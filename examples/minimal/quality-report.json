@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "urn:riopa:quality-report:nz-spatial-example:2026.07.18",
+  "subject_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+  "generated_at": "2026-07-18T01:10:00Z",
+  "profile": "https://w3id.org/riopa/quality/spatial-release/v1",
+  "results": [
+    {
+      "result_id": "urn:riopa:quality:example:geometry-validity",
+      "dimension": "validity",
+      "metric": "valid geometries after declared repair",
+      "method": "ST_IsValid over the canonical geometry column",
+      "value": 1.0,
+      "unit": "proportion",
+      "threshold": 1.0,
+      "status": "pass",
+      "evidence_refs": [
+        "urn:riopa:run:018f7f5a-3e17-7f08-a2bf-000000000001"
+      ],
+      "notes": "Synthetic result."
+    },
+    {
+      "result_id": "urn:riopa:quality:example:rights",
+      "dimension": "rights",
+      "metric": "source records with resolved redistribution status",
+      "method": "manifest rights inventory check",
+      "value": 1.0,
+      "unit": "proportion",
+      "threshold": 1.0,
+      "status": "pass",
+      "evidence_refs": [
+        "rights-inventory.json"
+      ],
+      "notes": null
+    },
+    {
+      "result_id": "urn:riopa:quality:example:legal-validity",
+      "dimension": "temporal-accuracy",
+      "metric": "features with evidenced legal operative dates",
+      "method": "source assertion completeness",
+      "value": 0.0,
+      "unit": "proportion",
+      "threshold": 1.0,
+      "status": "warn",
+      "evidence_refs": [
+        "source-record.json"
+      ],
+      "notes": "The example is a data-service demonstration, not a statutory-plan release."
+    }
+  ],
+  "overall_status": "warn",
+  "waivers": []
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000003",
+  "stream_id": "urn:riopa:stream:nz-spatial-example:2026.07.18",
+  "sequence": 2,
+  "event_type": "snapshot.assembled",
+  "status": "succeeded",
+  "occurred_at": "2026-07-18T01:15:00Z",
+  "recorded_at": "2026-07-18T01:15:01Z",
+  "activity": {
+    "activity_id": "urn:riopa:activity:nz-spatial-example:snapshot-assembly",
+    "activity_type": "snapshot-assembly",
+    "name": "Assemble illustrative RIOPA research snapshot",
+    "description": "Synthetic assembly event linking metadata, quality, rights and methods facts."
+  },
+  "agents": [
+    {
+      "agent_id": "https://github.com/edithatogo/riopa-infrastructure",
+      "agent_type": "workflow",
+      "role": "snapshot-assembler",
+      "name": "RIOPA reference release workflow",
+      "version": "0.1.0",
+      "identifier": null
+    }
+  ],
+  "inputs": [
+    "urn:riopa:artifact:sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "urn:riopa:quality-report:nz-spatial-example:2026.07.18",
+    "urn:riopa:rights-inventory:nz-spatial-example:2026.07.18",
+    "urn:riopa:methods-facts:nz-spatial-example:2026.07.18"
+  ],
+  "outputs": [
+    "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example"
+  ],
+  "parameters": {
+    "profile_version": "1.0.0-candidate"
+  },
+  "environment": {
+    "runtime": "Python 3.12"
+  },
+  "schema_refs": [
+    "https://w3id.org/riopa/schema/snapshot-manifest/v1"
+  ],
+  "classification_refs": [],
+  "rights_refs": [
+    "urn:riopa:rights-inventory:nz-spatial-example:2026.07.18"
+  ],
+  "quality_refs": [
+    "urn:riopa:quality-report:nz-spatial-example:2026.07.18"
+  ],
+  "valid_time": null,
+  "previous_event_hash": "f4d533e4979be780e70e1e0e445066b21dd7ece889ffd3092c4e222d7aa577a3",
+  "event_hash": "d8d0a390679ec98d29f496658cde5a931ebb49100136957fd2bec227d1161e08",
+  "signature_ref": null,
+  "diagnostics": [
+    "Synthetic metadata-only example."
+  ]
+}

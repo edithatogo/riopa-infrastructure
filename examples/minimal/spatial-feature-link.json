@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "link_id": "urn:riopa:spatial-rule-link:example:1",
+  "feature_version_id": "urn:riopa:feature-version:example-zone:1",
+  "provision_version_ids": [
+    "urn:riopa:provision-version:example-plan:zone-purpose:1"
+  ],
+  "link_method": "manual",
+  "confidence": 0.5,
+  "evidence_refs": [
+    "urn:riopa:artifact:sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  ],
+  "recorded_at": "2026-07-18T01:12:00Z",
+  "review": {
+    "reviewer": "example-reviewer-role",
+    "reviewed_at": "2026-07-18T01:12:00Z",
+    "decision": "uncertain",
+    "reason": "Synthetic demonstration only."
+  },
+  "caveats": [
+    "No legal interpretation should be drawn from this synthetic link."
+  ]
+}

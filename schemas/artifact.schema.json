@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/artifact/v1",
+  "title": "RIOPA Artifact v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_id",
+    "sha256",
+    "size_bytes",
+    "media_type",
+    "payload_status",
+    "verification_status"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "logical_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uri": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "media_type": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schema_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rights_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preservation_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payload_status": {
+      "type": "string",
+      "enum": [
+        "included",
+        "remote",
+        "not-bundled",
+        "restricted",
+        "missing"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "publisher-declared",
+        "not-verified",
+        "synthetic-placeholder"
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    {
+      "required": [
+        "uri"
+      ],
+      "properties": {
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  ]
+}

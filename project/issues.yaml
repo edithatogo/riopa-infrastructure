@@ -1,0 +1,902 @@
+{
+  "version": 1,
+  "issues": [
+    {
+      "key": "program-epic",
+      "title": "[Program] RIOPA provenance-first research infrastructure v1.0",
+      "labels": [
+        "type:program",
+        "provenance",
+        "geospatial"
+      ],
+      "body": "Build an open, modular, provenance-first research infrastructure ecosystem and its first New Zealand spatial reference implementation.\n\n## Outcomes\n\n- Shared provenance, transformation, quality, research-object and citation contracts.\n- A Conductor-aware repository/bootstrap template and staged adoption across existing repositories.\n- A temporally versioned NZ spatial archive linking council planning layers to source rules.\n- Reusable accessibility, facility-location and simulation engines.\n- Supermarket/health and emergency/hospital applied pilots.\n\n## Programme evidence\n\n- `conductor/product.md`\n- `conductor/design.md`\n- `conductor/tracks.md`\n- `docs/architecture.md`\n- `docs/standards-profile.md`\n\nThe parent and sub-issues generated from this repository are the executable roadmap.",
+      "project": true,
+      "mirror_to_umbrella": true
+    },
+    {
+      "key": "foundation_architecture_20260718",
+      "title": "[Track] Foundation architecture and programme governance",
+      "parent": "program-epic",
+      "blocked_by": [],
+      "labels": [
+        "type:track",
+        "phase:foundation",
+        "provenance"
+      ],
+      "body": "Conductor track: `foundation_architecture_20260718`  \nPhase: **Foundation**\n\n## Goal\n\nRatify the federated architecture, responsibility boundaries, version axes, governance model and implementation sequence.\n\n## Dependencies\n\n- None.\n\n## Acceptance criteria\n\n- [ ] All ADRs have an explicit accepted/superseded decision and rationale.\n- [ ] Architecture diagrams and component contracts pass stakeholder review.\n- [ ] Every later track has an owner repository, dependencies and measurable acceptance evidence.\n- [ ] Programme epic, track issues and project fields can be generated from versioned configuration.\n\n## Source of truth\n\n- `conductor/tracks/foundation_architecture_20260718/spec.md`\n- `conductor/tracks/foundation_architecture_20260718/plan.md`\n- `conductor/tracks/foundation_architecture_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Foundation",
+      "track_id": "foundation_architecture_20260718"
+    },
+    {
+      "key": "foundation_architecture_20260718:phase-1",
+      "title": "[foundation_architecture_20260718] 1. Architecture review",
+      "parent": "foundation_architecture_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:validation",
+        "phase:foundation"
+      ],
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Review existing connector/archive/corpus boundaries and document exact reuse.\n- [ ] 1.2 Review ADRs with maintainers and domain collaborators.\n- [ ] 1.3 Resolve repository name, package names and ownership.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Foundation",
+      "track_id": "foundation_architecture_20260718"
+    },
+    {
+      "key": "foundation_architecture_20260718:phase-2",
+      "title": "[foundation_architecture_20260718] 2. Governance and workflow",
+      "parent": "foundation_architecture_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:foundation"
+      ],
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Create GitHub programme epic and repository project.\n- [ ] 2.2 Link selected parent issues to RIOPA umbrella project.\n- [ ] 2.3 Document decision, schema and release approval roles.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Foundation",
+      "track_id": "foundation_architecture_20260718"
+    },
+    {
+      "key": "foundation_architecture_20260718:phase-3",
+      "title": "[foundation_architecture_20260718] 3. Architecture conformance",
+      "parent": "foundation_architecture_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:validation",
+        "phase:foundation"
+      ],
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Add an architecture test checklist.\n- [ ] 3.2 Confirm every materialisation has a named source-of-truth path.\n- [ ] 3.3 Publish architecture bundle v0.1.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Foundation",
+      "track_id": "foundation_architecture_20260718"
+    },
+    {
+      "key": "provenance_profile_v1_20260718",
+      "title": "[Track] Shared provenance, transformation and quality profile v1",
+      "parent": "program-epic",
+      "blocked_by": [
+        "foundation_architecture_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:core",
+        "provenance"
+      ],
+      "body": "Conductor track: `provenance_profile_v1_20260718`  \nPhase: **Core**\n\n## Goal\n\nStabilise a cross-language profile that unifies semantic lineage, operational run evidence, integrity, rights and quality without replacing existing repository evidence.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas validate examples and golden fixtures in Python and at least one non-Python implementation.\n- [ ] Mappings identify exact, approximate and unmapped semantics.\n- [ ] An fyi capture and an NLP transformation can be represented without losing existing evidence.\n- [ ] Hash-chain tampering and manifest-parent omissions fail validation.\n- [ ] Profile v1 migration and version policy are documented.\n\n## Source of truth\n\n- `conductor/tracks/provenance_profile_v1_20260718/spec.md`\n- `conductor/tracks/provenance_profile_v1_20260718/plan.md`\n- `conductor/tracks/provenance_profile_v1_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Core",
+      "track_id": "provenance_profile_v1_20260718"
+    },
+    {
+      "key": "provenance_profile_v1_20260718:phase-1",
+      "title": "[provenance_profile_v1_20260718] 1. Evidence inventory",
+      "parent": "provenance_profile_v1_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Map fyi-cli hash-chain fields and fyi-archive release provenance.\n- [ ] 1.2 Map nlp-policy-nz and healthpoint-rs manifests/provenance.\n- [ ] 1.3 Record gaps, collisions and source-specific extensions.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "provenance_profile_v1_20260718"
+    },
+    {
+      "key": "provenance_profile_v1_20260718:phase-2",
+      "title": "[provenance_profile_v1_20260718] 2. Contract stabilisation",
+      "parent": "provenance_profile_v1_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Refine JSON Schemas and canonicalisation algorithm.\n- [ ] 2.2 Define event-stream partitioning, ordering and retry semantics.\n- [ ] 2.3 Define PROV/OpenLineage adapters and conformance fixtures.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "provenance_profile_v1_20260718"
+    },
+    {
+      "key": "provenance_profile_v1_20260718:phase-3",
+      "title": "[provenance_profile_v1_20260718] 3. Cross-language implementations",
+      "parent": "provenance_profile_v1_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement reference Python library and CLI.\n- [ ] 3.2 Implement Rust structs/validator or generate them from schema.\n- [ ] 3.3 Run round-trip and semantic-equivalence tests.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "provenance_profile_v1_20260718"
+    },
+    {
+      "key": "provenance_profile_v1_20260718:phase-4",
+      "title": "[provenance_profile_v1_20260718] 4. Release",
+      "parent": "provenance_profile_v1_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:publication",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Publish candidate, solicit review and resolve issues.\n- [ ] 4.2 Publish v1 with migration guide, examples and DOI.\n- [ ] 4.3 Register stable w3id identifiers or equivalent redirects.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "provenance_profile_v1_20260718"
+    },
+    {
+      "key": "methods_research_objects_20260718",
+      "title": "[Track] Research objects, methods supplements and citation automation",
+      "parent": "program-epic",
+      "blocked_by": [
+        "provenance_profile_v1_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:core",
+        "provenance"
+      ],
+      "body": "Conductor track: `methods_research_objects_20260718`  \nPhase: **Core**\n\n## Goal\n\nGenerate concise citable methods and publication-grade supplementary evidence from the same machine-readable release facts.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n\n## Acceptance criteria\n\n- [ ] A clean example release contains the mandatory research-object files.\n- [ ] Generated methods include exact versions, sources, time ranges, quality status and limitations.\n- [ ] Missing required evidence fails closed or is explicitly stated as missing.\n- [ ] DataCite and RO-Crate validators pass.\n- [ ] A corrected release preserves and links the superseded release.\n\n## Source of truth\n\n- `conductor/tracks/methods_research_objects_20260718/spec.md`\n- `conductor/tracks/methods_research_objects_20260718/plan.md`\n- `conductor/tracks/methods_research_objects_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Core",
+      "track_id": "methods_research_objects_20260718"
+    },
+    {
+      "key": "methods_research_objects_20260718:phase-1",
+      "title": "[methods_research_objects_20260718] 1. Output contract",
+      "parent": "methods_research_objects_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Finalise mandatory and optional research-object files.\n- [ ] 1.2 Define methods facts schema and narrative anchors.\n- [ ] 1.3 Define correction/retraction/supersession relationships.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "methods_research_objects_20260718"
+    },
+    {
+      "key": "methods_research_objects_20260718:phase-2",
+      "title": "[methods_research_objects_20260718] 2. Generators and validators",
+      "parent": "methods_research_objects_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement RO-Crate and Workflow Run RO-Crate builder.\n- [ ] 2.2 Implement DataCite/DCAT/Croissant/Frictionless projections.\n- [ ] 2.3 Add external conformance validation in CI.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "methods_research_objects_20260718"
+    },
+    {
+      "key": "methods_research_objects_20260718:phase-3",
+      "title": "[methods_research_objects_20260718] 3. Publication workflow",
+      "parent": "methods_research_objects_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:publication",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Add Zenodo draft-first publication and DOI update.\n- [ ] 3.2 Add Sigstore/in-toto/SLSA attestations and SBOM.\n- [ ] 3.3 Conduct clean-room rebuild and methods comparison.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "methods_research_objects_20260718"
+    },
+    {
+      "key": "repository_template_adoption_20260718",
+      "title": "[Track] Repository template and cross-repository adoption",
+      "parent": "program-epic",
+      "blocked_by": [
+        "provenance_profile_v1_20260718",
+        "methods_research_objects_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:core",
+        "provenance"
+      ],
+      "body": "Conductor track: `repository_template_adoption_20260718`  \nPhase: **Core**\n\n## Goal\n\nMake provenance-first setup and staged adoption easy across existing and future repositories without destructive rewrites.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `methods_research_objects_20260718`\n\n## Acceptance criteria\n\n- [ ] One command creates a repository, project, labels, track issues and dependencies.\n- [ ] Template validation passes in a fresh checkout.\n- [ ] At least three existing repositories reach adoption level A1 and one reaches A3.\n- [ ] Existing outputs continue during a documented dual-run period.\n- [ ] Cross-repo compatibility is tested against pinned fixtures.\n\n## Source of truth\n\n- `conductor/tracks/repository_template_adoption_20260718/spec.md`\n- `conductor/tracks/repository_template_adoption_20260718/plan.md`\n- `conductor/tracks/repository_template_adoption_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Core",
+      "track_id": "repository_template_adoption_20260718"
+    },
+    {
+      "key": "repository_template_adoption_20260718:phase-1",
+      "title": "[repository_template_adoption_20260718] 1. Bootstrap hardening",
+      "parent": "repository_template_adoption_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Test repository and project creation idempotently.\n- [ ] 1.2 Add project field, issue dependency and umbrella mirror support.\n- [ ] 1.3 Add offline/dry-run report and failure recovery.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "repository_template_adoption_20260718"
+    },
+    {
+      "key": "repository_template_adoption_20260718:phase-2",
+      "title": "[repository_template_adoption_20260718] 2. Adapter templates",
+      "parent": "repository_template_adoption_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Python producer/consumer template.\n- [ ] 2.2 Rust producer/consumer template.\n- [ ] 2.3 GitHub Actions research-object release template.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "repository_template_adoption_20260718"
+    },
+    {
+      "key": "repository_template_adoption_20260718:phase-3",
+      "title": "[repository_template_adoption_20260718] 3. Adoption",
+      "parent": "repository_template_adoption_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:core"
+      ],
+      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement fyi-cli and fyi-archive mappings.\n- [ ] 3.2 Implement nlp-policy-nz and healthpoint-rs mappings.\n- [ ] 3.3 Publish compatibility report and migration guidance.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Core",
+      "track_id": "repository_template_adoption_20260718"
+    },
+    {
+      "key": "governance_maori_data_sovereignty_20260718",
+      "title": "[Track] Rights, privacy and Māori data sovereignty framework",
+      "parent": "program-epic",
+      "blocked_by": [
+        "foundation_architecture_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:foundation",
+        "provenance",
+        "rights-governance"
+      ],
+      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**\n\n## Goal\n\nEmbed lawful reuse, social licence, benefit, Māori rights and privacy decisions into source registration and publication gates.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] Source registration cannot publish when redistribution status is unresolved.\n- [ ] Trigger criteria and escalation roles are documented and reviewed with appropriate Māori expertise/partners.\n- [ ] Research objects carry rights and governance decisions and limitations.\n- [ ] Controlled-data work is separated architecturally from public-data releases.\n- [ ] At least one spatial-health pilot completes documented governance review before publication.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Foundation",
+      "track_id": "governance_maori_data_sovereignty_20260718"
+    },
+    {
+      "key": "governance_maori_data_sovereignty_20260718:phase-1",
+      "title": "[governance_maori_data_sovereignty_20260718] 1. Framework",
+      "parent": "governance_maori_data_sovereignty_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:foundation"
+      ],
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Inventory source rights/licensing states across existing repositories.\n- [ ] 1.2 Draft Māori data sovereignty and CARE-aligned trigger framework.\n- [ ] 1.3 Define privacy and controlled-data escalation.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Foundation",
+      "track_id": "governance_maori_data_sovereignty_20260718"
+    },
+    {
+      "key": "governance_maori_data_sovereignty_20260718:phase-2",
+      "title": "[governance_maori_data_sovereignty_20260718] 2. Operationalisation",
+      "parent": "governance_maori_data_sovereignty_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:foundation"
+      ],
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Add source and release gates.\n- [ ] 2.2 Add governance review record and research-object projection.\n- [ ] 2.3 Add sensitive issue/disclosure process.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Foundation",
+      "track_id": "governance_maori_data_sovereignty_20260718"
+    },
+    {
+      "key": "governance_maori_data_sovereignty_20260718:phase-3",
+      "title": "[governance_maori_data_sovereignty_20260718] 3. Review",
+      "parent": "governance_maori_data_sovereignty_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:validation",
+        "phase:foundation"
+      ],
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Seek appropriate external Māori governance review.\n- [ ] 3.2 Pilot the process on the supermarket/health dataset design.\n- [ ] 3.3 Revise and publish the framework with limitations.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Foundation",
+      "track_id": "governance_maori_data_sovereignty_20260718"
+    },
+    {
+      "key": "nz_spatial_source_registry_20260718",
+      "title": "[Track] New Zealand spatial source and authority registry",
+      "parent": "program-epic",
+      "blocked_by": [
+        "provenance_profile_v1_20260718",
+        "governance_maori_data_sovereignty_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:nz-spatial",
+        "geospatial"
+      ],
+      "body": "Conductor track: `nz_spatial_source_registry_20260718`  \nPhase: **NZ Spatial**\n\n## Goal\n\nCreate a versioned national inventory of authoritative national sources, councils, plans, GIS/ePlan services, documents, rights and connector health.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] All current regional and territorial authorities have source-registry records.\n- [ ] Each authority has a plan/publication mechanism classification and rights status.\n- [ ] At least four heterogeneous councils have reproducible source discovery.\n- [ ] National source records and service metadata snapshots are versioned and hashed.\n- [ ] Coverage, freshness and unresolved-rights dashboards are generated.\n\n## Source of truth\n\n- `conductor/tracks/nz_spatial_source_registry_20260718/spec.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/plan.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_source_registry_20260718"
+    },
+    {
+      "key": "nz_spatial_source_registry_20260718:phase-1",
+      "title": "[nz_spatial_source_registry_20260718] 1. Authority baseline",
+      "parent": "nz_spatial_source_registry_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Create current authority registry and identifier crosswalk.\n- [ ] 1.2 Record plan names/status and publication pages.\n- [ ] 1.3 Model authority/plan supersession and boundary change.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_source_registry_20260718"
+    },
+    {
+      "key": "nz_spatial_source_registry_20260718:phase-2",
+      "title": "[nz_spatial_source_registry_20260718] 2. Discovery adapters",
+      "parent": "nz_spatial_source_registry_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 ArcGIS service/item discovery.\n- [ ] 2.2 WFS/Koordinates capability discovery.\n- [ ] 2.3 ePlan/static document/download discovery.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_source_registry_20260718"
+    },
+    {
+      "key": "nz_spatial_source_registry_20260718:phase-3",
+      "title": "[nz_spatial_source_registry_20260718] 3. National adapters",
+      "parent": "nz_spatial_source_registry_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 3.1 LINZ catalogue/changeset metadata adapter.\n- [ ] 3.2 Stats NZ boundary/catalogue adapter.\n- [ ] 3.3 Gazette via DigitalNZ and MfE/planning-standard adapter.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_source_registry_20260718"
+    },
+    {
+      "key": "nz_spatial_source_registry_20260718:phase-4",
+      "title": "[nz_spatial_source_registry_20260718] 4. Pilot and scale",
+      "parent": "nz_spatial_source_registry_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Select councils by technology and rights heterogeneity.\n- [ ] 4.2 Publish coverage/health report and connector backlog.\n- [ ] 4.3 Scale discovery nationally without yet claiming full layer capture.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_source_registry_20260718"
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718",
+      "title": "[Track] New Zealand Spatial Archive minimum viable release",
+      "parent": "program-epic",
+      "blocked_by": [
+        "nz_spatial_source_registry_20260718",
+        "methods_research_objects_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:nz-spatial",
+        "geospatial"
+      ],
+      "body": "Conductor track: `nz_spatial_archive_mvp_20260718`  \nPhase: **NZ Spatial**\n\n## Goal\n\nPublish a small but complete, temporally versioned spatial research object using heterogeneous national and council sources.\n\n## Dependencies\n\n- `nz_spatial_source_registry_20260718`\n- `methods_research_objects_20260718`\n\n## Acceptance criteria\n\n- [ ] The release contains at least one LINZ/Stats national layer and zone/overlay layers from four heterogeneous councils.\n- [ ] Raw source evidence and service metadata are preserved or resolvably referenced.\n- [ ] All vector outputs pass geometry/schema and source-count reconciliation checks.\n- [ ] A clean environment rebuild reaches declared R2 or higher.\n- [ ] A DOI-ready RO-Crate and generated methods supplement are produced.\n\n## Source of truth\n\n- `conductor/tracks/nz_spatial_archive_mvp_20260718/spec.md`\n- `conductor/tracks/nz_spatial_archive_mvp_20260718/plan.md`\n- `conductor/tracks/nz_spatial_archive_mvp_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718"
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718:phase-1",
+      "title": "[nz_spatial_archive_mvp_20260718] 1. Capture",
+      "parent": "nz_spatial_archive_mvp_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Implement selected connector capture and retry/change semantics.\n- [ ] 1.2 Preserve service definitions and original distributions.\n- [ ] 1.3 Emit capture events and rights evidence.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718"
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718:phase-2",
+      "title": "[nz_spatial_archive_mvp_20260718] 2. Canonical model",
+      "parent": "nz_spatial_archive_mvp_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Create feature/version tables and source mappings.\n- [ ] 2.2 Implement CRS, geometry repair and source-field preservation.\n- [ ] 2.3 Create temporal assertions without inferring legal dates.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718"
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718:phase-3",
+      "title": "[nz_spatial_archive_mvp_20260718] 3. Materialise and validate",
+      "parent": "nz_spatial_archive_mvp_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Build GeoParquet and DuckDB Spatial bundle.\n- [ ] 3.2 Build STAC/catalogue views and example queries.\n- [ ] 3.3 Run quality profile and independent rebuild.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718"
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718:phase-4",
+      "title": "[nz_spatial_archive_mvp_20260718] 4. Release",
+      "parent": "nz_spatial_archive_mvp_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:publication",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Generate research object, methods, citation and attestations.\n- [ ] 4.2 Publish draft, review source rights/attribution, then DOI release.\n- [ ] 4.3 Enable prospective scheduled snapshots and health monitoring.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718"
+    },
+    {
+      "key": "planning_rules_linkage_20260718",
+      "title": "[Track] Council planning spatial-to-rule linkage",
+      "parent": "program-epic",
+      "blocked_by": [
+        "nz_spatial_archive_mvp_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:nz-spatial",
+        "geospatial"
+      ],
+      "body": "Conductor track: `planning_rules_linkage_20260718`  \nPhase: **NZ Spatial**\n\n## Goal\n\nLink zoning and planning geometries to versioned source plan documents and provisions with transparent evidence and uncertainty.\n\n## Dependencies\n\n- `nz_spatial_archive_mvp_20260718`\n\n## Acceptance criteria\n\n- [ ] Every pilot spatial layer links to its source plan/version and captured documents.\n- [ ] Provision links state method, evidence, confidence and review status.\n- [ ] National zone crosswalk retains local meaning and mapping uncertainty.\n- [ ] Evaluation reports precision/recall or reviewed accuracy on a gold sample.\n- [ ] Public documentation clearly separates publisher facts, extracted structure and interpretation.\n\n## Source of truth\n\n- `conductor/tracks/planning_rules_linkage_20260718/spec.md`\n- `conductor/tracks/planning_rules_linkage_20260718/plan.md`\n- `conductor/tracks/planning_rules_linkage_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "NZ Spatial",
+      "track_id": "planning_rules_linkage_20260718"
+    },
+    {
+      "key": "planning_rules_linkage_20260718:phase-1",
+      "title": "[planning_rules_linkage_20260718] 1. Legal/document model",
+      "parent": "planning_rules_linkage_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define plan, document and provision stable identifiers.\n- [ ] 1.2 Capture HTML/PDF/source spans and amendment relationships.\n- [ ] 1.3 Define legal-status assertion vocabulary.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "planning_rules_linkage_20260718"
+    },
+    {
+      "key": "planning_rules_linkage_20260718:phase-2",
+      "title": "[planning_rules_linkage_20260718] 2. Linkage",
+      "parent": "planning_rules_linkage_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement publisher/deterministic links.\n- [ ] 2.2 Implement candidate extraction and confidence evidence.\n- [ ] 2.3 Create review/adjudication workflow and gold sample.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "planning_rules_linkage_20260718"
+    },
+    {
+      "key": "planning_rules_linkage_20260718:phase-3",
+      "title": "[planning_rules_linkage_20260718] 3. Crosswalk and validation",
+      "parent": "planning_rules_linkage_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:validation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Map local zones to National Planning Standards concepts where defensible.\n- [ ] 3.2 Validate link accuracy and failure modes.\n- [ ] 3.3 Publish linked pilot research object with legal caveats.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "planning_rules_linkage_20260718"
+    },
+    {
+      "key": "spatial_quality_temporality_20260718",
+      "title": "[Track] Spatial quality, temporality and change-analysis framework",
+      "parent": "program-epic",
+      "blocked_by": [
+        "nz_spatial_archive_mvp_20260718",
+        "planning_rules_linkage_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:nz-spatial",
+        "geospatial"
+      ],
+      "body": "Conductor track: `spatial_quality_temporality_20260718`  \nPhase: **NZ Spatial**\n\n## Goal\n\nMake spatial, temporal and semantic quality measurable and support defensible historical/change analyses.\n\n## Dependencies\n\n- `nz_spatial_archive_mvp_20260718`\n- `planning_rules_linkage_20260718`\n\n## Acceptance criteria\n\n- [ ] Every released layer has a declared quality profile and metric results.\n- [ ] Spatial diffs separate schema, attribute and geometry changes.\n- [ ] Queries can reproduce state as-known-at and state-valid-at perspectives.\n- [ ] Boundary concordance uncertainty and aggregation method are recorded.\n- [ ] Quality warnings flow into methods and analytical sensitivity analyses.\n\n## Source of truth\n\n- `conductor/tracks/spatial_quality_temporality_20260718/spec.md`\n- `conductor/tracks/spatial_quality_temporality_20260718/plan.md`\n- `conductor/tracks/spatial_quality_temporality_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "NZ Spatial",
+      "track_id": "spatial_quality_temporality_20260718"
+    },
+    {
+      "key": "spatial_quality_temporality_20260718:phase-1",
+      "title": "[spatial_quality_temporality_20260718] 1. Metric profiles",
+      "parent": "spatial_quality_temporality_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `spatial_quality_temporality_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define core and layer-specific quality profiles.\n- [ ] 1.2 Implement geometry/schema/completeness metrics.\n- [ ] 1.3 Implement rights/lineage/accessibility metrics.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/spatial_quality_temporality_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "spatial_quality_temporality_20260718"
+    },
+    {
+      "key": "spatial_quality_temporality_20260718:phase-2",
+      "title": "[spatial_quality_temporality_20260718] 2. Temporal engine",
+      "parent": "spatial_quality_temporality_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `spatial_quality_temporality_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement bitemporal version tables and interval validation.\n- [ ] 2.2 Implement snapshot and feature diff.\n- [ ] 2.3 Label reconstruction source and confidence.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/spatial_quality_temporality_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "spatial_quality_temporality_20260718"
+    },
+    {
+      "key": "spatial_quality_temporality_20260718:phase-3",
+      "title": "[spatial_quality_temporality_20260718] 3. Concordance and reporting",
+      "parent": "spatial_quality_temporality_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial"
+      ],
+      "body": "Implementation phase for Conductor track `spatial_quality_temporality_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement boundary concordance and weighted aggregation evidence.\n- [ ] 3.2 Generate quality trend dashboard/data release.\n- [ ] 3.3 Add quality-driven publication gates and methods text.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/spatial_quality_temporality_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "NZ Spatial",
+      "track_id": "spatial_quality_temporality_20260718"
+    },
+    {
+      "key": "facility_location_engine_20260718",
+      "title": "[Track] Domain-neutral accessibility and facility-location engine",
+      "parent": "program-epic",
+      "blocked_by": [
+        "spatial_quality_temporality_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:analytics",
+        "geospatial"
+      ],
+      "body": "Conductor track: `facility_location_engine_20260718`  \nPhase: **Analytics**\n\n## Goal\n\nProvide reusable, inspectable optimisation components for coverage, average access, worst-case equity, capacity, competition and uncertainty.\n\n## Dependencies\n\n- `spatial_quality_temporality_20260718`\n\n## Acceptance criteria\n\n- [ ] Reference instances match known optimal solutions or certified bounds.\n- [ ] Problem definitions separate demand, candidates, feasibility, capacity, objectives and equity groups.\n- [ ] Every solution records solver/version, tolerances, seed, status and independent feasibility checks.\n- [ ] Pareto alternatives and subgroup outcomes are reportable.\n- [ ] At least supermarket and emergency-service adapters use the same core contracts.\n\n## Source of truth\n\n- `conductor/tracks/facility_location_engine_20260718/spec.md`\n- `conductor/tracks/facility_location_engine_20260718/plan.md`\n- `conductor/tracks/facility_location_engine_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Analytics",
+      "track_id": "facility_location_engine_20260718"
+    },
+    {
+      "key": "facility_location_engine_20260718:phase-1",
+      "title": "[facility_location_engine_20260718] 1. Problem contracts",
+      "parent": "facility_location_engine_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:analytics"
+      ],
+      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define demand/candidate/network/constraint/objective schemas.\n- [ ] 1.2 Define solution, bound, feasibility and uncertainty records.\n- [ ] 1.3 Create small benchmark suite.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Analytics",
+      "track_id": "facility_location_engine_20260718"
+    },
+    {
+      "key": "facility_location_engine_20260718:phase-2",
+      "title": "[facility_location_engine_20260718] 2. Model families",
+      "parent": "facility_location_engine_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:analytics"
+      ],
+      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement set/maximal covering and p-median/p-center.\n- [ ] 2.2 Implement capacities, budgets and site feasibility.\n- [ ] 2.3 Add robust/stochastic scenarios and sensitivity analysis.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Analytics",
+      "track_id": "facility_location_engine_20260718"
+    },
+    {
+      "key": "facility_location_engine_20260718:phase-3",
+      "title": "[facility_location_engine_20260718] 3. Multi-objective and validation",
+      "parent": "facility_location_engine_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:validation",
+        "phase:analytics"
+      ],
+      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement Pareto/epsilon-constraint workflow.\n- [ ] 3.2 Add MCDA preference layer with provenance of weights.\n- [ ] 3.3 Verify solutions independently and publish reproducible benchmarks.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Analytics",
+      "track_id": "facility_location_engine_20260718"
+    },
+    {
+      "key": "supermarket_health_pilot_20260718",
+      "title": "[Track] Supermarket access, zoning and health geography pilot",
+      "parent": "program-epic",
+      "blocked_by": [
+        "planning_rules_linkage_20260718",
+        "facility_location_engine_20260718",
+        "governance_maori_data_sovereignty_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:applications",
+        "geospatial"
+      ],
+      "body": "Conductor track: `supermarket_health_pilot_20260718`  \nPhase: **Applications**\n\n## Goal\n\nReproduce and extend supermarket-density/access analysis with open code, source evidence, zoning feasibility, health outcomes and constrained location alternatives.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `facility_location_engine_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Facility registry reports source coverage, duplicates, positional confidence and temporal status.\n- [ ] At least straight-line, road-network and population-weighted access metrics are compared.\n- [ ] Zoning feasibility is presented as sourced screening, not legal advice.\n- [ ] Health analyses preregister estimands and report ecological/confounding limitations.\n- [ ] Optimisation reports efficiency/equity Pareto alternatives and sensitivity to uncertain inputs.\n- [ ] Code, data permitted for release, methods and research object are public and citable.\n\n## Source of truth\n\n- `conductor/tracks/supermarket_health_pilot_20260718/spec.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/plan.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Applications",
+      "track_id": "supermarket_health_pilot_20260718"
+    },
+    {
+      "key": "supermarket_health_pilot_20260718:phase-1",
+      "title": "[supermarket_health_pilot_20260718] 1. Protocol and facility registry",
+      "parent": "supermarket_health_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Preregister data sources, estimands, outcomes and analyses.\n- [ ] 1.2 Build/reconcile supermarket source records and validation sample.\n- [ ] 1.3 Complete rights and governance review.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "supermarket_health_pilot_20260718"
+    },
+    {
+      "key": "supermarket_health_pilot_20260718:phase-2",
+      "title": "[supermarket_health_pilot_20260718] 2. Descriptive health geography",
+      "parent": "supermarket_health_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Generate density and access metrics at multiple geographies.\n- [ ] 2.2 Link deprivation/demography and open aggregate health outcomes.\n- [ ] 2.3 Analyse uncertainty, MAUP and source sensitivity.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "supermarket_health_pilot_20260718"
+    },
+    {
+      "key": "supermarket_health_pilot_20260718:phase-3",
+      "title": "[supermarket_health_pilot_20260718] 3. Feasibility and optimisation",
+      "parent": "supermarket_health_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Build zoning/candidate-site screening.\n- [ ] 3.2 Run p-median/p-center/maximal-covering and competitive/capacity variants.\n- [ ] 3.3 Report Pareto alternatives, distributional effects and caveats.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "supermarket_health_pilot_20260718"
+    },
+    {
+      "key": "supermarket_health_pilot_20260718:phase-4",
+      "title": "[supermarket_health_pilot_20260718] 4. Publication",
+      "parent": "supermarket_health_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:publication",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Reproduce baseline findings where possible and document discrepancies.\n- [ ] 4.2 Publish research object and manuscript-ready artifacts.\n- [ ] 4.3 Invite original analyst and councils/health geographers to review/collaborate.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "supermarket_health_pilot_20260718"
+    },
+    {
+      "key": "emergency_health_facilities_pilot_20260718",
+      "title": "[Track] Ambulance and hospital facility planning pilot",
+      "parent": "program-epic",
+      "blocked_by": [
+        "facility_location_engine_20260718",
+        "governance_maori_data_sovereignty_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:applications",
+        "geospatial"
+      ],
+      "body": "Conductor track: `emergency_health_facilities_pilot_20260718`  \nPhase: **Applications**\n\n## Goal\n\nDemonstrate the common location framework for emergency response and health facilities while respecting operational data and safety boundaries.\n\n## Dependencies\n\n- `facility_location_engine_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] A synthetic/public benchmark demonstrates maximal covering and dynamic/simulation evaluation.\n- [ ] Response-time, queueing, busy fraction, relocation and handover assumptions are explicit.\n- [ ] Hospital scenarios include service/capacity and access-equity constraints.\n- [ ] A controlled-data adapter contract is documented separately.\n- [ ] Safety statement and non-operational boundary are prominent in all outputs.\n\n## Source of truth\n\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Applications",
+      "track_id": "emergency_health_facilities_pilot_20260718"
+    },
+    {
+      "key": "emergency_health_facilities_pilot_20260718:phase-1",
+      "title": "[emergency_health_facilities_pilot_20260718] 1. Public benchmark design",
+      "parent": "emergency_health_facilities_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define synthetic demand, network, fleet and service-time scenarios.\n- [ ] 1.2 Implement static maximal-covering/p-center baselines.\n- [ ] 1.3 Define operational and safety acceptance boundaries.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "emergency_health_facilities_pilot_20260718"
+    },
+    {
+      "key": "emergency_health_facilities_pilot_20260718:phase-2",
+      "title": "[emergency_health_facilities_pilot_20260718] 2. Simulation",
+      "parent": "emergency_health_facilities_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement discrete-event simulation adapter.\n- [ ] 2.2 Validate static solutions under queueing and vehicle unavailability.\n- [ ] 2.3 Add dynamic posting/relocation policies and robustness scenarios.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "emergency_health_facilities_pilot_20260718"
+    },
+    {
+      "key": "emergency_health_facilities_pilot_20260718:phase-3",
+      "title": "[emergency_health_facilities_pilot_20260718] 3. Hospital/service pilot",
+      "parent": "emergency_health_facilities_pilot_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:implementation",
+        "phase:applications"
+      ],
+      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Model capacity, service mix, referrals and equity constraints.\n- [ ] 3.2 Compare p-median/p-center/capacitated and robust alternatives.\n- [ ] 3.3 Publish only benchmark results and controlled-data design.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Applications",
+      "track_id": "emergency_health_facilities_pilot_20260718"
+    },
+    {
+      "key": "publication_validation_20260718",
+      "title": "[Track] Independent validation, releases and publication programme",
+      "parent": "program-epic",
+      "blocked_by": [
+        "repository_template_adoption_20260718",
+        "nz_spatial_archive_mvp_20260718"
+      ],
+      "labels": [
+        "type:track",
+        "phase:publication"
+      ],
+      "body": "Conductor track: `publication_validation_20260718`  \nPhase: **Publication**\n\n## Goal\n\nConvert infrastructure, data and applied work into independently validated, citable software/data releases and manuscripts.\n\n## Dependencies\n\n- `repository_template_adoption_20260718`\n- `nz_spatial_archive_mvp_20260718`\n\n## Acceptance criteria\n\n- [ ] At least one external/clean-room reproduction report is published.\n- [ ] Code/profile and data snapshots have independent versions and persistent identifiers.\n- [ ] Methods and supplementary artifacts are generated and reviewed against the evidence.\n- [ ] Release correction/deprecation process is tested.\n- [ ] Publication packages clearly state contributions, limitations and AI-tool use.\n\n## Source of truth\n\n- `conductor/tracks/publication_validation_20260718/spec.md`\n- `conductor/tracks/publication_validation_20260718/plan.md`\n- `conductor/tracks/publication_validation_20260718/metadata.json`",
+      "project": true,
+      "mirror_to_umbrella": true,
+      "phase": "Publication",
+      "track_id": "publication_validation_20260718"
+    },
+    {
+      "key": "publication_validation_20260718:phase-1",
+      "title": "[publication_validation_20260718] 1. Validation protocol",
+      "parent": "publication_validation_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:validation",
+        "phase:publication"
+      ],
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define independent reproduction and audit checklist.\n- [ ] 1.2 Recruit reviewers/collaborators and create issue-based evidence log.\n- [ ] 1.3 Run clean-room rebuilds and discrepancy triage.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Publication",
+      "track_id": "publication_validation_20260718"
+    },
+    {
+      "key": "publication_validation_20260718:phase-2",
+      "title": "[publication_validation_20260718] 2. Releases",
+      "parent": "publication_validation_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:publication",
+        "phase:publication"
+      ],
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Publish provenance profile/software release.\n- [ ] 2.2 Publish NZ spatial archive data descriptor release.\n- [ ] 2.3 Verify mirrors, DOI metadata and citation files.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Publication",
+      "track_id": "publication_validation_20260718"
+    },
+    {
+      "key": "publication_validation_20260718:phase-3",
+      "title": "[publication_validation_20260718] 3. Applied publications",
+      "parent": "publication_validation_20260718",
+      "blocked_by": [],
+      "labels": [
+        "type:publication",
+        "phase:publication"
+      ],
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Publish supermarket/health research object and manuscript.\n- [ ] 3.2 Publish emergency/hospital methods/benchmark paper when validated.\n- [ ] 3.3 Track reuse, citations and contributor roles.\n\n## Evidence\n\nLink tests, artifacts, release records and decisions in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "project": true,
+      "mirror_to_umbrella": false,
+      "phase": "Publication",
+      "track_id": "publication_validation_20260718"
+    }
+  ]
+}

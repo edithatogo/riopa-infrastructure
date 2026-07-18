@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000010",
+  "stream_id": "urn:riopa:stream:nz-spatial-example:2026.07.18",
+  "sequence": 0,
+  "event_type": "capture.completed",
+  "status": "succeeded",
+  "occurred_at": "2026-07-18T01:05:00Z",
+  "recorded_at": "2026-07-18T01:05:01Z",
+  "activity": {
+    "activity_id": "urn:riopa:capture:018f7f5a-3e17-7f08-a2bf-000000000000",
+    "activity_type": "source-capture",
+    "name": "Illustrative LINZ layer capture",
+    "description": "Synthetic event with no bundled source payload."
+  },
+  "agents": [
+    {
+      "agent_id": "https://github.com/edithatogo/riopa-infrastructure",
+      "agent_type": "software",
+      "role": "capture-client",
+      "name": "riopa example connector",
+      "version": "0.1.0",
+      "identifier": null
+    }
+  ],
+  "inputs": [
+    "urn:riopa:source:linz-data-service"
+  ],
+  "outputs": [
+    "urn:riopa:artifact:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "parameters": {
+    "layer": "synthetic-example"
+  },
+  "environment": {
+    "runtime": "Python 3.12"
+  },
+  "schema_refs": [],
+  "classification_refs": [],
+  "rights_refs": [
+    "rights-inventory.json#linz"
+  ],
+  "quality_refs": [],
+  "valid_time": null,
+  "previous_event_hash": null,
+  "event_hash": "57c8f21fdfed578d3e5ea32028b65ca6004d946ffe6c83d2d0dbd0565b39614a",
+  "signature_ref": null,
+  "diagnostics": [
+    "Synthetic example only."
+  ]
+}

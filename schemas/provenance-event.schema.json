@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/provenance-event/v1",
+  "title": "RIOPA Provenance Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "stream_id",
+    "sequence",
+    "event_type",
+    "status",
+    "occurred_at",
+    "recorded_at",
+    "activity",
+    "agents",
+    "inputs",
+    "outputs",
+    "event_hash"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "stream_id": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "source.discovered",
+        "source.metadata_snapshot",
+        "capture.started",
+        "capture.completed",
+        "capture.failed",
+        "artifact.verified",
+        "transformation.started",
+        "transformation.completed",
+        "transformation.failed",
+        "validation.completed",
+        "snapshot.assembled",
+        "snapshot.revised",
+        "materialization.created",
+        "publication.staged",
+        "publication.released",
+        "rights.reviewed",
+        "governance.reviewed"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "started",
+        "succeeded",
+        "failed",
+        "partial",
+        "cancelled",
+        "reviewed"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "activity": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "activity_id",
+        "activity_type"
+      ],
+      "properties": {
+        "activity_id": {
+          "type": "string"
+        },
+        "activity_type": {
+          "type": "string"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "agent_id",
+          "agent_type",
+          "role"
+        ],
+        "properties": {
+          "agent_id": {
+            "type": "string"
+          },
+          "agent_type": {
+            "type": "string",
+            "enum": [
+              "person",
+              "organisation",
+              "software",
+              "service",
+              "workflow"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "identifier": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "schema_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "classification_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rights_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "quality_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valid_time": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "previous_event_hash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "event_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "signature_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

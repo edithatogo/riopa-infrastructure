@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "issues": [
+    {
+      "key": "fyi-cli-riopa-events",
+      "repository": "edithatogo/fyi-cli",
+      "title": "[Cross-repo] Emit RIOPA-compatible capture and provenance events",
+      "labels": [
+        "cross-repo",
+        "provenance"
+      ],
+      "body": "Adopt the shared RIOPA provenance profile without replacing the existing tamper-evident payload hash chain.\n\n## Scope\n\n- Map current `ProvenanceRecord` fields into artifact/capture events.\n- Preserve current chain verification as integrity evidence.\n- Emit source, input/output, agent, rights and schema references alongside current outputs.\n- Add golden fixtures and round-trip validation against `riopa-infrastructure`.\n\n## Acceptance\n\n- Existing chain tests remain green.\n- One real/synthetic capture emits a valid RIOPA event stream.\n- The mapping identifies semantic loss and unsupported fields.\n- No source-specific network responsibility moves out of `fyi-cli`.\n\nProgramme track: `repository_template_adoption_20260718`."
+    },
+    {
+      "key": "fyi-archive-riopa-release",
+      "repository": "edithatogo/fyi-archive",
+      "title": "[Cross-repo] Produce a RIOPA research-object and methods release bundle",
+      "labels": [
+        "cross-repo",
+        "provenance"
+      ],
+      "body": "Extend the existing release provenance, WARC/WACZ, Parquet/DuckDB, SBOM and attestation pipeline with the shared RIOPA snapshot/research-object profile.\n\n## Scope\n\n- Map `dist/provenance.json` and release artifacts into snapshot, materialisation and quality records.\n- Generate RO-Crate 1.3, DataCite-ready metadata, rights inventory and methods supplement.\n- Preserve the existing two-repository responsibility split: `fyi-cli` owns network/capture; `fyi-archive` owns orchestration/distribution.\n- Run dual output through a release before making the shared bundle supported.\n\n## Acceptance\n\n- Existing release outputs and mirrors remain unchanged.\n- One release validates against the RIOPA schemas and external RO-Crate checks.\n- Methods text is generated from release facts and states missing evidence explicitly.\n- The bundle links WARC/WACZ, manifest, DuckDB, SBOM and attestations.\n\nProgramme tracks: `methods_research_objects_20260718`, `repository_template_adoption_20260718`."
+    },
+    {
+      "key": "nlp-policy-riopa-lineage",
+      "repository": "edithatogo/nlp-policy-nz",
+      "title": "[Cross-repo] Add RIOPA transformation, ontology and source-span lineage",
+      "labels": [
+        "cross-repo",
+        "provenance"
+      ],
+      "body": "Map NLP pipeline runs and derived artifacts to the shared RIOPA transformation profile.\n\n## Scope\n\n- Record model, tokenizer, ontology/classification, embedding and chunking versions.\n- Link output records/chunks to source document and source spans where reliable.\n- Record deterministic/stochastic settings, seeds and environment identity.\n- Package a derived corpus as a RIOPA/RO-Crate research object while retaining current Parquet/LanceDB/Zenodo workflows.\n\n## Acceptance\n\n- A deterministic fixture emits valid transformation and snapshot records.\n- LanceDB is documented as a derived index and is rebuildable from canonical records.\n- Source-span lineage granularity and known losses are explicit.\n- Existing publication protocol remains supported during dual run.\n\nProgramme track: `repository_template_adoption_20260718`."
+    },
+    {
+      "key": "healthpoint-riopa-facility",
+      "repository": "edithatogo/healthpoint-rs",
+      "title": "[Cross-repo] Map Healthpoint facility exports to RIOPA source and provenance contracts",
+      "labels": [
+        "cross-repo",
+        "provenance",
+        "geospatial",
+        "rights-governance"
+      ],
+      "body": "Expose RIOPA-compatible source/capture/facility assertions while preserving Healthpoint licensing and the repository\u2019s code-first, data-light boundary.\n\n## Scope\n\n- Map export manifests, FHIR resource identity, retrieval time, source and tool version.\n- Preserve `local-only`, `licensed-share` and `open-approved` redistribution states.\n- Represent locations as source assertions suitable for later facility reconciliation; do not publish licensed payloads.\n- Add synthetic fixtures and cross-language schema tests.\n\n## Acceptance\n\n- Synthetic exports validate against RIOPA source/event contracts.\n- Rights state is never broadened by the adapter.\n- Facility records retain FHIR IDs and source coordinates separately from later geocoding/reconciliation.\n- No real Healthpoint payload is committed or publicly redistributed.\n\nProgramme tracks: `repository_template_adoption_20260718`, `supermarket_health_pilot_20260718`."
+    },
+    {
+      "key": "ecosystem-docs-riopa-page",
+      "repository": "edithatogo/ecosystem-docs",
+      "title": "[Cross-repo] Add RIOPA infrastructure programme and adoption documentation",
+      "labels": [
+        "cross-repo",
+        "type:publication"
+      ],
+      "body": "Add a programme page that explains the provenance-first architecture, repository ecosystem, standards profile, NZ spatial reference implementation and adoption status.\n\n## Acceptance\n\n- The page links the core repository, active Conductor tracks, source registry and citable releases.\n- It distinguishes authoritative raw evidence, canonical snapshots and derived materialisations.\n- It includes current adoption levels for `fyi-cli`, `fyi-archive`, `nlp-policy-nz` and `healthpoint-rs`.\n- Documentation builds and link checks pass.\n\nProgramme track: `publication_validation_20260718`."
+    },
+    {
+      "key": "corpus-legislation-riopa-snapshot",
+      "repository": "edithatogo/corpus-legislation-nz",
+      "title": "[Cross-repo] Map legislation corpus captures and releases to the RIOPA profile",
+      "labels": [
+        "cross-repo",
+        "provenance"
+      ],
+      "body": "Adopt RIOPA source, transformation, snapshot and research-object contracts while preserving the existing raw XML/HTML, JSONL, Parquet, Hugging Face and Zenodo workflow.\n\n## Scope\n\n- Map official source identity, work/expression versions, retrieval evidence and content hashes.\n- Map normalization, validation, coverage and archive activities into transformation/quality events.\n- Emit a snapshot manifest that links raw evidence, canonical records, Parquet shards and DOI/HF revisions.\n- Preserve current conservative coverage and rights caveats.\n\n## Acceptance\n\n- A fixture and one release validate against the shared schemas.\n- Legal/version assertions retain exact source evidence and uncertainty.\n- Existing manifest-hash citation and draft-first publication remain supported.\n- Missing coverage is reported, never converted into an implicit completeness claim.\n\nProgramme track: `repository_template_adoption_20260718`."
+    },
+    {
+      "key": "open-social-data-riopa-events",
+      "repository": "edithatogo/open_social_data",
+      "title": "[Cross-repo] Emit RIOPA source, change, quality and materialisation records",
+      "labels": [
+        "cross-repo",
+        "provenance"
+      ],
+      "body": "Map the Rust provider catalogue and fetch engine to the shared RIOPA contracts.\n\n## Scope\n\n- Map provider URLs, ETags, Last-Modified values, cache decisions and retrieval times into source/capture events.\n- Map provider-specific fetch/flatten operations and parameters into transformation runs.\n- Map existing quality reports and Parquet/catalogue outputs into quality and materialisation records.\n- Preserve provider-specific licences and attribution.\n\n## Acceptance\n\n- Synthetic/provider fixtures validate in Rust and against the normative JSON Schemas.\n- A `304 Not Modified` decision is represented as evidence without fabricating a new payload.\n- Parquet and SQLite/JSON catalogues are declared projections of a named snapshot.\n- Existing CLI behaviour remains stable during dual output.\n\nProgramme track: `repository_template_adoption_20260718`."
+    },
+    {
+      "key": "rulespec-nz-riopa-lineage",
+      "repository": "edithatogo/rulespec-nz",
+      "title": "[Cross-repo] Link RuleSpec modules and validation evidence to RIOPA legal provenance",
+      "labels": [
+        "cross-repo",
+        "provenance",
+        "rights-governance"
+      ],
+      "body": "Map source-grounded RuleSpec modules, corpus citation paths, oracle pins and ratcheted validation evidence into the shared RIOPA profile.\n\n## Scope\n\n- Represent provisions, source versions, RuleSpec modules and derived rules as linked assertions.\n- Record encoding/manual interpretation activities, evidence, reviewer roles and policy/version.\n- Map parity runs and known-gap ratchets into transformation and quality evidence.\n- Preserve exact corpus citation paths and pinned comparison SHAs.\n\n## Acceptance\n\n- One statute/regulation/policy slice produces valid source, run and quality records.\n- No RuleSpec assertion loses its source citation path.\n- Interpretation choices are explicit manual activities rather than hidden metadata.\n- Existing ratchets continue to fail on regressions and stale fixed entries.\n\nProgramme tracks: `planning_rules_linkage_20260718`, `repository_template_adoption_20260718`."
+    }
+  ]
+}

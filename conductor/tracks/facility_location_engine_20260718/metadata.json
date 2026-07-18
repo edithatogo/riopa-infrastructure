@@ -1,0 +1,15 @@
+{
+  "track_id": "facility_location_engine_20260718",
+  "type": "analytics",
+  "phase": "Analytics",
+  "status": "proposed",
+  "created_at": "2026-07-18T01:30:00Z",
+  "updated_at": "2026-07-18T01:30:00Z",
+  "description": "Provide reusable, inspectable optimisation components for coverage, average access, worst-case equity, capacity, competition and uncertainty.",
+  "depends_on": [
+    "spatial_quality_temporality_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": null
+}

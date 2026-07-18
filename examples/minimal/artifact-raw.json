@@ -1,0 +1,16 @@
+{
+  "artifact_id": "urn:riopa:artifact:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "logical_id": "urn:riopa:example:linz-layer-raw",
+  "path": "data/raw/example-layer.geojson",
+  "uri": null,
+  "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "size_bytes": 1024,
+  "media_type": "application/geo+json",
+  "created_at": "2026-07-18T01:05:00Z",
+  "source_id": "urn:riopa:source:linz-data-service",
+  "schema_id": null,
+  "rights_ref": "rights-inventory.json#linz",
+  "preservation_ref": null,
+  "payload_status": "not-bundled",
+  "verification_status": "synthetic-placeholder"
+}

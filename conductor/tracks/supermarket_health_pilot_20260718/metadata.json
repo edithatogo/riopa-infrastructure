@@ -1,0 +1,17 @@
+{
+  "track_id": "supermarket_health_pilot_20260718",
+  "type": "application",
+  "phase": "Applications",
+  "status": "proposed",
+  "created_at": "2026-07-18T01:30:00Z",
+  "updated_at": "2026-07-18T01:30:00Z",
+  "description": "Reproduce and extend supermarket-density/access analysis with open code, source evidence, zoning feasibility, health outcomes and constrained location alternatives.",
+  "depends_on": [
+    "planning_rules_linkage_20260718",
+    "facility_location_engine_20260718",
+    "governance_maori_data_sovereignty_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": null
+}

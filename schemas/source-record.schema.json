@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/source-record/v1",
+  "title": "RIOPA Source Record v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "name",
+    "publisher",
+    "jurisdiction",
+    "source_type",
+    "access",
+    "rights",
+    "discovered_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identifier_scheme": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "api",
+        "web-service",
+        "catalogue",
+        "download",
+        "website",
+        "document",
+        "database",
+        "manual-register",
+        "other"
+      ]
+    },
+    "authoritativeness": {
+      "type": "string",
+      "enum": [
+        "authoritative",
+        "official",
+        "publisher-provided",
+        "community",
+        "commercial",
+        "derived",
+        "unknown"
+      ]
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landing_page",
+        "mechanism",
+        "authentication"
+      ],
+      "properties": {
+        "landing_page": {
+          "type": "string",
+          "format": "uri"
+        },
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "mechanism": {
+          "type": "string"
+        },
+        "authentication": {
+          "type": "string",
+          "enum": [
+            "none",
+            "api-key",
+            "oauth",
+            "licensed-key",
+            "account",
+            "manual",
+            "unknown"
+          ]
+        },
+        "rate_limit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "terms_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "access_status",
+        "redistribution_status",
+        "licence_status"
+      ],
+      "properties": {
+        "access_status": {
+          "type": "string",
+          "enum": [
+            "open",
+            "public",
+            "registered",
+            "licensed",
+            "restricted",
+            "unknown"
+          ]
+        },
+        "redistribution_status": {
+          "type": "string",
+          "enum": [
+            "open",
+            "attribution-required",
+            "share-alike",
+            "metadata-only",
+            "local-only",
+            "prohibited",
+            "review-required",
+            "unknown"
+          ]
+        },
+        "licence_status": {
+          "type": "string",
+          "enum": [
+            "declared",
+            "inferred-not-permitted",
+            "not-found",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "spdx_or_uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attribution_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "spatial_coverage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "temporal_coverage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "update_pattern": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "discovered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata_snapshot_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "governance_triggers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "track_id": "methods_research_objects_20260718",
+  "type": "feature",
+  "phase": "Core",
+  "status": "proposed",
+  "created_at": "2026-07-18T01:30:00Z",
+  "updated_at": "2026-07-18T01:30:00Z",
+  "description": "Generate concise citable methods and publication-grade supplementary evidence from the same machine-readable release facts.",
+  "depends_on": [
+    "provenance_profile_v1_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.1.0"
+}

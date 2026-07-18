@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "methods_facts_id": "urn:riopa:methods-facts:nz-spatial-example:2026.07.18",
+  "subject_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+  "acquisition": "The illustrative source record describes an authenticated LINZ Data Service workflow. A production connector must preserve the exact layer metadata, request/service parameters, response headers and raw bytes before emitting a completed capture event.",
+  "exclusions": "No real source payloads, council planning instruments, facilities or health outcomes are included.",
+  "harmonisation": "The illustrative transformation declares a target CRS and geometry-repair policy but performs no bundled real-data transformation.",
+  "spatial_handling": "The example declares EPSG:2193 as the canonical analysis CRS and distinguishes source geometry from canonical geometry.",
+  "temporal_handling": "Retrieval time is recorded separately from valid or legal effective time. This example has no evidenced operative date and therefore makes no legal-status claim.",
+  "missing_data": "Absent valid-time and legal-status evidence are retained as unknown rather than imputed.",
+  "quality_notes": "The warning is intentional: schema and geometry validity do not establish legal temporal validity.",
+  "governance": "No Māori-specific data are included in this synthetic example. The production source registry must evaluate Māori data sovereignty triggers for derived geographic and health products.",
+  "privacy": "No personal or sensitive unit-record data are included in the synthetic example.",
+  "reproducibility": "The illustrative GeoParquet materialisation is classified R2: semantic reconstruction is expected, but byte identity has not been demonstrated.",
+  "software_hardware": "The example records package, commit, runtime, platform, lockfile and container identity fields; values marked synthetic are not execution evidence.",
+  "stochasticity": "The illustrative transformation is declared deterministic at the semantic level and uses no random seed.",
+  "ai_assistance": "The architecture and example were prepared with AI assistance; all normative contracts, source claims and release evidence require human review before stable publication.",
+  "deviations": [],
+  "limitations": [
+    "The example contains metadata records only and no genuine source geometry.",
+    "The recorded hash values and code commit are synthetic placeholders.",
+    "No council plan or legal operative status is represented."
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "type:program",
+    "color": "5319E7",
+    "description": "Programme-level epic or governance issue"
+  },
+  {
+    "name": "type:track",
+    "color": "1D76DB",
+    "description": "Parent issue corresponding to a Conductor track"
+  },
+  {
+    "name": "type:implementation",
+    "color": "0E8A16",
+    "description": "Implementation deliverable"
+  },
+  {
+    "name": "type:validation",
+    "color": "FBCA04",
+    "description": "Validation, audit or reproducibility evidence"
+  },
+  {
+    "name": "type:publication",
+    "color": "D93F0B",
+    "description": "Release, methods, DOI or manuscript work"
+  },
+  {
+    "name": "phase:foundation",
+    "color": "C5DEF5",
+    "description": "Foundation phase"
+  },
+  {
+    "name": "phase:core",
+    "color": "BFD4F2",
+    "description": "Core provenance and publication phase"
+  },
+  {
+    "name": "phase:nz-spatial",
+    "color": "BFDADC",
+    "description": "New Zealand spatial infrastructure phase"
+  },
+  {
+    "name": "phase:analytics",
+    "color": "D4C5F9",
+    "description": "Decision analytics phase"
+  },
+  {
+    "name": "phase:applications",
+    "color": "F9D0C4",
+    "description": "Applied research phase"
+  },
+  {
+    "name": "phase:publication",
+    "color": "FAD8C7",
+    "description": "Independent validation and publication phase"
+  },
+  {
+    "name": "provenance",
+    "color": "0052CC",
+    "description": "Provenance, lineage and transformation evidence"
+  },
+  {
+    "name": "geospatial",
+    "color": "006B75",
+    "description": "Geospatial data or analytics"
+  },
+  {
+    "name": "rights-governance",
+    "color": "B60205",
+    "description": "Licensing, privacy, ethics or Māori data sovereignty"
+  },
+  {
+    "name": "cross-repo",
+    "color": "6F42C1",
+    "description": "Work owned by or coordinated with another repository"
+  },
+  {
+    "name": "blocked",
+    "color": "E11D21",
+    "description": "Blocked by an explicit dependency"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "urn:riopa:dataset:nz-spatial-example",
+  "snapshot_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+  "snapshot_version": "2026.07.18-example.1",
+  "title": "RIOPA NZ Spatial Archive minimal example",
+  "description": "A synthetic metadata-only example demonstrating the RIOPA provenance, quality, materialisation and methods contracts.",
+  "created_at": "2026-07-18T01:15:00Z",
+  "coverage": {
+    "spatial": "Aotearoa New Zealand (illustrative metadata only)",
+    "valid_time_from": null,
+    "valid_time_to": null,
+    "retrieval_time_from": "2026-07-18T01:05:00Z",
+    "retrieval_time_to": "2026-07-18T01:05:00Z"
+  },
+  "sources": [
+    {
+      "source_id": "urn:riopa:source:linz-data-service",
+      "source_record": "source-record.json",
+      "capture_ids": [
+        "urn:riopa:capture:018f7f5a-3e17-7f08-a2bf-000000000000"
+      ],
+      "attribution": "Contains data sourced from the LINZ Data Service licensed for reuse under CC BY 4.0."
+    }
+  ],
+  "artifacts": [
+    "artifact-raw.json",
+    "artifact-canonical.json"
+  ],
+  "transformations": [
+    "transformation-run.json"
+  ],
+  "materializations": [
+    "materialization.json"
+  ],
+  "quality_report": "quality-report.json",
+  "rights_inventory": "rights-inventory.json",
+  "methods_facts": "methods-facts.json",
+  "conforms_to": [
+    "https://w3id.org/ro/crate/1.3",
+    "https://www.w3.org/TR/prov-o/",
+    "https://openlineage.io/",
+    "https://schema.datacite.org/meta/kernel-4.7/"
+  ],
+  "citation": {
+    "creators": [
+      "Dylan Mordaunt"
+    ],
+    "publisher": "RIOPA Infrastructure",
+    "publication_year": 2026,
+    "doi": null,
+    "concept_doi": null,
+    "repository": "https://github.com/edithatogo/riopa-infrastructure",
+    "licence": "MIT for metadata/code; source data retain source licences"
+  },
+  "relationships": [],
+  "manifest_sha256": "4a82bf5ea593c00ef182d81307fe35b01326b4675ca2ec1d8973cbd58f4d81be",
+  "provenance_events": [
+    "provenance-event.json",
+    "provenance-event-transformation.json",
+    "provenance-event-snapshot.json"
+  ],
+  "domain_records": [
+    "spatial-feature-link.json"
+  ]
+}

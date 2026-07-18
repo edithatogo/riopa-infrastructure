@@ -1,0 +1,54 @@
+name: Validate architecture bundle
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python-version }}
+          version: "0.11.16"
+      - name: Install locked environment
+        run: uv sync --extra dev --frozen
+      - name: Lint
+        run: uv run ruff check .
+      - name: Check formatting
+        run: uv run ruff format --check .
+      - name: Validate architecture and example bundle
+        run: uv run riopa validate --root .
+      - name: Run tests with branch coverage
+        run: >-
+          uv run pytest
+          --cov=riopa_provenance
+          --cov-branch
+          --cov-report=term-missing
+          --cov-fail-under=90
+      - name: Rebuild methods deterministically
+        run: |
+          uv run riopa methods \
+            --manifest examples/minimal/snapshot-manifest.json \
+            --output /tmp/METHODS.md
+          diff -u examples/minimal/METHODS.md /tmp/METHODS.md
+      - name: Build and verify example research object
+        run: |
+          uv run riopa research-object \
+            --manifest examples/minimal/snapshot-manifest.json \
+            --output-dir dist/example-research-object
+          cd dist/example-research-object
+          sha256sum --check checksums.sha256

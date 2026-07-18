@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "inventory_id": "urn:riopa:rights-inventory:nz-spatial-example:2026.07.18",
+  "subject_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+  "generated_at": "2026-07-18T01:10:00Z",
+  "sources": [
+    {
+      "source_id": "urn:riopa:source:linz-data-service",
+      "access_status": "registered",
+      "licence_status": "declared",
+      "licence": "CC BY 4.0",
+      "spdx_or_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "redistribution_status": "attribution-required",
+      "attribution": "Contains data sourced from the LINZ Data Service licensed for reuse under CC BY 4.0.",
+      "restrictions": [],
+      "governance_triggers": [],
+      "reviewer": "example-rights-review-role",
+      "reviewed_at": "2026-07-18T01:00:00Z",
+      "review_expires_at": null,
+      "evidence_refs": [
+        "source-record.json"
+      ],
+      "notes": "Synthetic example; verify every actual selected layer."
+    }
+  ],
+  "publication_decision": "allowed-with-attribution",
+  "decision_basis": [
+    "The illustrative source record declares CC BY 4.0 attribution terms."
+  ],
+  "approved_by": "example-publication-review-role",
+  "approved_at": "2026-07-18T01:10:00Z",
+  "notes": "Synthetic example only; no actual source payload is redistributed."
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "source_id": "urn:riopa:source:linz-data-service",
+  "name": "LINZ Data Service (illustrative source record)",
+  "publisher": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "identifier": null,
+    "identifier_scheme": null,
+    "url": "https://www.linz.govt.nz/"
+  },
+  "jurisdiction": "Aotearoa New Zealand",
+  "source_type": "web-service",
+  "authoritativeness": "official",
+  "access": {
+    "landing_page": "https://www.linz.govt.nz/products-services/data/linz-data-service",
+    "endpoint": "https://data.linz.govt.nz/",
+    "mechanism": "Koordinates catalogue, WFS and changeset service",
+    "authentication": "api-key",
+    "rate_limit": null,
+    "terms_url": "https://www.linz.govt.nz/data/licensing-and-using-data/attributing-linz-data"
+  },
+  "rights": {
+    "access_status": "registered",
+    "redistribution_status": "attribution-required",
+    "licence_status": "declared",
+    "spdx_or_uri": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution_text": "Contains data sourced from the LINZ Data Service licensed for reuse under CC BY 4.0.",
+    "notes": "Illustrative record only; each selected layer must retain its own published metadata and licence.",
+    "reviewed_at": "2026-07-18T01:00:00Z"
+  },
+  "spatial_coverage": "Aotearoa New Zealand",
+  "temporal_coverage": null,
+  "update_pattern": "dataset-specific; changeset service available for regularly updated data",
+  "discovered_at": "2026-07-18T00:30:00Z",
+  "metadata_snapshot_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "governance_triggers": [],
+  "notes": "Synthetic example metadata; no actual layer payload is bundled."
+}

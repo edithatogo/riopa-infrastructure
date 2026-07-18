@@ -1,0 +1,16 @@
+{
+  "track_id": "repository_template_adoption_20260718",
+  "type": "infrastructure",
+  "phase": "Core",
+  "status": "proposed",
+  "created_at": "2026-07-18T01:30:00Z",
+  "updated_at": "2026-07-18T01:30:00Z",
+  "description": "Make provenance-first setup and staged adoption easy across existing and future repositories without destructive rewrites.",
+  "depends_on": [
+    "provenance_profile_v1_20260718",
+    "methods_research_objects_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.1.0"
+}

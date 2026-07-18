@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/methods-facts/v1",
+  "title": "RIOPA Methods Facts v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "methods_facts_id",
+    "subject_id",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "methods_facts_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "acquisition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exclusions": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "harmonisation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "spatial_handling": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "temporal_handling": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "missing_data": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quality_notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "governance": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "privacy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reproducibility": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "software_hardware": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stochasticity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ai_assistance": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "deviations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

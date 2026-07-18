@@ -1,0 +1,65 @@
+name: Build candidate research object
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+  artifact-metadata: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          python-version: "3.13"
+          version: "0.11.16"
+      - name: Install locked environment
+        run: uv sync --extra dev --frozen
+      - name: Validate and test
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+          uv run riopa validate --root .
+          uv run pytest
+      - name: Build example research object
+        run: >-
+          uv run riopa research-object
+          --manifest examples/minimal/snapshot-manifest.json
+          --output-dir dist/example-research-object
+      - name: Verify internal research-object checksums
+        run: |
+          cd dist/example-research-object
+          sha256sum --check checksums.sha256
+      - name: Package release artifact
+        run: |
+          tar \
+            --sort=name \
+            --mtime='UTC 1970-01-01' \
+            --owner=0 \
+            --group=0 \
+            --numeric-owner \
+            -cf dist/riopa-example-research-object.tar \
+            -C dist/example-research-object .
+          gzip -n -f dist/riopa-example-research-object.tar
+          sha256sum dist/riopa-example-research-object.tar.gz > dist/SHA256SUMS
+      - name: Attest release artifact
+        uses: actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
+        with:
+          subject-path: dist/riopa-example-research-object.tar.gz
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            dist/riopa-example-research-object.tar.gz
+            dist/SHA256SUMS
+          generate_release_notes: true

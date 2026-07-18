@@ -1,0 +1,27 @@
+{
+  "materialization_id": "urn:riopa:materialization:example:geoparquet",
+  "snapshot_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+  "format": "geoparquet",
+  "media_type": "application/vnd.apache.parquet",
+  "artifact_id": "urn:riopa:artifact:sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "generated_by": "urn:riopa:run:018f7f5a-3e17-7f08-a2bf-000000000001",
+  "schema_ref": "https://w3id.org/riopa/example/spatial-layer/v1",
+  "crs": "EPSG:2193",
+  "partitioning": {
+    "columns": [
+      "source_id"
+    ]
+  },
+  "fidelity": {
+    "purpose": "portable spatial analysis",
+    "losses": [
+      "Original source field order is not preserved."
+    ],
+    "filters": [],
+    "generalization": null
+  },
+  "reproducibility_class": "R2",
+  "query_examples": [
+    "SELECT count(*) FROM read_parquet('example-layer.parquet')"
+  ]
+}

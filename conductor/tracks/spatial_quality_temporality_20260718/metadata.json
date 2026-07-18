@@ -1,0 +1,16 @@
+{
+  "track_id": "spatial_quality_temporality_20260718",
+  "type": "quality",
+  "phase": "NZ Spatial",
+  "status": "proposed",
+  "created_at": "2026-07-18T01:30:00Z",
+  "updated_at": "2026-07-18T01:30:00Z",
+  "description": "Make spatial, temporal and semantic quality measurable and support defensible historical/change analyses.",
+  "depends_on": [
+    "nz_spatial_archive_mvp_20260718",
+    "planning_rules_linkage_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": null
+}

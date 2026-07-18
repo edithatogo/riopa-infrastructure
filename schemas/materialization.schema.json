@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/materialization/v1",
+  "title": "RIOPA Materialisation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "materialization_id",
+    "snapshot_id",
+    "format",
+    "media_type",
+    "artifact_id",
+    "generated_by",
+    "fidelity"
+  ],
+  "properties": {
+    "materialization_id": {
+      "type": "string"
+    },
+    "snapshot_id": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "parquet",
+        "geoparquet",
+        "duckdb",
+        "flatgeobuf",
+        "geojson",
+        "pmtiles",
+        "cog",
+        "zarr",
+        "stac",
+        "postgis",
+        "lancedb",
+        "rdf",
+        "other"
+      ]
+    },
+    "media_type": {
+      "type": "string"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "generated_by": {
+      "type": "string"
+    },
+    "schema_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "crs": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "partitioning": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "fidelity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "losses"
+      ],
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "losses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generalization": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "reproducibility_class": {
+      "type": "string",
+      "enum": [
+        "R0",
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ]
+    },
+    "query_examples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

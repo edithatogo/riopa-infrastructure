@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "urn:riopa:run:018f7f5a-3e17-7f08-a2bf-000000000001",
+  "run_type": "example.canonicalise-vector",
+  "status": "succeeded",
+  "started_at": "2026-07-18T01:05:15Z",
+  "ended_at": "2026-07-18T01:06:00Z",
+  "implementation": {
+    "repository": "https://github.com/edithatogo/riopa-infrastructure",
+    "commit": "0123456789abcdef0123456789abcdef01234567",
+    "swhid": null,
+    "package": "riopa-provenance",
+    "package_version": "0.1.0"
+  },
+  "invocation": {
+    "command": [
+      "riopa-spatial",
+      "canonicalise",
+      "--input",
+      "example-layer.geojson"
+    ],
+    "parameters": {
+      "target_crs": "EPSG:2193",
+      "geometry_repair": "make_valid"
+    },
+    "working_directory": "/workspace"
+  },
+  "environment": {
+    "container_image": "ghcr.io/edithatogo/riopa-infrastructure:0.1.0",
+    "container_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "lockfile": "uv.lock",
+    "lockfile_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "runtime": "Python 3.12",
+    "platform": "linux/amd64",
+    "runner": "illustrative-local-run"
+  },
+  "inputs": [
+    "urn:riopa:artifact:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "outputs": [
+    "urn:riopa:artifact:sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ],
+  "schema_refs": [
+    "https://w3id.org/riopa/example/spatial-layer/v1"
+  ],
+  "classification_refs": [],
+  "determinism": {
+    "class": "deterministic-semantics",
+    "random_seed": null,
+    "tolerance": "geometry canonical equality"
+  },
+  "warnings": [
+    "Synthetic example; geometry payload is not included."
+  ],
+  "quality_refs": [
+    "urn:riopa:quality:example:geometry-validity"
+  ]
+}

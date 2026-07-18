@@ -1,0 +1,788 @@
+{
+  "schema_version": "1.0.0",
+  "package": "riopa-infrastructure",
+  "version": "0.1.0",
+  "generated_on": "2026-07-18",
+  "hash_algorithm": "sha256",
+  "remote_state": "not asserted; apply scripts/bootstrap_github.sh to create or reconcile GitHub resources",
+  "verification": {
+    "schema_and_integrity_checks": {
+      "passed": 24,
+      "failed": 0
+    },
+    "automated_tests": {
+      "passed": 23,
+      "failed": 0
+    },
+    "branch_aware_coverage_percent": 91.28,
+    "coverage_floor_percent": 90,
+    "planned_issues": 65,
+    "cross_repository_targets": 8,
+    "methods_regeneration": "byte-identical",
+    "example_research_object_checksums": "verified",
+    "github_bootstrap": "dry-run verified"
+  },
+  "files": [
+    {
+      "path": ".editorconfig",
+      "size_bytes": 202,
+      "sha256": "6297da6b1169de32dca2f6184b4eaa63a8bb6c7e1c66c20d6e813166256e3856"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "size_bytes": 257,
+      "sha256": "6ee44d43ea46d30b0d678f5ef2d936d8058f43bcd109d16fbf24e7a6a896de16"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/track.yml",
+      "size_bytes": 979,
+      "sha256": "6588b1441d5452d6edb3ed96add73767cd143afa6670a2ce111c26dae295dd87"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "size_bytes": 311,
+      "sha256": "912fea1f21b01684459b14d67e1a133a5bedc58478520462e41c4597ae9b33cf"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "size_bytes": 2172,
+      "sha256": "39a69f0ed487e7d68051129a8b4dfead58df3437aaac95e3d576a7bac5d0b5b9"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "size_bytes": 1718,
+      "sha256": "18f7adfc709b506bc0b544a3e6b63e803f6b72973bd424b5eaeaad3151e07b79"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 257,
+      "sha256": "ebb53a8ecc5d7377c2b83325f23621e48369bedddd73fbc4cc06ae24e81c2768"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size_bytes": 923,
+      "sha256": "e2d3ee342cfd60a88fedbedbf01a4d775a3e92ea13ee8295e64498a15fd450fc"
+    },
+    {
+      "path": "CITATION.cff",
+      "size_bytes": 606,
+      "sha256": "2b6f637cd2058998b4de5ee2c757aa96e0fdae643cb86dc5966d44fad7b9f533"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 566,
+      "sha256": "c4b07fdcc23e172c7c567dec4c5f3586bc43026a337705a7246c973ad75d76a3"
+    },
+    {
+      "path": "DELIVERY.md",
+      "size_bytes": 2372,
+      "sha256": "f827e69f7263b1440fd8faea14b6ce0617e46a5e64050bca4cdd07fdb8c86466"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 1071,
+      "sha256": "a8f8c4375309bf176fa00b18fbf168087642093dd700aabd06cf24ac94446b78"
+    },
+    {
+      "path": "Makefile",
+      "size_bytes": 859,
+      "sha256": "ca46af19e94c7a0cc2f554f9b5a9b1dc9eddca63a8919a0c8f7b947621d4e3a6"
+    },
+    {
+      "path": "NOTICE.md",
+      "size_bytes": 722,
+      "sha256": "3229c1f722f70de38b76d749372e080f1f7a889035087df47e630b643d02fb24"
+    },
+    {
+      "path": "PROGRAMME_PLAN.md",
+      "size_bytes": 9871,
+      "sha256": "07869be51da08ca91d249783c0e1a0771e8ee3ddb41ed253dc05a6db759d55f6"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 7377,
+      "sha256": "da5ac523602d2b3330bb9fc11861251b453a20fb0d8619583de652a813c1d981"
+    },
+    {
+      "path": "SECURITY.md",
+      "size_bytes": 463,
+      "sha256": "93fe91e49e9e69c57cc1d4feff22c3ab3a105622317665646c2b4951d5b185c0"
+    },
+    {
+      "path": "codemeta.json",
+      "size_bytes": 783,
+      "sha256": "71b1024e50c36e29ce3ecdb3efe57934843bd21ea2d36caa44966195493bb4f4"
+    },
+    {
+      "path": "conductor/design.md",
+      "size_bytes": 4525,
+      "sha256": "63e01c98602ed659d3d9843f4df4a403b736bd4f908c1a7756915a3252f269d6"
+    },
+    {
+      "path": "conductor/product-guidelines.md",
+      "size_bytes": 2864,
+      "sha256": "23fa9eac5b416f55d64da539d11bc8f750e8ab38caa28ebb55817fcfcb417f56"
+    },
+    {
+      "path": "conductor/product.md",
+      "size_bytes": 3506,
+      "sha256": "45a99674de9210a527019a257e50d76247006af23e8bbd589da999cb44e500e4"
+    },
+    {
+      "path": "conductor/requirements.md",
+      "size_bytes": 3974,
+      "sha256": "d3b54926d438df51f91c551134cdbc0dc421a17b2030f6d422427b98ac2d7ba8"
+    },
+    {
+      "path": "conductor/setup_state.json",
+      "size_bytes": 295,
+      "sha256": "16081cf4562228f53af15ea37f5d2973ef3981b3ff5fd3c4b5166842461f3038"
+    },
+    {
+      "path": "conductor/tech-stack.md",
+      "size_bytes": 2487,
+      "sha256": "f37aecbb47fc2f8f08e33d533669fb89ef20eb680b14d3fa1b8103c3bdf5b175"
+    },
+    {
+      "path": "conductor/tracks.md",
+      "size_bytes": 2695,
+      "sha256": "616f6eac6163ac4c9623e9441ac47901974e5dcb5938f2429ddd054f6211c87f"
+    },
+    {
+      "path": "conductor/tracks/emergency_health_facilities_pilot_20260718/index.md",
+      "size_bytes": 723,
+      "sha256": "31d5ed31a9a4f9149dc30371d3d1bf24ac2c1e2b18adc26bf68e0d6ae33060e9"
+    },
+    {
+      "path": "conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json",
+      "size_bytes": 564,
+      "sha256": "a98d73dde068e8280735db9da61ec8feff3ded8f3bf6664949efd51a8821717d"
+    },
+    {
+      "path": "conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md",
+      "size_bytes": 763,
+      "sha256": "80edeebedc0da30f8904c8e34c6f127fecb06b14d55f740c03d0d97f23472f70"
+    },
+    {
+      "path": "conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md",
+      "size_bytes": 1479,
+      "sha256": "5e1cfe8dd6278c4e3da17f189b9249f7e8af3671f345ccd4acb50921356d230f"
+    },
+    {
+      "path": "conductor/tracks/facility_location_engine_20260718/index.md",
+      "size_bytes": 722,
+      "sha256": "138e5e8b589eb837d269690521a50d25b343659be078fd103aac59092aec3eaa"
+    },
+    {
+      "path": "conductor/tracks/facility_location_engine_20260718/metadata.json",
+      "size_bytes": 501,
+      "sha256": "05e523e5d0cad36c7c255237bc4e7c122f20f2d7baabb377100f09aab34ed59f"
+    },
+    {
+      "path": "conductor/tracks/facility_location_engine_20260718/plan.md",
+      "size_bytes": 705,
+      "sha256": "b042ba667473f18f8bc9701f234be3db2ccbc34443972b0f9fe27b684a742015"
+    },
+    {
+      "path": "conductor/tracks/facility_location_engine_20260718/spec.md",
+      "size_bytes": 1357,
+      "sha256": "644f97b56d26ce574ce454fde7fdbf520f45610f5522e6f8fd94ec7ebbb7aa41"
+    },
+    {
+      "path": "conductor/tracks/foundation_architecture_20260718/index.md",
+      "size_bytes": 714,
+      "sha256": "4e7dd1829247ab678b53f53d890ff7b4b6c4bc663ebe53cdf0be145944e97bbc"
+    },
+    {
+      "path": "conductor/tracks/foundation_architecture_20260718/metadata.json",
+      "size_bytes": 442,
+      "sha256": "4e0ed3f0e5ea3993752f2b1315f72c7d87f9c9929de47f4d2fec56293807b9b4"
+    },
+    {
+      "path": "conductor/tracks/foundation_architecture_20260718/plan.md",
+      "size_bytes": 707,
+      "sha256": "66221fd6851be0288b0bd94af165c073b3419bef94f7942aabfb3cc0512058f7"
+    },
+    {
+      "path": "conductor/tracks/foundation_architecture_20260718/spec.md",
+      "size_bytes": 1162,
+      "sha256": "0e273f5c6b0546e7fcc6f42cccce2a89c008cb0bbbfdc861fa5881c8764ef463"
+    },
+    {
+      "path": "conductor/tracks/governance_maori_data_sovereignty_20260718/index.md",
+      "size_bytes": 728,
+      "sha256": "a3f954dbd18accefb1bc22b487aa75e4027b674ee2948c10ba1da7c9abeb5ad5"
+    },
+    {
+      "path": "conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json",
+      "size_bytes": 498,
+      "sha256": "f85459e8b3cc60b4ff1e17d247caee74b36805cc5de30e55eb81a7917369bac5"
+    },
+    {
+      "path": "conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md",
+      "size_bytes": 679,
+      "sha256": "236da40eecfacb07059b3ac0aaf66be766b6b92f80335a946fa3f4bb0ae23307"
+    },
+    {
+      "path": "conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md",
+      "size_bytes": 1361,
+      "sha256": "3a7b169c827b9e49e6173ea6c601abc3f2f40906d5d4779a028a55a5a6a4de8e"
+    },
+    {
+      "path": "conductor/tracks/methods_research_objects_20260718/index.md",
+      "size_bytes": 721,
+      "sha256": "730e62bdee9822773a2ff89951656f2fe98b127ed481c31aea7fd586ee6a426f"
+    },
+    {
+      "path": "conductor/tracks/methods_research_objects_20260718/metadata.json",
+      "size_bytes": 473,
+      "sha256": "8cc8f503789ce2d1e070e1c808041883086b82a58107c68007258a8963e8e615"
+    },
+    {
+      "path": "conductor/tracks/methods_research_objects_20260718/plan.md",
+      "size_bytes": 690,
+      "sha256": "6f39bb4193627fbdd423f424996366e4b0ae17b4b1feff89cb86ae894bc12e5f"
+    },
+    {
+      "path": "conductor/tracks/methods_research_objects_20260718/spec.md",
+      "size_bytes": 1248,
+      "sha256": "6a159780f1c4c7fda743132328fe86f9ec6a9e779f7f6af643584925a7227520"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_archive_mvp_20260718/index.md",
+      "size_bytes": 714,
+      "sha256": "8953765e33ad887520890426b860a56afe26cd186032aadec2227347e24c0300"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_archive_mvp_20260718/metadata.json",
+      "size_bytes": 533,
+      "sha256": "dc7beee62ab3123973ab40d16f76bd663ac382f87bfe35cf0a83c24c56199e58"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_archive_mvp_20260718/plan.md",
+      "size_bytes": 911,
+      "sha256": "8ba26771c4f94feb9a40cef0c356626ac115dfc302181672ded23c993987c131"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_archive_mvp_20260718/spec.md",
+      "size_bytes": 1345,
+      "sha256": "9c9f038abb2cc39bfdd8b321c2028bbcb6816fef330748a46eea55471fb76577"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_source_registry_20260718/index.md",
+      "size_bytes": 717,
+      "sha256": "945d5dc0b08ae466e920a33b7b6aa7980bcdb79e4393a8ba351855e2abde9fb7"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_source_registry_20260718/metadata.json",
+      "size_bytes": 566,
+      "sha256": "c78b2ecf39e22e2b9b1149b29c2658ff893e3708323d02ac7968205c325f992a"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_source_registry_20260718/plan.md",
+      "size_bytes": 857,
+      "sha256": "7342f85149309eb0c1a03d04c327294c2b832acc3ad1811e4a16584473c4ca22"
+    },
+    {
+      "path": "conductor/tracks/nz_spatial_source_registry_20260718/spec.md",
+      "size_bytes": 1435,
+      "sha256": "49cc11a303e1ecc682fca399a94798253ebcc40c0ff68f26ddc7c1b6e70c8564"
+    },
+    {
+      "path": "conductor/tracks/planning_rules_linkage_20260718/index.md",
+      "size_bytes": 704,
+      "sha256": "d5f2acd6df61e22d6333372b2944ab920da9df195b3869a2e5b5e05d50a0fc56"
+    },
+    {
+      "path": "conductor/tracks/planning_rules_linkage_20260718/metadata.json",
+      "size_bytes": 492,
+      "sha256": "a690f4988362584de89d4dd8ded183a125a635f522a8e4b43e7a4917399fa991"
+    },
+    {
+      "path": "conductor/tracks/planning_rules_linkage_20260718/plan.md",
+      "size_bytes": 688,
+      "sha256": "5e7fdf3228dbbfa9fcc9e85fa87cb1e0d7ad679292f96c1d49b9d7d98242daec"
+    },
+    {
+      "path": "conductor/tracks/planning_rules_linkage_20260718/spec.md",
+      "size_bytes": 1290,
+      "sha256": "a555de323191447a7d4c96eb1fa42cc5da67f295d67151bcd9fa7fd867a69528"
+    },
+    {
+      "path": "conductor/tracks/provenance_profile_v1_20260718/index.md",
+      "size_bytes": 713,
+      "sha256": "8bc5f09ace3d52fbfff4e19966c764a0e1e2b5e4f8d97a5e3239a21187f7261d"
+    },
+    {
+      "path": "conductor/tracks/provenance_profile_v1_20260718/metadata.json",
+      "size_bytes": 524,
+      "sha256": "49dd9a011ccf01177bfe98b3d699fb0b1bb1e070018246719dc4d2175f79a122"
+    },
+    {
+      "path": "conductor/tracks/provenance_profile_v1_20260718/plan.md",
+      "size_bytes": 945,
+      "sha256": "0803250512d675a7e874c199a18aade907047f8e80bcacc2aea22f12bc03f142"
+    },
+    {
+      "path": "conductor/tracks/provenance_profile_v1_20260718/spec.md",
+      "size_bytes": 1338,
+      "sha256": "4fd0d775533961c5d771f4df36c6b84242ef5b69b4465db2aa589b78de83faa2"
+    },
+    {
+      "path": "conductor/tracks/publication_validation_20260718/index.md",
+      "size_bytes": 723,
+      "sha256": "62eb95f8d1be6ef747096f7062e800f467398157883ee490f29e67368f7c4426"
+    },
+    {
+      "path": "conductor/tracks/publication_validation_20260718/metadata.json",
+      "size_bytes": 525,
+      "sha256": "133082b7a70bfc3450a0b7c187ebdc6dd09322f80827d0bbc855945dc8c9585d"
+    },
+    {
+      "path": "conductor/tracks/publication_validation_20260718/plan.md",
+      "size_bytes": 692,
+      "sha256": "ae1eb29e8a3ec59a247d03af5822e49fef80a656de2a404368e4fb14e85d0c0d"
+    },
+    {
+      "path": "conductor/tracks/publication_validation_20260718/spec.md",
+      "size_bytes": 1312,
+      "sha256": "2e53c2c2fa4e42dc0d682cf011f6222ea1c2dad094214de32ebc4a347b3dff95"
+    },
+    {
+      "path": "conductor/tracks/repository_template_adoption_20260718/index.md",
+      "size_bytes": 713,
+      "sha256": "c6fc97df91c9231b771a03795e8db2c7e13675853df1d94753e3ab0c4655be73"
+    },
+    {
+      "path": "conductor/tracks/repository_template_adoption_20260718/metadata.json",
+      "size_bytes": 524,
+      "sha256": "69c2bc2b30fb0f420ad0727ba1f01cade734d8a8b10f1eace41506d0e987209f"
+    },
+    {
+      "path": "conductor/tracks/repository_template_adoption_20260718/plan.md",
+      "size_bytes": 639,
+      "sha256": "b3d8f7acd1328cc2a1cecb0bf9aea946e34b0ec52bf6f89b8efdeff484874c8e"
+    },
+    {
+      "path": "conductor/tracks/repository_template_adoption_20260718/spec.md",
+      "size_bytes": 1248,
+      "sha256": "92d10ad0da1df9b82966c220f0aa750d33063c00f32a709192ad88c11b143429"
+    },
+    {
+      "path": "conductor/tracks/spatial_quality_temporality_20260718/index.md",
+      "size_bytes": 727,
+      "sha256": "60ec5cb16288dea19e1bc84e1a4d8035df0befa584d3b73dfec0f3f6a40bb1c7"
+    },
+    {
+      "path": "conductor/tracks/spatial_quality_temporality_20260718/metadata.json",
+      "size_bytes": 501,
+      "sha256": "b10bc202a43a9878f7ed5e7c1943b75ce59eb8bfec57e0add92c79d2e08fcc4a"
+    },
+    {
+      "path": "conductor/tracks/spatial_quality_temporality_20260718/plan.md",
+      "size_bytes": 672,
+      "sha256": "fad7312e8f8caab3c068f2865935304f85d256549904e34ab308ff3427afd66e"
+    },
+    {
+      "path": "conductor/tracks/spatial_quality_temporality_20260718/spec.md",
+      "size_bytes": 1279,
+      "sha256": "e8f3ad4937d5d0031220e01ee76c53178e2f490aa91b48c79e84d5c12cbafbeb"
+    },
+    {
+      "path": "conductor/tracks/supermarket_health_pilot_20260718/index.md",
+      "size_bytes": 721,
+      "sha256": "44d959b1ab9425c67e65835bce2a9f73404657181bbc16085c02f1204fdc94f2"
+    },
+    {
+      "path": "conductor/tracks/supermarket_health_pilot_20260718/metadata.json",
+      "size_bytes": 615,
+      "sha256": "92d83fa0ed1dc34d6d2001b340a10831a91f65eba972dbbecfca7b499518d1c6"
+    },
+    {
+      "path": "conductor/tracks/supermarket_health_pilot_20260718/plan.md",
+      "size_bytes": 1018,
+      "sha256": "741efd88e643d1be70e33a1a57ee82e80e2a3986d414f06c793c2c74afb39415"
+    },
+    {
+      "path": "conductor/tracks/supermarket_health_pilot_20260718/spec.md",
+      "size_bytes": 1661,
+      "sha256": "2a4645b9aba634d985336ddde275ac2793b8974198c8cf132c28772dff6f053c"
+    },
+    {
+      "path": "conductor/workflow.md",
+      "size_bytes": 2149,
+      "sha256": "2fcd7433db85756ea5d4aad22d6ebc3bdf25f17d196626e427ac084d34c38863"
+    },
+    {
+      "path": "docs/adoption-matrix.md",
+      "size_bytes": 3335,
+      "sha256": "fbead916a266dca5d8dc0028bb131ec36c6232a37d11fcf0aba415e62affe22d"
+    },
+    {
+      "path": "docs/adr/0001-repository-ecosystem.md",
+      "size_bytes": 901,
+      "sha256": "35d37ac7230aec128527b510d4091d58a570ecad3e2511b45ad53ae5fcb8c398"
+    },
+    {
+      "path": "docs/adr/0002-provenance-event-log.md",
+      "size_bytes": 810,
+      "sha256": "828bcebfcb9c02dd4360d85819e22ffa1a177633fd1fe2e62b56541494cbbdfb"
+    },
+    {
+      "path": "docs/adr/0003-materialisations.md",
+      "size_bytes": 760,
+      "sha256": "f276b95eee25466c33cb4df58334e155767a39262d9a7093b2a7993600bd3bb6"
+    },
+    {
+      "path": "docs/adr/0004-bitemporal-spatial-versioning.md",
+      "size_bytes": 766,
+      "sha256": "7212045c7f3ec7b950ca0819d42a725098ff380dfdb607412044291e31738221"
+    },
+    {
+      "path": "docs/adr/0005-knowledge-graph-projection.md",
+      "size_bytes": 626,
+      "sha256": "34fb7481d32f8f80a9aad8db6636f28bc743afabbfce1b9ebd589cc52a400d83"
+    },
+    {
+      "path": "docs/adr/0006-standards-profile.md",
+      "size_bytes": 717,
+      "sha256": "ec6a6b72b26dd3ad7fce3798ac6cf07a224234bc85597bbdd09de381076929e8"
+    },
+    {
+      "path": "docs/adr/0007-governance-rights.md",
+      "size_bytes": 795,
+      "sha256": "3d3917579b303e2da72ea8a15fcb87c65b098b8c789e23f065cbda04abed8dc0"
+    },
+    {
+      "path": "docs/architecture.md",
+      "size_bytes": 5028,
+      "sha256": "afe098cc14a22db2817c1e36cc2b6073a5f95fb07210ba09036817e26cefd080"
+    },
+    {
+      "path": "docs/data-model.md",
+      "size_bytes": 4032,
+      "sha256": "48a149a257a3d141a9e96e22cb1236a8dc58418c72894b3f53557baa45ac2e74"
+    },
+    {
+      "path": "docs/github-projects-operating-model.md",
+      "size_bytes": 2468,
+      "sha256": "ed7e3cd4560619f626a0fbcc9ce6d7b4f5e61d0d65892dd5c4d16be42ec7b3e0"
+    },
+    {
+      "path": "docs/materialization-strategy.md",
+      "size_bytes": 2927,
+      "sha256": "86f12a1b84ec1679473f7896381ea24c0eb74596491878f743822cb9fa2cb078"
+    },
+    {
+      "path": "docs/methods-output-contract.md",
+      "size_bytes": 3343,
+      "sha256": "05e8fe56f10a5a18e6fce5a9362fb19321444d1dc43e643e7d6fbdae29b07eea"
+    },
+    {
+      "path": "docs/nz-spatial-source-register.md",
+      "size_bytes": 5814,
+      "sha256": "6255c6a512b02a39640347842daa53a218de4650805b19d72e1ee4631f16837d"
+    },
+    {
+      "path": "docs/provenance-and-lineage.md",
+      "size_bytes": 4656,
+      "sha256": "7affb68fd797024e32d69eba799e8c1d111497138cfaf0d8e92f3e5b10645c70"
+    },
+    {
+      "path": "docs/publication-strategy.md",
+      "size_bytes": 2906,
+      "sha256": "8af3d94dca8f00c6cdbf494e6e3d1b3ff672e37e5e038970e5055b3c22d4181a"
+    },
+    {
+      "path": "docs/risk-register.md",
+      "size_bytes": 2714,
+      "sha256": "a7db1e271e4eaa11e52d37b6535819b18b31a056cb887c5f3bacf9852901c7f2"
+    },
+    {
+      "path": "docs/standards-profile.md",
+      "size_bytes": 5006,
+      "sha256": "543777c35b28063bb7cbef037a64b06ed8c7d45e7328c19a2aea6c20aa334e31"
+    },
+    {
+      "path": "examples/minimal/METHODS.md",
+      "size_bytes": 7534,
+      "sha256": "2b33d487eaacfb910f9ecb4b8b1282fc3cee08b0754f40a53d66b7e38f8d5365"
+    },
+    {
+      "path": "examples/minimal/README.md",
+      "size_bytes": 822,
+      "sha256": "1dfb5bc533878722b615ff04460c6144a3304123f3537b652881789695203ed6"
+    },
+    {
+      "path": "examples/minimal/artifact-canonical.json",
+      "size_bytes": 674,
+      "sha256": "d6e711b2d7fb65a3c999cbf667a5e3358fea31700bb5ef6bcbef2edec76b7cde"
+    },
+    {
+      "path": "examples/minimal/artifact-raw.json",
+      "size_bytes": 640,
+      "sha256": "633dd31d6a94e063ff594dce343ca46986d7b17c9a5d7497762f327013bac3b8"
+    },
+    {
+      "path": "examples/minimal/materialization.json",
+      "size_bytes": 879,
+      "sha256": "20119cf5d4401b5df5a061626f234215ce4cb808e676b4013ce4b7162c789149"
+    },
+    {
+      "path": "examples/minimal/methods-facts.json",
+      "size_bytes": 2523,
+      "sha256": "620631704d03d985cb31b4053354e887c05d70ba90e337d2de521c71c10df08b"
+    },
+    {
+      "path": "examples/minimal/provenance-event-snapshot.json",
+      "size_bytes": 1975,
+      "sha256": "bd6ccf04bed21d844ab2c8977858979b84c249196142279653eff36837df5b96"
+    },
+    {
+      "path": "examples/minimal/provenance-event-transformation.json",
+      "size_bytes": 1899,
+      "sha256": "c2345a09df0dad351681a87d30df02937751eb35ac4c575fc1b1d915734ee4b6"
+    },
+    {
+      "path": "examples/minimal/provenance-event.json",
+      "size_bytes": 1471,
+      "sha256": "ecc78e9c0e3a1330d52131539f73f259e834a0a0f9b8ade124f65e0d136d977d"
+    },
+    {
+      "path": "examples/minimal/quality-report.json",
+      "size_bytes": 1693,
+      "sha256": "51d51c744c6a6b7a25d70fd02b44dad1b88cbc1164fef7a32ab8a15d056ac4cc"
+    },
+    {
+      "path": "examples/minimal/rights-inventory.json",
+      "size_bytes": 1303,
+      "sha256": "1ebf1e593bc56dbf2b964cbc4819dd81ed7fab46790c6b773a7b72117089943c"
+    },
+    {
+      "path": "examples/minimal/snapshot-manifest.json",
+      "size_bytes": 2169,
+      "sha256": "83887002096a2e951fd4f3a8768c36cb2cc73d28b1c9742f77f2ceea755fca77"
+    },
+    {
+      "path": "examples/minimal/source-record.json",
+      "size_bytes": 1702,
+      "sha256": "bf9558814943ef191cedb5e31e647b2ac9f9432716644441f2aa01332a8d6171"
+    },
+    {
+      "path": "examples/minimal/spatial-feature-link.json",
+      "size_bytes": 732,
+      "sha256": "6b208b18049edfdbbf0b2577279f07bac4bbfa2122c54d64b0e7493600dfa303"
+    },
+    {
+      "path": "examples/minimal/transformation-run.json",
+      "size_bytes": 1807,
+      "sha256": "ef0549cfe260a34fdd7cd66d4ddd2cc1579e1aaf9c22a72e37dac16a7269d338"
+    },
+    {
+      "path": "project/README.md",
+      "size_bytes": 959,
+      "sha256": "c348a9d190919a9d9ef735c51889b167a8391d60bc389f0e6d1a183cab0d2bfa"
+    },
+    {
+      "path": "project/cross-repo-adoption.yaml",
+      "size_bytes": 9263,
+      "sha256": "e9bcdaafed9443b187e76a2792a64329967c9c39a9a97cb7c8206a686021b57e"
+    },
+    {
+      "path": "project/issues.yaml",
+      "size_bytes": 59962,
+      "sha256": "e85ed5666e55933a5b45ff6c71e66a7e4a67a78178c80cec789b004491ad9a3b"
+    },
+    {
+      "path": "project/labels.yaml",
+      "size_bytes": 1935,
+      "sha256": "1b3924918d3e85ff638f203fdc06268e7ab9e2414bbac43ab6f772f556b38e1e"
+    },
+    {
+      "path": "project/project.yaml",
+      "size_bytes": 1648,
+      "sha256": "063462097dec7e7d7b08f1f04de71ca24f3a253d975ac9a38b9371e27e733d37"
+    },
+    {
+      "path": "pyproject.toml",
+      "size_bytes": 1344,
+      "sha256": "cc7b24cd3098cca5533c99463d31d52db0c2d49303013b4be8d9b535aba2104f"
+    },
+    {
+      "path": "reviews/ecosystem-gap-analysis.md",
+      "size_bytes": 10450,
+      "sha256": "3aaa9f9777c0657d606481491e2a49d5be70e6d6678a555b1b24282277933f62"
+    },
+    {
+      "path": "reviews/repository-inventory.md",
+      "size_bytes": 2606,
+      "sha256": "f4613f96be0158710579c66412171691722ab142ae3695d563b982ba6a0afc9d"
+    },
+    {
+      "path": "schemas/README.md",
+      "size_bytes": 2059,
+      "sha256": "3c8650f9053573901d0afa29a9469c798db3354fe3573f4f83c19a5dd904d970"
+    },
+    {
+      "path": "schemas/artifact.schema.json",
+      "size_bytes": 2053,
+      "sha256": "52ac287011ee3341c750bb6fffcf6dc42e8e20e1d5f00c1e919eace0b93b6fe0"
+    },
+    {
+      "path": "schemas/materialization.schema.json",
+      "size_bytes": 2057,
+      "sha256": "dd0563ca12ab08031775326ddedf910241cda04cc5fb1af65a88eea773399013"
+    },
+    {
+      "path": "schemas/methods-facts.schema.json",
+      "size_bytes": 1872,
+      "sha256": "ac18b3dbc30055c9a2782e10862663cd514ee72c5c8c83d61edbe288f9981763"
+    },
+    {
+      "path": "schemas/provenance-event.schema.json",
+      "size_bytes": 4891,
+      "sha256": "8163c52931c43ecd84da42eb7fbed99f6f74be83c747fe13d6a197fdc62e7e06"
+    },
+    {
+      "path": "schemas/quality-report.schema.json",
+      "size_bytes": 3051,
+      "sha256": "2e7038de3e86970c1e410842559e5f0251c9895494f5600947b91fbcc299ce2e"
+    },
+    {
+      "path": "schemas/rights-inventory.schema.json",
+      "size_bytes": 4062,
+      "sha256": "8ebc9f5be35e4ffa793c1fb28eaf89d0546041c3467d87612045c78c8737a474"
+    },
+    {
+      "path": "schemas/snapshot-manifest.schema.json",
+      "size_bytes": 5112,
+      "sha256": "73526f9429860338ff3466650f6900265a9a19876da3311e0175fc9c26fab875"
+    },
+    {
+      "path": "schemas/source-record.schema.json",
+      "size_bytes": 4894,
+      "sha256": "90fd9fb9dbc2d5bd8d582eea41da6f7d98de4dcfda8f242e64c8dc2426a45fd1"
+    },
+    {
+      "path": "schemas/spatial-feature-link.schema.json",
+      "size_bytes": 1907,
+      "sha256": "0a9e2fbffb123a5739da22bfdd590804459d573eaa1601a83794341d5a52756c"
+    },
+    {
+      "path": "schemas/transformation-run.schema.json",
+      "size_bytes": 4294,
+      "sha256": "fa102cf3ec7c7ec3bb1bacbab41cd091a2608f1015bb2bdec2994a8643d7de93"
+    },
+    {
+      "path": "scripts/bootstrap_github.sh",
+      "size_bytes": 8978,
+      "sha256": "14a039391f67407c81b03cf7179fc6973deeda87b22072bfc8fecc539d5cb5e7"
+    },
+    {
+      "path": "scripts/build_research_object.py",
+      "size_bytes": 146,
+      "sha256": "f40d0d67b37c27b7392c22f891ed0eb759be99d464f0d9137e6bb09b29190653"
+    },
+    {
+      "path": "scripts/create_issues.py",
+      "size_bytes": 18272,
+      "sha256": "eb722d5e426dbdd7dbb1867921c03268b93aaa54b891384c1c7bd0ac2be824f6"
+    },
+    {
+      "path": "scripts/generate_methods.py",
+      "size_bytes": 138,
+      "sha256": "159b94f9b16adc223a56769d00e021a012ab854af7b4253edcd987bedc9f0658"
+    },
+    {
+      "path": "scripts/mirror_to_umbrella.py",
+      "size_bytes": 4072,
+      "sha256": "1a281454cc46f823b552c6950663fe54066c3c62afe49396f13e9dc32ad07617"
+    },
+    {
+      "path": "scripts/validate_bundle.py",
+      "size_bytes": 127,
+      "sha256": "2fcfce3d1dd3422988135cf3ce536de86e672ff161cf6d1e1d4214551b548734"
+    },
+    {
+      "path": "src/riopa_provenance/__init__.py",
+      "size_bytes": 302,
+      "sha256": "e95d0ddab3ec122e9e5fa789eab2c7577a5f7fcdb4fd84d45ab0e1c9021da2ac"
+    },
+    {
+      "path": "src/riopa_provenance/cli.py",
+      "size_bytes": 2271,
+      "sha256": "f32dd96fdf941e3baf9f1dbc9b77accd9ff2900252bab8332c77aa69f3e29874"
+    },
+    {
+      "path": "src/riopa_provenance/crate.py",
+      "size_bytes": 14318,
+      "sha256": "375d53e12e55e72b8ea1e1ceebd76cac27a36bc6cb1a36c8d40674c24c355750"
+    },
+    {
+      "path": "src/riopa_provenance/hashing.py",
+      "size_bytes": 1353,
+      "sha256": "132b9f7a6a9c2459e2712e413c3c55454c2cf760fe5f3458dfbb34e93d096a92"
+    },
+    {
+      "path": "src/riopa_provenance/methods.py",
+      "size_bytes": 12796,
+      "sha256": "ac971ef23453abd1947ea7625ac0be0e954b33b0d15139309d1765b4b892edd2"
+    },
+    {
+      "path": "src/riopa_provenance/validation.py",
+      "size_bytes": 14113,
+      "sha256": "ecb8f8f3bce1888f6288129b6e52a1ac6694553b92fb7551690deae4fb243656"
+    },
+    {
+      "path": "tests/test_cli.py",
+      "size_bytes": 2511,
+      "sha256": "537354d9d122e2905abdf4a678ca997e6b8700a818876fa9aa31f8e51bad4cea"
+    },
+    {
+      "path": "tests/test_crate.py",
+      "size_bytes": 1903,
+      "sha256": "ed8941b11760b6acf042558433b6700aed64289a97e207806c08b940b9d92c2b"
+    },
+    {
+      "path": "tests/test_hashing.py",
+      "size_bytes": 310,
+      "sha256": "0763b96130a9628a1c1155fc0ea421eec67c5931d5804672c71d33d54be8b5a3"
+    },
+    {
+      "path": "tests/test_methods.py",
+      "size_bytes": 525,
+      "sha256": "08e7fbe037d79425562d985c3f7af785bc31e214ffce546dad61b340447d6e54"
+    },
+    {
+      "path": "tests/test_project_automation.py",
+      "size_bytes": 785,
+      "sha256": "32a447bf2ec9151a542c6166960075de03ee5c431359f4fa37253588e3625026"
+    },
+    {
+      "path": "tests/test_project_config.py",
+      "size_bytes": 3002,
+      "sha256": "84f1a06a830d74e7f6fd598a83d158e0303c96d3e8677c283ec7127556e44a3c"
+    },
+    {
+      "path": "tests/test_schemas.py",
+      "size_bytes": 405,
+      "sha256": "218898983ffcc9e67683ae1eebef01f0c84b3b42cdb0c38a8dd668fad1439012"
+    },
+    {
+      "path": "tests/test_validation_failures.py",
+      "size_bytes": 3448,
+      "sha256": "9f456d7c29f2cda6e4bc123f03f62a3999f424871f5c96e1aa73a183dcf46200"
+    },
+    {
+      "path": "tests/test_validation_integrity.py",
+      "size_bytes": 1874,
+      "sha256": "afa6ef6c80d235b1245e00cdd272f976d6761e6b5526ab67a1314e269270acc5"
+    },
+    {
+      "path": "uv.lock",
+      "size_bytes": 107451,
+      "sha256": "f4a4f4019e31c1d3cb2f1900613fc43ce0c7384f6668adfe32a348ae7840aa65"
+    }
+  ],
+  "file_count": 152
+}

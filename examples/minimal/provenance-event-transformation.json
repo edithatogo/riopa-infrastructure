@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "event_id": "urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000002",
+  "stream_id": "urn:riopa:stream:nz-spatial-example:2026.07.18",
+  "sequence": 1,
+  "event_type": "transformation.completed",
+  "status": "succeeded",
+  "occurred_at": "2026-07-18T01:06:00Z",
+  "recorded_at": "2026-07-18T01:06:01Z",
+  "activity": {
+    "activity_id": "urn:riopa:run:018f7f5a-3e17-7f08-a2bf-000000000001",
+    "activity_type": "example.canonicalise-vector",
+    "name": "Illustrative canonical spatial transformation",
+    "description": "Synthetic event linked to the declared transformation-run record."
+  },
+  "agents": [
+    {
+      "agent_id": "https://github.com/edithatogo/riopa-infrastructure",
+      "agent_type": "software",
+      "role": "transformation-runner",
+      "name": "riopa-provenance reference implementation",
+      "version": "0.1.0",
+      "identifier": null
+    }
+  ],
+  "inputs": [
+    "urn:riopa:artifact:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "outputs": [
+    "urn:riopa:artifact:sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ],
+  "parameters": {
+    "target_crs": "EPSG:2193",
+    "geometry_repair": "make_valid"
+  },
+  "environment": {
+    "runtime": "Python 3.12",
+    "platform": "linux/amd64"
+  },
+  "schema_refs": [
+    "https://w3id.org/riopa/example/spatial-layer/v1"
+  ],
+  "classification_refs": [],
+  "rights_refs": [
+    "urn:riopa:rights-inventory:nz-spatial-example:2026.07.18"
+  ],
+  "quality_refs": [
+    "urn:riopa:quality:example:geometry-validity"
+  ],
+  "valid_time": null,
+  "previous_event_hash": "57c8f21fdfed578d3e5ea32028b65ca6004d946ffe6c83d2d0dbd0565b39614a",
+  "event_hash": "f4d533e4979be780e70e1e0e445066b21dd7ece889ffd3092c4e222d7aa577a3",
+  "signature_ref": null,
+  "diagnostics": [
+    "Synthetic example only; no geometry payload is bundled."
+  ]
+}

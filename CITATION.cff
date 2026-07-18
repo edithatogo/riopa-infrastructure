@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Please cite the software release and the dataset or research-object DOI used in your analysis."
+title: "RIOPA Infrastructure: provenance-first research infrastructure for Aotearoa New Zealand"
+type: software
+authors:
+  - family-names: Mordaunt
+    given-names: Dylan
+repository-code: "https://github.com/edithatogo/riopa-infrastructure"
+url: "https://github.com/edithatogo/riopa-infrastructure"
+version: 0.1.0
+date-released: 2026-07-18
+license: MIT
+keywords:
+  - provenance
+  - reproducibility
+  - geospatial
+  - health geography
+  - facility location
+  - Aotearoa New Zealand

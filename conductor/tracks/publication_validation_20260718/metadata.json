@@ -1,0 +1,16 @@
+{
+  "track_id": "publication_validation_20260718",
+  "type": "publication",
+  "phase": "Publication",
+  "status": "proposed",
+  "created_at": "2026-07-18T01:30:00Z",
+  "updated_at": "2026-07-18T01:30:00Z",
+  "description": "Convert infrastructure, data and applied work into independently validated, citable software/data releases and manuscripts.",
+  "depends_on": [
+    "repository_template_adoption_20260718",
+    "nz_spatial_archive_mvp_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": null
+}
