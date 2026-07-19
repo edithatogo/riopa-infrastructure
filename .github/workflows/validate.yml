@@ -31,7 +31,16 @@ jobs:
       - name: Check formatting
         run: uv run ruff format --check .
       - name: Validate architecture and example bundle
-        run: uv run riopa validate --root .
+        run: |
+          uv run riopa validate --root .
+          uv run riopa roadmap validate --root .
+      - name: Reject generated issue drift
+        run: |
+          cp project/issues.yaml /tmp/issues.json
+          uv run riopa roadmap generate-issues --root .
+          diff -u /tmp/issues.json project/issues.yaml
+      - name: Generate roadmap status
+        run: uv run riopa roadmap status --root . --output ROADMAP_STATUS.md
       - name: Run tests with branch coverage
         run: >-
           uv run pytest

@@ -2,18 +2,31 @@
 
 ## 1. Validation protocol
 
-- [ ] 1.1 Define independent reproduction and audit checklist.
-- [ ] 1.2 Recruit reviewers/collaborators and create issue-based evidence log.
-- [ ] 1.3 Run clean-room rebuilds and discrepancy triage.
+- [ ] 1.1 Define independent conformance, clean-room and external-user protocols.
+- [ ] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications.
+- [ ] 1.3 Select validators, environments and reviewer independence criteria.
 
-## 2. Releases
+## 2. Release and citation packages
 
-- [ ] 2.1 Publish provenance profile/software release.
-- [ ] 2.2 Publish NZ spatial archive data descriptor release.
-- [ ] 2.3 Verify mirrors, DOI metadata and citation files.
+- [ ] 2.1 Coordinate immutable software, schema, ontology, data, model and research-object versions.
+- [ ] 2.2 Generate DOI-ready metadata, citation, provenance, SBOM, attestations and preservation records.
+- [ ] 2.3 Verify discovery, install, query, reproduce and cite workflows.
 
-## 3. Applied publications
+## 3. Independent reproduction
 
-- [ ] 3.1 Publish supermarket/health research object and manuscript.
-- [ ] 3.2 Publish emergency/hospital methods/benchmark paper when validated.
-- [ ] 3.3 Track reuse, citations and contributor roles.
+- [ ] 3.1 Reproduce one real-data archive release externally.
+- [ ] 3.2 Reproduce one applied benchmark externally.
+- [ ] 3.3 Resolve findings and publish deviations/limitations.
+
+## 4. Publications and correction
+
+- [ ] 4.1 Complete infrastructure/methods, data descriptor and applied publication packages.
+- [ ] 4.2 Exercise correction, supersession and downstream-impact notification.
+- [ ] 4.3 Publish validation evidence and stable citation guidance.
+
+## Track closeout
+
+- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
+- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

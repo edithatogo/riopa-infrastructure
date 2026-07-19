@@ -2,14 +2,37 @@
   "track_id": "facility_location_engine_20260718",
   "type": "analytics",
   "phase": "Analytics",
-  "status": "proposed",
+  "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-18T01:30:00Z",
-  "description": "Provide reusable, inspectable optimisation components for coverage, average access, worst-case equity, capacity, competition and uncertainty.",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Provide reusable, independently verifiable optimisation for coverage, average access, worst-case equity, capacity, competition, robustness and multi-period decisions.",
   "depends_on": [
-    "spatial_quality_temporality_20260718"
+    "canonical_domain_schemas_ontology_20260719",
+    "accessibility_network_engine_20260719"
   ],
   "github_issue": null,
   "evidence": [],
-  "target_release": null
+  "target_release": "0.7.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "contracts",
+    "usability",
+    "analytics",
+    "science"
+  ],
+  "stability_class": "Platform",
+  "risk": "Critical",
+  "priority": "P1",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Methods and analytics lead",
+  "review_roles": [
+    "API/schema reviewer",
+    "External user reviewer",
+    "Quantitative methods reviewer",
+    "Scientific reviewer"
+  ],
+  "blocking_defects": []
 }

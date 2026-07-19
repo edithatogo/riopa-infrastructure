@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "issues": [
     {
       "key": "fyi-cli-riopa-events",
@@ -41,7 +41,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Expose RIOPA-compatible source/capture/facility assertions while preserving Healthpoint licensing and the repository\u2019s code-first, data-light boundary.\n\n## Scope\n\n- Map export manifests, FHIR resource identity, retrieval time, source and tool version.\n- Preserve `local-only`, `licensed-share` and `open-approved` redistribution states.\n- Represent locations as source assertions suitable for later facility reconciliation; do not publish licensed payloads.\n- Add synthetic fixtures and cross-language schema tests.\n\n## Acceptance\n\n- Synthetic exports validate against RIOPA source/event contracts.\n- Rights state is never broadened by the adapter.\n- Facility records retain FHIR IDs and source coordinates separately from later geocoding/reconciliation.\n- No real Healthpoint payload is committed or publicly redistributed.\n\nProgramme tracks: `repository_template_adoption_20260718`, `supermarket_health_pilot_20260718`."
+      "body": "Expose RIOPA-compatible source/capture/facility assertions while preserving Healthpoint licensing and the repository’s code-first, data-light boundary.\n\n## Scope\n\n- Map export manifests, FHIR resource identity, retrieval time, source and tool version.\n- Preserve `local-only`, `licensed-share` and `open-approved` redistribution states.\n- Represent locations as source assertions suitable for later facility reconciliation; do not publish licensed payloads.\n- Add synthetic fixtures and cross-language schema tests.\n\n## Acceptance\n\n- Synthetic exports validate against RIOPA source/event contracts.\n- Rights state is never broadened by the adapter.\n- Facility records retain FHIR IDs and source coordinates separately from later geocoding/reconciliation.\n- No real Healthpoint payload is committed or publicly redistributed.\n\nProgramme tracks: `repository_template_adoption_20260718`, `supermarket_health_pilot_20260718`."
     },
     {
       "key": "ecosystem-docs-riopa-page",
@@ -83,6 +83,28 @@
         "rights-governance"
       ],
       "body": "Map source-grounded RuleSpec modules, corpus citation paths, oracle pins and ratcheted validation evidence into the shared RIOPA profile.\n\n## Scope\n\n- Represent provisions, source versions, RuleSpec modules and derived rules as linked assertions.\n- Record encoding/manual interpretation activities, evidence, reviewer roles and policy/version.\n- Map parity runs and known-gap ratchets into transformation and quality evidence.\n- Preserve exact corpus citation paths and pinned comparison SHAs.\n\n## Acceptance\n\n- One statute/regulation/policy slice produces valid source, run and quality records.\n- No RuleSpec assertion loses its source citation path.\n- Interpretation choices are explicit manual activities rather than hidden metadata.\n- Existing ratchets continue to fail on regressions and stale fixed entries.\n\nProgramme tracks: `planning_rules_linkage_20260718`, `repository_template_adoption_20260718`."
+    },
+    {
+      "key": "conductor-next-riopa-maturity",
+      "repository": "edithatogo/conductor-next",
+      "title": "[Cross-repo] Support RIOPA evidence maturity, release gates and track metadata",
+      "labels": [
+        "cross-repo",
+        "type:validation",
+        "v1-critical"
+      ],
+      "body": "Extend Conductor adapters and validation to understand the mature RIOPA track contract without making it RIOPA-specific.\n\n## Scope\n\n- Preserve the canonical `spec.md`, `plan.md`, `metadata.json` and `index.md` layout.\n- Support current/target maturity, target release, risk, stability class, owner/reviewer roles, evidence and blocking defects.\n- Validate status transitions, dependency maturity and evidence requirements.\n- Expose hooks for deterministic issue generation and release-readiness reporting.\n\n## Acceptance\n\n- Existing Conductor projects remain compatible or have a documented migration.\n- RIOPA track fixtures round-trip through at least two supported adapters.\n- Invalid maturity transitions, missing evidence and dependency cycles fail deterministically.\n- Generated track files remain tool-neutral and reviewable without a hosted service.\n\nProgramme tracks: `foundation_architecture_20260718`, `documentation_developer_experience_20260719`."
+    },
+    {
+      "key": "digitalnz-riopa-capture",
+      "repository": "edithatogo/digitalnz",
+      "title": "[Cross-repo] Emit RIOPA source, capture and rights evidence for DigitalNZ records",
+      "labels": [
+        "cross-repo",
+        "provenance",
+        "rights-governance"
+      ],
+      "body": "Map DigitalNZ discovery and retrieval into the shared source-registry and faithful-capture contracts, including Gazette-related discovery where applicable.\n\n## Scope\n\n- Record query parameters, pagination, record identifiers, timestamps, HTTP evidence and tool identity.\n- Preserve source-provider attribution, rights statements and redistribution limitations.\n- Distinguish discovery metadata from preserved source payloads and downstream interpretations.\n- Add positive, negative, pagination, retry and no-change fixtures.\n\n## Acceptance\n\n- A representative public query emits valid source and capture records.\n- Pagination and retries are idempotent and do not fabricate duplicate artifacts.\n- Provider-specific rights are retained without broadening them.\n- The output can seed the NZ spatial/planning source registry and a complete research object.\n\nProgramme tracks: `connector_runtime_capture_20260719`, `nz_spatial_source_registry_20260718`."
     }
   ]
 }

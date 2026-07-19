@@ -74,3 +74,59 @@ def test_research_object_command_writes_output(
     assert exc.value.code == 0
     assert (output / "ro-crate-metadata.json").is_file()
     assert "Research object written" in capsys.readouterr().out
+
+
+def test_roadmap_validate_command_reports_success(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    root = Path(__file__).resolve().parents[1]
+    with pytest.raises(SystemExit) as exc:
+        cli.main(["roadmap", "validate", "--root", str(root)])
+    assert exc.value.code == 0
+    assert "PASS roadmap" in capsys.readouterr().out
+
+
+def test_roadmap_status_json_reports_stable_target(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    root = Path(__file__).resolve().parents[1]
+    with pytest.raises(SystemExit) as exc:
+        cli.main(
+            [
+                "roadmap",
+                "status",
+                "--root",
+                str(root),
+                "--release",
+                "1.0.0",
+                "--format",
+                "json",
+            ]
+        )
+    assert exc.value.code == 0
+    payload = __import__("json").loads(capsys.readouterr().out)
+    assert payload["stable_release"] == "1.0.0"
+    assert payload["tracks"]["total"] == 28
+    assert payload["releases"][0]["ready"] is False
+
+
+def test_roadmap_generate_issues_command_writes_output(
+    capsys: pytest.CaptureFixture[str], tmp_path: Path
+) -> None:
+    root = Path(__file__).resolve().parents[1]
+    output = tmp_path / "issues.json"
+    with pytest.raises(SystemExit) as exc:
+        cli.main(
+            [
+                "roadmap",
+                "generate-issues",
+                "--root",
+                str(root),
+                "--output",
+                str(output),
+            ]
+        )
+    assert exc.value.code == 0
+    payload = __import__("json").loads(output.read_text(encoding="utf-8"))
+    assert len([item for item in payload["issues"] if item.get("parent") == "program-epic"]) == 28
+    assert "Issue configuration written" in capsys.readouterr().out

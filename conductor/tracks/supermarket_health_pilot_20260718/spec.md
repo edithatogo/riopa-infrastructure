@@ -1,44 +1,83 @@
-# Track: Supermarket access, zoning and health geography pilot
+# Track: Supermarket access, zoning and health-geography reference study
 
 Track ID: `supermarket_health_pilot_20260718`  
-Phase: **Applications**
+Phase: **Applications**  
+Target release: **0.8.0**  
+Maturity target: **M6**  
+Stability class: **Reference**  
+V1 critical: **yes**
 
 ## Goal
 
-Reproduce and extend supermarket-density/access analysis with open code, source evidence, zoning feasibility, health outcomes and constrained location alternatives.
+Reproduce and extend supermarket density/access analysis with open code, multi-source facilities, zoning feasibility, health outcomes, causal restraint and transparent location alternatives.
+
+## v1 role
+
+This track is part of the stable v1 release contract. It is complete only when its implementation, compatibility, quality, security/governance, operational and reproducibility evidence satisfy both this specification and every applicable blocking gate in `conductor/releases.json` and `conductor/v1-gate.json`.
 
 ## Dependencies
 
+
 - `planning_rules_linkage_20260718`
+- `accessibility_network_engine_20260719`
+- `facility_registry_20260719`
 - `facility_location_engine_20260718`
+- `health_outcomes_causal_methods_20260719`
 - `governance_maori_data_sovereignty_20260718`
 
 ## Scope
 
-- Multi-source supermarket facility registry and temporal reconciliation.
-- Population/geographic density, network access and travel-time measures.
-- Zoning feasibility and planning-rule linkage.
-- Area-level socioeconomic and health outcome associations.
-- Counterfactual location alternatives under explicit objectives/constraints.
+- Reproduction of geography- and population-density supermarket findings.
+- Multi-source supermarket assertions, classification and temporal registry.
+- Distance, network, multimodal, capacity, competition and deprivation access measures.
+- Planning-rule feasibility and candidate-site construction.
+- Area-level health analysis, uncertainty, optimisation alternatives and publication package.
 
 ## Out of scope
 
-- Claiming ecological associations are causal.
-- Publishing retailer data contrary to terms.
-- Declaring a site legally consentable.
+- Attributing individual health outcomes to supermarket placement from ecological association alone.
+- Publishing a commercial site recommendation without market, land, community and feasibility review.
+
+## Requirements
+
+- **R01.** Reproduction and extension are separated, with discrepancies documented.
+- **R02.** Density, accessibility, affordability/availability, competition and health association remain distinct constructs.
+- **R03.** Candidate feasibility is sourced from linked rules and caveated where consent discretion remains.
+- **R04.** Descriptive, causal and prescriptive outputs use distinct analysis manifests.
+- **R05.** Optimisation reports multiple equity/efficiency alternatives rather than one preferred answer.
 
 ## Acceptance criteria
 
-- [ ] Facility registry reports source coverage, duplicates, positional confidence and temporal status.
-- [ ] At least straight-line, road-network and population-weighted access metrics are compared.
-- [ ] Zoning feasibility is presented as sourced screening, not legal advice.
-- [ ] Health analyses preregister estimands and report ecological/confounding limitations.
-- [ ] Optimisation reports efficiency/equity Pareto alternatives and sensitivity to uncertain inputs.
-- [ ] Code, data permitted for release, methods and research object are public and citable.
+- [ ] The baseline density/population analysis is reproduced from public, versioned inputs or discrepancies are fully explained.
+- [ ] Facility reconciliation and accessibility sensitivity are independently reviewed.
+- [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.
+- [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.
+- [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.
+- [ ] Code, data or resolvable inputs, methods, quality, governance and research object are independently reproducible.
+
+## Hardening and maturity gates
+
+- M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
+- M3 requires real-data integration, migration evidence and representative failure handling.
+- M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
+- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
+- Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
+
+## Evidence required
+
+- Preregistered reproduction/extension protocol.
+- Facility, access, zoning and health analysis packages.
+- Sensitivity, equity, causal-limitation and governance reports.
+- Complete research object and independent reproduction.
 
 ## Risks
 
-- Incomplete retailer sources.
-- Modifiable areal unit problem.
-- Residual confounding.
-- Zoning misclassification.
+- Original study details or data are unavailable.
+- Facility classification materially changes conclusions.
+- Zoning permission is confused with commercial viability or consent certainty.
+- Health associations are overinterpreted in public communication.
+
+## Completion rule
+
+The track may enter `complete` only after every acceptance criterion is evidenced in `index.md`, all blocking dependencies are complete, required migrations and documentation are published, and the target release readiness evaluator reports no track-specific blocker.

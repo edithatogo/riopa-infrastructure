@@ -53,9 +53,9 @@ Artifact payload status summary: 2 not-bundled.
 
 The declared event stream covers 2026-07-18T01:05:01Z to 2026-07-18T01:15:01Z. Events are ordered by sequence and linked through canonical SHA-256 hashes. The snapshot manifest is hashed after omitting its own `manifest_sha256` field.
 
-- sequence 0: `capture.completed` (`succeeded`), event `urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000010`, recorded 2026-07-18T01:05:01Z, hash `57c8f21fdfed578d3e5ea32028b65ca6004d946ffe6c83d2d0dbd0565b39614a`, previous `GENESIS`.
-- sequence 1: `transformation.completed` (`succeeded`), event `urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000002`, recorded 2026-07-18T01:06:01Z, hash `f4d533e4979be780e70e1e0e445066b21dd7ece889ffd3092c4e222d7aa577a3`, previous `57c8f21fdfed578d3e5ea32028b65ca6004d946ffe6c83d2d0dbd0565b39614a`.
-- sequence 2: `snapshot.assembled` (`succeeded`), event `urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000003`, recorded 2026-07-18T01:15:01Z, hash `d8d0a390679ec98d29f496658cde5a931ebb49100136957fd2bec227d1161e08`, previous `f4d533e4979be780e70e1e0e445066b21dd7ece889ffd3092c4e222d7aa577a3`.
+- sequence 0: `capture.completed` (`succeeded`), event `urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000010`, recorded 2026-07-18T01:05:01Z, hash `f339b18f3eed935a23aaa93feca0c5330cf7ea6377069f6254b667d64541c3ed`, previous `GENESIS`.
+- sequence 1: `transformation.completed` (`succeeded`), event `urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000002`, recorded 2026-07-18T01:06:01Z, hash `c66c4697d5f341036c91efb46860dff6f1dd071469aa38502d1ddb680a189b60`, previous `f339b18f3eed935a23aaa93feca0c5330cf7ea6377069f6254b667d64541c3ed`.
+- sequence 2: `snapshot.assembled` (`succeeded`), event `urn:riopa:event:018f7f5a-3e17-7f08-a2bf-000000000003`, recorded 2026-07-18T01:15:01Z, hash `d1c94f80efadc0c37dce71e891175d65802fd08c34d2954060615043b91ee6ba`, previous `c66c4697d5f341036c91efb46860dff6f1dd071469aa38502d1ddb680a189b60`.
 
 ## Quality assurance
 

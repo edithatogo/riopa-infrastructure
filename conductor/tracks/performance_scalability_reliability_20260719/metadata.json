@@ -1,0 +1,47 @@
+{
+  "track_id": "performance_scalability_reliability_20260719",
+  "type": "validation",
+  "phase": "Release",
+  "status": "specified",
+  "created_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Set and verify bounded performance, capacity, resilience and cost envelopes for the connector, archive, query, accessibility, optimisation and simulation workloads required by stable v1.",
+  "depends_on": [
+    "connector_runtime_capture_20260719",
+    "provenance_query_api_20260719",
+    "nz_spatial_archive_operations_20260719",
+    "accessibility_network_engine_20260719",
+    "facility_location_engine_20260718",
+    "simulation_validation_engine_20260719",
+    "operations_preservation_sre_20260719"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.9.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "owner_role": "Release manager",
+  "review_roles": [
+    "Performance reviewer",
+    "Operations reviewer",
+    "Security reviewer",
+    "Data steward",
+    "Quantitative methods reviewer",
+    "External user reviewer"
+  ],
+  "v1_critical": true,
+  "current_maturity": "M1",
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "performance",
+    "operations",
+    "security",
+    "data",
+    "analytics",
+    "usability"
+  ],
+  "stability_class": "Operational",
+  "risk": "Critical",
+  "priority": "P0",
+  "mirror_to_umbrella": true,
+  "blocking_defects": []
+}

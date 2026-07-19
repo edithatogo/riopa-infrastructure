@@ -1,29 +1,45 @@
-# Delivery record
+# Delivery record: stable-v1 roadmap bundle 0.2.0
 
-This repository is the executable architecture and implementation bundle for **RIOPA Infrastructure v0.1.0**, created on 18 July 2026.
+This repository is the revised architecture, Conductor and executable roadmap bundle for RIOPA Infrastructure, generated on 19 July 2026.
 
-## Included
+## Delivered in this update
 
-- 7 architecture decision records;
-- 13 dependency-linked Conductor tracks with specification, plan, metadata and index files;
-- 10 JSON Schemas covering sources, artifacts, provenance events, transformations, materialisations, snapshots, quality, rights, methods facts and spatial rule links;
-- a reference Python package and CLI for validation, publication-ready methods generation and RO-Crate research-object construction;
-- a three-event, hash-linked synthetic example with internal and manifest integrity verification;
-- GitHub repository, Project, issue graph, dependency, cross-repository adoption and RIOPA umbrella-mirroring automation;
-- a staged New Zealand Spatial Archive source and implementation plan;
-- facility-location, supermarket/health and ambulance/hospital pilot tracks;
-- governance, licensing, privacy and Māori data sovereignty gates.
+- **28 dependency-linked, v1-critical Conductor tracks**, each with a specification, four-phase implementation plan, machine-readable metadata and evidence index;
+- an **M0–M6 maturity model** across 12 non-substitutable dimensions;
+- a **nine-release train** from the present M1 roadmap release through M5 release candidate and M6 stable general availability;
+- **14 stable-v1 gate families** covering governance, contracts, provenance, security, data, operations, performance, interoperability, publication, usability, analytics, science, independent reproduction and release authority;
+- explicit defect, evidence-age, waiver, external-user/operator, operational-soak and signed-approval policies;
+- schemas and executable code for roadmap validation, dependency/cycle checks, evidence integrity, release readiness, status reporting and deterministic issue generation;
+- **141 generated programme issue records** and 10 cross-repository adoption targets;
+- dedicated tracks for the previously missing ontology/domain schemas, accessibility, facility reconciliation, provenance queries, health causal methods, planning transition, operations/preservation, interoperability, documentation/support and performance/reliability;
+- updated programme, compatibility, support, security, release, SLO, preservation, evidence and definition-of-done documentation;
+- stricter stable evidence rules: local evidence must be digest-bound and external evidence must be digest-bound or use a recognised content-addressed persistent identifier.
 
-## Verified delivery state
+## Current qualification state
 
-- 24 schema and closed-bundle integrity checks pass.
-- 23 automated tests pass.
-- Branch-aware test coverage is 91.28% with a 90% CI floor.
-- Methods regeneration is byte-for-byte stable against the checked-in example.
-- The example research object rebuilds and all internal SHA-256 checks pass.
-- GitHub issue and full bootstrap dry runs resolve the complete hierarchy without network writes.
+- **0.2.0 / M1: READY** as a specified roadmap, Conductor and tooling delivery.
+- **1.0.0 / M6: NOT READY**, deliberately blocked until every required track and evidence gate passes.
 
-This source archive does not claim that the remote GitHub repository, Project or issues exist until an applied bootstrap writes `project/bootstrap-summary.md` and `project/bootstrap-report.json`.
+The roadmap therefore prevents “feature complete” or “all issues closed” from being mistaken for a mature stable release.
+
+## Verification completed
+
+- Ruff lint and formatting: passed.
+- Schema, example and bundle-integrity validation: **29/29 passed**.
+- Roadmap, maturity, track, release-evidence and issue-drift validation: passed.
+- Automated tests: **70/70 passed**.
+- Branch-aware package coverage: **92.84%**, above the 90% floor.
+- Issue configuration regeneration: byte-identical.
+- Methods regeneration: byte-identical.
+- Two local research-object builds: byte-identical.
+- Research-object checksums: **17/17 verified**.
+- GitHub bootstrap and scripts: syntax checked and dry-run verified without remote writes.
+
+See `reports/quality-report.md`, `reports/quality-report.json` and `ROADMAP_STATUS.md` for the evidence and current blockers.
+
+## Delivery boundary
+
+The bundle is a mature **roadmap and execution-control system**, plus the existing provenance/research-object prototype. It does not claim that the national spatial archive, facility registry, accessibility/optimisation/simulation engines, applied studies, operational SLO history, external reproductions, DOI deposits, preservation copies or remote GitHub resources have already been delivered.
 
 ## Verification commands
 
@@ -32,25 +48,24 @@ uv sync --extra dev --frozen
 uv run ruff check .
 uv run ruff format --check .
 uv run riopa validate --root .
+uv run riopa roadmap validate --root .
+uv run riopa roadmap status --root . --output ROADMAP_STATUS.md
 uv run pytest --cov=riopa_provenance --cov-branch --cov-fail-under=90
 make verify-bundle
 bash -n scripts/bootstrap_github.sh
 make bootstrap-dry-run
 ```
 
-## Remote activation
+`DELIVERY_MANIFEST.json` records the package inventory and the qualification summary for this artifact.
 
-```bash
-gh auth refresh -s repo -s project
-bash scripts/bootstrap_github.sh \
-  --owner edithatogo \
-  --repo riopa-infrastructure \
-  --visibility public \
-  --create-project \
-  --create-issues \
-  --cross-repo \
-  --mirror-umbrella \
-  --apply
-```
 
-GitHub saved project views are configured manually from `project/project.yaml`; all other declared bootstrap operations are automated and idempotent.
+## Verified delivery state
+
+- 29/29 bundle, schema and integrity checks passed.
+- 70/70 automated tests passed.
+- Branch-aware coverage was 92.84% against a 90% floor.
+- Methods regenerated byte-for-byte.
+- All 17 example research-object checksums passed.
+- The issue generator resolved 141 programme issues and 10 cross-repository issues in dry-run mode.
+- A newly created clean workspace and virtual environment reproduced the same validation, tests, methods and research object.
+- Release 0.2.0 is ready at M1 with 4/4 gates; releases 0.3.0 through 1.0.0 remain not ready by design.

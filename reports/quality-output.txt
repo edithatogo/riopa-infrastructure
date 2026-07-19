@@ -1,0 +1,203 @@
+## ruff check
+All checks passed!
+## ruff format
+23 files already formatted
+## bundle validation
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/source-record.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/artifact-raw.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/artifact-canonical.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/provenance-event.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/provenance-event-transformation.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/provenance-event-snapshot.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/transformation-run.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/materialization.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/quality-report.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/rights-inventory.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/methods-facts.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/snapshot-manifest.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/spatial-feature-link.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/artifact.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/materialization.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/maturity-model.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/methods-facts.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/provenance-event.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/quality-report.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/release-evidence.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/release-roadmap.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/rights-inventory.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/snapshot-manifest.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/source-record.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/spatial-feature-link.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/track-metadata.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/transformation-run.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/schemas/v1-gate.schema.json
+PASS /mnt/data/riopa_work/riopa-infrastructure/examples/minimal/.bundle-integrity
+Validated 29 item(s); 0 failure(s).
+## roadmap validation
+PASS roadmap, maturity, release, track, evidence, and issue-graph validation
+## tests and coverage
+......................................................................   [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.5-final-0 ________________
+
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+src/riopa_provenance/__init__.py         5      0      0      0   100%
+src/riopa_provenance/cli.py             92      9     14      3    87%   54-57, 70-73, 138
+src/riopa_provenance/crate.py          110      6     30      6    91%   27, 31-32, 182->196, 269->281, 329, 333, 337
+src/riopa_provenance/hashing.py         17      0      4      0   100%
+src/riopa_provenance/methods.py         76      0     16      0   100%
+src/riopa_provenance/roadmap.py        684     28    342     27    95%   226, 327, 375, 389, 398->400, 440->460, 465, 475->484, 484->503, 486->503, 507->512, 613-614, 725, 733, 764, 776->784, 784->792, 953->966, 1186-1187, 1251-1252, 1262, 1301-1302, 1304->1309, 1307-1308, 1312-1314, 1317-1321, 1374->1372, 1377->1379, 1389-1393, 1418->1427, 1518-1519
+src/riopa_provenance/validation.py     211     20    104     21    87%   102->100, 111-112, 123-124, 133, 162, 165, 206, 214, 221, 224, 229, 234, 239, 253, 260, 266->268, 270->272, 279, 286, 291, 304->306, 318
+--------------------------------------------------------------------------------
+TOTAL                                 1195     63    510     57    93%
+Required test coverage of 90% reached. Total coverage: 92.84%
+70 passed in 12.02s
+
+
+===== NEXT QUALIFICATION RUN =====
+
+## issue generation determinism
+Issue configuration written to /tmp/issues-generated.json
+PASS issue graph byte-identical
+## methods determinism
+Methods written to /tmp/riopa-methods.md
+PASS methods byte-identical
+## research object deterministic builds
+Research object written to /tmp/riopa-ro-1
+Research object written to /tmp/riopa-ro-2
+PASS research objects byte-identical
+## research object checksums
+README.md: OK
+artifact-canonical.json: OK
+artifact-raw.json: OK
+bundle-manifest.json: OK
+materialization.json: OK
+methods-facts.json: OK
+methods.md: OK
+provenance-event-snapshot.json: OK
+provenance-event-transformation.json: OK
+provenance-event.json: OK
+quality-report.json: OK
+rights-inventory.json: OK
+ro-crate-metadata.json: OK
+snapshot-manifest.json: OK
+source-record.json: OK
+spatial-feature-link.json: OK
+transformation-run.json: OK
+## script syntax
+PASS script syntax
+
+
+===== NEXT QUALIFICATION RUN =====
+
+## clean environment sync
+Using CPython 3.13.5 interpreter at: /usr/bin/python3
+Creating virtual environment at: .venv
+   Building riopa-provenance @ file:///tmp/riopa-clean-v0.2.0
+      Built riopa-provenance @ file:///tmp/riopa-clean-v0.2.0
+Prepared 27 packages in 794ms
+Installed 27 packages in 46ms
+ + arrow==1.4.0
+ + attrs==26.1.0
+ + coverage==7.15.2
+ + fqdn==1.5.1
+ + idna==3.18
+ + iniconfig==2.3.0
+ + isoduration==20.11.0
+ + jsonpointer==3.1.1
+ + jsonschema==4.26.0
+ + jsonschema-specifications==2025.9.1
+ + packaging==26.2
+ + pluggy==1.6.0
+ + pygments==2.20.0
+ + pytest==8.4.2
+ + pytest-cov==6.3.0
+ + python-dateutil==2.9.0.post0
+ + pyyaml==6.0.3
+ + referencing==0.37.0
+ + rfc3339-validator==0.1.4
+ + rfc3987==1.3.8
+ + riopa-provenance==0.2.0 (from file:///tmp/riopa-clean-v0.2.0)
+ + rpds-py==2026.6.3
+ + ruff==0.15.22
+ + six==1.17.0
+ + tzdata==2026.3
+ + uri-template==1.3.0
+ + webcolors==25.10.0
+## clean ruff
+All checks passed!
+23 files already formatted
+## clean validation
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/source-record.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/artifact-raw.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/artifact-canonical.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/provenance-event.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/provenance-event-transformation.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/provenance-event-snapshot.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/transformation-run.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/materialization.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/quality-report.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/rights-inventory.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/methods-facts.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/snapshot-manifest.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/spatial-feature-link.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/artifact.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/materialization.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/maturity-model.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/methods-facts.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/provenance-event.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/quality-report.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/release-evidence.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/release-roadmap.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/rights-inventory.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/snapshot-manifest.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/source-record.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/spatial-feature-link.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/track-metadata.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/transformation-run.schema.json
+PASS /tmp/riopa-clean-v0.2.0/schemas/v1-gate.schema.json
+PASS /tmp/riopa-clean-v0.2.0/examples/minimal/.bundle-integrity
+Validated 29 item(s); 0 failure(s).
+PASS roadmap, maturity, release, track, evidence, and issue-graph validation
+## clean tests
+......................................................................   [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.5-final-0 ________________
+
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+src/riopa_provenance/__init__.py         5      0      0      0   100%
+src/riopa_provenance/cli.py             92      9     14      3    87%   54-57, 70-73, 138
+src/riopa_provenance/crate.py          110      6     30      6    91%   27, 31-32, 182->196, 269->281, 329, 333, 337
+src/riopa_provenance/hashing.py         17      0      4      0   100%
+src/riopa_provenance/methods.py         76      0     16      0   100%
+src/riopa_provenance/roadmap.py        684     28    342     27    95%   226, 327, 375, 389, 398->400, 440->460, 465, 475->484, 484->503, 486->503, 507->512, 613-614, 725, 733, 764, 776->784, 784->792, 953->966, 1186-1187, 1251-1252, 1262, 1301-1302, 1304->1309, 1307-1308, 1312-1314, 1317-1321, 1374->1372, 1377->1379, 1389-1393, 1418->1427, 1518-1519
+src/riopa_provenance/validation.py     211     20    104     21    87%   102->100, 111-112, 123-124, 133, 162, 165, 206, 214, 221, 224, 229, 234, 239, 253, 260, 266->268, 270->272, 279, 286, 291, 304->306, 318
+--------------------------------------------------------------------------------
+TOTAL                                 1195     63    510     57    93%
+Required test coverage of 90% reached. Total coverage: 92.84%
+70 passed in 11.64s
+## clean methods
+Methods written to /tmp/clean-methods.md
+## clean research object
+Research object written to /tmp/clean-ro
+README.md: OK
+artifact-canonical.json: OK
+artifact-raw.json: OK
+bundle-manifest.json: OK
+materialization.json: OK
+methods-facts.json: OK
+methods.md: OK
+provenance-event-snapshot.json: OK
+provenance-event-transformation.json: OK
+provenance-event.json: OK
+quality-report.json: OK
+rights-inventory.json: OK
+ro-crate-metadata.json: OK
+snapshot-manifest.json: OK
+source-record.json: OK
+spatial-feature-link.json: OK
+transformation-run.json: OK
+## clean issue graph
+Issue configuration written to /tmp/clean-issues.json

@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/conductor-track-metadata/v1",
+  "title": "RIOPA Conductor track metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "track_id",
+    "type",
+    "phase",
+    "status",
+    "created_at",
+    "updated_at",
+    "description",
+    "depends_on",
+    "github_issue",
+    "evidence",
+    "target_release",
+    "owner_repository",
+    "owner_role",
+    "review_roles",
+    "v1_critical",
+    "current_maturity",
+    "maturity_target",
+    "maturity_dimensions",
+    "stability_class",
+    "risk",
+    "priority",
+    "mirror_to_umbrella",
+    "blocking_defects"
+  ],
+  "properties": {
+    "track_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+_[0-9]{8}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "architecture",
+        "governance",
+        "specification",
+        "platform",
+        "data",
+        "analytics",
+        "research",
+        "operations",
+        "validation",
+        "release"
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "Foundation",
+        "Core",
+        "NZ Spatial",
+        "Analytics",
+        "Applications",
+        "Publication",
+        "Release"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "specified",
+        "ready",
+        "active",
+        "validating",
+        "complete",
+        "archived"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20
+    },
+    "depends_on": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+_[0-9]{8}$"
+      }
+    },
+    "github_issue": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target_release": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "owner_repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "owner_role": {
+      "type": "string",
+      "minLength": 3
+    },
+    "review_roles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "v1_critical": {
+      "type": "boolean"
+    },
+    "current_maturity": {
+      "type": "string",
+      "pattern": "^M[0-6]$"
+    },
+    "maturity_target": {
+      "type": "string",
+      "pattern": "^M[0-6]$"
+    },
+    "maturity_dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "governance",
+          "contracts",
+          "provenance",
+          "security",
+          "data",
+          "operations",
+          "performance",
+          "interoperability",
+          "publication",
+          "usability",
+          "analytics",
+          "science"
+        ]
+      }
+    },
+    "stability_class": {
+      "type": "string",
+      "enum": [
+        "Normative",
+        "Platform",
+        "Operational",
+        "Reference",
+        "Governance"
+      ]
+    },
+    "risk": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ]
+    },
+    "mirror_to_umbrella": {
+      "type": "boolean"
+    },
+    "blocking_defects": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

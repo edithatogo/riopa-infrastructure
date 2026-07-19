@@ -1,0 +1,38 @@
+{
+  "track_id": "planning_system_transition_20260719",
+  "type": "data",
+  "phase": "NZ Spatial",
+  "status": "specified",
+  "created_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Represent legislation, authority, plan and provision transitions so longitudinal analyses remain reproducible through planning reform, reorganisation and partial legal succession.",
+  "depends_on": [
+    "planning_rules_linkage_20260718",
+    "canonical_domain_schemas_ontology_20260719"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.7.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "governance",
+    "contracts",
+    "data",
+    "science"
+  ],
+  "stability_class": "Reference",
+  "risk": "Critical",
+  "priority": "P1",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Spatial data lead",
+  "review_roles": [
+    "Governance reviewer",
+    "API/schema reviewer",
+    "Data steward",
+    "Scientific reviewer"
+  ],
+  "blocking_defects": []
+}

@@ -32,6 +32,15 @@ class IssueResult:
     phase: str | None = None
     track_id: str | None = None
     target_release: str | None = None
+    current_maturity: str | None = None
+    maturity_target: str | None = None
+    risk: str | None = None
+    stability_class: str | None = None
+    v1_critical: bool = False
+    priority: str | None = None
+    owner_repository: str | None = None
+    owner_role: str | None = None
+    blocking_defects: int = 0
 
 
 def load(path: Path) -> Any:
@@ -293,6 +302,15 @@ def process_repository(
                     phase=item.get("phase"),
                     track_id=item.get("track_id"),
                     target_release=item.get("target_release"),
+                    current_maturity=item.get("current_maturity"),
+                    maturity_target=item.get("maturity_target"),
+                    risk=item.get("risk"),
+                    stability_class=item.get("stability_class"),
+                    v1_critical=bool(item.get("v1_critical")),
+                    priority=item.get("priority"),
+                    owner_repository=item.get("owner_repository"),
+                    owner_role=item.get("owner_role"),
+                    blocking_defects=int(item.get("blocking_defects", 0)),
                 )
             )
             pending.remove(item)
@@ -384,6 +402,29 @@ def set_text(
             field["id"],
             "--text",
             value,
+        ]
+    )
+
+
+def set_number(
+    *,
+    project_id: str,
+    item_id: str,
+    field: dict[str, Any],
+    value: int,
+) -> None:
+    gh(
+        [
+            "project",
+            "item-edit",
+            "--id",
+            item_id,
+            "--project-id",
+            project_id,
+            "--field-id",
+            field["id"],
+            "--number",
+            str(value),
         ]
     )
 
@@ -509,19 +550,59 @@ def sync_project_fields(
             value="None",
         ):
             missing_options.add("Evidence status=None")
-        if fields.get("Reproducibility") and not set_single_select(
+        if fields.get("Current maturity") and not set_single_select(
             project_id=project_id,
             item_id=item_id,
-            field=fields["Reproducibility"],
-            value="R0",
+            field=fields["Current maturity"],
+            value=result.current_maturity or "M0",
         ):
-            missing_options.add("Reproducibility=R0")
+            missing_options.add(f"Current maturity={result.current_maturity or 'M0'}")
+        select_values = {
+            "Maturity target": result.maturity_target,
+            "Risk": result.risk,
+            "Priority": result.priority,
+            "Stability class": result.stability_class,
+            "V1 critical": "Yes" if result.v1_critical else "No",
+        }
+        for field_name, value in select_values.items():
+            if (
+                value
+                and fields.get(field_name)
+                and not set_single_select(
+                    project_id=project_id,
+                    item_id=item_id,
+                    field=fields[field_name],
+                    value=value,
+                )
+            ):
+                missing_options.add(f"{field_name}={value}")
         if result.target_release and fields.get("Target release"):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Target release"],
                 value=result.target_release,
+            )
+        if result.owner_repository and fields.get("Owner repository"):
+            set_text(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Owner repository"],
+                value=result.owner_repository,
+            )
+        if result.owner_role and fields.get("Owner role"):
+            set_text(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Owner role"],
+                value=result.owner_role,
+            )
+        if fields.get("Blocking defects"):
+            set_number(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Blocking defects"],
+                value=result.blocking_defects,
             )
         updated += 1
 

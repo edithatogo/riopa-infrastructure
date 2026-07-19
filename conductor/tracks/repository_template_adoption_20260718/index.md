@@ -1,21 +1,33 @@
-# Repository template and cross-repository adoption
+# Evidence index: Repository template and cross-repository adoption
 
 - **Track ID:** `repository_template_adoption_20260718`
-- **Status:** proposed
-- **Phase:** Core
-- **GitHub issue:** not yet linked
-- **Last updated:** 2026-07-18
+- **Status:** `specified`
+- **Target release:** `0.5.0`
+- **Current maturity:** `M1`
+- **Maturity target:** `M6`
+- **Stability class:** `Platform`
+- **Risk / priority:** `High` / `P1`
+- **V1 critical:** `yes`
+- **Owner repository:** `edithatogo/riopa-infrastructure`
+- **Owner role:** Core platform maintainer
+- **GitHub issue:** not yet created
 
-## Current evidence
+## Evidence register
 
-- Architecture bundle: repository root and `docs/`.
-- Machine-readable metadata: `metadata.json`.
-- Implementation plan: `plan.md`.
+| Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
+|---|---|---|---|
+| _none_ | _Implementation evidence is added only after verification._ |  |  |
 
-## Next checkpoint
+## Blocking defects
 
-Create/link the track parent issue, assign ownership, confirm dependencies and move to `ready` only after acceptance criteria are testable.
+- None recorded.
 
-## Decisions and handover
+## Decisions, exceptions and limitations
 
-No implementation decisions beyond the accepted candidate ADRs have been made. Record material decisions here or in a numbered ADR and link the evidence.
+- None recorded.
+
+## Review and handover
+
+Required reviewer roles: API/schema reviewer, Security reviewer, Research-object reviewer, External user reviewer.
+
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

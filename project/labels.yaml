@@ -17,7 +17,7 @@
   {
     "name": "type:validation",
     "color": "FBCA04",
-    "description": "Validation, audit or reproducibility evidence"
+    "description": "Validation, audit, hardening or reproducibility evidence"
   },
   {
     "name": "type:publication",
@@ -27,32 +27,37 @@
   {
     "name": "phase:foundation",
     "color": "C5DEF5",
-    "description": "Foundation phase"
+    "description": "Architecture, governance, security and operations foundations"
   },
   {
     "name": "phase:core",
     "color": "BFD4F2",
-    "description": "Core provenance and publication phase"
+    "description": "Core contracts, provenance and platform capabilities"
   },
   {
     "name": "phase:nz-spatial",
     "color": "BFDADC",
-    "description": "New Zealand spatial infrastructure phase"
+    "description": "New Zealand spatial and planning infrastructure"
   },
   {
     "name": "phase:analytics",
     "color": "D4C5F9",
-    "description": "Decision analytics phase"
+    "description": "Accessibility, facilities, optimisation and simulation"
   },
   {
     "name": "phase:applications",
     "color": "F9D0C4",
-    "description": "Applied research phase"
+    "description": "Applied health, supermarket and emergency-service research"
   },
   {
     "name": "phase:publication",
     "color": "FAD8C7",
-    "description": "Independent validation and publication phase"
+    "description": "Independent validation and publication"
+  },
+  {
+    "name": "phase:release",
+    "color": "B60205",
+    "description": "Feature freeze, release candidate and stable v1 work"
   },
   {
     "name": "provenance",
@@ -62,12 +67,12 @@
   {
     "name": "geospatial",
     "color": "006B75",
-    "description": "Geospatial data or analytics"
+    "description": "Geospatial data, facilities or analytics"
   },
   {
     "name": "rights-governance",
     "color": "B60205",
-    "description": "Licensing, privacy, ethics or Māori data sovereignty"
+    "description": "Licensing, privacy, ethics, safety or M\u0101ori data sovereignty"
   },
   {
     "name": "cross-repo",
@@ -78,5 +83,125 @@
     "name": "blocked",
     "color": "E11D21",
     "description": "Blocked by an explicit dependency"
+  },
+  {
+    "name": "v1-critical",
+    "color": "B60205",
+    "description": "Required for stable v1.0 general availability"
+  },
+  {
+    "name": "risk:critical",
+    "color": "8B0000",
+    "description": "Critical programme, safety, security or release risk"
+  },
+  {
+    "name": "risk:high",
+    "color": "D93F0B",
+    "description": "High delivery or correctness risk"
+  },
+  {
+    "name": "risk:medium",
+    "color": "FBCA04",
+    "description": "Medium delivery risk"
+  },
+  {
+    "name": "risk:low",
+    "color": "0E8A16",
+    "description": "Low delivery risk"
+  },
+  {
+    "name": "stability:normative",
+    "color": "0052CC",
+    "description": "Stable schemas, ontology or semantic contract"
+  },
+  {
+    "name": "stability:platform",
+    "color": "1D76DB",
+    "description": "Reusable software platform or interface"
+  },
+  {
+    "name": "stability:operational",
+    "color": "006B75",
+    "description": "Scheduled service, archive or preservation capability"
+  },
+  {
+    "name": "stability:reference",
+    "color": "6F42C1",
+    "description": "Reference data, analytics or applied validation"
+  },
+  {
+    "name": "stability:governance",
+    "color": "5319E7",
+    "description": "Programme, policy, security or release governance"
+  },
+  {
+    "name": "maturity:m1",
+    "color": "C5DEF5",
+    "description": "Current evidence maturity M1"
+  },
+  {
+    "name": "maturity:m2",
+    "color": "BFD4F2",
+    "description": "Current evidence maturity M2"
+  },
+  {
+    "name": "maturity:m3",
+    "color": "BFDADC",
+    "description": "Current evidence maturity M3"
+  },
+  {
+    "name": "maturity:m4",
+    "color": "FBCA04",
+    "description": "Current evidence maturity M4"
+  },
+  {
+    "name": "maturity:m5",
+    "color": "D93F0B",
+    "description": "Current evidence maturity M5"
+  },
+  {
+    "name": "maturity:m6",
+    "color": "0E8A16",
+    "description": "Current evidence maturity M6"
+  },
+  {
+    "name": "release:0.3.0",
+    "color": "BFD4F2",
+    "description": "Target or gate for release 0.3.0"
+  },
+  {
+    "name": "release:0.4.0",
+    "color": "BFD4F2",
+    "description": "Target or gate for release 0.4.0"
+  },
+  {
+    "name": "release:0.5.0",
+    "color": "BFDADC",
+    "description": "Target or gate for release 0.5.0"
+  },
+  {
+    "name": "release:0.6.0",
+    "color": "D4C5F9",
+    "description": "Target or gate for release 0.6.0"
+  },
+  {
+    "name": "release:0.7.0",
+    "color": "FBCA04",
+    "description": "Target or gate for release 0.7.0"
+  },
+  {
+    "name": "release:0.8.0",
+    "color": "FBCA04",
+    "description": "Target or gate for release 0.8.0"
+  },
+  {
+    "name": "release:0.9.0",
+    "color": "D93F0B",
+    "description": "Target or gate for release 0.9.0"
+  },
+  {
+    "name": "release:1.0.0",
+    "color": "0E8A16",
+    "description": "Target or gate for release 1.0.0"
   }
 ]

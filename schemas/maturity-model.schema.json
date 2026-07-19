@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/maturity-model/v1",
+  "title": "RIOPA maturity model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "programme",
+    "stable_release",
+    "levels",
+    "dimensions",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "programme": {
+      "type": "string",
+      "minLength": 3
+    },
+    "stable_release": {
+      "const": "1.0.0"
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "definition",
+          "exit_criteria"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^M[0-6]$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 30
+          },
+          "exit_criteria": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "string",
+              "minLength": 15
+            }
+          }
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "stable_v1_outcome",
+          "required_evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "governance",
+              "contracts",
+              "provenance",
+              "security",
+              "data",
+              "operations",
+              "performance",
+              "interoperability",
+              "publication",
+              "usability",
+              "analytics",
+              "science"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3
+          },
+          "stable_v1_outcome": {
+            "type": "string",
+            "minLength": 30
+          },
+          "required_evidence": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "string",
+              "minLength": 15
+            }
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    }
+  }
+}

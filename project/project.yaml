@@ -1,6 +1,6 @@
 {
-  "title": "RIOPA Infrastructure Roadmap",
-  "description": "Implementation roadmap for provenance-first research infrastructure and the New Zealand spatial reference implementation.",
+  "title": "RIOPA Stable v1.0 Roadmap",
+  "description": "Evidence-gated 28-track programme from specified prototype to a stable, hardened, independently reproducible and supported RIOPA v1.0.",
   "visibility": "PUBLIC",
   "repository": "edithatogo/riopa-infrastructure",
   "fields": [
@@ -13,7 +13,8 @@
         "NZ Spatial",
         "Analytics",
         "Applications",
-        "Publication"
+        "Publication",
+        "Release"
       ]
     },
     {
@@ -27,45 +28,141 @@
         "None",
         "Partial",
         "Validated",
-        "Released"
+        "Released",
+        "Expired",
+        "Waived"
       ]
     },
     {
-      "name": "Reproducibility",
+      "name": "Current maturity",
       "type": "SINGLE_SELECT",
       "options": [
-        "R0",
-        "R1",
-        "R2",
-        "R3",
-        "R4"
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6"
+      ]
+    },
+    {
+      "name": "Maturity target",
+      "type": "SINGLE_SELECT",
+      "options": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6"
       ]
     },
     {
       "name": "Target release",
       "type": "TEXT"
+    },
+    {
+      "name": "Risk",
+      "type": "SINGLE_SELECT",
+      "options": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ]
+    },
+    {
+      "name": "Priority",
+      "type": "SINGLE_SELECT",
+      "options": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "name": "Stability class",
+      "type": "SINGLE_SELECT",
+      "options": [
+        "Normative",
+        "Platform",
+        "Operational",
+        "Reference",
+        "Governance"
+      ]
+    },
+    {
+      "name": "V1 critical",
+      "type": "SINGLE_SELECT",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "name": "Owner repository",
+      "type": "TEXT"
+    },
+    {
+      "name": "Owner role",
+      "type": "TEXT"
+    },
+    {
+      "name": "Blocking defects",
+      "type": "NUMBER"
     }
   ],
   "recommended_views": [
+    {
+      "name": "V1 critical path",
+      "filter": "V1 critical:Yes",
+      "group_by": "Target release"
+    },
+    {
+      "name": "By maturity",
+      "group_by": "Current maturity"
+    },
     {
       "name": "By phase",
       "group_by": "Phase"
     },
     {
-      "name": "Blocked work",
-      "filter": "is:open blocked-by:*"
+      "name": "Release blockers",
+      "filter": "V1 critical:Yes Evidence status:None,Partial,Expired"
     },
     {
-      "name": "Evidence queue",
-      "filter": "Evidence status:None,Partial"
+      "name": "High and critical risk",
+      "filter": "Risk:High,Critical"
+    },
+    {
+      "name": "Normative freeze queue",
+      "filter": "Stability class:Normative Current maturity:M0,M1,M2,M3,M4"
+    },
+    {
+      "name": "Operational readiness",
+      "filter": "Stability class:Operational Evidence status:None,Partial,Expired"
+    },
+    {
+      "name": "RC qualification",
+      "filter": "Target release:0.9.0"
+    },
+    {
+      "name": "GA qualification",
+      "filter": "Target release:1.0.0"
+    },
+    {
+      "name": "Independent validation",
+      "filter": "Phase:Publication,Release"
     },
     {
       "name": "Cross-repository adoption",
       "filter": "label:cross-repo"
     },
     {
-      "name": "Release readiness",
-      "filter": "Evidence status:Validated"
+      "name": "Blocked work",
+      "filter": "is:open blocked-by:*"
     }
   ],
   "umbrella": {

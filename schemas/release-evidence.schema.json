@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/release-evidence/v1",
+  "title": "RIOPA release qualification evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "release",
+    "evaluated_at",
+    "evaluated_by",
+    "machine_readable",
+    "immutable_evidence_identifiers",
+    "source_revision",
+    "tool",
+    "gates",
+    "defects",
+    "metrics",
+    "approvals",
+    "release_artifacts",
+    "known_limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "evidence_id": {"type": "string", "minLength": 8},
+    "release": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "evaluated_by": {"type": "string", "minLength": 3},
+    "machine_readable": {"type": "boolean"},
+    "immutable_evidence_identifiers": {"type": "boolean"},
+    "source_revision": {"type": "string", "minLength": 8},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "environment"],
+      "properties": {
+        "name": {"type": "string", "minLength": 2},
+        "version": {"type": "string", "minLength": 1},
+        "environment": {"type": ["string", "null"]}
+      }
+    },
+    "gates": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/gateEvidence"}
+    },
+    "defects": {"$ref": "#/$defs/defects"},
+    "metrics": {"$ref": "#/$defs/metrics"},
+    "approvals": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/approval"}
+    },
+    "release_artifacts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/evidenceReference"}
+    },
+    "known_limitations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "notes": {"type": ["string", "null"]}
+  },
+  "$defs": {
+    "evidenceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "kind",
+        "location",
+        "sha256",
+        "immutable",
+        "generated_at",
+        "description"
+      ],
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 8},
+        "kind": {
+          "type": "string",
+          "enum": [
+            "artifact",
+            "attestation",
+            "benchmark",
+            "decision",
+            "documentation",
+            "operational-report",
+            "reproduction-report",
+            "review",
+            "security-report",
+            "test-report",
+            "user-validation"
+          ]
+        },
+        "location": {"type": "string", "minLength": 1},
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "immutable": {"type": "boolean"},
+        "generated_at": {"type": "string", "format": "date-time"},
+        "description": {"type": "string", "minLength": 10}
+      }
+    },
+    "gateEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "status",
+        "evidence",
+        "reviewed_at",
+        "reviewer",
+        "expires_at",
+        "waiver",
+        "notes"
+      ],
+      "properties": {
+        "gate_id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "status": {
+          "type": "string",
+          "enum": ["planned", "in-progress", "passed", "failed", "waived"]
+        },
+        "evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/evidenceReference"}
+        },
+        "reviewed_at": {"type": ["string", "null"], "format": "date-time"},
+        "reviewer": {"type": ["string", "null"], "minLength": 3},
+        "expires_at": {"type": ["string", "null"], "format": "date-time"},
+        "waiver": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/waiver"}
+          ]
+        },
+        "notes": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["passed", "waived"]}}},
+          "then": {
+            "properties": {
+              "evidence": {"minItems": 1},
+              "reviewed_at": {"type": "string", "format": "date-time"},
+              "reviewer": {"type": "string", "minLength": 3}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"status": {"const": "waived"}}},
+          "then": {
+            "properties": {"waiver": {"$ref": "#/$defs/waiver"}}
+          }
+        },
+        {
+          "if": {"properties": {"status": {"not": {"const": "waived"}}}},
+          "then": {"properties": {"waiver": {"type": "null"}}}
+        }
+      ]
+    },
+    "waiver": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "scope",
+        "reason",
+        "owner",
+        "approver",
+        "created_at",
+        "expires_at",
+        "mitigation",
+        "public_summary"
+      ],
+      "properties": {
+        "category": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "scope": {"type": "string", "minLength": 5},
+        "reason": {"type": "string", "minLength": 10},
+        "owner": {"type": "string", "minLength": 3},
+        "approver": {"type": "string", "minLength": 3},
+        "created_at": {"type": "string", "format": "date-time"},
+        "expires_at": {"type": "string", "format": "date-time"},
+        "mitigation": {"type": "string", "minLength": 10},
+        "public_summary": {"type": "string", "minLength": 10},
+        "remediation_issue": {"type": ["string", "null"]}
+      }
+    },
+    "defects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "open_p0",
+        "open_p1",
+        "release_blocking_p2",
+        "critical_security_findings",
+        "governance_prohibitions",
+        "expired_waivers"
+      ],
+      "properties": {
+        "open_p0": {"type": "integer", "minimum": 0},
+        "open_p1": {"type": "integer", "minimum": 0},
+        "release_blocking_p2": {"type": "integer", "minimum": 0},
+        "critical_security_findings": {"type": "integer", "minimum": 0},
+        "governance_prohibitions": {"type": "integer", "minimum": 0},
+        "expired_waivers": {"type": "integer", "minimum": 0}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "independent_reviewers",
+        "clean_room_reproductions",
+        "external_reproductions",
+        "external_user_workflows",
+        "external_operator_workflows",
+        "operational_cycles",
+        "operational_evidence_days",
+        "release_candidate_soak_days"
+      ],
+      "properties": {
+        "independent_reviewers": {"type": "integer", "minimum": 0},
+        "clean_room_reproductions": {"type": "integer", "minimum": 0},
+        "external_reproductions": {"type": "integer", "minimum": 0},
+        "external_user_workflows": {"type": "integer", "minimum": 0},
+        "external_operator_workflows": {"type": "integer", "minimum": 0},
+        "operational_cycles": {"type": "integer", "minimum": 0},
+        "operational_evidence_days": {"type": "integer", "minimum": 0},
+        "release_candidate_soak_days": {"type": "integer", "minimum": 0}
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "reviewer",
+        "decision",
+        "decided_at",
+        "signed_decision_ref",
+        "notes"
+      ],
+      "properties": {
+        "role": {"type": "string", "minLength": 3},
+        "reviewer": {"type": "string", "minLength": 3},
+        "decision": {"type": "string", "enum": ["approve", "reject", "abstain"]},
+        "decided_at": {"type": "string", "format": "date-time"},
+        "signed_decision_ref": {"type": ["string", "null"]},
+        "notes": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

@@ -2,18 +2,31 @@
 
 ## 1. Public benchmark design
 
-- [ ] 1.1 Define synthetic demand, network, fleet and service-time scenarios.
-- [ ] 1.2 Implement static maximal-covering/p-center baselines.
-- [ ] 1.3 Define operational and safety acceptance boundaries.
+- [ ] 1.1 Define public/synthetic ambulance and hospital/service scenarios and non-deployment statement.
+- [ ] 1.2 Specify demand, fleet, staff, station, facility, travel, capacity and handover assumptions.
+- [ ] 1.3 Define efficiency, tail, equity, rurality, resilience and cost metrics.
 
-## 2. Simulation
+## 2. Ambulance optimisation and simulation
 
-- [ ] 2.1 Implement discrete-event simulation adapter.
-- [ ] 2.2 Validate static solutions under queueing and vehicle unavailability.
-- [ ] 2.3 Add dynamic posting/relocation policies and robustness scenarios.
+- [ ] 2.1 Implement coverage, backup, availability and location scenarios.
+- [ ] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation.
+- [ ] 2.3 Compare static and simulated performance under stress.
 
-## 3. Hospital/service pilot
+## 3. Hospital and service planning
 
-- [ ] 3.1 Model capacity, service mix, referrals and equity constraints.
-- [ ] 3.2 Compare p-median/p-center/capacitated and robust alternatives.
-- [ ] 3.3 Publish only benchmark results and controlled-data design.
+- [ ] 3.1 Implement multi-service location, capacity, referral and workforce scenarios.
+- [ ] 3.2 Add minimum volume, resilience, transition and phased investment constraints.
+- [ ] 3.3 Report Pareto alternatives and non-modelled clinical constraints.
+
+## 4. Safety and publication review
+
+- [ ] 4.1 Conduct operational/safety, methods, governance and reproducibility review.
+- [ ] 4.2 Resolve or bound all deployment-risk findings.
+- [ ] 4.3 Publish benchmark research objects and explicit non-operational limitations.
+
+## Track closeout
+
+- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
+- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:release-evidence:1.0.0:REPLACE",
+  "release": "1.0.0",
+  "evaluated_at": "2000-01-01T00:00:00Z",
+  "evaluated_by": "REPLACE WITH RELEASE EVALUATOR",
+  "machine_readable": true,
+  "immutable_evidence_identifiers": false,
+  "source_revision": "uncommitted:REPLACE-WITH-IMMUTABLE-REVISION",
+  "tool": {
+    "name": "riopa-provenance",
+    "version": "1.0.0",
+    "environment": "REPLACE"
+  },
+  "gates": [
+    {
+      "gate_id": "stable-governance",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety, corrections and withdrawals are approved for the released scope."
+    },
+    {
+      "gate_id": "stable-contracts",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "The v1 compatibility, support, versioning, deprecation and migration contract is published and verified."
+    },
+    {
+      "gate_id": "stable-provenance",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Released results have complete truthful lineage, transformation and integrity evidence and independently verified provenance queries."
+    },
+    {
+      "gate_id": "stable-security",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "The release passes final threat, vulnerability, supply-chain, credential, signing and incident-response verification."
+    },
+    {
+      "gate_id": "stable-data",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Coverage, freshness, quality, legal status, identity, geometry, uncertainty and temporal limitations are measured and public."
+    },
+    {
+      "gate_id": "stable-operations",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "SLOs, monitoring, source health, backfill, recovery, fixity, preservation, cost and on-call/ownership obligations are operational."
+    },
+    {
+      "gate_id": "stable-performance",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Reference workloads meet frozen performance, capacity, resilience and cost envelopes without disabled correctness controls."
+    },
+    {
+      "gate_id": "stable-interoperability",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Independent implementations, supported SDKs, standards projections and migrations pass the frozen v1 conformance suite."
+    },
+    {
+      "gate_id": "stable-publication",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Source, packages, containers, schemas, ontology, documentation and research objects are signed, checksummed, attested, cited and preserved."
+    },
+    {
+      "gate_id": "stable-usability",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "External users and operators complete supported workflows and named maintainers, support channels and sustainability bounds are active."
+    },
+    {
+      "gate_id": "stable-analytics",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Accessibility, optimisation and simulation engines pass frozen benchmark, correctness, uncertainty, equity and limitation tests."
+    },
+    {
+      "gate_id": "stable-science",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Applied outputs pass scientific-method, causal-boundary, sensitivity, interpretation and non-operational-use review."
+    },
+    {
+      "gate_id": "stable-independent-reproduction",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "At least two clean-room reproductions, including an external party, reproduce a complete real-data release and one applied benchmark."
+    },
+    {
+      "gate_id": "stable-release-authority",
+      "status": "planned",
+      "evidence": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "expires_at": null,
+      "waiver": null,
+      "notes": "All tracks and gates pass, defect and waiver thresholds are met, artifacts are immutable, and the named release authority approves GA."
+    }
+  ],
+  "defects": {
+    "open_p0": 0,
+    "open_p1": 0,
+    "release_blocking_p2": 0,
+    "critical_security_findings": 0,
+    "governance_prohibitions": 0,
+    "expired_waivers": 0
+  },
+  "metrics": {
+    "independent_reviewers": 0,
+    "clean_room_reproductions": 0,
+    "external_reproductions": 0,
+    "external_user_workflows": 0,
+    "external_operator_workflows": 0,
+    "operational_cycles": 0,
+    "operational_evidence_days": 0,
+    "release_candidate_soak_days": 0
+  },
+  "approvals": [],
+  "release_artifacts": [],
+  "known_limitations": [
+    "TEMPLATE ONLY: zero values are placeholders and do not constitute evidence."
+  ]
+}

@@ -17,7 +17,7 @@ def test_issue_graph_dry_run_resolves_parent_hierarchy() -> None:
             "--owner",
             "edithatogo",
             "--project-title",
-            "RIOPA Infrastructure Roadmap",
+            "RIOPA Stable v1.0 Roadmap",
             "--cross-repo",
         ],
         cwd=ROOT,

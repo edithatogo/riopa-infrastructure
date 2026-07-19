@@ -1,16 +1,39 @@
 {
   "track_id": "spatial_quality_temporality_20260718",
-  "type": "quality",
+  "type": "analytics",
   "phase": "NZ Spatial",
-  "status": "proposed",
+  "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-18T01:30:00Z",
-  "description": "Make spatial, temporal and semantic quality measurable and support defensible historical/change analyses.",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Make geometry, topology, completeness, positional, temporal and semantic quality measurable and support defensible historical, boundary and change analyses.",
   "depends_on": [
     "nz_spatial_archive_mvp_20260718",
-    "planning_rules_linkage_20260718"
+    "planning_rules_linkage_20260718",
+    "provenance_query_api_20260719"
   ],
   "github_issue": null,
   "evidence": [],
-  "target_release": null
+  "target_release": "0.7.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "provenance",
+    "data",
+    "analytics",
+    "science"
+  ],
+  "stability_class": "Reference",
+  "risk": "High",
+  "priority": "P1",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Spatial data lead",
+  "review_roles": [
+    "Provenance reviewer",
+    "Data steward",
+    "Quantitative methods reviewer",
+    "Scientific reviewer"
+  ],
+  "blocking_defects": []
 }

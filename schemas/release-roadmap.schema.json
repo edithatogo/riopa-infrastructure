@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/release-roadmap/v1",
+  "title": "RIOPA release roadmap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "programme_version",
+    "current_release",
+    "stable_release",
+    "releases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "programme_version": {
+      "type": "string",
+      "minLength": 3
+    },
+    "current_release": {
+      "type": "string"
+    },
+    "stable_release": {
+      "const": "1.0.0"
+    },
+    "releases": {
+      "type": "array",
+      "minItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "name",
+          "channel",
+          "maturity_level",
+          "objective",
+          "required_tracks",
+          "exit_gates"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "experimental",
+              "candidate",
+              "release-candidate",
+              "stable"
+            ]
+          },
+          "maturity_level": {
+            "type": "string",
+            "pattern": "^M[0-6]$"
+          },
+          "objective": {
+            "type": "string",
+            "minLength": 30
+          },
+          "required_tracks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9_]+_[0-9]{8}$"
+            }
+          },
+          "exit_gates": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "category",
+                "requirement",
+                "evidence_contract",
+                "blocking"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "category": {
+                  "type": "string",
+                  "enum": [
+                    "governance",
+                    "contracts",
+                    "provenance",
+                    "security",
+                    "data",
+                    "operations",
+                    "performance",
+                    "interoperability",
+                    "publication",
+                    "usability",
+                    "analytics",
+                    "science",
+                    "reproducibility",
+                    "release"
+                  ]
+                },
+                "requirement": {
+                  "type": "string",
+                  "minLength": 30
+                },
+                "evidence_contract": {
+                  "type": "array",
+                  "minItems": 3,
+                  "items": {
+                    "type": "string",
+                    "minLength": 4
+                  }
+                },
+                "blocking": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "track_id": "connector_runtime_capture_20260719",
+  "type": "platform",
+  "phase": "Core",
+  "status": "specified",
+  "created_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Provide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.",
+  "depends_on": [
+    "provenance_profile_v1_20260718",
+    "governance_maori_data_sovereignty_20260718",
+    "security_supply_chain_20260719"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.4.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "provenance",
+    "security",
+    "data",
+    "operations",
+    "usability"
+  ],
+  "stability_class": "Platform",
+  "risk": "Critical",
+  "priority": "P0",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Core platform maintainer",
+  "review_roles": [
+    "Provenance reviewer",
+    "Security reviewer",
+    "Data steward",
+    "Operations reviewer",
+    "External user reviewer"
+  ],
+  "blocking_defects": []
+}

@@ -1,196 +1,228 @@
-# RIOPA Infrastructure Programme Plan
+# RIOPA Infrastructure: programme roadmap to stable v1.0
+
+**Roadmap configuration:** 0.2.0  
+**Updated:** 19 July 2026  
+**Current programme maturity:** M1 — specified prototype  
+**Target:** M6 — stable v1 general availability
 
 ## Mission
 
-Build an open, modular, provenance-first research infrastructure that converts heterogeneous public and appropriately governed data into citable, reproducible research objects and decision analyses, beginning with a temporally versioned New Zealand spatial and planning archive.
+Build open, modular, provenance-first research infrastructure that converts heterogeneous public and appropriately governed data into citable, reproducible and maintainable research objects and decision analyses. The first full reference implementation is a temporally versioned New Zealand spatial and planning archive supporting supermarket and health geography, ambulance-system analysis and hospital-facility planning.
 
-## Programme principles
+This roadmap deliberately distinguishes a convincing prototype from a mature release. The programme does not reach v1.0 merely because features exist. It reaches v1.0 only after its contracts, software, data operations, analytical methods, governance, security, performance, documentation, preservation and independent reproduction have all passed evidence-based gates.
 
-1. **Federated, not monolithic.** Repositories retain clear source, archive, domain and analytical responsibilities.
-2. **Evidence before convenience.** Raw objects, events, schemas, code identity and signed manifests are authoritative; databases and indexes are rebuildable projections.
-3. **Additive adoption.** Existing provenance and outputs remain available while common contracts are dual-emitted and validated.
-4. **Rights are data.** Licence, attribution, redistribution, privacy, ethics and Māori data sovereignty decisions travel with every source and release.
-5. **No false precision.** Temporal, geographic, legal and entity-resolution uncertainty is represented explicitly.
-6. **Methods from facts.** Publication text is generated from machine-readable release evidence and reports missing evidence rather than guessing.
-7. **Optimisation remains inspectable.** Objectives, constraints, weights, uncertainty and policy value judgements are separately encoded.
+## Stable-v1 contract
 
-## Release sequence
+Stable v1.0 must be all of the following at the same time:
 
-### Architecture bundle `v0.1`
+- **Semantically stable:** schemas, ontology, identifiers, APIs, CLI, configuration and materialisation contracts have version negotiation, compatibility guarantees and tested migration paths.
+- **Scientifically defensible:** provenance, data quality, uncertainty, causal boundaries, optimisation assumptions, equity objectives and interpretation limits are explicit and independently reviewed.
+- **Secure and trustworthy:** source capture, credentials, dependencies, builds, releases and incident response follow an exercised threat and supply-chain model.
+- **Operational:** source change, scheduled updates, retries, quarantine, correction, backfill, monitoring, recovery and cost control have been exercised over repeated cycles.
+- **Performant within bounds:** reference workloads meet published throughput, latency, resource, scale, resilience and cost envelopes without disabling evidence or correctness controls.
+- **Interoperable:** at least two implementations and an independent consumer pass language-neutral conformance fixtures and standards-projection tests.
+- **Preservable and citable:** releases contain complete research objects, methods, quality, rights, software/environment evidence, signatures, attestations, persistent identifiers and tested restoration.
+- **Usable and supportable:** people outside the founding team can install, reproduce, operate, troubleshoot and extend supported workflows using released documentation and named support channels.
+- **Governed:** rights, privacy, ethics, benefit, sensitive locations and Māori data sovereignty are release decisions, not afterthoughts.
+- **Independently reproduced:** two clean-room reproductions, including one external operator, reproduce a real-data archive release and an applied analytical benchmark.
 
-**Purpose:** establish the programme contract and executable roadmap.
+Feature completion without those properties is not v1.0.
 
-**Release gate**
+## Programme architecture
 
-- Conductor product, design, workflow, requirements and tracks are complete.
-- ADRs define source of truth, event log, materialisations, bitemporal model, graph projection, standards and governance.
-- Candidate JSON Schemas and a valid synthetic research object are published.
-- GitHub bootstrap performs a dry run and its issue graph is internally consistent.
-- Representative ecosystem gaps and adoption targets are documented.
+The programme remains federated. Repositories may own connectors, archives, domain models or applications, while shared contracts make the outputs composable.
 
-### Provenance profile candidate `v0.2`
-
-**Purpose:** prove the common profile against native evidence.
-
-**Release gate**
-
-- Exact/approximate/unmapped field mappings exist for `fyi-cli` and `fyi-archive`.
-- Rust and Python validate the same golden fixtures.
-- Tampering, missing parent evidence, invalid rights states and stale schema versions fail CI.
-- One capture-to-release chain can be queried end to end.
-- Profile migration and compatibility rules are versioned.
-
-### Research-object release candidate `v0.3`
-
-**Purpose:** make methods, citation and independent review routine.
-
-**Release gate**
-
-- RO-Crate 1.3 and Workflow Run RO-Crate projections validate externally.
-- DataCite-ready metadata, rights inventory, quality summary, checksums, SBOM and attestations are emitted.
-- A clean environment rebuild is compared and recorded.
-- Generated short methods, full supplement and machine-readable facts agree.
-
-### NZ spatial registry `v0.4`
-
-**Purpose:** make authoritative-source discovery and rights/status assessment national and versioned.
-
-**Release gate**
-
-- All current local/regional authorities have a source-registry record, even when no reusable service is found.
-- LINZ, Stats NZ, MfE/planning standards, Gazette and legislation source families are registered.
-- Service definitions, layer/document inventories, source update evidence and rights classifications are preserved.
-- Māori data sovereignty and controlled/public-data pathways have named review gates.
-
-### NZ spatial archive MVP `v0.5`
-
-**Purpose:** demonstrate complete evidence-to-publication flow on heterogeneous councils.
-
-**Release gate**
-
-- At least four deliberately heterogeneous council mechanisms are captured.
-- Raw service/document evidence, canonical bitemporal features, rule links and quality evidence are present.
-- GeoParquet and DuckDB Spatial materialisations are rebuildable from a named snapshot.
-- The release states whether spatial layers are statutory, informational or unresolved based on source evidence.
-- A DOI-ready research object and methods supplement are generated.
-
-### Planning and temporal expansion `v0.6`
-
-**Purpose:** support historical and legal-policy analyses.
-
-**Release gate**
-
-- Stable plan/provision identifiers and spatial-to-rule links are validated.
-- Proposed, operative, partly operative, appeal and superseded states can be represented without collapsing them.
-- Prospective change capture and reconstructed historical evidence are distinguishable.
-- Cross-council harmonisation retains original classes and mapping evidence.
-
-### Decision analytics candidate `v0.7`
-
-**Purpose:** provide domain-neutral accessibility and location-allocation capability.
-
-**Release gate**
-
-- Network/travel-time inputs are separately versioned.
-- p-median, p-center, set covering, maximal covering and capacitated models share one problem contract.
-- Equity, robustness and multi-objective variants expose all weights and constraints.
-- Solutions carry solver, tolerance, seed, optimality/bound and feasibility evidence.
-- Simulation is used where queueing, dispatch or congestion invalidates a static model.
-
-### Applied pilots `v0.8–v0.9`
-
-**Supermarket/health pilot gate**
-
-- Facility assertions preserve source and reconciliation evidence.
-- Feasible sites are derived from sourced planning rules rather than a generic commercial-zone assumption.
-- Access, competition/capacity, deprivation and health-outcome analyses state ecological and causal limitations.
-- Descriptive, counterfactual and prescriptive outputs are kept distinct.
-
-**Ambulance/hospital pilot gate**
-
-- Dispatch/queueing simulation complements coverage/location models.
-- Demand, fleet, station, hospital capacity and travel-time assumptions are versioned.
-- Average, tail/worst-case, rurality and equity objectives are reported separately.
-- Sensitive or operationally risky data are not pushed through the public-data architecture.
-
-### Stable programme `v1.0`
-
-**Purpose:** publish a supported, independently reproducible infrastructure and reference implementation.
-
-**Release gate**
-
-- Profile and schemas have compatibility guarantees.
-- At least three existing repositories meet A1, two meet A3, and one release meets A4 independent reproduction.
-- NZ spatial archive has documented national coverage status and stable update operations.
-- Citation, governance, security, preservation and deprecation policies are active.
-- Infrastructure, data-descriptor and applied-study manuscripts have release-linked evidence packages.
-
-## Workstreams and ownership boundaries
-
-| Workstream | Primary outputs | Must remain separate from |
+| Layer | Responsibility | Stability rule |
 |---|---|---|
-| Shared profile | schemas, event semantics, validators, adapters, mappings | source-specific networking and scientific interpretation |
-| Research objects | methods, citation, RO-Crate, metadata, attestations | undocumented editorial claims |
-| Source registry | authority, service, document, access and rights records | canonical transformation logic |
-| NZ spatial archive | raw preservation, canonical bitemporal model, snapshots | applied causal claims |
-| Planning linkage | plan/provision identity, zone/overlay links and mappings | unsupported national equivalence claims |
-| Quality/governance | metrics, evidence, waivers, rights and review decisions | silent overrides |
-| Decision analytics | problem/solution contracts, solvers, simulation adapters | hidden policy weights |
-| Applied research | research questions, outcomes, interpretation and manuscripts | mutation of infrastructure evidence |
+| L0 source evidence | Original responses, files, service definitions, documents, headers, terms and capability snapshots | Immutable and append-only |
+| L1 provenance and canonical state | Acquisition and transformation events, stable identities, bitemporal entities, manual/AI review and rights/quality assertions | Versioned normative contracts |
+| L2 materialisations | Parquet/GeoParquet, DuckDB Spatial, STAC, PMTiles, COG/Zarr, optional PostGIS and LanceDB indexes | Rebuildable projections |
+| L3 analytics | Accessibility, facility reconciliation, optimisation, simulation, uncertainty and equity results | Versioned model specifications |
+| L4 research objects | Methods, citations, quality, rights, environment, checksums, attestations and preservation records | Immutable signed release |
 
-## Critical path
+Raw evidence and append-only provenance are authoritative. Databases, graphs, indexes, tiles and publication bundles are deterministic or explicitly tolerance-bounded projections.
 
-```mermaid
-flowchart LR
-  A[Foundation architecture] --> B[Provenance profile]
-  A --> G[Governance framework]
-  B --> C[Methods and research objects]
-  B --> D[NZ source registry]
-  G --> D
-  C --> E[NZ spatial archive MVP]
-  D --> E
-  E --> F[Planning rule linkage]
-  F --> H[Spatial quality and temporality]
-  H --> I[Facility-location engine]
-  I --> J[Supermarket and health pilot]
-  I --> K[Ambulance and hospital pilot]
-  C --> L[Repository adoption]
-  E --> M[Independent publication validation]
-  L --> M
+## Maturity model
+
+| Level | Name | Exit meaning |
+|---|---|---|
+| M0 | Concept | Problem and intended benefit identified; no binding contract. |
+| M1 | Specified prototype | Scope, risks, dependencies, interfaces, acceptance and evidence contracts validate. |
+| M2 | Integrated alpha | Executable real or representative workflow, negative tests and traceable evidence exist; interfaces remain experimental. |
+| M3 | Operational beta | Repeated cycles, migration, failure/recovery and external-use evidence exist. |
+| M4 | Hardened beta | Security, performance, preservation, scientific and compatibility hardening pass; interfaces approach freeze. |
+| M5 | Release candidate | Normative interfaces are frozen; candidate artifacts pass soak, independent reproduction and external workflow validation. |
+| M6 | Stable v1 GA | Supported compatibility, named maintainers, signed and preserved releases and post-release obligations are in force. |
+
+Maturity is assessed across 12 dimensions: governance, contracts, provenance, security, data, operations, performance, interoperability, publication, usability, analytics and science. No dimension can be silently averaged away by strength in another.
+
+## Release train
+
+| Release | Channel | Programme maturity | Purpose |
+|---|---|---:|---|
+| 0.2.0 | experimental | M1 | Machine-enforceable v1 roadmap, maturity model, evidence policy and 28-track Conductor graph |
+| 0.3.0 | experimental | M2 | Normative governance, security, domain-schema/ontology and provenance core alpha |
+| 0.4.0 | experimental | M2 | Real national-and-council capture through a complete research object |
+| 0.5.0 | experimental | M3 | Bounded New Zealand spatial archive alpha with reproducible GeoParquet and DuckDB materialisations |
+| 0.6.0 | candidate | M3 | Queryable lineage, planning-rule linkage, facility reconciliation, accessibility and cross-language interoperability beta |
+| 0.7.0 | candidate | M4 | Hardened temporal planning, spatial quality and independently verified facility-location engine |
+| 0.8.0 | candidate | M4 | Repeated archive operations, preservation, simulation validation and scientifically bounded applied pilots |
+| 0.9.0 | release candidate | M5 | Full feature and contract freeze; security, performance, operations, documentation and independent-reproduction qualification |
+| 1.0.0 | stable | M6 | Supported, signed, preserved and independently verified general availability |
+
+Release readiness is evaluated from `conductor/releases.json`; stable-v1 thresholds are additionally fixed in `conductor/v1-gate.json`.
+
+## Conductor programme
+
+The 28 tracks are grouped into seven phases. Every track has a specification, phased implementation plan, machine-readable metadata and evidence index.
+
+### Foundation
+
+1. Programme architecture and release governance.
+2. Rights, privacy, ethics and Māori data sovereignty.
+3. Security, integrity and software supply-chain hardening.
+4. Operations, preservation and site-reliability engineering.
+
+### Core contracts and platform
+
+5. Shared provenance, transformation and quality profile.
+6. Canonical domain schemas and ontology.
+7. Methods and research-object publication framework.
+8. Common connector runtime and faithful capture.
+9. Repository template and ecosystem adoption.
+10. Provenance and impact-query API.
+11. Interoperability, conformance suites and supported SDKs.
+
+### New Zealand spatial and planning infrastructure
+
+12. National spatial/planning source registry.
+13. Real-data spatial archive MVP.
+14. Spatial-to-planning-rule linkage.
+15. Planning-system transition and legal continuity.
+16. Spatial quality, identity and bitemporal reconstruction.
+17. National archive automation and coverage operations.
+
+### Reusable analytics
+
+18. Accessibility and network-analysis engine.
+19. Versioned multi-source facility registry.
+20. Facility-location optimisation engine.
+21. Simulation and validation engine.
+
+### Applied validation
+
+22. Health-outcomes and causal-method framework.
+23. Supermarket access, zoning and health pilot.
+24. Ambulance, emergency-response and hospital-facility pilot.
+
+### Publication and release qualification
+
+25. Documentation, developer experience and user support readiness.
+26. Independent publication and clean-room validation.
+27. Performance, scalability and reliability qualification.
+28. Stable-v1 release hardening and general availability.
+
+The complete dependency table is in `conductor/tracks.md`.
+
+## Critical implementation path
+
+### Stage A — ratify contracts before scaling
+
+The programme first freezes the product boundary, decision rights, threat model, core identities, ontology and provenance semantics. Existing repositories are mapped field-by-field so that native evidence is preserved rather than overwritten by a new abstraction.
+
+### Stage B — prove one difficult real vertical slice
+
+Before national ingestion, one council GIS service, one district-plan document, one national spatial/population source and one facility source pass through:
+
+```text
+source discovery → faithful capture → immutable raw evidence →
+canonical bitemporal entities → spatial-to-rule links →
+GeoParquet and DuckDB → quality/rights reports →
+methods and signed research object → clean-room reproduction
 ```
 
-## First execution wave
+This stage is intentionally narrow and deep. It forces identity, pagination, geometry, legal-status, rights, temporal and packaging assumptions to meet real data.
 
-1. Ratify ADRs and normative terms.
-2. Produce exact field mappings for `fyi-cli` and `fyi-archive`.
-3. Harden schemas with negative fixtures and chain/manifest integrity validation.
-4. Complete full methods/research-object projections and external validators.
-5. Run dual output through one archive release.
-6. Inventory every NZ council source mechanism and rights/status statement.
-7. Select four heterogeneous councils only after the inventory.
-8. Publish the first complete council spatial/rule research object.
+### Stage C — make the evidence queryable and reusable
 
-## Publication portfolio
+The next stage exposes dataset-, partition- and feature-level lineage only where justified; links spatial classes to sourced planning provisions; reconciles multiple facility assertions; and implements multimodal accessibility independently from facility optimisation.
 
-| Output | Evidence package |
-|---|---|
-| Infrastructure/methods paper | profile, schemas, cross-language fixtures, mappings, clean-room reproduction |
-| NZ spatial data descriptor | national source registry, archive manifest, quality/coverage report, DOI snapshot |
-| Planning/zoning methods paper | spatial-to-rule identity model, bitemporal reconstruction and validation |
-| Supermarket health-geography study | facility registry, zoning feasibility, access models, outcomes and uncertainty |
-| Ambulance/hospital planning study | optimisation/simulation specification, scenarios, equity metrics and sensitivity analyses |
+### Stage D — validate decision methods before application
 
-Every paper cites immutable releases rather than a moving default branch. Software, schema, dataset and research-object versions remain independent and explicitly related.
+Set covering, maximal covering, p-median, p-center, capacity, competitive location, equity and robust/multi-objective formulations are benchmarked against independent solvers. Ambulance and hospital work additionally requires queueing, probabilistic availability, backup coverage, dynamic relocation, handover delay and multi-service referral-network simulation.
 
-## Definition of done for any track
+### Stage E — operate, harden and independently reproduce
 
-A track is complete only when:
+The archive then completes repeated scheduled cycles, source changes, backfills, failures, restores, corrections and withdrawals. Release-candidate qualification adds security, malicious-input, performance, capacity, cost, cross-language, documentation, accessibility and external-reproduction evidence.
 
-- acceptance criteria pass;
-- machine-readable evidence is linked in the track index;
-- tests cover successful and failing cases;
-- rights/governance implications are reviewed;
-- migration and compatibility implications are documented;
-- user-facing methods/citation text is regenerated;
-- the relevant release or snapshot is immutable and identifiable;
-- remaining limitations are recorded as issues or ratchets, not hidden in prose.
+## Domain-specific research progression
+
+### Supermarkets, zoning and health geography
+
+The pilot separates seven distinct questions:
+
+1. facility density;
+2. physical accessibility by travel mode and time;
+3. affordability and economic access;
+4. healthy-food availability and store service range;
+5. competition and market capture;
+6. descriptive or causal association with area-level health outcomes;
+7. counterfactual facility placement under planning, capacity, equity and cost constraints.
+
+The facility registry preserves retailer, council, public-register and other source assertions separately, including disagreement, coordinates, opening/closure/relocation history, match evidence and rights. Health analysis distinguishes descriptive, predictive, causal and prescriptive claims; ecological and modifiable-area-unit limitations remain explicit.
+
+### Ambulance services
+
+The reference programme includes maximal and backup coverage, busy-fraction and probabilistic-availability formulations, queueing, time-dependent travel, fleet and roster constraints, dynamic relocation, dispatch simulation and ambulance–hospital handover delays. It is a research and planning reference, not a live dispatch system.
+
+### Hospitals and clinical facilities
+
+Hospital planning adds multi-service and hierarchical location, referral and transfer networks, workforce constraints, minimum safe clinical volumes, economies of scale, resilience/failover, phased capital investment and transition costs. Clinical-safety and service-policy judgements remain outside the optimisation engine and require accountable governance.
+
+## Evidence and release control
+
+Every track transition is supported by its `index.md`. Release evidence records identify the gate, evidence artifacts, reviewer, review date, expiry and any waiver. Stable v1 additionally requires:
+
+- zero open P0 or P1 defects;
+- zero release-blocking P2 defects;
+- zero critical security findings;
+- zero governance prohibitions;
+- zero expired waivers;
+- at least two independent reviewers;
+- two clean-room reproductions, including one external;
+- two external user workflows and one external operator workflow;
+- at least three operational cycles;
+- at least 90 consecutive days of representative operational evidence;
+- at least 30 days of release-candidate soak;
+- gate evidence no older than 120 days unless a stricter policy applies;
+- immutable evidence identifiers and machine-readable release decisions;
+- signed approvals from release management, security, governance, scientific-method and independent-reproducibility roles.
+
+Critical security, governance prohibition, integrity failure and unresolved P0/P1 categories are not waivable. Other exceptions must be scoped, approved, mitigated, public where safe and expire within 90 days.
+
+## V1 compatibility and maintenance
+
+- Stable schema/API/CLI removals require a documented deprecation window and tested migration path.
+- Immutable source captures, event hashes, historical assertions and released research objects never change in place.
+- Scientific estimands, facility classifications, optimisation objectives and defaults are versioned independently from software patch releases.
+- v1.0.x contains compatible defects, security and documentation fixes.
+- Annual revalidation covers conformance, restore, preservation, dependencies, security and maintainer succession.
+- A source or dataset can be corrected or withdrawn without erasing prior evidence; supersession remains explicit.
+
+## Current delivery boundary
+
+This 0.2.0 bundle delivers the architecture, machine-readable maturity/release/gate model, 28 Conductor tracks, evidence-aware roadmap validator, deterministic issue generation and the existing provenance/research-object prototype. Its own four M1 roadmap gates pass against the local evidence record. The programme as a whole nevertheless remains at M1. It does **not** claim that the national archive, accessibility engine, facility solvers, simulations, applied analyses, remote GitHub project or stable-v1 evidence already exist.
+
+The next implementation milestone is the 0.3.0 normative core, followed immediately by the 0.4.0 real-data vertical slice. That sequence is the shortest credible path from the present M1 programme to a mature v1.0.
+
+
+## Post-GA assurance loop
+
+Stable v1 is an ongoing service and evidence commitment rather than a one-time tag. After 1.0.0:
+
+- security, dependency, source-health, fixity, SLO and cost evidence is monitored continuously;
+- critical corrections use signed 1.0.x releases with explicit supersession and no silent mutation of prior research objects;
+- conformance, restore, preservation and maintainer-succession exercises are repeated at least annually;
+- material source, legal, ontology or scientific-assumption changes trigger scoped requalification rather than inheriting the original approval automatically;
+- unsupported surfaces are deprecated through the published policy and are never represented as supported merely because code remains available; and
+- failure to sustain a stable obligation is published as a support-status change, with remediation, migration or archival guidance.

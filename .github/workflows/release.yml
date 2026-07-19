@@ -29,6 +29,7 @@ jobs:
           uv run ruff check .
           uv run ruff format --check .
           uv run riopa validate --root .
+          uv run riopa roadmap validate --root .
           uv run pytest
       - name: Build example research object
         run: >-

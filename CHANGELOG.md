@@ -1,6 +1,31 @@
 # Changelog
 
-All notable changes to RIOPA Infrastructure are documented here. Software, schema, dataset and research-object versions remain independent unless a release explicitly relates them.
+Software, schema, dataset, analytical-model and research-object versions remain independent unless a release explicitly relates them.
+
+## 0.2.0 — 2026-07-19
+
+### Added
+
+- Seven-level M0–M6 maturity model across 12 stable-v1 dimensions.
+- Nine-stage release train from roadmap architecture to stable v1.0.
+- Machine-readable stable-v1 gate with defect, waiver, independence, soak, operations and release-authority thresholds.
+- Expansion from 13 to 28 dependency-linked Conductor tracks.
+- Dedicated tracks for canonical ontology/domain schemas, connector runtime, provenance queries, interoperability/SDKs, accessibility, facility reconciliation, planning-system transition, health causal methods, archive operations, simulation validation, performance qualification, documentation/support and final release hardening.
+- Roadmap validation, release-readiness reporting and deterministic issue-graph generation in the CLI.
+- Schemas for track metadata, maturity model, release roadmap, release evidence and stable-v1 gate.
+- Stable-v1 definition of done, release-gate, evidence/waiver, compatibility, operations and support documentation.
+- Machine-readable local evidence for the 0.2.0 M1 release and readiness reporting that leaves every later release blocked until real evidence exists.
+- Deterministic 141-issue programme graph and 10 cross-repository adoption targets.
+
+### Changed
+
+- All v1-critical tracks now target M6 and declare current maturity, ownership, review roles, dimensions and blocking defects.
+- Release readiness now evaluates maturity, track defects, gate evidence, expiry, waivers and stable-release approvals rather than feature status alone.
+- The release-candidate milestone is 0.9.0; 1.0.0 is reserved for supported general availability.
+- Project configuration and issue generation now represent the full mature-v1 programme.
+- The final release-hardening track now targets 1.0.0, with 0.9.0 retained as its M5 release-candidate checkpoint.
+- Release status now reports tracks as qualified for a maturity gate rather than misleadingly calling M1 specifications complete.
+- Stable-v1 local evidence must carry a verified digest; external evidence must be digest-bound or content-addressed.
 
 ## 0.1.0 — 2026-07-18
 
@@ -10,8 +35,5 @@ All notable changes to RIOPA Infrastructure are documented here. Software, schem
 - Seven architecture decision records and thirteen Conductor tracks.
 - Ten JSON Schema contracts with a hash-linked synthetic example.
 - Reference validation, methods-generation and RO-Crate packaging CLI.
-- Closed-bundle, event-chain, manifest, rights, quality and reference-integrity checks.
-- GitHub repository, Project, issue hierarchy, dependency and cross-repository adoption automation.
-- New Zealand spatial source-registry and archive plans.
-- Facility-location, supermarket/health and emergency-facility research tracks.
-- Pinned CI/release actions, deterministic packaging, checksums and artifact attestations.
+- GitHub Project and issue bootstrap automation.
+- New Zealand spatial archive, facility-location and applied-pilot plans.

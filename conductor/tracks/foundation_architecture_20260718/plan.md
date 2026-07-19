@@ -1,19 +1,32 @@
 # Plan: foundation_architecture_20260718
 
-## 1. Architecture review
+## 1. V1 boundary and decisions
 
-- [ ] 1.1 Review existing connector/archive/corpus boundaries and document exact reuse.
-- [ ] 1.2 Review ADRs with maintainers and domain collaborators.
-- [ ] 1.3 Resolve repository name, package names and ownership.
+- [ ] 1.1 Reconcile all v0.1 ADRs with the revised v1 maturity and release model.
+- [ ] 1.2 Define platform, dataset, analytics and application release boundaries and non-claims.
+- [ ] 1.3 Record responsibility, ownership and version axes for every component.
 
-## 2. Governance and workflow
+## 2. Programme governance
 
-- [ ] 2.1 Create GitHub programme epic and repository project.
-- [ ] 2.2 Link selected parent issues to RIOPA umbrella project.
-- [ ] 2.3 Document decision, schema and release approval roles.
+- [ ] 2.1 Define maintainers, approvers, reviewers, release authority and exception expiry.
+- [ ] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth.
+- [ ] 2.3 Establish sustainability, succession and contribution expectations.
 
 ## 3. Architecture conformance
 
-- [ ] 3.1 Add an architecture test checklist.
-- [ ] 3.2 Confirm every materialisation has a named source-of-truth path.
-- [ ] 3.3 Publish architecture bundle v0.1.
+- [ ] 3.1 Implement machine validation for tracks, dependencies, maturity and release gates.
+- [ ] 3.2 Generate the GitHub issue graph from Conductor artifacts and reject drift.
+- [ ] 3.3 Add architecture fitness checks for source-of-truth and version-boundary violations.
+
+## 4. Ratification and handover
+
+- [ ] 4.1 Conduct maintainer and external architecture review.
+- [ ] 4.2 Resolve or explicitly accept findings with time-limited exceptions.
+- [ ] 4.3 Publish the accepted architecture and v1 programme baseline.
+
+## Track closeout
+
+- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
+- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

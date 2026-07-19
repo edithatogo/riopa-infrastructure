@@ -19,7 +19,7 @@
       "agent_type": "software",
       "role": "transformation-runner",
       "name": "riopa-provenance reference implementation",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "identifier": null
     }
   ],
@@ -48,8 +48,8 @@
     "urn:riopa:quality:example:geometry-validity"
   ],
   "valid_time": null,
-  "previous_event_hash": "57c8f21fdfed578d3e5ea32028b65ca6004d946ffe6c83d2d0dbd0565b39614a",
-  "event_hash": "f4d533e4979be780e70e1e0e445066b21dd7ece889ffd3092c4e222d7aa577a3",
+  "previous_event_hash": "f339b18f3eed935a23aaa93feca0c5330cf7ea6377069f6254b667d64541c3ed",
+  "event_hash": "c66c4697d5f341036c91efb46860dff6f1dd071469aa38502d1ddb680a189b60",
   "signature_ref": null,
   "diagnostics": [
     "Synthetic example only; no geometry payload is bundled."

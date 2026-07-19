@@ -1,0 +1,47 @@
+{
+  "track_id": "documentation_developer_experience_20260719",
+  "type": "validation",
+  "phase": "Publication",
+  "status": "specified",
+  "created_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Make installation, contribution, operation, analysis, migration and troubleshooting independently usable through tested documentation, examples, support channels and accessibility review.",
+  "depends_on": [
+    "repository_template_adoption_20260718",
+    "methods_research_objects_20260718",
+    "provenance_query_api_20260719",
+    "interoperability_conformance_sdks_20260719",
+    "nz_spatial_archive_operations_20260719",
+    "accessibility_network_engine_20260719",
+    "facility_location_engine_20260718"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.9.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "owner_role": "Publication and validation lead",
+  "review_roles": [
+    "External user reviewer",
+    "API/schema reviewer",
+    "Research-object reviewer",
+    "Operations reviewer",
+    "Interoperability reviewer",
+    "Governance reviewer"
+  ],
+  "v1_critical": true,
+  "current_maturity": "M1",
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "usability",
+    "contracts",
+    "publication",
+    "operations",
+    "interoperability",
+    "governance"
+  ],
+  "stability_class": "Platform",
+  "risk": "High",
+  "priority": "P0",
+  "mirror_to_umbrella": true,
+  "blocking_defects": []
+}

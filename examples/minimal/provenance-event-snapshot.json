@@ -19,7 +19,7 @@
       "agent_type": "workflow",
       "role": "snapshot-assembler",
       "name": "RIOPA reference release workflow",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "identifier": null
     }
   ],
@@ -49,8 +49,8 @@
     "urn:riopa:quality-report:nz-spatial-example:2026.07.18"
   ],
   "valid_time": null,
-  "previous_event_hash": "f4d533e4979be780e70e1e0e445066b21dd7ece889ffd3092c4e222d7aa577a3",
-  "event_hash": "d8d0a390679ec98d29f496658cde5a931ebb49100136957fd2bec227d1161e08",
+  "previous_event_hash": "c66c4697d5f341036c91efb46860dff6f1dd071469aa38502d1ddb680a189b60",
+  "event_hash": "d1c94f80efadc0c37dce71e891175d65802fd08c34d2954060615043b91ee6ba",
   "signature_ref": null,
   "diagnostics": [
     "Synthetic metadata-only example."

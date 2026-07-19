@@ -1,16 +1,40 @@
 {
   "track_id": "publication_validation_20260718",
-  "type": "publication",
+  "type": "validation",
   "phase": "Publication",
-  "status": "proposed",
+  "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-18T01:30:00Z",
-  "description": "Convert infrastructure, data and applied work into independently validated, citable software/data releases and manuscripts.",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Convert infrastructure, data and applied work into independently validated, citable releases and manuscripts with reproducible evidence and transparent correction.",
   "depends_on": [
     "repository_template_adoption_20260718",
-    "nz_spatial_archive_mvp_20260718"
+    "nz_spatial_archive_mvp_20260718",
+    "methods_research_objects_20260718",
+    "security_supply_chain_20260719"
   ],
   "github_issue": null,
   "evidence": [],
-  "target_release": null
+  "target_release": "0.9.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "governance",
+    "publication",
+    "usability",
+    "science"
+  ],
+  "stability_class": "Reference",
+  "risk": "High",
+  "priority": "P1",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Publication and validation lead",
+  "review_roles": [
+    "Governance reviewer",
+    "Research-object reviewer",
+    "External user reviewer",
+    "Scientific reviewer"
+  ],
+  "blocking_defects": []
 }

@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/v1-gate/v1",
+  "title": "RIOPA stable v1 gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release",
+    "required_maturity",
+    "required_tracks",
+    "required_dimensions",
+    "required_gate_ids",
+    "defect_policy",
+    "evidence_policy",
+    "waiver_policy",
+    "release_authority",
+    "post_release_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "release": {
+      "const": "1.0.0"
+    },
+    "required_maturity": {
+      "const": "M6"
+    },
+    "required_tracks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+_[0-9]{8}$"
+      }
+    },
+    "required_dimensions": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "governance",
+          "contracts",
+          "provenance",
+          "security",
+          "data",
+          "operations",
+          "performance",
+          "interoperability",
+          "publication",
+          "usability",
+          "analytics",
+          "science"
+        ]
+      }
+    },
+    "required_gate_ids": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      }
+    },
+    "defect_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maximum_open_p0",
+        "maximum_open_p1",
+        "maximum_release_blocking_p2",
+        "maximum_critical_security_findings",
+        "maximum_governance_prohibitions",
+        "maximum_expired_waivers"
+      ],
+      "properties": {
+        "maximum_open_p0": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        },
+        "maximum_open_p1": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        },
+        "maximum_release_blocking_p2": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        },
+        "maximum_critical_security_findings": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        },
+        "maximum_governance_prohibitions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        },
+        "maximum_expired_waivers": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        }
+      }
+    },
+    "evidence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_independent_reviewers",
+        "minimum_clean_room_reproductions",
+        "minimum_external_reproductions",
+        "minimum_external_user_workflows",
+        "minimum_external_operator_workflows",
+        "minimum_operational_cycles",
+        "minimum_operational_evidence_days",
+        "minimum_release_candidate_soak_days",
+        "maximum_gate_evidence_age_days",
+        "machine_readable_evidence_required",
+        "immutable_evidence_identifiers_required"
+      ],
+      "properties": {
+        "minimum_independent_reviewers": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "minimum_clean_room_reproductions": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "minimum_external_reproductions": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_external_user_workflows": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "minimum_external_operator_workflows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_operational_cycles": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "minimum_release_candidate_soak_days": {
+          "type": "integer",
+          "minimum": 30
+        },
+        "maximum_gate_evidence_age_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 365
+        },
+        "machine_readable_evidence_required": {
+          "const": true
+        },
+        "immutable_evidence_identifiers_required": {
+          "const": true
+        },
+        "minimum_operational_evidence_days": {
+          "type": "integer",
+          "minimum": 60
+        }
+      }
+    },
+    "waiver_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_fields",
+        "non_waivable_categories",
+        "maximum_duration_days",
+        "expired_waiver_blocks_release"
+      ],
+      "properties": {
+        "required_fields": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "non_waivable_categories": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "maximum_duration_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "expired_waiver_blocks_release": {
+          "const": true
+        }
+      }
+    },
+    "release_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_roles",
+        "unanimous_for_non_waivable_categories",
+        "signed_decision_required"
+      ],
+      "properties": {
+        "required_roles": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "unanimous_for_non_waivable_categories": {
+          "const": true
+        },
+        "signed_decision_required": {
+          "const": true
+        }
+      }
+    },
+    "post_release_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supported_major_series",
+        "security_response_policy_required",
+        "annual_revalidation_required",
+        "annual_restore_exercise_required",
+        "annual_conformance_rerun_required",
+        "succession_and_maintainer_review_required"
+      ],
+      "properties": {
+        "supported_major_series": {
+          "const": "1.x"
+        },
+        "security_response_policy_required": {
+          "const": true
+        },
+        "annual_revalidation_required": {
+          "const": true
+        },
+        "annual_restore_exercise_required": {
+          "const": true
+        },
+        "annual_conformance_rerun_required": {
+          "const": true
+        },
+        "succession_and_maintainer_review_required": {
+          "const": true
+        }
+      }
+    }
+  }
+}

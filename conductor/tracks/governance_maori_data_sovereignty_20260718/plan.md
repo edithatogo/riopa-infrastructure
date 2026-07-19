@@ -1,19 +1,32 @@
 # Plan: governance_maori_data_sovereignty_20260718
 
-## 1. Framework
+## 1. Framework and classifications
 
-- [ ] 1.1 Inventory source rights/licensing states across existing repositories.
-- [ ] 1.2 Draft Māori data sovereignty and CARE-aligned trigger framework.
-- [ ] 1.3 Define privacy and controlled-data escalation.
+- [ ] 1.1 Define data classes, governance triggers and decision outcomes.
+- [ ] 1.2 Map licence, privacy, statutory, cultural and safety evidence into common records.
+- [ ] 1.3 Define review roles, expiry, escalation and conflict-of-interest rules.
 
-## 2. Operationalisation
+## 2. Technical enforcement
 
-- [ ] 2.1 Add source and release gates.
-- [ ] 2.2 Add governance review record and research-object projection.
-- [ ] 2.3 Add sensitive issue/disclosure process.
+- [ ] 2.1 Implement fail-closed publication and controlled/public separation tests.
+- [ ] 2.2 Attach governance decisions to source, artifact, model and release manifests.
+- [ ] 2.3 Add correction, supersession, withdrawal and takedown workflows.
 
-## 3. Review
+## 3. Engagement and applied review
 
-- [ ] 3.1 Seek appropriate external Māori governance review.
-- [ ] 3.2 Pilot the process on the supermarket/health dataset design.
-- [ ] 3.3 Revise and publish the framework with limitations.
+- [ ] 3.1 Establish appropriate Māori governance and engagement pathways for relevant datasets.
+- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases.
+- [ ] 3.3 Document benefits, harms, mitigations and residual risks.
+
+## 4. Stable governance gate
+
+- [ ] 4.1 Exercise publication blocking and withdrawal scenarios.
+- [ ] 4.2 Audit all v1 reference releases and pilots against the framework.
+- [ ] 4.3 Approve, exclude or bound each release with evidence and review expiry.
+
+## Track closeout
+
+- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
+- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

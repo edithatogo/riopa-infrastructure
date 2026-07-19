@@ -1,15 +1,38 @@
 {
   "track_id": "methods_research_objects_20260718",
-  "type": "feature",
+  "type": "platform",
   "phase": "Core",
-  "status": "proposed",
+  "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-18T01:30:00Z",
-  "description": "Generate concise citable methods and publication-grade supplementary evidence from the same machine-readable release facts.",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Generate concise citable methods and publication-grade supplementary evidence from the same validated release facts and package them as complete, externally verifiable research objects.",
   "depends_on": [
-    "provenance_profile_v1_20260718"
+    "provenance_profile_v1_20260718",
+    "security_supply_chain_20260719"
   ],
   "github_issue": null,
   "evidence": [],
-  "target_release": "0.1.0"
+  "target_release": "0.4.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "provenance",
+    "security",
+    "publication",
+    "usability"
+  ],
+  "stability_class": "Platform",
+  "risk": "Critical",
+  "priority": "P0",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Core platform maintainer",
+  "review_roles": [
+    "Provenance reviewer",
+    "Security reviewer",
+    "Research-object reviewer",
+    "External user reviewer"
+  ],
+  "blocking_defects": []
 }

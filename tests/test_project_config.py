@@ -14,7 +14,7 @@ def test_conductor_dependency_graph_is_complete_and_acyclic() -> None:
     metadata_files = sorted((ROOT / "conductor/tracks").glob("*/metadata.json"))
     metadata = [json.loads(path.read_text(encoding="utf-8")) for path in metadata_files]
     ids = {item["track_id"] for item in metadata}
-    assert len(ids) == 13
+    assert len(ids) == 28
 
     dependencies = {
         item["track_id"]: set(item.get("depends_on", item.get("depends", []))) for item in metadata

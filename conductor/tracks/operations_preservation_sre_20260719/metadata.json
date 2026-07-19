@@ -1,0 +1,38 @@
+{
+  "track_id": "operations_preservation_sre_20260719",
+  "type": "operations",
+  "phase": "Foundation",
+  "status": "specified",
+  "created_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-19T00:00:00Z",
+  "description": "Operate captures, transformations, releases and preservation as a measured service with observable health, explicit SLOs, fixity, recovery and sustainable cost controls.",
+  "depends_on": [
+    "foundation_architecture_20260718",
+    "security_supply_chain_20260719"
+  ],
+  "github_issue": null,
+  "evidence": [],
+  "target_release": "0.8.0",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "v1_critical": true,
+  "maturity_target": "M6",
+  "maturity_dimensions": [
+    "security",
+    "operations",
+    "publication",
+    "usability"
+  ],
+  "stability_class": "Operational",
+  "risk": "Critical",
+  "priority": "P0",
+  "mirror_to_umbrella": true,
+  "current_maturity": "M1",
+  "owner_role": "Programme owner",
+  "review_roles": [
+    "Security reviewer",
+    "Operations reviewer",
+    "Research-object reviewer",
+    "External user reviewer"
+  ],
+  "blocking_defects": []
+}
