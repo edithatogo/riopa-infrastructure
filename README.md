@@ -65,6 +65,10 @@ flowchart LR
   O --> P[Signed, citable and preserved release]
 ```
 
+## Development handoff bootstrap
+
+For a new local workspace, use [`BOOTSTRAP_AGENT_PROMPT.md`](BOOTSTRAP_AGENT_PROMPT.md). It instructs a coding agent to verify and safely unpack the ZIP, initialise Git without rewriting history, discover related local clones by remote URL, create or reconcile the GitHub repository, wire `origin`, and activate the configured Conductor Project and issue graph. Current development qualification and known gaps are recorded in [`HANDOFF_STATUS.md`](HANDOFF_STATUS.md).
+
 ## Quick start
 
 ```bash

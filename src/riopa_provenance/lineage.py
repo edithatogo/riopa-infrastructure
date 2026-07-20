@@ -1,0 +1,543 @@
+"""Queryable provenance and rebuild-impact index.
+
+The SQLite projection is derived from a validated RIOPA snapshot.  It is not a
+replacement for the signed/event provenance records; it is a disposable query
+index that can always be rebuilt from them.
+"""
+
+from __future__ import annotations
+
+import json
+import sqlite3
+from collections.abc import Iterable, Mapping
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+from .hashing import sha256_file
+from .validation import (
+    load_json,
+    manifest_reference_specs,
+    resolve_local_reference,
+    validate_manifest_closure,
+)
+
+
+class LineageError(ValueError):
+    """Raised when a lineage index cannot be built or queried safely."""
+
+
+@dataclass(frozen=True)
+class LineageNode:
+    node_id: str
+    node_type: str
+    label: str | None
+    record_path: str | None
+
+
+@dataclass(frozen=True)
+class LineageEdge:
+    source_id: str
+    target_id: str
+    relation: str
+    record_path: str | None
+
+
+_ID_KEYS = (
+    "event_id",
+    "run_id",
+    "materialization_id",
+    "report_id",
+    "inventory_id",
+    "methods_facts_id",
+    "link_id",
+    "registry_id",
+    "publication_id",
+    "artifact_id",
+    "source_id",
+)
+
+_LABEL_KEYS = ("title", "name", "logical_id", "description")
+
+_SCHEMA = """
+PRAGMA foreign_keys = ON;
+CREATE TABLE IF NOT EXISTS manifests (
+    manifest_id TEXT PRIMARY KEY,
+    manifest_path TEXT NOT NULL,
+    manifest_sha256 TEXT NOT NULL,
+    snapshot_id TEXT NOT NULL,
+    dataset_id TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS nodes (
+    node_id TEXT PRIMARY KEY,
+    node_type TEXT NOT NULL,
+    label TEXT,
+    record_path TEXT,
+    metadata_json TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS edges (
+    source_id TEXT NOT NULL,
+    target_id TEXT NOT NULL,
+    relation TEXT NOT NULL,
+    record_path TEXT,
+    manifest_id TEXT NOT NULL,
+    PRIMARY KEY (source_id, target_id, relation, manifest_id),
+    FOREIGN KEY (manifest_id) REFERENCES manifests(manifest_id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS idx_edges_source ON edges(source_id);
+CREATE INDEX IF NOT EXISTS idx_edges_target ON edges(target_id);
+CREATE INDEX IF NOT EXISTS idx_nodes_type ON nodes(node_type);
+"""
+
+
+def _identifier(record: Mapping[str, Any]) -> str | None:
+    for key in _ID_KEYS:
+        value = record.get(key)
+        if isinstance(value, str) and value:
+            return value
+    return None
+
+
+def _label(record: Mapping[str, Any]) -> str | None:
+    for key in _LABEL_KEYS:
+        value = record.get(key)
+        if isinstance(value, str) and value:
+            return value
+    return None
+
+
+def _role_node_type(role: str, record: Mapping[str, Any]) -> str:
+    if role == "domain_record":
+        record_type = record.get("record_type")
+        return str(record_type) if record_type else "domain_record"
+    return role
+
+
+def _normalise_json(value: Any) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+class LineageIndex:
+    """A reproducible SQLite projection of validated RIOPA provenance."""
+
+    def __init__(self, path: str | Path) -> None:
+        self.path = Path(path).resolve()
+
+    def _connect(self, *, read_only: bool = False) -> sqlite3.Connection:
+        if read_only:
+            uri = f"file:{self.path.as_posix()}?mode=ro"
+            connection = sqlite3.connect(uri, uri=True)
+        else:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            connection = sqlite3.connect(self.path)
+        connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA foreign_keys = ON")
+        return connection
+
+    @staticmethod
+    def _put_node(
+        connection: sqlite3.Connection,
+        node_id: str,
+        node_type: str,
+        *,
+        label: str | None = None,
+        record_path: str | None = None,
+        metadata: Any | None = None,
+    ) -> None:
+        existing = connection.execute(
+            "SELECT node_type, label, record_path, metadata_json FROM nodes WHERE node_id = ?",
+            (node_id,),
+        ).fetchone()
+        payload = _normalise_json(metadata if metadata is not None else {})
+        if existing is not None:
+            # A concrete record is allowed to enrich an earlier external stub,
+            # but conflicting concrete identities are rejected.
+            if (
+                existing["node_type"] != "external"
+                and node_type != "external"
+                and existing["node_type"] != node_type
+            ):
+                raise LineageError(
+                    f"node {node_id} has conflicting types {existing['node_type']} and {node_type}"
+                )
+            node_type = node_type if node_type != "external" else existing["node_type"]
+            label = label or existing["label"]
+            record_path = record_path or existing["record_path"]
+            payload = payload if metadata is not None else existing["metadata_json"]
+        connection.execute(
+            """
+            INSERT INTO nodes(node_id, node_type, label, record_path, metadata_json)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(node_id) DO UPDATE SET
+                node_type = excluded.node_type,
+                label = excluded.label,
+                record_path = excluded.record_path,
+                metadata_json = excluded.metadata_json
+            """,
+            (node_id, node_type, label, record_path, payload),
+        )
+
+    @classmethod
+    def _put_edge(
+        cls,
+        connection: sqlite3.Connection,
+        source_id: str,
+        target_id: str,
+        relation: str,
+        *,
+        record_path: str | None,
+        manifest_id: str,
+    ) -> None:
+        cls._put_node(connection, source_id, "external")
+        cls._put_node(connection, target_id, "external")
+        connection.execute(
+            """
+            INSERT OR IGNORE INTO edges(
+                source_id, target_id, relation, record_path, manifest_id
+            ) VALUES (?, ?, ?, ?, ?)
+            """,
+            (source_id, target_id, relation, record_path, manifest_id),
+        )
+
+    def import_manifest(
+        self,
+        manifest_path: str | Path,
+        *,
+        schema_dir: str | Path | None = None,
+    ) -> str:
+        """Validate and transactionally import one snapshot manifest."""
+
+        manifest_file = Path(manifest_path).resolve()
+        validation = validate_manifest_closure(manifest_file, schema_dir=schema_dir)
+        if not validation.valid:
+            detail = "\n".join(f"- {item}" for item in validation.errors)
+            raise LineageError(f"manifest validation failed:\n{detail}")
+
+        manifest = load_json(manifest_file)
+        if not isinstance(manifest, Mapping):
+            raise LineageError("manifest root must be an object")
+        manifest_id = str(manifest["snapshot_id"])
+        base = manifest_file.parent
+        records: list[tuple[str, str, Mapping[str, Any]]] = []
+        for spec in manifest_reference_specs(manifest):
+            path = resolve_local_reference(base, spec.reference)
+            record = load_json(path)
+            if not isinstance(record, Mapping):
+                raise LineageError(f"record {spec.reference} is not an object")
+            records.append((spec.reference, spec.role, record))
+
+        connection = self._connect()
+        try:
+            connection.executescript(_SCHEMA)
+            connection.execute("BEGIN IMMEDIATE")
+            connection.execute("DELETE FROM edges WHERE manifest_id = ?", (manifest_id,))
+            connection.execute("DELETE FROM manifests WHERE manifest_id = ?", (manifest_id,))
+            connection.execute(
+                """
+                INSERT INTO manifests(
+                    manifest_id, manifest_path, manifest_sha256, snapshot_id, dataset_id
+                ) VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    manifest_id,
+                    str(manifest_file),
+                    sha256_file(manifest_file),
+                    str(manifest["snapshot_id"]),
+                    str(manifest["dataset_id"]),
+                ),
+            )
+
+            dataset_id = str(manifest["dataset_id"])
+            snapshot_id = str(manifest["snapshot_id"])
+            self._put_node(
+                connection,
+                dataset_id,
+                "dataset",
+                label=str(manifest.get("title") or dataset_id),
+                record_path=manifest_file.name,
+                metadata={"dataset_id": dataset_id},
+            )
+            self._put_node(
+                connection,
+                snapshot_id,
+                "snapshot",
+                label=str(manifest.get("title") or snapshot_id),
+                record_path=manifest_file.name,
+                metadata=dict(manifest),
+            )
+            self._put_edge(
+                connection,
+                dataset_id,
+                snapshot_id,
+                "has_snapshot",
+                record_path=manifest_file.name,
+                manifest_id=manifest_id,
+            )
+
+            for reference, role, record in records:
+                node_id = _identifier(record)
+                if node_id is None:
+                    # Some extension records may not expose an identity yet;
+                    # retain them by a deterministic local identity.
+                    node_id = (
+                        f"urn:riopa:record:{sha256_file(resolve_local_reference(base, reference))}"
+                    )
+                node_type = _role_node_type(role, record)
+                self._put_node(
+                    connection,
+                    node_id,
+                    node_type,
+                    label=_label(record),
+                    record_path=reference,
+                    metadata=dict(record),
+                )
+                self._put_edge(
+                    connection,
+                    node_id,
+                    snapshot_id,
+                    "included_in_snapshot",
+                    record_path=reference,
+                    manifest_id=manifest_id,
+                )
+
+            for source_entry in manifest.get("sources", []):
+                if not isinstance(source_entry, Mapping):
+                    continue
+                source_id = source_entry.get("source_id")
+                if not isinstance(source_id, str):
+                    continue
+                for capture_id in source_entry.get("capture_ids", []):
+                    if isinstance(capture_id, str):
+                        self._put_node(connection, capture_id, "capture")
+                        self._put_edge(
+                            connection,
+                            source_id,
+                            capture_id,
+                            "captured_as",
+                            record_path=manifest_file.name,
+                            manifest_id=manifest_id,
+                        )
+
+            for reference, role, record in records:
+                node_id = _identifier(record)
+                if node_id is None:
+                    continue
+                if role == "artifact":
+                    source_id = record.get("source_id")
+                    if isinstance(source_id, str):
+                        self._put_edge(
+                            connection,
+                            source_id,
+                            node_id,
+                            "source_of_artifact",
+                            record_path=reference,
+                            manifest_id=manifest_id,
+                        )
+                elif role == "transformation":
+                    for input_id in record.get("inputs", []):
+                        if isinstance(input_id, str):
+                            self._put_edge(
+                                connection,
+                                input_id,
+                                node_id,
+                                "used_by_run",
+                                record_path=reference,
+                                manifest_id=manifest_id,
+                            )
+                    for output_id in record.get("outputs", []):
+                        if isinstance(output_id, str):
+                            self._put_edge(
+                                connection,
+                                node_id,
+                                output_id,
+                                "generated_by_run",
+                                record_path=reference,
+                                manifest_id=manifest_id,
+                            )
+                elif role == "provenance_event":
+                    for input_id in record.get("inputs", []):
+                        if isinstance(input_id, str):
+                            self._put_edge(
+                                connection,
+                                input_id,
+                                node_id,
+                                "used_by_event",
+                                record_path=reference,
+                                manifest_id=manifest_id,
+                            )
+                    for output_id in record.get("outputs", []):
+                        if isinstance(output_id, str):
+                            self._put_edge(
+                                connection,
+                                node_id,
+                                output_id,
+                                "generated_by_event",
+                                record_path=reference,
+                                manifest_id=manifest_id,
+                            )
+                    for parent_id in record.get("causal_parent_event_ids", []):
+                        if isinstance(parent_id, str):
+                            self._put_edge(
+                                connection,
+                                parent_id,
+                                node_id,
+                                "causal_predecessor",
+                                record_path=reference,
+                                manifest_id=manifest_id,
+                            )
+                elif role == "materialization":
+                    generated_by = record.get("generated_by")
+                    artifact_id = record.get("artifact_id")
+                    if isinstance(generated_by, str):
+                        self._put_edge(
+                            connection,
+                            generated_by,
+                            node_id,
+                            "generated_materialization",
+                            record_path=reference,
+                            manifest_id=manifest_id,
+                        )
+                    if isinstance(artifact_id, str):
+                        self._put_edge(
+                            connection,
+                            node_id,
+                            artifact_id,
+                            "describes_artifact",
+                            record_path=reference,
+                            manifest_id=manifest_id,
+                        )
+
+            for relationship in manifest.get("relationships", []):
+                if not isinstance(relationship, Mapping):
+                    continue
+                identifier = relationship.get("identifier")
+                relation = relationship.get("relation")
+                if isinstance(identifier, str) and isinstance(relation, str):
+                    self._put_edge(
+                        connection,
+                        snapshot_id,
+                        identifier,
+                        relation,
+                        record_path=manifest_file.name,
+                        manifest_id=manifest_id,
+                    )
+
+            connection.commit()
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+        return manifest_id
+
+    def _walk(self, node_id: str, *, downstream: bool, max_depth: int) -> list[dict[str, Any]]:
+        if max_depth < 1 or max_depth > 100:
+            raise LineageError("max_depth must be between 1 and 100")
+        connection = self._connect(read_only=True)
+        try:
+            exists = connection.execute(
+                "SELECT 1 FROM nodes WHERE node_id = ?", (node_id,)
+            ).fetchone()
+            if exists is None:
+                raise LineageError(f"unknown lineage node: {node_id}")
+            downstream_query = """
+            WITH RECURSIVE walk(node_id, depth, path) AS (
+                SELECT ?, 0, json_array(?)
+                UNION ALL
+                SELECT e.target_id, walk.depth + 1,
+                       json_insert(walk.path, '$[#]', e.target_id)
+                FROM walk
+                JOIN edges e ON e.source_id = walk.node_id
+                WHERE walk.depth < ?
+                  AND NOT EXISTS (
+                    SELECT 1 FROM json_each(walk.path)
+                    WHERE json_each.value = e.target_id
+                  )
+            )
+            SELECT walk.node_id, MIN(walk.depth) AS depth,
+                   nodes.node_type, nodes.label, nodes.record_path
+            FROM walk JOIN nodes USING(node_id)
+            WHERE walk.depth > 0
+            GROUP BY walk.node_id, nodes.node_type, nodes.label, nodes.record_path
+            ORDER BY depth, walk.node_id
+            """
+            upstream_query = """
+            WITH RECURSIVE walk(node_id, depth, path) AS (
+                SELECT ?, 0, json_array(?)
+                UNION ALL
+                SELECT e.source_id, walk.depth + 1,
+                       json_insert(walk.path, '$[#]', e.source_id)
+                FROM walk
+                JOIN edges e ON e.target_id = walk.node_id
+                WHERE walk.depth < ?
+                  AND NOT EXISTS (
+                    SELECT 1 FROM json_each(walk.path)
+                    WHERE json_each.value = e.source_id
+                  )
+            )
+            SELECT walk.node_id, MIN(walk.depth) AS depth,
+                   nodes.node_type, nodes.label, nodes.record_path
+            FROM walk JOIN nodes USING(node_id)
+            WHERE walk.depth > 0
+            GROUP BY walk.node_id, nodes.node_type, nodes.label, nodes.record_path
+            ORDER BY depth, walk.node_id
+            """
+            query = downstream_query if downstream else upstream_query
+            return [dict(row) for row in connection.execute(query, (node_id, node_id, max_depth))]
+        finally:
+            connection.close()
+
+    def upstream(self, node_id: str, *, max_depth: int = 20) -> list[dict[str, Any]]:
+        return self._walk(node_id, downstream=False, max_depth=max_depth)
+
+    def downstream(self, node_id: str, *, max_depth: int = 20) -> list[dict[str, Any]]:
+        return self._walk(node_id, downstream=True, max_depth=max_depth)
+
+    def direct_edges(self, node_id: str) -> list[LineageEdge]:
+        connection = self._connect(read_only=True)
+        try:
+            rows = connection.execute(
+                """
+                SELECT source_id, target_id, relation, record_path
+                FROM edges WHERE source_id = ? OR target_id = ?
+                ORDER BY source_id, target_id, relation
+                """,
+                (node_id, node_id),
+            )
+            return [LineageEdge(**dict(row)) for row in rows]
+        finally:
+            connection.close()
+
+    def nodes(self, *, node_type: str | None = None) -> list[LineageNode]:
+        connection = self._connect(read_only=True)
+        try:
+            if node_type is None:
+                rows = connection.execute(
+                    "SELECT node_id, node_type, label, record_path FROM nodes ORDER BY node_id"
+                )
+            else:
+                rows = connection.execute(
+                    """
+                    SELECT node_id, node_type, label, record_path
+                    FROM nodes WHERE node_type = ? ORDER BY node_id
+                    """,
+                    (node_type,),
+                )
+            return [LineageNode(**dict(row)) for row in rows]
+        finally:
+            connection.close()
+
+    def rebuild_impact(self, node_ids: Iterable[str], *, max_depth: int = 50) -> dict[str, Any]:
+        roots = sorted(set(node_ids))
+        impacted: dict[str, dict[str, Any]] = {}
+        for root in roots:
+            for item in self.downstream(root, max_depth=max_depth):
+                current = impacted.get(item["node_id"])
+                if current is None or item["depth"] < current["depth"]:
+                    impacted[item["node_id"]] = item
+        return {
+            "roots": roots,
+            "impacted": sorted(
+                impacted.values(), key=lambda item: (item["depth"], item["node_id"])
+            ),
+        }

@@ -1,0 +1,153 @@
+schema_version: 1.0.0
+policy_id: urn:riopa:policy:linz-all-catalogue
+policy_version: 0.2.0
+title: Catalogue-complete archival policy for the LINZ Data Service
+execution:
+  default_export_crs: EPSG:2193
+  automatic_export_limit_bytes: 5368709120
+  default_poll_limit: 120
+  format_profiles:
+    vector-open:
+      vector:
+        - application/geopackage+sqlite3
+        - application/x-zipped-shp
+        - application/x-ogc-filegdb
+    table-open:
+      table:
+        - text/csv
+        - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    raster-open:
+      raster:
+        - image/tiff;subtype=geotiff
+        - application/x-hdf;subtype=kea
+    grid-open:
+      grid:
+        - image/tiff;subtype=geotiff
+        - application/x-hdf;subtype=kea
+    attribute-grid-open:
+      attribute-grid:
+        - image/tiff;subtype=geotiff
+        - application/x-hdf;subtype=kea
+principles:
+  - Every published catalogue item receives a stable identity and explicit disposition.
+  - Catalogue summaries, item details, service inventories and rights evidence are captured before payload planning.
+  - Metadata capture is universal; payload publication remains rights- and capability-aware.
+  - Baselines plus changesets are preferred where the service supports them.
+  - Koordinates bulk export is the complete-snapshot path for vector, table, raster and grid data.
+  - Unknown-size or unusually large payloads cannot enter an unbounded automated export.
+  - A reviewed exception is visible coverage, not silent omission.
+rules:
+  - id: vector-with-changesets
+    match:
+      item_types: [layer]
+      kinds: [vector]
+      service_any: [wfs-changesets]
+    strategy: baseline-plus-changesets
+    payload_methods: [wfs-baseline, wfs-changesets, koordinates-export-checkpoint]
+    format_profile: vector-open
+    tier: T1
+    priority: P0
+    cadence: source-revision-aware-weekly-or-more-frequent
+    destinations: [github-metadata, huggingface-canonical, zenodo-release]
+    rights_disposition: candidate-permitted-review-required
+  - id: table-with-changesets
+    match:
+      item_types: [table]
+      service_any: [wfs-changesets]
+    strategy: baseline-plus-changesets
+    payload_methods: [wfs-baseline, wfs-changesets, koordinates-export-checkpoint]
+    format_profile: table-open
+    tier: T1
+    priority: P0
+    cadence: source-revision-aware-weekly-or-more-frequent
+    destinations: [github-metadata, huggingface-canonical, zenodo-release]
+    rights_disposition: candidate-permitted-review-required
+  - id: vector-snapshot
+    match:
+      item_types: [layer]
+      kinds: [vector]
+      service_any: [wfs, export]
+    strategy: full-snapshot-and-diff
+    payload_methods: [koordinates-export, wfs-snapshot]
+    format_profile: vector-open
+    tier: T2
+    priority: P1
+    cadence: metadata-informed
+    destinations: [github-metadata, huggingface-canonical, zenodo-release]
+    rights_disposition: candidate-permitted-review-required
+  - id: tabular-snapshot
+    match:
+      item_types: [table]
+      service_any: [wfs, export, data-table]
+    strategy: full-snapshot-and-diff
+    payload_methods: [koordinates-export, wfs-snapshot, data-table-snapshot]
+    format_profile: table-open
+    tier: T2
+    priority: P1
+    cadence: metadata-informed
+    destinations: [github-metadata, huggingface-canonical, zenodo-release]
+    rights_disposition: candidate-permitted-review-required
+  - id: raster-or-grid
+    match:
+      item_types: [layer]
+      kinds: [raster, grid, attribute-grid]
+    strategy: tile-inventory-plus-budgeted-payload
+    payload_methods: [koordinates-export, tile-inventory]
+    format_profile_by_kind:
+      raster: raster-open
+      grid: grid-open
+      attribute-grid: attribute-grid-open
+    tier: T3
+    priority: P2
+    cadence: metadata-informed
+    destinations: [github-metadata, huggingface-index, zenodo-manifest]
+    requires_size_estimate: true
+    rights_disposition: candidate-permitted-review-required
+  - id: set-membership
+    match:
+      item_types: [set]
+    strategy: set-membership-and-member-resolution
+    payload_methods: [set-detail, member-resolution]
+    tier: T2
+    priority: P1
+    cadence: weekly-catalogue-diff
+    destinations: [github-metadata, huggingface-catalogue, zenodo-manifest]
+    rights_disposition: metadata-only
+  - id: document-and-attachments
+    match:
+      item_types: [document]
+    strategy: metadata-and-rights-permitted-attachments
+    payload_methods: [document-detail, attachment-inventory, rights-permitted-attachment-copy]
+    tier: T3
+    priority: P2
+    cadence: weekly-catalogue-diff
+    destinations: [github-metadata, huggingface-catalogue, zenodo-manifest]
+  - id: external-catalogue-item
+    match:
+      item_types: [catalog-item]
+    strategy: external-reference
+    payload_methods: [service-topology, external-reference-health]
+    tier: T4
+    priority: P3
+    cadence: monthly-reference-health
+    destinations: [github-metadata, huggingface-catalogue, zenodo-manifest]
+    rights_disposition: metadata-only
+  - id: source-record
+    match:
+      item_types: [source]
+    strategy: source-metadata-and-service-topology
+    payload_methods: [source-detail, source-topology, reference-health]
+    tier: T2
+    priority: P1
+    cadence: weekly-catalogue-diff
+    destinations: [github-metadata, huggingface-catalogue, zenodo-manifest]
+    rights_disposition: metadata-only
+fallback:
+  id: explicit-fallback
+  strategy: unsupported-explicit-exception
+  payload_methods: [metadata-only-reviewed-exception]
+  tier: T4
+  priority: P3
+  cadence: manual-review
+  destinations: [github-metadata, huggingface-catalogue]
+  rights_disposition: review-required

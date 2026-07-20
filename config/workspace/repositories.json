@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "owner": "edithatogo",
+  "repositories": [
+    {
+      "full_name": "edithatogo/riopa-infrastructure",
+      "role": "Primary provenance, archival, publication, Conductor, and CI/CD programme repository",
+      "required": true,
+      "clone_if_missing": false,
+      "write_policy": "primary"
+    },
+    {
+      "full_name": "edithatogo/conductor-next",
+      "role": "Canonical local Conductor implementation and adapter source",
+      "required": true,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/conductor-upstream-canonical",
+      "role": "Upstream/canonical Conductor reference used for compatibility checks",
+      "required": false,
+      "clone_if_missing": false,
+      "write_policy": "read-only"
+    },
+    {
+      "full_name": "edithatogo/fyi-cli",
+      "role": "Faithful capture and native provenance adapter target",
+      "required": true,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/fyi-archive",
+      "role": "Archival orchestration, Hugging Face/Zenodo publication, and research-object adapter target",
+      "required": true,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/corpus-legislation-nz",
+      "role": "Legislation corpus archival and publication adapter target",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/nlp-policy-nz",
+      "role": "Derived NLP and source-span lineage adapter target",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/rulespec-nz",
+      "role": "Rules-as-code and legal provenance adapter target",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/open_social_data",
+      "role": "Multi-provider data catalogue and change-evidence adapter target",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/healthpoint-rs",
+      "role": "Rights-aware health facility source and facility-registry adapter target",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/digitalnz",
+      "role": "DigitalNZ source connector/reference and Gazette discovery integration",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/ecosystem-docs",
+      "role": "Programme, adoption, and public documentation surface",
+      "required": false,
+      "clone_if_missing": true,
+      "write_policy": "issue-and-branch-only"
+    },
+    {
+      "full_name": "edithatogo/nz-spatial-archive",
+      "role": "Planned New Zealand-specific archive orchestration and data-release repository",
+      "required": false,
+      "clone_if_missing": false,
+      "write_policy": "planned"
+    },
+    {
+      "full_name": "edithatogo/nz-hansard-corpus",
+      "provider": "huggingface-dataset",
+      "canonical_remote": "huggingface.co/datasets/edithatogo/nz-hansard-corpus",
+      "role": "Read-only reference for the established GitHub/Hugging Face/Zenodo corpus publication pattern",
+      "required": false,
+      "clone_if_missing": false,
+      "write_policy": "read-only"
+    },
+    {
+      "full_name": "edithatogo/fyi-archive-nz",
+      "provider": "huggingface-dataset",
+      "canonical_remote": "huggingface.co/datasets/edithatogo/fyi-archive-nz",
+      "role": "Read-only reference for incremental archive snapshots and Hugging Face dataset publication",
+      "required": false,
+      "clone_if_missing": false,
+      "write_policy": "read-only"
+    }
+  ]
+}

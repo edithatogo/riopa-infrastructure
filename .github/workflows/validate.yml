@@ -1,16 +1,54 @@
-name: Validate architecture bundle
+name: Continuous integration
 
 on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
 jobs:
-  validate:
+  quality:
+    name: Quality, contracts, and packaging
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+          python-version: "3.13"
+          version: "0.11.16"
+      - name: Install locked environment
+        run: uv sync --extra dev --extra spatial --frozen
+      - name: Run engineering quality harness
+        run: scripts/ci_quality.sh
+      - name: Upload package and SBOM evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: package-and-sbom
+          path: dist/package/
+          if-no-files-found: error
+          retention-days: 30
+
+  tests:
+    name: Tests on Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -18,6 +56,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Install uv and Python
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
@@ -25,39 +65,34 @@ jobs:
           python-version: ${{ matrix.python-version }}
           version: "0.11.16"
       - name: Install locked environment
-        run: uv sync --extra dev --frozen
-      - name: Lint
-        run: uv run ruff check .
-      - name: Check formatting
-        run: uv run ruff format --check .
-      - name: Validate architecture and example bundle
-        run: |
-          uv run riopa validate --root .
-          uv run riopa roadmap validate --root .
-      - name: Reject generated issue drift
-        run: |
-          cp project/issues.yaml /tmp/issues.json
-          uv run riopa roadmap generate-issues --root .
-          diff -u /tmp/issues.json project/issues.yaml
-      - name: Generate roadmap status
-        run: uv run riopa roadmap status --root . --output ROADMAP_STATUS.md
-      - name: Run tests with branch coverage
+        run: uv sync --extra dev --extra spatial --frozen
+      - name: Run branch-aware tests
         run: >-
           uv run pytest
           --cov=riopa_provenance
           --cov-branch
           --cov-report=term-missing
+          --cov-report=xml:coverage-${{ matrix.python-version }}.xml
           --cov-fail-under=90
-      - name: Rebuild methods deterministically
-        run: |
-          uv run riopa methods \
-            --manifest examples/minimal/snapshot-manifest.json \
-            --output /tmp/METHODS.md
-          diff -u examples/minimal/METHODS.md /tmp/METHODS.md
-      - name: Build and verify example research object
-        run: |
-          uv run riopa research-object \
-            --manifest examples/minimal/snapshot-manifest.json \
-            --output-dir dist/example-research-object
-          cd dist/example-research-object
-          sha256sum --check checksums.sha256
+      - name: Verify deterministic research objects
+        if: matrix.python-version == '3.13'
+        run: scripts/ci_reproducibility.sh
+      - name: Upload coverage evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: coverage-${{ matrix.python-version }}
+          path: coverage-${{ matrix.python-version }}.xml
+          if-no-files-found: error
+          retention-days: 30
+
+  dependency-review:
+    name: Dependency change review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Review dependency changes
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: high
+          show-patched-versions: true

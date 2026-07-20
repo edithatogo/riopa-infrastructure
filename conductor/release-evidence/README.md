@@ -14,3 +14,10 @@ digest or recognised content-addressed persistent identifier.
 Evidence is evidence of work completed; it must never be pre-populated merely to make a
 roadmap appear green. Waivers are scoped, public, approved and time-limited. The stable
 non-waivable categories cannot be bypassed.
+
+## Historical mutable-path migration
+
+When a release-evidence record originally pointed at a file that continued to evolve on the
+default branch, preserve the exact released bytes under
+`conductor/release-evidence/artifacts/<release>/` and repoint the evidence location to that
+content-preserved copy. Never update a historical digest to match newer code.

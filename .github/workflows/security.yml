@@ -1,0 +1,71 @@
+name: Dependency and supply-chain audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - .github/workflows/security.yml
+  schedule:
+    - cron: "43 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+  dependency-audit:
+    name: Audit locked runtime dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+          python-version: "3.13"
+          version: "0.11.16"
+      - name: Install locked audit environment
+        run: uv sync --extra dev --extra spatial --frozen
+      - name: Export the locked runtime graph
+        run: >-
+          uv export
+          --frozen
+          --no-dev
+          --extra spatial
+          --no-emit-project
+          --output-file runtime-requirements.txt
+      - name: Audit known vulnerabilities
+        run: >-
+          uv run pip-audit
+          --requirement runtime-requirements.txt
+          --require-hashes
+          --strict
+          --format json
+          --output pip-audit.json
+      - name: Build reproducible CycloneDX SBOM
+        run: scripts/build_sbom.sh riopa-provenance.cdx.json
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: dependency-audit
+          path: |
+            runtime-requirements.txt
+            pip-audit.json
+            riopa-provenance.cdx.json
+          if-no-files-found: warn
+          retention-days: 90

@@ -3,14 +3,27 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Australia/Sydney
+    open-pull-requests-limit: 5
+    labels: [dependencies, ci]
     groups:
       github-actions:
         patterns: ["*"]
+
   - package-ecosystem: pip
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
+      day: monday
+      time: "07:30"
+      timezone: Australia/Sydney
+    open-pull-requests-limit: 10
+    labels: [dependencies, python]
     groups:
-      python-runtime:
-        patterns: ["*"]
+      runtime:
+        dependency-type: production
+      development:
+        dependency-type: development

@@ -161,11 +161,11 @@
         {
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-engine",
           "kind": "artifact",
-          "location": "src/riopa_provenance/roadmap.py",
+          "location": "conductor/release-evidence/artifacts/0.2.0/src/riopa_provenance/roadmap.py",
           "sha256": "3c8ed967793dacd121338d33e8ebeb72bd802db4142181f1e6b2b2aec1a14276",
-          "immutable": false,
+          "immutable": true,
           "generated_at": "2026-07-19T09:20:00Z",
-          "description": "Executable validation, issue generation and readiness engine."
+          "description": "Executable validation, issue generation and readiness engine. Preserved as the exact v0.2.0 artifact."
         },
         {
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
@@ -179,11 +179,11 @@
         {
           "evidence_id": "urn:riopa:evidence:0.2.0:validation-workflow",
           "kind": "test-report",
-          "location": ".github/workflows/validate.yml",
+          "location": "conductor/release-evidence/artifacts/0.2.0/.github/workflows/validate.yml",
           "sha256": "b17f4a485cd08e6b44c3338ed24b1bc0062690c51f1b0a46fb8c4d0f11d6020e",
-          "immutable": false,
+          "immutable": true,
           "generated_at": "2026-07-19T09:20:00Z",
-          "description": "CI checks for roadmap, drift, tests and reproducible objects."
+          "description": "CI checks for roadmap, drift, tests and reproducible objects. Preserved as the exact v0.2.0 workflow artifact."
         },
         {
           "evidence_id": "urn:riopa:evidence:0.2.0:delivery-quality-report",

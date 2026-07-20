@@ -408,9 +408,7 @@ def _validate_release_evidence(
 
         allowed_gates = {gate["id"] for gate in release.get("exit_gates", [])}
         gates = [gate for gate in payload.get("gates", []) if isinstance(gate, dict)]
-        gate_ids: list[str] = [
-            gate_id for gate in gates if isinstance((gate_id := gate.get("gate_id")), str)
-        ]
+        gate_ids = [gate.get("gate_id") for gate in gates if isinstance(gate.get("gate_id"), str)]
         if len(gate_ids) != len(set(gate_ids)):
             problems.append(
                 RoadmapProblem(
@@ -728,9 +726,7 @@ def validate_roadmap(
                 RoadmapProblem("maturity", location, f"unknown maturity target: {target_maturity}")
             )
         if (
-            isinstance(current_maturity, str)
-            and isinstance(target_maturity, str)
-            and current_maturity in maturity_set
+            current_maturity in maturity_set
             and target_maturity in maturity_set
             and _maturity_rank(current_maturity) > _maturity_rank(target_maturity)
         ):
@@ -805,11 +801,8 @@ def validate_roadmap(
             continue
         for dependency in required:
             dependency_target = tracks.get(dependency, {}).get("target_release")
-            if (
-                isinstance(dependency_target, str)
-                and isinstance(target, str)
-                and dependency_target in release_set
-                and _semver_key(dependency_target) > _semver_key(target)
+            if dependency_target in release_set and _semver_key(dependency_target) > _semver_key(
+                target
             ):
                 problems.append(
                     RoadmapProblem(
@@ -981,13 +974,13 @@ def validate_roadmap(
                 )
             )
         else:
-            expected_issues = generate_issue_configuration(base)
+            expected = generate_issue_configuration(base)
             try:
                 actual = _load(issue_path)
             except (OSError, json.JSONDecodeError) as exc:
                 problems.append(RoadmapProblem("issue-load", issue_path.as_posix(), str(exc)))
             else:
-                if actual != expected_issues:
+                if actual != expected:
                     problems.append(
                         RoadmapProblem(
                             "issue-drift",

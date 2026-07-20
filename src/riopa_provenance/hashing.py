@@ -1,28 +1,29 @@
-"""Canonical hashing helpers used by profile examples and validators."""
+"""Canonical hashing helpers used by RIOPA records and validators."""
 
 from __future__ import annotations
 
 import hashlib
-import json
 from pathlib import Path
 from typing import Any
 
+import rfc8785
+
 
 def canonical_json_bytes(value: Any) -> bytes:
-    """Return deterministic UTF-8 JSON bytes for hashing.
+    """Return RFC 8785 JSON Canonicalization Scheme bytes.
 
-    The candidate v1 profile uses sorted keys, compact separators, UTF-8 and
-    unescaped Unicode. Production v1 should either freeze this algorithm or
-    adopt a named JSON canonicalisation standard before stable release.
+    Using a named canonicalisation standard is required for hashes that must be
+    reproduced across Python, Rust, JavaScript, R, and other implementations.
+    ``rfc8785`` rejects values that cannot be represented by the standard.
     """
 
-    return json.dumps(
-        value,
-        sort_keys=True,
-        separators=(",", ":"),
-        ensure_ascii=False,
-        allow_nan=False,
-    ).encode("utf-8")
+    return rfc8785.dumps(value)
+
+
+def sha256_bytes(value: bytes) -> str:
+    """Return the lower-case SHA-256 hex digest of bytes."""
+
+    return hashlib.sha256(value).hexdigest()
 
 
 def sha256_json(value: Any, *, omit_keys: set[str] | None = None) -> str:
@@ -30,7 +31,7 @@ def sha256_json(value: Any, *, omit_keys: set[str] | None = None) -> str:
 
     if omit_keys and isinstance(value, dict):
         value = {key: item for key, item in value.items() if key not in omit_keys}
-    return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
+    return sha256_bytes(canonical_json_bytes(value))
 
 
 def sha256_file(path: str | Path) -> str:

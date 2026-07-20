@@ -22,3 +22,6 @@ data/work/
 *.tif
 *.tiff
 project/bootstrap-report.json
+
+# Machine-local workspace discovery and bootstrap state
+.riopa-local/

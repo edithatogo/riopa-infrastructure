@@ -109,6 +109,53 @@ json_scalar() {
   python -c 'import json,sys; print(json.load(sys.stdin).get(sys.argv[1], ""))' "$key"
 }
 
+normalise_github_remote() {
+  python - "$1" <<'PYREMOTE'
+import re, sys
+from urllib.parse import urlsplit
+value=sys.argv[1].strip()
+match=re.match(r"^(?:[^@]+@)?([^:]+):(.+)$", value)
+if match and "://" not in value:
+    host, path=match.groups()
+else:
+    parsed=urlsplit(value)
+    host=parsed.hostname or ""
+    path=parsed.path
+path=path.strip("/")
+if path.endswith(".git"):
+    path=path[:-4]
+parts=[part for part in path.split("/") if part]
+if host.casefold() in {"github.com", "www.github.com"} and len(parts)>=2:
+    print(f"github.com/{parts[0].casefold()}/{parts[1].casefold()}")
+PYREMOTE
+}
+
+verify_origin() {
+  local expected="github.com/${FULL_REPO,,}"
+  if git remote get-url origin >/dev/null 2>&1; then
+    local actual_url actual
+    actual_url="$(git remote get-url origin)"
+    actual="$(normalise_github_remote "$actual_url")"
+    if [[ "$actual" != "$expected" ]]; then
+      echo "Refusing to use origin '$actual_url'; expected https://github.com/$FULL_REPO.git" >&2
+      exit 1
+    fi
+  fi
+}
+
+push_main_safely() {
+  verify_origin
+  git fetch origin --prune
+  if git show-ref --verify --quiet refs/remotes/origin/main; then
+    if ! git merge-base --is-ancestor origin/main HEAD; then
+      echo "Remote main is not an ancestor of local HEAD; refusing a divergent push." >&2
+      echo "Reconcile histories with a normal merge or pull request; never force-push." >&2
+      exit 1
+    fi
+  fi
+  git push -u origin main
+}
+
 require python
 require git
 if command -v uv >/dev/null 2>&1; then
@@ -134,6 +181,15 @@ if $APPLY; then
   if [[ ! -d .git ]]; then
     git init -b main
   fi
+  [[ "$(git rev-parse --show-toplevel)" == "$ROOT" ]] || {
+    echo "Refusing to bootstrap from a nested Git repository." >&2
+    exit 1
+  }
+  current_branch="$(git branch --show-current)"
+  if [[ -n "$current_branch" && "$current_branch" != "main" ]]; then
+    echo "Refusing to bootstrap from branch '$current_branch'; expected main." >&2
+    exit 1
+  fi
   if ! git config user.name >/dev/null; then
     git config user.name "$OWNER"
   fi
@@ -153,15 +209,21 @@ if $APPLY; then
     if ! git remote get-url origin >/dev/null 2>&1; then
       git remote add origin "https://github.com/$FULL_REPO.git"
     fi
+    verify_origin
+    gh repo set-default "$FULL_REPO"
     if ! $SKIP_PUSH; then
-      run git push -u origin main
+      push_main_safely
     fi
   else
-    repo_args=(repo create "$FULL_REPO" "--$VISIBILITY" --description "$DESCRIPTION" --source=. --remote=origin)
+    if git remote get-url origin >/dev/null 2>&1; then
+      verify_origin
+    fi
+    repo_args=(repo create "$FULL_REPO" "--$VISIBILITY" --description "$DESCRIPTION" --disable-wiki --source=. --remote=origin)
     if ! $SKIP_PUSH; then
       repo_args+=(--push)
     fi
     run gh "${repo_args[@]}"
+    gh repo set-default "$FULL_REPO"
   fi
 else
   run gh repo create "$FULL_REPO" "--$VISIBILITY" --description "$DESCRIPTION" --source=. --remote=origin --push

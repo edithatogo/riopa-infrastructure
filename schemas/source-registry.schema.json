@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schemas/source-registry/1.0.0",
+  "title": "RIOPA source registry",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "record_type", "registry_id", "generated_at", "sources"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "source_registry"},
+    "registry_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "catalogue_url": {"type": "string", "format": "uri"},
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    }
+  },
+  "$defs": {
+    "publisher": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"}
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["access_status", "redistribution_status"],
+      "properties": {
+        "access_status": {"type": "string", "minLength": 1},
+        "spdx_or_uri": {"type": "string", "minLength": 1},
+        "redistribution_status": {"type": "string", "minLength": 1},
+        "notes": {"type": "string"}
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["none", "api-key", "oauth2", "manual", "restricted"]},
+        "secret_location": {"enum": ["query", "header", "path"]},
+        "credential_name": {"type": "string", "minLength": 1},
+        "environment_variable": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"type": {"const": "api-key"}}, "required": ["type"]},
+          "then": {"required": ["secret_location", "environment_variable"]}
+        }
+      ]
+    },
+    "rate_limit": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "requests_per_second": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_concurrency": {"type": "integer", "minimum": 1}
+      }
+    },
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["endpoint_id", "mechanism", "enabled", "authentication"],
+      "properties": {
+        "endpoint_id": {"type": "string", "minLength": 1},
+        "mechanism": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "url_template": {"type": "string", "minLength": 1},
+        "enabled": {"type": "boolean"},
+        "capture_strategy": {"type": "string", "minLength": 1},
+        "authentication": {"$ref": "#/$defs/authentication"},
+        "capabilities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "rate_limit": {"$ref": "#/$defs/rate_limit"},
+        "layer_ids": {"type": "array", "items": {"type": "integer", "minimum": 0}, "uniqueItems": true},
+        "allowed_download_hosts": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "anyOf": [
+        {"required": ["url"]},
+        {"required": ["url_template"]}
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["source_id", "name", "publisher", "jurisdiction", "source_family", "status", "rights", "endpoints"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "publisher": {"$ref": "#/$defs/publisher"},
+        "jurisdiction": {"type": "string", "minLength": 1},
+        "source_family": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "rights": {"$ref": "#/$defs/rights"},
+        "endpoints": {"type": "array", "items": {"$ref": "#/$defs/endpoint"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+schema_version: 1.0.0
+record_type: source_registry
+registry_id: urn:riopa:registry:nz-spatial-sources:pilot
+generated_at: 2026-07-19T00:00:00Z
+catalogue_url: https://data.linz.govt.nz/
+sources:
+  - source_id: urn:riopa:source:linz-data-service
+    name: LINZ Data Service
+    publisher:
+      name: Toitū Te Whenua Land Information New Zealand
+      url: https://www.linz.govt.nz/
+    jurisdiction: New Zealand
+    source_family: linz-data-service
+    status: active
+    rights:
+      access_status: registered
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: review-required
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:linz:catalog
+        mechanism: koordinates-catalog
+        url: https://data.linz.govt.nz/services/api/v1/data/
+        enabled: true
+        authentication:
+          type: none
+        capabilities:
+          - catalogue-enumeration
+          - pagination
+          - metadata-discovery
+        rate_limit:
+          requests_per_second: 1
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:linz:api
+        mechanism: koordinates-api
+        url: https://data.linz.govt.nz/services/api/v1/
+        enabled: true
+        authentication:
+          type: none
+        capabilities:
+          - item-detail
+          - versions
+          - services
+          - attachments
+        rate_limit:
+          requests_per_second: 1
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:linz:export
+        mechanism: koordinates-export
+        url: https://data.linz.govt.nz/services/api/v1/exports/
+        enabled: true
+        authentication:
+          type: api-key
+          secret_location: header
+          credential_name: Authorization
+          environment_variable: LINZ_API_KEY
+          notes: "The runtime sends Authorization key authentication and never persists the secret."
+        allowed_download_hosts: []
+        capabilities:
+          - asynchronous-export
+          - vector
+          - table
+          - raster
+          - grid
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:linz:csw
+        mechanism: csw
+        url: https://data.linz.govt.nz/services/csw/
+        enabled: true
+        authentication:
+          type: none
+        capabilities:
+          - metadata-discovery
+          - standards-metadata
+        rate_limit:
+          requests_per_second: 1
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:linz:wfs
+        mechanism: wfs
+        url_template: https://data.linz.govt.nz/services;key={api_key}/wfs
+        enabled: true
+        authentication:
+          type: api-key
+          secret_location: path
+          credential_name: api_key
+          environment_variable: LINZ_API_KEY
+        capabilities:
+          - vector
+          - table
+          - paging
+          - changesets
+        rate_limit:
+          requests_per_second: 0.5
+          maximum_concurrency: 1

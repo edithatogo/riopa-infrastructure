@@ -6,11 +6,11 @@ import json
 import shlex
 from collections import Counter
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 
 def _load(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
 
 
 def _resolve(base: Path, ref: str) -> Path:
