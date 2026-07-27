@@ -23,7 +23,7 @@ unavailable until the locked environment can be provisioned.
 | `publication` | 425 | `test_publication.py` | pure rights-decision precedence and media-type contract tests; restore research-object integration next |
 | `registry` | 196 | `test_registry.py` | retained |
 | `roadmap` | 1,528 | `test_roadmap.py`, `test_roadmap_hardening.py` | retained |
-| `spatial` | 598 | none | restore conversion, invalid geometry and deterministic output tests |
+| `spatial` | 598 | `test_spatial.py` | common geometry conversion, true-curve rejection, ID/CRS preservation and input-shape negatives |
 | `validation` | 706 | `test_validation_failures.py`, `test_validation_integrity.py` | retained |
 | `wfs` | 223 | `test_wfs.py` | constructor and request-contract negatives; restore transport/pagination failures next |
 | `yaml_tools` | 47 | `test_yaml_tools.py` | retained |
