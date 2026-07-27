@@ -149,24 +149,40 @@ fi
 
 if ! $SKIP_QUALITY; then
   require uv
-  uv sync --extra dev --extra spatial --frozen
-  uv run python -m compileall -q src scripts
-  uv run riopa --help >/dev/null
-  uv run riopa registry validate \
-    --registry config/source-registry/nz-spatial-pilot.yaml \
-    --schema schemas/source-registry.schema.json
-  uv run pytest -q
-
   set +e
-  scripts/ci_quality.sh
-  QUALITY_STATUS=$?
-  scripts/ci_reproducibility.sh
-  REPRO_STATUS=$?
-  uv run pytest --cov=riopa_provenance --cov-branch --cov-report=term-missing \
-    >"$JOURNAL_DIR/coverage.txt" 2>&1
-  COVERAGE_STATUS=$?
+  uv sync --extra dev --extra spatial --frozen
+  SYNC_STATUS=$?
+  if [[ $SYNC_STATUS -eq 0 ]]; then
+    uv run python -m compileall -q src scripts
+    COMPILE_STATUS=$?
+    uv run riopa --help >/dev/null
+    CLI_STATUS=$?
+    uv run riopa registry validate \
+      --registry config/source-registry/nz-spatial-pilot.yaml \
+      --schema schemas/source-registry.schema.json
+    REGISTRY_STATUS=$?
+    uv run pytest -q
+    TEST_STATUS=$?
+    scripts/ci_quality.sh
+    QUALITY_STATUS=$?
+    scripts/ci_reproducibility.sh
+    REPRO_STATUS=$?
+    uv run pytest --cov=riopa_provenance --cov-branch --cov-report=term-missing \
+      >"$JOURNAL_DIR/coverage.txt" 2>&1
+    COVERAGE_STATUS=$?
+  else
+    COMPILE_STATUS=125
+    CLI_STATUS=125
+    REGISTRY_STATUS=125
+    TEST_STATUS=125
+    QUALITY_STATUS=125
+    REPRO_STATUS=125
+    COVERAGE_STATUS=125
+    echo "Locked environment provisioning failed; recording the blocker and continuing safe bootstrap phases."
+  fi
   set -e
-  printf 'quality_status=%s\nreproducibility_status=%s\ncoverage_status=%s\n' \
+  printf 'sync_status=%s\ncompile_status=%s\ncli_status=%s\nregistry_status=%s\ntest_status=%s\nquality_status=%s\nreproducibility_status=%s\ncoverage_status=%s\n' \
+    "$SYNC_STATUS" "$COMPILE_STATUS" "$CLI_STATUS" "$REGISTRY_STATUS" "$TEST_STATUS" \
     "$QUALITY_STATUS" "$REPRO_STATUS" "$COVERAGE_STATUS" \
     > "$JOURNAL_DIR/baseline-status.env"
   if [[ $QUALITY_STATUS -ne 0 || $REPRO_STATUS -ne 0 || $COVERAGE_STATUS -ne 0 ]]; then
