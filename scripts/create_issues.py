@@ -78,7 +78,13 @@ def collection(payload: Any, *keys: str) -> list[dict[str, Any]]:
     return []
 
 
-def list_existing(repo: str) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+def list_existing(
+    repo: str,
+) -> tuple[
+    dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
+    dict[str, set[str]],
+]:
     payload = json.loads(
         gh(
             [
@@ -91,19 +97,25 @@ def list_existing(repo: str) -> tuple[dict[str, dict[str, Any]], dict[str, dict[
                 "--limit",
                 "1000",
                 "--json",
-                "number,title,body,url",
+                "number,title,body,url,blockedBy",
             ]
         )
         or "[]"
     )
     by_key: dict[str, dict[str, Any]] = {}
     by_title: dict[str, dict[str, Any]] = {}
+    blocked_by_url: dict[str, set[str]] = {}
     for issue in collection(payload, "issues"):
         by_title[issue["title"]] = issue
+        blocked_by_url[issue["url"]] = {
+            item["url"]
+            for item in collection(issue.get("blockedBy"), "nodes", "items")
+            if item.get("url")
+        }
         match = MARKER_RE.search(issue.get("body") or "")
         if match:
             by_key[match.group(1)] = issue
-    return by_key, by_title
+    return by_key, by_title, blocked_by_url
 
 
 def ensure_labels(repo: str, label_names: set[str], *, apply: bool) -> None:
@@ -200,6 +212,7 @@ def ensure_dependencies(
     issue_url: str,
     blocked_by: list[str],
     urls: dict[str, str],
+    existing_urls: set[str] | None = None,
     *,
     apply: bool,
 ) -> None:
@@ -209,15 +222,17 @@ def ensure_dependencies(
         print("DRY-RUN dependencies", issue_url, "blocked by", blocked_by)
         return
 
-    current_payload = json.loads(
-        gh(["issue", "view", issue_url, "--repo", repo, "--json", "blockedBy"])
-    )
-    blocked_by_payload = current_payload.get("blockedBy", [])
-    existing_urls = {
-        item.get("url")
-        for item in collection(blocked_by_payload, "nodes", "items")
-        if item.get("url")
-    }
+    if existing_urls is None:
+        current_payload = json.loads(
+            gh(["issue", "view", issue_url, "--repo", repo, "--json", "blockedBy"])
+        )
+        existing_urls = {
+            item.get("url")
+            for item in collection(current_payload.get("blockedBy"), "nodes", "items")
+            if item.get("url")
+        }
+    else:
+        existing_urls = set(existing_urls)
     for dependency_key in blocked_by:
         dependency_url = urls.get(dependency_key)
         if not dependency_url:
@@ -260,7 +275,9 @@ def process_repository(
 ) -> list[IssueResult]:
     label_names = {label for item in items for label in item.get("labels", [])}
     ensure_labels(repo, label_names, apply=apply)
-    by_key, by_title = list_existing(repo) if apply else ({}, {})
+    by_key, by_title, existing_blocked_by = (
+        list_existing(repo) if apply else ({}, {}, {})
+    )
     urls: dict[str, str] = {}
     resolved_keys: set[str] = set()
     results: list[IssueResult] = []
@@ -335,6 +352,7 @@ def process_repository(
                     issue_url,
                     item.get("blocked_by", []),
                     urls,
+                    existing_blocked_by.get(issue_url),
                     apply=True,
                 )
 
