@@ -41,6 +41,7 @@ class IssueResult:
     owner_repository: str | None = None
     owner_role: str | None = None
     blocking_defects: int = 0
+    error: str | None = None
 
 
 def load(path: Path) -> Any:
@@ -645,15 +646,27 @@ def main() -> int:
     if args.cross_repo:
         cross_config = load(ROOT / "project/cross-repo-adoption.yaml")
         for item in cross_config["issues"]:
-            results.extend(
-                process_repository(
-                    item["repository"],
-                    [item],
-                    project=None,
-                    apply=args.apply,
-                    update_existing=args.update_existing,
+            try:
+                results.extend(
+                    process_repository(
+                        item["repository"],
+                        [item],
+                        project=None,
+                        apply=args.apply,
+                        update_existing=args.update_existing,
+                    )
                 )
-            )
+            except RuntimeError as error:
+                results.append(
+                    IssueResult(
+                        key=item["key"],
+                        repository=item["repository"],
+                        url=None,
+                        number=None,
+                        action="blocked",
+                        error=str(error),
+                    )
+                )
 
     project_number = args.project_number
     if args.apply and not project_number and args.project_title:
