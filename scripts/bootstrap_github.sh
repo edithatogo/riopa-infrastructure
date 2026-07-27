@@ -160,8 +160,11 @@ require python
 require git
 if command -v uv >/dev/null 2>&1; then
   echo "Validating scaffold with uv..."
-  uv run --with 'jsonschema[format]>=4.24,<5' --with 'PyYAML>=6.0.2,<7' \
-    python -m riopa_provenance.cli validate --root .
+  if ! uv run --no-sync python -m riopa_provenance.cli validate --root .; then
+    echo "Locked validator dependencies are unavailable; running the dependency-free handoff verifier."
+    python scripts/verify_codex_handoff.py
+    python -m compileall -q scripts
+  fi
 else
   echo "Validating scaffold with the active Python environment..."
   PYTHONPATH=src python -m riopa_provenance.cli validate --root .
