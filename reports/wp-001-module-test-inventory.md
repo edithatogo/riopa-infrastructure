@@ -13,7 +13,7 @@ unavailable until the locked environment can be provisioned.
 | `crate` | 742 | `test_crate.py` | retain; expand arbitrary-bundle and failure tests |
 | `hashing` | 44 | `test_hashing.py` | retained |
 | `lineage` | 543 | none | restore graph, cycle, query and deterministic projection tests |
-| `linz` | 773 | none | restore state-machine and interrupted-application tests |
+| `linz` | 773 | `test_linz.py` | second restored slice: revision/state-chain negative tests; add database failure injection when dependencies provision |
 | `linz_catalog` | 620 | `test_linz_catalog.py` | first restored slice in this increment |
 | `linz_enrichment` | 463 | none | restore service queue, receipt and resume tests |
 | `linz_export` | 322 | none | restore export, integrity and failure tests |
