@@ -15,7 +15,7 @@ unavailable until the locked environment can be provisioned.
 | `lineage` | 543 | `test_lineage.py` | third restored slice: graph walks, cycle safety, impact ordering and identity conflicts |
 | `linz` | 773 | `test_linz.py` | second restored slice: revision/state-chain negative tests; add database failure injection when dependencies provision |
 | `linz_catalog` | 620 | `test_linz_catalog.py` | first restored slice in this increment |
-| `linz_enrichment` | 463 | none | restore service queue, receipt and resume tests |
+| `linz_enrichment` | 463 | `test_linz_enrichment.py` | deterministic service queue and explicit owner-disposition tests |
 | `linz_export` | 322 | `test_linz_export.py` | pure export-job identity/state and credential contract negatives |
 | `linz_federation` | 978 | none | restore policy, staging, path and reproducibility tests |
 | `linz_inventory` | 605 | `test_linz_inventory.py` | policy matching, validation, bounded batching, unknown-size and oversize negatives |
