@@ -17,7 +17,7 @@ unavailable until the locked environment can be provisioned.
 | `linz_catalog` | 620 | `test_linz_catalog.py` | first restored slice in this increment |
 | `linz_enrichment` | 463 | `test_linz_enrichment.py` | deterministic service queue and explicit owner-disposition tests |
 | `linz_export` | 322 | `test_linz_export.py` | pure export-job identity/state and credential contract negatives |
-| `linz_federation` | 978 | none | restore policy, staging, path and reproducibility tests |
+| `linz_federation` | 978 | `test_linz_federation.py` | policy validation and deterministic family classification; restore staging/resume tests next |
 | `linz_inventory` | 605 | `test_linz_inventory.py` | policy matching, validation, bounded batching, unknown-size and oversize negatives |
 | `methods` | 307 | `test_methods.py` | retain; expand missing-evidence consistency tests |
 | `publication` | 425 | `test_publication.py` | pure rights-decision precedence and media-type contract tests; restore research-object integration next |
