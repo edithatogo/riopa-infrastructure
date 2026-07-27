@@ -133,7 +133,7 @@ if [[ -n "$(git status --porcelain --untracked-files=all)" ]]; then
 fi
 
 DISCOVERY=(python scripts/discover_workspace_repositories.py --repo-root .)
-for root in "${SEARCH_ROOTS[@]}"; do DISCOVERY+=(--search-root "$root"); done
+for root in ${SEARCH_ROOTS[@]+"${SEARCH_ROOTS[@]}"}; do DISCOVERY+=(--search-root "$root"); done
 $CLONE_MISSING && DISCOVERY+=(--clone-missing)
 set +e
 "${DISCOVERY[@]}"
@@ -188,7 +188,7 @@ if ! $SKIP_GITHUB; then
     --update-existing
   )
   $CLONE_MISSING && BOOTSTRAP+=(--clone-missing)
-  for root in "${SEARCH_ROOTS[@]}"; do BOOTSTRAP+=(--search-root "$root"); done
+  for root in ${SEARCH_ROOTS[@]+"${SEARCH_ROOTS[@]}"}; do BOOTSTRAP+=(--search-root "$root"); done
   $MIRROR_UMBRELLA && BOOTSTRAP+=(--mirror-umbrella)
   $APPLY && BOOTSTRAP+=(--apply)
 

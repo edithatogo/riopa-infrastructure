@@ -88,7 +88,7 @@ if [[ -d .git ]]; then
 fi
 
 discovery=(python scripts/discover_workspace_repositories.py --repo-root .)
-for search_root in "${SEARCH_ROOTS[@]}"; do
+for search_root in ${SEARCH_ROOTS[@]+"${SEARCH_ROOTS[@]}"}; do
   discovery+=(--search-root "$search_root")
 done
 $CLONE_MISSING && discovery+=(--clone-missing)
