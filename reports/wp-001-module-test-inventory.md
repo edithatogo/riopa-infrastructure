@@ -20,7 +20,7 @@ unavailable until the locked environment can be provisioned.
 | `linz_federation` | 978 | none | restore policy, staging, path and reproducibility tests |
 | `linz_inventory` | 605 | `test_linz_inventory.py` | policy matching, validation, bounded batching, unknown-size and oversize negatives |
 | `methods` | 307 | `test_methods.py` | retain; expand missing-evidence consistency tests |
-| `publication` | 425 | none | restore rights, retry, reconciliation and resumability tests |
+| `publication` | 425 | `test_publication.py` | pure rights-decision precedence and media-type contract tests; restore research-object integration next |
 | `registry` | 196 | `test_registry.py` | retained |
 | `roadmap` | 1,528 | `test_roadmap.py`, `test_roadmap_hardening.py` | retained |
 | `spatial` | 598 | none | restore conversion, invalid geometry and deterministic output tests |
