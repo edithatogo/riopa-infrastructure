@@ -32,8 +32,8 @@ unavailable until the locked environment can be provisioned.
 
 - `uv sync --extra dev --extra spatial --frozen` repeatedly failed while
   downloading locked packages from the configured package mirror, including
-  `tzdata==2026.3`, `virtualenv==21.6.1`, `httpcore==1.0.9`, and
-  `pygments==2.20.0`.
+  `tzdata==2026.3`, `virtualenv==21.6.1`, `httpcore==1.0.9`,
+  `pygments==2.20.0`, and `requests-toolbelt==1.0.0` (latest retry).
 - The system Python has an incomplete pytest installation (`pluggy` missing).
 - The partially created environment can start pytest, but package collection
   fails because the project dependency `rfc8785` is unavailable.
