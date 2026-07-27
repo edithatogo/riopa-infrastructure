@@ -2,6 +2,22 @@
 
 Software, schema, dataset, analytical-model and research-object versions remain independent unless a release explicitly relates them.
 
+## Unreleased handoff — 2026-07-27
+
+### Added
+
+- Transparent Git history reconstructed from the delivered v0.1.0, v0.2.0 and development artifact snapshots.
+- Root `AGENTS.md` and autonomous Codex implementation brief.
+- Guarded local/GitHub/Project/issue bootstrap that restores Git from an included bundle when necessary.
+- Machine-local Codex work-package orchestrator and stable-v1 implementation queue.
+- Git-bundle recovery and history-provenance documentation.
+- Focused tests for the local work-package orchestrator.
+
+### Changed
+
+- The compatibility bootstrap prompt now delegates to the persistent Codex instructions and continues beyond repository setup.
+- Handoff documentation now distinguishes reconstructed artifact history from unavailable original authoring history.
+
 ## 0.2.0 — 2026-07-19
 
 ### Added

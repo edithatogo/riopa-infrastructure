@@ -1,21 +1,33 @@
 # RIOPA development handoff status
 
-**Handoff date:** 20 July 2026  
-**Base roadmap release:** 0.2.0 / M1  
+**Handoff date:** 27 July 2026
+**Base roadmap release:** 0.2.0 / M1
 **Status:** unreleased development handoff; not a tagged release and not stable v1
 
 This tree combines the verified 0.2.0 roadmap/Conductor bundle with subsequent development implementations for faithful HTTP capture, ArcGIS and WFS archival, LINZ baseline/changeset processing, complete LINZ catalogue planning and export, spatial materialisation, lineage projection, rights-aware publication staging, hardened validation and CI/CD scaffolding.
+
+
+## Git and Codex handoff state
+
+This downloadable handoff includes `.git/` with a transparent reconstructed history of the v0.1.0, v0.2.0 and development artifact snapshots. Because earlier ZIPs did not preserve their original `.git` directories, the reconstruction is explicitly labelled and documented in `handoff/HISTORY_RECONSTRUCTION.md`; it is not represented as an unavailable original authoring history.
+
+The package also includes an ignored `handoff/riopa-infrastructure.bundle` recovery artifact, root `AGENTS.md` instructions for Codex, `CODEX_AUTONOMOUS_IMPLEMENTATION.md`, a guarded `scripts/bootstrap_codex_handoff.sh`, and a machine-local work-package orchestrator. Together they establish the repository, GitHub/Project/issue wiring and continuation loop without ending at bootstrap.
 
 ## Verified for this handoff
 
 - Locked installation succeeds with `uv sync --extra dev --extra spatial --frozen`.
 - The command-line package imports and `riopa --help` succeeds.
-- The existing automated suite passes: **84 tests**.
+- The imported development snapshot was previously verified with **84 tests**. This Codex handoff adds five focused orchestrator tests, all of which pass in the packaging environment. The complete suite must be rerun after the locked environment is provisioned.
 - `scripts/ci_quality.sh` passes, including Ruff, strict MyPy, Bandit, action-pin checks, workflow-policy checks, schema and example validation, source-registry validation, roadmap/evidence validation, deterministic issue generation, package build, Twine checks and CycloneDX SBOM validation.
 - `scripts/ci_reproducibility.sh` passes and produces byte-identical verified research objects.
 - The GitHub/Conductor bootstrap completes in non-writing dry-run mode.
 - The local-clone discovery tool correctly identifies the primary repository by normalised remote URL and reports missing required related clones without modifying them.
 - Historical 0.2.0 evidence is preserved byte-for-byte under `conductor/release-evidence/artifacts/0.2.0/`; newer development files do not masquerade as old release evidence.
+
+
+## Packaging-environment limitation
+
+The final handoff packaging environment could execute the five new standard-library/pytest orchestrator tests and all Git/bundle checks. A complete rerun of the imported suite was not possible at packaging time because the configured package mirror could not supply the locked `rfc8785` wheel; this is an environment/provisioning blocker rather than a claimed passing result. The embedded Codex bootstrap reruns `uv sync`, the complete tests, quality harness and reproducibility harness in the destination environment and records their actual outcomes.
 
 ## Known qualification gap
 

@@ -67,7 +67,13 @@ flowchart LR
 
 ## Development handoff bootstrap
 
-For a new local workspace, use [`BOOTSTRAP_AGENT_PROMPT.md`](BOOTSTRAP_AGENT_PROMPT.md). It instructs a coding agent to verify and safely unpack the ZIP, initialise Git without rewriting history, discover related local clones by remote URL, create or reconcile the GitHub repository, wire `origin`, and activate the configured Conductor Project and issue graph. Current development qualification and known gaps are recorded in [`HANDOFF_STATUS.md`](HANDOFF_STATUS.md).
+The Codex handoff includes a Git worktree, a full recovery bundle, persistent repository instructions in [`AGENTS.md`](AGENTS.md), and an autonomous execution brief in [`CODEX_AUTONOMOUS_IMPLEMENTATION.md`](CODEX_AUTONOMOUS_IMPLEMENTATION.md). Start with [`START_HERE.md`](START_HERE.md) or run:
+
+```bash
+bash scripts/bootstrap_codex_handoff.sh --apply --clone-missing
+```
+
+The bootstrap verifies/restores history, discovers related clones by normalised remote URL, creates or reconciles the GitHub repository, wires and safely pushes `origin`, activates the configured Project and issue graph, then generates the next implementation packet. Current development qualification and known gaps are recorded in [`HANDOFF_STATUS.md`](HANDOFF_STATUS.md).
 
 ## Quick start
 

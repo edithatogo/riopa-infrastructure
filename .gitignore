@@ -25,3 +25,8 @@ project/bootstrap-report.json
 
 # Machine-local workspace discovery and bootstrap state
 .riopa-local/
+
+# Recovery artifacts included only in downloadable handoff packages
+handoff/*.bundle
+handoff/*.bundle.sha256
+handoff/BUNDLE_INFO.json

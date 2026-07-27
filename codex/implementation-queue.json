@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0.0",
+  "programme": "RIOPA stable-v1 autonomous implementation",
+  "updated_at": "2026-07-27T00:00:00Z",
+  "packages": [
+    {
+      "id": "WP-001",
+      "title": "Reconcile the development snapshot and restore the quality baseline",
+      "priority": "P0",
+      "tracks": [
+        "security_supply_chain_20260719",
+        "connector_runtime_capture_20260719",
+        "methods_research_objects_20260718",
+        "v1_release_hardening_20260719"
+      ],
+      "acceptance": [
+        "A module-by-module implementation and coverage inventory is recorded.",
+        "Imported archive modules have focused positive, negative and failure-injection tests.",
+        "The full harness is reproducible and no stable gate is weakened.",
+        "Conductor metadata and issue configuration reflect actual implementation and blockers."
+      ],
+      "commands": [
+        "uv sync --extra dev --extra spatial --frozen",
+        "scripts/ci_quality.sh",
+        "uv run pytest --cov=riopa_provenance --cov-branch --cov-report=term-missing",
+        "scripts/ci_reproducibility.sh"
+      ]
+    },
+    {
+      "id": "WP-002",
+      "title": "Harden source health, retries, networking and capture failure semantics",
+      "priority": "P0",
+      "tracks": [
+        "connector_runtime_capture_20260719",
+        "security_supply_chain_20260719",
+        "operations_preservation_sre_20260719"
+      ],
+      "acceptance": [
+        "Source observations classify freshness, change, degradation and disappearance.",
+        "Retries are bounded, idempotent and evidence-preserving.",
+        "DNS/private-address controls cover connection-time resolution and TLS hostname verification.",
+        "Metrics and structured failure categories are tested."
+      ]
+    },
+    {
+      "id": "WP-003",
+      "title": "Implement hierarchical rights and resumable publication state",
+      "priority": "P0",
+      "tracks": [
+        "governance_maori_data_sovereignty_20260718",
+        "methods_research_objects_20260718",
+        "publication_validation_20260718",
+        "operations_preservation_sre_20260719"
+      ],
+      "acceptance": [
+        "Rights propagate from source to derived artifact and target-specific publication decision.",
+        "Unknown or conflicting rights fail closed.",
+        "GitHub, Hugging Face and Zenodo publication steps are resumable and idempotent.",
+        "Cross-platform identifiers and receipts reconcile without duplicate deposits."
+      ]
+    },
+    {
+      "id": "WP-004",
+      "title": "Operationalise catalogue-complete LINZ archival through sharded CI",
+      "priority": "P0",
+      "tracks": [
+        "nz_spatial_source_registry_20260718",
+        "nz_spatial_archive_mvp_20260718",
+        "nz_spatial_archive_operations_20260719",
+        "performance_scalability_reliability_20260719"
+      ],
+      "acceptance": [
+        "Every catalogue identity receives an explicit content-bound disposition.",
+        "Catalogue, details, services, planning, payload and federation stages are independently resumable.",
+        "Storage and egress budgets bound every batch.",
+        "Changeset state is periodically reconciled against a full export."
+      ]
+    },
+    {
+      "id": "WP-005",
+      "title": "Add feature-level differences and provenance impact queries",
+      "priority": "P1",
+      "tracks": [
+        "spatial_quality_temporality_20260718",
+        "provenance_query_api_20260719",
+        "canonical_domain_schemas_ontology_20260719"
+      ],
+      "acceptance": [
+        "Snapshot differences distinguish added, removed, attribute-changed, geometry-changed and schema-changed entities.",
+        "Exact and tolerance-aware geometry comparisons remain separately evidenced.",
+        "Why, where, how and rebuild-impact queries report their actual lineage granularity.",
+        "Projection reconciliation removes or labels stale records deterministically."
+      ]
+    },
+    {
+      "id": "WP-006",
+      "title": "Complete external conformance, signed evidence and preservation qualification",
+      "priority": "P1",
+      "tracks": [
+        "interoperability_conformance_sdks_20260719",
+        "methods_research_objects_20260718",
+        "security_supply_chain_20260719",
+        "publication_validation_20260718"
+      ],
+      "acceptance": [
+        "Independent validators cover every claimed publication profile.",
+        "Signed checkpoints, SBOMs and attestations are verified.",
+        "Research objects are closed, reproducible and preservation-ready.",
+        "Cross-language golden fixtures validate canonical hashes and schemas."
+      ]
+    },
+    {
+      "id": "WP-007",
+      "title": "Execute a bounded real LINZ-council-facility vertical slice",
+      "priority": "P1",
+      "tracks": [
+        "nz_spatial_archive_mvp_20260718",
+        "planning_rules_linkage_20260718",
+        "facility_registry_20260719",
+        "methods_research_objects_20260718"
+      ],
+      "requires": ["network", "source rights", "LINZ_API_KEY where required"],
+      "acceptance": [
+        "One real LINZ source, council GIS source, planning source and facility source are captured within explicit bounds.",
+        "Raw evidence, canonical data, GeoParquet, DuckDB, quality, rights and lineage are linked.",
+        "A clean environment reconstructs the result.",
+        "No public release occurs without target-specific review."
+      ]
+    },
+    {
+      "id": "WP-008",
+      "title": "Implement ecosystem adapters in related repositories",
+      "priority": "P1",
+      "tracks": [
+        "repository_template_adoption_20260718",
+        "interoperability_conformance_sdks_20260719"
+      ],
+      "acceptance": [
+        "fyi-cli and fyi-archive mappings classify exact, approximate, extension-only and unmapped fields.",
+        "Each related change has its own issue, branch, tests and commit/PR.",
+        "Dirty clones are never modified.",
+        "Cross-repository conformance fixtures pass."
+      ]
+    },
+    {
+      "id": "WP-009",
+      "title": "Implement accessibility and facility-location solver cores",
+      "priority": "P2",
+      "tracks": [
+        "accessibility_network_engine_20260719",
+        "facility_location_engine_20260718",
+        "performance_scalability_reliability_20260719"
+      ],
+      "acceptance": [
+        "Accessibility and optimisation remain separate reusable packages/interfaces.",
+        "Set covering, maximal covering, p-median, p-center and capacity models pass published or independently calculated benchmarks.",
+        "Equity objectives and constraints are explicit and Pareto outputs reproducible.",
+        "Solver claims include feasibility and independent verification."
+      ]
+    },
+    {
+      "id": "WP-010",
+      "title": "Implement simulation, health methods and applied reference pilots",
+      "priority": "P2",
+      "tracks": [
+        "simulation_validation_engine_20260719",
+        "health_outcomes_causal_methods_20260719",
+        "supermarket_health_pilot_20260718",
+        "emergency_health_facilities_pilot_20260718"
+      ],
+      "acceptance": [
+        "Simulation and causal claims have explicit estimands, assumptions and validation evidence.",
+        "Ambulance, hospital and supermarket pilots use versioned public/reference data and transparent value judgements.",
+        "No pilot is represented as an operational clinical, legal or commercial decision system.",
+        "Methods and research objects are independently reproducible."
+      ]
+    }
+  ]
+}

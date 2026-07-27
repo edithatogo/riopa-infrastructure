@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.bundle binary
+*.zip binary
+*.gz binary
+*.parquet binary
+*.geoparquet binary
+*.duckdb binary
+*.pmtiles binary
+*.tif binary
+*.tiff binary

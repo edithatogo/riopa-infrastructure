@@ -1,0 +1,3 @@
+ba4bbb4dc2d2c643c4b17d286dc52600c0d90304163f68f5e395362d51d2c645  riopa-infrastructure-v0.1.0.zip
+27eb8cabf3fd8540c6a7997c833c85949fa0f84c098e78d6d4d3f3ad25a77d86  riopa-infrastructure-v0.2.0.zip
+382b8ff43ad98d8bf53745c649df4d1d708d12b9f00acae7cfeac4354dde03d3  riopa-infrastructure-dev-handoff-2026-07-20.zip
