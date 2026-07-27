@@ -25,7 +25,7 @@ unavailable until the locked environment can be provisioned.
 | `roadmap` | 1,528 | `test_roadmap.py`, `test_roadmap_hardening.py` | retained |
 | `spatial` | 598 | none | restore conversion, invalid geometry and deterministic output tests |
 | `validation` | 706 | `test_validation_failures.py`, `test_validation_integrity.py` | retained |
-| `wfs` | 223 | none | restore paging, stored-query and failure tests |
+| `wfs` | 223 | `test_wfs.py` | constructor and request-contract negatives; restore transport/pagination failures next |
 | `yaml_tools` | 47 | `test_yaml_tools.py` | retained |
 
 ## Baseline blockers
