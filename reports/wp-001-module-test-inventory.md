@@ -18,7 +18,7 @@ unavailable until the locked environment can be provisioned.
 | `linz_enrichment` | 463 | none | restore service queue, receipt and resume tests |
 | `linz_export` | 322 | `test_linz_export.py` | pure export-job identity/state and credential contract negatives |
 | `linz_federation` | 978 | none | restore policy, staging, path and reproducibility tests |
-| `linz_inventory` | 605 | none | restore planning, batching and disposition tests |
+| `linz_inventory` | 605 | `test_linz_inventory.py` | policy matching, validation, bounded batching, unknown-size and oversize negatives |
 | `methods` | 307 | `test_methods.py` | retain; expand missing-evidence consistency tests |
 | `publication` | 425 | none | restore rights, retry, reconciliation and resumability tests |
 | `registry` | 196 | `test_registry.py` | retained |
