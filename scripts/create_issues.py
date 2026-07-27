@@ -211,7 +211,12 @@ def ensure_dependencies(
     current_payload = json.loads(
         gh(["issue", "view", issue_url, "--repo", repo, "--json", "blockedBy"])
     )
-    existing_urls = {item.get("url") for item in current_payload.get("blockedBy", [])}
+    blocked_by_payload = current_payload.get("blockedBy", [])
+    existing_urls = {
+        item.get("url")
+        for item in collection(blocked_by_payload, "nodes", "items")
+        if item.get("url")
+    }
     for dependency_key in blocked_by:
         dependency_url = urls.get(dependency_key)
         if not dependency_url:
