@@ -87,11 +87,14 @@ restore_git_from_bundle() {
   local temp
   temp="$(mktemp -d "${TMPDIR:-/tmp}/riopa-git-restore.XXXXXX")"
   trap 'rm -rf "${temp:-}"' RETURN
-  git clone --no-hardlinks "$bundle" "$temp/recovered"
+  git clone --no-hardlinks --branch main "$bundle" "$temp/recovered"
   [[ ! -e "$ROOT/.git" ]] || { echo "Refusing to overwrite an existing .git path" >&2; exit 1; }
   mv "$temp/recovered/.git" "$ROOT/.git"
   git reset --mixed HEAD >/dev/null
   git bundle verify "$bundle" >/dev/null
+  # The clone operation records the local bundle as origin. Remove that recovery
+  # transport so the guarded GitHub bootstrap can create/verify the real origin.
+  git remote remove origin
   rm -rf "$temp"
   trap - RETURN
 }
