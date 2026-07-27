@@ -380,6 +380,12 @@ def content_url(item: dict[str, Any]) -> str | None:
 def project_value_matches(item: dict[str, Any], field_name: str, expected: Any) -> bool:
     """Return whether a Project item already has the requested field value."""
 
+    # ``gh project item-list --format json`` exposes project fields as flattened
+    # lower-case keys (for example ``"owner repository"``), while older gh
+    # versions may return GraphQL-style ``fieldValues`` nodes.
+    flattened_key = field_name.casefold()
+    if flattened_key in item:
+        return item[flattened_key] == expected
     values = collection(item.get("fieldValues"), "nodes", "items")
     for value in values:
         field = value.get("field")
