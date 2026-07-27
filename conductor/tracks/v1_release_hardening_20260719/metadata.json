@@ -35,7 +35,7 @@
     "spatial_quality_temporality_20260718",
     "supermarket_health_pilot_20260718"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/139",
   "evidence": [],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

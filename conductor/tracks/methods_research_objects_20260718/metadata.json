@@ -10,7 +10,7 @@
     "provenance_profile_v1_20260718",
     "security_supply_chain_20260719"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/34",
   "evidence": [],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

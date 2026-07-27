@@ -10,13 +10,13 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Core platform maintainer
-- **GitHub issue:** not yet created
+- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/29
 
 ## Evidence register
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-001-inventory-20260727` | Imported implementation and focused-test inventory | `reports/wp-001-module-test-inventory.md` | Recorded; execution coverage blocked by dependency provisioning |
 
 ## Blocking defects
 

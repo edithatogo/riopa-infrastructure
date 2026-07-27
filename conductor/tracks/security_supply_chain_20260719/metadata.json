@@ -9,7 +9,7 @@
   "depends_on": [
     "foundation_architecture_20260718"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/24",
   "evidence": [],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
