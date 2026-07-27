@@ -479,8 +479,13 @@ def sync_project_fields(
     project_number: int,
     results: list[IssueResult],
     apply: bool,
+    limit: int | None = None,
 ) -> dict[str, Any]:
     eligible = [result for result in results if result.project and result.url]
+    if limit is not None:
+        if limit <= 0:
+            raise ValueError("project field limit must be positive")
+        eligible = eligible[:limit]
     if not apply:
         return {"project_number": project_number, "planned_items": len(eligible)}
 
@@ -687,6 +692,7 @@ def sync_project_fields(
         "project_number": project_number,
         "project_id": project_id,
         "eligible_items": len(eligible),
+        "limited": limit is not None,
         "items_added": added,
         "items_updated": updated,
         "missing_field_options": sorted(missing_options),
@@ -702,6 +708,11 @@ def main() -> int:
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--update-existing", action="store_true")
     parser.add_argument("--cross-repo", action="store_true")
+    parser.add_argument(
+        "--project-limit",
+        type=int,
+        help="limit Project field reconciliation to the first N eligible items",
+    )
     args = parser.parse_args()
 
     owner = args.owner or args.repo.split("/", 1)[0]
@@ -749,6 +760,7 @@ def main() -> int:
             project_number=project_number,
             results=[result for result in results if result.repository == args.repo],
             apply=args.apply,
+            limit=args.project_limit,
         )
 
     if args.apply:
