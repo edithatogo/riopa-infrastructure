@@ -15,7 +15,7 @@
     "simulation_validation_engine_20260719",
     "operations_preservation_sre_20260719"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/134",
   "evidence": [],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

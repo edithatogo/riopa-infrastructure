@@ -12,7 +12,7 @@
     "methods_research_objects_20260718",
     "repository_template_adoption_20260718"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/64",
   "evidence": [],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

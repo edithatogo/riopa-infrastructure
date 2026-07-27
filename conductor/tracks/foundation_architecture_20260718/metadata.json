@@ -7,7 +7,7 @@
   "updated_at": "2026-07-19T00:00:00Z",
   "description": "Ratify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.",
   "depends_on": [],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/14",
   "evidence": [],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

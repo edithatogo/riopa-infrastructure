@@ -10,7 +10,7 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Spatial data lead
-- **GitHub issue:** not yet created
+- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/74
 
 ## Evidence register
 

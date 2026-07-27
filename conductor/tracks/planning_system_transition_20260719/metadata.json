@@ -10,7 +10,7 @@
     "planning_rules_linkage_20260718",
     "canonical_domain_schemas_ontology_20260719"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/84",
   "evidence": [],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

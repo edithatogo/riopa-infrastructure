@@ -10,7 +10,7 @@
     "canonical_domain_schemas_ontology_20260719",
     "facility_location_engine_20260718"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/94",
   "evidence": [],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
