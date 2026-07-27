@@ -161,9 +161,10 @@ require git
 if command -v uv >/dev/null 2>&1; then
   echo "Validating scaffold with uv..."
   if ! uv run --no-sync python -m riopa_provenance.cli validate --root .; then
-    echo "Locked validator dependencies are unavailable; running the dependency-free handoff verifier."
-    python scripts/verify_codex_handoff.py
+    echo "Locked validator dependencies are unavailable; running dependency-free repository checks."
+    git fsck --full
     python -m compileall -q scripts
+    python scripts/codex_orchestrator.py status >/dev/null
   fi
 else
   echo "Validating scaffold with the active Python environment..."
