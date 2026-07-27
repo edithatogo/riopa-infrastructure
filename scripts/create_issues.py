@@ -359,6 +359,20 @@ def content_url(item: dict[str, Any]) -> str | None:
     return item.get("url")
 
 
+def project_value_matches(item: dict[str, Any], field_name: str, expected: Any) -> bool:
+    """Return whether a Project item already has the requested field value."""
+
+    values = collection(item.get("fieldValues"), "nodes", "items")
+    for value in values:
+        field = value.get("field")
+        if not isinstance(field, dict) or field.get("name") != field_name:
+            continue
+        for key in ("name", "text", "number", "date"):
+            if key in value:
+                return value[key] == expected
+    return False
+
+
 def set_single_select(
     *,
     project_id: str,
@@ -486,7 +500,8 @@ def sync_project_fields(
         )
     )
     items = collection(items_payload, "items")
-    item_ids_by_url = {content_url(item): item.get("id") for item in items if content_url(item)}
+    item_by_url = {content_url(item): item for item in items if content_url(item)}
+    item_ids_by_url = {url: item.get("id") for url, item in item_by_url.items()}
 
     added = 0
     for result in eligible:
@@ -523,7 +538,8 @@ def sync_project_fields(
             )
         )
         items = collection(items_payload, "items")
-        item_ids_by_url = {content_url(item): item.get("id") for item in items if content_url(item)}
+        item_by_url = {content_url(item): item for item in items if content_url(item)}
+        item_ids_by_url = {url: item.get("id") for url, item in item_by_url.items()}
 
     missing_options: set[str] = set()
     updated = 0
@@ -531,9 +547,11 @@ def sync_project_fields(
         item_id = item_ids_by_url.get(result.url)
         if not item_id:
             continue
+        item = item_by_url.get(result.url, {})
         if (
             result.phase
             and fields.get("Phase")
+            and not project_value_matches(item, "Phase", result.phase)
             and not set_single_select(
                 project_id=project_id,
                 item_id=item_id,
@@ -542,25 +560,39 @@ def sync_project_fields(
             )
         ):
             missing_options.add(f"Phase={result.phase}")
-        if result.track_id and fields.get("Track ID"):
+        if (
+            result.track_id
+            and fields.get("Track ID")
+            and not project_value_matches(item, "Track ID", result.track_id)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Track ID"],
                 value=result.track_id,
             )
-        if fields.get("Evidence status") and not set_single_select(
-            project_id=project_id,
-            item_id=item_id,
-            field=fields["Evidence status"],
-            value="None",
+        if (
+            fields.get("Evidence status")
+            and not project_value_matches(item, "Evidence status", "None")
+            and not set_single_select(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Evidence status"],
+                value="None",
+            )
         ):
             missing_options.add("Evidence status=None")
-        if fields.get("Current maturity") and not set_single_select(
-            project_id=project_id,
-            item_id=item_id,
-            field=fields["Current maturity"],
-            value=result.current_maturity or "M0",
+        if (
+            fields.get("Current maturity")
+            and not project_value_matches(
+                item, "Current maturity", result.current_maturity or "M0"
+            )
+            and not set_single_select(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Current maturity"],
+                value=result.current_maturity or "M0",
+            )
         ):
             missing_options.add(f"Current maturity={result.current_maturity or 'M0'}")
         select_values = {
@@ -574,6 +606,7 @@ def sync_project_fields(
             if (
                 value
                 and fields.get(field_name)
+                and not project_value_matches(item, field_name, value)
                 and not set_single_select(
                     project_id=project_id,
                     item_id=item_id,
@@ -582,28 +615,42 @@ def sync_project_fields(
                 )
             ):
                 missing_options.add(f"{field_name}={value}")
-        if result.target_release and fields.get("Target release"):
+        if (
+            result.target_release
+            and fields.get("Target release")
+            and not project_value_matches(item, "Target release", result.target_release)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Target release"],
                 value=result.target_release,
             )
-        if result.owner_repository and fields.get("Owner repository"):
+        if (
+            result.owner_repository
+            and fields.get("Owner repository")
+            and not project_value_matches(item, "Owner repository", result.owner_repository)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Owner repository"],
                 value=result.owner_repository,
             )
-        if result.owner_role and fields.get("Owner role"):
+        if (
+            result.owner_role
+            and fields.get("Owner role")
+            and not project_value_matches(item, "Owner role", result.owner_role)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Owner role"],
                 value=result.owner_role,
             )
-        if fields.get("Blocking defects"):
+        if fields.get("Blocking defects") and not project_value_matches(
+            item, "Blocking defects", result.blocking_defects
+        ):
             set_number(
                 project_id=project_id,
                 item_id=item_id,
