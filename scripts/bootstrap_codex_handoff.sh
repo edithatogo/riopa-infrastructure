@@ -83,7 +83,7 @@ restore_git_from_bundle() {
     echo "No .git directory and recovery bundle is missing: $bundle" >&2
     exit 1
   }
-  git bundle verify "$bundle"
+  git bundle list-heads "$bundle" >/dev/null
   local temp
   temp="$(mktemp -d "${TMPDIR:-/tmp}/riopa-git-restore.XXXXXX")"
   trap 'rm -rf "${temp:-}"' RETURN
@@ -91,6 +91,7 @@ restore_git_from_bundle() {
   [[ ! -e "$ROOT/.git" ]] || { echo "Refusing to overwrite an existing .git path" >&2; exit 1; }
   mv "$temp/recovered/.git" "$ROOT/.git"
   git reset --mixed HEAD >/dev/null
+  git bundle verify "$bundle" >/dev/null
   rm -rf "$temp"
   trap - RETURN
 }

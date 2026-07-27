@@ -1,7 +1,7 @@
 {
   "base_roadmap_release": "0.2.0",
   "expected_branch": "main",
-  "expected_minimum_commit_count": 4,
+  "expected_minimum_commit_count": 5,
   "file_count": 300,
   "files": [
     {
@@ -1226,8 +1226,8 @@
     },
     {
       "path": "scripts/bootstrap_codex_handoff.sh",
-      "sha256": "541ab712790fd6ca50135cd27a2d49999f34b53ab43570f7c6ee7a916f3edf6e",
-      "size_bytes": 7291
+      "sha256": "2889d878a7ca5c1a523ae6b662a7b859dd49cae6e596cd9d3fb669bcf0768918",
+      "size_bytes": 7347
     },
     {
       "path": "scripts/bootstrap_github.sh",
@@ -1505,7 +1505,7 @@
       "size_bytes": 375534
     }
   ],
-  "generated_at": "2026-07-27T08:47:55.434243+00:00",
+  "generated_at": "2026-07-27T08:48:57.784418+00:00",
   "handoff_id": "riopa-infrastructure-codex-handoff-2026-07-27",
   "history_mode": "reconstructed-from-delivered-artifact-snapshots",
   "manifest_self_excluded": true,
@@ -1530,5 +1530,5 @@
     }
   ],
   "status": "unreleased-development-handoff",
-  "total_size_bytes": 2094693
+  "total_size_bytes": 2094749
 }
