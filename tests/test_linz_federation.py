@@ -5,7 +5,13 @@ from pathlib import Path
 
 import pytest
 
-from riopa_provenance.linz_federation import LinzFederationError, classify_family, load_federation_policy
+from riopa_provenance.hashing import sha256_file, sha256_json
+from riopa_provenance.linz_federation import (
+    LinzFederationError,
+    _load_snapshot_manifest,
+    classify_family,
+    load_federation_policy,
+)
 
 
 def policy() -> dict[str, object]:
@@ -47,3 +53,26 @@ def test_policy_loader_rejects_missing_and_duplicate_family_repositories(tmp_pat
     path.write_text(json.dumps(invalid), encoding="utf-8")
     with pytest.raises(LinzFederationError, match="duplicate federation repository"):
         load_federation_policy(path)
+
+
+def test_snapshot_manifest_checks_hashes_sizes_and_root_containment(tmp_path: Path) -> None:
+    items = tmp_path / "items.jsonl"
+    csv = tmp_path / "items.csv"
+    items.write_text('{"catalog_item_id":"one"}\n', encoding="utf-8")
+    csv.write_text("catalog_item_id\none\n", encoding="utf-8")
+    manifest: dict[str, object] = {
+        "record_type": "linz_catalog_snapshot",
+        "snapshot_id": "snapshot",
+        "items": {"path": items.name, "sha256": sha256_file(items), "size_bytes": items.stat().st_size},
+        "csv": {"path": csv.name, "sha256": sha256_file(csv), "size_bytes": csv.stat().st_size},
+    }
+    manifest["manifest_sha256"] = sha256_json(manifest)
+    path = tmp_path / "manifest.json"
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+    assert _load_snapshot_manifest(path)["snapshot_id"] == "snapshot"
+
+    manifest["items"] = {"path": "../outside.jsonl", "sha256": "x", "size_bytes": 1}
+    manifest["manifest_sha256"] = sha256_json(manifest)
+    path.write_text(json.dumps(manifest), encoding="utf-8")
+    with pytest.raises(LinzFederationError, match="escapes snapshot root"):
+        _load_snapshot_manifest(path)
