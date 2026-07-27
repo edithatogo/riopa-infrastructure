@@ -7,7 +7,7 @@ unavailable until the locked environment can be provisioned.
 
 | Module | Lines | Direct focused test | WP-001 disposition |
 |---|---:|---|---|
-| `arcgis` | 365 | none | restore positive, pagination, attachment and failure tests |
+| `arcgis` | 365 | `test_arcgis.py` | pure field-selection, feature-ID validation and page-budget negatives; restore pagination/failures next |
 | `capture` | 368 | `test_capture.py` | retain; expand retry/network failure coverage in WP-002 |
 | `cli` | 965 | `test_cli.py` | retain; extend with each restored command surface |
 | `crate` | 742 | `test_crate.py` | retain; expand arbitrary-bundle and failure tests |
