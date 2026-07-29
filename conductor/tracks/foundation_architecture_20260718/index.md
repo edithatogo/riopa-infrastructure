@@ -25,8 +25,8 @@
 
 ## Blocking defects
 
-- `review-runtime-provisioning`: full Python/pytest and roadmap validation cannot currently run because the locked dependency mirror is timing out (`webcolors==25.10.0`); retry when the mirror recovers.
-- `review-approval-required`: two independent analyst architecture reviews are recorded; the gate itself is resolved, with remaining findings tracked below.
+- `review-runtime-provisioning`: full Python/pytest and roadmap validation cannot currently run because locked dependency provisioning still times out; the offline cache also lacks `filelock==3.31.0` (required through `pre-commit`/`virtualenv`).
+- The analyst-review, ADR-disposition, contract-matrix and issue-graph blockers are resolved locally; runtime evidence remains the sole open blocker.
 
 ## Decisions, exceptions and limitations
 

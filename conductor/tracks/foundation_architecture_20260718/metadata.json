@@ -39,9 +39,6 @@
     "External-user analyst"
   ],
   "blocking_defects": [
-    "review-runtime-provisioning",
-    "contract-migration-matrix",
-    "adr-ratification-records",
-    "issue-graph-regeneration"
+    "review-runtime-provisioning"
   ]
 }
