@@ -1,7 +1,7 @@
 # Evidence index: Rights, privacy and Māori data sovereignty framework
 
 - **Track ID:** `governance_maori_data_sovereignty_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -30,4 +30,4 @@
 
 Required reviewer roles: Governance reviewer, Security reviewer, Data steward, Scientific reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+Implementation is active. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
