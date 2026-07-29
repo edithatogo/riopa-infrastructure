@@ -1,6 +1,7 @@
 # WP-001 module and test inventory
 
-Recorded 2026-07-27 from the imported development snapshot. A test file is
+Recorded 2026-07-27 from the imported development snapshot; rechecked
+2026-07-29. A test file is
 listed only when it directly imports or exercises the module; incidental text
 references do not establish coverage. Measured line/branch coverage remains
 unavailable until the locked environment can be provisioned.
@@ -40,6 +41,9 @@ unavailable until the locked environment can be provisioned.
 - Consequently no new coverage percentage is claimed. The handoff’s last
   recorded combined branch-aware coverage remains historical evidence only,
   not a current result.
+- A direct system-Python retry on 2026-07-29 still fails during pytest startup
+  with `ModuleNotFoundError: No module named 'pluggy'`, independently confirming
+  that the execution gate remains unavailable.
 
 ## First restored test slice
 
