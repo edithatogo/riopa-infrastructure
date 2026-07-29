@@ -360,7 +360,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 1
     },
     {
       "key": "foundation_architecture_20260718:phase-1",
@@ -388,7 +388,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 1
     },
     {
       "key": "foundation_architecture_20260718:phase-2",
@@ -418,7 +418,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 1
     },
     {
       "key": "foundation_architecture_20260718:phase-3",
@@ -448,7 +448,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 1
     },
     {
       "key": "foundation_architecture_20260718:phase-4",
@@ -464,7 +464,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents).\n- [ ] 4.2 Resolve or explicitly accept findings with time-limited exceptions.\n- [ ] 4.3 Publish the accepted architecture and v1 programme baseline.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)\n- [ ] 4.2 Resolve or explicitly accept findings with time-limited exceptions.\n- [ ] 4.3 Publish the accepted architecture and v1 programme baseline.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -478,7 +478,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 1
     },
     {
       "key": "foundation_architecture_20260718:phase-5",
@@ -508,7 +508,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 1
     },
     {
       "key": "governance_maori_data_sovereignty_20260718",
@@ -542,7 +542,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 3
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-1",
@@ -556,7 +556,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define data classes, governance triggers and decision outcomes.\n- [ ] 1.2 Map licence, privacy, statutory, cultural and safety evidence into common records.\n- [ ] 1.3 Define review roles, expiry, escalation and conflict-of-interest rules.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define data classes, governance triggers and decision outcomes. (docs/governance-decision-framework.md; 4594fec)\n- [ ] 1.2 Map licence, privacy, statutory, cultural and safety evidence into common records. (schemas/governance-decision.schema.json; 4594fec)\n- [ ] 1.3 Define review roles, expiry, escalation and conflict-of-interest rules. (schemas/governance-decision.schema.json; 4594fec)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -570,7 +570,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 3
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-2",
@@ -586,7 +586,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement fail-closed publication and controlled/public separation tests.\n- [ ] 2.2 Attach governance decisions to source, artifact, model and release manifests.\n- [ ] 2.3 Add correction, supersession, withdrawal and takedown workflows.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement fail-closed publication and controlled/public separation tests. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)\n- [ ] 2.2 Attach governance decisions to source, artifact, model and release manifests. (schemas/governance-decision.schema.json; 4594fec)\n- [ ] 2.3 Add correction, supersession, withdrawal and takedown workflows. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -600,7 +600,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 3
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-3",
@@ -616,7 +616,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Establish appropriate Māori governance and engagement pathways for relevant datasets.\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases.\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Establish appropriate Māori governance and engagement pathways for relevant datasets. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases.\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -630,7 +630,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 3
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-4",
@@ -660,7 +660,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 3
     },
     {
       "key": "security_supply_chain_20260719",
