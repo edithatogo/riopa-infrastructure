@@ -16,7 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| R01–R03 | ADR reconciliation register | `docs/adr/README.md` | Implemented; ratification review pending |
 
 ## Blocking defects
 

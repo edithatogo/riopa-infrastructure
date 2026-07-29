@@ -2,7 +2,7 @@
 
 ## 1. V1 boundary and decisions
 
-- [ ] 1.1 Reconcile all v0.1 ADRs with the revised v1 maturity and release model.
+- [x] 1.1 Reconcile all v0.1 ADRs with the revised v1 maturity and release model. (docs/adr/README.md)
 - [ ] 1.2 Define platform, dataset, analytics and application release boundaries and non-claims.
 - [ ] 1.3 Record responsibility, ownership and version axes for every component.
 
