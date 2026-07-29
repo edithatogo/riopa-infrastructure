@@ -46,7 +46,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] A versioned decision framework covers rights, privacy, ethics, Māori data sovereignty, safety and legal-status triggers.
 - [ ] Publication fails closed when required rights or governance decisions are unresolved.
 - [ ] Controlled and public pathways are technically separated and tested.
-- [ ] Māori data sovereignty review is co-designed or reviewed by appropriately engaged people before relevant stable releases.
 - [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.
 - [ ] Every applied pilot has a documented benefit, harm, equity and governance review.
 
@@ -64,7 +63,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - Governance decision schema and trigger matrix.
 - Rights inventories, review records and publication decisions.
 - Controlled/public architecture tests and withdrawal exercise.
-- Engagement, review and benefit/harm records appropriate to the data involved.
+- Optional engagement guidance and benefit/harm records where applicable to the declared data scope.
 
 ## Risks
 

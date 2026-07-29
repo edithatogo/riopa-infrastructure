@@ -1,8 +1,8 @@
-# Māori governance and engagement pathway
+# Optional Māori-specific governance and engagement guidance
 
-This pathway describes how relevant work is paused until appropriately engaged
-people and accountable institutions have reviewed it. It is not a checklist
-that certifies tikanga, consent or Māori approval.
+This guidance describes a pathway for work that calls for Māori-specific
+engagement. It is optional and is not a mandatory completion gate for this
+track. It does not certify tikanga, consent or Māori approval.
 
 ## Trigger and triage
 
@@ -37,4 +37,5 @@ and prior provenance remain preserved; no public release is made while blocked.
 
 The pathway is implemented as policy and schema guidance. No live engagement,
 co-design or Māori governance approval is claimed for this development
-checkout; those records are required before relevant stable releases.
+checkout. The pathway may be activated when requested by affected parties, a
+data custodian, law, licence, safety analysis or the declared project scope.

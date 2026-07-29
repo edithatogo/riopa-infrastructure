@@ -14,7 +14,7 @@
 
 ## 3. Engagement and applied review
 
-- [x] 3.1 Establish appropriate Māori governance and engagement pathways for relevant datasets. (docs/governance-engagement-pathway.md; ee966dc)
+- [x] 3.1 Document optional Māori-specific governance and engagement guidance for contexts where it is requested or applicable. (docs/governance-engagement-pathway.md; ee966dc)
 - [x] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)
 - [x] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)
 

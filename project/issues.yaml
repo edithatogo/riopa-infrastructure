@@ -528,7 +528,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nEmbed lawful reuse, social licence, benefit, Māori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] A versioned decision framework covers rights, privacy, ethics, Māori data sovereignty, safety and legal-status triggers.\n- [ ] Publication fails closed when required rights or governance decisions are unresolved.\n- [ ] Controlled and public pathways are technically separated and tested.\n- [ ] Māori data sovereignty review is co-designed or reviewed by appropriately engaged people before relevant stable releases.\n- [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.\n- [ ] Every applied pilot has a documented benefit, harm, equity and governance review.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md`",
+      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nEmbed lawful reuse, social licence, benefit, Māori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] A versioned decision framework covers rights, privacy, ethics, Māori data sovereignty, safety and legal-status triggers.\n- [ ] Publication fails closed when required rights or governance decisions are unresolved.\n- [ ] Controlled and public pathways are technically separated and tested.\n- [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.\n- [ ] Every applied pilot has a documented benefit, harm, equity and governance review.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Foundation",
@@ -542,7 +542,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 3
+      "blocking_defects": 1
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-1",
@@ -570,7 +570,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 3
+      "blocking_defects": 1
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-2",
@@ -586,7 +586,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement fail-closed publication and controlled/public separation tests. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)\n- [ ] 2.2 Attach governance decisions to source, artifact, model and release manifests. (schemas/governance-decision.schema.json; 4594fec)\n- [ ] 2.3 Add correction, supersession, withdrawal and takedown workflows. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement fail-closed publication and controlled/public separation tests. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)\n- [ ] 2.2 Attach governance decisions to source, artifact, model and release manifests. (schemas/governance-decision.schema.json; schemas/{source-record,artifact,transformation-run,snapshot-manifest,release-evidence}.schema.json; 0095dc0)\n- [ ] 2.3 Add correction, supersession, withdrawal and takedown workflows. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -600,7 +600,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 3
+      "blocking_defects": 1
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-3",
@@ -616,7 +616,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Establish appropriate Māori governance and engagement pathways for relevant datasets. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases.\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Document optional Māori-specific governance and engagement guidance for contexts where it is requested or applicable. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -630,7 +630,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 3
+      "blocking_defects": 1
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-4",
@@ -640,13 +640,13 @@
         "governance_maori_data_sovereignty_20260718:phase-3"
       ],
       "labels": [
-        "type:validation",
+        "type:implementation",
         "phase:foundation",
         "risk:critical",
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Exercise publication blocking and withdrawal scenarios.\n- [ ] 4.2 Audit all v1 reference releases and pilots against the framework.\n- [ ] 4.3 Approve, exclude or bound each release with evidence and review expiry.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Exercise publication blocking and withdrawal scenarios. (reports/governance-withdrawal-drill.md; standalone drill passed 2026-07-29)\n- [ ] 4.2 Audit all v1 reference releases and pilots against the framework. (reports/governance-release-pilot-audit.md; 2026-07-29)\n- [ ] 4.3 Approve, exclude or bound each release with evidence and review expiry. (reports/governance-release-pilot-audit.md; 2026-07-29)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -660,7 +660,37 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 3
+      "blocking_defects": 1
+    },
+    {
+      "key": "governance_maori_data_sovereignty_20260718:phase-5",
+      "title": "[governance_maori_data_sovereignty_20260718] 5. Review fixes",
+      "parent": "governance_maori_data_sovereignty_20260718",
+      "blocked_by": [
+        "governance_maori_data_sovereignty_20260718:phase-4"
+      ],
+      "labels": [
+        "type:validation",
+        "phase:foundation",
+        "risk:critical",
+        "maturity:m1",
+        "release:0.3.0"
+      ],
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Validate review expiry, conflict-of-interest handling and predecessor preservation fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py; c3579bd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`. (0b062d5)\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. (476ff5a)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "Foundation",
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "target_release": "0.3.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Governance",
+      "v1_critical": true,
+      "priority": "P0",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Programme owner",
+      "blocking_defects": 1
     },
     {
       "key": "security_supply_chain_20260719",

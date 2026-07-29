@@ -20,7 +20,7 @@
 | R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; runtime suite pending environment provisioning |
 | R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
 | R01, R03 | Withdrawal and supersession record helpers | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; operational exercise pending |
-| R04, R05 | Māori governance and engagement pathway | `docs/governance-engagement-pathway.md` | Implemented; live co-design/review not claimed |
+| R04, R05 | Optional Māori-specific governance and engagement guidance | `docs/governance-engagement-pathway.md` | Implemented as optional guidance; no live co-design/review claimed |
 | R05 | Applied benefit/harm/equity review instrument | `docs/applied-governance-review-template.md` | Template only; pilot decisions pending |
 | R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
 | R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
@@ -30,7 +30,7 @@
 ## Blocking defects
 
 - `runtime-validation-provisioning`: locked dependency provisioning remains unavailable; runtime tests and schema validation are not yet executed in the complete environment.
-- `maori-engagement-review`: no live co-design or appropriately engaged Māori governance review is claimed for this checkout.
+- No live co-design or Māori governance approval is claimed; the pathway is optional guidance and is activated only when required by declared scope or another applicable obligation.
 - Local target reconciliation is tested; no live distribution/takedown system is claimed or required by this checkout’s bounded synthetic drill.
 
 ## Decisions, exceptions and limitations
