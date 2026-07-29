@@ -1,7 +1,7 @@
 # Evidence index: Foundation architecture and programme governance
 
 - **Track ID:** `foundation_architecture_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -30,4 +30,4 @@
 
 Required reviewer roles: Governance reviewer, API/schema reviewer, External user reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+Implementation is active. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
