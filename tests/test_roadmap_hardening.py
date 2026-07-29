@@ -37,7 +37,7 @@ HARDENING_TRACK = "v1_release_hardening_20260719"
 
 def copy_roadmap(tmp_path: Path) -> Path:
     root = tmp_path / "repo"
-    for name in ("conductor", "schemas", "project"):
+    for name in ("conductor", "schemas", "project", "docs"):
         shutil.copytree(ROOT / name, root / name)
     evidence_dir = root / "conductor/release-evidence"
     evidence_dir.mkdir(parents=True, exist_ok=True)
@@ -61,6 +61,13 @@ def track_metadata(root: Path, track_id: str = FIRST_TRACK) -> tuple[Path, dict[
 
 def codes(root: Path, *, issue_drift: bool = False) -> set[str]:
     return {item.code for item in validate_roadmap(root, check_generated_issues=issue_drift)}
+
+
+def test_architecture_fitness_requires_boundary_contract(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    assert "architecture-artifact" not in codes(root)
+    (root / "docs/v1-scope-and-boundaries.md").unlink()
+    assert "architecture-artifact" in codes(root)
 
 
 def iso(delta: timedelta = timedelta()) -> str:
