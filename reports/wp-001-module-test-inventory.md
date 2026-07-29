@@ -44,6 +44,10 @@ unavailable until the locked environment can be provisioned.
 - A direct system-Python retry on 2026-07-29 still fails during pytest startup
   with `ModuleNotFoundError: No module named 'pluggy'`, independently confirming
   that the execution gate remains unavailable.
+- An offline reproducibility retry on 2026-07-29 fails deterministically before
+  execution because the locked `tzdata==2026.3` wheel is absent from the local
+  cache; this confirms the remaining provisioning gate without another network
+  retry.
 
 ## First restored test slice
 
