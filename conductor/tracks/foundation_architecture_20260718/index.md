@@ -20,10 +20,12 @@
 | R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Implemented; ratification review pending |
 | R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Implemented; named approvals pending |
 | R01, R02, R03 | Executable roadmap, issue-graph and architecture-fitness validation | `src/riopa_provenance/roadmap.py`, `tests/test_roadmap_hardening.py`, `project/issues.yaml` | Implemented; full runtime validation pending environment provisioning |
+| R03, R05 | Architecture review packet | `docs/architecture-review-template.md` | Pending two maintainer/external review records |
 
 ## Blocking defects
 
-- None recorded.
+- `review-runtime-provisioning`: full Python/pytest and roadmap validation cannot currently run because the locked dependency mirror is timing out (`webcolors==25.10.0`); retry when the mirror recovers.
+- `review-approval-required`: two independent maintainer/external architecture reviews are required by the track acceptance criteria; no approval is inferred from this implementation.
 
 ## Decisions, exceptions and limitations
 
