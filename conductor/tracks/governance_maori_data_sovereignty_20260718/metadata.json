@@ -20,6 +20,7 @@
     ,"urn:riopa:evidence:governance-release-pilot-audit:2026-07-29",
     "urn:riopa:evidence:governance-review-fix:f914a38",
     "urn:riopa:evidence:governance-use-case-review:c3579bd"
+    ,"urn:riopa:evidence:governance-reference-propagation:0095dc0"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

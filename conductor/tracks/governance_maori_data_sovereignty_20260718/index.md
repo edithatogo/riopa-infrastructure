@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | R01, R02, R04, R05 | Versioned governance decision framework and schema | `docs/governance-decision-framework.md`, `schemas/governance-decision.schema.json` | Implemented; runtime suite pending environment provisioning |
+| R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; runtime suite pending environment provisioning |
 | R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
 | R01, R03 | Withdrawal and supersession record helpers | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; operational exercise pending |
 | R04, R05 | Māori governance and engagement pathway | `docs/governance-engagement-pathway.md` | Implemented; live co-design/review not claimed |
