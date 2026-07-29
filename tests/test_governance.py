@@ -7,6 +7,7 @@ from riopa_provenance.governance import (
     evaluate_decision,
     record_supersession,
     record_withdrawal,
+    reconcile_withdrawal_targets,
     require_allowed,
 )
 
@@ -93,3 +94,11 @@ def test_supersession_is_append_only() -> None:
     )
     assert superseded["outcome"] == "superseded"
     assert superseded["successor_id"] == "urn:riopa:governance-decision:successor"
+    assert superseded["supersedes_id"] == decision()["decision_id"]
+
+
+def test_withdrawal_reconciliation_removes_only_withdrawn_targets() -> None:
+    withdrawn = record_withdrawal(
+        decision(), withdrawal_id="urn:riopa:governance-decision:withdrawn-2", reason="takedown", scope=["zenodo"]
+    )
+    assert reconcile_withdrawal_targets(withdrawn, ["github", "zenodo"]) == (("github",), ("zenodo",))

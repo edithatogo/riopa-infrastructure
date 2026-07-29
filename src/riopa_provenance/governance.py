@@ -62,7 +62,7 @@ def evaluate_decision(
         not isinstance(review, Mapping)
         or not review.get("role")
         or not review.get("reviewed_at")
-        or "expires_at" not in review
+        or not review.get("expires_at")
         or "conflict_of_interest" not in review
     ):
         reasons.append("review identity, date and expiry are required")
@@ -129,8 +129,23 @@ def record_supersession(
             "decision_id": successor_id,
             "outcome": "superseded",
             "successor_id": successor_id,
+            "supersedes_id": str(decision.get("decision_id", "")),
             "rationale": reason,
             "recorded_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
         }
     )
     return result
+
+
+def reconcile_withdrawal_targets(
+    decision: Mapping[str, object], targets: Sequence[str]
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Return allowed and withdrawn targets without mutating prior evidence."""
+
+    if decision.get("outcome") != "withdraw":
+        return tuple(targets), ()
+    scope = decision.get("scope")
+    withdrawn = set(scope) if isinstance(scope, Sequence) and not isinstance(scope, (str, bytes)) else set()
+    return tuple(target for target in targets if target not in withdrawn), tuple(
+        target for target in targets if target in withdrawn
+    )

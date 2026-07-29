@@ -15,8 +15,8 @@
 ## 3. Engagement and applied review
 
 - [x] 3.1 Establish appropriate Māori governance and engagement pathways for relevant datasets. (docs/governance-engagement-pathway.md; ee966dc)
-- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases.
-- [ ] 3.3 Document benefits, harms, mitigations and residual risks.
+- [x] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)
+- [x] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)
 
 ## 4. Stable governance gate
 
@@ -26,7 +26,7 @@
 
 ## 5. Review fixes
 
-- [x] 5.1 Validate review expiry and conflict-of-interest handling fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py; f914a38)
+- [x] 5.1 Validate review expiry, conflict-of-interest handling and predecessor preservation fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py)
 
 ## Track closeout
 

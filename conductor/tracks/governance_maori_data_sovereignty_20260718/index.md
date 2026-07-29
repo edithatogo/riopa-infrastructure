@@ -24,12 +24,13 @@
 | R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
 | R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
 | R04 | Review fix for expiry and conflict handling | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
+| R05 | Planned facility, health, deprivation and culturally sensitive geography review | `reports/governance-use-case-review.md` | All remain `review-required`; no publication approval inferred |
 
 ## Blocking defects
 
 - `runtime-validation-provisioning`: locked dependency provisioning remains unavailable; runtime tests and schema validation are not yet executed in the complete environment.
 - `maori-engagement-review`: no live co-design or appropriately engaged Māori governance review is claimed for this checkout.
-- `withdrawal-drill-evidence`: correction/withdrawal helpers have unit-level contracts, but an end-to-end distribution reconciliation exercise is still required.
+- `live-distribution-reconciliation`: local target reconciliation is tested, but no live distribution/takedown system is in scope for this checkout.
 
 ## Decisions, exceptions and limitations
 
