@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
+from datetime import UTC, datetime
+from typing import Any
 
 ALLOW_OUTCOMES = frozenset({"allow", "allow-with-conditions"})
 PUBLIC_CLASSES = frozenset({"public"})
@@ -78,3 +80,44 @@ def require_allowed(
     result = evaluate_decision(decision, pathway=pathway, required_scope=required_scope)
     if not result.allowed:
         raise GovernanceError("; ".join(result.reasons))
+
+
+def record_withdrawal(
+    decision: Mapping[str, object], *, withdrawal_id: str, reason: str, scope: Sequence[str]
+) -> dict[str, Any]:
+    """Create an append-only withdrawal successor without rewriting provenance."""
+
+    if not withdrawal_id or not reason or not scope:
+        raise GovernanceError("withdrawal id, reason and scope are required")
+    result = dict(decision)
+    result.update(
+        {
+            "decision_id": withdrawal_id,
+            "outcome": "withdraw",
+            "scope": list(scope),
+            "withdrawal_reference": str(decision.get("decision_id", "")),
+            "rationale": reason,
+            "recorded_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        }
+    )
+    return result
+
+
+def record_supersession(
+    decision: Mapping[str, object], *, successor_id: str, reason: str
+) -> dict[str, Any]:
+    """Create a supersession record while retaining the predecessor reference."""
+
+    if not successor_id or not reason:
+        raise GovernanceError("successor id and reason are required")
+    result = dict(decision)
+    result.update(
+        {
+            "decision_id": successor_id,
+            "outcome": "superseded",
+            "successor_id": successor_id,
+            "rationale": reason,
+            "recorded_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        }
+    )
+    return result

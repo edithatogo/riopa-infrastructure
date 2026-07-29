@@ -2,7 +2,13 @@ from __future__ import annotations
 
 import pytest
 
-from riopa_provenance.governance import GovernanceError, evaluate_decision, require_allowed
+from riopa_provenance.governance import (
+    GovernanceError,
+    evaluate_decision,
+    record_supersession,
+    record_withdrawal,
+    require_allowed,
+)
 
 
 def decision(**overrides: object) -> dict[str, object]:
@@ -53,3 +59,19 @@ def test_controlled_path_accepts_controlled_classification() -> None:
 def test_missing_decision_raises() -> None:
     with pytest.raises(GovernanceError, match="missing"):
         require_allowed(None, pathway="public")
+
+
+def test_withdrawal_preserves_predecessor_reference() -> None:
+    withdrawn = record_withdrawal(
+        decision(), withdrawal_id="urn:riopa:governance-decision:withdrawn", reason="harm review", scope=["public"]
+    )
+    assert withdrawn["outcome"] == "withdraw"
+    assert withdrawn["withdrawal_reference"] == decision()["decision_id"]
+
+
+def test_supersession_is_append_only() -> None:
+    superseded = record_supersession(
+        decision(), successor_id="urn:riopa:governance-decision:successor", reason="corrected review"
+    )
+    assert superseded["outcome"] == "superseded"
+    assert superseded["successor_id"] == "urn:riopa:governance-decision:successor"
