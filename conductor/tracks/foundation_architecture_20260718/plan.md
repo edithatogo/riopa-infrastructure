@@ -14,9 +14,9 @@
 
 ## 3. Architecture conformance
 
-- [ ] 3.1 Implement machine validation for tracks, dependencies, maturity and release gates.
-- [ ] 3.2 Generate the GitHub issue graph from Conductor artifacts and reject drift.
-- [ ] 3.3 Add architecture fitness checks for source-of-truth and version-boundary violations.
+- [x] 3.1 Implement machine validation for tracks, dependencies, maturity and release gates. (src/riopa_provenance/roadmap.py)
+- [x] 3.2 Generate the GitHub issue graph from Conductor artifacts and reject drift. (scripts/create_issues.py; project/issues.yaml)
+- [x] 3.3 Add architecture fitness checks for source-of-truth and version-boundary violations. (src/riopa_provenance/roadmap.py; tests/test_roadmap_hardening.py)
 
 ## 4. Ratification and handover
 
