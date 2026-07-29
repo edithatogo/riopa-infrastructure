@@ -66,6 +66,18 @@ def evaluate_decision(
         or "conflict_of_interest" not in review
     ):
         reasons.append("review identity, date and expiry are required")
+    elif review.get("conflict_of_interest") is True and not review.get("conflict_resolution"):
+        reasons.append("conflict of interest requires documented resolution")
+    else:
+        try:
+            reviewed_at = datetime.fromisoformat(str(review["reviewed_at"]).replace("Z", "+00:00"))
+            if reviewed_at > datetime.now(UTC):
+                reasons.append("review date is in the future")
+            expires_at = review.get("expires_at")
+            if expires_at is not None and datetime.fromisoformat(str(expires_at).replace("Z", "+00:00")) <= datetime.now(UTC):
+                reasons.append("review has expired")
+        except (TypeError, ValueError):
+            reasons.append("review dates must be ISO-8601 timestamps")
     if not isinstance(evidence, Sequence) or isinstance(evidence, (str, bytes)) or not evidence:
         reasons.append("review evidence is required")
     if reasons:

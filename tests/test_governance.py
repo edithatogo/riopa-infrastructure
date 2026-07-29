@@ -62,6 +62,22 @@ def test_missing_decision_raises() -> None:
         require_allowed(None, pathway="public")
 
 
+def test_expired_review_fails_closed() -> None:
+    result = evaluate_decision(
+        decision(
+            review={
+                "role": "governance analyst",
+                "reviewed_at": "2025-01-01T00:00:00Z",
+                "expires_at": "2025-02-01T00:00:00Z",
+                "conflict_of_interest": False,
+            }
+        ),
+        pathway="public",
+    )
+    assert not result.allowed
+    assert any("expired" in reason for reason in result.reasons)
+
+
 def test_withdrawal_preserves_predecessor_reference() -> None:
     withdrawn = record_withdrawal(
         decision(), withdrawal_id="urn:riopa:governance-decision:withdrawn", reason="harm review", scope=["public"]
