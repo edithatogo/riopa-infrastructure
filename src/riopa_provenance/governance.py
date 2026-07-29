@@ -63,6 +63,7 @@ def evaluate_decision(
         or not review.get("role")
         or not review.get("reviewed_at")
         or "expires_at" not in review
+        or "conflict_of_interest" not in review
     ):
         reasons.append("review identity, date and expiry are required")
     if not isinstance(evidence, Sequence) or isinstance(evidence, (str, bytes)) or not evidence:

@@ -25,6 +25,7 @@ def decision(**overrides: object) -> dict[str, object]:
             "expires_at": "2026-12-31T00:00:00Z",
         },
         "evidence": ["urn:riopa:evidence:test"],
+        "rationale": "reviewed source terms and governance triggers",
     }
     value.update(overrides)
     return value

@@ -4,7 +4,7 @@
   "title": "RIOPA Governance Decision v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["decision_id", "subject_id", "subject_kind", "classification", "outcome", "scope", "review", "evidence"],
+  "required": ["decision_id", "subject_id", "subject_kind", "classification", "outcome", "scope", "review", "evidence", "rationale"],
   "properties": {
     "decision_id": {"type": "string", "pattern": "^urn:riopa:governance-decision:[A-Za-z0-9._:-]+$"},
     "subject_id": {"type": "string", "minLength": 1},

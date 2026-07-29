@@ -2,15 +2,15 @@
 
 ## 1. Framework and classifications
 
-- [ ] 1.1 Define data classes, governance triggers and decision outcomes.
-- [ ] 1.2 Map licence, privacy, statutory, cultural and safety evidence into common records.
-- [ ] 1.3 Define review roles, expiry, escalation and conflict-of-interest rules.
+- [x] 1.1 Define data classes, governance triggers and decision outcomes. (docs/governance-decision-framework.md; 4594fec)
+- [x] 1.2 Map licence, privacy, statutory, cultural and safety evidence into common records. (schemas/governance-decision.schema.json; 4594fec)
+- [x] 1.3 Define review roles, expiry, escalation and conflict-of-interest rules. (schemas/governance-decision.schema.json; 4594fec)
 
 ## 2. Technical enforcement
 
-- [ ] 2.1 Implement fail-closed publication and controlled/public separation tests.
-- [ ] 2.2 Attach governance decisions to source, artifact, model and release manifests.
-- [ ] 2.3 Add correction, supersession, withdrawal and takedown workflows.
+- [x] 2.1 Implement fail-closed publication and controlled/public separation tests. (src/riopa_provenance/governance.py; tests/test_governance.py; 18767b8)
+- [x] 2.2 Attach governance decisions to source, artifact, model and release manifests. (schemas/governance-decision.schema.json; 4594fec)
+- [x] 2.3 Add correction, supersession, withdrawal and takedown workflows. (src/riopa_provenance/governance.py; tests/test_governance.py; 18767b8)
 
 ## 3. Engagement and applied review
 
