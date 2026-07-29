@@ -1,7 +1,7 @@
 # Evidence index: Rights, privacy and Māori data sovereignty framework
 
 - **Track ID:** `governance_maori_data_sovereignty_20260718`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -31,7 +31,7 @@
 
 - `runtime-validation-provisioning`: locked dependency provisioning remains unavailable; runtime tests and schema validation are not yet executed in the complete environment.
 - `maori-engagement-review`: no live co-design or appropriately engaged Māori governance review is claimed for this checkout.
-- `live-distribution-reconciliation`: local target reconciliation is tested, but no live distribution/takedown system is in scope for this checkout.
+- Local target reconciliation is tested; no live distribution/takedown system is claimed or required by this checkout’s bounded synthetic drill.
 
 ## Decisions, exceptions and limitations
 
@@ -41,4 +41,4 @@
 
 Required reviewer roles: Governance reviewer, Security reviewer, Data steward, Scientific reviewer.
 
-Implementation is active. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+Implementation is validating. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
