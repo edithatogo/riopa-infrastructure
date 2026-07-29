@@ -145,6 +145,11 @@
     "rights_inventory": {
       "type": "string"
     },
+    "governance_decision_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
     "methods_facts": {
       "type": [
         "string",

@@ -71,6 +71,11 @@
         "null"
       ]
     },
+    "governance_decision_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
     "preservation_ref": {
       "type": [
         "string",

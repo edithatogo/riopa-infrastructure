@@ -180,6 +180,11 @@
         "type": "string"
       }
     },
+    "governance_decision_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
     "determinism": {
       "type": "object",
       "additionalProperties": false,
