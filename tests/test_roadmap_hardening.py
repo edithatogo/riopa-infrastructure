@@ -70,6 +70,11 @@ def test_architecture_fitness_requires_boundary_contract(tmp_path: Path) -> None
     assert "architecture-artifact" in codes(root)
 
 
+def test_plan_phases_retain_completed_tasks() -> None:
+    phases = _plan_phases("## 1. Done\n- [x] Completed\n## 2. Active\n- [~] In progress\n")
+    assert [phase["tasks"] for phase in phases] == [["Completed"], ["In progress"]]
+
+
 def iso(delta: timedelta = timedelta()) -> str:
     return (datetime.now(UTC) + delta).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 

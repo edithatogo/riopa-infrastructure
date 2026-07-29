@@ -43,7 +43,7 @@ SEMVER_RE = re.compile(
     r"(?:-(?P<pre>[0-9A-Za-z.-]+))?$"
 )
 PHASE_RE = re.compile(r"^##\s+(?P<number>\d+)\.\s+(?P<title>.+?)\s*$", re.MULTILINE)
-TASK_RE = re.compile(r"^- \[ \]\s+(?P<task>.+?)\s*$", re.MULTILINE)
+TASK_RE = re.compile(r"^- \[[ x~]\]\s+(?P<task>.+?)\s*$", re.MULTILINE)
 CHECKBOX_RE = re.compile(r"^- \[ \]\s+(.+?)\s*$", re.MULTILINE)
 HEADER_RE = {
     "track_id": re.compile(r"^Track ID:\s*`(?P<value>[^`]+)`", re.MULTILINE),
