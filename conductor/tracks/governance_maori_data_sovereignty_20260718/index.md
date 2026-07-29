@@ -19,14 +19,18 @@
 | R01, R02, R04, R05 | Versioned governance decision framework and schema | `docs/governance-decision-framework.md`, `schemas/governance-decision.schema.json` | Implemented; runtime suite pending environment provisioning |
 | R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
 | R01, R03 | Withdrawal and supersession record helpers | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; operational exercise pending |
+| R04, R05 | Māori governance and engagement pathway | `docs/governance-engagement-pathway.md` | Implemented; live co-design/review not claimed |
+| R05 | Applied benefit/harm/equity review instrument | `docs/applied-governance-review-template.md` | Template only; pilot decisions pending |
 
 ## Blocking defects
 
-- None recorded.
+- `runtime-validation-provisioning`: locked dependency provisioning remains unavailable; runtime tests and schema validation are not yet executed in the complete environment.
+- `maori-engagement-review`: no live co-design or appropriately engaged Māori governance review is claimed for this checkout.
+- `withdrawal-drill-evidence`: correction/withdrawal helpers have unit-level contracts, but an end-to-end distribution reconciliation exercise is still required.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Public visibility is not permission to redistribute or infer; all unresolved decisions remain `review-required`.
 
 ## Review and handover
 
