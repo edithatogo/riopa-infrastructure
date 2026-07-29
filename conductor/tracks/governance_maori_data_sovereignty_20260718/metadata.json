@@ -17,7 +17,8 @@
     ,"urn:riopa:evidence:governance-engagement-pathway:ee966dc"
     ,"urn:riopa:evidence:governance-review-template:ee966dc",
     "urn:riopa:evidence:governance-withdrawal-drill:2026-07-29"
-    ,"urn:riopa:evidence:governance-release-pilot-audit:2026-07-29"
+    ,"urn:riopa:evidence:governance-release-pilot-audit:2026-07-29",
+    "urn:riopa:evidence:governance-review-fix:f914a38"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

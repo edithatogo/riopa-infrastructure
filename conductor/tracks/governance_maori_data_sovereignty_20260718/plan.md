@@ -24,6 +24,10 @@
 - [x] 4.2 Audit all v1 reference releases and pilots against the framework. (reports/governance-release-pilot-audit.md; 2026-07-29)
 - [x] 4.3 Approve, exclude or bound each release with evidence and review expiry. (reports/governance-release-pilot-audit.md; 2026-07-29)
 
+## 5. Review fixes
+
+- [x] 5.1 Validate review expiry and conflict-of-interest handling fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py; f914a38)
+
 ## Track closeout
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
