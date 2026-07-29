@@ -21,8 +21,8 @@
 ## 4. Stable governance gate
 
 - [x] 4.1 Exercise publication blocking and withdrawal scenarios. (reports/governance-withdrawal-drill.md; standalone drill passed 2026-07-29)
-- [ ] 4.2 Audit all v1 reference releases and pilots against the framework.
-- [ ] 4.3 Approve, exclude or bound each release with evidence and review expiry.
+- [x] 4.2 Audit all v1 reference releases and pilots against the framework. (reports/governance-release-pilot-audit.md; 2026-07-29)
+- [x] 4.3 Approve, exclude or bound each release with evidence and review expiry. (reports/governance-release-pilot-audit.md; 2026-07-29)
 
 ## Track closeout
 

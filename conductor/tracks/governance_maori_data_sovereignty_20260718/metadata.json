@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-29T06:00:00Z",
+  "updated_at": "2026-07-29T06:30:00Z",
   "description": "Embed lawful reuse, social licence, benefit, M\u0101ori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.",
   "depends_on": [
     "foundation_architecture_20260718"
@@ -17,6 +17,7 @@
     ,"urn:riopa:evidence:governance-engagement-pathway:ee966dc"
     ,"urn:riopa:evidence:governance-review-template:ee966dc",
     "urn:riopa:evidence:governance-withdrawal-drill:2026-07-29"
+    ,"urn:riopa:evidence:governance-release-pilot-audit:2026-07-29"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

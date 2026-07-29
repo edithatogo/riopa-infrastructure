@@ -22,6 +22,7 @@
 | R04, R05 | Māori governance and engagement pathway | `docs/governance-engagement-pathway.md` | Implemented; live co-design/review not claimed |
 | R05 | Applied benefit/harm/equity review instrument | `docs/applied-governance-review-template.md` | Template only; pilot decisions pending |
 | R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
+| R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
 
 ## Blocking defects
 
