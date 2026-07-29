@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-29T02:45:00Z",
+  "updated_at": "2026-07-29T03:05:00Z",
   "description": "Ratify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.",
   "depends_on": [],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/14",
@@ -31,9 +31,9 @@
   "current_maturity": "M1",
   "owner_role": "Programme owner",
   "review_roles": [
-    "Governance reviewer",
-    "API/schema reviewer",
-    "External user reviewer"
+    "Governance analyst",
+    "API/schema analyst",
+    "External-user analyst"
   ],
   "blocking_defects": [
     "review-runtime-provisioning",

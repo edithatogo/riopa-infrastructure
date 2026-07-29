@@ -1,13 +1,15 @@
 # Foundation architecture review record
 
-Complete one record per reviewer and link the signed or attributed result from
-the foundation track evidence index. Automated validation is not a substitute
-for this review.
+Complete one record per analyst and link the attributed result from the
+foundation track evidence index. Analysts may be maintainers, external
+reviewers or agents. Two records are required, with distinct identities and a
+distinct scope or method; automated validation is not a substitute for this
+review.
 
-## Reviewer
+## Analyst
 
-- Name / handle:
-- Role: governance reviewer, API/schema reviewer, or external user reviewer
+- Name / handle / agent identity:
+- Role or analysis method: governance, API/schema, external-user, security, or independent agent review
 - Organisation / repository:
 - Date (UTC):
 - Scope and commit reviewed:
@@ -26,4 +28,4 @@ for this review.
 - [ ] The issue/Conductor/evidence sources of truth are reproducible.
 - [ ] Any unresolved item has an owner, expiry (if applicable) and issue.
 
-Reviewer decision: **pending**
+Analyst decision: **pending**

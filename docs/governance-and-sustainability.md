@@ -30,8 +30,9 @@ control, expiry and remediation issue in machine-readable release evidence.
 
 Contributors work through issues and focused changes with tests and evidence.
 Maintainers document ownership transfer before leaving a role, preserve access
-and recovery procedures, and keep at least two people familiar with every
-release-critical contract. The project publishes supported environments,
+and recovery procedures, and keep at least two analysts familiar with every
+release-critical contract; agents may contribute one of those analyses while
+human ownership remains explicit. The project publishes supported environments,
 security reporting, response boundaries and deprecation notices for stable 1.x.
 
 ## Review cadence
