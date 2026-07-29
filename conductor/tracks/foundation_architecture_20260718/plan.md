@@ -20,7 +20,7 @@
 
 ## 4. Ratification and handover
 
-- [ ] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents).
+- [x] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)
 - [ ] 4.2 Resolve or explicitly accept findings with time-limited exceptions.
 - [ ] 4.3 Publish the accepted architecture and v1 programme baseline.
 

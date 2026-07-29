@@ -20,16 +20,21 @@
 | R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Implemented; ratification review pending |
 | R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Implemented; named approvals pending |
 | R01, R02, R03 | Executable roadmap, issue-graph and architecture-fitness validation | `src/riopa_provenance/roadmap.py`, `tests/test_roadmap_hardening.py`, `project/issues.yaml` | Implemented; full runtime validation pending environment provisioning |
+| R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite pending environment provisioning |
 | R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings remain open |
 
 ## Blocking defects
 
 - `review-runtime-provisioning`: full Python/pytest and roadmap validation cannot currently run because the locked dependency mirror is timing out (`webcolors==25.10.0`); retry when the mirror recovers.
-- `review-approval-required`: two independent analyst architecture reviews are now recorded; findings F-AC-01..04 and F-AG-02..04 remain open.
+- `review-approval-required`: two independent analyst architecture reviews are recorded; the gate itself is resolved, with remaining findings tracked below.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- ADR-0006, ADR-0009 and ADR-0011 are explicitly deferred with owners, revisit
+  dates and follow-up tracks in `docs/adr/README.md`; they are not treated as
+  approvals.
+- The normative contract ownership and migration matrix is recorded in
+  `docs/contract-ownership-matrix.md`.
 
 ## Review and handover
 
