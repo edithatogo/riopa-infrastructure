@@ -68,6 +68,7 @@ def test_withdrawal_preserves_predecessor_reference() -> None:
     )
     assert withdrawn["outcome"] == "withdraw"
     assert withdrawn["withdrawal_reference"] == decision()["decision_id"]
+    assert not evaluate_decision(withdrawn, pathway="public").allowed
 
 
 def test_supersession_is_append_only() -> None:
