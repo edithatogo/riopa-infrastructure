@@ -26,7 +26,7 @@
 
 ## 5. Review fixes
 
-- [x] 5.1 Validate review expiry, conflict-of-interest handling and predecessor preservation fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py)
+- [x] 5.1 Validate review expiry, conflict-of-interest handling and predecessor preservation fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py; c3579bd)
 
 ## Track closeout
 
