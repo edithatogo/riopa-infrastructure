@@ -18,6 +18,7 @@
 |---|---|---|---|
 | R01–R03 | ADR reconciliation register | `docs/adr/README.md` | Implemented; ratification review pending |
 | R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Implemented; ratification review pending |
+| R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Implemented; named approvals pending |
 
 ## Blocking defects
 

@@ -8,9 +8,9 @@
 
 ## 2. Programme governance
 
-- [ ] 2.1 Define maintainers, approvers, reviewers, release authority and exception expiry.
-- [ ] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth.
-- [ ] 2.3 Establish sustainability, succession and contribution expectations.
+- [x] 2.1 Define maintainers, approvers, reviewers, release authority and exception expiry. (docs/governance-and-sustainability.md)
+- [x] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth. (docs/governance-and-sustainability.md)
+- [x] 2.3 Establish sustainability, succession and contribution expectations. (docs/governance-and-sustainability.md)
 
 ## 3. Architecture conformance
 
