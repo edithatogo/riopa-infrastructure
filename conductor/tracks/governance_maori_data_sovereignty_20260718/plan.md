@@ -8,9 +8,9 @@
 
 ## 2. Technical enforcement
 
-- [x] 2.1 Implement fail-closed publication and controlled/public separation tests. (src/riopa_provenance/governance.py; tests/test_governance.py; 18767b8)
+- [x] 2.1 Implement fail-closed publication and controlled/public separation tests. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)
 - [x] 2.2 Attach governance decisions to source, artifact, model and release manifests. (schemas/governance-decision.schema.json; 4594fec)
-- [x] 2.3 Add correction, supersession, withdrawal and takedown workflows. (src/riopa_provenance/governance.py; tests/test_governance.py; 18767b8)
+- [x] 2.3 Add correction, supersession, withdrawal and takedown workflows. (src/riopa_provenance/governance.py; tests/test_governance.py; 6d68b44)
 
 ## 3. Engagement and applied review
 
