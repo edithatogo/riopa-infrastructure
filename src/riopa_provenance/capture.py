@@ -14,7 +14,7 @@ import json
 import os
 import tempfile
 import uuid
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -141,6 +141,23 @@ def _validate_public_host(host: str) -> None:
         return
     if not address.is_global:
         raise CaptureError(f"non-public IP address is not allowed: {host}")
+
+
+def validate_resolved_addresses(host: str, addresses: Iterable[str]) -> tuple[str, ...]:
+    """Validate connection-time DNS results and return normalized addresses."""
+
+    normalized: list[str] = []
+    for value in addresses:
+        try:
+            address = ipaddress.ip_address(value)
+        except ValueError as exc:
+            raise CaptureError(f"resolver returned invalid address for {host}: {value}") from exc
+        if not address.is_global:
+            raise CaptureError(f"resolver returned non-public address for {host}: {value}")
+        normalized.append(str(address))
+    if not normalized:
+        raise CaptureError(f"resolver returned no addresses for {host}")
+    return tuple(dict.fromkeys(normalized))
 
 
 def validate_capture_url(url: httpx.URL, policy: CapturePolicy) -> None:

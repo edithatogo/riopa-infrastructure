@@ -14,6 +14,7 @@ from riopa_provenance.capture import (
     HttpCaptureClient,
     redact_text,
     redact_url,
+    validate_resolved_addresses,
     validate_capture_url,
 )
 from riopa_provenance.retry import RetryPolicy
@@ -43,6 +44,16 @@ def test_capture_policy_and_url_controls() -> None:
             httpx.URL("https://127.0.0.1/layer"),
             CapturePolicy(allowed_hosts=frozenset({"127.0.0.1"})),
         )
+
+
+def test_connection_time_resolution_rejects_private_or_invalid_addresses() -> None:
+    assert validate_resolved_addresses("data.example.govt.nz", ["8.8.8.8"]) == ("8.8.8.8",)
+    with pytest.raises(CaptureError, match="non-public"):
+        validate_resolved_addresses("data.example.govt.nz", ["10.0.0.1"])
+    with pytest.raises(CaptureError, match="invalid"):
+        validate_resolved_addresses("data.example.govt.nz", ["not-an-ip"])
+    with pytest.raises(CaptureError, match="no addresses"):
+        validate_resolved_addresses("data.example.govt.nz", [])
 
 
 def test_redaction_helpers() -> None:
