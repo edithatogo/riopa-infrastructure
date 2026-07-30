@@ -17,6 +17,7 @@ def test_source_health_classifies_fresh_change_and_degradation() -> None:
     )
     assert result.freshness == "fresh"
     assert result.changed and result.degraded and not result.disappeared
+    assert result.to_record()["record_type"] == "source_health_observation"
 
 
 def test_source_health_handles_unknown_stale_and_disappeared() -> None:

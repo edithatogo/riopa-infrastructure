@@ -16,6 +16,19 @@ class SourceHealthObservation:
     disappeared: bool
     age_seconds: float | None
 
+    def to_record(self) -> dict[str, object]:
+        """Return a versioned, JSON-compatible evidence record."""
+
+        return {
+            "schema_version": "1.0.0",
+            "record_type": "source_health_observation",
+            "freshness": self.freshness,
+            "changed": self.changed,
+            "degraded": self.degraded,
+            "disappeared": self.disappeared,
+            "age_seconds": self.age_seconds,
+        }
+
 
 def observe_source_health(
     *,
