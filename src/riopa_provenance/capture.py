@@ -67,6 +67,7 @@ class CaptureResult:
     metadata_path: Path
     request_fingerprint: str
     response_location: str | None = None
+    retry_after: str | None = None
 
     @property
     def succeeded(self) -> bool:
@@ -351,6 +352,7 @@ class HttpCaptureClient:
             metadata_path=metadata_path,
             request_fingerprint=request_fingerprint,
             response_location=response_headers.get("location"),
+            retry_after=response_headers.get("retry-after"),
         )
         if require_success and not result.succeeded:
             raise CaptureError(
@@ -393,7 +395,7 @@ class HttpCaptureClient:
                 method=method,
                 attempt=attempt,
                 status_code=result.status_code,
-                retry_after=None,
+                retry_after=result.retry_after,
                 policy=retry_policy,
             )
             if not decision.retry:

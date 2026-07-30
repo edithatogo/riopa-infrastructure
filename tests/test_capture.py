@@ -174,7 +174,9 @@ def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> 
     responses = iter([503, 200])
 
     def handler(request: httpx.Request) -> httpx.Response:
-        return httpx.Response(next(responses), content=b"ok", request=request)
+        status = next(responses)
+        headers = {"Retry-After": "3"} if status == 503 else {}
+        return httpx.Response(status, headers=headers, content=b"ok", request=request)
 
     store = CaptureStore(tmp_path, id_factory=iter(["first", "second"]).__next__)
     client = HttpCaptureClient(
@@ -192,6 +194,6 @@ def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> 
         sleep=delays.append,
     )
     assert result.status_code == 200
-    assert delays == [0.25]
+    assert delays == [3.0]
     assert (tmp_path / "captures" / "first.json").is_file()
     assert (tmp_path / "captures" / "second.json").is_file()
