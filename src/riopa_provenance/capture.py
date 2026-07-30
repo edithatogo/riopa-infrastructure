@@ -24,6 +24,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import httpx
 
 from .hashing import sha256_bytes, sha256_json
+from .retry import RetryPolicy, decide_retry
 
 
 class CaptureError(RuntimeError):
@@ -366,3 +367,41 @@ class HttpCaptureClient:
                 f"captured response is not valid UTF-8 JSON: {result.capture_id}: {exc}"
             ) from exc
         return result, value
+
+    def capture_with_retry(
+        self,
+        method: str,
+        url: str,
+        *,
+        retry_policy: RetryPolicy = RetryPolicy(),
+        sleep: Callable[[float], None] | None = None,
+        **kwargs: Any,
+    ) -> CaptureResult:
+        """Capture with bounded status retries while preserving every attempt.
+
+        Each attempt delegates to :meth:`capture` with ``require_success=False``;
+        consequently a retryable response is already content-addressed and has
+        immutable metadata before the next attempt begins.  Sleeping is injected
+        so callers can use a scheduler and tests can assert delays without I/O.
+        """
+
+        wait = sleep or (lambda _seconds: None)
+        kwargs.pop("require_success", None)
+        for attempt in range(1, retry_policy.max_attempts + 1):
+            result = self.capture(method, url, require_success=False, **kwargs)
+            decision = decide_retry(
+                method=method,
+                attempt=attempt,
+                status_code=result.status_code,
+                retry_after=None,
+                policy=retry_policy,
+            )
+            if not decision.retry:
+                if not result.succeeded:
+                    raise CaptureError(
+                        f"captured HTTP {result.status_code} after {attempt} attempt(s): "
+                        f"{result.metadata_path}"
+                    )
+                return result
+            wait(decision.delay_seconds)
+        raise AssertionError("retry loop must return on its final attempt")

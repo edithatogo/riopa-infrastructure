@@ -16,6 +16,7 @@ from riopa_provenance.capture import (
     redact_url,
     validate_capture_url,
 )
+from riopa_provenance.retry import RetryPolicy
 
 
 def policy(**overrides: object) -> CapturePolicy:
@@ -167,3 +168,30 @@ def test_non_success_is_archived_before_error(tmp_path: Path) -> None:
             endpoint_id="urn:test:endpoint",
         )
     assert (tmp_path / "captures" / "failure.json").is_file()
+
+
+def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> None:
+    responses = iter([503, 200])
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(next(responses), content=b"ok", request=request)
+
+    store = CaptureStore(tmp_path, id_factory=iter(["first", "second"]).__next__)
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=store,
+        policy=policy(),
+    )
+    delays: list[float] = []
+    result = client.capture_with_retry(
+        "GET",
+        "https://data.example.govt.nz/retry",
+        source_id="urn:test:source",
+        endpoint_id="urn:test:endpoint",
+        retry_policy=RetryPolicy(max_attempts=2, base_delay_seconds=0.25),
+        sleep=delays.append,
+    )
+    assert result.status_code == 200
+    assert delays == [0.25]
+    assert (tmp_path / "captures" / "first.json").is_file()
+    assert (tmp_path / "captures" / "second.json").is_file()
