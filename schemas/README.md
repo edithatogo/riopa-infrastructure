@@ -18,6 +18,7 @@ identifiers; repository paths are implementation locations.
 | `governance-decision` | versioned rights, privacy, sovereignty, safety and withdrawal decisions |
 | `methods-facts` | structured facts used to generate publication methods and limitations |
 | `spatial-feature-link` | evidence-based link between a spatial feature and plan provisions |
+| `source-health-observation` | versioned freshness, change, degradation and disappearance observation |
 
 ## Programme, maturity and release contracts
 
