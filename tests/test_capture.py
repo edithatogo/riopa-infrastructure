@@ -197,3 +197,27 @@ def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> 
     assert delays == [3.0]
     assert (tmp_path / "captures" / "first.json").is_file()
     assert (tmp_path / "captures" / "second.json").is_file()
+
+
+def test_capture_with_retry_bounds_transport_failures(tmp_path: Path) -> None:
+    attempts = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        raise httpx.ConnectError("temporary DNS failure", request=request)
+
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=CaptureStore(tmp_path),
+        policy=policy(),
+    )
+    with pytest.raises(CaptureError, match="transport failure"):
+        client.capture_with_retry(
+            "GET",
+            "https://data.example.govt.nz/failure",
+            source_id="urn:test:source",
+            endpoint_id="urn:test:endpoint",
+            retry_policy=RetryPolicy(max_attempts=2, base_delay_seconds=0),
+        )
+    assert attempts == 2

@@ -390,7 +390,21 @@ class HttpCaptureClient:
         wait = sleep or (lambda _seconds: None)
         kwargs.pop("require_success", None)
         for attempt in range(1, retry_policy.max_attempts + 1):
-            result = self.capture(method, url, require_success=False, **kwargs)
+            try:
+                result = self.capture(method, url, require_success=False, **kwargs)
+            except httpx.TransportError as exc:
+                decision = decide_retry(
+                    method=method,
+                    attempt=attempt,
+                    status_code=None,
+                    policy=retry_policy,
+                )
+                if decision.retry:
+                    wait(decision.delay_seconds)
+                    continue
+                raise CaptureError(
+                    f"transport failure after {attempt} attempt(s): {exc}"
+                ) from exc
             decision = decide_retry(
                 method=method,
                 attempt=attempt,
