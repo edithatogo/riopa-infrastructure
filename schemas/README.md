@@ -19,6 +19,7 @@ identifiers; repository paths are implementation locations.
 | `methods-facts` | structured facts used to generate publication methods and limitations |
 | `spatial-feature-link` | evidence-based link between a spatial feature and plan provisions |
 | `source-health-observation` | versioned freshness, change, degradation and disappearance observation |
+| `publication-plan` | fail-closed, rights-aware target and asset publication plan |
 
 ## Programme, maturity and release contracts
 
