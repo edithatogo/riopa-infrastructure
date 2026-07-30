@@ -26,6 +26,7 @@ environment cannot be provisioned), so no coverage percentage is asserted.
 | `methods` | `tests/test_methods.py` | 6 | focused tests present |
 | `publication` | `tests/test_publication.py` | 8 | focused tests present |
 | `registry` | `tests/test_registry.py` | 8 | focused tests present |
+| `retry` | `tests/test_retry.py` | 4 | focused policy tests added in WP-002 |
 | `roadmap` | `tests/test_roadmap.py`, `tests/test_roadmap_hardening.py` | 27 | focused tests present |
 | `spatial` | `tests/test_spatial.py` | 15 | focused tests present |
 | `validation` | `tests/test_validation_failures.py`, `tests/test_validation_integrity.py` | 21 | split focused tests present |
