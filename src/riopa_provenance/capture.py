@@ -24,7 +24,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import httpx
 
 from .hashing import sha256_bytes, sha256_json
-from .retry import RetryDecision, RetryPolicy, decide_retry
+from .retry import CircuitBreaker, RetryDecision, RetryPolicy, decide_retry
 
 
 class CaptureError(RuntimeError):
@@ -396,8 +396,10 @@ class HttpCaptureClient:
         url: str,
         *,
         retry_policy: RetryPolicy = RetryPolicy(),
+        circuit_breaker: CircuitBreaker | None = None,
         sleep: Callable[[float], None] | None = None,
         on_decision: Callable[[RetryDecision], None] | None = None,
+        now: Callable[[], datetime] | None = None,
         **kwargs: Any,
     ) -> CaptureResult:
         """Capture with bounded status retries while preserving every attempt.
@@ -409,8 +411,11 @@ class HttpCaptureClient:
         """
 
         wait = sleep or (lambda _seconds: None)
+        clock = now or (lambda: datetime.now(UTC))
         kwargs.pop("require_success", None)
         for attempt in range(1, retry_policy.max_attempts + 1):
+            if circuit_breaker is not None and not circuit_breaker.allow(now=clock()):
+                raise CaptureError("circuit breaker is open")
             try:
                 result = self.capture(method, url, require_success=False, **kwargs)
             except httpx.TransportError as exc:
@@ -423,6 +428,8 @@ class HttpCaptureClient:
                 if on_decision is not None:
                     on_decision(decision)
                 if decision.retry:
+                    if circuit_breaker is not None:
+                        circuit_breaker.record_failure(now=clock())
                     wait(decision.delay_seconds)
                     continue
                 raise CaptureError(
@@ -439,10 +446,16 @@ class HttpCaptureClient:
                 on_decision(decision)
             if not decision.retry:
                 if not result.succeeded:
+                    if circuit_breaker is not None:
+                        circuit_breaker.record_failure(now=clock())
                     raise CaptureError(
                         f"captured HTTP {result.status_code} after {attempt} attempt(s): "
                         f"{result.metadata_path}"
                     )
+                if circuit_breaker is not None:
+                    circuit_breaker.record_success()
                 return result
+            if circuit_breaker is not None:
+                circuit_breaker.record_failure(now=clock())
             wait(decision.delay_seconds)
         raise AssertionError("retry loop must return on its final attempt")

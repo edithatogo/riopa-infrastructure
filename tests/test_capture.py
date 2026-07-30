@@ -17,7 +17,7 @@ from riopa_provenance.capture import (
     validate_resolved_addresses,
     validate_capture_url,
 )
-from riopa_provenance.retry import RetryPolicy
+from riopa_provenance.retry import CircuitBreaker, RetryPolicy
 
 
 def policy(**overrides: object) -> CapturePolicy:
@@ -244,3 +244,23 @@ def test_capture_with_retry_bounds_transport_failures(tmp_path: Path) -> None:
             retry_policy=RetryPolicy(max_attempts=2, base_delay_seconds=0),
         )
     assert attempts == 2
+
+
+def test_capture_with_retry_uses_circuit_breaker(tmp_path: Path) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=b"ok", request=request)
+
+    breaker = CircuitBreaker(failure_threshold=1)
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=CaptureStore(tmp_path, id_factory=lambda: "ok"),
+        policy=policy(),
+    )
+    result = client.capture_with_retry(
+        "GET",
+        "https://data.example.govt.nz/ok",
+        source_id="urn:test:source",
+        endpoint_id="urn:test:endpoint",
+        circuit_breaker=breaker,
+    )
+    assert result.succeeded and breaker.state == "closed"
