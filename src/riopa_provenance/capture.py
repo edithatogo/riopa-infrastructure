@@ -45,6 +45,7 @@ class CapturePolicy:
     secret_header_names: frozenset[str] = frozenset(
         {"authorization", "proxy-authorization", "cookie", "set-cookie", "x-api-key"}
     )
+    resolve_addresses: Callable[[str], Iterable[str]] | None = None
 
     def __post_init__(self) -> None:
         if not self.allowed_hosts:
@@ -175,6 +176,8 @@ def validate_capture_url(url: httpx.URL, policy: CapturePolicy) -> None:
     if host not in allowed:
         raise CaptureError(f"host is not allowlisted: {host}")
     _validate_public_host(host)
+    if policy.resolve_addresses is not None:
+        validate_resolved_addresses(host, policy.resolve_addresses(host))
 
 
 def _redacted_url(url: httpx.URL, secret_keys: frozenset[str]) -> str:

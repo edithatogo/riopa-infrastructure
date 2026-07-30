@@ -54,6 +54,15 @@ def test_connection_time_resolution_rejects_private_or_invalid_addresses() -> No
         validate_resolved_addresses("data.example.govt.nz", ["not-an-ip"])
     with pytest.raises(CaptureError, match="no addresses"):
         validate_resolved_addresses("data.example.govt.nz", [])
+    validate_capture_url(
+        httpx.URL("https://data.example.govt.nz/layer"),
+        policy(resolve_addresses=lambda host: ["8.8.8.8"]),
+    )
+    with pytest.raises(CaptureError, match="non-public"):
+        validate_capture_url(
+            httpx.URL("https://data.example.govt.nz/layer"),
+            policy(resolve_addresses=lambda host: ["192.168.1.10"]),
+        )
 
 
 def test_redaction_helpers() -> None:
