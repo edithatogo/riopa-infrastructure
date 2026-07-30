@@ -9,7 +9,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 from email.utils import parsedate_to_datetime
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 
 RETRYABLE_STATUS_CODES = frozenset({408, 425, 429, 500, 502, 503, 504})
@@ -43,6 +43,48 @@ class RetryDecision:
     retry: bool
     delay_seconds: float
     reason: str
+
+
+@dataclass
+class CircuitBreaker:
+    """Small deterministic circuit breaker for one source/endpoint pair."""
+
+    failure_threshold: int = 3
+    cooldown: timedelta = timedelta(seconds=30)
+    failures: int = 0
+    opened_at: datetime | None = None
+    probe_in_flight: bool = False
+
+    def __post_init__(self) -> None:
+        if self.failure_threshold < 1:
+            raise ValueError("failure_threshold must be positive")
+        if self.cooldown.total_seconds() < 0:
+            raise ValueError("cooldown must not be negative")
+
+    @property
+    def state(self) -> str:
+        return "open" if self.opened_at is not None else "closed"
+
+    def allow(self, *, now: datetime) -> bool:
+        if self.opened_at is None:
+            return True
+        if now.astimezone(UTC) - self.opened_at.astimezone(UTC) < self.cooldown:
+            return False
+        if self.probe_in_flight:
+            return False
+        self.probe_in_flight = True
+        return True  # one half-open probe is admitted
+
+    def record_failure(self, *, now: datetime) -> None:
+        self.failures += 1
+        if self.failures >= self.failure_threshold:
+            self.opened_at = now.astimezone(UTC)
+            self.probe_in_flight = False
+
+    def record_success(self) -> None:
+        self.failures = 0
+        self.opened_at = None
+        self.probe_in_flight = False
 
 
 def parse_retry_after(value: str | None, *, now: datetime) -> float | None:

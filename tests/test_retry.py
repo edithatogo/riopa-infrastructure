@@ -2,7 +2,7 @@ from datetime import UTC, datetime
 
 import pytest
 
-from riopa_provenance.retry import RetryPolicy, decide_retry, parse_retry_after
+from riopa_provenance.retry import CircuitBreaker, RetryPolicy, decide_retry, parse_retry_after
 
 
 def test_retry_is_bounded_and_idempotency_aware() -> None:
@@ -28,3 +28,18 @@ def test_retry_policy_rejects_unbounded_parameters() -> None:
         RetryPolicy(base_delay_seconds=float("inf"))
     with pytest.raises(ValueError, match="less"):
         RetryPolicy(base_delay_seconds=2, max_delay_seconds=1)
+
+
+def test_circuit_breaker_opens_and_allows_one_cooldown_probe() -> None:
+    now = datetime(2026, 7, 30, 0, 0, tzinfo=UTC)
+    breaker = CircuitBreaker(failure_threshold=2, cooldown=timedelta(seconds=10))
+    assert breaker.allow(now=now)
+    breaker.record_failure(now=now)
+    assert breaker.state == "closed"
+    breaker.record_failure(now=now)
+    assert breaker.state == "open"
+    assert not breaker.allow(now=now + timedelta(seconds=9))
+    assert breaker.allow(now=now + timedelta(seconds=10))
+    assert not breaker.allow(now=now + timedelta(seconds=11))
+    breaker.record_success()
+    assert breaker.state == "closed" and breaker.failures == 0
