@@ -81,3 +81,11 @@ def test_bundle_validator_reports_missing_examples_schemas_and_bad_schema(tmp_pa
     assert "missing example" in errors
     assert "missing schema" in errors
     assert any("not valid" in error or "is not of type" in error for error in errors)
+
+
+def test_source_health_domain_record_uses_normative_schema() -> None:
+    from riopa_provenance.validation import _domain_schema_name
+
+    assert _domain_schema_name({"record_type": "source_health_observation"}) == (
+        "source-health-observation.schema.json"
+    )

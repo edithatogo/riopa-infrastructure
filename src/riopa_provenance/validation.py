@@ -82,6 +82,7 @@ DOMAIN_SCHEMA_BY_RECORD_TYPE: Mapping[str, str] = {
     "linz_layer_state": "linz-layer-state.schema.json",
     "linz_changeset_application": "linz-changeset-application.schema.json",
     "governance_decision": "governance-decision.schema.json",
+    "source_health_observation": "source-health-observation.schema.json",
 }
 DOMAIN_SCHEMA_SIGNATURES: tuple[tuple[frozenset[str], str], ...] = (
     (
