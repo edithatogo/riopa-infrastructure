@@ -205,6 +205,7 @@ def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> 
         policy=policy(),
     )
     delays: list[float] = []
+    decisions = []
     result = client.capture_with_retry(
         "GET",
         "https://data.example.govt.nz/retry",
@@ -212,9 +213,11 @@ def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> 
         endpoint_id="urn:test:endpoint",
         retry_policy=RetryPolicy(max_attempts=2, base_delay_seconds=0.25),
         sleep=delays.append,
+        on_decision=decisions.append,
     )
     assert result.status_code == 200
     assert delays == [3.0]
+    assert [item.reason for item in decisions] == ["retryable-status", "status-not-retryable"]
     assert (tmp_path / "captures" / "first.json").is_file()
     assert (tmp_path / "captures" / "second.json").is_file()
 

@@ -24,7 +24,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import httpx
 
 from .hashing import sha256_bytes, sha256_json
-from .retry import RetryPolicy, decide_retry
+from .retry import RetryDecision, RetryPolicy, decide_retry
 
 
 class CaptureError(RuntimeError):
@@ -397,6 +397,7 @@ class HttpCaptureClient:
         *,
         retry_policy: RetryPolicy = RetryPolicy(),
         sleep: Callable[[float], None] | None = None,
+        on_decision: Callable[[RetryDecision], None] | None = None,
         **kwargs: Any,
     ) -> CaptureResult:
         """Capture with bounded status retries while preserving every attempt.
@@ -419,6 +420,8 @@ class HttpCaptureClient:
                     status_code=None,
                     policy=retry_policy,
                 )
+                if on_decision is not None:
+                    on_decision(decision)
                 if decision.retry:
                     wait(decision.delay_seconds)
                     continue
@@ -432,6 +435,8 @@ class HttpCaptureClient:
                 retry_after=result.retry_after,
                 policy=retry_policy,
             )
+            if on_decision is not None:
+                on_decision(decision)
             if not decision.retry:
                 if not result.succeeded:
                     raise CaptureError(
