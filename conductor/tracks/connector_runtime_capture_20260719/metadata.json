@@ -14,7 +14,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/29",
   "evidence": [
     "urn:riopa:evidence:connector-retry-capture:29f4337",
-    "urn:riopa:evidence:connector-dns-validation:b78cf76"
+    "urn:riopa:evidence:connector-dns-validation:b78cf76",
+    "urn:riopa:evidence:connector-source-health:2026-07-30"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
