@@ -16,15 +16,16 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-010-non-operational-pilot-envelope-20260731` | Reference pilot outputs explicitly reject clinical, legal, commercial and live-operational suitability | `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Non-operational envelope passes on synthetic inputs; no supermarket dataset, reproduction or empirical health finding is claimed |
 
 ## Blocking defects
 
-- None recorded.
+- Versioned supermarket inputs, baseline reproduction, access/health analysis,
+  planning alternatives, research objects and independent review remain open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Synthetic contract evidence is not a supermarket pilot result.
 
 ## Review and handover
 

@@ -16,15 +16,18 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-010-analysis-protocol-and-did-reference-20260731` | Estimand, assumptions, parameter provenance and diagnostic hooks are machine-readable and causal claims remain bounded | `schemas/analysis-protocol.schema.json`, `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Synthetic DID contrast and diagnostics pass; empirical design, spatial sensitivity, preregistration and independent methods review remain open |
 
 ## Blocking defects
 
-- None recorded.
+- Empirical/public-data design, spatial confounding and MAUP sensitivity,
+  missing-data workflow, preregistration and independent methods review remain
+  open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Diagnostics can reveal concerns but do not prove identification assumptions or
+  support a causal conclusion.
 
 ## Review and handover
 

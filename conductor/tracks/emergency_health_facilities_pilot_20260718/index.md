@@ -16,15 +16,17 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-010-non-operational-capacity-fixture-20260731` | Capacity simulation outputs carry an explicit non-operational suitability boundary | `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Synthetic FCFS fixture passes; no ambulance, hospital, clinical or dispatch suitability is claimed |
 
 ## Blocking defects
 
-- None recorded.
+- Ambulance and hospital scenarios, dispatch/handover/relocation behaviour,
+  calibrated stress tests and operational/safety review remain open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The generic queue fixture cannot be used as an emergency-service or clinical
+  decision system.
 
 ## Review and handover
 
