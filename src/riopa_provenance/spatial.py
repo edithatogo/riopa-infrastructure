@@ -49,6 +49,144 @@ class SpatialConversionError(ValueError):
     """Raised when source geometry cannot be represented safely."""
 
 
+def _feature_identity(feature: Mapping[str, Any], identity_property: str | None) -> str:
+    value = (
+        feature.get("properties", {}).get(identity_property)
+        if identity_property is not None
+        else feature.get("id")
+    )
+    if value is None:
+        raise SpatialConversionError(
+            "feature comparison requires an id or configured identity property"
+        )
+    return str(value)
+
+
+def _feature_map(
+    features: Iterable[Mapping[str, Any]], identity_property: str | None
+) -> dict[str, Mapping[str, Any]]:
+    result: dict[str, Mapping[str, Any]] = {}
+    for feature in features:
+        identity = _feature_identity(feature, identity_property)
+        if identity in result:
+            raise SpatialConversionError(f"duplicate feature identity in comparison: {identity}")
+        properties = feature.get("properties")
+        if not isinstance(properties, Mapping):
+            raise SpatialConversionError(f"feature {identity} has no properties object")
+        geometry = feature.get("geometry_object")
+        if geometry is not None and not isinstance(geometry, BaseGeometry):
+            raise SpatialConversionError(f"feature {identity} has an invalid geometry object")
+        result[identity] = feature
+    return result
+
+
+def _feature_snapshot_hash(features: Mapping[str, Mapping[str, Any]]) -> str:
+    return sha256_json(
+        [
+            {
+                "id": identity,
+                "properties": dict(feature["properties"]),
+                "geometry_wkb": (
+                    to_wkb(feature["geometry_object"], hex=True)
+                    if feature.get("geometry_object") is not None
+                    else None
+                ),
+            }
+            for identity, feature in sorted(features.items())
+        ]
+    )
+
+
+def compare_feature_snapshots(
+    previous: Iterable[Mapping[str, Any]],
+    current: Iterable[Mapping[str, Any]],
+    *,
+    identity_property: str | None = None,
+    geometry_tolerance: float = 0.0,
+) -> dict[str, Any]:
+    """Classify feature changes with separate exact and tolerance evidence.
+
+    The result does not infer whether a difference originated at the source or
+    in a transformation. Callers must attach the returned, content-bound
+    comparison to the relevant capture and transformation provenance.
+    """
+
+    if geometry_tolerance < 0:
+        raise SpatialConversionError("geometry_tolerance must be non-negative")
+    previous_by_id = _feature_map(previous, identity_property)
+    current_by_id = _feature_map(current, identity_property)
+    previous_ids = set(previous_by_id)
+    current_ids = set(current_by_id)
+    shared_ids = sorted(previous_ids & current_ids)
+
+    previous_schema = sorted(
+        {key for feature in previous_by_id.values() for key in feature["properties"]}
+    )
+    current_schema = sorted(
+        {key for feature in current_by_id.values() for key in feature["properties"]}
+    )
+    attribute_changed: list[str] = []
+    geometry_changed_exact: list[str] = []
+    geometry_changed_within_tolerance: list[str] = []
+    geometry_changed_beyond_tolerance: list[str] = []
+
+    for identity in shared_ids:
+        before = previous_by_id[identity]
+        after = current_by_id[identity]
+        if dict(before["properties"]) != dict(after["properties"]):
+            attribute_changed.append(identity)
+        before_geometry = before.get("geometry_object")
+        after_geometry = after.get("geometry_object")
+        exact_equal = (
+            before_geometry is None
+            and after_geometry is None
+            or (
+                before_geometry is not None
+                and after_geometry is not None
+                and to_wkb(before_geometry, hex=True) == to_wkb(after_geometry, hex=True)
+            )
+        )
+        if exact_equal:
+            continue
+        geometry_changed_exact.append(identity)
+        within_tolerance = (
+            before_geometry is not None
+            and after_geometry is not None
+            and before_geometry.hausdorff_distance(after_geometry) <= geometry_tolerance
+        )
+        if within_tolerance:
+            geometry_changed_within_tolerance.append(identity)
+        else:
+            geometry_changed_beyond_tolerance.append(identity)
+
+    report: dict[str, Any] = {
+        "record_type": "feature_snapshot_difference",
+        "comparison_semantics": {
+            "identity": identity_property or "feature.id",
+            "geometry_exact": "canonical WKB byte equality",
+            "geometry_tolerance": "Hausdorff distance",
+            "geometry_tolerance_value": geometry_tolerance,
+        },
+        "evidence": {
+            "previous_snapshot_sha256": _feature_snapshot_hash(previous_by_id),
+            "current_snapshot_sha256": _feature_snapshot_hash(current_by_id),
+        },
+        "added": sorted(current_ids - previous_ids),
+        "removed": sorted(previous_ids - current_ids),
+        "attribute_changed": attribute_changed,
+        "geometry_changed_exact": geometry_changed_exact,
+        "geometry_changed_within_tolerance": geometry_changed_within_tolerance,
+        "geometry_changed_beyond_tolerance": geometry_changed_beyond_tolerance,
+        "schema_changed": {
+            "changed": previous_schema != current_schema,
+            "added_properties": sorted(set(current_schema) - set(previous_schema)),
+            "removed_properties": sorted(set(previous_schema) - set(current_schema)),
+        },
+    }
+    report["report_sha256"] = sha256_json(report)
+    return report
+
+
 def _ring_polygon(ring: Sequence[Sequence[float]]) -> Polygon | None:
     if len(ring) < 4:
         return None

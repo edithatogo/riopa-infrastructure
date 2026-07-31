@@ -422,6 +422,16 @@ class LineageIndex:
                         manifest_id=manifest_id,
                     )
 
+            connection.execute(
+                """
+                DELETE FROM nodes
+                WHERE NOT EXISTS (
+                    SELECT 1 FROM edges
+                    WHERE edges.source_id = nodes.node_id
+                       OR edges.target_id = nodes.node_id
+                )
+                """
+            )
             connection.commit()
         except Exception:
             connection.rollback()
@@ -496,6 +506,11 @@ class LineageIndex:
     def direct_edges(self, node_id: str) -> list[LineageEdge]:
         connection = self._connect(read_only=True)
         try:
+            exists = connection.execute(
+                "SELECT 1 FROM nodes WHERE node_id = ?", (node_id,)
+            ).fetchone()
+            if exists is None:
+                raise LineageError(f"unknown lineage node: {node_id}")
             rows = connection.execute(
                 """
                 SELECT source_id, target_id, relation, record_path
@@ -532,6 +547,106 @@ class LineageIndex:
         finally:
             connection.close()
 
+    def projection_metadata(self) -> dict[str, Any]:
+        """Describe the evidence set and granularity represented by this projection."""
+
+        connection = self._connect(read_only=True)
+        try:
+            manifests = [
+                dict(row)
+                for row in connection.execute(
+                    """
+                    SELECT manifest_id, manifest_sha256, snapshot_id, dataset_id
+                    FROM manifests ORDER BY manifest_id
+                    """
+                )
+            ]
+            node_types = [
+                str(row["node_type"])
+                for row in connection.execute(
+                    "SELECT DISTINCT node_type FROM nodes ORDER BY node_type"
+                )
+            ]
+        finally:
+            connection.close()
+        granularities = ["dataset"]
+        if any(item in {"partition", "feature", "row"} for item in node_types):
+            granularities.extend(
+                item for item in ("partition", "feature", "row") if item in node_types
+            )
+        return {
+            "authoritative_evidence": manifests,
+            "projection_sha256": sha256_file(self.path),
+            "freshness": "current-for-listed-authoritative-evidence",
+            "lineage_granularities": granularities,
+            "granularity_limitation": (
+                None
+                if any(item in {"feature", "row"} for item in node_types)
+                else "feature and row lineage were not captured by the authoritative evidence"
+            ),
+        }
+
+    def query(self, node_id: str, *, question: str, max_depth: int = 20) -> dict[str, Any]:
+        """Answer a normative where/why/how query with an explicit evidence envelope."""
+
+        if question == "where":
+            answer = self.downstream(node_id, max_depth=max_depth)
+        elif question == "why":
+            answer = self.upstream(node_id, max_depth=max_depth)
+        elif question == "how":
+            answer = [
+                {
+                    "source_id": edge.source_id,
+                    "target_id": edge.target_id,
+                    "relation": edge.relation,
+                    "record_path": edge.record_path,
+                }
+                for edge in self.direct_edges(node_id)
+            ]
+        else:
+            raise LineageError("question must be one of: where, why, how")
+        return {
+            "question": question,
+            "node_id": node_id,
+            "answer": answer,
+            "projection": self.projection_metadata(),
+        }
+
+    def reconcile_projection(self) -> dict[str, Any]:
+        """Remove nodes no longer referenced by any authoritative manifest edge."""
+
+        connection = self._connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            stale = [
+                str(row["node_id"])
+                for row in connection.execute(
+                    """
+                    SELECT node_id FROM nodes
+                    WHERE NOT EXISTS (
+                        SELECT 1 FROM edges
+                        WHERE edges.source_id = nodes.node_id
+                           OR edges.target_id = nodes.node_id
+                    )
+                    ORDER BY node_id
+                    """
+                )
+            ]
+            connection.executemany(
+                "DELETE FROM nodes WHERE node_id = ?", ((item,) for item in stale)
+            )
+            connection.commit()
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+        return {
+            "removed_stale_node_ids": stale,
+            "removed_count": len(stale),
+            "policy": "remove nodes unreferenced by every authoritative manifest edge",
+        }
+
     def rebuild_impact(self, node_ids: Iterable[str], *, max_depth: int = 50) -> dict[str, Any]:
         roots = sorted(set(node_ids))
         impacted: dict[str, dict[str, Any]] = {}
@@ -545,4 +660,5 @@ class LineageIndex:
             "impacted": sorted(
                 impacted.values(), key=lambda item: (item["depth"], item["node_id"])
             ),
+            "projection": self.projection_metadata(),
         }

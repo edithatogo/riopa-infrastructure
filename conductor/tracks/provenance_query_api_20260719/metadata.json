@@ -4,14 +4,17 @@
   "phase": "Core",
   "status": "specified",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-31T08:25:17Z",
   "description": "Expose reliable answers to where, why and how lineage questions through CLI, Python, relational, graph and MCP interfaces without making a graph database authoritative.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
     "provenance_profile_v1_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/69",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:lineage-query-envelope:2026-07-31",
+    "urn:riopa:evidence:projection-reconciliation:2026-07-31"
+  ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,
