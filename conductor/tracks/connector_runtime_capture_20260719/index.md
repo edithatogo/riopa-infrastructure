@@ -16,10 +16,11 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-001-inventory-20260727` | Imported implementation and focused-test inventory | `reports/wp-001-module-test-inventory.md` | Recorded; execution coverage blocked by dependency provisioning |
-| `WP-002-retry-capture-20260730` | Bounded idempotent retries, `Retry-After`, transport failure handling, circuit breaking and structured decisions | `src/riopa_provenance/retry.py`, `src/riopa_provenance/capture.py`, `tests/test_retry.py`, `tests/test_capture.py` | Implemented; static/smoke evidence passed, full runtime suite pending dependency provisioning |
-| `WP-002-dns-validation-20260730` | Connection-time resolver address validation against private-address/rebinding risks | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Implemented as policy resolver hook; transport integration and full runtime suite pending |
-| `WP-002-source-health-20260730` | Deterministic freshness, change, degradation and disappearance classification | `src/riopa_provenance/health.py`, `schemas/source-health-observation.schema.json`, `tests/test_health.py` | Versioned record implemented; adapter persistence and full runtime suite pending |
+| `WP-001-quality-reconciliation-20260731` | Imported implementation, functional-suite and branch-coverage baseline | `reports/quality-baseline-inventory.md` | Locked install and 178 tests pass; 56% branch-aware coverage remains below the 90% gate |
+| `WP-002-retry-capture-20260730` | Bounded idempotent retries, `Retry-After`, transport failure handling, circuit breaking and structured decisions | `src/riopa_provenance/retry.py`, `src/riopa_provenance/capture.py`, `tests/test_retry.py`, `tests/test_capture.py` | Implemented and exercised in the complete functional suite |
+| `WP-002-dns-validation-20260731` | Connection-time DNS pinning against private-address/rebinding risks while preserving HTTP Host and TLS SNI | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Pinned transport and negative rebinding tests implemented |
+| `WP-002-source-health-20260730` | Deterministic freshness, change, degradation and disappearance classification | `src/riopa_provenance/health.py`, `schemas/source-health-observation.schema.json`, `tests/test_health.py` | Versioned record implemented and exercised in the complete functional suite |
+| `WP-002-capture-observability-20260731` | Runtime attempt, success, failure, byte and failure-category observability | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Dependency-free metrics and structured failure callback tested |
 
 ## Blocking defects
 

@@ -9,9 +9,12 @@ import pytest
 
 from riopa_provenance.capture import (
     CaptureError,
+    CaptureFailureCategory,
+    CaptureMetrics,
     CapturePolicy,
     CaptureStore,
     HttpCaptureClient,
+    PinnedResolverTransport,
     redact_text,
     redact_url,
     validate_capture_url,
@@ -63,6 +66,50 @@ def test_connection_time_resolution_rejects_private_or_invalid_addresses() -> No
             httpx.URL("https://data.example.govt.nz/layer"),
             policy(resolve_addresses=lambda host: ["192.168.1.10"]),
         )
+
+
+def test_pinned_transport_preserves_host_and_tls_identity() -> None:
+    observed: dict[str, object] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        observed["host"] = request.url.host
+        observed["host_header"] = request.headers["host"]
+        observed["sni_hostname"] = request.extensions["sni_hostname"]
+        return httpx.Response(200, content=b"ok", request=request)
+
+    transport = PinnedResolverTransport(
+        lambda host: ["8.8.8.8"],
+        transport=httpx.MockTransport(handler),
+    )
+    with httpx.Client(transport=transport) as client:
+        response = client.get("https://data.example.govt.nz/layer")
+
+    assert response.status_code == 200
+    assert observed == {
+        "host": "8.8.8.8",
+        "host_header": "data.example.govt.nz",
+        "sni_hostname": "data.example.govt.nz",
+    }
+
+
+def test_pinned_transport_rejects_rebinding_before_network_io() -> None:
+    called = False
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal called
+        called = True
+        return httpx.Response(200, request=request)
+
+    transport = PinnedResolverTransport(
+        lambda host: ["192.168.1.5"],
+        transport=httpx.MockTransport(handler),
+    )
+    with (
+        httpx.Client(transport=transport) as client,
+        pytest.raises(CaptureError, match="non-public"),
+    ):
+        client.get("https://data.example.govt.nz/layer")
+    assert not called
 
 
 def test_redaction_helpers() -> None:
@@ -264,3 +311,47 @@ def test_capture_with_retry_uses_circuit_breaker(tmp_path: Path) -> None:
         circuit_breaker=breaker,
     )
     assert result.succeeded and breaker.state == "closed"
+
+
+def test_capture_metrics_and_structured_failures(tmp_path: Path) -> None:
+    responses = iter(
+        [
+            httpx.Response(200, content=b"ok"),
+            httpx.Response(503, content=b"unavailable"),
+            httpx.Response(302, headers={"Location": "https://data.example.govt.nz/other"}),
+        ]
+    )
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        response = next(responses)
+        response.request = request
+        return response
+
+    metrics = CaptureMetrics()
+    failures = []
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=CaptureStore(tmp_path, id_factory=iter(["ok", "http-error"]).__next__),
+        policy=policy(),
+        metrics=metrics,
+        on_failure=failures.append,
+    )
+    kwargs = {"source_id": "urn:test:source", "endpoint_id": "urn:test:endpoint"}
+    assert client.capture("GET", "https://data.example.govt.nz/ok", **kwargs).succeeded
+    with pytest.raises(CaptureError, match="captured HTTP 503"):
+        client.capture("GET", "https://data.example.govt.nz/http-error", **kwargs)
+    with pytest.raises(CaptureError, match="redirect"):
+        client.capture("GET", "https://data.example.govt.nz/redirect", **kwargs)
+
+    assert metrics.snapshot() == {
+        "attempts_total": 3,
+        "successes_total": 1,
+        "failures_total": 2,
+        "bytes_archived_total": 2,
+        "failures_by_category": {"http-status": 1, "redirect": 1},
+    }
+    assert [failure.category for failure in failures] == [
+        CaptureFailureCategory.HTTP_STATUS,
+        CaptureFailureCategory.REDIRECT,
+    ]
+    assert failures[0].retryable and failures[0].status_code == 503

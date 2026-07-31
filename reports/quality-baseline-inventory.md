@@ -4,9 +4,11 @@
 **Work package:** WP-001  
 **Scope:** imported `riopa_provenance` modules and repository tests
 
-This is an inventory, not a coverage result. The runtime dependency environment
-is currently incomplete (`pytest` cannot import `pluggy`, and the frozen `uv`
-environment cannot be provisioned), so no coverage percentage is asserted.
+The dependency environment is now reproducibly provisioned from the portable
+public-PyPI lockfile. The complete functional suite passes, but branch-aware
+package coverage is **56%**, below the unchanged **90%** stable-release gate.
+WP-001 therefore remains blocked on comprehensive test restoration rather than
+dependency provisioning.
 
 | Module | Test coverage entry | Functions/methods counted by source scan | Verification state |
 |---|---|---:|---|
@@ -35,13 +37,21 @@ environment cannot be provisioned), so no coverage percentage is asserted.
 
 ## Reproducible verification record
 
-- `python -m compileall -q src tests`: passed.
-- JSON schema parsing with the standard library: passed.
-- `python -m pytest --collect-only -q`: blocked by missing `pluggy` in the
-  available interpreter.
-- `uv sync --extra dev --extra spatial --frozen`: remains blocked by unavailable
-  internal package artifacts; no stable coverage gate was weakened.
+- `uv sync --python 3.13 --extra dev --extra spatial --frozen`: passed.
+- `.venv/bin/python -m pytest -q`: **178 passed**.
+- `uv run --python 3.13 bash scripts/ci_quality.sh`: passed, including Ruff,
+  formatting, strict MyPy, Bandit, action-pin and workflow checks, schema and
+  example validation, roadmap validation, package build, Twine checks and SBOM
+  validation.
+- Branch-aware coverage: **56%**, measured with the same `pytest-cov` options as
+  GitHub Actions; the `--cov-fail-under=90` gate correctly remains failing.
+- Exact-head GitHub Actions on `32bd5d5` proved locked installation and the
+  engineering quality job; the Python 3.12/3.13 test jobs first exposed missing
+  `scripts` package importability, corrected in `eb623f9`, and then retain the
+  honest coverage gate.
 
-The next verification step is to provision the declared frozen environment and
-run collection, focused tests, the full quality harness and coverage. Until
-then, this inventory must not be treated as evidence of the 90% release target.
+The next WP-001 step is focused test restoration for the lowest-coverage
+modules, beginning with `linz_enrichment`, `spatial`, `arcgis`, `publication`,
+`wfs`, `linz_federation`, `linz_export`, `linz`, `lineage` and `linz_catalog`.
+The passing functional suite is not evidence that the 90% release target has
+been achieved.

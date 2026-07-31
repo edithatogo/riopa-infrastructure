@@ -17,6 +17,7 @@ import uuid
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
+from enum import StrEnum
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
@@ -29,6 +30,57 @@ from .retry import CircuitBreaker, RetryDecision, RetryPolicy, decide_retry
 
 class CaptureError(RuntimeError):
     """Raised when a request violates policy or cannot be archived safely."""
+
+
+class CaptureFailureCategory(StrEnum):
+    """Stable operational categories for capture failures."""
+
+    POLICY = "policy"
+    TRANSPORT = "transport"
+    REDIRECT = "redirect"
+    RESPONSE_SIZE = "response-size"
+    MALFORMED_RESPONSE = "malformed-response"
+    HTTP_STATUS = "http-status"
+    CIRCUIT_OPEN = "circuit-open"
+
+
+@dataclass(frozen=True)
+class CaptureFailure:
+    """Structured, persistence-safe failure observation."""
+
+    category: CaptureFailureCategory
+    message: str
+    retryable: bool = False
+    status_code: int | None = None
+
+
+@dataclass
+class CaptureMetrics:
+    """Small dependency-free metric accumulator for adapters and tests."""
+
+    attempts_total: int = 0
+    successes_total: int = 0
+    failures_total: int = 0
+    bytes_archived_total: int = 0
+    failures_by_category: dict[str, int] = field(default_factory=dict)
+
+    def record_success(self, size_bytes: int) -> None:
+        self.successes_total += 1
+        self.bytes_archived_total += size_bytes
+
+    def record_failure(self, category: CaptureFailureCategory) -> None:
+        self.failures_total += 1
+        key = category.value
+        self.failures_by_category[key] = self.failures_by_category.get(key, 0) + 1
+
+    def snapshot(self) -> dict[str, object]:
+        return {
+            "attempts_total": self.attempts_total,
+            "successes_total": self.successes_total,
+            "failures_total": self.failures_total,
+            "bytes_archived_total": self.bytes_archived_total,
+            "failures_by_category": dict(sorted(self.failures_by_category.items())),
+        }
 
 
 @dataclass(frozen=True)
@@ -180,6 +232,49 @@ def validate_capture_url(url: httpx.URL, policy: CapturePolicy) -> None:
         validate_resolved_addresses(host, policy.resolve_addresses(host))
 
 
+class PinnedResolverTransport(httpx.BaseTransport):
+    """Connect to a validated DNS result while preserving HTTP Host and TLS SNI.
+
+    The request URL is rewritten only at the transport boundary. This prevents
+    the underlying network stack from resolving the hostname again after policy
+    validation, while the original hostname remains available for HTTP routing
+    and certificate verification.
+    """
+
+    def __init__(
+        self,
+        resolver: Callable[[str], Iterable[str]],
+        *,
+        transport: httpx.BaseTransport | None = None,
+    ) -> None:
+        self.resolver = resolver
+        self.transport = transport or httpx.HTTPTransport()
+
+    def handle_request(self, request: httpx.Request) -> httpx.Response:
+        host = _normalise_host(request.url.host or "")
+        addresses = validate_resolved_addresses(host, self.resolver(host))
+        pinned_url = request.url.copy_with(host=addresses[0])
+        headers = request.headers.copy()
+        default_port = 443 if request.url.scheme == "https" else 80
+        authority = (
+            host if request.url.port in {None, default_port} else f"{host}:{request.url.port}"
+        )
+        headers["Host"] = authority
+        extensions = dict(request.extensions)
+        extensions["sni_hostname"] = host
+        pinned_request = httpx.Request(
+            request.method,
+            pinned_url,
+            headers=headers,
+            stream=request.stream,
+            extensions=extensions,
+        )
+        return self.transport.handle_request(pinned_request)
+
+    def close(self) -> None:
+        self.transport.close()
+
+
 def _redacted_url(url: httpx.URL, secret_keys: frozenset[str]) -> str:
     parsed = urlsplit(str(url))
     query = []
@@ -240,11 +335,34 @@ class HttpCaptureClient:
         store: CaptureStore,
         policy: CapturePolicy,
         user_agent: str = "riopa-provenance/0.2.1",
+        metrics: CaptureMetrics | None = None,
+        on_failure: Callable[[CaptureFailure], None] | None = None,
     ) -> None:
         self.client = client
         self.store = store
         self.policy = policy
         self.user_agent = user_agent
+        self.metrics = metrics or CaptureMetrics()
+        self.on_failure = on_failure
+
+    def _record_failure(
+        self,
+        category: CaptureFailureCategory,
+        message: str,
+        *,
+        retryable: bool = False,
+        status_code: int | None = None,
+    ) -> None:
+        self.metrics.record_failure(category)
+        if self.on_failure is not None:
+            self.on_failure(
+                CaptureFailure(
+                    category=category,
+                    message=message,
+                    retryable=retryable,
+                    status_code=status_code,
+                )
+            )
 
     def capture(
         self,
@@ -262,50 +380,68 @@ class HttpCaptureClient:
         if headers:
             request_headers.update(headers)
         request = self.client.build_request(method, url, params=params, headers=request_headers)
-        validate_capture_url(request.url, self.policy)
+        try:
+            validate_capture_url(request.url, self.policy)
+        except CaptureError as exc:
+            self._record_failure(CaptureFailureCategory.POLICY, str(exc))
+            raise
+        self.metrics.attempts_total += 1
         started = self.store.clock().astimezone(UTC)
 
-        with self.client.stream(
-            request.method,
-            request.url,
-            headers=request.headers,
-            follow_redirects=False,
-        ) as response:
-            if self.policy.reject_redirects and response.is_redirect:
-                raise CaptureError(
-                    f"redirect response rejected for {request.url}: {response.status_code}"
+        try:
+            with self.client.stream(
+                request.method,
+                request.url,
+                headers=request.headers,
+                follow_redirects=False,
+            ) as response:
+                if self.policy.reject_redirects and response.is_redirect:
+                    message = (
+                        f"redirect response rejected for {request.url}: {response.status_code}"
+                    )
+                    self._record_failure(CaptureFailureCategory.REDIRECT, message)
+                    raise CaptureError(message)
+                declared_size = response.headers.get("content-length")
+                if declared_size:
+                    try:
+                        declared_size_value = int(declared_size)
+                    except ValueError as exc:
+                        message = f"invalid response Content-Length: {declared_size!r}"
+                        self._record_failure(CaptureFailureCategory.MALFORMED_RESPONSE, message)
+                        raise CaptureError(message) from exc
+                    if declared_size_value > self.policy.max_response_bytes:
+                        message = (
+                            f"response Content-Length {declared_size} exceeds "
+                            f"limit {self.policy.max_response_bytes}"
+                        )
+                        self._record_failure(CaptureFailureCategory.RESPONSE_SIZE, message)
+                        raise CaptureError(message)
+                chunks: list[bytes] = []
+                total = 0
+                # Preserve response-body bytes exactly as received. ``iter_bytes``
+                # transparently decompresses content encodings and is unsuitable
+                # for a faithful archive.
+                raw_chunks = (
+                    [response.content] if response.is_stream_consumed else response.iter_raw()
                 )
-            declared_size = response.headers.get("content-length")
-            if declared_size:
-                try:
-                    declared_size_value = int(declared_size)
-                except ValueError as exc:
-                    raise CaptureError(
-                        f"invalid response Content-Length: {declared_size!r}"
-                    ) from exc
-                if declared_size_value > self.policy.max_response_bytes:
-                    raise CaptureError(
-                        f"response Content-Length {declared_size} exceeds "
-                        f"limit {self.policy.max_response_bytes}"
-                    )
-            chunks: list[bytes] = []
-            total = 0
-            # Preserve response-body bytes exactly as received.  ``iter_bytes``
-            # transparently decompresses content encodings and is therefore
-            # unsuitable for a faithful archive.  Mock transports may provide
-            # an already-buffered body, in which case ``content`` is the exact
-            # supplied byte string.
-            raw_chunks = [response.content] if response.is_stream_consumed else response.iter_raw()
-            for chunk in raw_chunks:
-                total += len(chunk)
-                if total > self.policy.max_response_bytes:
-                    raise CaptureError(
-                        f"response exceeded byte limit {self.policy.max_response_bytes}"
-                    )
-                chunks.append(chunk)
-            payload = b"".join(chunks)
-            status_code = response.status_code
-            response_headers = response.headers
+                for chunk in raw_chunks:
+                    total += len(chunk)
+                    if total > self.policy.max_response_bytes:
+                        message = f"response exceeded byte limit {self.policy.max_response_bytes}"
+                        self._record_failure(CaptureFailureCategory.RESPONSE_SIZE, message)
+                        raise CaptureError(message)
+                    chunks.append(chunk)
+                payload = b"".join(chunks)
+                status_code = response.status_code
+                response_headers = response.headers
+        except httpx.TransportError as exc:
+            message = f"transport failure for {request.url}: {exc}"
+            self._record_failure(
+                CaptureFailureCategory.TRANSPORT,
+                message,
+                retryable=True,
+            )
+            raise
 
         digest, object_path = self.store.write_object(payload)
         capture_id = f"urn:uuid:{self.store.id_factory()}"
@@ -374,6 +510,15 @@ class HttpCaptureClient:
             response_location=response_headers.get("location"),
             retry_after=response_headers.get("retry-after"),
         )
+        if result.succeeded:
+            self.metrics.record_success(result.size_bytes)
+        else:
+            self._record_failure(
+                CaptureFailureCategory.HTTP_STATUS,
+                f"captured HTTP {status_code} for {redacted_url}",
+                retryable=status_code in {408, 425, 429, 500, 502, 503, 504},
+                status_code=status_code,
+            )
         if require_success and not result.succeeded:
             raise CaptureError(
                 f"captured HTTP {status_code} for {redacted_url}; metadata={metadata_path}"
@@ -385,6 +530,10 @@ class HttpCaptureClient:
         try:
             value = json.loads(result.object_path.read_text(encoding="utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            self._record_failure(
+                CaptureFailureCategory.MALFORMED_RESPONSE,
+                f"captured response is not valid UTF-8 JSON: {result.capture_id}",
+            )
             raise CaptureError(
                 f"captured response is not valid UTF-8 JSON: {result.capture_id}: {exc}"
             ) from exc
@@ -416,6 +565,10 @@ class HttpCaptureClient:
         kwargs.pop("require_success", None)
         for attempt in range(1, policy.max_attempts + 1):
             if circuit_breaker is not None and not circuit_breaker.allow(now=clock()):
+                self._record_failure(
+                    CaptureFailureCategory.CIRCUIT_OPEN,
+                    "circuit breaker is open",
+                )
                 raise CaptureError("circuit breaker is open")
             try:
                 result = self.capture(method, url, require_success=False, **kwargs)
