@@ -500,7 +500,12 @@ class LineageIndex:
                 """
                 SELECT source_id, target_id, relation, record_path
                 FROM edges WHERE source_id = ? OR target_id = ?
-                ORDER BY source_id, target_id, relation
+                ORDER BY CASE relation
+                        WHEN 'source_of_artifact' THEN 0
+                        WHEN 'included_in_snapshot' THEN 1
+                        ELSE 2
+                    END,
+                    relation, source_id, target_id
                 """,
                 (node_id, node_id),
             )

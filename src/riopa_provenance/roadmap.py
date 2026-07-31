@@ -1262,6 +1262,11 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
             blockers.append(f"track {track_id} is missing")
             continue
         current_level = track.get("current_maturity", "M0")
+        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
+            blockers.append(
+                f"track {track_id} status {track.get('status')} is incompatible with the release"
+            )
+            continue
         if _maturity_rank(current_level) < required_rank:
             blockers.append(f"track {track_id} is {current_level}; {required_level} is required")
             continue
@@ -1274,11 +1279,6 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
         if required_rank == 6 and track.get("status") != "complete":
             blockers.append(
                 f"track {track_id} is {track.get('status')}; complete is required for stable v1"
-            )
-            continue
-        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
-            blockers.append(
-                f"track {track_id} status {track.get('status')} is incompatible with the release"
             )
             continue
         incomplete_dependencies = [

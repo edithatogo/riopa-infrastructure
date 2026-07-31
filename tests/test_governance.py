@@ -24,6 +24,7 @@ def decision(**overrides: object) -> dict[str, object]:
             "role": "governance analyst",
             "reviewed_at": "2026-07-29T00:00:00Z",
             "expires_at": "2026-12-31T00:00:00Z",
+            "conflict_of_interest": False,
         },
         "evidence": ["urn:riopa:evidence:test"],
         "rationale": "reviewed source terms and governance triggers",

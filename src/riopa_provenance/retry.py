@@ -121,12 +121,12 @@ def decide_retry(
     if attempt < 1:
         raise ValueError("attempt must be positive")
     normalized_method = method.upper()
-    if attempt >= policy.max_attempts:
-        return RetryDecision(attempt, False, 0.0, "attempt-limit")
     if normalized_method not in IDEMPOTENT_METHODS:
         return RetryDecision(attempt, False, 0.0, "non-idempotent-method")
     if status_code is not None and status_code not in RETRYABLE_STATUS_CODES:
         return RetryDecision(attempt, False, 0.0, "status-not-retryable")
+    if attempt >= policy.max_attempts:
+        return RetryDecision(attempt, False, 0.0, "attempt-limit")
 
     exponential = min(policy.max_delay_seconds, policy.base_delay_seconds * (2 ** (attempt - 1)))
     retry_delay = parse_retry_after(retry_after, now=now or datetime.now(UTC))
