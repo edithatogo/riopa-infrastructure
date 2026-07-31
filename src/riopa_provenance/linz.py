@@ -423,7 +423,10 @@ def _json_safe(value: Any) -> Any:
 
 
 def _table_columns(connection: duckdb.DuckDBPyConnection, table_name: str) -> list[str]:
-    rows = connection.execute(f"PRAGMA table_info({_quote_identifier(table_name)})").fetchall()
+    try:
+        rows = connection.execute(f"PRAGMA table_info({_quote_identifier(table_name)})").fetchall()
+    except duckdb.CatalogException as exc:
+        raise LinzStateError(f"target table does not exist: {table_name}") from exc
     if not rows:
         raise LinzStateError(f"target table does not exist: {table_name}")
     return [str(row[1]) for row in rows]

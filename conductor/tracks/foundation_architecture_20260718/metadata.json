@@ -38,7 +38,5 @@
     "API/schema analyst",
     "External-user analyst"
   ],
-  "blocking_defects": [
-    "review-runtime-provisioning"
-  ]
+  "blocking_defects": []
 }

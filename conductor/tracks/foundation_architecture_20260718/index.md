@@ -19,14 +19,14 @@
 | R01–R03 | ADR reconciliation register | `docs/adr/README.md` | Implemented; ratification review pending |
 | R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Implemented; ratification review pending |
 | R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Implemented; named approvals pending |
-| R01, R02, R03 | Executable roadmap, issue-graph and architecture-fitness validation | `src/riopa_provenance/roadmap.py`, `tests/test_roadmap_hardening.py`, `project/issues.yaml` | Implemented; full runtime validation pending environment provisioning |
-| R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite pending environment provisioning |
+| R01, R02, R03 | Executable roadmap, issue-graph and architecture-fitness validation | `src/riopa_provenance/roadmap.py`, `tests/test_roadmap_hardening.py`, `project/issues.yaml`, `reports/quality-baseline-inventory.md` | Clean locked runtime, complete suite, roadmap, quality and reproducibility validation pass locally |
+| R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite passes locally |
 | R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings remain open |
 
 ## Blocking defects
 
-- `review-runtime-provisioning`: full Python/pytest and roadmap validation cannot currently run because locked dependency provisioning still times out; the offline cache also lacks `filelock==3.31.0` (required through `pre-commit`/`virtualenv`).
-- The analyst-review, ADR-disposition, contract-matrix and issue-graph blockers are resolved locally; runtime evidence remains the sole open blocker.
+- None recorded. Named ratification and publication remain track work rather
+  than a concealed implementation blocker.
 
 ## Decisions, exceptions and limitations
 

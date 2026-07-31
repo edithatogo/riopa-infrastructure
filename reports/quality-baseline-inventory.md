@@ -1,17 +1,19 @@
 # Quality baseline inventory
 
-**Recorded:** 2026-07-30  
-**Work package:** WP-001  
+**Recorded:** 2026-07-31
+**Work package:** WP-001
 **Scope:** imported `riopa_provenance` modules and repository tests
 
-The dependency environment is now reproducibly provisioned from the portable
-public-PyPI lockfile. The complete functional suite passes, but branch-aware
-package coverage is **56%**, below the unchanged **90%** stable-release gate.
-WP-001 therefore remains blocked on comprehensive test restoration rather than
-dependency provisioning.
+The dependency environment is reproducibly provisioned from the portable
+public-PyPI lockfile. The complete **467-test** functional suite passes and
+branch-aware package coverage is **93.27%**, above the unchanged **90%**
+stable-release gate. WP-001 is complete at this verified repository head.
 
 | Module | Test coverage entry | Functions/methods counted by source scan | Verification state |
 |---|---|---:|---|
+| `accessibility` | `tests/test_accessibility.py` | reference core | 100% branch-aware coverage |
+| `adapters` | `tests/test_adapters.py` | cross-repository contract | 100% branch-aware coverage |
+| `analysis` | `tests/test_analysis.py` | simulation/causal reference | 100% branch-aware coverage |
 | `arcgis` | `tests/test_arcgis.py` | 6 | focused tests present |
 | `capture` | `tests/test_capture.py` | 18 | focused tests present |
 | `cli` | `tests/test_cli.py` | 34 | focused tests present |
@@ -34,24 +36,24 @@ dependency provisioning.
 | `validation` | `tests/test_validation_failures.py`, `tests/test_validation_integrity.py` | 21 | split focused tests present |
 | `wfs` | `tests/test_wfs.py` | 2 | focused tests present |
 | `yaml_tools` | `tests/test_yaml_tools.py` | 1 | focused tests present |
+| `facility_location` | `tests/test_facility_location.py` | reference core | 100% branch-aware coverage |
 
 ## Reproducible verification record
 
 - `uv sync --python 3.13 --extra dev --extra spatial --frozen`: passed.
-- `.venv/bin/python -m pytest -q`: **178 passed**.
+- `.venv/bin/python -m pytest -q`: **467 passed**.
 - `uv run --python 3.13 bash scripts/ci_quality.sh`: passed, including Ruff,
   formatting, strict MyPy, Bandit, action-pin and workflow checks, schema and
   example validation, roadmap validation, package build, Twine checks and SBOM
   validation.
-- Branch-aware coverage: **56%**, measured with the same `pytest-cov` options as
-  GitHub Actions; the `--cov-fail-under=90` gate correctly remains failing.
+- Branch-aware coverage: **93.27%**, measured with the same `pytest-cov` options
+  as GitHub Actions; `--cov-fail-under=90` passes without changing the gate.
 - Exact-head GitHub Actions on `32bd5d5` proved locked installation and the
   engineering quality job; the Python 3.12/3.13 test jobs first exposed missing
   `scripts` package importability, corrected in `eb623f9`, and then retain the
   honest coverage gate.
 
-The next WP-001 step is focused test restoration for the lowest-coverage
-modules, beginning with `linz_enrichment`, `spatial`, `arcgis`, `publication`,
-`wfs`, `linz_federation`, `linz_export`, `linz`, `lineage` and `linz_catalog`.
-The passing functional suite is not evidence that the 90% release target has
-been achieved.
+The restored suite includes positive, negative, tamper, malformed-input,
+resumption and failure-injection paths across capture, archive, federation,
+inventory, spatial, lineage, CLI, validation and research-object boundaries.
+Hosted exact-head confirmation remains distinct from this local verification.

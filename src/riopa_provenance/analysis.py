@@ -238,7 +238,7 @@ def run_seeded_replications(
     seeds: list[int] = []
     for replication in range(protocol.replication.replications):
         seed = _replication_seed(protocol.replication.master_seed, replication)
-        rng = random.Random(seed)
+        rng = random.Random(seed)  # nosec B311
         arrivals: list[float] = []
         clock = 0.0
         for _ in range(customer_count):

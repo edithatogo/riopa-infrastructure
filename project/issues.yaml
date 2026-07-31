@@ -360,7 +360,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "foundation_architecture_20260718:phase-1",
@@ -388,7 +388,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "foundation_architecture_20260718:phase-2",
@@ -418,7 +418,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "foundation_architecture_20260718:phase-3",
@@ -448,7 +448,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "foundation_architecture_20260718:phase-4",
@@ -464,7 +464,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)\n- [ ] 4.2 Resolve or explicitly accept findings with time-limited exceptions.\n- [ ] 4.3 Publish the accepted architecture and v1 programme baseline.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)\n- [ ] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)\n- [ ] 4.3 Publish the accepted architecture and v1 programme baseline.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -478,7 +478,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "foundation_architecture_20260718:phase-5",
@@ -508,7 +508,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "governance_maori_data_sovereignty_20260718",

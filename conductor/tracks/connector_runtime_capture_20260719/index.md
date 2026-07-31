@@ -16,7 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-001-quality-reconciliation-20260731` | Imported implementation, functional-suite and branch-coverage baseline | `reports/quality-baseline-inventory.md` | Locked install and 178 tests pass; 56% branch-aware coverage remains below the 90% gate |
+| `WP-001-quality-reconciliation-20260731` | Imported implementation, functional-suite and branch-coverage baseline | `reports/quality-baseline-inventory.md` | 467 tests and 93.27% branch-aware coverage pass the unchanged 90% gate locally; hosted exact-head confirmation remains separate |
 | `WP-002-retry-capture-20260730` | Bounded idempotent retries, `Retry-After`, transport failure handling, circuit breaking and structured decisions | `src/riopa_provenance/retry.py`, `src/riopa_provenance/capture.py`, `tests/test_retry.py`, `tests/test_capture.py` | Implemented and exercised in the complete functional suite |
 | `WP-002-dns-validation-20260731` | Connection-time DNS pinning against private-address/rebinding risks while preserving HTTP Host and TLS SNI | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Pinned transport and negative rebinding tests implemented |
 | `WP-002-source-health-20260730` | Deterministic freshness, change, degradation and disappearance classification | `src/riopa_provenance/health.py`, `schemas/source-health-observation.schema.json`, `tests/test_health.py` | Versioned record implemented and exercised in the complete functional suite |
