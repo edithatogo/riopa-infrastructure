@@ -34,7 +34,7 @@ class LinzArchivePlanSummary:
 def load_archive_policy(path: str | Path) -> dict[str, Any]:
     source = Path(path)
     text = source.read_text(encoding="utf-8")
-    value = load_yaml(text) if source.suffix.lower() in {".yaml", ".yml"} else json.loads(text)
+    value = load_yaml(source) if source.suffix.lower() in {".yaml", ".yml"} else json.loads(text)
     if not isinstance(value, dict):
         raise LinzArchivePlanError("archive policy root must be an object")
     return value
