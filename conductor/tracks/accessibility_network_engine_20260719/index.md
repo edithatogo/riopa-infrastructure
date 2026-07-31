@@ -16,15 +16,17 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-009-reference-accessibility-core-20260731` | Versioned travel observations preserve missing/unreachable/censored semantics and hand-calculated accessibility measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Bounded dependency-free reference core passes; multimodal adapters, real NZ integration, scale and external review remain open |
 
 ## Blocking defects
 
-- None recorded.
+- Real road, walk, cycle and timetable engines; national-scale benchmarking; and
+  scientific/user review remain open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The reference matrix and measures are correctness fixtures, not a claim of
+  national routing coverage or operational service accessibility.
 
 ## Review and handover
 

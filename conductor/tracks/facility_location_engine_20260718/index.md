@@ -16,15 +16,17 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-009-reference-location-core-20260731` | Four canonical model families, explicit capacity/fixed/eligibility/equity constraints, deterministic Pareto outputs and independent feasibility verification | `src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | 35 combined core tests pass with 100% statement and branch coverage for both new modules; scalable external solvers and independent external benchmark review remain open |
 
 ## Blocking defects
 
-- None recorded.
+- Scalable solver adapters, certificate interchange, national workloads and
+  independent external benchmark verification remain open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Exhaustive enumeration is intentionally bounded to small correctness fixtures
+  and must not be represented as an operational planning engine.
 
 ## Review and handover
 

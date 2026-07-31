@@ -17,14 +17,17 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-004-resource-envelopes-20260731` | Every sharded archive job has enforced storage and egress ceilings | `src/riopa_provenance/linz_pipeline.py`, `src/riopa_provenance/linz_inventory.py`, `tests/test_linz_pipeline.py`, `tests/test_linz_inventory.py` | Boundary and overrun tests pass; national-scale benchmark remains open |
+| `WP-009-small-instance-correctness-oracle-20260731` | Deterministic exhaustive accessibility/location fixtures provide a correctness baseline for later scalable-engine comparisons | `src/riopa_provenance/accessibility.py`, `src/riopa_provenance/facility_location.py`, `tests/test_accessibility.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | Small-instance correctness passes; no national-scale performance, cost, soak or recovery claim is made |
 
 ## Blocking defects
 
-- None recorded.
+- National-scale ingestion/accessibility/optimisation benchmarks, resource and
+  cost envelopes, soak tests and stress/recovery evidence remain open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Exhaustive reference solvers are validation oracles rather than performance
+  implementations.
 
 ## Review and handover
 
