@@ -33,6 +33,10 @@ jobs:
           enable-cache: true
           python-version: "3.13"
           version: "0.11.16"
+      - name: Install independent Node conformance runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
       - name: Install locked environment
         run: uv sync --extra dev --extra spatial --frozen
       - name: Verify release tag and package version
@@ -109,6 +113,19 @@ jobs:
             dist/release/*.whl
             dist/release/*.tar.gz
             dist/release/*.cdx.json
+            dist/release/SHA256SUMS
+      - name: Independently verify registered attestations
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for asset in \
+            dist/release/*.whl \
+            dist/release/*.tar.gz \
+            dist/release/*.cdx.json \
+            dist/release/SHA256SUMS
+          do
+            gh attestation verify "$asset" --repo "$GITHUB_REPOSITORY"
+          done
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}

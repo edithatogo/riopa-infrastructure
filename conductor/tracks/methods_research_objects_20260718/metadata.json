@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-31T08:30:00Z",
+  "updated_at": "2026-07-31T08:30:44Z",
   "description": "Generate concise citable methods and publication-grade supplementary evidence from the same validated release facts and package them as complete, externally verifiable research objects.",
   "depends_on": [
     "provenance_profile_v1_20260718",
@@ -12,7 +12,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/34",
   "evidence": [
-    "urn:riopa:evidence:publication-plan-binding:2026-07-31"
+    "urn:riopa:evidence:publication-plan-binding:2026-07-31",
+    "urn:riopa:evidence:attested-release-verification-workflow:2026-07-31"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -4,14 +4,15 @@
   "phase": "Foundation",
   "status": "specified",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-31T08:00:00Z",
+  "updated_at": "2026-07-31T08:30:44Z",
   "description": "Make source capture, CI, release and distribution trustworthy through threat modelling, least privilege, signed artifacts, dependency integrity and exercised incident response.",
   "depends_on": [
     "foundation_architecture_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/24",
   "evidence": [
-    "urn:riopa:evidence:connector-dns-pinning:2026-07-31"
+    "urn:riopa:evidence:connector-dns-pinning:2026-07-31",
+    "urn:riopa:evidence:attestation-verification-workflow:2026-07-31"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

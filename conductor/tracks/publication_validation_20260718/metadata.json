@@ -4,7 +4,7 @@
   "phase": "Publication",
   "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-31T08:30:00Z",
+  "updated_at": "2026-07-31T08:30:44Z",
   "description": "Convert infrastructure, data and applied work into independently validated, citable releases and manuscripts with reproducible evidence and transparent correction.",
   "depends_on": [
     "repository_template_adoption_20260718",
@@ -14,7 +14,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/129",
   "evidence": [
-    "urn:riopa:evidence:resumable-publication-state:2026-07-31"
+    "urn:riopa:evidence:resumable-publication-state:2026-07-31",
+    "urn:riopa:evidence:prepublication-attestation-check:2026-07-31"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

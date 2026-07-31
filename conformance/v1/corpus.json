@@ -1,0 +1,46 @@
+{
+  "corpus_version": "1.0.0",
+  "canonicalization": "RFC 8785",
+  "cases": [
+    {
+      "case_id": "canonical-nested-object",
+      "instance": {
+        "z": [true, null, "Aotearoa", {"beta": 2, "alpha": 1}],
+        "a": "line\nquote\""
+      },
+      "expected_sha256": "a4d7cc83d74a01491d3e36454b66c6b8f17de030f7e58fa6acc528cce36b2bc0",
+      "schema": null,
+      "expected_valid": null
+    },
+    {
+      "case_id": "source-health-valid",
+      "instance": {
+        "schema_version": "1.0.0",
+        "record_type": "source_health_observation",
+        "freshness": "fresh",
+        "changed": false,
+        "degraded": false,
+        "disappeared": false,
+        "age_seconds": 0
+      },
+      "expected_sha256": "3b269abe320f1a6efdac279082b9a855c068273c824f248eb1a5f057605367bf",
+      "schema": "../../schemas/source-health-observation.schema.json",
+      "expected_valid": true
+    },
+    {
+      "case_id": "source-health-negative-age",
+      "instance": {
+        "schema_version": "1.0.0",
+        "record_type": "source_health_observation",
+        "freshness": "fresh",
+        "changed": false,
+        "degraded": false,
+        "disappeared": false,
+        "age_seconds": -1
+      },
+      "expected_sha256": "fbb819a1e0d1f7d3b4bb36d955cc9dbce1b523097208e2e62574904a85172ef7",
+      "schema": "../../schemas/source-health-observation.schema.json",
+      "expected_valid": false
+    }
+  ]
+}

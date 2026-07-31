@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-003-publication-binding-20260731` | Research-object bytes bind deterministic, target-specific publication plans | `src/riopa_provenance/publication.py`, `schemas/publication-plan.schema.json`, `tests/test_publication.py` | Content binding, target staging and negative rights tests pass |
+| `WP-006-attested-release-verification-20260731` | Release workflow attests and independently verifies package, research-object, SBOM and checksum subjects before publication | `.github/workflows/release.yml`, `docs/conformance-and-release-verification.md` | Workflow policy passes locally; no protected tag, external profile validation or preservation deposit is claimed |
 
 ## Blocking defects
 

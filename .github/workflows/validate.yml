@@ -64,6 +64,10 @@ jobs:
           enable-cache: true
           python-version: ${{ matrix.python-version }}
           version: "0.11.16"
+      - name: Install independent Node conformance runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
       - name: Install locked environment
         run: uv sync --extra dev --extra spatial --frozen
       - name: Run branch-aware tests
