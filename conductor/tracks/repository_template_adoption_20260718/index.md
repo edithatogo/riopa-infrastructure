@@ -16,15 +16,17 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-008-related-repository-adapters-20260731` | Related repositories have isolated issue, branch, tested commit and pull-request implementations without modifying dirty checkouts | `reports/wp008-cross-repository-adapters.md`, `conformance/adapters/report.json` | Local implementation and cross-repository fixture validation pass; PRs are open and unmerged pending exact-head hosted checks |
 
 ## Blocking defects
 
-- None recorded.
+- Related-repository PRs #285 (`fyi-cli`) and #319 (`fyi-archive`) remain
+  unmerged pending their exact-head hosted checks.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This evidence is bounded to the two adapter contracts and does not establish
+  template adoption or release conformance for either complete repository.
 
 ## Review and handover
 

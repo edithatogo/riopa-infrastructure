@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/adapter-mapping/v1",
+  "title": "RIOPA brownfield adapter semantic mapping",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repository",
+    "source_revision",
+    "profile_version",
+    "mappings"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+    "source_revision": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "profile_version": {"type": "string", "minLength": 1},
+    "mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "native_field",
+          "riopa_field",
+          "classification",
+          "rationale",
+          "evidence_fixture"
+        ],
+        "properties": {
+          "native_field": {"type": "string", "minLength": 1},
+          "riopa_field": {"type": ["string", "null"], "minLength": 1},
+          "classification": {
+            "enum": ["exact", "approximate", "extension-only", "unmapped"]
+          },
+          "rationale": {"type": "string", "minLength": 10},
+          "evidence_fixture": {"type": "string", "minLength": 1}
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "classification": {"const": "unmapped"}
+              },
+              "required": ["classification"]
+            },
+            "then": {"properties": {"riopa_field": {"type": "null"}}}
+          },
+          {
+            "if": {
+              "properties": {
+                "classification": {"const": "extension-only"}
+              },
+              "required": ["classification"]
+            },
+            "then": {
+              "properties": {
+                "riopa_field": {"type": ["string", "null"], "minLength": 1}
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "classification": {"enum": ["exact", "approximate"]}
+              },
+              "required": ["classification"]
+            },
+            "then": {"properties": {"riopa_field": {"type": "string", "minLength": 1}}}
+          }
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 10},
+      "uniqueItems": true
+    }
+  }
+}

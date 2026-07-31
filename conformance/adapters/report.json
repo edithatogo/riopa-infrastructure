@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "cross_repository_adapter_report",
+  "repositories": [
+    {
+      "repository": "edithatogo/fyi-archive",
+      "source_revision": "cea43a097f8928d7eaa4295d284f0b8d3999637b",
+      "profile_version": "1.0.0",
+      "mapping_sha256": "799492376e56ffdd4336752b58d57a7d295e6c1babbd815915964a7dfb9d7cb5",
+      "classification_counts": {
+        "exact": 7,
+        "approximate": 3,
+        "extension-only": 1,
+        "unmapped": 1
+      }
+    },
+    {
+      "repository": "edithatogo/fyi-cli",
+      "source_revision": "2db4813da80d8c61f145c24b22ff4392830bcad5",
+      "profile_version": "1.0.0",
+      "mapping_sha256": "aa4c06553265b4398d4cc5b4c8a13dc6e70e70f832be44d21462f7133ea9cf7d",
+      "classification_counts": {
+        "exact": 6,
+        "approximate": 2,
+        "extension-only": 2,
+        "unmapped": 1
+      }
+    }
+  ]
+}
