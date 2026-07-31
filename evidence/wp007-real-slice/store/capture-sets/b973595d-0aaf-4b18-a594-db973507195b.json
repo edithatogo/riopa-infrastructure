@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.1.0",
+  "record_type": "arcgis_layer_capture_set",
+  "capture_set_id": "urn:uuid:b973595d-0aaf-4b18-a594-db973507195b",
+  "source_id": "urn:riopa:source:wcc:2024-district-plan-zones",
+  "service_url": "https://gis.wcc.govt.nz/arcgis/rest/services/2024DistrictPlan/2024DistrictPlan/MapServer",
+  "layer_id": 122,
+  "metadata_capture_id": "urn:uuid:3237817a-ee12-418d-9111-58b8318dbe06",
+  "count_capture_ids": [
+    "urn:uuid:db75c0ad-92fb-4369-bc37-482cdd9d612e",
+    "urn:uuid:f7294b6d-1496-48ab-beb8-9dbbbbd5bca6"
+  ],
+  "object_ids_capture_id": null,
+  "page_capture_ids": [
+    "urn:uuid:b13af0b0-5a0b-4723-a92e-2629a348541d"
+  ],
+  "feature_count": 1,
+  "object_id_field": null,
+  "page_size": 2000,
+  "pagination_strategy": "offset",
+  "query": {
+    "where": "OBJECTID=1",
+    "out_fields": "OBJECTID,DPZone,DPZoneCode,DP_Chapter,ePlan_URL,Status,StatusNote"
+  },
+  "manifest_sha256": "59e230ec21b2b5498e0a23f401edba8595d53d624284d555b0df44ac44431723"
+}

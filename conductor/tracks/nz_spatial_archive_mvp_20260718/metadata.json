@@ -14,7 +14,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/49",
   "evidence": [
-    "urn:riopa:evidence:linz-sharded-pipeline:2026-07-31"
+    "urn:riopa:evidence:linz-sharded-pipeline:2026-07-31",
+    "urn:riopa:evidence:wp007-real-slice:2026-07-31"
   ],
   "target_release": "0.5.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "http_capture",
+  "capture_id": "urn:uuid:5b8b7e4c-4c8c-48c6-9ec5-abc753bcfdd8",
+  "source_id": "urn:riopa:source:mfe:national-planning-standards-2022",
+  "endpoint_id": "urn:riopa:endpoint:mfe:copyright",
+  "retrieved_at": "2026-07-31T08:40:37.039069Z",
+  "request": {
+    "method": "GET",
+    "url": "https://environment.govt.nz/about-this-site/copyright/",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "identity",
+      "connection": "keep-alive",
+      "host": "environment.govt.nz",
+      "user-agent": "riopa-provenance/0.2.1"
+    },
+    "fingerprint_sha256": "23966b7cbd2d5b5ca8acda5f85ce6e0394c2949aa2b6dca1496d9d6a914e948c"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=300",
+      "connection": "keep-alive",
+      "content-security-policy": "default-src 'self'; font-src 'self' data: fonts.gstatic.com; form-action 'self' *.list-manage.com; frame-src 'self' forms.office.com *.arcgis.com app.powerbi.com *.youtube.com *.youtube-nocookie.com player.vimeo.com *.mfe.govt.nz *.shinyapps.io; img-src 'self' data: *.ytimg.com *.google.com *.google.co.nz *.google-analytics.com *.googletagmanager.com *.gstatic.com stats.g.doubleclick.net i.vimeocdn.com *.mfe.govt.nz; media-src 'self' *.youtube.com *.youtube-nocookie.com *.mfe.govt.nz; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.google.com *.google.co.nz *.google-analytics.com *.googletagmanager.com tagmanager.google.com *.youtube.com *.youtube-nocookie.com *.ytimg.com *.mfe.govt.nz; style-src 'self' 'unsafe-inline' *.google.com *.google.co.nz tagmanager.google.com fonts.googleapis.com *.youtube.com *.youtube-nocookie.com *.mfe.govt.nz; base-uri 'self'; object-src 'self'; connect-src 'self' www.google-analytics.com",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Fri, 31 Jul 2026 08:40:37 GMT",
+      "etag": "\"f707467ef2219e6afc084aa6dbe231bd\"",
+      "expires": "Fri, 31 Jul 2026 08:45:37 GMT",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "server": "nginx",
+      "set-cookie": "<redacted>, <redacted>, <redacted>",
+      "strict-transport-security": "max-age=7776000; preload",
+      "transfer-encoding": "chunked",
+      "vary": "X-Forwarded-Protocol,Accept-Encoding",
+      "x-cdn": "Imperva",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "x-iinfo": "49-48584457-48584484 NNNN CT(151 151 0) RT(1785487237285 157) q(0 0 3 -1) r(5 8) U4",
+      "x-xss-protection": "1; mode=block"
+    },
+    "media_type": "text/html; charset=utf-8"
+  },
+  "object": {
+    "sha256": "0a31328ce0f8a026b8f06e5bb4dcd1c7b4fe1ec63993a6a0a2de7022692c6a6d",
+    "size_bytes": 748568,
+    "storage_path": "objects/sha256/0a/0a31328ce0f8a026b8f06e5bb4dcd1c7b4fe1ec63993a6a0a2de7022692c6a6d"
+  }
+}

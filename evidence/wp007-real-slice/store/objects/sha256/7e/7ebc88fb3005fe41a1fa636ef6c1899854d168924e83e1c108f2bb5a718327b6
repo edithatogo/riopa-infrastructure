@@ -1,0 +1,660 @@
+{
+ "currentVersion": 10.91,
+ "cimVersion": "2.9.0",
+ "id": 122,
+ "name": "Zones",
+ "type": "Feature Layer",
+ "description": "INTENDED PURPOSE: A polygon dataset of Zones created for the Wellington City Council District Plan as part of the District Plan Review Process. A zone spatially identifies and manages an area with common environmental characteristics or where environmental outcomes are sought, by bundling compatible activities or effects together, and controlling those that are incompatible. Large Lot Residential Zone (LLRZ): Areas used predominantly for residential activities and buildings such as detached houses on lots larger than those of the Low density residential and General residential zones, and where there are particular landscape characteristics, physical limitations or other constraints to more intensive development. High Density Residential Zone (HRZ): These areas are used predominantly for residential activities with a high concentration and bulk of buildings and other compatible activities. Medium Density Residential Zone (MRZ): Areas used predominantly for residential activities with moderate concentration and bulk of buildings, such as detached, semi-detached and terraced housing, low-rise apartments, and other compatible activities. General Rural Zone (GRZ): Areas used predominantly for primary production activities, including intensive indoor primary production. The zone may also be used for a range of activities that support primary production activities, including associated rural industry, and other activities that require a rural location. Neighbourhood Centre Zone (NCZ): Areas used predominantly for small-scale commercial and community activities that service the needs of the immediate residential neighbourhood. Local Centre Zone (LCZ): Areas used predominantly for a range of commercial and community activities that service the needs of the residential catchment. Commercial Zone (COMZ): Areas used predominantly for a range of commercial and community activities. Mixed Use Zone (MUZ): Areas used predominantly for a compatible mixture of residential, commercial, light industrial, recreational and/or community activities. Metropolitan Centre Zone (MCZ): Areas used predominantly for a broad range of commercial, community, recreational and residential activities. The zone is a focal point for sub-regional urban catchments. City Centre Zone (CCZ): Areas used predominantly for a broad range of commercial, community, recreational and residential activities. The zone is the main centre for the district or region. General Industrial Zone (GIZ): Areas used predominantly for a range of industrial activities. The zone may also be used for activities that are compatible with the adverse effects generated from industrial activities. Natural Open Space Zone (NOSZ): Areas where the natural environment is retained and activities, buildings and other structures are compatible with the characteristics of the zone. Open Space Zone (OSZ): Areas used predominantly for a range of passive and active recreational activities, along with limited associated facilities and structures. Sport and Active Recreation Zone (SARZ): Areas used predominantly for a range of indoor and outdoor sport and active recreation. Special Purpose Zone: Special purpose zones comprise several zones, within which a specialist activity is undertaken. The proposed District Plan for Wellington City has the following special purpose zones: Airport Zone (AIRPZ): The purpose of the Airport Zone is to provide for the ongoing management and development of Wellington International Airport. Corrections Zone (CORZ): Ara Poutama Aotearoa, the Department of Corrections operates a custodial prison facility for women located at 13 Main Road, Tawa, known as Arohata Prison. Ara Poutama Aotearoa, the Department of Corrections is responsible for the operational management of the prison. Future Urban Zone (FUZ): The purpose of the Future Urban Zone is to identify greenfield land that is suitable for urban development. The Future Urban Zone is used for land that is not ready for a residential, open space, centres or industrial zoning but has been identified for future urban use. Hospital Zone (HOSZ): The purpose of the Special Purpose Hospital Zone is to enable the efficient and effective operation and development of the Wellington Regional Hospital (Ngā Puna Wai ora) located in Newtown. Port Zone (PORTZ): The purpose of the Special Purpose Port zone is to enable the port to operate efficiently and effectively as a locally, regionally, and nationally significant shipping and passenger port and freight intermodal hub, while managing effects on the amenity of surrounding zones so that adverse effects are mitigated as far as practicable, and people\u2019s health and safety is maintained. Quarry Zone (QUARZ): The purpose of the Special Purpose Quarry Zone is to enable the continued use and operation of Wellington\u2019s large-scale quarries. Stadium Zone (STADZ): The purpose of the Special Purpose Stadium zone is to enable the continuing use, operation, and development of the Wellington Regional Stadium in a way that provides for its role as a multi-purpose stadium facility catering to a wide range of sporting, entertainment, education, cultural, and conference functions and events. Tertiary Education Zone (TEDZ): The Special Purpose Tertiary Education Zone applies to Victoria University\u2019s Kelburn campus and Massey University\u2019s Mount Cook campus. The purpose of the zone is to enable the efficient and effective operation and development of these tertiary education facilities across both campus sites. Waterfront Zone (WFZ): The Waterfront Zone provides an interface between the city centre and Te Whanganui a Tara. It contains one of the city\u2019s primary promenades along with two major parks: Frank Kitts Park and Waitangi Park. Wellington Town Belt Zone (WTBZ): The Town Belt is a large area of open space providing a scenic backdrop to the inner city and offering recreational opportunities to residents and visitors. ABBREVIATIONS/ACRONYMS: DP - District Plan; ePlan - \"Electronic Plan\" the web version of the District Plan. REFRESH RATE (Data only): Static. OWNERSHIP: This data is owned by WCC District Planning Team, contact District.Plan@wcc.govt.nz for questions about this layer and its appropriate use cases. Ownership specifies legal or administrative control over the content. STEWARDSHIP: This data is maintained by WCC City Insights Team, contact cityinsightsgis@wcc.govt.nz for information about the creation of this layer and its maintenance. CUSTODIANSHIP: This data is maintained by WCC City Insights Team, contact cityinsightsgis@wcc.govt.nz for information about the creation of this layer and its maintenance. Stewardship addresses the ongoing care, maintenance, and management of the content. AUTHORATATIVE DATA SOURCES (Data only): This data has been prepared based on the WCC District Plan Review Process. SUMMARY OF DATA COLLECTION (Data only): The purpose of a Zone is to spatially identify and manage an area with common environmental characteristics or where environmental outcomes are sought, by bundling compatible activities or effects together, and controlling those that are incompatible. District Plan Zones were modified from the Proposed District Plan as part of the WCC District Plan Review Process.",
+ "geometryType": "esriGeometryPolygon",
+ "sourceSpatialReference": {
+  "wkid": 2193,
+  "latestWkid": 2193,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -4020900,
+  "falseY": 1900,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": 0,
+  "mUnits": 1
+ },
+ "copyrightText": "District Planning Team, Wellington City Council",
+ "parentLayer": {
+  "id": 121,
+  "name": "Zones"
+ },
+ "subLayers": [],
+ "minScale": 0,
+ "maxScale": 0,
+ "referenceScale": 0.0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "uniqueValue",
+   "field1": "SymbolGroup",
+   "uniqueValueInfos": [
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       137,
+       68,
+       101,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "City Centre Zone",
+     "label": "City Centre Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       176,
+       115,
+       255,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "General Industrial Zone",
+     "label": "General Industrial Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       200,
+       202,
+       160,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "General Rural Zone",
+     "label": "General Rural Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       255,
+       181,
+       97,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "High Density Residential Zone",
+     "label": "High Density Residential Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       242,
+       235,
+       204,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Large Lot Residential Zone",
+     "label": "Large Lot Residential Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       245,
+       143,
+       148,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Local Centre Zone",
+     "label": "Local Centre Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       254,
+       219,
+       125,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Medium Density Residential Zone",
+     "label": "Medium Density Residential Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       255,
+       181,
+       255,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSSolid",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 3
+      }
+     },
+     "value": "Metropolitan Centre Zone",
+     "label": "Metropolitan Centre Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       230,
+       0,
+       169,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Mixed Use Zone",
+     "label": "Mixed Use Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       56,
+       173,
+       0,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Natural Open Space Zone",
+     "label": "Natural Open Space Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       255,
+       181,
+       199,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Neighbourhood Centre Zone",
+     "label": "Neighbourhood Centre Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       184,
+       240,
+       156,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Open Space Zone",
+     "label": "Open Space Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       204,
+       204,
+       204,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSSolid",
+       "color": [
+        130,
+        130,
+        130,
+        255
+       ],
+       "width": 0.5
+      }
+     },
+     "value": "Special Purpose Zone",
+     "label": "Special Purpose Zone"
+    },
+    {
+     "symbol": {
+      "type": "esriSFS",
+      "style": "esriSFSSolid",
+      "color": [
+       137,
+       205,
+       102,
+       255
+      ],
+      "outline": {
+       "type": "esriSLS",
+       "style": "esriSLSNull",
+       "color": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "width": 0
+      }
+     },
+     "value": "Sport and Active Recreation Zone",
+     "label": "Sport and Active Recreation Zone"
+    }
+   ],
+   "fieldDelimiter": ","
+  },
+  "scaleSymbols": true,
+  "transparency": 25,
+  "labelingInfo": [
+   {
+    "labelExpression": "[DPZoneCode]",
+    "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+    "multiPart": "labelLargest",
+    "allowOverrun": true,
+    "deconflictionStrategy": "static",
+    "repeatLabel": false,
+    "stackLabel": true,
+    "stackRowLength": 24,
+    "stackAlignment": "textSymbol",
+    "removeDuplicates": "none",
+    "where": "SymbolGroup = 'Special Purpose Zone'",
+    "useCodedValues": true,
+    "maxScale": 0,
+    "minScale": 15000,
+    "name": "Label Class 1",
+    "priority": 0,
+    "symbol": {
+     "type": "esriTS",
+     "color": [
+      0,
+      0,
+      0,
+      255
+     ],
+     "backgroundColor": null,
+     "borderLineColor": null,
+     "borderLineSize": null,
+     "verticalAlignment": "baseline",
+     "horizontalAlignment": "left",
+     "rightToLeft": false,
+     "angle": 0,
+     "xoffset": 0,
+     "yoffset": 0,
+     "kerning": true,
+     "haloColor": [
+      255,
+      255,
+      255,
+      252
+     ],
+     "haloSize": 2,
+     "font": {
+      "family": "Arial",
+      "size": 9,
+      "style": "normal",
+      "weight": "bold",
+      "decoration": "none"
+     }
+    }
+   }
+  ]
+ },
+ "defaultVisibility": true,
+ "extent": {
+  "xmin": 1735121.7329000002,
+  "ymin": 5419585.4661,
+  "xmax": 1759042.1804999998,
+  "ymax": 5443764.3396,
+  "spatialReference": {
+   "wkid": 2193,
+   "latestWkid": 2193,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -4020900,
+   "falseY": 1900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "displayField": "DPZone",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "DPZone",
+   "type": "esriFieldTypeString",
+   "alias": "DP Zone",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "DPZoneCode",
+   "type": "esriFieldTypeString",
+   "alias": "DP Zone Code",
+   "length": 10,
+   "domain": null
+  },
+  {
+   "name": "SymbolGroup",
+   "type": "esriFieldTypeString",
+   "alias": "Symbol_Group",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "Category",
+   "type": "esriFieldTypeString",
+   "alias": "Category",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "Symbology",
+   "type": "esriFieldTypeString",
+   "alias": "Symbology",
+   "length": 4000,
+   "domain": null
+  },
+  {
+   "name": "DP_Chapter",
+   "type": "esriFieldTypeString",
+   "alias": "DP_Chapter",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "ePlan_URL",
+   "type": "esriFieldTypeString",
+   "alias": "ePlan_URL",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "Metadata_URL",
+   "type": "esriFieldTypeString",
+   "alias": "Metadata_URL",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "Status",
+   "type": "esriFieldTypeString",
+   "alias": "Status",
+   "length": 255,
+   "domain": null
+  },
+  {
+   "name": "StatusNote",
+   "type": "esriFieldTypeString",
+   "alias": "Note",
+   "length": 500,
+   "domain": null
+  },
+  {
+   "name": "Shape",
+   "type": "esriFieldTypeGeometry",
+   "alias": "Shape",
+   "domain": null
+  },
+  {
+   "name": "Shape.STArea()",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape.STArea()",
+   "domain": null
+  },
+  {
+   "name": "Shape.STLength()",
+   "type": "esriFieldTypeDouble",
+   "alias": "Shape.STLength()",
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "Shape",
+  "type": "esriFieldTypeGeometry",
+  "alias": "Shape"
+ },
+ "indexes": [
+  {
+   "name": "R1084_pk",
+   "fields": "OBJECTID",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "S667_idx",
+   "fields": "Shape",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [],
+ "canModifyLayer": true,
+ "canScaleSymbols": false,
+ "hasLabels": true,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 2000,
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "hasZ": true,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {"allowOthersToQuery": true},
+ "useStandardizedQueries": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsPagination": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsTrueCurve": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true,
+  "supportsTimeRelation": true,
+  "supportsSqlFormat": false,
+  "supportsQueryAnalytic": true
+ },
+ "supportsDatumTransformation": true,
+ "advancedQueryAnalyticCapabilities": {
+  "supportsLinearRegression": true,
+  "supportsAsync": false,
+  "supportsPercentileAnalytic": true
+ },
+ "dateFieldsTimeReference": null,
+ "preferredTimeReference": null,
+ "datesInUnknownTimezone": false,
+ "hasGeometryProperties": true,
+ "geometryProperties": {
+  "shapeAreaFieldName": "Shape.STArea()",
+  "shapeLengthFieldName": "Shape.STLength()",
+  "units": "esriMeters"
+ },
+ "hasMetadata": true,
+ "isDataArchived": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsCoordinatesQuantization": true,
+ "supportsDynamicLegends": true
+}

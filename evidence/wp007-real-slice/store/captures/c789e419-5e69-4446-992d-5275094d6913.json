@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "http_capture",
+  "capture_id": "urn:uuid:c789e419-5e69-4446-992d-5275094d6913",
+  "source_id": "urn:riopa:source:mfe:national-planning-standards-2022",
+  "endpoint_id": "urn:riopa:endpoint:mfe:national-planning-standards-2022-pdf",
+  "retrieved_at": "2026-07-31T08:35:38.586321Z",
+  "request": {
+    "method": "GET",
+    "url": "https://environment.govt.nz/assets/publications/national-planning-standards-november-2019-updated-2022.pdf",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "identity",
+      "connection": "keep-alive",
+      "host": "environment.govt.nz",
+      "user-agent": "riopa-provenance/0.2.1"
+    },
+    "fingerprint_sha256": "b37ea06b79aca88b443693b3d21cd550cd5dcd215edd576c1bea9034554c2876"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "cache-control": "no-transform",
+      "content-length": "955125",
+      "content-type": "application/pdf",
+      "date": "Fri, 31 Jul 2026 08:35:38 GMT",
+      "etag": "\"626b21e0-e92f5\"",
+      "last-modified": "Thu, 28 Apr 2022 23:23:12 GMT",
+      "set-cookie": "<redacted>, <redacted>",
+      "x-cdn": "Imperva",
+      "x-iinfo": "54-66661807-0 0CNN RT(1785486939133 321) q(0 -1 -1 -1) r(0 -1)"
+    },
+    "media_type": "application/pdf"
+  },
+  "object": {
+    "sha256": "fa9d7cb41629968e7c52eb7263a62ceb86bf4a0563ff26ee1441394ed8b274ce",
+    "size_bytes": 955125,
+    "storage_path": "objects/sha256/fa/fa9d7cb41629968e7c52eb7263a62ceb86bf4a0563ff26ee1441394ed8b274ce"
+  }
+}

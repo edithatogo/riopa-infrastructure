@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "http_capture",
+  "capture_id": "urn:uuid:45558152-a99d-4c6c-a53c-ee0ef9f11efc",
+  "source_id": "urn:riopa:source:linz:nz-primary-parcels-metadata",
+  "endpoint_id": "urn:riopa:endpoint:linz:cc-by-4-license",
+  "retrieved_at": "2026-07-31T08:40:36.723154Z",
+  "request": {
+    "method": "GET",
+    "url": "https://data.linz.govt.nz/services/api/v1/licenses/171/fulltext/",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "identity",
+      "connection": "keep-alive",
+      "host": "data.linz.govt.nz",
+      "user-agent": "riopa-provenance/0.2.1"
+    },
+    "fingerprint_sha256": "fee438a4962c5b4239d738b6dbe4c6916a83019ff2b60a26022865631a55ae88"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "accepted-oauth-scopes": "*",
+      "allow": "GET, HEAD, OPTIONS",
+      "connection": "keep-alive",
+      "content-length": "18666",
+      "content-type": "text/plain; charset=utf-8",
+      "cross-origin-opener-policy": "same-origin",
+      "date": "Fri, 31 Jul 2026 08:40:36 GMT",
+      "referrer-policy": "origin-when-cross-origin",
+      "server": "Koordinates",
+      "strict-transport-security": "max-age=31536000",
+      "vary": "Accept, origin, Accept-Encoding, Cookie, Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "x-k-gentime": "0.019"
+    },
+    "media_type": "text/plain; charset=utf-8"
+  },
+  "object": {
+    "sha256": "b8778b61709766c22c17ea656e98e32cb81af99c85eb6d241107ff32f3b77e99",
+    "size_bytes": 18666,
+    "storage_path": "objects/sha256/b8/b8778b61709766c22c17ea656e98e32cb81af99c85eb6d241107ff32f3b77e99"
+  }
+}

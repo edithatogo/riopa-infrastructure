@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "spatial_materialization_quality",
+  "source_id": "urn:riopa:source:wcc:2024-district-plan-zones",
+  "layer_id": "https://gis.wcc.govt.nz/arcgis/rest/services/2024DistrictPlan/2024DistrictPlan/MapServer/122",
+  "capture_ids": [
+    "urn:uuid:3237817a-ee12-418d-9111-58b8318dbe06",
+    "urn:uuid:db75c0ad-92fb-4369-bc37-482cdd9d612e",
+    "urn:uuid:f7294b6d-1496-48ab-beb8-9dbbbbd5bca6",
+    "urn:uuid:b13af0b0-5a0b-4723-a92e-2629a348541d"
+  ],
+  "feature_count": 1,
+  "null_geometry_count": 0,
+  "invalid_geometry_count_before_repair": 0,
+  "repaired_geometry_count": 0,
+  "duplicate_feature_id_count": 0,
+  "geometry_types": [
+    "Polygon"
+  ],
+  "bbox": [
+    1752031.4702000003,
+    5438603.3798,
+    1753384.7471000003,
+    5439210.9709
+  ],
+  "crs": "EPSG:2193",
+  "geoparquet": {
+    "path": "wcc-zone-objectid-1.parquet",
+    "sha256": "eaa2c0cab0e76afeb28e808f7b451df32c646462f6dfb31dd35e728c035fab48",
+    "size_bytes": 18963,
+    "profile": "GeoParquet 1.1.0"
+  },
+  "duckdb": {
+    "path": "wcc-zone-objectid-1.duckdb",
+    "sha256": "b892592af88844cc28307dbd4319cf4cfc0bf9c461fe10059de71773cde7c9c2",
+    "size_bytes": 1323008,
+    "reproducibility_class": "deterministic-semantics"
+  }
+}

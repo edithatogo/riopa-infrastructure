@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "http_capture",
+  "capture_id": "urn:uuid:0e8cf43c-ee61-47d0-b697-855d5d79676d",
+  "source_id": "urn:riopa:source:moh:certified-public-hospitals",
+  "endpoint_id": "urn:riopa:endpoint:moh:certified-public-hospitals-csv",
+  "retrieved_at": "2026-07-31T08:35:40.795147Z",
+  "request": {
+    "method": "GET",
+    "url": "https://www.health.govt.nz/system/files/LegalEntitySummaryPublicHospital.csv",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "identity",
+      "connection": "keep-alive",
+      "host": "www.health.govt.nz",
+      "user-agent": "riopa-provenance/0.2.1"
+    },
+    "fingerprint_sha256": "8c076cad9e0c4c1539f3b83d0dc19b3b467d3c88acd783e29ce38242aae36c99"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "public",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a23b456439d4e7e2-SYD",
+      "connection": "keep-alive",
+      "content-language": "en-nz",
+      "content-security-policy": "default-src 'self' https://*.google-analytics.com https://*.google.com https://*.gstatic.com https://*.hotjar.com https://*.livestream.com https://*.monsido.com https://maps.google.co.nz https://ministryofhealthnewzealand.createsend.com https://www.youtube.com; connect-src 'self' https://*.hotjar.com https://*.hotjar.io https://*.monsido.com https://createsend.com https://www.google-analytics.com wss://*.hotjar.com https://export.highcharts.com https://export-svg.highcharts.com https://www.googletagmanager.com; frame-src 'self' https://*.arcgis.com https://*.google.com https://*.hotjar.com https://*.livestream.com https://livestream.com https://ministryofhealthnewzealand.createsend.com https://player.vimeo.com https://staticcdn.co.nz/ https://www.youtube.com; img-src 'self' https://*.google-analytics.com https://*.google.com https://*.googleapis.com https://*.hotjar.com https://*.livestream.com https://*.monsido.com https://livestream.com https://ministryofhealthnewzealand.createsend.com https://staticcdn.co.nz/ https://*.openstreetmap.org data: blob: https://www.google-analytics.com https://www.googletagmanager.com; media-src 'self' https://*.livestream.com https://livestream.com https://player.vimeo.com; object-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.google.com https://*.googletagmanager.com https://*.gstatic.com https://*.hotjar.com https://*.livestream.com https://*.monsido.com https://js.createsend1.com https://uu.createsend.com/ https://livestream.com https://ministryofhealthnewzealand.createsend.com https://staticcdn.co.nz https://static.cloudflareinsights.com cdn.jsdelivr.net https://api.mapbox.com https://app-script.monsido.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://monsido-consent.com https://unpkg.com https://www.google.com unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com cdn.jsdelivr.net https://api.mapbox.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com unpkg.com",
+      "content-type": "text/csv; charset=UTF-8",
+      "date": "Fri, 31 Jul 2026 08:35:40 GMT",
+      "expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "last-modified": "Thu, 30 Jul 2026 18:13:47 GMT",
+      "server": "cloudflare",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "vary": "accept-encoding",
+      "x-content-type-options": "nosniff",
+      "x-drupal-cache": "UNCACHEABLE (no cacheability)",
+      "x-drupal-dynamic-cache": "UNCACHEABLE (no cacheability)",
+      "x-frame-options": "SAMEORIGIN"
+    },
+    "media_type": "text/csv; charset=UTF-8"
+  },
+  "object": {
+    "sha256": "7f5f14465e6855b35038908dac519ed79084901063be3dde5195875570bc8ac4",
+    "size_bytes": 32373,
+    "storage_path": "objects/sha256/7f/7f5f14465e6855b35038908dac519ed79084901063be3dde5195875570bc8ac4"
+  }
+}

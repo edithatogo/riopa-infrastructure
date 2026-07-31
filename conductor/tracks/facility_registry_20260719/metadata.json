@@ -4,7 +4,7 @@
   "phase": "Analytics",
   "status": "specified",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-31T08:41:12Z",
   "description": "Reconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
@@ -12,7 +12,9 @@
     "governance_maori_data_sovereignty_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/59",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:wp007-public-hospital-source:2026-07-31"
+  ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "http_capture",
+  "capture_id": "urn:uuid:b13af0b0-5a0b-4723-a92e-2629a348541d",
+  "source_id": "urn:riopa:source:wcc:2024-district-plan-zones",
+  "endpoint_id": "urn:riopa:endpoint:wcc:2024-district-plan:query-page-000000",
+  "retrieved_at": "2026-07-31T08:35:38.187408Z",
+  "request": {
+    "method": "GET",
+    "url": "https://gis.wcc.govt.nz/arcgis/rest/services/2024DistrictPlan/2024DistrictPlan/MapServer/122/query?f=json&where=OBJECTID%3D1&outFields=OBJECTID%2CDPZone%2CDPZoneCode%2CDP_Chapter%2CePlan_URL%2CStatus%2CStatusNote&returnGeometry=true&resultOffset=0&resultRecordCount=2000&returnExceededLimitFeatures=true",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "identity",
+      "connection": "keep-alive",
+      "cookie": "<redacted>",
+      "host": "gis.wcc.govt.nz",
+      "user-agent": "riopa-provenance/0.2.1"
+    },
+    "fingerprint_sha256": "46f20538cd6cd1ebea6732f79ef3120c8adcf946edab16e02f87ad0829175ce2"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=0",
+      "connection": "keep-alive",
+      "content-length": "4695",
+      "content-type": "application/json;charset=UTF-8",
+      "date": "Fri, 31 Jul 2026 08:35:38 GMT",
+      "etag": "\"2f339e3f\"",
+      "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "server": ", Microsoft-IIS/10.0",
+      "set-cookie": "<redacted>, <redacted>",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-aspnet-version": "4.0.30319",
+      "x-content-type-options": "nosniff",
+      "x-powered-by": "ASP.NET",
+      "x-xss-protection": "1; mode=block"
+    },
+    "media_type": "application/json;charset=UTF-8"
+  },
+  "object": {
+    "sha256": "78487be3576bcaffddb3882ee33ee0e558c8c2111416258736d2fb894498c3fa",
+    "size_bytes": 4695,
+    "storage_path": "objects/sha256/78/78487be3576bcaffddb3882ee33ee0e558c8c2111416258736d2fb894498c3fa"
+  }
+}

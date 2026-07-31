@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-004-sharded-archive-contract-20260731` | Catalogue-to-federation stages are independently resumable and content-bound | `src/riopa_provenance/linz_pipeline.py`, `tests/test_linz_pipeline.py`, `docs/linz-archive-pipeline.md` | Synthetic stage/dependency/replay tests pass; real-data MVP remains open |
+| `WP-007-bounded-real-slice-20260731` | Real LINZ metadata, one WCC planning polygon, official planning PDF and facility CSV are content-addressed and linked to portable spatial materialisations | `evidence/wp007-real-slice/manifest.json`, `scripts/verify_wp007_slice.py`, `reports/wp007-bounded-real-slice.md` | Clean semantic rebuild passes; four-council/two-national-family coverage and external research-object validation remain open |
 
 ## Blocking defects
 

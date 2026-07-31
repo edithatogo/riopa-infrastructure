@@ -1,0 +1,120 @@
+schema_version: 1.0.0
+record_type: source_registry
+registry_id: urn:riopa:registry:wp007-real-slice:2026-07-31
+generated_at: 2026-07-31T08:35:00Z
+catalogue_url: https://github.com/edithatogo/riopa-infrastructure
+sources:
+  - source_id: urn:riopa:source:linz:nz-primary-parcels-metadata
+    name: LINZ NZ Primary Parcels metadata
+    publisher:
+      name: Toitū Te Whenua Land Information New Zealand
+      url: https://www.linz.govt.nz/
+    jurisdiction: New Zealand
+    source_family: linz-data-service
+    status: active
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "Layer metadata only; no parcel geometry or ownership information is captured."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:linz:nz-primary-parcels-metadata
+        mechanism: koordinates-catalog
+        url: https://data.linz.govt.nz/services/api/v1/layers/50772/
+        enabled: true
+        capture_strategy: metadata-only
+        authentication:
+          type: none
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:linz:cc-by-4-license
+        mechanism: web-resource
+        url: https://data.linz.govt.nz/services/api/v1/licenses/171/fulltext/
+        enabled: true
+        capture_strategy: metadata-only
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:wcc:2024-district-plan-zones
+    name: Wellington City 2024 District Plan zones
+    publisher:
+      name: Wellington City Council
+      url: https://wellington.govt.nz/
+    jurisdiction: Wellington City
+    source_family: council-arcgis
+    status: active
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-3.0-NZ
+      redistribution_status: attribution-required
+      notes: "Bounded feature capture; statutory meaning and operative status are not inferred."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:wcc:2024-district-plan
+        mechanism: arcgis-map-service
+        url: https://gis.wcc.govt.nz/arcgis/rest/services/2024DistrictPlan/2024DistrictPlan/MapServer
+        enabled: true
+        capture_strategy: paginated
+        authentication:
+          type: none
+        layer_ids: [122]
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+
+  - source_id: urn:riopa:source:mfe:national-planning-standards-2022
+    name: National planning standards updated 2022
+    publisher:
+      name: Ministry for the Environment
+      url: https://environment.govt.nz/
+    jurisdiction: New Zealand
+    source_family: official-planning-document
+    status: active
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "Official publication bytes; no automated legal interpretation is made."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:mfe:national-planning-standards-2022-pdf
+        mechanism: web-resource
+        url: https://environment.govt.nz/assets/publications/national-planning-standards-november-2019-updated-2022.pdf?v=2524784180d5a918833b1f3d2f21932c71cde537
+        enabled: true
+        capture_strategy: download-whole
+        authentication:
+          type: none
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:mfe:copyright
+        mechanism: web-resource
+        url: https://environment.govt.nz/about-this-site/copyright/
+        enabled: true
+        capture_strategy: metadata-only
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:moh:certified-public-hospitals
+    name: Certified public hospital providers
+    publisher:
+      name: Ministry of Health Manatū Hauora
+      url: https://www.health.govt.nz/
+    jurisdiction: New Zealand
+    source_family: official-facility-register
+    status: active
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "Public certified-provider CSV; certification is not a complete service or capacity claim."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:moh:certified-public-hospitals-csv
+        mechanism: web-resource
+        url: https://www.health.govt.nz/system/files/LegalEntitySummaryPublicHospital.csv
+        enabled: true
+        capture_strategy: download-whole
+        authentication:
+          type: none
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1

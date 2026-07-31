@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "bounded_real_vertical_slice",
+  "evidence_id": "urn:riopa:evidence:wp007-real-slice:2026-07-31",
+  "created_at": "2026-07-31T08:36:00Z",
+  "source_revision": "fca0cca41914fde42110863b1df0194bc8714bd6",
+  "registry": "../../config/source-registry/wp007-real-slice.yaml",
+  "bounds": {
+    "linz": "metadata for LINZ layer 50772 only; no parcel features",
+    "council_gis": "Wellington 2024 District Plan Zones layer, OBJECTID=1 only",
+    "planning": "one official National Planning Standards PDF, updated 2022",
+    "facility": "one official public-hospital provider CSV",
+    "publication": "not attempted"
+  },
+  "sources": [
+    {
+      "role": "linz",
+      "source_id": "urn:riopa:source:linz:nz-primary-parcels-metadata",
+      "capture_metadata": "store/captures/2c156ae3-12e4-424c-a769-28e9e9312ba3.json",
+      "rights_capture_metadata": "store/captures/45558152-a99d-4c6c-a53c-ee0ef9f11efc.json",
+      "rights_evidence": [
+        "https://data.linz.govt.nz/services/api/v1/layers/50772/",
+        "https://data.linz.govt.nz/license/attribution-4-0-international/"
+      ],
+      "rights_disposition": "metadata redistribution allowed with attribution"
+    },
+    {
+      "role": "council-gis",
+      "source_id": "urn:riopa:source:wcc:2024-district-plan-zones",
+      "capture_set": "store/capture-sets/b973595d-0aaf-4b18-a594-db973507195b.json",
+      "rights_evidence": [
+        "https://wellington.govt.nz/~/media/maps/gis/gis-data-metadata.pdf"
+      ],
+      "rights_disposition": "WCC GIS metadata declares CC BY 3.0 NZ; layer purpose limitations retained"
+    },
+    {
+      "role": "planning",
+      "source_id": "urn:riopa:source:mfe:national-planning-standards-2022",
+      "capture_metadata": "store/captures/c789e419-5e69-4446-992d-5275094d6913.json",
+      "rights_capture_metadata": "store/captures/5b8b7e4c-4c8c-48c6-9ec5-abc753bcfdd8.json",
+      "rights_evidence": [
+        "https://environment.govt.nz/publications/national-planning-standards/",
+        "https://environment.govt.nz/about-this-site/copyright/"
+      ],
+      "rights_disposition": "CC BY 4.0 with Crown attribution; logos and third-party material excluded"
+    },
+    {
+      "role": "facility",
+      "source_id": "urn:riopa:source:moh:certified-public-hospitals",
+      "capture_metadata": "store/captures/0e8cf43c-ee61-47d0-b697-855d5d79676d.json",
+      "rights_evidence": [
+        "https://www.health.govt.nz/regulation-legislation/certification-of-health-care-services/certified-providers/public-hospitals",
+        "https://www.health.govt.nz/about-this-site/copyright"
+      ],
+      "rights_disposition": "CC BY 4.0 with Ministry attribution; no service or capacity inference"
+    }
+  ],
+  "materialization": {
+    "source_id": "urn:riopa:source:wcc:2024-district-plan-zones",
+    "quality_report": "materialized/wcc-zone-objectid-1.quality.json",
+    "geoparquet": "materialized/wcc-zone-objectid-1.parquet",
+    "duckdb": "materialized/wcc-zone-objectid-1.duckdb",
+    "lineage": {
+      "capture_set_id": "urn:uuid:b973595d-0aaf-4b18-a594-db973507195b",
+      "capture_ids": [
+        "urn:uuid:3237817a-ee12-418d-9111-58b8318dbe06",
+        "urn:uuid:db75c0ad-92fb-4369-bc37-482cdd9d612e",
+        "urn:uuid:f7294b6d-1496-48ab-beb8-9dbbbbd5bca6",
+        "urn:uuid:b13af0b0-5a0b-4723-a92e-2629a348541d"
+      ],
+      "transformation": "riopa spatial arcgis-capture-set",
+      "target_crs": "EPSG:2193"
+    }
+  },
+  "limitations": [
+    "The LINZ evidence is item metadata, not a parcel payload.",
+    "The council slice contains one deliberately selected feature and is not coverage evidence.",
+    "No planning-rule interpretation or spatial-to-provision legal assertion is made.",
+    "The facility CSV is a certification register, not a complete service, location-quality or capacity model.",
+    "Publisher-wide rights statements are retained; no target-specific public release review has occurred.",
+    "WCC and Ministry of Health rights URLs were independently reviewed but their servers returned HTTP 403 to the pinned capture client, so those rights pages are referenced rather than bundled.",
+    "This is repository-owned validation, not independent reproduction."
+  ],
+  "publication_status": "not-attempted",
+  "manifest_sha256": "b0ae64725ea8548740936ab037cc6c1c83307f549272727369b9995f4cc2f227"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "http_capture",
+  "capture_id": "urn:uuid:3237817a-ee12-418d-9111-58b8318dbe06",
+  "source_id": "urn:riopa:source:wcc:2024-district-plan-zones",
+  "endpoint_id": "urn:riopa:endpoint:wcc:2024-district-plan:layer-metadata",
+  "retrieved_at": "2026-07-31T08:35:37.935727Z",
+  "request": {
+    "method": "GET",
+    "url": "https://gis.wcc.govt.nz/arcgis/rest/services/2024DistrictPlan/2024DistrictPlan/MapServer/122?f=pjson",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "identity",
+      "connection": "keep-alive",
+      "host": "gis.wcc.govt.nz",
+      "user-agent": "riopa-provenance/0.2.1"
+    },
+    "fingerprint_sha256": "c4ffccd7afed7a8dd0d0ec9a72d5c06b1ccd888014760daf6c7ea062e5519554"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=0",
+      "connection": "keep-alive",
+      "content-length": "19994",
+      "content-type": "text/plain;charset=UTF-8",
+      "date": "Fri, 31 Jul 2026 08:35:38 GMT",
+      "etag": "\"ac7cd1b\"",
+      "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "server": ", Microsoft-IIS/10.0",
+      "set-cookie": "<redacted>, <redacted>",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-aspnet-version": "4.0.30319",
+      "x-content-type-options": "nosniff",
+      "x-powered-by": "ASP.NET",
+      "x-xss-protection": "1; mode=block"
+    },
+    "media_type": "text/plain;charset=UTF-8"
+  },
+  "object": {
+    "sha256": "7ebc88fb3005fe41a1fa636ef6c1899854d168924e83e1c108f2bb5a718327b6",
+    "size_bytes": 19994,
+    "storage_path": "objects/sha256/7e/7ebc88fb3005fe41a1fa636ef6c1899854d168924e83e1c108f2bb5a718327b6"
+  }
+}
