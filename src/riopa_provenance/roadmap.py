@@ -328,13 +328,19 @@ def _validate_architecture_fitness(
     for relative, headings in required.items():
         path = base / relative
         if not path.is_file():
-            problems.append(RoadmapProblem("architecture-artifact", relative, "required artifact is absent"))
+            problems.append(
+                RoadmapProblem("architecture-artifact", relative, "required artifact is absent")
+            )
             continue
         text = path.read_text(encoding="utf-8")
         for heading in headings:
             if heading not in text:
                 problems.append(
-                    RoadmapProblem("architecture-artifact", relative, f"missing required contract section: {heading}")
+                    RoadmapProblem(
+                        "architecture-artifact",
+                        relative,
+                        f"missing required contract section: {heading}",
+                    )
                 )
 
     for track_id, item in sorted(tracks.items()):
@@ -1262,6 +1268,11 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
             blockers.append(f"track {track_id} is missing")
             continue
         current_level = track.get("current_maturity", "M0")
+        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
+            blockers.append(
+                f"track {track_id} status {track.get('status')} is incompatible with the release"
+            )
+            continue
         if _maturity_rank(current_level) < required_rank:
             blockers.append(f"track {track_id} is {current_level}; {required_level} is required")
             continue
@@ -1274,11 +1285,6 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
         if required_rank == 6 and track.get("status") != "complete":
             blockers.append(
                 f"track {track_id} is {track.get('status')}; complete is required for stable v1"
-            )
-            continue
-        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
-            blockers.append(
-                f"track {track_id} status {track.get('status')} is incompatible with the release"
             )
             continue
         incomplete_dependencies = [

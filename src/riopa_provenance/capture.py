@@ -395,7 +395,7 @@ class HttpCaptureClient:
         method: str,
         url: str,
         *,
-        retry_policy: RetryPolicy = RetryPolicy(),
+        retry_policy: RetryPolicy | None = None,
         circuit_breaker: CircuitBreaker | None = None,
         sleep: Callable[[float], None] | None = None,
         on_decision: Callable[[RetryDecision], None] | None = None,
@@ -410,10 +410,11 @@ class HttpCaptureClient:
         so callers can use a scheduler and tests can assert delays without I/O.
         """
 
+        policy = retry_policy or RetryPolicy()
         wait = sleep or (lambda _seconds: None)
         clock = now or (lambda: datetime.now(UTC))
         kwargs.pop("require_success", None)
-        for attempt in range(1, retry_policy.max_attempts + 1):
+        for attempt in range(1, policy.max_attempts + 1):
             if circuit_breaker is not None and not circuit_breaker.allow(now=clock()):
                 raise CaptureError("circuit breaker is open")
             try:
@@ -423,7 +424,7 @@ class HttpCaptureClient:
                     method=method,
                     attempt=attempt,
                     status_code=None,
-                    policy=retry_policy,
+                    policy=policy,
                 )
                 if on_decision is not None:
                     on_decision(decision)
@@ -432,15 +433,13 @@ class HttpCaptureClient:
                         circuit_breaker.record_failure(now=clock())
                     wait(decision.delay_seconds)
                     continue
-                raise CaptureError(
-                    f"transport failure after {attempt} attempt(s): {exc}"
-                ) from exc
+                raise CaptureError(f"transport failure after {attempt} attempt(s): {exc}") from exc
             decision = decide_retry(
                 method=method,
                 attempt=attempt,
                 status_code=result.status_code,
                 retry_after=result.retry_after,
-                policy=retry_policy,
+                policy=policy,
             )
             if on_decision is not None:
                 on_decision(decision)

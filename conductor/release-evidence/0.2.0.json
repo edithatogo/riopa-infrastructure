@@ -30,7 +30,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
           "kind": "documentation",
           "location": "conductor/tracks.md",
-          "sha256": "3c0e93c8d837c0d0e4a5e0f51e885f6b7c7c5322faf889d4ef652e3a4f89caa5",
+          "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Validated 28-track Conductor index."
@@ -86,7 +86,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap.py",
-          "sha256": "d08894b45d79a1ce5d7909a3a7c4c6528caad00237ffa1099dfedb1143b1857f",
+          "sha256": "2a99a0bee8332b829846f664d360edd5d6a65dd9e5452dba8885615ecab1f4df",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Automated roadmap and readiness tests."
@@ -95,7 +95,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-hardening-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap_hardening.py",
-          "sha256": "3ee0a020b8a42eb383dd859f01d28e71dac6fa520b558327dc6d97ceab645098",
+          "sha256": "d67d4af619cc0b9c695cb1e0ddb8300252fc982250189a72c827deab484c7677",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Negative, drift, expiry, evidence-integrity and stable-readiness tests."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "b787aee771a2f4de7e962c772b9f4e9a732feb041cd7009116a70946e5b47954",
+          "sha256": "c9b04922f4074e13e344c16e87937ce4b35edd21d560a2e159181b8678b236d8",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Deterministically generated programme issue graph."
@@ -253,7 +253,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
       "kind": "artifact",
       "location": "conductor/tracks.md",
-      "sha256": "3c0e93c8d837c0d0e4a5e0f51e885f6b7c7c5322faf889d4ef652e3a4f89caa5",
+      "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
       "immutable": false,
       "generated_at": "2026-07-19T09:20:00Z",
       "description": "Conductor track index delivered with the roadmap."

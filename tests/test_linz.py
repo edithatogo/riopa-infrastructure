@@ -25,9 +25,7 @@ def state(*, sequence: int, parent: str | None = None) -> dict[str, object]:
 
 def test_revision_intervals_require_utc_order_and_matching_precision() -> None:
     _validate_revision_interval("2026-01-01T00:00:00Z", "2026-01-01T00:00:01Z")
-    _validate_revision_interval(
-        "2026-01-01T00:00:00.000Z", "2026-01-01T00:00:01.000Z"
-    )
+    _validate_revision_interval("2026-01-01T00:00:00.000Z", "2026-01-01T00:00:01.000Z")
     with pytest.raises(LinzStateError, match="full UTC RFC 3339"):
         _validate_revision_interval("2026-01-01T00:00:00+00:00", "2026-01-01T00:00:01Z")
     with pytest.raises(LinzStateError, match="identical timestamp precision"):

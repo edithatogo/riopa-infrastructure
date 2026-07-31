@@ -135,9 +135,6 @@ def _load_snapshot_manifest(path: str | Path) -> dict[str, Any]:
         "linz_catalog_enriched_snapshot",
     }:
         raise LinzFederationError("not a LINZ catalogue snapshot manifest")
-    expected = sha256_json(value, omit_keys={"manifest_sha256"})
-    if value.get("manifest_sha256") != expected:
-        raise LinzFederationError("LINZ catalogue snapshot manifest hash mismatch")
     for label in ("items", "csv"):
         descriptor = value.get(label)
         if not isinstance(descriptor, Mapping) or not isinstance(descriptor.get("path"), str):
@@ -153,6 +150,9 @@ def _load_snapshot_manifest(path: str | Path) -> dict[str, Any]:
             raise LinzFederationError(f"catalogue {label} file hash mismatch")
         if candidate.stat().st_size != descriptor.get("size_bytes"):
             raise LinzFederationError(f"catalogue {label} file size mismatch")
+    expected = sha256_json(value, omit_keys={"manifest_sha256"})
+    if value.get("manifest_sha256") != expected:
+        raise LinzFederationError("LINZ catalogue snapshot manifest hash mismatch")
     return value
 
 

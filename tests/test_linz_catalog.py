@@ -21,8 +21,7 @@ from riopa_provenance.linz_catalog import (
 def test_pagination_headers_accept_supported_forms() -> None:
     assert parse_link_header(None) == {}
     assert parse_link_header(
-        '<https://data.linz.govt.nz/services/api/v1.x/?page=2>; rel="page-next", '
-        '</last>; rel=last'
+        '<https://data.linz.govt.nz/services/api/v1.x/?page=2>; rel="page-next", </last>; rel=last'
     ) == {
         "page-next": "https://data.linz.govt.nz/services/api/v1.x/?page=2",
         "last": "/last",

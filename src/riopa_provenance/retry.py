@@ -8,9 +8,8 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from email.utils import parsedate_to_datetime
 from datetime import UTC, datetime, timedelta
-
+from email.utils import parsedate_to_datetime
 
 RETRYABLE_STATUS_CODES = frozenset({408, 425, 429, 500, 502, 503, 504})
 IDEMPOTENT_METHODS = frozenset({"GET", "HEAD", "OPTIONS", "PUT", "DELETE"})
@@ -113,22 +112,30 @@ def decide_retry(
     attempt: int,
     status_code: int | None = None,
     retry_after: str | None = None,
-    policy: RetryPolicy = RetryPolicy(),
+    policy: RetryPolicy | None = None,
     now: datetime | None = None,
 ) -> RetryDecision:
     """Return a bounded retry decision without sleeping or performing I/O."""
 
+    retry_policy = policy or RetryPolicy()
     if attempt < 1:
         raise ValueError("attempt must be positive")
     normalized_method = method.upper()
-    if attempt >= policy.max_attempts:
-        return RetryDecision(attempt, False, 0.0, "attempt-limit")
     if normalized_method not in IDEMPOTENT_METHODS:
         return RetryDecision(attempt, False, 0.0, "non-idempotent-method")
     if status_code is not None and status_code not in RETRYABLE_STATUS_CODES:
         return RetryDecision(attempt, False, 0.0, "status-not-retryable")
+    if attempt >= retry_policy.max_attempts:
+        return RetryDecision(attempt, False, 0.0, "attempt-limit")
 
-    exponential = min(policy.max_delay_seconds, policy.base_delay_seconds * (2 ** (attempt - 1)))
+    exponential = min(
+        retry_policy.max_delay_seconds,
+        retry_policy.base_delay_seconds * (2 ** (attempt - 1)),
+    )
     retry_delay = parse_retry_after(retry_after, now=now or datetime.now(UTC))
-    delay = min(policy.max_delay_seconds, retry_delay) if retry_delay is not None else exponential
-    return RetryDecision(attempt, True, delay, "retryable-status" if status_code else "transport-error")
+    delay = (
+        min(retry_policy.max_delay_seconds, retry_delay) if retry_delay is not None else exponential
+    )
+    return RetryDecision(
+        attempt, True, delay, "retryable-status" if status_code else "transport-error"
+    )

@@ -73,7 +73,11 @@ def test_current_programme_is_honestly_not_release_ready() -> None:
     status = roadmap_status(ROOT)
     assert status["tracks"]["total"] == 28
     assert status["tracks"]["by_current_maturity"] == {"M1": 28}
-    assert status["releases"][0]["ready"] is True
+    assert status["releases"][0]["ready"] is False
+    assert status["releases"][0]["blockers"] == [
+        "track foundation_architecture_20260718 has blocking defects",
+        "track governance_maori_data_sovereignty_20260718 has blocking defects",
+    ]
     assert all(not release["ready"] for release in status["releases"][1:])
 
     stable = release_readiness(ROOT, "1.0.0")

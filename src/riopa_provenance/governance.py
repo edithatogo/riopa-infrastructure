@@ -74,7 +74,9 @@ def evaluate_decision(
             if reviewed_at > datetime.now(UTC):
                 reasons.append("review date is in the future")
             expires_at = review.get("expires_at")
-            if expires_at is not None and datetime.fromisoformat(str(expires_at).replace("Z", "+00:00")) <= datetime.now(UTC):
+            if expires_at is not None and datetime.fromisoformat(
+                str(expires_at).replace("Z", "+00:00")
+            ) <= datetime.now(UTC):
                 reasons.append("review has expired")
         except (TypeError, ValueError):
             reasons.append("review dates must be ISO-8601 timestamps")
@@ -145,7 +147,9 @@ def reconcile_withdrawal_targets(
     if decision.get("outcome") != "withdraw":
         return tuple(targets), ()
     scope = decision.get("scope")
-    withdrawn = set(scope) if isinstance(scope, Sequence) and not isinstance(scope, (str, bytes)) else set()
+    withdrawn = (
+        set(scope) if isinstance(scope, Sequence) and not isinstance(scope, (str, bytes)) else set()
+    )
     return tuple(target for target in targets if target not in withdrawn), tuple(
         target for target in targets if target in withdrawn
     )
