@@ -41,6 +41,7 @@ dev = [
   "cyclonedx-bom>=6,<8",
   "hypothesis>=6.130,<7",
   "mypy>=1.15,<3",
+  "pip-audit>=2.9,<3",
   "pre-commit>=4,<5",
   "pytest>=9.0.3,<10",
   "pytest-cov>=6,<8",
