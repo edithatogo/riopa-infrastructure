@@ -16,7 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-003-publication-binding-20260731` | Research-object bytes bind deterministic, target-specific publication plans | `src/riopa_provenance/publication.py`, `schemas/publication-plan.schema.json`, `tests/test_publication.py` | Content binding, target staging and negative rights tests pass |
 
 ## Blocking defects
 

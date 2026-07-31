@@ -16,6 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
+| `WP-003-hierarchical-rights-20260731` | Rights propagate to artifact and target-specific publication decisions without widening inherited permission | `src/riopa_provenance/publication.py`, `schemas/publication-plan.schema.json`, `tests/test_publication.py` | Narrowing-only inheritance and fail-closed conflict tests pass |
 | R01, R02, R04, R05 | Versioned governance decision framework and schema | `docs/governance-decision-framework.md`, `schemas/governance-decision.schema.json` | Implemented; runtime suite pending environment provisioning |
 | R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; runtime suite pending environment provisioning |
 | R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |

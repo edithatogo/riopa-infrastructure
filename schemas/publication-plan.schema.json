@@ -4,13 +4,14 @@
   "title": "RIOPA rights-aware publication plan",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "record_type", "publication_id", "snapshot_id", "snapshot_version", "source_research_object", "policy", "targets", "assets", "status", "blockers", "plan_sha256"],
+  "required": ["schema_version", "record_type", "publication_id", "snapshot_id", "snapshot_version", "created_at", "source_research_object", "policy", "targets", "assets", "status", "blockers", "plan_sha256"],
   "properties": {
     "schema_version": {"const": "1.0.0"},
     "record_type": {"const": "publication_plan"},
     "publication_id": {"type": "string", "format": "uri"},
     "snapshot_id": {"type": "string", "format": "uri"},
     "snapshot_version": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
     "source_research_object": {
       "type": "object", "additionalProperties": false,
       "required": ["bundle_manifest_sha256", "snapshot_manifest_sha256"],
@@ -56,7 +57,7 @@
     },
     "asset": {
       "type": "object", "additionalProperties": false,
-      "required": ["asset_id", "path", "sha256", "size_bytes", "media_type", "classification", "rights_decision", "source_ids", "target_ids", "decision_basis", "attribution"],
+      "required": ["asset_id", "path", "sha256", "size_bytes", "media_type", "classification", "rights_decision", "target_decisions", "source_ids", "target_ids", "decision_basis", "attribution"],
       "properties": {
         "asset_id": {"type": "string", "format": "uri"},
         "path": {"type": "string", "minLength": 1},
@@ -65,6 +66,10 @@
         "media_type": {"type": ["string", "null"]},
         "classification": {"type": "string", "minLength": 1},
         "rights_decision": {"enum": ["publish", "metadata-only", "local-only", "withhold", "review-required"]},
+        "target_decisions": {
+          "type": "object",
+          "additionalProperties": {"enum": ["publish", "metadata-only", "local-only", "withhold", "review-required"]}
+        },
         "source_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
         "target_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
         "decision_basis": {"type": "array", "items": {"type": "string"}, "minItems": 1},

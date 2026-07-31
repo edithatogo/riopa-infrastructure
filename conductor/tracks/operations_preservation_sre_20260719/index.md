@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-002-capture-observability-20260731` | Capture attempts, outcomes, archived bytes and structured failure categories | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Deterministic in-process metrics and structured failure events tested |
+| `WP-003-publication-resume-20260731` | Publication retry, idempotency and partial-completion semantics | `src/riopa_provenance/publication.py`, `tests/test_publication.py`, `docs/publication-state.md` | Content-bound operation keys, idempotent replay and conflict rejection tested |
 
 ## Blocking defects
 

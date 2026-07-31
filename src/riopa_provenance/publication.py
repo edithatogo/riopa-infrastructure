@@ -12,7 +12,7 @@ import mimetypes
 import shutil
 from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from .crate import verify_research_object
 from .hashing import sha256_file, sha256_json
@@ -100,6 +100,16 @@ def _most_restrictive(decisions: Sequence[str]) -> str:
     return max(decisions, key=_DECISION_PRECEDENCE.__getitem__)
 
 
+def _narrow_decision(inherited: str, proposed: str, *, context: str) -> str:
+    """Apply a reviewed decision without permitting it to widen inherited rights."""
+
+    if _DECISION_PRECEDENCE[proposed] < _DECISION_PRECEDENCE[inherited]:
+        raise PublicationError(
+            f"{context} would widen inherited rights from {inherited} to {proposed}"
+        )
+    return _most_restrictive([inherited, proposed])
+
+
 def _artifact_rights_decision(
     artifact: Mapping[str, Any] | None,
     source_ids: Sequence[str],
@@ -174,6 +184,7 @@ def build_publication_plan(
     *,
     targets: Sequence[Mapping[str, Any]] = DEFAULT_TARGETS,
     overrides: Mapping[str, str] | None = None,
+    target_overrides: Mapping[str, Mapping[str, str]] | None = None,
 ) -> Path:
     """Create a deterministic, fail-closed publication plan for a research object."""
 
@@ -199,12 +210,32 @@ def build_publication_plan(
     unknown_override = set(override_values.values()) - permitted_overrides
     if unknown_override:
         raise PublicationError(f"unsupported publication override: {sorted(unknown_override)}")
+    target_override_values = {
+        str(target_id): dict(decisions) for target_id, decisions in (target_overrides or {}).items()
+    }
+    unknown_targets = set(target_override_values) - set(target_ids)
+    if unknown_targets:
+        raise PublicationError(
+            f"publication overrides reference unknown targets: {sorted(unknown_targets)}"
+        )
+    unknown_target_decisions = {
+        decision
+        for decisions in target_override_values.values()
+        for decision in decisions.values()
+        if decision not in permitted_overrides
+    }
+    if unknown_target_decisions:
+        raise PublicationError(
+            f"unsupported target publication override: {sorted(unknown_target_decisions)}"
+        )
 
     assets: list[dict[str, Any]] = []
     blockers: list[str] = []
+    seen_paths: set[str] = set()
     for relative in sorted(
         path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()
     ):
+        seen_paths.add(relative)
         path = resolve_local_reference(root, relative)
         artifact = artifacts_by_path.get(relative)
         if artifact is None:
@@ -229,11 +260,36 @@ def build_publication_plan(
             )
 
         if relative in override_values:
-            decision = override_values[relative]
+            decision = _narrow_decision(
+                decision,
+                override_values[relative],
+                context=f"path override for {relative}",
+            )
             basis.append("A path-specific reviewed publication override was supplied.")
         if decision == "review-required":
             blockers.append(f"{relative}: rights review is required")
-        asset_targets = target_ids if decision in {"publish", "metadata-only"} else []
+        target_decisions: dict[str, str] = {}
+        for target_id in target_ids:
+            target_decision = decision
+            target_override = target_override_values.get(target_id, {}).get(relative)
+            if target_override is not None:
+                target_decision = _narrow_decision(
+                    decision,
+                    target_override,
+                    context=f"target override for {target_id}/{relative}",
+                )
+                basis.append(
+                    f"A reviewed {target_id} target decision narrows publication to "
+                    f"{target_decision}."
+                )
+            target_decisions[target_id] = target_decision
+            if target_decision == "review-required":
+                blockers.append(f"{relative}: {target_id} rights review is required")
+        asset_targets = [
+            target_id
+            for target_id, target_decision in target_decisions.items()
+            if target_decision in {"publish", "metadata-only"}
+        ]
         digest = sha256_file(path)
         assets.append(
             {
@@ -247,6 +303,7 @@ def build_publication_plan(
                 "media_type": _media_type(path),
                 "classification": classification,
                 "rights_decision": decision,
+                "target_decisions": target_decisions,
                 "source_ids": source_ids,
                 "target_ids": asset_targets,
                 "decision_basis": basis,
@@ -254,10 +311,16 @@ def build_publication_plan(
             }
         )
 
-    if any(asset["rights_decision"] == "review-required" for asset in assets):
-        status = "review-required"
-    else:
-        status = "ready"
+    configured_paths = set(override_values)
+    configured_paths.update(
+        path for decisions in target_override_values.values() for path in decisions
+    )
+    unknown_paths = configured_paths - seen_paths
+    if unknown_paths:
+        raise PublicationError(
+            f"publication overrides reference unknown asset paths: {sorted(unknown_paths)}"
+        )
+    status = "review-required" if blockers else "ready"
     publication_seed = {
         "snapshot_id": manifest["snapshot_id"],
         "snapshot_version": manifest["snapshot_version"],
@@ -368,12 +431,15 @@ def stage_publication(
             if target_id not in asset["target_ids"]:
                 continue
             source = resolve_local_reference(root, asset["path"])
-            if asset["rights_decision"] == "publish":
+            target_decision = asset.get("target_decisions", {}).get(
+                target_id, asset["rights_decision"]
+            )
+            if target_decision == "publish":
                 destination = target_root / asset["path"]
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(source, destination)
                 staged_path = asset["path"]
-            elif asset["rights_decision"] == "metadata-only":
+            elif target_decision == "metadata-only":
                 staged_path = f"withheld/{asset['path']}.metadata.json"
                 destination = target_root / staged_path
                 destination.parent.mkdir(parents=True, exist_ok=True)
@@ -393,7 +459,7 @@ def stage_publication(
                 )
             else:  # schema prevents this path from being target-addressable
                 raise PublicationError(
-                    f"unsafe target assignment for {asset['path']}: {asset['rights_decision']}"
+                    f"unsafe target assignment for {asset['path']}: {target_decision}"
                 )
             staged_assets.append(
                 {
@@ -443,3 +509,94 @@ def stage_publication(
         json.dumps(crosswalk, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     return output
+
+
+def initialise_publication_state(plan: Mapping[str, Any]) -> dict[str, Any]:
+    """Create a resumable target journal bound to one exact publication plan."""
+
+    if plan.get("status") != "ready":
+        raise PublicationError("publication state requires a ready plan")
+    plan_sha256 = str(plan.get("plan_sha256") or "")
+    if plan_sha256 != sha256_json(plan, omit_keys={"plan_sha256"}):
+        raise PublicationError("publication state requires a content-bound plan")
+    target_records = list(plan.get("targets", []))
+    target_ids = [str(target["target_id"]) for target in target_records]
+    if len(target_ids) != len(set(target_ids)):
+        raise PublicationError("publication state targets must be unique")
+    targets = {
+        str(target["target_id"]): {
+            "status": "pending",
+            "operation_key": sha256_json(
+                {"plan_sha256": plan_sha256, "target_id": target["target_id"]}
+            ),
+            "receipt": None,
+        }
+        for target in target_records
+    }
+    if not targets:
+        raise PublicationError("publication state requires at least one target")
+    state: dict[str, Any] = {
+        "schema_version": "1.0.0",
+        "record_type": "publication_state",
+        "publication_id": plan["publication_id"],
+        "plan_sha256": plan_sha256,
+        "status": "pending",
+        "targets": targets,
+        "state_sha256": "",
+    }
+    state["state_sha256"] = sha256_json(state, omit_keys={"state_sha256"})
+    return state
+
+
+def record_publication_receipt(
+    state: Mapping[str, Any],
+    receipt: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Reconcile one immutable remote receipt; identical replay is a no-op."""
+
+    expected_state_hash = sha256_json(state, omit_keys={"state_sha256"})
+    if state.get("state_sha256") != expected_state_hash:
+        raise PublicationError("publication state hash mismatch")
+    target_id = str(receipt.get("target_id") or "")
+    targets = state.get("targets")
+    if not isinstance(targets, Mapping) or target_id not in targets:
+        raise PublicationError(f"receipt references unknown target: {target_id}")
+    target = targets[target_id]
+    if not isinstance(target, Mapping):
+        raise PublicationError(f"invalid target state: {target_id}")
+    required = {
+        "target_id",
+        "operation_key",
+        "plan_sha256",
+        "identifier",
+        "revision",
+        "recorded_at",
+    }
+    missing = sorted(required - set(receipt))
+    if missing:
+        raise PublicationError(f"publication receipt is missing fields: {missing}")
+    if receipt["operation_key"] != target.get("operation_key"):
+        raise PublicationError("publication receipt operation key mismatch")
+    if receipt["plan_sha256"] != state.get("plan_sha256"):
+        raise PublicationError("publication receipt plan hash mismatch")
+    if not receipt["identifier"] or not receipt["revision"]:
+        raise PublicationError("publication receipt requires immutable identifier and revision")
+    normalised_receipt = dict(receipt)
+    normalised_receipt["receipt_sha256"] = sha256_json(
+        normalised_receipt, omit_keys={"receipt_sha256"}
+    )
+    existing = target.get("receipt")
+    if existing is not None:
+        if existing != normalised_receipt:
+            raise PublicationError(
+                f"conflicting publication receipt for completed target: {target_id}"
+            )
+        return dict(state)
+
+    updated = cast(dict[str, Any], json.loads(json.dumps(state)))
+    updated["targets"][target_id]["status"] = "published"
+    updated["targets"][target_id]["receipt"] = normalised_receipt
+    statuses = {item["status"] for item in updated["targets"].values()}
+    updated["status"] = "published" if statuses == {"published"} else "in-progress"
+    updated["state_sha256"] = sha256_json(updated, omit_keys={"state_sha256"})
+    return updated
