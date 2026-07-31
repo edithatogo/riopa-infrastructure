@@ -4,7 +4,7 @@
   "phase": "Release",
   "status": "specified",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-31T09:30:00Z",
   "description": "Set and verify bounded performance, capacity, resilience and cost envelopes for the connector, archive, query, accessibility, optimisation and simulation workloads required by stable v1.",
   "depends_on": [
     "connector_runtime_capture_20260719",
@@ -16,7 +16,9 @@
     "operations_preservation_sre_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/134",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:linz-pipeline-resource-envelopes:2026-07-31"
+  ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "owner_role": "Release manager",

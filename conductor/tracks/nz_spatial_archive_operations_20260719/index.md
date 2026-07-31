@@ -16,7 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `WP-004-resume-budget-reconcile-20260731` | Sharded retries, storage/egress bounds and periodic full-export reconciliation | `src/riopa_provenance/linz_pipeline.py`, `src/riopa_provenance/linz.py`, `tests/test_linz_pipeline.py`, `tests/test_linz.py` | Synthetic orchestration and semantic divergence tests pass; operational period remains open |
 
 ## Blocking defects
 

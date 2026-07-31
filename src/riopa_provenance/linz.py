@@ -472,6 +472,67 @@ def semantic_table_digest(
         connection.close()
 
 
+def reconcile_linz_full_export(
+    state: Mapping[str, Any],
+    *,
+    target_database: str | Path,
+    full_export_database: str | Path,
+    full_export_revision: str,
+    captured_at: str,
+    table_name: str = "features",
+) -> dict[str, Any]:
+    """Compare accumulated changeset state with an independent full export."""
+
+    if state.get("record_type") != "linz_layer_state":
+        raise LinzStateError("reconciliation requires a LINZ layer state")
+    if state.get("state_sha256") != sha256_json(state, omit_keys={"state_sha256"}):
+        raise LinzStateError("reconciliation state hash mismatch")
+    if state.get("pending_changesets"):
+        raise LinzStateError("cannot reconcile while a changeset is pending")
+    current_revision = str(state.get("current_revision") or "")
+    _parse_revision(current_revision)
+    _parse_revision(full_export_revision)
+    _parse_revision(captured_at)
+    if full_export_revision != current_revision:
+        raise LinzStateError("full export revision does not match the current checkpoint")
+    primary_key = str(state.get("primary_key") or "")
+    if not primary_key:
+        raise LinzStateError("LINZ state has no primary key")
+    target_digest, target_count = semantic_table_digest(
+        target_database,
+        table_name=table_name,
+        primary_key=primary_key,
+    )
+    export_digest, export_count = semantic_table_digest(
+        full_export_database,
+        table_name=table_name,
+        primary_key=primary_key,
+    )
+    matched = target_digest == export_digest and target_count == export_count
+    report: dict[str, Any] = {
+        "schema_version": "1.0.0",
+        "record_type": "linz_full_export_reconciliation",
+        "source_id": state.get("source_id"),
+        "layer_kind": state.get("layer_kind"),
+        "layer_id": state.get("layer_id"),
+        "revision": current_revision,
+        "captured_at": captured_at,
+        "state_sha256": state.get("state_sha256"),
+        "target": {
+            "semantic_sha256": target_digest,
+            "row_count": target_count,
+        },
+        "full_export": {
+            "semantic_sha256": export_digest,
+            "row_count": export_count,
+        },
+        "status": "matched" if matched else "diverged",
+        "report_sha256": "",
+    }
+    report["report_sha256"] = sha256_json(report, omit_keys={"report_sha256"})
+    return report
+
+
 def _scalar_int(
     connection: duckdb.DuckDBPyConnection,
     query: str,

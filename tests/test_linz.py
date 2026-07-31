@@ -3,13 +3,16 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import duckdb
 import pytest
 
+from riopa_provenance.hashing import sha256_json
 from riopa_provenance.linz import (
     LinzStateError,
     LinzStateStore,
     _validate_revision_interval,
     linz_service_url,
+    reconcile_linz_full_export,
 )
 
 
@@ -70,3 +73,79 @@ def test_state_store_rejects_wrong_identity_and_invalid_constructor(tmp_path: Pa
         LinzStateStore(tmp_path, layer_kind="layer", layer_id=0)
     with pytest.raises(LinzStateError, match="identity"):
         LinzStateStore(tmp_path, layer_kind="table", layer_id=42).write_state(state(sequence=0))
+
+
+def _database(path: Path, rows: list[tuple[int, str]]) -> Path:
+    connection = duckdb.connect(str(path))
+    try:
+        connection.execute("CREATE TABLE features (id INTEGER, name VARCHAR)")
+        connection.executemany("INSERT INTO features VALUES (?, ?)", rows)
+    finally:
+        connection.close()
+    return path
+
+
+def test_full_export_reconciliation_detects_changeset_drift(tmp_path: Path) -> None:
+    target = _database(tmp_path / "target.duckdb", [(1, "one"), (2, "two")])
+    matching = _database(tmp_path / "matching.duckdb", [(2, "two"), (1, "one")])
+    divergent = _database(tmp_path / "divergent.duckdb", [(1, "one"), (2, "changed")])
+    current = {
+        "record_type": "linz_layer_state",
+        "source_id": "urn:source:linz",
+        "layer_kind": "layer",
+        "layer_id": 42,
+        "primary_key": "id",
+        "current_revision": "2026-07-31T09:00:00Z",
+        "pending_changesets": [],
+        "state_sha256": "",
+    }
+    current["state_sha256"] = sha256_json(current, omit_keys={"state_sha256"})
+
+    report = reconcile_linz_full_export(
+        current,
+        target_database=target,
+        full_export_database=matching,
+        full_export_revision="2026-07-31T09:00:00Z",
+        captured_at="2026-07-31T09:05:00Z",
+    )
+    assert report["status"] == "matched"
+    assert report["target"] == report["full_export"]
+    assert (
+        reconcile_linz_full_export(
+            current,
+            target_database=target,
+            full_export_database=divergent,
+            full_export_revision="2026-07-31T09:00:00Z",
+            captured_at="2026-07-31T09:05:00Z",
+        )["status"]
+        == "diverged"
+    )
+
+
+def test_full_export_reconciliation_requires_a_stable_checkpoint(tmp_path: Path) -> None:
+    database = _database(tmp_path / "data.duckdb", [(1, "one")])
+    current = {
+        "record_type": "linz_layer_state",
+        "primary_key": "id",
+        "current_revision": "2026-07-31T09:00:00Z",
+        "pending_changesets": [{"status": "captured"}],
+        "state_sha256": "",
+    }
+    current["state_sha256"] = sha256_json(current, omit_keys={"state_sha256"})
+    with pytest.raises(LinzStateError, match="pending"):
+        reconcile_linz_full_export(
+            current,
+            target_database=database,
+            full_export_database=database,
+            full_export_revision="2026-07-31T09:00:00Z",
+            captured_at="2026-07-31T09:05:00Z",
+        )
+    invalid = {**current, "pending_changesets": []}
+    with pytest.raises(LinzStateError, match="state hash"):
+        reconcile_linz_full_export(
+            invalid,
+            target_database=database,
+            full_export_database=database,
+            full_export_revision="2026-07-31T09:00:00Z",
+            captured_at="2026-07-31T09:05:00Z",
+        )
