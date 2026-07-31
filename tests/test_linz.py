@@ -11,8 +11,10 @@ from riopa_provenance.linz import (
     LinzStateError,
     LinzStateStore,
     _validate_revision_interval,
+    apply_linz_changeset,
     linz_service_url,
     reconcile_linz_full_export,
+    semantic_table_digest,
 )
 
 
@@ -83,6 +85,103 @@ def _database(path: Path, rows: list[tuple[int, str]]) -> Path:
     finally:
         connection.close()
     return path
+
+
+def _changeset(path: Path, rows: list[tuple[int | None, str, str]]) -> Path:
+    connection = duckdb.connect()
+    try:
+        connection.execute("CREATE TABLE changes (id INTEGER, name VARCHAR, __change__ VARCHAR)")
+        connection.executemany("INSERT INTO changes VALUES (?, ?, ?)", rows)
+        connection.execute("COPY changes TO ? (FORMAT PARQUET)", [str(path)])
+    finally:
+        connection.close()
+    return path
+
+
+def _apply(target: Path, changeset: Path, receipt: Path) -> dict[str, object]:
+    return apply_linz_changeset(
+        target_database=target,
+        changeset_parquet=changeset,
+        source_id="urn:source:linz",
+        layer_id=42,
+        primary_key="id",
+        from_revision="2026-07-31T08:00:00Z",
+        to_revision="2026-07-31T09:00:00Z",
+        capture_set_id="urn:capture:set",
+        capture_set_manifest_sha256="a" * 64,
+        receipt_path=receipt,
+        applied_at="2026-07-31T09:05:00Z",
+    ).receipt
+
+
+def test_changeset_application_is_atomic_idempotent_and_content_bound(tmp_path: Path) -> None:
+    target = _database(tmp_path / "target.duckdb", [(1, "old"), (2, "delete")])
+    changes = _changeset(
+        tmp_path / "changes.parquet",
+        [(1, "updated", "update"), (2, "ignored", "DELETE"), (3, "new", "INSERT")],
+    )
+
+    first = _apply(target, changes, tmp_path / "first.json")
+    assert first["counts"] == {"INSERT": 1, "UPDATE": 1, "DELETE": 1}
+    assert first["row_count_before"] == 2
+    assert first["row_count_after"] == 2
+    assert first["semantic_digest_before"] != first["semantic_digest_after"]
+    connection = duckdb.connect(str(target), read_only=True)
+    try:
+        assert connection.execute("SELECT * FROM features ORDER BY id").fetchall() == [
+            (1, "updated"),
+            (3, "new"),
+        ]
+    finally:
+        connection.close()
+
+    second = _apply(target, changes, tmp_path / "recovered.json")
+    assert second == first
+    assert json.loads((tmp_path / "recovered.json").read_text(encoding="utf-8")) == first
+
+
+@pytest.mark.parametrize(
+    ("rows", "message"),
+    [
+        ([(None, "bad", "INSERT")], "null primary keys"),
+        ([(3, "a", "INSERT"), (3, "b", "INSERT")], "duplicated primary-key groups"),
+        ([(3, "bad", "UPSERT")], "invalid actions"),
+        ([(1, "conflict", "INSERT")], "already exist"),
+        ([(99, "missing", "UPDATE")], "do not exist"),
+    ],
+)
+def test_changeset_validation_rolls_back_without_mutating_target(
+    tmp_path: Path,
+    rows: list[tuple[int | None, str, str]],
+    message: str,
+) -> None:
+    target = _database(tmp_path / "target.duckdb", [(1, "one")])
+    before = semantic_table_digest(target, primary_key="id")
+    changes = _changeset(tmp_path / "changes.parquet", rows)
+    with pytest.raises(LinzStateError, match=message):
+        _apply(target, changes, tmp_path / "receipt.json")
+    assert semantic_table_digest(target, primary_key="id") == before
+    assert not (tmp_path / "receipt.json").exists()
+
+
+def test_changeset_application_rejects_missing_files_and_columns(tmp_path: Path) -> None:
+    target = _database(tmp_path / "target.duckdb", [(1, "one")])
+    with pytest.raises(LinzStateError, match="does not exist"):
+        _apply(tmp_path / "missing.duckdb", tmp_path / "missing.parquet", tmp_path / "r.json")
+    with pytest.raises(LinzStateError, match="does not exist"):
+        _apply(target, tmp_path / "missing.parquet", tmp_path / "r.json")
+
+    connection = duckdb.connect()
+    try:
+        connection.execute("CREATE TABLE changes (id INTEGER, __change__ VARCHAR)")
+        connection.execute("INSERT INTO changes VALUES (2, 'INSERT')")
+        connection.execute(
+            "COPY changes TO ? (FORMAT PARQUET)", [str(tmp_path / "incomplete.parquet")]
+        )
+    finally:
+        connection.close()
+    with pytest.raises(LinzStateError, match="missing columns: name"):
+        _apply(target, tmp_path / "incomplete.parquet", tmp_path / "r.json")
 
 
 def test_full_export_reconciliation_detects_changeset_drift(tmp_path: Path) -> None:
