@@ -86,7 +86,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap.py",
-          "sha256": "21ca2c34bb76928900d2ba893b8edaf652ba4f3818bb21351eb14cb94efb017d",
+          "sha256": "4e8306e147a3923822cf4ef37c89bbc27efa117643bba0dedb65a83ecd6722fb",
           "immutable": false,
           "generated_at": "2026-07-31T09:30:00Z",
           "description": "Automated roadmap and readiness tests."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "811e595fe0c23de3cc79f0696fd97d135447699c26c5bade11626a6c9024db8d",
+          "sha256": "4bc9ba49165f59068f5ed82d13e3c6bc94672271288ae3d3f53456e7e164f0d1",
           "immutable": false,
           "generated_at": "2026-07-31T09:30:00Z",
           "description": "Deterministically generated programme issue graph."

@@ -45,7 +45,5 @@
     "Data steward",
     "Scientific reviewer"
   ],
-  "blocking_defects": [
-    "runtime-validation-provisioning"
-  ]
+  "blocking_defects": []
 }

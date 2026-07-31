@@ -17,26 +17,29 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-003-hierarchical-rights-20260731` | Rights propagate to artifact and target-specific publication decisions without widening inherited permission | `src/riopa_provenance/publication.py`, `schemas/publication-plan.schema.json`, `tests/test_publication.py` | Narrowing-only inheritance and fail-closed conflict tests pass |
-| R01, R02, R04, R05 | Versioned governance decision framework and schema | `docs/governance-decision-framework.md`, `schemas/governance-decision.schema.json` | Implemented; runtime suite pending environment provisioning |
-| R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; runtime suite pending environment provisioning |
-| R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
+| R01, R02, R04, R05 | Versioned governance decision framework and schema | `docs/governance-decision-framework.md`, `schemas/governance-decision.schema.json` | Implemented; complete schema and quality suites pass locally |
+| R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; complete schema and quality suites pass locally |
+| R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; complete runtime suite passes locally |
 | R01, R03 | Withdrawal and supersession record helpers | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; operational exercise pending |
 | R04, R05 | Optional Māori-specific governance and engagement guidance | `docs/governance-engagement-pathway.md` | Implemented as optional guidance; no live co-design/review claimed |
 | R05 | Applied benefit/harm/equity review instrument | `docs/applied-governance-review-template.md` | Template only; pilot decisions pending |
 | R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
 | R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
-| R04 | Review fix for expiry and conflict handling | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
+| R04 | Review fix for expiry and conflict handling | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; complete runtime suite passes locally |
 | R05 | Planned facility, health, deprivation and culturally sensitive geography review | `reports/governance-use-case-review.md` | All remain `review-required`; no publication approval inferred |
 
 ## Blocking defects
 
-- `runtime-validation-provisioning`: locked dependency provisioning remains unavailable; runtime tests and schema validation are not yet executed in the complete environment.
-- No live co-design or Māori governance approval is claimed; the pathway is optional guidance and is activated only when required by declared scope or another applicable obligation.
-- Local target reconciliation is tested; no live distribution/takedown system is claimed or required by this checkout’s bounded synthetic drill.
+- None recorded for the implemented bounded framework.
 
 ## Decisions, exceptions and limitations
 
 - Public visibility is not permission to redistribute or infer; all unresolved decisions remain `review-required`.
+- No live co-design or Māori governance approval is claimed or required by the
+  repository baseline; the pathway is optional guidance activated only by
+  declared scope or another applicable obligation.
+- Local target reconciliation is tested; no live distribution/takedown system
+  is claimed by the bounded synthetic drill.
 
 ## Review and handover
 
