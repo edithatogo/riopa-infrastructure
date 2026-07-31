@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-29T04:05:00Z",
+  "updated_at": "2026-07-31T22:09:21Z",
   "description": "Ratify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.",
   "depends_on": [],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/14",
@@ -16,7 +16,8 @@
     "urn:riopa:evidence:foundation-review-packet:7448786"
     ,"urn:riopa:evidence:foundation-contract-analyst-01:2026-07-29"
     ,"urn:riopa:evidence:foundation-governance-analyst-02:2026-07-29",
-    "urn:riopa:evidence:foundation-contract-matrix:2026-07-29"
+    "urn:riopa:evidence:foundation-contract-matrix:2026-07-29",
+    "urn:riopa:decision:foundation-m1-ratification:2026-08-01"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

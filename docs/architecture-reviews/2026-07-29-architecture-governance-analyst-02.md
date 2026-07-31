@@ -16,3 +16,11 @@
 
 The local scope, governance and architecture-fitness artifacts were present and
 consistent at the reviewed commit.
+
+## Resolution update: 2026-08-01
+
+F-AG-01 is resolved by the two attributed records; F-AG-02 is resolved by the
+locked local suite and exact-head hosted CI; F-AG-03 is resolved by regenerated
+issue configuration using the independent-analyst rule; and F-AG-04 is
+explicitly deferred through named ADR owners, dates and tracks. The bounded M1
+ratification does not replace named stable-release approvals.

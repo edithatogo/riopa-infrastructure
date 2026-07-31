@@ -16,12 +16,13 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| R01–R03 | ADR reconciliation register | `docs/adr/README.md` | Implemented; ratification review pending |
-| R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Implemented; ratification review pending |
-| R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Implemented; named approvals pending |
+| R01–R03 | ADR reconciliation register | `docs/adr/README.md` | Accepted or explicitly deferred for the bounded M1 baseline; later qualification gates remain open |
+| R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Ratified as the bounded M1 development baseline; no stable-release approval implied |
+| R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Ratified for M1 operation; named stable-release approvals remain pending |
 | R01, R02, R03 | Executable roadmap, issue-graph and architecture-fitness validation | `src/riopa_provenance/roadmap.py`, `tests/test_roadmap_hardening.py`, `project/issues.yaml`, `reports/quality-baseline-inventory.md` | Clean locked runtime, complete suite, roadmap, quality and reproducibility validation pass locally |
 | R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite passes locally |
-| R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings remain open |
+| R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings resolved for M1 or explicitly deferred to named later gates |
+| R01–R05 | Programme-owner bounded architecture ratification | `docs/architecture-baseline-ratification.md`; source revision `64c4dd7c28d18f1ed68f28a52421770777f92d7d` | M1 development baseline ratified on 2026-08-01; M2-M6 maturity and release approvals explicitly excluded |
 
 ## Blocking defects
 
@@ -35,9 +36,14 @@
   approvals.
 - The normative contract ownership and migration matrix is recorded in
   `docs/contract-ownership-matrix.md`.
+- The programme-owner instruction ratifies only the M1 development architecture
+  baseline. Named signatories, signed evidence and stable-release authority
+  remain external M5/M6 gates.
 
 ## Review and handover
 
 Required analyst coverage: two independent analysts with distinct identities and scopes; governance, API/schema and external-user perspectives remain recommended coverage.
 
-Implementation is active. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+The bounded M1 architecture baseline is ratified; implementation remains active
+at M1. Evidence must be immutable or version-addressed, independently reviewed
+where required, and sufficient for each later maturity and release gate.

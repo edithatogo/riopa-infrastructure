@@ -16,3 +16,12 @@
 
 The prose boundaries, non-claims and source-of-truth contract were
 understandable and internally consistent.
+
+## Resolution update: 2026-08-01
+
+F-AC-01 is explicitly deferred through the named ADR owners, dates and tracks;
+F-AC-02 is resolved by the two attributed records; F-AC-03 is resolved by
+`docs/contract-ownership-matrix.md`; and F-AC-04 is resolved by the locked local
+suite plus exact-head hosted CI. The programme-owner decision in
+`docs/architecture-baseline-ratification.md` ratifies only the bounded M1
+baseline. It does not approve the deferred ADRs or stable v1.

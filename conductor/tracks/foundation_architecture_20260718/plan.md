@@ -22,7 +22,7 @@
 
 - [x] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)
 - [x] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)
-- [ ] 4.3 Publish the accepted architecture and v1 programme baseline.
+- [x] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 2026-08-01 programme-owner instruction)
 
 ## 5. Review fixes
 
@@ -30,7 +30,7 @@
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
-- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [x] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (docs/architecture-baseline-ratification.md)
+- [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (ROADMAP_STATUS.md; project/issues.yaml; 2026-08-01)
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

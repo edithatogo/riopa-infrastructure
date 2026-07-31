@@ -8,7 +8,9 @@ Stable target: `1.0.0`
 
 - Total: **28**
 - v1-critical: **28**
-- specified: **28**
+- active: **1**
+- specified: **26**
+- validating: **1**
 
 ### Current maturity
 
