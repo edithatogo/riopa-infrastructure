@@ -69,22 +69,52 @@ sources:
         authentication:
           type: none
 
-  - source_id: urn:riopa:source:nz:ambulance-stations-unresolved
-    name: National ambulance-station reference source
+  - source_id: urn:riopa:source:osm:nz-regional-pilot-pois
+    name: OpenStreetMap regional supermarket and ambulance POIs
     publisher:
-      name: Unresolved
-    jurisdiction: New Zealand
-    source_family: emergency-facility-reference
-    status: source-unresolved
+      name: OpenStreetMap contributors
+      url: https://www.openstreetmap.org/
+    jurisdiction: Rangitīkei regional reference extent
+    source_family: community-poi-reference
+    status: active-exploratory
     rights:
-      access_status: unknown
-      redistribution_status: prohibited-until-reviewed
-      notes: "No suitable authoritative national public station dataset with clear rights was identified in the bounded catalogue search. No acquisition endpoint is enabled."
+      access_status: public
+      spdx_or_uri: ODbL-1.0
+      redistribution_status: attribution-and-share-alike-required
+      notes: "Non-authoritative sensitivity source only. Completeness, tagging and currency must be measured; it cannot establish a national facility register."
     endpoints:
-      - endpoint_id: urn:riopa:endpoint:nz:ambulance-stations-unresolved
-        mechanism: unresolved
-        url: https://catalogue.data.govt.nz/
-        enabled: false
-        capture_strategy: no-acquisition
+      - endpoint_id: urn:riopa:endpoint:osm:overpass-regional-pilot
+        mechanism: overpass-api
+        url: https://overpass-api.de/api/interpreter
+        enabled: true
+        capture_strategy: bounded-query
         authentication:
           type: none
+        rate_limit:
+          requests_per_second: 0.1
+          maximum_concurrency: 1
+
+  - source_id: urn:riopa:source:rangitikei:public-facilities
+    name: Rangitīkei Public Facilities
+    publisher:
+      name: Rangitīkei District Council
+      url: https://www.rangitikei.govt.nz/
+    jurisdiction: Rangitīkei District
+    source_family: council-facility-reference
+    status: active-bounded-reference
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "The June 2023 manually captured layer contains three records categorised Ambulance. It is a regional reference, not a national or operational station register."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:rangitikei:public-facilities-ambulance
+        mechanism: arcgis-feature-service
+        url: https://services8.arcgis.com/rH83DoI7Xdq2nG28/arcgis/rest/services/CIVIC_civic_facilities_viewing_view/FeatureServer/3
+        enabled: true
+        capture_strategy: bounded-category-query
+        authentication:
+          type: none
+        rate_limit:
+          requests_per_second: 0.1
+          maximum_concurrency: 1

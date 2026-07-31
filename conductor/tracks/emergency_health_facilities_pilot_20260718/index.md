@@ -18,10 +18,11 @@
 |---|---|---|---|
 | `WP-010-non-operational-capacity-fixture-20260731` | Capacity simulation outputs carry an explicit non-operational suitability boundary | `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Synthetic FCFS fixture passes; no ambulance, hospital, clinical or dispatch suitability is claimed |
 | `WP-010-public-source-intake-20260801` | Hospital and ambulance source candidates retain explicit provenance, rights and acquisition state | `config/source-registry/wp010-public-pilot-candidates.yaml`, `tests/test_wp010_benchmark.py` | LINZ hospital-facility metadata is staged; an authoritative national ambulance-station source remains unresolved and no operational use is claimed |
+| `WP-010-regional-ambulance-observation-20260801` | Council and OSM regional observations remain separate by authority and licence | `scripts/capture_wp010_public_sources.py`, `tests/test_wp010_public_sources.py`, `reports/wp010-synthetic-methods-core.md` | Three council and two OSM ambulance POIs observed; no national completeness or dispatch suitability is claimed |
 
 ## Blocking defects
 
-- An authoritative rights-cleared ambulance-station source, ambulance and hospital scenarios, dispatch/handover/relocation behaviour,
+- A national authoritative ambulance-station source, ambulance and hospital scenarios, dispatch/handover/relocation behaviour,
   calibrated stress tests and operational/safety review remain open.
 
 ## Decisions, exceptions and limitations

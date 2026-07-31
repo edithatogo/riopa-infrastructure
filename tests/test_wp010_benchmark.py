@@ -65,16 +65,19 @@ def test_public_pilot_candidates_fail_closed() -> None:
     assert validate_registry(registry_path, ROOT / "schemas" / "source-registry.schema.json").valid
     registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
     sources = {source["source_id"]: source for source in registry["sources"]}
-    assert all(
-        not endpoint["enabled"] for source in sources.values() for endpoint in source["endpoints"]
-    )
-    blocked = [
-        source
-        for source in sources.values()
-        if source["status"] in {"rights-blocked", "source-unresolved"}
-    ]
-    assert len(blocked) == 2
+    blocked = [source for source in sources.values() if source["status"] == "rights-blocked"]
+    assert len(blocked) == 1
     assert all(
         source["rights"]["redistribution_status"] == "prohibited-until-reviewed"
         for source in blocked
     )
+    assert all(not endpoint["enabled"] for source in blocked for endpoint in source["endpoints"])
+    enabled = {
+        source["source_id"]
+        for source in sources.values()
+        if any(endpoint["enabled"] for endpoint in source["endpoints"])
+    }
+    assert enabled == {
+        "urn:riopa:source:osm:nz-regional-pilot-pois",
+        "urn:riopa:source:rangitikei:public-facilities",
+    }

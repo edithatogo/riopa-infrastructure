@@ -54,3 +54,14 @@ records are staged as metadata-only CC BY 4.0 candidates. The Wellington
 supermarket record is rights-blocked because the catalogue declares no licence;
 the ambulance source remains unresolved. Every endpoint is disabled, so this
 intake record cannot accidentally authorise payload acquisition or publication.
+
+On 2026-08-01 the bounded local capture recorded three Rangitīkei council
+features categorised as ambulance and eleven OpenStreetMap regional POIs (nine
+supermarkets and two ambulance stations). The canonical raw-response SHA-256
+values were respectively
+`ece91d56518e618670c7c9d04c13a43530eeb653ba25386ca0d25e737fdca277`
+and
+`fd8b83551e7ab8d404b2c2d1d94f084f5611f1d0fb77d9ef341bc40f3b810aea`.
+Raw geometries remain in ignored `.riopa-local` evidence and are not committed.
+Counts are observational source evidence, not completeness or operational
+claims.
