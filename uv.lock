@@ -1537,9 +1537,9 @@ requires-dist = [
     { name = "httpx", marker = "extra == 'spatial'", specifier = ">=0.28,<1" },
     { name = "hypothesis", marker = "extra == 'dev'", specifier = ">=6.130,<7" },
     { name = "jsonschema", extras = ["format"], specifier = ">=4.24,<5" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.15,<2" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.15,<3" },
     { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=4,<5" },
-    { name = "pyarrow", marker = "extra == 'spatial'", specifier = ">=18,<24" },
+    { name = "pyarrow", marker = "extra == 'spatial'", specifier = ">=18,<26" },
     { name = "pyproj", marker = "extra == 'spatial'", specifier = ">=3.6,<4" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.0.3,<10" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=6,<8" },
@@ -1547,7 +1547,7 @@ requires-dist = [
     { name = "rfc8785", specifier = ">=0.1.4,<1" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.11,<1" },
     { name = "shapely", marker = "extra == 'spatial'", specifier = ">=2.0,<3" },
-    { name = "twine", marker = "extra == 'dev'", specifier = ">=6,<7" },
+    { name = "twine", marker = "extra == 'dev'", specifier = ">=6,<8" },
     { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.12,<7" },
 ]
 provides-extras = ["archive", "spatial", "dev"]
