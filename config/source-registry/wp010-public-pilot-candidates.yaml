@@ -1,0 +1,90 @@
+schema_version: 1.0.0
+record_type: source_registry
+registry_id: urn:riopa:registry:wp010-public-pilot-candidates:2026-08-01
+generated_at: 2026-08-01T00:00:00Z
+catalogue_url: https://catalogue.data.govt.nz/
+sources:
+  - source_id: urn:riopa:source:stats-nz:estimated-population-grid-1km
+    name: New Zealand Estimated Resident Population Grid 1 kilometre
+    publisher:
+      name: Stats NZ
+      url: https://www.stats.govt.nz/
+    jurisdiction: New Zealand
+    source_family: official-population-reference
+    status: staged-metadata-only
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "Catalogue metadata reviewed; payload acquisition and exact-version receipt remain pending. The catalogue warns that derived grid estimates are not official statistics."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:stats-nz:population-grid-1km
+        mechanism: catalogue-record
+        url: https://catalogue.data.govt.nz/dataset/new-zealand-estimated-resident-population-grid-1-kilometre
+        enabled: false
+        capture_strategy: metadata-review-only
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:linz:nz-facilities-hospitals
+    name: NZ Facilities hospital boundaries
+    publisher:
+      name: Toitū Te Whenua Land Information New Zealand
+      url: https://www.linz.govt.nz/
+    jurisdiction: New Zealand
+    source_family: official-facility-reference
+    status: staged-metadata-only
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "Catalogue metadata reviewed; the source describes hospital and school boundaries originally assembled in early 2021. It is not a current service or capacity register."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:linz:nz-facilities
+        mechanism: catalogue-record
+        url: https://catalogue.data.govt.nz/dataset/nz-facilities21
+        enabled: false
+        capture_strategy: metadata-review-only
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:wcc:churton-park-village-supermarket
+    name: Churton Park Village Supermarket district-plan layer
+    publisher:
+      name: Wellington City Council
+      url: https://wellington.govt.nz/
+    jurisdiction: Wellington City
+    source_family: council-planning-reference
+    status: rights-blocked
+    rights:
+      access_status: public-metadata
+      redistribution_status: prohibited-until-reviewed
+      notes: "The data.govt.nz catalogue record declares no licence. Keep payload acquisition and redistribution disabled until the source agency terms are captured and reviewed."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:wcc:churton-supermarket-metadata
+        mechanism: catalogue-record
+        url: https://catalogue.data.govt.nz/dataset/churton-park-village-supermarket3
+        enabled: false
+        capture_strategy: metadata-review-only
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:nz:ambulance-stations-unresolved
+    name: National ambulance-station reference source
+    publisher:
+      name: Unresolved
+    jurisdiction: New Zealand
+    source_family: emergency-facility-reference
+    status: source-unresolved
+    rights:
+      access_status: unknown
+      redistribution_status: prohibited-until-reviewed
+      notes: "No suitable authoritative national public station dataset with clear rights was identified in the bounded catalogue search. No acquisition endpoint is enabled."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:nz:ambulance-stations-unresolved
+        mechanism: unresolved
+        url: https://catalogue.data.govt.nz/
+        enabled: false
+        capture_strategy: no-acquisition
+        authentication:
+          type: none

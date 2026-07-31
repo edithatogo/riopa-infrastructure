@@ -17,10 +17,11 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-010-non-operational-pilot-envelope-20260731` | Reference pilot outputs explicitly reject clinical, legal, commercial and live-operational suitability | `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Non-operational envelope passes on synthetic inputs; no supermarket dataset, reproduction or empirical health finding is claimed |
+| `WP-010-public-source-intake-20260801` | Candidate population and supermarket sources retain explicit rights and acquisition state | `config/source-registry/wp010-public-pilot-candidates.yaml`, `tests/test_wp010_benchmark.py` | Population metadata is staged; supermarket acquisition remains rights-blocked and no empirical pilot is claimed |
 
 ## Blocking defects
 
-- Versioned supermarket inputs, baseline reproduction, access/health analysis,
+- Rights-cleared versioned supermarket inputs, baseline reproduction, access/health analysis,
   planning alternatives, research objects and independent review remain open.
 
 ## Decisions, exceptions and limitations

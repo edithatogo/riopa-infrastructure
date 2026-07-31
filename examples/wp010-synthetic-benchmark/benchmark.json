@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "urn:riopa:benchmark:wp010:synthetic-methods:1.0.0",
+  "operational_status": "synthetic-non-operational",
+  "estimand": {
+    "name": "synthetic mean waiting time and difference-in-differences contrast",
+    "population": "six synthetic arrivals and four synthetic outcome groups",
+    "exposure": "declared synthetic service or treatment condition",
+    "comparison": "declared synthetic reference condition",
+    "outcome": "waiting time or unitless synthetic outcome",
+    "identification_assumptions": [
+      "inputs are generated fixtures rather than observations",
+      "no external validity or causal identification is claimed"
+    ]
+  },
+  "queue": {
+    "arrival_times": [0.0, 0.0, 1.0, 3.0, 3.0, 5.0],
+    "service_times": [2.0, 1.0, 2.0, 1.0, 3.0, 1.0],
+    "capacity": 2,
+    "warm_up_customers": 1,
+    "expected": {
+      "waits": [0.0, 0.0, 0.0, 0.0, 0.0],
+      "mean_wait": 0.0,
+      "maximum_wait": 0.0,
+      "utilisation": 0.6666666666666666,
+      "observed_customers": 5
+    }
+  },
+  "difference_in_differences": {
+    "treated_pre": [10.0, 12.0],
+    "treated_post": [16.0, 18.0],
+    "comparison_pre": [9.0, 11.0],
+    "comparison_post": [10.0, 12.0],
+    "expected": {
+      "estimate": 5.0,
+      "group_means": {
+        "treated_pre": 11.0,
+        "treated_post": 17.0,
+        "comparison_pre": 10.0,
+        "comparison_post": 11.0
+      }
+    }
+  },
+  "suitability": {
+    "clinical": false,
+    "legal": false,
+    "commercial": false,
+    "live_operations": false
+  },
+  "limitations": [
+    "This fixture is not an ambulance, hospital or supermarket model.",
+    "Passing the benchmark does not establish empirical calibration, causal identification or operational fitness."
+  ]
+}

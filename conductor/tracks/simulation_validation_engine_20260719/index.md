@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-010-synthetic-simulation-core-20260731` | Seeded replication, warm-up, uncertainty and convergence semantics are explicit and deterministic | `schemas/analysis-protocol.schema.json`, `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Synthetic queue reference passes; calibration, holdout, independent benchmark, domain adapters and external review remain open |
+| `WP-010-clean-room-benchmark-20260801` | A dependency-free verifier independently recomputes fixed queue and causal-reference expectations | `examples/wp010-synthetic-benchmark/`, `scripts/build_wp010_reviewer_bundle.py`, `tests/test_wp010_benchmark.py` | Deterministic repository-owned handoff passes; external reviewer execution remains open |
 
 ## Blocking defects
 

@@ -37,3 +37,20 @@ calculates a contrast and exposes diagnostics; it does not establish parallel
 trends, absence of interference, valid measurement, external validity or causal
 identification. No empirical calibration, holdout validation, operational
 review, public-data pilot or independent reproduction is claimed.
+
+## Reviewer handoff and public-source intake
+
+The versioned fixture in `examples/wp010-synthetic-benchmark/` provides a
+dependency-free clean-room exercise. Its standard-library verifier recomputes
+the FCFS and difference-in-differences results without importing the RIOPA
+implementation. `scripts/build_wp010_reviewer_bundle.py` packages the fixture as
+a byte-deterministic ZIP for transfer to an independent reviewer. Local
+execution is repository-owned verification and does not count as the external
+reproduction required by M5/M6.
+
+`config/source-registry/wp010-public-pilot-candidates.yaml` records the bounded
+source search. The Stats NZ population grid and LINZ NZ Facilities catalogue
+records are staged as metadata-only CC BY 4.0 candidates. The Wellington
+supermarket record is rights-blocked because the catalogue declares no licence;
+the ambulance source remains unresolved. Every endpoint is disabled, so this
+intake record cannot accidentally authorise payload acquisition or publication.

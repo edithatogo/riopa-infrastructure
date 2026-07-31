@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-010-analysis-protocol-and-did-reference-20260731` | Estimand, assumptions, parameter provenance and diagnostic hooks are machine-readable and causal claims remain bounded | `schemas/analysis-protocol.schema.json`, `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Synthetic DID contrast and diagnostics pass; empirical design, spatial sensitivity, preregistration and independent methods review remain open |
+| `WP-010-independent-fixture-calculation-20260801` | The committed synthetic estimand and expected DID contrast are recomputed by a standard-library verifier | `examples/wp010-synthetic-benchmark/`, `tests/test_wp010_benchmark.py` | Cross-implementation fixture passes locally; this does not establish causal identification or external reproduction |
 
 ## Blocking defects
 
