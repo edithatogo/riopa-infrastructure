@@ -8,9 +8,18 @@ from riopa_provenance.retry import CircuitBreaker, RetryPolicy, decide_retry, pa
 def test_retry_is_bounded_and_idempotency_aware() -> None:
     policy = RetryPolicy(max_attempts=2, base_delay_seconds=2, max_delay_seconds=5)
     assert decide_retry(method="GET", attempt=1, status_code=503, policy=policy).delay_seconds == 2
-    assert decide_retry(method="GET", attempt=2, status_code=503, policy=policy).reason == "attempt-limit"
-    assert decide_retry(method="POST", attempt=1, status_code=503, policy=policy).reason == "non-idempotent-method"
-    assert decide_retry(method="GET", attempt=1, status_code=404, policy=policy).reason == "status-not-retryable"
+    assert (
+        decide_retry(method="GET", attempt=2, status_code=503, policy=policy).reason
+        == "attempt-limit"
+    )
+    assert (
+        decide_retry(method="POST", attempt=1, status_code=503, policy=policy).reason
+        == "non-idempotent-method"
+    )
+    assert (
+        decide_retry(method="GET", attempt=1, status_code=404, policy=policy).reason
+        == "status-not-retryable"
+    )
 
 
 def test_retry_after_supports_seconds_and_http_dates() -> None:

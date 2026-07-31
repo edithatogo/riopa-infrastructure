@@ -14,8 +14,8 @@ from riopa_provenance.capture import (
     HttpCaptureClient,
     redact_text,
     redact_url,
-    validate_resolved_addresses,
     validate_capture_url,
+    validate_resolved_addresses,
 )
 from riopa_provenance.retry import CircuitBreaker, RetryPolicy
 

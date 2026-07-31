@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import sqlite3
 from pathlib import Path
 
 import pytest
 
-from riopa_provenance.lineage import LineageError, LineageIndex, _SCHEMA
+from riopa_provenance.lineage import _SCHEMA, LineageError, LineageIndex
 
 
 def seeded_index(tmp_path: Path) -> LineageIndex:

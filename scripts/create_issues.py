@@ -275,9 +275,7 @@ def process_repository(
 ) -> list[IssueResult]:
     label_names = {label for item in items for label in item.get("labels", [])}
     ensure_labels(repo, label_names, apply=apply)
-    by_key, by_title, existing_blocked_by = (
-        list_existing(repo) if apply else ({}, {}, {})
-    )
+    by_key, by_title, existing_blocked_by = list_existing(repo) if apply else ({}, {}, {})
     urls: dict[str, str] = {}
     resolved_keys: set[str] = set()
     results: list[IssueResult] = []
@@ -618,9 +616,7 @@ def sync_project_fields(
             missing_options.add("Evidence status=None")
         if (
             fields.get("Current maturity")
-            and not project_value_matches(
-                item, "Current maturity", result.current_maturity or "M0"
-            )
+            and not project_value_matches(item, "Current maturity", result.current_maturity or "M0")
             and not set_single_select(
                 project_id=project_id,
                 item_id=item_id,

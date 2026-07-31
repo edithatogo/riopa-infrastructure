@@ -40,9 +40,7 @@ def test_next_skips_complete_and_blocked_packages() -> None:
     assert selected.identifier == "WP-003"
 
 
-def test_local_state_mutation_does_not_change_conductor(
-    tmp_path: Path, monkeypatch
-) -> None:
+def test_local_state_mutation_does_not_change_conductor(tmp_path: Path, monkeypatch) -> None:
     local_dir = tmp_path / ".riopa-local" / "codex"
     monkeypatch.setattr(orchestrator, "LOCAL_DIR", local_dir)
     monkeypatch.setattr(orchestrator, "STATE_PATH", local_dir / "state.json")

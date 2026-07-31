@@ -63,7 +63,11 @@ def test_snapshot_manifest_checks_hashes_sizes_and_root_containment(tmp_path: Pa
     manifest: dict[str, object] = {
         "record_type": "linz_catalog_snapshot",
         "snapshot_id": "snapshot",
-        "items": {"path": items.name, "sha256": sha256_file(items), "size_bytes": items.stat().st_size},
+        "items": {
+            "path": items.name,
+            "sha256": sha256_file(items),
+            "size_bytes": items.stat().st_size,
+        },
         "csv": {"path": csv.name, "sha256": sha256_file(csv), "size_bytes": csv.stat().st_size},
     }
     manifest["manifest_sha256"] = sha256_json(manifest)

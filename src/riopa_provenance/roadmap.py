@@ -328,13 +328,19 @@ def _validate_architecture_fitness(
     for relative, headings in required.items():
         path = base / relative
         if not path.is_file():
-            problems.append(RoadmapProblem("architecture-artifact", relative, "required artifact is absent"))
+            problems.append(
+                RoadmapProblem("architecture-artifact", relative, "required artifact is absent")
+            )
             continue
         text = path.read_text(encoding="utf-8")
         for heading in headings:
             if heading not in text:
                 problems.append(
-                    RoadmapProblem("architecture-artifact", relative, f"missing required contract section: {heading}")
+                    RoadmapProblem(
+                        "architecture-artifact",
+                        relative,
+                        f"missing required contract section: {heading}",
+                    )
                 )
 
     for track_id, item in sorted(tracks.items()):

@@ -48,5 +48,7 @@ def test_artifact_rights_override_precedes_source_and_global_fallback() -> None:
     assert attribution == ["Override"]
     decision, _, _ = _artifact_rights_decision(None, [], records, "allowed")
     assert decision == "publish"
-    decision, _, _ = _artifact_rights_decision({"rights_ref": "missing"}, ["source"], records, "allowed")
+    decision, _, _ = _artifact_rights_decision(
+        {"rights_ref": "missing"}, ["source"], records, "allowed"
+    )
     assert decision == "review-required"

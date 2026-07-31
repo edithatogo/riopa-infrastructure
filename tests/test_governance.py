@@ -5,9 +5,9 @@ import pytest
 from riopa_provenance.governance import (
     GovernanceError,
     evaluate_decision,
+    reconcile_withdrawal_targets,
     record_supersession,
     record_withdrawal,
-    reconcile_withdrawal_targets,
     require_allowed,
 )
 
@@ -82,7 +82,10 @@ def test_expired_review_fails_closed() -> None:
 
 def test_withdrawal_preserves_predecessor_reference() -> None:
     withdrawn = record_withdrawal(
-        decision(), withdrawal_id="urn:riopa:governance-decision:withdrawn", reason="harm review", scope=["public"]
+        decision(),
+        withdrawal_id="urn:riopa:governance-decision:withdrawn",
+        reason="harm review",
+        scope=["public"],
     )
     assert withdrawn["outcome"] == "withdraw"
     assert withdrawn["withdrawal_reference"] == decision()["decision_id"]
@@ -91,7 +94,9 @@ def test_withdrawal_preserves_predecessor_reference() -> None:
 
 def test_supersession_is_append_only() -> None:
     superseded = record_supersession(
-        decision(), successor_id="urn:riopa:governance-decision:successor", reason="corrected review"
+        decision(),
+        successor_id="urn:riopa:governance-decision:successor",
+        reason="corrected review",
     )
     assert superseded["outcome"] == "superseded"
     assert superseded["successor_id"] == "urn:riopa:governance-decision:successor"
@@ -100,6 +105,12 @@ def test_supersession_is_append_only() -> None:
 
 def test_withdrawal_reconciliation_removes_only_withdrawn_targets() -> None:
     withdrawn = record_withdrawal(
-        decision(), withdrawal_id="urn:riopa:governance-decision:withdrawn-2", reason="takedown", scope=["zenodo"]
+        decision(),
+        withdrawal_id="urn:riopa:governance-decision:withdrawn-2",
+        reason="takedown",
+        scope=["zenodo"],
     )
-    assert reconcile_withdrawal_targets(withdrawn, ["github", "zenodo"]) == (("github",), ("zenodo",))
+    assert reconcile_withdrawal_targets(withdrawn, ["github", "zenodo"]) == (
+        ("github",),
+        ("zenodo",),
+    )

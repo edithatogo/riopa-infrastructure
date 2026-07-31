@@ -22,13 +22,16 @@ def test_source_health_classifies_fresh_change_and_degradation() -> None:
 
 def test_source_health_handles_unknown_stale_and_disappeared() -> None:
     now = datetime(2026, 7, 30, 0, 0, tzinfo=UTC)
-    assert observe_source_health(
-        retrieved_at=None,
-        now=now,
-        max_age=timedelta(hours=1),
-        current_digest=None,
-        previous_digest="old",
-    ).freshness == "unknown"
+    assert (
+        observe_source_health(
+            retrieved_at=None,
+            now=now,
+            max_age=timedelta(hours=1),
+            current_digest=None,
+            previous_digest="old",
+        ).freshness
+        == "unknown"
+    )
     stale = observe_source_health(
         retrieved_at=now - timedelta(hours=2),
         now=now,

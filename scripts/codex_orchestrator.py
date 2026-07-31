@@ -124,7 +124,10 @@ def render_work_packet(item: WorkPackage, status: str) -> str:
             "",
             "## Execution rule",
             "",
-            "Read the mapped track specifications and live issue state, choose a bounded vertical slice, implement and test it, record evidence, commit and push normally, update the local package state, then continue to the next unblocked package.",
+            "Read the mapped track specifications and live issue state, choose a bounded "
+            "vertical slice, implement and test it, record evidence, commit and push "
+            "normally, update the local package state, then continue to the next "
+            "unblocked package.",
             "",
         ]
     )
@@ -133,7 +136,8 @@ def render_work_packet(item: WorkPackage, status: str) -> str:
 
 def status_command(queue: list[WorkPackage], state: dict[str, Any]) -> int:
     for item in queue:
-        print(f"{item.identifier}\t{item.priority}\t{package_state(state, item.identifier)}\t{item.title}")
+        state_name = package_state(state, item.identifier)
+        print(f"{item.identifier}\t{item.priority}\t{state_name}\t{item.title}")
     return 0
 
 
