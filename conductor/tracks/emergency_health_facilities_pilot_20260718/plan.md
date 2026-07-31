@@ -24,6 +24,10 @@
 - [ ] 4.2 Resolve or bound all deployment-risk findings.
 - [ ] 4.3 Publish benchmark research objects and explicit non-operational limitations.
 
+## 5. Bounded WP-010 evidence
+
+- [x] 5.1 Register hospital candidates and record the unresolved authoritative ambulance-source boundary. (bdb3af6)
+
 ## Track closeout
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.

@@ -24,6 +24,10 @@
 - [ ] 4.2 Validate controlled/public data boundaries and performance.
 - [ ] 4.3 Freeze the v1 simulation and result contracts.
 
+## 5. Bounded WP-010 evidence
+
+- [x] 5.1 Package a dependency-free deterministic queue benchmark for independent handoff. (bdb3af6)
+
 ## Track closeout
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.

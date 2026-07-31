@@ -24,6 +24,10 @@
 - [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.
 - [ ] 4.3 Publish stable methods, reporting and limitation templates.
 
+## 5. Bounded WP-010 evidence
+
+- [x] 5.1 Cross-check the synthetic estimand and DID contrast with a dependency-free verifier. (bdb3af6)
+
 ## Track closeout
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.

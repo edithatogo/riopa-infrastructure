@@ -171,9 +171,9 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "ae04994488bb5a80015f7eec825253871efcfd58eb8e6d9d1841eaa6219d850d",
+          "sha256": "20b493f040bf0a6ae6883f9a5323e7390667d943ca613427bf9b05546843b3ed",
           "immutable": false,
-          "generated_at": "2026-07-31T22:09:21Z",
+          "generated_at": "2026-07-31T22:28:08Z",
           "description": "Deterministically generated programme issue graph."
         },
         {
@@ -264,7 +264,7 @@
       "location": "ROADMAP_STATUS.md",
       "sha256": "67423be885b733e2e40c7d03282d0a59e0ba801c680d4c89c4d0be62d4f87a7b",
       "immutable": false,
-      "generated_at": "2026-07-31T22:09:21Z",
+      "generated_at": "2026-07-31T22:28:08Z",
       "description": "Generated stage-by-stage release readiness and blockers."
     },
     {

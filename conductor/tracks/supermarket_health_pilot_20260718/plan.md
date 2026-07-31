@@ -24,6 +24,10 @@
 - [ ] 4.2 Generate complete methods, data and software research objects.
 - [ ] 4.3 Publish manuscript/preprint, limitations and correction path.
 
+## 5. Bounded WP-010 evidence
+
+- [x] 5.1 Register public-data candidates and fail closed where supermarket source rights are undeclared. (bdb3af6)
+
 ## Track closeout
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
