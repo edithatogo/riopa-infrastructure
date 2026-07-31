@@ -16,12 +16,11 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-008-related-repository-adapters-20260731` | Related repositories have isolated issue, branch, tested commit and pull-request implementations without modifying dirty checkouts | `reports/wp008-cross-repository-adapters.md`, `conformance/adapters/report.json` | Local implementation and cross-repository fixture validation pass; PRs are open and unmerged pending exact-head hosted checks |
+| `WP-008-related-repository-adapters-20260731` | Related repositories have isolated issue, branch, tested commit and merged pull-request implementations without modifying dirty checkouts | `reports/wp008-cross-repository-adapters.md`, `conformance/adapters/report.json` | Cross-repository fixture validation passes; `fyi-cli` PR #285 and `fyi-archive` PR #319 merged on 2026-07-31 |
 
 ## Blocking defects
 
-- Related-repository PRs #285 (`fyi-cli`) and #319 (`fyi-archive`) remain
-  unmerged pending their exact-head hosted checks.
+- None recorded for the bounded WP-008 adapter slice.
 
 ## Decisions, exceptions and limitations
 
