@@ -2,15 +2,26 @@
   "track_id": "governance_maori_data_sovereignty_20260718",
   "type": "governance",
   "phase": "Foundation",
-  "status": "specified",
+  "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
-  "description": "Embed lawful reuse, social licence, benefit, Māori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.",
+  "updated_at": "2026-07-29T09:00:00Z",
+  "description": "Embed lawful reuse, social licence, benefit, M\u0101ori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.",
   "depends_on": [
     "foundation_architecture_20260718"
   ],
-  "github_issue": null,
-  "evidence": [],
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/19",
+  "evidence": [
+    "urn:riopa:evidence:governance-framework:4594fec",
+    "urn:riopa:evidence:governance-decision-schema:4594fec",
+    "urn:riopa:evidence:governance-decision-core:4594fec"
+    ,"urn:riopa:evidence:governance-engagement-pathway:ee966dc"
+    ,"urn:riopa:evidence:governance-review-template:ee966dc",
+    "urn:riopa:evidence:governance-withdrawal-drill:2026-07-29"
+    ,"urn:riopa:evidence:governance-release-pilot-audit:2026-07-29",
+    "urn:riopa:evidence:governance-review-fix:f914a38",
+    "urn:riopa:evidence:governance-use-case-review:c3579bd"
+    ,"urn:riopa:evidence:governance-reference-propagation:0095dc0"
+  ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,
@@ -33,5 +44,7 @@
     "Data steward",
     "Scientific reviewer"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "runtime-validation-provisioning"
+  ]
 }

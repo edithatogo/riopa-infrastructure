@@ -1,0 +1,57 @@
+# WP-001 module and test inventory
+
+Recorded 2026-07-27 from the imported development snapshot; rechecked
+2026-07-29. A test file is
+listed only when it directly imports or exercises the module; incidental text
+references do not establish coverage. Measured line/branch coverage remains
+unavailable until the locked environment can be provisioned.
+
+| Module | Lines | Direct focused test | WP-001 disposition |
+|---|---:|---|---|
+| `arcgis` | 365 | `test_arcgis.py` | pure field-selection, feature-ID validation and page-budget negatives; restore pagination/failures next |
+| `capture` | 368 | `test_capture.py` | retain; expand retry/network failure coverage in WP-002 |
+| `cli` | 965 | `test_cli.py` | retain; extend with each restored command surface |
+| `crate` | 742 | `test_crate.py` | retain; expand arbitrary-bundle and failure tests |
+| `hashing` | 44 | `test_hashing.py` | retained |
+| `lineage` | 543 | `test_lineage.py` | third restored slice: graph walks, cycle safety, impact ordering and identity conflicts |
+| `linz` | 773 | `test_linz.py` | second restored slice: revision/state-chain negative tests; add database failure injection when dependencies provision |
+| `linz_catalog` | 620 | `test_linz_catalog.py` | first restored slice in this increment |
+| `linz_enrichment` | 463 | `test_linz_enrichment.py` | deterministic service queue and explicit owner-disposition tests |
+| `linz_export` | 322 | `test_linz_export.py` | pure export-job identity/state and credential contract negatives |
+| `linz_federation` | 978 | `test_linz_federation.py` | policy validation and deterministic family classification; restore staging/resume tests next |
+| `linz_inventory` | 605 | `test_linz_inventory.py` | policy matching, validation, bounded batching, unknown-size and oversize negatives |
+| `methods` | 307 | `test_methods.py` | retain; expand missing-evidence consistency tests |
+| `publication` | 425 | `test_publication.py` | pure rights-decision precedence and media-type contract tests; restore research-object integration next |
+| `registry` | 196 | `test_registry.py` | retained |
+| `roadmap` | 1,528 | `test_roadmap.py`, `test_roadmap_hardening.py` | retained |
+| `spatial` | 598 | `test_spatial.py` | common geometry conversion, true-curve rejection, ID/CRS preservation and input-shape negatives |
+| `validation` | 706 | `test_validation_failures.py`, `test_validation_integrity.py` | retained |
+| `wfs` | 223 | `test_wfs.py` | constructor and request-contract negatives; restore transport/pagination failures next |
+| `yaml_tools` | 47 | `test_yaml_tools.py` | retained |
+
+## Baseline blockers
+
+- `uv sync --extra dev --extra spatial --frozen` repeatedly failed while
+  downloading locked packages from the configured package mirror, including
+  `tzdata==2026.3`, `virtualenv==21.6.1`, `httpcore==1.0.9`,
+  `pygments==2.20.0`, and `requests-toolbelt==1.0.0` (latest retry).
+- The system Python has an incomplete pytest installation (`pluggy` missing).
+- The partially created environment can start pytest, but package collection
+  fails because the project dependency `rfc8785` is unavailable.
+- Consequently no new coverage percentage is claimed. The handoff’s last
+  recorded combined branch-aware coverage remains historical evidence only,
+  not a current result.
+- A direct system-Python retry on 2026-07-29 still fails during pytest startup
+  with `ModuleNotFoundError: No module named 'pluggy'`, independently confirming
+  that the execution gate remains unavailable.
+- An offline reproducibility retry on 2026-07-29 fails deterministically before
+  execution because the locked `tzdata==2026.3` wheel is absent from the local
+  cache; this confirms the remaining provisioning gate without another network
+  retry.
+
+## First restored test slice
+
+`tests/test_linz_catalog.py` adds positive, negative, path-safety,
+determinism, classification and pagination-header tests for the pure catalogue
+core. Syntax compilation is locally verifiable; execution and measured coverage
+remain pending locked-environment provisioning.

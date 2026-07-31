@@ -15,7 +15,9 @@ from riopa_provenance.capture import (
     redact_text,
     redact_url,
     validate_capture_url,
+    validate_resolved_addresses,
 )
+from riopa_provenance.retry import CircuitBreaker, RetryPolicy
 
 
 def policy(**overrides: object) -> CapturePolicy:
@@ -41,6 +43,25 @@ def test_capture_policy_and_url_controls() -> None:
         validate_capture_url(
             httpx.URL("https://127.0.0.1/layer"),
             CapturePolicy(allowed_hosts=frozenset({"127.0.0.1"})),
+        )
+
+
+def test_connection_time_resolution_rejects_private_or_invalid_addresses() -> None:
+    assert validate_resolved_addresses("data.example.govt.nz", ["8.8.8.8"]) == ("8.8.8.8",)
+    with pytest.raises(CaptureError, match="non-public"):
+        validate_resolved_addresses("data.example.govt.nz", ["10.0.0.1"])
+    with pytest.raises(CaptureError, match="invalid"):
+        validate_resolved_addresses("data.example.govt.nz", ["not-an-ip"])
+    with pytest.raises(CaptureError, match="no addresses"):
+        validate_resolved_addresses("data.example.govt.nz", [])
+    validate_capture_url(
+        httpx.URL("https://data.example.govt.nz/layer"),
+        policy(resolve_addresses=lambda host: ["8.8.8.8"]),
+    )
+    with pytest.raises(CaptureError, match="non-public"):
+        validate_capture_url(
+            httpx.URL("https://data.example.govt.nz/layer"),
+            policy(resolve_addresses=lambda host: ["192.168.1.10"]),
         )
 
 
@@ -167,3 +188,79 @@ def test_non_success_is_archived_before_error(tmp_path: Path) -> None:
             endpoint_id="urn:test:endpoint",
         )
     assert (tmp_path / "captures" / "failure.json").is_file()
+
+
+def test_capture_with_retry_preserves_each_retryable_attempt(tmp_path: Path) -> None:
+    responses = iter([503, 200])
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        status = next(responses)
+        headers = {"Retry-After": "3"} if status == 503 else {}
+        return httpx.Response(status, headers=headers, content=b"ok", request=request)
+
+    store = CaptureStore(tmp_path, id_factory=iter(["first", "second"]).__next__)
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=store,
+        policy=policy(),
+    )
+    delays: list[float] = []
+    decisions = []
+    result = client.capture_with_retry(
+        "GET",
+        "https://data.example.govt.nz/retry",
+        source_id="urn:test:source",
+        endpoint_id="urn:test:endpoint",
+        retry_policy=RetryPolicy(max_attempts=2, base_delay_seconds=0.25),
+        sleep=delays.append,
+        on_decision=decisions.append,
+    )
+    assert result.status_code == 200
+    assert delays == [3.0]
+    assert [item.reason for item in decisions] == ["retryable-status", "status-not-retryable"]
+    assert (tmp_path / "captures" / "first.json").is_file()
+    assert (tmp_path / "captures" / "second.json").is_file()
+
+
+def test_capture_with_retry_bounds_transport_failures(tmp_path: Path) -> None:
+    attempts = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        raise httpx.ConnectError("temporary DNS failure", request=request)
+
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=CaptureStore(tmp_path),
+        policy=policy(),
+    )
+    with pytest.raises(CaptureError, match="transport failure"):
+        client.capture_with_retry(
+            "GET",
+            "https://data.example.govt.nz/failure",
+            source_id="urn:test:source",
+            endpoint_id="urn:test:endpoint",
+            retry_policy=RetryPolicy(max_attempts=2, base_delay_seconds=0),
+        )
+    assert attempts == 2
+
+
+def test_capture_with_retry_uses_circuit_breaker(tmp_path: Path) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=b"ok", request=request)
+
+    breaker = CircuitBreaker(failure_threshold=1)
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        store=CaptureStore(tmp_path, id_factory=lambda: "ok"),
+        policy=policy(),
+    )
+    result = client.capture_with_retry(
+        "GET",
+        "https://data.example.govt.nz/ok",
+        source_id="urn:test:source",
+        endpoint_id="urn:test:endpoint",
+        circuit_breaker=breaker,
+    )
+    assert result.succeeded and breaker.state == "closed"

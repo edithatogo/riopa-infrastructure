@@ -47,7 +47,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Every v1-critical track has a repository owner, dependencies, target release, maturity target and checkable evidence contract.
 - [ ] The track and release dependency graphs are acyclic and validated automatically.
 - [ ] The v1 scope, non-claims, compatibility contract, support window and release authority are approved.
-- [ ] At least two maintainers or external reviewers complete an architecture review and findings are resolved or recorded.
+- [ ] At least two independent analysts complete an architecture review; analysts may be maintainers, external reviewers or agents. Each analyst must have a distinct identity, scope or method, and findings must be resolved or recorded.
 - [ ] A contributor can regenerate the issue graph and roadmap status from a clean checkout.
 
 ## Hardening and maturity gates

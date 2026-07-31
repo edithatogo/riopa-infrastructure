@@ -10,7 +10,7 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Core platform maintainer
-- **GitHub issue:** not yet created
+- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/2
 
 ## Evidence register
 

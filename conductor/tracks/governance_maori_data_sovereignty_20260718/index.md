@@ -1,7 +1,7 @@
 # Evidence index: Rights, privacy and Māori data sovereignty framework
 
 - **Track ID:** `governance_maori_data_sovereignty_20260718`
-- **Status:** `specified`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -10,24 +10,35 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Programme owner
-- **GitHub issue:** not yet created
+- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/19
 
 ## Evidence register
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| R01, R02, R04, R05 | Versioned governance decision framework and schema | `docs/governance-decision-framework.md`, `schemas/governance-decision.schema.json` | Implemented; runtime suite pending environment provisioning |
+| R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; runtime suite pending environment provisioning |
+| R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
+| R01, R03 | Withdrawal and supersession record helpers | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; operational exercise pending |
+| R04, R05 | Optional Māori-specific governance and engagement guidance | `docs/governance-engagement-pathway.md` | Implemented as optional guidance; no live co-design/review claimed |
+| R05 | Applied benefit/harm/equity review instrument | `docs/applied-governance-review-template.md` | Template only; pilot decisions pending |
+| R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
+| R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
+| R04 | Review fix for expiry and conflict handling | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; runtime suite pending environment provisioning |
+| R05 | Planned facility, health, deprivation and culturally sensitive geography review | `reports/governance-use-case-review.md` | All remain `review-required`; no publication approval inferred |
 
 ## Blocking defects
 
-- None recorded.
+- `runtime-validation-provisioning`: locked dependency provisioning remains unavailable; runtime tests and schema validation are not yet executed in the complete environment.
+- No live co-design or Māori governance approval is claimed; the pathway is optional guidance and is activated only when required by declared scope or another applicable obligation.
+- Local target reconciliation is tested; no live distribution/takedown system is claimed or required by this checkout’s bounded synthetic drill.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Public visibility is not permission to redistribute or infer; all unresolved decisions remain `review-required`.
 
 ## Review and handover
 
 Required reviewer roles: Governance reviewer, Security reviewer, Data steward, Scientific reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+Implementation is validating. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

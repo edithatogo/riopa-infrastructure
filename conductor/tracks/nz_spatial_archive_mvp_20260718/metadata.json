@@ -12,7 +12,7 @@
     "methods_research_objects_20260718",
     "canonical_domain_schemas_ontology_20260719"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/49",
   "evidence": [],
   "target_release": "0.5.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

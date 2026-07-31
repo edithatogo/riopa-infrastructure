@@ -2,13 +2,22 @@
   "track_id": "foundation_architecture_20260718",
   "type": "architecture",
   "phase": "Foundation",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-07-29T04:05:00Z",
   "description": "Ratify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.",
   "depends_on": [],
-  "github_issue": null,
-  "evidence": [],
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/14",
+  "evidence": [
+    "urn:riopa:evidence:foundation-adr-register:42adef0",
+    "urn:riopa:evidence:foundation-boundaries:43805ba",
+    "urn:riopa:evidence:foundation-governance:f95b827",
+    "urn:riopa:evidence:foundation-fitness:c5f66bc",
+    "urn:riopa:evidence:foundation-review-packet:7448786"
+    ,"urn:riopa:evidence:foundation-contract-analyst-01:2026-07-29"
+    ,"urn:riopa:evidence:foundation-governance-analyst-02:2026-07-29",
+    "urn:riopa:evidence:foundation-contract-matrix:2026-07-29"
+  ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,
@@ -25,9 +34,11 @@
   "current_maturity": "M1",
   "owner_role": "Programme owner",
   "review_roles": [
-    "Governance reviewer",
-    "API/schema reviewer",
-    "External user reviewer"
+    "Governance analyst",
+    "API/schema analyst",
+    "External-user analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "review-runtime-provisioning"
+  ]
 }

@@ -100,6 +100,40 @@ def _most_restrictive(decisions: Sequence[str]) -> str:
     return max(decisions, key=_DECISION_PRECEDENCE.__getitem__)
 
 
+def _artifact_rights_decision(
+    artifact: Mapping[str, Any] | None,
+    source_ids: Sequence[str],
+    rights_by_source: Mapping[str, Mapping[str, Any]],
+    global_status: str,
+) -> tuple[str, list[str], list[str]]:
+    """Resolve rights from artifact override, sources, then global policy."""
+
+    decisions: list[str] = []
+    basis: list[str] = []
+    attributions: list[str] = []
+    override = artifact.get("rights_ref") if isinstance(artifact, Mapping) else None
+    candidate_ids = [str(override)] if isinstance(override, str) and override else list(source_ids)
+    if override:
+        basis.append(f"Artifact rights_ref points to {override}.")
+    for source_id in candidate_ids:
+        record = rights_by_source.get(source_id)
+        if record is None:
+            decisions.append("review-required")
+            basis.append(f"No rights record exists for source {source_id}.")
+            continue
+        status = str(record.get("redistribution_status", "unknown"))
+        decisions.append(_RIGHTS_TO_DECISION.get(status, "review-required"))
+        basis.append(f"Rights record {source_id} redistribution status is {status}.")
+        attribution = record.get("attribution")
+        if isinstance(attribution, str) and attribution:
+            attributions.append(attribution)
+    if not decisions:
+        mapped = _GLOBAL_TO_DECISION.get(global_status, "review-required")
+        decisions.append(mapped)
+        basis.append(f"Global publication decision is {global_status}.")
+    return _most_restrictive(decisions), basis, sorted(set(attributions))
+
+
 def _load_object(path: Path) -> dict[str, Any]:
     value = load_json(path)
     if not isinstance(value, dict):
@@ -187,26 +221,12 @@ def build_publication_plan(
             source_id = artifact.get("source_id")
             source_ids = [source_id] if isinstance(source_id, str) else sorted(all_artifact_sources)
             classification = "source-payload" if isinstance(source_id, str) else "derived-payload"
-            source_decisions: list[str] = []
-            basis = []
-            attributions = []
-            for item_source_id in source_ids:
-                source_rights = rights_by_source.get(item_source_id)
-                if source_rights is None:
-                    source_decisions.append("review-required")
-                    basis.append(f"No rights record exists for source {item_source_id}.")
-                    continue
-                status = str(source_rights.get("redistribution_status", "unknown"))
-                source_decisions.append(_RIGHTS_TO_DECISION.get(status, "review-required"))
-                basis.append(f"Source {item_source_id} redistribution status is {status}.")
-                attribution = source_rights.get("attribution")
-                if isinstance(attribution, str) and attribution:
-                    attributions.append(attribution)
-            if not source_ids:
-                global_status = str(rights.get("publication_decision", "review-required"))
-                source_decisions.append(_GLOBAL_TO_DECISION.get(global_status, "review-required"))
-                basis.append(f"Global publication decision is {global_status}.")
-            decision = _most_restrictive(source_decisions)
+            decision, basis, attributions = _artifact_rights_decision(
+                artifact,
+                source_ids,
+                rights_by_source,
+                str(rights.get("publication_decision", "review-required")),
+            )
 
         if relative in override_values:
             decision = override_values[relative]

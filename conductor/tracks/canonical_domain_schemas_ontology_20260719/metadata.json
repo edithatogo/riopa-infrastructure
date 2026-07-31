@@ -10,7 +10,7 @@
     "foundation_architecture_20260718",
     "governance_maori_data_sovereignty_20260718"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/2",
   "evidence": [],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

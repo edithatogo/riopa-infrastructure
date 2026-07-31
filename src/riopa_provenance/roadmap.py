@@ -43,7 +43,7 @@ SEMVER_RE = re.compile(
     r"(?:-(?P<pre>[0-9A-Za-z.-]+))?$"
 )
 PHASE_RE = re.compile(r"^##\s+(?P<number>\d+)\.\s+(?P<title>.+?)\s*$", re.MULTILINE)
-TASK_RE = re.compile(r"^- \[ \]\s+(?P<task>.+?)\s*$", re.MULTILINE)
+TASK_RE = re.compile(r"^- \[[ x~]\]\s+(?P<task>.+?)\s*$", re.MULTILINE)
 CHECKBOX_RE = re.compile(r"^- \[ \]\s+(.+?)\s*$", re.MULTILINE)
 HEADER_RE = {
     "track_id": re.compile(r"^Track ID:\s*`(?P<value>[^`]+)`", re.MULTILINE),
@@ -303,6 +303,56 @@ def _validate_track_documents(
                     f"metadata values missing from evidence index: {missing}",
                 )
             )
+
+
+def _validate_architecture_fitness(
+    base: Path, tracks: dict[str, dict[str, Any]], problems: list[RoadmapProblem]
+) -> None:
+    """Check the foundation boundary contract and component ownership index."""
+
+    required = {
+        "docs/architecture.md": ("## Component model", "## Data-flow guarantees"),
+        "docs/v1-scope-and-boundaries.md": (
+            "## Platform guarantees",
+            "## Separate release axes",
+            "## Responsibility boundaries",
+            "## Non-claims",
+        ),
+        "docs/governance-and-sustainability.md": (
+            "## Decision rights",
+            "## Sources of truth",
+            "## Contribution and succession",
+        ),
+        "docs/adr/README.md": ("# Architecture decision register", "## Reconciliation rules"),
+    }
+    for relative, headings in required.items():
+        path = base / relative
+        if not path.is_file():
+            problems.append(
+                RoadmapProblem("architecture-artifact", relative, "required artifact is absent")
+            )
+            continue
+        text = path.read_text(encoding="utf-8")
+        for heading in headings:
+            if heading not in text:
+                problems.append(
+                    RoadmapProblem(
+                        "architecture-artifact",
+                        relative,
+                        f"missing required contract section: {heading}",
+                    )
+                )
+
+    for track_id, item in sorted(tracks.items()):
+        for field in ("owner_repository", "owner_role", "target_release", "maturity_target"):
+            if not item.get(field):
+                problems.append(
+                    RoadmapProblem(
+                        "architecture-ownership",
+                        f"conductor/tracks/{track_id}/metadata.json",
+                        f"missing {field}",
+                    )
+                )
 
 
 def _evidence_location(reference: Any) -> str:
@@ -614,6 +664,8 @@ def validate_roadmap(
         tracks = load_tracks(base)
     except (OSError, json.JSONDecodeError, ValueError) as exc:
         return (RoadmapProblem("track-load", "conductor/tracks", str(exc)),)
+
+    _validate_architecture_fitness(base, tracks, problems)
 
     maturity_ids = [item.get("id") for item in maturity.get("levels", [])]
     expected_maturity_ids = [f"M{index}" for index in range(len(maturity_ids))]
@@ -1216,6 +1268,11 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
             blockers.append(f"track {track_id} is missing")
             continue
         current_level = track.get("current_maturity", "M0")
+        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
+            blockers.append(
+                f"track {track_id} status {track.get('status')} is incompatible with the release"
+            )
+            continue
         if _maturity_rank(current_level) < required_rank:
             blockers.append(f"track {track_id} is {current_level}; {required_level} is required")
             continue
@@ -1228,11 +1285,6 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
         if required_rank == 6 and track.get("status") != "complete":
             blockers.append(
                 f"track {track_id} is {track.get('status')}; complete is required for stable v1"
-            )
-            continue
-        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
-            blockers.append(
-                f"track {track_id} status {track.get('status')} is incompatible with the release"
             )
             continue
         incomplete_dependencies = [

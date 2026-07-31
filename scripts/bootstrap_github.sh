@@ -131,7 +131,8 @@ PYREMOTE
 }
 
 verify_origin() {
-  local expected="github.com/${FULL_REPO,,}"
+  local expected
+  expected="github.com/$(printf '%s' "$FULL_REPO" | tr '[:upper:]' '[:lower:]')"
   if git remote get-url origin >/dev/null 2>&1; then
     local actual_url actual
     actual_url="$(git remote get-url origin)"

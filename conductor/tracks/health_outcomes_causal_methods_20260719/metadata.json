@@ -11,7 +11,7 @@
     "spatial_quality_temporality_20260718",
     "accessibility_network_engine_20260719"
   ],
-  "github_issue": null,
+  "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/104",
   "evidence": [],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -1,7 +1,7 @@
 # Evidence index: Foundation architecture and programme governance
 
 - **Track ID:** `foundation_architecture_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -10,24 +10,34 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Programme owner
-- **GitHub issue:** not yet created
+- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/14
 
 ## Evidence register
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| R01–R03 | ADR reconciliation register | `docs/adr/README.md` | Implemented; ratification review pending |
+| R01, R02, R05 | Scope, responsibility and compatibility boundary | `docs/v1-scope-and-boundaries.md`, `docs/architecture.md`, `docs/v1-release-policy.md` | Implemented; ratification review pending |
+| R03, R05 | Governance, decision rights and sustainability contract | `docs/governance-and-sustainability.md` | Implemented; named approvals pending |
+| R01, R02, R03 | Executable roadmap, issue-graph and architecture-fitness validation | `src/riopa_provenance/roadmap.py`, `tests/test_roadmap_hardening.py`, `project/issues.yaml` | Implemented; full runtime validation pending environment provisioning |
+| R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite pending environment provisioning |
+| R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings remain open |
 
 ## Blocking defects
 
-- None recorded.
+- `review-runtime-provisioning`: full Python/pytest and roadmap validation cannot currently run because locked dependency provisioning still times out; the offline cache also lacks `filelock==3.31.0` (required through `pre-commit`/`virtualenv`).
+- The analyst-review, ADR-disposition, contract-matrix and issue-graph blockers are resolved locally; runtime evidence remains the sole open blocker.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- ADR-0006, ADR-0009 and ADR-0011 are explicitly deferred with owners, revisit
+  dates and follow-up tracks in `docs/adr/README.md`; they are not treated as
+  approvals.
+- The normative contract ownership and migration matrix is recorded in
+  `docs/contract-ownership-matrix.md`.
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, API/schema reviewer, External user reviewer.
+Required analyst coverage: two independent analysts with distinct identities and scopes; governance, API/schema and external-user perspectives remain recommended coverage.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+Implementation is active. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

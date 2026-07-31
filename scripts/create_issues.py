@@ -41,6 +41,7 @@ class IssueResult:
     owner_repository: str | None = None
     owner_role: str | None = None
     blocking_defects: int = 0
+    error: str | None = None
 
 
 def load(path: Path) -> Any:
@@ -77,7 +78,13 @@ def collection(payload: Any, *keys: str) -> list[dict[str, Any]]:
     return []
 
 
-def list_existing(repo: str) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+def list_existing(
+    repo: str,
+) -> tuple[
+    dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
+    dict[str, set[str]],
+]:
     payload = json.loads(
         gh(
             [
@@ -90,19 +97,25 @@ def list_existing(repo: str) -> tuple[dict[str, dict[str, Any]], dict[str, dict[
                 "--limit",
                 "1000",
                 "--json",
-                "number,title,body,url",
+                "number,title,body,url,blockedBy",
             ]
         )
         or "[]"
     )
     by_key: dict[str, dict[str, Any]] = {}
     by_title: dict[str, dict[str, Any]] = {}
+    blocked_by_url: dict[str, set[str]] = {}
     for issue in collection(payload, "issues"):
         by_title[issue["title"]] = issue
+        blocked_by_url[issue["url"]] = {
+            item["url"]
+            for item in collection(issue.get("blockedBy"), "nodes", "items")
+            if item.get("url")
+        }
         match = MARKER_RE.search(issue.get("body") or "")
         if match:
             by_key[match.group(1)] = issue
-    return by_key, by_title
+    return by_key, by_title, blocked_by_url
 
 
 def ensure_labels(repo: str, label_names: set[str], *, apply: bool) -> None:
@@ -199,6 +212,7 @@ def ensure_dependencies(
     issue_url: str,
     blocked_by: list[str],
     urls: dict[str, str],
+    existing_urls: set[str] | None = None,
     *,
     apply: bool,
 ) -> None:
@@ -208,10 +222,17 @@ def ensure_dependencies(
         print("DRY-RUN dependencies", issue_url, "blocked by", blocked_by)
         return
 
-    current_payload = json.loads(
-        gh(["issue", "view", issue_url, "--repo", repo, "--json", "blockedBy"])
-    )
-    existing_urls = {item.get("url") for item in current_payload.get("blockedBy", [])}
+    if existing_urls is None:
+        current_payload = json.loads(
+            gh(["issue", "view", issue_url, "--repo", repo, "--json", "blockedBy"])
+        )
+        existing_urls = {
+            item.get("url")
+            for item in collection(current_payload.get("blockedBy"), "nodes", "items")
+            if item.get("url")
+        }
+    else:
+        existing_urls = set(existing_urls)
     for dependency_key in blocked_by:
         dependency_url = urls.get(dependency_key)
         if not dependency_url:
@@ -254,7 +275,7 @@ def process_repository(
 ) -> list[IssueResult]:
     label_names = {label for item in items for label in item.get("labels", [])}
     ensure_labels(repo, label_names, apply=apply)
-    by_key, by_title = list_existing(repo) if apply else ({}, {})
+    by_key, by_title, existing_blocked_by = list_existing(repo) if apply else ({}, {}, {})
     urls: dict[str, str] = {}
     resolved_keys: set[str] = set()
     results: list[IssueResult] = []
@@ -329,6 +350,7 @@ def process_repository(
                     issue_url,
                     item.get("blocked_by", []),
                     urls,
+                    existing_blocked_by.get(issue_url),
                     apply=True,
                 )
 
@@ -351,6 +373,26 @@ def content_url(item: dict[str, Any]) -> str | None:
     if isinstance(content, dict):
         return content.get("url")
     return item.get("url")
+
+
+def project_value_matches(item: dict[str, Any], field_name: str, expected: Any) -> bool:
+    """Return whether a Project item already has the requested field value."""
+
+    # ``gh project item-list --format json`` exposes project fields as flattened
+    # lower-case keys (for example ``"owner repository"``), while older gh
+    # versions may return GraphQL-style ``fieldValues`` nodes.
+    flattened_key = field_name.casefold()
+    if flattened_key in item:
+        return item[flattened_key] == expected
+    values = collection(item.get("fieldValues"), "nodes", "items")
+    for value in values:
+        field = value.get("field")
+        if not isinstance(field, dict) or field.get("name") != field_name:
+            continue
+        for key in ("name", "text", "number", "date"):
+            if key in value:
+                return value[key] == expected
+    return False
 
 
 def set_single_select(
@@ -435,8 +477,18 @@ def sync_project_fields(
     project_number: int,
     results: list[IssueResult],
     apply: bool,
+    offset: int = 0,
+    limit: int | None = None,
 ) -> dict[str, Any]:
     eligible = [result for result in results if result.project and result.url]
+    if offset < 0:
+        raise ValueError("project field offset must not be negative")
+    if offset:
+        eligible = eligible[offset:]
+    if limit is not None:
+        if limit <= 0:
+            raise ValueError("project field limit must be positive")
+        eligible = eligible[:limit]
     if not apply:
         return {"project_number": project_number, "planned_items": len(eligible)}
 
@@ -480,7 +532,8 @@ def sync_project_fields(
         )
     )
     items = collection(items_payload, "items")
-    item_ids_by_url = {content_url(item): item.get("id") for item in items if content_url(item)}
+    item_by_url = {content_url(item): item for item in items if content_url(item)}
+    item_ids_by_url = {url: item.get("id") for url, item in item_by_url.items()}
 
     added = 0
     for result in eligible:
@@ -517,7 +570,8 @@ def sync_project_fields(
             )
         )
         items = collection(items_payload, "items")
-        item_ids_by_url = {content_url(item): item.get("id") for item in items if content_url(item)}
+        item_by_url = {content_url(item): item for item in items if content_url(item)}
+        item_ids_by_url = {url: item.get("id") for url, item in item_by_url.items()}
 
     missing_options: set[str] = set()
     updated = 0
@@ -525,9 +579,11 @@ def sync_project_fields(
         item_id = item_ids_by_url.get(result.url)
         if not item_id:
             continue
+        item = item_by_url.get(result.url, {})
         if (
             result.phase
             and fields.get("Phase")
+            and not project_value_matches(item, "Phase", result.phase)
             and not set_single_select(
                 project_id=project_id,
                 item_id=item_id,
@@ -536,25 +592,37 @@ def sync_project_fields(
             )
         ):
             missing_options.add(f"Phase={result.phase}")
-        if result.track_id and fields.get("Track ID"):
+        if (
+            result.track_id
+            and fields.get("Track ID")
+            and not project_value_matches(item, "Track ID", result.track_id)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Track ID"],
                 value=result.track_id,
             )
-        if fields.get("Evidence status") and not set_single_select(
-            project_id=project_id,
-            item_id=item_id,
-            field=fields["Evidence status"],
-            value="None",
+        if (
+            fields.get("Evidence status")
+            and not project_value_matches(item, "Evidence status", "None")
+            and not set_single_select(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Evidence status"],
+                value="None",
+            )
         ):
             missing_options.add("Evidence status=None")
-        if fields.get("Current maturity") and not set_single_select(
-            project_id=project_id,
-            item_id=item_id,
-            field=fields["Current maturity"],
-            value=result.current_maturity or "M0",
+        if (
+            fields.get("Current maturity")
+            and not project_value_matches(item, "Current maturity", result.current_maturity or "M0")
+            and not set_single_select(
+                project_id=project_id,
+                item_id=item_id,
+                field=fields["Current maturity"],
+                value=result.current_maturity or "M0",
+            )
         ):
             missing_options.add(f"Current maturity={result.current_maturity or 'M0'}")
         select_values = {
@@ -568,6 +636,7 @@ def sync_project_fields(
             if (
                 value
                 and fields.get(field_name)
+                and not project_value_matches(item, field_name, value)
                 and not set_single_select(
                     project_id=project_id,
                     item_id=item_id,
@@ -576,28 +645,42 @@ def sync_project_fields(
                 )
             ):
                 missing_options.add(f"{field_name}={value}")
-        if result.target_release and fields.get("Target release"):
+        if (
+            result.target_release
+            and fields.get("Target release")
+            and not project_value_matches(item, "Target release", result.target_release)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Target release"],
                 value=result.target_release,
             )
-        if result.owner_repository and fields.get("Owner repository"):
+        if (
+            result.owner_repository
+            and fields.get("Owner repository")
+            and not project_value_matches(item, "Owner repository", result.owner_repository)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Owner repository"],
                 value=result.owner_repository,
             )
-        if result.owner_role and fields.get("Owner role"):
+        if (
+            result.owner_role
+            and fields.get("Owner role")
+            and not project_value_matches(item, "Owner role", result.owner_role)
+        ):
             set_text(
                 project_id=project_id,
                 item_id=item_id,
                 field=fields["Owner role"],
                 value=result.owner_role,
             )
-        if fields.get("Blocking defects"):
+        if fields.get("Blocking defects") and not project_value_matches(
+            item, "Blocking defects", result.blocking_defects
+        ):
             set_number(
                 project_id=project_id,
                 item_id=item_id,
@@ -610,6 +693,8 @@ def sync_project_fields(
         "project_number": project_number,
         "project_id": project_id,
         "eligible_items": len(eligible),
+        "offset": offset,
+        "limited": limit is not None,
         "items_added": added,
         "items_updated": updated,
         "missing_field_options": sorted(missing_options),
@@ -625,6 +710,17 @@ def main() -> int:
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--update-existing", action="store_true")
     parser.add_argument("--cross-repo", action="store_true")
+    parser.add_argument(
+        "--project-limit",
+        type=int,
+        help="limit Project field reconciliation to the first N eligible items",
+    )
+    parser.add_argument(
+        "--project-offset",
+        type=int,
+        default=0,
+        help="skip this many eligible items before Project field reconciliation",
+    )
     args = parser.parse_args()
 
     owner = args.owner or args.repo.split("/", 1)[0]
@@ -640,15 +736,27 @@ def main() -> int:
     if args.cross_repo:
         cross_config = load(ROOT / "project/cross-repo-adoption.yaml")
         for item in cross_config["issues"]:
-            results.extend(
-                process_repository(
-                    item["repository"],
-                    [item],
-                    project=None,
-                    apply=args.apply,
-                    update_existing=args.update_existing,
+            try:
+                results.extend(
+                    process_repository(
+                        item["repository"],
+                        [item],
+                        project=None,
+                        apply=args.apply,
+                        update_existing=args.update_existing,
+                    )
                 )
-            )
+            except RuntimeError as error:
+                results.append(
+                    IssueResult(
+                        key=item["key"],
+                        repository=item["repository"],
+                        url=None,
+                        number=None,
+                        action="blocked",
+                        error=str(error),
+                    )
+                )
 
     project_number = args.project_number
     if args.apply and not project_number and args.project_title:
@@ -660,6 +768,8 @@ def main() -> int:
             project_number=project_number,
             results=[result for result in results if result.repository == args.repo],
             apply=args.apply,
+            offset=args.project_offset,
+            limit=args.project_limit,
         )
 
     if args.apply:

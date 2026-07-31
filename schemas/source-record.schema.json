@@ -243,6 +243,11 @@
       },
       "uniqueItems": true
     },
+    "governance_decision_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
     "notes": {
       "type": [
         "string",

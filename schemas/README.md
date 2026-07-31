@@ -15,8 +15,11 @@ identifiers; repository paths are implementation locations.
 | `materialization` | physical representation, fidelity and reproducibility class |
 | `quality-report` | metric-level quality evidence and waivers |
 | `rights-inventory` | source-level licensing, governance review and publication decision |
+| `governance-decision` | versioned rights, privacy, sovereignty, safety and withdrawal decisions |
 | `methods-facts` | structured facts used to generate publication methods and limitations |
 | `spatial-feature-link` | evidence-based link between a spatial feature and plan provisions |
+| `source-health-observation` | versioned freshness, change, degradation and disappearance observation |
+| `publication-plan` | fail-closed, rights-aware target and asset publication plan |
 
 ## Programme, maturity and release contracts
 

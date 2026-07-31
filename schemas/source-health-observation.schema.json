@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riopa.nz/schema/source-health-observation.schema.json",
+  "title": "RIOPA source health observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "freshness", "changed", "degraded", "disappeared", "age_seconds"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "source_health_observation"},
+    "freshness": {"enum": ["fresh", "stale", "unknown"]},
+    "changed": {"type": "boolean"},
+    "degraded": {"type": "boolean"},
+    "disappeared": {"type": "boolean"},
+    "age_seconds": {"type": ["number", "null"], "minimum": 0}
+  }
+}

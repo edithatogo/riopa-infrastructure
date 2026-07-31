@@ -14,7 +14,7 @@ import json
 import os
 import tempfile
 import uuid
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -24,6 +24,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import httpx
 
 from .hashing import sha256_bytes, sha256_json
+from .retry import CircuitBreaker, RetryDecision, RetryPolicy, decide_retry
 
 
 class CaptureError(RuntimeError):
@@ -44,6 +45,7 @@ class CapturePolicy:
     secret_header_names: frozenset[str] = frozenset(
         {"authorization", "proxy-authorization", "cookie", "set-cookie", "x-api-key"}
     )
+    resolve_addresses: Callable[[str], Iterable[str]] | None = None
 
     def __post_init__(self) -> None:
         if not self.allowed_hosts:
@@ -66,6 +68,7 @@ class CaptureResult:
     metadata_path: Path
     request_fingerprint: str
     response_location: str | None = None
+    retry_after: str | None = None
 
     @property
     def succeeded(self) -> bool:
@@ -141,6 +144,23 @@ def _validate_public_host(host: str) -> None:
         raise CaptureError(f"non-public IP address is not allowed: {host}")
 
 
+def validate_resolved_addresses(host: str, addresses: Iterable[str]) -> tuple[str, ...]:
+    """Validate connection-time DNS results and return normalized addresses."""
+
+    normalized: list[str] = []
+    for value in addresses:
+        try:
+            address = ipaddress.ip_address(value)
+        except ValueError as exc:
+            raise CaptureError(f"resolver returned invalid address for {host}: {value}") from exc
+        if not address.is_global:
+            raise CaptureError(f"resolver returned non-public address for {host}: {value}")
+        normalized.append(str(address))
+    if not normalized:
+        raise CaptureError(f"resolver returned no addresses for {host}")
+    return tuple(dict.fromkeys(normalized))
+
+
 def validate_capture_url(url: httpx.URL, policy: CapturePolicy) -> None:
     """Apply scheme, credential, host allowlist, and IP-address controls."""
 
@@ -156,6 +176,8 @@ def validate_capture_url(url: httpx.URL, policy: CapturePolicy) -> None:
     if host not in allowed:
         raise CaptureError(f"host is not allowlisted: {host}")
     _validate_public_host(host)
+    if policy.resolve_addresses is not None:
+        validate_resolved_addresses(host, policy.resolve_addresses(host))
 
 
 def _redacted_url(url: httpx.URL, secret_keys: frozenset[str]) -> str:
@@ -350,6 +372,7 @@ class HttpCaptureClient:
             metadata_path=metadata_path,
             request_fingerprint=request_fingerprint,
             response_location=response_headers.get("location"),
+            retry_after=response_headers.get("retry-after"),
         )
         if require_success and not result.succeeded:
             raise CaptureError(
@@ -366,3 +389,72 @@ class HttpCaptureClient:
                 f"captured response is not valid UTF-8 JSON: {result.capture_id}: {exc}"
             ) from exc
         return result, value
+
+    def capture_with_retry(
+        self,
+        method: str,
+        url: str,
+        *,
+        retry_policy: RetryPolicy | None = None,
+        circuit_breaker: CircuitBreaker | None = None,
+        sleep: Callable[[float], None] | None = None,
+        on_decision: Callable[[RetryDecision], None] | None = None,
+        now: Callable[[], datetime] | None = None,
+        **kwargs: Any,
+    ) -> CaptureResult:
+        """Capture with bounded status retries while preserving every attempt.
+
+        Each attempt delegates to :meth:`capture` with ``require_success=False``;
+        consequently a retryable response is already content-addressed and has
+        immutable metadata before the next attempt begins.  Sleeping is injected
+        so callers can use a scheduler and tests can assert delays without I/O.
+        """
+
+        policy = retry_policy or RetryPolicy()
+        wait = sleep or (lambda _seconds: None)
+        clock = now or (lambda: datetime.now(UTC))
+        kwargs.pop("require_success", None)
+        for attempt in range(1, policy.max_attempts + 1):
+            if circuit_breaker is not None and not circuit_breaker.allow(now=clock()):
+                raise CaptureError("circuit breaker is open")
+            try:
+                result = self.capture(method, url, require_success=False, **kwargs)
+            except httpx.TransportError as exc:
+                decision = decide_retry(
+                    method=method,
+                    attempt=attempt,
+                    status_code=None,
+                    policy=policy,
+                )
+                if on_decision is not None:
+                    on_decision(decision)
+                if decision.retry:
+                    if circuit_breaker is not None:
+                        circuit_breaker.record_failure(now=clock())
+                    wait(decision.delay_seconds)
+                    continue
+                raise CaptureError(f"transport failure after {attempt} attempt(s): {exc}") from exc
+            decision = decide_retry(
+                method=method,
+                attempt=attempt,
+                status_code=result.status_code,
+                retry_after=result.retry_after,
+                policy=policy,
+            )
+            if on_decision is not None:
+                on_decision(decision)
+            if not decision.retry:
+                if not result.succeeded:
+                    if circuit_breaker is not None:
+                        circuit_breaker.record_failure(now=clock())
+                    raise CaptureError(
+                        f"captured HTTP {result.status_code} after {attempt} attempt(s): "
+                        f"{result.metadata_path}"
+                    )
+                if circuit_breaker is not None:
+                    circuit_breaker.record_success()
+                return result
+            if circuit_breaker is not None:
+                circuit_breaker.record_failure(now=clock())
+            wait(decision.delay_seconds)
+        raise AssertionError("retry loop must return on its final attempt")
