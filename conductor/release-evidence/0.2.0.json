@@ -86,9 +86,9 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap.py",
-          "sha256": "2a99a0bee8332b829846f664d360edd5d6a65dd9e5452dba8885615ecab1f4df",
+          "sha256": "21ca2c34bb76928900d2ba893b8edaf652ba4f3818bb21351eb14cb94efb017d",
           "immutable": false,
-          "generated_at": "2026-07-19T09:20:00Z",
+          "generated_at": "2026-07-31T09:30:00Z",
           "description": "Automated roadmap and readiness tests."
         },
         {
@@ -171,9 +171,9 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "c9b04922f4074e13e344c16e87937ce4b35edd21d560a2e159181b8678b236d8",
+          "sha256": "811e595fe0c23de3cc79f0696fd97d135447699c26c5bade11626a6c9024db8d",
           "immutable": false,
-          "generated_at": "2026-07-19T09:20:00Z",
+          "generated_at": "2026-07-31T09:30:00Z",
           "description": "Deterministically generated programme issue graph."
         },
         {
