@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -216,3 +217,184 @@ def test_pilot_report_rejects_mismatched_scenario() -> None:
             {"scenario_id": "different"},
             {"design": "difference-in-differences-reference-v1"},
         )
+
+
+@pytest.mark.parametrize(
+    ("mutate", "message"),
+    [
+        (lambda protocol: replace(protocol, protocol_id=" "), "protocol_id"),
+        (
+            lambda protocol: replace(
+                protocol,
+                estimand=replace(protocol.estimand, identification_assumptions=()),
+            ),
+            "identification assumption",
+        ),
+        (lambda protocol: replace(protocol, parameters=()), "at least one parameter"),
+        (
+            lambda protocol: replace(
+                protocol, parameters=(protocol.parameters[0], protocol.parameters[0])
+            ),
+            "names must be unique",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                parameters=(ParameterEvidence("", 1.0, "unit", "assumed"),),
+            ),
+            "parameter.name",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                parameters=(ParameterEvidence("rate", 1.0, "", "assumed"),),
+            ),
+            "unit",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                parameters=(ParameterEvidence("rate", float("inf"), "unit", "assumed"),),
+            ),
+            "finite",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                replication=replace(protocol.replication, replications=0),
+            ),
+            "replications",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                replication=replace(protocol.replication, warm_up_customers=-1),
+            ),
+            "warm_up_customers",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                replication=replace(protocol.replication, confidence_level=0.9),
+            ),
+            "only 95%",
+        ),
+        (
+            lambda protocol: replace(
+                protocol,
+                replication=replace(protocol.replication, convergence_relative_half_width=0),
+            ),
+            "threshold",
+        ),
+        (lambda protocol: replace(protocol, limitations=()), "limitation"),
+    ],
+)
+def test_protocol_validation_rejects_incomplete_contracts(mutate: Any, message: str) -> None:
+    with pytest.raises(AnalysisProtocolError, match=message):
+        validate_analysis_protocol(mutate(_protocol()))
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"capacity": 0}, "capacity"),
+        ({"warm_up_customers": -1}, "warm_up_customers"),
+        ({"warm_up_customers": 1}, "warm_up_customers"),
+    ],
+)
+def test_queue_rejects_invalid_capacity_and_warm_up(kwargs: dict[str, int], message: str) -> None:
+    arguments = {"capacity": 1, **kwargs}
+    with pytest.raises(ValueError, match=message):
+        simulate_fcfs_queue([0.0], [1.0], **arguments)
+
+
+@pytest.mark.parametrize(
+    ("arrivals", "services", "message"),
+    [
+        ([float("inf")], [1.0], "arrival_times"),
+        ([0.0], [float("nan")], "service_times"),
+    ],
+)
+def test_queue_rejects_non_finite_inputs(
+    arrivals: list[float], services: list[float], message: str
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        simulate_fcfs_queue(arrivals, services, capacity=1)
+
+
+def test_zero_duration_queue_has_zero_utilisation() -> None:
+    result = simulate_fcfs_queue([0.0], [0.0], capacity=1)
+    assert result.utilisation == 0.0
+    assert result.mean_wait == 0.0
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"customer_count": 2}, "customer_count"),
+        ({"mean_interarrival": 0.0}, "distribution means"),
+        ({"mean_service": -1.0}, "distribution means"),
+    ],
+)
+def test_replication_rejects_invalid_run_parameters(
+    kwargs: dict[str, float | int], message: str
+) -> None:
+    arguments: dict[str, float | int] = {
+        "customer_count": 5,
+        "capacity": 1,
+        "mean_interarrival": 2.0,
+        "mean_service": 1.0,
+    }
+    arguments.update(kwargs)
+    with pytest.raises(ValueError, match=message):
+        run_seeded_replications(_protocol(), **arguments)
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"treated_pre": []}, "non-empty"),
+        ({"treated_post": [float("inf")]}, "outcomes must be finite"),
+        ({"pretrend_treated": [1.0]}, "matching lengths"),
+        (
+            {
+                "pretrend_treated": [1.0, float("nan")],
+                "pretrend_comparison": [1.0, 2.0],
+            },
+            "pretrend outcomes",
+        ),
+        (
+            {
+                "negative_control": {
+                    "treated_pre": [1.0],
+                    "treated_post": [1.0],
+                    "comparison_pre": [1.0],
+                }
+            },
+            "four DID groups",
+        ),
+        (
+            {
+                "negative_control": {
+                    "treated_pre": [],
+                    "treated_post": [1.0],
+                    "comparison_pre": [1.0],
+                    "comparison_post": [1.0],
+                }
+            },
+            "groups must be non-empty",
+        ),
+    ],
+)
+def test_did_rejects_incomplete_or_invalid_diagnostics(
+    kwargs: dict[str, Any], message: str
+) -> None:
+    arguments: dict[str, Any] = {
+        "treated_pre": [1.0],
+        "treated_post": [2.0],
+        "comparison_pre": [1.0],
+        "comparison_post": [1.5],
+    }
+    arguments.update(kwargs)
+    with pytest.raises(ValueError, match=message):
+        difference_in_differences(**arguments)

@@ -4,7 +4,17 @@ from pathlib import Path
 
 import pytest
 
-from riopa_provenance.lineage import _SCHEMA, LineageError, LineageIndex
+import riopa_provenance.lineage as lineage_module
+from riopa_provenance.lineage import (
+    _SCHEMA,
+    LineageError,
+    LineageIndex,
+    _identifier,
+    _label,
+    _normalise_json,
+    _role_node_type,
+)
+from riopa_provenance.validation import ManifestReference, ValidationResult
 
 
 def seeded_index(tmp_path: Path) -> LineageIndex:
@@ -116,3 +126,171 @@ def test_projection_reconciliation_removes_only_unreferenced_nodes(tmp_path: Pat
         "snapshot-1",
         "source-1",
     ]
+
+
+def test_record_helpers_use_first_valid_identity_and_safe_fallbacks() -> None:
+    assert _identifier({"event_id": "", "run_id": "run-1"}) == "run-1"
+    assert _identifier({"event_id": 1}) is None
+    assert _label({"title": "", "name": "Readable"}) == "Readable"
+    assert _label({"title": 1}) is None
+    assert _role_node_type("domain_record", {"record_type": "facility"}) == "facility"
+    assert _role_node_type("domain_record", {}) == "domain_record"
+    assert _role_node_type("artifact", {}) == "artifact"
+    assert _normalise_json({"é": [2, 1]}) == '{"é":[2,1]}'
+
+
+def test_minimal_manifest_import_exercises_supported_lineage_relations(tmp_path: Path) -> None:
+    root = Path(__file__).resolve().parents[1]
+    index = LineageIndex(tmp_path / "imported.sqlite")
+
+    manifest_id = index.import_manifest(root / "examples/minimal/snapshot-manifest.json")
+
+    assert manifest_id == "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example"
+    relations = {
+        edge.relation for node in index.nodes() for edge in index.direct_edges(node.node_id)
+    }
+    assert {
+        "has_snapshot",
+        "included_in_snapshot",
+        "captured_as",
+        "source_of_artifact",
+        "used_by_run",
+        "generated_by_run",
+        "used_by_event",
+        "generated_by_event",
+        "generated_materialization",
+        "describes_artifact",
+    } <= relations
+    assert [node.node_id for node in index.nodes(node_type="source")] == [
+        "urn:riopa:source:linz-data-service"
+    ]
+
+    # Re-importing the same authoritative snapshot replaces its projection
+    # transactionally rather than duplicating edges.
+    edge_count = sum(len(index.direct_edges(node.node_id)) for node in index.nodes())
+    assert index.import_manifest(root / "examples/minimal/snapshot-manifest.json") == manifest_id
+    assert sum(len(index.direct_edges(node.node_id)) for node in index.nodes()) == edge_count
+
+
+def test_invalid_manifest_and_unknown_direct_edge_query_fail_closed(tmp_path: Path) -> None:
+    index = LineageIndex(tmp_path / "lineage.sqlite")
+    with pytest.raises(LineageError, match="manifest validation failed"):
+        index.import_manifest(tmp_path / "missing.json")
+
+    index = seeded_index(tmp_path)
+    with pytest.raises(LineageError, match="unknown lineage node"):
+        index.direct_edges("missing")
+
+
+def test_projection_reports_feature_granularity_and_enriches_external_stub(
+    tmp_path: Path,
+) -> None:
+    index = seeded_index(tmp_path)
+    connection = index._connect()
+    index._put_node(connection, "feature-1", "external")
+    index._put_node(
+        connection,
+        "feature-1",
+        "feature",
+        label="Feature",
+        record_path="feature.json",
+        metadata={"feature_id": 1},
+    )
+    # An external mention cannot erase a concrete node's metadata.
+    index._put_node(connection, "feature-1", "external")
+    index._put_edge(
+        connection,
+        "feature-1",
+        "snapshot-1",
+        "included_in_snapshot",
+        record_path="feature.json",
+        manifest_id="manifest-1",
+    )
+    connection.commit()
+    connection.close()
+
+    assert index.nodes(node_type="feature")[0].label == "Feature"
+    metadata = index.projection_metadata()
+    assert metadata["lineage_granularities"] == ["dataset", "feature"]
+    assert metadata["granularity_limitation"] is None
+
+
+def test_rebuild_impact_keeps_shortest_path_for_shared_descendant(tmp_path: Path) -> None:
+    index = seeded_index(tmp_path)
+    connection = index._connect()
+    index._put_edge(
+        connection,
+        "source-2",
+        "snapshot-1",
+        "direct_rebuild",
+        record_path=None,
+        manifest_id="manifest-1",
+    )
+    connection.commit()
+    connection.close()
+
+    result = index.rebuild_impact(["source-2", "source-1", "source-1"])
+    assert result["roots"] == ["source-1", "source-2"]
+    snapshot = next(item for item in result["impacted"] if item["node_id"] == "snapshot-1")
+    assert snapshot["depth"] == 1
+
+
+def test_manifest_import_maps_causal_and_relationship_edges_and_ignores_noise(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest_path = tmp_path / "manifest.json"
+    event_path = tmp_path / "event.json"
+    anonymous_path = tmp_path / "anonymous.json"
+    manifest_path.write_text("{}", encoding="utf-8")
+    event_path.write_text("{}", encoding="utf-8")
+    anonymous_path.write_text("{}", encoding="utf-8")
+    manifest = {
+        "snapshot_id": "snapshot",
+        "dataset_id": "dataset",
+        "sources": [
+            "not-an-object",
+            {"source_id": 3},
+            {"source_id": "source", "capture_ids": [4, "capture"]},
+        ],
+        "relationships": [
+            "not-an-object",
+            {"identifier": 4, "relation": "ignored"},
+            {"identifier": "related", "relation": "is_version_of"},
+        ],
+    }
+    event = {
+        "event_id": "event",
+        "inputs": [3, "input"],
+        "outputs": [4, "output"],
+        "causal_parent_event_ids": [5, "parent"],
+    }
+    records = {
+        manifest_path: manifest,
+        event_path: event,
+        anonymous_path: {"description": "anonymous extension"},
+    }
+    references = [
+        ManifestReference("event.json", None, "provenance_event"),
+        ManifestReference("anonymous.json", None, "domain_record"),
+    ]
+    monkeypatch.setattr(
+        lineage_module,
+        "validate_manifest_closure",
+        lambda *_args, **_kwargs: ValidationResult(manifest_path, None, ()),
+    )
+    monkeypatch.setattr(lineage_module, "load_json", lambda path: records[Path(path)])
+    monkeypatch.setattr(lineage_module, "manifest_reference_specs", lambda _manifest: references)
+
+    index = LineageIndex(tmp_path / "lineage.sqlite")
+    assert index.import_manifest(manifest_path) == "snapshot"
+    relations = {
+        (edge.source_id, edge.target_id, edge.relation)
+        for node in index.nodes()
+        for edge in index.direct_edges(node.node_id)
+    }
+    assert ("parent", "event", "causal_predecessor") in relations
+    assert ("event", "output", "generated_by_event") in relations
+    assert ("input", "event", "used_by_event") in relations
+    assert ("source", "capture", "captured_as") in relations
+    assert ("snapshot", "related", "is_version_of") in relations
+    assert any(node.node_id.startswith("urn:riopa:record:") for node in index.nodes())
