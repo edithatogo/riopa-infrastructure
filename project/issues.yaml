@@ -3190,7 +3190,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Register hospital candidates and record the unresolved authoritative ambulance-source boundary. (bdb3af6)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Register hospital candidates and record the unresolved authoritative ambulance-source boundary. (bdb3af6)\n- [ ] 5.2 Capture separate council and OSM regional ambulance observations without national or operational claims. (37510dd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",
@@ -3560,7 +3560,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Register public-data candidates and fail closed where supermarket source rights are undeclared. (bdb3af6)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Register public-data candidates and fail closed where supermarket source rights are undeclared. (bdb3af6)\n- [ ] 5.2 Capture a local-only OSM regional sensitivity observation without authoritative or completeness claims. (37510dd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",
@@ -4172,13 +4172,43 @@
         "publication_validation_20260718:phase-3"
       ],
       "labels": [
+        "type:implementation",
+        "phase:publication",
+        "risk:high",
+        "maturity:m1",
+        "release:0.9.0"
+      ],
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Complete infrastructure/methods, data descriptor and applied publication packages.\n- [ ] 4.2 Exercise correction, supersession and downstream-impact notification.\n- [ ] 4.3 Publish validation evidence and stable citation guidance.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "Publication",
+      "track_id": "publication_validation_20260718",
+      "target_release": "0.9.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "High",
+      "stability_class": "Reference",
+      "v1_critical": true,
+      "priority": "P1",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Publication and validation lead",
+      "blocking_defects": 0
+    },
+    {
+      "key": "publication_validation_20260718:phase-5",
+      "title": "[publication_validation_20260718] 5. Bounded reviewer preparation",
+      "parent": "publication_validation_20260718",
+      "blocked_by": [
+        "publication_validation_20260718:phase-4"
+      ],
+      "labels": [
         "type:validation",
         "phase:publication",
         "risk:high",
         "maturity:m1",
         "release:0.9.0"
       ],
-      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Complete infrastructure/methods, data descriptor and applied publication packages.\n- [ ] 4.2 Exercise correction, supersession and downstream-impact notification.\n- [ ] 4.3 Publish validation evidence and stable citation guidance.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Define the WP-010 clean-room procedure, independence criteria and content-bound evidence record. (37510dd)\n- [ ] 5.2 Define the staged Software Heritage plus artifact-repository preservation sequence without claiming a deposit. (37510dd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Publication",

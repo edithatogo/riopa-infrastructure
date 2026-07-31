@@ -27,6 +27,7 @@
 ## 5. Bounded WP-010 evidence
 
 - [x] 5.1 Register public-data candidates and fail closed where supermarket source rights are undeclared. (bdb3af6)
+- [x] 5.2 Capture a local-only OSM regional sensitivity observation without authoritative or completeness claims. (37510dd)
 
 ## Track closeout
 

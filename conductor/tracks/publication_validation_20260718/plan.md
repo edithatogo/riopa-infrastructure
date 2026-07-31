@@ -24,6 +24,11 @@
 - [ ] 4.2 Exercise correction, supersession and downstream-impact notification.
 - [ ] 4.3 Publish validation evidence and stable citation guidance.
 
+## 5. Bounded reviewer preparation
+
+- [x] 5.1 Define the WP-010 clean-room procedure, independence criteria and content-bound evidence record. (37510dd)
+- [x] 5.2 Define the staged Software Heritage plus artifact-repository preservation sequence without claiming a deposit. (37510dd)
+
 ## Track closeout
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.

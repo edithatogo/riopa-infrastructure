@@ -27,6 +27,7 @@
 ## 5. Bounded WP-010 evidence
 
 - [x] 5.1 Register hospital candidates and record the unresolved authoritative ambulance-source boundary. (bdb3af6)
+- [x] 5.2 Capture separate council and OSM regional ambulance observations without national or operational claims. (37510dd)
 
 ## Track closeout
 
