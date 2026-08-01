@@ -17,14 +17,19 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-007-public-hospital-source-20260731` | Official certified public-hospital provider CSV is preserved with content hash, HTTP receipt, rights reference and source limitation | `evidence/wp007-real-slice/manifest.json`, `reports/wp007-bounded-real-slice.md` | Real single-source capture passes; multi-source reconciliation, coordinates, history and review metrics remain open |
+| `WP-010-bounded-reconciliation-20260801` | Independent assertions retain source identity, coordinates, rights and authority class; deterministic matching preserves conflicts and requires accountable review | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py`, `scripts/compare_wp010_facility_sources.py`, `reports/wp010-facility-source-sensitivity.md` | Reference implementation and bounded council/OSM sensitivity pass locally; no candidate is adjudicated or promoted to authoritative status |
 
 ## Blocking defects
 
-- None recorded.
+- Independent reproduction issue #149 has no reviewer response.
+- National authoritative ambulance coverage, supermarket-source rights, reviewed performance
+  estimates, preservation deposit and authorised release remain external gates.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The bounded comparison reports one 5.660 m candidate pair and three source-only assertions.
+  It is not a national completeness, currency or accuracy estimate.
+- Accountable review may be performed by a human or agent analyst; no separate-human rule applies.
 
 ## Review and handover
 
