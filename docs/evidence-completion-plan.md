@@ -13,6 +13,7 @@ supplied by an external operator, source custodian or release authority.
 | Performance/capacity | Reproducible synthetic regional contract/runner under `examples/wp010-performance-benchmark/` | Representative beta/RC workload, latency/throughput/resource/storage/cost measurements and national-scale validation | Regional synthetic measurement available; national result is projection only | Publish measured envelope and defer scale claims |
 | Panel qualification | Generated pending templates and validated manifest for all 28 tracks (`docs/panel-qualification-report-templates-20260801.json`) | Completed three-agent reports with evidence links, concordance/dissent and disposition per track | Infrastructure complete; all track dispositions remain pending | Retain open status and technical-preview scope |
 | Release authority | Beta/RC/stable checklists and preserved artifacts | Named authority, operational evidence, soak, reproductions and signed approval | Open for all promotion tiers | Remain at technical preview |
+| Hosted quality gates | CI workflows, PR quality checklist and fail-closed blocker register (`docs/hosted-quality-gate-blockers-20260801.md`) | GitHub ruleset, Renovate, Codecov/OIDC and exact-head check receipts | Repository preparation complete; hosted settings remain unverified | Keep hosted rows open and do not infer protection or coverage from local results |
 
 ## Operating sequence
 
