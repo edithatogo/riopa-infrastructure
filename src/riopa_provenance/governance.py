@@ -62,6 +62,21 @@ def validate_source_acquisition_approval(
         errors.append("outcome must be a non-empty string")
     elif outcome not in ACQUISITION_OUTCOMES:
         errors.append("outcome is not an approved acquisition outcome")
+    # Permission-bearing outcomes cannot be satisfied by placeholders.  A
+    # metadata-only or review-required record may intentionally retain TBD
+    # references, but an allow decision must identify a real source revision,
+    # rights instrument and recipient.
+    if outcome in {"allow", "allow-with-conditions"}:
+        for field in ("recipient", "source_revision", "rights_reference", "approved_by"):
+            value = record.get(field)
+            if isinstance(value, str) and value.strip().lower() in {
+                "tbd",
+                "unknown",
+                "pending",
+                "review-required",
+                "not provided",
+            }:
+                errors.append(f"{field} cannot be a placeholder for an allow outcome")
     for field in ("scope", "conditions", "exclusions"):
         value = record.get(field)
         if not isinstance(value, Sequence) or isinstance(value, (str, bytes)):
