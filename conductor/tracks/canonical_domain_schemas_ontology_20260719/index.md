@@ -22,9 +22,13 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CANONICAL-INVENTORY-20260801` | Entity, identity, collision and extension inventory | `docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`, `tests/test_canonical.py` | Repository-owned baseline complete; SHACL, non-Python and domain-owner gates remain open |
 | `CANONICAL-CONTRACTS-20260801` | Versioned schemas, context, ontology descriptor, fixtures and identity tests | `schemas/canonical-crosswalk.schema.json`, `docs/ontology/`, `fixtures/canonical-crosswalk-golden.json`, `tests/test_canonical.py`, `tests/test_lineage_identifiers.py` | Python structural/semantic checks pass; SHACL and non-Python round-trip remain pending |
 
-## Blocking defects
+## Blocking defects and gates
 
-- None recorded.
+- `shacl-conformance-report` — pending qualifying SHACL engine/report.
+- `non-python-round-trip` — pending independent non-Python runtime evidence.
+- `ontology-publication-identifier` — pending publication decision and persistent identifier.
+- `domain-owner-review` — pending independent semantic/domain review.
+- `migration-compatibility-qualification` — pending compatibility matrix and migration execution.
 
 ## Decisions, exceptions and limitations
 
@@ -34,7 +38,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, External user reviewer.
 
-This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
 
 ## Review record
 

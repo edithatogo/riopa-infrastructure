@@ -57,7 +57,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-1",
@@ -85,7 +85,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-2",
@@ -115,7 +115,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-3",
@@ -145,7 +145,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-4",
@@ -175,7 +175,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "provenance_profile_v1_20260718",
