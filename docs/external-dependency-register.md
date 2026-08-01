@@ -4,6 +4,9 @@ This register separates repository-owned work from evidence that requires an
 independent party, source custodian, preservation service or named release authority.
 It is a planning and handoff artifact, not an approval record.
 
+The current recommended regional-first technical-preview posture is recorded in
+`docs/wp010-release-posture.md`; unresolved approvals remain explicitly TBD.
+
 | Gate | Current state | Closure evidence | Responsible party | Fallback and promotion consequence |
 |---|---|---|---|---|
 | Independent WP-010 reproduction | Bounded pilot review passed with limitations via subagent; external gate remains open; issue [#149](https://github.com/edithatogo/riopa-infrastructure/issues/149) remains open | Pilot: report satisfying `docs/bounded-pilot-review-protocol.md`; beta/stable: external reviewer identity, environment, exact revision/bundle digest, commands, findings and signed/content-bound report | Pilot: qualified subagent; beta/stable: independent external person/operator | Pilot may remain internal/regional and non-operational; no beta, release-candidate or stable-release claim |
