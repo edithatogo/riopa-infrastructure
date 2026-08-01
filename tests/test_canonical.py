@@ -7,6 +7,7 @@ from riopa_provenance.canonical import (
     build_crosswalk,
     canonical_entity_id,
     canonical_version_id,
+    validate_crosswalk_semantics,
 )
 
 
@@ -49,3 +50,13 @@ def test_crosswalk_builder_output_matches_normative_schema() -> None:
     schema = json.loads(Path("schemas/canonical-crosswalk.schema.json").read_text())
     errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(record))
     assert not errors
+    assert validate_crosswalk_semantics(record) == ()
+
+
+def test_crosswalk_semantics_fail_closed_for_reversed_time() -> None:
+    record = build_crosswalk(
+        source_id="s", source_label="x", canonical_id="urn:riopa:concept:x",
+        method="manual", confidence="medium", reviewer="r", valid_from="2026-02-01",
+        valid_to="2026-01-01",
+    )
+    assert "valid_time.to must not precede valid_time.from" in validate_crosswalk_semantics(record)

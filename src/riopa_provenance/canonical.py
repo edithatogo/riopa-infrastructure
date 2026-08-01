@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Mapping
+from datetime import date
 from typing import Any
 
 from .hashing import sha256_json
@@ -59,3 +60,23 @@ def build_crosswalk(*, source_id: str, source_label: str, canonical_id: str,
         "valid_time": {"from": valid_from, "to": valid_to},
         "evidence": evidence or [],
     }
+
+
+def validate_crosswalk_semantics(record: Mapping[str, Any]) -> tuple[str, ...]:
+    """Apply fail-closed semantic checks not expressible in JSON Schema alone."""
+    errors: list[str] = []
+    valid_time = record.get("valid_time")
+    if not isinstance(valid_time, Mapping):
+        return ("valid_time must be an object",)
+    try:
+        start = date.fromisoformat(str(valid_time.get("from")))
+        end_value = valid_time.get("to")
+        end = date.fromisoformat(str(end_value)) if end_value is not None else None
+        if end is not None and end < start:
+            errors.append("valid_time.to must not precede valid_time.from")
+    except ValueError:
+        errors.append("valid_time values must be ISO dates")
+    uncertain = {"disputed", "unknown", "inapplicable"}
+    if record.get("confidence") in uncertain and not record.get("evidence"):
+        errors.append("uncertain mappings require at least one evidence reference")
+    return tuple(errors)
