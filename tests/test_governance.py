@@ -79,6 +79,25 @@ def test_missing_decision_raises() -> None:
         require_allowed(None, pathway="public")
 
 
+@pytest.mark.parametrize(
+    "overrides",
+    [
+        {"classification": "unknown-class"},
+        {
+            "review": {
+                "role": "governance analyst",
+                "reviewed_at": "2026-07-29T00:00:00Z",
+                "expires_at": "2026-12-31T00:00:00Z",
+                "conflict_of_interest": True,
+            }
+        },
+    ],
+)
+def test_unknown_or_unresolved_rights_fail_closed(overrides: dict[str, object]) -> None:
+    result = evaluate_decision(decision(**overrides), pathway="public")
+    assert not result.allowed
+
+
 def test_expired_review_fails_closed() -> None:
     result = evaluate_decision(
         decision(
