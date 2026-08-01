@@ -3,12 +3,16 @@
   "record_type": "bounded_pilot_preservation_manifest",
   "evidence_id": "urn:riopa:evidence:wp010-bounded-pilot:2026-08-01",
   "created_at": "2026-08-01T05:20:00Z",
-  "source_revision": "c8380f54e9c7d05f99ca3505279b12440b604a39",
-  "publication_status": "not-attempted",
+  "source_revision": "9fe765a9350f7c3a65b8f7c41ba833b940869919",
+  "publication_status": "published-successor-pending",
   "decision_status": "approved-bounded-regional-pilot",
   "decision_id": "urn:riopa:decision:wp010-bounded-pilot:2026-08-01",
   "review_by": "2026-08-31T23:59:59Z",
-  "preservation_target": "Zenodo; deposit pending",
+  "preservation_target": "Zenodo 10.5281/zenodo.21735818; successor deposit pending",
+  "successor_of": {
+    "record_url": "https://zenodo.org/records/21735818",
+    "packet_sha256": "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b"
+  },
   "pilot_review_status": "subagent-pass-with-limitations",
   "external_reproduction_status": "required-for-beta-and-stable",
   "source_payloads": [
@@ -29,7 +33,7 @@
     "external_review_required": true
   },
   "repository_artifacts": [
-    {"path": "docs/wp010-bounded-pilot-decision.md", "sha256": "c286f50fc928b9a8c49893292a39e029d7c228fb70aaf1869c6d7a384847b771"},
+    {"path": "docs/wp010-bounded-pilot-decision.md", "sha256": "a2d17c5ba64509a9fa551cef5f1046f6fe8f44fa9dafeed3ac0e85e642ae1dc9"},
     {"path": "docs/bounded-pilot-review-protocol.md", "sha256": "49ceff9373467082e83f78ad20e9aa0734814fba334085d11bb728f23d728337"},
     {"path": "reports/wp010-facility-source-sensitivity.md", "sha256": "d43c66300e2a3c5c1642b79f3a474ada3053b0e739ecad06fd12901ad9e1d001"},
     {"path": "reports/wp010-subagent-review-20260801.md", "sha256": "8d80eb4d430a053232c39e5f3d7af344b2e0376f1dd10df11aff3fa1b7aaeee8"},
@@ -44,7 +48,7 @@
   "limitations": [
     "Raw payloads and geometries remain local and are not committed in this manifest.",
     "The pilot is regional, non-authoritative and non-operational.",
-    "This manifest prepares preservation; it is not a preservation deposit or publication approval.",
+    "This manifest records the successor state; the original deposited packet remains immutable and is identified above.",
     "The subagent review does not satisfy the external person/operator reproduction gate."
   ]
 }
