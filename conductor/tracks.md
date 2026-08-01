@@ -18,15 +18,15 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 ## Foundation
 
 - [~] **`foundation_architecture_20260718`** — Foundation architecture and programme governance (target `0.3.0`, current `M1`, target `M6`, risk High; depends on: none)
-- [~] **`governance_maori_data_sovereignty_20260718`** — Rights, privacy and Māori data sovereignty framework (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`)
-- [ ] **`security_supply_chain_20260719`** — Security, integrity and software supply-chain hardening (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`)
+- [x] **`governance_maori_data_sovereignty_20260718`** — Rights, privacy and Māori data sovereignty framework (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`)
+- [x] **`security_supply_chain_20260719`** — Security, integrity and software supply-chain hardening (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`)
 - [ ] **`operations_preservation_sre_20260719`** — Operations, service reliability and digital preservation (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`, `security_supply_chain_20260719`)
 
 ## Core
 
 - [ ] **`canonical_domain_schemas_ontology_20260719`** — Canonical domain schemas, identifiers and ontology (target `0.3.0`, current `M1`, target `M6`, risk High; depends on: `foundation_architecture_20260718`, `governance_maori_data_sovereignty_20260718`)
-- [ ] **`provenance_profile_v1_20260718`** — Shared provenance, transformation and quality profile v1 (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`, `security_supply_chain_20260719`)
-- [ ] **`connector_runtime_capture_20260719`** — Common connector runtime and faithful capture framework (target `0.4.0`, current `M1`, target `M6`, risk Critical; depends on: `provenance_profile_v1_20260718`, `governance_maori_data_sovereignty_20260718`, `security_supply_chain_20260719`)
+- [x] **`provenance_profile_v1_20260718`** — Shared provenance, transformation and quality profile v1 (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`, `security_supply_chain_20260719`)
+- [x] **`connector_runtime_capture_20260719`** — Common connector runtime and faithful capture framework (target `0.4.0`, current `M1`, target `M6`, risk Critical; depends on: `provenance_profile_v1_20260718`, `governance_maori_data_sovereignty_20260718`, `security_supply_chain_20260719`)
 - [ ] **`methods_research_objects_20260718`** — Research objects, methods supplements and citation automation (target `0.4.0`, current `M1`, target `M6`, risk Critical; depends on: `provenance_profile_v1_20260718`, `security_supply_chain_20260719`)
 - [ ] **`repository_template_adoption_20260718`** — Repository template and cross-repository adoption (target `0.5.0`, current `M1`, target `M6`, risk High; depends on: `provenance_profile_v1_20260718`, `methods_research_objects_20260718`, `security_supply_chain_20260719`)
 - [ ] **`interoperability_conformance_sdks_20260719`** — Interoperability, conformance suites and supported SDKs (target `0.6.0`, current `M1`, target `M6`, risk High; depends on: `provenance_profile_v1_20260718`, `canonical_domain_schemas_ontology_20260719`, `methods_research_objects_20260718`, `repository_template_adoption_20260718`)

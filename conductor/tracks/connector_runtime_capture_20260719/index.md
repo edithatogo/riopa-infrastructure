@@ -35,3 +35,7 @@
 Required reviewer roles: Provenance reviewer, Security reviewer, Data steward, Operations reviewer, External user reviewer.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+
+
+## Implementation Notes
+- Implemented all required adapters and runtime capture functionality.

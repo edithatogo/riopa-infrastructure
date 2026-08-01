@@ -32,5 +32,5 @@
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md`. (0b062d5)
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. (476ff5a)
-- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow.

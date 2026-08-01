@@ -19,9 +19,14 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
+  "duckdb>=1.5.4",
+  "httpx>=0.28.1",
   "jsonschema[format]>=4.24,<5",
+  "pyarrow>=23.0.1",
+  "pyproj>=3.7.2",
   "PyYAML>=6.0.2,<7",
   "rfc8785>=0.1.4,<1",
+  "shapely>=2.1.2",
 ]
 
 [project.optional-dependencies]
