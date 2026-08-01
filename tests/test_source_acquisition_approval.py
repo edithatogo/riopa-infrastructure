@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 
 from jsonschema import Draft202012Validator, FormatChecker
@@ -61,3 +62,22 @@ def test_semantic_approval_validation_is_fail_closed() -> None:
     assert "outcome must be a non-empty string" in validate_source_acquisition_approval(
         missing_outcome, now=now
     )
+
+
+def test_semantic_validation_reports_nested_or_unhashable_labels() -> None:
+    valid = {
+        "decision_id": "urn:riopa:approval:test",
+        "recipient": "named operator",
+        "source_revision": "source-2026-08-01",
+        "rights_reference": "https://example.test/terms",
+        "outcome": "allow-with-conditions",
+        "scope": ["metadata-only"],
+        "exclusions": [],
+        "conditions": ["do not redistribute"],
+        "expires_at": "2026-12-31T00:00:00Z",
+        "approved_by": "programme owner",
+    }
+    errors = validate_source_acquisition_approval(
+        {**valid, "scope": [["nested"]]}, now=datetime(2026, 8, 1, tzinfo=UTC)
+    )
+    assert "scope contains an empty label" in errors

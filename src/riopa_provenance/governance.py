@@ -71,7 +71,10 @@ def validate_source_acquisition_approval(
             errors.append(f"{field} must not be empty")
         if any(not isinstance(item, str) or not item.strip() for item in value):
             errors.append(f"{field} contains an empty label")
-        if len(set(value)) != len(value):
+        # Do not call ``set`` until element types are known: malformed nested
+        # arrays must produce validation errors, never a TypeError.
+        string_values = [item for item in value if isinstance(item, str)]
+        if len(set(string_values)) != len(string_values):
             errors.append(f"{field} contains duplicate labels")
     expiry = record.get("expires_at")
     if not isinstance(expiry, str) or not expiry.strip():
@@ -116,7 +119,7 @@ def scope_review_triggers(scope: Sequence[str]) -> tuple[str, ...]:
             {
                 SCOPE_REVIEW_TRIGGERS[label]
                 for label in scope
-                if label in SCOPE_REVIEW_TRIGGERS
+                if isinstance(label, str) and label in SCOPE_REVIEW_TRIGGERS
             }
         )
     )
@@ -169,12 +172,12 @@ def evaluate_decision(
     else:
         try:
             reviewed_at = datetime.fromisoformat(str(review["reviewed_at"]).replace("Z", "+00:00"))
-            if reviewed_at > datetime.now(UTC):
+            expires_at = datetime.fromisoformat(str(review["expires_at"]).replace("Z", "+00:00"))
+            if reviewed_at.tzinfo is None or expires_at.tzinfo is None:
+                reasons.append("review dates must include a timezone")
+            elif reviewed_at > datetime.now(UTC):
                 reasons.append("review date is in the future")
-            expires_at = review.get("expires_at")
-            if expires_at is not None and datetime.fromisoformat(
-                str(expires_at).replace("Z", "+00:00")
-            ) <= datetime.now(UTC):
+            elif expires_at <= datetime.now(UTC):
                 reasons.append("review has expired")
         except (TypeError, ValueError):
             reasons.append("review dates must be ISO-8601 timestamps")

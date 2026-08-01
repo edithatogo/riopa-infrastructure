@@ -52,6 +52,26 @@ def test_scope_review_triggers_reject_scalar_scope() -> None:
         scope_review_triggers("health")
 
 
+def test_scope_review_triggers_ignores_malformed_unknown_labels() -> None:
+    assert scope_review_triggers([[], "unknown-label", "health"]) == ("privacy-ethics",)
+
+
+def test_review_dates_without_timezone_fail_closed() -> None:
+    result = evaluate_decision(
+        decision(
+            review={
+                "role": "governance analyst",
+                "reviewed_at": "2026-07-29T00:00:00",
+                "expires_at": "2026-12-31T00:00:00",
+                "conflict_of_interest": False,
+            }
+        ),
+        pathway="public",
+    )
+    assert not result.allowed
+    assert any("timezone" in reason for reason in result.reasons)
+
+
 @pytest.mark.parametrize(
     "overrides",
     [
