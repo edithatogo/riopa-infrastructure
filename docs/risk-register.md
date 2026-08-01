@@ -3,7 +3,7 @@
 | Risk | Consequence | Control | Trigger/owner |
 |---|---|---|---|
 | Council endpoint/viewer changes | broken capture and coverage gaps | capability snapshots, health checks, connector adapters, archived raw evidence | connector health track |
-| Publicly viewable but restricted data | unlawful redistribution/licence laundering | rights status required; fail closed on public publish | rights review |
+| Publicly viewable but restricted data | unlawful redistribution/licence laundering | **Closed for current public-datasets-only scope**; no restricted/non-public payload acquisition or publication is authorised. Re-open on scope expansion. | rights review / scope change |
 | GIS layer differs from statutory plan | incorrect legal interpretation | preserve source disclaimer; link, do not merge, spatial and textual authority; legal-status evidence | planning linkage track |
 | Retrieval date mistaken for operative date | invalid temporal analysis | bitemporal fields and sourced assertions; null rather than inference | schema/QA |
 | Inconsistent zone semantics | false national comparisons | National Planning Standards crosswalk plus council-specific meaning and mapping confidence | ontology/crosswalk review |

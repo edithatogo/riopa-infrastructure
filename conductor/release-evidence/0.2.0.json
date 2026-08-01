@@ -124,7 +124,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:risk-register",
           "kind": "review",
           "location": "docs/risk-register.md",
-          "sha256": "a7db1e271e4eaa11e52d37b6535819b18b31a056cb887c5f3bacf9852901c7f2",
+          "sha256": "8ad5dcdf1fd5fbc99c434a6712fd0ebb56307bac85c82547676cf17bee446981",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Programme risk, escalation and boundary register."
