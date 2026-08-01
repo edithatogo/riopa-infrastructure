@@ -6,6 +6,9 @@
   "source_revision": "561d579ab4aaa66745e8a503998bdc8a36dd40f2",
   "publication_status": "not-attempted",
   "decision_status": "approved-bounded-regional-pilot",
+  "decision_id": "urn:riopa:decision:wp010-bounded-pilot:2026-08-01",
+  "review_by": "2026-08-31T23:59:59Z",
+  "preservation_target": "Zenodo; deposit pending",
   "pilot_review_status": "subagent-pass-with-limitations",
   "external_reproduction_status": "required-for-beta-and-stable",
   "source_payloads": [

@@ -53,6 +53,7 @@ of the proposed public packet.
 - Decision: **approved for bounded regional pilot**
 - Decision-maker: **programme owner approval recorded in Codex task**
 - Decision date: **2026-08-01**
-- Expiry/review date: **pending**
+- Expiry/review date: **2026-08-31; earlier review on any scope, rights, source-status or safety change**
 - Conditions accepted: **rights-cleared sources only; non-authoritative and non-operational claims; preservation deposit before public representation; external reproduction remains required for beta/stable**
-- Persistent decision identifier: **pending**
+- Persistent decision identifier: `urn:riopa:decision:wp010-bounded-pilot:2026-08-01`
+- Preservation destination: **Zenodo (target; deposit pending)**
