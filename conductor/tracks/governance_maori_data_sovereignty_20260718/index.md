@@ -28,6 +28,7 @@
 | R04 | Review fix for expiry and conflict handling | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; complete runtime suite passes locally |
 | R04, R05 | Explicit scope-triggered review activation and non-inference boundary | `src/riopa_provenance/governance.py`, `tests/test_governance.py`, `reports/governance-scope-trigger-audit.md` | 14 tests pass; no identity/geography inference or mandatory Māori co-design gate |
 | R01, R02, R04 | Unknown classification and unresolved conflict fail closed | `tests/test_governance.py` | Negative tests pass; no permission widening from incomplete review |
+| R01, R02, R04 | Metadata-only custodian and authority request boundary | `docs/source-authority-request-packet.md`, `docs/external-dependency-register.md` | Prepared, unsent; no acquisition, credentials or authority inferred |
 | R05 | Planned facility, health, deprivation and culturally sensitive geography review | `reports/governance-use-case-review.md` | All remain `review-required`; no publication approval inferred |
 
 ## Blocking defects
