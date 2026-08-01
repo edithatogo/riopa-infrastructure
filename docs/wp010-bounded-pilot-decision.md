@@ -59,3 +59,6 @@ of the proposed public packet.
 - Preservation destination: **Zenodo** — [record 21735818](https://zenodo.org/records/21735818)
 - Persistent identifier: [`10.5281/zenodo.21735818`](https://doi.org/10.5281/zenodo.21735818)
 - Deposited packet SHA-256: `bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b`
+- Successor preservation destination: **Zenodo** — [record 21737563](https://zenodo.org/records/21737563)
+- Successor persistent identifier: [`10.5281/zenodo.21737563`](https://doi.org/10.5281/zenodo.21737563)
+- Successor deposited packet SHA-256: `e0dcf5eb08e9b4530929da92a439d2cb97ced51bfe34f4848d1a2ef94c15abe5`
