@@ -1,0 +1,27 @@
+{
+  "decision_id": "urn:riopa:ontology-publication-decision:canonical:1.0.0",
+  "release_id": "urn:riopa:ontology-release:canonical:1.0.0",
+  "status": "pending",
+  "target": {
+    "repository_name": null,
+    "repository_url": null,
+    "persistent_identifier": null,
+    "licence": null
+  },
+  "approval": {
+    "approved_by": null,
+    "approved_at": null,
+    "scope": "ontology artifacts only",
+    "terms_reviewed": false
+  },
+  "evidence": {
+    "release_digest": null,
+    "publication_receipt": null,
+    "shacl_report": null,
+    "non_python_report": null
+  },
+  "limitations": [
+    "Do not set status to published until target, licence, persistent identifier and receipt are complete.",
+    "Publication does not imply SHACL or cross-language conformance."
+  ]
+}
