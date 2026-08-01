@@ -28,6 +28,10 @@ def test_runner_has_reproducible_checksum_and_classifications() -> None:
     assert report["regional"]["checksum"] == _runner().checksum(128, 200, 20260801)
     assert report["national"]["records"] == 250000
     assert report["national"]["estimated_elapsed_ns"] > report["regional"]["elapsed_ns"]
+    assert {case["case_id"] for case in report["scenarios"]} == {"baseline", "stressed", "degraded"}
+    for case in report["scenarios"]:
+        assert case["latency"]["p95_ms"] >= case["latency"]["p50_ms"]
+        assert "status" in case["resources"] and "status" in case["cost"]
 
 
 def test_runner_writes_json(tmp_path: Path) -> None:

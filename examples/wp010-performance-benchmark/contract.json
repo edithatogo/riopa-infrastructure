@@ -8,12 +8,18 @@
   "measurement": {
     "required_fields": [
       "case_id", "records", "iterations", "elapsed_ns", "records_per_second",
-      "classification", "environment"
+      "classification", "environment", "latency", "throughput", "resources", "cost"
     ],
     "clock": "monotonic_ns",
     "repeat_policy": "at least 3 repetitions per case; report median",
     "warmup_policy": "one discarded warm-up run per case",
-    "units": {"elapsed_ns": "nanoseconds", "records_per_second": "records/second"}
+    "units": {"elapsed_ns": "nanoseconds", "records_per_second": "records/second", "latency_ms": "milliseconds"},
+    "result_shape": {
+      "latency": ["p50_ms", "p95_ms"],
+      "throughput": ["records_per_second"],
+      "resources": ["cpu_seconds", "memory_mb", "storage_mb", "status"],
+      "cost": ["currency", "amount", "status"]
+    }
   },
   "projection": {
     "allowed": true,

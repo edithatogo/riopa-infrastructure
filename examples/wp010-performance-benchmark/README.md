@@ -11,6 +11,10 @@ python examples/wp010-performance-benchmark/run.py \
   --output /tmp/wp010-performance.json
 ```
 
+The runner emits baseline, stressed and degraded regional scenarios. Each
+scenario includes p50/p95 latency, throughput, and explicit resource/cost
+instrumentation status (unavailable fields are `null`, never invented).
+
 The `regional` object is measured. The `national` object is explicitly
 `projection-not-measurement`; its linear extrapolation is informative only and
 does not satisfy a national-scale qualification gate. Real national-scale

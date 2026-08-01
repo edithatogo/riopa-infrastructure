@@ -3,6 +3,11 @@
   "records": 128,
   "national_projection_records": 250000,
   "iterations": 200,
+  "scenarios": [
+    {"scenario_id": "baseline", "records": 128, "iterations": 200},
+    {"scenario_id": "stressed", "records": 512, "iterations": 400},
+    {"scenario_id": "degraded", "records": 128, "iterations": 200, "degraded": true}
+  ],
   "algorithm": "deterministic integer checksum over synthetic rows",
   "seed": 20260801,
   "data_status": "synthetic-only",

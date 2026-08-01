@@ -27,7 +27,7 @@ def checksum(records: int, iterations: int, seed: int) -> int:
     return value
 
 
-def measure(records: int, iterations: int, seed: int, repeats: int = 3) -> dict[str, Any]:
+def measure(records: int, iterations: int, seed: int, repeats: int = 3, degraded: bool = False) -> dict[str, Any]:
     if repeats < 3:
         raise ValueError("repeats must be at least 3")
     checksum(records, iterations, seed)  # deterministic discarded warm-up
@@ -36,6 +36,9 @@ def measure(records: int, iterations: int, seed: int, repeats: int = 3) -> dict[
     for _ in range(repeats):
         started = time.monotonic_ns()
         results.append(checksum(records, iterations, seed))
+        if degraded:
+            # Deterministically model a degraded path without claiming an outage.
+            checksum(1, iterations // 2, seed ^ 0xDEAD)
         samples.append(time.monotonic_ns() - started)
     elapsed = int(statistics.median(samples))
     return {
@@ -46,12 +49,24 @@ def measure(records: int, iterations: int, seed: int, repeats: int = 3) -> dict[
         "checksum": results[0],
         "repetitions": repeats,
         "classification": "measured-regional-synthetic",
+        "latency": {"p50_ms": elapsed / 1_000_000, "p95_ms": max(samples) / 1_000_000},
+        "throughput": {"records_per_second": records * 1_000_000_000 / elapsed if elapsed else 0.0},
+        "resources": {"cpu_seconds": None, "memory_mb": None, "storage_mb": None, "status": "not-instrumented"},
+        "cost": {"currency": None, "amount": None, "status": "not-priced"},
     }
 
 
 def run(output: Path | None = None) -> dict[str, Any]:
     workload = json.loads((HERE / "workload.json").read_text(encoding="utf-8"))
-    regional = measure(workload["records"], workload["iterations"], workload["seed"])
+    scenarios = []
+    for scenario in workload["scenarios"]:
+        result = measure(
+            scenario["records"], scenario["iterations"], workload["seed"],
+            degraded=scenario.get("degraded", False),
+        )
+        result["case_id"] = scenario["scenario_id"]
+        scenarios.append(result)
+    regional = next(item for item in scenarios if item["case_id"] == "baseline")
     factor = workload["national_projection_records"] / workload["records"]
     projection = {
         "records": workload["national_projection_records"],
@@ -65,6 +80,7 @@ def run(output: Path | None = None) -> dict[str, Any]:
         "benchmark_id": "urn:riopa:benchmark:wp010:performance-contract:1.0.0",
         "workload": workload,
         "regional": regional,
+        "scenarios": scenarios,
         "national": projection,
         "environment": {"python": __import__("sys").version.split()[0]},
     }
