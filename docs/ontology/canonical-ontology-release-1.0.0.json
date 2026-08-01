@@ -1,0 +1,16 @@
+{
+  "release_id": "urn:riopa:ontology-release:canonical:1.0.0",
+  "version": "1.0.0",
+  "status": "repository-fixture",
+  "namespace": "https://w3id.org/riopa/ontology/",
+  "artifacts": [
+    {"path": "docs/ontology/canonical-context.jsonld", "kind": "json-ld-context"},
+    {"path": "schemas/canonical-crosswalk.schema.json", "kind": "json-schema"},
+    {"path": "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json", "kind": "migration-fixture"}
+  ],
+  "publication": {"repository": "RIOPA", "persistent_identifier": null},
+  "limitations": [
+    "This descriptor is not a published ontology release.",
+    "SHACL conformance and non-Python round-trip evidence remain outstanding."
+  ]
+}

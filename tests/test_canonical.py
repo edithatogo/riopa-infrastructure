@@ -97,3 +97,13 @@ def test_versioned_migration_fixture_is_explicit_and_bounded() -> None:
     assert migration["compatibility"] == "backward-compatible"
     assert migration["automated"] is True
     assert migration["notes"].startswith("Fixture documents")
+
+
+def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
+    descriptor = json.loads(
+        Path("docs/ontology/canonical-ontology-release-1.0.0.json").read_text()
+    )
+    assert descriptor["version"] == "1.0.0"
+    assert descriptor["status"] == "repository-fixture"
+    assert descriptor["publication"]["persistent_identifier"] is None
+    assert len(descriptor["artifacts"]) == 3
