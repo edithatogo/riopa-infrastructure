@@ -9,6 +9,7 @@ from riopa_provenance.canonical import (
     canonical_version_id,
     validate_crosswalk_semantics,
 )
+from riopa_provenance.hashing import sha256_json
 
 
 def test_entity_id_is_stable_and_label_independent() -> None:
@@ -67,3 +68,11 @@ def test_ontology_context_declares_canonical_terms() -> None:
     terms = context["@context"]
     assert terms["riopa"] == "https://w3id.org/riopa/ontology/"
     assert {"entity", "mapping", "canonicalConcept"}.issubset(terms)
+
+
+def test_golden_fixture_has_stable_canonical_digest() -> None:
+    fixture = json.loads(Path("fixtures/canonical-crosswalk-golden.json").read_text())
+    assert validate_crosswalk_semantics(fixture) == ()
+    assert sha256_json(fixture) == (
+        "51765ecf4129f0cfb7c5045a77977c999894e978a74cb84346f0a68ee8c0f828"
+    )

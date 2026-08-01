@@ -1,0 +1,10 @@
+{
+  "mapping_id": "urn:riopa:mapping:golden-001",
+  "source_assertion": {"source_id": "council:one", "label": "Urgent care"},
+  "canonical_id": "urn:riopa:concept:service:urgent-care",
+  "method": "manual-review",
+  "confidence": "medium",
+  "reviewer": "fixture-reviewer",
+  "valid_time": {"from": "2026-01-01", "to": null},
+  "evidence": ["fixture:golden-001"]
+}
