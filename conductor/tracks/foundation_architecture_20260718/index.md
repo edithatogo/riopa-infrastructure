@@ -10,6 +10,8 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Programme owner
+
+Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.md`.
 - **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/14
 
 ## Evidence register

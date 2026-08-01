@@ -8,6 +8,8 @@
 - **Stability class:** `Normative`
 - **Risk / priority:** `High` / `P0`
 - **V1 critical:** `yes`
+
+Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.md`.
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Core platform maintainer
 - **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/2
