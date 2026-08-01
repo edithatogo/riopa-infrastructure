@@ -70,6 +70,19 @@ def test_architecture_fitness_requires_boundary_contract(tmp_path: Path) -> None
     assert "architecture-artifact" in codes(root)
 
 
+def test_v1_critical_track_requires_owner_and_maturity_metadata(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    path, metadata = track_metadata(root)
+    metadata.pop("owner_repository")
+    metadata.pop("maturity_target")
+    write_json(path, metadata)
+    problems = validate_roadmap(root, check_generated_issues=False)
+    assert {item.code for item in problems} >= {"architecture-ownership"}
+    messages = " ".join(item.message for item in problems)
+    assert "missing owner_repository" in messages
+    assert "missing maturity_target" in messages
+
+
 def test_plan_phases_retain_completed_tasks() -> None:
     phases = _plan_phases("## 1. Done\n- [x] Completed\n## 2. Active\n- [~] In progress\n")
     assert [phase["tasks"] for phase in phases] == [["Completed"], ["In progress"]]

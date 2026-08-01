@@ -95,7 +95,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-hardening-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap_hardening.py",
-          "sha256": "d67d4af619cc0b9c695cb1e0ddb8300252fc982250189a72c827deab484c7677",
+          "sha256": "cc340b7d22ce41455985f1f5e17e53cd889c5d810597d1ad0f4a5708539b7241",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Negative, drift, expiry, evidence-integrity and stable-readiness tests."
