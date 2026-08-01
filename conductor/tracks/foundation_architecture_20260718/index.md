@@ -1,7 +1,7 @@
 # Evidence index: Foundation architecture and programme governance
 
 - **Track ID:** `foundation_architecture_20260718`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -29,10 +29,13 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | C.3 | M1 closeout audit | `docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md` | Repository-owned blocker, waiver and limitation checks pass; later maturity and external gates remain open |
 | M2-prep | Executable acceptance checklist | `docs/architecture-reviews/foundation-m2-evidence-checklist.md` | Defines bounded proof and explicit non-claims for the next maturity gate |
 
-## Blocking defects
+## Blocking maturity gates
 
-- None recorded. Named ratification and publication remain track work rather
-  than a concealed implementation blocker.
+- M2 executable proof, negative tests and traceable evidence.
+- M3 real-data integration and representative failure handling.
+- M4 repeated operation, external use and SLO evidence.
+- M5 independent review, recovery qualification and RC soak.
+- M6 supported compatibility, external reproduction, named maintainers and stable release authority.
 
 ## Decisions, exceptions and limitations
 
@@ -53,5 +56,5 @@ The bounded M1 architecture baseline is ratified; implementation remains active
 at M1. Evidence must be immutable or version-addressed, independently reviewed
 where required, and sufficient for each later maturity and release gate.
 
-Target-release metadata and evidence were revalidated on 2026-08-01; status
-remains `active` by design until M2–M6 gates are evidenced.
+Target-release metadata and evidence were revalidated on 2026-08-01; status is
+`validating` by design until M2–M6 gates are evidenced.

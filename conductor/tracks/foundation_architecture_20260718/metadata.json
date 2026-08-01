@@ -2,9 +2,9 @@
   "track_id": "foundation_architecture_20260718",
   "type": "architecture",
   "phase": "Foundation",
-  "status": "active",
+  "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-31T22:09:21Z",
+  "updated_at": "2026-08-01T14:00:00Z",
   "description": "Ratify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.",
   "depends_on": [],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/14",
@@ -40,5 +40,11 @@
     "API/schema analyst",
     "External-user analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "m2-executable-proof-and-negative-tests",
+    "m3-real-data-and-failure-evidence",
+    "m4-operational-and-external-use-evidence",
+    "m5-rc-soak-and-independent-review",
+    "m6-stable-support-and-release-authority"
+  ]
 }

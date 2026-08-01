@@ -359,7 +359,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-1",
@@ -387,7 +387,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-2",
@@ -417,7 +417,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-3",
@@ -447,7 +447,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-4",
@@ -477,7 +477,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-5",
@@ -507,7 +507,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "governance_maori_data_sovereignty_20260718",
