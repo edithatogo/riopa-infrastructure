@@ -164,6 +164,59 @@ def validate_conformance_manifest(
     return tuple(errors)
 
 
+def validate_conformance_corpus(
+    corpus: Mapping[str, Any], *, root: str | None = None
+) -> tuple[str, ...]:
+    """Validate the language-neutral corpus envelope before executing it.
+
+    This checks only portable metadata and references; it does not promote any
+    release gate or assert semantic equivalence across implementations.
+    """
+    from pathlib import Path
+
+    errors: list[str] = []
+    if not isinstance(corpus.get("corpus_version"), str) or not corpus["corpus_version"].strip():
+        errors.append("corpus_version must be a non-empty string")
+    if corpus.get("canonicalization") != "RFC 8785":
+        errors.append("canonicalization must be RFC 8785")
+    cases = corpus.get("cases")
+    if not isinstance(cases, list) or not cases:
+        return tuple([*errors, "cases must be a non-empty array"])
+    seen: set[str] = set()
+    base = Path(root or ".")
+    for index, case in enumerate(cases):
+        if not isinstance(case, Mapping):
+            errors.append(f"case {index} must be an object")
+            continue
+        case_id = case.get("case_id")
+        if not isinstance(case_id, str) or not case_id.strip():
+            errors.append(f"case {index} case_id must be a non-empty string")
+        elif case_id in seen:
+            errors.append(f"duplicate case_id: {case_id}")
+        else:
+            seen.add(case_id)
+        digest = case.get("expected_sha256")
+        if not isinstance(digest, str) or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest):
+            errors.append(f"case {index} expected_sha256 must be lowercase SHA-256")
+        if "instance" not in case:
+            errors.append(f"case {index} must include instance")
+        schema = case.get("schema")
+        if schema is not None:
+            if not isinstance(schema, str) or not schema or Path(schema).is_absolute():
+                errors.append(f"case {index} schema must be a safe relative path")
+            else:
+                resolved = (base / schema).resolve()
+                try:
+                    resolved.relative_to(base.resolve().parents[1])
+                except ValueError:
+                    errors.append(f"case {index} schema must remain within repository: {schema}")
+                if not resolved.is_file():
+                    errors.append(f"case {index} schema does not exist: {schema}")
+        if not isinstance(case.get("expected_valid"), (bool, type(None))):
+            errors.append(f"case {index} expected_valid must be boolean or null")
+    return tuple(errors)
+
+
 def validate_migration_fixture(migration: Mapping[str, Any]) -> tuple[str, ...]:
     """Validate the bounded, declarative shape of a schema migration fixture.
 

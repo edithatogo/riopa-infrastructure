@@ -8,7 +8,7 @@ from typing import Any
 from jsonschema import Draft202012Validator
 
 from riopa_provenance.hashing import sha256_json
-from riopa_provenance.canonical import validate_conformance_manifest
+from riopa_provenance.canonical import validate_conformance_corpus, validate_conformance_manifest
 
 
 def _corpus() -> tuple[Path, dict[str, Any]]:
@@ -26,6 +26,15 @@ def test_python_reference_passes_language_neutral_corpus() -> None:
             validator = Draft202012Validator(json.loads(schema_path.read_text()))
             errors = list(validator.iter_errors(case["instance"]))
             assert (not errors) is case["expected_valid"]
+
+
+def test_corpus_envelope_is_safe_and_well_formed() -> None:
+    root, corpus = _corpus()
+    assert validate_conformance_corpus(corpus, root=str(root / "conformance/v1")) == ()
+
+    tampered = dict(corpus)
+    tampered["cases"] = [dict(corpus["cases"][0]), dict(corpus["cases"][0])]
+    assert any("duplicate case_id" in error for error in validate_conformance_corpus(tampered, root=str(root / "conformance/v1")))
 
 
 def test_node_implementation_matches_python_outcomes() -> None:
