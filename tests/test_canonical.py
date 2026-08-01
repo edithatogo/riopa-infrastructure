@@ -7,6 +7,7 @@ from riopa_provenance.canonical import (
     build_crosswalk,
     canonical_entity_id,
     canonical_version_id,
+    validate_crosswalk_contract,
     validate_crosswalk_semantics,
 )
 from riopa_provenance.hashing import sha256_json
@@ -76,3 +77,12 @@ def test_golden_fixture_has_stable_canonical_digest() -> None:
     assert sha256_json(fixture) == (
         "51765ecf4129f0cfb7c5045a77977c999894e978a74cb84346f0a68ee8c0f828"
     )
+    assert validate_crosswalk_contract(fixture) == ()
+
+
+def test_crosswalk_contract_rejects_missing_id_and_evidence() -> None:
+    errors = validate_crosswalk_contract(
+        {"confidence": "disputed", "valid_time": {"from": "2026-01-01", "to": None}}
+    )
+    assert any("missing required field: mapping_id" in error for error in errors)
+    assert any("uncertain mappings require at least one evidence" in error for error in errors)

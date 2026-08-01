@@ -80,3 +80,27 @@ def validate_crosswalk_semantics(record: Mapping[str, Any]) -> tuple[str, ...]:
     if record.get("confidence") in uncertain and not record.get("evidence"):
         errors.append("uncertain mappings require at least one evidence reference")
     return tuple(errors)
+
+
+def validate_crosswalk_contract(record: Mapping[str, Any]) -> tuple[str, ...]:
+    """Fail-closed structural and semantic validation for crosswalk claims."""
+    required = {
+        "mapping_id", "source_assertion", "canonical_id", "method",
+        "confidence", "reviewer", "valid_time", "evidence",
+    }
+    errors = [f"missing required field: {key}" for key in sorted(required - record.keys())]
+    if not isinstance(record.get("mapping_id"), str) or not str(
+        record.get("mapping_id", "")
+    ).startswith("urn:riopa:mapping:"):
+        errors.append("mapping_id must be a canonical mapping URN")
+    assertion = record.get("source_assertion")
+    if (
+        not isinstance(assertion, Mapping)
+        or not assertion.get("source_id")
+        or not assertion.get("label")
+    ):
+        errors.append("source_assertion requires source_id and label")
+    if not isinstance(record.get("evidence"), list):
+        errors.append("evidence must be an array")
+    errors.extend(validate_crosswalk_semantics(record))
+    return tuple(dict.fromkeys(errors))
