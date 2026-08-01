@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import json
 from dataclasses import dataclass
 from math import asin, cos, radians, sin, sqrt
 from typing import Literal
@@ -46,6 +47,39 @@ class Reconciliation:
     method: str = "riopa-name-distance-v1"
     reviewer: str | None = None
     rationale: str | None = None
+
+
+def assertions_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, object]:
+    """Return a deterministic, non-authoritative registry snapshot.
+
+    The snapshot is deliberately a set of source assertions rather than a
+    canonical facility list. Duplicate assertion IDs are rejected so that a
+    capture cannot silently overwrite evidence during materialisation.
+    """
+    identifiers = [item.assertion_id for item in assertions]
+    if len(identifiers) != len(set(identifiers)):
+        raise ValueError("assertion IDs must be unique")
+    rows = [
+        {
+            "assertion_id": item.assertion_id,
+            "source_id": item.source_id,
+            "facility_type": item.facility_type,
+            "name": item.name,
+            "latitude": item.latitude,
+            "longitude": item.longitude,
+            "authority": item.authority,
+            "licence": item.licence,
+            "observed_at": item.observed_at,
+            "positional_uncertainty_m": item.positional_uncertainty_m,
+        }
+        for item in sorted(assertions, key=lambda value: value.assertion_id)
+    ]
+    return {"record_type": "facility_assertions", "authoritative": False, "assertions": rows}
+
+
+def assertions_snapshot_json(assertions: tuple[FacilityAssertion, ...]) -> str:
+    """Encode :func:`assertions_snapshot` with stable JSON formatting."""
+    return json.dumps(assertions_snapshot(assertions), ensure_ascii=False, sort_keys=True, indent=2) + "\n"
 
 
 def normalize_name(value: str) -> tuple[str, ...]:

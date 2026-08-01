@@ -6,6 +6,8 @@ from riopa_provenance.facility_registry import (
     distance_m,
     name_similarity,
     reconcile,
+    assertions_snapshot,
+    assertions_snapshot_json,
 )
 
 
@@ -83,3 +85,13 @@ def test_review_requires_accountability_and_candidate_state() -> None:
             same_facility=False,
             rationale="no pair",
         )
+
+
+def test_assertions_snapshot_is_sorted_and_non_authoritative() -> None:
+    values = (assertion("b", 1, 1), assertion("a", 0, 0))
+    snapshot = assertions_snapshot(values)
+    assert snapshot["authoritative"] is False
+    assert [row["assertion_id"] for row in snapshot["assertions"]] == ["a", "b"]
+    assert assertions_snapshot_json(values).endswith("\n")
+    with pytest.raises(ValueError, match="unique"):
+        assertions_snapshot((assertion("a", 0, 0), assertion("a", 1, 1)))
