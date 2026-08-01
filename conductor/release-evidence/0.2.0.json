@@ -30,7 +30,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
           "kind": "documentation",
           "location": "conductor/tracks.md",
-          "sha256": "405aa6916ca89b218a970ffc6e2a1e5e6754742976afb8969fc5cd4b4fbece36",
+          "sha256": "4bce924fe9e55e084a8d8578cf5ba313f57fe8123e633ab859680d5a095131e3",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Validated 28-track Conductor index."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "8d04d11695432c6d2f47469fb9b0ec1e8e7bf0594e490de5b1fa76f18b4d4c53",
+          "sha256": "bf8985a7bf099ceb3b5b58625d1895d400b6c186ef9498863f5d64b10fe4bcee",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."
@@ -253,7 +253,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
       "kind": "artifact",
       "location": "conductor/tracks.md",
-          "sha256": "405aa6916ca89b218a970ffc6e2a1e5e6754742976afb8969fc5cd4b4fbece36",
+          "sha256": "4bce924fe9e55e084a8d8578cf5ba313f57fe8123e633ab859680d5a095131e3",
       "immutable": false,
       "generated_at": "2026-07-19T09:20:00Z",
       "description": "Conductor track index delivered with the roadmap."

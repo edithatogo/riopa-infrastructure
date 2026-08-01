@@ -2,9 +2,9 @@
 
 ## 1. Threat and trust model
 
-- [ ] 1.1 Model assets, actors, trust boundaries and abuse cases.
-- [ ] 1.2 Classify credentials, environments, sources and release authorities.
-- [ ] 1.3 Define severity, response and release-blocking rules.
+- [x] 1.1 Model assets, actors, trust boundaries and abuse cases. (docs/security-threat-model.md)
+- [x] 1.2 Classify credentials, environments, sources and release authorities. (docs/security-threat-model.md)
+- [x] 1.3 Define severity, response and release-blocking rules. (docs/vulnerability-response-policy.md)
 
 ## 2. CI and dependency hardening
 
@@ -22,7 +22,7 @@
 
 - [ ] 4.1 Conduct security review and resolve findings.
 - [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.
-- [ ] 4.3 Publish the supported-version and vulnerability-response policy.
+- [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 
 ## Track closeout
 
