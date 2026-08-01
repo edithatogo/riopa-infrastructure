@@ -6,7 +6,8 @@
   "source_revision": "a25245ece62097f7566220e9f4a73f150013d30c",
   "publication_status": "not-attempted",
   "decision_status": "pending-accountable-decision",
-  "external_reproduction_status": "internal-subagent-pass-with-limitations",
+  "pilot_review_status": "subagent-pass-with-limitations",
+  "external_reproduction_status": "required-for-beta-and-stable",
   "source_payloads": [
     {
       "source_id": "urn:riopa:source:rangitikei:public-facilities",

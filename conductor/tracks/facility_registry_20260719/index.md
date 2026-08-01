@@ -20,6 +20,7 @@
 | `WP-010-bounded-reconciliation-20260801` | Independent assertions retain source identity, coordinates, rights and authority class; deterministic matching preserves conflicts and requires accountable review | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py`, `scripts/compare_wp010_facility_sources.py`, `reports/wp010-facility-source-sensitivity.md` | Reference implementation and bounded council/OSM sensitivity pass locally; no candidate is adjudicated or promoted to authoritative status |
 | `WP-010-bounded-pilot-decision-20260801` | Pilot scope, source exclusions and publication conditions are explicit | `docs/wp010-bounded-pilot-decision.md` | Decision remains pending; rights-uncertain and metadata-only sources are excluded or deferred |
 | `WP-010-preservation-manifest-20260801` | Exact revision, source hashes, reviewer bundle and exclusions are assembled for deposit | `evidence/wp010-bounded-pilot/manifest.json` | Preservation-ready only; no deposit or publication has been attempted |
+| `WP-010-bounded-pilot-review-policy-20260801` | Pilot-level agent review is separated from beta/stable external reproduction | `docs/bounded-pilot-review-protocol.md`, `reports/wp010-subagent-review-20260801.md` | Pilot review may support bounded internal scope; external gate remains mandatory for higher promotion |
 
 ## Blocking defects
 

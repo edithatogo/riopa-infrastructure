@@ -28,8 +28,9 @@ of the proposed public packet.
 ## Required conditions before pilot publication
 
 - Rights and attribution records are attached to the exact output packet.
-- The independent reproduction issue receives a report satisfying
-  `docs/independent-reproduction-protocol.md`.
+- The internal pilot review receives a report satisfying
+  `docs/bounded-pilot-review-protocol.md`; the external reproduction issue
+  remains required before beta, release candidate or stable-v1 promotion.
 - The output manifest, source hashes and generated report are deposited in a
   persistent repository or the release remains internal-only.
 - An accountable release authority records the decision, exclusions, expiry and
