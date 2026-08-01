@@ -18,11 +18,15 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `PROVENANCE-MAPPING-20260801` | Native evidence mapping, semantic classification and migration boundaries | `docs/provenance-profile-mapping-inventory-20260801.md`, `docs/provenance-and-lineage.md` | Repository-owned baseline complete; external parity/review gates remain open |
+| `PROVENANCE-CONTRACT-20260801` | Canonical event, retry, lineage and projection contracts | `schemas/provenance-event.schema.json`, `src/riopa_provenance/validation.py`, `src/riopa_provenance/crate.py`, tests | Python validation and projections pass; non-Python and signed-attestation evidence remains pending |
 
-## Blocking defects
+## Blocking defects and gates
 
-- None recorded.
+- Non-Python validator/model parity and round-trip evidence.
+- Independent PROV/OpenLineage semantic-loss review.
+- Stable profile publication identifier, migration/deprecation release evidence.
+- Signed v1 attestation and independent review.
 
 ## Decisions, exceptions and limitations
 
