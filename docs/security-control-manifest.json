@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "status": "repository-baseline",
+  "controls": [
+    {"id": "SC-01", "requirement": "pull-request workflows have read-only default permissions", "evidence": [".github/workflows/validate.yml", ".github/workflows/security.yml", ".github/workflows/release.yml"]},
+    {"id": "SC-02", "requirement": "workflow actions are pinned to immutable commit identities", "evidence": [".github/workflows/validate.yml", ".github/workflows/security.yml", ".github/workflows/release.yml"]},
+    {"id": "SC-03", "requirement": "dependency, static, secret and dependency-change checks are declared", "evidence": [".github/workflows/security.yml", ".github/workflows/codeql.yml", ".github/workflows/validate.yml", "scripts/ci_quality.sh"]},
+    {"id": "SC-04", "requirement": "release assets receive checksums, SBOM and protected-tag attestations", "evidence": [".github/workflows/release.yml", "scripts/build_sbom.sh"]}
+  ],
+  "external_gates": ["protected branch settings", "release environment approval", "executed signed release", "independent verification", "rollback exercise"]
+}

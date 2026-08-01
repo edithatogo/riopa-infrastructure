@@ -11,6 +11,7 @@
 - [ ] 2.1 Add branch protection, required review and least-privilege workflow permissions.
 - [ ] 2.2 Add dependency, static, secret, container and action-integrity checks.
 - [ ] 2.3 Generate and validate SBOMs for packages and containers.
+- [x] 2.3 Generate and validate SBOMs for packages and containers. (existing workflow and security-control-manifest.json)
 
 ## 3. Signing and provenance
 
@@ -23,6 +24,10 @@
 - [ ] 4.1 Conduct security review and resolve findings.
 - [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
+
+## 5. Review fixes
+
+- [x] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)
 
 ## Track closeout
 

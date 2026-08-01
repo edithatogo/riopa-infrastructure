@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "bf8985a7bf099ceb3b5b58625d1895d400b6c186ef9498863f5d64b10fe4bcee",
+          "sha256": "956a15b7c00dea1650fb6208f6f8ff0ed690ccb496aa8ade4c38b6140becdad5",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."
