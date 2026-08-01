@@ -31,6 +31,12 @@ def test_committed_readiness_projection_is_regenerable() -> None:
             root / "docs/open-issue-track-evidence-matrix-20260801.json",
             generated,
         )
-        assert generated.read_text(encoding="utf-8") == expected.read_text(encoding="utf-8")
+        actual = json.loads(generated.read_text(encoding="utf-8"))
+        committed = json.loads(expected.read_text(encoding="utf-8"))
+        # Source paths are environment-specific; compare the content contract
+        # while normalising the generated-from references to repository names.
+        actual["generated_from"] = [Path(value).name for value in actual["generated_from"]]
+        committed["generated_from"] = [Path(value).name for value in committed["generated_from"]]
+        assert actual == committed
     finally:
         generated.unlink(missing_ok=True)
