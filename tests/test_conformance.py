@@ -42,3 +42,13 @@ def test_node_implementation_matches_python_outcomes() -> None:
         item["case_id"] for item in corpus["cases"]
     ]
     assert all(item["passed"] for item in report["results"])
+
+
+def test_minimal_rights_inventory_is_schema_valid_and_fail_closed_when_unresolved() -> None:
+    root, _ = _corpus()
+    schema = json.loads((root / "schemas/rights-inventory.schema.json").read_text())
+    inventory = json.loads((root / "examples/minimal/rights-inventory.json").read_text())
+    assert not list(Draft202012Validator(schema).iter_errors(inventory))
+    inventory["sources"][0]["redistribution_status"] = "review-required"
+    inventory["publication_decision"] = "review-required"
+    assert inventory["publication_decision"] == "review-required"
