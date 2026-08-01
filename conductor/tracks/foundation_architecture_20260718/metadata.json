@@ -17,7 +17,8 @@
     ,"urn:riopa:evidence:foundation-contract-analyst-01:2026-07-29"
     ,"urn:riopa:evidence:foundation-governance-analyst-02:2026-07-29",
     "urn:riopa:evidence:foundation-contract-matrix:2026-07-29",
-    "urn:riopa:decision:foundation-m1-ratification:2026-08-01"
+    "urn:riopa:decision:foundation-m1-ratification:2026-08-01",
+    "urn:riopa:evidence:external-dependency-register:2026-08-01"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
