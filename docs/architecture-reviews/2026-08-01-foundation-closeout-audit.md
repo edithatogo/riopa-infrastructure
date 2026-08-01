@@ -8,7 +8,7 @@ stable-release approval or substitute for later external evidence.
 
 - `uv run riopa roadmap validate` passes roadmap, maturity, release, track,
   evidence and issue-graph validation.
-- Track metadata has `blocking_defects: []`, target release `0.3.0`, owner,
+- Track metadata records the M2–M6 blockers, target release `0.3.0`, owner,
   maturity target and revision-addressed evidence identifiers.
 - The external-dependency register names every open external gate, owner,
   closure artifact and bounded fallback; no waiver is implicit.
@@ -19,6 +19,7 @@ stable-release approval or substitute for later external evidence.
 ## Outcome
 
 No expired waiver, hidden blocking defect or undocumented limitation was found
-for the M1 development baseline. The track remains `active` at M1 because M2–M6
-implementation, external reproduction and release-authority gates remain open.
-This audit closes the repository-owned C.3 closeout check only.
+for the M1 development baseline. The track remains `validating` at M1 because
+M2–M6 implementation, external reproduction and release-authority gates remain
+open. This audit closes the repository-owned C.3 closeout check only; the
+machine-readable M2 readiness record remains `promotion_ready: false`.
