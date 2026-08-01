@@ -16,6 +16,7 @@ def test_acquisition_approval_requires_scope_rights_recipient_and_expiry() -> No
         "recipient": "named operator",
         "source_revision": "source-2026-08-01",
         "rights_reference": "https://example.test/terms",
+        "outcome": "allow-with-conditions",
         "scope": ["metadata-only"],
         "exclusions": ["raw payload"],
         "conditions": ["do not redistribute"],
@@ -33,6 +34,7 @@ def test_semantic_approval_validation_is_fail_closed() -> None:
         "recipient": "named operator",
         "source_revision": "source-2026-08-01",
         "rights_reference": "https://example.test/terms",
+        "outcome": "allow-with-conditions",
         "scope": ["metadata-only"],
         "exclusions": ["raw payload"],
         "conditions": ["do not redistribute"],
@@ -54,4 +56,8 @@ def test_semantic_approval_validation_is_fail_closed() -> None:
     ))
     assert "scope contains duplicate labels" in validate_source_acquisition_approval(
         {**valid, "scope": ["metadata-only", "metadata-only"]}, now=now
+    )
+    missing_outcome = {key: value for key, value in valid.items() if key != "outcome"}
+    assert "outcome must be a non-empty string" in validate_source_acquisition_approval(
+        missing_outcome, now=now
     )

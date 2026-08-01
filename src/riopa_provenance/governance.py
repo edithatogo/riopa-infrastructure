@@ -58,7 +58,9 @@ def validate_source_acquisition_approval(
         if not isinstance(value, str) or not value.strip():
             errors.append(f"{field} must be a non-empty string")
     outcome = record.get("outcome")
-    if outcome is not None and outcome not in ACQUISITION_OUTCOMES:
+    if not isinstance(outcome, str) or not outcome.strip():
+        errors.append("outcome must be a non-empty string")
+    elif outcome not in ACQUISITION_OUTCOMES:
         errors.append("outcome is not an approved acquisition outcome")
     for field in ("scope", "conditions", "exclusions"):
         value = record.get(field)
