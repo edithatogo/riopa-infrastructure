@@ -1,7 +1,9 @@
 # WP-010 bounded pilot decision packet
 
-**Status: pending accountable decision.** This packet prepares a pilot decision;
-it is not approval, publication authority or evidence of independent reproduction.
+**Status: approved bounded pilot; preservation and expiry conditions remain open.**
+This approval is limited to the regional, non-operational scope below. It is not
+national authority, publication approval, stable-release approval or evidence of
+external independent reproduction.
 
 ## Recommended decision
 
@@ -48,9 +50,9 @@ of the proposed public packet.
 
 ## Decision record
 
-- Decision: **pending**
-- Decision-maker: **pending**
-- Decision date: **pending**
+- Decision: **approved for bounded regional pilot**
+- Decision-maker: **programme owner approval recorded in Codex task**
+- Decision date: **2026-08-01**
 - Expiry/review date: **pending**
-- Conditions accepted: **pending**
+- Conditions accepted: **rights-cleared sources only; non-authoritative and non-operational claims; preservation deposit before public representation; external reproduction remains required for beta/stable**
 - Persistent decision identifier: **pending**
