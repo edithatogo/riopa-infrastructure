@@ -86,3 +86,14 @@ def test_crosswalk_contract_rejects_missing_id_and_evidence() -> None:
     )
     assert any("missing required field: mapping_id" in error for error in errors)
     assert any("uncertain mappings require at least one evidence" in error for error in errors)
+
+
+def test_versioned_migration_fixture_is_explicit_and_bounded() -> None:
+    migration = json.loads(
+        Path("docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json").read_text()
+    )
+    assert migration["from_version"] == "1.0.0"
+    assert migration["to_version"] == "1.1.0"
+    assert migration["compatibility"] == "backward-compatible"
+    assert migration["automated"] is True
+    assert migration["notes"].startswith("Fixture documents")

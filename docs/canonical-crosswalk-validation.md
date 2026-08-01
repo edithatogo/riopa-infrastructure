@@ -10,3 +10,8 @@ claim must not be promoted or treated as an accepted equivalence.
 assertion and semantic checks without optional validator dependencies. It is a
 structural gate, not a SHACL conformance claim; full SHACL and cross-runtime
 validation remain future evidence requirements.
+
+The versioned migration fixture under `docs/ontology/migrations/` is a
+machine-readable compatibility example. It records retained source values and
+the evidence constraint; it does not establish support for any non-Python
+runtime until independently reproduced.
