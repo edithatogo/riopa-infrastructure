@@ -14,6 +14,9 @@ coverage or operational readiness.
   change classes with content hashes.
 - Preservation and archive workflows retain source bytes separately from
   derived products and require explicit provenance links.
+- Archive manifests can be checked with a root-scoped digest verifier that
+  rejects traversal, missing files and content mismatches without mutating
+  the archive.
 
 ## Remaining qualification evidence
 
