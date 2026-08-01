@@ -3,6 +3,16 @@
 **Status: pending accountable decision.** This packet prepares a pilot decision;
 it is not approval, publication authority or evidence of independent reproduction.
 
+## Recommended decision
+
+Approve the bounded regional, non-operational pilot using the rights-cleared
+Rangitīkei and OpenStreetMap reference assertions, with the Wellington source
+excluded and Stats NZ/LINZ candidates deferred. Deposit the preservation packet
+before any public pilot representation.
+
+The deterministic packet digest is recorded in the preservation handoff and
+must be regenerated whenever this decision packet changes.
+
 ## Proposed scope
 
 The pilot is limited to the locally captured Rangitīkei council ambulance
