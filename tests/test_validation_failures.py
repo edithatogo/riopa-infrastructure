@@ -296,3 +296,13 @@ def test_manifest_discovery_ignores_generated_directories(tmp_path: Path) -> Non
     ignored.parent.mkdir()
     ignored.write_text("{}", encoding="utf-8")
     assert discover_manifests(tmp_path) == [expected]
+
+
+def test_provenance_profile_manifest_records_bounded_conformance() -> None:
+    manifest = json.loads(
+        (ROOT / "docs/provenance-profile-conformance-manifest-1.0.0.json").read_text()
+    )
+    assert manifest["status"] == "bounded-pending"
+    assert manifest["checks"]["python_schema"] == "passing"
+    assert manifest["checks"]["non_python_round_trip"] == "not-run"
+    assert manifest["checks"]["signed_attestation"] == "not-run"

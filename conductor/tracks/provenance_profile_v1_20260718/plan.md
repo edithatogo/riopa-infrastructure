@@ -16,7 +16,7 @@
 
 - [ ] 3.1 Implement Python and non-Python validators/models.
 - [x] 3.2 Emit and validate PROV, OpenLineage and signed-attestation projections. (`src/riopa_provenance/crate.py`, `docs/standards-profile.md`; signed attestation remains release-gated)
-- [ ] 3.3 Run positive, negative, round-trip and semantic-loss suites.
+- [x] 3.3 Run positive, negative, round-trip and semantic-loss suites. (`tests/test_validation_failures.py`, `tests/test_crate.py`; non-Python parity remains pending)
 
 ## 4. Stable profile release
 

@@ -13,7 +13,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/8",
   "evidence": [
     "urn:riopa:evidence:provenance-profile-mapping:2026-08-01",
-    "urn:riopa:evidence:provenance-profile-contract:2026-08-01"
+    "urn:riopa:evidence:provenance-profile-contract:2026-08-01",
+    "urn:riopa:evidence:provenance-profile-conformance:2026-08-01"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
