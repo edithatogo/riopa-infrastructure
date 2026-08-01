@@ -107,3 +107,13 @@ def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
     assert descriptor["status"] == "repository-fixture"
     assert descriptor["publication"]["persistent_identifier"] is None
     assert len(descriptor["artifacts"]) == 3
+
+
+def test_conformance_manifest_reports_unmet_external_checks() -> None:
+    manifest = json.loads(
+        Path("docs/ontology/canonical-conformance-manifest-1.0.0.json").read_text()
+    )
+    assert manifest["status"] == "bounded-pending"
+    assert manifest["checks"]["shacl"]["status"] == "not-run"
+    assert manifest["checks"]["cross_language_round_trip"]["status"] == "not-run"
+    assert manifest["publication"]["persistent_identifier"] is None
