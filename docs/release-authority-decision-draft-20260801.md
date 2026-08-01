@@ -10,10 +10,11 @@ The existing bounded pilot does not depend on access to a national ambulance
 dataset. Custodian approval is required only if the scope expands to
 authoritative provider, national, current-service or operational claims.
 
-- Repository head: `cefcf50` (panel-preparation and public-source metadata refresh).
+- Repository head: `2278cc8` (operational-cycle evidence schema, stressed/degraded benchmark scenarios, panel templates and release-readiness projection).
 - Successor preservation record: [Zenodo 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563).
 - Internal panel rehearsal: two clean-room bundle builds were byte-identical; `verify.py` passed; expected SHA-256 was `26bf2281…b6813`. This is rehearsal evidence only and does **not** satisfy the mandatory independent external-operator gate.
 - Public-source metadata refresh found no candidate with both confirmed authoritative status and clear redistribution rights. No acquisition or national-completeness claim is authorised.
+- Repository-owned preparation now includes a fail-closed operational-cycle/soak schema, deterministic local restore/rollback evidence, structured regional benchmark scenarios, and pending qualification templates for all 28 tracks. These artifacts do not represent elapsed-time, production, national-scale or external-operator evidence.
 
 ## Promotion prerequisites
 
