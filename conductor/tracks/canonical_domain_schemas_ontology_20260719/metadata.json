@@ -11,7 +11,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/2",
   "evidence": [
-    "urn:riopa:evidence:projection-reconciliation:2026-07-31"
+    "urn:riopa:evidence:projection-reconciliation:2026-07-31",
+    "urn:riopa:evidence:canonical-domain-inventory:2026-08-01"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

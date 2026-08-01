@@ -2,9 +2,9 @@
 
 ## 1. Evidence and identity inventory
 
-- [ ] 1.1 Inventory entities and identifiers across existing connector, archive, policy and health repositories.
-- [ ] 1.2 Define identity, version identity, source assertion and adjudication rules.
-- [ ] 1.3 Record unresolved semantic collisions and extension needs.
+- [x] 1.1 Inventory entities and identifiers across existing connector, archive, policy and health repositories. (`docs/canonical-domain-inventory-20260801.md`)
+- [x] 1.2 Define identity, version identity, source assertion and adjudication rules. (`docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`)
+- [x] 1.3 Record unresolved semantic collisions and extension needs. (`docs/canonical-domain-inventory-20260801.md`)
 
 ## 2. Schema and ontology implementation
 

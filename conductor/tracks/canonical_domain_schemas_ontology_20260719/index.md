@@ -19,6 +19,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-005-projection-reconciliation-20260731` | Deterministic stale-node removal preserves identities referenced by authoritative manifest edges | `src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/change-and-impact-queries.md` | Synthetic relational projection fixture passes; normative schema/ontology migration evidence remains open |
+| `CANONICAL-INVENTORY-20260801` | Entity, identity, collision and extension inventory | `docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`, `tests/test_canonical.py` | Repository-owned baseline complete; SHACL, non-Python and domain-owner gates remain open |
 
 ## Blocking defects
 
