@@ -56,4 +56,6 @@ of the proposed public packet.
 - Expiry/review date: **2026-08-31; earlier review on any scope, rights, source-status or safety change**
 - Conditions accepted: **rights-cleared sources only; non-authoritative and non-operational claims; preservation deposit before public representation; external reproduction remains required for beta/stable**
 - Persistent decision identifier: `urn:riopa:decision:wp010-bounded-pilot:2026-08-01`
-- Preservation destination: **Zenodo (target; deposit pending)**
+- Preservation destination: **Zenodo** — [record 21735818](https://zenodo.org/records/21735818)
+- Persistent identifier: [`10.5281/zenodo.21735818`](https://doi.org/10.5281/zenodo.21735818)
+- Deposited packet SHA-256: `bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b`
