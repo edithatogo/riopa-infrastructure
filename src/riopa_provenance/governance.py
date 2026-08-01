@@ -11,6 +11,7 @@ ALLOW_OUTCOMES = frozenset({"allow", "allow-with-conditions"})
 PUBLIC_CLASSES = frozenset({"public"})
 CONTROLLED_CLASSES = frozenset({"restricted", "sensitive", "controlled"})
 BLOCKING_OUTCOMES = frozenset({"withdraw", "superseded", "prohibited", "review-required"})
+ACQUISITION_OUTCOMES = frozenset({"allow", "allow-with-conditions", "metadata-only", "review-required", "prohibited"})
 
 # Scope labels are deliberately explicit rather than inferred from geography or
 # population names.  This keeps cultural/community review a documented trigger
@@ -36,6 +37,65 @@ class GovernanceResult:
     allowed: bool
     pathway: str
     reasons: tuple[str, ...]
+
+
+def validate_source_acquisition_approval(
+    record: Mapping[str, object] | None, *, now: datetime | None = None
+) -> tuple[str, ...]:
+    """Validate an acquisition approval beyond JSON Schema's structural checks.
+
+    This helper is deliberately fail-closed and side-effect free.  It catches
+    whitespace-only values, expired approvals, duplicate/empty scope labels and
+    credential-shaped fields that a valid JSON Schema instance could otherwise
+    contain.  It never fetches a source or resolves credentials.
+    """
+
+    if not isinstance(record, Mapping):
+        return ("approval record is missing",)
+    errors: list[str] = []
+    for field in ("decision_id", "recipient", "source_revision", "rights_reference", "approved_by"):
+        value = record.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{field} must be a non-empty string")
+    outcome = record.get("outcome")
+    if outcome is not None and outcome not in ACQUISITION_OUTCOMES:
+        errors.append("outcome is not an approved acquisition outcome")
+    for field in ("scope", "conditions", "exclusions"):
+        value = record.get(field)
+        if not isinstance(value, Sequence) or isinstance(value, (str, bytes)):
+            errors.append(f"{field} must be an array")
+            continue
+        if field != "exclusions" and not value:
+            errors.append(f"{field} must not be empty")
+        if any(not isinstance(item, str) or not item.strip() for item in value):
+            errors.append(f"{field} contains an empty label")
+        if len(set(value)) != len(value):
+            errors.append(f"{field} contains duplicate labels")
+    expiry = record.get("expires_at")
+    if not isinstance(expiry, str) or not expiry.strip():
+        errors.append("expires_at is required")
+    else:
+        try:
+            parsed = datetime.fromisoformat(expiry.replace("Z", "+00:00"))
+            reference = now or datetime.now(UTC)
+            if parsed.tzinfo is None:
+                errors.append("expires_at must include a timezone")
+            elif parsed <= reference:
+                errors.append("approval has expired")
+        except ValueError:
+            errors.append("expires_at must be an ISO-8601 timestamp")
+    forbidden = {"password", "token", "secret", "credential", "api_key", "access_token"}
+    stack: list[object] = [record]
+    while stack:
+        current = stack.pop()
+        if isinstance(current, Mapping):
+            for key, value in current.items():
+                if str(key).lower() in forbidden:
+                    errors.append(f"credential-shaped field is prohibited: {key}")
+                stack.append(value)
+        elif isinstance(current, Sequence) and not isinstance(current, (str, bytes)):
+            stack.extend(current)
+    return tuple(dict.fromkeys(errors))
 
 
 def scope_review_triggers(scope: Sequence[str]) -> tuple[str, ...]:
