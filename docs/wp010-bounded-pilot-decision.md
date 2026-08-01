@@ -1,9 +1,10 @@
 # WP-010 bounded pilot decision packet
 
-**Status: approved bounded pilot; preservation and expiry conditions remain open.**
+**Status: approved bounded pilot; panel validation accepted for this public-datasets-only preview; preservation and expiry conditions remain open.**
 This approval is limited to the regional, non-operational scope below. It is not
 national authority, publication approval, stable-release approval or evidence of
-external independent reproduction.
+external independent reproduction. The panel decision applies only to this
+bounded preview and does not satisfy beta, RC or stable-v1 external gates.
 
 ## Recommended decision
 
@@ -52,6 +53,7 @@ of the proposed public packet.
 
 - Decision: **approved for bounded regional pilot**
 - Decision-maker: **programme owner approval recorded in Codex task**
+- Validation authority: **three-agent subagent panel; consolidated report recorded as bounded-pilot evidence**
 - Decision date: **2026-08-01**
 - Expiry/review date: **2026-08-31; earlier review on any scope, rights, source-status or safety change**
 - Conditions accepted: **rights-cleared sources only; non-authoritative and non-operational claims; preservation deposit before public representation; external reproduction remains required for beta/stable**

@@ -5,6 +5,11 @@ successor deposit. The internal subagent panel may prepare, reproduce and audit
 evidence, but it is not a substitute for an accountable external operator,
 source custodian, or release authority.
 
+For the current public-datasets-only bounded technical preview, the
+programme-owner-authorised panel report may close the pilot validation gate.
+The beta, release-candidate and stable-v1 gates remain governed by the stricter
+requirements below.
+
 | Gate | Required closing evidence | Panel contribution | What the panel cannot substitute for | Owner / contingency |
 | --- | --- | --- | --- | --- |
 | External reproduction (issue #149) | A clean-room operator outside the implementation run completes the documented workflow from the frozen revision, records environment and deviations, and publishes an adverse-findings or no-findings report with exact hashes. Required for beta, release candidate and stable v1. | Rebuild the packet twice, run the scripted workflow, perform an adversarial review, and prepare a ready-to-run operator bundle and report template. | A subagent run is not an independent person/operator reproduction and cannot attest to usability for an external operator. | Release owner solicits an external operator and records the response. If unavailable, keep the project at regional technical-preview status and mark the gate open. |

@@ -20,6 +20,8 @@
     "packet_sha256": "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b"
   },
   "pilot_review_status": "subagent-pass-with-limitations",
+  "pilot_validation_authority": "three-agent subagent panel",
+  "pilot_validation_status": "accepted-bounded-public-datasets-preview",
   "external_reproduction_status": "required-for-beta-and-stable",
   "source_payloads": [
     {
@@ -39,7 +41,8 @@
     "external_review_required": true
   },
   "repository_artifacts": [
-    {"path": "docs/wp010-bounded-pilot-decision.md", "sha256": "4d0882b1ec4002ab4f0436192658f15ec5fd8dd2ab7c3e0bca681ca3f512dbf6"},
+    {"path": "docs/wp010-bounded-pilot-decision.md", "sha256": "a5d914e88ea595dde1431ee186c490067179ad4d25017dfcf6a70b4eafadfbe8"},
+    {"path": "docs/wp010-panel-validation-report-20260801.md", "sha256": "18d46a3fbcb0735a87eaee8ddd5fb9e4aa6e219099fef57be083e4e72c727410"},
     {"path": "docs/bounded-pilot-review-protocol.md", "sha256": "49ceff9373467082e83f78ad20e9aa0734814fba334085d11bb728f23d728337"},
     {"path": "reports/wp010-facility-source-sensitivity.md", "sha256": "d43c66300e2a3c5c1642b79f3a474ada3053b0e739ecad06fd12901ad9e1d001"},
     {"path": "reports/wp010-subagent-review-20260801.md", "sha256": "8d80eb4d430a053232c39e5f3d7af344b2e0376f1dd10df11aff3fa1b7aaeee8"},
