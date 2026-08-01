@@ -111,6 +111,7 @@ def validate_conformance_manifest(
 ) -> tuple[str, ...]:
     """Validate conformance references and prevent premature status promotion."""
     from pathlib import Path
+    import hashlib
 
     errors: list[str] = []
     if manifest.get("status") != "bounded-pending":
@@ -126,7 +127,26 @@ def validate_conformance_manifest(
         if checks.get(name, {}).get("status") != "not-run":
             errors.append(f"{name} cannot be promoted without external evidence")
     base = Path(root or ".")
-    for artifact in manifest.get("artifacts", []):
-        if not (base / artifact).is_file():
+    artifacts = manifest.get("artifacts", [])
+    digests = manifest.get("artifact_sha256", {})
+    if not isinstance(digests, Mapping):
+        errors.append("artifact_sha256 must be an object")
+        digests = {}
+    if set(digests) != set(artifacts):
+        errors.append("artifact_sha256 keys must exactly match artifacts")
+    for artifact in artifacts:
+        path = base / artifact
+        if not path.is_file():
             errors.append(f"missing conformance artifact: {artifact}")
+            continue
+        expected = digests.get(artifact)
+        if not isinstance(expected, str) or len(expected) != 64:
+            errors.append(f"invalid SHA-256 digest for conformance artifact: {artifact}")
+            continue
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual != expected:
+            errors.append(
+                f"conformance artifact digest mismatch for {artifact}: "
+                f"expected {expected}, found {actual}"
+            )
     return tuple(errors)
