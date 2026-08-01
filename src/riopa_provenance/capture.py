@@ -167,6 +167,30 @@ class CaptureStore:
         _atomic_write(path, payload)
         return path
 
+    def verify_capture_integrity(self, capture_id: str) -> Mapping[str, Any]:
+        """Verify an archived capture's metadata and content-addressed object.
+
+        Verification is deliberately independent of the HTTP client so release
+        and preservation checks can revalidate an old capture offline.
+        """
+        path = self.capture_path(capture_id)
+        if not path.is_file():
+            raise CaptureError(f"capture metadata is missing: {capture_id}")
+        try:
+            metadata = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise CaptureError(f"capture metadata is unreadable: {capture_id}") from exc
+        if not isinstance(metadata, Mapping):
+            raise CaptureError(f"capture metadata must be an object: {capture_id}")
+        obj = metadata.get("object")
+        if not isinstance(obj, Mapping) or not isinstance(obj.get("sha256"), str):
+            raise CaptureError(f"capture object digest is missing: {capture_id}")
+        digest = obj["sha256"]
+        object_path = self.object_path(digest)
+        if not object_path.is_file() or sha256_bytes(object_path.read_bytes()) != digest:
+            raise CaptureError(f"capture object digest mismatch: {capture_id}")
+        return metadata
+
 
 def _atomic_write(path: Path, payload: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)

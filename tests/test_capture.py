@@ -49,6 +49,21 @@ def test_capture_policy_and_url_controls() -> None:
         )
 
 
+def test_capture_store_verifies_archived_object_integrity(tmp_path: Path) -> None:
+    store = CaptureStore(tmp_path, id_factory=lambda: "integrity")
+    client = HttpCaptureClient(
+        client=httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=b"ok", request=request))),
+        store=store,
+        policy=policy(),
+    )
+    result = client.capture("GET", "https://data.example.govt.nz/item", source_id="s", endpoint_id="e")
+    metadata = store.verify_capture_integrity(result.capture_id)
+    assert metadata["object"]["sha256"] == result.object_sha256
+    result.object_path.write_bytes(b"tampered")
+    with pytest.raises(CaptureError, match="digest mismatch"):
+        store.verify_capture_integrity(result.capture_id)
+
+
 def test_connection_time_resolution_rejects_private_or_invalid_addresses() -> None:
     assert validate_resolved_addresses("data.example.govt.nz", ["8.8.8.8"]) == ("8.8.8.8",)
     with pytest.raises(CaptureError, match="non-public"):
