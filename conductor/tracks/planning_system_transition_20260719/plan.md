@@ -2,9 +2,9 @@
 
 ## 1. Transition model
 
-- [ ] 1.1 Define legislation, authority, instrument and provision transition relationships.
-- [ ] 1.2 Define legal/status and knowledge-time assertions and uncertainty.
-- [ ] 1.3 Add transition fixtures for rename, merge, split, replacement and partial continuity.
+- [x] 1.1 Define legislation, authority, instrument and provision transition relationships. (transition schema; implementation)
+- [x] 1.2 Define legal/status and knowledge-time assertions and uncertainty. (transitions.py; implementation)
+- [x] 1.3 Add transition fixtures for rename, merge, split, replacement and partial continuity. (planning-transition-golden.json; implementation)
 
 ## 2. Historical reconstruction
 
@@ -14,9 +14,9 @@
 
 ## 3. Temporal query integration
 
-- [ ] 3.1 Add valid-time, recorded-time and as-known-at query modes.
+- [x] 3.1 Add valid-time, recorded-time and as-known-at query modes. (transitions.py; implementation)
 - [ ] 3.2 Test downstream zoning and accessibility analyses across transitions.
-- [ ] 3.3 Document non-equivalence and unresolved transitions.
+- [x] 3.3 Document non-equivalence and unresolved transitions. (planning-system-transition-migration-playbook.md)
 
 ## 4. Review and migration readiness
 

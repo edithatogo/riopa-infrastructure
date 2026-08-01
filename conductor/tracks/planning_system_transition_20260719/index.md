@@ -1,7 +1,7 @@
 # Evidence index: Planning-system transition and legal continuity
 
 - **Track ID:** `planning_system_transition_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.7.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -16,11 +16,13 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| PT-1 | Transition schema and fail-closed validator | `schemas/planning-transition.schema.json`, `src/riopa_provenance/transitions.py`, `tests/test_transitions.py` | Repository tests passing; real-data evidence not claimed |
+| PT-2 | Rename, merge, split, replacement and partial-continuity fixtures | `fixtures/planning-transition-golden.json` | Deterministic fixture validated; not a legal equivalence claim |
+| PT-3 | Temporal perspectives and migration guidance | `docs/planning-system-transition-migration-playbook.md` | Valid-time, recorded-time and as-known-at semantics documented |
 
 ## Blocking defects
 
-- None recorded.
+- Real authority reorganisation and plan replacement reconstructions remain pending; public-source capture and domain review are required before validation.
 
 ## Decisions, exceptions and limitations
 
@@ -30,4 +32,4 @@
 
 Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, Scientific reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
