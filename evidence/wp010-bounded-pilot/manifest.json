@@ -3,7 +3,7 @@
   "record_type": "bounded_pilot_preservation_manifest",
   "evidence_id": "urn:riopa:evidence:wp010-bounded-pilot:2026-08-01",
   "created_at": "2026-08-01T05:20:00Z",
-  "source_revision": "561d579ab4aaa66745e8a503998bdc8a36dd40f2",
+  "source_revision": "c8380f54e9c7d05f99ca3505279b12440b604a39",
   "publication_status": "not-attempted",
   "decision_status": "approved-bounded-regional-pilot",
   "decision_id": "urn:riopa:decision:wp010-bounded-pilot:2026-08-01",
