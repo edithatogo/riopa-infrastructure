@@ -15,8 +15,8 @@
 ## 3. Cross-language and projection conformance
 
 - [ ] 3.1 Implement Python and non-Python validators/models.
-- [x] 3.2 Emit and validate PROV, OpenLineage and signed-attestation projections. (`src/riopa_provenance/crate.py`, `docs/standards-profile.md`; signed attestation remains release-gated)
-- [x] 3.3 Run positive, negative, round-trip and semantic-loss suites. (`tests/test_validation_failures.py`, `tests/test_crate.py`; non-Python parity remains pending)
+- [~] 3.2 Emit and validate PROV, OpenLineage and signed-attestation projections. (`src/riopa_provenance/crate.py`, `docs/standards-profile.md`; signed attestation remains release-gated)
+- [~] 3.3 Run positive, negative, round-trip and semantic-loss suites. (`tests/test_validation_failures.py`, `tests/test_crate.py`; non-Python parity remains pending)
 
 ## 4. Stable profile release
 
@@ -30,3 +30,8 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R.1 Correct partial conformance task states so pending signed-attestation
+  and non-Python evidence cannot be represented as complete. (`ef25920`)

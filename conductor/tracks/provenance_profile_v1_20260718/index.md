@@ -38,3 +38,11 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 Required reviewer roles: API/schema reviewer, Provenance reviewer, Security reviewer, Research-object reviewer.
 
 This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+
+## Review record
+
+- Review scope: track implementation changes through `ef25920`.
+- Finding: projection and round-trip tasks must remain partial while signed
+  attestation and non-Python parity are not evidenced.
+- Fix: task states changed to `[~]`; blockers remain explicit above.
+- Validation: focused provenance tests and full roadmap validation passed.
