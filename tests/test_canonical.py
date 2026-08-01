@@ -1,3 +1,8 @@
+import json
+from pathlib import Path
+
+from jsonschema import Draft202012Validator, FormatChecker
+
 from riopa_provenance.canonical import (
     build_crosswalk,
     canonical_entity_id,
@@ -33,3 +38,14 @@ def test_crosswalk_preserves_source_and_uncertainty() -> None:
     )
     assert record["source_assertion"]["label"] == "Urgent care"
     assert record["confidence"] == "disputed"
+
+
+def test_crosswalk_builder_output_matches_normative_schema() -> None:
+    record = build_crosswalk(
+        source_id="council:one", source_label="Urgent care",
+        canonical_id="urn:riopa:concept:service:urgent-care", method="manual",
+        confidence="medium", reviewer="reviewer", valid_from="2026-01-01",
+    )
+    schema = json.loads(Path("schemas/canonical-crosswalk.schema.json").read_text())
+    errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(record))
+    assert not errors
