@@ -8,8 +8,7 @@
   "description": "Reconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
-    "connector_runtime_capture_20260719",
-    "governance_maori_data_sovereignty_20260718"
+    "connector_runtime_capture_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/59",
   "evidence": [

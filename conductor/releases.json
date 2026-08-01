@@ -137,7 +137,7 @@
         {
           "id": "core-governance-baseline",
           "category": "governance",
-          "requirement": "Rights, privacy, Māori data sovereignty and release decision hooks are embedded in the contracts.",
+          "requirement": "Rights, privacy, scope-triggered cultural or community review, and release decision hooks are embedded in the contracts.",
           "evidence_contract": [
             "Governance review",
             "Rights fixtures",
@@ -464,7 +464,7 @@
         {
           "id": "governed-publication",
           "category": "governance",
-          "requirement": "Public outputs pass rights, privacy, Māori data sovereignty, safety and sensitive-location review.",
+          "requirement": "Public outputs pass rights, privacy, applicable cultural or community review, safety and sensitive-location review.",
           "evidence_contract": [
             "Governance decisions",
             "Rights inventory",
@@ -663,7 +663,7 @@
         {
           "id": "stable-governance",
           "category": "governance",
-          "requirement": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety, corrections and withdrawals are approved for the released scope.",
+          "requirement": "Decision rights, rights, privacy, ethics, applicable cultural or community review, safety, corrections and withdrawals are approved for the released scope.",
           "evidence_contract": [
             "Signed governance decision",
             "Rights and limitation inventory",

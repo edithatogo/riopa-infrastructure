@@ -18,7 +18,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Dependencies
 
 
-- `governance_maori_data_sovereignty_20260718`
 - `spatial_quality_temporality_20260718`
 - `accessibility_network_engine_20260719`
 

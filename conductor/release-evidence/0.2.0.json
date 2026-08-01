@@ -30,7 +30,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
           "kind": "documentation",
           "location": "conductor/tracks.md",
-          "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
+          "sha256": "9fd9fb006b31ab491825b9e469f2836c8c4b6259547d8655150ba6030fbf6f01",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Validated 28-track Conductor index."
@@ -59,7 +59,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:maturity-model",
           "kind": "artifact",
           "location": "conductor/maturity-model.json",
-          "sha256": "78234e18a381f36f0e9901db5bbba6e8eea6654baf1c9a29e2651ad5ea7aa975",
+          "sha256": "cb40016f17a69cdb9a53f2d7b5f3be6714a990482f02d72ca2b2bbdaf5efc536",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Machine-readable M0-M6 model and maturity dimensions."
@@ -68,7 +68,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:release-train",
           "kind": "artifact",
           "location": "conductor/releases.json",
-          "sha256": "201563e35cae8a06c4a677a11faa715eaaae6fc16c0221fb1dfd90c759ae1c5a",
+          "sha256": "bf427bdb243829730c88512d14f7ead8041444ce34aa3737589e2489cc0b9b37",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Machine-readable release train and stage gates."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "7ace2c8bb04a622428ca8fc133279cc0be229cff532773bf6a85214d1b452165",
+          "sha256": "dd3814007a67f589ac455721fb840008fef470c1cd9695d6093d84980dc62f02",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."
@@ -253,7 +253,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
       "kind": "artifact",
       "location": "conductor/tracks.md",
-      "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
+      "sha256": "9fd9fb006b31ab491825b9e469f2836c8c4b6259547d8655150ba6030fbf6f01",
       "immutable": false,
       "generated_at": "2026-07-19T09:20:00Z",
       "description": "Conductor track index delivered with the roadmap."

@@ -8,7 +8,6 @@
   "description": "Provide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.",
   "depends_on": [
     "provenance_profile_v1_20260718",
-    "governance_maori_data_sovereignty_20260718",
     "security_supply_chain_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/29",

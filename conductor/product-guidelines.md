@@ -22,7 +22,7 @@
 
 - Record source licence, attribution, access conditions, redistribution status and any uncertainty at capture time.
 - Do not infer open redistribution from public accessibility.
-- Apply Māori data sovereignty principles and governance review where data is for, from or about Māori, including derived classifications and geographic aggregations.
+- Apply scope-triggered cultural or community governance review where a dataset, derived classification or geographic aggregation has a documented cultural, community or legal sensitivity. This is not a universal co-design or Māori-governance requirement.
 - Apply privacy-by-design and disclosure controls to health and social outcomes.
 - Keep legally operative plan text, explanatory material and derived machine interpretations distinct.
 

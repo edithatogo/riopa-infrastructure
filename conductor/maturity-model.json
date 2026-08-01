@@ -83,7 +83,7 @@
     {
       "id": "governance",
       "name": "Governance and responsible data use",
-      "stable_v1_outcome": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety boundaries, corrections and withdrawals are approved and auditable.",
+      "stable_v1_outcome": "Decision rights, rights, privacy, ethics, applicable cultural or community review, safety boundaries, corrections and withdrawals are approved and auditable.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
         "Named reviewer or release authority decision.",

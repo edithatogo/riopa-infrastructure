@@ -20,7 +20,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - `canonical_domain_schemas_ontology_20260719`
 - `connector_runtime_capture_20260719`
-- `governance_maori_data_sovereignty_20260718`
 
 ## Scope
 

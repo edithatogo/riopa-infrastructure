@@ -9,8 +9,7 @@
   "depends_on": [
     "accessibility_network_engine_20260719",
     "facility_location_engine_20260718",
-    "simulation_validation_engine_20260719",
-    "governance_maori_data_sovereignty_20260718"
+    "simulation_validation_engine_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/99",
   "evidence": [],

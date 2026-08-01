@@ -7,8 +7,7 @@
   "updated_at": "2026-07-31T08:25:17Z",
   "description": "Define stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.",
   "depends_on": [
-    "foundation_architecture_20260718",
-    "governance_maori_data_sovereignty_20260718"
+    "foundation_architecture_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/2",
   "evidence": [

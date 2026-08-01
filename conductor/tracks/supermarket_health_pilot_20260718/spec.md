@@ -23,7 +23,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 - `facility_registry_20260719`
 - `facility_location_engine_20260718`
 - `health_outcomes_causal_methods_20260719`
-- `governance_maori_data_sovereignty_20260718`
 
 ## Scope
 

@@ -30,8 +30,7 @@
       "title": "[Track] Canonical domain schemas, identifiers and ontology",
       "parent": "program-epic",
       "blocked_by": [
-        "foundation_architecture_20260718",
-        "governance_maori_data_sovereignty_20260718"
+        "foundation_architecture_20260718"
       ],
       "labels": [
         "type:track",
@@ -44,7 +43,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `canonical_domain_schemas_ontology_20260719`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nDefine stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas cover authority, jurisdiction, service, endpoint, layer, plan, provision, feature/version, facility/assertion, mapping, review and analytical run.\n- [ ] A versioned ontology and SHACL validation suite are published with original-to-canonical crosswalk fixtures.\n- [ ] Identifier rules survive source renames, authority reorganisation, facility relocation and plan replacement.\n- [ ] Python and Rust or another non-Python binding round-trip golden fixtures without semantic loss.\n- [ ] At least two heterogeneous council and two facility-source examples validate the model.\n- [ ] Stable 1.x schema and ontology migration rules pass backward-compatibility tests.\n\n## Source of truth\n\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md`",
+      "body": "Conductor track: `canonical_domain_schemas_ontology_20260719`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nDefine stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas cover authority, jurisdiction, service, endpoint, layer, plan, provision, feature/version, facility/assertion, mapping, review and analytical run.\n- [ ] A versioned ontology and SHACL validation suite are published with original-to-canonical crosswalk fixtures.\n- [ ] Identifier rules survive source renames, authority reorganisation, facility relocation and plan replacement.\n- [ ] Python and Rust or another non-Python binding round-trip golden fixtures without semantic loss.\n- [ ] At least two heterogeneous council and two facility-source examples validate the model.\n- [ ] Stable 1.x schema and ontology migration rules pass backward-compatibility tests.\n\n## Source of truth\n\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
@@ -512,7 +511,7 @@
     },
     {
       "key": "governance_maori_data_sovereignty_20260718",
-      "title": "[Track] Rights, privacy and Māori data sovereignty framework",
+      "title": "[Track] Rights, privacy and scope-triggered data governance framework",
       "parent": "program-epic",
       "blocked_by": [
         "foundation_architecture_20260718"
@@ -528,7 +527,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nEmbed lawful reuse, social licence, benefit, Māori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] A versioned decision framework covers rights, privacy, ethics, Māori data sovereignty, safety and legal-status triggers.\n- [ ] Publication fails closed when required rights or governance decisions are unresolved.\n- [ ] Controlled and public pathways are technically separated and tested.\n- [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.\n- [ ] Every applied pilot has a documented benefit, harm, equity and governance review.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md`",
+      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nEmbed lawful reuse, privacy, safety, social licence and withdrawal decisions into source registration, analysis and publication gates. Cultural or community-specific review is triggered only when the documented scope, source terms or risk assessment requires it.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] A versioned decision framework covers rights, privacy, ethics, scope-triggered cultural or community review, safety and legal-status triggers.\n- [ ] Publication fails closed when required rights or governance decisions are unresolved.\n- [ ] Controlled and public pathways are technically separated and tested.\n- [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.\n- [ ] Every applied pilot has a documented benefit, harm, equity and governance review.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Foundation",
@@ -616,7 +615,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Document optional Māori-specific governance and engagement guidance for contexts where it is requested or applicable. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Document optional scope-triggered cultural or community governance and engagement guidance where it is requested or applicable. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -849,7 +848,6 @@
       "parent": "program-epic",
       "blocked_by": [
         "provenance_profile_v1_20260718",
-        "governance_maori_data_sovereignty_20260718",
         "security_supply_chain_20260719"
       ],
       "labels": [
@@ -864,7 +862,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `connector_runtime_capture_20260719`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nProvide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `governance_maori_data_sovereignty_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] A common adapter interface supports at least ArcGIS REST, WFS/OGC, Koordinates/API, document download and web-archive capture classes.\n- [ ] Captures record method, URL template, safe parameters, relevant headers, status, pagination, timing, bytes, digest, ETag and source/service identity.\n- [ ] Retry, resume, idempotency, throttling, malformed response and partial failure tests pass.\n- [ ] Rights/governance and authentication policies can block acquisition or publication independently.\n- [ ] Source health and schema/capability drift generate actionable events and alerts.\n- [ ] At least one real national and one council source complete the capture contract.\n\n## Source of truth\n\n- `conductor/tracks/connector_runtime_capture_20260719/spec.md`\n- `conductor/tracks/connector_runtime_capture_20260719/plan.md`\n- `conductor/tracks/connector_runtime_capture_20260719/metadata.json`\n- `conductor/tracks/connector_runtime_capture_20260719/index.md`",
+      "body": "Conductor track: `connector_runtime_capture_20260719`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nProvide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] A common adapter interface supports at least ArcGIS REST, WFS/OGC, Koordinates/API, document download and web-archive capture classes.\n- [ ] Captures record method, URL template, safe parameters, relevant headers, status, pagination, timing, bytes, digest, ETag and source/service identity.\n- [ ] Retry, resume, idempotency, throttling, malformed response and partial failure tests pass.\n- [ ] Rights/governance and authentication policies can block acquisition or publication independently.\n- [ ] Source health and schema/capability drift generate actionable events and alerts.\n- [ ] At least one real national and one council source complete the capture contract.\n\n## Source of truth\n\n- `conductor/tracks/connector_runtime_capture_20260719/spec.md`\n- `conductor/tracks/connector_runtime_capture_20260719/plan.md`\n- `conductor/tracks/connector_runtime_capture_20260719/metadata.json`\n- `conductor/tracks/connector_runtime_capture_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
@@ -1157,8 +1155,7 @@
       "parent": "program-epic",
       "blocked_by": [
         "canonical_domain_schemas_ontology_20260719",
-        "provenance_profile_v1_20260718",
-        "governance_maori_data_sovereignty_20260718"
+        "provenance_profile_v1_20260718"
       ],
       "labels": [
         "type:track",
@@ -1171,7 +1168,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `nz_spatial_source_registry_20260718`  \nPhase: **NZ Spatial**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Operational**\n\n## Goal\n\nCreate a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `provenance_profile_v1_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Every current local and regional authority has authority, plan, service/document and disposition records.\n- [ ] All named national source families are registered with access, rights, update and preservation evidence.\n- [ ] Automated discovery adapters and manual review produce equivalent canonical records.\n- [ ] Coverage reports distinguish available, restricted, viewer-only, document-only, unresolved and absent sources.\n- [ ] Source changes, disappearances and terms/licence changes are detected and versioned.\n- [ ] The registry is independently sampled and errors are below an approved threshold or transparently reported.\n\n## Source of truth\n\n- `conductor/tracks/nz_spatial_source_registry_20260718/spec.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/plan.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/metadata.json`\n- `conductor/tracks/nz_spatial_source_registry_20260718/index.md`",
+      "body": "Conductor track: `nz_spatial_source_registry_20260718`  \nPhase: **NZ Spatial**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Operational**\n\n## Goal\n\nCreate a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `provenance_profile_v1_20260718`\n\n## Acceptance criteria\n\n- [ ] Every current local and regional authority has authority, plan, service/document and disposition records.\n- [ ] All named national source families are registered with access, rights, update and preservation evidence.\n- [ ] Automated discovery adapters and manual review produce equivalent canonical records.\n- [ ] Coverage reports distinguish available, restricted, viewer-only, document-only, unresolved and absent sources.\n- [ ] Source changes, disappearances and terms/licence changes are detected and versioned.\n- [ ] The registry is independently sampled and errors are below an approved threshold or transparently reported.\n\n## Source of truth\n\n- `conductor/tracks/nz_spatial_source_registry_20260718/spec.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/plan.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/metadata.json`\n- `conductor/tracks/nz_spatial_source_registry_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "NZ Spatial",
@@ -1771,8 +1768,7 @@
       "parent": "program-epic",
       "blocked_by": [
         "canonical_domain_schemas_ontology_20260719",
-        "connector_runtime_capture_20260719",
-        "governance_maori_data_sovereignty_20260718"
+        "connector_runtime_capture_20260719"
       ],
       "labels": [
         "type:track",
@@ -1786,7 +1782,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `facility_registry_20260719`  \nPhase: **Analytics**  \nTarget release: **0.6.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `connector_runtime_capture_20260719`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] At least three independent supermarket/food-retail source families and two health-service source families are represented where rights permit.\n- [ ] Entity-resolution precision/recall or equivalent review metrics are reported on a stratified sample.\n- [ ] Facility history represents opening, closure, relocation, rebrand and source disagreement.\n- [ ] Source/geocoded coordinates and uncertainty are separately queryable.\n- [ ] Manual adjudication records are reproducible and reviewer/audit evidence is preserved.\n- [ ] Public release filters sensitive/restricted facilities according to governance decisions.\n\n## Source of truth\n\n- `conductor/tracks/facility_registry_20260719/spec.md`\n- `conductor/tracks/facility_registry_20260719/plan.md`\n- `conductor/tracks/facility_registry_20260719/metadata.json`\n- `conductor/tracks/facility_registry_20260719/index.md`",
+      "body": "Conductor track: `facility_registry_20260719`  \nPhase: **Analytics**  \nTarget release: **0.6.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `connector_runtime_capture_20260719`\n\n## Acceptance criteria\n\n- [ ] At least three independent supermarket/food-retail source families and two health-service source families are represented where rights permit.\n- [ ] Entity-resolution precision/recall or equivalent review metrics are reported on a stratified sample.\n- [ ] Facility history represents opening, closure, relocation, rebrand and source disagreement.\n- [ ] Source/geocoded coordinates and uncertainty are separately queryable.\n- [ ] Manual adjudication records are reproducible and reviewer/audit evidence is preserved.\n- [ ] Public release filters sensitive/restricted facilities according to governance decisions.\n\n## Source of truth\n\n- `conductor/tracks/facility_registry_20260719/spec.md`\n- `conductor/tracks/facility_registry_20260719/plan.md`\n- `conductor/tracks/facility_registry_20260719/metadata.json`\n- `conductor/tracks/facility_registry_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Analytics",
@@ -3028,8 +3024,7 @@
       "blocked_by": [
         "accessibility_network_engine_20260719",
         "facility_location_engine_20260718",
-        "simulation_validation_engine_20260719",
-        "governance_maori_data_sovereignty_20260718"
+        "simulation_validation_engine_20260719"
       ],
       "labels": [
         "type:track",
@@ -3042,7 +3037,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `emergency_health_facilities_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nDemonstrate the common location and simulation framework for emergency response and hospital/service planning while preserving safety, uncertainty and controlled-data boundaries.\n\n## Dependencies\n\n- `accessibility_network_engine_20260719`\n- `facility_location_engine_20260718`\n- `simulation_validation_engine_20260719`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Ambulance benchmark includes maximal/backup coverage, busy availability and stochastic dispatch simulation.\n- [ ] Dynamic relocation or posting is tested without implying live operational suitability.\n- [ ] Hospital/service benchmark includes multiple services, capacity, referral/workforce, resilience and phased investment.\n- [ ] Static and simulated results are compared under common scenarios and stress tests.\n- [ ] Equity, rurality, tail outcomes and uncertainty are reported separately from averages.\n- [ ] Independent operational/safety, methods and governance reviewers approve the bounded reference claims.\n\n## Source of truth\n\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md`",
+      "body": "Conductor track: `emergency_health_facilities_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nDemonstrate the common location and simulation framework for emergency response and hospital/service planning while preserving safety, uncertainty and controlled-data boundaries.\n\n## Dependencies\n\n- `accessibility_network_engine_20260719`\n- `facility_location_engine_20260718`\n- `simulation_validation_engine_20260719`\n\n## Acceptance criteria\n\n- [ ] Ambulance benchmark includes maximal/backup coverage, busy availability and stochastic dispatch simulation.\n- [ ] Dynamic relocation or posting is tested without implying live operational suitability.\n- [ ] Hospital/service benchmark includes multiple services, capacity, referral/workforce, resilience and phased investment.\n- [ ] Static and simulated results are compared under common scenarios and stress tests.\n- [ ] Equity, rurality, tail outcomes and uncertainty are reported separately from averages.\n- [ ] Independent operational/safety, methods and governance reviewers approve the bounded reference claims.\n\n## Source of truth\n\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Applications",
@@ -3211,7 +3206,6 @@
       "title": "[Track] Health-outcomes, spatial epidemiology and causal-methods framework",
       "parent": "program-epic",
       "blocked_by": [
-        "governance_maori_data_sovereignty_20260718",
         "spatial_quality_temporality_20260718",
         "accessibility_network_engine_20260719"
       ],
@@ -3226,7 +3220,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `health_outcomes_causal_methods_20260719`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nProvide a rigorous framework for linking access, zoning and facilities to health outcomes while separating ecological description, prediction, causal inference and prescriptive modelling.\n\n## Dependencies\n\n- `governance_maori_data_sovereignty_20260718`\n- `spatial_quality_temporality_20260718`\n- `accessibility_network_engine_20260719`\n\n## Acceptance criteria\n\n- [ ] A machine-readable analysis protocol captures DAG, estimand, population, exposure, comparator, outcome, time and assumptions.\n- [ ] Reference code supports descriptive spatial analysis and at least one longitudinal/quasi-experimental design on public or synthetic data.\n- [ ] Spatial confounding, autocorrelation, MAUP and measurement-error sensitivity are demonstrated.\n- [ ] Negative control, missing-data and subgroup/equity plans are included where applicable.\n- [ ] Preregistered pilot analyses distinguish exploratory from confirmatory results.\n- [ ] Independent methodological and governance review approves claims or requires bounded language.\n\n## Source of truth\n\n- `conductor/tracks/health_outcomes_causal_methods_20260719/spec.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/plan.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/index.md`",
+      "body": "Conductor track: `health_outcomes_causal_methods_20260719`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nProvide a rigorous framework for linking access, zoning and facilities to health outcomes while separating ecological description, prediction, causal inference and prescriptive modelling.\n\n## Dependencies\n\n- `spatial_quality_temporality_20260718`\n- `accessibility_network_engine_20260719`\n\n## Acceptance criteria\n\n- [ ] A machine-readable analysis protocol captures DAG, estimand, population, exposure, comparator, outcome, time and assumptions.\n- [ ] Reference code supports descriptive spatial analysis and at least one longitudinal/quasi-experimental design on public or synthetic data.\n- [ ] Spatial confounding, autocorrelation, MAUP and measurement-error sensitivity are demonstrated.\n- [ ] Negative control, missing-data and subgroup/equity plans are included where applicable.\n- [ ] Preregistered pilot analyses distinguish exploratory from confirmatory results.\n- [ ] Independent methodological and governance review approves claims or requires bounded language.\n\n## Source of truth\n\n- `conductor/tracks/health_outcomes_causal_methods_20260719/spec.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/plan.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Applications",
@@ -3399,8 +3393,7 @@
         "accessibility_network_engine_20260719",
         "facility_registry_20260719",
         "facility_location_engine_20260718",
-        "health_outcomes_causal_methods_20260719",
-        "governance_maori_data_sovereignty_20260718"
+        "health_outcomes_causal_methods_20260719"
       ],
       "labels": [
         "type:track",
@@ -3412,7 +3405,7 @@
         "v1-critical",
         "geospatial"
       ],
-      "body": "Conductor track: `supermarket_health_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReproduce and extend supermarket density/access analysis with open code, multi-source facilities, zoning feasibility, health outcomes, causal restraint and transparent location alternatives.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `accessibility_network_engine_20260719`\n- `facility_registry_20260719`\n- `facility_location_engine_20260718`\n- `health_outcomes_causal_methods_20260719`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] The baseline density/population analysis is reproduced from public, versioned inputs or discrepancies are fully explained.\n- [ ] Facility reconciliation and accessibility sensitivity are independently reviewed.\n- [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.\n- [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.\n- [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.\n- [ ] Code, data or resolvable inputs, methods, quality, governance and research object are independently reproducible.\n\n## Source of truth\n\n- `conductor/tracks/supermarket_health_pilot_20260718/spec.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/plan.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/metadata.json`\n- `conductor/tracks/supermarket_health_pilot_20260718/index.md`",
+      "body": "Conductor track: `supermarket_health_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReproduce and extend supermarket density/access analysis with open code, multi-source facilities, zoning feasibility, health outcomes, causal restraint and transparent location alternatives.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `accessibility_network_engine_20260719`\n- `facility_registry_20260719`\n- `facility_location_engine_20260718`\n- `health_outcomes_causal_methods_20260719`\n\n## Acceptance criteria\n\n- [ ] The baseline density/population analysis is reproduced from public, versioned inputs or discrepancies are fully explained.\n- [ ] Facility reconciliation and accessibility sensitivity are independently reviewed.\n- [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.\n- [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.\n- [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.\n- [ ] Code, data or resolvable inputs, methods, quality, governance and research object are independently reproducible.\n\n## Source of truth\n\n- `conductor/tracks/supermarket_health_pilot_20260718/spec.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/plan.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/metadata.json`\n- `conductor/tracks/supermarket_health_pilot_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Applications",

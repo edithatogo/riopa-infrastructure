@@ -19,7 +19,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 
 - `provenance_profile_v1_20260718`
-- `governance_maori_data_sovereignty_20260718`
 - `security_supply_chain_20260719`
 
 ## Scope

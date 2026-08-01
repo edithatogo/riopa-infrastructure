@@ -21,7 +21,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 - `accessibility_network_engine_20260719`
 - `facility_location_engine_20260718`
 - `simulation_validation_engine_20260719`
-- `governance_maori_data_sovereignty_20260718`
 
 ## Scope
 

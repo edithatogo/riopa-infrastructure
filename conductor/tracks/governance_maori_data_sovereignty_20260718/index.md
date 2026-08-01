@@ -1,4 +1,4 @@
-# Evidence index: Rights, privacy and Māori data sovereignty framework
+# Evidence index: Rights, privacy and scope-triggered data governance framework
 
 - **Track ID:** `governance_maori_data_sovereignty_20260718`
 - **Status:** `validating`
@@ -21,7 +21,7 @@
 | R01 | Governance decision references on source, artifact, transformation, snapshot and release records | `schemas/source-record.schema.json`, `schemas/artifact.schema.json`, `schemas/transformation-run.schema.json`, `schemas/snapshot-manifest.schema.json`, `schemas/release-evidence.schema.json` | Implemented; complete schema and quality suites pass locally |
 | R02, R03 | Fail-closed public/controlled decision core and tests | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; complete runtime suite passes locally |
 | R01, R03 | Withdrawal and supersession record helpers | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; operational exercise pending |
-| R04, R05 | Optional Māori-specific governance and engagement guidance | `docs/governance-engagement-pathway.md` | Implemented as optional guidance; no live co-design/review claimed |
+| R04, R05 | Optional scope-triggered cultural or community governance guidance | `docs/governance-engagement-pathway.md` | Implemented as optional guidance; no live co-design/review claimed |
 | R05 | Applied benefit/harm/equity review instrument | `docs/applied-governance-review-template.md` | Template only; pilot decisions pending |
 | R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
 | R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
