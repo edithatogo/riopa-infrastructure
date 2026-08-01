@@ -8,6 +8,8 @@ from urllib.parse import urlparse
 REQUIRED = ("Selection approver", "Report URI", "Report digest", "Acceptance decision")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 ZENODO_DOI = "10.5281/zenodo.21735818"
+EXPECTED_REVISION = "6b99b3ee42110733b36fd7777c960832719359b8"
+EXPECTED_BUNDLE_DIGEST = "26bf2281f67c35f3327ebadeda3c8d5e7c6460e5b447dfc8417c851bcb0b6813"
 
 
 def _value(text: str, label: str) -> str:
@@ -44,6 +46,14 @@ def main() -> int:
     if ZENODO_DOI not in text:
         print("missing deposited Zenodo DOI", file=sys.stderr)
         return 4
+    revision = _value(text, "Exact tested repository revision")
+    if revision != EXPECTED_REVISION:
+        print("exact tested repository revision does not match frozen handoff", file=sys.stderr)
+        return 7
+    bundle_digest = _value(text, "Reviewer-bundle SHA-256")
+    if bundle_digest != EXPECTED_BUNDLE_DIGEST:
+        print("reviewer-bundle digest does not match frozen handoff", file=sys.stderr)
+        return 7
     report_digest = _value(text, "Report digest")
     if not SHA256.fullmatch(report_digest):
         print("invalid report digest: expected a 64-character lowercase SHA-256", file=sys.stderr)

@@ -6,6 +6,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 DOI = "10.5281/zenodo.21735818"
 DIGEST = "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b"
+REVISION = "6b99b3ee42110733b36fd7777c960832719359b8"
+BUNDLE_DIGEST = "26bf2281f67c35f3327ebadeda3c8d5e7c6460e5b447dfc8417c851bcb0b6813"
 
 def test_wp010_decision_and_reproduction_handoff_bind_deposit_identity() -> None:
     decision = (ROOT / "docs/wp010-bounded-pilot-decision.md").read_text()
@@ -34,6 +36,8 @@ def test_wp010_approval_record_is_explicitly_unresolved_until_completed() -> Non
     assert "Report digest" in record
     assert "`TBD`" in record
     assert "does not approve" in record
+    assert "Exact tested repository revision" in record
+    assert "Reviewer-bundle SHA-256" in record
 
 def test_wp010_record_validator_fails_closed_on_pending_template() -> None:
     process = subprocess.run(
@@ -49,6 +53,8 @@ def test_wp010_record_validator_rejects_unbound_completed_report(tmp_path: Path)
     record = record.replace("`TBD`", "ready")
     record = record.replace("ready", "2026-08-01", 1)
     record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
+    record = record.replace("- Exact tested repository revision: ready", f"- Exact tested repository revision: `{REVISION}`")
+    record = record.replace("- Reviewer-bundle SHA-256: ready", f"- Reviewer-bundle SHA-256: `{BUNDLE_DIGEST}`")
     record += f"\nDeposited packet digest: `{DIGEST}`\n"
     path = tmp_path / "record.md"
     path.write_text(record)
@@ -69,6 +75,8 @@ def test_wp010_record_validator_rejects_completed_record_without_external_identi
         record = record.replace(old, new)
     record = record.replace("ready", "2026-08-01", 1)
     record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
+    record = record.replace("- Exact tested repository revision: ready", f"- Exact tested repository revision: `{REVISION}`")
+    record = record.replace("- Reviewer-bundle SHA-256: ready", f"- Reviewer-bundle SHA-256: `{BUNDLE_DIGEST}`")
     record += f"\nDeposited packet digest: `{DIGEST}`\n"
     path = tmp_path / "record.md"
     path.write_text(record)
@@ -84,6 +92,8 @@ def test_wp010_record_validator_rejects_non_uri_report(tmp_path: Path) -> None:
     record = record.replace("`TBD`", "ready")
     record = record.replace("ready", "2026-08-01", 1)
     record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
+    record = record.replace("- Exact tested repository revision: ready", f"- Exact tested repository revision: `{REVISION}`")
+    record = record.replace("- Reviewer-bundle SHA-256: ready", f"- Reviewer-bundle SHA-256: `{BUNDLE_DIGEST}`")
     record = record.replace("- Report URI or issue #149 comment: ready", "- Report URI or issue #149 comment: local-file")
     record += f"\nDeposited packet digest: `{DIGEST}`\n"
     path = tmp_path / "record.md"
