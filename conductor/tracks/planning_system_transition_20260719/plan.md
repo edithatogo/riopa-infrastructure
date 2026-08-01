@@ -21,8 +21,12 @@
 ## 4. Review and migration readiness
 
 - [ ] 4.1 Conduct planning-domain review and resolve model findings.
-- [x] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57)
+- [x] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)
 - [ ] 4.3 Release transition data and limitations with immutable evidence.
+
+## 5. Review fixes
+
+- [x] 5.1 Correct the migration-playbook evidence SHA and record pending reconstruction/review gates explicitly. (review fix)
 
 ## Track closeout
 

@@ -26,10 +26,22 @@
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The repository-owned contract and fixtures are complete for the current slice.
+  Historical authority/plan reconstruction, downstream integration evidence,
+  independent planning-domain review and immutable public-source evidence are
+  still blocking validation.
 
 ## Review and handover
 
 Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, Scientific reviewer.
+
+## Review record
+
+- Review scope: transition contract, fixtures, temporal selector, migration
+  guidance and Conductor records through `2f544c2`.
+- Finding: the playbook task cited the implementation commit rather than the
+  commit that recorded the completed task, and pending gates were not mirrored
+  in metadata.
+- Fix: corrected the evidence reference and recorded the blockers explicitly.
 
 This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

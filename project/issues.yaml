@@ -2560,7 +2560,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-1",
@@ -2588,7 +2588,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-2",
@@ -2618,7 +2618,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-3",
@@ -2648,7 +2648,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-4",
@@ -2658,13 +2658,13 @@
         "planning_system_transition_20260719:phase-3"
       ],
       "labels": [
-        "type:validation",
+        "type:implementation",
         "phase:nz-spatial",
         "risk:critical",
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct planning-domain review and resolve model findings.\n- [ ] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57)\n- [ ] 4.3 Release transition data and limitations with immutable evidence.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct planning-domain review and resolve model findings.\n- [ ] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)\n- [ ] 4.3 Release transition data and limitations with immutable evidence.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -2678,7 +2678,37 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
+    },
+    {
+      "key": "planning_system_transition_20260719:phase-5",
+      "title": "[planning_system_transition_20260719] 5. Review fixes",
+      "parent": "planning_system_transition_20260719",
+      "blocked_by": [
+        "planning_system_transition_20260719:phase-4"
+      ],
+      "labels": [
+        "type:validation",
+        "phase:nz-spatial",
+        "risk:critical",
+        "maturity:m1",
+        "release:0.7.0"
+      ],
+      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 5.1 Correct the migration-playbook evidence SHA and record pending reconstruction/review gates explicitly. (review fix)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "NZ Spatial",
+      "track_id": "planning_system_transition_20260719",
+      "target_release": "0.7.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Reference",
+      "v1_critical": true,
+      "priority": "P1",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Spatial data lead",
+      "blocking_defects": 4
     },
     {
       "key": "spatial_quality_temporality_20260718",
