@@ -7,6 +7,7 @@ from riopa_provenance.canonical import (
     build_crosswalk,
     canonical_entity_id,
     canonical_version_id,
+    validate_conformance_manifest,
     validate_crosswalk_contract,
     validate_crosswalk_semantics,
 )
@@ -117,3 +118,4 @@ def test_conformance_manifest_reports_unmet_external_checks() -> None:
     assert manifest["checks"]["shacl"]["status"] == "not-run"
     assert manifest["checks"]["cross_language_round_trip"]["status"] == "not-run"
     assert manifest["publication"]["persistent_identifier"] is None
+    assert validate_conformance_manifest(manifest, root=".") == ()

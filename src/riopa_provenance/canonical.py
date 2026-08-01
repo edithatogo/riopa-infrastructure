@@ -104,3 +104,29 @@ def validate_crosswalk_contract(record: Mapping[str, Any]) -> tuple[str, ...]:
         errors.append("evidence must be an array")
     errors.extend(validate_crosswalk_semantics(record))
     return tuple(dict.fromkeys(errors))
+
+
+def validate_conformance_manifest(
+    manifest: Mapping[str, Any], *, root: str | None = None
+) -> tuple[str, ...]:
+    """Validate conformance references and prevent premature status promotion."""
+    from pathlib import Path
+
+    errors: list[str] = []
+    if manifest.get("status") != "bounded-pending":
+        errors.append("conformance manifest must remain bounded-pending")
+    publication = manifest.get("publication", {})
+    if (
+        publication.get("status") != "unpublished"
+        or publication.get("persistent_identifier") is not None
+    ):
+        errors.append("unpublished manifest must not contain a persistent identifier")
+    checks = manifest.get("checks", {})
+    for name in ("shacl", "cross_language_round_trip"):
+        if checks.get(name, {}).get("status") != "not-run":
+            errors.append(f"{name} cannot be promoted without external evidence")
+    base = Path(root or ".")
+    for artifact in manifest.get("artifacts", []):
+        if not (base / artifact).is_file():
+            errors.append(f"missing conformance artifact: {artifact}")
+    return tuple(errors)
