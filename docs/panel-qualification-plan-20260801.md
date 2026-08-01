@@ -1,0 +1,52 @@
+# Panel qualification plan — publication, methods, interoperability, security and v1 hardening
+
+This plan records the repository-owned path for the five release-critical tracks
+assigned to the evidence batch. It uses a three-agent panel in place of a human
+reviewer for the bounded public-datasets-only preview. It does not assert that
+stable v1 is ready.
+
+## Panel composition
+
+Each run is independent and content-bound:
+
+1. **Reproducer** rebuilds the research object, publication plan and conformance
+   corpus from the frozen revision.
+2. **Adversarial reviewer** exercises malformed inputs, rights narrowing,
+   provenance breaks, dependency tampering and rollback paths.
+3. **Evidence auditor** verifies hashes, SBOM/attestation references, methods
+   facts, publication receipts and traceability to the release gate.
+
+The orchestrator stores each report, SHA-256 digest, environment, commands,
+findings and dissent. A disagreement or digest mismatch fails the panel gate.
+
+## Track exit criteria and current disposition
+
+| Track | Panel evidence required | Current disposition |
+| --- | --- | --- |
+| `publication_validation_20260718` | rights-aware plan, deterministic staging, receipt idempotence, preservation DOI | Repository controls present; panel execution and publication receipts remain to be attached. |
+| `methods_research_objects_20260718` | RO-Crate closure, generated methods facts, citation and checksum verification | Contracts and generators present; real release object and citation projection remain open. |
+| `interoperability_conformance_sdks_20260719` | language-neutral corpus, schema/version checks, two independent runners | Corpus validation is implemented; cross-language runner evidence remains open. |
+| `security_supply_chain_20260719` | dependency audit, SBOM, provenance attestation, secret and tamper checks | CI controls exist; signed release attestations and remediation evidence remain open. |
+| `v1_release_hardening_20260719` | all upstream gates, rollback/restore, soak, support and release decision | Blocked until upstream evidence and time-based qualification complete. |
+
+## Options and contingencies
+
+* **Recommended:** qualify the bounded preview with the panel and preserve the
+  higher-tier gates as open until their evidence exists.
+* **Fallback:** if a panel member cannot run, record an incomplete panel and
+  retain preview status; never infer a pass from missing output.
+* **Reproducibility failure:** preserve both bundles, open a remediation issue,
+  and repeat from a new frozen revision.
+* **Security or integrity failure:** fail closed, quarantine the candidate and
+  require a new attestation/SBOM before any publication.
+* **Missing soak or restore evidence:** defer beta/RC/stable promotion; a local
+  green test run is not a waiver.
+
+## Non-waivable boundaries
+
+This panel plan does not authorise clinical, dispatch, national-completeness or
+operational claims. It does not convert a technical-preview report into a
+stable-v1 release decision. Your public-source authority approval applies to
+the declared public-datasets-only scope; a future scope expansion creates a
+new evidence packet and reopens the affected gates.
+
