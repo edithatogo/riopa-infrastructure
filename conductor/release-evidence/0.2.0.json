@@ -30,7 +30,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
           "kind": "documentation",
           "location": "conductor/tracks.md",
-          "sha256": "bd8a09a36b9c9addee909b81562e5bf86b295532bb5fab2095f37c61f2b344a0",
+          "sha256": "09ff50020b6e47ace47617a715c1cd7cb778a2f26095d94369c7012b466c158d",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Validated 28-track Conductor index."
@@ -253,7 +253,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
       "kind": "artifact",
       "location": "conductor/tracks.md",
-          "sha256": "bd8a09a36b9c9addee909b81562e5bf86b295532bb5fab2095f37c61f2b344a0",
+          "sha256": "09ff50020b6e47ace47617a715c1cd7cb778a2f26095d94369c7012b466c158d",
       "immutable": false,
       "generated_at": "2026-07-19T09:20:00Z",
       "description": "Conductor track index delivered with the roadmap."

@@ -1,7 +1,7 @@
 # Evidence index: Shared provenance, transformation and quality profile v1
 
 - **Track ID:** `provenance_profile_v1_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -32,4 +32,4 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required reviewer roles: API/schema reviewer, Provenance reviewer, Security reviewer, Research-object reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
