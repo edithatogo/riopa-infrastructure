@@ -128,6 +128,12 @@ def validate_conformance_manifest(
             errors.append(f"{name} cannot be promoted without external evidence")
     base = Path(root or ".")
     artifacts = manifest.get("artifacts", [])
+    if not isinstance(artifacts, list) or any(
+        not isinstance(item, str) or not item or item.startswith("/") or ".." in Path(item).parts
+        for item in artifacts
+    ):
+        errors.append("artifacts must contain safe repository-relative paths")
+        artifacts = artifacts if isinstance(artifacts, list) else []
     digests = manifest.get("artifact_sha256", {})
     if not isinstance(digests, Mapping):
         errors.append("artifact_sha256 must be an object")
@@ -149,4 +155,34 @@ def validate_conformance_manifest(
                 f"conformance artifact digest mismatch for {artifact}: "
                 f"expected {expected}, found {actual}"
             )
+    return tuple(errors)
+
+
+def validate_migration_fixture(migration: Mapping[str, Any]) -> tuple[str, ...]:
+    """Validate the bounded, declarative shape of a schema migration fixture.
+
+    This deliberately does not claim that the transformation has been run against
+    real data; it only prevents malformed or ambiguous migration metadata from
+    entering the conformance inventory.
+    """
+    errors: list[str] = []
+    for key in ("migration_id", "from_version", "to_version", "compatibility", "notes"):
+        if not isinstance(migration.get(key), str) or not migration[key].strip():
+            errors.append(f"migration {key} must be a non-empty string")
+    if not isinstance(migration.get("automated"), bool):
+        errors.append("migration automated must be boolean")
+    changes = migration.get("changes")
+    if not isinstance(changes, list) or not changes:
+        errors.append("migration changes must be a non-empty array")
+    else:
+        for index, change in enumerate(changes):
+            if not isinstance(change, Mapping):
+                errors.append(f"migration change {index} must be an object")
+                continue
+            for key in ("path", "kind", "rule"):
+                if not isinstance(change.get(key), str) or not change[key].strip():
+                    errors.append(f"migration change {index} {key} must be a non-empty string")
+    if isinstance(migration.get("from_version"), str) and isinstance(migration.get("to_version"), str):
+        if migration["from_version"] == migration["to_version"]:
+            errors.append("migration from_version and to_version must differ")
     return tuple(errors)

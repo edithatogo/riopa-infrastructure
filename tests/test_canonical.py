@@ -10,6 +10,7 @@ from riopa_provenance.canonical import (
     validate_conformance_manifest,
     validate_crosswalk_contract,
     validate_crosswalk_semantics,
+    validate_migration_fixture,
 )
 from riopa_provenance.hashing import sha256_json
 
@@ -98,6 +99,16 @@ def test_versioned_migration_fixture_is_explicit_and_bounded() -> None:
     assert migration["compatibility"] == "backward-compatible"
     assert migration["automated"] is True
     assert migration["notes"].startswith("Fixture documents")
+    assert validate_migration_fixture(migration) == ()
+
+
+def test_migration_fixture_validation_rejects_ambiguous_metadata() -> None:
+    errors = validate_migration_fixture(
+        {"from_version": "1.0.0", "to_version": "1.0.0", "automated": "yes", "changes": []}
+    )
+    assert any("automated must be boolean" in error for error in errors)
+    assert any("changes must be a non-empty array" in error for error in errors)
+    assert any("must differ" in error for error in errors)
 
 
 def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
