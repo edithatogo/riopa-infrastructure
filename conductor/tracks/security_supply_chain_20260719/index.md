@@ -33,4 +33,13 @@
 
 Required reviewer roles: API/schema reviewer, Security reviewer, Operations reviewer, Research-object reviewer.
 
+## Review record
+
+- Review scope: security baseline, control manifest, workflow pinning test and
+  Conductor records through `e5ede96`.
+- Finding: plan item 2.3 was duplicated, and the manifest overstated secret
+  scanning coverage not present in the checked-in workflows.
+- Fix: retained one completed 2.3 item and narrowed SC-03 to controls evidenced
+  by the repository.
+
 This index records the repository-owned M1 implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
