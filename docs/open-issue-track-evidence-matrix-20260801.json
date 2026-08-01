@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated_at": "2026-08-01",
+  "repository": "edithatogo/riopa-infrastructure",
+  "source": "gh issue list --state open --limit 300 --json number,title,labels,body",
+  "snapshot": {
+    "open_issue_count": 146,
+    "open_track_parent_count": 28,
+    "v1_critical_count": 29,
+    "issue_counts_by_release_label": {
+      "0.3.0": 25,
+      "0.4.0": 15,
+      "0.5.0": 10,
+      "0.6.0": 25,
+      "0.7.0": 15,
+      "0.8.0": 31,
+      "0.9.0": 15,
+      "1.0.0": 6
+    },
+    "issue_counts_by_type_label": {
+      "implementation": 84,
+      "validation": 29,
+      "track": 28,
+      "program": 1
+    }
+  },
+  "classification": {
+    "track_parent": "label type:track or title starts [Track]",
+    "track_key": "body marker <!-- riopa-issue-key: <track-key> -->, otherwise title prefix",
+    "evidence_status": "inferred from labels and linked conductor track metadata; must be confirmed by the evidence register",
+    "blocker_class": {
+      "implementation": "type:implementation",
+      "validation": "type:validation",
+      "governance_or_rights": "rights-governance, stability:governance, or risk:critical",
+      "operational": "stability:operational",
+      "reference": "stability:reference",
+      "programme": "type:program"
+    },
+    "release_tier": "release:<version> label; v1-critical is an additional stable-v1 gate"
+  },
+  "track_inventory": [
+    {"track_key": "facility_location_engine_20260718", "source": "conductor/tracks/facility_location_engine_20260718", "release_tier": "0.3.0", "evidence_status": "M1/open", "blocker_class": "implementation"},
+    {"track_key": "canonical_domain_schemas_ontology_20260719", "source": "conductor/tracks/canonical_domain_schemas_ontology_20260719", "release_tier": "0.3.0", "evidence_status": "M1/open", "blocker_class": "governance_or_rights"},
+    {"track_key": "nz_spatial_archive_mvp_20260718", "source": "conductor/tracks/nz_spatial_archive_mvp_20260718", "release_tier": "0.4.0", "evidence_status": "M1/open", "blocker_class": "implementation"},
+    {"track_key": "nz_spatial_archive_operations_20260719", "source": "conductor/tracks/nz_spatial_archive_operations_20260719", "release_tier": "0.5.0", "evidence_status": "M1/open", "blocker_class": "operational"},
+    {"track_key": "nz_spatial_source_registry_20260718", "source": "conductor/tracks/nz_spatial_source_registry_20260718", "release_tier": "0.3.0", "evidence_status": "M1/open", "blocker_class": "governance_or_rights"},
+    {"track_key": "emergency_health_facilities_pilot_20260718", "source": "conductor/tracks/emergency_health_facilities_pilot_20260718", "release_tier": "0.8.0", "evidence_status": "bounded pilot/panel validated", "blocker_class": "reference"},
+    {"track_key": "health_outcomes_causal_methods_20260719", "source": "conductor/tracks/health_outcomes_causal_methods_20260719", "release_tier": "0.6.0", "evidence_status": "M1/open", "blocker_class": "validation"},
+    {"track_key": "facility_registry_20260719", "source": "conductor/tracks/facility_registry_20260719", "release_tier": "0.4.0", "evidence_status": "M1/open", "blocker_class": "implementation"},
+    {"track_key": "provenance_profile_v1_20260718", "source": "conductor/tracks/provenance_profile_v1_20260718", "release_tier": "0.3.0", "evidence_status": "M1/open", "blocker_class": "governance_or_rights"},
+    {"track_key": "foundation_architecture_20260718", "source": "conductor/tracks/foundation_architecture_20260718", "release_tier": "0.3.0", "evidence_status": "M1/open", "blocker_class": "implementation"},
+    {"track_key": "publication_validation_20260718", "source": "conductor/tracks/publication_validation_20260718", "release_tier": "0.9.0", "evidence_status": "M1/open", "blocker_class": "validation"},
+    {"track_key": "performance_scalability_reliability_20260719", "source": "conductor/tracks/performance_scalability_reliability_20260719", "release_tier": "0.9.0", "evidence_status": "M1/open", "blocker_class": "operational"},
+    {"track_key": "v1_release_hardening_20260719", "source": "conductor/tracks/v1_release_hardening_20260719", "release_tier": "1.0.0", "evidence_status": "M1/open", "blocker_class": "validation"}
+  ],
+  "limitations": [
+    "The GitHub snapshot has 28 parent tracks but the repository contains additional archived/renamed track directories; refresh before closure decisions.",
+    "This artifact does not close issues, assert completion, or replace content-bound evidence reports.",
+    "Public-source authority is treated as approved for the currently declared scope; scope expansion still requires a new decision record."
+  ]
+}
