@@ -93,3 +93,19 @@ def test_wp010_record_validator_rejects_non_uri_report(tmp_path: Path) -> None:
         cwd=ROOT, capture_output=True, text=True, check=False,
     )
     assert process.returncode == 9
+
+
+def test_wp010_record_validator_requires_preserved_zenodo_doi(tmp_path: Path) -> None:
+    record = (ROOT / "docs/wp010-external-reproduction-approval-record.md").read_text()
+    record = record.replace("`TBD`", "ready")
+    record = record.replace("ready", "2026-08-01", 1)
+    record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
+    record = record.replace("10.5281/zenodo.21735818", "10.5281/zenodo.MISSING")
+    record += f"\nDeposited packet digest: `{DIGEST}`\n"
+    path = tmp_path / "record.md"
+    path.write_text(record)
+    process = subprocess.run(
+        [sys.executable, "scripts/validate_wp010_reproduction_record.py", str(path)],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    assert process.returncode == 4

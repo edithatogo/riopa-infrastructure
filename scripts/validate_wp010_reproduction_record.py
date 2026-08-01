@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 REQUIRED = ("Selection approver", "Report URI", "Report digest", "Acceptance decision")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
+ZENODO_DOI = "10.5281/zenodo.21735818"
 
 
 def _value(text: str, label: str) -> str:
@@ -37,6 +38,11 @@ def main() -> int:
         return 3
     if "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b" not in text:
         print("missing deposited packet digest", file=sys.stderr)
+        return 4
+    # The acceptance record must bind the report to the exact preserved pilot,
+    # rather than relying on a free-form confirmation string alone.
+    if ZENODO_DOI not in text:
+        print("missing deposited Zenodo DOI", file=sys.stderr)
         return 4
     report_digest = _value(text, "Report digest")
     if not SHA256.fullmatch(report_digest):

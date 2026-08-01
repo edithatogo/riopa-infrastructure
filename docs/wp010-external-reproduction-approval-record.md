@@ -16,6 +16,7 @@ or draft record is not evidence of reproduction and does not close issue #149.
 - Report URI or issue #149 comment: `TBD`
 - Report digest: `TBD`
 - Exact revision and reviewer-bundle digest match: `TBD`
+- Zenodo DOI: `10.5281/zenodo.21735818`
 - Zenodo DOI and deposited packet digest match: `TBD`
 - Commands/logs complete and reproducible: `TBD`
 - Deviations, safety and rights findings adjudicated: `TBD`
