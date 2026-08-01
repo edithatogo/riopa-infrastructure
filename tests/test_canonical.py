@@ -111,6 +111,23 @@ def test_migration_fixture_validation_rejects_ambiguous_metadata() -> None:
     assert any("must differ" in error for error in errors)
 
 
+def test_migration_fixture_validation_rejects_unsafe_versions_and_paths() -> None:
+    errors = validate_migration_fixture(
+        {
+            "migration_id": "urn:riopa:migration:test",
+            "from_version": "1.0",
+            "to_version": "next",
+            "compatibility": "unknown",
+            "automated": True,
+            "changes": [{"path": "../secret", "kind": "rename", "rule": "x"}],
+            "notes": "fixture",
+        }
+    )
+    assert any("semantic version form" in error for error in errors)
+    assert any("compatibility must be one of" in error for error in errors)
+    assert any("safe JSON Pointer" in error for error in errors)
+
+
 def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
     descriptor = json.loads(
         Path("docs/ontology/canonical-ontology-release-1.0.0.json").read_text()

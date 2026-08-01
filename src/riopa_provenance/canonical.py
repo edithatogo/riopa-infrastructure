@@ -165,12 +165,25 @@ def validate_migration_fixture(migration: Mapping[str, Any]) -> tuple[str, ...]:
     real data; it only prevents malformed or ambiguous migration metadata from
     entering the conformance inventory.
     """
+    import re
+
     errors: list[str] = []
     for key in ("migration_id", "from_version", "to_version", "compatibility", "notes"):
         if not isinstance(migration.get(key), str) or not migration[key].strip():
             errors.append(f"migration {key} must be a non-empty string")
     if not isinstance(migration.get("automated"), bool):
         errors.append("migration automated must be boolean")
+    version_pattern = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
+    versions = (migration.get("from_version"), migration.get("to_version"))
+    if all(isinstance(version, str) for version in versions):
+        for field, version in zip(("from_version", "to_version"), versions):
+            if not version_pattern.fullmatch(version):
+                errors.append(f"migration {field} must use semantic version form X.Y.Z")
+    compatibility = migration.get("compatibility")
+    if compatibility not in {"backward-compatible", "breaking", "experimental"}:
+        errors.append(
+            "migration compatibility must be one of backward-compatible, breaking, experimental"
+        )
     changes = migration.get("changes")
     if not isinstance(changes, list) or not changes:
         errors.append("migration changes must be a non-empty array")
@@ -182,6 +195,11 @@ def validate_migration_fixture(migration: Mapping[str, Any]) -> tuple[str, ...]:
             for key in ("path", "kind", "rule"):
                 if not isinstance(change.get(key), str) or not change[key].strip():
                     errors.append(f"migration change {index} {key} must be a non-empty string")
+            path = change.get("path")
+            if isinstance(path, str) and (
+                not path.startswith("/") or ".." in path.split("/")
+            ):
+                errors.append(f"migration change {index} path must be a safe JSON Pointer")
     if isinstance(migration.get("from_version"), str) and isinstance(migration.get("to_version"), str):
         if migration["from_version"] == migration["to_version"]:
             errors.append("migration from_version and to_version must differ")
