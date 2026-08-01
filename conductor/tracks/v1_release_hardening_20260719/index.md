@@ -1,7 +1,7 @@
 # Evidence index: Stable v1 release hardening and general availability
 
 - **Track ID:** `v1_release_hardening_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `1.0.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -16,11 +16,11 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| V1-BASELINE-20260801 | Fail-closed stable-v1 readiness baseline | `docs/v1-release-readiness-baseline-20260801.json`, `tests/test_v1_release_readiness.py` | Repository checks passing; promotion explicitly blocked |
 
 ## Blocking defects
 
-- None recorded.
+- Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision.
 
 ## Decisions, exceptions and limitations
 
@@ -30,4 +30,4 @@
 
 Required reviewer roles: Governance reviewer, API/schema reviewer, Provenance reviewer, Security reviewer, Data steward, Operations reviewer, Performance reviewer, Interoperability reviewer, Research-object reviewer, External user reviewer, Quantitative methods reviewer, Scientific reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index records a bounded repository-owned readiness baseline while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
