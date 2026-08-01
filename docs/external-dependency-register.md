@@ -13,6 +13,9 @@ It is a planning and handoff artifact, not an approval record.
 | Release authority | Open | Named decision, scope, exclusions, expiry and accountable signatory | Programme release authority | Pilot/internal status only; no tag or public stable release |
 | Hosted verification | Passed for `ff328458f61fe8a5448979fcea04e4dbfba72afc` | CI run [30682545412](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30682545412) and CodeQL run [30682545414](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30682545414) | Repository CI | None; hosted checks are necessary but do not replace external evidence |
 
+The proposed pilot scope and source exclusions are prepared in
+`docs/wp010-bounded-pilot-decision.md`; its decision fields remain pending.
+
 ## Operating rule
 
 Repository implementation may proceed while a gate is open when the affected
