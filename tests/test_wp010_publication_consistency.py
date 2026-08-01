@@ -25,3 +25,10 @@ def test_wp010_request_requires_approval_and_content_bound_report() -> None:
     assert "approve the operator" in request
     assert "report digest" in request
     assert "issue #149 remains open" in request
+
+def test_wp010_approval_record_is_explicitly_unresolved_until_completed() -> None:
+    record = (ROOT / "docs/wp010-external-reproduction-approval-record.md").read_text()
+    assert "Selection approver" in record
+    assert "Report digest" in record
+    assert "`TBD`" in record
+    assert "does not approve" in record
