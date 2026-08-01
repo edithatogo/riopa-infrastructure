@@ -100,6 +100,12 @@ def validate_crosswalk_contract(record: Mapping[str, Any]) -> tuple[str, ...]:
         or not assertion.get("label")
     ):
         errors.append("source_assertion requires source_id and label")
+    canonical_id = record.get("canonical_id")
+    if not isinstance(canonical_id, str) or not canonical_id.startswith("urn:riopa:"):
+        errors.append("canonical_id must be a canonical RIOPA URN")
+    for field in ("method", "reviewer"):
+        if not isinstance(record.get(field), str) or not record[field].strip():
+            errors.append(f"{field} must be a non-empty string")
     if not isinstance(record.get("evidence"), list):
         errors.append("evidence must be an array")
     errors.extend(validate_crosswalk_semantics(record))

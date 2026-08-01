@@ -90,6 +90,20 @@ def test_crosswalk_contract_rejects_missing_id_and_evidence() -> None:
     assert any("uncertain mappings require at least one evidence" in error for error in errors)
 
 
+def test_crosswalk_contract_rejects_unscoped_identity_and_empty_provenance() -> None:
+    record = build_crosswalk(
+        source_id="s", source_label="x", canonical_id="urn:riopa:concept:x",
+        method="manual", confidence="medium", reviewer="r", valid_from="2026-01-01",
+    )
+    record["canonical_id"] = "https://example.org/concept/x"
+    record["method"] = "  "
+    record["reviewer"] = ""
+    errors = validate_crosswalk_contract(record)
+    assert "canonical_id must be a canonical RIOPA URN" in errors
+    assert "method must be a non-empty string" in errors
+    assert "reviewer must be a non-empty string" in errors
+
+
 def test_versioned_migration_fixture_is_explicit_and_bounded() -> None:
     migration = json.loads(
         Path("docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json").read_text()
