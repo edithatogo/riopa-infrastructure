@@ -30,3 +30,10 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R.1 Add digest-bound SHACL shape preparation while preserving the
+  `not-run` conformance status. (`1ac750a`)
+- [x] R.2 Verify the updated manifest, ontology descriptor and tests under the
+  project validation workflow. (`1ac750a`)

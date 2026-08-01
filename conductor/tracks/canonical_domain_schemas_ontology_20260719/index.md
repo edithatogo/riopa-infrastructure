@@ -34,4 +34,13 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, External user reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+
+## Review record
+
+- Review scope: repository diff from `d5dee91` through `1ac750a`.
+- Findings: no correctness, security, metadata or digest-integrity defects.
+- Review fixes: SHACL shape preparation is digest-bound and explicitly remains
+  `not-run` until a qualifying engine/report exists.
+- Validation: canonical/conformance tests and roadmap validation passed.
+- External gates remain open; the track is not complete or archive-eligible.
