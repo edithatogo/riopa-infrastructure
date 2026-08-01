@@ -69,12 +69,12 @@ def test_generated_issue_graph_covers_all_tracks_and_phases() -> None:
     assert len({item["key"] for item in issues}) == len(issues)
 
 
-def test_current_development_release_is_ready_but_stable_is_not() -> None:
+def test_current_development_release_is_blocked_but_stable_is_not() -> None:
     status = roadmap_status(ROOT)
     assert status["tracks"]["total"] == 28
     assert status["tracks"]["by_current_maturity"] == {"M1": 28}
-    assert status["releases"][0]["ready"] is True
-    assert status["releases"][0]["blockers"] == []
+    assert status["releases"][0]["ready"] is False
+    assert status["releases"][0]["blockers"]
     assert all(not release["ready"] for release in status["releases"][1:])
 
     stable = release_readiness(ROOT, "1.0.0")

@@ -86,7 +86,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap.py",
-          "sha256": "4e8306e147a3923822cf4ef37c89bbc27efa117643bba0dedb65a83ecd6722fb",
+          "sha256": "df8bfc472938806d0acbd448038b9cf0276cd0b70a935e71bbf610018ce78b63",
           "immutable": false,
           "generated_at": "2026-07-31T09:30:00Z",
           "description": "Automated roadmap and readiness tests."
