@@ -17,6 +17,18 @@ requirements below.
 | Release authority | Named accountable authority signs a tier-specific decision covering scope, exclusions, safety posture, evidence links, expiry/review date, and rollback/withdrawal conditions. | Assemble the release-evidence index, check traceability and identify unresolved risks or stale artefacts. | A panel recommendation is not an approval, accountability assignment, or authorization to represent the system as operational. | Release authority (to be nominated) decides beta/RC/v1. If absent, publish no higher tier and retain the technical-preview label. |
 | Ontology and conformance | Versioned ontology/semantic contract, fixture-backed conformance results, mapping assumptions, and review of all equations, heuristics and parameters against cited sources. | Cross-check mappings, run conformance fixtures and adversarially test unknown/ambiguous values; report gaps and provenance. | Panel agreement cannot establish domain ownership or validate an ontology for operational use where a custodian or accountable domain authority is required. | Technical lead owns the contract; domain authority confirms semantics. If confirmation is unavailable, limit claims to the documented pilot vocabulary and fail closed on unknowns. |
 
+## Newly implemented preparation artifacts
+
+The repository now contains executable preparation for three previously open
+evidence lanes: a deterministic local restore/rollback harness
+(`docs/restore-rollback-evidence-20260801.md`), a synthetic regional benchmark
+contract with explicitly non-measured national extrapolation
+(`examples/wp010-performance-benchmark/`), and pending qualification templates
+for all 28 open tracks (`docs/panel-qualification-report-templates-20260801.json`).
+These artifacts make the remaining work reproducible, but do not close the
+production, time-based, external-operator, national-scale, or release-authority
+gates.
+
 ## Panel operating protocol
 
 The orchestrator should collect separate signed (content-hashed) outputs from a
