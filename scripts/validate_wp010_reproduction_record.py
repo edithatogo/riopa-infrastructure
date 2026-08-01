@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """Fail-closed validation for the WP-010 external reproduction record."""
 from pathlib import Path
+import re
 import sys
 
 REQUIRED = ("Selection approver", "Report URI", "Report digest", "Acceptance decision")
+SHA256 = re.compile(r"^[0-9a-f]{64}$")
+
+
+def _value(text: str, label: str) -> str:
+    match = re.search(rf"^-\s*{re.escape(label)}(?:\s+or\s+issue\s+#149\s+comment)?:\s*`?([^`\n]+?)`?\s*$", text, re.MULTILINE | re.IGNORECASE)
+    return match.group(1).strip() if match else ""
 
 def main() -> int:
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("docs/wp010-external-reproduction-approval-record.md")
@@ -18,6 +25,22 @@ def main() -> int:
     if "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b" not in text:
         print("missing deposited packet digest", file=sys.stderr)
         return 4
+    report_digest = _value(text, "Report digest")
+    if not SHA256.fullmatch(report_digest):
+        print("invalid report digest: expected a 64-character lowercase SHA-256", file=sys.stderr)
+        return 5
+    independence = _value(text, "Independence/conflict statement received")
+    if not independence or independence.lower() in {"none", "no", "n/a"}:
+        print("missing operator independence/conflict statement", file=sys.stderr)
+        return 6
+    match = re.search(r"Exact revision and reviewer-bundle digest match:\s*`?([^`\n]+?)`?\s*$", text, re.MULTILINE | re.IGNORECASE)
+    if not match or match.group(1).strip().lower() not in {"yes", "true", "match", "passed"}:
+        print("exact revision/reviewer-bundle digest match not confirmed", file=sys.stderr)
+        return 7
+    decision = _value(text, "Acceptance decision")
+    if decision.lower() not in {"pass", "pass-with-limitations"}:
+        print("acceptance decision is not an accepted bounded-pilot result", file=sys.stderr)
+        return 8
     print("PASS WP-010 reproduction approval record")
     return 0
 
