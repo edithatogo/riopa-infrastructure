@@ -49,13 +49,23 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
   baseline. Named signatories, signed evidence and stable-release authority
   remain external M5/M6 gates.
 
+## Review record
+
+- Review scope: maturity-readiness and closeout changes through `601940f`.
+- Finding: closeout task C.4 still described the track as `active` after the
+  metadata and index moved to `validating`.
+- Fix: aligned C.4 and the handover language with the validating status while
+  retaining `promotion_ready: false` and the M2–M6 blockers.
+- Validation: roadmap validation and repository test evidence are required
+  before this review is closed; no external gate is represented as complete.
+
 ## Review and handover
 
 Required analyst coverage: two independent analysts with distinct identities and scopes; governance, API/schema and external-user perspectives remain recommended coverage.
 
-The bounded M1 architecture baseline is ratified; implementation remains active
-at M1. Evidence must be immutable or version-addressed, independently reviewed
-where required, and sufficient for each later maturity and release gate.
+The bounded M1 architecture baseline is ratified; implementation remains
+validating at M1. Evidence must be immutable or version-addressed, independently
+reviewed where required, and sufficient for each later maturity and release gate.
 
 Target-release metadata and evidence were revalidated on 2026-08-01; status is
 `validating` by design until M2–M6 gates are evidenced.

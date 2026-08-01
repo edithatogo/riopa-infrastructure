@@ -28,10 +28,11 @@
 
 - [x] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)
 - [x] 5.2 Register external dependencies, closure evidence, owners and bounded fallbacks. (docs/external-dependency-register.md; f614b40)
+- [x] 5.3 Align the closeout wording with the validating status and machine-readable M2 readiness boundary. (601940f; review fix)
 
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)
 - [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)
 - [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active` at M1 pending M2–M6 gates. (index.md; metadata.json)
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)
