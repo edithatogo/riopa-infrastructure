@@ -11,6 +11,36 @@ import sys
 from pathlib import Path
 
 ROLES = {"reproducer", "adversarial-reviewer", "evidence-auditor"}
+PANEL_TEMPLATE_STATUSES = {"pending", "in-progress", "complete"}
+
+
+def validate_template_manifest(path: Path, tracks_root: Path) -> list[str]:
+    """Validate the track-wide template without treating templates as results."""
+    errors: list[str] = []
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f"{path}: cannot read template manifest ({exc})"]
+    entries = manifest.get("tracks") if isinstance(manifest, dict) else None
+    if not isinstance(entries, list) or not entries:
+        return ["template manifest must contain a non-empty tracks list"]
+    expected = {p.name for p in tracks_root.iterdir() if p.is_dir() and (p / "metadata.json").exists()}
+    actual = {e.get("track_id") for e in entries if isinstance(e, dict)}
+    if actual != expected:
+        errors.append("template manifest track set does not match conductor tracks")
+    for entry in entries:
+        if not isinstance(entry, dict):
+            errors.append("each template entry must be an object")
+            continue
+        if entry.get("status") not in PANEL_TEMPLATE_STATUSES:
+            errors.append(f"{entry.get('track_id', '<unknown>')}: invalid panel status")
+        if entry.get("status") == "pending" and entry.get("disposition") is not None:
+            errors.append(f"{entry.get('track_id', '<unknown>')}: pending template cannot claim disposition")
+        if entry.get("release_decision_ref") != "docs/release-authority-decision-draft-20260801.md":
+            errors.append(f"{entry.get('track_id', '<unknown>')}: missing release decision linkage")
+        if entry.get("required_roles") != sorted(ROLES):
+            errors.append(f"{entry.get('track_id', '<unknown>')}: required panel roles mismatch")
+    return sorted(set(errors))
 
 
 def validate(paths: list[Path]) -> list[str]:
@@ -48,7 +78,14 @@ def validate(paths: list[Path]) -> list[str]:
 
 
 def main() -> int:
-    errors = validate([Path(arg) for arg in sys.argv[1:]])
+    args = sys.argv[1:]
+    if args and args[0] == "--template-manifest":
+        if len(args) != 4 or args[2] != "--tracks-root":
+            print("usage: --template-manifest PATH --tracks-root PATH", file=sys.stderr)
+            return 2
+        errors = validate_template_manifest(Path(args[1]), Path(args[3]))
+    else:
+        errors = validate([Path(arg) for arg in args])
     if errors:
         for error in errors:
             print(error, file=sys.stderr)

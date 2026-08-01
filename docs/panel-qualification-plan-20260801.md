@@ -21,6 +21,14 @@ findings and dissent. A disagreement or digest mismatch fails the panel gate.
 
 ## Track exit criteria and current disposition
 
+The machine-readable template [`panel-qualification-report-templates-20260801.json`](panel-qualification-report-templates-20260801.json)
+covers every currently open Conductor track. Every entry is explicitly `pending`
+with a null disposition until all three panel reports and content-bound evidence
+are attached. The template links each track to the release-authority decision
+record; it is an evidence index, not a qualification result. Run
+`uv run python scripts/validate_panel_reports.py` with report paths for an
+executed panel, and use `validate_template_manifest` in CI to detect drift.
+
 | Track | Panel evidence required | Current disposition |
 | --- | --- | --- |
 | `publication_validation_20260718` | rights-aware plan, deterministic staging, receipt idempotence, preservation DOI | Repository controls present; panel execution and publication receipts remain to be attached. |
@@ -49,4 +57,3 @@ operational claims. It does not convert a technical-preview report into a
 stable-v1 release decision. Your public-source authority approval applies to
 the declared public-datasets-only scope; a future scope expansion creates a
 new evidence packet and reopens the affected gates.
-
