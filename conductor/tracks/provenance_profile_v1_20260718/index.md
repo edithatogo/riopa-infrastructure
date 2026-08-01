@@ -37,7 +37,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required reviewer roles: API/schema reviewer, Provenance reviewer, Security reviewer, Research-object reviewer.
 
-This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
 
 ## Review record
 
@@ -46,3 +46,6 @@ This index is deliberately non-assertive while the track remains `active`. Statu
   attestation and non-Python parity are not evidenced.
 - Fix: task states changed to `[~]`; blockers remain explicit above.
 - Validation: focused provenance tests and full roadmap validation passed.
+
+The track is not complete or archive-eligible while the listed conformance,
+publication, attestation and independent-review gates remain open.
