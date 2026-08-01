@@ -12,4 +12,6 @@ def test_template_manifest_covers_every_track(tmp_path: Path) -> None:
     assert validate_template_manifest(output, root / "conductor" / "tracks") == []
     payload = json.loads(output.read_text())
     assert payload["non_assertive"] is True
-    assert all(entry["status"] == "pending" and entry["disposition"] is None for entry in payload["tracks"])
+    assert all(
+        entry["status"] == "pending" and entry["disposition"] is None for entry in payload["tracks"]
+    )

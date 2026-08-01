@@ -30,8 +30,9 @@ def canonical_entity_id(namespace: str, source_id: str) -> str:
     return f"urn:riopa:entity:{_part(namespace)}:{_part(source_id)}"
 
 
-def canonical_version_id(entity_id: str, *, valid_from: str, valid_to: str | None,
-                         representation: Mapping[str, Any]) -> str:
+def canonical_version_id(
+    entity_id: str, *, valid_from: str, valid_to: str | None, representation: Mapping[str, Any]
+) -> str:
     """Build a deterministic version identifier from temporal and content state."""
 
     if not entity_id.startswith("urn:riopa:entity:"):
@@ -40,10 +41,18 @@ def canonical_version_id(entity_id: str, *, valid_from: str, valid_to: str | Non
     return f"{entity_id}:version:{sha256_json(state)[:24]}"
 
 
-def build_crosswalk(*, source_id: str, source_label: str, canonical_id: str,
-                    method: str, confidence: str, reviewer: str,
-                    valid_from: str, valid_to: str | None = None,
-                    evidence: list[str] | None = None) -> dict[str, Any]:
+def build_crosswalk(
+    *,
+    source_id: str,
+    source_label: str,
+    canonical_id: str,
+    method: str,
+    confidence: str,
+    reviewer: str,
+    valid_from: str,
+    valid_to: str | None = None,
+    evidence: list[str] | None = None,
+) -> dict[str, Any]:
     """Create a versioned mapping claim without discarding the original value."""
 
     allowed = {"unknown", "low", "medium", "high", "disputed", "inapplicable"}
@@ -85,8 +94,14 @@ def validate_crosswalk_semantics(record: Mapping[str, Any]) -> tuple[str, ...]:
 def validate_crosswalk_contract(record: Mapping[str, Any]) -> tuple[str, ...]:
     """Fail-closed structural and semantic validation for crosswalk claims."""
     required = {
-        "mapping_id", "source_assertion", "canonical_id", "method",
-        "confidence", "reviewer", "valid_time", "evidence",
+        "mapping_id",
+        "source_assertion",
+        "canonical_id",
+        "method",
+        "confidence",
+        "reviewer",
+        "valid_time",
+        "evidence",
     }
     errors = [f"missing required field: {key}" for key in sorted(required - record.keys())]
     if not isinstance(record.get("mapping_id"), str) or not str(
@@ -116,8 +131,8 @@ def validate_conformance_manifest(
     manifest: Mapping[str, Any], *, root: str | None = None
 ) -> tuple[str, ...]:
     """Validate conformance references and prevent premature status promotion."""
-    from pathlib import Path
     import hashlib
+    from pathlib import Path
 
     errors: list[str] = []
     if manifest.get("status") != "bounded-pending":
@@ -196,7 +211,11 @@ def validate_conformance_corpus(
         else:
             seen.add(case_id)
         digest = case.get("expected_sha256")
-        if not isinstance(digest, str) or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest):
+        if (
+            not isinstance(digest, str)
+            or len(digest) != 64
+            or any(c not in "0123456789abcdef" for c in digest)
+        ):
             errors.append(f"case {index} expected_sha256 must be lowercase SHA-256")
         if "instance" not in case:
             errors.append(f"case {index} must include instance")
@@ -235,7 +254,8 @@ def validate_migration_fixture(migration: Mapping[str, Any]) -> tuple[str, ...]:
     version_pattern = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
     versions = (migration.get("from_version"), migration.get("to_version"))
     if all(isinstance(version, str) for version in versions):
-        for field, version in zip(("from_version", "to_version"), versions):
+        typed_versions = [version for version in versions if isinstance(version, str)]
+        for field, version in zip(("from_version", "to_version"), typed_versions, strict=False):
             if not version_pattern.fullmatch(version):
                 errors.append(f"migration {field} must use semantic version form X.Y.Z")
     compatibility = migration.get("compatibility")
@@ -255,11 +275,12 @@ def validate_migration_fixture(migration: Mapping[str, Any]) -> tuple[str, ...]:
                 if not isinstance(change.get(key), str) or not change[key].strip():
                     errors.append(f"migration change {index} {key} must be a non-empty string")
             path = change.get("path")
-            if isinstance(path, str) and (
-                not path.startswith("/") or ".." in path.split("/")
-            ):
+            if isinstance(path, str) and (not path.startswith("/") or ".." in path.split("/")):
                 errors.append(f"migration change {index} path must be a safe JSON Pointer")
-    if isinstance(migration.get("from_version"), str) and isinstance(migration.get("to_version"), str):
-        if migration["from_version"] == migration["to_version"]:
-            errors.append("migration from_version and to_version must differ")
+    if (
+        isinstance(migration.get("from_version"), str)
+        and isinstance(migration.get("to_version"), str)
+        and migration["from_version"] == migration["to_version"]
+    ):
+        errors.append("migration from_version and to_version must differ")
     return tuple(errors)

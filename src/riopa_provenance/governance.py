@@ -11,7 +11,9 @@ ALLOW_OUTCOMES = frozenset({"allow", "allow-with-conditions"})
 PUBLIC_CLASSES = frozenset({"public"})
 CONTROLLED_CLASSES = frozenset({"restricted", "sensitive", "controlled"})
 BLOCKING_OUTCOMES = frozenset({"withdraw", "superseded", "prohibited", "review-required"})
-ACQUISITION_OUTCOMES = frozenset({"allow", "allow-with-conditions", "metadata-only", "review-required", "prohibited"})
+ACQUISITION_OUTCOMES = frozenset(
+    {"allow", "allow-with-conditions", "metadata-only", "review-required", "prohibited"}
+)
 
 # Scope labels are deliberately explicit rather than inferred from geography or
 # population names.  This keeps cultural/community review a documented trigger

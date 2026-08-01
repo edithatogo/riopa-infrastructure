@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import re
 import json
+import re
 from dataclasses import dataclass
 from math import asin, cos, radians, sin, sqrt
 from typing import Literal
@@ -79,7 +79,10 @@ def assertions_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, 
 
 def assertions_snapshot_json(assertions: tuple[FacilityAssertion, ...]) -> str:
     """Encode :func:`assertions_snapshot` with stable JSON formatting."""
-    return json.dumps(assertions_snapshot(assertions), ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+    return (
+        json.dumps(assertions_snapshot(assertions), ensure_ascii=False, sort_keys=True, indent=2)
+        + "\n"
+    )
 
 
 def normalize_name(value: str) -> tuple[str, ...]:

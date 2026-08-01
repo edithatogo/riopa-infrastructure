@@ -8,13 +8,18 @@ def _reports(tmp_path: Path) -> list[Path]:
     paths = []
     for role in ("reproducer", "adversarial-reviewer", "evidence-auditor"):
         path = tmp_path / f"{role}.json"
-        path.write_text(json.dumps({
-            "role": role,
-            "source_revision": "a" * 40,
-            "bundle_sha256": "b" * 64,
-            "disposition": "pass-with-limitations",
-            "dissent": [],
-        }), encoding="utf-8")
+        path.write_text(
+            json.dumps(
+                {
+                    "role": role,
+                    "source_revision": "a" * 40,
+                    "bundle_sha256": "b" * 64,
+                    "disposition": "pass-with-limitations",
+                    "dissent": [],
+                }
+            ),
+            encoding="utf-8",
+        )
         paths.append(path)
     return paths
 

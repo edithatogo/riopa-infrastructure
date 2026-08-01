@@ -7,8 +7,8 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from riopa_provenance.hashing import sha256_json
 from riopa_provenance.canonical import validate_conformance_corpus, validate_conformance_manifest
+from riopa_provenance.hashing import sha256_json
 
 
 def _corpus() -> tuple[Path, dict[str, Any]]:
@@ -34,7 +34,10 @@ def test_corpus_envelope_is_safe_and_well_formed() -> None:
 
     tampered = dict(corpus)
     tampered["cases"] = [dict(corpus["cases"][0]), dict(corpus["cases"][0])]
-    assert any("duplicate case_id" in error for error in validate_conformance_corpus(tampered, root=str(root / "conformance/v1")))
+    assert any(
+        "duplicate case_id" in error
+        for error in validate_conformance_corpus(tampered, root=str(root / "conformance/v1"))
+    )
 
 
 def test_node_implementation_matches_python_outcomes() -> None:
@@ -74,7 +77,10 @@ def test_canonical_conformance_manifest_binds_artifact_digests() -> None:
     tampered["artifact_sha256"] = dict(manifest["artifact_sha256"])
     artifact = manifest["artifacts"][0]
     tampered["artifact_sha256"][artifact] = "0" * 64
-    assert any("digest mismatch" in error for error in validate_conformance_manifest(tampered, root=str(root)))
+    assert any(
+        "digest mismatch" in error
+        for error in validate_conformance_manifest(tampered, root=str(root))
+    )
 
 
 def test_canonical_conformance_manifest_rejects_unbound_artifact() -> None:
@@ -82,8 +88,14 @@ def test_canonical_conformance_manifest_rejects_unbound_artifact() -> None:
     manifest = {
         "status": "bounded-pending",
         "publication": {"status": "unpublished", "persistent_identifier": None},
-        "checks": {"shacl": {"status": "not-run"}, "cross_language_round_trip": {"status": "not-run"}},
+        "checks": {
+            "shacl": {"status": "not-run"},
+            "cross_language_round_trip": {"status": "not-run"},
+        },
         "artifacts": ["docs/ontology/canonical-context.jsonld"],
         "artifact_sha256": {},
     }
-    assert any("keys must exactly match" in error for error in validate_conformance_manifest(manifest, root=str(root)))
+    assert any(
+        "keys must exactly match" in error
+        for error in validate_conformance_manifest(manifest, root=str(root))
+    )

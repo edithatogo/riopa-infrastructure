@@ -1,4 +1,11 @@
-from riopa_provenance.hashing import canonical_json_bytes, sha256_json
+from pathlib import Path
+
+from riopa_provenance.hashing import (
+    canonical_json_bytes,
+    sha256_file,
+    sha256_json,
+    verify_file_digests,
+)
 
 
 def test_canonical_hash_is_key_order_independent() -> None:
@@ -6,9 +13,6 @@ def test_canonical_hash_is_key_order_independent() -> None:
     right = {"a": 1, "b": 2}
     assert canonical_json_bytes(left) == canonical_json_bytes(right)
     assert sha256_json(left) == sha256_json(right)
-from pathlib import Path
-
-from riopa_provenance.hashing import sha256_file, verify_file_digests
 
 
 def test_verify_file_digests_reports_mismatch_and_missing(tmp_path: Path) -> None:

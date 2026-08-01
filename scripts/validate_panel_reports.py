@@ -4,6 +4,7 @@
 Reports are JSON and must agree on the frozen revision and bundle digest.  This
 tool only establishes panel concordance; it never promotes a release.
 """
+
 from __future__ import annotations
 
 import json
@@ -24,7 +25,9 @@ def validate_template_manifest(path: Path, tracks_root: Path) -> list[str]:
     entries = manifest.get("tracks") if isinstance(manifest, dict) else None
     if not isinstance(entries, list) or not entries:
         return ["template manifest must contain a non-empty tracks list"]
-    expected = {p.name for p in tracks_root.iterdir() if p.is_dir() and (p / "metadata.json").exists()}
+    expected = {
+        p.name for p in tracks_root.iterdir() if p.is_dir() and (p / "metadata.json").exists()
+    }
     actual = {e.get("track_id") for e in entries if isinstance(e, dict)}
     if actual != expected:
         errors.append("template manifest track set does not match conductor tracks")
@@ -35,7 +38,9 @@ def validate_template_manifest(path: Path, tracks_root: Path) -> list[str]:
         if entry.get("status") not in PANEL_TEMPLATE_STATUSES:
             errors.append(f"{entry.get('track_id', '<unknown>')}: invalid panel status")
         if entry.get("status") == "pending" and entry.get("disposition") is not None:
-            errors.append(f"{entry.get('track_id', '<unknown>')}: pending template cannot claim disposition")
+            errors.append(
+                f"{entry.get('track_id', '<unknown>')}: pending template cannot claim disposition"
+            )
         if entry.get("release_decision_ref") != "docs/release-authority-decision-draft-20260801.md":
             errors.append(f"{entry.get('track_id', '<unknown>')}: missing release decision linkage")
         if entry.get("required_roles") != sorted(ROLES):
@@ -60,7 +65,10 @@ def validate(paths: list[Path]) -> list[str]:
         reports.append(value)
     roles = [str(report.get("role", "")) for report in reports]
     if set(roles) != ROLES or len(roles) != len(set(roles)):
-        errors.append("panel roles must be unique and exactly reproducer, adversarial-reviewer, evidence-auditor")
+        errors.append(
+            "panel roles must be unique and exactly reproducer, "
+            "adversarial-reviewer, evidence-auditor"
+        )
     for field in ("source_revision", "bundle_sha256"):
         values = {str(report.get(field, "")) for report in reports}
         if "" in values:

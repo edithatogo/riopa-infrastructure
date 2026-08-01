@@ -52,9 +52,12 @@ def test_semantic_approval_validation_is_fail_closed() -> None:
     assert "approval has expired" in validate_source_acquisition_approval(
         {**valid, "expires_at": "2026-07-31T00:00:00Z"}, now=now
     )
-    assert any("credential-shaped" in error for error in validate_source_acquisition_approval(
-        {**valid, "conditions": ["safe"], "notes": {"api_key": "never"}}, now=now
-    ))
+    assert any(
+        "credential-shaped" in error
+        for error in validate_source_acquisition_approval(
+            {**valid, "conditions": ["safe"], "notes": {"api_key": "never"}}, now=now
+        )
+    )
     assert "scope contains duplicate labels" in validate_source_acquisition_approval(
         {**valid, "scope": ["metadata-only", "metadata-only"]}, now=now
     )
@@ -102,7 +105,10 @@ def test_allow_outcome_rejects_placeholder_authority_fields() -> None:
     )
     assert "rights_reference cannot be a placeholder for an allow outcome" in errors
     # Non-permission outcomes may deliberately record unresolved authority.
-    assert validate_source_acquisition_approval(
-        {**valid, "outcome": "review-required", "rights_reference": "TBD"},
-        now=datetime(2026, 8, 1, tzinfo=UTC),
-    ) == ()
+    assert (
+        validate_source_acquisition_approval(
+            {**valid, "outcome": "review-required", "rights_reference": "TBD"},
+            now=datetime(2026, 8, 1, tzinfo=UTC),
+        )
+        == ()
+    )

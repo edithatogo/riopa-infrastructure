@@ -47,9 +47,13 @@ def test_crosswalk_preserves_source_and_uncertainty() -> None:
 
 def test_crosswalk_builder_output_matches_normative_schema() -> None:
     record = build_crosswalk(
-        source_id="council:one", source_label="Urgent care",
-        canonical_id="urn:riopa:concept:service:urgent-care", method="manual",
-        confidence="medium", reviewer="reviewer", valid_from="2026-01-01",
+        source_id="council:one",
+        source_label="Urgent care",
+        canonical_id="urn:riopa:concept:service:urgent-care",
+        method="manual",
+        confidence="medium",
+        reviewer="reviewer",
+        valid_from="2026-01-01",
     )
     schema = json.loads(Path("schemas/canonical-crosswalk.schema.json").read_text())
     errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(record))
@@ -59,8 +63,13 @@ def test_crosswalk_builder_output_matches_normative_schema() -> None:
 
 def test_crosswalk_semantics_fail_closed_for_reversed_time() -> None:
     record = build_crosswalk(
-        source_id="s", source_label="x", canonical_id="urn:riopa:concept:x",
-        method="manual", confidence="medium", reviewer="r", valid_from="2026-02-01",
+        source_id="s",
+        source_label="x",
+        canonical_id="urn:riopa:concept:x",
+        method="manual",
+        confidence="medium",
+        reviewer="r",
+        valid_from="2026-02-01",
         valid_to="2026-01-01",
     )
     assert "valid_time.to must not precede valid_time.from" in validate_crosswalk_semantics(record)
@@ -92,8 +101,13 @@ def test_crosswalk_contract_rejects_missing_id_and_evidence() -> None:
 
 def test_crosswalk_contract_rejects_unscoped_identity_and_empty_provenance() -> None:
     record = build_crosswalk(
-        source_id="s", source_label="x", canonical_id="urn:riopa:concept:x",
-        method="manual", confidence="medium", reviewer="r", valid_from="2026-01-01",
+        source_id="s",
+        source_label="x",
+        canonical_id="urn:riopa:concept:x",
+        method="manual",
+        confidence="medium",
+        reviewer="r",
+        valid_from="2026-01-01",
     )
     record["canonical_id"] = "https://example.org/concept/x"
     record["method"] = "  "
@@ -143,9 +157,7 @@ def test_migration_fixture_validation_rejects_unsafe_versions_and_paths() -> Non
 
 
 def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
-    descriptor = json.loads(
-        Path("docs/ontology/canonical-ontology-release-1.0.0.json").read_text()
-    )
+    descriptor = json.loads(Path("docs/ontology/canonical-ontology-release-1.0.0.json").read_text())
     assert descriptor["version"] == "1.0.0"
     assert descriptor["status"] == "repository-fixture"
     assert descriptor["publication"]["persistent_identifier"] is None

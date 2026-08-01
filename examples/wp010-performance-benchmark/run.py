@@ -15,7 +15,6 @@ import time
 from pathlib import Path
 from typing import Any
 
-
 HERE = Path(__file__).parent
 
 
@@ -27,7 +26,9 @@ def checksum(records: int, iterations: int, seed: int) -> int:
     return value
 
 
-def measure(records: int, iterations: int, seed: int, repeats: int = 3, degraded: bool = False) -> dict[str, Any]:
+def measure(
+    records: int, iterations: int, seed: int, repeats: int = 3, degraded: bool = False
+) -> dict[str, Any]:
     if repeats < 3:
         raise ValueError("repeats must be at least 3")
     checksum(records, iterations, seed)  # deterministic discarded warm-up
@@ -51,7 +52,12 @@ def measure(records: int, iterations: int, seed: int, repeats: int = 3, degraded
         "classification": "measured-regional-synthetic",
         "latency": {"p50_ms": elapsed / 1_000_000, "p95_ms": max(samples) / 1_000_000},
         "throughput": {"records_per_second": records * 1_000_000_000 / elapsed if elapsed else 0.0},
-        "resources": {"cpu_seconds": None, "memory_mb": None, "storage_mb": None, "status": "not-instrumented"},
+        "resources": {
+            "cpu_seconds": None,
+            "memory_mb": None,
+            "storage_mb": None,
+            "status": "not-instrumented",
+        },
         "cost": {"currency": None, "amount": None, "status": "not-priced"},
     }
 
@@ -61,7 +67,9 @@ def run(output: Path | None = None) -> dict[str, Any]:
     scenarios = []
     for scenario in workload["scenarios"]:
         result = measure(
-            scenario["records"], scenario["iterations"], workload["seed"],
+            scenario["records"],
+            scenario["iterations"],
+            workload["seed"],
             degraded=scenario.get("degraded", False),
         )
         result["case_id"] = scenario["scenario_id"]
@@ -94,7 +102,14 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     report = run(args.output)
-    print(json.dumps({"benchmark_id": report["benchmark_id"], "classification": report["national"]["classification"]}))
+    print(
+        json.dumps(
+            {
+                "benchmark_id": report["benchmark_id"],
+                "classification": report["national"]["classification"],
+            }
+        )
+    )
     return 0
 
 

@@ -4,6 +4,7 @@
 This is a planning projection, not an approval or qualification result. Missing
 matrix rows and panel evidence are surfaced as blockers rather than inferred.
 """
+
 from __future__ import annotations
 
 import json
@@ -26,15 +27,17 @@ def generate(manifest_path: Path, matrix_path: Path, output: Path) -> None:
                 blockers.append(f"track evidence status: {row['evidence_status']}")
             if row.get("blocker_class"):
                 blockers.append(f"matrix blocker class: {row['blocker_class']}")
-        tracks.append({
-            "track_id": track_id,
-            "panel_status": template["status"],
-            "disposition": template["disposition"],
-            "matrix_entry": row,
-            "blockers": blockers,
-            "release_authority": "pending",
-            "release_decision_ref": template["release_decision_ref"],
-        })
+        tracks.append(
+            {
+                "track_id": track_id,
+                "panel_status": template["status"],
+                "disposition": template["disposition"],
+                "matrix_entry": row,
+                "blockers": blockers,
+                "release_authority": "pending",
+                "release_decision_ref": template["release_decision_ref"],
+            }
+        )
     payload = {
         "schema": "riopa.release-decision-readiness.v1",
         "generated_from": [str(manifest_path), str(matrix_path)],

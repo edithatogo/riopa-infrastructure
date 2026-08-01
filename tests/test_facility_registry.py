@@ -3,11 +3,11 @@ import pytest
 from riopa_provenance.facility_registry import (
     FacilityAssertion,
     apply_review,
+    assertions_snapshot,
+    assertions_snapshot_json,
     distance_m,
     name_similarity,
     reconcile,
-    assertions_snapshot,
-    assertions_snapshot_json,
 )
 
 
