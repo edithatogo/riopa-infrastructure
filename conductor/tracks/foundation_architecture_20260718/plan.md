@@ -27,6 +27,7 @@
 ## 5. Review fixes
 
 - [x] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)
+- [x] 5.2 Register external dependencies, closure evidence, owners and bounded fallbacks. (docs/external-dependency-register.md; f614b40)
 
 ## Track closeout
 
