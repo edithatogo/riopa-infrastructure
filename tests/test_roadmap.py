@@ -72,7 +72,7 @@ def test_generated_issue_graph_covers_all_tracks_and_phases() -> None:
 def test_current_development_release_is_ready_but_stable_is_not() -> None:
     status = roadmap_status(ROOT)
     assert status["tracks"]["total"] == 28
-    assert status["tracks"]["by_current_maturity"] == {"M1": 28}
+    assert status["tracks"]["by_current_maturity"] == {"M1": 26, "M6": 2}
     assert status["releases"][0]["ready"] is True
     assert status["releases"][0]["blockers"] == []
     assert all(not release["ready"] for release in status["releases"][1:])
@@ -80,7 +80,7 @@ def test_current_development_release_is_ready_but_stable_is_not() -> None:
     stable = release_readiness(ROOT, "1.0.0")
     assert not stable.ready
     assert stable.required_tracks == 28
-    assert stable.qualified_tracks == 0
+    assert stable.qualified_tracks == 2
     assert any("M6 is required" in blocker for blocker in stable.blockers)
     assert any("stable release evidence record is absent" in blocker for blocker in stable.blockers)
 

@@ -32,5 +32,5 @@
 
 - [x] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)
 - [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)
-- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow.

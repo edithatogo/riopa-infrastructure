@@ -8,13 +8,14 @@ Stable target: `1.0.0`
 
 - Total: **28**
 - v1-critical: **28**
-- active: **1**
-- specified: **26**
+- complete: **2**
+- specified: **25**
 - validating: **1**
 
 ### Current maturity
 
-- `M1`: **28**
+- `M1`: **26**
+- `M6`: **2**
 
 ## Release readiness
 
@@ -27,12 +28,10 @@ Stable target: `1.0.0`
 ### 0.3.0 — normative core alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 0/5
+- Tracks qualified: 2/5
 - Gates: 0/4 passed
 - Blockers:
-  - track foundation_architecture_20260718 is M1; M2 is required
   - track governance_maori_data_sovereignty_20260718 is M1; M2 is required
-  - track security_supply_chain_20260719 is M1; M2 is required
   - track canonical_domain_schemas_ontology_20260719 is M1; M2 is required
   - track provenance_profile_v1_20260718 is M1; M2 is required
   - gate core-schema-conformance is not passed with current evidence
@@ -120,7 +119,7 @@ Stable target: `1.0.0`
 ### 0.9.0 — v1 release candidate (NOT READY)
 
 - Maturity gate: `M5`
-- Tracks qualified: 0/28
+- Tracks qualified: 2/28
 - Gates: 0/10 passed
 - Blockers:
   - track accessibility_network_engine_20260719 is M1; M5 is required
@@ -130,7 +129,6 @@ Stable target: `1.0.0`
   - track emergency_health_facilities_pilot_20260718 is M1; M5 is required
   - track facility_location_engine_20260718 is M1; M5 is required
   - track facility_registry_20260719 is M1; M5 is required
-  - track foundation_architecture_20260718 is M1; M5 is required
   - track governance_maori_data_sovereignty_20260718 is M1; M5 is required
   - track health_outcomes_causal_methods_20260719 is M1; M5 is required
   - track interoperability_conformance_sdks_20260719 is M1; M5 is required
@@ -146,7 +144,6 @@ Stable target: `1.0.0`
   - track provenance_query_api_20260719 is M1; M5 is required
   - track publication_validation_20260718 is M1; M5 is required
   - track repository_template_adoption_20260718 is M1; M5 is required
-  - track security_supply_chain_20260719 is M1; M5 is required
   - track simulation_validation_engine_20260719 is M1; M5 is required
   - track spatial_quality_temporality_20260718 is M1; M5 is required
   - track supermarket_health_pilot_20260718 is M1; M5 is required
@@ -165,7 +162,7 @@ Stable target: `1.0.0`
 ### 1.0.0 — stable v1 general availability (NOT READY)
 
 - Maturity gate: `M6`
-- Tracks qualified: 0/28
+- Tracks qualified: 2/28
 - Gates: 0/14 passed
 - Blockers:
   - track accessibility_network_engine_20260719 is M1; M6 is required
@@ -175,7 +172,6 @@ Stable target: `1.0.0`
   - track emergency_health_facilities_pilot_20260718 is M1; M6 is required
   - track facility_location_engine_20260718 is M1; M6 is required
   - track facility_registry_20260719 is M1; M6 is required
-  - track foundation_architecture_20260718 is M1; M6 is required
   - track governance_maori_data_sovereignty_20260718 is M1; M6 is required
   - track health_outcomes_causal_methods_20260719 is M1; M6 is required
   - track interoperability_conformance_sdks_20260719 is M1; M6 is required
@@ -191,7 +187,6 @@ Stable target: `1.0.0`
   - track provenance_query_api_20260719 is M1; M6 is required
   - track publication_validation_20260718 is M1; M6 is required
   - track repository_template_adoption_20260718 is M1; M6 is required
-  - track security_supply_chain_20260719 is M1; M6 is required
   - track simulation_validation_engine_20260719 is M1; M6 is required
   - track spatial_quality_temporality_20260718 is M1; M6 is required
   - track supermarket_health_pilot_20260718 is M1; M6 is required

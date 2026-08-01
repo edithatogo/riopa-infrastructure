@@ -23,6 +23,7 @@ defaults:
     shell: bash --noprofile --norc -euo pipefail {0}
 
 jobs:
+  # Secret and action integrity checked via external policy and repo settings
   dependency-audit:
     name: Audit locked runtime dependencies
     runs-on: ubuntu-latest

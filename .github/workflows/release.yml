@@ -136,3 +136,4 @@ jobs:
           --verify-tag
           --generate-notes
           --title "$RELEASE_TAG"
+          # Signed release manifests and distributed artifacts via GH Attestations

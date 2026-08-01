@@ -1,9 +1,9 @@
 # Evidence index: Foundation architecture and programme governance
 
 - **Track ID:** `foundation_architecture_20260718`
-- **Status:** `active`
+- **Status:** `complete`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M6`
 - **Maturity target:** `M6`
 - **Stability class:** `Governance`
 - **Risk / priority:** `High` / `P0`

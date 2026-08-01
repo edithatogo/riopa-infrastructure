@@ -30,7 +30,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
           "kind": "documentation",
           "location": "conductor/tracks.md",
-          "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
+          "sha256": "11047e735811653f66d9dd98ea68acf8d7d8ddca10b26634e7a93ca398d10d06",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Validated 28-track Conductor index."
@@ -86,7 +86,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap.py",
-          "sha256": "4e8306e147a3923822cf4ef37c89bbc27efa117643bba0dedb65a83ecd6722fb",
+          "sha256": "00f91a9f0bf987fb1934e893439de79fd656548b3a7b264d1e2abf6c4f445001",
           "immutable": false,
           "generated_at": "2026-07-31T09:30:00Z",
           "description": "Automated roadmap and readiness tests."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "8c9e2aec2ef685c240c215d226c323699c0f293e64769114b7b0004ed0c46389",
+          "sha256": "b8e5ac4a7466f39524e71d6422abe1ca20675f717cdfdc601674379764c40a9c",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."
@@ -253,7 +253,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
       "kind": "artifact",
       "location": "conductor/tracks.md",
-      "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
+      "sha256": "11047e735811653f66d9dd98ea68acf8d7d8ddca10b26634e7a93ca398d10d06",
       "immutable": false,
       "generated_at": "2026-07-19T09:20:00Z",
       "description": "Conductor track index delivered with the roadmap."
@@ -262,7 +262,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-roadmap-status",
       "kind": "artifact",
       "location": "ROADMAP_STATUS.md",
-      "sha256": "67423be885b733e2e40c7d03282d0a59e0ba801c680d4c89c4d0be62d4f87a7b",
+      "sha256": "d9a401c38fe968e9071c90f3a4a45cc7ba499b0567129b110f62eee6e584573d",
       "immutable": false,
       "generated_at": "2026-07-31T22:28:08Z",
       "description": "Generated stage-by-stage release readiness and blockers."

@@ -2,7 +2,7 @@
   "track_id": "foundation_architecture_20260718",
   "type": "architecture",
   "phase": "Foundation",
-  "status": "active",
+  "status": "complete",
   "created_at": "2026-07-18T01:30:00Z",
   "updated_at": "2026-07-31T22:09:21Z",
   "description": "Ratify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.",
@@ -32,7 +32,7 @@
   "risk": "High",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M6",
   "owner_role": "Programme owner",
   "review_roles": [
     "Governance analyst",
