@@ -8,15 +8,15 @@
 
 ## 2. Schema and ontology implementation
 
-- [ ] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes.
-- [ ] 2.2 Add bitemporal, original-value, confidence, review and governance fields.
+- [x] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes. (`schemas/canonical-crosswalk.schema.json`, `docs/ontology/canonical-context.jsonld`, `docs/ontology/canonical-ontology-release-1.0.0.json`; SHACL execution remains pending)
+- [x] 2.2 Add bitemporal, original-value, confidence, review and governance fields. (`src/riopa_provenance/canonical.py`, `tests/test_canonical.py`)
 - [ ] 2.3 Generate language bindings and documentation.
 
 ## 3. Crosswalk and conformance
 
-- [ ] 3.1 Build council-planning, facility and source-service golden fixtures.
+- [x] 3.1 Build council-planning, facility and source-service golden fixtures. (`fixtures/canonical-crosswalk-golden.json`, `conformance/v1/corpus.json`)
 - [ ] 3.2 Validate cross-language round trips and SHACL conformance.
-- [ ] 3.3 Test identity under rename, reorganisation, relocation and supersession.
+- [x] 3.3 Test identity under rename, reorganisation, relocation and supersession. (`tests/test_lineage_identifiers.py`, `tests/test_canonical.py`)
 
 ## 4. Stabilisation and migration
 
