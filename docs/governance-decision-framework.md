@@ -1,4 +1,4 @@
-# Rights, privacy and Māori data sovereignty decision framework
+# Rights, privacy and scope-triggered data governance decision framework
 
 This framework records a decision about a source, artifact, transformation,
 model or release. It does not certify tikanga, consent, legal compliance or
@@ -22,7 +22,7 @@ and accountable institutions.
 | licence or attribution uncertainty | licence/source record and legal-status note | redistribution and publication |
 | public visibility without reuse permission | source terms and access evidence | capture, redistribution and inference |
 | personal or health information | privacy/ethics review and disclosure assessment | linkage, analysis and release |
-| Māori data or Māori-relevant derived classification | appropriately engaged governance review and benefit/harm record | capture, transformation, linkage and release |
+| declared culturally sensitive scope, community request or applicable source term | documented scope, benefit/harm and access review; engage an appropriate contact when required | capture, transformation, linkage and release |
 | culturally sensitive place or knowledge | sensitivity assessment and access controls | granularity, mapping and publication |
 | safety or operational risk | threat/safety assessment and mitigation | analysis, recommendation and release |
 | correction, withdrawal or supersession request | authenticated request, scope and successor evidence | distribution and downstream reuse |

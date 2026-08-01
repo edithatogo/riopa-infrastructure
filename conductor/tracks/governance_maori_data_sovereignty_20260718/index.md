@@ -26,6 +26,7 @@
 | R02, R03 | Synthetic withdrawal and public/controlled pathway drill | `reports/governance-withdrawal-drill.md` | Passed; live takedown/reconciliation not claimed |
 | R04, R05 | Release and pilot governance audit | `reports/governance-release-pilot-audit.md` | No live pilots/releases approved; future scope explicitly bounded |
 | R04 | Review fix for expiry and conflict handling | `src/riopa_provenance/governance.py`, `tests/test_governance.py` | Implemented; complete runtime suite passes locally |
+| R04, R05 | Explicit scope-triggered review activation and non-inference boundary | `src/riopa_provenance/governance.py`, `tests/test_governance.py`, `reports/governance-scope-trigger-audit.md` | 14 tests pass; no identity/geography inference or mandatory Māori co-design gate |
 | R05 | Planned facility, health, deprivation and culturally sensitive geography review | `reports/governance-use-case-review.md` | All remain `review-required`; no publication approval inferred |
 
 ## Blocking defects
