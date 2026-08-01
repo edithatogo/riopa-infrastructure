@@ -8,6 +8,11 @@ credentials, include source payloads, or imply permission.
 
 ## Proposed recipients and candidate references
 
+This request is **not** a prerequisite for the already-approved bounded pilot.
+That pilot uses the preserved regional reference packet and remains
+non-authoritative and non-operational. The request is for any future expansion
+to provider-authoritative, national, current-service or operational claims.
+
 Please route this request to the data custodian or accountable data owner for
 each organisation. The following public references are included only to make
 the candidate source and scope unambiguous:

@@ -6,6 +6,10 @@
 
 ## Evidence available to the decision-maker
 
+The existing bounded pilot does not depend on access to a national ambulance
+dataset. Custodian approval is required only if the scope expands to
+authoritative provider, national, current-service or operational claims.
+
 - Repository head: `cefcf50` (panel-preparation and public-source metadata refresh).
 - Successor preservation record: [Zenodo 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563).
 - Internal panel rehearsal: two clean-room bundle builds were byte-identical; `verify.py` passed; expected SHA-256 was `26bf2281…b6813`. This is rehearsal evidence only and does **not** satisfy the mandatory independent external-operator gate.
@@ -58,4 +62,3 @@ Select one and sign separately (this draft records no selection):
 - **Decline/withdraw:** pause the pilot and publish a withdrawal/correction notice if rights, safety or source status cannot be established.
 
 **Signature:** ____________________  **Role:** ____________________  **Date:** __________
-
