@@ -12,6 +12,20 @@ PUBLIC_CLASSES = frozenset({"public"})
 CONTROLLED_CLASSES = frozenset({"restricted", "sensitive", "controlled"})
 BLOCKING_OUTCOMES = frozenset({"withdraw", "superseded", "prohibited", "review-required"})
 
+# Scope labels are deliberately explicit rather than inferred from geography or
+# population names.  This keeps cultural/community review a documented trigger
+# (when required by scope, source terms or risk), not an automatic requirement.
+SCOPE_REVIEW_TRIGGERS: dict[str, str] = {
+    "health": "privacy-ethics",
+    "unit-record": "privacy-ethics",
+    "linkage": "privacy-ethics",
+    "operational": "safety",
+    "culturally-sensitive-geography": "cultural-community",
+    "community-request": "cultural-community",
+    "source-terms": "rights-licence",
+    "statutory": "legal-authority",
+}
+
 
 class GovernanceError(ValueError):
     """Raised when a governance decision cannot safely permit an action."""
@@ -22,6 +36,28 @@ class GovernanceResult:
     allowed: bool
     pathway: str
     reasons: tuple[str, ...]
+
+
+def scope_review_triggers(scope: Sequence[str]) -> tuple[str, ...]:
+    """Return deterministic review domains activated by declared scope labels.
+
+    Labels must be declared by the source/pilot owner; this helper never infers
+    cultural or community obligations from place names or population attributes.
+    Unknown labels are ignored so callers can evolve scope vocabularies without
+    accidentally widening review requirements.
+    """
+
+    if isinstance(scope, (str, bytes)):
+        raise GovernanceError("scope must be a sequence of labels")
+    return tuple(
+        sorted(
+            {
+                SCOPE_REVIEW_TRIGGERS[label]
+                for label in scope
+                if label in SCOPE_REVIEW_TRIGGERS
+            }
+        )
+    )
 
 
 def evaluate_decision(

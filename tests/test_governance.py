@@ -9,6 +9,7 @@ from riopa_provenance.governance import (
     record_supersession,
     record_withdrawal,
     require_allowed,
+    scope_review_triggers,
 )
 
 
@@ -35,6 +36,20 @@ def decision(**overrides: object) -> dict[str, object]:
 
 def test_public_decision_allows_matching_scope() -> None:
     assert evaluate_decision(decision(), pathway="public", required_scope="publication").allowed
+
+
+def test_scope_review_triggers_are_explicit_and_deterministic() -> None:
+    assert scope_review_triggers(["health", "culturally-sensitive-geography", "health"]) == (
+        "cultural-community",
+        "privacy-ethics",
+    )
+    # A place or population label alone does not activate cultural review.
+    assert scope_review_triggers(["new-zealand", "population- Māori"]) == ()
+
+
+def test_scope_review_triggers_reject_scalar_scope() -> None:
+    with pytest.raises(GovernanceError, match="sequence"):
+        scope_review_triggers("health")
 
 
 @pytest.mark.parametrize(

@@ -11,8 +11,12 @@ def test_entity_id_is_stable_and_label_independent() -> None:
 
 def test_version_id_changes_with_representation() -> None:
     base = canonical_entity_id("facility", "NZ-01")
-    first = canonical_version_id(base, valid_from="2026-01-01", valid_to=None, representation={"name": "A"})
-    second = canonical_version_id(base, valid_from="2026-01-01", valid_to=None, representation={"name": "B"})
+    first = canonical_version_id(
+        base, valid_from="2026-01-01", valid_to=None, representation={"name": "A"}
+    )
+    second = canonical_version_id(
+        base, valid_from="2026-01-01", valid_to=None, representation={"name": "B"}
+    )
     assert first != second
     assert first.startswith(base + ":version:")
 

@@ -8,7 +8,8 @@ the method/reviewer metadata required for later adjudication.
 from __future__ import annotations
 
 import re
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 from .hashing import sha256_json
 
@@ -47,8 +48,9 @@ def build_crosswalk(*, source_id: str, source_label: str, canonical_id: str,
     allowed = {"unknown", "low", "medium", "high", "disputed", "inapplicable"}
     if confidence not in allowed:
         raise ValueError(f"confidence must be one of {sorted(allowed)}")
+    mapping_key = {"source_id": source_id, "canonical_id": canonical_id, "valid_from": valid_from}
     return {
-        "mapping_id": f"urn:riopa:mapping:{sha256_json({'source_id': source_id, 'canonical_id': canonical_id, 'valid_from': valid_from})[:24]}",
+        "mapping_id": f"urn:riopa:mapping:{sha256_json(mapping_key)[:24]}",
         "source_assertion": {"source_id": source_id, "label": source_label},
         "canonical_id": canonical_id,
         "method": method,
