@@ -5,6 +5,7 @@
   "namespace": "https://w3id.org/riopa/ontology/",
   "artifacts": [
     {"path": "docs/ontology/canonical-context.jsonld", "kind": "json-ld-context"},
+    {"path": "docs/ontology/canonical-crosswalk.shacl.ttl", "kind": "shacl-shapes"},
     {"path": "schemas/canonical-crosswalk.schema.json", "kind": "json-schema"},
     {"path": "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json", "kind": "migration-fixture"}
   ],

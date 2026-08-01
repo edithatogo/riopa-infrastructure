@@ -82,6 +82,15 @@ def test_ontology_context_declares_canonical_terms() -> None:
     assert {"entity", "mapping", "canonicalConcept"}.issubset(terms)
 
 
+def test_shacl_shape_is_versioned_preparation_not_conformance_claim() -> None:
+    shape = Path("docs/ontology/canonical-crosswalk.shacl.ttl").read_text()
+    assert "riopa:CanonicalCrosswalkShape" in shape
+    assert "sh:NodeShape" in shape
+    manifest = json.loads(Path("docs/ontology/canonical-conformance-manifest-1.0.0.json").read_text())
+    assert "docs/ontology/canonical-crosswalk.shacl.ttl" in manifest["artifacts"]
+    assert manifest["checks"]["shacl"]["status"] == "not-run"
+
+
 def test_golden_fixture_has_stable_canonical_digest() -> None:
     fixture = json.loads(Path("fixtures/canonical-crosswalk-golden.json").read_text())
     assert validate_crosswalk_semantics(fixture) == ()
@@ -161,7 +170,7 @@ def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
     assert descriptor["version"] == "1.0.0"
     assert descriptor["status"] == "repository-fixture"
     assert descriptor["publication"]["persistent_identifier"] is None
-    assert len(descriptor["artifacts"]) == 3
+    assert len(descriptor["artifacts"]) == 4
 
 
 def test_conformance_manifest_reports_unmet_external_checks() -> None:
