@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "urn:riopa:benchmark:wp010:performance-contract:1.0.0",
+  "status": "synthetic-non-operational",
+  "scope": "regional-public-data-pilot",
+  "workload": "workload.json",
+  "runner": "run.py",
+  "measurement": {
+    "required_fields": [
+      "case_id", "records", "iterations", "elapsed_ns", "records_per_second",
+      "classification", "environment"
+    ],
+    "clock": "monotonic_ns",
+    "repeat_policy": "at least 3 repetitions per case; report median",
+    "warmup_policy": "one discarded warm-up run per case",
+    "units": {"elapsed_ns": "nanoseconds", "records_per_second": "records/second"}
+  },
+  "projection": {
+    "allowed": true,
+    "classification": "projection-not-measurement",
+    "method": "linear record-count extrapolation from regional measured median",
+    "limitations": [
+      "national scale is not executed or observed by this fixture",
+      "linear scaling omits network, storage, contention and cache effects",
+      "a projection cannot close the national-scale performance gate"
+    ]
+  },
+  "suitability": {"live_operations": false, "clinical": false, "dispatch": false}
+}

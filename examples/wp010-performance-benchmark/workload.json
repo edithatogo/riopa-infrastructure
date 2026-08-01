@@ -1,0 +1,10 @@
+{
+  "workload_id": "urn:riopa:workload:wp010:regional-v1",
+  "records": 128,
+  "national_projection_records": 250000,
+  "iterations": 200,
+  "algorithm": "deterministic integer checksum over synthetic rows",
+  "seed": 20260801,
+  "data_status": "synthetic-only",
+  "regional_boundary": "bounded public-data pilot; no national source claimed"
+}
