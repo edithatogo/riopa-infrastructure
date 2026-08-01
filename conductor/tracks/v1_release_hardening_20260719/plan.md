@@ -2,7 +2,7 @@
 
 ## 1. Feature freeze and normative inventory
 
-- [x] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. (v1-release-readiness-baseline-20260801.json; bounded baseline)
+- [ ] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. (full inventory remains pending; readiness baseline is not an inventory)
 - [ ] 1.2 Generate compatibility diffs and resolve unintended breaking changes.
 - [ ] 1.3 Close or formally defer non-v1 features.
 
@@ -29,6 +29,7 @@
 ## 5. Review fixes
 
 - [x] 5.1 Record a machine-readable, fail-closed v1 readiness baseline and explicit release blockers. (v1-release-readiness-baseline-20260801.json)
+- [x] 5.2 Correct the readiness baseline boundary so it does not overstate completion of the normative inventory. (review fix)
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.

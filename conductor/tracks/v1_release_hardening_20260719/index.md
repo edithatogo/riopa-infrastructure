@@ -31,3 +31,11 @@
 Required reviewer roles: Governance reviewer, API/schema reviewer, Provenance reviewer, Security reviewer, Data steward, Operations reviewer, Performance reviewer, Interoperability reviewer, Research-object reviewer, External user reviewer, Quantitative methods reviewer, Scientific reviewer.
 
 This index records a bounded repository-owned readiness baseline while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+
+## Review record
+
+- Review scope: v1 readiness baseline, plan status, metadata and registry through
+  `1bac0cc`.
+- Finding: the baseline was incorrectly used as evidence that the complete
+  normative API/schema/ontology inventory was finished.
+- Fix: restored task 1.1 to pending and recorded the boundary explicitly.
