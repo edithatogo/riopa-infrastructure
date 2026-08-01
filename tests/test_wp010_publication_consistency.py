@@ -48,6 +48,7 @@ def test_wp010_record_validator_rejects_unbound_completed_report(tmp_path: Path)
     record = (ROOT / "docs/wp010-external-reproduction-approval-record.md").read_text()
     record = record.replace("`TBD`", "ready")
     record = record.replace("ready", "2026-08-01", 1)
+    record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
     record += f"\nDeposited packet digest: `{DIGEST}`\n"
     path = tmp_path / "record.md"
     path.write_text(record)
@@ -55,4 +56,40 @@ def test_wp010_record_validator_rejects_unbound_completed_report(tmp_path: Path)
         [sys.executable, "scripts/validate_wp010_reproduction_record.py", str(path)],
         cwd=ROOT, capture_output=True, text=True, check=False,
     )
-    assert process.returncode in {5, 6, 7, 8}
+    assert process.returncode in {5, 6, 7, 8, 9, 10, 11, 12}
+
+
+def test_wp010_record_validator_rejects_completed_record_without_external_identity(tmp_path: Path) -> None:
+    record = (ROOT / "docs/wp010-external-reproduction-approval-record.md").read_text()
+    replacements = {
+        "`TBD`": "ready",
+        "- Operator/person or accountable organisation: `ready`": "- Operator/person or accountable organisation: `TBD`",
+    }
+    for old, new in replacements.items():
+        record = record.replace(old, new)
+    record = record.replace("ready", "2026-08-01", 1)
+    record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
+    record += f"\nDeposited packet digest: `{DIGEST}`\n"
+    path = tmp_path / "record.md"
+    path.write_text(record)
+    process = subprocess.run(
+        [sys.executable, "scripts/validate_wp010_reproduction_record.py", str(path)],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    assert process.returncode in {6, 9}
+
+
+def test_wp010_record_validator_rejects_non_uri_report(tmp_path: Path) -> None:
+    record = (ROOT / "docs/wp010-external-reproduction-approval-record.md").read_text()
+    record = record.replace("`TBD`", "ready")
+    record = record.replace("ready", "2026-08-01", 1)
+    record = record.replace("- Report digest: ready", f"- Report digest: `{DIGEST}`")
+    record = record.replace("- Report URI or issue #149 comment: ready", "- Report URI or issue #149 comment: local-file")
+    record += f"\nDeposited packet digest: `{DIGEST}`\n"
+    path = tmp_path / "record.md"
+    path.write_text(record)
+    process = subprocess.run(
+        [sys.executable, "scripts/validate_wp010_reproduction_record.py", str(path)],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    assert process.returncode == 9
