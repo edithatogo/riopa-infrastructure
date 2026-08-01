@@ -60,3 +60,10 @@ def test_crosswalk_semantics_fail_closed_for_reversed_time() -> None:
         valid_to="2026-01-01",
     )
     assert "valid_time.to must not precede valid_time.from" in validate_crosswalk_semantics(record)
+
+
+def test_ontology_context_declares_canonical_terms() -> None:
+    context = json.loads(Path("docs/ontology/canonical-context.jsonld").read_text())
+    terms = context["@context"]
+    assert terms["riopa"] == "https://w3id.org/riopa/ontology/"
+    assert {"entity", "mapping", "canonicalConcept"}.issubset(terms)
