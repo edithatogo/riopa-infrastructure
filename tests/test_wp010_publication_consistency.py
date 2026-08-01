@@ -1,5 +1,7 @@
 from pathlib import Path
 import re
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 DOI = "10.5281/zenodo.21735818"
@@ -32,3 +34,11 @@ def test_wp010_approval_record_is_explicitly_unresolved_until_completed() -> Non
     assert "Report digest" in record
     assert "`TBD`" in record
     assert "does not approve" in record
+
+def test_wp010_record_validator_fails_closed_on_pending_template() -> None:
+    process = subprocess.run(
+        [sys.executable, "scripts/validate_wp010_reproduction_record.py"],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    assert process.returncode == 3
+    assert "pending" in process.stderr
