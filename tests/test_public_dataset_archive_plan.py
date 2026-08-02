@@ -113,3 +113,12 @@ def test_hamilton_food_premise_packet_is_revision_bound() -> None:
     assert descriptor["packet_revision"] == "3d3d0f4eb3065bcfb28e1c05cb8c7012a58df433"
     assert descriptor["status"] == "archived-source-specific-assertions"
     assert "national" in descriptor["non_claim"]
+
+
+def test_facility_source_family_gate_is_bounded() -> None:
+    evidence = json.loads(
+        (ROOT / "docs/facility-source-family-qualification-20260803.json").read_text()
+    )
+    assert evidence["qualification"]["independent_families"] >= evidence["qualification"]["required_minimum"]
+    assert evidence["qualification"]["reconciliation_gate"] == "open"
+    assert evidence["qualification"]["national_completeness_claim"] is False
