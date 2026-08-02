@@ -95,3 +95,12 @@ def test_food_service_packet_is_source_specific_and_claim_bounded() -> None:
     assert descriptor["status"] == "archived-source-specific-assertions"
     assert "authoritative" in descriptor["non_claim"]
     assert "national-accessibility-claim" in descriptor["disabled_use"]
+
+
+def test_marlborough_food_premise_packet_is_revision_bound() -> None:
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/marlborough-food-premise-licences-2026.json").read_text()
+    )
+    assert descriptor["packet_revision"] == "b31703eb0dbdaa6aa05b6a84df5fe46e57e37ee0"
+    assert descriptor["status"] == "archived-source-specific-assertions"
+    assert "national" in descriptor["non_claim"]
