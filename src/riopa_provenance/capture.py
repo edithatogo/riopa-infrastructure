@@ -256,7 +256,7 @@ def validate_capture_url(url: httpx.URL, policy: CapturePolicy) -> None:
         validate_resolved_addresses(host, policy.resolve_addresses(host))
 
 
-class PinnedResolverTransport(httpx.BaseTransport):
+class PinnedResolverTransport(httpx.BaseTransport):  # type: ignore[misc]
     """Connect to a validated DNS result while preserving HTTP Host and TLS SNI.
 
     The request URL is rewritten only at the transport boundary. This prevents
