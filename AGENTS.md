@@ -49,7 +49,7 @@ Do not stop after analysing, bootstrapping, or writing a plan. Make the safest u
 
 ## Engineering and quality rules
 
-- Python 3.12/3.13, `uv`, strict MyPy, Ruff, Bandit, pytest and branch-aware coverage are mandatory for the current implementation.
+- Python 3.14 only, `uv`, strict MyPy, Ruff, Bandit, pytest and branch-aware coverage are mandatory for the current implementation.
 - Do not lower, bypass or hide the 90% stable-release coverage target. Improve coverage with meaningful unit, property, contract, integration, failure-injection and reproducibility tests.
 - Keep raw evidence immutable and content-addressed. Canonical state and physical formats are versioned projections.
 - Use RFC 8785/cross-language canonicalisation for signed or chained JSON.

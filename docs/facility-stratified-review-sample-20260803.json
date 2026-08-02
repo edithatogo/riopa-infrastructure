@@ -1,0 +1,50 @@
+{
+  "evidence_id": "facility-stratified-review-sample-20260803",
+  "source_evidence": "facility-food-reconciliation-20260803",
+  "method": "sha256-ranked-bounded-strata-v1",
+  "sample_divisor": 20,
+  "strata": [
+    {
+      "id": "candidate-matches",
+      "population": 39,
+      "sample_size": 39,
+      "selection": "include-all-candidate-pairs",
+      "review_questions": [
+        "same facility",
+        "classification",
+        "coordinate plausibility"
+      ]
+    },
+    {
+      "id": "osm-only",
+      "population": 13650,
+      "sample_size": 683,
+      "selection": "stable-sha256-rank-of-source-assertion-id",
+      "review_questions": [
+        "classification",
+        "coordinate plausibility",
+        "duplicate risk"
+      ]
+    },
+    {
+      "id": "marlborough-only",
+      "population": 379,
+      "sample_size": 19,
+      "selection": "stable-sha256-rank-of-source-assertion-id",
+      "review_questions": [
+        "classification",
+        "coordinate plausibility",
+        "duplicate risk"
+      ]
+    }
+  ],
+  "total_population": 14068,
+  "total_sample_size": 741,
+  "selection_frame_sha256": "051093fdea15b7bed41206e6669566d1fba242f76b55c969c0e23047666fef32",
+  "status": "pending-agent-panel-disposition",
+  "limitations": [
+    "The frame contains counts, not source payload identifiers or adjudications.",
+    "Panel review is required before identity, classification or authority claims.",
+    "Hamilton remains excluded because its archived packet has null geometry."
+  ]
+}

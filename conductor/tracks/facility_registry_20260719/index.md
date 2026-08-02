@@ -1,7 +1,7 @@
 # Evidence index: Versioned multi-source facility registry
 
 - **Track ID:** `facility_registry_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.6.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -29,6 +29,7 @@
 | `FACILITY-SOURCE-MATERIALIZATION-20260803` | Payload digests and record counts were verified directly from the three immutable hosted packets | `scripts/materialize_archived_food_sources.py`, `docs/facility-source-materialization-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Hamilton packet has null geometry for all 3,245 records; geometry/reconciliation qualification remains open |
 | `FACILITY-FOOD-RECONCILIATION-20260803` | Deterministic matching ran on the two spatially usable packets while preserving source-only disagreement | `scripts/qualify_archived_food_reconciliation.py`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py` | 39 candidate matches are not adjudicated; Hamilton is attribute-only and panel qualification remains open |
 | `FACILITY-PANEL-QUALIFICATION-20260803` | Methods, provenance and governance dispositions qualify candidate generation without authoritative promotion | `docs/facility-panel-qualification-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Reviewed matches remain zero; stratified adjudication or candidate-only release decision remains open |
+| `FACILITY-STRATIFIED-REVIEW-SAMPLE-20260803` | Deterministic bounded strata define the candidate, OSM-only and Marlborough-only review frame | `scripts/build_facility_review_sample.py`, `docs/facility-stratified-review-sample-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Frame is reproducible; panel disposition and any authority decision remain open |
 
 ## Blocking defects
 
