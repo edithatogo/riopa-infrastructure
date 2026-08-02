@@ -18,6 +18,7 @@ def test_meshblock_projection_records_are_content_addressed_and_complete() -> No
         ("source_record", "source_record_sha256"),
         ("capture_records", "capture_records_sha256"),
         ("projection_record", "projection_record_sha256"),
+        ("materialization_receipt", "materialization_receipt_sha256"),
     ):
         path = EVIDENCE / manifest[path_field]
         assert path.is_file()
@@ -50,3 +51,7 @@ def test_meshblock_projection_records_are_content_addressed_and_complete() -> No
     assert record["archive_only"] is True
     assert record["live_endpoint_contacted"] is False
     assert "never repair implicitly" in record["geometry_policy"]
+
+    receipt = json.loads((EVIDENCE / manifest["materialization_receipt"]).read_text())
+    assert receipt["projection_id"] == projection["projection_id"]
+    assert receipt["receipt_sha256"] == sha256_json(receipt, omit_keys={"receipt_sha256"})

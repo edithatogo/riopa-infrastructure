@@ -107,6 +107,7 @@ class ArchivedProjectionResult:
     capture_records_path: Path
     records_manifest_path: Path
     projection_record_path: Path
+    materialization_receipt_path: Path
     projection_record: dict[str, Any]
     materialization: SpatialMaterialization
 
@@ -513,6 +514,7 @@ def build_archived_arcgis_projection(
         base_name=base_name,
         repair_invalid=False,
     )
+    quality = json.loads(materialization.quality_report_path.read_text(encoding="utf-8"))
     projection_record = {
         "schema_version": "1.0.0",
         "record_type": "archived_spatial_projection",
@@ -540,16 +542,43 @@ def build_archived_arcgis_projection(
                 for feature in sorted(features, key=lambda value: str(value["id"]))
             ]
         ),
-        "materialization": {
-            "geoparquet_sha256": materialization.geoparquet_sha256,
-            "geoparquet_size_bytes": materialization.geoparquet_path.stat().st_size,
-            "duckdb_sha256": materialization.duckdb_sha256,
-            "duckdb_size_bytes": materialization.duckdb_path.stat().st_size,
-            "quality_sha256": sha256_file(materialization.quality_report_path),
+        "quality": {
+            "null_geometry_count": quality["null_geometry_count"],
+            "invalid_geometry_count_before_repair": quality["invalid_geometry_count_before_repair"],
+            "repaired_geometry_count": quality["repaired_geometry_count"],
+            "duplicate_feature_id_count": quality["duplicate_feature_id_count"],
+            "geometry_types": quality["geometry_types"],
+            "bbox": quality["bbox"],
         },
+        "materialization_profiles": ["GeoParquet 1.1.0", "DuckDB deterministic-semantics"],
     }
     projection_envelope, projection_record_path = _write_content_addressed(
         records, "projection", projection_record
+    )
+    materialization_receipt = {
+        "schema_version": "1.0.0",
+        "record_type": "spatial_materialization_receipt",
+        "projection_id": projection_envelope["projection_id"],
+        "geoparquet": {
+            "sha256": materialization.geoparquet_sha256,
+            "size_bytes": materialization.geoparquet_path.stat().st_size,
+            "profile": "GeoParquet 1.1.0",
+        },
+        "duckdb": {
+            "sha256": materialization.duckdb_sha256,
+            "size_bytes": materialization.duckdb_path.stat().st_size,
+            "reproducibility_class": "deterministic-semantics",
+        },
+        "quality_report": {
+            "sha256": sha256_file(materialization.quality_report_path),
+            "size_bytes": materialization.quality_report_path.stat().st_size,
+        },
+    }
+    materialization_receipt["receipt_sha256"] = sha256_json(materialization_receipt)
+    materialization_receipt_path = records / "materialization-receipt.json"
+    materialization_receipt_path.write_text(
+        json.dumps(materialization_receipt, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
     )
     records_manifest = {
         "schema_version": "1.0.0",
@@ -561,6 +590,8 @@ def build_archived_arcgis_projection(
         "projection_record": str(projection_record_path.relative_to(records)),
         "projection_record_sha256": sha256_file(projection_record_path),
         "projection_id": projection_envelope["projection_id"],
+        "materialization_receipt": materialization_receipt_path.name,
+        "materialization_receipt_sha256": sha256_file(materialization_receipt_path),
     }
     records_manifest["manifest_sha256"] = sha256_json(records_manifest)
     records_manifest_path = records / "records-manifest.json"
@@ -574,6 +605,7 @@ def build_archived_arcgis_projection(
         capture_records_path=capture_records_path,
         records_manifest_path=records_manifest_path,
         projection_record_path=projection_record_path,
+        materialization_receipt_path=materialization_receipt_path,
         projection_record=projection_record,
         materialization=materialization,
     )

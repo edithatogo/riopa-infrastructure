@@ -277,6 +277,18 @@ def test_builds_content_addressed_records_and_repair_free_projection(tmp_path: P
     assert quality["repaired_geometry_count"] == 0
     assert quality["geometry_repair_enabled"] is False
 
+    rebuild = build_archived_arcgis_projection(
+        descriptor,
+        packet_root=packet_root,
+        records_dir=tmp_path / "rebuild-records",
+        output_dir=tmp_path / "rebuild-bulk",
+        base_name="meshblocks",
+    )
+    first_projection = json.loads(result.projection_record_path.read_text())
+    second_projection = json.loads(rebuild.projection_record_path.read_text())
+    assert first_projection["projection_id"] == second_projection["projection_id"]
+    assert first_projection["record"] == second_projection["record"]
+
 
 def test_projection_rejects_incomplete_inventory(tmp_path: Path) -> None:
     descriptor, payloads = _fixture()

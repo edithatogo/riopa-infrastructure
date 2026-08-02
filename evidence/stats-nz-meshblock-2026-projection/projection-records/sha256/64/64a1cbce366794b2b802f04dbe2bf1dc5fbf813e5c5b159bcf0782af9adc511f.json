@@ -1,5 +1,5 @@
 {
-  "projection_id": "urn:riopa:projection:sha256:9400d276aa9208021cbac5baad5df2e275b5c0645b1fe1b114d66f09593b29af",
+  "projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
   "record": {
     "archive_only": true,
     "capture_record_ids": [
@@ -246,21 +246,34 @@
     "geometry_policy": "preserve translated source geometry; never repair implicitly",
     "live_endpoint_contacted": false,
     "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
-    "materialization": {
-      "duckdb_sha256": "edd3e538f9e907a889cb01e6cae055bf2e43ba20dfc9eabd781639aeab950b6b",
-      "duckdb_size_bytes": 297021440,
-      "geoparquet_sha256": "713868f5f63c56c8ce7ff179e84ba6aec67608a3af2a4761f4bcbae796e2d649",
-      "geoparquet_size_bytes": 230509833,
-      "quality_sha256": "dfe414ff986b035507e27e29dade920f9f1eaf2bddb7b9a3d1656c7e6e18bc53"
-    },
+    "materialization_profiles": [
+      "GeoParquet 1.1.0",
+      "DuckDB deterministic-semantics"
+    ],
     "normalized_semantic_sha256": "1b0a0e6a9ffde6b065dcbee5f65e8bd31d141c927895edb34b98d9499b0ea69f",
     "object_id_field": "OBJECTID",
     "object_ids_sha256": "314d697704ed857a9e756c0605e06b1cfda38d8057a645df23618404bb14d02e",
     "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202",
+    "quality": {
+      "bbox": [
+        1067061.1995,
+        4701317.1815,
+        2523319.4925,
+        6242140.2959
+      ],
+      "duplicate_feature_id_count": 0,
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "invalid_geometry_count_before_repair": 1,
+      "null_geometry_count": 16,
+      "repaired_geometry_count": 0
+    },
     "record_type": "archived_spatial_projection",
     "schema_version": "1.0.0",
     "source_id": "urn:riopa:source:stats-nz:meshblock-2026",
     "source_record_sha256": "9067e5e9da3673f88de357315870fe18d058760fe87a36e9bf4abfc080a55ced"
   },
-  "record_sha256": "9400d276aa9208021cbac5baad5df2e275b5c0645b1fe1b114d66f09593b29af"
+  "record_sha256": "64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f"
 }

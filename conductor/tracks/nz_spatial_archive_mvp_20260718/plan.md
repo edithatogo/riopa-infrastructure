@@ -13,7 +13,7 @@
 - [ ] 2.1 Transform source layers into canonical feature/version records.
 - [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.
 - [ ] 2.3 Link source, document and plan identities without unsupported interpretation.
-- [x] 2.4 Build a normalized Meshblock feature projection with page-level capture lineage and no implicit geometry repair (`8f34bfd`; projection `urn:riopa:projection:sha256:9400d276aa9208021cbac5baad5df2e275b5c0645b1fe1b114d66f09593b29af`).
+- [x] 2.4 Build a normalized Meshblock feature projection with page-level capture lineage and no implicit geometry repair (`8f34bfd`; projection `urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f`).
 
 ## 3. Materialisation and quality
 
@@ -30,7 +30,7 @@
 
 ## 5. Review fixes
 
-- [x] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record and safely reuse only a verified local packet (`ffeb681`, `6c9c5c8`, `f04693c`).
+- [x] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record, safely reuse only a verified local packet, reject redirects outside the archive host boundary and separate stable semantic identity from run-specific DuckDB bytes (`ffeb681`, `6c9c5c8`, `f04693c`, `de8b790`).
 
 ## Track closeout
 
