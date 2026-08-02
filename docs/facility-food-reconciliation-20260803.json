@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "candidate_matches": 39,
+    "marlborough_spatial_assertions": 379,
+    "osm_spatial_assertions": 13650,
+    "source_only": 13951
+  },
+  "evidence_id": "facility-food-reconciliation-20260803",
+  "limitations": [
+    "Candidate matches are not adjudicated facility identities.",
+    "Hamilton is excluded because its packet has null geometry for every record.",
+    "The result does not estimate national completeness or source accuracy."
+  ],
+  "method": "riopa-name-distance-v1",
+  "source_packets": {
+    "marlborough-food-premise-licences": "b31703eb0dbdaa6aa05b6a84df5fe46e57e37ee0",
+    "osm-new-zealand-food-service": "d834601efedada86be03dee2ff7a90d0fa37c0a2"
+  },
+  "status": "candidate-matches-not-adjudicated"
+}

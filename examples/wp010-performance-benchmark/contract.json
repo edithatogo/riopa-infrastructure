@@ -1,9 +1,12 @@
 {
   "schema_version": "1.0.0",
   "benchmark_id": "urn:riopa:benchmark:wp010:performance-contract:1.0.0",
-  "status": "synthetic-non-operational",
+  "status": "manifest-bound-synthetic-non-operational",
   "scope": "regional-public-data-pilot",
   "workload": "workload.json",
+  "national_workload_manifest": "docs/national-workload-manifest-20260803.json",
+  "enabled_domains": ["ingestion", "scalability", "accessibility-reference-only"],
+  "disabled_domains": ["network", "timetable", "facility"],
   "runner": "run.py",
   "measurement": {
     "required_fields": [

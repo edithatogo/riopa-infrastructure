@@ -16,6 +16,20 @@ from pathlib import Path
 from typing import Any
 
 HERE = Path(__file__).parent
+ROOT = HERE.parents[1]
+
+
+def load_manifest() -> dict[str, Any]:
+    path = ROOT / "docs/national-workload-manifest-20260803.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    from riopa_provenance.hashing import sha256_json
+
+    observed = sha256_json(manifest, omit_keys={"manifest_sha256"})
+    if observed != manifest.get("manifest_sha256"):
+        raise ValueError("national workload manifest digest mismatch")
+    if manifest.get("scope", {}).get("live_endpoints_contacted") is not False:
+        raise ValueError("national workload manifest must be archive-only")
+    return manifest
 
 
 def checksum(records: int, iterations: int, seed: int) -> int:
@@ -64,6 +78,9 @@ def measure(
 
 def run(output: Path | None = None) -> dict[str, Any]:
     workload = json.loads((HERE / "workload.json").read_text(encoding="utf-8"))
+    manifest = load_manifest()
+    workload["national_workload_manifest_path"] = workload["national_workload_manifest"]
+    workload["national_workload_manifest"] = manifest
     scenarios = []
     for scenario in workload["scenarios"]:
         result = measure(
@@ -90,6 +107,22 @@ def run(output: Path | None = None) -> dict[str, Any]:
         "regional": regional,
         "scenarios": scenarios,
         "national": projection,
+        "ingestion": {
+            "classification": "archive-bound-metadata",
+            "geography_features": manifest["snapshots"][0]["feature_count"],
+            "geography_pages": manifest["snapshots"][0]["page_count"],
+            "population_workbook_bytes": manifest["snapshots"][1]["workbook_bytes"],
+            "live_endpoint_contacted": False,
+        },
+        "accessibility": {
+            "classification": "reference-only-spatial-input",
+            "geography_snapshot": manifest["snapshots"][0]["id"],
+            "population_snapshot": manifest["snapshots"][1]["id"],
+            "network": "disabled-no-archive",
+            "timetable": "disabled-no-archive",
+            "facility": "disabled-no-archive",
+            "claim_supported": False,
+        },
         "environment": {"python": __import__("sys").version.split()[0]},
     }
     if output:

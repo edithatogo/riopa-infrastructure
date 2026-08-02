@@ -1,9 +1,13 @@
 {
   "evidence_id": "regional-performance-evidence-20260802",
   "benchmark_id": "urn:riopa:benchmark:wp010:performance-contract:1.0.0",
-  "status": "synthetic-regional-only",
+  "status": "manifest-bound-synthetic-regional-only",
   "runner": "examples/wp010-performance-benchmark/run.py",
   "workload": "examples/wp010-performance-benchmark/workload.json",
+  "national_workload_manifest": "docs/national-workload-manifest-20260803.json",
+  "national_workload_manifest_sha256": "2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67",
+  "enabled_domains": ["ingestion", "scalability", "accessibility-reference-only"],
+  "disabled_domains": ["network", "timetable", "facility"],
   "regional": {
     "classification": "measured-regional-synthetic",
     "records": 128,
@@ -18,6 +22,8 @@
   "limitations": [
     "Timing is environment-dependent and resource/cost instrumentation is not configured.",
     "This artifact does not establish national-scale performance.",
-    "This artifact is not operational or production evidence."
+    "This artifact is not operational or production evidence.",
+    "Population is an archived subnational reference workbook; no population is assigned to Meshblocks.",
+    "Network, timetable and facility claims are disabled until their archives exist."
   ]
 }

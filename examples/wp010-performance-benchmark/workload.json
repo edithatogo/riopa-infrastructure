@@ -1,7 +1,17 @@
 {
   "workload_id": "urn:riopa:workload:wp010:regional-v1",
+  "national_workload_manifest": "docs/national-workload-manifest-20260803.json",
+  "national_workload_manifest_sha256": "2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67",
+  "benchmark_domains": {
+    "ingestion": "enabled",
+    "scalability": "enabled",
+    "accessibility": "enabled-reference-only",
+    "network": "disabled-no-archive",
+    "timetable": "disabled-no-archive",
+    "facility": "disabled-no-archive"
+  },
   "records": 128,
-  "national_projection_records": 250000,
+  "national_projection_records": 57575,
   "iterations": 200,
   "scenarios": [
     {"scenario_id": "baseline", "records": 128, "iterations": 200},
@@ -10,6 +20,7 @@
   ],
   "algorithm": "deterministic integer checksum over synthetic rows",
   "seed": 20260801,
-  "data_status": "synthetic-only",
-  "regional_boundary": "bounded public-data pilot; no national source claimed"
+  "data_status": "manifest-bound-public-snapshots-with-synthetic-timing",
+  "regional_boundary": "bounded public-data pilot; national result remains a projection",
+  "network_timetable_facility_claims": "disabled-until-archives-exist"
 }

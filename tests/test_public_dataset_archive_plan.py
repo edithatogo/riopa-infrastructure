@@ -85,3 +85,74 @@ def test_population_archive_is_revision_and_digest_bound() -> None:
     assert evidence["population_workbook_sha256"] == (
         "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6"
     )
+
+
+def test_food_service_packet_is_source_specific_and_claim_bounded() -> None:
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/osm-new-zealand-food-service-2026.json").read_text()
+    )
+    assert descriptor["packet_revision"] == "d834601efedada86be03dee2ff7a90d0fa37c0a2"
+    assert descriptor["status"] == "archived-source-specific-assertions"
+    assert "authoritative" in descriptor["non_claim"]
+    assert "national-accessibility-claim" in descriptor["disabled_use"]
+
+
+def test_marlborough_food_premise_packet_is_revision_bound() -> None:
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/marlborough-food-premise-licences-2026.json").read_text()
+    )
+    assert descriptor["packet_revision"] == "b31703eb0dbdaa6aa05b6a84df5fe46e57e37ee0"
+    assert descriptor["status"] == "archived-source-specific-assertions"
+    assert "national" in descriptor["non_claim"]
+
+
+def test_hamilton_food_premise_packet_is_revision_bound() -> None:
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/hamilton-food-premise-register-2026.json").read_text()
+    )
+    assert descriptor["packet_revision"] == "3d3d0f4eb3065bcfb28e1c05cb8c7012a58df433"
+    assert descriptor["status"] == "archived-source-specific-assertions"
+    assert "national" in descriptor["non_claim"]
+
+
+def test_facility_source_family_gate_is_bounded() -> None:
+    evidence = json.loads(
+        (ROOT / "docs/facility-source-family-qualification-20260803.json").read_text()
+    )
+    assert (
+        evidence["qualification"]["independent_families"]
+        >= evidence["qualification"]["required_minimum"]
+    )
+    assert evidence["qualification"]["reconciliation_gate"] == "open"
+    assert evidence["qualification"]["national_completeness_claim"] is False
+
+
+def test_materialized_food_source_summary_is_digest_bound_and_non_authoritative() -> None:
+    evidence = json.loads((ROOT / "docs/facility-source-materialization-20260803.json").read_text())
+    assert len(evidence["sources"]) == 3
+    assert all(item["source_assertions_only"] for item in evidence["sources"])
+    assert all(len(item["payload_sha256"]) == 64 for item in evidence["sources"])
+    hamilton = next(
+        item
+        for item in evidence["sources"]
+        if item["source_id"] == "hamilton-food-premise-register"
+    )
+    assert hamilton["null_geometry_count"] == hamilton["record_count"]
+    assert hamilton["spatially_usable"] is False
+    assert evidence["claims"]["authoritative_registry"] is False
+
+
+def test_food_reconciliation_preserves_candidate_and_source_only_counts() -> None:
+    evidence = json.loads((ROOT / "docs/facility-food-reconciliation-20260803.json").read_text())
+    assert evidence["status"] == "candidate-matches-not-adjudicated"
+    assert evidence["counts"]["candidate_matches"] == 39
+    assert evidence["counts"]["source_only"] == 13951
+    assert "Hamilton" in " ".join(evidence["limitations"])
+
+
+def test_facility_panel_preserves_open_adjudication_gate() -> None:
+    evidence = json.loads((ROOT / "docs/facility-panel-qualification-20260803.json").read_text())
+    assert evidence["inputs"]["candidate_matches"] == 39
+    assert evidence["decisions"]["reviewed_matches"] == 0
+    assert evidence["decisions"]["authoritative_registry"] is False
+    assert len(evidence["panel"]) == 3

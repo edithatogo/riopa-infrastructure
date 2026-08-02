@@ -1,0 +1,14 @@
+{
+  "source_id": "osm-new-zealand-food-service",
+  "authority": "OpenStreetMap contributors / OpenDataSoft mirror",
+  "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/36",
+  "landing_page": "https://c0mm0.com/entry/food-services-new-zealand-osm-data/",
+  "archive_dataset": "edithatogo/riopa-public-data-archive",
+  "packet_revision": "d834601efedada86be03dee2ff7a90d0fa37c0a2",
+  "capture_run": "https://github.com/edithatogo/open_social_data/actions/runs/30754134781",
+  "status": "archived-source-specific-assertions",
+  "rights_status": "ODbL-attribution-required",
+  "non_claim": "This packet is not an authoritative or complete food-retail register and does not establish national facility coverage.",
+  "enabled_use": ["bounded-source-reconciliation", "provenance-fixture"],
+  "disabled_use": ["authoritative-facility-coverage", "national-accessibility-claim"]
+}

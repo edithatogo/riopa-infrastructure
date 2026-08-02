@@ -40,6 +40,14 @@ The machine-readable plan lists the exact source families, routing, status,
 downstream tracks and non-claims in
 `docs/public-dataset-archive-incorporation-plan-20260802.json`.
 
+The upstream acquisition inventory for issues [#36](https://github.com/edithatogo/open_social_data/issues/36)
+and [#37](https://github.com/edithatogo/open_social_data/issues/37) is now
+registered at [`open_social_data` commit `b0b36da`](https://github.com/edithatogo/open_social_data/commit/b0b36da).
+It is deliberately discovery-only: candidate landing/payload URLs, regional
+scope and rights requirements are recorded, but no facility, network or
+timetable claim is enabled until raw bytes, terms and content-addressed
+receipts are archived.
+
 ## Completed archive slice
 
 Stats NZ Meshblock 2026 was captured in full by
@@ -68,3 +76,19 @@ revision `4f94d300c0bea6b64972b4b67044990f7e591716`, with workbook SHA-256
 packets are combined only in the bounded reference workload manifest
 `docs/national-workload-manifest-20260803.json`; no population values are
 assigned to Meshblocks or downscaled from regional units.
+
+Issue #37 now has hosted negative-evidence packets for both candidate regional
+GTFS feeds: Metro Christchurch run [30753973737](https://github.com/edithatogo/open_social_data/actions/runs/30753973737)
+(HTTP 401) and Auckland Transport run [30754015729](https://github.com/edithatogo/open_social_data/actions/runs/30754015729).
+The packets are preserved as unavailable dispositions, not timetable data, so
+the network/timetable domains remain disabled.
+
+Issue #36 now has a hosted public assertion packet from run
+[30754134781](https://github.com/edithatogo/open_social_data/actions/runs/30754134781)
+for the OpenStreetMap-derived New Zealand food-service export. Packet revision
+`d834601efedada86be03dee2ff7a90d0fa37c0a2` is preserved for bounded facility
+reconciliation; it remains source-specific evidence and does not establish
+complete or authoritative food-retail coverage.
+RIOPA binds that packet through
+`config/archive-sources/osm-new-zealand-food-service-2026.json`; it is
+available only for bounded source reconciliation and provenance fixtures.
