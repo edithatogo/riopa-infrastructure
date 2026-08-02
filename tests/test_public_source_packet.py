@@ -34,3 +34,18 @@ def test_manifest_digest_is_deterministic_for_same_entries(tmp_path: Path) -> No
     left = build_packet(tmp_path / "a", source)
     right = build_packet(tmp_path / "b", source)
     assert left["manifest_sha256"] == right["manifest_sha256"]
+
+
+def test_committed_campaign_packet_is_linked_and_fail_closed() -> None:
+    root = Path(__file__).parents[1]
+    campaign = json.loads(
+        (root / "docs/operational-evidence-campaign-20260802.json").read_text()
+    )
+    lane = next(item for item in campaign["lanes"] if item["id"] == "public-source-packets")
+    manifest_path = root / lane["artifact"]
+    manifest = json.loads(manifest_path.read_text())
+    assert manifest["payloads_acquired"] is False
+    assert manifest["non_claims"]
+    assert len(list(manifest_path.parent.glob("negative-receipt-*.json"))) == len(
+        manifest["sources"]
+    )
