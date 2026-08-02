@@ -196,7 +196,9 @@ def _ring_polygon(ring: Sequence[Sequence[float]]) -> Polygon | None:
     return polygon
 
 
-def _arcgis_rings_to_geometry(rings: Sequence[Sequence[Sequence[float]]]) -> BaseGeometry:
+def _arcgis_rings_to_geometry(
+    rings: Sequence[Sequence[Sequence[float]]], *, repair_invalid: bool = True
+) -> BaseGeometry:
     """Build polygons by ring containment rather than trusting winding alone."""
 
     candidates: list[tuple[Polygon, Sequence[Sequence[float]]]] = []
@@ -242,10 +244,12 @@ def _arcgis_rings_to_geometry(rings: Sequence[Sequence[Sequence[float]]]) -> Bas
     if not polygons:
         return Polygon()
     geometry: BaseGeometry = polygons[0] if len(polygons) == 1 else MultiPolygon(polygons)
-    return make_valid(geometry) if not is_valid(geometry) else geometry
+    return make_valid(geometry) if repair_invalid and not is_valid(geometry) else geometry
 
 
-def arcgis_geometry(value: Mapping[str, Any] | None) -> BaseGeometry | None:
+def arcgis_geometry(
+    value: Mapping[str, Any] | None, *, repair_invalid: bool = True
+) -> BaseGeometry | None:
     """Convert common ArcGIS JSON geometry forms into a Shapely geometry."""
 
     if value is None:
@@ -265,7 +269,7 @@ def arcgis_geometry(value: Mapping[str, Any] | None) -> BaseGeometry | None:
             return LineString()
         return lines[0] if len(lines) == 1 else MultiLineString(lines)
     if "rings" in value:
-        return _arcgis_rings_to_geometry(value["rings"])
+        return _arcgis_rings_to_geometry(value["rings"], repair_invalid=repair_invalid)
     if {"xmin", "ymin", "xmax", "ymax"} <= set(value):
         return Polygon(
             [
@@ -283,6 +287,7 @@ def arcgis_features_to_geojson(
     payloads: Iterable[Mapping[str, Any]],
     *,
     object_id_field: str | None = None,
+    repair_invalid: bool = True,
 ) -> tuple[list[dict[str, Any]], str | None]:
     """Convert paginated ArcGIS query payloads to GeoJSON-like feature records."""
 
@@ -299,7 +304,9 @@ def arcgis_features_to_geojson(
         for source_feature in payload.get("features", []):
             attributes = dict(source_feature.get("attributes") or {})
             object_id = attributes.get(object_id_field) if object_id_field else None
-            geometry = arcgis_geometry(source_feature.get("geometry"))
+            geometry = arcgis_geometry(
+                source_feature.get("geometry"), repair_invalid=repair_invalid
+            )
             output.append(
                 {
                     "type": "Feature",
@@ -402,6 +409,7 @@ def materialize_features(
     crs: str | None,
     object_id_field: str | None = None,
     base_name: str = "features",
+    repair_invalid: bool = True,
 ) -> SpatialMaterialization:
     """Write canonical GeoParquet, DuckDB, and a quality report."""
 
@@ -420,8 +428,9 @@ def materialize_features(
             null_geometries += 1
         elif not is_valid(geometry):
             invalid_before += 1
-            geometry = make_valid(geometry)
-            repaired += 1
+            if repair_invalid:
+                geometry = make_valid(geometry)
+                repaired += 1
         if geometry is not None and not geometry.is_empty:
             geometry_types.add(geometry.geom_type)
             bounds.append(geometry.bounds)
@@ -440,7 +449,18 @@ def materialize_features(
                     "_riopa_source_object_id": (
                         str(source_object_id) if source_object_id is not None else None
                     ),
-                    "_riopa_capture_ids": json.dumps(list(capture_ids), separators=(",", ":")),
+                    "_riopa_capture_ids": json.dumps(
+                        list(feature.get("capture_ids", capture_ids)), separators=(",", ":")
+                    ),
+                    **(
+                        {
+                            "_riopa_source_geometry_sha256": feature[
+                                "source_geometry_sha256"
+                            ]
+                        }
+                        if "source_geometry_sha256" in feature
+                        else {}
+                    ),
                     "geometry": to_wkb(geometry) if geometry is not None else None,
                 },
                 canonical_feature,
@@ -455,16 +475,21 @@ def materialize_features(
         raise SpatialConversionError(
             f"{duplicate_ids} duplicate stable feature identifiers; provide a unique object ID"
         )
+    base_columns = [
+        "_riopa_feature_id",
+        "_riopa_source_id",
+        "_riopa_layer_id",
+        "_riopa_source_object_id",
+        "_riopa_capture_ids",
+    ]
+    if any("_riopa_source_geometry_sha256" in row for row in rows):
+        base_columns.append("_riopa_source_geometry_sha256")
+        for row in rows:
+            row.setdefault("_riopa_source_geometry_sha256", None)
+    base_columns.append("geometry")
     columns: dict[str, list[Any]] = {
         key: [row[key] for row in rows]
-        for key in (
-            "_riopa_feature_id",
-            "_riopa_source_id",
-            "_riopa_layer_id",
-            "_riopa_source_object_id",
-            "_riopa_capture_ids",
-            "geometry",
-        )
+        for key in base_columns
     }
     columns.update(_normalise_property_columns(sorted_features))
     table = pa.table(columns)
@@ -555,6 +580,7 @@ def materialize_features(
         "null_geometry_count": null_geometries,
         "invalid_geometry_count_before_repair": invalid_before,
         "repaired_geometry_count": repaired,
+        "geometry_repair_enabled": repair_invalid,
         "duplicate_feature_id_count": duplicate_ids,
         "geometry_types": sorted(geometry_types),
         "bbox": bbox,

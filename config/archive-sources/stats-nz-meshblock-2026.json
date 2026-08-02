@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "source_id": "urn:riopa:source:stats-nz:meshblock-2026",
+  "dataset_repository": "edithatogo/riopa-public-data-archive",
+  "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202",
+  "receipt_revision": "34c093646f884d7b57447231d6605e83739bb302",
+  "manifest_path": "snapshots/stats-nz-meshblock-2026/20260802T133311Z/manifest.json",
+  "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+  "checksums_sha256": "dc6d77c55d0d95825873bba679f84107e3119d9ae92169ee75a44adb79ac0aa8",
+  "receipt_path": "receipts/github/30750165664-1.json",
+  "receipt_sha256": "7dc389ccbc832acc30c8baf357f4c98b039fd42160e04e3c51befa3b91872019",
+  "expected_features": 57575,
+  "expected_pages": 231,
+  "expected_null_geometries": 16
+}
