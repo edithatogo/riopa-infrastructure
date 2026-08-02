@@ -24,6 +24,7 @@
 | V1-GITHUB-ISSUE-SYNC-20260802 | Validated Conductor projections are reconciled to live GitHub issues after the agent-panel migration | `docs/github-issue-sync-20260802.json`, `project/issues.yaml` | 151 generated records applied without error; 140 updated and 11 missing phase issues created; open work remains open |
 | V1-GITHUB-MAIN-PROTECTION-20260802 | The single-developer main branch enforces exact hosted checks without a human-review requirement | `docs/github-main-protection-20260802.json` | Strict CI and CodeQL checks, linear history, conversation resolution and admin enforcement enabled; force-push and deletion disabled |
 | V1-ALL-TRACK-PANEL-20260802 | Three content-bound agent lenses and an orchestrator synthesis cover all 28 tracks | `docs/panel-reports/20260802/manifest.json`, `docs/panel-reports/20260802/orchestrator-synthesis.json` | Report-availability gate closed; all 28 M6 dispositions remain not-qualified and factual release gates remain open |
+| V1-CAMPAIGN-V3-20260802 | Current protected-head GitHub state, Hugging Face execution outcome, remaining gate sequence, library options and contingencies are reconciled | `docs/remaining-gates-campaign-v3-20260802.json`, `docs/remaining-gates-campaign-v3-20260802.md`, `tests/test_campaign_v3.py` | Exact-head CI and CodeQL pass; no open PRs; 14 evidenced phase issues closed and 141 issues remain; Hugging Face job was not created after an HTTP 402 response; gates remain fail-closed |
 
 ## Blocking defects
 

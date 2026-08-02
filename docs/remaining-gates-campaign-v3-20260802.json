@@ -1,0 +1,119 @@
+{
+  "schema": "riopa.remaining-gates-campaign.v3",
+  "observed_at": "2026-08-02T12:13:53Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "mode": "single-developer-agent-panel",
+  "github": {
+    "head": "3ff0139a441f2e6ba456c6383e6231629b19de77",
+    "open_pull_requests": 0,
+    "open_issues": 141,
+    "open_track_parents": 28,
+    "open_track_phases": 108,
+    "other_open_issues": [1, 145, 146, 147, 149],
+    "completed_phase_issues_closed_in_campaign": [3, 9, 10, 15, 16, 17, 18, 20, 21, 22, 23, 25, 85, 154],
+    "continuous_integration": {
+      "run_id": 30746836934,
+      "conclusion": "success"
+    },
+    "codeql": {
+      "run_id": 30746836960,
+      "conclusion": "success"
+    },
+    "main_protection": "strict-exact-head-checks-no-human-review-requirement",
+    "main_protection_verifier": "scripts/verify_github_main_protection.py"
+  },
+  "hugging_face": {
+    "account": "edithatogo",
+    "jobs_before_submission": [],
+    "dataset_plugin_search": "disabled-by-server-configuration",
+    "cli_searches": [
+      "New Zealand geospatial",
+      "New Zealand OpenStreetMap",
+      "LINZ"
+    ],
+    "authoritative_nz_geospatial_workload_found": false,
+    "attempted_runner": {
+      "purpose": "secondary hosted recovery verification",
+      "hardware": "cpu-basic",
+      "timeout": "10m",
+      "image": "python:3.13-slim@sha256:6771159cd4fa5d9bba1258caf0b82e6b73458c694d178ad97c5e925c2d0e1a91",
+      "revision": "3ff0139a441f2e6ba456c6383e6231629b19de77",
+      "result": "not-created",
+      "error": "HTTP 402 Payment Required: prepaid credit balance is insufficient"
+    },
+    "billable_job_created": false
+  },
+  "gates": [
+    {
+      "id": "agent-panel-qualification",
+      "status": "reports-complete-dispositions-not-qualified",
+      "next_action": "Rerun the content-bound panel after evidence corrections and resolve track-specific findings in dependency order.",
+      "contingency": "Preserve dissent and leave the affected track open.",
+      "non_claim": "Panel availability is not M6 qualification."
+    },
+    {
+      "id": "operational-beta",
+      "status": "one-current-contract-observation-one-cycle",
+      "next_action": "Continue the protected-main daily cumulative ledger until 90 elapsed days, three labelled operational cycles and cadence requirements are observed.",
+      "contingency": "Reset the qualification epoch after a material candidate or instrumentation change; retain prior receipts as rehearsal evidence.",
+      "non_claim": "Automation cannot create elapsed time in advance."
+    },
+    {
+      "id": "release-candidate-soak",
+      "status": "not-started",
+      "next_action": "Freeze an exact release-candidate revision only after upstream implementation and beta gates pass, then collect 30 elapsed days of evidence.",
+      "contingency": "Defer RC and keep pre-freeze observations as non-qualifying rehearsal evidence.",
+      "non_claim": "Beta observations are not an exact-candidate RC soak."
+    },
+    {
+      "id": "hosted-recovery",
+      "status": "github-technical-drill-passed-hugging-face-credit-blocked-production-dr-pending",
+      "next_action": "Keep the GitHub drill as technical evidence and rerun the digest-pinned Hugging Face job only after prepaid credit exists; separately execute a production-representative restore with measured RPO and RTO.",
+      "contingency": "Use GitHub Actions as the primary runner and retain production DR as open.",
+      "non_claim": "A rejected job submission and a technical drill are not production disaster recovery."
+    },
+    {
+      "id": "national-scale-performance",
+      "status": "public-workload-and-measurements-pending",
+      "next_action": "Freeze an authoritative public workload manifest and measure ingestion, query, accessibility and optimisation resource/cost envelopes.",
+      "contingency": "Run national-volume synthetic tests while prohibiting nationally representative claims.",
+      "non_claim": "Community Hub search results and synthetic volume are not authoritative national evidence."
+    },
+    {
+      "id": "external-workflow-facts",
+      "status": "pending-if-higher-tier-criteria-retained",
+      "next_action": "Use agents for every review; retain operator and user records only as factual execution/usability evidence when required by the selected release tier.",
+      "contingency": "Remain a technical preview or formally narrow higher-tier criteria.",
+      "non_claim": "An agent-panel review cannot attest to a distinct external participant experience."
+    },
+    {
+      "id": "release-authority",
+      "status": "promotion-decision-pending",
+      "next_action": "Assemble a digest-bound decision packet for the single accountable owner after the selected tier's factual gates pass.",
+      "contingency": "Record deferral and do not promote beta, RC or stable.",
+      "non_claim": "An agent recommendation is not an accountable promotion decision."
+    },
+    {
+      "id": "cross-track-implementation",
+      "status": "141-open-issues-28-m1-tracks",
+      "next_action": "Implement and validate phase issues in dependency order, attach exact evidence, then progress tracks through the Conductor workflow.",
+      "contingency": "Explicitly defer out-of-scope work without raising maturity.",
+      "non_claim": "Generated issue coverage is not implementation completion."
+    }
+  ],
+  "library_decision": {
+    "retain": ["duckdb", "pyarrow", "pyproj", "shapely", "httpx", "jsonschema"],
+    "benchmark_only_when_consumed": ["pyperf", "psutil"],
+    "conditional_in_process_hub_access": ["huggingface_hub", "fsspec"],
+    "not_recommended_now": ["datasets", "geopandas", "locust", "asv", "pandera", "frictionless"],
+    "rationale": "No additional library supplies missing source authority, elapsed time, production recovery, participant facts or release authority. Add only a tested dependency that materially improves an implemented harness."
+  },
+  "recommended_order": [
+    "resolve panel findings and immediately implementable phase issues",
+    "continue the daily beta ledger",
+    "freeze and execute an authoritative public workload",
+    "execute production-representative recovery",
+    "freeze RC and start its soak only after upstream gates pass",
+    "assemble the accountable tier-decision packet"
+  ]
+}
