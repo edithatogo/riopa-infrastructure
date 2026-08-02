@@ -22,6 +22,20 @@
 
 - Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision.
 
+## Campaign gate capability map
+
+| Gate | Repository-owned work | Required external or elapsed evidence |
+|---|---|---|
+| Hosted recovery execution | Prepare manifests, scripts and verification; execute only where an authenticated hosted environment exists | Hosted/DR run logs, timestamps, recovery-point hashes and independent verification |
+| Operational cycles and RC soak | Start logging, automate observations and maintain digests | Actual elapsed cycles and soak duration; interruptions reset the clock |
+| National-scale workload measurements | Design workloads and run bounded public-data/regional benchmarks | Approved national workload, infrastructure and measured results |
+| External operator/user workflows | Prepare frozen bundles, instructions and report templates; run panel rehearsals | External operator reproduction and two distinct external-user reports |
+| Accountable release-authority decision | Assemble the digest-bound decision packet and draft options | Named authority's signed tier decision with expiry and rollback conditions |
+
+Subagent panels can prepare and qualify repository-owned evidence, but cannot
+substitute for external participants, elapsed qualification time or accountable
+release authority.
+
 ## Decisions, exceptions and limitations
 
 - None recorded.
@@ -39,3 +53,5 @@ This index records a bounded repository-owned readiness baseline while the track
 - Finding: the baseline was incorrectly used as evidence that the complete
   normative API/schema/ontology inventory was finished.
 - Fix: restored task 1.1 to pending and recorded the boundary explicitly.
+- Follow-up: mapped each remaining campaign gate to repository-owned preparation
+  and its non-substitutable external/elapsed evidence requirement.
