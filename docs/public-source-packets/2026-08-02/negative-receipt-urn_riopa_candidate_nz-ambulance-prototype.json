@@ -1,0 +1,16 @@
+{
+  "landing_url": "https://www.arcgis.com/home/item.html?id=e5b22c07d197417495c8012e945c41da",
+  "non_claim": "No source payload was acquired or approved.",
+  "reason": "Payload not acquired; authority, rights or availability gate remains open.",
+  "record_type": "riopa_public_source_negative_receipt",
+  "recorded_at": "2026-08-02T10:21:52.952356+00:00",
+  "resolution_required": [
+    "authority",
+    "terms_url",
+    "version",
+    "payload_sha256"
+  ],
+  "schema_version": "1.0.0",
+  "source_id": "urn:riopa:candidate:nz-ambulance-prototype",
+  "status": "metadata-only"
+}

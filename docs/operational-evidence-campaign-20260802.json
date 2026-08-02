@@ -11,6 +11,18 @@
   },
   "lanes": [
     {
+      "id": "public-source-packets",
+      "owner": "data-steward",
+      "required_artifacts": [
+        "content-addressed-metadata-manifest",
+        "negative-receipts",
+        "authority-and-terms-record"
+      ],
+      "artifact": "docs/public-source-packets/2026-08-02/manifest.json",
+      "status": "metadata-only-negative-receipts",
+      "non_claim": "No payload authority, redistribution permission or operational completeness is established."
+    },
+    {
       "id": "recovery-rollback",
       "owner": "operations-evidence",
       "required_artifacts": ["raw-log", "timestamped-object-hashes", "recovery-point", "decision-record"],
