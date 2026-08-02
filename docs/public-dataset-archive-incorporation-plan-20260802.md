@@ -82,3 +82,10 @@ GTFS feeds: Metro Christchurch run [30753973737](https://github.com/edithatogo/o
 (HTTP 401) and Auckland Transport run [30754015729](https://github.com/edithatogo/open_social_data/actions/runs/30754015729).
 The packets are preserved as unavailable dispositions, not timetable data, so
 the network/timetable domains remain disabled.
+
+Issue #36 now has a hosted public assertion packet from run
+[30754134781](https://github.com/edithatogo/open_social_data/actions/runs/30754134781)
+for the OpenStreetMap-derived New Zealand food-service export. Packet revision
+`d834601efedada86be03dee2ff7a90d0fa37c0a2` is preserved for bounded facility
+reconciliation; it remains source-specific evidence and does not establish
+complete or authoritative food-retail coverage.
