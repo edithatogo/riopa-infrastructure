@@ -65,8 +65,24 @@
       "upstream_owner": "edithatogo/open_social_data",
       "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/35",
       "archive_action": "Archive exact service metadata, schema and all paged features plus selected exact-edition public population/census tables before building denominator projections.",
+      "archive_evidence": {
+        "github_run": "https://github.com/edithatogo/open_social_data/actions/runs/30750165664",
+        "workflow_revision": "728c4d651b02458f9712a6daff8c388ca3a6acad",
+        "hugging_face_dataset": "https://huggingface.co/datasets/edithatogo/riopa-public-data-archive",
+        "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202",
+        "receipt_revision": "34c093646f884d7b57447231d6605e83739bb302",
+        "manifest_path": "snapshots/stats-nz-meshblock-2026/20260802T133311Z/manifest.json",
+        "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+        "payload_set_sha256": "706c6d39c497e643eb5989fc65d4824799d16ade197b4c808a4e2988722e9b14",
+        "captured_features": 57575,
+        "available_features": 57575,
+        "pages": 231,
+        "null_geometries": 16,
+        "source_stable_during_capture": true,
+        "readback_verified": true
+      },
       "incorporation": ["nz_spatial_source_registry_20260718", "nz_spatial_archive_mvp_20260718", "accessibility_network_engine_20260719", "performance_scalability_reliability_20260719"],
-      "status": "upstream-issue-open",
+      "status": "meshblock-archive-complete-population-pending",
       "non_claim": "Meshblocks define supporting geography; they do not supply destinations, travel times or causal evidence."
     },
     {

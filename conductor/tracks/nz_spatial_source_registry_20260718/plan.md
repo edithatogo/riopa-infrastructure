@@ -5,6 +5,7 @@
 - [ ] 1.1 Create current/historical authority and jurisdiction records.
 - [ ] 1.2 Inventory district/regional plans, versions, statuses and official landing pages.
 - [ ] 1.3 Register exact-version LINZ, Stats NZ, NZTA/network, planning, Gazette and legislation source families, including their cross-repository ownership and archive disposition.
+- [x] 1.4 Register the exact Stats NZ Meshblock 2026 item, edition, service, rights and immutable hosted archive evidence without implying that the other national source families are complete.
 
 ## 2. Service and document discovery
 

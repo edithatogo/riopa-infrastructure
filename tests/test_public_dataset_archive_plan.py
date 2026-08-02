@@ -42,3 +42,26 @@ def test_non_public_healthpoint_payloads_are_excluded() -> None:
         if dataset["id"] == "public-health-and-ambulance-facilities"
     )
     assert "Licensed Healthpoint payloads are excluded" in health["excluded_source"]
+
+
+def test_stats_nz_meshblock_archive_is_revision_and_digest_bound() -> None:
+    meshblocks = next(
+        dataset
+        for dataset in _plan()["datasets"]
+        if dataset["id"] == "stats-nz-meshblock-2026-and-public-population"
+    )
+    evidence = meshblocks["archive_evidence"]
+    assert meshblocks["status"] == "meshblock-archive-complete-population-pending"
+    assert evidence["captured_features"] == evidence["available_features"] == 57575
+    assert evidence["pages"] == 231
+    assert evidence["source_stable_during_capture"] is True
+    assert evidence["readback_verified"] is True
+    for field in (
+        "workflow_revision",
+        "packet_revision",
+        "receipt_revision",
+        "manifest_sha256",
+        "payload_set_sha256",
+    ):
+        expected_length = 40 if "revision" in field else 64
+        assert len(evidence[field]) == expected_length

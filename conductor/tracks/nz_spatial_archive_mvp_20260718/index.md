@@ -19,10 +19,11 @@
 | `WP-004-sharded-archive-contract-20260731` | Catalogue-to-federation stages are independently resumable and content-bound | `src/riopa_provenance/linz_pipeline.py`, `tests/test_linz_pipeline.py`, `docs/linz-archive-pipeline.md` | Synthetic stage/dependency/replay tests pass; real-data MVP remains open |
 | `WP-007-bounded-real-slice-20260731` | Real LINZ metadata, one WCC planning polygon, official planning PDF and facility CSV are content-addressed and linked to portable spatial materialisations | `evidence/wp007-real-slice/manifest.json`, `scripts/verify_wp007_slice.py`, `reports/wp007-bounded-real-slice.md` | Clean semantic rebuild passes; four-council/two-national-family coverage and external research-object validation remain open |
 | `DATASET-ARCHIVE-INCORPORATION-20260802` | Required public national/council inputs are routed through immutable raw archive packets before materialisation or analysis | `docs/public-dataset-archive-incorporation-plan-20260802.json`, `tests/test_public_dataset_archive_plan.py` | Archive order and repository ownership defined; full payloads and four-council/two-national-family coverage remain pending |
+| `STATS-NZ-MESHBLOCK-ARCHIVE-20260802` | One exact national supporting-geography edition is completely captured, checksum-bound and revision-addressed | [GitHub Actions run 30750165664](https://github.com/edithatogo/open_social_data/actions/runs/30750165664), [Hugging Face packet revision](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive/tree/3f2dc0a4d95a4fcb495551098d58fc5bce9c9202), `docs/public-dataset-archive-incorporation-plan-20260802.json` | 57,575/57,575 IDs and 231 pages captured; pre/post inventory stable; manifest and boundary pages verified by hosted readback; population, LINZ, council and projection evidence remain open |
 
 ## Blocking defects
 
-- Full LINZ/Stats NZ payload archives, four heterogeneous council archives and durable preservation remain pending.
+- Full LINZ and Stats NZ population archives, four heterogeneous council archives and durable preservation beyond the revision-addressed Hugging Face mirror remain pending.
 
 ## Decisions, exceptions and limitations
 

@@ -17,6 +17,7 @@
 - [ ] 3.1 Build public reference instances and cross-engine comparisons from named archived network, timetable, demand and facility snapshots.
 - [ ] 3.2 Implement partitioning, caching and incremental recomputation.
 - [ ] 3.3 Benchmark national-scale performance, storage and cost.
+- [x] 3.4 Preserve the complete Stats NZ Meshblock 2026 supporting geography as an immutable input candidate while keeping demand, destination, network and performance claims open.
 
 ## 4. Stable accessibility interface
 
