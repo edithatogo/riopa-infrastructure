@@ -5,9 +5,9 @@
   "account": "edithatogo",
   "observed_cli_version": "1.15.0",
   "observed_jobs": [],
-  "source_revision": "3ff0139a441f2e6ba456c6383e6231629b19de77",
+  "source_revision": "56614252be9a0c9c5355b830b16a7d62d7b14bb0",
   "runner_script": "scripts/hf_hosted_recovery.py",
-  "runner_script_sha256": "0a2728215d33a4d7c7346807cb3c281077d8e87b1bdc7162274671d489f85267",
+  "runner_script_sha256": "3647db200952f3ea380b1e0456c906efb5a80db02b2d89cd7706f2b25e079b5d",
   "submission_transport": "Read runner_script at the exact source revision and pass its contents inline to the Hugging Face Jobs MCP tool; a local path is not visible in the remote container.",
   "job_spec": {
     "operation": "run",
@@ -19,12 +19,12 @@
       "--repository",
       "edithatogo/riopa-infrastructure",
       "--revision",
-      "3ff0139a441f2e6ba456c6383e6231629b19de77"
+      "56614252be9a0c9c5355b830b16a7d62d7b14bb0"
     ],
     "flavor": "cpu-basic",
     "timeout": "10m",
     "maximum_cost_usd_at_timeout": 0.002,
-    "label": "riopa-recovery-3ff0139",
+    "label": "riopa-recovery-5661425",
     "secrets": []
   },
   "submission_attempt": {
