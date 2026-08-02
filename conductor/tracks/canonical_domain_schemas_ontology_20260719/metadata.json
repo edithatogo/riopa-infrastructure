@@ -40,7 +40,7 @@
     "shacl-conformance-report",
     "non-python-round-trip",
     "ontology-publication-identifier",
-    "domain-owner-review",
+    "domain-agent-panel-qualification",
     "migration-compatibility-qualification"
   ]
 }

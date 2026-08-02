@@ -32,10 +32,10 @@
 
 - The bounded comparison reports one 5.660 m candidate pair and three source-only assertions.
   It is not a national completeness, currency or accuracy estimate.
-- Accountable review may be performed by a human or agent analyst; no separate-human rule applies.
+- Accountable review is performed by an orchestrated panel of agent analysts; no second-person sign-off is required.
 
 ## Review and handover
 
 Required agent-panel lenses: Governance analyst, Provenance analyst, Data-governance analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

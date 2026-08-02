@@ -6,11 +6,13 @@
   "campaign_manifest": "docs/operational-evidence-campaign-20260802.json",
   "repository_owned_artifacts": [
     "docs/hosted-recovery-readiness-20260802.json",
+    "docs/hosted-recovery-execution-20260802.json",
+    "docs/hosted-evidence-batch-20260802.json",
     "docs/regional-performance-evidence-20260802.json",
     "docs/panel-qualification-report-templates-20260801.json"
   ],
   "pending_gates": [
-    "hosted recovery execution",
+    "production disaster-recovery execution",
     "elapsed operational cycles and release-candidate soak",
     "external operator and user workflows",
     "national-scale performance measurement",

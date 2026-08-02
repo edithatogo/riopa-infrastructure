@@ -10,7 +10,10 @@ def test_operational_lanes_link_existing_readiness_artifacts() -> None:
     for lane_id in ("public-source-packets", "recovery-rollback", "regional-performance"):
         artifact = lanes[lane_id].get("artifact") or lanes[lane_id].get("readiness_artifact")
         assert artifact and (ROOT / artifact).exists()
-    assert lanes["recovery-rollback"]["status"] == "pending-hosted-execution"
+    assert (
+        lanes["recovery-rollback"]["status"]
+        == "hosted-technical-preview-passed-production-dr-pending"
+    )
     assert lanes["regional-performance"]["status"] == "synthetic-regional-only"
 
 

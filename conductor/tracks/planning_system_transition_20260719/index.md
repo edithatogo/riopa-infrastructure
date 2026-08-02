@@ -22,13 +22,13 @@
 
 ## Blocking defects
 
-- Real authority reorganisation and plan replacement reconstructions remain pending; public-source capture and domain review are required before validation.
+- Real authority reorganisation and plan replacement reconstructions remain pending; public-source capture and planning-domain agent-panel qualification are required before validation.
 
 ## Decisions, exceptions and limitations
 
 - The repository-owned contract and fixtures are complete for the current slice.
   Historical authority/plan reconstruction, downstream integration evidence,
-  independent planning-domain review and immutable public-source evidence are
+  planning-domain agent-panel qualification and immutable public-source evidence are
   still blocking validation.
 
 ## Review and handover
@@ -44,4 +44,4 @@ Required agent-panel lenses: Governance analyst, API/schema analyst, Data-govern
   in metadata.
 - Fix: corrected the evidence reference and recorded the blockers explicitly.
 
-This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

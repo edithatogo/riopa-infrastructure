@@ -12,7 +12,7 @@ import re
 import sys
 from pathlib import Path
 
-ROLES = {"reproducer", "adversarial-reviewer", "evidence-auditor"}
+ROLES = {"reproducer", "adversarial-analyst", "evidence-auditor"}
 PANEL_TEMPLATE_STATUSES = {"pending", "in-progress", "complete"}
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 REVISION = re.compile(r"^[0-9a-f]{40}$")
@@ -70,7 +70,7 @@ def validate(paths: list[Path]) -> list[str]:
     if set(roles) != ROLES or len(roles) != len(set(roles)):
         errors.append(
             "panel roles must be unique and exactly reproducer, "
-            "adversarial-reviewer, evidence-auditor"
+            "adversarial-analyst, evidence-auditor"
         )
     for field in ("source_revision", "bundle_sha256"):
         values = {str(report.get(field, "")) for report in reports}

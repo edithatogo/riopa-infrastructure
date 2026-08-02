@@ -6,7 +6,7 @@ from scripts.validate_panel_reports import validate
 
 def _reports(tmp_path: Path) -> list[Path]:
     paths = []
-    for role in ("reproducer", "adversarial-reviewer", "evidence-auditor"):
+    for role in ("reproducer", "adversarial-analyst", "evidence-auditor"):
         path = tmp_path / f"{role}.json"
         path.write_text(
             json.dumps(

@@ -59,7 +59,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:maturity-model",
           "kind": "artifact",
           "location": "conductor/maturity-model.json",
-          "sha256": "4d3c060a0551d4d3f55648156f0e8819020fc11d05c66a4ca03d403a50422414",
+          "sha256": "04f002c5467df5ec212e494d7b719b23bc480c8b57d88f5fec6e115cb88145e1",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Machine-readable M0-M6 model and maturity dimensions."
@@ -68,7 +68,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:release-train",
           "kind": "artifact",
           "location": "conductor/releases.json",
-          "sha256": "bf427bdb243829730c88512d14f7ead8041444ce34aa3737589e2489cc0b9b37",
+          "sha256": "3b8a58af9e4630a5ed6e709c50a477c35ff21d7c7b4f9ccea6dafb7dc6fe8dac",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Machine-readable release train and stage gates."
@@ -77,7 +77,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:v1-global-gate",
           "kind": "artifact",
           "location": "conductor/v1-gate.json",
-          "sha256": "648d45a40551430a348578c4d63c362d53485bc223a5b6610af1409237a6b18c",
+          "sha256": "37ce0be6d6ddc65a19093a361d65d6350f084621aba6be04c2be589915505458",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Global stable-v1 defect, evidence, waiver and authority policy."
@@ -95,7 +95,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-hardening-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap_hardening.py",
-          "sha256": "cc340b7d22ce41455985f1f5e17e53cd889c5d810597d1ad0f4a5708539b7241",
+          "sha256": "a16fc93bc03404825669cf515faa9251bb87eab2af52f23527280000cf850cbd",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Negative, drift, expiry, evidence-integrity and stable-readiness tests."
@@ -133,7 +133,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:v1-definition",
           "kind": "decision",
           "location": "docs/v1-definition-of-done.md",
-          "sha256": "53db2e8065953588525e58c934b5983ca2398351e724e18a2407c15b867325f5",
+          "sha256": "81b90ebaf4ea58bd34b82139bf70169df6468eec9ea74b81540f8b46b7fb4d35",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Stable-v1 completion and non-authority boundary."
@@ -142,7 +142,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:waiver-policy",
           "kind": "decision",
           "location": "docs/v1-evidence-and-waiver-policy.md",
-          "sha256": "1bc5ef5b3a6d3f3a3fb2006e95a4b5121ec9f917d0526a80655c750dfebbdf10",
+          "sha256": "070ac9a029d2cbbc01f017dc40657edb19196831c6f8114bc092d07a460dcc30",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Evidence, waiver and release-blocking policy."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "f58851353728831166473c7c8109f847304e6b961a333329a31a03cd2adea002",
+          "sha256": "90da7114d768fb2c517a6afca138c8622313a7d5f65104437f8ff513341383fc",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."

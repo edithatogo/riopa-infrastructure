@@ -20,7 +20,7 @@
 
 ## 4. Stable profile release
 
-- [ ] 4.1 Conduct public and maintainer review.
+- [ ] 4.1 Record public consultation evidence and conduct orchestrated agent-panel qualification.
 - [ ] 4.2 Publish profile identifiers, compatibility matrix and migration tooling.
 - [ ] 4.3 Freeze and sign the v1 normative profile candidate.
 

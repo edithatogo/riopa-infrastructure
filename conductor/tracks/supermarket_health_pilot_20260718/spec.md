@@ -48,7 +48,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Acceptance criteria
 
 - [ ] The baseline density/population analysis is reproduced from public, versioned inputs or discrepancies are fully explained.
-- [ ] Facility reconciliation and accessibility sensitivity are independently reviewed.
+- [ ] Facility reconciliation and accessibility sensitivity are agent-panel qualified.
 - [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.
 - [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.
 - [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.
@@ -59,7 +59,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 

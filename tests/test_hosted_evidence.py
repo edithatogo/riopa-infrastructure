@@ -16,6 +16,9 @@ def test_hosted_receipt_is_content_bound_and_fail_closed(tmp_path: Path) -> None
     log = (tmp_path / receipt["log"]["path"]).read_bytes()
     assert receipt["log"]["sha256"] == hashlib.sha256(log).hexdigest()
     assert receipt["classification"] == "hosted-technical-preview-drill"
+    assert receipt["campaign_id"]
+    assert receipt["qualification_epoch"]
+    assert receipt["operational_cycle_id"]
     assert len(receipt["non_claims"]) >= 4
 
 

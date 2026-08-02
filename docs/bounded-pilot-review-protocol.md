@@ -13,7 +13,7 @@ implementation, and a recorded scope and method. The review must be adverse-
 findings capable and must not be represented as external validation.
 
 A qualifying panel consists of at least three isolated agents: a reproducer,
-an adversarial reviewer and an evidence/rights auditor. The orchestrator must
+an adversarial analyst and an evidence/rights auditor. The orchestrator must
 preserve separate reports, dissent, relationship disclosures and content
 hashes.
 

@@ -16,7 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-007-wcc-plan-source-pair-20260731` | One real WCC District Plan zone feature and the official National Planning Standards document are separately preserved | `evidence/wp007-real-slice/manifest.json`, `reports/wp007-bounded-real-slice.md` | Source preservation passes; no provision link, legal interpretation, operative-status assertion or human-reviewed extraction is claimed |
+| `WP-007-wcc-plan-source-pair-20260731` | One real WCC District Plan zone feature and the official National Planning Standards document are separately preserved | `evidence/wp007-real-slice/manifest.json`, `reports/wp007-bounded-real-slice.md` | Source preservation passes; no provision link, legal interpretation, operative-status assertion or agent-panel-qualified extraction is claimed |
 
 ## Blocking defects
 
@@ -30,4 +30,4 @@
 
 Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

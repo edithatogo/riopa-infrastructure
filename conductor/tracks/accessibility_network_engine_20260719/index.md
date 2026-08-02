@@ -16,12 +16,12 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-009-reference-accessibility-core-20260731` | Versioned travel observations preserve missing/unreachable/censored semantics and hand-calculated accessibility measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Bounded dependency-free reference core passes; multimodal adapters, real NZ integration, scale and external review remain open |
+| `WP-009-reference-accessibility-core-20260731` | Versioned travel observations preserve missing/unreachable/censored semantics and hand-calculated accessibility measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Bounded dependency-free reference core passes; multimodal adapters, real NZ integration, scale and agent-panel qualification remain open |
 
 ## Blocking defects
 
 - Real road, walk, cycle and timetable engines; national-scale benchmarking; and
-  scientific/user review remain open.
+  scientific-methods/user-workflow agent-panel qualification remains open.
 
 ## Decisions, exceptions and limitations
 
@@ -32,4 +32,4 @@
 
 Required agent-panel lenses: API/schema analyst, Data-governance analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

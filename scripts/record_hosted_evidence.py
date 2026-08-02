@@ -53,6 +53,17 @@ def _now() -> str:
 
 def run_lane(lane: str, output_dir: Path) -> dict:
     command = LANES[lane]
+    campaign_id = os.getenv("EVIDENCE_CAMPAIGN_ID", "adhoc-technical-preview")
+    qualification_epoch = os.getenv("EVIDENCE_QUALIFICATION_EPOCH", campaign_id)
+    operational_cycle_id = os.getenv("EVIDENCE_OPERATIONAL_CYCLE_ID") or datetime.now(UTC).strftime(
+        "%G-W%V"
+    )
+    candidate_revision = os.getenv("EVIDENCE_CANDIDATE_REVISION") or None
+    source_revision = os.getenv("GITHUB_SHA", "local-uncommitted")
+    if lane == "rc-soak-observation" and candidate_revision != source_revision:
+        raise ValueError(
+            "rc-soak-observation requires EVIDENCE_CANDIDATE_REVISION to equal GITHUB_SHA"
+        )
     output_dir.mkdir(parents=True, exist_ok=True)
     started_at = _now()
     completed = subprocess.run(command, check=False, capture_output=True, text=True)
@@ -62,7 +73,11 @@ def run_lane(lane: str, output_dir: Path) -> dict:
     log_path.write_text(log)
     log_digest = hashlib.sha256(log.encode()).hexdigest()
     receipt = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
+        "campaign_id": campaign_id,
+        "qualification_epoch": qualification_epoch,
+        "operational_cycle_id": operational_cycle_id,
+        "candidate_revision": candidate_revision,
         "lane": lane,
         "classification": "hosted-technical-preview-drill",
         "status": "passed" if completed.returncode == 0 else "failed",
@@ -70,7 +85,7 @@ def run_lane(lane: str, output_dir: Path) -> dict:
         "started_at": started_at,
         "ended_at": ended_at,
         "exit_code": completed.returncode,
-        "source_revision": os.getenv("GITHUB_SHA", "local-uncommitted"),
+        "source_revision": source_revision,
         "host": {
             "provider": "github-actions" if os.getenv("GITHUB_ACTIONS") else "local",
             "run_id": os.getenv("GITHUB_RUN_ID"),

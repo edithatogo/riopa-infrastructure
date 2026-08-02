@@ -27,7 +27,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 - `shacl-conformance-report` — pending qualifying SHACL engine/report.
 - `non-python-round-trip` — pending independent non-Python runtime evidence.
 - `ontology-publication-identifier` — pending publication decision and persistent identifier.
-- `domain-owner-review` — pending independent semantic/domain review.
+- `domain-agent-panel-qualification` — pending orchestrated semantic/domain agent-panel qualification.
 - `migration-compatibility-qualification` — pending compatibility matrix and migration execution.
 
 ## Decisions, exceptions and limitations
@@ -38,7 +38,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
 
 ## Review record
 

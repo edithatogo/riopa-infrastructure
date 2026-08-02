@@ -47,7 +47,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Stable identifiers represent plan/version/provision and survive document repagination where possible.
 - [ ] At least two councils with materially different plan structures complete spatial-to-rule linkage.
 - [ ] Automated or AI-assisted extraction records model/tool evidence and receives review by a multi-agent panel before release.
-- [ ] Independent review samples quantify missing and incorrect links.
+- [ ] Orchestrated agent-panel qualification samples quantify missing and incorrect links.
 - [ ] Feasibility queries return cited rules, status, confidence and caveats rather than one unsupported boolean.
 - [ ] Cross-council mappings preserve original classes and provenance.
 
@@ -56,7 +56,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 
@@ -64,7 +64,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - Plan/provision identity and linkage schemas.
 - Linked council examples with source citations.
-- Independent review, false-link and missing-link analysis.
+- Orchestrated agent-panel qualification, false-link and missing-link analysis.
 - Feasibility query fixtures and limitation report.
 
 ## Risks

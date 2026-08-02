@@ -16,7 +16,7 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-009-reference-location-core-20260731` | Four canonical model families, explicit capacity/fixed/eligibility/equity constraints, deterministic Pareto outputs and independent feasibility verification | `src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | 35 combined core tests pass with 100% statement and branch coverage for both new modules; scalable external solvers and independent external benchmark review remain open |
+| `WP-009-reference-location-core-20260731` | Four canonical model families, explicit capacity/fixed/eligibility/equity constraints, deterministic Pareto outputs and independent feasibility verification | `src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | 35 combined core tests pass with 100% statement and branch coverage for both new modules; scalable external solvers and agent-panel benchmark qualification remain open |
 
 ## Blocking defects
 
@@ -32,4 +32,4 @@
 
 Required agent-panel lenses: API/schema analyst, External-user workflow analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

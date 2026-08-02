@@ -20,6 +20,7 @@
 | V1-REMAINING-GATES-20260802 | Single-developer gate plan, platform observations, hosted receipt runner, library decision and contingencies | `docs/remaining-gates-autonomous-plan-20260802.json`, `docs/remaining-gates-autonomous-plan-20260802.md`, `docs/single-developer-agent-panel-review-policy.md`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_remaining_gates_plan.py`, `tests/test_hosted_evidence.py` | Agent-panel policy and hosted technical-preview runner implemented; actual elapsed, national, participant and authority evidence remains open |
 | V1-HOSTED-RECOVERY-20260802 | Exact-revision recovery/rollback technical-preview drill executes in GitHub's hosted environment | `docs/hosted-recovery-execution-20260802.json`, [GitHub Actions run 30744372005](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744372005) | Passed at `347cf53`; production DR, participant, elapsed-soak and authority gates remain open |
 | V1-HOSTED-BATCH-20260802 | Exact-revision agent clean-room, scale-smoke, operational and RC-soak observations execute in hosted runners | `docs/hosted-evidence-batch-20260802.json` | Four lanes passed at `6fcbe29`; national scale, elapsed duration, external participants, track reports and authority remain open |
+| V1-CAMPAIGN-V2-20260802 | Live GitHub/Conductor drift, daily evidence schedule, revision-bound ledger, Hugging Face fallback and library choices are reconciled | `docs/remaining-gates-campaign-v2-20260802.md`, `docs/hugging-face-evidence-runner-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py` | Repository review uses agent panels; live issue sync and elapsed/external/authority evidence remain separately tracked |
 
 ## Blocking defects
 
@@ -47,7 +48,7 @@ release authority.
 
 Required agent-panel lenses: Governance analyst, API/schema analyst, Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, Performance analyst, Interoperability analyst, Research-object analyst, External-user workflow analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index records a bounded repository-owned readiness baseline while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index records a bounded repository-owned readiness baseline while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
 
 ## Review record
 

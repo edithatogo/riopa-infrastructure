@@ -18,9 +18,9 @@
 - [ ] 3.2 Add negative controls, missing-data and assumption diagnostics.
 - [ ] 3.3 Test on public/synthetic opening, closure or zoning-change scenarios.
 
-## 4. Review and stable methods release
+## 4. Agent-panel qualification and stable methods release
 
-- [ ] 4.1 Conduct independent epidemiological/statistical and governance review.
+- [ ] 4.1 Conduct orchestrated epidemiological/statistical and governance agent-panel qualification.
 - [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.
 - [ ] 4.3 Publish stable methods, reporting and limitation templates.
 

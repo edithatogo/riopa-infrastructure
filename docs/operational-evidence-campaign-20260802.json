@@ -4,8 +4,8 @@
   "status": "evidence-collection",
   "claims": {
     "local_recovery": "executed-local",
-    "hosted_recovery": "pending",
-    "operational_cycles": "pending-duration",
+    "hosted_recovery": "technical-preview-drill-passed-production-dr-pending",
+    "operational_cycles": "first-observation-passed-duration-pending",
     "rc_soak": "pending-duration",
     "national_scale_performance": "unsupported"
   },
@@ -26,14 +26,16 @@
       "id": "recovery-rollback",
       "owner": "operations-evidence",
       "required_artifacts": ["raw-log", "timestamped-object-hashes", "recovery-point", "decision-record"],
-      "status": "pending-hosted-execution",
-      "readiness_artifact": "docs/hosted-recovery-readiness-20260802.json"
+      "status": "hosted-technical-preview-passed-production-dr-pending",
+      "readiness_artifact": "docs/hosted-recovery-readiness-20260802.json",
+      "execution_artifact": "docs/hosted-recovery-execution-20260802.json"
     },
     {
       "id": "operational-cycles",
       "owner": "operations-evidence",
       "required_artifacts": ["cycle-records", "failure-recovery-notes", "daily-digests"],
-      "status": "clock-not-started"
+      "status": "daily-schedule-active-first-observation-passed",
+      "execution_artifact": "docs/hosted-evidence-batch-20260802.json"
     },
     {
       "id": "regional-performance",
@@ -50,13 +52,13 @@
     }
   ],
   "promotion_blockers": [
-    "hosted-or-production-recovery-execution",
+    "production-disaster-recovery-execution",
     "elapsed-operational-cycle-and-rc-soak-duration",
     "national-scale-measurements",
     "accountable-release-authority-decision"
   ],
   "limitations": [
-    "Local synthetic drills do not establish hosted or production recovery evidence.",
+    "The hosted technical-preview drill does not establish production disaster-recovery evidence.",
     "Synthetic regional benchmarks do not support national-scale claims.",
     "Subagent rehearsals do not satisfy external operator or user reproduction gates.",
     "No gate may be marked complete without content-addressed raw observations."

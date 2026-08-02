@@ -16,7 +16,7 @@ owner or compatibility policy.
 | `quality-report.schema.json` | Quality maintainer | metrics retain identifier and uncertainty semantics | `scripts/ci_quality.sh`; `tests/test_validation_integrity.py` |
 | `release-evidence.schema.json` | Release authority | gate IDs and evidence references are migration-bound | `scripts/ci_quality.sh`; `tests/test_roadmap_hardening.py` |
 | `release-roadmap.schema.json` | Programme owner | release train migrations preserve monotonic maturity | `scripts/ci_quality.sh`; `tests/test_roadmap_hardening.py` |
-| `rights-inventory.schema.json` | Governance reviewer | rights decisions are fail-closed and append-only | `scripts/ci_quality.sh`; `tests/test_publication.py` |
+| `rights-inventory.schema.json` | Governance analyst | rights decisions are fail-closed and append-only | `scripts/ci_quality.sh`; `tests/test_publication.py` |
 | `snapshot-manifest.schema.json` | Archive maintainer | released manifests are immutable; corrections are successors | `scripts/ci_quality.sh`; `tests/test_crate.py` |
 | `source-record.schema.json` | Source-registry maintainer | source identity is stable across retrieval/version changes | `scripts/ci_quality.sh`; `tests/test_registry.py` |
 | `source-registry.schema.json` | Source-registry maintainer | registry additions are compatible; identity changes require migration | `scripts/ci_quality.sh`; `tests/test_linz_catalog.py` |

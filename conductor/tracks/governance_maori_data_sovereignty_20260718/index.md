@@ -49,4 +49,4 @@
 
 Required agent-panel lenses: Governance analyst, Security analyst, Data-governance analyst, Scientific-methods analyst.
 
-Implementation is validating. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+Implementation is validating. Evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

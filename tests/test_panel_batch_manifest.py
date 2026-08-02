@@ -13,7 +13,7 @@ def test_panel_batch_manifest_is_pending_and_non_assertive() -> None:
     assert manifest["source_revision"] is None
     assert manifest["bundle_sha256"] is None
     assert manifest["required_roles"] == [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer",
     ]

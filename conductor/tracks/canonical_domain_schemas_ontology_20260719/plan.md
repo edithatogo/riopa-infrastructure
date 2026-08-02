@@ -20,7 +20,7 @@
 
 ## 4. Stabilisation and migration
 
-- [ ] 4.1 Run public review and resolve semantic findings.
+- [ ] 4.1 Run agent-panel semantic qualification and resolve semantic findings.
 - [ ] 4.2 Publish migration tools, compatibility matrix and extension policy.
 - [ ] 4.3 Freeze the v1 normative schema/ontology candidate.
 

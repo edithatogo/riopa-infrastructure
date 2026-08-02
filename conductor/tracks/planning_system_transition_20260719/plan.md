@@ -18,9 +18,9 @@
 - [ ] 3.2 Test downstream zoning and accessibility analyses across transitions.
 - [x] 3.3 Document non-equivalence and unresolved transitions. (planning-system-transition-migration-playbook.md)
 
-## 4. Review and migration readiness
+## 4. Agent-panel qualification and migration readiness
 
-- [ ] 4.1 Conduct planning-domain review and resolve model findings.
+- [ ] 4.1 Conduct planning-domain agent-panel qualification and resolve model findings.
 - [x] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)
 - [ ] 4.3 Release transition data and limitations with immutable evidence.
 

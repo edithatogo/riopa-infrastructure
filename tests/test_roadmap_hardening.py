@@ -123,7 +123,7 @@ def passing_gate(gate_id: str) -> dict[str, Any]:
         "gate_id": gate_id,
         "status": "passed",
         "evidence": [evidence_reference(gate_id)],
-        "reviewer": "Independent reviewer",
+        "reviewer": "Independent agent analyst",
         "reviewed_at": iso(),
         "expires_at": iso(timedelta(days=90)),
         "waiver": None,
@@ -137,7 +137,7 @@ def stable_evidence(root: Path) -> dict[str, Any]:
     gate_ids = [item["id"] for item in stable["exit_gates"] if item.get("blocking", True)]
     v1_gate = read_json(root / "conductor/v1-gate.json")
     metrics = {
-        "independent_reviewers": 2,
+        "agent_panel_analysts": 2,
         "clean_room_reproductions": 2,
         "external_reproductions": 1,
         "external_user_workflows": 2,
@@ -465,7 +465,7 @@ def test_release_evidence_validation_reports_structural_and_reference_failures(
                 "expired_waivers": 0,
             },
             "metrics": {
-                "independent_reviewers": 0,
+                "agent_panel_analysts": 0,
                 "clean_room_reproductions": 0,
                 "external_reproductions": 0,
                 "external_user_workflows": 0,
@@ -788,7 +788,7 @@ def test_stable_qualification_metrics_defects_approvals_and_decision_are_enforce
     evidence = make_stable_ready(root)
     evidence["defects"].pop("open_p0")
     evidence["defects"]["open_p1"] = 1
-    evidence["metrics"].pop("independent_reviewers")
+    evidence["metrics"].pop("agent_panel_analysts")
     evidence["metrics"]["clean_room_reproductions"] = 1
     evidence["machine_readable"] = False
     evidence["immutable_evidence_identifiers"] = False
@@ -802,7 +802,7 @@ def test_stable_qualification_metrics_defects_approvals_and_decision_are_enforce
     text = "\n".join(readiness.blockers)
     assert "stable defect metric open_p0 is missing" in text
     assert "open_p1=1 exceeds 0" in text
-    assert "independent_reviewers is missing" in text
+    assert "agent_panel_analysts is missing" in text
     assert "clean_room_reproductions=1 is below 2" in text
     assert "not declared machine-readable" in text
     assert "does not require immutable identifiers" in text

@@ -20,7 +20,7 @@
 
 ## 4. Ratification and handover
 
-- [x] 4.1 Conduct two independent analyst architecture reviews (maintainers and/or agents). (docs/architecture-reviews/; 4f1560e)
+- [x] 4.1 Conduct two independent agent-analyst architecture assessments. (docs/architecture-reviews/; 4f1560e)
 - [x] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)
 - [x] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)
 

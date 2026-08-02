@@ -26,6 +26,6 @@ or external conformance.
 ## Unresolved gates
 
 Non-Python acceptance/rejection parity, independent projection round trips,
-profile publication, signed v1 attestation and independent review remain
+profile publication, signed v1 attestation and orchestrated agent-panel qualification remain
 pending. Native evidence is not rewritten destructively.
 

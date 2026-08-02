@@ -18,10 +18,10 @@
 - [ ] 3.2 Publish capacity, scaling and cost models.
 - [ ] 3.3 Resolve bottlenecks without weakening correctness or provenance.
 
-## 4. Independent v1 qualification
+## 4. Agent-panel v1 qualification
 
 - [ ] 4.1 Repeat benchmarks in a second environment.
-- [ ] 4.2 Complete independent method and results review.
+- [ ] 4.2 Complete orchestrated method-and-results agent-panel qualification.
 - [ ] 4.3 Freeze v1 performance envelopes, limitations and operational actions.
 
 ## Track closeout

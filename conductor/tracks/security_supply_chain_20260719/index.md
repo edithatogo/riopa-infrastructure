@@ -21,10 +21,11 @@
 | `SEC-M1-THREAT-20260801` | Threat, credential and vulnerability response baseline | `docs/security-threat-model.md`, `docs/vulnerability-response-policy.md` | Repository policy recorded; hosted controls and exercises remain pending |
 | `SEC-M1-CONTROLS-20260801` | Machine-readable security control inventory and immutable-action regression test | `docs/security-control-manifest.json`, `tests/test_security_controls.py` | Repository checks passing; hosted execution remains pending |
 | `SEC-HOSTED-TRUST-20260802` | Additional hosted runner and dependency choices remain explicit and least-privilege | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py` | GitHub workflow uses read-only permissions and immutable action pins; no remote mutation or new runtime dependency; cost approval required before Hugging Face job submission |
+| `SEC-HF-RUNNER-PREFLIGHT-20260802` | Hugging Face runner use is revision/image pinned, cost bounded and secret free before submission | `docs/hugging-face-evidence-runner-plan-20260802.json` | Staged only; no billable job or new trust boundary activated |
 
 ## Blocking defects
 
-- Hosted release-environment verification, SBOM/signature execution, credential-compromise and rollback exercise, and independent security review remain pending.
+- Hosted release-environment verification, SBOM/signature execution, credential-compromise and rollback exercise, and security agent-panel qualification remain pending.
 
 ## Decisions, exceptions and limitations
 
@@ -43,4 +44,4 @@ Required agent-panel lenses: API/schema analyst, Security analyst, Operations an
 - Fix: retained one completed 2.3 item and narrowed SC-03 to controls evidenced
   by the repository.
 
-This index records the repository-owned M1 implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index records the repository-owned M1 implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

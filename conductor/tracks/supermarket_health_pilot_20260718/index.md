@@ -23,7 +23,7 @@
 ## Blocking defects
 
 - Rights-cleared versioned supermarket inputs, baseline reproduction, access/health analysis,
-  planning alternatives, research objects and independent review remain open.
+  planning alternatives, research objects and orchestrated agent-panel qualification remain open.
 
 ## Decisions, exceptions and limitations
 
@@ -33,4 +33,4 @@
 
 Required agent-panel lenses: Data-governance analyst, Research-object analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

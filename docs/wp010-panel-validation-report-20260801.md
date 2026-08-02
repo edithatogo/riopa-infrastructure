@@ -16,7 +16,7 @@
 
 1. Reproducer: two clean-room bundle builds were byte-identical and matched the
    expected digest.
-2. Adversarial reviewer: no deviation was observed in the scripted synthetic
+2. Adversarial analyst: no deviation was observed in the scripted synthetic
    benchmark; the report retains the declared limitations.
 3. Evidence/rights auditor: preservation, source exclusions and public-only
    scope were consistent; no restricted or unpublished payload was introduced.

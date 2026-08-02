@@ -11,7 +11,7 @@ Each run is independent and content-bound:
 
 1. **Reproducer** rebuilds the research object, publication plan and conformance
    corpus from the frozen revision.
-2. **Adversarial reviewer** exercises malformed inputs, rights narrowing,
+2. **Adversarial analyst** exercises malformed inputs, rights narrowing,
    provenance breaks, dependency tampering and rollback paths.
 3. **Evidence auditor** verifies hashes, SBOM/attestation references, methods
    facts, publication receipts and traceability to the release gate.

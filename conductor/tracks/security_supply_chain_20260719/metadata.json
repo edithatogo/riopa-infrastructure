@@ -40,6 +40,6 @@
     "hosted-protection-and-release-environment-verification",
     "sbom-signature-and-provenance-execution",
     "credential-compromise-and-rollback-exercise",
-    "independent-security-review"
+    "security-agent-panel-qualification"
   ]
 }

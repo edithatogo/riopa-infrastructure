@@ -20,6 +20,7 @@
 | `WP-009-small-instance-correctness-oracle-20260731` | Deterministic exhaustive accessibility/location fixtures provide a correctness baseline for later scalable-engine comparisons | `src/riopa_provenance/accessibility.py`, `src/riopa_provenance/facility_location.py`, `tests/test_accessibility.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | Small-instance correctness passes; no national-scale performance, cost, soak or recovery claim is made |
 | `PERF-HOSTED-OPTIONS-20260802` | Hosted runner and national-workload execution options are explicit and fail closed | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_hosted_evidence.py` | GitHub scale-smoke lane implemented; Hugging Face Jobs is a budget-gated fallback; no national run claimed |
 | `PERF-HOSTED-SMOKE-20260802` | Exact-revision performance correctness smoke executes in a hosted runner | `docs/hosted-evidence-batch-20260802.json`, [GitHub Actions run 30744487469](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744487469) | Passed; not a national-scale workload or capacity measurement |
+| `PERF-HF-LIBRARY-ASSESSMENT-20260802` | Secondary hosted runner, public workload and measurement-library options are bounded | `docs/hugging-face-evidence-runner-plan-20260802.json`, `docs/remaining-gates-campaign-v2-20260802.md` | No authoritative HF national workload found; `pyperf`/`psutil` remain benchmark-only candidates |
 
 ## Blocking defects
 
@@ -35,4 +36,4 @@
 
 Required agent-panel lenses: Performance analyst, Operations analyst, Security analyst, Data-governance analyst, Quantitative methods analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

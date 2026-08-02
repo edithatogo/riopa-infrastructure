@@ -11,7 +11,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -25,7 +25,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -39,7 +39,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -53,7 +53,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -67,7 +67,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -81,7 +81,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -95,7 +95,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -109,7 +109,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -123,7 +123,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -137,7 +137,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -151,7 +151,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -165,7 +165,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -179,7 +179,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -193,7 +193,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -207,7 +207,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -221,7 +221,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -235,7 +235,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -249,7 +249,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -263,7 +263,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -277,7 +277,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -291,7 +291,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -305,7 +305,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -319,7 +319,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -333,7 +333,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -347,7 +347,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -361,7 +361,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -375,7 +375,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],
@@ -389,7 +389,7 @@
       "disposition": null,
       "evidence_refs": [],
       "required_roles": [
-        "adversarial-reviewer",
+        "adversarial-analyst",
         "evidence-auditor",
         "reproducer"
       ],

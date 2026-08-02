@@ -48,7 +48,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] At least one authority reorganisation and one plan replacement are reconstructed with evidence.
 - [ ] Longitudinal queries can choose valid-time, recorded-time and as-known-at perspectives.
 - [ ] Continuity crosswalks expose confidence, scope and non-equivalence.
-- [ ] Independent domain review confirms that the data model does not imply legal advice.
+- [ ] An orchestrated planning-domain agent panel confirms that the data model does not imply legal advice.
 - [ ] Migration guidance covers future planning-system changes without rewriting historical records.
 
 ## Hardening and maturity gates
@@ -56,7 +56,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 
@@ -65,7 +65,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - Transition and continuity schema fixtures.
 - Worked authority and plan transition reconstructions.
 - Temporal query and crosswalk validation.
-- Domain review and legal non-authority statement.
+- Planning-domain agent-panel report and legal non-authority statement.
 
 ## Risks
 

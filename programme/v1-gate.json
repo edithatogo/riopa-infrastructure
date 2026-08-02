@@ -71,7 +71,7 @@
     "maximum_expired_waivers": 0
   },
   "evidence_policy": {
-    "minimum_independent_reviewers": 2,
+    "minimum_agent_panel_analysts": 2,
     "minimum_clean_room_reproductions": 2,
     "minimum_external_reproductions": 1,
     "minimum_external_user_workflows": 2,
@@ -107,10 +107,10 @@
   "release_authority": {
     "required_roles": [
       "Release manager",
-      "Security reviewer",
-      "Governance reviewer",
-      "Scientific reviewer",
-      "Independent reproducibility reviewer"
+      "Security analyst",
+      "Governance analyst",
+      "Scientific-methods analyst",
+      "Independent reproducibility analyst"
     ],
     "unanimous_for_non_waivable_categories": true,
     "signed_decision_required": true

@@ -16,7 +16,7 @@ evidence requirements.
 ## Panel validation
 
 Use three isolated subagents: clean-room reproducer, adversarial safety
-reviewer and evidence auditor. Retain each report, environment, command log,
+analyst and evidence auditor. Retain each report, environment, command log,
 revision and SHA-256 digest. A disagreement is a failed gate, not a majority
 vote. Panel results qualify the bounded preview only; beta, RC and stable-v1
 gates remain subject to their declared policy.

@@ -14,10 +14,26 @@ on:
           - scale-smoke
           - operational-observation
           - rc-soak-observation
+      campaign_id:
+        description: Stable evidence-campaign identifier
+        required: true
+        default: operational-beta-20260802
+        type: string
+      candidate_revision:
+        description: Required exact 40-character revision for an RC-soak observation
+        required: false
+        default: ""
+        type: string
+      qualification_epoch:
+        description: Change only when a material beta candidate or instrumentation change resets the clock
+        required: true
+        default: beta-epoch-20260802
+        type: string
   schedule:
-    - cron: "17 14 * * 0"
+    - cron: "17 14 * * *"
 
 permissions:
+  actions: read
   contents: read
 
 concurrency:
@@ -35,6 +51,9 @@ jobs:
     timeout-minutes: 45
     env:
       EVIDENCE_LANE: ${{ github.event.inputs.lane || 'operational-observation' }}
+      EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || 'operational-beta-20260802' }}
+      EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || '' }}
+      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || 'beta-epoch-20260802' }}
     steps:
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -49,17 +68,48 @@ jobs:
       - name: Install locked environment
         run: uv sync --extra dev --extra spatial --frozen
       - name: Execute bounded lane
-        run: uv run python scripts/record_hosted_evidence.py "$EVIDENCE_LANE"
+        id: execute
+        continue-on-error: true
+        run: >-
+          uv run python scripts/record_hosted_evidence.py "$EVIDENCE_LANE"
+          --output-dir "dist/hosted-evidence/${GITHUB_RUN_ID}"
       - name: Validate receipt schema
+        if: always()
         run: >-
           uv run jsonschema
-          --instance "dist/hosted-evidence/${EVIDENCE_LANE}.receipt.json"
+          --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json"
           schemas/hosted-evidence.schema.json
-      - name: Upload content-bound evidence
+      - name: Restore the latest cumulative campaign artifact
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p dist/campaign-history dist/prior-campaign
+          artifact_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=evidence-campaign-${EVIDENCE_CAMPAIGN_ID}-${EVIDENCE_LANE}&per_page=100" --jq '.artifacts | sort_by(.created_at) | last | .id // empty')"
+          if [[ -n "$artifact_id" ]]; then
+            gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}/zip" > dist/prior-campaign.zip
+            unzip -q dist/prior-campaign.zip -d dist/prior-campaign
+            find dist/prior-campaign -name '*.receipt.json' -exec cp {} dist/campaign-history/ \;
+          fi
+          cp "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json" \
+            "dist/campaign-history/${GITHUB_RUN_ID}-${EVIDENCE_LANE}.receipt.json"
+      - name: Build cumulative fail-closed campaign ledger
+        if: always()
+        run: >-
+          uv run python scripts/build_campaign_ledger.py
+          dist/campaign-history/*.receipt.json
+          --output dist/campaign-ledger.json
+      - name: Upload cumulative content-bound evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: hosted-evidence-${{ env.EVIDENCE_LANE }}-${{ github.run_id }}
-          path: dist/hosted-evidence/
+          name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-${{ env.EVIDENCE_LANE }}
+          path: |
+            dist/campaign-history/
+            dist/campaign-ledger.json
+            dist/hosted-evidence/
           if-no-files-found: error
           retention-days: 90
+      - name: Fail when the bounded lane failed
+        if: always() && steps.execute.outcome != 'success'
+        run: exit 1

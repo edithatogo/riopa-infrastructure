@@ -15,7 +15,7 @@
 ## 3. Quality and review
 
 - [ ] 3.1 Build stratified duplicate, classification and coordinate review samples.
-- [ ] 3.2 Record bounded source sensitivity (one candidate pair and three source-only assertions); performance estimates require an independently reviewed reference sample.
+- [ ] 3.2 Record bounded source sensitivity (one candidate pair and three source-only assertions); performance estimates require a reference sample qualified by the agent panel.
 - [ ] 3.3 Implement sensitive/restricted release filtering.
 
 ## 4. Stable registry release

@@ -13,7 +13,7 @@ and one operator-bundle SHA-256, then give those exact values to all three
 roles:
 
 - `reproducer`
-- `adversarial-reviewer`
+- `adversarial-analyst`
 - `evidence-auditor`
 
 Each role writes one JSON report satisfying the validator contract. Reports
@@ -24,7 +24,7 @@ disposition and dissent. Run:
 ```sh
 uv run python scripts/validate_panel_reports.py \
   reports/panel/<batch>/<track>/reproducer.json \
-  reports/panel/<batch>/<track>/adversarial-reviewer.json \
+  reports/panel/<batch>/<track>/adversarial-analyst.json \
   reports/panel/<batch>/<track>/evidence-auditor.json
 ```
 

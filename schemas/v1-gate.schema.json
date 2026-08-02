@@ -115,7 +115,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "minimum_independent_reviewers",
+        "minimum_agent_panel_analysts",
         "minimum_clean_room_reproductions",
         "minimum_external_reproductions",
         "minimum_external_user_workflows",
@@ -128,7 +128,7 @@
         "immutable_evidence_identifiers_required"
       ],
       "properties": {
-        "minimum_independent_reviewers": {
+        "minimum_agent_panel_analysts": {
           "type": "integer",
           "minimum": 2
         },

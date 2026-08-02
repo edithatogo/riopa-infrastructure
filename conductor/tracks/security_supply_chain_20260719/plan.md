@@ -8,7 +8,7 @@
 
 ## 2. CI and dependency hardening
 
-- [ ] 2.1 Add branch protection, required review and least-privilege workflow permissions.
+- [ ] 2.1 Add branch protection, required automated checks, agent-panel qualification evidence and least-privilege workflow permissions.
 - [ ] 2.2 Add dependency, static, secret, container and action-integrity checks.
 - [x] 2.3 Generate and validate SBOMs for packages and containers. (existing workflow and security-control-manifest.json)
 
@@ -20,7 +20,7 @@
 
 ## 4. Audit and incident exercise
 
-- [ ] 4.1 Conduct security review and resolve findings.
+- [ ] 4.1 Conduct orchestrated security agent-panel qualification and resolve findings.
 - [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 

@@ -32,7 +32,7 @@ gates.
 ## Panel operating protocol
 
 The orchestrator should collect separate signed (content-hashed) outputs from a
-reproduction agent, an adversarial reviewer and an evidence/rights auditor.
+reproduction agent, an adversarial analyst and an evidence/rights auditor.
 Each output must identify the source revision, packet digest, tools and
 limitations. The orchestrator then publishes one panel report that links each
 finding to the gate above and preserves dissent; it must not change a gate's

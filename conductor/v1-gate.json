@@ -71,7 +71,7 @@
     "maximum_expired_waivers": 0
   },
   "evidence_policy": {
-    "minimum_independent_reviewers": 2,
+    "minimum_agent_panel_analysts": 2,
     "minimum_clean_room_reproductions": 2,
     "minimum_external_reproductions": 1,
     "minimum_external_user_workflows": 2,

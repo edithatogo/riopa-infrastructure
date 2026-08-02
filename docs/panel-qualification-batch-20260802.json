@@ -5,7 +5,7 @@
   "source_revision": null,
   "bundle_sha256": null,
   "non_assertive": true,
-  "required_roles": ["adversarial-reviewer", "evidence-auditor", "reproducer"],
+  "required_roles": ["adversarial-analyst", "evidence-auditor", "reproducer"],
   "tracks": [
     {"track_id": "publication_validation_20260718", "status": "pending", "reports": []},
     {"track_id": "methods_research_objects_20260718", "status": "pending", "reports": []},

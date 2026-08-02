@@ -14,7 +14,7 @@ contains:
 - one result for every evaluated gate, including status, reviewer, review date,
   expiry and evidence references;
 - defect counts using the same field names as the global v1 policy;
-- qualification metrics for independent review, clean-room/external reproduction,
+- qualification metrics for orchestrated agent-panel qualification, clean-room/external reproduction,
   external users/operators, operational cycles, operational evidence and RC soak;
 - role-specific approvals and signed decision references;
 - immutable release-artifact references; and

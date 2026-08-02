@@ -53,7 +53,7 @@
         "Threat, performance, resilience and data-quality reviews have no unresolved release blocker.",
         "Compatibility matrix and migration tooling cover supported predecessor versions.",
         "Restore, rollback, correction and withdrawal exercises pass.",
-        "Independent review verifies methods, limitations and evidence completeness."
+        "Orchestrated agent-panel qualification verifies methods, limitations and evidence completeness."
       ]
     },
     {

@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-ROLES = ["adversarial-reviewer", "evidence-auditor", "reproducer"]
+ROLES = ["adversarial-analyst", "evidence-auditor", "reproducer"]
 
 
 def generate(tracks_root: Path, output: Path) -> None:

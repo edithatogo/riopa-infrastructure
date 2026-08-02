@@ -32,6 +32,7 @@
 - [x] 5.2 Correct the readiness baseline boundary so it does not overstate completion of the normative inventory. (review fix)
 - [x] 5.3 Record the capability/boundary map for hosted recovery, soak, scale, external workflows and release authority. (review fix)
 - [x] 5.4 Adopt the single-developer agent-panel policy and record a fail-closed GitHub/Hugging Face remaining-gates plan with library options and contingencies. (review fix)
+- [x] 5.5 Reconcile all normative review language to agent-panel qualification, stage daily hosted observations and record the GitHub/Hugging Face campaign-v2 plan. (review fix)
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.

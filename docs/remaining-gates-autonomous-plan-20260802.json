@@ -5,11 +5,11 @@
   "mode": "single-developer-agent-panel",
   "sources": {
     "github": {
-      "open_issue_count": 146,
+      "open_issue_count": 145,
       "open_track_parent_count": 28,
       "track_issue": 139,
-      "latest_observed_head": "42d9fdfb89ff3b7fa32463a26c04452193fd6d1d",
-      "latest_ci": "replacement-exact-head-run-queued-after-local-fix",
+      "latest_observed_head": "f8135fca3a6e10b525c2feb3c350075acbd484bc",
+      "latest_ci": "passed-run-30744567515",
       "codeql": "passed"
     },
     "hugging_face": {
@@ -67,7 +67,7 @@
     },
     {
       "id": "cross-track-completion",
-      "status": "146-open-issues-across-28-track-parents",
+      "status": "145-open-issues-across-28-track-parents",
       "recommended_option": "Reconcile issues to content-bound evidence in dependency order; close only after validation and panel disposition.",
       "contingency": "Defer out-of-scope work explicitly without changing maturity or release claims.",
       "non_claim": "An issue label, generated roadmap or plan checkbox is not implementation evidence."

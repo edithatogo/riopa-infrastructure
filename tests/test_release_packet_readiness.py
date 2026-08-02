@@ -11,4 +11,4 @@ def test_release_packet_readiness_links_campaign_artifacts_and_fails_closed() ->
     assert packet["release_authority"] == "pending"
     for artifact in packet["repository_owned_artifacts"]:
         assert (ROOT / artifact).exists()
-    assert "hosted recovery execution" in packet["pending_gates"]
+    assert "production disaster-recovery execution" in packet["pending_gates"]

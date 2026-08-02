@@ -40,7 +40,7 @@
   ],
   "blocking_defects": [
     "non-python-validator-parity",
-    "projection-independent-review",
+    "projection-agent-panel-qualification",
     "profile-publication-identifier",
     "signed-v1-attestation"
   ]

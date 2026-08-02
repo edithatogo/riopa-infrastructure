@@ -2,7 +2,7 @@
 
 RIOPA is maintained as a single-developer repository. Repository review is
 therefore performed by a multi-agent panel coordinated by an orchestrating
-agent. No acceptance criterion requires a second human reviewer.
+agent. No acceptance criterion requires a second person as reviewer.
 
 ## Panel contract
 
@@ -27,7 +27,7 @@ formally changed.
 
 An external operator or user may supply execution or usability evidence, but is
 not a reviewer and is not required to review the repository. The accountable
-release authority approves promotion; it is not a code or scientific reviewer.
+release authority approves promotion; it is not a code or scientific-methods assessor.
 
 ## Minimum evidence
 
@@ -36,4 +36,3 @@ release authority approves promotion; it is not a code or scientific reviewer.
 - orchestrator synthesis, options, recommendation and contingency;
 - disposition of every material finding;
 - explicit non-claims for hosted, elapsed, external-user and authority gates.
-

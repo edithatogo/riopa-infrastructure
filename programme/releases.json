@@ -137,7 +137,7 @@
         {
           "id": "core-governance-baseline",
           "category": "governance",
-          "requirement": "Rights, privacy, Māori data sovereignty and release decision hooks are embedded in the contracts.",
+          "requirement": "Rights, privacy, scope-triggered cultural or community review, and release decision hooks are embedded in the contracts.",
           "evidence_contract": [
             "Governance review",
             "Rights fixtures",
@@ -359,11 +359,11 @@
         {
           "id": "spatial-quality-temporality",
           "category": "science",
-          "requirement": "Geometry, coverage, bitemporal validity, change and uncertainty metrics pass independent review.",
+          "requirement": "Geometry, coverage, bitemporal validity, change and uncertainty metrics pass orchestrated agent-panel qualification.",
           "evidence_contract": [
             "Quality benchmark",
             "Temporal reconstruction report",
-            "Independent review"
+            "Orchestrated agent-panel qualification"
           ],
           "blocking": true
         },
@@ -464,7 +464,7 @@
         {
           "id": "governed-publication",
           "category": "governance",
-          "requirement": "Public outputs pass rights, privacy, Māori data sovereignty, safety and sensitive-location review.",
+          "requirement": "Public outputs pass rights, privacy, applicable cultural or community review, safety and sensitive-location review.",
           "evidence_contract": [
             "Governance decisions",
             "Rights inventory",
@@ -604,7 +604,7 @@
           "category": "science",
           "requirement": "Scientific, governance, rights, safety and interpretation reviews approve the bounded v1 scope.",
           "evidence_contract": [
-            "Scientific review",
+            "Scientific-methods agent-panel qualification",
             "Governance approvals",
             "Limitations and exclusions register"
           ],
@@ -663,7 +663,7 @@
         {
           "id": "stable-governance",
           "category": "governance",
-          "requirement": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety, corrections and withdrawals are approved for the released scope.",
+          "requirement": "Decision rights, rights, privacy, ethics, applicable cultural or community review, safety, corrections and withdrawals are approved for the released scope.",
           "evidence_contract": [
             "Signed governance decision",
             "Rights and limitation inventory",
@@ -786,7 +786,7 @@
           "category": "science",
           "requirement": "Applied outputs pass scientific-method, causal-boundary, sensitivity, interpretation and non-operational-use review.",
           "evidence_contract": [
-            "Scientific review",
+            "Scientific-methods agent-panel qualification",
             "Preregistered or declared analysis plans",
             "Interpretation and limitation report"
           ],

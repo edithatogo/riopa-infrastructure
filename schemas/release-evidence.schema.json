@@ -222,7 +222,6 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "independent_reviewers",
         "clean_room_reproductions",
         "external_reproductions",
         "external_user_workflows",
@@ -231,8 +230,21 @@
         "operational_evidence_days",
         "release_candidate_soak_days"
       ],
+      "allOf": [
+        {
+          "anyOf": [
+            {"required": ["agent_panel_analysts"]},
+            {"required": ["independent_reviewers"]}
+          ]
+        }
+      ],
       "properties": {
-        "independent_reviewers": {"type": "integer", "minimum": 0},
+        "agent_panel_analysts": {"type": "integer", "minimum": 0},
+        "independent_reviewers": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Legacy field accepted for historical evidence records only."
+        },
         "clean_room_reproductions": {"type": "integer", "minimum": 0},
         "external_reproductions": {"type": "integer", "minimum": 0},
         "external_user_workflows": {"type": "integer", "minimum": 0},

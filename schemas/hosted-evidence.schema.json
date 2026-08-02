@@ -19,7 +19,11 @@
     "non_claims"
   ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"enum": ["1.0.0", "1.1.0"]},
+    "campaign_id": {"type": "string", "minLength": 3},
+    "qualification_epoch": {"type": "string", "minLength": 3},
+    "operational_cycle_id": {"type": "string", "minLength": 3},
+    "candidate_revision": {"type": ["string", "null"], "pattern": "^[0-9a-f]{40}$"},
     "lane": {
       "enum": [
         "recovery-rollback",
@@ -35,7 +39,12 @@
     "started_at": {"type": "string", "format": "date-time"},
     "ended_at": {"type": "string", "format": "date-time"},
     "exit_code": {"type": "integer"},
-    "source_revision": {"type": "string", "minLength": 7},
+    "source_revision": {
+      "anyOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        {"const": "local-uncommitted"}
+      ]
+    },
     "host": {
       "type": "object",
       "additionalProperties": false,
@@ -59,6 +68,27 @@
       }
     },
     "non_claims": {"type": "array", "minItems": 4, "items": {"type": "string"}}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"schema_version": {"const": "1.1.0"}}},
+      "then": {
+        "required": ["campaign_id", "qualification_epoch", "operational_cycle_id"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {"const": "1.1.0"},
+          "lane": {"const": "rc-soak-observation"}
+        }
+      },
+      "then": {
+        "required": ["candidate_revision"],
+        "properties": {
+          "candidate_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+        }
+      }
+    }
+  ]
 }
-

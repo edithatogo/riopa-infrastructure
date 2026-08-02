@@ -18,16 +18,16 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `PROVENANCE-MAPPING-20260801` | Native evidence mapping, semantic classification and migration boundaries | `docs/provenance-profile-mapping-inventory-20260801.md`, `docs/provenance-and-lineage.md` | Repository-owned baseline complete; external parity/review gates remain open |
+| `PROVENANCE-MAPPING-20260801` | Native evidence mapping, semantic classification and migration boundaries | `docs/provenance-profile-mapping-inventory-20260801.md`, `docs/provenance-and-lineage.md` | Repository-owned baseline complete; non-Python parity and agent-panel qualification gates remain open |
 | `PROVENANCE-CONTRACT-20260801` | Canonical event, retry, lineage and projection contracts | `schemas/provenance-event.schema.json`, `src/riopa_provenance/validation.py`, `src/riopa_provenance/crate.py`, tests | Python validation and projections pass; non-Python and signed-attestation evidence remains pending |
 | `PROVENANCE-CONFORMANCE-20260801` | Bounded conformance status and explicit external-gate boundary | `docs/provenance-profile-conformance-manifest-1.0.0.json`, `tests/test_validation_failures.py` | Python positive/negative suites pass; non-Python parity and signed attestation remain not-run |
 
 ## Blocking defects and gates
 
 - Non-Python validator/model parity and round-trip evidence.
-- Independent PROV/OpenLineage semantic-loss review.
+- PROV/OpenLineage semantic-loss agent-panel qualification.
 - Stable profile publication identifier, migration/deprecation release evidence.
-- Signed v1 attestation and independent review.
+- Signed v1 attestation and orchestrated agent-panel qualification.
 
 ## Decisions, exceptions and limitations
 
@@ -37,7 +37,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required agent-panel lenses: API/schema analyst, Provenance analyst, Security analyst, Research-object analyst.
 
-This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
 
 ## Review record
 
@@ -48,4 +48,4 @@ This index is deliberately non-assertive while the track remains `validating`. S
 - Validation: focused provenance tests and full roadmap validation passed.
 
 The track is not complete or archive-eligible while the listed conformance,
-publication, attestation and independent-review gates remain open.
+publication, attestation and agent-panel qualification gates remain open.

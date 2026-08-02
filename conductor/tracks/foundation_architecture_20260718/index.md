@@ -35,7 +35,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 - M2 executable proof, negative tests and traceable evidence.
 - M3 real-data integration and representative failure handling.
 - M4 repeated operation, external use and SLO evidence.
-- M5 independent review, recovery qualification and RC soak.
+- M5 orchestrated agent-panel qualification, recovery qualification and RC soak.
 - M6 supported compatibility, external reproduction, named maintainers and stable release authority.
 
 ## Decisions, exceptions and limitations
@@ -64,8 +64,8 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 Required analyst coverage: two independent analysts with distinct identities and scopes; governance, API/schema and external-user perspectives remain recommended coverage.
 
 The bounded M1 architecture baseline is ratified; implementation remains
-validating at M1. Evidence must be immutable or version-addressed, independently
-reviewed where required, and sufficient for each later maturity and release gate.
+validating at M1. Evidence must be immutable or version-addressed, qualified by
+the orchestrated agent panel where required, and sufficient for each later maturity and release gate.
 
 Target-release metadata and evidence were revalidated on 2026-08-01; status is
 `validating` by design until M2–M6 gates are evidenced.

@@ -21,7 +21,7 @@
 ## 4. Stable accessibility interface
 
 - [ ] 4.1 Integrate with real NZ archive and facility registry versions.
-- [ ] 4.2 Conduct scientific and user review of semantics and limitations.
+- [ ] 4.2 Conduct scientific-methods and user-workflow agent-panel qualification of semantics and limitations.
 - [ ] 4.3 Freeze the v1 accessibility contract and examples.
 
 ## Track closeout

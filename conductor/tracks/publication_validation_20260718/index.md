@@ -22,6 +22,7 @@
 | `WP-010-independent-review-protocol-20260801` | Clean-room environment, independence, result and content-binding requirements are explicit | `docs/independent-reproduction-protocol.md`, `docs/preservation-deposit-plan.md` | Protocol ready for external execution; no panel report, deposit, DOI or release approval is claimed |
 | `PUB-AGENT-PANEL-HF-20260802` | Review responsibility and optional public evidence mirror are bounded for a single-developer repository | `docs/single-developer-agent-panel-review-policy.md`, `docs/remaining-gates-autonomous-plan-20260802.json` | Agent-panel review policy active; Hugging Face is optional and not preservation, participant or authority evidence |
 | `PUB-HOSTED-CLEAN-ROOM-20260802` | Dependency-isolated verifier runs on an exact revision in a hosted runner | `docs/hosted-evidence-batch-20260802.json`, [GitHub Actions run 30744486356](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744486356) | Passed for technical-preview rehearsal; external participant evidence remains pending |
+| `PUB-SINGLE-DEVELOPER-PANEL-V2-20260802` | Machine-readable gates, templates and live issue sources use agent-panel qualification semantics | `docs/single-developer-agent-panel-review-policy.md`, `docs/remaining-gates-campaign-v2-20260802.md`, `docs/panel-qualification-report-templates-20260801.json` | Review is agent-panel-owned; external participant and authority evidence remain distinct |
 
 ## Blocking defects
 
@@ -35,4 +36,4 @@
 
 Required agent-panel lenses: Governance analyst, Research-object analyst, External-user workflow analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
