@@ -39,7 +39,7 @@ def _fixture() -> tuple[ArchivedPacketDescriptor, dict[str, bytes]]:
         "objectIdField": "OBJECTID",
         "extent": {"spatialReference": {"wkid": 2193}},
     }
-    inventory = {"objectIdFieldName": "OBJECTID", "objectIds": [1, 2]}
+    inventory = {"objectIdFieldName": "OBJECTID", "objectIds": [2, 1]}
     page = {
         "spatialReference": {"wkid": 2193},
         "features": [

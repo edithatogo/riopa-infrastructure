@@ -465,10 +465,9 @@ def build_archived_arcgis_projection(
         raise ArchivedPacketError("object ID inventory is malformed")
     if before_ids != after_ids or len(before_ids) != len(set(before_ids)):
         raise ArchivedPacketError("object ID inventories are unstable or non-unique")
+    normalized_ids = sorted(before_ids)
     expected_object_digest = packet.manifest["integrity"].get("object_ids_sha256")
-    if expected_object_digest != sha256_bytes(
-        json.dumps(before_ids, sort_keys=True, separators=(",", ":")).encode()
-    ):
+    if expected_object_digest != sha256_json(normalized_ids):
         raise ArchivedPacketError("object ID inventory digest mismatch")
 
     page_items = sorted(
@@ -495,7 +494,7 @@ def build_archived_arcgis_projection(
             )
         features.extend(page_features)
         crs = crs or page_crs
-    if observed_ids != before_ids or len(features) != descriptor.expected_features:
+    if observed_ids != normalized_ids or len(features) != descriptor.expected_features:
         raise ArchivedPacketError("feature pages do not exactly match the object ID inventory")
     null_count = sum(feature["geometry_object"] is None for feature in features)
     if null_count != descriptor.expected_null_geometries:
