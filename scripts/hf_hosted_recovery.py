@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import platform
+import re
 import subprocess
 import sys
 import tarfile
@@ -14,6 +15,17 @@ import tempfile
 import time
 import urllib.request
 from pathlib import Path
+
+REPOSITORY_PATTERN = re.compile(r"[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}")
+REVISION_PATTERN = re.compile(r"[0-9a-f]{40}")
+
+
+def validate_source(repository: str, revision: str) -> None:
+    """Restrict downloads to an exact public GitHub repository and commit."""
+    if REPOSITORY_PATTERN.fullmatch(repository) is None:
+        raise ValueError("repository must be a plain owner/name identifier")
+    if REVISION_PATTERN.fullmatch(revision) is None:
+        raise ValueError("revision must be a 40-character lowercase Git SHA")
 
 
 def validate_archive_members(members: list[tarfile.TarInfo], destination: Path) -> None:
@@ -28,6 +40,7 @@ def validate_archive_members(members: list[tarfile.TarInfo], destination: Path) 
 
 
 def run(repository: str, revision: str, output: Path | None) -> dict[str, object]:
+    validate_source(repository, revision)
     started = time.monotonic()
     source_url = f"https://codeload.github.com/{repository}/tar.gz/{revision}"
     with urllib.request.urlopen(source_url, timeout=120) as response:  # noqa: S310

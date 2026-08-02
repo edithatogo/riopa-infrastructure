@@ -33,6 +33,25 @@ def test_archive_links_are_rejected(tmp_path: Path) -> None:
         MODULE.validate_archive_members([_member("repo/link", link="../outside")], tmp_path)
 
 
+@pytest.mark.parametrize(
+    ("repository", "revision"),
+    [
+        ("https://example.invalid/repo", "a" * 40),
+        ("owner/repo/extra", "a" * 40),
+        ("owner/repo?host=internal", "a" * 40),
+        ("owner/repo", "main"),
+        ("owner/repo", "A" * 40),
+    ],
+)
+def test_source_identifiers_are_strict(repository: str, revision: str) -> None:
+    with pytest.raises(ValueError):
+        MODULE.validate_source(repository, revision)
+
+
+def test_exact_github_source_identifiers_are_accepted() -> None:
+    MODULE.validate_source("edithatogo/riopa-infrastructure", "a" * 40)
+
+
 def test_fixture_archive_has_one_safe_root(tmp_path: Path) -> None:
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode="w:gz") as tar:
