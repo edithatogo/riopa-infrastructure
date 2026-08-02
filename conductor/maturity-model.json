@@ -86,7 +86,7 @@
       "stable_v1_outcome": "Decision rights, rights, privacy, ethics, applicable cultural or community review, safety boundaries, corrections and withdrawals are approved and auditable.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -96,7 +96,7 @@
       "stable_v1_outcome": "Schemas, ontology, identifiers, APIs, CLI, configuration and file formats have frozen v1 contracts, version negotiation and tested migration paths.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -106,7 +106,7 @@
       "stable_v1_outcome": "Every released result has truthful declared lineage granularity, complete transformation evidence, tamper detection and authenticated release provenance.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -116,7 +116,7 @@
       "stable_v1_outcome": "Threats, credentials, dependencies, builds, releases, vulnerability response and incident recovery meet the v1 security policy.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -126,7 +126,7 @@
       "stable_v1_outcome": "Coverage, freshness, legal status, geometry, identity, uncertainty, bitemporal semantics and limitations are measured and published.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -136,7 +136,7 @@
       "stable_v1_outcome": "Scheduled operation, monitoring, backfill, quarantine, restore, fixity, disaster recovery, retention and cost controls have been exercised.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -146,7 +146,7 @@
       "stable_v1_outcome": "Reference workloads meet published latency, throughput, resource, capacity, cost and graceful-degradation envelopes without weakening correctness.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -156,7 +156,7 @@
       "stable_v1_outcome": "Cross-language implementations and standards projections pass normative conformance and bounded-loss tests.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -166,7 +166,7 @@
       "stable_v1_outcome": "Methods, rights, quality, software, environment, identifiers, checksums, attestations and preservation records form complete citable research objects.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -176,7 +176,7 @@
       "stable_v1_outcome": "External users and operators can install, reproduce, troubleshoot and extend supported workflows using versioned documentation and named support channels.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -186,7 +186,7 @@
       "stable_v1_outcome": "Accessibility, optimisation and simulation models have explicit objectives, constraints, uncertainty, equity, benchmark and independent-verification evidence.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     },
@@ -196,7 +196,7 @@
       "stable_v1_outcome": "Estimands, causal boundaries, ecological limitations, preregistration or analysis plans, diagnostics, sensitivity and interpretation are explicit and reviewed.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
-        "Named reviewer or release authority decision.",
+        "Agent-panel synthesis or release-authority decision.",
         "Open limitations, exceptions and expiry recorded."
       ]
     }

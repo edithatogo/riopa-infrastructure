@@ -24,13 +24,19 @@ def validate_transition(record: Mapping[str, Any]) -> tuple[str, ...]:
     errors: list[str] = []
     required = {"transition_id", "relationship", "predecessors", "successors", "state", "evidence"}
     errors.extend(f"missing required field: {key}" for key in sorted(required - record.keys()))
-    if not isinstance(record.get("transition_id"), str) or not str(record.get("transition_id", "")).startswith("urn:riopa:transition:"):
+    if not isinstance(record.get("transition_id"), str) or not str(
+        record.get("transition_id", "")
+    ).startswith("urn:riopa:transition:"):
         errors.append("transition_id must be a transition URN")
     if record.get("relationship") not in TRANSITION_RELATIONSHIPS:
         errors.append("relationship must be a supported transition relationship")
     for field in ("predecessors", "successors", "evidence"):
         value = record.get(field)
-        if not isinstance(value, list) or not value or any(not isinstance(item, str) or not item for item in value):
+        if (
+            not isinstance(value, list)
+            or not value
+            or any(not isinstance(item, str) or not item for item in value)
+        ):
             errors.append(f"{field} must be a non-empty array of strings")
     if record.get("state") not in TRANSITION_STATES:
         errors.append("state must be a supported planning state")

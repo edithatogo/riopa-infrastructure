@@ -18,6 +18,7 @@
 |---|---|---|---|
 | `WP-002-capture-observability-20260731` | Capture attempts, outcomes, archived bytes and structured failure categories | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Deterministic in-process metrics and structured failure events tested |
 | `WP-003-publication-resume-20260731` | Publication retry, idempotency and partial-completion semantics | `src/riopa_provenance/publication.py`, `tests/test_publication.py`, `docs/publication-state.md` | Content-bound operation keys, idempotent replay and conflict rejection tested |
+| `OPS-REMAINING-GATES-20260802` | Recovery, operational-cycle and RC-soak evidence sequence, executable hosted lanes and reset contingencies | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_hosted_evidence.py` | Revision-bound technical-preview runner implemented; hosted execution and elapsed clocks remain pending actual observations |
 
 ## Blocking defects
 
@@ -29,6 +30,6 @@
 
 ## Review and handover
 
-Required reviewer roles: Security reviewer, Operations reviewer, Research-object reviewer, External user reviewer.
+Required agent-panel lenses: Security analyst, Operations analyst, Research-object analyst, External-user workflow analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

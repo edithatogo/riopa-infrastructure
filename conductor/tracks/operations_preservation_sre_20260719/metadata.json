@@ -32,10 +32,10 @@
   "current_maturity": "M1",
   "owner_role": "Programme owner",
   "review_roles": [
-    "Security reviewer",
-    "Operations reviewer",
-    "Research-object reviewer",
-    "External user reviewer"
+    "Security analyst",
+    "Operations analyst",
+    "Research-object analyst",
+    "External-user workflow analyst"
   ],
   "blocking_defects": []
 }

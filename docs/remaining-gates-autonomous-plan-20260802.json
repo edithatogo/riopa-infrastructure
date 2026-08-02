@@ -1,0 +1,89 @@
+{
+  "plan_id": "remaining-gates-autonomous-20260802",
+  "observed_at": "2026-08-02",
+  "repository": "edithatogo/riopa-infrastructure",
+  "mode": "single-developer-agent-panel",
+  "sources": {
+    "github": {
+      "open_issue_count": 146,
+      "open_track_parent_count": 28,
+      "track_issue": 139,
+      "latest_observed_head": "42d9fdfb89ff3b7fa32463a26c04452193fd6d1d",
+      "latest_ci": "failed-formatting",
+      "codeql": "passed"
+    },
+    "hugging_face": {
+      "account": "edithatogo",
+      "cli_version": "1.15.0",
+      "dataset_search": "New Zealand geospatial",
+      "dataset_search_results": 0,
+      "cpu_basic_observed_cost_per_hour_usd": 0.01,
+      "remote_mutation_performed": false
+    }
+  },
+  "recommendation": "Fix exact-head CI, adopt agent-panel review, prepare revision-pinned hosted execution specifications, and keep every unobserved gate fail-closed.",
+  "gates": [
+    {
+      "id": "hosted-recovery",
+      "status": "pending-actual-hosted-execution",
+      "recommended_option": "Run the existing recovery bundle in an ephemeral revision-pinned runner and capture signed logs, timestamps and restored hashes.",
+      "contingency": "Use GitHub Actions first; use a budget-capped Hugging Face cpu-basic Job only if Actions cannot represent the failure-domain exercise.",
+      "non_claim": "A local or panel rehearsal is not hosted recovery evidence."
+    },
+    {
+      "id": "operational-cycles-and-rc-soak",
+      "status": "clock-not-started",
+      "recommended_option": "Start digest-chained scheduled observations only after the candidate revision and SLO contract are frozen.",
+      "contingency": "A material candidate or instrumentation change resets the relevant clock; retain earlier observations as rehearsal evidence.",
+      "non_claim": "Generated timestamps cannot substitute for elapsed time."
+    },
+    {
+      "id": "national-scale-performance",
+      "status": "synthetic-regional-only",
+      "recommended_option": "Publish a revision-pinned public workload manifest, correctness oracle and tiered resource envelope before scaling execution.",
+      "contingency": "If national public inputs remain unavailable, report regional/synthetic ceilings and prohibit national-scale claims.",
+      "non_claim": "Hardware capacity or a runnable job specification is not a measured national result."
+    },
+    {
+      "id": "external-operator-and-user-workflows",
+      "status": "pending-actual-participant-evidence",
+      "recommended_option": "Use agent panels for all review and retain operator/user roles only as execution and usability evidence producers.",
+      "contingency": "Remain at technical preview if actual external workflow evidence is absent.",
+      "non_claim": "Agent panels do not attest to an external participant's experience."
+    },
+    {
+      "id": "panel-qualification",
+      "status": "policy-implemented-reports-pending",
+      "recommended_option": "Run parallel agent lenses and require an orchestrator synthesis for each track qualification packet.",
+      "contingency": "Keep the track open when panel findings or evidence links are unresolved.",
+      "non_claim": "Panel qualification does not grant promotion authority."
+    },
+    {
+      "id": "release-authority",
+      "status": "pending-accountable-decision",
+      "recommended_option": "Assemble a digest-bound options paper and require the accountable authority to record promotion, deferral or rejection.",
+      "contingency": "No beta, RC or stable promotion without the decision record.",
+      "non_claim": "A developer or agent recommendation is not an accountable release decision."
+    },
+    {
+      "id": "cross-track-completion",
+      "status": "146-open-issues-across-28-track-parents",
+      "recommended_option": "Reconcile issues to content-bound evidence in dependency order; close only after validation and panel disposition.",
+      "contingency": "Defer out-of-scope work explicitly without changing maturity or release claims.",
+      "non_claim": "An issue label, generated roadmap or plan checkbox is not implementation evidence."
+    }
+  ],
+  "library_decision": {
+    "retain": ["duckdb", "pyarrow", "pyproj", "shapely", "httpx", "jsonschema"],
+    "conditional": ["huggingface_hub", "fsspec", "pandera", "frictionless"],
+    "decision": "Do not add runtime dependencies now. Use the installed Hugging Face CLI for revision-pinned transfer and job preparation; add a library only when a tested in-process integration is required.",
+    "rationale": "No candidate library closes an evidence gate by itself, and dependency growth increases audit and supply-chain work."
+  },
+  "remote_actions": {
+    "github_read_only_observation": true,
+    "hugging_face_read_only_observation": true,
+    "hugging_face_job_submitted": false,
+    "hugging_face_dataset_created": false
+  }
+}
+

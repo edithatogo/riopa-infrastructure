@@ -62,18 +62,18 @@
   "current_maturity": "M1",
   "owner_role": "Release authority",
   "review_roles": [
-    "Governance reviewer",
-    "API/schema reviewer",
-    "Provenance reviewer",
-    "Security reviewer",
-    "Data steward",
-    "Operations reviewer",
-    "Performance reviewer",
-    "Interoperability reviewer",
-    "Research-object reviewer",
-    "External user reviewer",
-    "Quantitative methods reviewer",
-    "Scientific reviewer"
+    "Governance analyst",
+    "API/schema analyst",
+    "Provenance analyst",
+    "Security analyst",
+    "Data-governance analyst",
+    "Operations analyst",
+    "Performance analyst",
+    "Interoperability analyst",
+    "Research-object analyst",
+    "External-user workflow analyst",
+    "Quantitative methods analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": ["all-v1-critical-tracks-complete", "clean-room-and-external-reproduction", "external-user-validation", "operational-and-release-candidate-soak", "signed-preserved-stable-release", "release-authority-decision"]
 }

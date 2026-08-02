@@ -59,7 +59,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:maturity-model",
           "kind": "artifact",
           "location": "conductor/maturity-model.json",
-          "sha256": "cb40016f17a69cdb9a53f2d7b5f3be6714a990482f02d72ca2b2bbdaf5efc536",
+          "sha256": "4d3c060a0551d4d3f55648156f0e8819020fc11d05c66a4ca03d403a50422414",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Machine-readable M0-M6 model and maturity dimensions."
@@ -77,7 +77,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:v1-global-gate",
           "kind": "artifact",
           "location": "conductor/v1-gate.json",
-          "sha256": "eb3b34d4707b153fad4a72c318debadcf35abe0f01174df6f3fa77b50b01ff3b",
+          "sha256": "648d45a40551430a348578c4d63c362d53485bc223a5b6610af1409237a6b18c",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Global stable-v1 defect, evidence, waiver and authority policy."
@@ -142,7 +142,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:waiver-policy",
           "kind": "decision",
           "location": "docs/v1-evidence-and-waiver-policy.md",
-          "sha256": "ad535e7a5d7129c9f1befd1a2c23ec792bfa1a46727b1ee2b9904462a39b62b8",
+          "sha256": "1bc5ef5b3a6d3f3a3fb2006e95a4b5121ec9f917d0526a80655c750dfebbdf10",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Evidence, waiver and release-blocking policy."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "c606a667c057ae1432662bb7755963724c49833f45eb749d578e69b38b209db6",
+          "sha256": "f58851353728831166473c7c8109f847304e6b961a333329a31a03cd2adea002",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."

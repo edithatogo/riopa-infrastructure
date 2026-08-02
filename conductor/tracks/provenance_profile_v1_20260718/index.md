@@ -35,7 +35,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 ## Review and handover
 
-Required reviewer roles: API/schema reviewer, Provenance reviewer, Security reviewer, Research-object reviewer.
+Required agent-panel lenses: API/schema analyst, Provenance analyst, Security analyst, Research-object analyst.
 
 This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
 

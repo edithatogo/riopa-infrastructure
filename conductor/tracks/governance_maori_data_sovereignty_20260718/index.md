@@ -47,6 +47,6 @@
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, Security reviewer, Data steward, Scientific reviewer.
+Required agent-panel lenses: Governance analyst, Security analyst, Data-governance analyst, Scientific-methods analyst.
 
 Implementation is validating. Evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

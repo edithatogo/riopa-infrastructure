@@ -49,7 +49,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Short methods, full supplement, methods facts, citation and manifest agree under automated checks.
 - [ ] The bundle includes payload or resolvable-content evidence, quality, rights, SBOM, attestations, environment and preservation records.
 - [ ] Two clean builds are content-identical or have declared and verified tolerance differences.
-- [ ] A clean-room reviewer can verify and cite the release without repository-specific knowledge.
+- [ ] A clean-room agent analyst can verify and cite the release without repository-specific knowledge.
 
 ## Hardening and maturity gates
 

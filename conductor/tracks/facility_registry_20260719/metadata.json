@@ -31,10 +31,10 @@
   "current_maturity": "M1",
   "owner_role": "Methods and analytics lead",
   "review_roles": [
-    "Governance reviewer",
-    "Provenance reviewer",
-    "Data steward",
-    "Scientific reviewer"
+    "Governance analyst",
+    "Provenance analyst",
+    "Data-governance analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": []
 }

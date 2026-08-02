@@ -86,7 +86,9 @@ def test_shacl_shape_is_versioned_preparation_not_conformance_claim() -> None:
     shape = Path("docs/ontology/canonical-crosswalk.shacl.ttl").read_text()
     assert "riopa:CanonicalCrosswalkShape" in shape
     assert "sh:NodeShape" in shape
-    manifest = json.loads(Path("docs/ontology/canonical-conformance-manifest-1.0.0.json").read_text())
+    manifest = json.loads(
+        Path("docs/ontology/canonical-conformance-manifest-1.0.0.json").read_text()
+    )
     assert "docs/ontology/canonical-crosswalk.shacl.ttl" in manifest["artifacts"]
     assert manifest["checks"]["shacl"]["status"] == "not-run"
 

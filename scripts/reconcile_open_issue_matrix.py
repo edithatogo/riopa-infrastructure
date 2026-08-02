@@ -5,6 +5,7 @@ The input is the JSON emitted by ``gh issue list --json number,title,labels,body
 Only explicit track markers and labels are used; missing or ambiguous values are
 represented as unresolved rather than guessed.
 """
+
 from __future__ import annotations
 
 import json
@@ -62,30 +63,48 @@ def reconcile(issues: list[dict], observed: str | None = None) -> dict:
     for key in sorted(keys):
         linked = grouped[key]
         labels = set().union(*(_labels(i) for i in linked)) if linked else set()
-        rows.append({
-            "track_key": key,
-            "source": f"conductor/tracks/{key}",
-            "issue_numbers": sorted(i["number"] for i in linked),
-            "open_issue_count": len(linked),
-            "release_tier": _release(labels),
-            "evidence_status": "M1/open" if linked else "unresolved/no linked open issues",
-            "blocker_class": _class(labels) if linked else "unresolved",
-            "classification_basis": "linked issue labels and explicit riopa-issue-key marker" if linked else "no matching open issue",
-        })
+        rows.append(
+            {
+                "track_key": key,
+                "source": f"conductor/tracks/{key}",
+                "issue_numbers": sorted(i["number"] for i in linked),
+                "open_issue_count": len(linked),
+                "release_tier": _release(labels),
+                "evidence_status": "M1/open" if linked else "unresolved/no linked open issues",
+                "blocker_class": _class(labels) if linked else "unresolved",
+                "classification_basis": "linked issue labels and explicit riopa-issue-key marker"
+                if linked
+                else "no matching open issue",
+            }
+        )
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "generated_at": observed or date.today().isoformat(),
         "repository": "edithatogo/riopa-infrastructure",
         "source": "gh issue list --state open --limit 300 --json number,title,labels,body,url",
-        "snapshot": {"open_issue_count": len(issues), "open_track_parent_count": sum(1 for i in issues if "type:track" in _labels(i)), "track_count": len(keys)},
-        "classification": {"track_key": "riopa-issue-key marker, with verified title-prefix fallback", "evidence_status": "planning status only; content-bound evidence remains required", "blocker_class": "explicit issue labels; unresolved when absent"},
+        "snapshot": {
+            "open_issue_count": len(issues),
+            "open_track_parent_count": sum(1 for i in issues if "type:track" in _labels(i)),
+            "track_count": len(keys),
+        },
+        "classification": {
+            "track_key": "riopa-issue-key marker, with verified title-prefix fallback",
+            "evidence_status": "planning status only; content-bound evidence remains required",
+            "blocker_class": "explicit issue labels; unresolved when absent",
+        },
         "track_inventory": rows,
-        "limitations": ["This reconciliation does not close issues or qualify tracks.", "External reproduction, operational soak and release authority remain separate gates.", "Rows with unresolved classifications require manual evidence review before closure decisions."],
+        "limitations": [
+            "This reconciliation does not close issues or qualify tracks.",
+            "External reproduction, operational soak and release authority remain separate gates.",
+            "Rows with unresolved classifications require agent-panel evidence "
+            "review before closure decisions.",
+        ],
     }
 
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)

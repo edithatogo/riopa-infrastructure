@@ -31,10 +31,10 @@
   "current_maturity": "M1",
   "owner_role": "Programme owner",
   "review_roles": [
-    "API/schema reviewer",
-    "Security reviewer",
-    "Operations reviewer",
-    "Research-object reviewer"
+    "API/schema analyst",
+    "Security analyst",
+    "Operations analyst",
+    "Research-object analyst"
   ],
   "blocking_defects": [
     "hosted-protection-and-release-environment-verification",

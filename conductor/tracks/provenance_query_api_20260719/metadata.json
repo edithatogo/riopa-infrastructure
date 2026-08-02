@@ -32,10 +32,10 @@
   "current_maturity": "M1",
   "owner_role": "Core platform maintainer",
   "review_roles": [
-    "API/schema reviewer",
-    "Provenance reviewer",
-    "Operations reviewer",
-    "External user reviewer"
+    "API/schema analyst",
+    "Provenance analyst",
+    "Operations analyst",
+    "External-user workflow analyst"
   ],
   "blocking_defects": []
 }

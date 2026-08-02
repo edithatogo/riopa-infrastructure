@@ -31,6 +31,7 @@
 - [x] 5.1 Record a machine-readable, fail-closed v1 readiness baseline and explicit release blockers. (v1-release-readiness-baseline-20260801.json)
 - [x] 5.2 Correct the readiness baseline boundary so it does not overstate completion of the normative inventory. (review fix)
 - [x] 5.3 Record the capability/boundary map for hosted recovery, soak, scale, external workflows and release authority. (review fix)
+- [x] 5.4 Adopt the single-developer agent-panel policy and record a fail-closed GitHub/Hugging Face remaining-gates plan with library options and contingencies. (review fix)
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.

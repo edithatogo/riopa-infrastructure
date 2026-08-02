@@ -35,11 +35,11 @@
   "current_maturity": "M1",
   "owner_role": "Core platform maintainer",
   "review_roles": [
-    "Provenance reviewer",
-    "Security reviewer",
-    "Data steward",
-    "Operations reviewer",
-    "External user reviewer"
+    "Provenance analyst",
+    "Security analyst",
+    "Data-governance analyst",
+    "Operations analyst",
+    "External-user workflow analyst"
   ],
   "blocking_defects": []
 }

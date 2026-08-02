@@ -23,12 +23,12 @@
   "owner_repository": "edithatogo/riopa-infrastructure",
   "owner_role": "Release manager",
   "review_roles": [
-    "Performance reviewer",
-    "Operations reviewer",
-    "Security reviewer",
-    "Data steward",
-    "Quantitative methods reviewer",
-    "External user reviewer"
+    "Performance analyst",
+    "Operations analyst",
+    "Security analyst",
+    "Data-governance analyst",
+    "Quantitative methods analyst",
+    "External-user workflow analyst"
   ],
   "v1_critical": true,
   "current_maturity": "M1",

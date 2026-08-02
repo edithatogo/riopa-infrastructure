@@ -39,7 +39,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Requirements
 
 - **R01.** Each scientific claim has a traceable analysis, data, code, environment and limitation record.
-- **R02.** Independent reviewers use preserved public inputs and documented interfaces.
+- **R02.** Independent agent analysts use preserved public inputs and documented interfaces.
 - **R03.** Failures and deviations are published rather than normalised away.
 - **R04.** Software, schemas, data and papers cite exact immutable versions.
 - **R05.** Corrections preserve prior versions and explain downstream impact.
@@ -71,7 +71,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 ## Risks
 
-- Reviewers unknowingly rely on local caches or unpublished credentials.
+- Agent analysts unknowingly rely on local caches or unpublished credentials.
 - Publication schedules pressure maintainers to weaken release gates.
 - Manuscript claims drift from final release artifacts.
 - Corrections fragment citations or leave downstream users unaware.

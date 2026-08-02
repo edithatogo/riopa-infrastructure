@@ -25,7 +25,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - Plan, plan-version, chapter, provision and rule identities.
 - Spatial-feature to provision-version relationships and evidence.
-- Extraction, citation, link confidence, human review and disagreement.
+- Extraction, citation, link confidence, agent-panel review and disagreement.
 - Zone/overlay/precinct/designation crosswalks that preserve original meaning.
 - Feasibility queries that distinguish permitted, discretionary, prohibited and unresolved states.
 
@@ -46,7 +46,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - [ ] Stable identifiers represent plan/version/provision and survive document repagination where possible.
 - [ ] At least two councils with materially different plan structures complete spatial-to-rule linkage.
-- [ ] Automated or AI-assisted extraction records model/tool evidence and receives human review before release.
+- [ ] Automated or AI-assisted extraction records model/tool evidence and receives review by a multi-agent panel before release.
 - [ ] Independent review samples quantify missing and incorrect links.
 - [ ] Feasibility queries return cited rules, status, confidence and caveats rather than one unsupported boolean.
 - [ ] Cross-council mappings preserve original classes and provenance.

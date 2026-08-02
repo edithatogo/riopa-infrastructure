@@ -107,10 +107,10 @@
   "release_authority": {
     "required_roles": [
       "Release manager",
-      "Security reviewer",
-      "Governance reviewer",
-      "Scientific reviewer",
-      "Independent reproducibility reviewer"
+      "Security analyst",
+      "Governance analyst",
+      "Scientific-methods analyst",
+      "Independent reproducibility analyst"
     ],
     "unanimous_for_non_waivable_categories": true,
     "signed_decision_required": true

@@ -8,7 +8,7 @@
 
 ## 2. Programme governance
 
-- [x] 2.1 Define maintainers, approvers, reviewers, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)
+- [x] 2.1 Define maintainers, approvers, agent-panel lenses, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)
 - [x] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth. (docs/governance-and-sustainability.md; f95b827)
 - [x] 2.3 Establish sustainability, succession and contribution expectations. (docs/governance-and-sustainability.md; f95b827)
 
@@ -20,7 +20,7 @@
 
 ## 4. Ratification and handover
 
-- [x] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)
+- [x] 4.1 Conduct two independent analyst architecture reviews (maintainers and/or agents). (docs/architecture-reviews/; 4f1560e)
 - [x] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)
 - [x] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)
 

@@ -34,6 +34,6 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 ## Review and handover
 
-Required reviewer roles: Provenance reviewer, Security reviewer, Data steward, Operations reviewer, External user reviewer.
+Required agent-panel lenses: Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, External-user workflow analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

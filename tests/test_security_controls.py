@@ -6,7 +6,12 @@ from pathlib import Path
 def test_security_control_manifest_is_bounded_and_complete() -> None:
     manifest = json.loads(Path("docs/security-control-manifest.json").read_text())
     assert manifest["status"] == "repository-baseline"
-    assert {control["id"] for control in manifest["controls"]} == {"SC-01", "SC-02", "SC-03", "SC-04"}
+    assert {control["id"] for control in manifest["controls"]} == {
+        "SC-01",
+        "SC-02",
+        "SC-03",
+        "SC-04",
+    }
     assert manifest["external_gates"]
 
 

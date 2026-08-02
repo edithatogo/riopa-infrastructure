@@ -6,7 +6,13 @@ from riopa_provenance.transitions import select_temporal_records, validate_trans
 
 def test_transition_fixture_covers_relationships_and_validates() -> None:
     records = json.loads(Path("fixtures/planning-transition-golden.json").read_text())
-    assert {record["relationship"] for record in records} == {"rename", "merge", "split", "replacement", "partial_continuity"}
+    assert {record["relationship"] for record in records} == {
+        "rename",
+        "merge",
+        "split",
+        "replacement",
+        "partial_continuity",
+    }
     assert all(validate_transition(record) == () for record in records)
 
 

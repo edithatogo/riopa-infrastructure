@@ -50,7 +50,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Hospital/service benchmark includes multiple services, capacity, referral/workforce, resilience and phased investment.
 - [ ] Static and simulated results are compared under common scenarios and stress tests.
 - [ ] Equity, rurality, tail outcomes and uncertainty are reported separately from averages.
-- [ ] Independent operational/safety, methods and governance reviewers approve the bounded reference claims.
+- [ ] An independent multi-agent panel assesses operational/safety, methods and governance lenses and approves the bounded reference claims.
 
 ## Hardening and maturity gates
 

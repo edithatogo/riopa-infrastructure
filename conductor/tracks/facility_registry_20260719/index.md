@@ -24,7 +24,7 @@
 
 ## Blocking defects
 
-- Independent reproduction issue #149 has no reviewer response.
+- Independent reproduction issue #149 has no external-operator response.
 - National authoritative ambulance coverage, supermarket-source rights, reviewed performance
   estimates, preservation deposit and authorised release remain external gates.
 
@@ -36,6 +36,6 @@
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, Provenance reviewer, Data steward, Scientific reviewer.
+Required agent-panel lenses: Governance analyst, Provenance analyst, Data-governance analyst, Scientific-methods analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

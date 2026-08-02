@@ -21,12 +21,12 @@
   "owner_repository": "edithatogo/riopa-infrastructure",
   "owner_role": "Publication and validation lead",
   "review_roles": [
-    "External user reviewer",
-    "API/schema reviewer",
-    "Research-object reviewer",
-    "Operations reviewer",
-    "Interoperability reviewer",
-    "Governance reviewer"
+    "External-user workflow analyst",
+    "API/schema analyst",
+    "Research-object analyst",
+    "Operations analyst",
+    "Interoperability analyst",
+    "Governance analyst"
   ],
   "v1_critical": true,
   "current_maturity": "M1",

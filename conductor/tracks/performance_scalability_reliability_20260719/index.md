@@ -18,6 +18,7 @@
 |---|---|---|---|
 | `WP-004-resource-envelopes-20260731` | Every sharded archive job has enforced storage and egress ceilings | `src/riopa_provenance/linz_pipeline.py`, `src/riopa_provenance/linz_inventory.py`, `tests/test_linz_pipeline.py`, `tests/test_linz_inventory.py` | Boundary and overrun tests pass; national-scale benchmark remains open |
 | `WP-009-small-instance-correctness-oracle-20260731` | Deterministic exhaustive accessibility/location fixtures provide a correctness baseline for later scalable-engine comparisons | `src/riopa_provenance/accessibility.py`, `src/riopa_provenance/facility_location.py`, `tests/test_accessibility.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | Small-instance correctness passes; no national-scale performance, cost, soak or recovery claim is made |
+| `PERF-HOSTED-OPTIONS-20260802` | Hosted runner and national-workload execution options are explicit and fail closed | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_hosted_evidence.py` | GitHub scale-smoke lane implemented; Hugging Face Jobs is a budget-gated fallback; no national run claimed |
 
 ## Blocking defects
 
@@ -31,6 +32,6 @@
 
 ## Review and handover
 
-Required reviewer roles: Performance reviewer, Operations reviewer, Security reviewer, Data steward, Quantitative methods reviewer, External user reviewer.
+Required agent-panel lenses: Performance analyst, Operations analyst, Security analyst, Data-governance analyst, Quantitative methods analyst, External-user workflow analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

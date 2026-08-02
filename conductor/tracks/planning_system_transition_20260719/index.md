@@ -33,7 +33,7 @@
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, Scientific reviewer.
+Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, Scientific-methods analyst.
 
 ## Review record
 

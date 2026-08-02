@@ -28,6 +28,6 @@
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, Operations reviewer.
+Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, Operations analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.

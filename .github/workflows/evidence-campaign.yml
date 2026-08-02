@@ -1,0 +1,65 @@
+name: Hosted evidence campaign
+
+on:
+  workflow_dispatch:
+    inputs:
+      lane:
+        description: Bounded evidence lane
+        required: true
+        default: recovery-rollback
+        type: choice
+        options:
+          - recovery-rollback
+          - agent-clean-room
+          - scale-smoke
+          - operational-observation
+          - rc-soak-observation
+  schedule:
+    - cron: "17 14 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: evidence-campaign-${{ github.event.inputs.lane || 'operational-observation' }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+  observe:
+    name: Record hosted evidence receipt
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      EVIDENCE_LANE: ${{ github.event.inputs.lane || 'operational-observation' }}
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          enable-cache: true
+          python-version: "3.13"
+          version: "0.11.16"
+      - name: Install locked environment
+        run: uv sync --extra dev --extra spatial --frozen
+      - name: Execute bounded lane
+        run: uv run python scripts/record_hosted_evidence.py "$EVIDENCE_LANE"
+      - name: Validate receipt schema
+        run: >-
+          uv run jsonschema
+          --instance "dist/hosted-evidence/${EVIDENCE_LANE}.receipt.json"
+          schemas/hosted-evidence.schema.json
+      - name: Upload content-bound evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: hosted-evidence-${{ env.EVIDENCE_LANE }}-${{ github.run_id }}
+          path: dist/hosted-evidence/
+          if-no-files-found: error
+          retention-days: 90

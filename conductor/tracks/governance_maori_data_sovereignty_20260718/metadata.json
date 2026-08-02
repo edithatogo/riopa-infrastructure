@@ -40,10 +40,10 @@
   "current_maturity": "M1",
   "owner_role": "Programme owner",
   "review_roles": [
-    "Governance reviewer",
-    "Security reviewer",
-    "Data steward",
-    "Scientific reviewer"
+    "Governance analyst",
+    "Security analyst",
+    "Data-governance analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": []
 }

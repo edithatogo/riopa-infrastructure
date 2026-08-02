@@ -34,10 +34,10 @@
   "current_maturity": "M1",
   "owner_role": "Publication and validation lead",
   "review_roles": [
-    "Governance reviewer",
-    "Research-object reviewer",
-    "External user reviewer",
-    "Scientific reviewer"
+    "Governance analyst",
+    "Research-object analyst",
+    "External-user workflow analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": []
 }

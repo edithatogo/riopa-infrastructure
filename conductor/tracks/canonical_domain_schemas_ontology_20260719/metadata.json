@@ -31,10 +31,10 @@
   "current_maturity": "M1",
   "owner_role": "Core platform maintainer",
   "review_roles": [
-    "Governance reviewer",
-    "API/schema reviewer",
-    "Data steward",
-    "External user reviewer"
+    "Governance analyst",
+    "API/schema analyst",
+    "Data-governance analyst",
+    "External-user workflow analyst"
   ],
   "blocking_defects": [
     "shacl-conformance-report",

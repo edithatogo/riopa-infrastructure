@@ -57,7 +57,7 @@ Expired, overlong, unsigned or prohibited waivers block release.
 ## Independence
 
 M5 and M6 cannot be established entirely by the implementer. Stable v1 requires at
-least two independent reviewers, two clean-room reproductions including one external
+least two independent agent analysts, two clean-room reproductions including one external
 reproduction, two external user workflows and one external operator workflow.
 Conflicts of interest are disclosed in the release decision.
 

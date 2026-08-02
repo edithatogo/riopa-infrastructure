@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | V1-BASELINE-20260801 | Fail-closed stable-v1 readiness baseline | `docs/v1-release-readiness-baseline-20260801.json`, `tests/test_v1_release_readiness.py` | Repository checks passing; promotion explicitly blocked |
+| V1-REMAINING-GATES-20260802 | Single-developer gate plan, platform observations, hosted receipt runner, library decision and contingencies | `docs/remaining-gates-autonomous-plan-20260802.json`, `docs/remaining-gates-autonomous-plan-20260802.md`, `docs/single-developer-agent-panel-review-policy.md`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_remaining_gates_plan.py`, `tests/test_hosted_evidence.py` | Agent-panel policy and hosted technical-preview runner implemented; actual elapsed, national, participant and authority evidence remains open |
 
 ## Blocking defects
 
@@ -32,7 +33,7 @@
 | External operator/user workflows | Prepare frozen bundles, instructions and report templates; run panel rehearsals | External operator reproduction and two distinct external-user reports |
 | Accountable release-authority decision | Assemble the digest-bound decision packet and draft options | Named authority's signed tier decision with expiry and rollback conditions |
 
-Subagent panels can prepare and qualify repository-owned evidence, but cannot
+Agent panels can prepare and qualify repository-owned evidence, but cannot
 substitute for external participants, elapsed qualification time or accountable
 release authority.
 
@@ -42,7 +43,7 @@ release authority.
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, API/schema reviewer, Provenance reviewer, Security reviewer, Data steward, Operations reviewer, Performance reviewer, Interoperability reviewer, Research-object reviewer, External user reviewer, Quantitative methods reviewer, Scientific reviewer.
+Required agent-panel lenses: Governance analyst, API/schema analyst, Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, Performance analyst, Interoperability analyst, Research-object analyst, External-user workflow analyst, Quantitative methods analyst, Scientific-methods analyst.
 
 This index records a bounded repository-owned readiness baseline while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
 
@@ -55,3 +56,5 @@ This index records a bounded repository-owned readiness baseline while the track
 - Fix: restored task 1.1 to pending and recorded the boundary explicitly.
 - Follow-up: mapped each remaining campaign gate to repository-owned preparation
   and its non-substitutable external/elapsed evidence requirement.
+- Follow-up: adopted the single-developer agent-panel policy, recorded the live
+  GitHub/Hugging Face assessment, library decision, options and contingencies.

@@ -30,10 +30,10 @@
   "current_maturity": "M1",
   "owner_role": "Research lead",
   "review_roles": [
-    "Governance reviewer",
-    "Research-object reviewer",
-    "Quantitative methods reviewer",
-    "Scientific reviewer"
+    "Governance analyst",
+    "Research-object analyst",
+    "Quantitative methods analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": []
 }

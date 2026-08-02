@@ -33,10 +33,10 @@
   "current_maturity": "M1",
   "owner_role": "Core platform maintainer",
   "review_roles": [
-    "API/schema reviewer",
-    "Provenance reviewer",
-    "Security reviewer",
-    "Research-object reviewer"
+    "API/schema analyst",
+    "Provenance analyst",
+    "Security analyst",
+    "Research-object analyst"
   ],
   "blocking_defects": [
     "non-python-validator-parity",
