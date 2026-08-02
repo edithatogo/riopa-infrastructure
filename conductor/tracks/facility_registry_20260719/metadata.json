@@ -2,9 +2,9 @@
   "track_id": "facility_registry_20260719",
   "type": "data",
   "phase": "Analytics",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-31T08:41:12Z",
+  "updated_at": "2026-08-03T00:00:00Z",
   "description": "Reconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
@@ -36,5 +36,10 @@
     "Data-governance analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "facility-review-panel-disposition pending: docs/facility-panel-qualification-20260803.json and docs/facility-stratified-review-sample-20260803.json",
+    "hamilton-geometry-disposition blocked: docs/facility-source-materialization-20260803.json",
+    "public-health-source-family pending: conductor/tracks/facility_registry_20260719/index.md",
+    "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md"
+  ]
 }

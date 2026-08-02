@@ -10,8 +10,7 @@ import sys
 
 EXPECTED_CHECKS = {
     "Quality, contracts, and packaging",
-    "Tests on Python 3.12",
-    "Tests on Python 3.13",
+    "Tests on Python 3.14",
     "Analyze Python",
 }
 
@@ -44,7 +43,7 @@ def validate(payload: dict[str, object], branch: str = "main") -> list[str]:
         repository = payload["data"]["repository"]  # type: ignore[index]
         nodes = repository["branchProtectionRules"]["nodes"]  # type: ignore[index]
         rule = next(node for node in nodes if node["pattern"] == branch)
-    except (KeyError, TypeError, StopIteration):
+    except KeyError, TypeError, StopIteration:
         return [f"no branch-protection rule found for {branch}"]
 
     expected_true = (
