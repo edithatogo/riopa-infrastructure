@@ -152,6 +152,23 @@ def _expect_digest(body: bytes, expected: str, label: str) -> None:
         )
 
 
+def _verify_file_body(body: bytes, item: Mapping[str, Any]) -> None:
+    relative = str(item["path"])
+    _expect_digest(body, str(item["sha256"]), f"archive file {relative}")
+    if item.get("bytes") != len(body):
+        raise ArchivedPacketError(f"archive file size mismatch: {relative}")
+    if item.get("content_encoding") == "gzip":
+        try:
+            uncompressed = gzip.decompress(body)
+        except (OSError, EOFError) as exc:
+            raise ArchivedPacketError(f"invalid gzip archive member: {relative}") from exc
+        if item.get("uncompressed_bytes") != len(uncompressed):
+            raise ArchivedPacketError(f"uncompressed file size mismatch: {relative}")
+        expected = item.get("uncompressed_sha256")
+        if not isinstance(expected, str) or sha256_bytes(uncompressed) != expected:
+            raise ArchivedPacketError(f"uncompressed file digest mismatch: {relative}")
+
+
 def _manifest_files(manifest: Mapping[str, Any]) -> tuple[dict[str, Any], ...]:
     integrity = manifest.get("integrity")
     raw_files = integrity.get("files") if isinstance(integrity, Mapping) else None
@@ -270,9 +287,7 @@ def download_archived_packet(
         for item in files:
             relative = str(_safe_path(item["path"]))
             body = fetch(immutable_hugging_face_url(descriptor, f"{prefix}/{relative}"))
-            _expect_digest(body, item["sha256"], f"archive file {relative}")
-            if item.get("bytes") != len(body):
-                raise ArchivedPacketError(f"archive file size mismatch: {relative}")
+            _verify_file_body(body, item)
             if checksums.get(relative) != item["sha256"]:
                 raise ArchivedPacketError(f"checksums binding mismatch: {relative}")
             path = temporary / relative
@@ -309,10 +324,9 @@ def verify_archived_packet(
     checksums = _parse_checksums(checksums_body)
     for item in files:
         path = root / str(_safe_path(item["path"]))
-        if not path.is_file() or sha256_file(path) != item["sha256"]:
+        if not path.is_file():
             raise ArchivedPacketError(f"packet file digest mismatch: {item['path']}")
-        if path.stat().st_size != item.get("bytes"):
-            raise ArchivedPacketError(f"packet file size mismatch: {item['path']}")
+        _verify_file_body(path.read_bytes(), item)
         if checksums.get(item["path"]) != item["sha256"]:
             raise ArchivedPacketError(f"checksums binding mismatch: {item['path']}")
     return VerifiedArchivedPacket(root, manifest, receipt, files)
@@ -361,6 +375,8 @@ def _capture_record(
         ),
         None,
     )
+    if receipt is None:
+        raise ArchivedPacketError(f"archive artifact has no retrieval receipt: {item['path']}")
     return {
         "schema_version": "1.0.0",
         "record_type": "archived_http_capture",
@@ -371,7 +387,7 @@ def _capture_record(
             "manifest_sha256": descriptor.manifest_sha256,
         },
         "artifact": dict(item),
-        "original_retrieval_receipt": dict(receipt) if receipt is not None else None,
+        "original_retrieval_receipt": dict(receipt),
     }
 
 

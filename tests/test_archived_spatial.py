@@ -263,7 +263,7 @@ def test_projection_rejects_incomplete_inventory(tmp_path: Path) -> None:
     value = json.loads(gzip.decompress(page.read_bytes()))
     value["features"].pop()
     page.write_bytes(gzip.compress(_json_bytes(value), mtime=0))
-    with pytest.raises(ArchivedPacketError, match="packet file digest mismatch"):
+    with pytest.raises(ArchivedPacketError, match="digest mismatch"):
         build_archived_arcgis_projection(
             descriptor,
             packet_root=packet_root,
