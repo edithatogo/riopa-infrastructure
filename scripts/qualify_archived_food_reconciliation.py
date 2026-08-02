@@ -25,7 +25,10 @@ def load(source_id: str, revision: str) -> object:
 
 def assertions() -> tuple[tuple[FacilityAssertion, ...], tuple[FacilityAssertion, ...]]:
     osm = load("osm-new-zealand-food-service", PACKETS["osm-new-zealand-food-service"])
-    council = load("marlborough-food-premise-licences", PACKETS["marlborough-food-premise-licences"])
+    council = load(
+        "marlborough-food-premise-licences",
+        PACKETS["marlborough-food-premise-licences"],
+    )
     left = tuple(
         FacilityAssertion(
             assertion_id=f"osm:{item['meta_osm_id']}",
