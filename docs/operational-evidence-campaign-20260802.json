@@ -26,7 +26,8 @@
       "id": "recovery-rollback",
       "owner": "operations-evidence",
       "required_artifacts": ["raw-log", "timestamped-object-hashes", "recovery-point", "decision-record"],
-      "status": "pending-hosted-execution"
+      "status": "pending-hosted-execution",
+      "readiness_artifact": "docs/hosted-recovery-readiness-20260802.json"
     },
     {
       "id": "operational-cycles",
@@ -38,7 +39,8 @@
       "id": "regional-performance",
       "owner": "performance-evidence",
       "required_artifacts": ["workload-manifest", "raw-measurements", "resource-cost-summary"],
-      "status": "synthetic-regional-only"
+      "status": "synthetic-regional-only",
+      "readiness_artifact": "docs/regional-performance-evidence-20260802.json"
     },
     {
       "id": "rc-soak",
