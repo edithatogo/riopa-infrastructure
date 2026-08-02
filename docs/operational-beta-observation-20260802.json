@@ -1,0 +1,30 @@
+{
+  "schema": "riopa.operational-beta-observation.v1",
+  "campaign_id": "operational-beta-20260802",
+  "qualification_epoch": "beta-epoch-20260802",
+  "recorded_at": "2026-08-02T11:36:14Z",
+  "source_revision": "ea118c63b9857bc3458807a856e62e553c39d5cd",
+  "github_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30746064668",
+  "artifact_name": "evidence-campaign-operational-beta-20260802-operational-observation",
+  "status": "passed-observation-gate-pending",
+  "ledger": {
+    "observation_count": 1,
+    "operational_cycle_ids": ["2026-W31"],
+    "elapsed_seconds": 1,
+    "required_elapsed_days": 90,
+    "required_operational_cycles": 3,
+    "maximum_allowed_gap_hours": 36,
+    "duration_status": "pending-duration",
+    "cadence_status": "passed",
+    "operational_cycles_status": "pending-cycles",
+    "elapsed_gate_status": "pending",
+    "chain_head_sha256": "986dcaba9e2fc77a2fca9f23a8f82a4e39d03d338f1ac2787fbcfbe8b0176d38"
+  },
+  "preservation": "Each daily run restores the latest same-campaign artifact and republishes all hashed receipts plus a rebuilt chain. Any restore or cadence break remains fail-closed.",
+  "non_claims": [
+    "One successful observation does not establish 90 elapsed days.",
+    "One weekly cycle identifier does not establish three operational cycles.",
+    "This technical-preview observation is not production disaster-recovery evidence.",
+    "This record is not an accountable beta, release-candidate or stable promotion decision."
+  ]
+}
