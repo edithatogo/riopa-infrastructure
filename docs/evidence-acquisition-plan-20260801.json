@@ -2,7 +2,7 @@
   "schema": "riopa.evidence-acquisition-plan.v1",
   "generated_at": "2026-08-01",
   "scope": "public-datasets-only technical preview and staged v1 qualification",
-  "status": "in_progress",
+  "status": "approved_to_launch",
   "operational_campaign_manifest": "docs/operational-evidence-campaign-20260802.json",
   "lanes": [
     {"id":"matrix-reconciliation","gate":"track-to-issue evidence mapping","source":"live GitHub issue export plus Conductor metadata","artifact":"docs/open-issue-track-evidence-reconciliation-20260801.md","owner_role":"programme maintainer","status":"partially-complete","contingency":"retain unmatched rows as blockers"},
