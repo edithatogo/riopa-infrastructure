@@ -104,3 +104,12 @@ def test_marlborough_food_premise_packet_is_revision_bound() -> None:
     assert descriptor["packet_revision"] == "b31703eb0dbdaa6aa05b6a84df5fe46e57e37ee0"
     assert descriptor["status"] == "archived-source-specific-assertions"
     assert "national" in descriptor["non_claim"]
+
+
+def test_hamilton_food_premise_packet_is_revision_bound() -> None:
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/hamilton-food-premise-register-2026.json").read_text()
+    )
+    assert descriptor["packet_revision"] == "3d3d0f4eb3065bcfb28e1c05cb8c7012a58df433"
+    assert descriptor["status"] == "archived-source-specific-assertions"
+    assert "national" in descriptor["non_claim"]
