@@ -35,6 +35,7 @@
 - [x] 5.5 Reconcile all normative review language to agent-panel qualification, stage daily hosted observations and record the GitHub/Hugging Face campaign-v2 plan. (review fix)
 - [x] 5.6 Synchronise the validated issue graph to GitHub and record exact-head hosted check evidence. (`docs/github-issue-sync-20260802.json`)
 - [x] 5.7 Protect `main` with strict hosted checks and no second-person review requirement. (`docs/github-main-protection-20260802.json`)
+- [x] 5.8 Complete content-bound three-lens reports and an orchestrator synthesis for all 28 tracks without promoting any M6 disposition. (`docs/panel-reports/20260802/manifest.json`)
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.

@@ -18,15 +18,15 @@
 |---|---|---|---|
 | `WP-007-public-hospital-source-20260731` | Official certified public-hospital provider CSV is preserved with content hash, HTTP receipt, rights reference and source limitation | `evidence/wp007-real-slice/manifest.json`, `reports/wp007-bounded-real-slice.md` | Real single-source capture passes; multi-source reconciliation, coordinates, history and review metrics remain open |
 | `WP-010-bounded-reconciliation-20260801` | Independent assertions retain source identity, coordinates, rights and authority class; deterministic matching preserves conflicts and requires accountable review | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py`, `scripts/compare_wp010_facility_sources.py`, `reports/wp010-facility-source-sensitivity.md` | Reference implementation and bounded council/OSM sensitivity pass locally; no candidate is adjudicated or promoted to authoritative status |
-| `WP-010-bounded-pilot-decision-20260801` | Pilot scope, source exclusions and publication conditions are explicit | `docs/wp010-bounded-pilot-decision.md` | Decision remains pending; rights-uncertain and metadata-only sources are excluded or deferred |
-| `WP-010-preservation-manifest-20260801` | Exact revision, source hashes, reviewer bundle and exclusions are assembled for deposit | `evidence/wp010-bounded-pilot/manifest.json` | Preservation-ready only; no deposit or publication has been attempted |
+| `WP-010-bounded-pilot-decision-20260801` | Pilot scope, source exclusions and publication conditions are explicit | `docs/wp010-bounded-pilot-decision.md` | Approved for the bounded regional public-data pilot only; beta, RC and stable promotion remain excluded |
+| `WP-010-preservation-manifest-20260801` | Exact revision, source hashes, reviewer bundle and exclusions are preserved | `evidence/wp010-bounded-pilot/manifest.json`, [Zenodo 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563) | Successor packet deposited with recorded SHA-256; this does not close external reproduction or higher-tier release gates |
 | `WP-010-bounded-pilot-review-policy-20260801` | Pilot-level agent review is separated from beta/stable external reproduction | `docs/bounded-pilot-review-protocol.md`, `reports/wp010-subagent-review-20260801.md` | Pilot review may support bounded internal scope; external gate remains mandatory for higher promotion |
 
 ## Blocking defects
 
 - Independent reproduction issue #149 has no external-operator response.
-- National authoritative ambulance coverage, supermarket-source rights, reviewed performance
-  estimates, preservation deposit and authorised release remain external gates.
+- National authoritative ambulance coverage, supermarket-source rights, agent-panel-qualified
+  performance estimates and beta/RC/stable release authority remain open gates.
 
 ## Decisions, exceptions and limitations
 

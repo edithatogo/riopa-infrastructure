@@ -1,0 +1,26 @@
+{
+  "schema": "riopa.all-track-agent-panel.v1",
+  "batch_id": "all-track-m6-qualification-20260802",
+  "status": "complete-not-qualified",
+  "source_revision": "dbbb71b38ca7f943ddd4e42069b4d6bc0a7bd669",
+  "bundle_sha256": "436843d563a7cfa22f21eba58adae66f2af71efa0dc3b7168b656b7fb80c11d6",
+  "track_count": 28,
+  "roles": ["adversarial-analyst", "evidence-auditor", "reproducer"],
+  "reports": [
+    "docs/panel-reports/20260802/adversarial-analyst.json",
+    "docs/panel-reports/20260802/evidence-auditor.json",
+    "docs/panel-reports/20260802/reproducer.json"
+  ],
+  "synthesis": "docs/panel-reports/20260802/orchestrator-synthesis.json",
+  "programme_disposition": "not-qualified-for-m6-or-release-promotion",
+  "final_track_dispositions": {"not-qualified": 28},
+  "post_panel_remediation": {
+    "facility_registry_evidence_index_conflict": "repaired-after-frozen-panel",
+    "qualification_effect": "none-until-a-content-bound-rerun"
+  },
+  "non_claims": [
+    "Complete reports do not mean that any track reached M6.",
+    "Post-panel remediation does not retroactively change the frozen reports.",
+    "The panel does not create external participant, elapsed-time, production-recovery, national-scale or release-authority evidence."
+  ]
+}
