@@ -6,7 +6,7 @@
 - [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
 - [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.
 - [x] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.
-- [ ] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service.
+- [~] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service.
 
 ## 2. Canonical bitemporal model
 
