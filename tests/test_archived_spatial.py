@@ -45,9 +45,7 @@ def _fixture() -> tuple[ArchivedPacketDescriptor, dict[str, bytes]]:
         "features": [
             {
                 "attributes": {"OBJECTID": 1, "MB2026_V1_00": "001"},
-                "geometry": {
-                    "rings": [[[0, 0], [3, 3], [0, 4], [4, 0], [0, 0]]]
-                },
+                "geometry": {"rings": [[[0, 0], [3, 3], [0, 4], [4, 0], [0, 0]]]},
             },
             {
                 "attributes": {"OBJECTID": 2, "MB2026_V1_00": "002"},
@@ -127,10 +125,15 @@ def _fixture() -> tuple[ArchivedPacketDescriptor, dict[str, bytes]]:
         "non_claims": ["not population data"],
     }
     manifest_bytes = json.dumps(manifest, indent=2, sort_keys=True).encode() + b"\n"
-    checksums = "\n".join(
-        [*(f"{item['sha256']}  {item['path']}" for item in files),
-         f"{hashlib.sha256(manifest_bytes).hexdigest()}  manifest.json"]
-    ).encode() + b"\n"
+    checksums = (
+        "\n".join(
+            [
+                *(f"{item['sha256']}  {item['path']}" for item in files),
+                f"{hashlib.sha256(manifest_bytes).hexdigest()}  manifest.json",
+            ]
+        ).encode()
+        + b"\n"
+    )
     receipt = {
         "schema": "open-social-data.hugging-face-receipt.v1",
         "dataset": "owner/archive",
@@ -195,6 +198,12 @@ def test_download_uses_only_immutable_hugging_face_objects(tmp_path: Path) -> No
     assert all("huggingface.co/datasets/owner/archive/resolve/" in url for url in requested)
     assert all("services2.arcgis.com" not in url for url in requested)
     assert (tmp_path / "packet" / "receipt.json").is_file()
+    reused = download_archived_packet(
+        descriptor,
+        tmp_path / "packet",
+        fetch=lambda _url: pytest.fail("verified local packet should be reused"),
+    )
+    assert reused.manifest == packet.manifest
 
 
 def test_download_fails_closed_on_archived_digest_drift(tmp_path: Path) -> None:
@@ -202,9 +211,7 @@ def test_download_fails_closed_on_archived_digest_drift(tmp_path: Path) -> None:
     page_url = next(url for url in payloads if url.endswith("page-00001.json.gz"))
     payloads[page_url] += b"tampered"
     with pytest.raises(ArchivedPacketError, match="digest mismatch"):
-        download_archived_packet(
-            descriptor, tmp_path / "packet", fetch=lambda url: payloads[url]
-        )
+        download_archived_packet(descriptor, tmp_path / "packet", fetch=lambda url: payloads[url])
 
 
 def test_builds_content_addressed_records_and_repair_free_projection(tmp_path: Path) -> None:

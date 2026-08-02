@@ -453,11 +453,7 @@ def materialize_features(
                         list(feature.get("capture_ids", capture_ids)), separators=(",", ":")
                     ),
                     **(
-                        {
-                            "_riopa_source_geometry_sha256": feature[
-                                "source_geometry_sha256"
-                            ]
-                        }
+                        {"_riopa_source_geometry_sha256": feature["source_geometry_sha256"]}
                         if "source_geometry_sha256" in feature
                         else {}
                     ),
@@ -487,10 +483,7 @@ def materialize_features(
         for row in rows:
             row.setdefault("_riopa_source_geometry_sha256", None)
     base_columns.append("geometry")
-    columns: dict[str, list[Any]] = {
-        key: [row[key] for row in rows]
-        for key in base_columns
-    }
+    columns: dict[str, list[Any]] = {key: [row[key] for row in rows] for key in base_columns}
     columns.update(_normalise_property_columns(sorted_features))
     table = pa.table(columns)
 

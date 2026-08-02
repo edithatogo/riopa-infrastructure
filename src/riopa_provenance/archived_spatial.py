@@ -68,11 +68,14 @@ class ArchivedPacketDescriptor:
         _safe_path(self.receipt_path)
         if not self.source_id.startswith("urn:riopa:source:"):
             raise ArchivedPacketError("source_id must be a RIOPA source URN")
-        if min(
-            self.expected_features,
-            self.expected_pages,
-            self.expected_null_geometries,
-        ) < 0:
+        if (
+            min(
+                self.expected_features,
+                self.expected_pages,
+                self.expected_null_geometries,
+            )
+            < 0
+        ):
             raise ArchivedPacketError("expected counts must be non-negative")
 
     @classmethod
@@ -211,17 +214,13 @@ def _verify_manifest_contract(
     if integrity.get("source_stable_during_capture") is not True:
         raise ArchivedPacketError("archive source was not stable during capture")
     files = _manifest_files(manifest)
-    payload_identity = [
-        {"path": item["path"], "sha256": item["sha256"]} for item in files
-    ]
+    payload_identity = [{"path": item["path"], "sha256": item["sha256"]} for item in files]
     if integrity.get("payload_set_sha256") != sha256_json(payload_identity):
         raise ArchivedPacketError("manifest payload-set digest mismatch")
     return files
 
 
-def _verify_receipt(
-    descriptor: ArchivedPacketDescriptor, receipt: Mapping[str, Any]
-) -> None:
+def _verify_receipt(descriptor: ArchivedPacketDescriptor, receipt: Mapping[str, Any]) -> None:
     if receipt.get("dataset") != descriptor.dataset_repository:
         raise ArchivedPacketError("receipt dataset does not bind the descriptor")
     if receipt.get("packet_revision") != descriptor.packet_revision:
@@ -260,6 +259,9 @@ def download_archived_packet(
     """Download and verify a packet exclusively through immutable archive URLs."""
 
     descriptor.validate()
+    target = Path(destination).resolve()
+    if target.exists():
+        return verify_archived_packet(descriptor, target)
     manifest_body = fetch(immutable_hugging_face_url(descriptor, descriptor.manifest_path))
     _expect_digest(manifest_body, descriptor.manifest_sha256, "manifest")
     manifest = _read_json_bytes(manifest_body, "manifest")
@@ -277,7 +279,6 @@ def download_archived_packet(
     receipt = _read_json_bytes(receipt_body, "receipt")
     _verify_receipt(descriptor, receipt)
 
-    target = Path(destination).resolve()
     target.parent.mkdir(parents=True, exist_ok=True)
     temporary = Path(tempfile.mkdtemp(prefix=f".{target.name}-", dir=target.parent))
     try:
@@ -295,8 +296,6 @@ def download_archived_packet(
             path.write_bytes(body)
         if checksums.get("manifest.json") != descriptor.manifest_sha256:
             raise ArchivedPacketError("checksums do not bind manifest.json")
-        if target.exists():
-            shutil.rmtree(target)
         temporary.replace(target)
     except Exception:
         shutil.rmtree(temporary, ignore_errors=True)
@@ -341,9 +340,7 @@ def _read_gzip_json(packet: VerifiedArchivedPacket, relative: str) -> dict[str, 
 
 def _envelope(kind: str, record: dict[str, Any]) -> dict[str, Any]:
     digest = sha256_json(record)
-    id_field = {"source": "record_id", "capture": "capture_id"}.get(
-        kind, f"{kind}_id"
-    )
+    id_field = {"source": "record_id", "capture": "capture_id"}.get(kind, f"{kind}_id")
     return {
         id_field: f"urn:riopa:{kind.replace('_', '-')}:sha256:{digest}",
         "record_sha256": digest,
