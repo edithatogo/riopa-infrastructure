@@ -28,6 +28,11 @@ are attached. The template links each track to the release-authority decision
 record; it is an evidence index, not a qualification result. Run
 `uv run python scripts/validate_panel_reports.py` with report paths for an
 executed panel, and use `validate_template_manifest` in CI to detect drift.
+Executed reports must include a stable `report_id`, `track_id`, bounded `scope`,
+UTC `evaluated_at` timestamp, `findings` and `evidence_refs` arrays, the exact
+40-character source revision and a lowercase 64-character bundle SHA-256. These
+fields bind a report to a reproducible run; their presence does not make a
+report independent or close any external gate.
 
 | Track | Panel evidence required | Current disposition |
 | --- | --- | --- |

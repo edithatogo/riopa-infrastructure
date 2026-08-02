@@ -8,11 +8,14 @@ tool only establishes panel concordance; it never promotes a release.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
 ROLES = {"reproducer", "adversarial-reviewer", "evidence-auditor"}
 PANEL_TEMPLATE_STATUSES = {"pending", "in-progress", "complete"}
+SHA256 = re.compile(r"^[0-9a-f]{64}$")
+REVISION = re.compile(r"^[0-9a-f]{40}$")
 
 
 def validate_template_manifest(path: Path, tracks_root: Path) -> list[str]:
@@ -76,6 +79,17 @@ def validate(paths: list[Path]) -> list[str]:
         elif len(values) != 1:
             errors.append(f"panel reports disagree on {field}")
     for report in reports:
+        for field in ("report_id", "track_id", "scope", "evaluated_at"):
+            if not isinstance(report.get(field), str) or not report[field].strip():
+                errors.append(f"missing {field}")
+        if not isinstance(report.get("findings"), list):
+            errors.append("findings must be a list")
+        if not isinstance(report.get("evidence_refs"), list):
+            errors.append("evidence_refs must be a list")
+        if not REVISION.fullmatch(str(report.get("source_revision", ""))):
+            errors.append("source_revision must be a 40-character lowercase Git SHA-1")
+        if not SHA256.fullmatch(str(report.get("bundle_sha256", ""))):
+            errors.append("bundle_sha256 must be a 64-character lowercase SHA-256")
         if report.get("disposition") not in {"pass", "pass-with-limitations", "fail"}:
             errors.append("disposition must be pass, pass-with-limitations or fail")
         if report.get("dissent") is None:
