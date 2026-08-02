@@ -85,3 +85,13 @@ def test_population_archive_is_revision_and_digest_bound() -> None:
     assert evidence["population_workbook_sha256"] == (
         "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6"
     )
+
+
+def test_food_service_packet_is_source_specific_and_claim_bounded() -> None:
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/osm-new-zealand-food-service-2026.json").read_text()
+    )
+    assert descriptor["packet_revision"] == "d834601efedada86be03dee2ff7a90d0fa37c0a2"
+    assert descriptor["status"] == "archived-source-specific-assertions"
+    assert "authoritative" in descriptor["non_claim"]
+    assert "national-accessibility-claim" in descriptor["disabled_use"]

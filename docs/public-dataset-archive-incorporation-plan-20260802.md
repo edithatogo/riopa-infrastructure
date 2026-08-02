@@ -89,3 +89,6 @@ for the OpenStreetMap-derived New Zealand food-service export. Packet revision
 `d834601efedada86be03dee2ff7a90d0fa37c0a2` is preserved for bounded facility
 reconciliation; it remains source-specific evidence and does not establish
 complete or authoritative food-retail coverage.
+RIOPA binds that packet through
+`config/archive-sources/osm-new-zealand-food-service-2026.json`; it is
+available only for bounded source reconciliation and provenance fixtures.
