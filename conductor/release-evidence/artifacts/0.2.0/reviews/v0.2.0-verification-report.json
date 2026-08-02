@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "urn:riopa:verification-report:0.2.0:local-clean-workspace",
+  "release": "0.2.0",
+  "executed_at": "2026-07-19T09:26:16Z",
+  "scope": "roadmap, Conductor, provenance reference implementation and packaging checks; not stable-v1 platform qualification",
+  "environments": [
+    {
+      "name": "working delivery workspace",
+      "python": "CPython 3.13.5",
+      "dependency_environment": "existing locked uv environment with dev extra",
+      "result": "passed"
+    },
+    {
+      "name": "clean copied workspace with a newly created virtual environment",
+      "python": "CPython 3.13.5",
+      "dependency_environment": "uv sync --extra dev --frozen",
+      "result": "passed"
+    }
+  ],
+  "checks": {
+    "ruff_lint": {
+      "status": "passed"
+    },
+    "ruff_format": {
+      "status": "passed",
+      "files_checked": 23
+    },
+    "bundle_schema_and_integrity": {
+      "status": "passed",
+      "passed": 29,
+      "failed": 0
+    },
+    "roadmap_validation": {
+      "status": "passed"
+    },
+    "automated_tests": {
+      "status": "passed",
+      "passed": 70,
+      "failed": 0
+    },
+    "branch_aware_coverage": {
+      "status": "passed",
+      "percent": 92.84,
+      "required_percent": 90.0
+    },
+    "issue_generation": {
+      "status": "passed",
+      "comparison": "byte-identical"
+    },
+    "methods_regeneration": {
+      "status": "passed",
+      "comparison": "byte-identical"
+    },
+    "research_object_determinism": {
+      "status": "passed",
+      "comparison": "two local builds byte-identical"
+    },
+    "research_object_checksums": {
+      "status": "passed",
+      "files_verified": 17
+    },
+    "github_bootstrap_shell_syntax": {
+      "status": "passed"
+    },
+    "github_bootstrap_dry_run": {
+      "status": "passed",
+      "programme_issues": 141,
+      "cross_repository_issues": 10,
+      "remote_writes": 0
+    },
+    "roadmap_current_release": {
+      "status": "ready",
+      "release": "0.2.0",
+      "maturity": "M1",
+      "tracks_qualified": 28,
+      "tracks_required": 28,
+      "gates_passed": 4,
+      "gates_required": 4
+    },
+    "later_releases": {
+      "status": "not-ready-by-design",
+      "first": "0.3.0",
+      "last": "1.0.0"
+    }
+  },
+  "limitations": [
+    "The clean workspace was independently instantiated within the same execution environment, not by an external organisation.",
+    "No remote GitHub repository, Project or issue was created by this verification.",
+    "No national spatial archive, facility engine, simulation, health analysis or stable-v1 qualification is claimed.",
+    "The 0.2.0 evidence identifiers are local and mutable; immutable signed evidence is required at stable v1."
+  ]
+}

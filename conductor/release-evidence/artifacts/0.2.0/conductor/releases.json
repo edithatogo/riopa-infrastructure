@@ -1,0 +1,820 @@
+{
+  "schema_version": "1.0.0",
+  "programme_version": "0.2.0",
+  "current_release": "0.2.0",
+  "stable_release": "1.0.0",
+  "releases": [
+    {
+      "version": "0.2.0",
+      "name": "v1 roadmap and maturity architecture",
+      "channel": "experimental",
+      "maturity_level": "M1",
+      "objective": "Make the path to stable v1 explicit, dependency-complete and machine-enforceable.",
+      "required_tracks": [
+        "accessibility_network_engine_20260719",
+        "canonical_domain_schemas_ontology_20260719",
+        "connector_runtime_capture_20260719",
+        "documentation_developer_experience_20260719",
+        "emergency_health_facilities_pilot_20260718",
+        "facility_location_engine_20260718",
+        "facility_registry_20260719",
+        "foundation_architecture_20260718",
+        "governance_maori_data_sovereignty_20260718",
+        "health_outcomes_causal_methods_20260719",
+        "interoperability_conformance_sdks_20260719",
+        "methods_research_objects_20260718",
+        "nz_spatial_archive_mvp_20260718",
+        "nz_spatial_archive_operations_20260719",
+        "nz_spatial_source_registry_20260718",
+        "operations_preservation_sre_20260719",
+        "performance_scalability_reliability_20260719",
+        "planning_rules_linkage_20260718",
+        "planning_system_transition_20260719",
+        "provenance_profile_v1_20260718",
+        "provenance_query_api_20260719",
+        "publication_validation_20260718",
+        "repository_template_adoption_20260718",
+        "security_supply_chain_20260719",
+        "simulation_validation_engine_20260719",
+        "spatial_quality_temporality_20260718",
+        "supermarket_health_pilot_20260718",
+        "v1_release_hardening_20260719"
+      ],
+      "exit_gates": [
+        {
+          "id": "roadmap-complete",
+          "category": "governance",
+          "requirement": "The complete v1 scope, ownership, dependencies and release authority are explicit.",
+          "evidence_contract": [
+            "Validated 28-track graph",
+            "Named ownership matrix",
+            "Approved programme boundary"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "maturity-model-enforced",
+          "category": "contracts",
+          "requirement": "Maturity levels, dimensions, release gates and evidence rules are machine-validated.",
+          "evidence_contract": [
+            "Maturity and release schemas",
+            "Roadmap validation test report",
+            "Generated issue drift check"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "risk-and-boundaries",
+          "category": "science",
+          "requirement": "Legal, clinical, causal, operational and data-authority boundaries are explicit.",
+          "evidence_contract": [
+            "Risk register",
+            "Intended-use and non-authority statements",
+            "Review record"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "roadmap-reproducible",
+          "category": "release",
+          "requirement": "The roadmap, tracks and issue graph regenerate deterministically from versioned sources.",
+          "evidence_contract": [
+            "Deterministic generation result",
+            "Repository checksum manifest",
+            "Clean-environment verification"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.3.0",
+      "name": "normative core alpha",
+      "channel": "experimental",
+      "maturity_level": "M2",
+      "objective": "Stabilise the candidate governance, security, schema, ontology and provenance contracts.",
+      "required_tracks": [
+        "foundation_architecture_20260718",
+        "governance_maori_data_sovereignty_20260718",
+        "security_supply_chain_20260719",
+        "canonical_domain_schemas_ontology_20260719",
+        "provenance_profile_v1_20260718"
+      ],
+      "exit_gates": [
+        {
+          "id": "core-schema-conformance",
+          "category": "contracts",
+          "requirement": "Candidate schemas, ontology, identifiers and migrations pass positive and negative conformance tests.",
+          "evidence_contract": [
+            "Schema corpus",
+            "Ontology validation",
+            "Migration fixtures"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "core-provenance-integrity",
+          "category": "provenance",
+          "requirement": "Capture, transformation, lineage, manual/AI assistance and integrity semantics work across representative event patterns.",
+          "evidence_contract": [
+            "Golden event streams",
+            "Tamper and concurrency tests",
+            "Lineage-granularity report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "core-security-baseline",
+          "category": "security",
+          "requirement": "Threat model, dependency controls, secret handling and release-signing design have no unmitigated critical finding.",
+          "evidence_contract": [
+            "Threat model",
+            "Security review",
+            "CI and signing policy"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "core-governance-baseline",
+          "category": "governance",
+          "requirement": "Rights, privacy, Māori data sovereignty and release decision hooks are embedded in the contracts.",
+          "evidence_contract": [
+            "Governance review",
+            "Rights fixtures",
+            "Decision and escalation model"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.4.0",
+      "name": "real capture-to-research-object alpha",
+      "channel": "experimental",
+      "maturity_level": "M2",
+      "objective": "Complete one real national and one council capture through a complete citable research object.",
+      "required_tracks": [
+        "methods_research_objects_20260718",
+        "connector_runtime_capture_20260719",
+        "nz_spatial_source_registry_20260718"
+      ],
+      "exit_gates": [
+        {
+          "id": "capture-real-sources",
+          "category": "data",
+          "requirement": "At least one national and one council/planning source complete faithful capture with rights and source-capability evidence.",
+          "evidence_contract": [
+            "Raw capture artifacts",
+            "Capture provenance",
+            "Rights and source reports"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "research-object-complete",
+          "category": "publication",
+          "requirement": "A closed research object contains payloads, methods, quality, rights, environment, citation, checksums and attestations.",
+          "evidence_contract": [
+            "RO-Crate validation",
+            "Closed-bundle report",
+            "Signed checksum and attestation set"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "vertical-slice-reproduction",
+          "category": "provenance",
+          "requirement": "A clean environment rebuilds the vertical slice with exact or declared tolerance-equivalent outputs.",
+          "evidence_contract": [
+            "Clean-room log",
+            "Output comparison",
+            "Environment manifest"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "vertical-slice-failure-tests",
+          "category": "operations",
+          "requirement": "Retry, partial failure, malformed input, source change and recovery paths are exercised.",
+          "evidence_contract": [
+            "Failure-injection report",
+            "Quarantine/recovery evidence",
+            "Diagnostic bundle"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.5.0",
+      "name": "New Zealand spatial archive alpha",
+      "channel": "experimental",
+      "maturity_level": "M3",
+      "objective": "Operate a bounded real-data archive slice with canonical bitemporal records and reproducible materialisations.",
+      "required_tracks": [
+        "repository_template_adoption_20260718",
+        "nz_spatial_archive_mvp_20260718"
+      ],
+      "exit_gates": [
+        {
+          "id": "spatial-canonical-model",
+          "category": "data",
+          "requirement": "Authority, source, layer, plan, feature and snapshot identities preserve original evidence and temporal semantics.",
+          "evidence_contract": [
+            "Canonical schema validation",
+            "Bitemporal query examples",
+            "Identity collision report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "spatial-materialisations",
+          "category": "interoperability",
+          "requirement": "GeoParquet and DuckDB materialisations rebuild deterministically and pass compatibility checks.",
+          "evidence_contract": [
+            "Materialisation checksums",
+            "Tool compatibility matrix",
+            "Rebuild report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "spatial-repository-adoption",
+          "category": "contracts",
+          "requirement": "Repository templates and at least two ecosystem adapters emit conforming evidence without losing native provenance.",
+          "evidence_contract": [
+            "Adapter mappings",
+            "Template conformance report",
+            "Migration findings"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "spatial-alpha-operations",
+          "category": "operations",
+          "requirement": "The bounded archive completes three scheduled cycles including one change and one failure/recovery path.",
+          "evidence_contract": [
+            "Cycle logs",
+            "Change report",
+            "Recovery evidence"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.6.0",
+      "name": "queryable planning, access and facility beta",
+      "channel": "candidate",
+      "maturity_level": "M3",
+      "objective": "Expose trustworthy lineage, planning links, access metrics and reconciled facilities through interoperable contracts.",
+      "required_tracks": [
+        "provenance_query_api_20260719",
+        "interoperability_conformance_sdks_20260719",
+        "planning_rules_linkage_20260718",
+        "accessibility_network_engine_20260719",
+        "facility_registry_20260719"
+      ],
+      "exit_gates": [
+        {
+          "id": "lineage-query-contract",
+          "category": "provenance",
+          "requirement": "Why, where, how and downstream-impact queries return truthful declared lineage granularity.",
+          "evidence_contract": [
+            "Query conformance suite",
+            "Impact-analysis fixtures",
+            "False-precision negative tests"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "planning-linkage-evidence",
+          "category": "data",
+          "requirement": "Zone and overlay features link to versioned plan provisions with legal-status uncertainty and source evidence.",
+          "evidence_contract": [
+            "Spatial-rule link sample",
+            "Legal-status report",
+            "Manual review evidence"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "accessibility-validity",
+          "category": "analytics",
+          "requirement": "Network, catchment and capacity-weighted access methods pass benchmark and uncertainty tests.",
+          "evidence_contract": [
+            "Accessibility benchmark",
+            "Mode and uncertainty report",
+            "Independent method review"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "facility-reconciliation-validity",
+          "category": "data",
+          "requirement": "Facility assertions, temporal history, coordinates and reconciliations preserve disagreement and measured match quality.",
+          "evidence_contract": [
+            "Registry release",
+            "Stratified resolution audit",
+            "Rights/sensitivity filtering tests"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "cross-language-interoperability",
+          "category": "interoperability",
+          "requirement": "At least two implementations and an independent client pass the normative conformance corpus.",
+          "evidence_contract": [
+            "Cross-language report",
+            "Compatibility matrix",
+            "Independent client result"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.7.0",
+      "name": "temporal and decision analytics hardened beta",
+      "channel": "candidate",
+      "maturity_level": "M4",
+      "objective": "Harden temporal planning interpretation, spatial quality and core facility-location methods.",
+      "required_tracks": [
+        "planning_system_transition_20260719",
+        "spatial_quality_temporality_20260718",
+        "facility_location_engine_20260718"
+      ],
+      "exit_gates": [
+        {
+          "id": "planning-transition-continuity",
+          "category": "data",
+          "requirement": "Predecessor/successor instruments, operative transitions and unresolved legal continuity are explicitly modelled.",
+          "evidence_contract": [
+            "Transition crosswalk",
+            "Effective-date tests",
+            "Legal uncertainty register"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "spatial-quality-temporality",
+          "category": "science",
+          "requirement": "Geometry, coverage, bitemporal validity, change and uncertainty metrics pass independent review.",
+          "evidence_contract": [
+            "Quality benchmark",
+            "Temporal reconstruction report",
+            "Independent review"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "facility-solver-verification",
+          "category": "analytics",
+          "requirement": "Set covering, maximal covering, p-median, p-center, capacity, equity and robust formulations pass independent optimality/feasibility checks.",
+          "evidence_contract": [
+            "Benchmark suite",
+            "Independent solver comparison",
+            "Assumption and limitation report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "decision-model-compatibility",
+          "category": "contracts",
+          "requirement": "Model specifications, defaults and result schemas are versioned independently and have tested migration paths.",
+          "evidence_contract": [
+            "Model registry",
+            "Compatibility tests",
+            "Migration guide"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.8.0",
+      "name": "operational and applied hardened beta",
+      "channel": "candidate",
+      "maturity_level": "M4",
+      "objective": "Demonstrate repeated national operations, preservation, simulation validation and scientifically bounded applied pilots.",
+      "required_tracks": [
+        "operations_preservation_sre_20260719",
+        "nz_spatial_archive_operations_20260719",
+        "simulation_validation_engine_20260719",
+        "health_outcomes_causal_methods_20260719",
+        "supermarket_health_pilot_20260718",
+        "emergency_health_facilities_pilot_20260718"
+      ],
+      "exit_gates": [
+        {
+          "id": "archive-operational-slo",
+          "category": "operations",
+          "requirement": "Scheduled archive operations meet published beta SLOs across repeated cycles, failures, corrections and restore.",
+          "evidence_contract": [
+            "SLO report",
+            "Incident and recovery exercises",
+            "Coverage/freshness report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "preservation-fixity-recovery",
+          "category": "publication",
+          "requirement": "Preservation, fixity, restore, supersession, correction and withdrawal processes work on representative releases.",
+          "evidence_contract": [
+            "Fixity audit",
+            "Restore report",
+            "Correction/withdrawal exercise"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "simulation-validation",
+          "category": "analytics",
+          "requirement": "Queueing, availability, dynamic relocation and hospital-network simulations pass verification, calibration and sensitivity checks.",
+          "evidence_contract": [
+            "Simulation benchmark",
+            "Calibration report",
+            "Independent validation"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "health-science-boundaries",
+          "category": "science",
+          "requirement": "Health analyses separate descriptive, predictive, causal and prescriptive claims and pass preregistered diagnostics and sensitivity review.",
+          "evidence_contract": [
+            "Analysis plan or preregistration",
+            "Diagnostics and sensitivity report",
+            "Interpretation review"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "applied-pilot-reproducibility",
+          "category": "usability",
+          "requirement": "Supermarket and emergency/hospital reference pilots are independently reproducible and clearly non-operational.",
+          "evidence_contract": [
+            "Pilot research objects",
+            "External reproduction",
+            "Intended-use and limitation statements"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "governed-publication",
+          "category": "governance",
+          "requirement": "Public outputs pass rights, privacy, Māori data sovereignty, safety and sensitive-location review.",
+          "evidence_contract": [
+            "Governance decisions",
+            "Rights inventory",
+            "Exclusion and limitation register"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "0.9.0",
+      "name": "v1 release candidate",
+      "channel": "release-candidate",
+      "maturity_level": "M5",
+      "objective": "Freeze all v1 contracts and qualify the complete system through security, performance, operations, usability and independent reproduction.",
+      "required_tracks": [
+        "accessibility_network_engine_20260719",
+        "canonical_domain_schemas_ontology_20260719",
+        "connector_runtime_capture_20260719",
+        "documentation_developer_experience_20260719",
+        "emergency_health_facilities_pilot_20260718",
+        "facility_location_engine_20260718",
+        "facility_registry_20260719",
+        "foundation_architecture_20260718",
+        "governance_maori_data_sovereignty_20260718",
+        "health_outcomes_causal_methods_20260719",
+        "interoperability_conformance_sdks_20260719",
+        "methods_research_objects_20260718",
+        "nz_spatial_archive_mvp_20260718",
+        "nz_spatial_archive_operations_20260719",
+        "nz_spatial_source_registry_20260718",
+        "operations_preservation_sre_20260719",
+        "performance_scalability_reliability_20260719",
+        "planning_rules_linkage_20260718",
+        "planning_system_transition_20260719",
+        "provenance_profile_v1_20260718",
+        "provenance_query_api_20260719",
+        "publication_validation_20260718",
+        "repository_template_adoption_20260718",
+        "security_supply_chain_20260719",
+        "simulation_validation_engine_20260719",
+        "spatial_quality_temporality_20260718",
+        "supermarket_health_pilot_20260718",
+        "v1_release_hardening_20260719"
+      ],
+      "exit_gates": [
+        {
+          "id": "rc-feature-and-contract-freeze",
+          "category": "contracts",
+          "requirement": "All v1-critical tracks are complete and normative interfaces are frozen with migration and rollback guidance.",
+          "evidence_contract": [
+            "Normative inventory",
+            "API/schema/ontology diff",
+            "Migration and rollback rehearsal"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-security-qualification",
+          "category": "security",
+          "requirement": "Security, supply-chain, credential, malicious-input and incident-response qualification has no unresolved blocker.",
+          "evidence_contract": [
+            "Security audit",
+            "SBOM and attestation verification",
+            "Incident exercise"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-performance-qualification",
+          "category": "performance",
+          "requirement": "Reference workloads meet published performance, capacity, resilience and cost envelopes in two environments.",
+          "evidence_contract": [
+            "Benchmark report",
+            "Second-environment result",
+            "Capacity and cost model"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-operational-soak",
+          "category": "operations",
+          "requirement": "Operational components provide at least ninety consecutive days of representative beta evidence, followed by a minimum thirty-day release-candidate soak with SLO, recovery, freshness, preservation and defect evidence.",
+          "evidence_contract": [
+            "Ninety-day beta SLO report",
+            "Thirty-day release-candidate soak report",
+            "Incident, exclusion, recovery and defect register"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-interoperability-qualification",
+          "category": "interoperability",
+          "requirement": "Supported SDKs, storage forms, external standards projections and cross-version migrations pass the frozen conformance suite.",
+          "evidence_contract": [
+            "Conformance report",
+            "Compatibility matrix",
+            "Migration results"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-documentation-user-validation",
+          "category": "usability",
+          "requirement": "External users and an operator complete distinct documented workflows using only release-candidate artifacts.",
+          "evidence_contract": [
+            "User validation reports",
+            "Operator exercise",
+            "Documentation test report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-independent-reproduction",
+          "category": "provenance",
+          "requirement": "Two clean-room reproductions, including one external operator, reproduce a real archive release and applied benchmark.",
+          "evidence_contract": [
+            "Independent reproduction reports",
+            "Output comparisons",
+            "Resolved findings"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-publication-preservation",
+          "category": "publication",
+          "requirement": "Release artifacts, research objects, citations, checksums, signatures, attestations and preservation deposits are complete.",
+          "evidence_contract": [
+            "Release manifest",
+            "RO-Crate validation",
+            "Preservation and citation records"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-scientific-and-governance-review",
+          "category": "science",
+          "requirement": "Scientific, governance, rights, safety and interpretation reviews approve the bounded v1 scope.",
+          "evidence_contract": [
+            "Scientific review",
+            "Governance approvals",
+            "Limitations and exclusions register"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "rc-defect-threshold",
+          "category": "release",
+          "requirement": "No P0, P1, critical security, governance prohibition or release-blocking correctness/reproducibility defect remains.",
+          "evidence_contract": [
+            "Defect register",
+            "Waiver register",
+            "Release authority decision"
+          ],
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "name": "stable v1 general availability",
+      "channel": "stable",
+      "maturity_level": "M6",
+      "objective": "Publish and support a mature, hardened, independently verified and preservable stable v1.",
+      "required_tracks": [
+        "accessibility_network_engine_20260719",
+        "canonical_domain_schemas_ontology_20260719",
+        "connector_runtime_capture_20260719",
+        "documentation_developer_experience_20260719",
+        "emergency_health_facilities_pilot_20260718",
+        "facility_location_engine_20260718",
+        "facility_registry_20260719",
+        "foundation_architecture_20260718",
+        "governance_maori_data_sovereignty_20260718",
+        "health_outcomes_causal_methods_20260719",
+        "interoperability_conformance_sdks_20260719",
+        "methods_research_objects_20260718",
+        "nz_spatial_archive_mvp_20260718",
+        "nz_spatial_archive_operations_20260719",
+        "nz_spatial_source_registry_20260718",
+        "operations_preservation_sre_20260719",
+        "performance_scalability_reliability_20260719",
+        "planning_rules_linkage_20260718",
+        "planning_system_transition_20260719",
+        "provenance_profile_v1_20260718",
+        "provenance_query_api_20260719",
+        "publication_validation_20260718",
+        "repository_template_adoption_20260718",
+        "security_supply_chain_20260719",
+        "simulation_validation_engine_20260719",
+        "spatial_quality_temporality_20260718",
+        "supermarket_health_pilot_20260718",
+        "v1_release_hardening_20260719"
+      ],
+      "exit_gates": [
+        {
+          "id": "stable-governance",
+          "category": "governance",
+          "requirement": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety, corrections and withdrawals are approved for the released scope.",
+          "evidence_contract": [
+            "Signed governance decision",
+            "Rights and limitation inventory",
+            "Correction/withdrawal policy"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-contracts",
+          "category": "contracts",
+          "requirement": "The v1 compatibility, support, versioning, deprecation and migration contract is published and verified.",
+          "evidence_contract": [
+            "Compatibility policy",
+            "Support policy",
+            "Migration suite"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-provenance",
+          "category": "provenance",
+          "requirement": "Released results have complete truthful lineage, transformation and integrity evidence and independently verified provenance queries.",
+          "evidence_contract": [
+            "Provenance conformance report",
+            "Lineage query report",
+            "Integrity/signature verification"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-security",
+          "category": "security",
+          "requirement": "The release passes final threat, vulnerability, supply-chain, credential, signing and incident-response verification.",
+          "evidence_contract": [
+            "Final security report",
+            "SBOMs and attestations",
+            "Incident/rollback exercise"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-data",
+          "category": "data",
+          "requirement": "Coverage, freshness, quality, legal status, identity, geometry, uncertainty and temporal limitations are measured and public.",
+          "evidence_contract": [
+            "Coverage/quality report",
+            "Temporal/legal-status report",
+            "Known-data-limitations register"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-operations",
+          "category": "operations",
+          "requirement": "SLOs, monitoring, source health, backfill, recovery, fixity, preservation, cost and on-call/ownership obligations are operational.",
+          "evidence_contract": [
+            "Stable SLO report",
+            "Disaster-recovery and restore exercise",
+            "Operations and cost acceptance"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-performance",
+          "category": "performance",
+          "requirement": "Reference workloads meet frozen performance, capacity, resilience and cost envelopes without disabled correctness controls.",
+          "evidence_contract": [
+            "Signed benchmark report",
+            "Regression baseline",
+            "Capacity model"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-interoperability",
+          "category": "interoperability",
+          "requirement": "Independent implementations, supported SDKs, standards projections and migrations pass the frozen v1 conformance suite.",
+          "evidence_contract": [
+            "Cross-language conformance",
+            "Compatibility matrix",
+            "Independent consumer report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-publication",
+          "category": "publication",
+          "requirement": "Source, packages, containers, schemas, ontology, documentation and research objects are signed, checksummed, attested, cited and preserved.",
+          "evidence_contract": [
+            "Signed release manifest",
+            "Research-object validation",
+            "Persistent identifier and preservation records"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-usability",
+          "category": "usability",
+          "requirement": "External users and operators complete supported workflows and named maintainers, support channels and sustainability bounds are active.",
+          "evidence_contract": [
+            "External workflow reports",
+            "Maintainer roster",
+            "Support and sustainability policy"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-analytics",
+          "category": "analytics",
+          "requirement": "Accessibility, optimisation and simulation engines pass frozen benchmark, correctness, uncertainty, equity and limitation tests.",
+          "evidence_contract": [
+            "Analytics conformance report",
+            "Independent solver/simulation verification",
+            "Assumption registry"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-science",
+          "category": "science",
+          "requirement": "Applied outputs pass scientific-method, causal-boundary, sensitivity, interpretation and non-operational-use review.",
+          "evidence_contract": [
+            "Scientific review",
+            "Preregistered or declared analysis plans",
+            "Interpretation and limitation report"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-independent-reproduction",
+          "category": "reproducibility",
+          "requirement": "At least two clean-room reproductions, including an external party, reproduce a complete real-data release and one applied benchmark.",
+          "evidence_contract": [
+            "External reproduction reports",
+            "Output equivalence decisions",
+            "Resolved reproducibility findings"
+          ],
+          "blocking": true
+        },
+        {
+          "id": "stable-release-authority",
+          "category": "release",
+          "requirement": "All tracks and gates pass, defect and waiver thresholds are met, artifacts are immutable, and the named release authority approves GA.",
+          "evidence_contract": [
+            "Machine-readable v1 gate result",
+            "Defect/waiver register",
+            "Signed release authority decision"
+          ],
+          "blocking": true
+        }
+      ]
+    }
+  ]
+}

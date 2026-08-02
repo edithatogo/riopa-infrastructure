@@ -370,6 +370,8 @@ def _validate_evidence_reference(
     evidence_path: Path,
     reference: Any,
     problems: list[RoadmapProblem],
+    *,
+    release_version: str | None = None,
 ) -> None:
     """Verify a local evidence reference and any declared digest."""
 
@@ -390,7 +392,26 @@ def _validate_evidence_reference(
             )
         )
         return
-    if not candidate.is_file():
+    snapshot: Path | None = None
+    snapshot_root: Path | None = None
+    if release_version is not None:
+        snapshot_root = (base / "conductor/release-evidence/artifacts" / release_version).resolve()
+        snapshot = snapshot_root / location
+    if snapshot is not None and snapshot.is_file():
+        candidate = snapshot.resolve()
+        assert snapshot_root is not None
+        try:
+            candidate.relative_to(snapshot_root)
+        except ValueError:
+            problems.append(
+                RoadmapProblem(
+                    "evidence-path",
+                    evidence_path.as_posix(),
+                    f"snapshot evidence path escapes release root: {location}",
+                )
+            )
+            return
+    elif not candidate.is_file():
         problems.append(
             RoadmapProblem(
                 "missing-evidence",
@@ -553,13 +574,17 @@ def _validate_release_evidence(
                             )
                         )
             for reference in references:
-                _validate_evidence_reference(base, path, reference, problems)
+                _validate_evidence_reference(
+                    base, path, reference, problems, release_version=version
+                )
 
         release_artifacts = payload.get("release_artifacts", [])
         if isinstance(release_artifacts, list):
             all_references.extend(release_artifacts)
             for reference in release_artifacts:
-                _validate_evidence_reference(base, path, reference, problems)
+                _validate_evidence_reference(
+                    base, path, reference, problems, release_version=version
+                )
 
         identifiers = [
             _evidence_identifier(reference)

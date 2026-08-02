@@ -27,7 +27,11 @@ def test_conductor_review_roles_are_agent_panel_lenses() -> None:
         metadata = json.loads(path.read_text())
         assert all(not role.endswith(" reviewer") for role in metadata["review_roles"]), path
     for path in (ROOT / "conductor").rglob("*"):
-        if path.is_file() and path.suffix in {".json", ".md"}:
+        if (
+            path.is_file()
+            and path.suffix in {".json", ".md"}
+            and "release-evidence/artifacts" not in path.as_posix()
+        ):
             assert not any(term in path.read_text() for term in forbidden), path
 
 
