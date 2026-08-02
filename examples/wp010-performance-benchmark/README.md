@@ -15,6 +15,14 @@ The runner emits baseline, stressed and degraded regional scenarios. Each
 scenario includes p50/p95 latency, throughput, and explicit resource/cost
 instrumentation status (unavailable fields are `null`, never invented).
 
+The workload is bound to the content-addressed national manifest at
+`docs/national-workload-manifest-20260803.json`. Its archived Meshblock
+geography and subnational population snapshot supply ingestion metadata and
+the bounded scalability projection; the population snapshot is not joined or
+downscaled to Meshblocks. Accessibility is reference-only for those archived
+inputs. Network, timetable and facility claims remain disabled until their
+corresponding archives exist.
+
 The `regional` object is measured. The `national` object is explicitly
 `projection-not-measurement`; its linear extrapolation is informative only and
 does not satisfy a national-scale qualification gate. Real national-scale
