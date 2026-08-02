@@ -1,0 +1,50 @@
+{
+  "campaign_id": "operational-evidence-20260802",
+  "scope": "bounded-public-data-technical-preview",
+  "status": "evidence-collection",
+  "claims": {
+    "local_recovery": "executed-local",
+    "hosted_recovery": "pending",
+    "operational_cycles": "pending-duration",
+    "rc_soak": "pending-duration",
+    "national_scale_performance": "unsupported"
+  },
+  "lanes": [
+    {
+      "id": "recovery-rollback",
+      "owner": "operations-evidence",
+      "required_artifacts": ["raw-log", "timestamped-object-hashes", "recovery-point", "decision-record"],
+      "status": "pending-hosted-execution"
+    },
+    {
+      "id": "operational-cycles",
+      "owner": "operations-evidence",
+      "required_artifacts": ["cycle-records", "failure-recovery-notes", "daily-digests"],
+      "status": "clock-not-started"
+    },
+    {
+      "id": "regional-performance",
+      "owner": "performance-evidence",
+      "required_artifacts": ["workload-manifest", "raw-measurements", "resource-cost-summary"],
+      "status": "synthetic-regional-only"
+    },
+    {
+      "id": "rc-soak",
+      "owner": "release-evidence",
+      "required_artifacts": ["immutable-build-digest", "soak-observations", "incident-log"],
+      "status": "clock-not-started"
+    }
+  ],
+  "promotion_blockers": [
+    "hosted-or-production-recovery-execution",
+    "elapsed-operational-cycle-and-rc-soak-duration",
+    "national-scale-measurements",
+    "accountable-release-authority-decision"
+  ],
+  "limitations": [
+    "Local synthetic drills do not establish hosted or production recovery evidence.",
+    "Synthetic regional benchmarks do not support national-scale claims.",
+    "Subagent rehearsals do not satisfy external operator or user reproduction gates.",
+    "No gate may be marked complete without content-addressed raw observations."
+  ]
+}
