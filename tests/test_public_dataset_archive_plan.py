@@ -135,3 +135,13 @@ def test_materialized_food_source_summary_is_digest_bound_and_non_authoritative(
     assert hamilton["null_geometry_count"] == hamilton["record_count"]
     assert hamilton["spatially_usable"] is False
     assert evidence["claims"]["authoritative_registry"] is False
+
+
+def test_food_reconciliation_preserves_candidate_and_source_only_counts() -> None:
+    evidence = json.loads(
+        (ROOT / "docs/facility-food-reconciliation-20260803.json").read_text()
+    )
+    assert evidence["status"] == "candidate-matches-not-adjudicated"
+    assert evidence["counts"]["candidate_matches"] == 39
+    assert evidence["counts"]["source_only"] == 13951
+    assert "Hamilton" in " ".join(evidence["limitations"])
