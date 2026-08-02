@@ -5,7 +5,7 @@
   "claims": {
     "local_recovery": "executed-local",
     "hosted_recovery": "technical-preview-drill-passed-production-dr-pending",
-    "operational_cycles": "first-observation-passed-duration-pending",
+    "operational_cycles": "cumulative-daily-campaign-active-duration-pending",
     "rc_soak": "pending-duration",
     "national_scale_performance": "unsupported"
   },
@@ -35,7 +35,8 @@
       "owner": "operations-evidence",
       "required_artifacts": ["cycle-records", "failure-recovery-notes", "daily-digests"],
       "status": "daily-schedule-active-first-observation-passed",
-      "execution_artifact": "docs/hosted-evidence-batch-20260802.json"
+      "execution_artifact": "docs/operational-beta-observation-20260802.json",
+      "legacy_batch_artifact": "docs/hosted-evidence-batch-20260802.json"
     },
     {
       "id": "regional-performance",

@@ -23,6 +23,7 @@
 - [ ] 4.1 Operate the release pipeline for the required beta evidence period.
 - [ ] 4.2 Publish SLO, incident, capacity and preservation reports.
 - [ ] 4.3 Approve stable operational risk and support obligations.
+- [x] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)
 
 ## Track closeout
 
