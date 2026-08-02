@@ -27,3 +27,13 @@ def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:
         "operational-observation",
         "rc-soak-observation",
     }
+
+
+def test_recorded_hosted_recovery_receipt_is_bound_to_successful_run() -> None:
+    evidence = json.loads((ROOT / "docs/hosted-recovery-execution-20260802.json").read_text())
+    receipt = evidence["receipt"]
+    schema = json.loads((ROOT / "schemas/hosted-evidence.schema.json").read_text())
+    Draft202012Validator(schema).validate(receipt)
+    assert receipt["status"] == "passed"
+    assert receipt["host"]["provider"] == "github-actions"
+    assert evidence["gate_disposition"]["production_disaster_recovery"] == "pending"

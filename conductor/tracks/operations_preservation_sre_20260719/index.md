@@ -19,6 +19,7 @@
 | `WP-002-capture-observability-20260731` | Capture attempts, outcomes, archived bytes and structured failure categories | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Deterministic in-process metrics and structured failure events tested |
 | `WP-003-publication-resume-20260731` | Publication retry, idempotency and partial-completion semantics | `src/riopa_provenance/publication.py`, `tests/test_publication.py`, `docs/publication-state.md` | Content-bound operation keys, idempotent replay and conflict rejection tested |
 | `OPS-REMAINING-GATES-20260802` | Recovery, operational-cycle and RC-soak evidence sequence, executable hosted lanes and reset contingencies | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_hosted_evidence.py` | Revision-bound technical-preview runner implemented; hosted execution and elapsed clocks remain pending actual observations |
+| `OPS-HOSTED-RECOVERY-20260802` | Hosted recovery/rollback technical-preview drill produces schema-valid, content-bound evidence | `docs/hosted-recovery-execution-20260802.json`, [GitHub Actions run 30744372005](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744372005) | Passed; production disaster-recovery qualification remains pending |
 
 ## Blocking defects
 

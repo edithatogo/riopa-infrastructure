@@ -7,7 +7,11 @@ authority evidence without relabelling rehearsals as outcomes.
 
 The live GitHub snapshot contained 146 open issues, including 28 track parents.
 CodeQL passed at the observed head, while CI failed on formatting; the formatting
-defect is repository-owned and is fixed in this change. The machine-readable
+defect is repository-owned and is fixed in this change. GitHub-hosted run
+`30744372005` subsequently passed the recovery/rollback technical-preview lane
+at exact revision `347cf53`; its content-bound receipt is recorded in
+`docs/hosted-recovery-execution-20260802.json`. Production disaster-recovery
+qualification remains open. The machine-readable
 snapshot and gate options are in
 `docs/remaining-gates-autonomous-plan-20260802.json`.
 
@@ -68,4 +72,3 @@ work. The installed `hf` CLI is sufficient for staged Hub and Jobs operations.
   preview even after agent-panel qualification.
 - If the accountable decision is absent or declines promotion, preserve the
   packet and keep beta/RC/stable gates open.
-

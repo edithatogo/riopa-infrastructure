@@ -1,0 +1,51 @@
+{
+  "evidence_id": "hosted-recovery-execution-20260802-run-30744372005",
+  "classification": "hosted-technical-preview-drill",
+  "workflow_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744372005",
+  "workflow_conclusion": "success",
+  "artifact_receipt_sha256": "abdb022bf77c91431a50b64b9c1db48d901ff3f9d402ec6357ea6b5e7476e825",
+  "receipt": {
+    "classification": "hosted-technical-preview-drill",
+    "command": [
+      "uv",
+      "run",
+      "pytest",
+      "-q",
+      "tests/test_publication.py",
+      "tests/test_linz_pipeline.py"
+    ],
+    "ended_at": "2026-08-02T10:45:52.467387Z",
+    "exit_code": 0,
+    "host": {
+      "architecture": "x86_64",
+      "provider": "github-actions",
+      "run_attempt": "1",
+      "run_id": "30744372005",
+      "runner_name": "GitHub Actions 1000277928",
+      "runner_os": "Linux"
+    },
+    "lane": "recovery-rollback",
+    "log": {
+      "path": "recovery-rollback.log",
+      "sha256": "f44919a3367dc52929a8af8f8919d5f9536d2eb90b5c6c6d38b1e58904be21bc"
+    },
+    "non_claims": [
+      "This receipt is not production disaster-recovery qualification.",
+      "This receipt is not external operator or external user evidence.",
+      "This receipt does not satisfy elapsed soak duration by itself.",
+      "This receipt is not an accountable release-authority decision."
+    ],
+    "schema_version": "1.0.0",
+    "source_revision": "347cf533da57b80980359abd57f492c76ab6988a",
+    "started_at": "2026-08-02T10:45:50.553585Z",
+    "status": "passed"
+  },
+  "gate_disposition": {
+    "hosted_technical_preview_drill": "passed",
+    "production_disaster_recovery": "pending",
+    "external_operator_or_user": "pending",
+    "elapsed_soak": "pending",
+    "release_authority": "pending"
+  }
+}
+
