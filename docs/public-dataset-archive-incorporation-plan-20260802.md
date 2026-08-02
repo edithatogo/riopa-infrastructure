@@ -76,3 +76,9 @@ revision `4f94d300c0bea6b64972b4b67044990f7e591716`, with workbook SHA-256
 packets are combined only in the bounded reference workload manifest
 `docs/national-workload-manifest-20260803.json`; no population values are
 assigned to Meshblocks or downscaled from regional units.
+
+Issue #37 now has hosted negative-evidence packets for both candidate regional
+GTFS feeds: Metro Christchurch run [30753973737](https://github.com/edithatogo/open_social_data/actions/runs/30753973737)
+(HTTP 401) and Auckland Transport run [30754015729](https://github.com/edithatogo/open_social_data/actions/runs/30754015729).
+The packets are preserved as unavailable dispositions, not timetable data, so
+the network/timetable domains remain disabled.
