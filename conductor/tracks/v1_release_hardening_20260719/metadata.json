@@ -75,5 +75,12 @@
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": ["all-v1-critical-tracks-complete", "clean-room-and-external-reproduction", "external-user-validation", "operational-and-release-candidate-soak", "signed-preserved-stable-release", "release-authority-decision"]
+  "blocking_defects": [
+    "all-v1-critical-tracks-complete",
+    "clean-room-and-external-reproduction",
+    "external-user-validation",
+    "operational-and-release-candidate-soak",
+    "signed-preserved-stable-release",
+    "release-authority-decision"
+  ]
 }

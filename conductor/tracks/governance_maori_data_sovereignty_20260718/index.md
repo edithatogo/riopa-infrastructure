@@ -10,7 +10,7 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Programme owner
-- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/19
+- **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/155
 
 ## Evidence register
 

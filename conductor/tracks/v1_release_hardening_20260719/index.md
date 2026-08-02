@@ -21,6 +21,7 @@
 | V1-HOSTED-RECOVERY-20260802 | Exact-revision recovery/rollback technical-preview drill executes in GitHub's hosted environment | `docs/hosted-recovery-execution-20260802.json`, [GitHub Actions run 30744372005](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744372005) | Passed at `347cf53`; production DR, participant, elapsed-soak and authority gates remain open |
 | V1-HOSTED-BATCH-20260802 | Exact-revision agent clean-room, scale-smoke, operational and RC-soak observations execute in hosted runners | `docs/hosted-evidence-batch-20260802.json` | Four lanes passed at `6fcbe29`; national scale, elapsed duration, external participants, track reports and authority remain open |
 | V1-CAMPAIGN-V2-20260802 | Live GitHub/Conductor drift, daily evidence schedule, revision-bound ledger, Hugging Face fallback and library choices are reconciled | `docs/remaining-gates-campaign-v2-20260802.md`, `docs/hugging-face-evidence-runner-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py` | Repository review uses agent panels; live issue sync and elapsed/external/authority evidence remain separately tracked |
+| V1-GITHUB-ISSUE-SYNC-20260802 | Validated Conductor projections are reconciled to live GitHub issues after the agent-panel migration | `docs/github-issue-sync-20260802.json`, `project/issues.yaml` | 151 generated records applied without error; 140 updated and 11 missing phase issues created; open work remains open |
 
 ## Blocking defects
 

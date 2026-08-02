@@ -1,0 +1,27 @@
+{
+  "schema": "riopa.github-issue-sync.v1",
+  "recorded_at": "2026-08-02T11:29:00Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "source_revision": "59842251d447e6107bb9ad2b75338facff60db30",
+  "source_manifest": "project/issues.yaml",
+  "applied": true,
+  "generated_issue_records": 151,
+  "actions": {"updated": 140, "created": 11, "supplemental_updates": 1, "errors": 0},
+  "open_issue_count_after_sync": 156,
+  "reconciliations": [
+    "Live generated issue bodies now match the validated agent-panel Conductor sources.",
+    "Issue 149 remains open only for external-person/operator execution evidence; agent-panel review cannot close it.",
+    "Issue 153 was closed because the bounded pilot decision and Zenodo DOI were already recorded.",
+    "Pull requests 150, 151 and 152 were closed unmerged as conflicting, superseded evidence rewrites."
+  ],
+  "exact_head_checks": {
+    "continuous_integration_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30745630272",
+    "codeql_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30745630287",
+    "conclusion": "passed"
+  },
+  "non_claims": [
+    "Issue synchronization does not close the implementation tasks represented by open issues.",
+    "Green checks do not create elapsed-time, production-recovery, national-scale, participant or release-authority evidence.",
+    "This record does not assert that every track has reached its target maturity."
+  ]
+}
