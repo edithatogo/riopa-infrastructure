@@ -9,6 +9,9 @@ Software, schema, dataset, analytical-model and research-object versions remain 
 - Offline-only, content-pinned Stats NZ Meshblock 2026 acquisition verification,
   content-addressed source/capture records and a normalized spatial projection
   with page-level lineage and no implicit geometry repair.
+- Bounded national reference workload manifest linking the immutable Meshblock
+  geography and provisional subnational population packets without an
+  unsupported geographic join.
 - Transparent Git history reconstructed from the delivered v0.1.0, v0.2.0 and development artifact snapshots.
 - Root `AGENTS.md` and autonomous Codex implementation brief.
 - Guarded local/GitHub/Project/issue bootstrap that restores Git from an included bundle when necessary.
