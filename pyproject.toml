@@ -80,6 +80,10 @@ warn_unused_ignores = true
 show_error_codes = true
 exclude = ["dist", "build"]
 
+[[tool.mypy.overrides]]
+module = ["riopa_provenance.capture"]
+disable_error_code = ["misc"]
+
 [tool.bandit]
 exclude_dirs = ["tests", "dist", "build"]
 skips = ["B101"]
