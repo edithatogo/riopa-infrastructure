@@ -14,7 +14,7 @@ def test_hosted_recovery_packet_is_fail_closed() -> None:
 
 def test_regional_performance_packet_rejects_national_claim() -> None:
     packet = json.loads((ROOT / "docs/regional-performance-evidence-20260802.json").read_text())
-    assert packet["status"] == "synthetic-regional-only"
+    assert packet["status"] == "manifest-bound-synthetic-regional-only"
     assert packet["regional"]["checksum"] == 2665628609
     assert packet["national"]["classification"] == "projection-not-measurement"
     assert packet["national"]["claim_supported"] is False

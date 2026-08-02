@@ -119,7 +119,10 @@ def test_facility_source_family_gate_is_bounded() -> None:
     evidence = json.loads(
         (ROOT / "docs/facility-source-family-qualification-20260803.json").read_text()
     )
-    assert evidence["qualification"]["independent_families"] >= evidence["qualification"]["required_minimum"]
+    assert (
+        evidence["qualification"]["independent_families"]
+        >= evidence["qualification"]["required_minimum"]
+    )
     assert evidence["qualification"]["reconciliation_gate"] == "open"
     assert evidence["qualification"]["national_completeness_claim"] is False
 
@@ -131,7 +134,11 @@ def test_materialized_food_source_summary_is_digest_bound_and_non_authoritative(
     assert len(evidence["sources"]) == 3
     assert all(item["source_assertions_only"] for item in evidence["sources"])
     assert all(len(item["payload_sha256"]) == 64 for item in evidence["sources"])
-    hamilton = next(item for item in evidence["sources"] if item["source_id"] == "hamilton-food-premise-register")
+    hamilton = next(
+        item
+        for item in evidence["sources"]
+        if item["source_id"] == "hamilton-food-premise-register"
+    )
     assert hamilton["null_geometry_count"] == hamilton["record_count"]
     assert hamilton["spatially_usable"] is False
     assert evidence["claims"]["authoritative_registry"] is False
