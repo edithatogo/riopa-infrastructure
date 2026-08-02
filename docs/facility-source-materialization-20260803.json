@@ -12,7 +12,8 @@
       "payload_sha256": "67ae6bf14b3d7283ecdedb5ca8392a993c170e442e84ff97b143e84cd3d02eab",
       "record_count": 13650,
       "source_assertions_only": true,
-      "source_id": "osm-new-zealand-food-service"
+      "source_id": "osm-new-zealand-food-service",
+      "spatially_usable": true
     },
     {
       "null_geometry_count": 0,
@@ -20,7 +21,8 @@
       "payload_sha256": "f51393d0305acb0f51e623361f36548245ab9a7cd81d451f1833ccc99d5c593f",
       "record_count": 379,
       "source_assertions_only": true,
-      "source_id": "marlborough-food-premise-licences"
+      "source_id": "marlborough-food-premise-licences",
+      "spatially_usable": true
     },
     {
       "null_geometry_count": 3245,
@@ -28,7 +30,8 @@
       "payload_sha256": "618933c1f27d6931d89dd6e79d26c421a449af012b38e164902d7423ae14d2e1",
       "record_count": 3245,
       "source_assertions_only": true,
-      "source_id": "hamilton-food-premise-register"
+      "source_id": "hamilton-food-premise-register",
+      "spatially_usable": false
     }
   ],
   "status": "materialized-source-summaries-non-authoritative"

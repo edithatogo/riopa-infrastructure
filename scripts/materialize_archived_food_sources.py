@@ -43,6 +43,7 @@ def summarize(source_id: str, revision: str) -> dict[str, Any]:
         "payload_sha256": observed,
         "record_count": len(records),
         "null_geometry_count": null_geometry,
+        "spatially_usable": null_geometry < len(records),
         "source_assertions_only": True,
     }
 

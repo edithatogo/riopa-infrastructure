@@ -9,6 +9,6 @@
   "status": "archived-source-specific-assertions",
   "rights_status": "terms-preserved-with-source-receipt",
   "non_claim": "This regional register is not an authoritative or complete national food-retail register.",
-  "enabled_use": ["bounded-source-reconciliation", "provenance-fixture"],
+  "enabled_use": ["bounded-attribute-reconciliation", "provenance-fixture"],
   "disabled_use": ["national-facility-coverage", "national-accessibility-claim"]
 }

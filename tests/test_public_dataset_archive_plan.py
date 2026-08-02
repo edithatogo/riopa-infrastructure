@@ -133,4 +133,5 @@ def test_materialized_food_source_summary_is_digest_bound_and_non_authoritative(
     assert all(len(item["payload_sha256"]) == 64 for item in evidence["sources"])
     hamilton = next(item for item in evidence["sources"] if item["source_id"] == "hamilton-food-premise-register")
     assert hamilton["null_geometry_count"] == hamilton["record_count"]
+    assert hamilton["spatially_usable"] is False
     assert evidence["claims"]["authoritative_registry"] is False
