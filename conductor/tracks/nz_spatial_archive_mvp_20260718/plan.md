@@ -3,7 +3,7 @@
 ## 1. Real source capture
 
 - [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.
-- [ ] 1.2 Capture national layers, council services and planning documents faithfully.
+- [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
 - [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.
 
 ## 2. Canonical bitemporal model
@@ -14,7 +14,7 @@
 
 ## 3. Materialisation and quality
 
-- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples.
+- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples only from content-addressed archived source packets.
 - [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.
 - [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.
 

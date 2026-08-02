@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0.0",
+  "programme": "RIOPA Infrastructure",
+  "stable_release": "1.0.0",
+  "levels": [
+    {
+      "id": "M0",
+      "name": "Concept",
+      "definition": "A problem, opportunity or research need is identified, but no binding scope or implementation contract exists.",
+      "exit_criteria": [
+        "Named problem and intended users or beneficiaries.",
+        "Initial ownership, ethical, rights and safety considerations recorded.",
+        "Decision to specify, defer or reject the work."
+      ]
+    },
+    {
+      "id": "M1",
+      "name": "Specified prototype",
+      "definition": "Scope, dependencies, risks, interfaces, acceptance criteria and evidence requirements are explicit and reviewable.",
+      "exit_criteria": [
+        "Conductor specification, plan, metadata and evidence index validate.",
+        "Architecture and domain boundaries are documented.",
+        "Executable prototype plan and negative-test strategy are approved."
+      ]
+    },
+    {
+      "id": "M2",
+      "name": "Integrated alpha",
+      "definition": "Executable implementation and conformance fixtures work against representative or real data, with known limitations and experimental interfaces.",
+      "exit_criteria": [
+        "Positive, negative and failure-path tests pass.",
+        "Real or faithful representative inputs complete the intended workflow.",
+        "Provenance, rights, quality and reproducibility evidence are generated.",
+        "Known incompatibilities and migration risks are published."
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Operational beta",
+      "definition": "The capability operates repeatedly with monitoring, recovery, migration and external-use evidence while compatibility may still change with notice.",
+      "exit_criteria": [
+        "At least three representative operational cycles complete.",
+        "Source or dependency failures, backfills and recovery are exercised.",
+        "External users or independent consumers complete documented workflows.",
+        "Quality, coverage, cost and operational limitations are public."
+      ]
+    },
+    {
+      "id": "M4",
+      "name": "Hardened beta",
+      "definition": "Interfaces are approaching freeze and the capability has passed security, performance, compatibility, preservation and scientific-method hardening.",
+      "exit_criteria": [
+        "Threat, performance, resilience and data-quality reviews have no unresolved release blocker.",
+        "Compatibility matrix and migration tooling cover supported predecessor versions.",
+        "Restore, rollback, correction and withdrawal exercises pass.",
+        "Independent review verifies methods, limitations and evidence completeness."
+      ]
+    },
+    {
+      "id": "M5",
+      "name": "Release candidate",
+      "definition": "Normative interfaces are frozen, all critical work is feature-complete, and candidate artifacts are undergoing independent reproduction and soak.",
+      "exit_criteria": [
+        "Normative inventory and conformance suites are frozen.",
+        "No P0, P1, critical security or prohibited governance finding remains.",
+        "Release-candidate soak, clean-room reproduction and external workflow validation pass.",
+        "Signed, attested and preservation-ready artifacts are available."
+      ]
+    },
+    {
+      "id": "M6",
+      "name": "Stable v1 general availability",
+      "definition": "Supported compatibility, documented service boundaries, preserved releases, named maintainers and post-release verification are in force.",
+      "exit_criteria": [
+        "The machine-readable v1 gate and every blocking release gate pass.",
+        "Support, compatibility, deprecation, security and incident policies are active.",
+        "Persistent release, citation and preservation records are verified.",
+        "Post-release monitoring, annual revalidation and succession obligations are assigned."
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "governance",
+      "name": "Governance and responsible data use",
+      "stable_v1_outcome": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety boundaries, corrections and withdrawals are approved and auditable.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "contracts",
+      "name": "Stable contracts and compatibility",
+      "stable_v1_outcome": "Schemas, ontology, identifiers, APIs, CLI, configuration and file formats have frozen v1 contracts, version negotiation and tested migration paths.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "provenance",
+      "name": "Provenance, lineage and integrity",
+      "stable_v1_outcome": "Every released result has truthful declared lineage granularity, complete transformation evidence, tamper detection and authenticated release provenance.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security and software supply chain",
+      "stable_v1_outcome": "Threats, credentials, dependencies, builds, releases, vulnerability response and incident recovery meet the v1 security policy.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "data",
+      "name": "Data quality, coverage and temporality",
+      "stable_v1_outcome": "Coverage, freshness, legal status, geometry, identity, uncertainty, bitemporal semantics and limitations are measured and published.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Operations, preservation and reliability",
+      "stable_v1_outcome": "Scheduled operation, monitoring, backfill, quarantine, restore, fixity, disaster recovery, retention and cost controls have been exercised.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "performance",
+      "name": "Performance and scalability",
+      "stable_v1_outcome": "Reference workloads meet published latency, throughput, resource, capacity, cost and graceful-degradation envelopes without weakening correctness.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "interoperability",
+      "name": "Interoperability and independent implementations",
+      "stable_v1_outcome": "Cross-language implementations and standards projections pass normative conformance and bounded-loss tests.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "publication",
+      "name": "Research objects, citation and preservation",
+      "stable_v1_outcome": "Methods, rights, quality, software, environment, identifiers, checksums, attestations and preservation records form complete citable research objects.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "usability",
+      "name": "Documentation, developer experience and support",
+      "stable_v1_outcome": "External users and operators can install, reproduce, troubleshoot and extend supported workflows using versioned documentation and named support channels.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "analytics",
+      "name": "Analytical and decision-model validity",
+      "stable_v1_outcome": "Accessibility, optimisation and simulation models have explicit objectives, constraints, uncertainty, equity, benchmark and independent-verification evidence.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    },
+    {
+      "id": "science",
+      "name": "Scientific validity and interpretation",
+      "stable_v1_outcome": "Estimands, causal boundaries, ecological limitations, preregistration or analysis plans, diagnostics, sensitivity and interpretation are explicit and reviewed.",
+      "required_evidence": [
+        "Machine-readable gate result linked to immutable artifacts.",
+        "Named reviewer or release authority decision.",
+        "Open limitations, exceptions and expiry recorded."
+      ]
+    }
+  ],
+  "rules": {
+    "monotonic_progression": true,
+    "evidence_required_for_transition": true,
+    "dependency_maturity_required": true,
+    "no_self_attestation_for_m5_or_m6": true,
+    "expired_evidence_blocks_release": true,
+    "waivers_are_scoped_time_limited_and_public_where_safe": true,
+    "m6_requires_all_dimensions": true
+  }
+}
