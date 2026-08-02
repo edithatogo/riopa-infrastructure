@@ -28,6 +28,7 @@
 | `FACILITY-SOURCE-FAMILY-GATE-20260803` | Three independent public source families are archived and the source-family gate is satisfied | `docs/facility-source-family-qualification-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Pairwise reconciliation, stratified metrics and panel disposition remain open |
 | `FACILITY-SOURCE-MATERIALIZATION-20260803` | Payload digests and record counts were verified directly from the three immutable hosted packets | `scripts/materialize_archived_food_sources.py`, `docs/facility-source-materialization-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Hamilton packet has null geometry for all 3,245 records; geometry/reconciliation qualification remains open |
 | `FACILITY-FOOD-RECONCILIATION-20260803` | Deterministic matching ran on the two spatially usable packets while preserving source-only disagreement | `scripts/qualify_archived_food_reconciliation.py`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py` | 39 candidate matches are not adjudicated; Hamilton is attribute-only and panel qualification remains open |
+| `FACILITY-PANEL-QUALIFICATION-20260803` | Methods, provenance and governance dispositions qualify candidate generation without authoritative promotion | `docs/facility-panel-qualification-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Reviewed matches remain zero; stratified adjudication or candidate-only release decision remains open |
 
 ## Blocking defects
 

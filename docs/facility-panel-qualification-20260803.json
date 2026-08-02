@@ -1,0 +1,34 @@
+{
+  "evidence_id": "facility-panel-qualification-20260803",
+  "status": "bounded-panel-qualified-open-gates",
+  "inputs": {
+    "reconciliation_report": "docs/facility-food-reconciliation-20260803.json",
+    "candidate_matches": 39,
+    "source_only_assertions": 13951,
+    "source_packets": 3
+  },
+  "panel": [
+    {
+      "role": "methods",
+      "finding": "The name-distance matcher is deterministic and reproducible for candidate generation.",
+      "disposition": "qualified-for-candidate-generation-only"
+    },
+    {
+      "role": "provenance",
+      "finding": "All three packets are revision-bound and source identity is preserved; Hamilton geometry is null for every record.",
+      "disposition": "qualified-with-attribute-only-hamilton-boundary"
+    },
+    {
+      "role": "governance",
+      "finding": "Source disagreement and source-only assertions remain visible; no source is authoritative or nationally complete.",
+      "disposition": "no-authoritative-promotion"
+    }
+  ],
+  "decisions": {
+    "reviewed_matches": 0,
+    "authoritative_registry": false,
+    "national_completeness": false,
+    "spatial_accessibility_claim": false,
+    "next_gate": "stratified adjudication or explicit decision to retain candidate-only status"
+  }
+}

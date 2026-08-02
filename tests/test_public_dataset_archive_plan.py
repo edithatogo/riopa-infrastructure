@@ -152,3 +152,13 @@ def test_food_reconciliation_preserves_candidate_and_source_only_counts() -> Non
     assert evidence["counts"]["candidate_matches"] == 39
     assert evidence["counts"]["source_only"] == 13951
     assert "Hamilton" in " ".join(evidence["limitations"])
+
+
+def test_facility_panel_preserves_open_adjudication_gate() -> None:
+    evidence = json.loads(
+        (ROOT / "docs/facility-panel-qualification-20260803.json").read_text()
+    )
+    assert evidence["inputs"]["candidate_matches"] == 39
+    assert evidence["decisions"]["reviewed_matches"] == 0
+    assert evidence["decisions"]["authoritative_registry"] is False
+    assert len(evidence["panel"]) == 3
