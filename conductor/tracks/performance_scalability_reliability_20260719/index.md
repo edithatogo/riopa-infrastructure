@@ -21,6 +21,7 @@
 | `PERF-HOSTED-OPTIONS-20260802` | Hosted runner and national-workload execution options are explicit and fail closed | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_hosted_evidence.py` | GitHub scale-smoke lane implemented; Hugging Face Jobs is a budget-gated fallback; no national run claimed |
 | `PERF-HOSTED-SMOKE-20260802` | Exact-revision performance correctness smoke executes in a hosted runner | `docs/hosted-evidence-batch-20260802.json`, [GitHub Actions run 30744487469](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744487469) | Passed; not a national-scale workload or capacity measurement |
 | `PERF-HF-LIBRARY-ASSESSMENT-20260802` | Secondary hosted runner, public workload and measurement-library options are bounded | `docs/hugging-face-evidence-runner-plan-20260802.json`, `docs/remaining-gates-campaign-v2-20260802.md` | No authoritative HF national workload found; `pyperf`/`psutil` remain benchmark-only candidates |
+| `PERF-CAMPAIGN-V3-20260802` | Current national-workload, runner and measurement-library options are reconciled without overclaiming | `docs/remaining-gates-campaign-v3-20260802.json`, `docs/remaining-gates-campaign-v3-20260802.md`, `docs/hugging-face-evidence-runner-plan-v2-20260802.json`, `tests/test_campaign_v3.py` | No authoritative workload was selected through HF; retain current stack, source official workload manifests independently and keep national measurement open |
 
 ## Blocking defects
 

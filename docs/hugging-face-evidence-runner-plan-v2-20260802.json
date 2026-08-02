@@ -1,0 +1,47 @@
+{
+  "schema": "riopa.hugging-face-runner-plan.v2",
+  "supersedes": "docs/hugging-face-evidence-runner-plan-20260802.json",
+  "status": "submission-blocked-prepaid-credit",
+  "account": "edithatogo",
+  "observed_cli_version": "1.15.0",
+  "observed_jobs": [],
+  "source_revision": "3ff0139a441f2e6ba456c6383e6231629b19de77",
+  "runner_script": "scripts/hf_hosted_recovery.py",
+  "runner_script_sha256": "0a2728215d33a4d7c7346807cb3c281077d8e87b1bdc7162274671d489f85267",
+  "submission_transport": "Read runner_script at the exact source revision and pass its contents inline to the Hugging Face Jobs MCP tool; a local path is not visible in the remote container.",
+  "job_spec": {
+    "operation": "run",
+    "image": "python:3.13-slim@sha256:6771159cd4fa5d9bba1258caf0b82e6b73458c694d178ad97c5e925c2d0e1a91",
+    "command_contract": [
+      "python",
+      "-c",
+      "<exact runner_script contents>",
+      "--repository",
+      "edithatogo/riopa-infrastructure",
+      "--revision",
+      "3ff0139a441f2e6ba456c6383e6231629b19de77"
+    ],
+    "flavor": "cpu-basic",
+    "timeout": "10m",
+    "maximum_cost_usd_at_timeout": 0.002,
+    "label": "riopa-recovery-3ff0139",
+    "secrets": []
+  },
+  "submission_attempt": {
+    "result": "not-created",
+    "error": "HTTP 402 Payment Required: prepaid credit balance is insufficient",
+    "billable_job_created": false
+  },
+  "dataset_search": {
+    "plugin": "disabled-by-server-configuration",
+    "cli_queries": ["New Zealand geospatial", "New Zealand OpenStreetMap", "LINZ"],
+    "authoritative_workload_selected": false,
+    "boundary": "Hub absence is not evidence that no official national workload exists; select official source manifests independently."
+  },
+  "non_claims": [
+    "The rejected submission is not hosted execution evidence.",
+    "No billable job or dataset repository was created.",
+    "A future secondary hosted drill is not production disaster recovery.",
+    "Hugging Face is not a source authority or preservation repository."
+  ]
+}

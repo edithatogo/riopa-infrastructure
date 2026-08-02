@@ -18,5 +18,7 @@
   "allow_force_pushes": false,
   "allow_deletions": false,
   "single_developer_boundary": "Changes require hosted checks but no second-person or human-review approval. Repository assessment uses the orchestrated agent panel.",
-  "source_observation": "GitHub branch-protection API response recorded after applying the configuration."
+  "source_observation": "GitHub branch-protection API response recorded after applying the configuration.",
+  "live_verifier": "scripts/verify_github_main_protection.py",
+  "review_requirement_verification": "Use GraphQL branchProtectionRule.requiresApprovingReviews=false and requiredApprovingReviewCount=null, or absence of required_pull_request_reviews in the aggregate REST response. Do not infer enablement from the standalone legacy REST subresource, which can return a default count even when review enforcement is disabled."
 }

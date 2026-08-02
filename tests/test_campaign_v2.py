@@ -16,6 +16,17 @@ def test_hugging_face_runner_remains_staged_and_fail_closed() -> None:
     assert len(plan["non_claims"]) >= 4
 
 
+def test_hugging_face_runner_v2_is_pinned_and_fail_closed() -> None:
+    plan = json.loads(
+        (ROOT / "docs/hugging-face-evidence-runner-plan-v2-20260802.json").read_text()
+    )
+    assert plan["status"] == "submission-blocked-prepaid-credit"
+    assert plan["job_spec"]["image"].startswith("python:3.13-slim@sha256:")
+    assert plan["job_spec"]["secrets"] == []
+    assert plan["job_spec"]["maximum_cost_usd_at_timeout"] <= 0.002
+    assert plan["submission_attempt"]["billable_job_created"] is False
+
+
 def test_operational_observation_schedule_is_daily_and_read_only() -> None:
     workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
     triggers = workflow.get("on", workflow.get(True))
