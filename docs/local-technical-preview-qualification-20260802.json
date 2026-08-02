@@ -1,0 +1,23 @@
+{
+  "evidence_id": "local-technical-preview-qualification-20260802",
+  "scope": "bounded-public-data-technical-preview",
+  "status": "local-qualification-passing",
+  "recovery": {
+    "test": "tests/test_recovery.py",
+    "status": "passing-local-synthetic",
+    "claims_supported": ["deterministic snapshot/restore/rollback control"]
+  },
+  "performance": {
+    "test": "tests/test_wp010_performance_contract.py",
+    "status": "passing-regional-synthetic",
+    "claims_supported": ["bounded synthetic regional benchmark"]
+  },
+  "not_established": [
+    "hosted or production recovery",
+    "national-scale performance",
+    "operational soak or elapsed cycles",
+    "external operator or user reproduction",
+    "beta, release-candidate or stable release authority"
+  ],
+  "promotion_ready": false
+}
