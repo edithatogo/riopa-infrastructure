@@ -1,0 +1,33 @@
+{
+  "capture_id": "urn:riopa:capture:sha256:11d299fadd85a4eca92445f724d71da7cfc81c147bc408593536a50062eb8a6d",
+  "record": {
+    "archive": {
+      "dataset_repository": "edithatogo/riopa-public-data-archive",
+      "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+      "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202"
+    },
+    "artifact": {
+      "bytes": 3668,
+      "content_encoding": "gzip",
+      "media_type": "application/json",
+      "path": "raw/item.json.gz",
+      "sha256": "9fa61f3401984bc7113c39fc22517ebf2b79ec7f8f60018c7b90af9b0c883b7d",
+      "uncompressed_bytes": 11865,
+      "uncompressed_sha256": "00ca707d4fd35de2a13602633b70ac0abc5f18b62e9bf2ba61b350cda91ab052"
+    },
+    "original_retrieval_receipt": {
+      "artifact": "raw/item.json.gz",
+      "headers": {
+        "content-type": "application/json;charset=utf-8"
+      },
+      "method": "GET",
+      "retrieved_at": "2026-08-02T13:33:11Z",
+      "status": 200,
+      "url": "https://www.arcgis.com/sharing/rest/content/items/4c023f2be0bf4993bdf7327f08b794bb?f=json"
+    },
+    "record_type": "archived_http_capture",
+    "schema_version": "1.0.0",
+    "source_id": "urn:riopa:source:stats-nz:meshblock-2026"
+  },
+  "record_sha256": "11d299fadd85a4eca92445f724d71da7cfc81c147bc408593536a50062eb8a6d"
+}

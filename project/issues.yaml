@@ -1534,7 +1534,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.\n- [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.\n- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.\n- [ ] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.\n- [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.\n- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.\n- [ ] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.\n- [ ] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service (`8f34bfd`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1564,7 +1564,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Transform source layers into canonical feature/version records.\n- [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.\n- [ ] 2.3 Link source, document and plan identities without unsupported interpretation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Transform source layers into canonical feature/version records.\n- [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.\n- [ ] 2.3 Link source, document and plan identities without unsupported interpretation.\n- [ ] 2.4 Build a normalized Meshblock feature projection with page-level capture lineage and no implicit geometry repair (`8f34bfd`, `61cddd3`; projection `urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1594,7 +1594,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples only from content-addressed archived source packets.\n- [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.\n- [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples only from content-addressed archived source packets.\n- [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.\n- [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.\n- [ ] 3.4 Validate the complete offline projection and commit bounded evidence while keeping bulk spatial outputs outside Git (`evidence/stats-nz-meshblock-2026-projection/records-manifest.json`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1618,13 +1618,43 @@
         "nz_spatial_archive_mvp_20260718:phase-3"
       ],
       "labels": [
+        "type:implementation",
+        "phase:nz-spatial",
+        "risk:critical",
+        "maturity:m1",
+        "release:0.5.0"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Generate methods, citation, provenance, SBOM and attestations.\n- [ ] 4.2 Run external validation and clean-environment rebuild.\n- [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "target_release": "0.5.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Reference",
+      "v1_critical": true,
+      "priority": "P0",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Spatial data lead",
+      "blocking_defects": 0
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718:phase-5",
+      "title": "[nz_spatial_archive_mvp_20260718] 5. Review fixes",
+      "parent": "nz_spatial_archive_mvp_20260718",
+      "blocked_by": [
+        "nz_spatial_archive_mvp_20260718:phase-4"
+      ],
+      "labels": [
         "type:validation",
         "phase:nz-spatial",
         "risk:critical",
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Generate methods, citation, provenance, SBOM and attestations.\n- [ ] 4.2 Run external validation and clean-environment rebuild.\n- [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record, safely reuse only a verified local packet, reject redirects outside the archive host boundary and separate stable semantic identity from run-specific DuckDB bytes (`ffeb681`, `6c9c5c8`, `f04693c`, `de8b790`, `61cddd3`).\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",

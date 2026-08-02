@@ -54,5 +54,10 @@ geometries, a stable pre/post source inventory, manifest SHA-256
 payload-set SHA-256
 `706c6d39c497e643eb5989fc65d4824799d16ade197b4c808a4e2988722e9b14`.
 Independent hosted readback verified the manifest and the first and final page
-digests. Population tables and downstream projections remain pending; this
-archive alone is not national accessibility or performance evidence.
+digests. RIOPA subsequently verified every stored and expanded archive object
+and built 236 content-addressed capture records plus a normalized 57,575-feature
+projection without contacting the recorded live endpoint. The projection
+preserves 16 null geometries and one invalid translated source geometry without
+implicit repair. Population tables and downstream analytical projections remain
+pending; this supporting-geography projection is not national accessibility or
+performance evidence.
