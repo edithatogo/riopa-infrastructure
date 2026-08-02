@@ -1,7 +1,7 @@
 # Evidence index: New Zealand Spatial Archive real-data vertical slice
 
 - **Track ID:** `nz_spatial_archive_mvp_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.5.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -33,4 +33,8 @@
 
 Required agent-panel lenses: Provenance analyst, Data-governance analyst, Operations analyst, Research-object analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index remains deliberately non-assertive while the track is `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+
+The track entered `active` for the bounded archived Meshblock incorporation slice.
+The qualified immutable packet is a frozen safe-parallel interface; incomplete
+dependencies and all broader acceptance criteria remain open.
