@@ -40,6 +40,14 @@ The machine-readable plan lists the exact source families, routing, status,
 downstream tracks and non-claims in
 `docs/public-dataset-archive-incorporation-plan-20260802.json`.
 
+The upstream acquisition inventory for issues [#36](https://github.com/edithatogo/open_social_data/issues/36)
+and [#37](https://github.com/edithatogo/open_social_data/issues/37) is now
+registered at [`open_social_data` commit `b0b36da`](https://github.com/edithatogo/open_social_data/commit/b0b36da).
+It is deliberately discovery-only: candidate landing/payload URLs, regional
+scope and rights requirements are recorded, but no facility, network or
+timetable claim is enabled until raw bytes, terms and content-addressed
+receipts are archived.
+
 ## Completed archive slice
 
 Stats NZ Meshblock 2026 was captured in full by
