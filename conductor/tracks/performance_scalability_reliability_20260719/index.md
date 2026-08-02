@@ -19,6 +19,7 @@
 | `WP-004-resource-envelopes-20260731` | Every sharded archive job has enforced storage and egress ceilings | `src/riopa_provenance/linz_pipeline.py`, `src/riopa_provenance/linz_inventory.py`, `tests/test_linz_pipeline.py`, `tests/test_linz_inventory.py` | Boundary and overrun tests pass; national-scale benchmark remains open |
 | `WP-009-small-instance-correctness-oracle-20260731` | Deterministic exhaustive accessibility/location fixtures provide a correctness baseline for later scalable-engine comparisons | `src/riopa_provenance/accessibility.py`, `src/riopa_provenance/facility_location.py`, `tests/test_accessibility.py`, `tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md` | Small-instance correctness passes; no national-scale performance, cost, soak or recovery claim is made |
 | `PERF-HOSTED-OPTIONS-20260802` | Hosted runner and national-workload execution options are explicit and fail closed | `docs/remaining-gates-autonomous-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_hosted_evidence.py` | GitHub scale-smoke lane implemented; Hugging Face Jobs is a budget-gated fallback; no national run claimed |
+| `PERF-HOSTED-SMOKE-20260802` | Exact-revision performance correctness smoke executes in a hosted runner | `docs/hosted-evidence-batch-20260802.json`, [GitHub Actions run 30744487469](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744487469) | Passed; not a national-scale workload or capacity measurement |
 
 ## Blocking defects
 

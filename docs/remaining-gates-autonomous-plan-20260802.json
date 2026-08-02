@@ -32,14 +32,14 @@
     },
     {
       "id": "operational-cycles-and-rc-soak",
-      "status": "clock-not-started",
+      "status": "first-hosted-observation-passed-duration-pending",
       "recommended_option": "Start digest-chained scheduled observations only after the candidate revision and SLO contract are frozen.",
       "contingency": "A material candidate or instrumentation change resets the relevant clock; retain earlier observations as rehearsal evidence.",
       "non_claim": "Generated timestamps cannot substitute for elapsed time."
     },
     {
       "id": "national-scale-performance",
-      "status": "synthetic-regional-only",
+      "status": "hosted-scale-smoke-passed-national-measurement-pending",
       "recommended_option": "Publish a revision-pinned public workload manifest, correctness oracle and tiered resource envelope before scaling execution.",
       "contingency": "If national public inputs remain unavailable, report regional/synthetic ceilings and prohibit national-scale claims.",
       "non_claim": "Hardware capacity or a runnable job specification is not a measured national result."
@@ -53,7 +53,7 @@
     },
     {
       "id": "panel-qualification",
-      "status": "policy-implemented-reports-pending",
+      "status": "hosted-agent-clean-room-passed-track-reports-pending",
       "recommended_option": "Run parallel agent lenses and require an orchestrator synthesis for each track qualification packet.",
       "contingency": "Keep the track open when panel findings or evidence links are unresolved.",
       "non_claim": "Panel qualification does not grant promotion authority."
@@ -82,6 +82,7 @@
   "remote_actions": {
     "github_read_only_observation": true,
     "github_hosted_recovery_dispatch": "passed-run-30744372005",
+    "github_hosted_campaign_batch": "four-passed-runs-30744486356-through-30744489387",
     "hugging_face_read_only_observation": true,
     "hugging_face_job_submitted": false,
     "hugging_face_dataset_created": false

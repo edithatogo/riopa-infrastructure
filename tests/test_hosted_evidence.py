@@ -37,3 +37,17 @@ def test_recorded_hosted_recovery_receipt_is_bound_to_successful_run() -> None:
     assert receipt["status"] == "passed"
     assert receipt["host"]["provider"] == "github-actions"
     assert evidence["gate_disposition"]["production_disaster_recovery"] == "pending"
+
+
+def test_hosted_batch_records_all_bounded_lanes_without_overclaiming() -> None:
+    batch = json.loads((ROOT / "docs/hosted-evidence-batch-20260802.json").read_text())
+    observations = {item["lane"]: item for item in batch["observations"]}
+    assert set(observations) == {
+        "agent-clean-room",
+        "scale-smoke",
+        "operational-observation",
+        "rc-soak-observation",
+    }
+    assert all(item["status"] == "passed" for item in observations.values())
+    assert len({item["run_id"] for item in observations.values()}) == 4
+    assert batch["disposition"]["rc_soak"] == "one-observation-duration-pending"
