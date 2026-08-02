@@ -51,11 +51,15 @@ def test_stats_nz_meshblock_archive_is_revision_and_digest_bound() -> None:
         if dataset["id"] == "stats-nz-meshblock-2026-and-public-population"
     )
     evidence = meshblocks["archive_evidence"]
-    assert meshblocks["status"] == "meshblock-archive-complete-population-pending"
+    assert meshblocks["status"] == "meshblock-projection-complete-population-pending"
     assert evidence["captured_features"] == evidence["available_features"] == 57575
     assert evidence["pages"] == 231
     assert evidence["source_stable_during_capture"] is True
     assert evidence["readback_verified"] is True
+    assert evidence["projection_features"] == 57575
+    assert evidence["projection_capture_records"] == 236
+    assert evidence["projection_live_endpoint_contacted"] is False
+    assert evidence["projection_geometry_repairs"] == 0
     for field in (
         "workflow_revision",
         "packet_revision",
