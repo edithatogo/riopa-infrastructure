@@ -87,10 +87,15 @@
         "projection_features": 57575,
         "projection_capture_records": 236,
         "projection_live_endpoint_contacted": false,
-        "projection_geometry_repairs": 0
+        "projection_geometry_repairs": 0,
+        "national_workload_manifest": "docs/national-workload-manifest-20260803.json",
+        "national_workload_manifest_sha256": "2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67",
+        "population_packet_revision": "4f94d300c0bea6b64972b4b67044990f7e591716",
+        "population_manifest_sha256": "47540c8eb74fbc069b841308402961319aee57a0e85caad8b1de392595465617",
+        "population_workbook_sha256": "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6"
       },
       "incorporation": ["nz_spatial_source_registry_20260718", "nz_spatial_archive_mvp_20260718", "accessibility_network_engine_20260719", "performance_scalability_reliability_20260719"],
-      "status": "meshblock-projection-complete-population-pending",
+      "status": "meshblock-and-population-archives-complete-workload-bound",
       "non_claim": "Meshblocks define supporting geography; they do not supply destinations, travel times or causal evidence."
     },
     {

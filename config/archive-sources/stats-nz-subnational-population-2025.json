@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "source_id": "urn:riopa:source:stats-nz:subnational-population-2025",
+  "dataset_repository": "edithatogo/riopa-public-data-archive",
+  "packet_revision": "4f94d300c0bea6b64972b4b67044990f7e591716",
+  "receipt_revision": "bbe8136e4cac6052b7fb4ed5ac054822487d7aad",
+  "manifest_path": "snapshots/stats-nz-subnational-population-2025/20260802T140246Z/manifest.json",
+  "manifest_sha256": "47540c8eb74fbc069b841308402961319aee57a0e85caad8b1de392595465617",
+  "checksums_sha256": "46d2aeeb128fb6a31e0059dc3d33ae05ab3acad723550fabd6fce07fb28b5a61",
+  "receipt_path": "receipts/github/30751233863-1.json",
+  "receipt_sha256": "f9f6cd8ce01653681cd3bd9cc5288ce1b59e287b3ed2335d25fc9a72d5a0024d",
+  "expected_workbook_sha256": "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a",
+  "expected_workbook_bytes": 97990
+}

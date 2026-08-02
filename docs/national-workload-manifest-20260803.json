@@ -1,0 +1,91 @@
+{
+  "schema": "riopa.national-workload-manifest.v1",
+  "schema_version": "1.0.0",
+  "manifest_id": "urn:riopa:workload:nz-national-reference-20260803",
+  "manifest_sha256": "2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67",
+  "status": "bounded-reference-workload",
+  "scope": {
+    "jurisdiction": "New Zealand",
+    "purpose": "national-volume reference workload for ingestion, spatial indexing and population-table alignment",
+    "claim_scope": "bounded national reference inputs; not a national service, completeness, accessibility or performance claim",
+    "live_endpoints_contacted": false,
+    "bulk_payloads_committed": false
+  },
+  "snapshots": [
+    {
+      "id": "geography-meshblock-2026",
+      "role": "supporting-geography",
+      "source_id": "urn:riopa:source:stats-nz:meshblock-2026",
+      "archive_descriptor": "config/archive-sources/stats-nz-meshblock-2026.json",
+      "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202",
+      "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+      "projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
+      "projection_record_sha256": "39c56ce70d5532727f453f7374dec2ed26a05b4fbe887bc6d97f89a1af966d3b",
+      "records_manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+      "records_manifest_sha256": "92b38767943694f42f18fd5b9b1efc398ea9164c2580b27ca776b641aec8d8c1",
+      "feature_count": 57575,
+      "page_count": 231,
+      "crs": "EPSG:2193",
+      "null_geometry_count": 16,
+      "geometry_repairs": 0
+    },
+    {
+      "id": "population-subnational-2025",
+      "role": "population-reference",
+      "source_id": "urn:riopa:source:stats-nz:subnational-population-2025",
+      "archive_descriptor": "config/archive-sources/stats-nz-subnational-population-2025.json",
+      "packet_revision": "4f94d300c0bea6b64972b4b67044990f7e591716",
+      "receipt_revision": "bbe8136e4cac6052b7fb4ed5ac054822487d7aad",
+      "manifest_sha256": "47540c8eb74fbc069b841308402961319aee57a0e85caad8b1de392595465617",
+      "payload_set_sha256": "9ea60cf23695db2f9c5c0b972fd6100776180916a93e50a4b63da24744b568c6",
+      "workbook_sha256": "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6",
+      "workbook_bytes": 97990,
+      "worksheets": 7,
+      "published_geographies": [
+        "regional council areas",
+        "territorial authority areas",
+        "Auckland local board areas"
+      ],
+      "reference_dates": ["30 June 2023", "30 June 2024", "30 June 2025"],
+      "edition": "At 30 June 2025 (provisional)"
+    }
+  ],
+  "workload_contract": {
+    "scenario_ids": [
+      "archive-readback-geography",
+      "archive-readback-population-workbook",
+      "bounded-cross-snapshot-alignment"
+    ],
+    "geography_unit": "Stats NZ Meshblock 2026 feature",
+    "population_units": [
+      "regional council area",
+      "territorial authority area",
+      "Auckland local board area"
+    ],
+    "alignment": {
+      "status": "reference-only",
+      "permitted": [
+        "measure archive readback and normalized geography workload size",
+        "exercise population workbook parsing and schema checks",
+        "record that both snapshots cover New Zealand with different geographic units and editions"
+      ],
+      "prohibited": [
+        "assign regional or territorial population to Meshblocks",
+        "downscale or interpolate population to Meshblocks",
+        "claim population-weighted accessibility or denominator validity",
+        "claim national completeness from these two snapshots alone"
+      ]
+    },
+    "correctness_oracles": [
+      "each packet manifest and checksums file",
+      "geography object-ID inventory and projection record",
+      "population workbook SHA-256, byte length, edition markers and worksheet count"
+    ]
+  },
+  "non_claims": [
+    "The population workbook is provisional and is not a Meshblock-level denominator.",
+    "The geography snapshot supplies supporting geometry only; it contains no population observations.",
+    "This manifest does not establish national accessibility, network coverage, service completeness, cost, capacity or operational performance.",
+    "A later exact-edition population or boundary change requires a new manifest identity."
+  ]
+}

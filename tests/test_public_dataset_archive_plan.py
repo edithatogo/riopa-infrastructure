@@ -51,7 +51,7 @@ def test_stats_nz_meshblock_archive_is_revision_and_digest_bound() -> None:
         if dataset["id"] == "stats-nz-meshblock-2026-and-public-population"
     )
     evidence = meshblocks["archive_evidence"]
-    assert meshblocks["status"] == "meshblock-projection-complete-population-pending"
+    assert meshblocks["status"] == "meshblock-and-population-archives-complete-workload-bound"
     assert evidence["captured_features"] == evidence["available_features"] == 57575
     assert evidence["pages"] == 231
     assert evidence["source_stable_during_capture"] is True
@@ -69,3 +69,19 @@ def test_stats_nz_meshblock_archive_is_revision_and_digest_bound() -> None:
     ):
         expected_length = 40 if "revision" in field else 64
         assert len(evidence[field]) == expected_length
+
+
+def test_population_archive_is_revision_and_digest_bound() -> None:
+    population = next(
+        dataset
+        for dataset in _plan()["datasets"]
+        if dataset["id"] == "stats-nz-meshblock-2026-and-public-population"
+    )
+    evidence = population["archive_evidence"]
+    assert evidence["population_packet_revision"] == ("4f94d300c0bea6b64972b4b67044990f7e591716")
+    assert evidence["population_manifest_sha256"] == (
+        "47540c8eb74fbc069b841308402961319aee57a0e85caad8b1de392595465617"
+    )
+    assert evidence["population_workbook_sha256"] == (
+        "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6"
+    )

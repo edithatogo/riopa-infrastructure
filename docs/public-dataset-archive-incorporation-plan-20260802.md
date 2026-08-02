@@ -61,3 +61,10 @@ preserves 16 null geometries and one invalid translated source geometry without
 implicit repair. Population tables and downstream analytical projections remain
 pending; this supporting-geography projection is not national accessibility or
 performance evidence.
+
+The exact provisional Stats NZ population edition is also pinned at packet
+revision `4f94d300c0bea6b64972b4b67044990f7e591716`, with workbook SHA-256
+`001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6`. The two
+packets are combined only in the bounded reference workload manifest
+`docs/national-workload-manifest-20260803.json`; no population values are
+assigned to Meshblocks or downscaled from regional units.
