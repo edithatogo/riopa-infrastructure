@@ -1226,7 +1226,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Create current/historical authority and jurisdiction records.\n- [ ] 1.2 Inventory district/regional plans, versions, statuses and official landing pages.\n- [ ] 1.3 Register national spatial, planning, Gazette and legislation source families.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Create current/historical authority and jurisdiction records.\n- [ ] 1.2 Inventory district/regional plans, versions, statuses and official landing pages.\n- [ ] 1.3 Register exact-version LINZ, Stats NZ, NZTA/network, planning, Gazette and legislation source families, including their cross-repository ownership and archive disposition.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1256,7 +1256,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Discover ArcGIS, WFS/OGC, Koordinates, ePlan and downloadable-layer mechanisms.\n- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.\n- [ ] 2.3 Preserve capability, metadata, terms and rights snapshots.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Discover ArcGIS, WFS/OGC, Koordinates, ePlan and downloadable-layer mechanisms.\n- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.\n- [ ] 2.3 Preserve capability, metadata, terms and rights snapshots before any source is incorporated into a canonical or analytical projection.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1534,7 +1534,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.\n- [ ] 1.2 Capture national layers, council services and planning documents faithfully.\n- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.\n- [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.\n- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1594,7 +1594,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples.\n- [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.\n- [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples only from content-addressed archived source packets.\n- [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.\n- [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1746,7 +1746,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build public reference instances and cross-engine comparisons.\n- [ ] 3.2 Implement partitioning, caching and incremental recomputation.\n- [ ] 3.3 Benchmark national-scale performance, storage and cost.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build public reference instances and cross-engine comparisons from named archived network, timetable, demand and facility snapshots.\n- [ ] 3.2 Implement partitioning, caching and incremental recomputation.\n- [ ] 3.3 Benchmark national-scale performance, storage and cost.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1776,7 +1776,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate with real NZ archive and facility registry versions.\n- [ ] 4.2 Conduct scientific-methods and user-workflow agent-panel qualification of semantics and limitations.\n- [ ] 4.3 Freeze the v1 accessibility contract and examples.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate only with content-addressed real NZ archive, network/timetable and facility-registry versions.\n- [ ] 4.2 Conduct scientific-methods and user-workflow agent-panel qualification of semantics and limitations.\n- [ ] 4.3 Freeze the v1 accessibility contract and examples.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1840,7 +1840,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define facility assertion identities in the bounded reference contract; operator, service and stable registry identities remain release work.\n- [ ] 1.2 Define source coordinates, optional uncertainty, rights, authority and observation fields for bounded source assertions; temporal registry state remains release work.\n- [ ] 1.3 Register supermarket and health-service source families.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define facility assertion identities in the bounded reference contract; operator, service and stable registry identities remain release work.\n- [ ] 1.2 Define source coordinates, optional uncertainty, rights, authority and observation fields for bounded source assertions; temporal registry state remains release work.\n- [ ] 1.3 Register rights-cleared public supermarket and health-service source families; keep licensed/non-public payloads excluded from the current campaign.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1870,7 +1870,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Capture independent council and OSM source assertions with immutable local receipts; broader and geocoded evidence remains open.\n- [ ] 2.2 Implement deterministic type/name/distance candidate generation, conflict preservation and accountable review recording; production adjudication remains open.\n- [ ] 2.3 Record openings, closures, relocations and rebrands.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Archive independent public council, OSM and verified health-source assertions with immutable receipts before reconciliation; broader and geocoded evidence remains open.\n- [ ] 2.2 Implement deterministic type/name/distance candidate generation, conflict preservation and accountable review recording; production adjudication remains open.\n- [ ] 2.3 Record openings, closures, relocations and rebrands.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",

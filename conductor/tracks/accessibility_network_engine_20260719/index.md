@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-009-reference-accessibility-core-20260731` | Versioned travel observations preserve missing/unreachable/censored semantics and hand-calculated accessibility measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Bounded dependency-free reference core passes; multimodal adapters, real NZ integration, scale and agent-panel qualification remain open |
+| `ACCESS-ARCHIVED-INPUTS-20260802` | Real accessibility inputs are acquired as independent immutable network, timetable, demand and facility archives | `docs/public-dataset-archive-incorporation-plan-20260802.json`, [open_social_data issue 35](https://github.com/edithatogo/open_social_data/issues/35), [open_social_data issue 37](https://github.com/edithatogo/open_social_data/issues/37) | Source routes defined; archived feeds, cross-engine benchmarks and national measurements remain pending |
 
 ## Blocking defects
 

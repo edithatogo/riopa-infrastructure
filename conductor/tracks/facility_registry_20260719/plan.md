@@ -4,11 +4,11 @@
 
 - [ ] 1.1 Define facility assertion identities in the bounded reference contract; operator, service and stable registry identities remain release work.
 - [ ] 1.2 Define source coordinates, optional uncertainty, rights, authority and observation fields for bounded source assertions; temporal registry state remains release work.
-- [ ] 1.3 Register supermarket and health-service source families.
+- [ ] 1.3 Register rights-cleared public supermarket and health-service source families; keep licensed/non-public payloads excluded from the current campaign.
 
 ## 2. Acquisition and reconciliation
 
-- [ ] 2.1 Capture independent council and OSM source assertions with immutable local receipts; broader and geocoded evidence remains open.
+- [ ] 2.1 Archive independent public council, OSM and verified health-source assertions with immutable receipts before reconciliation; broader and geocoded evidence remains open.
 - [ ] 2.2 Implement deterministic type/name/distance candidate generation, conflict preservation and accountable review recording; production adjudication remains open.
 - [ ] 2.3 Record openings, closures, relocations and rebrands.
 

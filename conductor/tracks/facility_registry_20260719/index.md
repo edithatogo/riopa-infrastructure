@@ -21,6 +21,7 @@
 | `WP-010-bounded-pilot-decision-20260801` | Pilot scope, source exclusions and publication conditions are explicit | `docs/wp010-bounded-pilot-decision.md` | Approved for the bounded regional public-data pilot only; beta, RC and stable promotion remain excluded |
 | `WP-010-preservation-manifest-20260801` | Exact revision, source hashes, reviewer bundle and exclusions are preserved | `evidence/wp010-bounded-pilot/manifest.json`, [Zenodo 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563) | Successor packet deposited with recorded SHA-256; this does not close external reproduction or higher-tier release gates |
 | `WP-010-bounded-pilot-review-policy-20260801` | Pilot-level agent review is separated from beta/stable external reproduction | `docs/bounded-pilot-review-protocol.md`, `reports/wp010-subagent-review-20260801.md` | Pilot review may support bounded internal scope; external gate remains mandatory for higher promotion |
+| `FACILITY-PUBLIC-SOURCE-ROUTING-20260802` | Missing public retail/health/ambulance inputs are separated from licensed sources and routed through archive-first acquisition | `docs/public-dataset-archive-incorporation-plan-20260802.json`, [open_social_data issue 36](https://github.com/edithatogo/open_social_data/issues/36), `tests/test_public_dataset_archive_plan.py` | Public food-retail acquisition issue open; second public health family and authoritative ambulance coverage remain pending; Healthpoint payloads excluded |
 
 ## Blocking defects
 

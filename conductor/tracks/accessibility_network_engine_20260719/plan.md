@@ -14,13 +14,13 @@
 
 ## 3. Benchmark and scale
 
-- [ ] 3.1 Build public reference instances and cross-engine comparisons.
+- [ ] 3.1 Build public reference instances and cross-engine comparisons from named archived network, timetable, demand and facility snapshots.
 - [ ] 3.2 Implement partitioning, caching and incremental recomputation.
 - [ ] 3.3 Benchmark national-scale performance, storage and cost.
 
 ## 4. Stable accessibility interface
 
-- [ ] 4.1 Integrate with real NZ archive and facility registry versions.
+- [ ] 4.1 Integrate only with content-addressed real NZ archive, network/timetable and facility-registry versions.
 - [ ] 4.2 Conduct scientific-methods and user-workflow agent-panel qualification of semantics and limitations.
 - [ ] 4.3 Freeze the v1 accessibility contract and examples.
 
