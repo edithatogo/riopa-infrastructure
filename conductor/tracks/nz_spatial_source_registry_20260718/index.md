@@ -18,10 +18,11 @@
 |---|---|---|---|
 | `WP-004-catalogue-disposition-pipeline-20260731` | Plan-bound catalogue scope flows through content-bound detail, service and planning stages | `src/riopa_provenance/linz_catalog.py`, `src/riopa_provenance/linz_enrichment.py`, `src/riopa_provenance/linz_inventory.py`, `src/riopa_provenance/linz_pipeline.py`, `tests/test_linz_pipeline.py` | Deterministic synthetic orchestration tests pass; no live catalogue claim |
 | `DATASET-ARCHIVE-ROUTING-20260802` | Missing public national, council, network, timetable and facility sources have an archive-first ownership and incorporation plan | `docs/public-dataset-archive-incorporation-plan-20260802.json`, `docs/public-dataset-archive-incorporation-plan-20260802.md`, `tests/test_public_dataset_archive_plan.py` | Cross-repository issues routed; source payload capture, completeness and continuing freshness remain pending |
+| `STATS-NZ-MESHBLOCK-ARCHIVE-20260802` | The Stats NZ Meshblock 2026 source identity, edition, rights, service schema and complete raw capture are revision-bound | [Hugging Face packet revision](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive/tree/3f2dc0a4d95a4fcb495551098d58fc5bce9c9202), `docs/public-dataset-archive-incorporation-plan-20260802.json` | Complete geography archive verified; population tables, registry projections, continuing freshness and broader authority coverage remain open |
 
 ## Blocking defects
 
-- Live national catalogue/authority coverage and the archive packets listed in the public-dataset plan remain pending.
+- Live national catalogue/authority coverage and all other archive packets listed in the public-dataset plan remain pending; the Meshblock 2026 geography slice is complete.
 
 ## Decisions, exceptions and limitations
 

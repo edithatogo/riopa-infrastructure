@@ -39,3 +39,20 @@ network, facility and benchmark projections must identify that archived packet.
 The machine-readable plan lists the exact source families, routing, status,
 downstream tracks and non-claims in
 `docs/public-dataset-archive-incorporation-plan-20260802.json`.
+
+## Completed archive slice
+
+Stats NZ Meshblock 2026 was captured in full by
+[GitHub Actions run 30750165664](https://github.com/edithatogo/open_social_data/actions/runs/30750165664)
+and published to the public
+[Hugging Face archive](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive).
+The immutable packet revision is `3f2dc0a4d95a4fcb495551098d58fc5bce9c9202`;
+the receipt-bearing revision is `34c093646f884d7b57447231d6605e83739bb302`.
+The manifest records 57,575 of 57,575 object IDs across 231 pages, 16 null
+geometries, a stable pre/post source inventory, manifest SHA-256
+`1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f` and
+payload-set SHA-256
+`706c6d39c497e643eb5989fc65d4824799d16ade197b4c808a4e2988722e9b14`.
+Independent hosted readback verified the manifest and the first and final page
+digests. Population tables and downstream projections remain pending; this
+archive alone is not national accessibility or performance evidence.

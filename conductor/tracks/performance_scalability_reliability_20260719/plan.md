@@ -5,6 +5,7 @@
 - [ ] 1.1 Define reference datasets, workloads, correctness checks and measurement protocol.
 - [ ] 1.2 Set provisional latency, throughput, resource and cost envelopes.
 - [ ] 1.3 Implement reproducible benchmark environment capture.
+- [x] 1.4 Record the hosted full Meshblock 2026 acquisition as workload-shaping evidence without promoting its elapsed time to a national performance benchmark.
 
 ## 2. Load and resilience qualification
 

@@ -5,6 +5,7 @@
 - [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.
 - [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
 - [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.
+- [x] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.
 
 ## 2. Canonical bitemporal model
 
