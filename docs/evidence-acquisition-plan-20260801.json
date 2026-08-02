@@ -5,7 +5,7 @@
   "status": "approved_to_launch",
   "operational_campaign_manifest": "docs/operational-evidence-campaign-20260802.json",
   "lanes": [
-    {"id":"matrix-reconciliation","gate":"track-to-issue evidence mapping","source":"live GitHub issue export plus Conductor metadata","artifact":"docs/open-issue-track-evidence-reconciliation-20260801.md","owner_role":"programme maintainer","status":"partially-complete","contingency":"retain unmatched rows as blockers"},
+    {"id":"matrix-reconciliation","gate":"track-to-issue evidence mapping","source":"live GitHub issue export plus Conductor metadata","artifact":"docs/open-issue-track-evidence-matrix-20260802.json","owner_role":"programme maintainer","status":"complete-for-current-snapshot","contingency":"retain ambiguous or stale joins as blockers"},
     {"id":"public-source-capture","gate":"real-data and transition evidence","source":"versioned public authority and planning sources","artifact":"content-addressed source manifest and capture receipts","owner_role":"data steward","status":"pending","contingency":"preserve negative receipt and use deterministic fixture"},
     {"id":"repository-qualification","gate":"M2 executable proof and negative tests","source":"repository code, fixtures and CI","artifact":"tests, reports and release-evidence digests","owner_role":"implementation maintainer","status":"passing-for-local-scope","contingency":"fail closed on any digest or test mismatch"},
     {"id":"panel-qualification","gate":"independent panel reports","source":"three-agent reproducer, adversarial reviewer and evidence auditor panel","artifact":"content-bound reports with hashes and dissent","owner_role":"qualification orchestrator","status":"template-ready","contingency":"incomplete panel remains pending"},
