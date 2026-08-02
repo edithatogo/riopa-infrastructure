@@ -1,0 +1,553 @@
+{
+  "schema": "riopa.track-panel-lens.v1",
+  "role": "adversarial-analyst",
+  "source_revision": "dbbb71b38ca7f943ddd4e42069b4d6bc0a7bd669",
+  "bundle_sha256": "436843d563a7cfa22f21eba58adae66f2af71efa0dc3b7168b656b7fb80c11d6",
+  "evaluated_at": "2026-08-02T11:45:22Z",
+  "tracks": [
+    {
+      "track_id": "accessibility_network_engine_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the M1 reference accessibility core, its declared boundaries, tests and track records.",
+      "findings": [
+        "The deterministic reference core and tests provide useful bounded correctness evidence.",
+        "Real road, walking, cycling and timetable engines, national-scale measurements and user-workflow qualification remain open; the evidence does not support M6 or operational accessibility claims."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/accessibility_network_engine_20260719/metadata.json",
+        "conductor/tracks/accessibility_network_engine_20260719/spec.md",
+        "conductor/tracks/accessibility_network_engine_20260719/plan.md",
+        "conductor/tracks/accessibility_network_engine_20260719/index.md",
+        "src/riopa_provenance/accessibility.py",
+        "tests/test_accessibility.py",
+        "reports/wp009-reference-solver-cores.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "canonical_domain_schemas_ontology_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the canonical inventory, schema and ontology implementation, conformance evidence and migration boundaries.",
+      "findings": [
+        "The canonical contracts and local conformance evidence are coherent for the current M1 slice.",
+        "A qualifying SHACL report, non-Python round trip, publication identifier, migration matrix and final semantic agent-panel disposition remain unresolved."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md",
+        "docs/canonical-domain-inventory-20260801.md",
+        "src/riopa_provenance/canonical.py",
+        "tests/test_canonical.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "connector_runtime_capture_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of bounded capture, retry, DNS and runtime evidence at M1.",
+      "findings": [
+        "Retry and capture behavior has executable local evidence, including bounded adverse-path tests.",
+        "The track remains specified at M1; representative connector breadth, long-running hosted operation and stable support evidence are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/connector_runtime_capture_20260719/metadata.json",
+        "conductor/tracks/connector_runtime_capture_20260719/spec.md",
+        "conductor/tracks/connector_runtime_capture_20260719/plan.md",
+        "conductor/tracks/connector_runtime_capture_20260719/index.md",
+        "src/riopa_provenance/capture.py",
+        "src/riopa_provenance/retry.py",
+        "tests/test_capture.py",
+        "tests/test_retry.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "documentation_developer_experience_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the documentation and developer-experience contract and present track evidence.",
+      "findings": [
+        "The track records a coherent documentation scope and agent-panel review boundary.",
+        "External user and operator workflows, install and troubleshooting studies, supported-environment evidence and M6 documentation qualification remain unperformed."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/documentation_developer_experience_20260719/metadata.json",
+        "conductor/tracks/documentation_developer_experience_20260719/spec.md",
+        "conductor/tracks/documentation_developer_experience_20260719/plan.md",
+        "conductor/tracks/documentation_developer_experience_20260719/index.md",
+        "docs/single-developer-agent-panel-review-policy.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "emergency_health_facilities_pilot_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the synthetic and regional public-source emergency-facilities pilot evidence.",
+      "findings": [
+        "The non-operational synthetic fixture and bounded public-source observations are appropriately labelled and reproducible.",
+        "No national authoritative ambulance-station workload, calibrated dispatch or handover model, operational safety evidence or representative stress qualification is present."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/index.md",
+        "reports/wp010-synthetic-methods-core.md",
+        "tests/test_wp010_benchmark.py",
+        "docs/wp010-bounded-pilot-decision.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "facility_location_engine_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the small-instance facility-location reference solver and evidence boundaries.",
+      "findings": [
+        "Small deterministic instances provide a credible correctness oracle for the supported formulations.",
+        "Scalable solver adapters, interchangeable certificates, national workloads, cost envelopes and independent external benchmark execution remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/facility_location_engine_20260718/metadata.json",
+        "conductor/tracks/facility_location_engine_20260718/spec.md",
+        "conductor/tracks/facility_location_engine_20260718/plan.md",
+        "conductor/tracks/facility_location_engine_20260718/index.md",
+        "src/riopa_provenance/facility_location.py",
+        "tests/test_facility_location.py",
+        "reports/wp009-reference-solver-cores.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "facility_registry_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of bounded public-source facility reconciliation and conflict-preservation evidence.",
+      "findings": [
+        "The reference implementation preserves source identity and conflict rather than silently adjudicating candidates.",
+        "External operator reproduction, national authoritative ambulance coverage, complete supermarket-source evidence, reviewed performance estimates and stable release authority remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/facility_registry_20260719/metadata.json",
+        "conductor/tracks/facility_registry_20260719/spec.md",
+        "conductor/tracks/facility_registry_20260719/plan.md",
+        "conductor/tracks/facility_registry_20260719/index.md",
+        "src/riopa_provenance/facility_registry.py",
+        "tests/test_facility_registry.py",
+        "reports/wp010-facility-source-sensitivity.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "foundation_architecture_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of architecture decisions, governance contracts, roadmap machinery and current validating evidence.",
+      "findings": [
+        "The architecture, release policy, ownership contracts and roadmap validation form a coherent M1 foundation.",
+        "The validating status is appropriate; named accountable promotion, complete cross-track qualification, external reproduction and stable operational evidence are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/foundation_architecture_20260718/metadata.json",
+        "conductor/tracks/foundation_architecture_20260718/spec.md",
+        "conductor/tracks/foundation_architecture_20260718/plan.md",
+        "conductor/tracks/foundation_architecture_20260718/index.md",
+        "docs/architecture.md",
+        "docs/v1-release-policy.md",
+        "tests/test_roadmap_hardening.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the bounded rights, privacy, safety, correction and scope-triggered governance framework.",
+      "findings": [
+        "Fail-closed governance records and correction, withdrawal and publication controls have bounded executable evidence.",
+        "The track identifier is historical; current requirements make cultural or community engagement scope-triggered and do not claim live co-design or Māori approval. This panel cannot grant governance authority for a future governed dataset or release."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/index.md",
+        "docs/governance-decision-framework.md",
+        "src/riopa_provenance/governance.py",
+        "tests/test_governance.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "health_outcomes_causal_methods_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of causal-method contracts and synthetic difference-in-differences reference evidence.",
+      "findings": [
+        "The protocol schema and synthetic reference calculations state causal and non-operational limitations.",
+        "Empirical public-data analysis, spatial-confounding and MAUP sensitivity, missing-data workflow, preregistration and final methods qualification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/spec.md",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/plan.md",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/index.md",
+        "schemas/analysis-protocol.schema.json",
+        "src/riopa_provenance/analysis.py",
+        "tests/test_analysis.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "interoperability_conformance_sdks_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of Python and Node conformance plus bounded related-repository adapter evidence.",
+      "findings": [
+        "The shared corpus and adapter reports provide useful cross-runtime M1 conformance evidence.",
+        "The evidence does not establish full SDK breadth, stable compatibility, external consumer adoption or all M6 standards projections."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/interoperability_conformance_sdks_20260719/metadata.json",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/spec.md",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/plan.md",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/index.md",
+        "conformance/v1/corpus.json",
+        "scripts/conformance_node.mjs",
+        "tests/test_conformance.py",
+        "conformance/adapters/report.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "methods_research_objects_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of publication binding, attestations, preserved real-input slices and research-object preparation.",
+      "findings": [
+        "The M1 publication and attestation controls bind methods and bounded evidence without presenting templates as completed releases.",
+        "Complete real research objects, final signed attestations, long-term preservation and supported-release verification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/methods_research_objects_20260718/metadata.json",
+        "conductor/tracks/methods_research_objects_20260718/spec.md",
+        "conductor/tracks/methods_research_objects_20260718/plan.md",
+        "conductor/tracks/methods_research_objects_20260718/index.md",
+        "src/riopa_provenance/publication.py",
+        "tests/test_publication.py",
+        "docs/conformance-and-release-verification.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the sharded archive contract and bounded LINZ/public real-slice evidence.",
+      "findings": [
+        "The pipeline, fixity checks and bounded real slice support the declared M1 archive reference behavior.",
+        "The slice is not a complete national archive and does not establish recurring acquisition, preservation service durability or M6 operational support."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/metadata.json",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/spec.md",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/plan.md",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/index.md",
+        "src/riopa_provenance/linz_pipeline.py",
+        "tests/test_linz_pipeline.py",
+        "evidence/wp007-real-slice/manifest.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_archive_operations_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of resumable archive operations, budgeting and reconciliation behavior.",
+      "findings": [
+        "Local tests cover bounded resume, inventory and budget behavior.",
+        "Repeated hosted operation, representative failures, production restore, SLO history, cost history and long-term preservation evidence remain absent."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_archive_operations_20260719/metadata.json",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/spec.md",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/plan.md",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/index.md",
+        "src/riopa_provenance/linz_pipeline.py",
+        "src/riopa_provenance/linz.py",
+        "tests/test_linz_pipeline.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_source_registry_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of catalogue, enrichment, inventory and source-registry controls.",
+      "findings": [
+        "The registry pipeline preserves explicit source identity and fail-closed disposition for the bounded catalogue slice.",
+        "Complete national source coverage, recurring freshness evidence, source change migration and stable operational ownership remain unproven."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_source_registry_20260718/metadata.json",
+        "conductor/tracks/nz_spatial_source_registry_20260718/spec.md",
+        "conductor/tracks/nz_spatial_source_registry_20260718/plan.md",
+        "conductor/tracks/nz_spatial_source_registry_20260718/index.md",
+        "src/riopa_provenance/linz_catalog.py",
+        "src/riopa_provenance/linz_inventory.py",
+        "tests/test_linz_pipeline.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "operations_preservation_sre_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of SRE preparation, hosted technical-preview receipts and elapsed-evidence campaign machinery.",
+      "findings": [
+        "The daily workflow, qualification epochs, lane-specific cumulative ledger, bounded-gap checks, cycle count and digest chain fail closed more reliably than the earlier rehearsal design.",
+        "Elapsed 90-day beta and 30-day frozen-RC clocks have not completed; hosted technical-preview recovery is not production disaster recovery, and artifact continuity remains dependent on successful scheduled runs."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/operations_preservation_sre_20260719/metadata.json",
+        "conductor/tracks/operations_preservation_sre_20260719/spec.md",
+        "conductor/tracks/operations_preservation_sre_20260719/plan.md",
+        "conductor/tracks/operations_preservation_sre_20260719/index.md",
+        ".github/workflows/evidence-campaign.yml",
+        "scripts/record_hosted_evidence.py",
+        "scripts/build_campaign_ledger.py",
+        "tests/test_campaign_ledger.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "performance_scalability_reliability_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of resource-envelope preparation, scale smoke tests, hosted-runner options and benchmark library choices.",
+      "findings": [
+        "The small-instance correctness oracle and hosted scale smoke are suitable rehearsal evidence, and deferring unused benchmark dependencies avoids needless audit surface.",
+        "No authoritative national workload, national ingestion or optimisation measurement, representative cost envelope, stress run or completed soak exists."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/performance_scalability_reliability_20260719/metadata.json",
+        "conductor/tracks/performance_scalability_reliability_20260719/spec.md",
+        "conductor/tracks/performance_scalability_reliability_20260719/plan.md",
+        "conductor/tracks/performance_scalability_reliability_20260719/index.md",
+        "docs/hugging-face-evidence-runner-plan-20260802.json",
+        "docs/remaining-gates-campaign-v2-20260802.md",
+        "tests/test_accessibility.py",
+        "tests/test_facility_location.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "planning_rules_linkage_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the bounded WCC plan source pair and spatial-to-rule linkage contract.",
+      "findings": [
+        "The bounded source pair preserves citations and legal-status limitations.",
+        "Two materially different councils, quantified false and missing link samples, stable identifiers across plan changes and final agent-panel qualification remain outstanding."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/planning_rules_linkage_20260718/metadata.json",
+        "conductor/tracks/planning_rules_linkage_20260718/spec.md",
+        "conductor/tracks/planning_rules_linkage_20260718/plan.md",
+        "conductor/tracks/planning_rules_linkage_20260718/index.md",
+        "evidence/wp007-real-slice/manifest.json",
+        "reports/wp007-bounded-real-slice.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "planning_system_transition_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of transition schemas, golden fixtures and migration playbook.",
+      "findings": [
+        "The implementation makes effective dates and predecessor-successor uncertainty explicit for synthetic fixtures.",
+        "Real authority reorganisation and plan-replacement reconstructions, public-source capture and planning-domain qualification remain pending."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/planning_system_transition_20260719/metadata.json",
+        "conductor/tracks/planning_system_transition_20260719/spec.md",
+        "conductor/tracks/planning_system_transition_20260719/plan.md",
+        "conductor/tracks/planning_system_transition_20260719/index.md",
+        "schemas/planning-transition.schema.json",
+        "src/riopa_provenance/transitions.py",
+        "tests/test_transitions.py",
+        "fixtures/planning-transition-golden.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "provenance_profile_v1_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the provenance profile mapping, validation contract and current conformance evidence.",
+      "findings": [
+        "The mapping inventory distinguishes exact, approximate, preserved, conflicting and unmapped semantics and avoids destructive rewriting of native evidence.",
+        "Non-Python validator parity, PROV and OpenLineage bounded-loss qualification, stable publication identifier, migration evidence and signed v1 attestation remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/provenance_profile_v1_20260718/metadata.json",
+        "conductor/tracks/provenance_profile_v1_20260718/spec.md",
+        "conductor/tracks/provenance_profile_v1_20260718/plan.md",
+        "conductor/tracks/provenance_profile_v1_20260718/index.md",
+        "docs/provenance-profile-mapping-inventory-20260801.md",
+        "schemas/provenance-event.schema.json",
+        "src/riopa_provenance/validation.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "provenance_query_api_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the bounded lineage query envelope and change-impact evidence.",
+      "findings": [
+        "The current query implementation and tests support bounded lineage and impact queries.",
+        "Stable API negotiation, authorization, pagination and performance envelopes, representative graph scale and external SDK consumption remain unqualified."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/provenance_query_api_20260719/metadata.json",
+        "conductor/tracks/provenance_query_api_20260719/spec.md",
+        "conductor/tracks/provenance_query_api_20260719/plan.md",
+        "conductor/tracks/provenance_query_api_20260719/index.md",
+        "src/riopa_provenance/lineage.py",
+        "tests/test_lineage.py",
+        "docs/change-and-impact-queries.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "publication_validation_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of resumable publication, prepublication verification and bounded synthetic publication packets.",
+      "findings": [
+        "The pipeline has executable fail-closed publication and attestation checks for bounded artifacts.",
+        "External discovery and installation workflows, complete citation and preservation verification, correction lifecycle operation and stable publication qualification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/publication_validation_20260718/metadata.json",
+        "conductor/tracks/publication_validation_20260718/spec.md",
+        "conductor/tracks/publication_validation_20260718/plan.md",
+        "conductor/tracks/publication_validation_20260718/index.md",
+        "src/riopa_provenance/publication.py",
+        "tests/test_publication.py",
+        "docs/conformance-and-release-verification.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "repository_template_adoption_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of bounded related-repository adapters and template conformance evidence.",
+      "findings": [
+        "The fyi-cli and fyi-archive adapters preserve a bounded compatibility report without claiming universal adoption.",
+        "Broader repository migration, versioned template release, maintenance commitments and representative downstream upgrade evidence remain outstanding."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/repository_template_adoption_20260718/metadata.json",
+        "conductor/tracks/repository_template_adoption_20260718/spec.md",
+        "conductor/tracks/repository_template_adoption_20260718/plan.md",
+        "conductor/tracks/repository_template_adoption_20260718/index.md",
+        "reports/wp008-cross-repository-adapters.md",
+        "conformance/adapters/report.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "security_supply_chain_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of DNS pinning, attestation verification, threat policy, workflow controls and hosted-runner boundaries.",
+      "findings": [
+        "The M1 controls include immutable action pins, least-privilege evidence workflows, threat and vulnerability policy, and bounded attestation verification.",
+        "Hosted release-environment verification, executed release SBOM and signing path, credential-compromise and rollback exercises, and final security panel disposition remain pending."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/security_supply_chain_20260719/metadata.json",
+        "conductor/tracks/security_supply_chain_20260719/spec.md",
+        "conductor/tracks/security_supply_chain_20260719/plan.md",
+        "conductor/tracks/security_supply_chain_20260719/index.md",
+        "docs/security-threat-model.md",
+        "docs/security-control-manifest.json",
+        "tests/test_security_controls.py",
+        ".github/workflows/release.yml"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "simulation_validation_engine_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the synthetic simulation core, analysis protocol and clean-room benchmark preparation.",
+      "findings": [
+        "The deterministic synthetic benchmark provides a reproducible implementation reference with explicit non-operational boundaries.",
+        "Domain simulation adapters, empirical calibration and validation, external benchmark comparison, performance qualification and real-world fitness remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/simulation_validation_engine_20260719/metadata.json",
+        "conductor/tracks/simulation_validation_engine_20260719/spec.md",
+        "conductor/tracks/simulation_validation_engine_20260719/plan.md",
+        "conductor/tracks/simulation_validation_engine_20260719/index.md",
+        "src/riopa_provenance/analysis.py",
+        "tests/test_analysis.py",
+        "tests/test_wp010_benchmark.py",
+        "reports/wp010-synthetic-methods-core.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "spatial_quality_temporality_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of bounded feature-difference and temporal quality behavior.",
+      "findings": [
+        "The current spatial difference implementation and tests provide bounded M1 evidence for declared semantics.",
+        "Representative national geometry and bitemporal quality measurements, uncertainty benchmarks, source-change histories and stable qualification are not present."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/spatial_quality_temporality_20260718/metadata.json",
+        "conductor/tracks/spatial_quality_temporality_20260718/spec.md",
+        "conductor/tracks/spatial_quality_temporality_20260718/plan.md",
+        "conductor/tracks/spatial_quality_temporality_20260718/index.md",
+        "src/riopa_provenance/spatial.py",
+        "tests/test_spatial.py",
+        "docs/change-and-impact-queries.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "supermarket_health_pilot_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the synthetic supermarket-health envelope and bounded public-source intake.",
+      "findings": [
+        "The synthetic methods core and intake records retain non-operational and source-status limitations.",
+        "Rights-cleared versioned supermarket inputs, baseline reproduction, accessibility and health analysis, planning alternatives, complete research objects and final panel qualification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/supermarket_health_pilot_20260718/metadata.json",
+        "conductor/tracks/supermarket_health_pilot_20260718/spec.md",
+        "conductor/tracks/supermarket_health_pilot_20260718/plan.md",
+        "conductor/tracks/supermarket_health_pilot_20260718/index.md",
+        "reports/wp010-synthetic-methods-core.md",
+        "config/source-registry/wp010-public-pilot-candidates.yaml",
+        "tests/test_wp010_benchmark.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "v1_release_hardening_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Adversarial review of the stable-v1 readiness baseline, agent-panel policy, hosted campaign design and release-decision boundaries.",
+      "findings": [
+        "The repository now separates agent-panel qualification from external participant evidence, elapsed evidence and accountable release authority, and records remaining gates without promoting maturity.",
+        "Stable v1 is not qualified: all tracks remain M1, the elapsed beta and RC durations are incomplete, national-scale measurements and external participant workflows are absent, production disaster recovery is pending, and no accountable stable-release decision exists."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/v1_release_hardening_20260719/metadata.json",
+        "conductor/tracks/v1_release_hardening_20260719/spec.md",
+        "conductor/tracks/v1_release_hardening_20260719/plan.md",
+        "conductor/tracks/v1_release_hardening_20260719/index.md",
+        "docs/v1-release-readiness-baseline-20260801.json",
+        "docs/remaining-gates-campaign-v2-20260802.md",
+        "docs/single-developer-agent-panel-review-policy.md",
+        "conductor/v1-gate.json"
+      ],
+      "dissent": []
+    }
+  ],
+  "non_claims": [
+    "This adversarial-agent report is one panel lens and is not an orchestrator synthesis or complete three-role panel disposition.",
+    "A pass-with-limitations disposition qualifies only the bounded evidence slice reviewed; it does not mark a track complete or advance its M1 maturity.",
+    "This report is not external operator or external user evidence and does not replace factual participant workflows required by the release policy.",
+    "This report does not create elapsed operational-cycle or release-candidate soak time.",
+    "This report does not establish national-scale performance, production disaster-recovery qualification, source authority or operational safety.",
+    "This report is not an accountable release-authority decision and does not authorize beta, release-candidate or stable-v1 promotion."
+  ]
+}

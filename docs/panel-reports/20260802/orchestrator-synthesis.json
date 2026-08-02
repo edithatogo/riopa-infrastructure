@@ -1,0 +1,264 @@
+{
+  "schema": "riopa.track-panel-synthesis.v1",
+  "orchestrator_identity": "codex-orchestrator-agent",
+  "source_revision": "dbbb71b38ca7f943ddd4e42069b4d6bc0a7bd669",
+  "bundle_sha256": "436843d563a7cfa22f21eba58adae66f2af71efa0dc3b7168b656b7fb80c11d6",
+  "evaluated_at": "2026-08-02T11:51:18Z",
+  "programme_disposition": "not-qualified-for-m6-or-release-promotion",
+  "options": [
+    {
+      "id": "continue-bounded-m1",
+      "disposition": "recommended",
+      "rationale": "Accept the three-lens reports as bounded M1 qualification evidence, repair the facility-registry conflict, and keep every M2-M6 and release gate open until its factual evidence exists."
+    },
+    {
+      "id": "defer-all-panel-dispositions",
+      "disposition": "available",
+      "rationale": "This is the adopted final M6 disposition for every track; bounded M1 lens results remain useful evidence but are not final qualification."
+    },
+    {
+      "id": "promote-from-repository-evidence",
+      "disposition": "rejected",
+      "rationale": "Repository-local tests and agent analyses cannot create production recovery, elapsed soak, national-scale, external-participant, preservation, signing or accountable-authority evidence."
+    }
+  ],
+  "programme_recommendation": "Adopt the bounded M1 panel dispositions, repair and re-review facility_registry_20260719, execute remaining track work in dependency order, and prohibit maturity or release promotion until the factual external, elapsed, scale, recovery, preservation and authority gates pass.",
+  "programme_contingencies": [
+    "If a blocker cannot be closed, retain the affected track at M1 and narrow or defer the corresponding release scope.",
+    "If a later change invalidates the frozen revision or bundle, create a new panel batch rather than transferring these dispositions.",
+    "If external operator or user evidence, production recovery, national measurements, elapsed beta/RC duration or accountable authority remains absent, remain a bounded technical preview."
+  ],
+  "tracks": [
+    {
+      "track_id": "accessibility_network_engine_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Real multimodal engines and New Zealand integration are incomplete.", "National-scale measurements and methods/user-workflow qualification are absent."],
+      "recommendation": "Retain the deterministic core as the M1 oracle, then integrate real versioned networks and execute bounded national benchmarks.",
+      "contingency": "Publish only small-instance reference behavior and prohibit operational accessibility claims."
+    },
+    {
+      "track_id": "canonical_domain_schemas_ontology_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["SHACL and non-Python round-trip evidence are incomplete.", "Persistent identifiers, migration execution and final semantic qualification remain open."],
+      "recommendation": "Complete cross-runtime conformance, SHACL execution, identifier publication and migration evidence before freezing the ontology.",
+      "contingency": "Keep the present schemas as an M1 draft contract and reject unsupported semantic projections."
+    },
+    {
+      "track_id": "connector_runtime_capture_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Representative connector breadth and real-source acceptance are incomplete.", "Long-running hosted operation and stable adapter support are unproven."],
+      "recommendation": "Extend the bounded retry/capture core through representative public-source adapters and sustained hosted exercises.",
+      "contingency": "Keep unsupported connectors disabled and make no stable runtime claim."
+    },
+    {
+      "track_id": "documentation_developer_experience_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["The evidence register lacks completed build, accessibility and supported-environment evidence.", "External user/operator workflow facts and RC tutorial execution are absent."],
+      "recommendation": "Build and test the documentation across supported environments, complete agent-panel qualification, and separately collect required participant workflow records.",
+      "contingency": "Retain developer-preview documentation and list unsupported workflows explicitly."
+    },
+    {
+      "track_id": "emergency_health_facilities_pilot_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Authoritative national ambulance coverage and representative scenarios are absent.", "Calibration, dispatch/handover, stress and safety evidence remain open."],
+      "recommendation": "Preserve the synthetic pilot boundary and add authoritative public inputs and non-operational validation before broader use.",
+      "contingency": "Publish only the bounded synthetic/regional demonstration with explicit clinical and dispatch non-claims."
+    },
+    {
+      "track_id": "facility_location_engine_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Scalable solver adapters and certificate interchange are incomplete.", "National workloads, cost envelopes and external benchmark execution are absent."],
+      "recommendation": "Use the exhaustive core as the correctness oracle and qualify scalable adapters against it on frozen workloads.",
+      "contingency": "Limit support to documented small instances and prohibit national planning claims."
+    },
+    {
+      "track_id": "facility_registry_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "fail", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["The evidence index incorrectly says the bounded-pilot decision and preservation deposit are pending despite recorded approval and Zenodo DOI 10.5281/zenodo.21737563.", "External-operator issue 149, national/source coverage, performance qualification and higher-tier release authority remain open."],
+      "recommendation": "Repair the index to cite the current bounded-pilot decision and successor DOI without overstating scope, regenerate dependent evidence, and rerun all three lenses before qualification.",
+      "contingency": "If the conflict cannot be reconciled, retain the track as not-qualified and exclude facility-registry promotion and downstream empirical claims."
+    },
+    {
+      "track_id": "foundation_architecture_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["M2-M6 executable, real-data, operational, recovery and compatibility evidence is incomplete.", "External reproduction and accountable stable-release authority are absent."],
+      "recommendation": "Accept the coherent M1 roadmap foundation and advance only through evidence-backed maturity transitions.",
+      "contingency": "Keep validating status and do not infer stable architecture approval from completed planning items."
+    },
+    {
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Two closeout tasks and applied takedown/publication exercises remain open.", "No future governed dataset or release authority is granted by the panel."],
+      "recommendation": "Retain the renamed scope-triggered, fail-closed governance framework and complete applied decision/withdrawal evidence when triggered.",
+      "contingency": "Keep unresolved cases review-required and make no co-design, cultural approval or controlled-data claim."
+    },
+    {
+      "track_id": "health_outcomes_causal_methods_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Empirical design, causal identification and public-data analysis are absent.", "Spatial confounding, MAUP, missing-data, preregistration and methods qualification remain open."],
+      "recommendation": "Retain the synthetic protocol as M1 evidence and complete preregistered empirical and sensitivity work before causal claims.",
+      "contingency": "Report descriptive or synthetic results only with explicit non-clinical and non-causal limitations."
+    },
+    {
+      "track_id": "interoperability_conformance_sdks_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["SDK/runtime breadth and complete standards projections are unfinished.", "External client adoption and signed stable conformance reports are absent."],
+      "recommendation": "Expand the shared corpus across supported runtimes and add an external-client workflow before freezing SDK support.",
+      "contingency": "Support only the explicitly tested Python/Node and bounded adapter surface."
+    },
+    {
+      "track_id": "methods_research_objects_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Complete research objects and final signed attestations are absent.", "External validation, protected-tag execution and long-term preservation remain open."],
+      "recommendation": "Build and verify complete content-bound research objects, signatures and preservation receipts for a frozen candidate.",
+      "contingency": "Retain the present artifacts as templates and bounded preparation evidence only."
+    },
+    {
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["The required broader council and national-source MVP is incomplete.", "Recurring acquisition, external research-object validation and preservation durability are absent."],
+      "recommendation": "Extend the bounded real slice through the specified public-source coverage with fixity and external reproduction evidence.",
+      "contingency": "Describe the present output only as a bounded archive reference, not national coverage."
+    },
+    {
+      "track_id": "nz_spatial_archive_operations_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Sustained hosted operation, SLO and cost history are absent.", "Production restore, national coverage and elapsed operational evidence remain open."],
+      "recommendation": "Operate bounded recurring public-source jobs and record failures, recovery, costs, coverage and preservation receipts.",
+      "contingency": "Keep operations experimental and prohibit service-level or national-archive claims."
+    },
+    {
+      "track_id": "nz_spatial_source_registry_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Live national catalogue and authority/currency coverage are incomplete.", "Recurring freshness, source-change migration and operational ownership are unproven."],
+      "recommendation": "Expand the deterministic registry to versioned authoritative public catalogues and record continuing freshness evidence.",
+      "contingency": "Keep unverified sources discovery-only and make no national-completeness claim."
+    },
+    {
+      "track_id": "operations_preservation_sre_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["The 90-day/three-cycle beta period and frozen-candidate 30-day RC soak are incomplete.", "Production disaster recovery, sustained SLO and preservation evidence are absent."],
+      "recommendation": "Continue the digest-chained campaign, freeze a later RC explicitly, and execute production-representative recovery with RPO/RTO evidence.",
+      "contingency": "Reset the applicable epoch after invalidating changes or failed cadence and remain technical preview."
+    },
+    {
+      "track_id": "performance_scalability_reliability_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["No authoritative national workload or national ingestion/accessibility/optimisation measurements exist.", "Representative cost, stress, soak, recovery and final benchmark qualification are absent."],
+      "recommendation": "Freeze a public national workload and measurement contract, then record end-to-end resource, cost and failure envelopes.",
+      "contingency": "Publish regional/synthetic ceilings only and prohibit national-scale claims."
+    },
+    {
+      "track_id": "planning_rules_linkage_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["A second materially different council and operative provision linkage are absent.", "Accuracy sampling, stable identifiers across change and domain qualification remain open."],
+      "recommendation": "Implement and sample cited linkage across two heterogeneous public planning systems before stable qualification.",
+      "contingency": "Retain the source pair as a legal-non-authority feasibility demonstration only."
+    },
+    {
+      "track_id": "planning_system_transition_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Real authority reorganisations and plan replacements are not reconstructed.", "Public-source capture and planning-domain qualification remain pending."],
+      "recommendation": "Apply the transition model to versioned public real-world reorganisations and qualify uncertainty and migration behavior.",
+      "contingency": "Keep fixtures synthetic and make no legal-equivalence assertion."
+    },
+    {
+      "track_id": "provenance_profile_v1_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Non-Python parity and bounded-loss projection qualification are incomplete.", "Publication identity, migration/deprecation execution and signed v1 attestation remain open."],
+      "recommendation": "Complete cross-language parity and projection-loss review before publishing and signing the stable profile.",
+      "contingency": "Retain native evidence and the current Python profile without claiming universal semantic equivalence."
+    },
+    {
+      "track_id": "provenance_query_api_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Stable CLI/MCP/API negotiation, authorization and backend equivalence are incomplete.", "Representative graph scale and external client behavior are unqualified."],
+      "recommendation": "Implement the declared public surfaces and conformance tests, then qualify access control and scale on real release graphs.",
+      "contingency": "Keep the bounded Python/SQLite envelope experimental and unsupported at scale."
+    },
+    {
+      "track_id": "publication_validation_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["External discovery, installation, operator and user workflow facts remain open.", "Complete preserved release, correction lifecycle and release-authority evidence are absent."],
+      "recommendation": "Complete the release package and preservation/correction exercises, use agents for review, and separately collect factual participant evidence if retained as a gate.",
+      "contingency": "Publish only bounded technical-preview artifacts with no stable-publication claim."
+    },
+    {
+      "track_id": "repository_template_adoption_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Broad template adoption and migration coverage are incomplete.", "Supported lifecycle, downstream upgrade and external-user workflow evidence are absent."],
+      "recommendation": "Version the template, migrate representative repositories and verify upgrades and divergence handling.",
+      "contingency": "Limit claims to the two bounded adapter integrations."
+    },
+    {
+      "track_id": "security_supply_chain_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Protected release execution, SBOM/signature verification and complete scanning remain open.", "Credential-compromise, rollback and final security qualification are absent."],
+      "recommendation": "Execute and preserve the complete signed release and incident/rollback path in hosted environments before promotion.",
+      "contingency": "Retain immutable pins and least privilege but make no hardened-release claim."
+    },
+    {
+      "track_id": "simulation_validation_engine_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Domain adapters, empirical calibration and holdout validation are absent.", "External benchmark comparison, performance qualification and real-world fitness remain open."],
+      "recommendation": "Retain the deterministic synthetic benchmark as an oracle and add preregistered domain calibration and external comparisons.",
+      "contingency": "Prohibit emergency, health-system or operational validity claims."
+    },
+    {
+      "track_id": "spatial_quality_temporality_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Representative historical geometry, boundary concordance and temporal currency evidence are absent.", "CRS/precision breadth, uncertainty benchmarks, MAUP and quality qualification remain open."],
+      "recommendation": "Run the bounded difference semantics against versioned real historical series and qualify repair and uncertainty behavior.",
+      "contingency": "Limit support to the documented synthetic spatial semantics."
+    },
+    {
+      "track_id": "supermarket_health_pilot_20260718",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["Rights-cleared versioned supermarket inputs and baseline reproduction are incomplete.", "Accessibility/health analyses, planning alternatives, research objects and final panel qualification are absent."],
+      "recommendation": "Acquire frozen public inputs and reproduce the baseline before bounded access, health and planning analyses.",
+      "contingency": "Retain the synthetic envelope and nine-POI observation as non-complete technical-preview evidence."
+    },
+    {
+      "track_id": "v1_release_hardening_20260719",
+      "lens_dispositions": {"adversarial-analyst": "pass-with-limitations", "evidence-auditor": "pass-with-limitations", "reproducer": "pass-with-limitations"},
+      "final_disposition": "not-qualified",
+      "blockers": ["All tracks remain M1 and material implementation/closeout work is open.", "Production recovery, 90-day beta, frozen-RC 30-day soak, national measurements, external participant workflows, preserved signed candidate and accountable authority remain incomplete."],
+      "recommendation": "Use this synthesis as bounded M1 review evidence only and advance the dependency-ordered campaign without promoting beta, RC or stable v1.",
+      "contingency": "Remain a technical preview or formally narrow scope; never infer promotion from repository-local or agent-panel evidence."
+    }
+  ],
+  "non_claims": [
+    "No track is finally qualified for its M6 target or for beta, release-candidate or stable-v1 promotion.",
+    "Agent-panel qualification does not substitute for an external operator or external-user workflow fact where those criteria remain in scope.",
+    "This synthesis does not create elapsed beta or RC-soak time, production disaster-recovery evidence, national-scale measurements, preservation/signing evidence or accountable release authority.",
+    "The synthesis is bound only to the stated source revision and archive digest and must not be transferred to a later candidate.",
+    "Facility registry remains not-qualified until its evidence-index conflict is repaired and the panel is rerun."
+  ]
+}
