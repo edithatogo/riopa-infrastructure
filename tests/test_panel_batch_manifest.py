@@ -35,3 +35,14 @@ def test_panel_batch_manifest_links_release_decision() -> None:
     )
     decision = root / manifest["release_decision_ref"]
     assert decision.exists()
+
+
+def test_panel_evidence_packet_preserves_external_and_release_boundaries() -> None:
+    root = Path(__file__).parents[1]
+    packet = (root / "docs" / "panel-evidence-packet-20260802.md").read_text(
+        encoding="utf-8"
+    )
+    assert "does not establish independent" in packet
+    assert "external reproduction" in packet
+    assert "No report, digest or disposition may be inferred" in packet
+    assert "release authority" in packet
