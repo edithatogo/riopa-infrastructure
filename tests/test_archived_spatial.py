@@ -4,11 +4,13 @@ import gzip
 import hashlib
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pyarrow.parquet as pq
 import pytest
 from jsonschema import Draft202012Validator, FormatChecker
 
+from riopa_provenance import archived_spatial
 from riopa_provenance.archived_spatial import (
     ArchivedPacketDescriptor,
     ArchivedPacketError,
@@ -182,6 +184,20 @@ def test_descriptor_rejects_mutable_or_unsafe_archive_identity() -> None:
         ArchivedPacketDescriptor(
             **{**descriptor.__dict__, "manifest_path": "../manifest.json"}
         ).validate()
+
+
+def test_default_fetch_rejects_redirect_away_from_archive_hosts(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    response = SimpleNamespace(
+        history=[SimpleNamespace(url="https://huggingface.co/pinned")],
+        url="https://services2.arcgis.com/live",
+        content=b"not used",
+        raise_for_status=lambda: None,
+    )
+    monkeypatch.setattr(archived_spatial.httpx, "get", lambda *_args, **_kwargs: response)
+    with pytest.raises(ArchivedPacketError, match="disallowed host"):
+        archived_spatial._default_fetch("https://huggingface.co/pinned")
 
 
 def test_download_uses_only_immutable_hugging_face_objects(tmp_path: Path) -> None:

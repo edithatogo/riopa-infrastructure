@@ -16,7 +16,7 @@ from collections.abc import Callable, Mapping
 from dataclasses import asdict, dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 
 import httpx
 from shapely import to_wkb
@@ -134,6 +134,11 @@ def immutable_hugging_face_url(
 def _default_fetch(url: str) -> bytes:
     response = httpx.get(url, follow_redirects=True, timeout=120.0)
     response.raise_for_status()
+    traversed = [*response.history, response]
+    for item in traversed:
+        host = urlparse(str(item.url)).hostname or ""
+        if host != "huggingface.co" and not host.endswith(".hf.co"):
+            raise ArchivedPacketError(f"archive download redirected to disallowed host: {host}")
     return response.content
 
 
