@@ -29,6 +29,7 @@
 | V1-FEATURE-FREEZE-20260803 | Bounded normative-surface inventory and explicit freeze exclusions | `docs/v1-feature-freeze-inventory-20260803.json` | Python 3.14/runtime, schema, CLI and publication surfaces are inventoried; full compatibility diff remains open |
 | V1-RC-HANDOVER-20260803 | Digest-bound candidate handover packet links current readiness evidence and fail-closed promotion decision | `docs/v1-rc-validation-handover-20260803.json` | Handover packet prepared; external, elapsed, national-scale, signed-preservation and accountable-authority gates remain open |
 | V1-PARENT-MATURITY-20260803 | Consolidated inventory of all parent Conductor tracks below their M6 target | `docs/parent-track-maturity-report-20260803.json`, `scripts/report_parent_maturity.py` | 28/28 tracks remain below M6; inventory is fail-closed and does not substitute for track evidence |
+| V1-FINAL-GATES-20260803 | Final elapsed-soak, participant, authority and stable-approval gates are consolidated in one fail-closed status record | `docs/final-release-gates-status-20260803.json` | Beta/RC duration, external users, signed authority and stable approval remain pending |
 
 ## Blocking defects
 
