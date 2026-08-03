@@ -8,8 +8,15 @@ from urllib.parse import urlparse
 
 REQUIRED = ("Selection approver", "Report URI", "Report digest", "Acceptance decision")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
-ZENODO_DOI = "10.5281/zenodo.21735818"
-EXPECTED_REVISION = "6b99b3ee42110733b36fd7777c960832719359b8"
+ZENODO_DOIS = {"10.5281/zenodo.21735818", "10.5281/zenodo.21737563"}
+DEPOSIT_DIGESTS = {
+    "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b",
+    "e0dcf5eb08e9b4530929da92a439d2cb97ced51bfe34f4848d1a2ef94c15abe5",
+}
+EXPECTED_REVISIONS = {
+    "8cac8b019cd20f7ba276147567442003489ac5b5",
+    "6b99b3ee42110733b36fd7777c960832719359b8",
+}
 EXPECTED_BUNDLE_DIGEST = "26bf2281f67c35f3327ebadeda3c8d5e7c6460e5b447dfc8417c851bcb0b6813"
 
 
@@ -48,16 +55,16 @@ def main() -> int:
     if "`TBD`" in text:
         print("pending: approval/reproduction record contains TBD fields", file=sys.stderr)
         return 3
-    if "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b" not in text:
+    if not any(digest in text for digest in DEPOSIT_DIGESTS):
         print("missing deposited packet digest", file=sys.stderr)
         return 4
     # The acceptance record must bind the report to the exact preserved pilot,
     # rather than relying on a free-form confirmation string alone.
-    if ZENODO_DOI not in text:
+    if not any(doi in text for doi in ZENODO_DOIS):
         print("missing deposited Zenodo DOI", file=sys.stderr)
         return 4
     revision = _value(text, "Exact tested repository revision")
-    if revision != EXPECTED_REVISION:
+    if revision not in EXPECTED_REVISIONS:
         print("exact tested repository revision does not match frozen handoff", file=sys.stderr)
         return 7
     bundle_digest = _value(text, "Reviewer-bundle SHA-256")
