@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:preservation-deposition-qualification:2026-08-03",
+  "scope": "WP-010 bounded public-datasets-only pilot packet",
+  "status": "repository-qualified-with-external-signature-pending",
+  "deposition": {
+    "repository": "Zenodo",
+    "doi": "10.5281/zenodo.21737563",
+    "record_url": "https://zenodo.org/records/21737563",
+    "packet_sha256": "e0dcf5eb08e9b4530929da92a439d2cb97ced51bfe34f4848d1a2ef94c15abe5",
+    "successor_of": "10.5281/zenodo.21735818",
+    "successor_relation": "append-only successor; predecessor remains immutable"
+  },
+  "repository_verification": {
+    "source_revision": "8cac8b019cd20f7ba276147567442003489ac5b5",
+    "reviewer_bundle_sha256": "26bf2281f67c35f3327ebadeda3c8d5e7c6460e5b447dfc8417c851bcb0b6813",
+    "deterministic_rebuilds": "passed",
+    "validator": "scripts/validate_wp010_reproduction_record.py",
+    "manifest": "evidence/wp010-bounded-pilot/manifest.json"
+  },
+  "qualification": {
+    "fixity_and_successor_links": "repository-evidenced",
+    "content_bound_deposition_receipt": "recorded",
+    "independent_preservation_service_verification": "not_claimed",
+    "signed_operator_or_release_authority_evidence": "pending",
+    "external_operator_reproduction": "pending-issue-149"
+  },
+  "limitations": [
+    "This qualifies the bounded pilot packet and does not qualify beta, RC or stable-v1 release preservation.",
+    "A repository owner or agent cannot manufacture an independent preservation-service attestation or accountable release-authority signature.",
+    "The packet contains no operational, national-scale, clinical or authoritative claims."
+  ],
+  "next_required_evidence": [
+    "Preservation service receipt or independent fixity verification for the deposited record.",
+    "Signed/content-bound acceptance record from the accountable release authority.",
+    "External operator report linked to issue #149 before higher-tier promotion."
+  ]
+}
