@@ -22,7 +22,7 @@ secrets, private credentials or sensitive local paths.
 ## Frozen inputs
 
 - Repository URL: `https://github.com/edithatogo/riopa-infrastructure`
-- Exact commit: `6b99b3ee42110733b36fd7777c960832719359b8`
+- Exact commit: `8cac8b019cd20f7ba276147567442003489ac5b5`
 - Benchmark ID: `urn:riopa:benchmark:wp010:synthetic-methods:1.0.0`
 - Reviewer-bundle SHA-256: `26bf2281f67c35f3327ebadeda3c8d5e7c6460e5b447dfc8417c851bcb0b6813`
 

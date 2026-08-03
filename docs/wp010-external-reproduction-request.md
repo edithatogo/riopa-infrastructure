@@ -8,7 +8,7 @@ release-candidate or stable-v1 promotion.
 
 - Follow [`wp010-external-reproduction-handoff.md`](wp010-external-reproduction-handoff.md).
 - Use the exact frozen revision and reviewer-bundle digest stated there.
-- Verify the published packet at [Zenodo DOI 10.5281/zenodo.21735818](https://doi.org/10.5281/zenodo.21735818).
+- Verify the published packet at [Zenodo DOI 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563).
 - Do not substitute a local or modified packet; record the observed SHA-256.
 
 ## Independence and approval requirements
