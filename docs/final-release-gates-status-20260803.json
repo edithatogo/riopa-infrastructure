@@ -2,6 +2,7 @@
   "schema_version": "1.0.0",
   "evidence_id": "urn:riopa:evidence:final-release-gates:2026-08-03",
   "status": "blocked-fail-closed",
+  "governing_decision": "docs/release-scope-and-evidence-policy-20260804.json",
   "release_posture": "bounded-regional-non-operational-technical-preview",
   "gates": {
     "beta_elapsed_soak": {

@@ -2,7 +2,7 @@
 
 **Decision status:** DRAFT — NOT SIGNED; no release or promotion is authorised by this document.
 
-**Current posture:** RIOPA remains a bounded regional, non-authoritative technical preview. The bounded pilot is limited to the frozen WP-010 packet and its documented scope, exclusions, safety constraints and expiry/review conditions. It must not be represented as a national ambulance register, operational dispatch system, or production decision service.
+**Current posture:** RIOPA remains a bounded regional, public-datasets-only, non-operational technical preview. Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled until separately evidenced. The bounded pilot is limited to the frozen WP-010 packet and its documented scope, exclusions, safety constraints and expiry/review conditions.
 
 ## Evidence available to the decision-maker
 
@@ -56,7 +56,7 @@ In addition to release-candidate prerequisites:
 
 ## Decision requested from accountable authority
 
-Select one and sign separately (this draft records no selection):
+The repository owner has authorized preparation of the release packet, but this draft remains unsigned and records no promotion authorization. Select one and sign separately:
 
 - **Maintain technical preview (recommended):** keep current regional scope and defer beta/RC/stable promotion until all gates above are evidenced.
 - **Approve a narrower beta:** only if every beta prerequisite is attached, with explicit exclusions, expiry and rollback conditions.
