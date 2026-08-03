@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:quality-frontier:2026-08-03",
+  "issue": 145,
+  "runtime": "Python 3.14 only",
+  "status": "partially-qualified-with-explicit-gaps",
+  "applicability": {
+    "mutation": {
+      "status": "pending-tooling-and-threshold",
+      "rationale": "Mutation score is not inferred from line or branch coverage; a pinned mutation tool, scope and minimum score must be selected before claiming qualification.",
+      "next": "Run a bounded scheduled mutation lane over validators and publication state, retain the raw report and set an approved threshold."
+    },
+    "dst": {
+      "status": "bounded-not-applicable-to-current-contract",
+      "rationale": "Persisted timestamps are normalized to UTC and the current public contract has no local-time scheduling or civil-time arithmetic.",
+      "evidence": ["tests/test_health.py", "tests/test_roadmap_hardening.py"],
+      "boundary": "If local-time scheduling, calendar windows or timezone-aware source updates are added, add zoneinfo transition fixtures before enabling them."
+    },
+    "multi_target": {
+      "status": "covered",
+      "evidence": ["tests/test_publication.py"],
+      "coverage": ["duplicate target rejection", "per-target rights overrides", "idempotent target state"]
+    },
+    "contract": {
+      "status": "covered-with-cross-language-gap",
+      "evidence": ["tests/test_conformance.py", "tests/test_validation_integrity.py", "conformance/v1"],
+      "boundary": "Python schema and integrity contracts are exercised; Rust or separately implemented consumer parity remains a release-track gate."
+    },
+    "ci": {
+      "workflow_lint": "covered-by-workflow-policy-check",
+      "secret_scan": "not-configured-as-a-hosted-required-check",
+      "boundary": "The repository does not claim secret-scanning qualification until a hosted scanner and retained result are configured."
+    }
+  },
+  "current_quality_evidence": {
+    "python314_tests": 623,
+    "branch_aware_coverage_percent": 91.96,
+    "hosted_exact_head": "3ebcae13d54a7653f2f4b9519e42e045bab2733e"
+  },
+  "release_boundary": "This record documents applicability and evidence boundaries; it does not close the v1 quality frontier, mutation qualification, cross-language parity or hosted secret-scanning gates."
+}
