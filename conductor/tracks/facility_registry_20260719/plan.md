@@ -65,5 +65,6 @@ Options and contingencies:
 3. **Last resort:** administrator merge, only with an explicit release-authority
    decision because it bypasses the protected merge gate.
 
-- [~] G.6 Reconcile hosted merge policy through a fresh PR; do not treat local
-  green checks or an administrator bypass as release evidence.
+- [x] G.6 Reconcile hosted merge policy through a fresh PR. PR #177 merged on
+  2026-08-03 as an explicitly recorded administrative exception after all
+  required checks passed; this is not release evidence.
