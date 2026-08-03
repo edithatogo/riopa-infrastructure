@@ -39,6 +39,7 @@
 | Operational cycles and RC soak | Start logging, automate observations and maintain digests | Actual elapsed cycles and soak duration; interruptions reset the clock |
 | National-scale workload measurements | Design workloads and run bounded public-data/regional benchmarks | Approved national workload, infrastructure and measured results |
 | External operator/user workflows | Prepare frozen bundles, instructions and report templates; run panel rehearsals | External operator reproduction and two distinct external-user reports |
+| Quality frontier qualification | Python 3.14 suite, branch-aware coverage, applicability and explicit exclusions recorded | `docs/quality-frontier-qualification-20260803.json`, `tests/test_conformance.py`, `tests/test_publication.py` | Multi-target and schema contracts covered; mutation, cross-language parity and hosted secret scanning remain open |
 | Accountable release-authority decision | Assemble the digest-bound decision packet and draft options | Named authority's signed tier decision with expiry and rollback conditions |
 
 Agent panels can prepare and qualify repository-owned evidence, but cannot
