@@ -2,7 +2,7 @@
 
 ## Runtime and packaging
 
-- Python 3.12 baseline for reference tooling and orchestration.
+- Python 3.14 only for reference tooling and orchestration; CI and packaging reject earlier or later interpreters.
 - Rust for high-throughput or safety-critical connectors where justified.
 - `uv` lockfiles, reproducible containers and GitHub Actions.
 - JSON Schema 2020-12 for cross-language contracts.

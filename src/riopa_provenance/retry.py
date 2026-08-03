@@ -97,7 +97,7 @@ def parse_retry_after(value: str | None, *, now: datetime) -> float | None:
     except ValueError:
         try:
             target = parsedate_to_datetime(rendered).astimezone(UTC)
-        except (TypeError, ValueError, OverflowError):
+        except TypeError, ValueError, OverflowError:
             return None
         current = now.astimezone(UTC)
         seconds = (target - current).total_seconds()

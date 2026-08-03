@@ -522,7 +522,7 @@ def _validate_release_evidence(
                                 "the future",
                             )
                         )
-                except (TypeError, ValueError):
+                except TypeError, ValueError:
                     problems.append(
                         RoadmapProblem(
                             "invalid-review-date",
@@ -565,7 +565,7 @@ def _validate_release_evidence(
                                         f"{duration} days",
                                     )
                                 )
-                    except (TypeError, ValueError):
+                    except TypeError, ValueError:
                         problems.append(
                             RoadmapProblem(
                                 "invalid-waiver",
@@ -1267,7 +1267,7 @@ def _waiver_is_current(gate: dict[str, Any], now: datetime) -> bool:
     waiver = gate.get("waiver") or {}
     try:
         return bool(waiver.get("reason")) and _parse_datetime(waiver["expires_at"]) > now
-    except (KeyError, TypeError, ValueError):
+    except KeyError, TypeError, ValueError:
         return False
 
 
@@ -1371,7 +1371,7 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
                     if age_days > max_age:
                         blockers.append(f"gate {gate['id']} evidence is {age_days} days old")
                         continue
-            except (TypeError, ValueError):
+            except TypeError, ValueError:
                 blockers.append(f"gate {gate['id']} has invalid evidence dates")
                 continue
             passed_gates += 1
@@ -1393,7 +1393,7 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
                 created_at = _parse_datetime(waiver["created_at"])
                 expires_at = _parse_datetime(waiver["expires_at"])
                 duration_days = (expires_at - created_at).days
-            except (KeyError, TypeError, ValueError):
+            except KeyError, TypeError, ValueError:
                 blockers.append(f"gate {gate['id']} has invalid waiver dates")
                 continue
             maximum_duration = v1_gate.get("waiver_policy", {}).get("maximum_duration_days", 90)

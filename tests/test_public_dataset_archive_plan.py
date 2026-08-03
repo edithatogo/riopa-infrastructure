@@ -156,3 +156,13 @@ def test_facility_panel_preserves_open_adjudication_gate() -> None:
     assert evidence["decisions"]["reviewed_matches"] == 0
     assert evidence["decisions"]["authoritative_registry"] is False
     assert len(evidence["panel"]) == 3
+
+
+def test_facility_review_sample_is_bounded_and_reproducible() -> None:
+    evidence = json.loads(
+        (ROOT / "docs/facility-stratified-review-sample-20260803.json").read_text()
+    )
+    assert evidence["status"] == "pending-agent-panel-disposition"
+    assert evidence["total_sample_size"] == 741
+    assert evidence["total_sample_size"] < evidence["total_population"]
+    assert len(evidence["selection_frame_sha256"]) == 64

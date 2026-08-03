@@ -13,7 +13,7 @@ import json
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import duckdb
 import pyarrow as pa
@@ -396,7 +396,7 @@ def _stable_feature_id(
 def _crs_metadata(crs: str | None) -> dict[str, Any] | None:
     if crs is None:
         return None
-    return CRS.from_user_input(crs).to_json_dict()
+    return cast(dict[str, Any], CRS.from_user_input(crs).to_json_dict())
 
 
 def materialize_features(

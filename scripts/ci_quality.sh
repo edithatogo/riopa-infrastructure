@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 uv run ruff check .
-uv run ruff format --check .
+# Historical release evidence is digest-bound and intentionally retains the
+# formatter version used when that release was attested.
+uv run ruff format --check . --exclude conductor/release-evidence/artifacts
 uv run mypy src/riopa_provenance
 uv run bandit -q -c pyproject.toml -r src/riopa_provenance
 uv run python scripts/check_action_pins.py --root .

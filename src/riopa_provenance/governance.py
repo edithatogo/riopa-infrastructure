@@ -196,7 +196,7 @@ def evaluate_decision(
                 reasons.append("review date is in the future")
             elif expires_at <= datetime.now(UTC):
                 reasons.append("review has expired")
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             reasons.append("review dates must be ISO-8601 timestamps")
     if not isinstance(evidence, Sequence) or isinstance(evidence, (str, bytes)) or not evidence:
         reasons.append("review evidence is required")

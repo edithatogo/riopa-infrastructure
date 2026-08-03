@@ -140,7 +140,7 @@ def _default_fetch(url: str) -> bytes:
         host = urlparse(str(item.url)).hostname or ""
         if host != "huggingface.co" and not host.endswith(".hf.co"):
             raise ArchivedPacketError(f"archive download redirected to disallowed host: {host}")
-    return response.content
+    return bytes(response.content)
 
 
 def _read_json_bytes(body: bytes, label: str) -> dict[str, Any]:
