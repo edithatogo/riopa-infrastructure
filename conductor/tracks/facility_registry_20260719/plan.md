@@ -48,3 +48,22 @@ promote a source to authoritative status without a documented panel disposition.
 - [ ] G.3 A second public health source family with an immutable archive receipt.
 - [ ] G.4 Stable registry projection, source-disagreement and coverage reports.
 - [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.
+
+## Hosted merge-policy blocker (2026-08-03)
+
+The code and required checks are green, but GitHub reports the protected PR as
+`BLOCKED` after the main-branch check contract changed from Python 3.12/3.13 to
+Python 3.14. This is an external policy-state gate, not an implementation defect.
+
+Options and contingencies:
+
+1. **Recommended:** create a fresh PR from the current clean branch so GitHub
+   evaluates the current protection rules against a new pull request head.
+2. **Fallback:** wait with auto-merge enabled if the fresh PR also remains
+   blocked; record the unchanged policy response and escalate to repository
+   administration/support.
+3. **Last resort:** administrator merge, only with an explicit release-authority
+   decision because it bypasses the protected merge gate.
+
+- [~] G.6 Reconcile hosted merge policy through a fresh PR; do not treat local
+  green checks or an administrator bypass as release evidence.

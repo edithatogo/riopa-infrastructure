@@ -1856,7 +1856,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 4
+      "blocking_defects": 5
     },
     {
       "key": "facility_registry_20260719:phase-1",
@@ -1884,7 +1884,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 4
+      "blocking_defects": 5
     },
     {
       "key": "facility_registry_20260719:phase-2",
@@ -1914,7 +1914,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 4
+      "blocking_defects": 5
     },
     {
       "key": "facility_registry_20260719:phase-3",
@@ -1944,7 +1944,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 4
+      "blocking_defects": 5
     },
     {
       "key": "facility_registry_20260719:phase-4",
@@ -1960,7 +1960,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate registry versions with accessibility and planning queries.\n- [ ] 4.2 Publish source disagreement and coverage reports.\n- [ ] 4.3 Release immutable registry snapshot and correction process.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.\n- [ ] G.2 Geometry-bearing or explicitly attribute-only disposition for the Hamilton packet.\n- [ ] G.3 A second public health source family with an immutable archive receipt.\n- [ ] G.4 Stable registry projection, source-disagreement and coverage reports.\n- [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate registry versions with accessibility and planning queries.\n- [ ] 4.2 Publish source disagreement and coverage reports.\n- [ ] 4.3 Release immutable registry snapshot and correction process.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.\n- [ ] G.2 Geometry-bearing or explicitly attribute-only disposition for the Hamilton packet.\n- [ ] G.3 A second public health source family with an immutable archive receipt.\n- [ ] G.4 Stable registry projection, source-disagreement and coverage reports.\n- [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.\n- [ ] G.6 Reconcile hosted merge policy through a fresh PR; do not treat local\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1974,7 +1974,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 4
+      "blocking_defects": 5
     },
     {
       "key": "interoperability_conformance_sdks_20260719",

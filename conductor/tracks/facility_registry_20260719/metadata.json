@@ -40,6 +40,7 @@
     "facility-review-panel-disposition pending: docs/facility-panel-qualification-20260803.json and docs/facility-stratified-review-sample-20260803.json",
     "hamilton-geometry-disposition blocked: docs/facility-source-materialization-20260803.json",
     "public-health-source-family pending: conductor/tracks/facility_registry_20260719/index.md",
-    "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md"
+    "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
+    "hosted-merge-policy-reconciliation pending: PR #175 remains externally blocked despite passing required checks"
   ]
 }

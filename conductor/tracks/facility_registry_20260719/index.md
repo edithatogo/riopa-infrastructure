@@ -36,6 +36,8 @@
 - Independent reproduction issue #149 has no external-operator response.
 - National authoritative ambulance coverage, supermarket-source rights, agent-panel-qualified
   performance estimates and beta/RC/stable release authority remain open gates.
+- Hosted merge-policy reconciliation is open: PR #175 has passing required checks but
+  remains externally `BLOCKED` after the Python 3.14-only protection update.
 
 ## Decisions, exceptions and limitations
 
