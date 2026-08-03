@@ -26,6 +26,8 @@
 | V1-ALL-TRACK-PANEL-20260802 | Three content-bound agent lenses and an orchestrator synthesis cover all 28 tracks | `docs/panel-reports/20260802/manifest.json`, `docs/panel-reports/20260802/orchestrator-synthesis.json` | Report-availability gate closed; all 28 M6 dispositions remain not-qualified and factual release gates remain open |
 | V1-CAMPAIGN-V3-20260802 | Current protected-head GitHub state, Hugging Face execution outcome, remaining gate sequence, library options and contingencies are reconciled | `docs/remaining-gates-campaign-v3-20260802.json`, `docs/remaining-gates-campaign-v3-20260802.md`, `tests/test_campaign_v3.py` | Exact-head CI and CodeQL pass; no open PRs; 14 evidenced phase issues closed and 141 issues remain; Hugging Face job was not created after an HTTP 402 response; gates remain fail-closed |
 | V1-PYTHON314-QUALITY-20260803 | Current Python 3.14 mainline reaches the 90% branch-aware coverage gate | `docs/python314-quality-evidence-20260803.json` | 623 tests passed at 91.96%; external, elapsed and authority gates remain open |
+| V1-FEATURE-FREEZE-20260803 | Bounded normative-surface inventory and explicit freeze exclusions | `docs/v1-feature-freeze-inventory-20260803.json` | Python 3.14/runtime, schema, CLI and publication surfaces are inventoried; full compatibility diff remains open |
+| V1-RC-HANDOVER-20260803 | Digest-bound candidate handover packet links current readiness evidence and fail-closed promotion decision | `docs/v1-rc-validation-handover-20260803.json` | Handover packet prepared; external, elapsed, national-scale, signed-preservation and accountable-authority gates remain open |
 
 ## Blocking defects
 

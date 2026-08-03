@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-rc-validation-handover:2026-08-03",
+  "status": "handover-packet-prepared-not-approved",
+  "candidate": {
+    "version": "0.2.0",
+    "revision_binding": "regenerate this handover record against the exact merged candidate head before any RC decision",
+    "runtime": "Python 3.14 only"
+  },
+  "evidence_links": [
+    "docs/v1-feature-freeze-inventory-20260803.json",
+    "docs/python314-quality-evidence-20260803.json",
+    "docs/quality-frontier-qualification-20260803.json",
+    "docs/performance-benchmark-qualification-20260803.json",
+    "docs/preservation-deposition-qualification-20260803.json",
+    "docs/publication-correction-package-20260803.json",
+    "docs/wp010-external-reproduction-handoff.md",
+    "docs/v1-release-readiness-baseline-20260801.json"
+  ],
+  "validation_state": {
+    "repository_checks": "passing-on-exact-head",
+    "agent_panel": "available-for-requalification",
+    "external_reproduction": "pending-issue-149",
+    "external_user_workflows": "pending",
+    "beta_soak_and_rc_soak": "elapsed-evidence-pending",
+    "national_scale": "measurement-pending",
+    "signed_preservation": "qualification-and-authority-signature-pending",
+    "release_authority": "decision-pending"
+  },
+  "handover_decision": "Do not promote to beta, RC or stable-v1 until all blocking states above have qualifying evidence.",
+  "rollback_and_correction": "Use successor publication and withdrawal/correction procedures; never mutate the candidate in place."
+}

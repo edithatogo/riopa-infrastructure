@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-feature-freeze-inventory:2026-08-03",
+  "status": "bounded-inventory-with-open-compatibility-diff",
+  "release_candidate": {
+    "version": "0.2.0",
+    "python": ">=3.14,<3.15",
+    "source_of_truth": ["pyproject.toml", "uv.lock", "conductor/releases.json", "conductor/v1-gate.json"]
+  },
+  "normative_surfaces": {
+    "schemas": {
+      "directory": "schemas",
+      "validation": "scripts/ci_quality.sh",
+      "contract_tests": ["tests/test_conformance.py", "tests/test_validation_integrity.py"]
+    },
+    "cli": {
+      "entrypoint": "riopa_provenance.cli:main",
+      "surface_inventory": "src/riopa_provenance/cli.py",
+      "contract_tests": ["tests/test_cli.py"]
+    },
+    "python_api": {
+      "package": "src/riopa_provenance",
+      "compatibility_policy": "docs/compatibility-support-policy.md"
+    },
+    "publication_formats": ["RO-Crate", "DataCite metadata", "PROV/OpenLineage projections", "SBOM"]
+  },
+  "frozen_controls": {
+    "python314_only": true,
+    "required_checks": ["Quality, contracts, and packaging", "Tests on Python 3.14", "Analyze Python", "CodeQL", "Dependency change review"],
+    "human_review_required": false,
+    "main_protection_receipt": "docs/github-main-protection-20260802.json"
+  },
+  "deferred_or_excluded": [
+    {"surface": "Rust/non-Python validator parity", "reason": "separate interoperability release gate"},
+    {"surface": "local civil-time/DST scheduling", "reason": "not part of current UTC-only contract"},
+    {"surface": "national network/timetable/facility claims", "reason": "archives do not exist"}
+  ],
+  "open_freeze_findings": [
+    "full public API/schema/ontology compatibility diff is not yet generated",
+    "external reproduction and user workflows remain pending",
+    "elapsed beta/RC evidence and accountable release authority remain pending"
+  ]
+}
