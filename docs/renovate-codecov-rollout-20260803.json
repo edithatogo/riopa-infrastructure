@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:renovate-codecov-rollout:2026-08-03",
+  "renovate": {
+    "repository_config": "renovate.json",
+    "extends": "github>edithatogo/renovate-config",
+    "dependency_dashboard": true,
+    "competing_bot_policy": "Dependabot remains enabled until the hosted Renovate app is confirmed active; remove it only after a dashboard or first Renovate PR is observed."
+  },
+  "codecov": {
+    "repository_config": "codecov.yml",
+    "coverage_source": ".github/workflows/validate.yml",
+    "current_local_threshold_percent": 90,
+    "upload_status": "pending-hosted-activation",
+    "required_hosted_evidence": [
+      "Codecov repository activation",
+      "OIDC or tokenless upload receipt",
+      "commit status or check on an exact main head"
+    ]
+  },
+  "security_context": {
+    "solo_maintainer": true,
+    "required_human_approvals": 0,
+    "automated_merge_checks": ["Quality, contracts, and packaging", "Tests on Python 3.14", "Analyze Python", "CodeQL", "Dependency change review"],
+    "hosted_settings_receipt": "docs/github-main-protection-20260802.json",
+    "secret_scanning": "not-claimed-until-hosted-result-is-retained"
+  },
+  "boundary": "Configuration is repository-owned. Hosted app access, Codecov activation and hosted security-product receipts remain external state and are not fabricated here."
+}
