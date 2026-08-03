@@ -38,6 +38,10 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 - M5 orchestrated agent-panel qualification, recovery qualification and RC soak.
 - M6 supported compatibility, external reproduction, named maintainers and stable release authority.
 
+The consolidated parent-track maturity inventory is recorded in
+`docs/parent-track-maturity-report-20260803.json`; it finds all 28 tracks at
+M1 against an M6 target and does not promote any track.
+
 ## Decisions, exceptions and limitations
 
 - ADR-0006, ADR-0009 and ADR-0011 are explicitly deferred with owners, revisit
