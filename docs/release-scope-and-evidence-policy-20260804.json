@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "decision_id": "urn:riopa:decision:release-scope-and-evidence-policy:2026-08-04",
+  "decision_status": "owner-authorized-policy; promotion-not-authorized",
+  "decided_at": "2026-08-04",
+  "release_scope": {
+    "posture": "bounded-regional-public-datasets-only-non-operational-technical-preview",
+    "disabled_claims": ["network", "timetable", "facility", "national", "clinical", "dispatch", "authoritative"],
+    "activation_rule": "Each disabled claim requires separate archived inputs, rights/authority evidence, validation and an applicable release decision."
+  },
+  "participant_policy": {
+    "external_operator_required": ["beta", "release-candidate", "stable-v1"],
+    "external_user_workflows_required": ["beta", "release-candidate", "stable-v1"],
+    "agent_panel_role": "assess submitted reports and repository evidence; never substitute for factual participant evidence"
+  },
+  "elapsed_policy": {
+    "beta": {"minimum_days": 90, "minimum_operational_cycles": 3},
+    "release_candidate": {"minimum_days": 30, "exact_frozen_revision": true},
+    "reset_conditions": ["qualifying interruption", "revision change", "failed restoration", "material scope or rights change"]
+  },
+  "authority_policy": {
+    "preparation_authorized": true,
+    "promotion_authorized": false,
+    "required_decision": "named accountable authority signs a tier-specific decision with scope, exclusions, expiry, rollback and revocation conditions"
+  },
+  "owner_instruction": "Prepare the release packet, but do not promote beta, release candidate or stable-v1 until the named authority signs the applicable decision and every evidence gate passes."
+}
