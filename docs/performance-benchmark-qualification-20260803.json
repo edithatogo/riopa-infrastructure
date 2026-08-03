@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:performance-qualification:2026-08-03",
+  "track": "performance_scalability_reliability_20260719",
+  "status": "repository-contract-and-regional-rehearsal-qualified",
+  "contract": {
+    "benchmark": "examples/wp010-performance-benchmark/contract.json",
+    "workload": "examples/wp010-performance-benchmark/workload.json",
+    "environment_capture": "scripts/capture_benchmark_environment.py",
+    "correctness": "deterministic checksum and archive-only manifest digest",
+    "repetitions": 3,
+    "warmup": 1,
+    "clock": "monotonic_ns"
+  },
+  "envelopes": {
+    "regional_synthetic": {
+      "status": "measured-rehearsal",
+      "threshold_policy": "retain median and p95; do not assert a universal latency target across hosts"
+    },
+    "national_scale": {
+      "status": "not-measured",
+      "reason": "current national value is a projection from the archived bounded workload"
+    },
+    "resource_and_cost": {
+      "status": "not-instrumented",
+      "required_before_release": ["CPU", "memory", "storage", "network", "cost model"]
+    }
+  },
+  "resilience": {
+    "scenarios": ["baseline", "stressed", "degraded"],
+    "status": "deterministic-degraded-path-rehearsal",
+    "production_failure_injection": "pending",
+    "restore_and_recovery": "tracked by operations preservation gates"
+  },
+  "panel": {
+    "status": "agent-panel-qualification-pending",
+    "required_lenses": ["performance method", "correctness/provenance", "operations/resilience", "limitations"]
+  },
+  "limitations": [
+    "No national-scale claim is made.",
+    "Network, timetable and facility domains remain disabled until archived inputs exist.",
+    "This record does not replace independent release qualification or elapsed soak evidence."
+  ]
+}
