@@ -20,7 +20,13 @@ def sha256(path: Path) -> str:
 def build_manifest(root: Path, *, bundle_id: str) -> dict[str, object]:
     files = []
     for path in sorted(p for p in root.rglob("*") if p.is_file()):
-        files.append({"path": str(path.relative_to(root)), "sha256": sha256(path), "bytes": path.stat().st_size})
+        files.append(
+            {
+                "path": str(path.relative_to(root)),
+                "sha256": sha256(path),
+                "bytes": path.stat().st_size,
+            }
+        )
     return {
         "schema": "riopa.evidence-redundancy-manifest.v1",
         "bundle_id": bundle_id,
