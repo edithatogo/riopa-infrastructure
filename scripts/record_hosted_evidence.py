@@ -44,6 +44,16 @@ LANES: dict[str, list[str]] = {
         "tests/test_campaign_consistency.py",
     ],
     "rc-soak-observation": ["scripts/ci_quality.sh"],
+    "retrospective-replay": [
+        "uv",
+        "run",
+        "pytest",
+        "-q",
+        "tests/test_campaign_consistency.py",
+        "tests/test_wp010_performance_contract.py",
+        "tests/test_publication.py",
+        "tests/test_governance.py",
+    ],
 }
 
 
@@ -79,7 +89,11 @@ def run_lane(lane: str, output_dir: Path) -> dict:
         "operational_cycle_id": operational_cycle_id,
         "candidate_revision": candidate_revision,
         "lane": lane,
-        "classification": "hosted-technical-preview-drill",
+        "classification": (
+            "hosted-retrospective-supplement"
+            if lane == "retrospective-replay"
+            else "hosted-technical-preview-drill"
+        ),
         "status": "passed" if completed.returncode == 0 else "failed",
         "command": command,
         "started_at": started_at,
@@ -100,6 +114,7 @@ def run_lane(lane: str, output_dir: Path) -> dict:
             "This receipt is not external operator or external user evidence.",
             "This receipt does not satisfy elapsed soak duration by itself.",
             "This receipt is not an accountable release-authority decision.",
+            "Retrospective supplements do not count as elapsed beta or RC soak observations.",
         ],
     }
     receipt_path = output_dir / f"{lane}.receipt.json"
