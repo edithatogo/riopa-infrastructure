@@ -29,6 +29,7 @@ def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:
         "scale-smoke",
         "operational-observation",
         "rc-soak-observation",
+        "retrospective-replay",
     }
 
 

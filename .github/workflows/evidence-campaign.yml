@@ -14,6 +14,7 @@ on:
           - scale-smoke
           - operational-observation
           - rc-soak-observation
+          - retrospective-replay
       campaign_id:
         description: Stable evidence-campaign identifier
         required: true
@@ -80,7 +81,7 @@ jobs:
           --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json"
           schemas/hosted-evidence.schema.json
       - name: Restore the latest cumulative campaign artifact
-        if: always()
+        if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -94,13 +95,13 @@ jobs:
           cp "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json" \
             "dist/campaign-history/${GITHUB_RUN_ID}-${EVIDENCE_LANE}.receipt.json"
       - name: Build cumulative fail-closed campaign ledger
-        if: always()
+        if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
         run: >-
           uv run python scripts/build_campaign_ledger.py
           dist/campaign-history/*.receipt.json
           --output dist/campaign-ledger.json
       - name: Upload cumulative content-bound evidence
-        if: always()
+        if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-${{ env.EVIDENCE_LANE }}
@@ -108,6 +109,14 @@ jobs:
             dist/campaign-history/
             dist/campaign-ledger.json
             dist/hosted-evidence/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload retrospective supplemental evidence
+        if: always() && env.EVIDENCE_LANE == 'retrospective-replay'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-retrospective-${{ github.run_id }}
+          path: dist/hosted-evidence/
           if-no-files-found: error
           retention-days: 90
       - name: Fail when the bounded lane failed
