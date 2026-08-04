@@ -17,6 +17,9 @@
 - [ ] 3.1 Define retention, replicas, fixity cadence and preservation package format.
 - [ ] 3.2 Automate backup, restore, correction, supersession and withdrawal paths.
 - [ ] 3.3 Conduct restore and disaster-recovery exercises.
+- [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)
+- [x] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)
+- [ ] 3.6 Configure repository credentials and verify independent Hugging Face and Zenodo acceptance receipts.
 
 ## 4. Beta operation and stable gate
 
