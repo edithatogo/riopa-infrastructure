@@ -608,13 +608,13 @@ def test_stable_release_can_be_proven_ready_with_full_qualification_evidence(
     make_stable_ready(root)
     readiness = release_readiness(root, "1.0.0")
     assert readiness.ready
-    assert readiness.qualified_tracks == readiness.required_tracks == 28
+    assert readiness.qualified_tracks == readiness.required_tracks == 27
     assert readiness.passed_gates == readiness.required_gates == 14
 
     status = roadmap_status(root, "1.0.0")
     markdown = render_status_markdown(status)
     assert "(READY)" in markdown
-    assert "Tracks qualified: 28/28" in markdown
+    assert "Tracks qualified: 27/27" in markdown
     assert "Gates: 14/14" in markdown
 
 

@@ -21,7 +21,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 - `repository_template_adoption_20260718`
 - `methods_research_objects_20260718`
 - `provenance_query_api_20260719`
-- `interoperability_conformance_sdks_20260719`
 - `nz_spatial_archive_operations_20260719`
 - `accessibility_network_engine_20260719`
 - `facility_location_engine_20260718`

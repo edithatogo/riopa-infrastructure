@@ -109,7 +109,7 @@ def test_roadmap_status_json_reports_stable_target(
     assert exc.value.code == 0
     payload = __import__("json").loads(capsys.readouterr().out)
     assert payload["stable_release"] == "1.0.0"
-    assert payload["tracks"]["total"] == 28
+    assert payload["tracks"]["total"] == 27
     assert payload["releases"][0]["ready"] is False
 
 
@@ -131,7 +131,7 @@ def test_roadmap_generate_issues_command_writes_output(
         )
     assert exc.value.code == 0
     payload = __import__("json").loads(output.read_text(encoding="utf-8"))
-    assert len([item for item in payload["issues"] if item.get("parent") == "program-epic"]) == 28
+    assert len([item for item in payload["issues"] if item.get("parent") == "program-epic"]) == 27
     assert "Issue configuration written" in capsys.readouterr().out
 
 

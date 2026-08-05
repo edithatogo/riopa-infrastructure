@@ -45,7 +45,7 @@ def test_stable_v1_model_has_full_scope_and_dimensions() -> None:
         json.loads(path.read_text(encoding="utf-8"))["track_id"]
         for path in (ROOT / "conductor/tracks").glob("*/metadata.json")
     }
-    assert len(tracks) == 28
+    assert len(tracks) == 27
     assert {
         json.loads(path.read_text(encoding="utf-8"))["maturity_target"]
         for path in (ROOT / "conductor/tracks").glob("*/metadata.json")
@@ -64,22 +64,22 @@ def test_generated_issue_graph_covers_all_tracks_and_phases() -> None:
     config = generate_issue_configuration(ROOT)
     issues = config["issues"]
     assert config["version"] == 3
-    assert len([item for item in issues if item.get("parent") == "program-epic"]) == 28
+    assert len([item for item in issues if item.get("parent") == "program-epic"]) == 27
     assert len([item for item in issues if ":phase-" in item["key"]]) >= 112
     assert len({item["key"] for item in issues}) == len(issues)
 
 
 def test_current_development_release_is_ready_but_stable_is_not() -> None:
     status = roadmap_status(ROOT)
-    assert status["tracks"]["total"] == 28
-    assert status["tracks"]["by_current_maturity"] == {"M1": 28}
+    assert status["tracks"]["total"] == 27
+    assert status["tracks"]["by_current_maturity"] == {"M1": 27}
     assert status["releases"][0]["ready"] is True
     assert status["releases"][0]["blockers"] == []
     assert all(not release["ready"] for release in status["releases"][1:])
 
     stable = release_readiness(ROOT, "1.0.0")
     assert not stable.ready
-    assert stable.required_tracks == 28
+    assert stable.required_tracks == 27
     assert stable.qualified_tracks == 0
     assert any("M6 is required" in blocker for blocker in stable.blockers)
     assert any("stable release evidence record is absent" in blocker for blocker in stable.blockers)

@@ -30,7 +30,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
           "kind": "documentation",
           "location": "conductor/tracks.md",
-          "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
+          "sha256": "7bc6f4b80c0e29f819aa17cce497ed34e782389f36ff6820be4284e18ae5cfef",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Validated 28-track Conductor index."
@@ -68,7 +68,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:release-train",
           "kind": "artifact",
           "location": "conductor/releases.json",
-          "sha256": "201563e35cae8a06c4a677a11faa715eaaae6fc16c0221fb1dfd90c759ae1c5a",
+          "sha256": "f9b17c3c7f53047511a87cca7d0fa6c7e1f1d271871ec944e58f76b5227cfa39",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Machine-readable release train and stage gates."
@@ -77,7 +77,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:v1-global-gate",
           "kind": "artifact",
           "location": "conductor/v1-gate.json",
-          "sha256": "eb3b34d4707b153fad4a72c318debadcf35abe0f01174df6f3fa77b50b01ff3b",
+          "sha256": "8ee3e599f0695dd7cea492ace91d7f860cf76b5560512ee7c0e457462ba9d8ab",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Global stable-v1 defect, evidence, waiver and authority policy."
@@ -86,7 +86,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap.py",
-          "sha256": "4e8306e147a3923822cf4ef37c89bbc27efa117643bba0dedb65a83ecd6722fb",
+          "sha256": "61fb680d9a5970d7b66ce8ecb3b9d61451748c36f1d0ff77bd0805be8bb27258",
           "immutable": false,
           "generated_at": "2026-07-31T09:30:00Z",
           "description": "Automated roadmap and readiness tests."
@@ -95,7 +95,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-hardening-tests",
           "kind": "test-report",
           "location": "tests/test_roadmap_hardening.py",
-          "sha256": "d67d4af619cc0b9c695cb1e0ddb8300252fc982250189a72c827deab484c7677",
+          "sha256": "97ddf4de80d2d8edb201e9889b24c0cd59741654b841bd9ce6e0a023497a3ff5",
           "immutable": false,
           "generated_at": "2026-07-19T09:20:00Z",
           "description": "Negative, drift, expiry, evidence-integrity and stable-readiness tests."
@@ -171,7 +171,7 @@
           "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
           "kind": "artifact",
           "location": "project/issues.yaml",
-          "sha256": "8c9e2aec2ef685c240c215d226c323699c0f293e64769114b7b0004ed0c46389",
+          "sha256": "3c22f03368bde41c9f07e72731d06f10fb1d5e61ad6eae31b5e3a663e5839f52",
           "immutable": false,
           "generated_at": "2026-07-31T22:37:00Z",
           "description": "Deterministically generated programme issue graph."
@@ -253,7 +253,7 @@
       "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
       "kind": "artifact",
       "location": "conductor/tracks.md",
-      "sha256": "55171be57b537d0e78cf5ef78e9d1ed9b73ffc41097ce3537bf3083f604af611",
+      "sha256": "7bc6f4b80c0e29f819aa17cce497ed34e782389f36ff6820be4284e18ae5cfef",
       "immutable": false,
       "generated_at": "2026-07-19T09:20:00Z",
       "description": "Conductor track index delivered with the roadmap."

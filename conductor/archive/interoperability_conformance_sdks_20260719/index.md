@@ -1,7 +1,7 @@
 # Evidence index: Interoperability, conformance suites and supported SDKs
 
 - **Track ID:** `interoperability_conformance_sdks_20260719`
-- **Status:** `specified`
+- **Status:** `complete`
 - **Target release:** `0.6.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`

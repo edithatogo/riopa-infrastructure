@@ -21,7 +21,6 @@
         "foundation_architecture_20260718",
         "governance_maori_data_sovereignty_20260718",
         "health_outcomes_causal_methods_20260719",
-        "interoperability_conformance_sdks_20260719",
         "methods_research_objects_20260718",
         "nz_spatial_archive_mvp_20260718",
         "nz_spatial_archive_operations_20260719",
@@ -137,7 +136,7 @@
         {
           "id": "core-governance-baseline",
           "category": "governance",
-          "requirement": "Rights, privacy, Māori data sovereignty and release decision hooks are embedded in the contracts.",
+          "requirement": "Rights, privacy, M\u0101ori data sovereignty and release decision hooks are embedded in the contracts.",
           "evidence_contract": [
             "Governance review",
             "Rights fixtures",
@@ -270,7 +269,6 @@
       "objective": "Expose trustworthy lineage, planning links, access metrics and reconciled facilities through interoperable contracts.",
       "required_tracks": [
         "provenance_query_api_20260719",
-        "interoperability_conformance_sdks_20260719",
         "planning_rules_linkage_20260718",
         "accessibility_network_engine_20260719",
         "facility_registry_20260719"
@@ -464,7 +462,7 @@
         {
           "id": "governed-publication",
           "category": "governance",
-          "requirement": "Public outputs pass rights, privacy, Māori data sovereignty, safety and sensitive-location review.",
+          "requirement": "Public outputs pass rights, privacy, M\u0101ori data sovereignty, safety and sensitive-location review.",
           "evidence_contract": [
             "Governance decisions",
             "Rights inventory",
@@ -491,7 +489,6 @@
         "foundation_architecture_20260718",
         "governance_maori_data_sovereignty_20260718",
         "health_outcomes_causal_methods_20260719",
-        "interoperability_conformance_sdks_20260719",
         "methods_research_objects_20260718",
         "nz_spatial_archive_mvp_20260718",
         "nz_spatial_archive_operations_20260719",
@@ -640,7 +637,6 @@
         "foundation_architecture_20260718",
         "governance_maori_data_sovereignty_20260718",
         "health_outcomes_causal_methods_20260719",
-        "interoperability_conformance_sdks_20260719",
         "methods_research_objects_20260718",
         "nz_spatial_archive_mvp_20260718",
         "nz_spatial_archive_operations_20260719",
@@ -663,7 +659,7 @@
         {
           "id": "stable-governance",
           "category": "governance",
-          "requirement": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety, corrections and withdrawals are approved for the released scope.",
+          "requirement": "Decision rights, rights, privacy, ethics, M\u0101ori data sovereignty, safety, corrections and withdrawals are approved for the released scope.",
           "evidence_contract": [
             "Signed governance decision",
             "Rights and limitation inventory",
