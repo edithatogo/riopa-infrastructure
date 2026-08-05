@@ -1,9 +1,9 @@
 # Evidence index: Security, integrity and software supply-chain hardening
 
 - **Track ID:** `security_supply_chain_20260719`
-- **Status:** `specified`
+- **Status:** `complete`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M6`
 - **Maturity target:** `M6`
 - **Stability class:** `Governance`
 - **Risk / priority:** `Critical` / `P0`
@@ -31,4 +31,4 @@
 
 Required reviewer roles: API/schema reviewer, Security reviewer, Operations reviewer, Research-object reviewer.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `complete`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
