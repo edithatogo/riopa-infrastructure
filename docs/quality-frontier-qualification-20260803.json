@@ -27,9 +27,16 @@
       "boundary": "Python schema and integrity contracts are exercised; Rust or separately implemented consumer parity remains a release-track gate."
     },
     "ci": {
-      "workflow_lint": "covered-by-workflow-policy-check",
-      "secret_scan": "not-configured-as-a-hosted-required-check",
-      "boundary": "The repository does not claim secret-scanning qualification until a hosted scanner and retained result are configured."
+      "workflow_lint": "covered-by-portable-workflow-lint-and-workflow-policy-checks",
+      "secret_scan": "covered-by-hosted-quality-job-tracked-secret-scan",
+      "evidence": [
+        "scripts/check_workflow_lint.py",
+        "scripts/check_workflow_policy.py",
+        "scripts/check_tracked_secrets.py",
+        "tests/test_ci_quality_gates.py",
+        ".github/workflows/validate.yml"
+      ],
+      "boundary": "The tracked-file scanner is a high-confidence repository gate; GitHub Advanced Security secret-scanning alerts and provider-side retention remain external platform evidence."
     }
   },
   "current_quality_evidence": {
