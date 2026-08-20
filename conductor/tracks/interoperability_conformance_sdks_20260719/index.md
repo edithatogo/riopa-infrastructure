@@ -1,7 +1,7 @@
 # Evidence index: Interoperability, conformance suites and supported SDKs
 
 - **Track ID:** `interoperability_conformance_sdks_20260719`
-- **Status:** `specified`
+- **Status:** `validating`
 - **Target release:** `0.6.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -22,6 +22,13 @@
 ## Blocking defects
 
 - None recorded for the bounded WP-008 adapter slice.
+
+## Remaining maturity gates
+
+Implementation evidence is bounded to the recorded conformance slices. Rust,
+full-schema, standards-projection, external-client, signed-report, and
+release-authority evidence remain open; the track must not be marked complete
+or archived until its M2–M6 acceptance evidence is recorded.
 
 ## Decisions, exceptions and limitations
 
