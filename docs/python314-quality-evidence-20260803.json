@@ -1,0 +1,13 @@
+{
+  "evidence_id": "python314-quality-evidence-20260803",
+  "runtime": "CPython 3.14.5",
+  "command": "uv run --frozen --python 3.14 --extra dev --extra spatial pytest --cov=riopa_provenance --cov-branch --cov-fail-under=90",
+  "tests_passed": 623,
+  "branch_coverage_percent": 91.96,
+  "threshold_percent": 90.0,
+  "status": "passed",
+  "limitations": [
+    "Coverage does not substitute for external reproduction, elapsed soak, or release authority.",
+    "This is repository-owned evidence for the current main commit."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "captured_at": "2026-08-02T10:21:52.952356+00:00",
+  "manifest_sha256": "555cdd52a16bf37d7b2ea93cd8a0b62901eba1c0a4be05b751e97cafe60b8bde",
+  "non_claims": [
+    "Metadata and negative receipts do not establish authority or permission.",
+    "This packet does not support operational, national-completeness or safety claims."
+  ],
+  "packet_id": "public-source-packet-20260802",
+  "payloads_acquired": false,
+  "record_type": "riopa_public_source_packet",
+  "schema_version": "1.0.0",
+  "scope": "bounded-public-data-technical-preview",
+  "sources": [
+    {
+      "authority": "unconfirmed prototype publisher",
+      "landing_url": "https://www.arcgis.com/home/item.html?id=e5b22c07d197417495c8012e945c41da",
+      "limitations": [
+        "Prototype status and redistribution terms require confirmation.",
+        "Payload not acquired; authority, rights or availability gate remains open."
+      ],
+      "negative_receipt": true,
+      "payload_sha256": null,
+      "retrieved_at": null,
+      "source_id": "urn:riopa:candidate:nz-ambulance-prototype",
+      "status": "metadata-only",
+      "terms_url": null,
+      "version": null
+    },
+    {
+      "authority": "Greater Wellington regional endpoint",
+      "landing_url": "https://mapping.gw.govt.nz/arcgis/rest/services/GW/Emergencies_P/MapServer/1",
+      "limitations": [
+        "Regional reference only; licence and correction terms require confirmation.",
+        "Payload not acquired; authority, rights or availability gate remains open."
+      ],
+      "negative_receipt": true,
+      "payload_sha256": null,
+      "retrieved_at": null,
+      "source_id": "urn:riopa:candidate:greater-wellington-ambulance",
+      "status": "metadata-only",
+      "terms_url": null,
+      "version": null
+    },
+    {
+      "authority": "Stats NZ",
+      "landing_url": "https://www.stats.govt.nz/geographies/meshblock/",
+      "limitations": [
+        "Supporting geography only; not an ambulance-source authority.",
+        "Payload not acquired; authority, rights or availability gate remains open."
+      ],
+      "negative_receipt": true,
+      "payload_sha256": null,
+      "retrieved_at": null,
+      "source_id": "urn:riopa:candidate:stats-nz-meshblocks",
+      "status": "metadata-only",
+      "terms_url": null,
+      "version": null
+    }
+  ]
+}

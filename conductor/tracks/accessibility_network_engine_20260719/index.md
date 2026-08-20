@@ -16,12 +16,14 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| `WP-009-reference-accessibility-core-20260731` | Versioned travel observations preserve missing/unreachable/censored semantics and hand-calculated accessibility measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Bounded dependency-free reference core passes; multimodal adapters, real NZ integration, scale and external review remain open |
+| `WP-009-reference-accessibility-core-20260731` | Versioned travel observations preserve missing/unreachable/censored semantics and hand-calculated accessibility measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Bounded dependency-free reference core passes; multimodal adapters, real NZ integration, scale and agent-panel qualification remain open |
+| `ACCESS-ARCHIVED-INPUTS-20260802` | Real accessibility inputs are acquired as independent immutable network, timetable, demand and facility archives | `docs/public-dataset-archive-incorporation-plan-20260802.json`, [open_social_data issue 35](https://github.com/edithatogo/open_social_data/issues/35), [open_social_data issue 37](https://github.com/edithatogo/open_social_data/issues/37) | Source routes defined; archived feeds, cross-engine benchmarks and national measurements remain pending |
+| `ACCESS-MESHBLOCK-SUPPORT-20260802` | Exact national supporting-geography bytes are available without treating geography as demand, destinations or routing evidence | [Hugging Face packet revision](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive/tree/3f2dc0a4d95a4fcb495551098d58fc5bce9c9202), `docs/public-dataset-archive-incorporation-plan-20260802.json` | Full Meshblock 2026 archive verified; population, network, timetable, destination and accessibility measurements remain open |
 
 ## Blocking defects
 
 - Real road, walk, cycle and timetable engines; national-scale benchmarking; and
-  scientific/user review remain open.
+  scientific-methods/user-workflow agent-panel qualification remains open.
 
 ## Decisions, exceptions and limitations
 
@@ -30,6 +32,6 @@
 
 ## Review and handover
 
-Required reviewer roles: API/schema reviewer, Data steward, Quantitative methods reviewer, Scientific reviewer.
+Required agent-panel lenses: API/schema analyst, Data-governance analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

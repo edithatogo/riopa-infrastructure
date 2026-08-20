@@ -14,7 +14,7 @@ contains:
 - one result for every evaluated gate, including status, reviewer, review date,
   expiry and evidence references;
 - defect counts using the same field names as the global v1 policy;
-- qualification metrics for independent review, clean-room/external reproduction,
+- qualification metrics for orchestrated agent-panel qualification, clean-room/external reproduction,
   external users/operators, operational cycles, operational evidence and RC soak;
 - role-specific approvals and signed decision references;
 - immutable release-artifact references; and
@@ -57,7 +57,7 @@ Expired, overlong, unsigned or prohibited waivers block release.
 ## Independence
 
 M5 and M6 cannot be established entirely by the implementer. Stable v1 requires at
-least two independent reviewers, two clean-room reproductions including one external
+least two independent agent analysts, two clean-room reproductions including one external
 reproduction, two external user workflows and one external operator workflow.
 Conflicts of interest are disclosed in the release decision.
 

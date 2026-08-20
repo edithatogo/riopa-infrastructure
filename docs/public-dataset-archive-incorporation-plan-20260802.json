@@ -1,0 +1,167 @@
+{
+  "schema": "riopa.public-dataset-archive-plan.v1",
+  "recorded_at": "2026-08-02",
+  "mode": "public-datasets-only",
+  "repository": "edithatogo/riopa-infrastructure",
+  "archive_policy": {
+    "raw_before_derived": true,
+    "required_receipts": [
+      "source metadata and authority",
+      "exact version or observation time",
+      "terms and redistribution disposition",
+      "retrieval request and response metadata",
+      "complete payload or explicit page disposition",
+      "SHA-256 content digest"
+    ],
+    "incorporation_rule": "Analytical and canonical projections may consume only a named, content-addressed archived snapshot. Mutable live endpoints are acquisition inputs, not analytical evidence.",
+    "storage_boundary": "Do not commit live GIS payloads, Parquet, GeoParquet, DuckDB or bulk archives to Git. Store manifests and bounded evidence in-repository; stage large payloads in the configured artifact/preservation workflow.",
+    "temporary_owner": "edithatogo/riopa-infrastructure retains archive-plan ownership until the planned edithatogo/nz-spatial-archive repository is activated and a content-bound handover is approved."
+  },
+  "related_repository_routing": [
+    {
+      "repository": "edithatogo/open_social_data",
+      "issues": [
+        "https://github.com/edithatogo/open_social_data/issues/35",
+        "https://github.com/edithatogo/open_social_data/issues/36",
+        "https://github.com/edithatogo/open_social_data/issues/37"
+      ],
+      "role": "Provider discovery, acquisition, raw snapshot manifests and RIOPA source/capture projections."
+    },
+    {
+      "repository": "edithatogo/corpus-legislation-nz",
+      "issues": [
+        "https://github.com/edithatogo/corpus-legislation-nz/issues/143",
+        "https://github.com/edithatogo/corpus-legislation-nz/issues/144"
+      ],
+      "role": "Existing NZ Gazette archive, publication staging, freshness and change evidence; no duplicate issue created."
+    },
+    {
+      "repository": "edithatogo/healthpoint-rs",
+      "issues": ["https://github.com/edithatogo/healthpoint-rs/issues/52"],
+      "role": "Code-first facility contract adapter only. Licensed Healthpoint payloads are excluded from the public-only campaign and are not archive inputs."
+    },
+    {
+      "repository": "edithatogo/fyi-archive",
+      "issues": ["https://github.com/edithatogo/fyi-archive/issues/266"],
+      "role": "Existing research-object and preservation adapter work may be reused after source-specific archives are complete; it does not own these datasets."
+    }
+  ],
+  "datasets": [
+    {
+      "id": "linz-nz-primary-parcels",
+      "authority": "Toitū Te Whenua Land Information New Zealand",
+      "source": "https://data.linz.govt.nz/services/api/v1/layers/50772/",
+      "current_evidence": "Metadata for layer 50772 is archived in WP-007; feature payload is not.",
+      "upstream_owner": "edithatogo/riopa-infrastructure",
+      "archive_action": "Freeze the selected published version and source revision, run a bounded complete export, record every export/poll/download receipt and preserve the raw package by SHA-256.",
+      "incorporation": ["nz_spatial_archive_mvp_20260718", "performance_scalability_reliability_20260719"],
+      "status": "archive-payload-pending",
+      "non_claim": "Parcel coverage is national geometry evidence, not population, network, facility or accessibility validity."
+    },
+    {
+      "id": "stats-nz-meshblock-2026-and-public-population",
+      "authority": "Stats NZ",
+      "source": "https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2026/FeatureServer/0",
+      "upstream_owner": "edithatogo/open_social_data",
+      "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/35",
+      "archive_action": "Archive exact service metadata, schema and all paged features plus selected exact-edition public population/census tables before building denominator projections.",
+      "archive_evidence": {
+        "github_run": "https://github.com/edithatogo/open_social_data/actions/runs/30750165664",
+        "workflow_revision": "728c4d651b02458f9712a6daff8c388ca3a6acad",
+        "hugging_face_dataset": "https://huggingface.co/datasets/edithatogo/riopa-public-data-archive",
+        "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202",
+        "receipt_revision": "34c093646f884d7b57447231d6605e83739bb302",
+        "manifest_path": "snapshots/stats-nz-meshblock-2026/20260802T133311Z/manifest.json",
+        "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+        "payload_set_sha256": "706c6d39c497e643eb5989fc65d4824799d16ade197b4c808a4e2988722e9b14",
+        "captured_features": 57575,
+        "available_features": 57575,
+        "pages": 231,
+        "null_geometries": 16,
+        "source_stable_during_capture": true,
+        "readback_verified": true,
+        "riopa_records_manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+        "riopa_records_manifest_sha256": "d689fa95e2ed8a6cef30598d454876fca3a499e57fdd569a77add7361129a161",
+        "riopa_projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
+        "normalized_semantic_sha256": "1b0a0e6a9ffde6b065dcbee5f65e8bd31d141c927895edb34b98d9499b0ea69f",
+        "projection_features": 57575,
+        "projection_capture_records": 236,
+        "projection_live_endpoint_contacted": false,
+        "projection_geometry_repairs": 0,
+        "national_workload_manifest": "docs/national-workload-manifest-20260803.json",
+        "national_workload_manifest_sha256": "2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67",
+        "population_packet_revision": "4f94d300c0bea6b64972b4b67044990f7e591716",
+        "population_manifest_sha256": "47540c8eb74fbc069b841308402961319aee57a0e85caad8b1de392595465617",
+        "population_workbook_sha256": "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6"
+      },
+      "incorporation": ["nz_spatial_source_registry_20260718", "nz_spatial_archive_mvp_20260718", "accessibility_network_engine_20260719", "performance_scalability_reliability_20260719"],
+      "status": "meshblock-and-population-archives-complete-workload-bound",
+      "non_claim": "Meshblocks define supporting geography; they do not supply destinations, travel times or causal evidence."
+    },
+    {
+      "id": "nzta-amds-network-model",
+      "authority": "NZ Transport Agency Waka Kotahi",
+      "source": "https://www.nzta.govt.nz/partners/data-and-tools/asset-management-data-standard/amds-network-model",
+      "upstream_owner": "edithatogo/open_social_data",
+      "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/37",
+      "archive_action": "Register the exact open-data service, freeze its schema/version/terms and preserve a complete content-addressed network snapshot before routing conversion.",
+      "incorporation": ["nz_spatial_archive_mvp_20260718", "accessibility_network_engine_20260719", "performance_scalability_reliability_20260719"],
+      "status": "upstream-issue-open",
+      "non_claim": "An archived network is not proof that every mode, restriction or route is complete or routable."
+    },
+    {
+      "id": "regional-public-gtfs",
+      "authority": "Verified regional public transport authorities",
+      "source": "https://www.nzta.govt.nz/about-us/our-data-and-official-information/use-our-data",
+      "upstream_owner": "edithatogo/open_social_data",
+      "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/37",
+      "archive_action": "Inventory public static and realtime feeds separately, preserve terms/service dates/feed bytes and health receipts per authority, and retain unavailable/private feeds as explicit dispositions.",
+      "incorporation": ["accessibility_network_engine_20260719"],
+      "status": "source-discovery-pending",
+      "non_claim": "Regional feeds must not be represented as a complete national timetable."
+    },
+    {
+      "id": "heterogeneous-council-plans-and-layers",
+      "authority": "Selected territorial and regional authorities",
+      "source": "config/source-registry/nz-spatial-pilot.yaml",
+      "upstream_owner": "edithatogo/riopa-infrastructure",
+      "archive_action": "Select four materially different public mechanisms, then archive raw service capabilities, layers, plan documents, terms and legal-status evidence before canonical linkage.",
+      "incorporation": ["nz_spatial_source_registry_20260718", "nz_spatial_archive_mvp_20260718", "planning_rules_linkage_20260718", "planning_system_transition_20260719"],
+      "status": "coverage-expansion-pending",
+      "non_claim": "Archived plan material is evidence of publication and content, not legal interpretation."
+    },
+    {
+      "id": "nz-gazette-versioned-series",
+      "authority": "New Zealand Gazette and preserved secondary sources",
+      "source": "https://github.com/edithatogo/corpus-legislation-nz/issues/143",
+      "upstream_owner": "edithatogo/corpus-legislation-nz",
+      "upstream_issue": "https://github.com/edithatogo/corpus-legislation-nz/issues/144",
+      "archive_action": "Consume only versioned Gazette archive manifests and freshness/change receipts produced by the existing corpus tracks.",
+      "incorporation": ["nz_spatial_source_registry_20260718", "planning_rules_linkage_20260718", "planning_system_transition_20260719"],
+      "status": "existing-upstream-work-open",
+      "non_claim": "Gazette evidence does not alone establish the operative status or spatial extent of a planning provision."
+    },
+    {
+      "id": "public-food-retail-assertions",
+      "authority": "Public council registers and source-specific open contributors",
+      "source": "https://github.com/edithatogo/open_social_data/issues/36",
+      "upstream_owner": "edithatogo/open_social_data",
+      "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/36",
+      "archive_action": "Archive source-specific council register and OpenStreetMap snapshots with terms, observation times and hashes before emitting immutable facility assertions.",
+      "incorporation": ["facility_registry_20260719", "supermarket_health_pilot_20260718"],
+      "status": "upstream-issue-open",
+      "non_claim": "No single public source is authoritative or complete; disagreement and missingness remain visible."
+    },
+    {
+      "id": "public-health-and-ambulance-facilities",
+      "authority": "Verified public health agencies and public source assertions",
+      "source": "evidence/wp007-real-slice/manifest.json",
+      "upstream_owner": "edithatogo/riopa-infrastructure",
+      "archive_action": "Retain the existing certified-provider snapshot, identify a second rights-cleared public health source, and archive any verified public ambulance-station source before facility reconciliation.",
+      "incorporation": ["facility_registry_20260719", "emergency_health_facilities_pilot_20260718"],
+      "status": "one-health-family-archived-ambulance-authority-pending",
+      "excluded_source": "Licensed Healthpoint payloads are excluded; healthpoint-rs issue 52 remains a data-light contract path only.",
+      "non_claim": "OSM or public web assertions cannot be promoted to authoritative national ambulance coverage."
+    }
+  ]
+}

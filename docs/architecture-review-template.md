@@ -1,10 +1,10 @@
 # Foundation architecture review record
 
 Complete one record per analyst and link the attributed result from the
-foundation track evidence index. Analysts may be maintainers, external
-reviewers or agents. Two records are required, with distinct identities and a
+foundation track evidence index. Analysts are isolated agents using maintainer,
+external-context, or other distinct analytical lenses. Two records are required, with distinct identities and a
 distinct scope or method; automated validation is not a substitute for this
-review.
+agent-panel qualification.
 
 ## Analyst
 

@@ -5,6 +5,8 @@
 - [ ] 1.1 Define reference datasets, workloads, correctness checks and measurement protocol.
 - [ ] 1.2 Set provisional latency, throughput, resource and cost envelopes.
 - [ ] 1.3 Implement reproducible benchmark environment capture.
+- [x] 1.4 Record the hosted full Meshblock 2026 acquisition as workload-shaping evidence without promoting its elapsed time to a national performance benchmark.
+- [x] 1.5 Freeze a bounded national reference workload manifest linking the immutable Meshblock geography and provisional subnational population packets without an unsupported geographic join (`docs/national-workload-manifest-20260803.json`).
 
 ## 2. Load and resilience qualification
 
@@ -18,10 +20,10 @@
 - [ ] 3.2 Publish capacity, scaling and cost models.
 - [ ] 3.3 Resolve bottlenecks without weakening correctness or provenance.
 
-## 4. Independent v1 qualification
+## 4. Agent-panel v1 qualification
 
 - [ ] 4.1 Repeat benchmarks in a second environment.
-- [ ] 4.2 Complete independent method and results review.
+- [ ] 4.2 Complete orchestrated method-and-results agent-panel qualification.
 - [ ] 4.3 Freeze v1 performance envelopes, limitations and operational actions.
 
 ## Track closeout

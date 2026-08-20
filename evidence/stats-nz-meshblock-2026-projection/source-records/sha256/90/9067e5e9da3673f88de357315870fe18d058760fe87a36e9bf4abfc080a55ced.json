@@ -1,0 +1,40 @@
+{
+  "record": {
+    "access": {
+      "authentication": "none",
+      "endpoint": null,
+      "landing_page": "https://datafinder.stats.govt.nz/",
+      "mechanism": "immutable archived packet",
+      "terms_url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "authoritativeness": "authoritative",
+    "discovered_at": "2026-08-02T13:33:11Z",
+    "governance_decision_refs": [],
+    "governance_triggers": [],
+    "jurisdiction": "New Zealand",
+    "metadata_snapshot_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+    "name": "Meshblock 2026",
+    "notes": "Constructed exclusively from a content-pinned archived packet.",
+    "publisher": {
+      "name": "Stats NZ Tatauranga Aotearoa",
+      "url": "https://www.stats.govt.nz/"
+    },
+    "rights": {
+      "access_status": "public",
+      "attribution_text": "Stats NZ Tatauranga Aotearoa",
+      "licence_status": "declared",
+      "notes": "Rights assertion copied from the verified archive manifest.",
+      "redistribution_status": "attribution-required",
+      "reviewed_at": "2026-08-02T13:38:16Z",
+      "spdx_or_uri": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "schema_version": "1.0.0",
+    "source_id": "urn:riopa:source:stats-nz:meshblock-2026",
+    "source_type": "web-service",
+    "spatial_coverage": "New Zealand",
+    "temporal_coverage": "boundaries as at 1 January 2026",
+    "update_pattern": null
+  },
+  "record_id": "urn:riopa:source:sha256:9067e5e9da3673f88de357315870fe18d058760fe87a36e9bf4abfc080a55ced",
+  "record_sha256": "9067e5e9da3673f88de357315870fe18d058760fe87a36e9bf4abfc080a55ced"
+}

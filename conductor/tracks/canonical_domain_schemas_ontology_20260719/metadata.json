@@ -2,17 +2,17 @@
   "track_id": "canonical_domain_schemas_ontology_20260719",
   "type": "specification",
   "phase": "Core",
-  "status": "specified",
+  "status": "validating",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-31T08:25:17Z",
+  "updated_at": "2026-08-01T12:30:00Z",
   "description": "Define stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.",
   "depends_on": [
-    "foundation_architecture_20260718",
-    "governance_maori_data_sovereignty_20260718"
+    "foundation_architecture_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/2",
   "evidence": [
-    "urn:riopa:evidence:projection-reconciliation:2026-07-31"
+    "urn:riopa:evidence:projection-reconciliation:2026-07-31",
+    "urn:riopa:evidence:canonical-domain-inventory:2026-08-01"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -31,10 +31,16 @@
   "current_maturity": "M1",
   "owner_role": "Core platform maintainer",
   "review_roles": [
-    "Governance reviewer",
-    "API/schema reviewer",
-    "Data steward",
-    "External user reviewer"
+    "Governance analyst",
+    "API/schema analyst",
+    "Data-governance analyst",
+    "External-user workflow analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "shacl-conformance-report",
+    "non-python-round-trip",
+    "ontology-publication-identifier",
+    "domain-agent-panel-qualification",
+    "migration-compatibility-qualification"
+  ]
 }

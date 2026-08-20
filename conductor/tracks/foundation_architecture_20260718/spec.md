@@ -47,7 +47,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Every v1-critical track has a repository owner, dependencies, target release, maturity target and checkable evidence contract.
 - [ ] The track and release dependency graphs are acyclic and validated automatically.
 - [ ] The v1 scope, non-claims, compatibility contract, support window and release authority are approved.
-- [ ] At least two independent analysts complete an architecture review; analysts may be maintainers, external reviewers or agents. Each analyst must have a distinct identity, scope or method, and findings must be resolved or recorded.
+- [ ] At least two independent agent analysts complete architecture qualification. Each analyst must have a distinct identity, scope or method, and findings must be resolved or recorded by the orchestrator.
 - [ ] A contributor can regenerate the issue graph and roadmap status from a clean checkout.
 
 ## Hardening and maturity gates
@@ -55,7 +55,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 
@@ -63,7 +63,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - Accepted ADR set and architecture diagrams.
 - Automated roadmap validation report and generated issue graph.
-- Maintainer/reviewer decisions and unresolved-decision register.
+- Orchestrator/agent-panel decisions and unresolved-decision register.
 - Published v1 scope, compatibility and sustainability policies.
 
 ## Risks

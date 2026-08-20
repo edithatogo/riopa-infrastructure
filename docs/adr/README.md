@@ -12,9 +12,9 @@ decisions and consequences.
 | 0004 | Bitemporal spatial versioning | accepted for the spatial reference implementation | Spatial maintainer | Add real-source migration evidence |
 | 0005 | Knowledge-graph projection | deferred; optional, not a platform dependency | Architecture reviewer | Reassess after query benchmarks |
 | 0006 | Standards profile | explicitly deferred pending conformance inventory | Interoperability maintainer | Revisit by 2026-10-31; issue `interoperability_conformance_sdks_20260719` |
-| 0007 | Governance and rights | accepted as a fail-closed constraint | Governance reviewer | Ratify sovereignty review and exceptions |
-| 0008 | Stable contracts/versioning | accepted; expanded by the v1 compatibility policy | API/schema reviewer | Add migration fixtures before M2 |
-| 0009 | Security/trust model | explicitly deferred pending qualification evidence | Security reviewer | Revisit by 2026-10-31; issue `security_supply_chain_20260719` |
+| 0007 | Governance and rights | accepted as a fail-closed constraint | Governance analyst | Ratify sovereignty review and exceptions |
+| 0008 | Stable contracts/versioning | accepted; expanded by the v1 compatibility policy | API/schema analyst | Add migration fixtures before M2 |
+| 0009 | Security/trust model | explicitly deferred pending qualification evidence | Security analyst | Revisit by 2026-10-31; issue `security_supply_chain_20260719` |
 | 0010 | Operations/preservation | accepted as target architecture; claims deferred | Operations maintainer | Produce SLO, restore and fixity evidence |
 | 0011 | v1 release authority | explicitly deferred pending named signatories and reproduction evidence | Release authority | Revisit by 2026-12-31; issue `v1_release_hardening_20260719` |
 

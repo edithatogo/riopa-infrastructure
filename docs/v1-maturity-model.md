@@ -24,7 +24,7 @@ The capability runs repeatedly with monitoring, quarantine, recovery, migration,
 
 ### M4 — hardened beta
 
-The feature set is substantially complete. Security, performance, resilience, preservation, compatibility, scientific-method and independent review have no unresolved beta blocker. Interfaces are approaching freeze.
+The feature set is substantially complete. Security, performance, resilience, preservation, compatibility, scientific-method and orchestrated agent-panel qualification have no unresolved beta blocker. Interfaces are approaching freeze.
 
 ### M5 — release candidate
 

@@ -2,7 +2,7 @@
 
 ## 1. Feature freeze and normative inventory
 
-- [ ] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format.
+- [ ] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. (full inventory remains pending; readiness baseline is not an inventory)
 - [ ] 1.2 Generate compatibility diffs and resolve unintended breaking changes.
 - [ ] 1.3 Close or formally defer non-v1 features.
 
@@ -25,6 +25,17 @@
 - [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.
 
 ## Track closeout
+
+## 5. Review fixes
+
+- [x] 5.1 Record a machine-readable, fail-closed v1 readiness baseline and explicit release blockers. (v1-release-readiness-baseline-20260801.json)
+- [x] 5.2 Correct the readiness baseline boundary so it does not overstate completion of the normative inventory. (review fix)
+- [x] 5.3 Record the capability/boundary map for hosted recovery, soak, scale, external workflows and release authority. (review fix)
+- [x] 5.4 Adopt the single-developer agent-panel policy and record a fail-closed GitHub/Hugging Face remaining-gates plan with library options and contingencies. (review fix)
+- [x] 5.5 Reconcile all normative review language to agent-panel qualification, stage daily hosted observations and record the GitHub/Hugging Face campaign-v2 plan. (review fix)
+- [x] 5.6 Synchronise the validated issue graph to GitHub and record exact-head hosted check evidence. (`docs/github-issue-sync-20260802.json`)
+- [x] 5.7 Protect `main` with strict hosted checks and no second-person review requirement. (`docs/github-main-protection-20260802.json`)
+- [x] 5.8 Complete content-bound three-lens reports and an orchestrator synthesis for all 28 tracks without promoting any M6 disposition. (`docs/panel-reports/20260802/manifest.json`)
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.

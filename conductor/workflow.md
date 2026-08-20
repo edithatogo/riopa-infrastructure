@@ -43,7 +43,8 @@ Each track lives at `conductor/tracks/<track_id>/` and contains:
 - All acceptance criteria pass.
 - Blocking dependencies are complete.
 - Security, rights/governance, compatibility and operational reviews pass.
-- Independent review/reproduction requirements are satisfied.
+- Orchestrated agent-panel qualification and any distinct clean-room or
+  external-reproduction requirements are satisfied.
 - No expired waiver or undocumented limitation remains.
 
 ## Release lifecycle

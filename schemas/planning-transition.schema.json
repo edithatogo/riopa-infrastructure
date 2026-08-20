@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/planning-transition/v1",
+  "title": "RIOPA planning-system transition v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["transition_id", "relationship", "predecessors", "successors", "state", "valid_time", "recorded_time", "evidence"],
+  "properties": {
+    "transition_id": {"type": "string", "pattern": "^urn:riopa:transition:[A-Za-z0-9._:-]+$"},
+    "relationship": {"enum": ["rename", "merge", "split", "replacement", "partial_continuity"]},
+    "predecessors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "successors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "state": {"enum": ["proposed", "notified", "operative", "partly_operative", "appealed", "superseded", "transitional"]},
+    "scope": {"type": "string", "minLength": 1},
+    "valid_time": {"$ref": "#/$defs/window"},
+    "recorded_time": {"$ref": "#/$defs/window"},
+    "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {"window": {"type": "object", "required": ["from", "to"], "additionalProperties": false, "properties": {"from": {"type": "string", "format": "date"}, "to": {"type": ["string", "null"], "format": "date"}}}}
+}

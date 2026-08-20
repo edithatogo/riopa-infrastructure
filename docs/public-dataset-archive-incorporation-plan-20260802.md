@@ -1,0 +1,94 @@
+# Public dataset archive and incorporation plan
+
+RIOPA will not analyse mutable live endpoints directly. Every selected public
+dataset first becomes a versioned archive packet containing source authority,
+exact version or observation time, terms, retrieval receipts, completeness or
+page dispositions and SHA-256 digests. Canonical, Parquet, GeoParquet, DuckDB,
+network, facility and benchmark projections must identify that archived packet.
+
+## Cross-repository routing
+
+- `open_social_data` owns public provider acquisition work for Stats NZ
+  geography/population ([#35](https://github.com/edithatogo/open_social_data/issues/35)),
+  public food-retail assertions ([#36](https://github.com/edithatogo/open_social_data/issues/36))
+  and NZTA/network/GTFS sources ([#37](https://github.com/edithatogo/open_social_data/issues/37)).
+- `corpus-legislation-nz` already owns Gazette archive and freshness work in
+  [#143](https://github.com/edithatogo/corpus-legislation-nz/issues/143) and
+  [#144](https://github.com/edithatogo/corpus-legislation-nz/issues/144), so no
+  duplicate issue was created.
+- `healthpoint-rs` [#52](https://github.com/edithatogo/healthpoint-rs/issues/52)
+  remains a code-first contract adapter. Licensed Healthpoint payloads are not
+  part of this public-only campaign.
+- The planned `nz-spatial-archive` repository does not yet exist. This
+  repository therefore retains archive-plan ownership until a content-bound
+  handover is possible.
+
+## Incorporation order
+
+1. Freeze source metadata, version and rights/terms.
+2. Capture raw bytes or every bounded page, preserving failures and omissions.
+3. Validate completeness and calculate immutable digests.
+4. Preserve the raw packet outside Git when it is bulk data; commit only safe
+   manifests, receipts and bounded evidence.
+5. Build source-specific normalized/materialized projections.
+6. Incorporate named projections into registry, archive, accessibility,
+   facility, planning and performance tracks.
+7. Run an agent-panel review of provenance, completeness, limitations and
+   claims before any maturity change.
+
+The machine-readable plan lists the exact source families, routing, status,
+downstream tracks and non-claims in
+`docs/public-dataset-archive-incorporation-plan-20260802.json`.
+
+The upstream acquisition inventory for issues [#36](https://github.com/edithatogo/open_social_data/issues/36)
+and [#37](https://github.com/edithatogo/open_social_data/issues/37) is now
+registered at [`open_social_data` commit `b0b36da`](https://github.com/edithatogo/open_social_data/commit/b0b36da).
+It is deliberately discovery-only: candidate landing/payload URLs, regional
+scope and rights requirements are recorded, but no facility, network or
+timetable claim is enabled until raw bytes, terms and content-addressed
+receipts are archived.
+
+## Completed archive slice
+
+Stats NZ Meshblock 2026 was captured in full by
+[GitHub Actions run 30750165664](https://github.com/edithatogo/open_social_data/actions/runs/30750165664)
+and published to the public
+[Hugging Face archive](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive).
+The immutable packet revision is `3f2dc0a4d95a4fcb495551098d58fc5bce9c9202`;
+the receipt-bearing revision is `34c093646f884d7b57447231d6605e83739bb302`.
+The manifest records 57,575 of 57,575 object IDs across 231 pages, 16 null
+geometries, a stable pre/post source inventory, manifest SHA-256
+`1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f` and
+payload-set SHA-256
+`706c6d39c497e643eb5989fc65d4824799d16ade197b4c808a4e2988722e9b14`.
+Independent hosted readback verified the manifest and the first and final page
+digests. RIOPA subsequently verified every stored and expanded archive object
+and built 236 content-addressed capture records plus a normalized 57,575-feature
+projection without contacting the recorded live endpoint. The projection
+preserves 16 null geometries and one invalid translated source geometry without
+implicit repair. Population tables and downstream analytical projections remain
+pending; this supporting-geography projection is not national accessibility or
+performance evidence.
+
+The exact provisional Stats NZ population edition is also pinned at packet
+revision `4f94d300c0bea6b64972b4b67044990f7e591716`, with workbook SHA-256
+`001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6`. The two
+packets are combined only in the bounded reference workload manifest
+`docs/national-workload-manifest-20260803.json`; no population values are
+assigned to Meshblocks or downscaled from regional units.
+
+Issue #37 now has hosted negative-evidence packets for both candidate regional
+GTFS feeds: Metro Christchurch run [30753973737](https://github.com/edithatogo/open_social_data/actions/runs/30753973737)
+(HTTP 401) and Auckland Transport run [30754015729](https://github.com/edithatogo/open_social_data/actions/runs/30754015729).
+The packets are preserved as unavailable dispositions, not timetable data, so
+the network/timetable domains remain disabled.
+
+Issue #36 now has a hosted public assertion packet from run
+[30754134781](https://github.com/edithatogo/open_social_data/actions/runs/30754134781)
+for the OpenStreetMap-derived New Zealand food-service export. Packet revision
+`d834601efedada86be03dee2ff7a90d0fa37c0a2` is preserved for bounded facility
+reconciliation; it remains source-specific evidence and does not establish
+complete or authoritative food-retail coverage.
+RIOPA binds that packet through
+`config/archive-sources/osm-new-zealand-food-service-2026.json`; it is
+available only for bounded source reconciliation and provenance fixtures.

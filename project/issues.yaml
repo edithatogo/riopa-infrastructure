@@ -30,8 +30,7 @@
       "title": "[Track] Canonical domain schemas, identifiers and ontology",
       "parent": "program-epic",
       "blocked_by": [
-        "foundation_architecture_20260718",
-        "governance_maori_data_sovereignty_20260718"
+        "foundation_architecture_20260718"
       ],
       "labels": [
         "type:track",
@@ -44,7 +43,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `canonical_domain_schemas_ontology_20260719`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nDefine stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas cover authority, jurisdiction, service, endpoint, layer, plan, provision, feature/version, facility/assertion, mapping, review and analytical run.\n- [ ] A versioned ontology and SHACL validation suite are published with original-to-canonical crosswalk fixtures.\n- [ ] Identifier rules survive source renames, authority reorganisation, facility relocation and plan replacement.\n- [ ] Python and Rust or another non-Python binding round-trip golden fixtures without semantic loss.\n- [ ] At least two heterogeneous council and two facility-source examples validate the model.\n- [ ] Stable 1.x schema and ontology migration rules pass backward-compatibility tests.\n\n## Source of truth\n\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md`",
+      "body": "Conductor track: `canonical_domain_schemas_ontology_20260719`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nDefine stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas cover authority, jurisdiction, service, endpoint, layer, plan, provision, feature/version, facility/assertion, mapping, review and analytical run.\n- [ ] A versioned ontology and SHACL validation suite are published with original-to-canonical crosswalk fixtures.\n- [ ] Identifier rules survive source renames, authority reorganisation, facility relocation and plan replacement.\n- [ ] Python and Rust or another non-Python binding round-trip golden fixtures without semantic loss.\n- [ ] At least two heterogeneous council and two facility-source examples validate the model.\n- [ ] Stable 1.x schema and ontology migration rules pass backward-compatibility tests.\n\n## Source of truth\n\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
@@ -58,7 +57,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-1",
@@ -72,7 +71,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Inventory entities and identifiers across existing connector, archive, policy and health repositories.\n- [ ] 1.2 Define identity, version identity, source assertion and adjudication rules.\n- [ ] 1.3 Record unresolved semantic collisions and extension needs.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Inventory entities and identifiers across existing connector, archive, policy and health repositories. (`docs/canonical-domain-inventory-20260801.md`)\n- [ ] 1.2 Define identity, version identity, source assertion and adjudication rules. (`docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`)\n- [ ] 1.3 Record unresolved semantic collisions and extension needs. (`docs/canonical-domain-inventory-20260801.md`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -86,7 +85,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-2",
@@ -102,7 +101,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes.\n- [ ] 2.2 Add bitemporal, original-value, confidence, review and governance fields.\n- [ ] 2.3 Generate language bindings and documentation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes. (`schemas/canonical-crosswalk.schema.json`, `docs/ontology/canonical-context.jsonld`, `docs/ontology/canonical-ontology-release-1.0.0.json`; SHACL execution remains pending)\n- [ ] 2.2 Add bitemporal, original-value, confidence, review and governance fields. (`src/riopa_provenance/canonical.py`, `tests/test_canonical.py`)\n- [ ] 2.3 Generate language bindings and documentation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -116,7 +115,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-3",
@@ -132,7 +131,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build council-planning, facility and source-service golden fixtures.\n- [ ] 3.2 Validate cross-language round trips and SHACL conformance.\n- [ ] 3.3 Test identity under rename, reorganisation, relocation and supersession.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build council-planning, facility and source-service golden fixtures. (`fixtures/canonical-crosswalk-golden.json`, `conformance/v1/corpus.json`)\n- [ ] 3.2 Validate cross-language round trips and SHACL conformance.\n- [ ] 3.3 Test identity under rename, reorganisation, relocation and supersession. (`tests/test_lineage_identifiers.py`, `tests/test_canonical.py`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -146,7 +145,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-4",
@@ -162,7 +161,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Run public review and resolve semantic findings.\n- [ ] 4.2 Publish migration tools, compatibility matrix and extension policy.\n- [ ] 4.3 Freeze the v1 normative schema/ontology candidate.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Run agent-panel semantic qualification and resolve semantic findings.\n- [ ] 4.2 Publish migration tools, compatibility matrix and extension policy.\n- [ ] 4.3 Freeze the v1 normative schema/ontology candidate.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R.1 Add digest-bound SHACL shape preparation while preserving the\n- [ ] R.2 Verify the updated manifest, ontology descriptor and tests under the\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -176,7 +175,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "provenance_profile_v1_20260718",
@@ -197,7 +196,7 @@
         "provenance",
         "rights-governance"
       ],
-      "body": "Conductor track: `provenance_profile_v1_20260718`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nStabilise a cross-language profile that unifies capture, transformation, lineage, manual and AI assistance, integrity, rights and quality without replacing repository-native evidence.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] Python and at least one non-Python implementation accept and reject identical golden fixtures.\n- [ ] Mappings classify every existing field as exact, approximate, extension-preserved, conflicting or unmapped.\n- [ ] Concurrent streams, retries, partial failures, checkpoints and late events pass conformance tests.\n- [ ] Tampering, missing parents, invalid rights state, stale schema and false granularity claims fail validation.\n- [ ] PROV, OpenLineage and attestation projections round-trip required semantics or document bounded loss.\n- [ ] Profile v1 has a stable identifier, migration guide, deprecation policy and independent review.\n\n## Source of truth\n\n- `conductor/tracks/provenance_profile_v1_20260718/spec.md`\n- `conductor/tracks/provenance_profile_v1_20260718/plan.md`\n- `conductor/tracks/provenance_profile_v1_20260718/metadata.json`\n- `conductor/tracks/provenance_profile_v1_20260718/index.md`",
+      "body": "Conductor track: `provenance_profile_v1_20260718`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nStabilise a cross-language profile that unifies capture, transformation, lineage, manual and AI assistance, integrity, rights and quality without replacing repository-native evidence.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] Python and at least one non-Python implementation accept and reject identical golden fixtures.\n- [ ] Mappings classify every existing field as exact, approximate, extension-preserved, conflicting or unmapped.\n- [ ] Concurrent streams, retries, partial failures, checkpoints and late events pass conformance tests.\n- [ ] Tampering, missing parents, invalid rights state, stale schema and false granularity claims fail validation.\n- [ ] PROV, OpenLineage and attestation projections round-trip required semantics or document bounded loss.\n- [ ] Profile v1 has a stable identifier, migration guide, deprecation policy and orchestrated agent-panel qualification.\n\n## Source of truth\n\n- `conductor/tracks/provenance_profile_v1_20260718/spec.md`\n- `conductor/tracks/provenance_profile_v1_20260718/plan.md`\n- `conductor/tracks/provenance_profile_v1_20260718/metadata.json`\n- `conductor/tracks/provenance_profile_v1_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
@@ -211,7 +210,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "provenance_profile_v1_20260718:phase-1",
@@ -225,7 +224,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Map fyi-cli, fyi-archive, nlp-policy-nz, corpus and healthpoint evidence.\n- [ ] 1.2 Classify exact, approximate, conflicting, extension and unmapped semantics.\n- [ ] 1.3 Define additive dual-emission and migration boundaries.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Map fyi-cli, fyi-archive, nlp-policy-nz, corpus and healthpoint evidence. (`docs/provenance-profile-mapping-inventory-20260801.md`)\n- [ ] 1.2 Classify exact, approximate, conflicting, extension and unmapped semantics. (`docs/provenance-profile-mapping-inventory-20260801.md`)\n- [ ] 1.3 Define additive dual-emission and migration boundaries. (`docs/provenance-and-lineage.md`, `docs/provenance-profile-mapping-inventory-20260801.md`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -239,7 +238,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "provenance_profile_v1_20260718:phase-2",
@@ -255,7 +254,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Adopt named canonical JSON and cryptographic identity rules.\n- [ ] 2.2 Define stream, partition, retry, idempotency, checkpoint and causal-parent semantics.\n- [ ] 2.3 Add manual, adjudication and AI-assistance facets.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Adopt named canonical JSON and cryptographic identity rules. (`src/riopa_provenance/hashing.py`, `schemas/provenance-event.schema.json`)\n- [ ] 2.2 Define stream, partition, retry, idempotency, checkpoint and causal-parent semantics. (`src/riopa_provenance/validation.py`, `src/riopa_provenance/retry.py`, `tests/test_validation_failures.py`)\n- [ ] 2.3 Add manual, adjudication and AI-assistance facets. (`docs/provenance-and-lineage.md`, `schemas/provenance-event.schema.json`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -269,7 +268,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "provenance_profile_v1_20260718:phase-3",
@@ -285,7 +284,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement Python and non-Python validators/models.\n- [ ] 3.2 Emit and validate PROV, OpenLineage and signed-attestation projections.\n- [ ] 3.3 Run positive, negative, round-trip and semantic-loss suites.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement Python and non-Python validators/models.\n- [ ] 3.2 Emit and validate PROV, OpenLineage and signed-attestation projections. (`src/riopa_provenance/crate.py`, `docs/standards-profile.md`; signed attestation remains release-gated)\n- [ ] 3.3 Run positive, negative, round-trip and semantic-loss suites. (`tests/test_validation_failures.py`, `tests/test_crate.py`; non-Python parity remains pending)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -299,7 +298,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "provenance_profile_v1_20260718:phase-4",
@@ -315,7 +314,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct public and maintainer review.\n- [ ] 4.2 Publish profile identifiers, compatibility matrix and migration tooling.\n- [ ] 4.3 Freeze and sign the v1 normative profile candidate.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `provenance_profile_v1_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Record public consultation evidence and conduct orchestrated agent-panel qualification.\n- [ ] 4.2 Publish profile identifiers, compatibility matrix and migration tooling.\n- [ ] 4.3 Freeze and sign the v1 normative profile candidate.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R.1 Correct partial conformance task states so pending signed-attestation\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_profile_v1_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -329,7 +328,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "foundation_architecture_20260718",
@@ -346,7 +345,7 @@
         "v1-critical",
         "rights-governance"
       ],
-      "body": "Conductor track: `foundation_architecture_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nRatify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.\n\n## Dependencies\n\n- None.\n\n## Acceptance criteria\n\n- [ ] All architecture decisions are accepted, superseded or explicitly deferred with rationale and owner.\n- [ ] Every v1-critical track has a repository owner, dependencies, target release, maturity target and checkable evidence contract.\n- [ ] The track and release dependency graphs are acyclic and validated automatically.\n- [ ] The v1 scope, non-claims, compatibility contract, support window and release authority are approved.\n- [ ] At least two independent analysts complete an architecture review; analysts may be maintainers, external reviewers or agents. Each analyst must have a distinct identity, scope or method, and findings must be resolved or recorded.\n- [ ] A contributor can regenerate the issue graph and roadmap status from a clean checkout.\n\n## Source of truth\n\n- `conductor/tracks/foundation_architecture_20260718/spec.md`\n- `conductor/tracks/foundation_architecture_20260718/plan.md`\n- `conductor/tracks/foundation_architecture_20260718/metadata.json`\n- `conductor/tracks/foundation_architecture_20260718/index.md`",
+      "body": "Conductor track: `foundation_architecture_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nRatify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.\n\n## Dependencies\n\n- None.\n\n## Acceptance criteria\n\n- [ ] All architecture decisions are accepted, superseded or explicitly deferred with rationale and owner.\n- [ ] Every v1-critical track has a repository owner, dependencies, target release, maturity target and checkable evidence contract.\n- [ ] The track and release dependency graphs are acyclic and validated automatically.\n- [ ] The v1 scope, non-claims, compatibility contract, support window and release authority are approved.\n- [ ] At least two independent agent analysts complete architecture qualification. Each analyst must have a distinct identity, scope or method, and findings must be resolved or recorded by the orchestrator.\n- [ ] A contributor can regenerate the issue graph and roadmap status from a clean checkout.\n\n## Source of truth\n\n- `conductor/tracks/foundation_architecture_20260718/spec.md`\n- `conductor/tracks/foundation_architecture_20260718/plan.md`\n- `conductor/tracks/foundation_architecture_20260718/metadata.json`\n- `conductor/tracks/foundation_architecture_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Foundation",
@@ -360,7 +359,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-1",
@@ -388,7 +387,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-2",
@@ -404,7 +403,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Define maintainers, approvers, reviewers, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)\n- [ ] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth. (docs/governance-and-sustainability.md; f95b827)\n- [ ] 2.3 Establish sustainability, succession and contribution expectations. (docs/governance-and-sustainability.md; f95b827)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Define maintainers, approvers, agent-panel lenses, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)\n- [ ] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth. (docs/governance-and-sustainability.md; f95b827)\n- [ ] 2.3 Establish sustainability, succession and contribution expectations. (docs/governance-and-sustainability.md; f95b827)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -418,7 +417,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-3",
@@ -448,7 +447,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-4",
@@ -464,7 +463,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)\n- [ ] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)\n- [ ] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two independent agent-analyst architecture assessments. (docs/architecture-reviews/; 4f1560e)\n- [ ] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)\n- [ ] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -478,7 +477,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "foundation_architecture_20260718:phase-5",
@@ -494,7 +493,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)\n- [ ] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)\n- [ ] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)\n- [ ] 5.2 Register external dependencies, closure evidence, owners and bounded fallbacks. (docs/external-dependency-register.md; f614b40)\n- [ ] 5.3 Align the closeout wording with the validating status and machine-readable M2 readiness boundary. (601940f; review fix)\n- [ ] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)\n- [ ] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -508,11 +507,11 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "governance_maori_data_sovereignty_20260718",
-      "title": "[Track] Rights, privacy and Māori data sovereignty framework",
+      "title": "[Track] Rights, privacy and scope-triggered data governance framework",
       "parent": "program-epic",
       "blocked_by": [
         "foundation_architecture_20260718"
@@ -528,7 +527,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nEmbed lawful reuse, social licence, benefit, Māori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] A versioned decision framework covers rights, privacy, ethics, Māori data sovereignty, safety and legal-status triggers.\n- [ ] Publication fails closed when required rights or governance decisions are unresolved.\n- [ ] Controlled and public pathways are technically separated and tested.\n- [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.\n- [ ] Every applied pilot has a documented benefit, harm, equity and governance review.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md`",
+      "body": "Conductor track: `governance_maori_data_sovereignty_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nEmbed lawful reuse, privacy, safety, social licence and withdrawal decisions into source registration, analysis and publication gates. Cultural or community-specific review is triggered only when the documented scope, source terms or risk assessment requires it.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] A versioned decision framework covers rights, privacy, ethics, scope-triggered cultural or community review, safety and legal-status triggers.\n- [ ] Publication fails closed when required rights or governance decisions are unresolved.\n- [ ] Controlled and public pathways are technically separated and tested.\n- [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.\n- [ ] Every applied pilot has a documented benefit, harm, equity and governance review.\n\n## Source of truth\n\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json`\n- `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Foundation",
@@ -616,7 +615,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Document optional Māori-specific governance and engagement guidance for contexts where it is requested or applicable. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Document optional scope-triggered cultural or community governance and engagement guidance where it is requested or applicable. (docs/governance-engagement-pathway.md; ee966dc)\n- [ ] 3.2 Review facility, health, deprivation and culturally sensitive geographic use cases. (reports/governance-use-case-review.md; 2026-07-29)\n- [ ] 3.3 Document benefits, harms, mitigations and residual risks. (reports/governance-use-case-review.md; 2026-07-29)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -723,7 +722,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "security_supply_chain_20260719:phase-1",
@@ -737,7 +736,7 @@
         "maturity:m6",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Model assets, actors, trust boundaries and abuse cases.\n- [ ] 1.2 Classify credentials, environments, sources and release authorities.\n- [ ] 1.3 Define severity, response and release-blocking rules.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Model assets, actors, trust boundaries and abuse cases. (docs/security-threat-model.md)\n- [ ] 1.2 Classify credentials, environments, sources and release authorities. (docs/security-threat-model.md)\n- [ ] 1.3 Define severity, response and release-blocking rules. (docs/vulnerability-response-policy.md)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -751,7 +750,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "security_supply_chain_20260719:phase-2",
@@ -767,7 +766,7 @@
         "maturity:m6",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Add branch protection, required review and least-privilege workflow permissions.\n- [ ] 2.2 Add dependency, static, secret, container and action-integrity checks.\n- [ ] 2.3 Generate and validate SBOMs for packages and containers.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Add branch protection, required automated checks, agent-panel qualification evidence and least-privilege workflow permissions.\n- [ ] 2.2 Add dependency, static, secret, container and action-integrity checks.\n- [ ] 2.3 Generate and validate SBOMs for packages and containers. (existing workflow and security-control-manifest.json)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -781,7 +780,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "security_supply_chain_20260719:phase-3",
@@ -811,7 +810,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "security_supply_chain_20260719:phase-4",
@@ -821,13 +820,13 @@
         "security_supply_chain_20260719:phase-3"
       ],
       "labels": [
-        "type:validation",
+        "type:implementation",
         "phase:foundation",
         "risk:critical",
         "maturity:m6",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct security review and resolve findings.\n- [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.\n- [ ] 4.3 Publish the supported-version and vulnerability-response policy.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct orchestrated security agent-panel qualification and resolve findings.\n- [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.\n- [ ] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -841,7 +840,37 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
+    },
+    {
+      "key": "security_supply_chain_20260719:phase-5",
+      "title": "[security_supply_chain_20260719] 5. Review fixes",
+      "parent": "security_supply_chain_20260719",
+      "blocked_by": [
+        "security_supply_chain_20260719:phase-4"
+      ],
+      "labels": [
+        "type:validation",
+        "phase:foundation",
+        "risk:critical",
+        "maturity:m1",
+        "release:0.3.0"
+      ],
+      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)\n- [ ] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "Foundation",
+      "track_id": "security_supply_chain_20260719",
+      "target_release": "0.3.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Governance",
+      "v1_critical": true,
+      "priority": "P0",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Programme owner",
+      "blocking_defects": 4
     },
     {
       "key": "connector_runtime_capture_20260719",
@@ -849,7 +878,6 @@
       "parent": "program-epic",
       "blocked_by": [
         "provenance_profile_v1_20260718",
-        "governance_maori_data_sovereignty_20260718",
         "security_supply_chain_20260719"
       ],
       "labels": [
@@ -864,7 +892,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `connector_runtime_capture_20260719`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nProvide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `governance_maori_data_sovereignty_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] A common adapter interface supports at least ArcGIS REST, WFS/OGC, Koordinates/API, document download and web-archive capture classes.\n- [ ] Captures record method, URL template, safe parameters, relevant headers, status, pagination, timing, bytes, digest, ETag and source/service identity.\n- [ ] Retry, resume, idempotency, throttling, malformed response and partial failure tests pass.\n- [ ] Rights/governance and authentication policies can block acquisition or publication independently.\n- [ ] Source health and schema/capability drift generate actionable events and alerts.\n- [ ] At least one real national and one council source complete the capture contract.\n\n## Source of truth\n\n- `conductor/tracks/connector_runtime_capture_20260719/spec.md`\n- `conductor/tracks/connector_runtime_capture_20260719/plan.md`\n- `conductor/tracks/connector_runtime_capture_20260719/metadata.json`\n- `conductor/tracks/connector_runtime_capture_20260719/index.md`",
+      "body": "Conductor track: `connector_runtime_capture_20260719`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nProvide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] A common adapter interface supports at least ArcGIS REST, WFS/OGC, Koordinates/API, document download and web-archive capture classes.\n- [ ] Captures record method, URL template, safe parameters, relevant headers, status, pagination, timing, bytes, digest, ETag and source/service identity.\n- [ ] Retry, resume, idempotency, throttling, malformed response and partial failure tests pass.\n- [ ] Rights/governance and authentication policies can block acquisition or publication independently.\n- [ ] Source health and schema/capability drift generate actionable events and alerts.\n- [ ] At least one real national and one council source complete the capture contract.\n\n## Source of truth\n\n- `conductor/tracks/connector_runtime_capture_20260719/spec.md`\n- `conductor/tracks/connector_runtime_capture_20260719/plan.md`\n- `conductor/tracks/connector_runtime_capture_20260719/metadata.json`\n- `conductor/tracks/connector_runtime_capture_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
@@ -1017,7 +1045,7 @@
         "provenance",
         "rights-governance"
       ],
-      "body": "Conductor track: `methods_research_objects_20260718`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nGenerate concise citable methods and publication-grade supplementary evidence from the same validated release facts and package them as complete, externally verifiable research objects.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] The validator discovers record schemas generically and rejects malformed records regardless of filename.\n- [ ] A complete real-data research object passes external RO-Crate and metadata validation.\n- [ ] Short methods, full supplement, methods facts, citation and manifest agree under automated checks.\n- [ ] The bundle includes payload or resolvable-content evidence, quality, rights, SBOM, attestations, environment and preservation records.\n- [ ] Two clean builds are content-identical or have declared and verified tolerance differences.\n- [ ] A clean-room reviewer can verify and cite the release without repository-specific knowledge.\n\n## Source of truth\n\n- `conductor/tracks/methods_research_objects_20260718/spec.md`\n- `conductor/tracks/methods_research_objects_20260718/plan.md`\n- `conductor/tracks/methods_research_objects_20260718/metadata.json`\n- `conductor/tracks/methods_research_objects_20260718/index.md`",
+      "body": "Conductor track: `methods_research_objects_20260718`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nGenerate concise citable methods and publication-grade supplementary evidence from the same validated release facts and package them as complete, externally verifiable research objects.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] The validator discovers record schemas generically and rejects malformed records regardless of filename.\n- [ ] A complete real-data research object passes external RO-Crate and metadata validation.\n- [ ] Short methods, full supplement, methods facts, citation and manifest agree under automated checks.\n- [ ] The bundle includes payload or resolvable-content evidence, quality, rights, SBOM, attestations, environment and preservation records.\n- [ ] Two clean builds are content-identical or have declared and verified tolerance differences.\n- [ ] A clean-room agent analyst can verify and cite the release without repository-specific knowledge.\n\n## Source of truth\n\n- `conductor/tracks/methods_research_objects_20260718/spec.md`\n- `conductor/tracks/methods_research_objects_20260718/plan.md`\n- `conductor/tracks/methods_research_objects_20260718/metadata.json`\n- `conductor/tracks/methods_research_objects_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
@@ -1157,8 +1185,7 @@
       "parent": "program-epic",
       "blocked_by": [
         "canonical_domain_schemas_ontology_20260719",
-        "provenance_profile_v1_20260718",
-        "governance_maori_data_sovereignty_20260718"
+        "provenance_profile_v1_20260718"
       ],
       "labels": [
         "type:track",
@@ -1171,7 +1198,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `nz_spatial_source_registry_20260718`  \nPhase: **NZ Spatial**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Operational**\n\n## Goal\n\nCreate a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `provenance_profile_v1_20260718`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Every current local and regional authority has authority, plan, service/document and disposition records.\n- [ ] All named national source families are registered with access, rights, update and preservation evidence.\n- [ ] Automated discovery adapters and manual review produce equivalent canonical records.\n- [ ] Coverage reports distinguish available, restricted, viewer-only, document-only, unresolved and absent sources.\n- [ ] Source changes, disappearances and terms/licence changes are detected and versioned.\n- [ ] The registry is independently sampled and errors are below an approved threshold or transparently reported.\n\n## Source of truth\n\n- `conductor/tracks/nz_spatial_source_registry_20260718/spec.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/plan.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/metadata.json`\n- `conductor/tracks/nz_spatial_source_registry_20260718/index.md`",
+      "body": "Conductor track: `nz_spatial_source_registry_20260718`  \nPhase: **NZ Spatial**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Operational**\n\n## Goal\n\nCreate a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `provenance_profile_v1_20260718`\n\n## Acceptance criteria\n\n- [ ] Every current local and regional authority has authority, plan, service/document and disposition records.\n- [ ] All named national source families are registered with access, rights, update and preservation evidence.\n- [ ] Automated discovery adapters and manual review produce equivalent canonical records.\n- [ ] Coverage reports distinguish available, restricted, viewer-only, document-only, unresolved and absent sources.\n- [ ] Source changes, disappearances and terms/licence changes are detected and versioned.\n- [ ] The registry is independently sampled and errors are below an approved threshold or transparently reported.\n\n## Source of truth\n\n- `conductor/tracks/nz_spatial_source_registry_20260718/spec.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/plan.md`\n- `conductor/tracks/nz_spatial_source_registry_20260718/metadata.json`\n- `conductor/tracks/nz_spatial_source_registry_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "NZ Spatial",
@@ -1199,7 +1226,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Create current/historical authority and jurisdiction records.\n- [ ] 1.2 Inventory district/regional plans, versions, statuses and official landing pages.\n- [ ] 1.3 Register national spatial, planning, Gazette and legislation source families.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Create current/historical authority and jurisdiction records.\n- [ ] 1.2 Inventory district/regional plans, versions, statuses and official landing pages.\n- [ ] 1.3 Register exact-version LINZ, Stats NZ, NZTA/network, planning, Gazette and legislation source families, including their cross-repository ownership and archive disposition.\n- [ ] 1.4 Register the exact Stats NZ Meshblock 2026 item, edition, service, rights and immutable hosted archive evidence without implying that the other national source families are complete.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1229,7 +1256,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Discover ArcGIS, WFS/OGC, Koordinates, ePlan and downloadable-layer mechanisms.\n- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.\n- [ ] 2.3 Preserve capability, metadata, terms and rights snapshots.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Discover ArcGIS, WFS/OGC, Koordinates, ePlan and downloadable-layer mechanisms.\n- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.\n- [ ] 2.3 Preserve capability, metadata, terms and rights snapshots before any source is incorporated into a canonical or analytical projection.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1507,7 +1534,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.\n- [ ] 1.2 Capture national layers, council services and planning documents faithfully.\n- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.\n- [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.\n- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.\n- [ ] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.\n- [ ] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service (`8f34bfd`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1537,7 +1564,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Transform source layers into canonical feature/version records.\n- [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.\n- [ ] 2.3 Link source, document and plan identities without unsupported interpretation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Transform source layers into canonical feature/version records.\n- [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.\n- [ ] 2.3 Link source, document and plan identities without unsupported interpretation.\n- [ ] 2.4 Build a normalized Meshblock feature projection with page-level capture lineage and no implicit geometry repair (`8f34bfd`, `61cddd3`; projection `urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1567,7 +1594,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples.\n- [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.\n- [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate GeoParquet and DuckDB Spatial outputs and query examples only from content-addressed archived source packets.\n- [ ] 3.2 Run geometry, topology, completeness, temporal, rights and lineage checks.\n- [ ] 3.3 Produce coverage, fidelity and unresolved-status reports.\n- [ ] 3.4 Validate the complete offline projection and commit bounded evidence while keeping bulk spatial outputs outside Git (`evidence/stats-nz-meshblock-2026-projection/records-manifest.json`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1591,13 +1618,43 @@
         "nz_spatial_archive_mvp_20260718:phase-3"
       ],
       "labels": [
+        "type:implementation",
+        "phase:nz-spatial",
+        "risk:critical",
+        "maturity:m1",
+        "release:0.5.0"
+      ],
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Generate methods, citation, provenance, SBOM and attestations.\n- [ ] 4.2 Run external validation and clean-environment rebuild.\n- [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "NZ Spatial",
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "target_release": "0.5.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Reference",
+      "v1_critical": true,
+      "priority": "P0",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Spatial data lead",
+      "blocking_defects": 0
+    },
+    {
+      "key": "nz_spatial_archive_mvp_20260718:phase-5",
+      "title": "[nz_spatial_archive_mvp_20260718] 5. Review fixes",
+      "parent": "nz_spatial_archive_mvp_20260718",
+      "blocked_by": [
+        "nz_spatial_archive_mvp_20260718:phase-4"
+      ],
+      "labels": [
         "type:validation",
         "phase:nz-spatial",
         "risk:critical",
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Generate methods, citation, provenance, SBOM and attestations.\n- [ ] 4.2 Run external validation and clean-environment rebuild.\n- [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_archive_mvp_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record, safely reuse only a verified local packet, reject redirects outside the archive host boundary and separate stable semantic identity from run-specific DuckDB bytes (`ffeb681`, `6c9c5c8`, `f04693c`, `de8b790`, `61cddd3`).\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_archive_mvp_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1719,7 +1776,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build public reference instances and cross-engine comparisons.\n- [ ] 3.2 Implement partitioning, caching and incremental recomputation.\n- [ ] 3.3 Benchmark national-scale performance, storage and cost.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build public reference instances and cross-engine comparisons from named archived network, timetable, demand and facility snapshots.\n- [ ] 3.2 Implement partitioning, caching and incremental recomputation.\n- [ ] 3.3 Benchmark national-scale performance, storage and cost.\n- [ ] 3.4 Preserve the complete Stats NZ Meshblock 2026 supporting geography as an immutable input candidate while keeping demand, destination, network and performance claims open.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1749,7 +1806,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate with real NZ archive and facility registry versions.\n- [ ] 4.2 Conduct scientific and user review of semantics and limitations.\n- [ ] 4.3 Freeze the v1 accessibility contract and examples.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `accessibility_network_engine_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate only with content-addressed real NZ archive, network/timetable and facility-registry versions.\n- [ ] 4.2 Conduct scientific-methods and user-workflow agent-panel qualification of semantics and limitations.\n- [ ] 4.3 Freeze the v1 accessibility contract and examples.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/accessibility_network_engine_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1771,8 +1828,7 @@
       "parent": "program-epic",
       "blocked_by": [
         "canonical_domain_schemas_ontology_20260719",
-        "connector_runtime_capture_20260719",
-        "governance_maori_data_sovereignty_20260718"
+        "connector_runtime_capture_20260719"
       ],
       "labels": [
         "type:track",
@@ -1786,7 +1842,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `facility_registry_20260719`  \nPhase: **Analytics**  \nTarget release: **0.6.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `connector_runtime_capture_20260719`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] At least three independent supermarket/food-retail source families and two health-service source families are represented where rights permit.\n- [ ] Entity-resolution precision/recall or equivalent review metrics are reported on a stratified sample.\n- [ ] Facility history represents opening, closure, relocation, rebrand and source disagreement.\n- [ ] Source/geocoded coordinates and uncertainty are separately queryable.\n- [ ] Manual adjudication records are reproducible and reviewer/audit evidence is preserved.\n- [ ] Public release filters sensitive/restricted facilities according to governance decisions.\n\n## Source of truth\n\n- `conductor/tracks/facility_registry_20260719/spec.md`\n- `conductor/tracks/facility_registry_20260719/plan.md`\n- `conductor/tracks/facility_registry_20260719/metadata.json`\n- `conductor/tracks/facility_registry_20260719/index.md`",
+      "body": "Conductor track: `facility_registry_20260719`  \nPhase: **Analytics**  \nTarget release: **0.6.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.\n\n## Dependencies\n\n- `canonical_domain_schemas_ontology_20260719`\n- `connector_runtime_capture_20260719`\n\n## Acceptance criteria\n\n- [ ] At least three independent supermarket/food-retail source families and two health-service source families are represented where rights permit.\n- [ ] Entity-resolution precision/recall or equivalent review metrics are reported on a stratified sample.\n- [ ] Facility history represents opening, closure, relocation, rebrand and source disagreement.\n- [ ] Source/geocoded coordinates and uncertainty are separately queryable.\n- [ ] Manual adjudication records are reproducible and agent-panel/audit evidence is preserved.\n- [ ] Public release filters sensitive/restricted facilities according to governance decisions.\n\n## Source of truth\n\n- `conductor/tracks/facility_registry_20260719/spec.md`\n- `conductor/tracks/facility_registry_20260719/plan.md`\n- `conductor/tracks/facility_registry_20260719/metadata.json`\n- `conductor/tracks/facility_registry_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Analytics",
@@ -1800,7 +1856,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "facility_registry_20260719:phase-1",
@@ -1814,7 +1870,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define facility, operator, location, service and assertion identities.\n- [ ] 1.2 Define temporal state, coordinates, uncertainty, rights and governance fields.\n- [ ] 1.3 Register supermarket and health-service source families.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define facility assertion identities in the bounded reference contract; operator, service and stable registry identities remain release work.\n- [ ] 1.2 Define source coordinates, optional uncertainty, rights, authority and observation fields for bounded source assertions; temporal registry state remains release work.\n- [ ] 1.3 Register rights-cleared public supermarket and health-service source families; three public food-retail families are archived, while a second public health family remains open.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1828,7 +1884,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "facility_registry_20260719:phase-2",
@@ -1844,7 +1900,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Capture independent source assertions and geocoding evidence.\n- [ ] 2.2 Implement candidate generation, scoring, conflict preservation and adjudication.\n- [ ] 2.3 Record openings, closures, relocations and rebrands.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Archive independent public council and OSM assertions with immutable receipts before reconciliation; verified health and broader geocoded evidence remain open.\n- [ ] 2.2 Implement deterministic type/name/distance candidate generation and conflict preservation; accountable adjudication remains open.\n- [ ] 2.3 Record openings, closures, relocations and rebrands.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1858,7 +1914,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "facility_registry_20260719:phase-3",
@@ -1874,7 +1930,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build stratified duplicate, classification and coordinate review samples.\n- [ ] 3.2 Estimate match/classification performance and sensitivity.\n- [ ] 3.3 Implement sensitive/restricted release filtering.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build a deterministic stratified duplicate, classification and coordinate review sample; panel disposition is pending.\n- [ ] 3.2 Record bounded source sensitivity; performance estimates require a reference sample qualified by the agent panel.\n- [ ] 3.3 Implement sensitive/restricted release filtering.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1888,7 +1944,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "facility_registry_20260719:phase-4",
@@ -1904,7 +1960,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate registry versions with accessibility and planning queries.\n- [ ] 4.2 Publish source disagreement and coverage reports.\n- [ ] 4.3 Release immutable registry snapshot and correction process.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate registry versions with accessibility and planning queries.\n- [ ] 4.2 Publish source disagreement and coverage reports.\n- [ ] 4.3 Release immutable registry snapshot and correction process.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.\n- [ ] G.2 Geometry-bearing or explicitly attribute-only disposition for the Hamilton packet.\n- [ ] G.3 A second public health source family with an immutable archive receipt.\n- [ ] G.4 Stable registry projection, source-disagreement and coverage reports.\n- [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.\n- [ ] G.6 Reconcile hosted merge policy through a fresh PR. PR #177 merged on\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1918,7 +1974,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "interoperability_conformance_sdks_20260719",
@@ -2245,7 +2301,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `planning_rules_linkage_20260718`  \nPhase: **NZ Spatial**  \nTarget release: **0.6.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nLink zoning, overlays, precincts and other planning geometries to versioned plans and provisions with transparent evidence, review, confidence and legal-status limitations.\n\n## Dependencies\n\n- `nz_spatial_archive_mvp_20260718`\n- `canonical_domain_schemas_ontology_20260719`\n\n## Acceptance criteria\n\n- [ ] Stable identifiers represent plan/version/provision and survive document repagination where possible.\n- [ ] At least two councils with materially different plan structures complete spatial-to-rule linkage.\n- [ ] Automated or AI-assisted extraction records model/tool evidence and receives human review before release.\n- [ ] Independent review samples quantify missing and incorrect links.\n- [ ] Feasibility queries return cited rules, status, confidence and caveats rather than one unsupported boolean.\n- [ ] Cross-council mappings preserve original classes and provenance.\n\n## Source of truth\n\n- `conductor/tracks/planning_rules_linkage_20260718/spec.md`\n- `conductor/tracks/planning_rules_linkage_20260718/plan.md`\n- `conductor/tracks/planning_rules_linkage_20260718/metadata.json`\n- `conductor/tracks/planning_rules_linkage_20260718/index.md`",
+      "body": "Conductor track: `planning_rules_linkage_20260718`  \nPhase: **NZ Spatial**  \nTarget release: **0.6.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nLink zoning, overlays, precincts and other planning geometries to versioned plans and provisions with transparent evidence, review, confidence and legal-status limitations.\n\n## Dependencies\n\n- `nz_spatial_archive_mvp_20260718`\n- `canonical_domain_schemas_ontology_20260719`\n\n## Acceptance criteria\n\n- [ ] Stable identifiers represent plan/version/provision and survive document repagination where possible.\n- [ ] At least two councils with materially different plan structures complete spatial-to-rule linkage.\n- [ ] Automated or AI-assisted extraction records model/tool evidence and receives review by a multi-agent panel before release.\n- [ ] Orchestrated agent-panel qualification samples quantify missing and incorrect links.\n- [ ] Feasibility queries return cited rules, status, confidence and caveats rather than one unsupported boolean.\n- [ ] Cross-council mappings preserve original classes and provenance.\n\n## Source of truth\n\n- `conductor/tracks/planning_rules_linkage_20260718/spec.md`\n- `conductor/tracks/planning_rules_linkage_20260718/plan.md`\n- `conductor/tracks/planning_rules_linkage_20260718/metadata.json`\n- `conductor/tracks/planning_rules_linkage_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "NZ Spatial",
@@ -2550,7 +2606,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `planning_system_transition_20260719`  \nPhase: **NZ Spatial**  \nTarget release: **0.7.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nRepresent legislation, authority, plan and provision transitions so longitudinal analyses remain reproducible through planning reform, reorganisation and partial legal succession.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `canonical_domain_schemas_ontology_20260719`\n\n## Acceptance criteria\n\n- [ ] Transition schemas represent all named legal and plan states without substituting retrieval time.\n- [ ] At least one authority reorganisation and one plan replacement are reconstructed with evidence.\n- [ ] Longitudinal queries can choose valid-time, recorded-time and as-known-at perspectives.\n- [ ] Continuity crosswalks expose confidence, scope and non-equivalence.\n- [ ] Independent domain review confirms that the data model does not imply legal advice.\n- [ ] Migration guidance covers future planning-system changes without rewriting historical records.\n\n## Source of truth\n\n- `conductor/tracks/planning_system_transition_20260719/spec.md`\n- `conductor/tracks/planning_system_transition_20260719/plan.md`\n- `conductor/tracks/planning_system_transition_20260719/metadata.json`\n- `conductor/tracks/planning_system_transition_20260719/index.md`",
+      "body": "Conductor track: `planning_system_transition_20260719`  \nPhase: **NZ Spatial**  \nTarget release: **0.7.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nRepresent legislation, authority, plan and provision transitions so longitudinal analyses remain reproducible through planning reform, reorganisation and partial legal succession.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `canonical_domain_schemas_ontology_20260719`\n\n## Acceptance criteria\n\n- [ ] Transition schemas represent all named legal and plan states without substituting retrieval time.\n- [ ] At least one authority reorganisation and one plan replacement are reconstructed with evidence.\n- [ ] Longitudinal queries can choose valid-time, recorded-time and as-known-at perspectives.\n- [ ] Continuity crosswalks expose confidence, scope and non-equivalence.\n- [ ] An orchestrated planning-domain agent panel confirms that the data model does not imply legal advice.\n- [ ] Migration guidance covers future planning-system changes without rewriting historical records.\n\n## Source of truth\n\n- `conductor/tracks/planning_system_transition_20260719/spec.md`\n- `conductor/tracks/planning_system_transition_20260719/plan.md`\n- `conductor/tracks/planning_system_transition_20260719/metadata.json`\n- `conductor/tracks/planning_system_transition_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "NZ Spatial",
@@ -2564,7 +2620,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-1",
@@ -2578,7 +2634,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define legislation, authority, instrument and provision transition relationships.\n- [ ] 1.2 Define legal/status and knowledge-time assertions and uncertainty.\n- [ ] 1.3 Add transition fixtures for rename, merge, split, replacement and partial continuity.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define legislation, authority, instrument and provision transition relationships. (transition schema; implementation)\n- [ ] 1.2 Define legal/status and knowledge-time assertions and uncertainty. (transitions.py; implementation)\n- [ ] 1.3 Add transition fixtures for rename, merge, split, replacement and partial continuity. (planning-transition-golden.json; implementation)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -2592,7 +2648,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-2",
@@ -2622,7 +2678,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-3",
@@ -2638,7 +2694,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Add valid-time, recorded-time and as-known-at query modes.\n- [ ] 3.2 Test downstream zoning and accessibility analyses across transitions.\n- [ ] 3.3 Document non-equivalence and unresolved transitions.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Add valid-time, recorded-time and as-known-at query modes. (transitions.py; implementation)\n- [ ] 3.2 Test downstream zoning and accessibility analyses across transitions.\n- [ ] 3.3 Document non-equivalence and unresolved transitions. (planning-system-transition-migration-playbook.md)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -2652,14 +2708,44 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "planning_system_transition_20260719:phase-4",
-      "title": "[planning_system_transition_20260719] 4. Review and migration readiness",
+      "title": "[planning_system_transition_20260719] 4. Agent-panel qualification and migration readiness",
       "parent": "planning_system_transition_20260719",
       "blocked_by": [
         "planning_system_transition_20260719:phase-3"
+      ],
+      "labels": [
+        "type:implementation",
+        "phase:nz-spatial",
+        "risk:critical",
+        "maturity:m1",
+        "release:0.7.0"
+      ],
+      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct planning-domain agent-panel qualification and resolve model findings.\n- [ ] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)\n- [ ] 4.3 Release transition data and limitations with immutable evidence.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "NZ Spatial",
+      "track_id": "planning_system_transition_20260719",
+      "target_release": "0.7.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Reference",
+      "v1_critical": true,
+      "priority": "P1",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Spatial data lead",
+      "blocking_defects": 4
+    },
+    {
+      "key": "planning_system_transition_20260719:phase-5",
+      "title": "[planning_system_transition_20260719] 5. Review fixes",
+      "parent": "planning_system_transition_20260719",
+      "blocked_by": [
+        "planning_system_transition_20260719:phase-4"
       ],
       "labels": [
         "type:validation",
@@ -2668,7 +2754,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct planning-domain review and resolve model findings.\n- [ ] 4.2 Publish future-reform migration playbook.\n- [ ] 4.3 Release transition data and limitations with immutable evidence.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `planning_system_transition_20260719`.\n\n## Tasks\n\n- [ ] 5.1 Correct the migration-playbook evidence SHA and record pending reconstruction/review gates explicitly. (review fix)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_system_transition_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -2682,7 +2768,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "spatial_quality_temporality_20260718",
@@ -2810,7 +2896,7 @@
     },
     {
       "key": "spatial_quality_temporality_20260718:phase-4",
-      "title": "[spatial_quality_temporality_20260718] 4. Independent quality validation",
+      "title": "[spatial_quality_temporality_20260718] 4. Agent-panel quality validation",
       "parent": "spatial_quality_temporality_20260718",
       "blocked_by": [
         "spatial_quality_temporality_20260718:phase-3"
@@ -3028,8 +3114,7 @@
       "blocked_by": [
         "accessibility_network_engine_20260719",
         "facility_location_engine_20260718",
-        "simulation_validation_engine_20260719",
-        "governance_maori_data_sovereignty_20260718"
+        "simulation_validation_engine_20260719"
       ],
       "labels": [
         "type:track",
@@ -3042,7 +3127,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `emergency_health_facilities_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nDemonstrate the common location and simulation framework for emergency response and hospital/service planning while preserving safety, uncertainty and controlled-data boundaries.\n\n## Dependencies\n\n- `accessibility_network_engine_20260719`\n- `facility_location_engine_20260718`\n- `simulation_validation_engine_20260719`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] Ambulance benchmark includes maximal/backup coverage, busy availability and stochastic dispatch simulation.\n- [ ] Dynamic relocation or posting is tested without implying live operational suitability.\n- [ ] Hospital/service benchmark includes multiple services, capacity, referral/workforce, resilience and phased investment.\n- [ ] Static and simulated results are compared under common scenarios and stress tests.\n- [ ] Equity, rurality, tail outcomes and uncertainty are reported separately from averages.\n- [ ] Independent operational/safety, methods and governance reviewers approve the bounded reference claims.\n\n## Source of truth\n\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md`",
+      "body": "Conductor track: `emergency_health_facilities_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nDemonstrate the common location and simulation framework for emergency response and hospital/service planning while preserving safety, uncertainty and controlled-data boundaries.\n\n## Dependencies\n\n- `accessibility_network_engine_20260719`\n- `facility_location_engine_20260718`\n- `simulation_validation_engine_20260719`\n\n## Acceptance criteria\n\n- [ ] Ambulance benchmark includes maximal/backup coverage, busy availability and stochastic dispatch simulation.\n- [ ] Dynamic relocation or posting is tested without implying live operational suitability.\n- [ ] Hospital/service benchmark includes multiple services, capacity, referral/workforce, resilience and phased investment.\n- [ ] Static and simulated results are compared under common scenarios and stress tests.\n- [ ] Equity, rurality, tail outcomes and uncertainty are reported separately from averages.\n- [ ] An independent multi-agent panel assesses operational/safety, methods and governance lenses and approves the bounded reference claims.\n\n## Source of truth\n\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json`\n- `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Applications",
@@ -3211,7 +3296,6 @@
       "title": "[Track] Health-outcomes, spatial epidemiology and causal-methods framework",
       "parent": "program-epic",
       "blocked_by": [
-        "governance_maori_data_sovereignty_20260718",
         "spatial_quality_temporality_20260718",
         "accessibility_network_engine_20260719"
       ],
@@ -3226,7 +3310,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `health_outcomes_causal_methods_20260719`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nProvide a rigorous framework for linking access, zoning and facilities to health outcomes while separating ecological description, prediction, causal inference and prescriptive modelling.\n\n## Dependencies\n\n- `governance_maori_data_sovereignty_20260718`\n- `spatial_quality_temporality_20260718`\n- `accessibility_network_engine_20260719`\n\n## Acceptance criteria\n\n- [ ] A machine-readable analysis protocol captures DAG, estimand, population, exposure, comparator, outcome, time and assumptions.\n- [ ] Reference code supports descriptive spatial analysis and at least one longitudinal/quasi-experimental design on public or synthetic data.\n- [ ] Spatial confounding, autocorrelation, MAUP and measurement-error sensitivity are demonstrated.\n- [ ] Negative control, missing-data and subgroup/equity plans are included where applicable.\n- [ ] Preregistered pilot analyses distinguish exploratory from confirmatory results.\n- [ ] Independent methodological and governance review approves claims or requires bounded language.\n\n## Source of truth\n\n- `conductor/tracks/health_outcomes_causal_methods_20260719/spec.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/plan.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/index.md`",
+      "body": "Conductor track: `health_outcomes_causal_methods_20260719`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nProvide a rigorous framework for linking access, zoning and facilities to health outcomes while separating ecological description, prediction, causal inference and prescriptive modelling.\n\n## Dependencies\n\n- `spatial_quality_temporality_20260718`\n- `accessibility_network_engine_20260719`\n\n## Acceptance criteria\n\n- [ ] A machine-readable analysis protocol captures DAG, estimand, population, exposure, comparator, outcome, time and assumptions.\n- [ ] Reference code supports descriptive spatial analysis and at least one longitudinal/quasi-experimental design on public or synthetic data.\n- [ ] Spatial confounding, autocorrelation, MAUP and measurement-error sensitivity are demonstrated.\n- [ ] Negative control, missing-data and subgroup/equity plans are included where applicable.\n- [ ] Preregistered pilot analyses distinguish exploratory from confirmatory results.\n- [ ] An orchestrated methods-and-governance agent panel approves claims or requires bounded language.\n\n## Source of truth\n\n- `conductor/tracks/health_outcomes_causal_methods_20260719/spec.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/plan.md`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json`\n- `conductor/tracks/health_outcomes_causal_methods_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Applications",
@@ -3332,7 +3416,7 @@
     },
     {
       "key": "health_outcomes_causal_methods_20260719:phase-4",
-      "title": "[health_outcomes_causal_methods_20260719] 4. Review and stable methods release",
+      "title": "[health_outcomes_causal_methods_20260719] 4. Agent-panel qualification and stable methods release",
       "parent": "health_outcomes_causal_methods_20260719",
       "blocked_by": [
         "health_outcomes_causal_methods_20260719:phase-3"
@@ -3344,7 +3428,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `health_outcomes_causal_methods_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct independent epidemiological/statistical and governance review.\n- [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.\n- [ ] 4.3 Publish stable methods, reporting and limitation templates.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/health_outcomes_causal_methods_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `health_outcomes_causal_methods_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct orchestrated epidemiological/statistical and governance agent-panel qualification.\n- [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.\n- [ ] 4.3 Publish stable methods, reporting and limitation templates.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/health_outcomes_causal_methods_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",
@@ -3399,8 +3483,7 @@
         "accessibility_network_engine_20260719",
         "facility_registry_20260719",
         "facility_location_engine_20260718",
-        "health_outcomes_causal_methods_20260719",
-        "governance_maori_data_sovereignty_20260718"
+        "health_outcomes_causal_methods_20260719"
       ],
       "labels": [
         "type:track",
@@ -3412,7 +3495,7 @@
         "v1-critical",
         "geospatial"
       ],
-      "body": "Conductor track: `supermarket_health_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReproduce and extend supermarket density/access analysis with open code, multi-source facilities, zoning feasibility, health outcomes, causal restraint and transparent location alternatives.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `accessibility_network_engine_20260719`\n- `facility_registry_20260719`\n- `facility_location_engine_20260718`\n- `health_outcomes_causal_methods_20260719`\n- `governance_maori_data_sovereignty_20260718`\n\n## Acceptance criteria\n\n- [ ] The baseline density/population analysis is reproduced from public, versioned inputs or discrepancies are fully explained.\n- [ ] Facility reconciliation and accessibility sensitivity are independently reviewed.\n- [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.\n- [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.\n- [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.\n- [ ] Code, data or resolvable inputs, methods, quality, governance and research object are independently reproducible.\n\n## Source of truth\n\n- `conductor/tracks/supermarket_health_pilot_20260718/spec.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/plan.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/metadata.json`\n- `conductor/tracks/supermarket_health_pilot_20260718/index.md`",
+      "body": "Conductor track: `supermarket_health_pilot_20260718`  \nPhase: **Applications**  \nTarget release: **0.8.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Reference**\n\n## Goal\n\nReproduce and extend supermarket density/access analysis with open code, multi-source facilities, zoning feasibility, health outcomes, causal restraint and transparent location alternatives.\n\n## Dependencies\n\n- `planning_rules_linkage_20260718`\n- `accessibility_network_engine_20260719`\n- `facility_registry_20260719`\n- `facility_location_engine_20260718`\n- `health_outcomes_causal_methods_20260719`\n\n## Acceptance criteria\n\n- [ ] The baseline density/population analysis is reproduced from public, versioned inputs or discrepancies are fully explained.\n- [ ] Facility reconciliation and accessibility sensitivity are agent-panel qualified.\n- [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.\n- [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.\n- [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.\n- [ ] Code, data or resolvable inputs, methods, quality, governance and research object are independently reproducible.\n\n## Source of truth\n\n- `conductor/tracks/supermarket_health_pilot_20260718/spec.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/plan.md`\n- `conductor/tracks/supermarket_health_pilot_20260718/metadata.json`\n- `conductor/tracks/supermarket_health_pilot_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Applications",
@@ -3682,7 +3765,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `operations_preservation_sre_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Define retention, replicas, fixity cadence and preservation package format.\n- [ ] 3.2 Automate backup, restore, correction, supersession and withdrawal paths.\n- [ ] 3.3 Conduct restore and disaster-recovery exercises.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/operations_preservation_sre_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `operations_preservation_sre_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Define retention, replicas, fixity cadence and preservation package format.\n- [ ] 3.2 Automate backup, restore, correction, supersession and withdrawal paths.\n- [ ] 3.3 Conduct restore and disaster-recovery exercises.\n- [ ] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)\n- [ ] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)\n- [ ] 3.6 Configure repository credentials and verify independent Hugging Face and Zenodo acceptance receipts.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/operations_preservation_sre_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -3712,7 +3795,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `operations_preservation_sre_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Operate the release pipeline for the required beta evidence period.\n- [ ] 4.2 Publish SLO, incident, capacity and preservation reports.\n- [ ] 4.3 Approve stable operational risk and support obligations.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/operations_preservation_sre_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `operations_preservation_sre_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Operate the release pipeline for the required beta evidence period.\n- [ ] 4.2 Publish SLO, incident, capacity and preservation reports.\n- [ ] 4.3 Approve stable operational risk and support obligations.\n- [ ] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/operations_preservation_sre_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -4088,7 +4171,7 @@
         "maturity:m1",
         "release:0.9.0"
       ],
-      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define independent conformance, clean-room and external-user protocols.\n- [ ] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications.\n- [ ] 1.3 Select validators, environments and reviewer independence criteria.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define independent conformance, clean-room and external-user protocols.\n- [ ] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications.\n- [ ] 1.3 Select agent-panel validators, environments and analyst-independence criteria.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Publication",
@@ -4196,7 +4279,7 @@
     },
     {
       "key": "publication_validation_20260718:phase-5",
-      "title": "[publication_validation_20260718] 5. Bounded reviewer preparation",
+      "title": "[publication_validation_20260718] 5. Bounded agent-panel preparation",
       "parent": "publication_validation_20260718",
       "blocked_by": [
         "publication_validation_20260718:phase-4"
@@ -4208,7 +4291,7 @@
         "maturity:m1",
         "release:0.9.0"
       ],
-      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Define the WP-010 clean-room procedure, independence criteria and content-bound evidence record. (37510dd)\n- [ ] 5.2 Define the staged Software Heritage plus artifact-repository preservation sequence without claiming a deposit. (37510dd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Define the WP-010 clean-room procedure, independence criteria and content-bound evidence record. (37510dd)\n- [ ] 5.2 Define the staged Software Heritage plus artifact-repository preservation sequence without claiming a deposit. (37510dd)\n- [ ] 5.3 Execute three isolated agent lenses across all 28 tracks and publish the fail-closed orchestrator synthesis. (`docs/panel-reports/20260802/manifest.json`)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Publication",
@@ -4248,7 +4331,7 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `performance_scalability_reliability_20260719`  \nPhase: **Release**  \nTarget release: **0.9.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Operational**\n\n## Goal\n\nDemonstrate that the v1 reference workloads complete within published resource, latency, throughput, reliability and cost envelopes and degrade safely under stress.\n\n## Dependencies\n\n- `connector_runtime_capture_20260719`\n- `provenance_query_api_20260719`\n- `nz_spatial_archive_operations_20260719`\n- `accessibility_network_engine_20260719`\n- `facility_location_engine_20260718`\n- `simulation_validation_engine_20260719`\n- `operations_preservation_sre_20260719`\n\n## Acceptance criteria\n\n- [ ] National-scale ingestion, snapshot, lineage query, accessibility and optimisation benchmarks meet published v1 envelopes.\n- [ ] Soak and concurrency tests demonstrate bounded queues, retries, memory and storage growth.\n- [ ] Stress, cancellation and dependency-failure tests show graceful degradation and successful recovery.\n- [ ] A reproducible cost and capacity model covers reference deployment and clean-room reproduction.\n- [ ] CI detects material performance regressions using noise-aware thresholds and retained baselines.\n- [ ] An independent reviewer verifies benchmark method, correctness controls and reported limitations.\n\n## Source of truth\n\n- `conductor/tracks/performance_scalability_reliability_20260719/spec.md`\n- `conductor/tracks/performance_scalability_reliability_20260719/plan.md`\n- `conductor/tracks/performance_scalability_reliability_20260719/metadata.json`\n- `conductor/tracks/performance_scalability_reliability_20260719/index.md`",
+      "body": "Conductor track: `performance_scalability_reliability_20260719`  \nPhase: **Release**  \nTarget release: **0.9.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Operational**\n\n## Goal\n\nDemonstrate that the v1 reference workloads complete within published resource, latency, throughput, reliability and cost envelopes and degrade safely under stress.\n\n## Dependencies\n\n- `connector_runtime_capture_20260719`\n- `provenance_query_api_20260719`\n- `nz_spatial_archive_operations_20260719`\n- `accessibility_network_engine_20260719`\n- `facility_location_engine_20260718`\n- `simulation_validation_engine_20260719`\n- `operations_preservation_sre_20260719`\n\n## Acceptance criteria\n\n- [ ] National-scale ingestion, snapshot, lineage query, accessibility and optimisation benchmarks meet published v1 envelopes.\n- [ ] Soak and concurrency tests demonstrate bounded queues, retries, memory and storage growth.\n- [ ] Stress, cancellation and dependency-failure tests show graceful degradation and successful recovery.\n- [ ] A reproducible cost and capacity model covers reference deployment and clean-room reproduction.\n- [ ] CI detects material performance regressions using noise-aware thresholds and retained baselines.\n- [ ] An independent multi-agent panel verifies benchmark method, correctness controls and reported limitations.\n\n## Source of truth\n\n- `conductor/tracks/performance_scalability_reliability_20260719/spec.md`\n- `conductor/tracks/performance_scalability_reliability_20260719/plan.md`\n- `conductor/tracks/performance_scalability_reliability_20260719/metadata.json`\n- `conductor/tracks/performance_scalability_reliability_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Release",
@@ -4276,7 +4359,7 @@
         "maturity:m1",
         "release:0.9.0"
       ],
-      "body": "Implementation phase for Conductor track `performance_scalability_reliability_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define reference datasets, workloads, correctness checks and measurement protocol.\n- [ ] 1.2 Set provisional latency, throughput, resource and cost envelopes.\n- [ ] 1.3 Implement reproducible benchmark environment capture.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/performance_scalability_reliability_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `performance_scalability_reliability_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define reference datasets, workloads, correctness checks and measurement protocol.\n- [ ] 1.2 Set provisional latency, throughput, resource and cost envelopes.\n- [ ] 1.3 Implement reproducible benchmark environment capture.\n- [ ] 1.4 Record the hosted full Meshblock 2026 acquisition as workload-shaping evidence without promoting its elapsed time to a national performance benchmark.\n- [ ] 1.5 Freeze a bounded national reference workload manifest linking the immutable Meshblock geography and provisional subnational population packets without an unsupported geographic join (`docs/national-workload-manifest-20260803.json`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/performance_scalability_reliability_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Release",
@@ -4354,7 +4437,7 @@
     },
     {
       "key": "performance_scalability_reliability_20260719:phase-4",
-      "title": "[performance_scalability_reliability_20260719] 4. Independent v1 qualification",
+      "title": "[performance_scalability_reliability_20260719] 4. Agent-panel v1 qualification",
       "parent": "performance_scalability_reliability_20260719",
       "blocked_by": [
         "performance_scalability_reliability_20260719:phase-3"
@@ -4366,7 +4449,7 @@
         "maturity:m1",
         "release:0.9.0"
       ],
-      "body": "Implementation phase for Conductor track `performance_scalability_reliability_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Repeat benchmarks in a second environment.\n- [ ] 4.2 Complete independent method and results review.\n- [ ] 4.3 Freeze v1 performance envelopes, limitations and operational actions.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/performance_scalability_reliability_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `performance_scalability_reliability_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Repeat benchmarks in a second environment.\n- [ ] 4.2 Complete orchestrated method-and-results agent-panel qualification.\n- [ ] 4.3 Freeze v1 performance envelopes, limitations and operational actions.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/performance_scalability_reliability_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Release",
@@ -4441,7 +4524,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Release authority",
-      "blocking_defects": 0
+      "blocking_defects": 6
     },
     {
       "key": "v1_release_hardening_20260719:phase-1",
@@ -4455,7 +4538,7 @@
         "maturity:m1",
         "release:1.0.0"
       ],
-      "body": "Implementation phase for Conductor track `v1_release_hardening_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format.\n- [ ] 1.2 Generate compatibility diffs and resolve unintended breaking changes.\n- [ ] 1.3 Close or formally defer non-v1 features.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/v1_release_hardening_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `v1_release_hardening_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. (full inventory remains pending; readiness baseline is not an inventory)\n- [ ] 1.2 Generate compatibility diffs and resolve unintended breaking changes.\n- [ ] 1.3 Close or formally defer non-v1 features.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/v1_release_hardening_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Release",
@@ -4469,7 +4552,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Release authority",
-      "blocking_defects": 0
+      "blocking_defects": 6
     },
     {
       "key": "v1_release_hardening_20260719:phase-2",
@@ -4499,7 +4582,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Release authority",
-      "blocking_defects": 0
+      "blocking_defects": 6
     },
     {
       "key": "v1_release_hardening_20260719:phase-3",
@@ -4529,7 +4612,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Release authority",
-      "blocking_defects": 0
+      "blocking_defects": 6
     },
     {
       "key": "v1_release_hardening_20260719:phase-4",
@@ -4539,13 +4622,13 @@
         "v1_release_hardening_20260719:phase-3"
       ],
       "labels": [
-        "type:validation",
+        "type:implementation",
         "phase:release",
         "risk:critical",
         "maturity:m1",
         "release:1.0.0"
       ],
-      "body": "Implementation phase for Conductor track `v1_release_hardening_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Approve all machine-readable v1 release gates and governance decisions.\n- [ ] 4.2 Publish stable artifacts, DOI/citations, support, deprecation and maintenance plan.\n- [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/v1_release_hardening_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `v1_release_hardening_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Approve all machine-readable v1 release gates and governance decisions.\n- [ ] 4.2 Publish stable artifacts, DOI/citations, support, deprecation and maintenance plan.\n- [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/v1_release_hardening_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Release",
@@ -4559,7 +4642,37 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Release authority",
-      "blocking_defects": 0
+      "blocking_defects": 6
+    },
+    {
+      "key": "v1_release_hardening_20260719:phase-5",
+      "title": "[v1_release_hardening_20260719] 5. Review fixes",
+      "parent": "v1_release_hardening_20260719",
+      "blocked_by": [
+        "v1_release_hardening_20260719:phase-4"
+      ],
+      "labels": [
+        "type:validation",
+        "phase:release",
+        "risk:critical",
+        "maturity:m1",
+        "release:1.0.0"
+      ],
+      "body": "Implementation phase for Conductor track `v1_release_hardening_20260719`.\n\n## Tasks\n\n- [ ] 5.1 Record a machine-readable, fail-closed v1 readiness baseline and explicit release blockers. (v1-release-readiness-baseline-20260801.json)\n- [ ] 5.2 Correct the readiness baseline boundary so it does not overstate completion of the normative inventory. (review fix)\n- [ ] 5.3 Record the capability/boundary map for hosted recovery, soak, scale, external workflows and release authority. (review fix)\n- [ ] 5.4 Adopt the single-developer agent-panel policy and record a fail-closed GitHub/Hugging Face remaining-gates plan with library options and contingencies. (review fix)\n- [ ] 5.5 Reconcile all normative review language to agent-panel qualification, stage daily hosted observations and record the GitHub/Hugging Face campaign-v2 plan. (review fix)\n- [ ] 5.6 Synchronise the validated issue graph to GitHub and record exact-head hosted check evidence. (`docs/github-issue-sync-20260802.json`)\n- [ ] 5.7 Protect `main` with strict hosted checks and no second-person review requirement. (`docs/github-main-protection-20260802.json`)\n- [ ] 5.8 Complete content-bound three-lens reports and an orchestrator synthesis for all 28 tracks without promoting any M6 disposition. (`docs/panel-reports/20260802/manifest.json`)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/v1_release_hardening_20260719/index.md` before closing.",
+      "mirror_to_umbrella": false,
+      "project": true,
+      "phase": "Release",
+      "track_id": "v1_release_hardening_20260719",
+      "target_release": "1.0.0",
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "risk": "Critical",
+      "stability_class": "Governance",
+      "v1_critical": true,
+      "priority": "P0",
+      "owner_repository": "edithatogo/riopa-infrastructure",
+      "owner_role": "Release authority",
+      "blocking_defects": 6
     }
   ]
 }

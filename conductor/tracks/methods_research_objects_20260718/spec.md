@@ -49,14 +49,14 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Short methods, full supplement, methods facts, citation and manifest agree under automated checks.
 - [ ] The bundle includes payload or resolvable-content evidence, quality, rights, SBOM, attestations, environment and preservation records.
 - [ ] Two clean builds are content-identical or have declared and verified tolerance differences.
-- [ ] A clean-room reviewer can verify and cite the release without repository-specific knowledge.
+- [ ] A clean-room agent analyst can verify and cite the release without repository-specific knowledge.
 
 ## Hardening and maturity gates
 
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 

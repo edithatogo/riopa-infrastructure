@@ -1,0 +1,66 @@
+{
+  "batch_id": "hosted-evidence-batch-20260802",
+  "source_revision": "6fcbe29ea0502a39625bd6b9be3c45a0a45fcb58",
+  "classification": "hosted-technical-preview-observations",
+  "observations": [
+    {
+      "lane": "agent-clean-room",
+      "run_id": "30744486356",
+      "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744486356",
+      "status": "passed",
+      "started_at": "2026-08-02T10:49:26.402484Z",
+      "ended_at": "2026-08-02T10:49:28.314248Z",
+      "runner_name": "GitHub Actions 1000277989",
+      "log_sha256": "c4b808d34f4db00b333696dec1f3a43a2887d8bfe0cb7af07a3cb98ff43a7830",
+      "receipt_sha256": "4eb7b224cfa3e45a9755590dd5990db242ce3dc65ada28cac7548c41a35a13d5"
+    },
+    {
+      "lane": "scale-smoke",
+      "run_id": "30744487469",
+      "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744487469",
+      "status": "passed",
+      "started_at": "2026-08-02T10:49:33.926672Z",
+      "ended_at": "2026-08-02T10:49:35.905818Z",
+      "runner_name": "GitHub Actions 1000277990",
+      "log_sha256": "23814bd54c3f40e10907bbb3fbbf634b818152cf7afb3d0013ebceb07460326b",
+      "receipt_sha256": "bed7556d710cff3c0f75d7a12b3affb8a52711d1119041718c8d94e4652a367f"
+    },
+    {
+      "lane": "operational-observation",
+      "run_id": "30744488425",
+      "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744488425",
+      "status": "passed",
+      "started_at": "2026-08-02T10:49:34.857926Z",
+      "ended_at": "2026-08-02T10:49:36.495956Z",
+      "runner_name": "GitHub Actions 1000277991",
+      "log_sha256": "99db33d5c94c6f7da021687c7391181685cc33299c5435b1c861e2db3be3ec87",
+      "receipt_sha256": "5f7bfc9924ba285d6e3917f4877c6c4f62c9c1266b04bd49c6db63f57307c8c4"
+    },
+    {
+      "lane": "rc-soak-observation",
+      "run_id": "30744489387",
+      "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744489387",
+      "status": "passed",
+      "started_at": "2026-08-02T10:49:38.140766Z",
+      "ended_at": "2026-08-02T10:49:50.436546Z",
+      "runner_name": "GitHub Actions 1000277992",
+      "log_sha256": "6621ccf2e89de6e2dd51284a93a2f26c01170689f97f5e0814a46665713a8ce3",
+      "receipt_sha256": "5960f67e56a202000846976dac9ec3f3670752996457879c513f0900285ccfaa"
+    }
+  ],
+  "disposition": {
+    "hosted_agent_clean_room": "passed-for-technical-preview",
+    "hosted_scale_smoke": "passed-not-national-scale",
+    "operational_cycle": "one-observation-duration-pending",
+    "rc_soak": "one-observation-duration-pending",
+    "external_participant_evidence": "pending",
+    "release_authority": "pending"
+  },
+  "non_claims": [
+    "These observations are not national-scale measurements.",
+    "A single observation is not an elapsed operational cycle or RC soak.",
+    "Agent clean-room execution is not external operator or user evidence.",
+    "This batch does not grant release authority."
+  ]
+}
+

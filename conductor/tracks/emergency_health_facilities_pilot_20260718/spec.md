@@ -21,7 +21,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 - `accessibility_network_engine_20260719`
 - `facility_location_engine_20260718`
 - `simulation_validation_engine_20260719`
-- `governance_maori_data_sovereignty_20260718`
 
 ## Scope
 
@@ -51,14 +50,14 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Hospital/service benchmark includes multiple services, capacity, referral/workforce, resilience and phased investment.
 - [ ] Static and simulated results are compared under common scenarios and stress tests.
 - [ ] Equity, rurality, tail outcomes and uncertainty are reported separately from averages.
-- [ ] Independent operational/safety, methods and governance reviewers approve the bounded reference claims.
+- [ ] An independent multi-agent panel assesses operational/safety, methods and governance lenses and approves the bounded reference claims.
 
 ## Hardening and maturity gates
 
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 

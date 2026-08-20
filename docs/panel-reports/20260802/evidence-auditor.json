@@ -1,0 +1,468 @@
+{
+  "schema": "riopa.track-panel-lens.v1",
+  "role": "evidence-auditor",
+  "source_revision": "dbbb71b38ca7f943ddd4e42069b4d6bc0a7bd669",
+  "bundle_sha256": "436843d563a7cfa22f21eba58adae66f2af71efa0dc3b7168b656b7fb80c11d6",
+  "evaluated_at": "2026-08-02T11:46:55Z",
+  "tracks": [
+    {
+      "track_id": "accessibility_network_engine_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #54 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Metadata and index consistently retain specified/M1 status and the live parent issue is open.",
+        "The bounded reference core is evidenced, but real multimodal engines, New Zealand integration, national-scale measurements and methods/user-workflow panel qualification remain missing."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/accessibility_network_engine_20260719/metadata.json",
+        "conductor/tracks/accessibility_network_engine_20260719/index.md",
+        "reports/wp009-reference-solver-cores.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/54"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "canonical_domain_schemas_ontology_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #2 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The validating/M1 metadata, evidence register and open issue linkage are internally consistent.",
+        "SHACL conformance, a non-Python round trip, a persistent ontology identifier, migration execution and semantic/domain panel qualification remain open and correctly prevent promotion."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md",
+        "docs/canonical-domain-inventory-20260801.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/2"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "connector_runtime_capture_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #29 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "All five registered repository artifacts resolve and the specified/M1 metadata matches the index and open issue.",
+        "The register supports the bounded retry, capture, DNS and health slice only; specified status does not evidence the track's complete real-source and later-maturity acceptance surface."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/connector_runtime_capture_20260719/metadata.json",
+        "conductor/tracks/connector_runtime_capture_20260719/index.md",
+        "reports/quality-baseline-inventory.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/29"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "documentation_developer_experience_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #124 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Metadata, index and live open issue agree on specified/M1 status.",
+        "The evidence register contains only an explicit none placeholder; documentation builds, accessibility, two distinct user workflows, support rehearsal and agent-panel qualification are not evidenced.",
+        "The empty register is fail-closed, although the Blocking defects section should enumerate these missing gates instead of saying none recorded."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/documentation_developer_experience_20260719/metadata.json",
+        "conductor/tracks/documentation_developer_experience_20260719/index.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/124"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "emergency_health_facilities_pilot_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #99 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The index binds synthetic and bounded public-source artifacts while metadata and live issue remain specified/M1 and open.",
+        "An authoritative national ambulance source, representative operational scenarios, calibration, stress testing and safety/methods qualification remain missing; the index correctly disclaims clinical and dispatch suitability."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/index.md",
+        "reports/wp010-synthetic-methods-core.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/99"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "facility_location_engine_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #79 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The small-instance correctness evidence resolves and is consistently bounded by specified/M1 metadata and an open issue.",
+        "Scalable solver adapters, certificate interchange, national workloads, performance envelopes and external benchmark qualification remain missing; exhaustive enumeration cannot support an operational-planning claim."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/facility_location_engine_20260718/metadata.json",
+        "conductor/tracks/facility_location_engine_20260718/index.md",
+        "reports/wp009-reference-solver-cores.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/79"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "facility_registry_20260719",
+      "disposition": "fail",
+      "scope": "Evidence-index, metadata, live issue #59 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Metadata and live issue consistently keep the track specified/M1 and open, and the bounded reconciliation limitations are explicit.",
+        "The evidence index is materially stale: it says the bounded-pilot decision is pending and no preservation deposit was attempted, while docs/wp010-bounded-pilot-decision.md records approval and Zenodo deposits with DOI 10.5281/zenodo.21735818 and successor DOI 10.5281/zenodo.21737563.",
+        "External-operator issue #149, national/source coverage, qualified performance estimates and release authority beyond the bounded preview remain open; the stale evidence states must be reconciled before this lens can pass."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/facility_registry_20260719/metadata.json",
+        "conductor/tracks/facility_registry_20260719/index.md",
+        "docs/wp010-bounded-pilot-decision.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/59",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/149"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "foundation_architecture_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #14 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The bounded M1 ratification, validating status, open issue and later-gate register are coherent and evidence references resolve.",
+        "M2 executable proof, M3 real-data integration, M4 operational/user evidence, M5 panel/recovery/RC soak and M6 compatibility, reproduction, maintenance and release-authority gates remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/foundation_architecture_20260718/metadata.json",
+        "conductor/tracks/foundation_architecture_20260718/index.md",
+        "docs/foundation-maturity-readiness-20260801.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/14"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #155 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The renamed scope-triggered governance track is validating/M1, its live issue is open, and the bounded rights/withdrawal/scope-trigger evidence is traceable.",
+        "Templates and synthetic drills do not establish live takedown operation, publication approval or applied use-case decisions; unresolved cases correctly remain review-required without imposing a Māori co-design gate."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/index.md",
+        "reports/governance-scope-trigger-audit.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/155"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "health_outcomes_causal_methods_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #104 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Synthetic protocol and independent fixture calculations resolve, with specified/M1 metadata and an open live issue.",
+        "No empirical design, causal identification evidence, spatial-confounding or MAUP sensitivity, missing-data workflow, preregistration or methods panel qualification is present."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/index.md",
+        "reports/wp010-synthetic-methods-core.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/104"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "interoperability_conformance_sdks_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #64 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The Python/Node corpus and bounded related-repository adapters are traceable and the specified/M1/open-issue state is consistent.",
+        "Rust, complete JSON Schema behavior, standards projections, an external client, signed conformance reporting and the supported SDK surface remain missing."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/interoperability_conformance_sdks_20260719/metadata.json",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/index.md",
+        "conformance/adapters/report.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/64"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "methods_research_objects_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #34 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Publication binding, workflow policy, bounded real-input preservation and deterministic handoff artifacts resolve; metadata and live issue remain specified/M1 and open.",
+        "A complete research object, external validation, protected-tag execution, current preservation binding and stable publication evidence are not established by these repository-owned fixtures."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/methods_research_objects_20260718/metadata.json",
+        "conductor/tracks/methods_research_objects_20260718/index.md",
+        "evidence/wp007-real-slice/manifest.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/34"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #49 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Synthetic sharding and a bounded real slice are traceable while metadata and live issue consistently remain specified/M1 and open.",
+        "The four-council/two-national-family MVP, broader real-data behavior and external research-object validation remain missing; the real slice is not national archive coverage."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/metadata.json",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/index.md",
+        "reports/wp007-bounded-real-slice.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/49"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_archive_operations_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #119 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The synthetic resume, budget and reconciliation evidence resolves and the track remains specified/M1 with an open live issue.",
+        "No elapsed operational period, national coverage measurement, recurring update evidence, service-level evidence or recovery qualification is established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_archive_operations_20260719/metadata.json",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/index.md",
+        "src/riopa_provenance/linz_pipeline.py",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/119"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_source_registry_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #39 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The deterministic synthetic catalogue-disposition pipeline is traceable and specified/M1/open-issue state is consistent.",
+        "No live national catalogue, authority/currency coverage, acquisition history or release-qualified registry evidence is claimed or present."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_source_registry_20260718/metadata.json",
+        "conductor/tracks/nz_spatial_source_registry_20260718/index.md",
+        "src/riopa_provenance/linz_catalog.py",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/39"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "operations_preservation_sre_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #114 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Hosted technical-preview recovery, first operational/RC observations and the daily digest-chained campaign are linked while the track remains specified/M1 and open.",
+        "Only one beta observation and one operational-cycle identifier are recorded; the 90-day/three-cycle beta gate, frozen-candidate 30-day RC soak and production disaster-recovery qualification remain pending.",
+        "The Blocking defects section says none recorded even though the evidence rows identify these factual gates; the rows and non-claims preserve the fail-closed outcome."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/operations_preservation_sre_20260719/metadata.json",
+        "conductor/tracks/operations_preservation_sre_20260719/index.md",
+        "docs/operational-beta-observation-20260802.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/114"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "performance_scalability_reliability_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #134 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Small-instance correctness, resource-limit tests and hosted smoke evidence resolve; metadata and issue remain specified/M1 and open.",
+        "No authoritative Hugging Face national workload was found, and no national-scale ingestion, accessibility or optimisation measurement, cost envelope, soak, stress/recovery run or benchmark panel report is present."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/performance_scalability_reliability_20260719/metadata.json",
+        "conductor/tracks/performance_scalability_reliability_20260719/index.md",
+        "docs/hugging-face-evidence-runner-plan-20260802.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/134"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "planning_rules_linkage_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #74 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The one preserved Wellington plan/source pair resolves and specified/M1/open-issue state is consistent.",
+        "No provision linkage, operative-status proof, legal interpretation, second materially different council, accuracy sample or agent-panel-qualified extraction is evidenced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/planning_rules_linkage_20260718/metadata.json",
+        "conductor/tracks/planning_rules_linkage_20260718/index.md",
+        "evidence/wp007-real-slice/manifest.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/74"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "planning_system_transition_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #84 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The active/M1 metadata, open issue, transition schema, validator and deterministic fixtures are mutually consistent.",
+        "Real authority reorganisations and plan replacements, public-source capture and planning-domain panel qualification remain missing; fixtures are not legal-equivalence evidence."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/planning_system_transition_20260719/metadata.json",
+        "conductor/tracks/planning_system_transition_20260719/index.md",
+        "fixtures/planning-transition-golden.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/84"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "provenance_profile_v1_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #8 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The validating/M1 metadata, open live issue and three bounded Python evidence records are coherent.",
+        "Non-Python parity and round trip, projection semantic-loss qualification, publication identifier, migration/deprecation execution, signed attestation and final panel qualification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/provenance_profile_v1_20260718/metadata.json",
+        "conductor/tracks/provenance_profile_v1_20260718/index.md",
+        "docs/provenance-profile-conformance-manifest-1.0.0.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/8"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "provenance_query_api_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #69 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The bounded Python/SQLite lineage envelope resolves and the track remains specified/M1 with an open live issue.",
+        "CLI and MCP surfaces, graph-backend equivalence, access control, scale, real-release integration and user-workflow panel qualification remain missing."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/provenance_query_api_20260719/metadata.json",
+        "conductor/tracks/provenance_query_api_20260719/index.md",
+        "docs/change-and-impact-queries.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/69"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "publication_validation_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #129 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "Publication-state, attestation policy, deterministic handoff, hosted rehearsal and single-developer panel-policy evidence resolve; metadata and issue remain specified/M1 and open.",
+        "The technical-preview clean-room run and agent-panel review do not satisfy the still-open external-operator, external-user, final preserved-release or release-authority gates.",
+        "The Blocking defects section says none recorded although the evidence rows explicitly identify these pending gates."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/publication_validation_20260718/metadata.json",
+        "conductor/tracks/publication_validation_20260718/index.md",
+        "docs/single-developer-agent-panel-review-policy.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/129"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "repository_template_adoption_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #44 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The two bounded related-repository adapter integrations are traceable and specified/M1/open-issue state is consistent.",
+        "Two adapter contracts do not establish broad template adoption, migration coverage, supported lifecycle behavior or external-user workflow qualification."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/repository_template_adoption_20260718/metadata.json",
+        "conductor/tracks/repository_template_adoption_20260718/index.md",
+        "reports/wp008-cross-repository-adapters.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/44"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "security_supply_chain_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #24 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The active/M1 metadata, open issue and bounded source, workflow, threat/control and runner-preflight evidence are coherent.",
+        "Protected-release execution, SBOM/signature verification, credential-compromise and rollback exercises, complete scanning coverage and security panel qualification remain pending; the Hugging Face job is staged only."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/security_supply_chain_20260719/metadata.json",
+        "conductor/tracks/security_supply_chain_20260719/index.md",
+        "docs/security-control-manifest.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/24"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "simulation_validation_engine_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #94 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The deterministic synthetic simulation and dependency-free benchmark artifacts resolve and specified/M1/open-issue state is consistent.",
+        "Domain adapters, empirical calibration and holdout validation, benchmark comparison, performance evidence and methods/domain panel qualification remain missing; no emergency or health-system validity follows."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/simulation_validation_engine_20260719/metadata.json",
+        "conductor/tracks/simulation_validation_engine_20260719/index.md",
+        "reports/wp010-synthetic-methods-core.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/94"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "spatial_quality_temporality_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #89 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The synthetic deterministic feature-difference evidence resolves and the track remains specified/M1 with an open issue.",
+        "Real historical series, boundary concordance, CRS/precision breadth, temporal currency evaluation and quality panel qualification remain missing."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/spatial_quality_temporality_20260718/metadata.json",
+        "conductor/tracks/spatial_quality_temporality_20260718/index.md",
+        "docs/change-and-impact-queries.md",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/89"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "supermarket_health_pilot_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #109 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The synthetic non-operational envelope and bounded source observations are traceable and specified/M1/open-issue state is consistent.",
+        "Rights-cleared versioned supermarket inputs, baseline reproduction, access and health analyses, planning alternatives, research objects and panel qualification remain open; nine OSM POIs do not establish completeness."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/supermarket_health_pilot_20260718/metadata.json",
+        "conductor/tracks/supermarket_health_pilot_20260718/index.md",
+        "config/source-registry/wp010-public-pilot-candidates.yaml",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/109"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "v1_release_hardening_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Evidence-index, metadata, live issue #139 and fail-closed boundary audit at the bound revision.",
+      "findings": [
+        "The active/M1 metadata, open issue, readiness baseline and gate-capability map are consistent and explicitly block promotion.",
+        "Stable-v1 remains blocked by incomplete track implementations, production recovery, 90-day beta and frozen-candidate 30-day RC soak, national-scale performance, external operator/user workflows, final per-track panel synthesis, preserved signed release and accountable release-authority decision."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/v1_release_hardening_20260719/metadata.json",
+        "conductor/tracks/v1_release_hardening_20260719/index.md",
+        "docs/v1-release-readiness-baseline-20260801.json",
+        "https://github.com/edithatogo/riopa-infrastructure/issues/139"
+      ],
+      "dissent": []
+    }
+  ],
+  "non_claims": [
+    "This evidence-auditor lens is an agent-panel input, not a release-authority decision.",
+    "A pass-with-limitations disposition confirms evidence traceability and fail-closed boundaries only; it does not mark a track complete or archive-eligible.",
+    "Repository-owned tests, fixtures and hosted technical previews do not establish national coverage, empirical validity, production recovery, elapsed soak, external participation or stable-release fitness.",
+    "The audit does not substitute for the other required agent-panel lenses or the orchestrator's cross-lens synthesis.",
+    "The audit is bound only to source revision dbbb71b38ca7f943ddd4e42069b4d6bc0a7bd669 and deterministic archive SHA-256 436843d563a7cfa22f21eba58adae66f2af71efa0dc3b7168b656b7fb80c11d6."
+  ]
+}

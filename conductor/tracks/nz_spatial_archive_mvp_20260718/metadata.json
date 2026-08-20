@@ -2,9 +2,9 @@
   "track_id": "nz_spatial_archive_mvp_20260718",
   "type": "data",
   "phase": "NZ Spatial",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-31T09:30:00Z",
+  "updated_at": "2026-08-02T14:27:43Z",
   "description": "Publish a complete, temporally explicit spatial and planning research object using heterogeneous national and council sources, from raw evidence to portable materialisations.",
   "depends_on": [
     "connector_runtime_capture_20260719",
@@ -34,10 +34,10 @@
   "current_maturity": "M1",
   "owner_role": "Spatial data lead",
   "review_roles": [
-    "Provenance reviewer",
-    "Data steward",
-    "Operations reviewer",
-    "Research-object reviewer"
+    "Provenance analyst",
+    "Data-governance analyst",
+    "Operations analyst",
+    "Research-object analyst"
   ],
   "blocking_defects": []
 }

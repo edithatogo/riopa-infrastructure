@@ -28,6 +28,6 @@
 
 ## Review and handover
 
-Required reviewer roles: External user reviewer, API/schema reviewer, Research-object reviewer, Operations reviewer, Interoperability reviewer, Governance reviewer.
+Required agent-panel lenses: External-user workflow analyst, API/schema analyst, Research-object analyst, Operations analyst, Interoperability analyst, Governance analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

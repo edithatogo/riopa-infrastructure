@@ -34,10 +34,10 @@
   "current_maturity": "M1",
   "owner_role": "Spatial data lead",
   "review_roles": [
-    "Governance reviewer",
-    "Data steward",
-    "Operations reviewer",
-    "Research-object reviewer"
+    "Governance analyst",
+    "Data-governance analyst",
+    "Operations analyst",
+    "Research-object analyst"
   ],
   "blocking_defects": []
 }

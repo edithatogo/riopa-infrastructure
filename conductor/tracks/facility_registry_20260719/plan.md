@@ -1,21 +1,31 @@
 # Plan: facility_registry_20260719
 
+The current implementation slice is active and evidence-gated. Public food-retail
+packets are archived and reconciled only as source assertions. This plan does not
+promote a source to authoritative status without a documented panel disposition.
+
+## 0 Runtime and evidence policy
+
+- [x] 0.1 Restrict packaging, linting, typing and hosted CI to Python 3.14 only (`pyproject.toml`, workflow files and `scripts/verify_github_main_protection.py`).
+- [x] 0.2 Preserve immutable source packets and record their hosted revisions, payload hashes and limitations in the evidence index.
+- [~] 0.3 Build a deterministic bounded review frame; panel disposition remains an evidence gate.
+
 ## 1. Facility/source model
 
-- [ ] 1.1 Define facility, operator, location, service and assertion identities.
-- [ ] 1.2 Define temporal state, coordinates, uncertainty, rights and governance fields.
-- [ ] 1.3 Register supermarket and health-service source families.
+- [x] 1.1 Define facility assertion identities in the bounded reference contract; operator, service and stable registry identities remain release work.
+- [x] 1.2 Define source coordinates, optional uncertainty, rights, authority and observation fields for bounded source assertions; temporal registry state remains release work.
+- [~] 1.3 Register rights-cleared public supermarket and health-service source families; three public food-retail families are archived, while a second public health family remains open.
 
 ## 2. Acquisition and reconciliation
 
-- [ ] 2.1 Capture independent source assertions and geocoding evidence.
-- [ ] 2.2 Implement candidate generation, scoring, conflict preservation and adjudication.
+- [x] 2.1 Archive independent public council and OSM assertions with immutable receipts before reconciliation; verified health and broader geocoded evidence remain open.
+- [x] 2.2 Implement deterministic type/name/distance candidate generation and conflict preservation; accountable adjudication remains open.
 - [ ] 2.3 Record openings, closures, relocations and rebrands.
 
 ## 3. Quality and review
 
-- [ ] 3.1 Build stratified duplicate, classification and coordinate review samples.
-- [ ] 3.2 Estimate match/classification performance and sensitivity.
+- [~] 3.1 Build a deterministic stratified duplicate, classification and coordinate review sample; panel disposition is pending.
+- [x] 3.2 Record bounded source sensitivity; performance estimates require a reference sample qualified by the agent panel.
 - [ ] 3.3 Implement sensitive/restricted release filtering.
 
 ## 4. Stable registry release
@@ -30,3 +40,31 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Evidence gates still open
+
+- [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.
+- [ ] G.2 Geometry-bearing or explicitly attribute-only disposition for the Hamilton packet.
+- [ ] G.3 A second public health source family with an immutable archive receipt.
+- [ ] G.4 Stable registry projection, source-disagreement and coverage reports.
+- [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.
+
+## Hosted merge-policy blocker (2026-08-03)
+
+The code and required checks are green, but GitHub reports the protected PR as
+`BLOCKED` after the main-branch check contract changed from Python 3.12/3.13 to
+Python 3.14. This is an external policy-state gate, not an implementation defect.
+
+Options and contingencies:
+
+1. **Recommended:** create a fresh PR from the current clean branch so GitHub
+   evaluates the current protection rules against a new pull request head.
+2. **Fallback:** wait with auto-merge enabled if the fresh PR also remains
+   blocked; record the unchanged policy response and escalate to repository
+   administration/support.
+3. **Last resort:** administrator merge, only with an explicit release-authority
+   decision because it bypasses the protected merge gate.
+
+- [x] G.6 Reconcile hosted merge policy through a fresh PR. PR #177 merged on
+  2026-08-03 as an explicitly recorded administrative exception after all
+  required checks passed; this is not release evidence.

@@ -55,6 +55,8 @@ _ID_KEYS = (
     "publication_id",
     "artifact_id",
     "source_id",
+    "mapping_id",
+    "version_id",
 )
 
 _LABEL_KEYS = ("title", "name", "logical_id", "description")

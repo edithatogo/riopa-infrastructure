@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:final-release-gates:2026-08-03",
+  "status": "blocked-fail-closed",
+  "governing_decision": "docs/release-scope-and-evidence-policy-20260804.json",
+  "release_posture": "bounded-regional-non-operational-technical-preview",
+  "gates": {
+    "beta_elapsed_soak": {
+      "required": "90 consecutive days and three operational cycles",
+      "observed": "one observation and one cycle identifier",
+      "status": "pending-duration",
+      "reset_rule": "any cadence break, revision change or failed restoration resets the clock"
+    },
+    "rc_elapsed_soak": {
+      "required": "30 days on one frozen release-candidate revision",
+      "observed": "technical-preview observation only",
+      "status": "pending-exact-candidate"
+    },
+    "external_user_workflows": {
+      "required": "two distinct external-user workflows with environment, deviations and findings",
+      "observed": "agent-panel workflow analysis only",
+      "status": "pending-participants"
+    },
+    "accountable_release_authority": {
+      "required": "signed tier-specific decision with scope, exclusions, expiry, rollback and revocation conditions",
+      "observed": "unsigned decision draft",
+      "status": "pending-signature",
+      "record": "docs/release-authority-decision-draft-20260801.md"
+    },
+    "stable_release_approval": {
+      "required": "all v1 gates, signed/attested/preserved artifacts and release-authority approval",
+      "observed": "repository readiness packet only",
+      "status": "not-approved",
+      "promotion": "forbidden until every blocking gate has qualifying evidence"
+    }
+  },
+  "repository_owned_preparation": [
+    "docs/operational-beta-observation-20260802.json",
+    "docs/hosted-evidence-batch-20260802.json",
+    "docs/v1-rc-validation-handover-20260803.json",
+    "docs/release-authority-decision-draft-20260801.md",
+    "docs/preservation-deposition-qualification-20260803.json"
+  ],
+  "non_substitution_rule": "Agent panels, local tests, hosted technical previews and synthetic fixtures cannot create elapsed time, participant facts, accountable signatures or stable-release approval.",
+  "next_actions": [
+    "Continue the protected-main beta ledger without resetting its exact revision or cadence contract.",
+    "Freeze a release candidate only after upstream implementation and evidence gates pass, then start a new 30-day exact-head clock.",
+    "Collect two factual external-user workflow records and attach immutable reports.",
+    "Obtain and preserve the accountable authority's signed decision before any promotion or announcement."
+  ]
+}

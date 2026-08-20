@@ -7,7 +7,6 @@
   "updated_at": "2026-07-19T00:00:00Z",
   "description": "Provide a rigorous framework for linking access, zoning and facilities to health outcomes while separating ecological description, prediction, causal inference and prescriptive modelling.",
   "depends_on": [
-    "governance_maori_data_sovereignty_20260718",
     "spatial_quality_temporality_20260718",
     "accessibility_network_engine_20260719"
   ],
@@ -30,10 +29,10 @@
   "current_maturity": "M1",
   "owner_role": "Research lead",
   "review_roles": [
-    "Governance reviewer",
-    "Data steward",
-    "Quantitative methods reviewer",
-    "Scientific reviewer"
+    "Governance analyst",
+    "Data-governance analyst",
+    "Quantitative methods analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": []
 }

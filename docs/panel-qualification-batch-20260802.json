@@ -1,0 +1,18 @@
+{
+  "schema": "riopa.panel-qualification-batch.v1",
+  "batch_id": "bounded-public-preview-20260802",
+  "status": "template-ready",
+  "source_revision": null,
+  "bundle_sha256": null,
+  "non_assertive": true,
+  "required_roles": ["adversarial-analyst", "evidence-auditor", "reproducer"],
+  "tracks": [
+    {"track_id": "publication_validation_20260718", "status": "pending", "reports": []},
+    {"track_id": "methods_research_objects_20260718", "status": "pending", "reports": []},
+    {"track_id": "interoperability_conformance_sdks_20260719", "status": "pending", "reports": []},
+    {"track_id": "security_supply_chain_20260719", "status": "pending", "reports": []},
+    {"track_id": "v1_release_hardening_20260719", "status": "pending", "reports": []}
+  ],
+  "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+  "contingency": "Missing, disagreeing or digest-mismatched reports leave the panel gate open; this template never qualifies a track."
+}

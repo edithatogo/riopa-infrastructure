@@ -1,0 +1,487 @@
+{
+  "schema": "riopa.track-panel-lens.v1",
+  "role": "reproducer",
+  "source_revision": "dbbb71b38ca7f943ddd4e42069b4d6bc0a7bd669",
+  "bundle_sha256": "436843d563a7cfa22f21eba58adae66f2af71efa0dc3b7168b656b7fb80c11d6",
+  "evaluated_at": "2026-08-02T11:46:17Z",
+  "tracks": [
+    {
+      "track_id": "accessibility_network_engine_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the declared accessibility contracts, bounded reference core and track evidence boundaries.",
+      "findings": [
+        "The immutable source bundle was reproduced and the repository validation suite passed.",
+        "All 16 implementation and closeout tasks remain open; real multimodal engines, national-scale benchmarks and methods/user-workflow qualification are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/accessibility_network_engine_20260719/metadata.json",
+        "conductor/tracks/accessibility_network_engine_20260719/spec.md",
+        "conductor/tracks/accessibility_network_engine_20260719/plan.md",
+        "conductor/tracks/accessibility_network_engine_20260719/index.md",
+        "tests/test_accessibility.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "canonical_domain_schemas_ontology_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce canonical schema, identity, ontology preparation and golden-fixture evidence.",
+      "findings": [
+        "Nine completed plan items and their repository tests are reproducible at the bound revision.",
+        "SHACL execution, non-Python round trips, publication identity, migration qualification and semantic agent-panel qualification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md",
+        "conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md",
+        "tests/test_canonical.py",
+        "tests/test_lineage_identifiers.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "connector_runtime_capture_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce existing retry, capture, DNS-pinning, source-health and observability evidence.",
+      "findings": [
+        "The referenced bounded runtime controls pass in the complete local test suite.",
+        "The track remains specified with all 16 plan tasks open; real national and council capture acceptance and stable adapter publication are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/connector_runtime_capture_20260719/metadata.json",
+        "conductor/tracks/connector_runtime_capture_20260719/spec.md",
+        "conductor/tracks/connector_runtime_capture_20260719/plan.md",
+        "conductor/tracks/connector_runtime_capture_20260719/index.md",
+        "tests/test_capture.py",
+        "tests/test_retry.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "documentation_developer_experience_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the documentation track definition, issue projection and evidence-boundary controls.",
+      "findings": [
+        "Track structure and issue projection validate at the immutable revision.",
+        "The evidence register is empty and all 16 plan tasks remain open; external user/operator workflows and RC tutorial execution are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/documentation_developer_experience_20260719/metadata.json",
+        "conductor/tracks/documentation_developer_experience_20260719/spec.md",
+        "conductor/tracks/documentation_developer_experience_20260719/plan.md",
+        "conductor/tracks/documentation_developer_experience_20260719/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "emergency_health_facilities_pilot_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce bounded synthetic capacity and public-source intake observations without operational claims.",
+      "findings": [
+        "Two bounded WP-010 preparation tasks and the non-operational synthetic fixtures are reproducible.",
+        "Authoritative ambulance coverage, applied scenarios, calibration, dispatch/handover behavior and safety qualification remain open."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/metadata.json",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/spec.md",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/plan.md",
+        "conductor/tracks/emergency_health_facilities_pilot_20260718/index.md",
+        "tests/test_analysis.py",
+        "tests/test_wp010_public_sources.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "facility_location_engine_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce bounded reference location formulations and independent feasibility checks.",
+      "findings": [
+        "The small-instance correctness core passes locally at the bound revision.",
+        "All 16 track tasks remain open; scalable solvers, certificate interchange, national workloads and external benchmark verification are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/facility_location_engine_20260718/metadata.json",
+        "conductor/tracks/facility_location_engine_20260718/spec.md",
+        "conductor/tracks/facility_location_engine_20260718/plan.md",
+        "conductor/tracks/facility_location_engine_20260718/index.md",
+        "tests/test_facility_location.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "facility_registry_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce bounded multi-source assertion and deterministic reconciliation behavior.",
+      "findings": [
+        "The declared bounded reconciliation and public-source sensitivity fixtures pass locally.",
+        "All 16 plan tasks remain open; issue 149 lacks external-operator evidence and national authority, performance, preservation and release gates remain unsatisfied."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/facility_registry_20260719/metadata.json",
+        "conductor/tracks/facility_registry_20260719/spec.md",
+        "conductor/tracks/facility_registry_20260719/plan.md",
+        "conductor/tracks/facility_registry_20260719/index.md",
+        "tests/test_facility_registry.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "foundation_architecture_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the bounded M1 architecture, governance and roadmap-control baseline.",
+      "findings": [
+        "All 19 plan items are marked complete and the roadmap, evidence and issue graph validate at the exact revision.",
+        "The validating status and M1 boundary are honored; this does not establish M2-M6 maturity or stable-release approval."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/foundation_architecture_20260718/metadata.json",
+        "conductor/tracks/foundation_architecture_20260718/spec.md",
+        "conductor/tracks/foundation_architecture_20260718/plan.md",
+        "conductor/tracks/foundation_architecture_20260718/index.md",
+        "tests/test_roadmap_hardening.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the bounded governance, decision and controlled-data framework currently declared by the track.",
+      "findings": [
+        "Fifteen completed tasks and associated repository controls are structurally reproducible.",
+        "Two closeout tasks remain open and no controlled-data, external participation or higher-maturity evidence is inferred."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/metadata.json",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/spec.md",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/plan.md",
+        "conductor/tracks/governance_maori_data_sovereignty_20260718/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "health_outcomes_causal_methods_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the bounded synthetic causal-reference implementation and non-clinical boundaries.",
+      "findings": [
+        "The completed synthetic-reference task and local tests reproduce deterministically.",
+        "Sixteen remaining tasks include empirical design, spatial confounding, MAUP, missing-data, preregistration and methods qualification."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/health_outcomes_causal_methods_20260719/metadata.json",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/spec.md",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/plan.md",
+        "conductor/tracks/health_outcomes_causal_methods_20260719/index.md",
+        "tests/test_analysis.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "interoperability_conformance_sdks_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the bounded adapter/conformance slice and track-level interoperability assertions.",
+      "findings": [
+        "The referenced WP-008 adapter fixture evidence is represented consistently and repository validation passes.",
+        "All 16 plan tasks remain open; broad versioned conformance, SDK parity and external implementation evidence are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/interoperability_conformance_sdks_20260719/metadata.json",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/spec.md",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/plan.md",
+        "conductor/tracks/interoperability_conformance_sdks_20260719/index.md",
+        "conformance/adapters/report.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "methods_research_objects_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the track's research-object contracts and evidence-index consistency.",
+      "findings": [
+        "Repository-level structure and validation pass for the declared track sources.",
+        "All 16 implementation and closeout tasks remain open; independent reuse and preserved publication evidence are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/methods_research_objects_20260718/metadata.json",
+        "conductor/tracks/methods_research_objects_20260718/spec.md",
+        "conductor/tracks/methods_research_objects_20260718/plan.md",
+        "conductor/tracks/methods_research_objects_20260718/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the archive-MVP track contracts, evidence links and fail-closed maturity status.",
+      "findings": [
+        "Track sources and repository validation are internally consistent at the immutable revision.",
+        "All 16 plan tasks remain open; complete real-source archive release and independent reproduction are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/metadata.json",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/spec.md",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/plan.md",
+        "conductor/tracks/nz_spatial_archive_mvp_20260718/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_archive_operations_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce archive-operations definitions and bounded repository-owned evidence.",
+      "findings": [
+        "The exact source bundle and roadmap controls reproduce successfully.",
+        "All 16 plan tasks remain open; sustained operations, production restoration and elapsed operational evidence are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_archive_operations_20260719/metadata.json",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/spec.md",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/plan.md",
+        "conductor/tracks/nz_spatial_archive_operations_20260719/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "nz_spatial_source_registry_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce source-registry structures, provenance boundaries and track projection.",
+      "findings": [
+        "Repository validation confirms structurally consistent track and issue evidence.",
+        "All 16 plan tasks remain open; authoritative national coverage, continuing source monitoring and publication maturity are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/nz_spatial_source_registry_20260718/metadata.json",
+        "conductor/tracks/nz_spatial_source_registry_20260718/spec.md",
+        "conductor/tracks/nz_spatial_source_registry_20260718/plan.md",
+        "conductor/tracks/nz_spatial_source_registry_20260718/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "operations_preservation_sre_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the bounded hosted evidence preparation and operations/preservation controls.",
+      "findings": [
+        "One bounded evidence-preparation task and repository validations reproduce locally.",
+        "Sixteen remaining tasks include production recovery, sustained SLO/soak evidence, preservation operations and incident exercises."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/operations_preservation_sre_20260719/metadata.json",
+        "conductor/tracks/operations_preservation_sre_20260719/spec.md",
+        "conductor/tracks/operations_preservation_sre_20260719/plan.md",
+        "conductor/tracks/operations_preservation_sre_20260719/index.md",
+        "docs/hosted-evidence-batch-20260802.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "performance_scalability_reliability_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce benchmark definitions and existing bounded performance evidence without scale extrapolation.",
+      "findings": [
+        "Repository validation and bounded scale-smoke evidence reproduce at the bound revision.",
+        "All 16 plan tasks remain open; national workloads, cost/resource envelopes, soak, stress and recovery measurements remain absent."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/performance_scalability_reliability_20260719/metadata.json",
+        "conductor/tracks/performance_scalability_reliability_20260719/spec.md",
+        "conductor/tracks/performance_scalability_reliability_20260719/plan.md",
+        "conductor/tracks/performance_scalability_reliability_20260719/index.md",
+        "docs/hosted-evidence-batch-20260802.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "planning_rules_linkage_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce planning-linkage contracts, evidence boundaries and issue projection.",
+      "findings": [
+        "Track sources validate structurally and remain correctly fail-closed.",
+        "All 16 tasks remain open; real planning provisions, citations, spatial linkage and domain qualification are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/planning_rules_linkage_20260718/metadata.json",
+        "conductor/tracks/planning_rules_linkage_20260718/spec.md",
+        "conductor/tracks/planning_rules_linkage_20260718/plan.md",
+        "conductor/tracks/planning_rules_linkage_20260718/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "planning_system_transition_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce implemented transition-event, supersession and synthetic reconstruction controls.",
+      "findings": [
+        "Seven completed tasks and their bounded synthetic evidence reproduce locally.",
+        "Ten tasks remain open; real authority reorganisation/plan replacement, public-source capture and planning-domain qualification are pending."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/planning_system_transition_20260719/metadata.json",
+        "conductor/tracks/planning_system_transition_20260719/spec.md",
+        "conductor/tracks/planning_system_transition_20260719/plan.md",
+        "conductor/tracks/planning_system_transition_20260719/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "provenance_profile_v1_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce implemented provenance-profile schemas, fixtures and Python validation behavior.",
+      "findings": [
+        "Seven completed items and repository-owned profile evidence reproduce at the exact revision.",
+        "Eight tasks remain open, including non-Python parity, semantic-loss qualification, publication identity, migration evidence and signed v1 attestation."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/provenance_profile_v1_20260718/metadata.json",
+        "conductor/tracks/provenance_profile_v1_20260718/spec.md",
+        "conductor/tracks/provenance_profile_v1_20260718/plan.md",
+        "conductor/tracks/provenance_profile_v1_20260718/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "provenance_query_api_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce provenance-query API track definitions and bounded query evidence.",
+      "findings": [
+        "The track projection and complete repository suite validate successfully.",
+        "All 16 tasks remain open; stable API conformance, authorization, scale and external client behavior are not reproduced."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/provenance_query_api_20260719/metadata.json",
+        "conductor/tracks/provenance_query_api_20260719/spec.md",
+        "conductor/tracks/provenance_query_api_20260719/plan.md",
+        "conductor/tracks/provenance_query_api_20260719/index.md"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "publication_validation_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce bounded clean-room packet preparation and publication/preservation controls.",
+      "findings": [
+        "Two bounded agent-panel preparation tasks and dependency-free verification are reproducible.",
+        "Sixteen tasks remain open; external reproductions, full publication packages, preservation execution and correction exercises are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/publication_validation_20260718/metadata.json",
+        "conductor/tracks/publication_validation_20260718/spec.md",
+        "conductor/tracks/publication_validation_20260718/plan.md",
+        "conductor/tracks/publication_validation_20260718/index.md",
+        "tests/test_wp010_benchmark.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "repository_template_adoption_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the bounded cross-repository adapter evidence and track boundaries.",
+      "findings": [
+        "The WP-008 adapter report and repository validation are reproducible.",
+        "All 16 tasks remain open; this does not establish full template adoption, upgrade behavior or required independent reproduction levels."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/repository_template_adoption_20260718/metadata.json",
+        "conductor/tracks/repository_template_adoption_20260718/spec.md",
+        "conductor/tracks/repository_template_adoption_20260718/plan.md",
+        "conductor/tracks/repository_template_adoption_20260718/index.md",
+        "conformance/adapters/report.json"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "security_supply_chain_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce implemented security policies, repository controls and immutable-action checks.",
+      "findings": [
+        "Seven completed security tasks and the repository test suite reproduce locally.",
+        "Eleven tasks remain open; hosted release verification, signing/SBOM execution, credential-compromise/rollback exercise and security qualification are pending."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/security_supply_chain_20260719/metadata.json",
+        "conductor/tracks/security_supply_chain_20260719/spec.md",
+        "conductor/tracks/security_supply_chain_20260719/plan.md",
+        "conductor/tracks/security_supply_chain_20260719/index.md",
+        "tests/test_security_controls.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "simulation_validation_engine_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the deterministic synthetic queue benchmark and declared simulation evidence boundaries.",
+      "findings": [
+        "The completed dependency-free benchmark task and seeded synthetic checks reproduce.",
+        "Sixteen tasks remain open; domain adapters, empirical calibration, independent benchmark comparison and performance qualification are absent."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/simulation_validation_engine_20260719/metadata.json",
+        "conductor/tracks/simulation_validation_engine_20260719/spec.md",
+        "conductor/tracks/simulation_validation_engine_20260719/plan.md",
+        "conductor/tracks/simulation_validation_engine_20260719/index.md",
+        "tests/test_analysis.py",
+        "tests/test_wp010_benchmark.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "spatial_quality_temporality_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce bounded spatial-difference fixtures and temporal-quality track declarations.",
+      "findings": [
+        "Synthetic deterministic spatial difference tests reproduce in the complete suite.",
+        "All 16 plan tasks remain open; real historical data, topology/repair effects, boundary concordance, MAUP and quality ratchets are not established."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/spatial_quality_temporality_20260718/metadata.json",
+        "conductor/tracks/spatial_quality_temporality_20260718/spec.md",
+        "conductor/tracks/spatial_quality_temporality_20260718/plan.md",
+        "conductor/tracks/spatial_quality_temporality_20260718/index.md",
+        "tests/test_spatial.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "supermarket_health_pilot_20260718",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the non-operational synthetic envelope and bounded public-source observations.",
+      "findings": [
+        "Two bounded WP-010 tasks and their local fixtures reproduce without empirical-health claims.",
+        "Sixteen tasks remain open; rights-cleared versioned inputs, baseline reproduction, health/access analyses, alternatives and publication qualification are absent."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/supermarket_health_pilot_20260718/metadata.json",
+        "conductor/tracks/supermarket_health_pilot_20260718/spec.md",
+        "conductor/tracks/supermarket_health_pilot_20260718/plan.md",
+        "conductor/tracks/supermarket_health_pilot_20260718/index.md",
+        "tests/test_wp010_public_sources.py"
+      ],
+      "dissent": []
+    },
+    {
+      "track_id": "v1_release_hardening_20260719",
+      "disposition": "pass-with-limitations",
+      "scope": "Reproduce the fail-closed v1 readiness baseline, campaign controls and repository-owned hosted-evidence preparation.",
+      "findings": [
+        "Seven completed review-fix tasks, exact-revision bundle identity and repository validations reproduce.",
+        "Sixteen tasks and stable-v1 gates remain open, including production recovery, actual beta/RC duration, national measurements, external participants, final panel synthesis, signed preserved candidate and release-authority decision."
+      ],
+      "evidence_refs": [
+        "conductor/tracks/v1_release_hardening_20260719/metadata.json",
+        "conductor/tracks/v1_release_hardening_20260719/spec.md",
+        "conductor/tracks/v1_release_hardening_20260719/plan.md",
+        "conductor/tracks/v1_release_hardening_20260719/index.md",
+        "docs/v1-release-readiness-baseline-20260801.json",
+        "docs/remaining-gates-campaign-v2-20260802.md"
+      ],
+      "dissent": []
+    }
+  ],
+  "non_claims": [
+    "This report records a repository-local agent reproduction, not an independent external-person or external-operator reproduction.",
+    "A passing local suite does not establish external participant usability, operational suitability, clinical suitability, national completeness or national-scale performance.",
+    "This report does not create elapsed beta or release-candidate soak duration and does not replace production hosted recovery evidence.",
+    "This report is one panel lens and does not by itself constitute the final orchestrator synthesis or track qualification decision.",
+    "This report does not approve a release, sign an accountable release-authority decision, satisfy preservation/signing gates or advance any track maturity/status."
+  ]
+}

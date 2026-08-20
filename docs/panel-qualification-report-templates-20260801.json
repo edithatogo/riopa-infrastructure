@@ -1,0 +1,400 @@
+{
+  "schema": "riopa.panel-qualification-template.v1",
+  "generated_from": "conductor/tracks/*/metadata.json",
+  "scope": "all open Conductor tracks",
+  "non_assertive": true,
+  "tracks": [
+    {
+      "track_id": "accessibility_network_engine_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/accessibility_network_engine_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "canonical_domain_schemas_ontology_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/canonical_domain_schemas_ontology_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "connector_runtime_capture_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/connector_runtime_capture_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "documentation_developer_experience_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/documentation_developer_experience_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "emergency_health_facilities_pilot_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/emergency_health_facilities_pilot_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "facility_location_engine_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/facility_location_engine_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "facility_registry_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/facility_registry_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "foundation_architecture_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/foundation_architecture_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/governance_maori_data_sovereignty_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "health_outcomes_causal_methods_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/health_outcomes_causal_methods_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "interoperability_conformance_sdks_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/interoperability_conformance_sdks_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "methods_research_objects_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/methods_research_objects_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/nz_spatial_archive_mvp_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "nz_spatial_archive_operations_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/nz_spatial_archive_operations_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "nz_spatial_source_registry_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/nz_spatial_source_registry_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "operations_preservation_sre_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/operations_preservation_sre_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "performance_scalability_reliability_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/performance_scalability_reliability_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "planning_rules_linkage_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/planning_rules_linkage_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "planning_system_transition_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/planning_system_transition_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "provenance_profile_v1_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/provenance_profile_v1_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "provenance_query_api_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/provenance_query_api_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "publication_validation_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/publication_validation_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "repository_template_adoption_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/repository_template_adoption_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "security_supply_chain_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/security_supply_chain_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "simulation_validation_engine_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/simulation_validation_engine_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "spatial_quality_temporality_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/spatial_quality_temporality_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "supermarket_health_pilot_20260718",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/supermarket_health_pilot_20260718",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    },
+    {
+      "track_id": "v1_release_hardening_20260719",
+      "source": "/Volumes/PortableSSD/GitHub/riopa/riopa-infrastructure/conductor/tracks/v1_release_hardening_20260719",
+      "status": "pending",
+      "disposition": null,
+      "evidence_refs": [],
+      "required_roles": [
+        "adversarial-analyst",
+        "evidence-auditor",
+        "reproducer"
+      ],
+      "release_decision_ref": "docs/release-authority-decision-draft-20260801.md",
+      "notes": "Template only. Populate from content-bound panel execution; do not infer a result from missing evidence."
+    }
+  ]
+}

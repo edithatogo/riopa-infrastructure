@@ -1,4 +1,4 @@
-# Track: Rights, privacy and Māori data sovereignty framework
+# Track: Rights, privacy and scope-triggered data governance framework
 
 Track ID: `governance_maori_data_sovereignty_20260718`  
 Phase: **Foundation**  
@@ -9,7 +9,7 @@ V1 critical: **yes**
 
 ## Goal
 
-Embed lawful reuse, social licence, benefit, Māori rights, privacy, safety and withdrawal decisions into source registration, analysis and publication gates.
+Embed lawful reuse, privacy, safety, social licence and withdrawal decisions into source registration, analysis and publication gates. Cultural or community-specific review is triggered only when the documented scope, source terms or risk assessment requires it.
 
 ## v1 role
 
@@ -24,13 +24,13 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - Source access, licensing, attribution, redistribution and statutory-authority review.
 - Data classification for public, restricted, sensitive, controlled and prohibited material.
-- Māori data sovereignty triggers, governance relationships, benefit and harm review.
+- Scope-triggered cultural or community review, benefit and harm assessment.
 - Privacy, ethics, safety, culturally sensitive geography and derived-data risk.
 - Correction, withdrawal, supersession, takedown and benefit-sharing pathways.
 
 ## Out of scope
 
-- Software claiming to certify tikanga, consent, legal compliance or Māori approval.
+- Software claiming to certify consent, legal compliance or community approval.
 - Publishing restricted health or operational unit-record data through the public archive.
 
 ## Requirements
@@ -38,12 +38,12 @@ This track is part of the stable v1 release contract. It is complete only when i
 - **R01.** Rights and governance status travel with sources, artifacts, transformations and releases.
 - **R02.** Public visibility is never treated as permission to redistribute or infer.
 - **R03.** Governance triggers can block capture, transformation, linkage, analysis or publication independently.
-- **R04.** Human review decisions identify role, evidence, date, expiry and scope.
+- **R04.** Agent-panel review decisions identify analyst role, evidence, date, expiry and scope.
 - **R05.** Derived products are reviewed for new harms even when inputs are individually open.
 
 ## Acceptance criteria
 
-- [ ] A versioned decision framework covers rights, privacy, ethics, Māori data sovereignty, safety and legal-status triggers.
+- [ ] A versioned decision framework covers rights, privacy, ethics, scope-triggered cultural or community review, safety and legal-status triggers.
 - [ ] Publication fails closed when required rights or governance decisions are unresolved.
 - [ ] Controlled and public pathways are technically separated and tested.
 - [ ] Correction, withdrawal and supersession drills preserve provenance while stopping inappropriate distribution.
@@ -54,7 +54,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 

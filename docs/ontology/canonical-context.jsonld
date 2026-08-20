@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "riopa": "https://w3id.org/riopa/ontology/",
+    "entity": "riopa:entity",
+    "mapping": "riopa:mapping",
+    "sourceAssertion": "riopa:sourceAssertion",
+    "canonicalConcept": "riopa:canonicalConcept",
+    "validFrom": "riopa:validFrom",
+    "validTo": "riopa:validTo"
+  },
+  "@graph": [
+    {"@id": "riopa:entity", "@type": "@id"},
+    {"@id": "riopa:mapping", "@type": "@id"},
+    {"@id": "riopa:sourceAssertion", "@type": "@id"},
+    {"@id": "riopa:canonicalConcept", "@type": "@id"},
+    {"@id": "riopa:validFrom", "@type": "http://www.w3.org/2001/XMLSchema#date"},
+    {"@id": "riopa:validTo", "@type": "http://www.w3.org/2001/XMLSchema#date"}
+  ]
+}

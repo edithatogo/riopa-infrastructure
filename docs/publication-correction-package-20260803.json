@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:publication-correction-package:2026-08-03",
+  "status": "template-and-bounded-pilot-example",
+  "correction_policy": {
+    "immutable_predecessors": true,
+    "successor_required": true,
+    "silent_mutation_forbidden": true,
+    "notification_targets": ["repository issue", "citation metadata", "preservation record", "known downstream consumers"]
+  },
+  "bounded_example": {
+    "predecessor": {
+      "doi": "10.5281/zenodo.21735818",
+      "sha256": "bf22b88342d577ca84ce554b77cba90cf38c6df3e617a125c1801eb5d7291d9b"
+    },
+    "successor": {
+      "doi": "10.5281/zenodo.21737563",
+      "sha256": "e0dcf5eb08e9b4530929da92a439d2cb97ced51bfe34f4848d1a2ef94c15abe5",
+      "reason": "successor preservation packet with reconciled manifest and bounded pilot decision"
+    },
+    "impact": "bounded-pilot metadata and preservation references only; no empirical claim is changed",
+    "notification": "issue #149 and successor preservation record"
+  },
+  "required_correction_record_fields": [
+    "correction_id",
+    "predecessor_identifier_and_digest",
+    "successor_identifier_and_digest",
+    "reason_and_scope",
+    "affected_claims_or_artifacts",
+    "downstream_impact_assessment",
+    "notification_receipts",
+    "accountable_acceptance"
+  ],
+  "qualification": {
+    "repository_controls": "governance supersession and publication state tests pass",
+    "correction_exercise": "bounded example recorded; production downstream notification exercise pending",
+    "external_reproduction": "pending-issue-149",
+    "release_authority": "pending"
+  },
+  "limitations": [
+    "This is not a stable-v1 publication package.",
+    "No external validator, downstream consumer or release authority is represented as having accepted the correction."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "source_id": "marlborough-food-premise-licences",
+  "authority": "Marlborough District Council",
+  "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/36",
+  "landing_page": "https://gis.marlborough.govt.nz/server/rest/services/OpenData/OpenData2/MapServer",
+  "archive_dataset": "edithatogo/riopa-public-data-archive",
+  "packet_revision": "b31703eb0dbdaa6aa05b6a84df5fe46e57e37ee0",
+  "capture_run": "https://github.com/edithatogo/open_social_data/actions/runs/30754246343",
+  "status": "archived-source-specific-assertions",
+  "rights_status": "terms-preserved-with-source-receipt",
+  "non_claim": "This regional register is not an authoritative or complete national food-retail register.",
+  "enabled_use": ["bounded-source-reconciliation", "provenance-fixture"],
+  "disabled_use": ["national-facility-coverage", "national-accessibility-claim"]
+}

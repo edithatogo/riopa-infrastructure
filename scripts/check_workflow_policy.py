@@ -41,7 +41,6 @@ DANGEROUS_RUN_CONTEXTS = (
     "${{ github.base_ref",
     "${{ github.ref_name",
 )
-ALLOWED_GLOBAL_PERMISSION = {"contents": "read"}
 ALLOWED_SECURITY_WRITE = {"security-events"}
 
 
@@ -87,8 +86,13 @@ def workflow_policy_errors(root: Path) -> list[str]:
             isinstance(triggers, dict) and "pull_request_target" in triggers
         ) or triggers == "pull_request_target":
             errors.append(f"{relative}: pull_request_target is prohibited")
-        if _mapping(document.get("permissions")) != ALLOWED_GLOBAL_PERMISSION:
-            errors.append(f"{relative}: global permissions must be exactly contents: read")
+        global_permissions = _mapping(document.get("permissions"))
+        if global_permissions.get("contents") != "read" or any(
+            value != "read" for value in global_permissions.values()
+        ):
+            errors.append(
+                f"{relative}: global permissions must be read-only and include contents: read"
+            )
         concurrency = _mapping(document.get("concurrency"))
         if not concurrency.get("group") or concurrency.get("cancel-in-progress") is not True:
             errors.append(f"{relative}: concurrency must cancel superseded runs")

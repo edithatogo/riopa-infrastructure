@@ -1,0 +1,27 @@
+{
+  "schema": "riopa.release-packet-readiness.v1",
+  "packet_id": "release-packet-readiness-20260802",
+  "status": "preparation-only",
+  "readiness_projection": "docs/release-decision-readiness-20260801.json",
+  "campaign_manifest": "docs/operational-evidence-campaign-20260802.json",
+  "repository_owned_artifacts": [
+    "docs/hosted-recovery-readiness-20260802.json",
+    "docs/hosted-recovery-execution-20260802.json",
+    "docs/hosted-evidence-batch-20260802.json",
+    "docs/regional-performance-evidence-20260802.json",
+    "docs/panel-qualification-report-templates-20260801.json"
+  ],
+  "pending_gates": [
+    "production disaster-recovery execution",
+    "elapsed operational cycles and release-candidate soak",
+    "external operator and user workflows",
+    "national-scale performance measurement",
+    "accountable release-authority decision"
+  ],
+  "release_ready": false,
+  "release_authority": "pending",
+  "non_claims": [
+    "This packet is not a release approval or promotion decision.",
+    "Repository-owned readiness artifacts do not substitute for external or elapsed evidence."
+  ]
+}

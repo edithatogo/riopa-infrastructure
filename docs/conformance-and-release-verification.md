@@ -45,4 +45,4 @@ sha256sum --check SHA256SUMS
 
 The workflow proves authenticated build provenance only after it has run for a
 protected tag. Configuration and local tests are not a signed release, an
-independent scientific review, or preservation in a separate failure domain.
+scientific-methods agent-panel review, or preservation in a separate failure domain.

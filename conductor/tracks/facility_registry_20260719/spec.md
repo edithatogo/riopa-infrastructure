@@ -20,7 +20,6 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - `canonical_domain_schemas_ontology_20260719`
 - `connector_runtime_capture_20260719`
-- `governance_maori_data_sovereignty_20260718`
 
 ## Scope
 
@@ -49,7 +48,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Entity-resolution precision/recall or equivalent review metrics are reported on a stratified sample.
 - [ ] Facility history represents opening, closure, relocation, rebrand and source disagreement.
 - [ ] Source/geocoded coordinates and uncertainty are separately queryable.
-- [ ] Manual adjudication records are reproducible and reviewer/audit evidence is preserved.
+- [ ] Manual adjudication records are reproducible and agent-panel/audit evidence is preserved.
 - [ ] Public release filters sensitive/restricted facilities according to governance decisions.
 
 ## Hardening and maturity gates
@@ -57,7 +56,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 

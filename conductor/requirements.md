@@ -76,7 +76,7 @@
 ## Governance, rights and safety
 
 - **R-070** Public visibility is never treated as redistribution permission.
-- **R-071** Rights, privacy, ethics, Māori data sovereignty, legal-status and safety decisions travel with sources and releases.
+- **R-071** Rights, privacy, ethics, applicable cultural or community review, legal-status and safety decisions travel with sources and releases.
 - **R-072** Publication fails closed when required governance decisions are unresolved.
 - **R-073** Controlled and public data pathways are technically separated and tested.
 - **R-074** Corrections and withdrawals stop inappropriate distribution while preserving explanatory provenance.

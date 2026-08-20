@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:beta-campaign-acceleration:2026-08-04",
+  "qualifying_lane": {
+    "workflow": ".github/workflows/evidence-campaign.yml",
+    "schedule": "daily protected-main operational-observation",
+    "counts_toward": ["90-day beta duration", "three operational cycles"],
+    "rules": ["exact revision/campaign epoch", "hash-chained receipts", "cadence gap <=36 hours", "failed observation resets active segment"]
+  },
+  "supplemental_lane": {
+    "workflow_input": "retrospective-replay",
+    "purpose": ["replay existing historical receipts", "run deterministic load/stress/recovery scenarios", "exercise correction and governance tests", "capture current environment and resource baselines"],
+    "counts_toward": [],
+    "classification": "hosted-retrospective-supplement",
+    "retention": "GitHub Actions artifact, 90 days",
+    "boundary": "Supplemental observations are not backdated elapsed time and cannot satisfy external participant or accountable-authority gates."
+  },
+  "data_acquisition": {
+    "allowed": "archive-only and public-datasets-only",
+    "live_endpoint": false,
+    "historical_receipts": "may be aggregated only when their original timestamps, source revision and digest are preserved",
+    "synthetic_replay": "must be labelled replay and cannot be represented as historical operation"
+  },
+  "recommendation": "Run the supplemental lane immediately and let the qualifying daily lane continue independently."
+}

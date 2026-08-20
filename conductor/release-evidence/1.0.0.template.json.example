@@ -21,7 +21,7 @@
       "reviewer": null,
       "expires_at": null,
       "waiver": null,
-      "notes": "Decision rights, rights, privacy, ethics, Māori data sovereignty, safety, corrections and withdrawals are approved for the released scope."
+      "notes": "Decision rights, rights, privacy, ethics, applicable cultural or community review, safety, corrections and withdrawals are approved for the released scope."
     },
     {
       "gate_id": "stable-contracts",
@@ -163,7 +163,7 @@
     "expired_waivers": 0
   },
   "metrics": {
-    "independent_reviewers": 0,
+    "agent_panel_analysts": 0,
     "clean_room_reproductions": 0,
     "external_reproductions": 0,
     "external_user_workflows": 0,

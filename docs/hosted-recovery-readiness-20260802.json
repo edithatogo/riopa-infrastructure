@@ -1,0 +1,28 @@
+{
+  "evidence_id": "hosted-recovery-readiness-20260802",
+  "scope": "bounded-public-data-technical-preview",
+  "status": "ready-pending-hosted-execution",
+  "required_drills": ["restore", "rollback", "correction", "withdrawal"],
+  "required_artifacts": [
+    "raw-log",
+    "timestamps",
+    "recovery-point-hash",
+    "restored-object-hash",
+    "environment-identity",
+    "operator-decision-record"
+  ],
+  "local_preparation": {
+    "status": "passing",
+    "test": "tests/test_recovery.py",
+    "classification": "local-synthetic-only"
+  },
+  "hosted_execution": {
+    "status": "pending",
+    "promotion_effect": "blocking"
+  },
+  "limitations": [
+    "This readiness packet does not claim hosted, production or disaster-recovery execution.",
+    "A hosted failure resets the applicable qualification clock.",
+    "No release tier may be promoted without content-addressed hosted observations."
+  ]
+}

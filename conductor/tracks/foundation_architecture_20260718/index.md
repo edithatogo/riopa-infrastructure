@@ -1,7 +1,7 @@
 # Evidence index: Foundation architecture and programme governance
 
 - **Track ID:** `foundation_architecture_20260718`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -10,6 +10,8 @@
 - **V1 critical:** `yes`
 - **Owner repository:** `edithatogo/riopa-infrastructure`
 - **Owner role:** Programme owner
+
+Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.md`.
 - **GitHub issue:** https://github.com/edithatogo/riopa-infrastructure/issues/14
 
 ## Evidence register
@@ -23,11 +25,22 @@
 | R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite passes locally |
 | R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings resolved for M1 or explicitly deferred to named later gates |
 | R01–R05 | Programme-owner bounded architecture ratification | `docs/architecture-baseline-ratification.md`; source revision `64c4dd7c28d18f1ed68f28a52421770777f92d7d` | M1 development baseline ratified on 2026-08-01; M2-M6 maturity and release approvals explicitly excluded |
+| R05 | External dependency and release-gate register | `docs/external-dependency-register.md` | Current hosted checks are recorded as passed; independent reproduction, source authority, preservation and release authority remain open with explicit fallbacks |
+| C.3 | M1 closeout audit | `docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md` | Repository-owned blocker, waiver and limitation checks pass; later maturity and external gates remain open |
+| M2-prep | Executable acceptance checklist | `docs/architecture-reviews/foundation-m2-evidence-checklist.md` | Defines bounded proof and explicit non-claims for the next maturity gate |
+| M2-READINESS-20260801 | Machine-readable M2 readiness and later-gate boundary | `docs/foundation-maturity-readiness-20260801.json` | Repository-owned M2 preparation passes; promotion remains false |
 
-## Blocking defects
+## Blocking maturity gates
 
-- None recorded. Named ratification and publication remain track work rather
-  than a concealed implementation blocker.
+- M2 executable proof, negative tests and traceable evidence.
+- M3 real-data integration and representative failure handling.
+- M4 repeated operation, external use and SLO evidence.
+- M5 orchestrated agent-panel qualification, recovery qualification and RC soak.
+- M6 supported compatibility, external reproduction, named maintainers and stable release authority.
+
+The consolidated parent-track maturity inventory is recorded in
+`docs/parent-track-maturity-report-20260803.json`; it finds all 28 tracks at
+M1 against an M6 target and does not promote any track.
 
 ## Decisions, exceptions and limitations
 
@@ -40,10 +53,23 @@
   baseline. Named signatories, signed evidence and stable-release authority
   remain external M5/M6 gates.
 
+## Review record
+
+- Review scope: maturity-readiness and closeout changes through `601940f`.
+- Finding: closeout task C.4 still described the track as `active` after the
+  metadata and index moved to `validating`.
+- Fix: aligned C.4 and the handover language with the validating status while
+  retaining `promotion_ready: false` and the M2–M6 blockers.
+- Validation: roadmap validation and repository test evidence are required
+  before this review is closed; no external gate is represented as complete.
+
 ## Review and handover
 
 Required analyst coverage: two independent analysts with distinct identities and scopes; governance, API/schema and external-user perspectives remain recommended coverage.
 
-The bounded M1 architecture baseline is ratified; implementation remains active
-at M1. Evidence must be immutable or version-addressed, independently reviewed
-where required, and sufficient for each later maturity and release gate.
+The bounded M1 architecture baseline is ratified; implementation remains
+validating at M1. Evidence must be immutable or version-addressed, qualified by
+the orchestrated agent panel where required, and sufficient for each later maturity and release gate.
+
+Target-release metadata and evidence were revalidated on 2026-08-01; status is
+`validating` by design until M2–M6 gates are evidenced.

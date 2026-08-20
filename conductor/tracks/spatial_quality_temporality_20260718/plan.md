@@ -18,7 +18,7 @@
 - [ ] 3.2 Add MAUP and denominator-version sensitivity analyses.
 - [ ] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces.
 
-## 4. Independent quality validation
+## 4. Agent-panel quality validation
 
 - [ ] 4.1 Validate profiles on heterogeneous real council layers.
 - [ ] 4.2 Review blocking thresholds and waiver governance.

@@ -4,7 +4,7 @@
 
 - [ ] 1.1 Define independent conformance, clean-room and external-user protocols.
 - [ ] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications.
-- [ ] 1.3 Select validators, environments and reviewer independence criteria.
+- [ ] 1.3 Select agent-panel validators, environments and analyst-independence criteria.
 
 ## 2. Release and citation packages
 
@@ -24,10 +24,11 @@
 - [ ] 4.2 Exercise correction, supersession and downstream-impact notification.
 - [ ] 4.3 Publish validation evidence and stable citation guidance.
 
-## 5. Bounded reviewer preparation
+## 5. Bounded agent-panel preparation
 
 - [x] 5.1 Define the WP-010 clean-room procedure, independence criteria and content-bound evidence record. (37510dd)
 - [x] 5.2 Define the staged Software Heritage plus artifact-repository preservation sequence without claiming a deposit. (37510dd)
+- [x] 5.3 Execute three isolated agent lenses across all 28 tracks and publish the fail-closed orchestrator synthesis. (`docs/panel-reports/20260802/manifest.json`)
 
 ## Track closeout
 

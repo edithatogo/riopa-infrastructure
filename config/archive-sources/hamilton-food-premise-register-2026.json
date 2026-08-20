@@ -1,0 +1,14 @@
+{
+  "source_id": "hamilton-food-premise-register",
+  "authority": "Hamilton City Council",
+  "upstream_issue": "https://github.com/edithatogo/open_social_data/issues/36",
+  "landing_page": "https://services1.arcgis.com/R6s0QqCMQdwKY6yp/arcgis/rest/services/Food_Premise/FeatureServer",
+  "archive_dataset": "edithatogo/riopa-public-data-archive",
+  "packet_revision": "3d3d0f4eb3065bcfb28e1c05cb8c7012a58df433",
+  "capture_run": "https://github.com/edithatogo/open_social_data/actions/runs/30754473415",
+  "status": "archived-source-specific-assertions",
+  "rights_status": "terms-preserved-with-source-receipt",
+  "non_claim": "This regional register is not an authoritative or complete national food-retail register.",
+  "enabled_use": ["bounded-attribute-reconciliation", "provenance-fixture"],
+  "disabled_use": ["national-facility-coverage", "national-accessibility-claim"]
+}

@@ -4,7 +4,7 @@
   "phase": "Release",
   "status": "specified",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-31T09:30:00Z",
+  "updated_at": "2026-08-02T13:38:26Z",
   "description": "Set and verify bounded performance, capacity, resilience and cost envelopes for the connector, archive, query, accessibility, optimisation and simulation workloads required by stable v1.",
   "depends_on": [
     "connector_runtime_capture_20260719",
@@ -23,12 +23,12 @@
   "owner_repository": "edithatogo/riopa-infrastructure",
   "owner_role": "Release manager",
   "review_roles": [
-    "Performance reviewer",
-    "Operations reviewer",
-    "Security reviewer",
-    "Data steward",
-    "Quantitative methods reviewer",
-    "External user reviewer"
+    "Performance analyst",
+    "Operations analyst",
+    "Security analyst",
+    "Data-governance analyst",
+    "Quantitative methods analyst",
+    "External-user workflow analyst"
   ],
   "v1_critical": true,
   "current_maturity": "M1",

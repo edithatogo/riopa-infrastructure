@@ -1,0 +1,24 @@
+{
+  "schema": "riopa.github-branch-protection.v1",
+  "recorded_at": "2026-08-02T11:33:00Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "branch": "main",
+  "enabled": true,
+  "strict_status_checks": true,
+  "required_checks": [
+    "Quality, contracts, and packaging",
+    "Tests on Python 3.12",
+    "Tests on Python 3.13",
+    "Analyze Python"
+  ],
+  "enforce_for_administrators": true,
+  "required_pull_request_reviews": null,
+  "required_conversation_resolution": true,
+  "required_linear_history": true,
+  "allow_force_pushes": false,
+  "allow_deletions": false,
+  "single_developer_boundary": "Changes require hosted checks but no second-person or human-review approval. Repository assessment uses the orchestrated agent panel.",
+  "source_observation": "GitHub branch-protection API response recorded after applying the configuration.",
+  "live_verifier": "scripts/verify_github_main_protection.py",
+  "review_requirement_verification": "Use GraphQL branchProtectionRule.requiresApprovingReviews=false and requiredApprovingReviewCount=null, or absence of required_pull_request_reviews in the aggregate REST response. Do not infer enablement from the standalone legacy REST subresource, which can return a default count even when review enforcement is disabled."
+}

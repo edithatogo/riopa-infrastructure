@@ -1,0 +1,213 @@
+{
+  "below_target_count": 28,
+  "classification": "fail-closed-maturity-inventory",
+  "evidence_id": "urn:riopa:evidence:parent-track-maturity:2026-08-03",
+  "promotion_rule": "No parent track is promoted to M6 by inventory or panel recommendation alone; each track requires its own evidence contract and applicable external/elapsed gates.",
+  "schema_version": "1.0.0",
+  "shared_blockers": [
+    "incomplete track-specific implementation and compatibility evidence",
+    "external operator and user workflows",
+    "elapsed beta/RC soak and production recovery qualification",
+    "national-scale performance and cost measurements",
+    "signed preservation and accountable release-authority decisions"
+  ],
+  "track_count": 28,
+  "tracks": [
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "accessibility_network_engine_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "validating",
+      "track_id": "canonical_domain_schemas_ontology_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "connector_runtime_capture_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "documentation_developer_experience_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "emergency_health_facilities_pilot_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "facility_location_engine_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "active",
+      "track_id": "facility_registry_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "validating",
+      "track_id": "foundation_architecture_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "validating",
+      "track_id": "governance_maori_data_sovereignty_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "health_outcomes_causal_methods_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "interoperability_conformance_sdks_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "methods_research_objects_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "active",
+      "track_id": "nz_spatial_archive_mvp_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "nz_spatial_archive_operations_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "nz_spatial_source_registry_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "operations_preservation_sre_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "performance_scalability_reliability_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "planning_rules_linkage_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "active",
+      "track_id": "planning_system_transition_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "validating",
+      "track_id": "provenance_profile_v1_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "provenance_query_api_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "publication_validation_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "repository_template_adoption_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "active",
+      "track_id": "security_supply_chain_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "simulation_validation_engine_20260719",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "spatial_quality_temporality_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "specified",
+      "track_id": "supermarket_health_pilot_20260718",
+      "v1_critical": true
+    },
+    {
+      "current_maturity": "M1",
+      "maturity_target": "M6",
+      "status": "active",
+      "track_id": "v1_release_hardening_20260719",
+      "v1_critical": true
+    }
+  ]
+}

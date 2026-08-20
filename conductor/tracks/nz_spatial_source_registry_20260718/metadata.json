@@ -4,12 +4,11 @@
   "phase": "NZ Spatial",
   "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-31T09:30:00Z",
+  "updated_at": "2026-08-02T13:38:26Z",
   "description": "Create a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
-    "provenance_profile_v1_20260718",
-    "governance_maori_data_sovereignty_20260718"
+    "provenance_profile_v1_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/39",
   "evidence": [
@@ -32,10 +31,10 @@
   "current_maturity": "M1",
   "owner_role": "Spatial data lead",
   "review_roles": [
-    "Governance reviewer",
-    "API/schema reviewer",
-    "Data steward",
-    "Operations reviewer"
+    "Governance analyst",
+    "API/schema analyst",
+    "Data-governance analyst",
+    "Operations analyst"
   ],
   "blocking_defects": []
 }

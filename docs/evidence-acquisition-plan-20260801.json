@@ -1,0 +1,18 @@
+{
+  "schema": "riopa.evidence-acquisition-plan.v1",
+  "generated_at": "2026-08-01",
+  "scope": "public-datasets-only technical preview and staged v1 qualification",
+  "status": "approved_to_launch",
+  "operational_campaign_manifest": "docs/operational-evidence-campaign-20260802.json",
+  "lanes": [
+    {"id":"matrix-reconciliation","gate":"track-to-issue evidence mapping","source":"live GitHub issue export plus Conductor metadata","artifact":"docs/open-issue-track-evidence-matrix-20260802.json","owner_role":"programme maintainer","status":"complete-for-current-snapshot","contingency":"retain ambiguous or stale joins as blockers"},
+    {"id":"public-source-capture","gate":"real-data and transition evidence","source":"versioned public authority and planning sources","artifact":"content-addressed source manifest and capture receipts","owner_role":"data steward","status":"pending","contingency":"preserve negative receipt and use deterministic fixture"},
+    {"id":"repository-qualification","gate":"M2 executable proof and negative tests","source":"repository code, fixtures and CI","artifact":"tests, reports and release-evidence digests","owner_role":"implementation maintainer","status":"passing-for-local-scope","contingency":"fail closed on any digest or test mismatch"},
+    {"id":"panel-qualification","gate":"independent panel reports","source":"three-agent reproducer, adversarial analyst and evidence auditor panel","artifact":"content-bound reports with hashes and dissent","owner_role":"qualification orchestrator","status":"template-ready","contingency":"incomplete panel remains pending"},
+    {"id":"recovery-and-operations","gate":"restore, rollback, correction, withdrawal and operational cycles","source":"local deterministic drills plus bounded preview observations","artifact":"raw observations, timestamps, hashes and cycle records","owner_role":"operations lead","status":"local-drill-passing-duration-pending","contingency":"restart qualification clock after failed/interrupted drill"},
+    {"id":"performance","gate":"regional and national-scale measurements","source":"synthetic regional benchmark followed by approved public-data workload","artifact":"benchmark report with limits, cost and failure behavior","owner_role":"performance lead","status":"regional-synthetic-passing","contingency":"retain regional-only claims if national workload is unavailable"},
+    {"id":"external-reproduction","gate":"clean-room and external operator evidence","source":"frozen public-data operator bundle","artifact":"two reproduction reports including one external operator report","owner_role":"release coordinator","status":"pending","contingency":"remain technical preview"},
+    {"id":"release-authority","gate":"beta/RC/stable decision","source":"assembled digest-bound release packet","artifact":"signed decision record with expiry and rollback conditions","owner_role":"accountable release authority","status":"pending","contingency":"no promotion or archive"}
+  ],
+  "non_claims": ["No external operator, external user, elapsed soak or release-authority evidence is represented as complete.", "Public-source authority approval does not imply national, operational, clinical or stable-release authority."]
+}

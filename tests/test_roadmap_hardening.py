@@ -19,6 +19,7 @@ from riopa_provenance.roadmap import (
     _section,
     _semver_key,
     _stability_label,
+    _validate_evidence_reference,
     _validate_release_evidence,
     _waiver_is_current,
     generate_issue_configuration,
@@ -70,6 +71,19 @@ def test_architecture_fitness_requires_boundary_contract(tmp_path: Path) -> None
     assert "architecture-artifact" in codes(root)
 
 
+def test_v1_critical_track_requires_owner_and_maturity_metadata(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    path, metadata = track_metadata(root)
+    metadata.pop("owner_repository")
+    metadata.pop("maturity_target")
+    write_json(path, metadata)
+    problems = validate_roadmap(root, check_generated_issues=False)
+    assert {item.code for item in problems} >= {"architecture-ownership"}
+    messages = " ".join(item.message for item in problems)
+    assert "missing owner_repository" in messages
+    assert "missing maturity_target" in messages
+
+
 def test_plan_phases_retain_completed_tasks() -> None:
     phases = _plan_phases("## 1. Done\n- [x] Completed\n## 2. Active\n- [~] In progress\n")
     assert [phase["tasks"] for phase in phases] == [["Completed"], ["In progress"]]
@@ -105,12 +119,37 @@ def evidence_reference(name: str, *, immutable: bool = True) -> dict[str, Any]:
     }
 
 
+def test_historical_evidence_uses_preserved_release_snapshot(tmp_path: Path) -> None:
+    root = tmp_path / "repo"
+    live = root / "project/issues.yaml"
+    live.parent.mkdir(parents=True)
+    live.write_text("current issue graph\n", encoding="utf-8")
+    snapshot = root / "conductor/release-evidence/artifacts/0.2.0" / "project/issues.yaml"
+    snapshot.parent.mkdir(parents=True)
+    snapshot.write_text("original issue graph\n", encoding="utf-8")
+    reference = {
+        "location": "project/issues.yaml",
+        "sha256": "b0221eb9571ec0449b2ad0d295b429071ccb9534644238a1e7dba50470f40d2e",
+    }
+    problems: list[RoadmapProblem] = []
+
+    _validate_evidence_reference(
+        root,
+        root / "conductor/release-evidence/0.2.0.json",
+        reference,
+        problems,
+        release_version="0.2.0",
+    )
+
+    assert problems == []
+
+
 def passing_gate(gate_id: str) -> dict[str, Any]:
     return {
         "gate_id": gate_id,
         "status": "passed",
         "evidence": [evidence_reference(gate_id)],
-        "reviewer": "Independent reviewer",
+        "reviewer": "Independent agent analyst",
         "reviewed_at": iso(),
         "expires_at": iso(timedelta(days=90)),
         "waiver": None,
@@ -124,7 +163,7 @@ def stable_evidence(root: Path) -> dict[str, Any]:
     gate_ids = [item["id"] for item in stable["exit_gates"] if item.get("blocking", True)]
     v1_gate = read_json(root / "conductor/v1-gate.json")
     metrics = {
-        "independent_reviewers": 2,
+        "agent_panel_analysts": 2,
         "clean_room_reproductions": 2,
         "external_reproductions": 1,
         "external_user_workflows": 2,
@@ -452,7 +491,7 @@ def test_release_evidence_validation_reports_structural_and_reference_failures(
                 "expired_waivers": 0,
             },
             "metrics": {
-                "independent_reviewers": 0,
+                "agent_panel_analysts": 0,
                 "clean_room_reproductions": 0,
                 "external_reproductions": 0,
                 "external_user_workflows": 0,
@@ -775,7 +814,7 @@ def test_stable_qualification_metrics_defects_approvals_and_decision_are_enforce
     evidence = make_stable_ready(root)
     evidence["defects"].pop("open_p0")
     evidence["defects"]["open_p1"] = 1
-    evidence["metrics"].pop("independent_reviewers")
+    evidence["metrics"].pop("agent_panel_analysts")
     evidence["metrics"]["clean_room_reproductions"] = 1
     evidence["machine_readable"] = False
     evidence["immutable_evidence_identifiers"] = False
@@ -789,7 +828,7 @@ def test_stable_qualification_metrics_defects_approvals_and_decision_are_enforce
     text = "\n".join(readiness.blockers)
     assert "stable defect metric open_p0 is missing" in text
     assert "open_p1=1 exceeds 0" in text
-    assert "independent_reviewers is missing" in text
+    assert "agent_panel_analysts is missing" in text
     assert "clean_room_reproductions=1 is below 2" in text
     assert "not declared machine-readable" in text
     assert "does not require immutable identifiers" in text

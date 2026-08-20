@@ -1,0 +1,9 @@
+{
+  "release": "1.0.0",
+  "status": "blocked",
+  "current_maturity": "M1",
+  "promotion_ready": false,
+  "repository_owned_checks": {"roadmap_validation": "passing", "generated_issue_graph": "passing", "release_policy": "recorded", "release_workflow": "recorded"},
+  "blocking_gates": ["all-v1-critical-tracks-complete", "frozen-conformance-suite", "restore-rollback-correction-withdrawal-rehearsals", "security-performance-operations-and-scientific-audits", "two-clean-room-reproductions-including-external-operator", "two-external-user-workflows", "signed-attested-preserved-stable-artifacts", "release-authority-decision"],
+  "limitations": ["This record is a readiness baseline, not a release approval.", "Repository validation cannot substitute for external reproduction, user validation or release authority."]
+}

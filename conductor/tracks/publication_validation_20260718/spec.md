@@ -28,7 +28,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - Independent conformance, clean-room reproduction and external-user validation protocols.
 - Software, schema, ontology, dataset, model and research-object release coordination.
 - DOI/citation, preprint/manuscript, data-descriptor and methods-paper packages.
-- Peer-review response, correction, supersession and retraction evidence.
+- Publication-feedback response, correction, supersession and retraction evidence.
 - Evidence coverage, claim-to-artifact traceability and publication ethics.
 
 ## Out of scope
@@ -39,7 +39,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Requirements
 
 - **R01.** Each scientific claim has a traceable analysis, data, code, environment and limitation record.
-- **R02.** Independent reviewers use preserved public inputs and documented interfaces.
+- **R02.** Independent agent analysts use preserved public inputs and documented interfaces.
 - **R03.** Failures and deviations are published rather than normalised away.
 - **R04.** Software, schemas, data and papers cite exact immutable versions.
 - **R05.** Corrections preserve prior versions and explain downstream impact.
@@ -58,7 +58,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
-- M5 requires frozen interfaces, independent review, security/performance/recovery qualification and release-candidate soak.
+- M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 
@@ -71,7 +71,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 ## Risks
 
-- Reviewers unknowingly rely on local caches or unpublished credentials.
+- Agent analysts unknowingly rely on local caches or unpublished credentials.
 - Publication schedules pressure maintainers to weaken release gates.
 - Manuscript claims drift from final release artifacts.
 - Corrections fragment citations or leave downstream users unaware.

@@ -1,0 +1,15 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix riopa: <https://w3id.org/riopa/ontology/> .
+
+riopa:CanonicalCrosswalkShape a sh:NodeShape ;
+    sh:targetClass riopa:CrosswalkClaim ;
+    sh:property [ sh:path riopa:mappingId ; sh:minCount 1 ; sh:datatype <http://www.w3.org/2001/XMLSchema#string> ] ;
+    sh:property [ sh:path riopa:canonicalId ; sh:minCount 1 ; sh:datatype <http://www.w3.org/2001/XMLSchema#string> ] ;
+    sh:property [ sh:path riopa:method ; sh:minCount 1 ; sh:datatype <http://www.w3.org/2001/XMLSchema#string> ] ;
+    sh:property [ sh:path riopa:confidence ; sh:minCount 1 ] ;
+    sh:property [ sh:path riopa:reviewer ; sh:minCount 1 ; sh:datatype <http://www.w3.org/2001/XMLSchema#string> ] ;
+    sh:property [ sh:path riopa:evidence ; sh:minCount 1 ] .
+
+# This shape is a versioned validation input. A SHACL engine and report are
+# still required before the ontology can claim SHACL conformance.

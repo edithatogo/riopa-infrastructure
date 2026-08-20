@@ -1,0 +1,20 @@
+{
+  "migration_id": "urn:riopa:migration:canonical-crosswalk:1.0.0-to-1.1.0",
+  "from_version": "1.0.0",
+  "to_version": "1.1.0",
+  "compatibility": "backward-compatible",
+  "changes": [
+    {
+      "path": "/source_assertion/label",
+      "kind": "retained",
+      "rule": "Preserve the original source label verbatim; consumers may add a display label separately."
+    },
+    {
+      "path": "/evidence",
+      "kind": "constraint-tightening",
+      "rule": "Uncertain mappings must include at least one evidence reference."
+    }
+  ],
+  "automated": true,
+  "notes": "Fixture documents contract evolution; it is not evidence of cross-runtime compatibility."
+}

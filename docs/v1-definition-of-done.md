@@ -6,7 +6,7 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 
 - All 28 v1-critical tracks are `complete`, at their declared M6 target, with immutable or version-addressed evidence.
 - The global v1 gate and all stable release gates pass.
-- Release authority, maintainers, security contact, governance reviewers and succession responsibilities are named.
+- Release authority, maintainers, security contact, governance agent-panel analysts and succession responsibilities are named.
 - Rights, privacy, ethics, Māori data sovereignty, safety, correction and withdrawal decisions approve or explicitly bound the released scope.
 
 ## Normative platform

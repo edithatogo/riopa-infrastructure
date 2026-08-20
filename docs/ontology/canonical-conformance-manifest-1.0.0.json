@@ -1,0 +1,26 @@
+{
+  "manifest_id": "urn:riopa:ontology-conformance:canonical:1.0.0",
+  "release_id": "urn:riopa:ontology-release:canonical:1.0.0",
+  "status": "bounded-pending",
+  "artifacts": [
+    "docs/ontology/canonical-ontology-release-1.0.0.json",
+    "docs/ontology/canonical-crosswalk.shacl.ttl",
+    "schemas/canonical-crosswalk.schema.json",
+    "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json",
+    "fixtures/canonical-crosswalk-golden.json"
+  ],
+  "artifact_sha256": {
+    "docs/ontology/canonical-ontology-release-1.0.0.json": "07e379a2137a3f34ce66f9f28c06b1a4f289e34cb717b14edcc858b5230458d0",
+    "docs/ontology/canonical-crosswalk.shacl.ttl": "f43ee9a29112136abe0719977bfcde75fb907e4f8809329c7643594c5bc2bf25",
+    "schemas/canonical-crosswalk.schema.json": "2389536e5e9717e79cb25894e3c9a6070aee2d5e16dd30ab4815cb069fb014a4",
+    "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json": "942538b5c57038ee9d2bffea129a6548b55886fcd0af26051be8415f4e33ea59",
+    "fixtures/canonical-crosswalk-golden.json": "0a5ce20c85fd43c29dc47ec8e6baafe72af1f297929d2c5285381a0e0ec85e74"
+  },
+  "checks": {
+    "json_schema": {"status": "passing", "runtime": "python"},
+    "semantic_contract": {"status": "passing", "runtime": "python"},
+    "shacl": {"status": "not-run", "reason": "No SHACL dependency or external report is installed."},
+    "cross_language_round_trip": {"status": "not-run", "reason": "Requires independent non-Python runtime evidence."}
+  },
+  "publication": {"status": "unpublished", "persistent_identifier": null}
+}

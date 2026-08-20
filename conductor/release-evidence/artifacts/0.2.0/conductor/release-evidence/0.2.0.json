@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:release-evidence:0.2.0:local-delivery",
+  "release": "0.2.0",
+  "evaluated_at": "2026-07-19T09:26:17Z",
+  "evaluated_by": "RIOPA roadmap validator and maintainer review",
+  "machine_readable": true,
+  "immutable_evidence_identifiers": false,
+  "source_revision": "uncommitted:riopa-roadmap-v0.2.0-delivery",
+  "tool": {
+    "name": "riopa-provenance",
+    "version": "0.2.0",
+    "environment": "locked uv environment; Python 3.13 local qualification run"
+  },
+  "gates": [
+    {
+      "gate_id": "roadmap-complete",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-programme-plan",
+          "kind": "documentation",
+          "location": "PROGRAMME_PLAN.md",
+          "sha256": "1da26ffd7786c44fe1047a7c96eee66370ec56752626aa43e951c1e2765dde78",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Stable-v1 programme and release train."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-track-index",
+          "kind": "documentation",
+          "location": "conductor/tracks.md",
+          "sha256": "3c0e93c8d837c0d0e4a5e0f51e885f6b7c7c5322faf889d4ef652e3a4f89caa5",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Validated 28-track Conductor index."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-project-model",
+          "kind": "documentation",
+          "location": "project/project.yaml",
+          "sha256": "0d077e13ad4cabb8a82fe3c578e23c84ee5027686910c6a78878e85e39941d25",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Project fields, views and ownership model."
+        }
+      ],
+      "reviewed_at": "2026-07-19T09:26:17Z",
+      "reviewer": "RIOPA roadmap maintainer",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "The complete v1 scope, dependencies and release authority are represented in versioned configuration."
+    },
+    {
+      "gate_id": "maturity-model-enforced",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:maturity-model",
+          "kind": "artifact",
+          "location": "conductor/maturity-model.json",
+          "sha256": "78234e18a381f36f0e9901db5bbba6e8eea6654baf1c9a29e2651ad5ea7aa975",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Machine-readable M0-M6 model and maturity dimensions."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:release-train",
+          "kind": "artifact",
+          "location": "conductor/releases.json",
+          "sha256": "201563e35cae8a06c4a677a11faa715eaaae6fc16c0221fb1dfd90c759ae1c5a",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Machine-readable release train and stage gates."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:v1-global-gate",
+          "kind": "artifact",
+          "location": "conductor/v1-gate.json",
+          "sha256": "eb3b34d4707b153fad4a72c318debadcf35abe0f01174df6f3fa77b50b01ff3b",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Global stable-v1 defect, evidence, waiver and authority policy."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-tests",
+          "kind": "test-report",
+          "location": "tests/test_roadmap.py",
+          "sha256": "d08894b45d79a1ce5d7909a3a7c4c6528caad00237ffa1099dfedb1143b1857f",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Automated roadmap and readiness tests."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-hardening-tests",
+          "kind": "test-report",
+          "location": "tests/test_roadmap_hardening.py",
+          "sha256": "3ee0a020b8a42eb383dd859f01d28e71dac6fa520b558327dc6d97ceab645098",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Negative, drift, expiry, evidence-integrity and stable-readiness tests."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:maturity-model-enforced:verification-report",
+          "kind": "test-report",
+          "location": "reviews/v0.2.0-verification-report.json",
+          "sha256": "3cd08917acaf7ab237bd4d19ac9c53b68b18815f799d0c3894f5bd2b934018c9",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:35:00Z",
+          "description": "Machine-readable clean-workspace verification results for the roadmap delivery."
+        }
+      ],
+      "reviewed_at": "2026-07-19T09:26:17Z",
+      "reviewer": "RIOPA roadmap maintainer",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Schemas and code enforce maturity, release scope, dependencies, issue drift and stable-v1 closure."
+    },
+    {
+      "gate_id": "risk-and-boundaries",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:risk-register",
+          "kind": "review",
+          "location": "docs/risk-register.md",
+          "sha256": "a7db1e271e4eaa11e52d37b6535819b18b31a056cb887c5f3bacf9852901c7f2",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Programme risk, escalation and boundary register."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:v1-definition",
+          "kind": "decision",
+          "location": "docs/v1-definition-of-done.md",
+          "sha256": "53db2e8065953588525e58c934b5983ca2398351e724e18a2407c15b867325f5",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Stable-v1 completion and non-authority boundary."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:waiver-policy",
+          "kind": "decision",
+          "location": "docs/v1-evidence-and-waiver-policy.md",
+          "sha256": "ad535e7a5d7129c9f1befd1a2c23ec792bfa1a46727b1ee2b9904462a39b62b8",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Evidence, waiver and release-blocking policy."
+        }
+      ],
+      "reviewed_at": "2026-07-19T09:26:17Z",
+      "reviewer": "RIOPA roadmap maintainer",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Legal, clinical, causal, operational and source-authority boundaries are explicit and release-blocking."
+    },
+    {
+      "gate_id": "roadmap-reproducible",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-engine",
+          "kind": "artifact",
+          "location": "src/riopa_provenance/roadmap.py",
+          "sha256": "3c8ed967793dacd121338d33e8ebeb72bd802db4142181f1e6b2b2aec1a14276",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Executable validation, issue generation and readiness engine."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:generated-issues",
+          "kind": "artifact",
+          "location": "project/issues.yaml",
+          "sha256": "b787aee771a2f4de7e962c772b9f4e9a732feb041cd7009116a70946e5b47954",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "Deterministically generated programme issue graph."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:validation-workflow",
+          "kind": "test-report",
+          "location": ".github/workflows/validate.yml",
+          "sha256": "b17f4a485cd08e6b44c3338ed24b1bc0062690c51f1b0a46fb8c4d0f11d6020e",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:20:00Z",
+          "description": "CI checks for roadmap, drift, tests and reproducible objects."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:delivery-quality-report",
+          "kind": "test-report",
+          "location": "reviews/v0.2.0-verification-report.json",
+          "sha256": "3cd08917acaf7ab237bd4d19ac9c53b68b18815f799d0c3894f5bd2b934018c9",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:26:17Z",
+          "description": "Machine-readable local and clean-workspace delivery qualification report."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.2.0:roadmap-reproducible:verification-report",
+          "kind": "test-report",
+          "location": "reviews/v0.2.0-verification-report.json",
+          "sha256": "3cd08917acaf7ab237bd4d19ac9c53b68b18815f799d0c3894f5bd2b934018c9",
+          "immutable": false,
+          "generated_at": "2026-07-19T09:35:00Z",
+          "description": "Machine-readable clean-workspace verification results for the roadmap delivery."
+        }
+      ],
+      "reviewed_at": "2026-07-19T09:26:17Z",
+      "reviewer": "RIOPA roadmap maintainer",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Roadmap status and issue configuration are regenerated from Conductor source files and checked for drift."
+    }
+  ],
+  "defects": {
+    "open_p0": 0,
+    "open_p1": 0,
+    "release_blocking_p2": 0,
+    "critical_security_findings": 0,
+    "governance_prohibitions": 0,
+    "expired_waivers": 0
+  },
+  "metrics": {
+    "independent_reviewers": 0,
+    "clean_room_reproductions": 1,
+    "external_reproductions": 0,
+    "external_user_workflows": 0,
+    "external_operator_workflows": 0,
+    "operational_cycles": 0,
+    "operational_evidence_days": 0,
+    "release_candidate_soak_days": 0
+  },
+  "approvals": [
+    {
+      "role": "Programme architect",
+      "reviewer": "RIOPA roadmap maintainer",
+      "decision": "approve",
+      "decided_at": "2026-07-19T09:20:00Z",
+      "signed_decision_ref": null,
+      "notes": "Approves the roadmap configuration as a development-stage M1 release, not stable v1."
+    }
+  ],
+  "release_artifacts": [
+    {
+      "evidence_id": "urn:riopa:evidence:0.2.0:release-programme-plan",
+      "kind": "artifact",
+      "location": "PROGRAMME_PLAN.md",
+      "sha256": "1da26ffd7786c44fe1047a7c96eee66370ec56752626aa43e951c1e2765dde78",
+      "immutable": false,
+      "generated_at": "2026-07-19T09:20:00Z",
+      "description": "Primary roadmap delivery artifact."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.2.0:release-track-index",
+      "kind": "artifact",
+      "location": "conductor/tracks.md",
+      "sha256": "3c0e93c8d837c0d0e4a5e0f51e885f6b7c7c5322faf889d4ef652e3a4f89caa5",
+      "immutable": false,
+      "generated_at": "2026-07-19T09:20:00Z",
+      "description": "Conductor track index delivered with the roadmap."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.2.0:release-roadmap-status",
+      "kind": "artifact",
+      "location": "ROADMAP_STATUS.md",
+      "sha256": "96b9e44dce50dc37f5bad87904b92664e6952497c1f8f9396abe17c2086012e5",
+      "immutable": false,
+      "generated_at": "2026-07-19T09:35:00Z",
+      "description": "Generated stage-by-stage release readiness and blockers."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.2.0:release-verification-report",
+      "kind": "test-report",
+      "location": "reviews/v0.2.0-verification-report.json",
+      "sha256": "3cd08917acaf7ab237bd4d19ac9c53b68b18815f799d0c3894f5bd2b934018c9",
+      "immutable": false,
+      "generated_at": "2026-07-19T09:35:00Z",
+      "description": "Machine-readable verification summary for the 0.2.0 delivery."
+    }
+  ],
+  "known_limitations": [
+    "This release is a specified M1 roadmap and tooling release, not the implemented spatial platform.",
+    "Remote GitHub repository, issues and Project are not created by this local evidence record.",
+    "The stable-v1 evidence thresholds and independent approvals have not yet been met."
+  ]
+}

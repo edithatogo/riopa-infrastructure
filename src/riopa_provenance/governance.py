@@ -11,6 +11,23 @@ ALLOW_OUTCOMES = frozenset({"allow", "allow-with-conditions"})
 PUBLIC_CLASSES = frozenset({"public"})
 CONTROLLED_CLASSES = frozenset({"restricted", "sensitive", "controlled"})
 BLOCKING_OUTCOMES = frozenset({"withdraw", "superseded", "prohibited", "review-required"})
+ACQUISITION_OUTCOMES = frozenset(
+    {"allow", "allow-with-conditions", "metadata-only", "review-required", "prohibited"}
+)
+
+# Scope labels are deliberately explicit rather than inferred from geography or
+# population names.  This keeps cultural/community review a documented trigger
+# (when required by scope, source terms or risk), not an automatic requirement.
+SCOPE_REVIEW_TRIGGERS: dict[str, str] = {
+    "health": "privacy-ethics",
+    "unit-record": "privacy-ethics",
+    "linkage": "privacy-ethics",
+    "operational": "safety",
+    "culturally-sensitive-geography": "cultural-community",
+    "community-request": "cultural-community",
+    "source-terms": "rights-licence",
+    "statutory": "legal-authority",
+}
 
 
 class GovernanceError(ValueError):
@@ -22,6 +39,107 @@ class GovernanceResult:
     allowed: bool
     pathway: str
     reasons: tuple[str, ...]
+
+
+def validate_source_acquisition_approval(
+    record: Mapping[str, object] | None, *, now: datetime | None = None
+) -> tuple[str, ...]:
+    """Validate an acquisition approval beyond JSON Schema's structural checks.
+
+    This helper is deliberately fail-closed and side-effect free.  It catches
+    whitespace-only values, expired approvals, duplicate/empty scope labels and
+    credential-shaped fields that a valid JSON Schema instance could otherwise
+    contain.  It never fetches a source or resolves credentials.
+    """
+
+    if not isinstance(record, Mapping):
+        return ("approval record is missing",)
+    errors: list[str] = []
+    for field in ("decision_id", "recipient", "source_revision", "rights_reference", "approved_by"):
+        value = record.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{field} must be a non-empty string")
+    outcome = record.get("outcome")
+    if not isinstance(outcome, str) or not outcome.strip():
+        errors.append("outcome must be a non-empty string")
+    elif outcome not in ACQUISITION_OUTCOMES:
+        errors.append("outcome is not an approved acquisition outcome")
+    # Permission-bearing outcomes cannot be satisfied by placeholders.  A
+    # metadata-only or review-required record may intentionally retain TBD
+    # references, but an allow decision must identify a real source revision,
+    # rights instrument and recipient.
+    if outcome in {"allow", "allow-with-conditions"}:
+        for field in ("recipient", "source_revision", "rights_reference", "approved_by"):
+            value = record.get(field)
+            if isinstance(value, str) and value.strip().lower() in {
+                "tbd",
+                "unknown",
+                "pending",
+                "review-required",
+                "not provided",
+            }:
+                errors.append(f"{field} cannot be a placeholder for an allow outcome")
+    for field in ("scope", "conditions", "exclusions"):
+        value = record.get(field)
+        if not isinstance(value, Sequence) or isinstance(value, (str, bytes)):
+            errors.append(f"{field} must be an array")
+            continue
+        if field != "exclusions" and not value:
+            errors.append(f"{field} must not be empty")
+        if any(not isinstance(item, str) or not item.strip() for item in value):
+            errors.append(f"{field} contains an empty label")
+        # Do not call ``set`` until element types are known: malformed nested
+        # arrays must produce validation errors, never a TypeError.
+        string_values = [item for item in value if isinstance(item, str)]
+        if len(set(string_values)) != len(string_values):
+            errors.append(f"{field} contains duplicate labels")
+    expiry = record.get("expires_at")
+    if not isinstance(expiry, str) or not expiry.strip():
+        errors.append("expires_at is required")
+    else:
+        try:
+            parsed = datetime.fromisoformat(expiry.replace("Z", "+00:00"))
+            reference = now or datetime.now(UTC)
+            if parsed.tzinfo is None:
+                errors.append("expires_at must include a timezone")
+            elif parsed <= reference:
+                errors.append("approval has expired")
+        except ValueError:
+            errors.append("expires_at must be an ISO-8601 timestamp")
+    forbidden = {"password", "token", "secret", "credential", "api_key", "access_token"}
+    stack: list[object] = [record]
+    while stack:
+        current = stack.pop()
+        if isinstance(current, Mapping):
+            for key, value in current.items():
+                if str(key).lower() in forbidden:
+                    errors.append(f"credential-shaped field is prohibited: {key}")
+                stack.append(value)
+        elif isinstance(current, Sequence) and not isinstance(current, (str, bytes)):
+            stack.extend(current)
+    return tuple(dict.fromkeys(errors))
+
+
+def scope_review_triggers(scope: Sequence[str]) -> tuple[str, ...]:
+    """Return deterministic review domains activated by declared scope labels.
+
+    Labels must be declared by the source/pilot owner; this helper never infers
+    cultural or community obligations from place names or population attributes.
+    Unknown labels are ignored so callers can evolve scope vocabularies without
+    accidentally widening review requirements.
+    """
+
+    if isinstance(scope, (str, bytes)):
+        raise GovernanceError("scope must be a sequence of labels")
+    return tuple(
+        sorted(
+            {
+                SCOPE_REVIEW_TRIGGERS[label]
+                for label in scope
+                if isinstance(label, str) and label in SCOPE_REVIEW_TRIGGERS
+            }
+        )
+    )
 
 
 def evaluate_decision(
@@ -71,14 +189,14 @@ def evaluate_decision(
     else:
         try:
             reviewed_at = datetime.fromisoformat(str(review["reviewed_at"]).replace("Z", "+00:00"))
-            if reviewed_at > datetime.now(UTC):
+            expires_at = datetime.fromisoformat(str(review["expires_at"]).replace("Z", "+00:00"))
+            if reviewed_at.tzinfo is None or expires_at.tzinfo is None:
+                reasons.append("review dates must include a timezone")
+            elif reviewed_at > datetime.now(UTC):
                 reasons.append("review date is in the future")
-            expires_at = review.get("expires_at")
-            if expires_at is not None and datetime.fromisoformat(
-                str(expires_at).replace("Z", "+00:00")
-            ) <= datetime.now(UTC):
+            elif expires_at <= datetime.now(UTC):
                 reasons.append("review has expired")
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             reasons.append("review dates must be ISO-8601 timestamps")
     if not isinstance(evidence, Sequence) or isinstance(evidence, (str, bytes)) or not evidence:
         reasons.append("review evidence is required")

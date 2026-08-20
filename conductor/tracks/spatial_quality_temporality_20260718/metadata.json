@@ -32,10 +32,10 @@
   "current_maturity": "M1",
   "owner_role": "Spatial data lead",
   "review_roles": [
-    "Provenance reviewer",
-    "Data steward",
-    "Quantitative methods reviewer",
-    "Scientific reviewer"
+    "Provenance analyst",
+    "Data-governance analyst",
+    "Quantitative methods analyst",
+    "Scientific-methods analyst"
   ],
   "blocking_defects": []
 }

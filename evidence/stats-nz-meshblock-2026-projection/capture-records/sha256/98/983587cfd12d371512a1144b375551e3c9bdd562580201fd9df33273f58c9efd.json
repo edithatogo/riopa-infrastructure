@@ -1,0 +1,37 @@
+{
+  "capture_id": "urn:riopa:capture:sha256:983587cfd12d371512a1144b375551e3c9bdd562580201fd9df33273f58c9efd",
+  "record": {
+    "archive": {
+      "dataset_repository": "edithatogo/riopa-public-data-archive",
+      "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+      "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202"
+    },
+    "artifact": {
+      "bytes": 102628,
+      "content_encoding": "gzip",
+      "media_type": "application/json",
+      "path": "raw/features/page-00081.json.gz",
+      "sha256": "ce7be334a284b330e74ef1ad628e4e869ef2deecd893810b70391586d18f84fc",
+      "uncompressed_bytes": 443493,
+      "uncompressed_sha256": "bd36e34e1ff2cddc47036cfe2f05a2f1d50e4ee7af257c850b474daa2307cc3e"
+    },
+    "original_retrieval_receipt": {
+      "artifact": "raw/features/page-00081.json.gz",
+      "headers": {
+        "content-length": "443493",
+        "content-type": "application/json; charset=utf-8",
+        "etag": "sd1810_827221107",
+        "last-modified": "Wed, 21 Jan 2026 02:17:28 GMT"
+      },
+      "method": "POST",
+      "request_body_sha256": "79efb70b3591a673f99091f736ca376877b05a202e59fccfff10d2184bf62758",
+      "retrieved_at": "2026-08-02T13:35:01Z",
+      "status": 200,
+      "url": "https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2026/FeatureServer/0/query"
+    },
+    "record_type": "archived_http_capture",
+    "schema_version": "1.0.0",
+    "source_id": "urn:riopa:source:stats-nz:meshblock-2026"
+  },
+  "record_sha256": "983587cfd12d371512a1144b375551e3c9bdd562580201fd9df33273f58c9efd"
+}

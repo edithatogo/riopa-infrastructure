@@ -17,12 +17,16 @@
 - [ ] 3.1 Define retention, replicas, fixity cadence and preservation package format.
 - [ ] 3.2 Automate backup, restore, correction, supersession and withdrawal paths.
 - [ ] 3.3 Conduct restore and disaster-recovery exercises.
+- [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)
+- [x] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)
+- [ ] 3.6 Configure repository credentials and verify independent Hugging Face and Zenodo acceptance receipts.
 
 ## 4. Beta operation and stable gate
 
 - [ ] 4.1 Operate the release pipeline for the required beta evidence period.
 - [ ] 4.2 Publish SLO, incident, capacity and preservation reports.
 - [ ] 4.3 Approve stable operational risk and support obligations.
+- [x] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)
 
 ## Track closeout
 

@@ -1,0 +1,21 @@
+{
+  "manifest_id": "urn:riopa:provenance-profile:1.0.0",
+  "status": "bounded-pending",
+  "artifacts": [
+    "schemas/provenance-event.schema.json",
+    "examples/minimal/provenance-event.json",
+    "docs/provenance-and-lineage.md",
+    "docs/standards-profile.md"
+  ],
+  "checks": {
+    "python_schema": "passing",
+    "python_stream_integrity": "passing",
+    "prov_openlineage_projection": "repository-emitted",
+    "non_python_round_trip": "not-run",
+    "signed_attestation": "not-run"
+  },
+  "limitations": [
+    "This manifest records repository-owned preparation and Python evidence only.",
+    "Non-Python parity, independent projection review and signed release attestation remain open."
+  ]
+}

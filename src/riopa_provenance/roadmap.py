@@ -370,6 +370,8 @@ def _validate_evidence_reference(
     evidence_path: Path,
     reference: Any,
     problems: list[RoadmapProblem],
+    *,
+    release_version: str | None = None,
 ) -> None:
     """Verify a local evidence reference and any declared digest."""
 
@@ -390,7 +392,26 @@ def _validate_evidence_reference(
             )
         )
         return
-    if not candidate.is_file():
+    snapshot: Path | None = None
+    snapshot_root: Path | None = None
+    if release_version is not None:
+        snapshot_root = (base / "conductor/release-evidence/artifacts" / release_version).resolve()
+        snapshot = snapshot_root / location
+    if snapshot is not None and snapshot.is_file():
+        candidate = snapshot.resolve()
+        assert snapshot_root is not None
+        try:
+            candidate.relative_to(snapshot_root)
+        except ValueError:
+            problems.append(
+                RoadmapProblem(
+                    "evidence-path",
+                    evidence_path.as_posix(),
+                    f"snapshot evidence path escapes release root: {location}",
+                )
+            )
+            return
+    elif not candidate.is_file():
         problems.append(
             RoadmapProblem(
                 "missing-evidence",
@@ -501,7 +522,7 @@ def _validate_release_evidence(
                                 "the future",
                             )
                         )
-                except (TypeError, ValueError):
+                except TypeError, ValueError:
                     problems.append(
                         RoadmapProblem(
                             "invalid-review-date",
@@ -544,7 +565,7 @@ def _validate_release_evidence(
                                         f"{duration} days",
                                     )
                                 )
-                    except (TypeError, ValueError):
+                    except TypeError, ValueError:
                         problems.append(
                             RoadmapProblem(
                                 "invalid-waiver",
@@ -553,13 +574,17 @@ def _validate_release_evidence(
                             )
                         )
             for reference in references:
-                _validate_evidence_reference(base, path, reference, problems)
+                _validate_evidence_reference(
+                    base, path, reference, problems, release_version=version
+                )
 
         release_artifacts = payload.get("release_artifacts", [])
         if isinstance(release_artifacts, list):
             all_references.extend(release_artifacts)
             for reference in release_artifacts:
-                _validate_evidence_reference(base, path, reference, problems)
+                _validate_evidence_reference(
+                    base, path, reference, problems, release_version=version
+                )
 
         identifiers = [
             _evidence_identifier(reference)
@@ -1242,7 +1267,7 @@ def _waiver_is_current(gate: dict[str, Any], now: datetime) -> bool:
     waiver = gate.get("waiver") or {}
     try:
         return bool(waiver.get("reason")) and _parse_datetime(waiver["expires_at"]) > now
-    except (KeyError, TypeError, ValueError):
+    except KeyError, TypeError, ValueError:
         return False
 
 
@@ -1346,7 +1371,7 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
                     if age_days > max_age:
                         blockers.append(f"gate {gate['id']} evidence is {age_days} days old")
                         continue
-            except (TypeError, ValueError):
+            except TypeError, ValueError:
                 blockers.append(f"gate {gate['id']} has invalid evidence dates")
                 continue
             passed_gates += 1
@@ -1368,7 +1393,7 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
                 created_at = _parse_datetime(waiver["created_at"])
                 expires_at = _parse_datetime(waiver["expires_at"])
                 duration_days = (expires_at - created_at).days
-            except (KeyError, TypeError, ValueError):
+            except KeyError, TypeError, ValueError:
                 blockers.append(f"gate {gate['id']} has invalid waiver dates")
                 continue
             maximum_duration = v1_gate.get("waiver_policy", {}).get("maximum_duration_days", 90)

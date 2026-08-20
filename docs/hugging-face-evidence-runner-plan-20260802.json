@@ -1,0 +1,44 @@
+{
+  "plan_id": "hugging-face-evidence-runner-20260802",
+  "status": "staged-not-submitted",
+  "account": "edithatogo",
+  "observed_cli_version": "1.15.0",
+  "observed_jobs": [],
+  "recommended_hardware": "cpu-basic",
+  "observed_cost_usd_per_hour": 0.01,
+  "maximum_initial_timeout": "30m",
+  "source_revision": "f8135fca3a6e10b525c2feb3c350075acbd484bc",
+  "purpose": "A second hosted failure domain for a bounded technical-preview recovery or performance observation.",
+  "submission_template": [
+    "hf",
+    "jobs",
+    "run",
+    "ghcr.io/astral-sh/uv:python3.13-bookworm-slim",
+    "<revision-pinned bootstrap and evidence command>",
+    "--flavor",
+    "cpu-basic",
+    "--timeout",
+    "30m",
+    "--label",
+    "riopa-evidence-f8135fc"
+  ],
+  "required_preflight": [
+    "Pin the exact source revision and runner image digest.",
+    "Prove the bootstrap command in a local container.",
+    "Set a bounded timeout and record the maximum cost.",
+    "Reject secrets and private inputs from the command and environment.",
+    "Capture job ID, hardware, timestamps, logs, resource statistics and output hashes."
+  ],
+  "dataset_search_observations": {
+    "queries": ["LINZ", "New Zealand", "OpenStreetMap New Zealand"],
+    "authoritative_nz_geospatial_workload_found": false,
+    "decision": "Do not use a Hugging Face community dataset as national or source-authority evidence."
+  },
+  "non_claims": [
+    "This staged command is not execution evidence.",
+    "Hugging Face is not the source authority or preservation repository.",
+    "A second hosted technical drill is not production disaster-recovery qualification.",
+    "No billable Job or dataset repository was created."
+  ]
+}
+

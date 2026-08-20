@@ -1,7 +1,7 @@
 # Evidence index: Planning-system transition and legal continuity
 
 - **Track ID:** `planning_system_transition_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.7.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -16,18 +16,32 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| PT-1 | Transition schema and fail-closed validator | `schemas/planning-transition.schema.json`, `src/riopa_provenance/transitions.py`, `tests/test_transitions.py` | Repository tests passing; real-data evidence not claimed |
+| PT-2 | Rename, merge, split, replacement and partial-continuity fixtures | `fixtures/planning-transition-golden.json` | Deterministic fixture validated; not a legal equivalence claim |
+| PT-3 | Temporal perspectives and migration guidance | `docs/planning-system-transition-migration-playbook.md` | Valid-time, recorded-time and as-known-at semantics documented |
 
 ## Blocking defects
 
-- None recorded.
+- Real authority reorganisation and plan replacement reconstructions remain pending; public-source capture and planning-domain agent-panel qualification are required before validation.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The repository-owned contract and fixtures are complete for the current slice.
+  Historical authority/plan reconstruction, downstream integration evidence,
+  planning-domain agent-panel qualification and immutable public-source evidence are
+  still blocking validation.
 
 ## Review and handover
 
-Required reviewer roles: Governance reviewer, API/schema reviewer, Data steward, Scientific reviewer.
+Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, independently reviewed where required, and sufficient for the applicable release gates.
+## Review record
+
+- Review scope: transition contract, fixtures, temporal selector, migration
+  guidance and Conductor records through `2f544c2`.
+- Finding: the playbook task cited the implementation commit rather than the
+  commit that recorded the completed task, and pending gates were not mirrored
+  in metadata.
+- Fix: corrected the evidence reference and recorded the blockers explicitly.
+
+This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

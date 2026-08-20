@@ -8,7 +8,7 @@
 
 ## 2. Programme governance
 
-- [x] 2.1 Define maintainers, approvers, reviewers, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)
+- [x] 2.1 Define maintainers, approvers, agent-panel lenses, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)
 - [x] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth. (docs/governance-and-sustainability.md; f95b827)
 - [x] 2.3 Establish sustainability, succession and contribution expectations. (docs/governance-and-sustainability.md; f95b827)
 
@@ -20,17 +20,19 @@
 
 ## 4. Ratification and handover
 
-- [x] 4.1 Conduct two independent analyst architecture reviews (maintainers, external reviewers and/or agents). (docs/architecture-reviews/; 4f1560e)
+- [x] 4.1 Conduct two independent agent-analyst architecture assessments. (docs/architecture-reviews/; 4f1560e)
 - [x] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)
 - [x] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)
 
 ## 5. Review fixes
 
 - [x] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)
+- [x] 5.2 Register external dependencies, closure evidence, owners and bounded fallbacks. (docs/external-dependency-register.md; f614b40)
+- [x] 5.3 Align the closeout wording with the validating status and machine-readable M2 readiness boundary. (601940f; review fix)
 
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)
 - [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)
-- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)

@@ -63,7 +63,7 @@ def verify(root: Path, manifest_path: Path) -> list[str]:
         try:
             resolved = path.resolve(strict=True)
             resolved.relative_to(root.resolve())
-        except (FileNotFoundError, ValueError):
+        except FileNotFoundError, ValueError:
             errors.append(f"missing or escaping path: {relative}")
             continue
         if not path.is_file() or path.is_symlink():

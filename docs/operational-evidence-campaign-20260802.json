@@ -1,0 +1,67 @@
+{
+  "campaign_id": "operational-evidence-20260802",
+  "scope": "bounded-public-data-technical-preview",
+  "status": "evidence-collection",
+  "claims": {
+    "local_recovery": "executed-local",
+    "hosted_recovery": "technical-preview-drill-passed-production-dr-pending",
+    "operational_cycles": "cumulative-daily-campaign-active-duration-pending",
+    "rc_soak": "pending-duration",
+    "national_scale_performance": "unsupported"
+  },
+  "lanes": [
+    {
+      "id": "public-source-packets",
+      "owner": "data-steward",
+      "required_artifacts": [
+        "content-addressed-metadata-manifest",
+        "negative-receipts",
+        "authority-and-terms-record"
+      ],
+      "artifact": "docs/public-source-packets/2026-08-02/manifest.json",
+      "status": "metadata-only-negative-receipts",
+      "non_claim": "No payload authority, redistribution permission or operational completeness is established."
+    },
+    {
+      "id": "recovery-rollback",
+      "owner": "operations-evidence",
+      "required_artifacts": ["raw-log", "timestamped-object-hashes", "recovery-point", "decision-record"],
+      "status": "hosted-technical-preview-passed-production-dr-pending",
+      "readiness_artifact": "docs/hosted-recovery-readiness-20260802.json",
+      "execution_artifact": "docs/hosted-recovery-execution-20260802.json"
+    },
+    {
+      "id": "operational-cycles",
+      "owner": "operations-evidence",
+      "required_artifacts": ["cycle-records", "failure-recovery-notes", "daily-digests"],
+      "status": "daily-schedule-active-first-observation-passed",
+      "execution_artifact": "docs/operational-beta-observation-20260802.json",
+      "legacy_batch_artifact": "docs/hosted-evidence-batch-20260802.json"
+    },
+    {
+      "id": "regional-performance",
+      "owner": "performance-evidence",
+      "required_artifacts": ["workload-manifest", "raw-measurements", "resource-cost-summary"],
+      "status": "synthetic-regional-only",
+      "readiness_artifact": "docs/regional-performance-evidence-20260802.json"
+    },
+    {
+      "id": "rc-soak",
+      "owner": "release-evidence",
+      "required_artifacts": ["immutable-build-digest", "soak-observations", "incident-log"],
+      "status": "clock-not-started"
+    }
+  ],
+  "promotion_blockers": [
+    "production-disaster-recovery-execution",
+    "elapsed-operational-cycle-and-rc-soak-duration",
+    "national-scale-measurements",
+    "accountable-release-authority-decision"
+  ],
+  "limitations": [
+    "The hosted technical-preview drill does not establish production disaster-recovery evidence.",
+    "Synthetic regional benchmarks do not support national-scale claims.",
+    "Subagent rehearsals do not satisfy external operator or user reproduction gates.",
+    "No gate may be marked complete without content-addressed raw observations."
+  ]
+}
