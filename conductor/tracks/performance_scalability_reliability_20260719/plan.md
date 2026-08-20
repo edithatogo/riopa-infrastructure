@@ -2,9 +2,9 @@
 
 ## 1. Benchmark contract
 
-- [ ] 1.1 Define reference datasets, workloads, correctness checks and measurement protocol.
-- [ ] 1.2 Set provisional latency, throughput, resource and cost envelopes.
-- [ ] 1.3 Implement reproducible benchmark environment capture.
+- [x] 1.1 Define reference datasets, workloads, correctness checks and measurement protocol. (`examples/wp010-performance-benchmark/contract.json`, `examples/wp010-performance-benchmark/workload.json`)
+- [x] 1.2 Set provisional latency, throughput, resource and cost envelopes. (`examples/wp010-performance-benchmark/contract.json`, `docs/performance-benchmark-qualification-20260803.json`)
+- [x] 1.3 Implement reproducible benchmark environment capture. (`scripts/capture_benchmark_environment.py`, `tests/test_benchmark_environment_capture.py`)
 - [x] 1.4 Record the hosted full Meshblock 2026 acquisition as workload-shaping evidence without promoting its elapsed time to a national performance benchmark.
 - [x] 1.5 Freeze a bounded national reference workload manifest linking the immutable Meshblock geography and provisional subnational population packets without an unsupported geographic join (`docs/national-workload-manifest-20260803.json`).
 
