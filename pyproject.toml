@@ -87,3 +87,16 @@ disable_error_code = ["misc"]
 [tool.bandit]
 exclude_dirs = ["tests", "dist", "build"]
 skips = ["B101"]
+
+[tool.mutmut]
+source_paths = ["src/riopa_provenance/validation.py", "src/riopa_provenance/publication.py"]
+also_copy = ["src/riopa_provenance", "scripts", "examples", "schemas"]
+pytest_add_cli_args = ["-q"]
+pytest_add_cli_args_test_selection = ["tests/test_validation_integrity.py", "tests/test_publication.py"]
+mutate_only_covered_lines = true
+max_stack_depth = 8
+
+[dependency-groups]
+dev = [
+    "mutmut>=3.3,<4",
+]

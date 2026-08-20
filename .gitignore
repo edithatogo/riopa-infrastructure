@@ -5,6 +5,8 @@ __pycache__/
 .coverage
 htmlcov/
 dist/
+.mutmut-cache
+mutants/
 build/
 *.egg-info/
 .DS_Store
