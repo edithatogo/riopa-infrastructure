@@ -12,6 +12,7 @@ on:
           - recovery-rollback
           - agent-clean-room
           - scale-smoke
+          - performance-rehearsal
           - operational-observation
           - rc-soak-observation
           - retrospective-replay

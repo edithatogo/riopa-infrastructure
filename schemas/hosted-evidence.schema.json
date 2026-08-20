@@ -31,6 +31,7 @@
         "scale-smoke",
         "operational-observation",
         "rc-soak-observation",
+        "performance-rehearsal",
         "retrospective-replay"
       ]
     },

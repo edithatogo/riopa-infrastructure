@@ -13,6 +13,12 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 LANES: dict[str, list[str]] = {
+    "performance-rehearsal": [
+        "uv",
+        "run",
+        "python",
+        "scripts/validate_resilience_matrix.py",
+    ],
     "recovery-rollback": [
         "uv",
         "run",
@@ -77,6 +83,26 @@ def run_lane(lane: str, output_dir: Path) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     started_at = _now()
     completed = subprocess.run(command, check=False, capture_output=True, text=True)
+    if completed.returncode == 0 and lane == "performance-rehearsal":
+        benchmark = subprocess.run(
+            [
+                "uv",
+                "run",
+                "python",
+                "examples/wp010-performance-benchmark/run.py",
+                "--output",
+                str(output_dir / "benchmark.json"),
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        completed = subprocess.CompletedProcess(
+            command,
+            benchmark.returncode,
+            completed.stdout + benchmark.stdout,
+            completed.stderr + benchmark.stderr,
+        )
     ended_at = _now()
     log = completed.stdout + completed.stderr
     log_path = output_dir / f"{lane}.log"

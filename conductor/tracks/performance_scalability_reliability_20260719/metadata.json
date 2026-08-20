@@ -19,7 +19,8 @@
   "evidence": [
     "urn:riopa:evidence:linz-pipeline-resource-envelopes:2026-07-31",
     "urn:riopa:evidence:benchmark-contract:2026-08-21",
-    "urn:riopa:evidence:resilience-matrix:2026-08-21"
+    "urn:riopa:evidence:resilience-matrix:2026-08-21",
+    "urn:riopa:evidence:hosted-rehearsal-lane:2026-08-21"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
