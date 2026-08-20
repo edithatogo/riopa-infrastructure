@@ -23,7 +23,9 @@
     "required_human_approvals": 0,
     "automated_merge_checks": ["Quality, contracts, and packaging", "Tests on Python 3.14", "Analyze Python", "CodeQL", "Dependency change review"],
     "hosted_settings_receipt": "docs/github-main-protection-20260802.json",
-    "secret_scanning": "not-claimed-until-hosted-result-is-retained"
+    "secret_scanning": "not-claimed-until-hosted-result-is-retained",
+    "canonical_context": "docs/solo-maintainer-security-context.md",
+    "context_validator": "scripts/validate_repo_context.py"
   },
   "boundary": "Configuration is repository-owned. Hosted app access, Codecov activation and hosted security-product receipts remain external state and are not fabricated here."
 }
