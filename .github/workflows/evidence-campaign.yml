@@ -82,7 +82,7 @@ jobs:
           --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json"
           schemas/hosted-evidence.schema.json
       - name: Restore the latest cumulative campaign artifact
-        if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
+        if: ${{ always() && env.EVIDENCE_LANE != 'retrospective-replay' && env.EVIDENCE_LANE != 'performance-rehearsal' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -96,7 +96,7 @@ jobs:
           cp "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json" \
             "dist/campaign-history/${GITHUB_RUN_ID}-${EVIDENCE_LANE}.receipt.json"
       - name: Build cumulative fail-closed campaign ledger
-        if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
+        if: ${{ always() && env.EVIDENCE_LANE != 'retrospective-replay' && env.EVIDENCE_LANE != 'performance-rehearsal' }}
         run: >-
           uv run python scripts/build_campaign_ledger.py
           dist/campaign-history/*.receipt.json
@@ -109,7 +109,7 @@ jobs:
           --bundle-id "${EVIDENCE_CAMPAIGN_ID}-${EVIDENCE_LANE}-${GITHUB_RUN_ID}"
           --output "dist/hosted-evidence/${GITHUB_RUN_ID}/redundancy-manifest.json"
       - name: Upload cumulative content-bound evidence
-        if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
+        if: ${{ always() && env.EVIDENCE_LANE != 'retrospective-replay' && env.EVIDENCE_LANE != 'performance-rehearsal' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-${{ env.EVIDENCE_LANE }}
@@ -120,10 +120,10 @@ jobs:
           if-no-files-found: error
           retention-days: 90
       - name: Upload retrospective supplemental evidence
-        if: always() && env.EVIDENCE_LANE == 'retrospective-replay'
+        if: ${{ always() && (env.EVIDENCE_LANE == 'retrospective-replay' || env.EVIDENCE_LANE == 'performance-rehearsal') }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-retrospective-${{ github.run_id }}
+          name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-${{ env.EVIDENCE_LANE }}-${{ github.run_id }}
           path: dist/hosted-evidence/
           if-no-files-found: error
           retention-days: 90
