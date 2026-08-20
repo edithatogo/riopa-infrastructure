@@ -10,6 +10,7 @@
 
 ## 2. Load and resilience qualification
 
+- The repository-owned rehearsal matrix is now validated, but execution remains gated on hosted infrastructure, elapsed observation and an external operator (`examples/wp010-performance-benchmark/resilience-matrix.json`).
 - [ ] 2.1 Run ingestion, query, accessibility, optimisation and simulation load tests.
 - [ ] 2.2 Run soak, concurrency, retry-storm, cancellation and malformed-input tests.
 - [ ] 2.3 Measure recovery, queue, storage and memory behaviour.

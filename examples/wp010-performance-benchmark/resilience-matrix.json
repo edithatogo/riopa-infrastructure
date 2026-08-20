@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "matrix_id": "urn:riopa:benchmark:wp010:resilience-matrix:1.0.0",
+  "classification": "repository-rehearsal-plan-not-operational-evidence",
+  "workload": "workload.json",
+  "required_cases": [
+    "baseline",
+    "stressed",
+    "degraded",
+    "concurrency",
+    "retry-storm",
+    "cancellation",
+    "malformed-input"
+  ],
+  "observables": [
+    "correctness_checksum",
+    "elapsed_ns",
+    "queue_depth",
+    "storage_bytes",
+    "memory_bytes",
+    "recovery_status"
+  ],
+  "safety": {
+    "live_endpoint_contacted": false,
+    "production_failure_injection": false,
+    "network_timetable_facility_claims": false,
+    "national_scale_measurement": false
+  },
+  "completion": {
+    "requires_hosted_execution": true,
+    "requires_external_operator": true,
+    "requires_elapsed_soak": true,
+    "status": "not-run"
+  }
+}
