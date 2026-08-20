@@ -1,0 +1,25 @@
+{
+  "schema": "riopa.evidence-redundancy-plan.v1",
+  "scope": "Hosted evidence receipts, cumulative ledgers and milestone release packets",
+  "recommended_architecture": [
+    "GitHub Actions artifact for immediate run recovery",
+    "Hugging Face dataset repository for content-addressed machine-readable receipt bundles",
+    "Zenodo deposition for milestone packets and long-term DOI preservation",
+    "Git history for manifests, pointers, schemas and decision records"
+  ],
+  "controls": [
+    "SHA-256 manifest for every bundle",
+    "Independent target receipts with exact bundle digest",
+    "No promotion when a required target is pending or digest-mismatched",
+    "Bounded retries with failed-attempt receipts",
+    "No local checkout treated as authoritative storage",
+    "Retention and replication status exposed in Conductor evidence"
+  ],
+  "contingencies": {
+    "huggingface_unavailable": "Retain GitHub artifact and queue a bounded retry; do not mark preservation qualified",
+    "zenodo_unavailable": "Retain GitHub artifact and queue a bounded retry; do not issue a milestone DOI claim",
+    "both_unavailable": "Keep the campaign running for operational observation but block preservation and release promotion",
+    "credential_missing": "Generate the manifest and explicit pending-target receipt without printing or storing credentials"
+  },
+  "current_state": "Repository-owned implementation complete; external target credentials and acceptance receipts remain required"
+}
