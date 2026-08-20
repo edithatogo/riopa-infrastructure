@@ -19,7 +19,7 @@
 | V1-BASELINE-20260801 | Fail-closed stable-v1 readiness baseline | `docs/v1-release-readiness-baseline-20260801.json`, `tests/test_v1_release_readiness.py` | Repository checks passing; promotion explicitly blocked |
 | V1-REMAINING-GATES-20260802 | Single-developer gate plan, platform observations, hosted receipt runner, library decision and contingencies | `docs/remaining-gates-autonomous-plan-20260802.json`, `docs/remaining-gates-autonomous-plan-20260802.md`, `docs/single-developer-agent-panel-review-policy.md`, `.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_remaining_gates_plan.py`, `tests/test_hosted_evidence.py` | Agent-panel policy and hosted technical-preview runner implemented; actual elapsed, national, participant and authority evidence remains open |
 | V1-HOSTED-RECOVERY-20260802 | Exact-revision recovery/rollback technical-preview drill executes in GitHub's hosted environment | `docs/hosted-recovery-execution-20260802.json`, [GitHub Actions run 30744372005](https://github.com/edithatogo/riopa-infrastructure/actions/runs/30744372005) | Passed at `347cf53`; production DR, participant, elapsed-soak and authority gates remain open |
-| V1-HOSTED-BATCH-20260802 | Exact-revision agent clean-room, scale-smoke, operational and RC-soak observations execute in hosted runners | `docs/hosted-evidence-batch-20260802.json` | Four lanes passed at `6fcbe29`; national scale, elapsed duration, external participants, track qualification and authority remain open |
+| V1-HOSTED-BATCH-20260802 | Exact-revision agent clean-room, scale-smoke, operational and RC-soak observations execute in hosted runners | `docs/hosted-evidence-batch-20260802.json` | Four lanes passed at `6fcbe29`; national scale, elapsed duration, additional agent workflows, track qualification and authority remain open |
 | V1-CAMPAIGN-V2-20260802 | Live GitHub/Conductor drift, daily evidence schedule, revision-bound ledger, Hugging Face fallback and library choices are reconciled | `docs/remaining-gates-campaign-v2-20260802.md`, `docs/hugging-face-evidence-runner-plan-20260802.json`, `.github/workflows/evidence-campaign.yml`, `scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py` | Repository review uses agent panels; live issue sync and elapsed/external/authority evidence remain separately tracked |
 | V1-GITHUB-ISSUE-SYNC-20260802 | Validated Conductor projections are reconciled to live GitHub issues after the agent-panel migration | `docs/github-issue-sync-20260802.json`, `project/issues.yaml` | 151 generated records applied without error; 140 updated and 11 missing phase issues created; open work remains open |
 | V1-GITHUB-MAIN-PROTECTION-20260802 | The single-developer main branch enforces exact hosted checks without a human-review requirement | `docs/github-main-protection-20260802.json` | Strict CI and CodeQL checks, linear history, conversation resolution and admin enforcement enabled; force-push and deletion disabled |
@@ -29,7 +29,7 @@
 | V1-FEATURE-FREEZE-20260803 | Bounded normative-surface inventory and explicit freeze exclusions | `docs/v1-feature-freeze-inventory-20260803.json` | Python 3.14/runtime, schema, CLI and publication surfaces are inventoried; full compatibility diff remains open |
 | V1-RC-HANDOVER-20260803 | Digest-bound candidate handover packet links current readiness evidence and fail-closed promotion decision | `docs/v1-rc-validation-handover-20260803.json` | Handover packet prepared; external, elapsed, national-scale, signed-preservation and accountable-authority gates remain open |
 | V1-PARENT-MATURITY-20260803 | Consolidated inventory of all parent Conductor tracks below their M6 target | `docs/parent-track-maturity-report-20260803.json`, `scripts/report_parent_maturity.py` | 28/28 tracks remain below M6; inventory is fail-closed and does not substitute for track evidence |
-| V1-FINAL-GATES-20260803 | Final elapsed-soak, participant, authority and stable-approval gates are consolidated in one fail-closed status record | `docs/final-release-gates-status-20260803.json` | Beta/RC duration, external users, signed authority and stable approval remain pending |
+| V1-FINAL-GATES-20260803 | Final elapsed-soak, agent-workflow, authority and stable-approval gates are consolidated in one fail-closed status record | `docs/final-release-gates-status-20260803.json` | Beta/RC duration, agent workflows, owner decision and stable approval remain pending |
 | V1-SCOPE-POLICY-20260804 | Owner-authorized scope, participant, elapsed-time and authority policy | `docs/release-scope-and-evidence-policy-20260804.json` | Preparation authorized; promotion remains forbidden until qualifying evidence and a named signed authority decision exist |
 | V1-BETA-ACCELERATION-20260804 | GitHub Actions runs qualifying daily observations alongside a separated retrospective replay lane | `docs/beta-campaign-acceleration-plan-20260804.json`, `.github/workflows/evidence-campaign.yml` | Supplemental replay can accelerate technical learning but contributes zero elapsed-time qualification |
 
@@ -44,15 +44,16 @@
 | Hosted recovery execution | Prepare manifests, scripts and verification; execute only where an authenticated hosted environment exists | Hosted/DR run logs, timestamps, recovery-point hashes and independent verification |
 | Operational cycles and RC soak | Start logging, automate observations and maintain digests | Actual elapsed cycles and soak duration; interruptions reset the clock |
 | National-scale workload measurements | Design workloads and run bounded public-data/regional benchmarks | Approved national workload, infrastructure and measured results |
-| External operator/user workflows | Prepare frozen bundles, instructions and report templates; run panel rehearsals | External operator reproduction and two distinct external-user reports |
+| Agent-operated operator/user workflows | Prepare frozen bundles, instructions and report templates; execute owner-authorized agent workflows and panel rehearsals | Two distinct agent-executed workflow reports with exact revision and limitations |
 | Quality frontier qualification | Python 3.14 suite, branch-aware coverage, applicability and explicit exclusions recorded | `docs/quality-frontier-qualification-20260803.json`, `.github/workflows/mutation.yml`, `scripts/check_mutation_score.py`, `scripts/verify_conformance_parity.py`, `scripts/check_workflow_lint.py`, `scripts/check_tracked_secrets.py` | Bounded mutation lane measured 68.78% against a 65% floor; Python/Node corpus parity is now hosted and receipt-backed; Rust/SDK/external-client parity and provider-side scanning remain open |
 | Solo-maintainer security context | Canonical agent, contribution, security and protected-main boundaries with a one-command drift check | `docs/solo-maintainer-security-context.md`, `scripts/validate_repo_context.py`, `tests/test_repo_context.py`, `docs/renovate-codecov-rollout-20260803.json` | Repository-owned context and live protection verifier are present; Renovate, Codecov/OIDC and provider-side scanning remain external gates |
 | Quality frontier closeout | Issue #147 subissues closed with explicit bounded qualifications and non-substitutable release boundaries | `docs/quality-frontier-closeout-20260821.json`, `tests/test_quality_frontier_closeout.py` | Repository-owned hardening scope qualified; broader parity, provider services, elapsed, participant and authority gates remain open |
-| Accountable release-authority decision | Assemble the digest-bound decision packet and draft options | Named authority's signed tier decision with expiry and rollback conditions |
+| Owner accountable release-authority decision | Assemble the digest-bound decision packet and draft options | Repository owner's signed tier decision with expiry and rollback conditions |
+| Single-person authority context | Record owner accountability and agent-operated workflow roles without authorising promotion | `docs/single-person-operating-model-20260821.md`, `docs/owner-accountable-authority-20260821.json` | Owner accountability confirmed; tier-specific promotion decision remains unrecorded |
 
 Agent panels can prepare and qualify repository-owned evidence, but cannot
-substitute for external participants, elapsed qualification time or accountable
-release authority.
+substitute for elapsed qualification time or the repository owner's accountable
+release decision.
 
 ## Decisions, exceptions and limitations
 
@@ -60,7 +61,7 @@ release authority.
 
 ## Review and handover
 
-Required agent-panel lenses: Governance analyst, API/schema analyst, Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, Performance analyst, Interoperability analyst, Research-object analyst, External-user workflow analyst, Quantitative methods analyst, Scientific-methods analyst.
+Required agent-panel lenses: Governance analyst, API/schema analyst, Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, Performance analyst, Interoperability analyst, Research-object analyst, Agent workflow analyst, Quantitative methods analyst, Scientific-methods analyst.
 
 This index records a bounded repository-owned readiness baseline while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
 

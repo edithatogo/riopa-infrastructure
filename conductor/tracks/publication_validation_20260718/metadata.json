@@ -36,7 +36,7 @@
   "review_roles": [
     "Governance analyst",
     "Research-object analyst",
-    "External-user workflow analyst",
+    "Agent workflow analyst",
     "Scientific-methods analyst"
   ],
   "blocking_defects": []

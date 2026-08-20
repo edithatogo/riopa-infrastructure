@@ -41,6 +41,6 @@
 
 ## Review and handover
 
-Required agent-panel lenses: Performance analyst, Operations analyst, Security analyst, Data-governance analyst, Quantitative methods analyst, External-user workflow analyst.
+Required agent-panel lenses: Performance analyst, Operations analyst, Security analyst, Data-governance analyst, Quantitative methods analyst, Agent workflow analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

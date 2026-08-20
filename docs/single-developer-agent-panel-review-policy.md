@@ -19,15 +19,14 @@ analyst evaluates claims and methods; it does not represent human peer review.
 ## Boundaries
 
 Agent-panel review can qualify repository-owned code, documentation, methods,
-benchmarks and evidence packets. It does not create elapsed time, execute a
-workflow in a hosted failure domain, attest to an external user's experience,
-or make an accountable release decision. Those facts remain distinct campaign
-gates until their actual evidence exists or the applicable release scope is
-formally changed.
+benchmarks and evidence packets. Owner-authorized agents may also execute the
+operator and user workflows for this single-person repository. Agent execution
+does not create elapsed time or make an accountable release decision. Those
+facts remain distinct campaign gates until their actual evidence exists.
 
-An external operator or user may supply execution or usability evidence, but is
-not a reviewer and is not required to review the repository. The accountable
-release authority approves promotion; it is not a code or scientific-methods assessor.
+The repository owner is the accountable release authority. An agent may prepare
+the decision packet and report, but may not approve promotion on the owner's
+behalf.
 
 ## Minimum evidence
 
@@ -35,4 +34,4 @@ release authority approves promotion; it is not a code or scientific-methods ass
 - at least two named agent analyses with distinct lenses;
 - orchestrator synthesis, options, recommendation and contingency;
 - disposition of every material finding;
-- explicit non-claims for hosted, elapsed, external-user and authority gates.
+- explicit non-claims for hosted, elapsed and authority gates.

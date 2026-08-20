@@ -15,7 +15,7 @@ contains:
   expiry and evidence references;
 - defect counts using the same field names as the global v1 policy;
 - qualification metrics for orchestrated agent-panel qualification, clean-room/external reproduction,
-  external users/operators, operational cycles, operational evidence and RC soak;
+  agent-operated user/operator workflows, operational cycles, operational evidence and RC soak;
 - role-specific approvals and signed decision references;
 - immutable release-artifact references; and
 - known limitations that remain true at release time.
@@ -58,7 +58,7 @@ Expired, overlong, unsigned or prohibited waivers block release.
 
 M5 and M6 cannot be established entirely by the implementer. Stable v1 requires at
 least two independent agent analysts, two clean-room reproductions including one external
-reproduction, two external user workflows and one external operator workflow.
+reproduction, two agent-operated user workflows and one agent-operated operator workflow.
 Conflicts of interest are disclosed in the release decision.
 
 ## Release authority

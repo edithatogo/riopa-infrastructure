@@ -2,8 +2,10 @@
 
 This matrix records the evidence still required after the deterministic WP-010
 successor deposit. The internal subagent panel may prepare, reproduce and audit
-evidence, but it is not a substitute for an accountable external operator,
-source custodian, or release authority.
+evidence, but it is not a substitute for a source custodian or release
+authority. This repository has no second human: operator and user workflows
+are executed by owner-authorized agents, while the repository owner remains the
+accountable release authority.
 
 For the current public-datasets-only bounded technical preview, the
 programme-owner-authorised panel report may close the pilot validation gate.
@@ -12,9 +14,9 @@ requirements below.
 
 | Gate | Required closing evidence | Panel contribution | What the panel cannot substitute for | Owner / contingency |
 | --- | --- | --- | --- | --- |
-| External reproduction (issue #149) | A clean-room operator outside the implementation run completes the documented workflow from the frozen revision, records environment and deviations, and publishes an adverse-findings or no-findings report with exact hashes. Required for beta, release candidate and stable v1. | Rebuild the packet twice, run the scripted workflow, perform an adversarial review, and prepare a ready-to-run operator bundle and report template. | A subagent run is not an independent person/operator reproduction and cannot attest to usability for an external operator. | Release owner solicits an external operator and records the response. If unavailable, keep the project at regional technical-preview status and mark the gate open. |
+| Agent reproduction (issue #149) | An owner-authorized clean-room agent completes the documented workflow from the frozen revision, records environment and deviations, and publishes an adverse-findings or no-findings report with exact hashes. Required for beta, release candidate and stable v1. | Rebuild the packet twice, run the scripted workflow, perform an adversarial review, and preserve the report. | An agent panel may assess the report but cannot approve promotion or invent elapsed evidence. | If the agent run is unavailable or fails, keep the project at regional technical-preview status and mark the gate open. |
 | National ambulance source authority | Written confirmation from the responsible custodian(s) of dataset authority, geographic coverage, version/freshness, licence and redistribution rights, sensitive-location restrictions, correction route, and permitted claims; preserve the exact authorised payload and hash. | Search official public catalogues, build a candidate rights/provenance matrix, and draft custodian requests without activating acquisition or redistribution. | Panel findings cannot confer authority, licence permission, completeness, or a correction commitment. Public metadata alone cannot support national-completeness claims. | Data/source steward requests confirmation from Health NZ/Te Whatu Ora and provider custodians. If no response, retain only the bounded regional public-data pilot and state the limitation. |
-| Release authority | Named accountable authority signs a tier-specific decision covering scope, exclusions, safety posture, evidence links, expiry/review date, and rollback/withdrawal conditions. | Assemble the release-evidence index, check traceability and identify unresolved risks or stale artefacts. | A panel recommendation is not an approval, accountability assignment, or authorization to represent the system as operational. | Release authority (to be nominated) decides beta/RC/v1. If absent, publish no higher tier and retain the technical-preview label. |
+| Owner release authority | Repository owner signs a tier-specific decision covering scope, exclusions, safety posture, evidence links, expiry/review date, and rollback/withdrawal conditions. | Assemble the release-evidence index, check traceability and identify unresolved risks or stale artefacts. | A panel recommendation is not the owner's approval or authorization to represent the system as operational. | If the owner's tier decision is absent, publish no higher tier and retain the technical-preview label. |
 | Ontology and conformance | Versioned ontology/semantic contract, fixture-backed conformance results, mapping assumptions, and review of all equations, heuristics and parameters against cited sources. | Cross-check mappings, run conformance fixtures and adversarially test unknown/ambiguous values; report gaps and provenance. | Panel agreement cannot establish domain ownership or validate an ontology for operational use where a custodian or accountable domain authority is required. | Technical lead owns the contract; domain authority confirms semantics. If confirmation is unavailable, limit claims to the documented pilot vocabulary and fail closed on unknowns. |
 
 ## Newly implemented preparation artifacts

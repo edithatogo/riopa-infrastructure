@@ -11,9 +11,19 @@ REQUIRED_MARKERS = {
     "SECURITY.md": ("private vulnerability reporting", "release blockers"),
     ".github/pull_request_template.md": ("Conductor track / issue", "Gate honesty"),
     "docs/solo-maintainer-security-context.md": (
-        "single-developer repository",
+        "single-person repository",
         "verify_github_main_protection.py",
         "Renovate app access",
+    ),
+    "docs/single-person-operating-model-20260821.md": (
+        "one person",
+        "owner-authorized agent observations",
+        "accountable release authority",
+    ),
+    "docs/owner-accountable-authority-20260821.json": (
+        "repository owner",
+        "tier-promotion-not-authorized",
+        "single-person-repository-agent-operated-workflows",
     ),
 }
 
