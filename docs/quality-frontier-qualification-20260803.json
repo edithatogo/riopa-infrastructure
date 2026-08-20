@@ -6,9 +6,14 @@
   "status": "partially-qualified-with-explicit-gaps",
   "applicability": {
     "mutation": {
-      "status": "pending-tooling-and-threshold",
-      "rationale": "Mutation score is not inferred from line or branch coverage; a pinned mutation tool, scope and minimum score must be selected before claiming qualification.",
-      "next": "Run a bounded scheduled mutation lane over validators and publication state, retain the raw report and set an approved threshold."
+      "status": "bounded-lane-qualified-with-survivors",
+      "tool": "mutmut 3.7.0",
+      "scope": ["src/riopa_provenance/validation.py", "src/riopa_provenance/publication.py"],
+      "minimum_score": 0.65,
+      "observed_score": 0.687811,
+      "observed_counts": {"killed": 1106, "survived": 502, "total": 1608},
+      "evidence": [".github/workflows/mutation.yml", "scripts/check_mutation_score.py", "tests/test_mutation_score.py"],
+      "boundary": "The scheduled lane qualifies only this bounded scope; surviving mutants and all other modules remain open for follow-up."
     },
     "dst": {
       "status": "bounded-not-applicable-to-current-contract",
