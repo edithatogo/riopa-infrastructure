@@ -7,7 +7,9 @@ uv run ruff format --check . --exclude conductor/release-evidence/artifacts
 uv run mypy src/riopa_provenance
 uv run bandit -q -c pyproject.toml -r src/riopa_provenance
 uv run python scripts/check_action_pins.py --root .
+uv run python scripts/check_workflow_lint.py --root .
 uv run python scripts/check_workflow_policy.py --root .
+uv run python scripts/check_tracked_secrets.py --root .
 uv run riopa validate --root .
 uv run riopa registry validate --registry config/source-registry/nz-spatial-pilot.yaml --schema schemas/source-registry.schema.json
 uv run riopa roadmap validate --root .

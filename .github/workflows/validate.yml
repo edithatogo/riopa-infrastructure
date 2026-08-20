@@ -37,6 +37,10 @@ jobs:
         run: uv sync --extra dev --extra spatial --frozen
       - name: Run engineering quality harness
         run: scripts/ci_quality.sh
+      - name: Verify workflow lint and tracked-secret gates
+        run: |
+          uv run python scripts/check_workflow_lint.py --root .
+          uv run python scripts/check_tracked_secrets.py --root .
       - name: Upload package and SBOM evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
