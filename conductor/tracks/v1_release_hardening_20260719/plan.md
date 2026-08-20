@@ -38,6 +38,7 @@
 - [x] 5.8 Complete content-bound three-lens reports and an orchestrator synthesis for all 28 tracks without promoting any M6 disposition. (`docs/panel-reports/20260802/manifest.json`)
 - [x] 5.9 Add portable workflow-lint and tracked-secret gates to local and hosted quality checks, with deterministic negative tests. (`scripts/check_workflow_lint.py`, `scripts/check_tracked_secrets.py`, `tests/test_ci_quality_gates.py`)
 - [x] 5.10 Add a bounded, scheduled mutation lane with a pinned tool, explicit scope, threshold, raw-result artifact and score receipt. (`.github/workflows/mutation.yml`, `scripts/check_mutation_score.py`)
+- [x] 5.11 Emit and retain a hosted receipt proving parity between the Python reference and Node standard-library conformance runner for the bounded corpus. (`scripts/verify_conformance_parity.py`, `.github/workflows/validate.yml`)
 
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
