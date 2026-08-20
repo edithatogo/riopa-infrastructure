@@ -27,9 +27,9 @@
       "coverage": ["duplicate target rejection", "per-target rights overrides", "idempotent target state"]
     },
     "contract": {
-      "status": "covered-with-cross-language-gap",
-      "evidence": ["tests/test_conformance.py", "tests/test_validation_integrity.py", "conformance/v1"],
-      "boundary": "Python schema and integrity contracts are exercised; Rust or separately implemented consumer parity remains a release-track gate."
+      "status": "bounded-node-parity-qualified",
+      "evidence": ["tests/test_conformance.py", "tests/test_conformance_parity_receipt.py", "scripts/verify_conformance_parity.py", "conformance/v1", ".github/workflows/validate.yml"],
+      "boundary": "Python and Node independently reproduce the bounded canonical-hash and schema-outcome corpus; Rust, standards projection, SDK and external-client parity remain release-track gates."
     },
     "ci": {
       "workflow_lint": "covered-by-portable-workflow-lint-and-workflow-policy-checks",
