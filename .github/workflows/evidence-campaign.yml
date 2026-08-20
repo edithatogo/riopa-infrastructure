@@ -13,6 +13,7 @@ on:
           - agent-clean-room
           - scale-smoke
           - performance-rehearsal
+          - agent-user-workflows
           - operational-observation
           - rc-soak-observation
           - retrospective-replay

@@ -32,6 +32,7 @@
         "operational-observation",
         "rc-soak-observation",
         "performance-rehearsal",
+        "agent-user-workflows",
         "retrospective-replay"
       ]
     },

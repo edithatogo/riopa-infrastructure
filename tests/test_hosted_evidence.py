@@ -24,6 +24,7 @@ def test_hosted_receipt_is_content_bound_and_fail_closed(tmp_path: Path) -> None
 
 def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:
     assert set(LANES) == {
+        "agent-user-workflows",
         "performance-rehearsal",
         "recovery-rollback",
         "agent-clean-room",
@@ -39,6 +40,14 @@ def test_performance_rehearsal_emits_benchmark_artifact(tmp_path: Path) -> None:
     assert receipt["status"] == "passed"
     report = json.loads((tmp_path / "benchmark.json").read_text())
     assert report["national"]["classification"] == "projection-not-measurement"
+
+
+def test_agent_user_workflows_emit_two_bounded_reports(tmp_path: Path) -> None:
+    receipt = run_lane("agent-user-workflows", tmp_path)
+    assert receipt["status"] == "passed"
+    report = json.loads((tmp_path / "user-workflows" / "agent-user-workflows.json").read_text())
+    assert [item["status"] for item in report["workflows"]] == ["passed", "passed"]
+    assert report["classification"].startswith("owner-authorized-agent")
 
 
 def test_recorded_hosted_recovery_receipt_is_bound_to_successful_run() -> None:

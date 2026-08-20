@@ -13,6 +13,12 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 LANES: dict[str, list[str]] = {
+    "agent-user-workflows": [
+        "uv",
+        "run",
+        "python",
+        "scripts/validate_resilience_matrix.py",
+    ],
     "performance-rehearsal": [
         "uv",
         "run",
@@ -102,6 +108,26 @@ def run_lane(lane: str, output_dir: Path) -> dict:
             benchmark.returncode,
             completed.stdout + benchmark.stdout,
             completed.stderr + benchmark.stderr,
+        )
+    if completed.returncode == 0 and lane == "agent-user-workflows":
+        workflow_run = subprocess.run(
+            [
+                "uv",
+                "run",
+                "python",
+                "scripts/run_agent_user_workflows.py",
+                "--output-dir",
+                str(output_dir / "user-workflows"),
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        completed = subprocess.CompletedProcess(
+            command,
+            workflow_run.returncode,
+            completed.stdout + workflow_run.stdout,
+            completed.stderr + workflow_run.stderr,
         )
     ended_at = _now()
     log = completed.stdout + completed.stderr
