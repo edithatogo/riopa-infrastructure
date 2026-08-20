@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status_id": "urn:riopa:evidence:campaign-status:2026-08-21",
   "status": "hosted-evidence-accumulating-not-release-approval",
-  "source_revision": "46fa94eaf30849cfbc9b6be0a0ae32ee7cc2cfbb",
+  "source_revision": "7156a4c699be9543cc6c0f0d44947ee24a6dd962",
   "observations": [
     {"lane": "performance-rehearsal", "run_id": "32420107756", "status": "passed", "revision": "5d59b61c8bd9ecebb50516131c6a1ce8eeeed2fe"},
     {"lane": "agent-clean-room", "run_id": "32422142075", "status": "passed", "revision": "054f99d0028912a2b68bb9bda05c470de4c4a5c9"},
@@ -11,7 +11,8 @@
     {"lane": "retrospective-replay", "run_id": "32423259651", "status": "passed", "revision": "2248a6117ff03e6125b417e935ce9fbf9e57bf77"},
     {"lane": "agent-user-workflows", "run_id": "32423900230", "status": "passed", "revision": "8cf1ca602f9665ee607f17e05c1f5c9458e7ec08"},
     {"lane": "operational-observation", "run_id": "32422487405", "status": "passed", "revision": "4228f0784f83dcadc0a59b6c755be86968d6ea2b"},
-    {"lane": "operational-observation", "run_id": "32427334717", "status": "passed", "revision": "46fa94eaf30849cfbc9b6be0a0ae32ee7cc2cfbb"}
+    {"lane": "operational-observation", "run_id": "32427334717", "status": "passed", "revision": "46fa94eaf30849cfbc9b6be0a0ae32ee7cc2cfbb"},
+    {"lane": "operational-observation", "run_id": "32427813133", "status": "passed", "revision": "7156a4c699be9543cc6c0f0d44947ee24a6dd962"}
   ],
   "elapsed_gate": {
     "campaign_id": "operational-beta-20260802",
