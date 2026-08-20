@@ -21,5 +21,22 @@
     "both_unavailable": "Keep the campaign running for operational observation but block preservation and release promotion",
     "credential_missing": "Generate the manifest and explicit pending-target receipt without printing or storing credentials"
   },
-  "current_state": "Repository-owned implementation complete; external target credentials and acceptance receipts remain required"
+  "verified_targets": [
+    {
+      "kind": "huggingface-dataset",
+      "repository": "edithatogo/riopa-evidence-campaign",
+      "revision": "5bf69d746aa252003e68ac337b55634a8d89b144",
+      "url": "https://huggingface.co/datasets/edithatogo/riopa-evidence-campaign/commit/5bf69d746aa252003e68ac337b55634a8d89b144",
+      "scope": "Protected-main campaign receipts and cumulative ledger through 2026-08-19",
+      "status": "accepted"
+    }
+  ],
+  "pending_targets": [
+    {
+      "kind": "zenodo",
+      "status": "pending-milestone-deposition",
+      "reason": "Zenodo deposition is a deliberate milestone action and requires a final packet plus DOI receipt"
+    }
+  ],
+  "current_state": "Hugging Face replication verified; Zenodo milestone deposition remains pending; local checkout is not authoritative storage"
 }
