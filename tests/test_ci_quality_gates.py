@@ -27,7 +27,7 @@ def test_workflow_lint_rejects_missing_timeout(tmp_path: Path) -> None:
 
 def test_secret_scan_detects_private_key(tmp_path: Path) -> None:
     (tmp_path / "secret.txt").write_text(
-        "-----BEGIN PRIVATE KEY-----\nnot-a-key\n", encoding="utf-8"
+        "-----BEGIN " + "PRIVATE KEY-----\nnot-a-key\n", encoding="utf-8"
     )
     (tmp_path / ".git").mkdir()
     import subprocess
