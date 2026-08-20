@@ -45,7 +45,7 @@ def main() -> int:
     args = parser.parse_args()
     findings = secret_findings(args.root.resolve())
     if findings:
-        print("\n".join(findings))
+        print(f"Tracked-secret scan failed: {len(findings)} redacted finding(s).")
         return 1
     print("Tracked-secret scan passed.")
     return 0
