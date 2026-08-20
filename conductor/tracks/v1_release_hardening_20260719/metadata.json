@@ -38,7 +38,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/139",
   "evidence": [
     "urn:riopa:evidence:quality-frontier-ci-gates:2026-08-20",
-    "urn:riopa:evidence:owner-accountability-context:2026-08-21"
+    "urn:riopa:evidence:owner-accountability-context:2026-08-21",
+    "urn:riopa:evidence:agent-recovery-rehearsal:2026-08-21"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
