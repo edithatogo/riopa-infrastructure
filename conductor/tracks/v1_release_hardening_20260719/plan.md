@@ -15,7 +15,7 @@
 ## 3. Release candidate validation
 
 - [ ] 3.1 Build, sign, attest and preserve the exact release candidate.
-- [ ] 3.2 Complete two clean-room reproductions and external-user journeys.
+- [ ] 3.2 Complete two clean-room reproductions and agent-operated user journeys.
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
 
 ## 4. General availability and handover

@@ -51,7 +51,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - V1 feature freeze, normative inventory, API/schema/ontology diff and compatibility tests.
 - Performance, security, accessibility, documentation, governance and reproducibility audits.
 - Upgrade, migration, rollback, restore, correction and withdrawal rehearsals.
-- Release candidate soak, defect thresholds, external reproduction and user validation.
+- Release candidate soak, defect thresholds, agent reproduction and agent workflow validation.
 - Signed GA release, support/deprecation policy, maintainer roster and sustainability plan.
 
 ## Out of scope
@@ -73,8 +73,8 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Normative APIs, schemas, ontology, CLI, configuration and file formats pass frozen conformance suites.
 - [ ] Upgrade, migration, rollback, restore, correction and withdrawal rehearsals pass on representative releases.
 - [ ] Security, performance, operations, accessibility, documentation, governance and scientific audits have no unresolved blocker.
-- [ ] Two clean-room reproductions, including one external operator, pass the release candidate.
-- [ ] At least two external users complete distinct documented workflows.
+- [ ] Two clean-room reproductions, including one agent-operated workflow, pass the release candidate.
+- [ ] At least two agent-operated workflows complete distinct documented journeys.
 - [ ] The stable release is signed, attested, checksummed, preserved, DOI-ready and accompanied by support/deprecation/sustainability policies.
 
 ## Hardening and maturity gates
@@ -83,7 +83,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
 - M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
-- M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
+- M6 requires supported compatibility, signed and preserved releases, agent reproduction, a named owner and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 
 ## Evidence required

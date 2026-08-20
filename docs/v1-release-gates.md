@@ -24,7 +24,7 @@ Candidate qualification includes:
 - at least 90 consecutive days of representative operational-beta evidence;
 - at least 30 days of release-candidate soak;
 - two clean-room reproductions, including at least one external reproduction;
-- external user and operator workflows;
+- agent-operated user and operator workflows;
 - migration, rollback, restore, correction and withdrawal rehearsals;
 - complete publication and preservation objects;
 - no prohibited defect or expired waiver.

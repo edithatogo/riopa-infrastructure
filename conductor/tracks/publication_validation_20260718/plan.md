@@ -2,7 +2,7 @@
 
 ## 1. Validation protocol
 
-- [ ] 1.1 Define independent conformance, clean-room and external-user protocols.
+- [ ] 1.1 Define agent-panel conformance, clean-room and agent-user workflow protocols.
 - [ ] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications.
 - [ ] 1.3 Select agent-panel validators, environments and analyst-independence criteria.
 
@@ -12,10 +12,10 @@
 - [ ] 2.2 Generate DOI-ready metadata, citation, provenance, SBOM, attestations and preservation records.
 - [ ] 2.3 Verify discovery, install, query, reproduce and cite workflows.
 
-## 3. Independent reproduction
+## 3. Agent reproduction
 
-- [ ] 3.1 Reproduce one real-data archive release externally.
-- [ ] 3.2 Reproduce one applied benchmark externally.
+- [ ] 3.1 Reproduce one real-data archive release with an owner-authorized agent.
+- [ ] 3.2 Reproduce one applied benchmark with an owner-authorized agent.
 - [ ] 3.3 Resolve findings and publish deviations/limitations.
 
 ## 4. Publications and correction

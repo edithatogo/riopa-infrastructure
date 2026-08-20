@@ -49,8 +49,8 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 ## Acceptance criteria
 
-- [ ] Two external users complete distinct end-to-end workflows using only released documentation.
-- [ ] An external operator completes installation, scheduled update, failure diagnosis and restore exercises.
+- [ ] Two owner-authorized agents complete distinct end-to-end workflows using only released documentation.
+- [ ] An owner-authorized agent completes installation, scheduled update, failure diagnosis and restore exercises.
 - [ ] All executable tutorials and examples pass against the release candidate in clean environments.
 - [ ] API, CLI, schema, ontology, configuration, migration and troubleshooting references are complete and versioned.
 - [ ] Documentation passes link, code-example, terminology, accessibility and limitation checks.
@@ -68,7 +68,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Evidence required
 
 - Documentation inventory and automated documentation test results.
-- External user and operator validation reports.
+- Agent-operated user and operator validation reports.
 - Accessibility, terminology and limitation review.
 - Support, triage and maintainer ownership policy.
 

@@ -1,10 +1,15 @@
 # Solo-maintainer security context
 
-RIOPA is operated as a single-developer repository. Pull requests require the
-protected automated checks, but no second-person approval, CODEOWNERS rule,
-team gate or human review is required. Repository assessment may use the
-orchestrated agent panel described in
+RIOPA is operated as a single-person repository by the repository owner.
+Pull requests require the protected automated checks, but no second-person
+approval, CODEOWNERS rule, team gate or human review is required. Agents are
+the only operator/user/reviewer roles used for repository-owned workflows.
+Repository assessment may use the orchestrated agent panel described in
 [`single-developer-agent-panel-review-policy.md`](single-developer-agent-panel-review-policy.md).
+
+The repository owner is the accountable release authority for all tiers.
+Agents may prepare evidence and decision records, but only the owner may
+authorize promotion.
 
 The `main` protection contract is fail-closed: force-push and branch deletion
 are disabled; linear history, conversation resolution, strict status checks and

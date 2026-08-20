@@ -10,7 +10,7 @@
 
 ## 2. Load and resilience qualification
 
-- The repository-owned rehearsal matrix is now validated, but execution remains gated on hosted infrastructure, elapsed observation and an external operator (`examples/wp010-performance-benchmark/resilience-matrix.json`).
+- The repository-owned rehearsal matrix is now validated, but execution remains gated on hosted infrastructure and elapsed observation; operator workflows are owner-authorized agent executions (`examples/wp010-performance-benchmark/resilience-matrix.json`).
 - A `performance-rehearsal` hosted campaign lane now runs the deterministic benchmark and retains its report; its national value remains explicitly a projection.
 - [ ] 2.1 Run ingestion, query, accessibility, optimisation and simulation load tests.
 - [ ] 2.2 Run soak, concurrency, retry-storm, cancellation and malformed-input tests.

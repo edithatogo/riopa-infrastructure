@@ -37,7 +37,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/139",
   "evidence": [
-    "urn:riopa:evidence:quality-frontier-ci-gates:2026-08-20"
+    "urn:riopa:evidence:quality-frontier-ci-gates:2026-08-20",
+    "urn:riopa:evidence:owner-accountability-context:2026-08-21"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -73,14 +74,14 @@
     "Performance analyst",
     "Interoperability analyst",
     "Research-object analyst",
-    "External-user workflow analyst",
+    "Agent workflow analyst",
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
   "blocking_defects": [
     "all-v1-critical-tracks-complete",
-    "clean-room-and-external-reproduction",
-    "external-user-validation",
+    "clean-room-agent-reproduction",
+    "agent-user-workflow-validation",
     "operational-and-release-candidate-soak",
     "signed-preserved-stable-release",
     "release-authority-decision"

@@ -25,7 +25,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 ## Scope
 
-- Independent conformance, clean-room reproduction and external-user validation protocols.
+- Agent-panel conformance, clean-room reproduction and agent-user workflow validation protocols.
 - Software, schema, ontology, dataset, model and research-object release coordination.
 - DOI/citation, preprint/manuscript, data-descriptor and methods-paper packages.
 - Publication-feedback response, correction, supersession and retraction evidence.
@@ -46,12 +46,12 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 ## Acceptance criteria
 
-- [ ] At least one complete real-data release and one applied benchmark are reproduced by an external party.
+- [ ] At least one complete real-data release and one applied benchmark are reproduced by an owner-authorized agent.
 - [ ] RO-Crate, DataCite, provenance, SBOM, attestation and archive validations pass with exact validator versions recorded.
 - [ ] Infrastructure/methods, spatial data descriptor and applied-study publication packages are complete or have explicit post-v1 sequencing.
 - [ ] Claim-to-evidence matrices identify unsupported, exploratory and confirmatory statements.
 - [ ] Correction and supersession exercises update citations and downstream impact without erasing history.
-- [ ] External users can discover, install, query, reproduce and cite releases from public documentation.
+- [ ] Agent-operated workflows can discover, install, query, reproduce and cite releases from public documentation.
 
 ## Hardening and maturity gates
 
@@ -59,7 +59,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - M3 requires real-data integration, migration evidence and representative failure handling.
 - M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
 - M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
-- M6 requires supported compatibility, signed and preserved releases, external reproduction, named maintainers and post-release verification.
+- M6 requires supported compatibility, signed and preserved releases, agent reproduction, a named owner and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
 
 ## Evidence required

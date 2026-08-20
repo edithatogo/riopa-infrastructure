@@ -47,6 +47,6 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 ## Independent validation, usability and support
 
 - Two clean-room reproductions pass, at least one external.
-- At least two external users and one external operator complete distinct supported workflows using released documentation.
+- At least two owner-authorized agents complete distinct supported user/operator workflows using released documentation.
 - Executable tutorials, API/CLI/schema/ontology references, migration and troubleshooting documentation pass clean-environment tests.
 - Stable 1.x support, compatibility, deprecation, vulnerability response, correction, maintenance, sustainability and annual revalidation policies are active.

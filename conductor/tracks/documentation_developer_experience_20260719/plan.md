@@ -14,7 +14,7 @@
 
 ## 3. Independent usability validation
 
-- [ ] 3.1 Run external user and operator workflow studies.
+- [ ] 3.1 Run owner-authorized agent user and operator workflow studies.
 - [ ] 3.2 Run accessibility, terminology, safety and limitations review.
 - [ ] 3.3 Resolve or document observed friction and support burden.
 

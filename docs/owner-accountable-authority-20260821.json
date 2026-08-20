@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "decision_id": "urn:riopa:decision:owner-accountable-authority:2026-08-21",
+  "decision_status": "owner-accountability-confirmed; tier-promotion-not-authorized",
+  "accountable_authority": {
+    "role": "repository owner",
+    "identity": "owner-confirmed in project instruction",
+    "scope": "all RIOPA repository tiers and release decisions"
+  },
+  "operating_model": "single-person-repository-agent-operated-workflows",
+  "agent_roles": ["operator", "user-workflow executor", "review analyst", "orchestrator"],
+  "promotion_rule": "The owner must record a tier-specific decision before beta, release-candidate or stable-v1 promotion.",
+  "required_decision_fields": ["scope", "exclusions", "evidence links", "expiry", "rollback conditions", "revocation conditions"],
+  "scope_boundary": {
+    "posture": "bounded-regional-public-datasets-only-non-operational-technical-preview",
+    "disabled_claims": ["network", "timetable", "facility", "national", "clinical", "dispatch", "authoritative"]
+  }
+}

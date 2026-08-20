@@ -9,9 +9,9 @@
     "activation_rule": "Each disabled claim requires separate archived inputs, rights/authority evidence, validation and an applicable release decision."
   },
   "participant_policy": {
-    "external_operator_required": ["beta", "release-candidate", "stable-v1"],
-    "external_user_workflows_required": ["beta", "release-candidate", "stable-v1"],
-    "agent_panel_role": "assess submitted reports and repository evidence; never substitute for factual participant evidence"
+    "agent_operator_required": ["beta", "release-candidate", "stable-v1"],
+    "agent_user_workflows_required": ["beta", "release-candidate", "stable-v1"],
+    "agent_panel_role": "assess owner-authorized agent reports and repository evidence; never approve promotion or invent elapsed evidence"
   },
   "elapsed_policy": {
     "beta": {"minimum_days": 90, "minimum_operational_cycles": 3},
@@ -21,7 +21,7 @@
   "authority_policy": {
     "preparation_authorized": true,
     "promotion_authorized": false,
-    "required_decision": "named accountable authority signs a tier-specific decision with scope, exclusions, expiry, rollback and revocation conditions"
+    "required_decision": "repository owner signs a tier-specific decision with scope, exclusions, expiry, rollback and revocation conditions"
   },
-  "owner_instruction": "Prepare the release packet, but do not promote beta, release candidate or stable-v1 until the named authority signs the applicable decision and every evidence gate passes."
+  "owner_instruction": "Prepare the release packet, but do not promote beta, release candidate or stable-v1 until the repository owner signs the applicable decision and every evidence gate passes."
 }

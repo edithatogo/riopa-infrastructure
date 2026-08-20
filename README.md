@@ -15,7 +15,7 @@ The first complete reference implementation is a New Zealand spatial and plannin
 - A **seven-level M0–M6 maturity model** across 12 independent dimensions.
 - A **nine-release train** from the present roadmap architecture through stable v1.0.
 - **28 dependency-linked Conductor tracks**, each with specification, phased plan, metadata and evidence index.
-- A machine-readable **stable-v1 gate** covering defects, waivers, independent reproduction, external users, operational cycles, release-candidate soak and release authority.
+- A machine-readable **stable-v1 gate** covering defects, waivers, agent-executed reproduction and workflows, operational cycles, release-candidate soak and the owner accountable release authority.
 - Executable roadmap validation, evidence-aware readiness reporting and deterministic generation of 141 programme issues plus 10 cross-repository adoption issues.
 - The existing provenance, schema validation, methods generation and research-object reference implementation.
 - Detailed plans for national spatial/planning capture, facility reconciliation, accessibility, optimisation, simulation, health methods, security, performance, preservation, interoperability, documentation and support.
