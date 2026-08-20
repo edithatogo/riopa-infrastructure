@@ -51,6 +51,7 @@
 | Quality frontier closeout | Issue #147 subissues closed with explicit bounded qualifications and non-substitutable release boundaries | `docs/quality-frontier-closeout-20260821.json`, `tests/test_quality_frontier_closeout.py` | Repository-owned hardening scope qualified; broader parity, provider services, elapsed, participant and authority gates remain open |
 | Owner accountable release-authority decision | Assemble the digest-bound decision packet and draft options | Repository owner's signed tier decision with expiry and rollback conditions |
 | Single-person authority context | Record owner accountability and agent-operated workflow roles without authorising promotion | `docs/single-person-operating-model-20260821.md`, `docs/owner-accountable-authority-20260821.json` | Owner accountability confirmed; tier-specific promotion decision remains unrecorded |
+| Evidence campaign status snapshot | Consolidate successful hosted lanes and the active beta epoch in one dated, fail-closed status record | `docs/evidence-campaign-status-20260821.json` | Hosted evidence is accumulating; 90-day/three-cycle duration and owner promotion decision remain pending |
 
 Agent panels can prepare and qualify repository-owned evidence, but cannot
 substitute for elapsed qualification time or the repository owner's accountable
