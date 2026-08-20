@@ -61,7 +61,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install uv and Python
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           enable-cache: true
           python-version: "3.14"
@@ -100,6 +100,13 @@ jobs:
           uv run python scripts/build_campaign_ledger.py
           dist/campaign-history/*.receipt.json
           --output dist/campaign-ledger.json
+      - name: Build replication manifest
+        if: always()
+        run: >-
+          uv run python scripts/build_redundancy_manifest.py
+          dist/hosted-evidence/${GITHUB_RUN_ID}
+          --bundle-id "${EVIDENCE_CAMPAIGN_ID}-${EVIDENCE_LANE}-${GITHUB_RUN_ID}"
+          --output "dist/hosted-evidence/${GITHUB_RUN_ID}/redundancy-manifest.json"
       - name: Upload cumulative content-bound evidence
         if: always() && env.EVIDENCE_LANE != 'retrospective-replay'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
