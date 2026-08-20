@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:quality-frontier-closeout:2026-08-21",
+  "issue": 147,
+  "status": "repository-owned-scope-qualified-with-explicit-boundaries",
+  "subissues": {
+    "145": {"status": "closed", "evidence": "docs/quality-frontier-qualification-20260803.json"},
+    "146": {"status": "closed", "evidence": "docs/solo-maintainer-security-context.md"}
+  },
+  "qualified_controls": [
+    "bounded mutation lane with threshold and retained results",
+    "UTC-only DST exclusion recorded",
+    "multi-target publication tests",
+    "Python/Node bounded conformance parity receipt",
+    "workflow lint and tracked-file secret scanning",
+    "solo-maintainer context and protected-main drift validation"
+  ],
+  "remaining_boundaries": [
+    "Rust, standards-projection, SDK and external-client parity",
+    "provider-side secret-scanning receipt",
+    "Renovate app access and Codecov/OIDC activation",
+    "elapsed soak and operational cycles",
+    "external operator/user evidence",
+    "accountable release-authority decision"
+  ],
+  "release_claim": "This closeout does not promote beta, RC or stable-v1 and does not substitute for external, elapsed-time or accountable-authority evidence."
+}
