@@ -23,6 +23,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `WP-002-dns-validation-20260731` | Connection-time DNS pinning against private-address/rebinding risks while preserving HTTP Host and TLS SNI | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Pinned transport and negative rebinding tests implemented |
 | `WP-002-source-health-20260730` | Deterministic freshness, change, degradation and disappearance classification | `src/riopa_provenance/health.py`, `schemas/source-health-observation.schema.json`, `tests/test_health.py` | Versioned record implemented and exercised in the complete functional suite |
 | `WP-002-capture-observability-20260731` | Runtime attempt, success, failure, byte and failure-category observability | `src/riopa_provenance/capture.py`, `tests/test_capture.py` | Dependency-free metrics and structured failure callback tested |
+| `CONNECTOR-RUNTIME-CONTRACT-20260822` | Adapter lifecycle, capture/raw-object, evidence-redaction and rights/publication hook definitions | `src/riopa_provenance/capture.py`, `src/riopa_provenance/retry.py`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py`, `schemas/source-acquisition-approval.schema.json`, `docs/source-acquisition-runbook.md`, `tests/test_capture.py`, `tests/test_retry.py` | Tasks 1.1–1.3 are reconciled to executable repository contracts; live adapter coverage, real-source validation, external rights and publication gates remain open |
 
 ## Blocking defects
 

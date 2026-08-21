@@ -920,7 +920,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define adapter lifecycle, capture attempts, idempotency and raw object interfaces.\n- [ ] 1.2 Define HTTP/service/document evidence and secret-redaction rules.\n- [ ] 1.3 Define rights, governance and publication hooks.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define adapter lifecycle, capture attempts, idempotency and raw object interfaces. Evidence: `src/riopa_provenance/capture.py`, `src/riopa_provenance/retry.py`, `tests/test_capture.py`, `tests/test_retry.py`. (existing implementation)\n- [ ] 1.2 Define HTTP/service/document evidence and secret-redaction rules. Evidence: `src/riopa_provenance/capture.py::CapturePolicy`, `redact_url`, `redact_text`, `tests/test_capture.py`, `docs/source-acquisition-runbook.md`. (existing implementation)\n- [ ] 1.3 Define rights, governance and publication hooks. Evidence: `schemas/source-acquisition-approval.schema.json`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py`, `docs/source-acquisition-runbook.md`. (existing implementation)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
