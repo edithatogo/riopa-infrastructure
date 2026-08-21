@@ -14,7 +14,7 @@
 
 ## 3. Preservation and recovery
 
-- [ ] 3.1 Define retention, replicas, fixity cadence and preservation package format.
+- [x] 3.1 Define retention, replicas, fixity cadence and preservation package format. Evidence: `docs/preservation-package-contract-20260822.json`, `tests/test_preservation_package_contract.py`; independent target acceptance and restore execution remain pending.
 - [ ] 3.2 Automate backup, restore, correction, supersession and withdrawal paths.
 - [ ] 3.3 Conduct restore and disaster-recovery exercises.
 - [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)

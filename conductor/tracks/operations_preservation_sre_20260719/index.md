@@ -32,6 +32,7 @@
 | `OPS-OBSERVABILITY-CONTRACT-20260822` | Source health, freshness, quality, storage, cost and release-status signal contract with fail-closed unmeasured states | `docs/operations-observability-contract-20260822.json`, `tests/test_operations_observability_contract.py` | Task 2.1 passes contract tests; hosted measurements, alert execution, production recovery and external/elapsed gates remain open |
 | `OPS-ALERT-CONTRACT-20260822` | Alert ownership, actionable response and expiring suppression contract | `docs/operations-alert-contract-20260822.json`, `tests/test_operations_alert_contract.py` | Task 2.2 passes contract tests; deployed alerting, delivery receipts, measured SLOs and external/elapsed gates remain open |
 | `OPS-RUNBOOK-CATALOG-20260822` | Source, schema, rights, corruption and capacity runbooks with stop conditions and evidence boundaries | `docs/operations-runbook-catalog-20260822.json`, `docs/runbooks/*.md`, `tests/test_operations_runbook_catalog.py` | Task 2.3 passes catalog/path tests; production execution, restore, capacity and external/elapsed gates remain open |
+| `PRESERVATION-PACKAGE-CONTRACT-20260822` | Retention, replica, fixity and research-object package contract | `docs/preservation-package-contract-20260822.json`, `tests/test_preservation_package_contract.py` | Task 3.1 passes contract tests; independent deposit acceptance, restore execution and release authority remain open |
 
 ## Blocking defects
 
