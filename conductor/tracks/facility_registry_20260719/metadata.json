@@ -13,7 +13,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/59",
   "evidence": [
     "urn:riopa:evidence:wp007-public-hospital-source:2026-07-31",
-    "urn:riopa:evidence:facility-history-events:2026-08-22"
+    "urn:riopa:evidence:facility-history-events:2026-08-22",
+    "urn:riopa:evidence:facility-public-release-filter:2026-08-22"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
