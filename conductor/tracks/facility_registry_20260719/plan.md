@@ -41,6 +41,11 @@ promote a source to authoritative status without a documented panel disposition.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
 
+## Review fixes
+
+- [x] 5.1 Enforce the history event-type union at runtime, add a negative test,
+  and align the evidence-index lifecycle wording with active metadata. (review fix; 2026-08-22)
+
 ## Evidence gates still open
 
 - [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.

@@ -163,6 +163,16 @@ def test_history_records_opening_closure_relocation_rebrand_and_disagreement() -
 
 
 def test_history_rejects_missing_evidence_reversed_window_and_retrospective_recording() -> None:
+    with pytest.raises(ValueError, match="event type"):
+        FacilityHistoryEvent(
+            "event:bad-type",
+            "facility:one",
+            "unknown",  # type: ignore[arg-type]
+            "2024-01-01",
+            "2024-01-02",
+            ("source:one",),
+            "unsupported",
+        )
     with pytest.raises(ValueError, match="source assertion"):
         FacilityHistoryEvent(
             "event:bad",

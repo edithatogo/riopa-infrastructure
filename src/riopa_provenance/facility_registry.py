@@ -67,6 +67,14 @@ class FacilityHistoryEvent:
     def __post_init__(self) -> None:
         if any(not value.strip() for value in (self.event_id, self.facility_id, self.details)):
             raise ValueError("history identity, facility identity and details must be non-empty")
+        if self.event_type not in {
+            "opening",
+            "closure",
+            "relocation",
+            "rebrand",
+            "source-disagreement",
+        }:
+            raise ValueError("history event type is unsupported")
         if not self.source_assertion_ids or any(
             not value.strip() for value in self.source_assertion_ids
         ):
