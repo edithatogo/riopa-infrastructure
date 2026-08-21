@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import re
 import shutil
 from collections.abc import Mapping, Sequence
 from pathlib import Path
@@ -21,6 +22,59 @@ from .validation import load_json, resolve_local_reference, validate_instance
 
 class PublicationError(ValueError):
     """Raised when a publication plan or stage violates release policy."""
+
+
+def validate_correction_package(package: Mapping[str, Any] | None) -> tuple[str, ...]:
+    """Validate a correction/supersession package without contacting targets."""
+    if not isinstance(package, Mapping):
+        return ("correction package must be an object",)
+    errors: list[str] = []
+    required_fields = (
+        "evidence_id",
+        "status",
+        "correction_policy",
+        "bounded_example",
+        "required_correction_record_fields",
+        "qualification",
+    )
+    errors.extend(
+        f"missing correction package field: {field}"
+        for field in required_fields
+        if field not in package
+    )
+    policy = package.get("correction_policy")
+    if isinstance(policy, Mapping):
+        for field in ("immutable_predecessors", "successor_required", "silent_mutation_forbidden"):
+            if policy.get(field) is not True:
+                errors.append(f"correction policy must require {field}")
+        if (
+            not isinstance(policy.get("notification_targets"), list)
+            or not policy["notification_targets"]
+        ):
+            errors.append("correction policy requires notification targets")
+    example = package.get("bounded_example")
+    if isinstance(example, Mapping):
+        predecessor = example.get("predecessor")
+        successor = example.get("successor")
+        digest = re.compile(r"^[0-9a-f]{64}$")
+        for label, record in (("predecessor", predecessor), ("successor", successor)):
+            if not isinstance(record, Mapping):
+                errors.append(f"bounded example requires {label}")
+                continue
+            if not isinstance(record.get("doi"), str) or not record["doi"].strip():
+                errors.append(f"bounded example {label} requires an identifier")
+            if not isinstance(record.get("sha256"), str) or not digest.fullmatch(record["sha256"]):
+                errors.append(f"bounded example {label} requires a SHA-256 digest")
+        if (
+            isinstance(predecessor, Mapping)
+            and isinstance(successor, Mapping)
+            and predecessor.get("sha256") == successor.get("sha256")
+        ):
+            errors.append("successor digest must differ from predecessor digest")
+    required = package.get("required_correction_record_fields")
+    if not isinstance(required, list) or not required:
+        errors.append("required correction record fields must be a non-empty array")
+    return tuple(dict.fromkeys(errors))
 
 
 DEFAULT_TARGETS: tuple[dict[str, Any], ...] = (

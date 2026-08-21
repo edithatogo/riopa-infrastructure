@@ -21,7 +21,7 @@
 ## 4. Publications and correction
 
 - [ ] 4.1 Complete infrastructure/methods, data descriptor and applied publication packages.
-- [ ] 4.2 Exercise correction, supersession and downstream-impact notification.
+- [~] 4.2 Exercise correction, supersession and downstream-impact notification. Bounded package validation is executable; production downstream notification remains open. (`validate_correction_package`, tests)
 - [ ] 4.3 Publish validation evidence and stable citation guidance.
 
 ## 5. Bounded agent-panel preparation

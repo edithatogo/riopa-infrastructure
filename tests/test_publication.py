@@ -17,6 +17,7 @@ from riopa_provenance.publication import (
     initialise_publication_state,
     record_publication_receipt,
     stage_publication,
+    validate_correction_package,
 )
 
 
@@ -52,6 +53,21 @@ def test_publication_media_types_are_deterministic(name: str, expected: str) -> 
 
 def test_publication_error_is_value_error() -> None:
     assert issubclass(PublicationError, ValueError)
+
+
+def test_correction_package_validator_accepts_bounded_example_and_rejects_reuse() -> None:
+    package = json.loads(
+        (
+            Path(__file__).resolve().parents[1]
+            / "docs/publication-correction-package-20260803.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert validate_correction_package(package) == ()
+    tampered = json.loads(json.dumps(package))
+    tampered["bounded_example"]["successor"]["sha256"] = tampered["bounded_example"]["predecessor"][
+        "sha256"
+    ]
+    assert any("successor digest" in error for error in validate_correction_package(tampered))
 
 
 def test_artifact_rights_override_precedes_source_and_global_fallback() -> None:
