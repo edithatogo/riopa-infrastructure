@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:operations:observability:bounded-preview:1.0",
+  "signals": [
+    {"name": "source_health", "unit": "state", "required_dimensions": ["source_id", "capture_revision", "status"]},
+    {"name": "freshness", "unit": "seconds", "required_dimensions": ["source_id", "observed_at", "age_seconds"]},
+    {"name": "quality", "unit": "ratio", "required_dimensions": ["artifact_id", "check_id", "passed", "checked_at"]},
+    {"name": "storage", "unit": "bytes", "required_dimensions": ["artifact_id", "target", "size_bytes"]},
+    {"name": "cost", "unit": "decimal", "required_dimensions": ["run_id", "currency", "amount"]},
+    {"name": "release_status", "unit": "state", "required_dimensions": ["revision", "tier", "status"]}
+  ],
+  "measurement_policy": {
+    "unmeasured_status": "candidate-not-measured",
+    "missing_source_health": "unknown-not-healthy",
+    "missing_quality": "not-qualified",
+    "aggregation": "retain-source-and-revision-dimensions"
+  },
+  "non_claims": [
+    "This contract defines observability fields; it is not production SLO history or an alert execution receipt.",
+    "A missing or unmeasured signal is not evidence of health, quality, low cost or release readiness.",
+    "No national, operational, external-user or accountable-authority claim is enabled by this contract."
+  ]
+}
