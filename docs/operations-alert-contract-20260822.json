@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:operations:alerts:bounded-preview:1.0",
+  "alerts": [
+    {"alert_id": "source-health-unknown", "signal": "source_health", "severity": "warning", "owner_role": "source steward", "action": "quarantine new incorporation and inspect the latest capture"},
+    {"alert_id": "freshness-breach", "signal": "freshness", "severity": "high", "owner_role": "operations maintainer", "action": "stop promotion and investigate source or scheduler state"},
+    {"alert_id": "integrity-failure", "signal": "quality", "severity": "critical", "owner_role": "release authority", "action": "fail closed, preserve the failed receipt and start correction review"}
+  ],
+  "suppression": {
+    "allowed_reasons": ["declared-maintenance", "upstream-outage", "duplicate-notification"],
+    "required_fields": ["reason", "started_at", "expires_at", "owner_role", "linked_evidence"],
+    "default": "do-not-suppress"
+  },
+  "non_claims": [
+    "This contract does not prove an alerting service is deployed or that notifications were delivered.",
+    "Suppression is not a waiver of integrity, rights, safety or release gates.",
+    "An alert panel cannot substitute for external operator or accountable-authority evidence."
+  ]
+}
