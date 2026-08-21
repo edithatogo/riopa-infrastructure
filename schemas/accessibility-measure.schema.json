@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/accessibility-measure/v1",
+  "title": "RIOPA Accessibility Measure v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "measure_id", "matrix_id", "measure", "missing_policy", "denominator_semantics", "result", "claim_classification"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "accessibility_measure"},
+    "measure_id": {"type": "string", "minLength": 1},
+    "matrix_id": {"type": "string", "minLength": 1},
+    "measure": {"enum": ["cumulative-opportunity", "gravity", "two-step-floating-catchment"]},
+    "origin": {"type": ["string", "null"]},
+    "parameters": {"type": "object", "additionalProperties": true},
+    "missing_policy": {"enum": ["exclude", "report-separately", "fail-closed"]},
+    "denominator_semantics": {"enum": ["none", "explicit-demand", "reachable-demand"]},
+    "result": {"type": ["number", "null"]},
+    "claim_classification": {"const": "reference-only"}
+  }
+}
