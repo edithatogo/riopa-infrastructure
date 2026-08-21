@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:preservation:package:bounded-preview:1.0",
+  "package_format": {
+    "root": "research-object",
+    "required_members": ["manifest.json", "SHA256SUMS", "methods.md", "rights.json", "provenance.json"],
+    "content_addressing": "sha256",
+    "failed_evidence_policy": "append-successor-never-overwrite"
+  },
+  "retention": {
+    "primary": "protected Git history and release artifact store",
+    "replica_targets": ["Hugging Face dataset revision", "Zenodo or institutional repository"],
+    "fixity_cadence": "before-transfer-and-on-restore",
+    "deletion_gate": "two verified targets plus correction and withdrawal record"
+  },
+  "non_claims": [
+    "This defines a preservation package contract; it is not an independent deposit receipt.",
+    "A configured target is not an accepted target until its immutable receipt is verified.",
+    "Retention policy does not authorize redistribution or override rights, privacy or release gates."
+  ]
+}

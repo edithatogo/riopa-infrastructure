@@ -17,7 +17,8 @@
     "urn:riopa:evidence:operations-control-contract:2026-08-22",
     "urn:riopa:evidence:operations-observability-contract:2026-08-22",
     "urn:riopa:evidence:operations-alert-contract:2026-08-22",
-    "urn:riopa:evidence:operations-runbook-catalog:2026-08-22"
+    "urn:riopa:evidence:operations-runbook-catalog:2026-08-22",
+    "urn:riopa:evidence:preservation-package-contract:2026-08-22"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
