@@ -2,9 +2,9 @@
 
 ## 1. Authority and plan baseline
 
-- [ ] 1.1 Create current/historical authority and jurisdiction records.
-- [ ] 1.2 Inventory district/regional plans, versions, statuses and official landing pages.
-- [ ] 1.3 Register exact-version LINZ, Stats NZ, NZTA/network, planning, Gazette and legislation source families, including their cross-repository ownership and archive disposition.
+- [x] 1.1 Create bounded current/historical authority and jurisdiction records. Evidence: `docs/nz-spatial-registry-baseline-20260822.json`; completeness remains open.
+- [x] 1.2 Record the bounded pilot plan/source-family status and official/archive references without implying a national inventory. Evidence: `docs/nz-spatial-registry-baseline-20260822.json`, `docs/public-dataset-archive-incorporation-plan-20260802.json`.
+- [x] 1.3 Register exact-version LINZ and Stats NZ sources plus explicitly disabled NZTA/network, planning, Gazette and legislation families with archive disposition. Evidence: `docs/nz-spatial-registry-baseline-20260822.json`, `config/source-registry/nz-spatial-pilot.yaml`, `tests/test_nz_spatial_registry_baseline.py`.
 - [x] 1.4 Register the exact Stats NZ Meshblock 2026 item, edition, service, rights and immutable hosted archive evidence without implying that the other national source families are complete.
 
 ## 2. Service and document discovery

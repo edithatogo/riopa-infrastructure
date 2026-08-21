@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "urn:riopa:registry:nz-spatial-sources:bounded-pilot-2026-08-22",
+  "scope": "regional public-datasets-only technical preview",
+  "authorities": [
+    {"authority_id": "linz", "jurisdiction": "New Zealand", "source_family": "linz-data-service", "status": "registered", "evidence": "config/source-registry/nz-spatial-pilot.yaml"},
+    {"authority_id": "stats-nz", "jurisdiction": "New Zealand", "source_family": "stats-nz-meshblock-2026", "status": "archived-exact-edition", "evidence": "STATS-NZ-MESHBLOCK-ARCHIVE-20260802"},
+    {"authority_id": "nzta", "jurisdiction": "New Zealand", "source_family": "network-and-gtfs", "status": "disabled-pending-archive", "evidence": "docs/public-dataset-archive-incorporation-plan-20260802.json"},
+    {"authority_id": "territorial-authorities", "jurisdiction": "New Zealand", "source_family": "planning-and-eplan", "status": "disabled-pending-archive", "evidence": "docs/public-dataset-archive-incorporation-plan-20260802.json"},
+    {"authority_id": "gazette-and-legislation", "jurisdiction": "New Zealand", "source_family": "legal-status", "status": "disabled-pending-archive", "evidence": "docs/public-dataset-archive-incorporation-plan-20260802.json"}
+  ],
+  "non_claims": [
+    "This is a bounded registry baseline, not a complete national authority inventory.",
+    "Disabled source families cannot support network, timetable, facility, national, clinical, dispatch or authoritative claims.",
+    "Public metadata and agent-panel assessment do not establish custodian authority, completeness or continuing freshness."
+  ]
+}
