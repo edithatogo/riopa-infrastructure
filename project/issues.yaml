@@ -1073,7 +1073,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Replace filename-specific validation with schema-declared arbitrary-bundle validation.\n- [ ] 1.2 Define non-circular package manifest, checksum and RO-Crate finalisation rules.\n- [ ] 1.3 Add payload, rights, quality, software, environment and preservation closure checks.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Replace filename-specific validation with schema-declared arbitrary-bundle validation. Evidence: `src/riopa_provenance/validation.py::validate_manifest_closure`, `src/riopa_provenance/crate.py::verify_research_object`, `tests/test_crate.py`.\n- [ ] 1.2 Define non-circular package manifest, checksum and RO-Crate finalisation rules. Evidence: `src/riopa_provenance/crate.py::build_research_object`, `docs/methods-output-contract.md`, `tests/test_crate.py::test_research_object_build_is_content_deterministic`.\n- [ ] 1.3 Add payload, rights, quality, software, environment and preservation closure checks. Evidence: `src/riopa_provenance/validation.py::validate_manifest_closure`, `tests/test_validation_failures.py`, `tests/test_crate.py`.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -1103,7 +1103,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Generate concise methods, full supplement, methods facts and limitations.\n- [ ] 2.2 Generate CFF, DataCite, PROV, OpenLineage and workflow/run crate projections.\n- [ ] 2.3 Add consistency and missing-evidence diagnostics.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Generate concise methods, full supplement, methods facts and limitations. Evidence: `src/riopa_provenance/methods.py::generate_methods_markdown`, `docs/methods-output-contract.md`, `tests/test_methods.py`.\n- [ ] 2.2 Generate CFF, DataCite, PROV, OpenLineage and workflow/run crate projections. Evidence: `src/riopa_provenance/crate.py::build_research_object`, `tests/test_crate.py`.\n- [ ] 2.3 Add consistency and missing-evidence diagnostics. Evidence: `src/riopa_provenance/methods.py`, `src/riopa_provenance/validation.py`, `tests/test_validation_failures.py`.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -1133,7 +1133,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate SBOMs, signatures and attestations and verify them independently.\n- [ ] 3.2 Run external profile validators and record exact versions/results.\n- [ ] 3.3 Test deterministic and tolerance-equivalent clean builds.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `methods_research_objects_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Generate SBOMs, signatures and attestations and verify them independently.\n- [ ] 3.2 Run external profile validators and record exact versions/results.\n- [ ] 3.3 Test deterministic and tolerance-equivalent clean builds. Evidence: `tests/test_crate.py::test_research_object_build_is_content_deterministic`.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/methods_research_objects_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
