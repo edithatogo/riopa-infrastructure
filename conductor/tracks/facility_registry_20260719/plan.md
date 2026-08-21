@@ -20,7 +20,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [x] 2.1 Archive independent public council and OSM assertions with immutable receipts before reconciliation; verified health and broader geocoded evidence remain open.
 - [x] 2.2 Implement deterministic type/name/distance candidate generation and conflict preservation; accountable adjudication remains open.
-- [ ] 2.3 Record openings, closures, relocations and rebrands.
+- [x] 2.3 Record openings, closures, relocations and rebrands. (`412c252`; append-only history events and deterministic snapshot)
 
 ## 3. Quality and review
 
@@ -40,6 +40,11 @@ promote a source to authoritative status without a documented panel disposition.
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] 5.1 Enforce the history event-type union at runtime, add a negative test,
+  and align the evidence-index lifecycle wording with active metadata. (review fix; 2026-08-22)
 
 ## Evidence gates still open
 
