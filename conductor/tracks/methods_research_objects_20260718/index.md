@@ -1,7 +1,7 @@
 # Evidence index: Research objects, methods supplements and citation automation
 
 - **Track ID:** `methods_research_objects_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.4.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
