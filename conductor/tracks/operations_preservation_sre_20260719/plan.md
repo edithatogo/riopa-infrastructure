@@ -9,7 +9,7 @@
 ## 2. Observability and runbooks
 
 - [x] 2.1 Instrument source health, freshness, quality, storage, cost and release status. Evidence: `docs/operations-observability-contract-20260822.json`, `tests/test_operations_observability_contract.py`; measurements remain candidate-not-measured until hosted operations emit them.
-- [ ] 2.2 Implement alerts with actionable ownership and suppression rules.
+- [x] 2.2 Implement alerts with actionable ownership and suppression rules. Evidence: `docs/operations-alert-contract-20260822.json`, `tests/test_operations_alert_contract.py`; deployment and notification receipts remain pending.
 - [ ] 2.3 Write and test source, schema, rights, corruption and capacity runbooks.
 
 ## 3. Preservation and recovery
