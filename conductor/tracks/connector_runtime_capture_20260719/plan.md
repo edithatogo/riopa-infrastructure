@@ -2,9 +2,9 @@
 
 ## 1. Runtime contract
 
-- [x] 1.1 Define adapter lifecycle, capture attempts, idempotency and raw object interfaces. Evidence: `src/riopa_provenance/capture.py`, `src/riopa_provenance/retry.py`, `tests/test_capture.py`, `tests/test_retry.py`. (existing implementation)
-- [x] 1.2 Define HTTP/service/document evidence and secret-redaction rules. Evidence: `src/riopa_provenance/capture.py::CapturePolicy`, `redact_url`, `redact_text`, `tests/test_capture.py`, `docs/source-acquisition-runbook.md`. (existing implementation)
-- [x] 1.3 Define rights, governance and publication hooks. Evidence: `schemas/source-acquisition-approval.schema.json`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py`, `docs/source-acquisition-runbook.md`. (existing implementation)
+- [x] 1.1 Define adapter lifecycle, capture attempts, idempotency and raw object interfaces. Evidence: `src/riopa_provenance/capture.py`, `src/riopa_provenance/retry.py`, `tests/test_capture.py`, `tests/test_retry.py`. (ad5aef7)
+- [x] 1.2 Define HTTP/service/document evidence and secret-redaction rules. Evidence: `src/riopa_provenance/capture.py::CapturePolicy`, `redact_url`, `redact_text`, `tests/test_capture.py`, `docs/source-acquisition-runbook.md`. (ad5aef7)
+- [x] 1.3 Define rights, governance and publication hooks. Evidence: `schemas/source-acquisition-approval.schema.json`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py`, `docs/source-acquisition-runbook.md`. (ad5aef7)
 
 ## 2. Adapter implementations
 
