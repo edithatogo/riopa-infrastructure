@@ -1,7 +1,7 @@
 # Evidence index: Operations, service reliability and digital preservation
 
 - **Track ID:** `operations_preservation_sre_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.8.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
