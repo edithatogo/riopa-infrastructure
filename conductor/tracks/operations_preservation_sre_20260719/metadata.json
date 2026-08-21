@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-22T00:30:00Z",
+  "updated_at": "2026-08-22T00:45:00Z",
   "description": "Operate captures, transformations, releases and preservation as a measured service with observable health, explicit SLOs, fixity, recovery and sustainable cost controls.",
   "depends_on": [
     "foundation_architecture_20260718",
