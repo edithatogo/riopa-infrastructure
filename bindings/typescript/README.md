@@ -7,7 +7,8 @@
 uv run python scripts/generate_canonical_bindings.py
 ```
 
-CI uses `--check` to reject schema-to-binding drift. The declaration preserves
+The hosted test suite compares the generated output with the committed binding;
+`--check` provides the equivalent local drift gate. The declaration preserves
 required fields, nullable valid-time bounds and the complete confidence enum.
 It does not perform runtime validation: consumers must validate input against
 the JSON Schema and apply the semantic checks documented in
