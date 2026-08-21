@@ -16,7 +16,7 @@
 
 - [ ] 3.1 Emit DSSE/in-toto-compatible attestations for builds and releases.
 - [ ] 3.2 Sign release manifests, tags and distributed artifacts using documented policy.
-- [ ] 3.3 Provide offline and CI verification commands and negative tests.
+- [x] 3.3 Provide offline and CI verification commands and negative tests. Evidence: `docs/conformance-and-release-verification.md`, `.github/workflows/release.yml`, `docs/security-offline-verification-contract-20260822.json`, and `tests/test_security_offline_verification_contract.py`; execution remains protected-tag gated.
 
 ## 4. Audit and incident exercise
 

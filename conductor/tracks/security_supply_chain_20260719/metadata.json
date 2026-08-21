@@ -12,7 +12,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/24",
   "evidence": [
     "urn:riopa:evidence:connector-dns-pinning:2026-07-31",
-    "urn:riopa:evidence:attestation-verification-workflow:2026-07-31"
+    "urn:riopa:evidence:attestation-verification-workflow:2026-07-31",
+    "urn:riopa:evidence:security-offline-verification:2026-08-22"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
