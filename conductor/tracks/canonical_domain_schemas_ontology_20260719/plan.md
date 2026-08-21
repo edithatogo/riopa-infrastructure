@@ -37,3 +37,6 @@
   `not-run` conformance status. (`1ac750a`)
 - [x] R.2 Verify the updated manifest, ontology descriptor and tests under the
   project validation workflow. (`1ac750a`)
+- [x] R.3 Correct the TypeScript binding documentation so hosted pytest drift
+  enforcement and the equivalent local `--check` command are distinguished.
+  (`913f683`; review fix)

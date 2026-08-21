@@ -42,9 +42,10 @@ This index is deliberately non-assertive while the track remains `validating`. S
 
 ## Review record
 
-- Review scope: repository diff from `d5dee91` through `1ac750a`.
-- Findings: no correctness, security, metadata or digest-integrity defects.
-- Review fixes: SHACL shape preparation is digest-bound and explicitly remains
-  `not-run` until a qualifying engine/report exists.
+- Review scope: repository diff from `d5dee91` through `913f683`.
+- Findings: the TypeScript binding was deterministic and bounded correctly, but
+  its README described the local `--check` flag as the hosted CI mechanism.
+- Review fixes: SHACL shape preparation remains digest-bound and `not-run`; the
+  binding README now distinguishes hosted pytest enforcement from local checking.
 - Validation: canonical/conformance tests and roadmap validation passed.
 - External gates remain open; the track is not complete or archive-eligible.
