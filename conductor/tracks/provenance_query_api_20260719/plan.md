@@ -2,8 +2,8 @@
 
 ## 1. Query contract
 
-- [ ] 1.1 Define why, where, how, downstream and rebuild-impact query semantics.
-- [ ] 1.2 Define granularity, freshness, uncertainty and access-control responses.
+- [x] 1.1 Define why, where, how, downstream and rebuild-impact query semantics. (`src/riopa_provenance/lineage.py`, `docs/change-and-impact-queries.md`)
+- [x] 1.2 Define granularity, freshness, uncertainty and access-control responses. (`src/riopa_provenance/lineage.py`, `docs/change-and-impact-queries.md`, `tests/test_lineage.py`)
 - [ ] 1.3 Build a language-neutral query conformance corpus.
 
 ## 2. Projection implementation
