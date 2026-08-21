@@ -1900,7 +1900,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Archive independent public council and OSM assertions with immutable receipts before reconciliation; verified health and broader geocoded evidence remain open.\n- [ ] 2.2 Implement deterministic type/name/distance candidate generation and conflict preservation; accountable adjudication remains open.\n- [ ] 2.3 Record openings, closures, relocations and rebrands.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Archive independent public council and OSM assertions with immutable receipts before reconciliation; verified health and broader geocoded evidence remain open.\n- [ ] 2.2 Implement deterministic type/name/distance candidate generation and conflict preservation; accountable adjudication remains open.\n- [ ] 2.3 Record openings, closures, relocations and rebrands. (`412c252`; append-only history events and deterministic snapshot)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",

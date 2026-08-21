@@ -20,7 +20,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [x] 2.1 Archive independent public council and OSM assertions with immutable receipts before reconciliation; verified health and broader geocoded evidence remain open.
 - [x] 2.2 Implement deterministic type/name/distance candidate generation and conflict preservation; accountable adjudication remains open.
-- [ ] 2.3 Record openings, closures, relocations and rebrands.
+- [x] 2.3 Record openings, closures, relocations and rebrands. (`412c252`; append-only history events and deterministic snapshot)
 
 ## 3. Quality and review
 
