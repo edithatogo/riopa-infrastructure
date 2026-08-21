@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-005-lineage-query-envelope-20260731` | Where, why, how and rebuild-impact responses state authoritative evidence, projection hash and actual granularity | `src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/change-and-impact-queries.md` | Python/SQLite synthetic conformance passes; CLI, MCP, graph equivalence, access control and real-release evidence remain open |
+| `PROVENANCE-QUERY-CONTRACT-20260822` | Query semantics and evidence envelopes for where/why/how/impact responses | `src/riopa_provenance/lineage.py`, `docs/change-and-impact-queries.md`, `tests/test_lineage.py` | Repository-owned Python/SQLite contract passes; language-neutral corpus, interface equivalence, access control and real-release evidence remain open |
 
 ## Blocking defects
 
