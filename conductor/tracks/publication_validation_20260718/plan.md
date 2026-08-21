@@ -2,7 +2,7 @@
 
 ## 1. Validation protocol
 
-- [ ] 1.1 Define agent-panel conformance, clean-room and agent-user workflow protocols.
+- [x] 1.1 Define agent-panel conformance, clean-room and agent-user workflow protocols. Evidence: `docs/single-developer-agent-panel-review-policy.md`, `docs/independent-reproduction-protocol.md`, `docs/release-gate-evidence-matrix.md`, `tests/test_hosted_evidence.py`.
 - [ ] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications.
 - [ ] 1.3 Select agent-panel validators, environments and analyst-independence criteria.
 
