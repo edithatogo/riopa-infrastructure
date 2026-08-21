@@ -2,10 +2,12 @@ import pytest
 
 from riopa_provenance.facility_registry import (
     FacilityAssertion,
+    FacilityHistoryEvent,
     apply_review,
     assertions_snapshot,
     assertions_snapshot_json,
     distance_m,
+    history_snapshot,
     name_similarity,
     reconcile,
 )
@@ -91,7 +93,104 @@ def test_assertions_snapshot_is_sorted_and_non_authoritative() -> None:
     values = (assertion("b", 1, 1), assertion("a", 0, 0))
     snapshot = assertions_snapshot(values)
     assert snapshot["authoritative"] is False
-    assert [row["assertion_id"] for row in snapshot["assertions"]] == ["a", "b"]
+    assertion_rows = snapshot["assertions"]
+    assert isinstance(assertion_rows, list)
+    assert [row["assertion_id"] for row in assertion_rows] == ["a", "b"]
     assert assertions_snapshot_json(values).endswith("\n")
     with pytest.raises(ValueError, match="unique"):
         assertions_snapshot((assertion("a", 0, 0), assertion("a", 1, 1)))
+
+
+def test_history_records_opening_closure_relocation_rebrand_and_disagreement() -> None:
+    events = (
+        FacilityHistoryEvent(
+            "event:closure",
+            "facility:one",
+            "closure",
+            "2024-01-01",
+            "2024-01-03",
+            ("source:one",),
+            "source reported closure",
+        ),
+        FacilityHistoryEvent(
+            "event:opening",
+            "facility:one",
+            "opening",
+            "2020-01-01",
+            "2020-01-02",
+            ("source:one",),
+            "source reported opening",
+        ),
+        FacilityHistoryEvent(
+            "event:relocation",
+            "facility:one",
+            "relocation",
+            "2022-06-01",
+            "2022-06-02",
+            ("source:one", "source:two"),
+            "coordinates differ across source assertions",
+        ),
+        FacilityHistoryEvent(
+            "event:rebrand",
+            "facility:one",
+            "rebrand",
+            "2023-01-01",
+            "2023-01-02",
+            ("source:two",),
+            "operator name changed",
+        ),
+        FacilityHistoryEvent(
+            "event:disagreement",
+            "facility:one",
+            "source-disagreement",
+            "2023-02-01",
+            "2023-02-02",
+            ("source:one", "source:two"),
+            "sources disagree on current name",
+        ),
+    )
+    snapshot = history_snapshot(events)
+    assert snapshot["authoritative"] is False
+    event_rows = snapshot["events"]
+    assert isinstance(event_rows, list)
+    assert [row["event_type"] for row in event_rows] == [
+        "opening",
+        "relocation",
+        "rebrand",
+        "source-disagreement",
+        "closure",
+    ]
+
+
+def test_history_rejects_missing_evidence_reversed_window_and_retrospective_recording() -> None:
+    with pytest.raises(ValueError, match="source assertion"):
+        FacilityHistoryEvent(
+            "event:bad",
+            "facility:one",
+            "opening",
+            "2024-01-01",
+            "2024-01-02",
+            (),
+            "missing evidence",
+        )
+    with pytest.raises(ValueError, match="valid_to"):
+        FacilityHistoryEvent(
+            "event:bad-window",
+            "facility:one",
+            "closure",
+            "2024-02-01",
+            "2024-02-02",
+            ("source:one",),
+            "reversed",
+            valid_to="2024-01-01",
+        )
+    with pytest.raises(ValueError, match="recorded_at"):
+        FacilityHistoryEvent(
+            "event:bad-recorded",
+            "facility:one",
+            "opening",
+            "2024-02-01",
+            "2024-01-01",
+            ("source:one",),
+            "recorded before event",
+        )

@@ -5,11 +5,13 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass
+from datetime import date
 from math import asin, cos, radians, sin, sqrt
 from typing import Literal
 
 Authority = Literal["official-reference", "community-reference", "other-reference"]
 Disposition = Literal["candidate-match", "source-only", "reviewed-match", "reviewed-distinct"]
+HistoryEventType = Literal["opening", "closure", "relocation", "rebrand", "source-disagreement"]
 
 
 @dataclass(frozen=True)
@@ -47,6 +49,60 @@ class Reconciliation:
     method: str = "riopa-name-distance-v1"
     reviewer: str | None = None
     rationale: str | None = None
+
+
+@dataclass(frozen=True)
+class FacilityHistoryEvent:
+    """An append-only, source-linked change observation for a facility assertion."""
+
+    event_id: str
+    facility_id: str
+    event_type: HistoryEventType
+    valid_from: str
+    recorded_at: str
+    source_assertion_ids: tuple[str, ...]
+    details: str
+    valid_to: str | None = None
+
+    def __post_init__(self) -> None:
+        if any(not value.strip() for value in (self.event_id, self.facility_id, self.details)):
+            raise ValueError("history identity, facility identity and details must be non-empty")
+        if not self.source_assertion_ids or any(
+            not value.strip() for value in self.source_assertion_ids
+        ):
+            raise ValueError("history events require source assertion identities")
+        try:
+            start = date.fromisoformat(self.valid_from)
+            recorded = date.fromisoformat(self.recorded_at)
+            end = date.fromisoformat(self.valid_to) if self.valid_to is not None else None
+        except ValueError as exc:
+            raise ValueError("history dates must be ISO dates") from exc
+        if end is not None and end < start:
+            raise ValueError("history valid_to must not precede valid_from")
+        if recorded < start:
+            raise ValueError("history recorded_at must not precede valid_from")
+
+
+def history_snapshot(events: tuple[FacilityHistoryEvent, ...]) -> dict[str, object]:
+    """Return a deterministic non-authoritative history projection without overwrites."""
+
+    identifiers = [event.event_id for event in events]
+    if len(identifiers) != len(set(identifiers)):
+        raise ValueError("history event IDs must be unique")
+    rows = [
+        {
+            "event_id": event.event_id,
+            "facility_id": event.facility_id,
+            "event_type": event.event_type,
+            "valid_from": event.valid_from,
+            "valid_to": event.valid_to,
+            "recorded_at": event.recorded_at,
+            "source_assertion_ids": list(event.source_assertion_ids),
+            "details": event.details,
+        }
+        for event in sorted(events, key=lambda item: (item.valid_from, item.event_id))
+    ]
+    return {"record_type": "facility_history", "authoritative": False, "events": rows}
 
 
 def assertions_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, object]:
