@@ -2,7 +2,7 @@
 
 ## 1. Feature freeze and normative inventory
 
-- [ ] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. (full inventory remains pending; readiness baseline is not an inventory)
+- [~] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. The bounded inventory is now executable-validated; the full compatibility inventory remains open. (`scripts/validate_v1_feature_inventory.py`, `tests/test_v1_release_readiness.py`)
 - [ ] 1.2 Generate compatibility diffs and resolve unintended breaking changes.
 - [ ] 1.3 Close or formally defer non-v1 features.
 

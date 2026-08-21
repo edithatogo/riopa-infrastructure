@@ -33,6 +33,7 @@
 | V1-FINAL-GATES-20260803 | Final elapsed-soak, agent-workflow, authority and stable-approval gates are consolidated in one fail-closed status record | `docs/final-release-gates-status-20260803.json` | Beta/RC duration, agent workflows, owner decision and stable approval remain pending |
 | V1-SCOPE-POLICY-20260804 | Owner-authorized scope, participant, elapsed-time and authority policy | `docs/release-scope-and-evidence-policy-20260804.json` | Preparation authorized; promotion remains forbidden until qualifying evidence and a named signed authority decision exist |
 | V1-BETA-ACCELERATION-20260804 | GitHub Actions runs qualifying daily observations alongside a separated retrospective replay lane | `docs/beta-campaign-acceleration-plan-20260804.json`, `.github/workflows/evidence-campaign.yml` | Supplemental replay can accelerate technical learning but contributes zero elapsed-time qualification |
+| V1-FEATURE-FREEZE-VALIDATION-20260822 | Executable validation of the bounded feature-freeze inventory and explicit open findings | `scripts/validate_v1_feature_inventory.py`, `tests/test_v1_release_readiness.py`, `docs/v1-feature-freeze-inventory-20260803.json` | Repository inventory validates; full compatibility diff and external/release gates remain open |
 
 ## Blocking defects
 
