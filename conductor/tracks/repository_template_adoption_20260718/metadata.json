@@ -2,9 +2,9 @@
   "track_id": "repository_template_adoption_20260718",
   "type": "platform",
   "phase": "Core",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-08-22T02:00:00Z",
   "description": "Make provenance-first setup, Conductor governance, CI, releases and staged adoption easy across existing and future repositories without destructive rewrites.",
   "depends_on": [
     "provenance_profile_v1_20260718",

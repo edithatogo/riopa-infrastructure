@@ -1,7 +1,7 @@
 # Evidence index: Repository template and cross-repository adoption
 
 - **Track ID:** `repository_template_adoption_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.5.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
