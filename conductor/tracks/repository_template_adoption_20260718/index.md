@@ -17,6 +17,7 @@
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-008-related-repository-adapters-20260731` | Related repositories have isolated issue, branch, tested commit and merged pull-request implementations without modifying dirty checkouts | `reports/wp008-cross-repository-adapters.md`, `conformance/adapters/report.json` | Cross-repository fixture validation passes; `fyi-cli` PR #285 and `fyi-archive` PR #319 merged on 2026-07-31 |
+| `TEMPLATE-CONTRACT-20260822` | Additive greenfield/brownfield setup, scaffolding, generated-file boundaries and self-tests | `schemas/repository-template-contract.schema.json`, `docs/repository-template-contract-20260822.json`, `docs/repository-template-contract-20260822.md`, `tests/test_repository_template_contract.py` | Tasks 1.1–1.3 are schema- and negative-test validated; cross-repository adoption, external onboarding and independent reproduction remain open |
 
 ## Blocking defects
 

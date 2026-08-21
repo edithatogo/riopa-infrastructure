@@ -1379,7 +1379,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define greenfield and brownfield setup contracts and generated-file boundaries.\n- [ ] 1.2 Include Conductor, CI, security, release, citation and support scaffolding.\n- [ ] 1.3 Add template self-tests and documentation tests.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define greenfield and brownfield setup contracts and generated-file boundaries. Evidence: `schemas/repository-template-contract.schema.json`, `docs/repository-template-contract-20260822.json`, `docs/repository-template-contract-20260822.md`. (a400d49)\n- [ ] 1.2 Include Conductor, CI, security, release, citation and support scaffolding. Evidence: `docs/repository-template-contract-20260822.json`, `conductor/workflow.md`, `.github/workflows/validate.yml`, `.github/workflows/security.yml`, `.github/workflows/release.yml`, `docs/operations-and-support.md`. (a400d49)\n- [ ] 1.3 Add template self-tests and documentation tests. Evidence: `tests/test_repository_template_contract.py`, `scripts/ci_quality.sh`, `scripts/ci_reproducibility.sh`. (a400d49)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
