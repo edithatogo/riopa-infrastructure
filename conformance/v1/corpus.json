@@ -13,6 +13,22 @@
       "expected_valid": null
     },
     {
+      "case_id": "canonical-crosswalk-golden",
+      "instance": {
+        "mapping_id": "urn:riopa:mapping:golden-001",
+        "source_assertion": {"source_id": "council:one", "label": "Urgent care"},
+        "canonical_id": "urn:riopa:concept:service:urgent-care",
+        "method": "manual-review",
+        "confidence": "medium",
+        "reviewer": "fixture-reviewer",
+        "valid_time": {"from": "2026-01-01", "to": null},
+        "evidence": ["fixture:golden-001"]
+      },
+      "expected_sha256": "51765ecf4129f0cfb7c5045a77977c999894e978a74cb84346f0a68ee8c0f828",
+      "schema": "../../schemas/canonical-crosswalk.schema.json",
+      "expected_valid": true
+    },
+    {
       "case_id": "source-health-valid",
       "instance": {
         "schema_version": "1.0.0",
