@@ -19,10 +19,14 @@
 | PT-1 | Transition schema and fail-closed validator | `schemas/planning-transition.schema.json`, `src/riopa_provenance/transitions.py`, `tests/test_transitions.py` | Repository tests passing; real-data evidence not claimed |
 | PT-2 | Rename, merge, split, replacement and partial-continuity fixtures | `fixtures/planning-transition-golden.json` | Deterministic fixture validated; not a legal equivalence claim |
 | PT-3 | Temporal perspectives and migration guidance | `docs/planning-system-transition-migration-playbook.md` | Valid-time, recorded-time and as-known-at semantics documented |
+| PT-4 | Downstream zoning and accessibility transition integration | `tests/test_transition_downstream.py`, `docs/planning-transition-downstream-contract.md` | Successor plan is selected at explicit valid time and passed to the dependency-free reference accessibility measure; synthetic only, with network/timetable/facility and legal claims disabled |
 
 ## Blocking defects
 
-- Real authority reorganisation and plan replacement reconstructions remain pending; public-source capture and planning-domain agent-panel qualification are required before validation.
+- Real authority reorganisation and plan replacement reconstructions remain
+  pending; public-source capture and planning-domain agent-panel qualification
+  are required before validation. The downstream integration slice is bounded
+  synthetic evidence, not real-data or operational qualification.
 
 ## Decisions, exceptions and limitations
 

@@ -15,7 +15,7 @@
 ## 3. Temporal query integration
 
 - [x] 3.1 Add valid-time, recorded-time and as-known-at query modes. (transitions.py; implementation)
-- [ ] 3.2 Test downstream zoning and accessibility analyses across transitions.
+- [x] 3.2 Test downstream zoning and accessibility analyses across transitions. (`a3ef9ae`; bounded synthetic reference contract)
 - [x] 3.3 Document non-equivalence and unresolved transitions. (planning-system-transition-migration-playbook.md)
 
 ## 4. Agent-panel qualification and migration readiness
