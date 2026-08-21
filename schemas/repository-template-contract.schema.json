@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/repository-template-contract/1.0.0",
+  "title": "RIOPA repository template contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "template_id", "mode_contract", "required_scaffolding", "generated_boundaries", "self_tests", "non_claims"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "template_id": {"type": "string", "pattern": "^urn:riopa:template:[A-Za-z0-9._:-]+$"},
+    "mode_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["greenfield", "brownfield"],
+      "properties": {
+        "greenfield": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "brownfield": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "required_scaffolding": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+    "generated_boundaries": {"type": "object", "additionalProperties": false, "required": ["generated", "hand_authored", "never_overwrite"], "properties": {"generated": {"type": "array", "items": {"type": "string"}}, "hand_authored": {"type": "array", "items": {"type": "string"}}, "never_overwrite": {"type": "array", "items": {"type": "string"}}}},
+    "self_tests": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["name", "command"], "properties": {"name": {"type": "string"}, "command": {"type": "array", "items": {"type": "string"}, "minItems": 1}}}, "minItems": 1},
+    "non_claims": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

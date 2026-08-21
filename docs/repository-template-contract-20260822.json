@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "urn:riopa:template:riopa-single-developer-2026-08-22",
+  "mode_contract": {
+    "greenfield": ["create the required Conductor files before implementation", "enable protected CI before release work"],
+    "brownfield": ["preserve existing source, history and local customisation", "add RIOPA outputs additively", "never overwrite raw evidence"]
+  },
+  "required_scaffolding": ["AGENTS.md", "conductor/index.md", "conductor/workflow.md", "conductor/tracks.md", ".github/workflows/validate.yml", ".github/pull_request_template.md", "docs/operations-and-support.md"],
+  "generated_boundaries": {
+    "generated": ["project/issues.yaml", "dist/", "build/"],
+    "hand_authored": ["conductor/tracks/*/spec.md", "conductor/tracks/*/plan.md", "conductor/tracks/*/metadata.json", "conductor/tracks/*/index.md"],
+    "never_overwrite": ["raw source bytes", ".git/", "local customisation outside the generated boundary"]
+  },
+  "self_tests": [
+    {"name": "roadmap", "command": ["uv", "run", "riopa", "roadmap", "validate", "--root", "."]},
+    {"name": "quality", "command": ["bash", "scripts/ci_quality.sh"]},
+    {"name": "reproducibility", "command": ["bash", "scripts/ci_reproducibility.sh"]}
+  ],
+  "non_claims": [
+    "This is a setup contract and not evidence that another repository has adopted the template.",
+    "It does not overwrite local customisation or create cross-repository authority.",
+    "External onboarding, independent reproduction and release qualification remain open."
+  ]
+}

@@ -2,9 +2,9 @@
 
 ## 1. Template hardening
 
-- [ ] 1.1 Define greenfield and brownfield setup contracts and generated-file boundaries.
-- [ ] 1.2 Include Conductor, CI, security, release, citation and support scaffolding.
-- [ ] 1.3 Add template self-tests and documentation tests.
+- [x] 1.1 Define greenfield and brownfield setup contracts and generated-file boundaries. Evidence: `schemas/repository-template-contract.schema.json`, `docs/repository-template-contract-20260822.json`, `docs/repository-template-contract-20260822.md`. (a400d49)
+- [x] 1.2 Include Conductor, CI, security, release, citation and support scaffolding. Evidence: `docs/repository-template-contract-20260822.json`, `conductor/workflow.md`, `.github/workflows/validate.yml`, `.github/workflows/security.yml`, `.github/workflows/release.yml`, `docs/operations-and-support.md`. (a400d49)
+- [x] 1.3 Add template self-tests and documentation tests. Evidence: `tests/test_repository_template_contract.py`, `scripts/ci_quality.sh`, `scripts/ci_reproducibility.sh`. (a400d49)
 
 ## 2. Adapters and upgrades
 
