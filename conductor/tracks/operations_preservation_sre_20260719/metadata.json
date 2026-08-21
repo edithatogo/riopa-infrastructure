@@ -2,9 +2,9 @@
   "track_id": "operations_preservation_sre_20260719",
   "type": "operations",
   "phase": "Foundation",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-31T08:30:00Z",
+  "updated_at": "2026-08-22T00:45:00Z",
   "description": "Operate captures, transformations, releases and preservation as a measured service with observable health, explicit SLOs, fixity, recovery and sustainable cost controls.",
   "depends_on": [
     "foundation_architecture_20260718",
@@ -13,7 +13,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/114",
   "evidence": [
     "urn:riopa:evidence:connector-capture-observability:2026-07-31",
-    "urn:riopa:evidence:resumable-publication-state:2026-07-31"
+    "urn:riopa:evidence:resumable-publication-state:2026-07-31",
+    "urn:riopa:evidence:operations-control-contract:2026-08-22"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

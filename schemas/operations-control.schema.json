@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/operations-control/1.0.0",
+  "title": "RIOPA operations control contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_id", "qualification_status", "job_lifecycle", "slo_catalogue", "incident_policy"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_id": {"type": "string", "pattern": "^urn:riopa:operations-control:[A-Za-z0-9._:-]+$"},
+    "qualification_status": {"const": "candidate-not-measured"},
+    "job_lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["states", "transitions", "retry", "partial_failure", "quarantine", "backpressure"],
+      "properties": {
+        "states": {"type": "array", "items": {"enum": ["planned", "running", "succeeded", "partial", "quarantined", "failed", "cancelled"]}, "minItems": 7, "uniqueItems": true},
+        "transitions": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["from", "to", "diagnostic_required"], "properties": {"from": {"enum": ["planned", "running", "succeeded", "partial", "quarantined", "failed", "cancelled"]}, "to": {"enum": ["planned", "running", "succeeded", "partial", "quarantined", "failed", "cancelled"]}, "diagnostic_required": {"type": "boolean"}}}, "minItems": 1},
+        "retry": {"type": "object", "additionalProperties": false, "required": ["only_idempotent_methods", "max_attempts", "honour_retry_after", "attempts_are_content_addressed"], "properties": {"only_idempotent_methods": {"const": true}, "max_attempts": {"type": "integer", "minimum": 1}, "honour_retry_after": {"type": "boolean"}, "attempts_are_content_addressed": {"const": true}}},
+        "partial_failure": {"type": "object", "additionalProperties": false, "required": ["requires_diagnostic", "publication_disposition"], "properties": {"requires_diagnostic": {"const": true}, "publication_disposition": {"enum": ["quarantine", "fail-closed", "explicit-partial"]}}},
+        "quarantine": {"type": "object", "additionalProperties": false, "required": ["triggers", "release_requires_review"], "properties": {"triggers": {"type": "array", "items": {"type": "string"}, "minItems": 1}, "release_requires_review": {"const": true}}},
+        "backpressure": {"type": "object", "additionalProperties": false, "required": ["bounded_queue", "overflow_disposition"], "properties": {"bounded_queue": {"const": true}, "overflow_disposition": {"enum": ["quarantine", "defer", "fail-closed"]}}}
+      }
+    },
+    "slo_catalogue": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": false, "required": ["sli_id", "numerator", "denominator", "upstream_exclusions", "target_status"], "properties": {"sli_id": {"type": "string", "pattern": "^sli-[a-z0-9-]+$"}, "numerator": {"type": "string"}, "denominator": {"type": "string"}, "upstream_exclusions": {"type": "array", "items": {"type": "string"}}, "target_status": {"const": "candidate-not-measured"}}},
+      "minItems": 1
+    },
+    "incident_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["severity_levels", "escalation_required", "communication_required", "post_incident_review_required"],
+      "properties": {
+        "severity_levels": {"type": "array", "items": {"enum": ["SEV0", "SEV1", "SEV2", "SEV3"]}, "minItems": 4, "uniqueItems": true},
+        "escalation_required": {"const": true},
+        "communication_required": {"const": true},
+        "post_incident_review_required": {"const": true}
+      }
+    },
+    "non_claims": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

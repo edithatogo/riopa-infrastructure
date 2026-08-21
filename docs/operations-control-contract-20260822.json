@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:operations-control:bounded-preview-2026-08-22",
+  "qualification_status": "candidate-not-measured",
+  "job_lifecycle": {
+    "states": ["planned", "running", "succeeded", "partial", "quarantined", "failed", "cancelled"],
+    "transitions": [
+      {"from": "running", "to": "succeeded", "diagnostic_required": false},
+      {"from": "running", "to": "partial", "diagnostic_required": true},
+      {"from": "running", "to": "quarantined", "diagnostic_required": true},
+      {"from": "running", "to": "failed", "diagnostic_required": true}
+    ],
+    "retry": {"only_idempotent_methods": true, "max_attempts": 5, "honour_retry_after": true, "attempts_are_content_addressed": true},
+    "partial_failure": {"requires_diagnostic": true, "publication_disposition": "fail-closed"},
+    "quarantine": {"triggers": ["schema drift", "rights change", "corrupt payload", "source disappearance", "capacity exhaustion"], "release_requires_review": true},
+    "backpressure": {"bounded_queue": true, "overflow_disposition": "defer"}
+  },
+  "slo_catalogue": [
+    {"sli_id": "sli-capture-success", "numerator": "captures completing with a verified receipt", "denominator": "scheduled captures excluding separately counted rights-blocked jobs", "upstream_exclusions": ["upstream outage", "approved maintenance"], "target_status": "candidate-not-measured"},
+    {"sli_id": "sli-source-freshness", "numerator": "managed sources within their freshness objective", "denominator": "managed sources due in the observation window", "upstream_exclusions": ["unmanaged source"], "target_status": "candidate-not-measured"},
+    {"sli_id": "sli-fixity", "numerator": "objects whose re-hash matches the recorded digest", "denominator": "objects selected for the fixity audit", "upstream_exclusions": [], "target_status": "candidate-not-measured"},
+    {"sli_id": "sli-restore-readiness", "numerator": "restore exercises producing the expected recovery-point digest", "denominator": "restore exercises scheduled", "upstream_exclusions": [], "target_status": "candidate-not-measured"}
+  ],
+  "incident_policy": {"severity_levels": ["SEV0", "SEV1", "SEV2", "SEV3"], "escalation_required": true, "communication_required": true, "post_incident_review_required": true},
+  "non_claims": [
+    "This contract defines controls and measurement semantics; it is not measured SLO evidence.",
+    "It does not promise availability or correctness of upstream authorities.",
+    "It does not satisfy the 90-day beta, 30-day RC soak, production disaster-recovery or accountable release-authority gates."
+  ]
+}

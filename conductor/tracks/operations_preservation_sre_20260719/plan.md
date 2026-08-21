@@ -2,9 +2,9 @@
 
 ## 1. Operational model and SLOs
 
-- [ ] 1.1 Define job state, retry, idempotency, quarantine and partial-failure semantics.
-- [ ] 1.2 Define SLIs/SLOs, maintenance windows, upstream exclusions and alert thresholds.
-- [ ] 1.3 Define incident severity, escalation, communication and review.
+- [x] 1.1 Define job state, retry, idempotency, quarantine and partial-failure semantics. Evidence: `schemas/operations-control.schema.json`, `docs/operations-control-contract-20260822.json`, `src/riopa_provenance/retry.py`, `tests/test_retry.py`. (f6e50d7)
+- [x] 1.2 Define SLIs/SLOs, maintenance windows, upstream exclusions and alert thresholds. Evidence: `schemas/operations-control.schema.json`, `docs/operations-control-contract-20260822.json`, `docs/operations-slo.md`, `tests/test_operations_control_contract.py`. (f6e50d7)
+- [x] 1.3 Define incident severity, escalation, communication and review. Evidence: `schemas/operations-control.schema.json`, `docs/operations-control-contract-20260822.json`, `tests/test_operations_control_contract.py`. (f6e50d7)
 
 ## 2. Observability and runbooks
 
@@ -27,6 +27,10 @@
 - [ ] 4.2 Publish SLO, incident, capacity and preservation reports.
 - [ ] 4.3 Approve stable operational risk and support obligations.
 - [x] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)
+
+## Review fixes
+
+- [x] R1 Constrain lifecycle transition endpoints to the declared job states and add a negative validation. Evidence: `schemas/operations-control.schema.json`, `tests/test_operations_control_contract.py`. (3af81f0)
 
 ## Track closeout
 
