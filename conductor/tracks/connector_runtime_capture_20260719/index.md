@@ -1,7 +1,7 @@
 # Evidence index: Common connector runtime and faithful capture framework
 
 - **Track ID:** `connector_runtime_capture_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.4.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
