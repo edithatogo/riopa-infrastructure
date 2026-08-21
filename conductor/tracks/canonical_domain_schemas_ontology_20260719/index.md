@@ -20,12 +20,12 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 |---|---|---|---|
 | `WP-005-projection-reconciliation-20260731` | Deterministic stale-node removal preserves identities referenced by authoritative manifest edges | `src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/change-and-impact-queries.md` | Synthetic relational projection fixture passes; normative schema/ontology migration evidence remains open |
 | `CANONICAL-INVENTORY-20260801` | Entity, identity, collision and extension inventory | `docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`, `tests/test_canonical.py` | Repository-owned baseline complete; SHACL, non-Python and domain-owner gates remain open |
-| `CANONICAL-CONTRACTS-20260801` | Versioned schemas, context, ontology descriptor, fixtures and identity tests | `schemas/canonical-crosswalk.schema.json`, `docs/ontology/`, `fixtures/canonical-crosswalk-golden.json`, `tests/test_canonical.py`, `tests/test_lineage_identifiers.py` | Python structural/semantic checks pass; SHACL and non-Python round-trip remain pending |
+| `CANONICAL-CONTRACTS-20260801` | Versioned schemas, context, ontology descriptor, fixtures and identity tests | `schemas/canonical-crosswalk.schema.json`, `docs/ontology/`, `fixtures/canonical-crosswalk-golden.json`, `tests/test_canonical.py`, `tests/test_lineage_identifiers.py` | Python structural/semantic checks pass; SHACL and broader external-client qualification remain pending |
+| `CANONICAL-TYPESCRIPT-BINDING-20260821` | Generated non-Python binding and golden-fixture round trip | `bindings/typescript/`, `scripts/generate_canonical_bindings.py`, `conformance/v1/corpus.json`, `tests/test_canonical_bindings.py`, `tests/test_conformance_parity_receipt.py` | Generated declarations are schema-drift checked; Python and Node reproduce the golden crosswalk digest and structural outcome. Full JSON Schema, SHACL, external-client and stable compatibility qualification remain open |
 
 ## Blocking defects and gates
 
 - `shacl-conformance-report` — pending qualifying SHACL engine/report.
-- `non-python-round-trip` — pending independent non-Python runtime evidence.
 - `ontology-publication-identifier` — pending publication decision and persistent identifier.
 - `domain-agent-panel-qualification` — pending orchestrated semantic/domain agent-panel qualification.
 - `migration-compatibility-qualification` — pending compatibility matrix and migration execution.
