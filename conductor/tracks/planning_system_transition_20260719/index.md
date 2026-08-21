@@ -31,9 +31,10 @@
 ## Decisions, exceptions and limitations
 
 - The repository-owned contract and fixtures are complete for the current slice.
-  Historical authority/plan reconstruction, downstream integration evidence,
-  planning-domain agent-panel qualification and immutable public-source evidence are
-  still blocking validation.
+  Historical authority/plan reconstruction, planning-domain agent-panel
+  qualification and immutable public-source evidence are still blocking
+  validation. The downstream integration evidence is bounded synthetic coverage
+  and does not satisfy the real-data gate.
 
 ## Review and handover
 
@@ -42,10 +43,12 @@ Required agent-panel lenses: Governance analyst, API/schema analyst, Data-govern
 ## Review record
 
 - Review scope: transition contract, fixtures, temporal selector, migration
-  guidance and Conductor records through `2f544c2`.
+  guidance, downstream integration and Conductor records through 2026-08-22.
 - Finding: the playbook task cited the implementation commit rather than the
   commit that recorded the completed task, and pending gates were not mirrored
   in metadata.
 - Fix: corrected the evidence reference and recorded the blockers explicitly.
+- Additional fix: aligned the decisions register with PT-4 while retaining the
+  real-data and external qualification boundaries.
 
 This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

@@ -27,6 +27,7 @@
 ## 5. Review fixes
 
 - [x] 5.1 Correct the migration-playbook evidence SHA and record pending reconstruction/review gates explicitly. (review fix)
+- [x] 5.2 Align the decisions register with the completed bounded downstream integration evidence and retain only the real-data, panel and immutable-source blockers. (review fix; 2026-08-22)
 
 ## Track closeout
 
