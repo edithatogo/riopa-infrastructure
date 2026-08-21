@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "corpus_id": "urn:riopa:conformance:provenance-query:1.0",
+  "projection": "synthetic SQLite lineage projection",
+  "cases": [
+    {"case_id": "where-source-1", "question": "where", "node_id": "source-1", "expected_answer_ids": ["artifact-1", "snapshot-1"]},
+    {"case_id": "why-snapshot-1", "question": "why", "node_id": "snapshot-1", "expected_answer_ids": ["artifact-1", "source-1"]},
+    {"case_id": "how-artifact-1", "question": "how", "node_id": "artifact-1", "expected_relations": [{"source_id": "source-1", "target_id": "artifact-1", "relation": "source_of_artifact", "record_path": "artifact.json"}, {"source_id": "artifact-1", "target_id": "snapshot-1", "relation": "included_in_snapshot", "record_path": "artifact.json"}]},
+    {"case_id": "impact-source-1", "question": "impact", "node_id": "source-1", "expected_answer_ids": ["artifact-1", "snapshot-1"]}
+  ],
+  "non_claims": [
+    "The corpus exercises deterministic synthetic SQLite answers only.",
+    "It does not establish graph equivalence, production performance, access-control enforcement or external-user validation.",
+    "Missing feature or row lineage remains an explicit limitation, not negative evidence."
+  ]
+}

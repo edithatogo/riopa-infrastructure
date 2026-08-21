@@ -4,7 +4,7 @@
 
 - [x] 1.1 Define why, where, how, downstream and rebuild-impact query semantics. (`src/riopa_provenance/lineage.py`, `docs/change-and-impact-queries.md`)
 - [x] 1.2 Define granularity, freshness, uncertainty and access-control responses. (`src/riopa_provenance/lineage.py`, `docs/change-and-impact-queries.md`, `tests/test_lineage.py`)
-- [ ] 1.3 Build a language-neutral query conformance corpus.
+- [x] 1.3 Build a language-neutral query conformance corpus. Evidence: `docs/provenance-query-conformance-corpus-20260822.json`, `tests/test_provenance_query_corpus.py`; Python reference answers are deterministic over a synthetic SQLite projection.
 
 ## 2. Projection implementation
 
