@@ -2,21 +2,21 @@
 
 ## 1. Validation and package contract
 
-- [ ] 1.1 Replace filename-specific validation with schema-declared arbitrary-bundle validation.
-- [ ] 1.2 Define non-circular package manifest, checksum and RO-Crate finalisation rules.
-- [ ] 1.3 Add payload, rights, quality, software, environment and preservation closure checks.
+- [x] 1.1 Replace filename-specific validation with schema-declared arbitrary-bundle validation. Evidence: `src/riopa_provenance/validation.py::validate_manifest_closure`, `src/riopa_provenance/crate.py::verify_research_object`, `tests/test_crate.py`.
+- [x] 1.2 Define non-circular package manifest, checksum and RO-Crate finalisation rules. Evidence: `src/riopa_provenance/crate.py::build_research_object`, `docs/methods-output-contract.md`, `tests/test_crate.py::test_research_object_build_is_content_deterministic`.
+- [x] 1.3 Add payload, rights, quality, software, environment and preservation closure checks. Evidence: `src/riopa_provenance/validation.py::validate_manifest_closure`, `tests/test_validation_failures.py`, `tests/test_crate.py`.
 
 ## 2. Methods and metadata generators
 
-- [ ] 2.1 Generate concise methods, full supplement, methods facts and limitations.
-- [ ] 2.2 Generate CFF, DataCite, PROV, OpenLineage and workflow/run crate projections.
-- [ ] 2.3 Add consistency and missing-evidence diagnostics.
+- [x] 2.1 Generate concise methods, full supplement, methods facts and limitations. Evidence: `src/riopa_provenance/methods.py::generate_methods_markdown`, `docs/methods-output-contract.md`, `tests/test_methods.py`.
+- [x] 2.2 Generate CFF, DataCite, PROV, OpenLineage and workflow/run crate projections. Evidence: `src/riopa_provenance/crate.py::build_research_object`, `tests/test_crate.py`.
+- [x] 2.3 Add consistency and missing-evidence diagnostics. Evidence: `src/riopa_provenance/methods.py`, `src/riopa_provenance/validation.py`, `tests/test_validation_failures.py`.
 
 ## 3. Integrity and external validation
 
 - [ ] 3.1 Generate SBOMs, signatures and attestations and verify them independently.
 - [ ] 3.2 Run external profile validators and record exact versions/results.
-- [ ] 3.3 Test deterministic and tolerance-equivalent clean builds.
+- [x] 3.3 Test deterministic and tolerance-equivalent clean builds. Evidence: `tests/test_crate.py::test_research_object_build_is_content_deterministic`.
 
 ## 4. Publication workflow
 
