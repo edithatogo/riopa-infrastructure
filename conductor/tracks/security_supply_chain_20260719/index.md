@@ -43,7 +43,7 @@ Required agent-panel lenses: API/schema analyst, Security analyst, Operations an
 ## Review record
 
 - Review scope: current track records, specification acceptance criteria,
-  dependency state, hosted evidence and panel reports through 2026-08-21.
+  dependency state, hosted evidence and panel reports through `f6e0a1c`.
 - High finding: commit `7a61d9b` changed the track from M1/active to M6/complete,
   removed recorded blockers, and marked every task complete without the required
   foundation dependency or M2-M6 evidence.

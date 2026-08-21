@@ -28,7 +28,7 @@
 
 - [x] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)
 - [x] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)
-- [x] 5.3 Restore evidence-backed task states after review found that commit `7a61d9b` promoted the track without its required dependency or M2-M6 evidence. (review fix; 2026-08-21)
+- [x] 5.3 Restore evidence-backed task states after review found that commit `7a61d9b` promoted the track without its required dependency or M2-M6 evidence. (`f6e0a1c`; review fix)
 
 ## Track closeout
 
