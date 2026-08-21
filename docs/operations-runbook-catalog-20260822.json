@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "urn:riopa:operations:runbooks:bounded-preview:1.0",
+  "runbooks": [
+    {"id": "source-health", "path": "docs/runbooks/source-health.md", "evidence_class": "repository-contract"},
+    {"id": "schema-drift", "path": "docs/runbooks/schema-drift.md", "evidence_class": "repository-contract"},
+    {"id": "rights-review", "path": "docs/runbooks/rights-review.md", "evidence_class": "repository-contract"},
+    {"id": "corruption-recovery", "path": "docs/runbooks/corruption-recovery.md", "evidence_class": "repository-contract"},
+    {"id": "capacity-and-cost", "path": "docs/runbooks/capacity-and-cost.md", "evidence_class": "repository-contract"}
+  ],
+  "non_claims": [
+    "These are executable runbook contracts, not evidence that a production operator has executed them.",
+    "They do not establish restore success, national-scale capacity, rights authority, or release approval.",
+    "A failed run remains preserved and cannot be replaced by a synthetic success."
+  ]
+}
