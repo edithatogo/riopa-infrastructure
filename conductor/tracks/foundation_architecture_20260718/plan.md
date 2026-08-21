@@ -36,3 +36,7 @@
 - [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)
 - [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)
+
+## Review fixes
+
+- [x] R.6 Reconcile the programme status summary with the 28 track metadata states: 12 active, 4 validating and 12 specified; no track is promoted by this documentation correction. (`conductor/tracks.md`)

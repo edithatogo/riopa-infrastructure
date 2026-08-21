@@ -6,10 +6,10 @@ This is the programme-level source of truth for the stable, hardened and support
 
 - **Total tracks:** 28
 - **Complete:** 0
-- **Active:** 0
-- **Validating:** 0
+- **Active:** 12
+- **Validating:** 4
 - **Ready:** 0
-- **Specified:** 28
+- **Specified:** 12
 - **Proposed:** 0
 - **V1-critical:** 28
 
