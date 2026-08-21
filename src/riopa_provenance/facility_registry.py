@@ -12,6 +12,7 @@ from typing import Literal
 Authority = Literal["official-reference", "community-reference", "other-reference"]
 Disposition = Literal["candidate-match", "source-only", "reviewed-match", "reviewed-distinct"]
 HistoryEventType = Literal["opening", "closure", "relocation", "rebrand", "source-disagreement"]
+ReleaseClassification = Literal["public", "restricted", "sensitive", "controlled"]
 
 
 @dataclass(frozen=True)
@@ -28,6 +29,7 @@ class FacilityAssertion:
     licence: str
     observed_at: str | None = None
     positional_uncertainty_m: float | None = None
+    release_classification: ReleaseClassification = "public"
 
     def __post_init__(self) -> None:
         required = (self.assertion_id, self.source_id, self.facility_type, self.name, self.licence)
@@ -37,6 +39,8 @@ class FacilityAssertion:
             raise ValueError("coordinates must be valid WGS84 longitude/latitude")
         if self.positional_uncertainty_m is not None and self.positional_uncertainty_m < 0:
             raise ValueError("positional uncertainty must be non-negative")
+        if self.release_classification not in {"public", "restricted", "sensitive", "controlled"}:
+            raise ValueError("release classification is unsupported")
 
 
 @dataclass(frozen=True)
@@ -113,6 +117,19 @@ def history_snapshot(events: tuple[FacilityHistoryEvent, ...]) -> dict[str, obje
     return {"record_type": "facility_history", "authoritative": False, "events": rows}
 
 
+def public_release_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, object]:
+    """Project only public assertions and retain excluded IDs as an audit ledger."""
+
+    public = tuple(item for item in assertions if item.release_classification == "public")
+    excluded = sorted(
+        item.assertion_id for item in assertions if item.release_classification != "public"
+    )
+    snapshot = assertions_snapshot(public)
+    snapshot["excluded_assertion_ids"] = excluded
+    snapshot["release_filter"] = "public-only"
+    return snapshot
+
+
 def assertions_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, object]:
     """Return a deterministic, non-authoritative registry snapshot.
 
@@ -135,6 +152,7 @@ def assertions_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, 
             "licence": item.licence,
             "observed_at": item.observed_at,
             "positional_uncertainty_m": item.positional_uncertainty_m,
+            "release_classification": item.release_classification,
         }
         for item in sorted(assertions, key=lambda value: value.assertion_id)
     ]

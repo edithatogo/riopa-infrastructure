@@ -26,7 +26,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [~] 3.1 Build a deterministic stratified duplicate, classification and coordinate review sample; panel disposition is pending.
 - [x] 3.2 Record bounded source sensitivity; performance estimates require a reference sample qualified by the agent panel.
-- [ ] 3.3 Implement sensitive/restricted release filtering.
+- [x] 3.3 Implement sensitive/restricted release filtering. (`ad87365`; public-only projection with exclusion ledger)
 
 ## 4. Stable registry release
 
@@ -45,6 +45,8 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [x] 5.1 Enforce the history event-type union at runtime, add a negative test,
   and align the evidence-index lifecycle wording with active metadata. (review fix; 2026-08-22)
+- [x] 5.2 Verify the public-only release projection, preserve the exclusion
+  ledger and align the history evidence row after task 3.3. (review fix; 2026-08-22)
 
 ## Evidence gates still open
 
