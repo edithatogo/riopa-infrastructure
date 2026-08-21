@@ -12,9 +12,9 @@
 
 - The repository-owned rehearsal matrix is now validated, but execution remains gated on hosted infrastructure and elapsed observation; operator workflows are owner-authorized agent executions (`examples/wp010-performance-benchmark/resilience-matrix.json`).
 - A `performance-rehearsal` hosted campaign lane now runs the deterministic benchmark and retains its report; its national value remains explicitly a projection.
-- [ ] 2.1 Run ingestion, query, accessibility, optimisation and simulation load tests.
-- [ ] 2.2 Run soak, concurrency, retry-storm, cancellation and malformed-input tests.
-- [ ] 2.3 Measure recovery, queue, storage and memory behaviour.
+- [~] 2.1 Run bounded local ingestion/query/accessibility rehearsal; hosted and national-scale measurement remain open. (`scripts/run_bounded_resilience_rehearsal.py`)
+- [~] 2.2 Run bounded local concurrency, retry-storm, cancellation and malformed-input rehearsal; hosted soak remains open. (`scripts/run_bounded_resilience_rehearsal.py`)
+- [~] 2.3 Record bounded deterministic recovery observables; hosted queue, storage and memory behaviour remain open. (`scripts/run_bounded_resilience_rehearsal.py`)
 
 ## 3. Regression and capacity controls
 
