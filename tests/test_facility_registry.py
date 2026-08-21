@@ -3,9 +3,11 @@ import pytest
 from riopa_provenance.facility_registry import (
     FacilityAssertion,
     FacilityHistoryEvent,
+    Reconciliation,
     apply_review,
     assertions_snapshot,
     assertions_snapshot_json,
+    disagreement_coverage_report,
     distance_m,
     history_snapshot,
     name_similarity,
@@ -51,6 +53,25 @@ def test_candidate_is_non_authoritative_and_review_is_explicit() -> None:
     )
     assert reviewed.disposition == "reviewed-match"
     assert reviewed.reviewer == "analyst-agent-1"
+
+
+def test_disagreement_coverage_report_is_bounded_and_sorted() -> None:
+    left = assertion("left", 0, 0, source_id="z-source")
+    right = assertion("right", 0, 0.00001, source_id="a-source")
+    report = disagreement_coverage_report((left, right), reconcile((left,), (right,)))
+    assert report["authoritative"] is False
+    assert report["source_counts"] == {"a-source": 1, "z-source": 1}
+    assert report["candidate_match_count"] == 1
+    assert report["scope"] == "supplied archived assertions only"
+
+
+def test_disagreement_coverage_report_rejects_unknown_assertions() -> None:
+    left = assertion("left", 0, 0)
+    with pytest.raises(ValueError, match="unknown assertions"):
+        disagreement_coverage_report(
+            (left,),
+            (Reconciliation("left", "missing", "candidate-match", 1.0, 1.0),),
+        )
 
 
 def test_type_distance_and_one_to_one_rules_preserve_unmatched_assertions() -> None:

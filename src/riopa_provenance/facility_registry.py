@@ -271,3 +271,43 @@ def apply_review(
         reviewer,
         rationale,
     )
+
+
+def disagreement_coverage_report(
+    assertions: tuple[FacilityAssertion, ...],
+    reconciliations: tuple[Reconciliation, ...],
+) -> dict[str, object]:
+    """Build a deterministic, non-authoritative report over supplied assertions."""
+    assertion_ids = {item.assertion_id for item in assertions}
+    referenced = {
+        identifier
+        for row in reconciliations
+        for identifier in (row.left_assertion_id, row.right_assertion_id)
+        if identifier is not None
+    }
+    unknown = sorted(referenced - assertion_ids)
+    if unknown:
+        raise ValueError(f"reconciliation references unknown assertions: {unknown}")
+    by_source: dict[str, int] = {}
+    by_type: dict[str, int] = {}
+    for item in assertions:
+        by_source[item.source_id] = by_source.get(item.source_id, 0) + 1
+        by_type[item.facility_type] = by_type.get(item.facility_type, 0) + 1
+    disposition_counts: dict[str, int] = {}
+    for row in reconciliations:
+        disposition_counts[row.disposition] = disposition_counts.get(row.disposition, 0) + 1
+    return {
+        "record_type": "facility_disagreement_coverage",
+        "authoritative": False,
+        "assertion_count": len(assertions),
+        "source_counts": dict(sorted(by_source.items())),
+        "facility_type_counts": dict(sorted(by_type.items())),
+        "reconciliation_counts": dict(sorted(disposition_counts.items())),
+        "unmatched_assertion_ids": sorted(
+            row.left_assertion_id for row in reconciliations if row.disposition == "source-only"
+        ),
+        "candidate_match_count": disposition_counts.get("candidate-match", 0),
+        "reviewed_match_count": disposition_counts.get("reviewed-match", 0),
+        "reviewed_distinct_count": disposition_counts.get("reviewed-distinct", 0),
+        "scope": "supplied archived assertions only",
+    }

@@ -32,6 +32,7 @@
 | `FACILITY-STRATIFIED-REVIEW-SAMPLE-20260803` | Deterministic bounded strata define the candidate, OSM-only and Marlborough-only review frame | `scripts/build_facility_review_sample.py`, `docs/facility-stratified-review-sample-20260803.json`, `tests/test_public_dataset_archive_plan.py` | Frame is reproducible; panel disposition and any authority decision remain open |
 | `FACILITY-HISTORY-EVENTS-20260822` | Append-only opening, closure, relocation, rebrand and source-disagreement history | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py`, `docs/facility-history-contract.md` | Date/evidence validation and deterministic non-authoritative snapshot pass; source adjudication remains open |
 | `FACILITY-PUBLIC-RELEASE-FILTER-20260822` | Sensitive/restricted release filtering | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py`, `docs/facility-history-contract.md` | Public-only projection excludes restricted, sensitive and controlled assertions while retaining an exclusion ledger; raw packets remain unchanged |
+| `FACILITY-DISAGREEMENT-COVERAGE-20260822` | Deterministic bounded disagreement and coverage report over archived assertions | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py` | Report is non-authoritative and scoped to supplied archived assertions; panel adjudication, completeness and release gates remain open |
 
 ## Blocking defects
 
