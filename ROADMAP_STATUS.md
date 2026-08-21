@@ -8,9 +8,9 @@ Stable target: `1.0.0`
 
 - Total: **28**
 - v1-critical: **28**
-- active: **1**
-- specified: **26**
-- validating: **1**
+- active: **5**
+- specified: **18**
+- validating: **5**
 
 ### Current maturity
 
@@ -18,11 +18,19 @@ Stable target: `1.0.0`
 
 ## Release readiness
 
-### 0.2.0 — v1 roadmap and maturity architecture (READY)
+### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 28/28
+- Tracks qualified: 21/28
 - Gates: 4/4 passed
+- Blockers:
+  - track canonical_domain_schemas_ontology_20260719 has blocking defects
+  - track facility_registry_20260719 has blocking defects
+  - track foundation_architecture_20260718 has blocking defects
+  - track planning_system_transition_20260719 has blocking defects
+  - track provenance_profile_v1_20260718 has blocking defects
+  - track security_supply_chain_20260719 has blocking defects
+  - track v1_release_hardening_20260719 has blocking defects
 
 ### 0.3.0 — normative core alpha (NOT READY)
 
