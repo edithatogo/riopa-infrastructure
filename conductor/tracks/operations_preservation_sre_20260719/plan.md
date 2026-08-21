@@ -2,9 +2,9 @@
 
 ## 1. Operational model and SLOs
 
-- [ ] 1.1 Define job state, retry, idempotency, quarantine and partial-failure semantics.
-- [ ] 1.2 Define SLIs/SLOs, maintenance windows, upstream exclusions and alert thresholds.
-- [ ] 1.3 Define incident severity, escalation, communication and review.
+- [x] 1.1 Define job state, retry, idempotency, quarantine and partial-failure semantics. Evidence: `schemas/operations-control.schema.json`, `docs/operations-control-contract-20260822.json`, `src/riopa_provenance/retry.py`, `tests/test_retry.py`. (f6e50d7)
+- [x] 1.2 Define SLIs/SLOs, maintenance windows, upstream exclusions and alert thresholds. Evidence: `schemas/operations-control.schema.json`, `docs/operations-control-contract-20260822.json`, `docs/operations-slo.md`, `tests/test_operations_control_contract.py`. (f6e50d7)
+- [x] 1.3 Define incident severity, escalation, communication and review. Evidence: `schemas/operations-control.schema.json`, `docs/operations-control-contract-20260822.json`, `tests/test_operations_control_contract.py`. (f6e50d7)
 
 ## 2. Observability and runbooks
 

@@ -23,3 +23,11 @@ def test_operations_control_contract_rejects_measured_status() -> None:
     record["qualification_status"] = "qualified"
     errors = list(Draft202012Validator(schema).iter_errors(record))
     assert any(list(error.path) == ["qualification_status"] for error in errors)
+
+
+def test_operations_control_contract_rejects_unknown_transition_state() -> None:
+    schema = json.loads((ROOT / "schemas/operations-control.schema.json").read_text())
+    record = json.loads((ROOT / "docs/operations-control-contract-20260822.json").read_text())
+    record["job_lifecycle"]["transitions"][0]["to"] = "unknown"
+    errors = list(Draft202012Validator(schema).iter_errors(record))
+    assert any(list(error.path) == ["job_lifecycle", "transitions", 0, "to"] for error in errors)
