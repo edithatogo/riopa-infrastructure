@@ -45,7 +45,9 @@ def test_workflows_declare_fail_closed_least_privilege_permissions() -> None:
             if not isinstance(job, dict) or "permissions" not in job:
                 continue
             job_permissions = job["permissions"]
-            assert isinstance(job_permissions, dict), f"job permissions must be explicit: {path}:{job_name}"
+            assert isinstance(
+                job_permissions, dict
+            ), f"job permissions must be explicit: {path}:{job_name}"
             for scope, value in job_permissions.items():
                 if scope == "security-events" and value == "write":
                     continue
