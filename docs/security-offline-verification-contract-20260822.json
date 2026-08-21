@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:security:offline-verification:1.0",
+  "verification_commands": [
+    {"name": "checksum", "command": ["sha256sum", "--check", "SHA256SUMS"]},
+    {"name": "github-attestation", "command": ["gh", "attestation", "verify", "PATH_TO_ASSET", "--repo", "edithatogo/riopa-infrastructure"]}
+  ],
+  "required_inputs": ["exact release asset", "SHA256SUMS", "repository identity"],
+  "non_claims": [
+    "Commands are verification instructions, not evidence that a protected release has executed.",
+    "A valid checksum or attestation does not establish source factual truth, preservation or release authority.",
+    "Offline verification is unavailable until the exact release bundle and attestation exist."
+  ]
+}
