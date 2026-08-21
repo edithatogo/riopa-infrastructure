@@ -10,7 +10,7 @@
 
 - [x] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes. (`schemas/canonical-crosswalk.schema.json`, `docs/ontology/canonical-context.jsonld`, `docs/ontology/canonical-ontology-release-1.0.0.json`; SHACL execution remains pending)
 - [x] 2.2 Add bitemporal, original-value, confidence, review and governance fields. (`src/riopa_provenance/canonical.py`, `tests/test_canonical.py`)
-- [ ] 2.3 Generate language bindings and documentation.
+- [x] 2.3 Generate language bindings and documentation. (`2a7cd96`; generated TypeScript declaration, drift test and bounded Python/Node golden-fixture parity)
 
 ## 3. Crosswalk and conformance
 
@@ -37,3 +37,6 @@
   `not-run` conformance status. (`1ac750a`)
 - [x] R.2 Verify the updated manifest, ontology descriptor and tests under the
   project validation workflow. (`1ac750a`)
+- [x] R.3 Correct the TypeScript binding documentation so hosted pytest drift
+  enforcement and the equivalent local `--check` command are distinguished.
+  (`913f683`; review fix)

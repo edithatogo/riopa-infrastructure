@@ -57,7 +57,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-1",
@@ -85,7 +85,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-2",
@@ -101,7 +101,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes. (`schemas/canonical-crosswalk.schema.json`, `docs/ontology/canonical-context.jsonld`, `docs/ontology/canonical-ontology-release-1.0.0.json`; SHACL execution remains pending)\n- [ ] 2.2 Add bitemporal, original-value, confidence, review and governance fields. (`src/riopa_provenance/canonical.py`, `tests/test_canonical.py`)\n- [ ] 2.3 Generate language bindings and documentation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes. (`schemas/canonical-crosswalk.schema.json`, `docs/ontology/canonical-context.jsonld`, `docs/ontology/canonical-ontology-release-1.0.0.json`; SHACL execution remains pending)\n- [ ] 2.2 Add bitemporal, original-value, confidence, review and governance fields. (`src/riopa_provenance/canonical.py`, `tests/test_canonical.py`)\n- [ ] 2.3 Generate language bindings and documentation. (`2a7cd96`; generated TypeScript declaration, drift test and bounded Python/Node golden-fixture parity)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -115,7 +115,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-3",
@@ -145,7 +145,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-4",
@@ -161,7 +161,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Run agent-panel semantic qualification and resolve semantic findings.\n- [ ] 4.2 Publish migration tools, compatibility matrix and extension policy.\n- [ ] 4.3 Freeze the v1 normative schema/ontology candidate.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R.1 Add digest-bound SHACL shape preparation while preserving the\n- [ ] R.2 Verify the updated manifest, ontology descriptor and tests under the\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Run agent-panel semantic qualification and resolve semantic findings.\n- [ ] 4.2 Publish migration tools, compatibility matrix and extension policy.\n- [ ] 4.3 Freeze the v1 normative schema/ontology candidate.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R.1 Add digest-bound SHACL shape preparation while preserving the\n- [ ] R.2 Verify the updated manifest, ontology descriptor and tests under the\n- [ ] R.3 Correct the TypeScript binding documentation so hosted pytest drift\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -175,7 +175,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "provenance_profile_v1_20260718",
