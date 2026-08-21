@@ -9,6 +9,7 @@ from riopa_provenance.facility_registry import (
     distance_m,
     history_snapshot,
     name_similarity,
+    public_release_snapshot,
     reconcile,
 )
 
@@ -204,3 +205,17 @@ def test_history_rejects_missing_evidence_reversed_window_and_retrospective_reco
             ("source:one",),
             "recorded before event",
         )
+
+
+def test_public_release_filter_excludes_non_public_assertions_and_records_ledger() -> None:
+    public = assertion("public", 0, 0)
+    restricted = assertion("restricted", 1, 1, release_classification="restricted")
+    sensitive = assertion("sensitive", 2, 2, release_classification="sensitive")
+    snapshot = public_release_snapshot((sensitive, public, restricted))
+    rows = snapshot["assertions"]
+    assert isinstance(rows, list)
+    assert [row["assertion_id"] for row in rows] == ["public"]
+    assert snapshot["excluded_assertion_ids"] == ["restricted", "sensitive"]
+    assert snapshot["release_filter"] == "public-only"
+    with pytest.raises(ValueError, match="classification"):
+        assertion("bad-class", 0, 0, release_classification="unknown")
