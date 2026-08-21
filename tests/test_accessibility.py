@@ -1,4 +1,6 @@
+import json
 from math import isclose
+from pathlib import Path
 
 import pytest
 
@@ -10,6 +12,7 @@ from riopa_provenance.accessibility import (
     gravity_accessibility,
     two_step_floating_catchment,
 )
+from riopa_provenance.validation import validate_instance
 
 
 def _matrix() -> AccessibilityMatrix:
@@ -68,3 +71,40 @@ def test_empty_two_step_catchment_has_zero_ratio() -> None:
     assert two_step_floating_catchment(_matrix(), {"outside": 1}, {"x": 10}, threshold=2) == {
         "outside": 0.0
     }
+
+
+def test_versioned_accessibility_contract_preserves_missing_semantics() -> None:
+    root = Path(__file__).resolve().parents[1]
+    matrix_schema = json.loads((root / "schemas/accessibility-matrix.schema.json").read_text())
+    measure_schema = json.loads((root / "schemas/accessibility-measure.schema.json").read_text())
+    matrix = {
+        "schema_version": "1.0.0",
+        "record_type": "accessibility_matrix",
+        "matrix_id": "matrix:fixture",
+        "network_version": "archive:fixture",
+        "engine": "reference",
+        "engine_version": "1",
+        "mode": "straight-line",
+        "observations": [
+            {"origin": "o1", "destination": "d1", "status": "reachable", "impedance": 2.0},
+            {"origin": "o1", "destination": "d2", "status": "missing", "impedance": None},
+        ],
+        "source_refs": ["fixture:archive"],
+        "claim_classification": "reference-only",
+    }
+    assert validate_instance(matrix, matrix_schema) == ()
+    invalid = json.loads(json.dumps(matrix))
+    invalid["observations"][1]["impedance"] = 1.0
+    assert validate_instance(invalid, matrix_schema)
+    measure = {
+        "schema_version": "1.0.0",
+        "record_type": "accessibility_measure",
+        "measure_id": "measure:fixture",
+        "matrix_id": "matrix:fixture",
+        "measure": "gravity",
+        "missing_policy": "report-separately",
+        "denominator_semantics": "none",
+        "result": 1.5,
+        "claim_classification": "reference-only",
+    }
+    assert validate_instance(measure, measure_schema) == ()

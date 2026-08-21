@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/accessibility-matrix/v1",
+  "title": "RIOPA Versioned Accessibility Matrix v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "matrix_id", "network_version", "engine", "engine_version", "mode", "observations", "source_refs", "claim_classification"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "accessibility_matrix"},
+    "matrix_id": {"type": "string", "minLength": 1},
+    "network_version": {"type": "string", "minLength": 1},
+    "engine": {"type": "string", "minLength": 1},
+    "engine_version": {"type": "string", "minLength": 1},
+    "mode": {"enum": ["straight-line", "road", "walk", "cycle", "public-transport"]},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["origin", "destination", "status"],
+        "properties": {
+          "origin": {"type": "string", "minLength": 1},
+          "destination": {"type": "string", "minLength": 1},
+          "status": {"enum": ["reachable", "unreachable", "missing", "censored"]},
+          "impedance": {"type": ["number", "null"], "minimum": 0},
+          "uncertainty": {"type": ["number", "null"], "minimum": 0}
+        },
+        "allOf": [
+          {"if": {"properties": {"status": {"const": "reachable"}}}, "then": {"required": ["impedance"], "properties": {"impedance": {"type": "number", "minimum": 0}}}},
+          {"if": {"properties": {"status": {"enum": ["unreachable", "missing", "censored"]}}}, "then": {"properties": {"impedance": {"const": null}}}}
+        ]
+      }
+    },
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "claim_classification": {"const": "reference-only"}
+  }
+}
