@@ -57,6 +57,15 @@ def test_node_implementation_matches_python_outcomes() -> None:
     assert all(item["passed"] for item in report["results"])
 
 
+def test_bounded_typescript_provenance_model_is_present() -> None:
+    root = Path(__file__).resolve().parents[1]
+    model = root / "bindings/typescript/provenance-event-v1.d.ts"
+    text = model.read_text(encoding="utf-8")
+    assert "export interface ProvenanceEventV1" in text
+    assert 'schema_version: "1.0.0"' in text
+    assert "event_hash: string" in text
+
+
 def test_minimal_rights_inventory_is_schema_valid_and_fail_closed_when_unresolved() -> None:
     root, _ = _corpus()
     schema = json.loads((root / "schemas/rights-inventory.schema.json").read_text())
