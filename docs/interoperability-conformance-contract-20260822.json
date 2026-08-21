@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "corpus": {
+    "path": "conformance/v1/corpus.json",
+    "version": "1.0.0",
+    "case_classes": ["positive", "negative", "migration"],
+    "runners": ["Python reference validator", "Node standard-library runner"]
+  },
+  "negotiation": {
+    "profile": "urn:riopa:profile:canonical-conformance:1.0",
+    "extension_policy": "preserve-and-declare",
+    "version_policy": "major-breaks"
+  },
+  "non_claims": [
+    "The corpus is a bounded canonical-hash and schema-outcome contract, not a complete JSON Schema implementation.",
+    "This contract does not establish Rust, SHACL, standards-projection, external-client or signed-release conformance.",
+    "Agent-panel assessment cannot substitute for independent producer or consumer evidence."
+  ]
+}

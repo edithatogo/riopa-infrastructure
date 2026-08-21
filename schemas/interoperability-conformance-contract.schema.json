@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/interoperability-conformance-contract/1.0.0",
+  "title": "RIOPA bounded interoperability conformance contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "corpus", "negotiation", "non_claims"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "version", "case_classes", "runners"],
+      "properties": {
+        "path": {"type": "string", "const": "conformance/v1/corpus.json"},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "case_classes": {
+          "type": "array",
+          "items": {"enum": ["positive", "negative", "migration"]},
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "runners": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 2,
+          "uniqueItems": true
+        }
+      }
+    },
+    "negotiation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "extension_policy", "version_policy"],
+      "properties": {
+        "profile": {"type": "string", "pattern": "^urn:riopa:profile:[A-Za-z0-9._:-]+$"},
+        "extension_policy": {"enum": ["preserve-and-declare", "reject-unknown"]},
+        "version_policy": {"enum": ["major-breaks", "minor-additive", "patch-corrective"]}
+      }
+    },
+    "non_claims": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1}
+  }
+}

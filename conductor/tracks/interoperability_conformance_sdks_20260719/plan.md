@@ -2,9 +2,9 @@
 
 ## 1. Normative conformance corpus
 
-- [ ] 1.1 Define language-neutral positive, negative and migration fixtures.
-- [ ] 1.2 Define expected validation, hashing and lineage-query results.
-- [ ] 1.3 Publish extension and profile-version negotiation rules.
+- [x] 1.1 Define language-neutral positive, negative and migration fixtures. Evidence: `conformance/v1/corpus.json` (four existing canonical/schema cases plus a digest-bound migration case), validated by `tests/test_conformance.py` and `tests/test_interoperability_conformance_contract.py`.
+- [x] 1.2 Define expected validation, hashing and lineage-query results. Evidence: `conformance/v1/corpus.json`, `scripts/verify_conformance_parity.py`, and `docs/conformance-and-release-verification.md`; lineage-query results remain explicitly outside this bounded corpus.
+- [x] 1.3 Publish extension and profile-version negotiation rules. Evidence: `schemas/interoperability-conformance-contract.schema.json`, `docs/interoperability-conformance-contract-20260822.json`, and `docs/interoperability-conformance-contract-20260822.md`.
 
 ## 2. Independent implementations
 
