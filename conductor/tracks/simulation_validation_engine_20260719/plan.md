@@ -2,9 +2,9 @@
 
 ## 1. Simulation contract and RNG
 
-- [ ] 1.1 Define event, resource, queue, demand, service and policy contracts.
-- [ ] 1.2 Define random stream, seed, replication, warm-up and convergence semantics.
-- [ ] 1.3 Build deterministic toy and stochastic reference fixtures.
+- [x] 1.1 Define event, resource, queue, demand, service and policy contracts. (`src/riopa_provenance/analysis.py`, `schemas/analysis-protocol.schema.json`)
+- [x] 1.2 Define random stream, seed, replication, warm-up and convergence semantics. (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`)
+- [x] 1.3 Build deterministic toy and stochastic reference fixtures. (`examples/wp010-synthetic-benchmark/`, `tests/test_analysis.py`)
 
 ## 2. Reference simulation engine
 
