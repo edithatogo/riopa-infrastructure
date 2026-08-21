@@ -15,7 +15,7 @@
 ## 3. Temporal query integration
 
 - [x] 3.1 Add valid-time, recorded-time and as-known-at query modes. (transitions.py; implementation)
-- [ ] 3.2 Test downstream zoning and accessibility analyses across transitions.
+- [x] 3.2 Test downstream zoning and accessibility analyses across transitions. (`a3ef9ae`; bounded synthetic reference contract)
 - [x] 3.3 Document non-equivalence and unresolved transitions. (planning-system-transition-migration-playbook.md)
 
 ## 4. Agent-panel qualification and migration readiness
@@ -27,6 +27,7 @@
 ## 5. Review fixes
 
 - [x] 5.1 Correct the migration-playbook evidence SHA and record pending reconstruction/review gates explicitly. (review fix)
+- [x] 5.2 Align the decisions register with the completed bounded downstream integration evidence and retain only the real-data, panel and immutable-source blockers. (review fix; 2026-08-22)
 
 ## Track closeout
 

@@ -19,17 +19,22 @@
 | PT-1 | Transition schema and fail-closed validator | `schemas/planning-transition.schema.json`, `src/riopa_provenance/transitions.py`, `tests/test_transitions.py` | Repository tests passing; real-data evidence not claimed |
 | PT-2 | Rename, merge, split, replacement and partial-continuity fixtures | `fixtures/planning-transition-golden.json` | Deterministic fixture validated; not a legal equivalence claim |
 | PT-3 | Temporal perspectives and migration guidance | `docs/planning-system-transition-migration-playbook.md` | Valid-time, recorded-time and as-known-at semantics documented |
+| PT-4 | Downstream zoning and accessibility transition integration | `tests/test_transition_downstream.py`, `docs/planning-transition-downstream-contract.md` | Successor plan is selected at explicit valid time and passed to the dependency-free reference accessibility measure; synthetic only, with network/timetable/facility and legal claims disabled |
 
 ## Blocking defects
 
-- Real authority reorganisation and plan replacement reconstructions remain pending; public-source capture and planning-domain agent-panel qualification are required before validation.
+- Real authority reorganisation and plan replacement reconstructions remain
+  pending; public-source capture and planning-domain agent-panel qualification
+  are required before validation. The downstream integration slice is bounded
+  synthetic evidence, not real-data or operational qualification.
 
 ## Decisions, exceptions and limitations
 
 - The repository-owned contract and fixtures are complete for the current slice.
-  Historical authority/plan reconstruction, downstream integration evidence,
-  planning-domain agent-panel qualification and immutable public-source evidence are
-  still blocking validation.
+  Historical authority/plan reconstruction, planning-domain agent-panel
+  qualification and immutable public-source evidence are still blocking
+  validation. The downstream integration evidence is bounded synthetic coverage
+  and does not satisfy the real-data gate.
 
 ## Review and handover
 
@@ -38,10 +43,12 @@ Required agent-panel lenses: Governance analyst, API/schema analyst, Data-govern
 ## Review record
 
 - Review scope: transition contract, fixtures, temporal selector, migration
-  guidance and Conductor records through `2f544c2`.
+  guidance, downstream integration and Conductor records through 2026-08-22.
 - Finding: the playbook task cited the implementation commit rather than the
   commit that recorded the completed task, and pending gates were not mirrored
   in metadata.
 - Fix: corrected the evidence reference and recorded the blockers explicitly.
+- Additional fix: aligned the decisions register with PT-4 while retaining the
+  real-data and external qualification boundaries.
 
 This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
