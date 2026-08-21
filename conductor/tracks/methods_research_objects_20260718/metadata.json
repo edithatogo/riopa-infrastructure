@@ -2,9 +2,9 @@
   "track_id": "methods_research_objects_20260718",
   "type": "platform",
   "phase": "Core",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-22T00:00:00Z",
+  "updated_at": "2026-08-22T01:45:00Z",
   "description": "Generate concise citable methods and publication-grade supplementary evidence from the same validated release facts and package them as complete, externally verifiable research objects.",
   "depends_on": [
     "provenance_profile_v1_20260718",
