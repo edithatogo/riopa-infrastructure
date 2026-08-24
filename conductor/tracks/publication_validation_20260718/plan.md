@@ -9,7 +9,7 @@
 ## 2. Release and citation packages
 
 - [ ] 2.1 Coordinate immutable software, schema, ontology, data, model and research-object versions.
-- [ ] 2.2 Generate DOI-ready metadata, citation, provenance, SBOM, attestations and preservation records.
+- [~] 2.2 Prepare DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence. The packet links repository contracts and exact build inputs; protected attestations, accepted deposit/restore, participant evidence and authority remain open (`docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py`).
 - [ ] 2.3 Verify discovery, install, query, reproduce and cite workflows.
 
 ## 3. Agent reproduction

@@ -1,0 +1,50 @@
+{
+  "schema": "riopa.publication-validation-packet.v1",
+  "packet_id": "publication-validation-packet-20260825",
+  "status": "doi-ready-preparation-only",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "software": {
+    "package": "riopa-provenance",
+    "runtime": "Python 3.14",
+    "version_source": "pyproject.toml",
+    "build_verification": "bash scripts/ci_quality.sh",
+    "sbom": "dist/package/riopa-provenance.cdx.json"
+  },
+  "metadata_contracts": [
+    "docs/publication-claim-classification-contract-20260825.json",
+    "docs/publication-validator-selection-contract-20260825.json",
+    "docs/research-object-attestation-contract-20260825.json",
+    "docs/publication-correction-package-20260803.json"
+  ],
+  "citation_fields": [
+    "title",
+    "creator",
+    "version",
+    "release_date",
+    "description",
+    "scope_and_non_claims",
+    "software_revision",
+    "source_and_capture_digests",
+    "licence_and_rights_record",
+    "citation_identifier"
+  ],
+  "preservation_sequence": [
+    "freeze exact software and evidence revisions",
+    "build and verify source, wheel, SBOM and checksums",
+    "obtain protected artifact attestations",
+    "deposit the exact packet with an approved preservation service",
+    "verify anonymous restore and record the persistent identifier"
+  ],
+  "pending_gates": [
+    "protected artifact attestations",
+    "accepted preservation deposit and restore receipt",
+    "external operator/user reproduction",
+    "elapsed beta/RC qualification",
+    "accountable release-authority decision"
+  ],
+  "publication_ready": false,
+  "non_claims": [
+    "This packet is DOI-ready preparation, not a DOI, publication or preservation receipt.",
+    "A local SBOM, checksum or agent-panel report cannot establish external acceptance or release authority."
+  ]
+}
