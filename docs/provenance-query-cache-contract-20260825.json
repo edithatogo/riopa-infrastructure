@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.provenance-query-cache-contract.v1",
+  "status": "bounded-repository-contract",
+  "implementation": "src/riopa_provenance/lineage.py:QueryCache and LineageIndex.query_cached",
+  "controls": [
+    "cache keys include the logical projection fingerprint",
+    "entries are bounded with deterministic oldest-entry eviction",
+    "cached results are deep-copied before return",
+    "projection changes naturally bypass prior entries"
+  ],
+  "open_gates": [
+    "distributed or persistent cache qualification",
+    "remote authorization and access filtering",
+    "production-scale performance measurements"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is an in-process cache contract, not production-scale performance evidence.",
+    "Caching does not grant access to restricted provenance or replace external-user testing."
+  ]
+}

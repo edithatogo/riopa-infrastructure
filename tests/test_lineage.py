@@ -11,6 +11,7 @@ from riopa_provenance.lineage import (
     LineageError,
     LineageIndex,
     LineageQuery,
+    QueryCache,
     _identifier,
     _label,
     _normalise_json,
@@ -85,6 +86,31 @@ def test_page_nodes_is_bounded_and_reports_diagnostics(tmp_path: Path) -> None:
     assert len(page["nodes"]) == 1
     assert page["diagnostics"]["projection_sha256"]
     assert "no remote authorization" in page["access_control"]
+
+
+def test_query_cache_is_bounded_and_projection_fingerprint_aware(tmp_path: Path) -> None:
+    index = seeded_index(tmp_path)
+    first = index.query_cached("source-1", question="where")
+    second = index.query_cached("source-1", question="where")
+    assert first["cache"]["hit"] is False
+    assert second["cache"]["hit"] is True
+    assert second["answer"] == first["answer"]
+    connection = index._connect()
+    index._put_node(connection, "new-node", "artifact")
+    connection.commit()
+    connection.close()
+    changed = index.query_cached("source-1", question="where")
+    assert changed["cache"]["hit"] is False
+
+
+def test_query_cache_rejects_invalid_size_and_evicts_oldest() -> None:
+    with pytest.raises(LineageError, match="max_entries"):
+        QueryCache(0)
+    cache = QueryCache(1)
+    cache.put(("a", "node", "where", 1), {"answer": [1]})
+    cache.put(("b", "node", "where", 1), {"answer": [2]})
+    assert cache.size == 1
+    assert cache.get(("a", "node", "where", 1)) is None
 
 
 def test_export_duckdb_preserves_projection_rows_and_digest_binding(tmp_path: Path) -> None:
