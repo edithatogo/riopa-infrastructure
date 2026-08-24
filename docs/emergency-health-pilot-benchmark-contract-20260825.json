@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:pilot:emergency-health:benchmark:2026-08-25",
+  "status": "bounded-reference-only",
+  "scope": "regional public-datasets-only technical preview",
+  "scenarios": [
+    {"id": "ambulance-coverage", "input_status": "synthetic-or-candidate-only", "claim_classification": "reference-only"},
+    {"id": "hospital-service-allocation", "input_status": "synthetic-only", "claim_classification": "reference-only"},
+    {"id": "backup-and-resilience", "input_status": "synthetic-only", "claim_classification": "reference-only"}
+  ],
+  "assumptions": {
+    "demand": "synthetic demand points with declared weights",
+    "fleet": "synthetic units with declared availability and no dispatch authority",
+    "staff": "not modelled as a clinical or employment claim",
+    "stations": "candidate coordinates only; completeness and authority are disabled",
+    "facilities": "public assertions or synthetic records only; no authoritative identity",
+    "travel": "archived/reference matrix only; live network and timetable are disabled",
+    "capacity": "declared synthetic capacity; no clinical suitability",
+    "handover": "synthetic duration only; no operational workflow"
+  },
+  "metrics": [
+    {"id": "coverage-at-threshold", "unit": "proportion", "interpretation": "reference demand reached within declared impedance"},
+    {"id": "tail-impedance", "unit": "declared-impedance", "interpretation": "descriptive upper-tail proxy"},
+    {"id": "subgroup-gap", "unit": "difference", "interpretation": "descriptive subgroup contrast"},
+    {"id": "rurality-gap", "unit": "difference", "interpretation": "descriptive rurality contrast"},
+    {"id": "resilience-loss", "unit": "difference", "interpretation": "synthetic removal-scenario contrast"},
+    {"id": "cost-projection", "unit": "declared-units", "interpretation": "synthetic cost envelope only"}
+  ],
+  "disabled_claims": [
+    "national ambulance or hospital completeness",
+    "clinical safety, quality or suitability",
+    "dispatch, handover or emergency-operational recommendation",
+    "authoritative facility or station identity",
+    "causal health outcome or policy conclusion"
+  ],
+  "nonclaims": [
+    "This contract is not a deployment specification or operational approval.",
+    "Synthetic and candidate inputs cannot establish real-world performance or safety.",
+    "External reproduction, source authority, clinical review, elapsed evidence and accountable release authority remain open."
+  ]
+}
