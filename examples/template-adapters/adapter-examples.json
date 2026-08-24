@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "status": "example",
+  "scope": "bounded-regional-public-preview",
+  "adapters": [
+    {"role": "connector", "input": "synthetic-request-metadata", "output": "capture-record", "controls": ["https-only", "redacted-request", "content-addressed"]},
+    {"role": "archive", "input": "capture-record", "output": "immutable-archive-reference", "controls": ["digest-verified", "no-overwrite", "rights-bound"]},
+    {"role": "transformation", "input": "immutable-archive-reference", "output": "derived-research-object-record", "controls": ["declared-method", "source-lineage", "new-digest"]},
+    {"role": "analytics", "input": "derived-research-object-record", "output": "bounded-metric-report", "controls": ["synthetic-or-public-input", "uncertainty-envelope", "non-operational"]}
+  ],
+  "nonclaims": [
+    "No adapter in this fixture contacts a live endpoint.",
+    "The fixture does not establish rights clearance, preservation acceptance, external reproduction or release approval."
+  ]
+}

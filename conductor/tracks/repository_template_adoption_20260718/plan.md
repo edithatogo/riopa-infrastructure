@@ -8,7 +8,7 @@
 
 ## 2. Adapters and upgrades
 
-- [ ] 2.1 Provide connector, archive, transformation and analytics adapter examples.
+- [x] 2.1 Provide connector, archive, transformation and analytics adapter examples. (`examples/template-adapters/adapter-examples.json`, `examples/template-adapters/README.md`, `tests/test_template_adapter_examples.py`; synthetic additive contract only)
 - [~] 2.2 Implement read-only template version detection, drift reporting and safe-upgrade recommendations. The report detects missing scaffolding and records mutation-free boundaries; cross-repository upgrade execution remains open (`scripts/check_template_drift.py`, `tests/test_template_drift.py`).
 - [ ] 2.3 Add rollback and local-customisation preservation tests.
 
