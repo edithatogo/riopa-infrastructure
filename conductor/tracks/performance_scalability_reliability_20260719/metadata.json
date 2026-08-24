@@ -2,9 +2,9 @@
   "track_id": "performance_scalability_reliability_20260719",
   "type": "validation",
   "phase": "Release",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T01:20:00Z",
+  "updated_at": "2026-08-25T06:20:00Z",
   "description": "Set and verify bounded performance, capacity, resilience and cost envelopes for the connector, archive, query, accessibility, optimisation and simulation workloads required by stable v1.",
   "depends_on": [
     "connector_runtime_capture_20260719",
