@@ -6,6 +6,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, field, replace
 from itertools import combinations, product
 from math import exp, isclose, isfinite
+from time import perf_counter
 from typing import Literal
 
 Model = Literal["set-cover", "maximal-cover", "p-median", "p-center"]
@@ -179,6 +180,54 @@ def evaluate_robust_scenarios(
             else:
                 evaluations.append(ScenarioEvaluation(scenario.scenario_id, solution))
     return tuple(evaluations)
+
+
+def benchmark_reference_solvers(
+    problem: LocationProblem, *, models: tuple[Model, ...] = ("p-median",)
+) -> dict[str, object]:
+    """Measure bounded reference solves without making scale claims.
+
+    The exhaustive solver is intentionally used only for small, supplied
+    fixtures.  The result records problem cardinalities and wall-clock timing
+    so a later hosted/national benchmark can be compared without conflating
+    this local rehearsal with production capacity evidence.
+    """
+
+    if not models:
+        raise ValueError("at least one model is required")
+    if len(set(models)) != len(models):
+        raise ValueError("models must be unique")
+    reports: list[dict[str, object]] = []
+    for model in models:
+        candidate = replace(problem, model=model)
+        started = perf_counter()
+        solution = solve(candidate)
+        elapsed = perf_counter() - started
+        reports.append(
+            {
+                "model": model,
+                "elapsed_seconds": elapsed,
+                "status": solution.status,
+                "objective": solution.objective,
+                "selected": list(solution.selected),
+            }
+        )
+    return {
+        "record_type": "bounded_facility_reference_benchmark",
+        "problem": {
+            "demands": len(problem.demands),
+            "candidates": len(problem.candidates),
+            "travel_pairs": len(problem.travel),
+        },
+        "solvers": reports,
+        "measurement": "single local wall-clock observation per model",
+        "scale_class": "bounded-reference-fixture",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "This is not a national-scale capacity or cost measurement.",
+            "Wall-clock values are environment-bound and are not an SLO or release gate.",
+        ],
+    }
 
 
 def _eligible(problem: LocationProblem, demand: Demand, candidate: Candidate) -> bool:

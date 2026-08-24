@@ -11,6 +11,7 @@ from riopa_provenance.facility_location import (
     Model,
     MultiPeriodPlan,
     RobustScenario,
+    benchmark_reference_solvers,
     competitive_capture_reference,
     evaluate_robust_scenarios,
     minimax_subgroup_alternative,
@@ -74,6 +75,15 @@ def test_robust_scenarios_and_multi_period_interface_are_deterministic() -> None
     assert [period for period, _ in plan.solve()] == ["baseline", "stress"]
     with pytest.raises(ValueError, match="exactly one problem"):
         MultiPeriodPlan(("baseline",), {})
+
+
+def test_reference_benchmark_records_bounded_nonclaims() -> None:
+    report = benchmark_reference_solvers(
+        _line_problem("p-median", p=1), models=("p-median", "p-center")
+    )
+    assert report["scale_class"] == "bounded-reference-fixture"
+    assert [item["model"] for item in report["solvers"]] == ["p-median", "p-center"]
+    assert report["promotion_allowed"] is False
 
 
 def test_competitive_capture_reference_is_normalized_and_fail_closed() -> None:
