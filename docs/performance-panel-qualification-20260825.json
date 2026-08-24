@@ -1,0 +1,41 @@
+{
+  "schema": "riopa.performance-panel-qualification.v1",
+  "packet_id": "performance-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "revision_basis": "protected-main",
+  "scope": "regional public-source non-operational technical preview",
+  "lenses": [
+    {
+      "id": "performance",
+      "finding": "bounded benchmark contracts, noise gate and capacity projections are internally coherent",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "operations",
+      "finding": "resilience and recovery rehearsals are specified and bounded; hosted resource and production recovery evidence is absent",
+      "disposition": "open"
+    },
+    {
+      "id": "quantitative-methods",
+      "finding": "regional measurements and synthetic projections are separated from national claims",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "security-data-governance",
+      "finding": "provenance, scope and non-claim boundaries are explicit",
+      "disposition": "repository-evidence-qualified"
+    }
+  ],
+  "open_gates": [
+    "second execution environment",
+    "hosted national-scale ingestion/query/accessibility measurements",
+    "resource and cost instrumentation",
+    "elapsed soak and production failure injection",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This agent-panel packet is not a national-scale measurement or independent external review.",
+    "Panel agreement cannot close hosted, elapsed, participant or accountable-authority gates."
+  ]
+}

@@ -29,6 +29,7 @@
     "urn:riopa:evidence:hosted-performance-rehearsal:2026-08-25",
     "urn:riopa:evidence:hosted-scale-smoke:2026-08-25",
     "urn:riopa:evidence:hosted-performance-rehearsal-post-merge:2026-08-25"
+    ,"urn:riopa:evidence:performance-panel-qualification:2026-08-25"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
