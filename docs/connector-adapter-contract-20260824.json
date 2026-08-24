@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "connector_adapter_contract",
+  "status": "bounded-repository-contract",
+  "python": "3.14",
+  "surfaces": [
+    {"id": "arcgis-rest", "module": "riopa_provenance.arcgis", "live_qualification": "pending"},
+    {"id": "wfs-2.0.0", "module": "riopa_provenance.wfs", "live_qualification": "pending"},
+    {"id": "koordinates-export", "module": "riopa_provenance.linz_export", "live_qualification": "pending"},
+    {"id": "offline-warc-wacz", "module": "riopa_provenance.web_archive", "live_qualification": "not-applicable-offline-only"}
+  ],
+  "required_controls": [
+    "https-allowlist-and-no-userinfo",
+    "content-addressed-raw-bytes",
+    "bounded-retry-and-rate-limit",
+    "deterministic-completeness-reconciliation",
+    "immutable-quarantine",
+    "capability-drift-observation",
+    "redacted-diagnostic-bundle"
+  ],
+  "open_gates": [
+    "real-source-national-and-council-capture",
+    "rights-and-publication-qualification",
+    "hosted-alerting-and-long-running-operation",
+    "external-reproduction-and-user-workflows",
+    "preservation-deposit-and-release-authority"
+  ],
+  "claims": [
+    "This artifact describes repository contracts only.",
+    "It does not authorize acquisition or publication."
+  ]
+}
