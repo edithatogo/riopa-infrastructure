@@ -34,14 +34,39 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 ## Blocking defects
 
-- None recorded.
+- Live national and council/planning capture, rights/publication qualification,
+  preservation acceptance, hosted long-running operation, alert delivery and
+  external reproduction remain open.
+
+## Repository-owned closeout slice (2026-08-24)
+
+The adapter request contracts, offline WARC/WACZ packaging, rate limiting,
+quarantine, capability drift and diagnostic bundle controls are linked above
+and validated by `bash scripts/ci_quality.sh` at protected `main` revision
+`ed69976d815f064843c3492fa2045807381857ca`. These are repository-owned
+contracts and offline safeguards; they do not claim live-source acquisition,
+rights clearance, preservation acceptance or operational qualification.
+
+The next implementation boundary is the real-source vertical slice. It must
+remain bounded, public-source-only, content-addressed and fail closed until
+source rights, load limits, publication scope and hosted credentials are
+available. No unsupported national, network, timetable, facility, clinical or
+dispatch claim is enabled here.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This is a single-developer repository. Agent-panel lenses may assess
+  packets, but cannot substitute for factual external operator/user evidence,
+  hosted execution or accountable release-authority approval.
+- Offline fixtures and deterministic packaging are not live-source evidence.
+- Missing rights, source status, hosted receipts or participant evidence are
+  pending rather than negative evidence.
 
 ## Review and handover
 
 Required agent-panel lenses: Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at
+M1. Status may advance only through `conductor/workflow.md`; evidence must be
+immutable or version-addressed, agent-panel qualified where required, and
+sufficient for the applicable release gates.

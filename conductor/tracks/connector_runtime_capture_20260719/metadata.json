@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-24T13:22:00Z",
+  "updated_at": "2026-08-24T23:59:00Z",
   "description": "Provide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.",
   "depends_on": [
     "provenance_profile_v1_20260718",
@@ -47,5 +47,11 @@
     "Operations analyst",
     "External-user workflow analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "live-national-and-council-capture",
+    "rights-and-publication-qualification",
+    "preservation-acceptance",
+    "hosted-long-running-operation-and-alert-delivery",
+    "external-operator-user-reproduction"
+  ]
 }

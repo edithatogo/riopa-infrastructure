@@ -906,7 +906,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "connector_runtime_capture_20260719:phase-1",
@@ -934,7 +934,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "connector_runtime_capture_20260719:phase-2",
@@ -964,7 +964,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "connector_runtime_capture_20260719:phase-3",
@@ -994,7 +994,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "connector_runtime_capture_20260719:phase-4",
@@ -1010,7 +1010,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Capture one national and one council/planning source end to end.\n- [ ] 4.2 Review security, rights, load and evidence completeness.\n- [ ] 4.3 Publish the bounded adapter contract and authoring guide. `docs/connector-adapter-authoring-guide-20260824.md` and `docs/connector-adapter-contract-20260824.json` describe the implemented surfaces and controls without claiming stable production qualification; live-source, rights/publication, preservation and external gates remain pending.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Capture one national and one council/planning source end to end.\n- [ ] 4.2 Review security, rights, load and evidence completeness.\n- [ ] 4.3 Publish the bounded adapter contract and authoring guide. `docs/connector-adapter-authoring-guide-20260824.md` and `docs/connector-adapter-contract-20260824.json` describe the implemented surfaces and controls without claiming stable production qualification; live-source, rights/publication, preservation and external gates remain pending.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned contract slice; live-source and external gates remain explicitly pending.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -1024,7 +1024,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "methods_research_objects_20260718",
