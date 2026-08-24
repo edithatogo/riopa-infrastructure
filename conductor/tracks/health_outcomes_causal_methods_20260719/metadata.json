@@ -18,6 +18,7 @@
     ,"urn:riopa:evidence:health-spatial-summaries:2026-08-25"
     ,"urn:riopa:evidence:health-sensitivity-diagnostics:2026-08-25"
     ,"urn:riopa:evidence:health-subgroup-controls:2026-08-25"
+    ,"urn:riopa:evidence:health-longitudinal-reference:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

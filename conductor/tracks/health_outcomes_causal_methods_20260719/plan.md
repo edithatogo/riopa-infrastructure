@@ -14,7 +14,7 @@
 
 ## 3. Longitudinal and causal designs
 
-- [ ] 3.1 Implement event-study/interrupted-time-series or difference-in-differences reference workflow.
+- [x] 3.1 Implement event-study/interrupted-time-series or difference-in-differences reference workflow. The event-study wrapper requires a declared reference period and both groups per period; it remains descriptive and non-causal (`src/riopa_provenance/health_longitudinal.py`, `tests/test_health_longitudinal.py`).
 - [ ] 3.2 Add negative controls, missing-data and assumption diagnostics.
 - [ ] 3.3 Test on public/synthetic opening, closure or zoning-change scenarios.
 
