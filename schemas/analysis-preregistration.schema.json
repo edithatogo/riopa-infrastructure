@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/analysis-preregistration/1.0.0",
+  "title": "RIOPA bounded analysis preregistration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "packet_id", "domain", "analyses", "limitations"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "packet_id": {"type": "string", "pattern": "^urn:riopa:preregistration:[A-Za-z0-9._:-]+$"},
+    "domain": {"const": "synthetic-non-clinical"},
+    "analyses": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["analysis_id", "classification", "estimand", "data_edition", "decision_rule", "analysis_plan", "deviations"], "properties": {"analysis_id": {"type": "string", "minLength": 1}, "classification": {"enum": ["exploratory", "confirmatory", "reference"]}, "estimand": {"type": "string", "minLength": 1}, "data_edition": {"type": "string", "minLength": 1}, "decision_rule": {"type": "string", "minLength": 1}, "analysis_plan": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1}, "deviations": {"type": "array", "items": {"type": "string", "minLength": 1}}}}},
+    "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1}
+  }
+}
