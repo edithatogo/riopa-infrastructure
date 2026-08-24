@@ -34,6 +34,7 @@
 | `PUB-CORRECTION-CONTRACT-CLOSEOUT-20260825` | Repository-owned correction/supersession package validation with digest-reuse rejection | `src/riopa_provenance/publication.py`, `tests/test_publication.py`, `docs/publication-correction-package-20260803.json` | Bounded validation passes; production downstream notification, external reproduction and release-authority acceptance remain open |
 | `PUB-CLAIM-CLASSIFICATION-CONTRACT-20260825` | Claim-to-evidence traceability and exploratory/confirmatory/reference/prohibited classification rules | `docs/publication-claim-classification-contract-20260825.json`, `tests/test_publication_claim_classification.py` | Fail-closed classification contract passes; publication, participant, authority and elapsed gates remain open |
 | `PUB-VALIDATOR-SELECTION-CONTRACT-20260825` | Agent-panel lenses, execution environments and analyst-independence criteria | `docs/publication-validator-selection-contract-20260825.json`, `tests/test_publication_validator_selection.py` | Selection contract passes; factual participant, preservation, publication and authority gates remain open |
+| `PUB-VALIDATION-PACKET-20260825` | DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence | `docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py` | Preparation packet is not a DOI or preservation receipt; protected attestations, accepted deposit, participant, elapsed and authority gates remain open |
 
 ## Blocking defects
 
