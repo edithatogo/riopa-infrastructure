@@ -91,3 +91,15 @@ def test_github_security_observation_is_fail_closed() -> None:
     assert endpoints["code_scanning_alerts"]["open_alert_count"] == 0
     assert endpoints["dependabot_alerts"]["alert_count"] >= 0
     assert observation["non_claims"]
+
+
+def test_dependabot_remediation_receipt_binds_fixed_alerts_to_lockfile() -> None:
+    receipt = json.loads(Path("docs/github-dependabot-remediation-20260825.json").read_text())
+    assert receipt["status"] == "fixed-alerts-verified-in-lockfile"
+    assert receipt["manifest"] == "uv.lock"
+    assert {(item["package"], item["locked_version"]) for item in receipt["alerts"]} == {
+        ("cryptography", "50.0.0"),
+        ("pytest", "9.1.1"),
+    }
+    assert all(item["state"] == "fixed" for item in receipt["alerts"])
+    assert receipt["non_claims"]
