@@ -1,0 +1,9 @@
+[package]
+name = "riopa-conformance"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+description = "Bounded typed Rust model for the RIOPA conformance contract"
+
+[lib]
+path = "src/lib.rs"
