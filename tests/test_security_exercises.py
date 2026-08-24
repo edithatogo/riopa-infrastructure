@@ -10,7 +10,7 @@ from riopa_provenance.security_exercises import (
 def test_security_exercise_packet_is_secret_free_and_scenario_bound() -> None:
     packet = build_exercise_packet("malicious-input", source_revision="a" * 40)
     assert packet["status"] == "planned"
-    assert packet["secret_present"] is False
+    assert packet["credential_material"] == "absent"
     assert validate_exercise_packet(packet) == ()
 
 

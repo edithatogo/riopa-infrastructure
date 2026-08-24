@@ -29,7 +29,7 @@ def build_exercise_packet(scenario: str, *, source_revision: str) -> dict[str, A
         "scenario": scenario,
         "source_revision": source_revision,
         "status": "planned",
-        "secret_present": False,
+        "credential_material": "absent",
         "required_controls": list(SCENARIO_CONTROLS[scenario]),
         "observations": [],
         "non_claims": [
@@ -55,8 +55,8 @@ def validate_exercise_packet(packet: Mapping[str, Any] | None) -> tuple[str, ...
         errors.append("required_controls do not match scenario")
     if packet.get("status") not in {"planned", "executed", "failed"}:
         errors.append("status is unsupported")
-    if packet.get("secret_present") is not False:
-        errors.append("secret_present must be false")
+    if packet.get("credential_material") != "absent":
+        errors.append("credential_material must be absent")
     observations = packet.get("observations")
     if not isinstance(observations, Sequence) or isinstance(observations, (str, bytes)):
         errors.append("observations must be an array")
