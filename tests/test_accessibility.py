@@ -12,6 +12,7 @@ from riopa_provenance.accessibility import (
     gravity_accessibility,
     public_facility_opportunities,
     two_step_floating_catchment,
+    validate_scenario_contract,
 )
 from riopa_provenance.validation import validate_instance
 
@@ -69,6 +70,23 @@ def test_public_facility_snapshot_becomes_unit_opportunities_only() -> None:
     assert public_facility_opportunities(snapshot, facility_type="clinic") == {"public:one": 1.0}
     with pytest.raises(ValueError, match="non-authoritative"):
         public_facility_opportunities({**snapshot, "authoritative": True})
+
+
+def test_scenario_contract_preserves_subgroups_and_uncertainty() -> None:
+    contract = {
+        "scenario_id": "bounded-reference",
+        "claim_classification": "reference-only",
+        "assumptions": ["archived matrix only"],
+        "subgroup_dimensions": ["rurality", "deprivation_quintile"],
+        "uncertainty": {
+            "method": "scenario-range",
+            "missing_policy": "report-separately",
+            "reporting_unit": "minutes",
+        },
+    }
+    assert validate_scenario_contract(contract) == ()
+    contract["subgroup_dimensions"] = ["rurality", "rurality"]
+    assert any("unique" in error for error in validate_scenario_contract(contract))
 
 
 def test_missing_unreachable_and_censored_remain_distinct() -> None:

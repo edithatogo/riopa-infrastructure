@@ -4,7 +4,7 @@
 
 - [x] 1.1 Define network, timetable, origin/destination and travel-matrix schemas. (`schemas/accessibility-matrix.schema.json`, `docs/accessibility-contract-v1.md`)
 - [x] 1.2 Specify accessibility measures, capacity and missing/unreachable semantics. (`schemas/accessibility-measure.schema.json`, `tests/test_accessibility.py`)
-- [ ] 1.3 Define uncertainty, subgroup and scenario contracts.
+- [~] 1.3 Define uncertainty, subgroup and scenario contracts. A reference-only schema and validator now require explicit assumptions, subgroup dimensions, missing-data policy and uncertainty method; real-network and operational qualification remain pending.
 
 ## 2. Reference implementations
 
