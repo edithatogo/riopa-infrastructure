@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from collections import OrderedDict
 from collections.abc import Iterable, Mapping
+from copy import deepcopy
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
@@ -42,6 +44,33 @@ class LineageEdge:
     target_id: str
     relation: str
     record_path: str | None
+
+
+class QueryCache:
+    """Bounded in-process cache keyed by a logical projection fingerprint."""
+
+    def __init__(self, max_entries: int = 128) -> None:
+        if max_entries < 1:
+            raise LineageError("max_entries must be positive")
+        self.max_entries = max_entries
+        self._items: OrderedDict[tuple[str, str, str, int], dict[str, Any]] = OrderedDict()
+
+    def get(self, key: tuple[str, str, str, int]) -> dict[str, Any] | None:
+        value = self._items.get(key)
+        if value is None:
+            return None
+        self._items.move_to_end(key)
+        return deepcopy(value)
+
+    def put(self, key: tuple[str, str, str, int], value: dict[str, Any]) -> None:
+        self._items[key] = deepcopy(value)
+        self._items.move_to_end(key)
+        while len(self._items) > self.max_entries:
+            self._items.popitem(last=False)
+
+    @property
+    def size(self) -> int:
+        return len(self._items)
 
 
 @dataclass(frozen=True)
@@ -175,6 +204,7 @@ class LineageIndex:
 
     def __init__(self, path: str | Path) -> None:
         self.path = Path(path).resolve()
+        self._query_cache = QueryCache()
 
     def _connect(self, *, read_only: bool = False) -> sqlite3.Connection:
         if read_only:
@@ -896,6 +926,20 @@ class LineageIndex:
             "answer": answer,
             "projection": self.projection_metadata(),
         }
+
+    def query_cached(self, node_id: str, *, question: str, max_depth: int = 20) -> dict[str, Any]:
+        """Answer a query with bounded cache reuse tied to the logical projection."""
+
+        fingerprint = self.projection_fingerprint()
+        key = (fingerprint, node_id, question, max_depth)
+        cached = self._query_cache.get(key)
+        if cached is not None:
+            cached["cache"] = {"hit": True, "projection_fingerprint": fingerprint}
+            return cached
+        result = self.query(node_id, question=question, max_depth=max_depth)
+        self._query_cache.put(key, result)
+        result["cache"] = {"hit": False, "projection_fingerprint": fingerprint}
+        return result
 
     def reconcile_projection(self) -> dict[str, Any]:
         """Remove nodes no longer referenced by any authoritative manifest edge."""

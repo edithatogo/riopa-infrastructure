@@ -17,7 +17,7 @@
 - [~] 3.1 Implement CLI, Python and MCP interfaces. The Python reference and
   CLI lineage build/walk/impact/export commands are repository-owned; an MCP
   transport and cross-interface equivalence remain open.
-- [~] 3.2 Add caching, pagination, access filtering and diagnostics. Deterministic local pagination and projection diagnostics are implemented; caching, remote authorization and access filtering remain open (`src/riopa_provenance/lineage.py`, `src/riopa_provenance/cli.py`, `docs/provenance-query-pagination-diagnostics-contract-20260825.json`).
+- [~] 3.2 Add caching, pagination, access filtering and diagnostics. Deterministic local pagination, projection diagnostics and fingerprint-aware bounded caching are implemented; remote authorization and access filtering remain open (`src/riopa_provenance/lineage.py`, `src/riopa_provenance/cli.py`, `docs/provenance-query-pagination-diagnostics-contract-20260825.json`, `docs/provenance-query-cache-contract-20260825.json`).
 - [~] 3.3 Benchmark representative release and impact queries. A deterministic local timing harness covers where/why/impact/page cases; representative release-scale, second-environment and production measurements remain open (`scripts/benchmark_lineage_queries.py`, `tests/test_provenance_query_benchmark.py`).
 
 ## 4. Stable query release
