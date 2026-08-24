@@ -22,6 +22,7 @@
 | `HEALTH-BOUNDARY-GOVERNANCE-20260825` | Boundary, denominator, time, missing-data and governance requirements are explicit and fail closed | `schemas/health-analysis-design.schema.json`, `fixtures/health-analysis-design-synthetic.json`, `tests/test_health_analysis_design.py` | Synthetic reference validates with clinical claims disabled; empirical, clinical, spatial-sensitivity and panel gates remain open |
 | `HEALTH-PREREGISTRATION-SYNTHETIC-20260825` | Preregistration template labels reference/exploratory work with estimand, data edition, decision rule, plan and deviations | `schemas/analysis-preregistration.schema.json`, `fixtures/analysis-preregistration-synthetic.json`, `tests/test_analysis_preregistration.py` | Synthetic template validates; confirmatory empirical execution, clinical validity and methods-panel gates remain open |
 | `HEALTH-SPATIAL-SUMMARIES-20260825` | Bounded descriptive mapping, spatial autocorrelation and ecological group summaries | `src/riopa_provenance/health_spatial.py`, `tests/test_health_spatial.py` | Synthetic deterministic methods pass; clinical, causal, public-data and methods-panel qualification gates remain open |
+| `HEALTH-SENSITIVITY-DIAGNOSTICS-20260825` | Bounded spatial-confounding, MAUP and measurement-error diagnostics | `src/riopa_provenance/health_sensitivity.py`, `tests/test_health_sensitivity.py` | Synthetic deterministic diagnostics pass; empirical, calibration, clinical, causal and methods-panel gates remain open |
 
 ## Blocking defects
 
