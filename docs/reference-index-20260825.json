@@ -1,0 +1,56 @@
+{
+  "document_id": "urn:riopa:documentation:reference-index:2026-08-25",
+  "version": "0.2.0",
+  "python": "3.14",
+  "scope": "bounded-regional-public-preview",
+  "surfaces": {
+    "python_package": {
+      "module": "src/riopa_provenance",
+      "entrypoint": "riopa",
+      "description": "Reference contracts and evidence-bound tooling"
+    },
+    "cli": {
+      "command": "uv run riopa",
+      "commands": [
+        "lineage build",
+        "lineage walk",
+        "lineage impact",
+        "roadmap validate",
+        "roadmap generate-issues"
+      ],
+      "documentation": "docs/conformance-and-release-verification.md"
+    },
+    "schemas": {
+      "directory": "schemas",
+      "representative": [
+        "analysis-protocol.schema.json",
+        "canonical-crosswalk.schema.json",
+        "snapshot-manifest.schema.json",
+        "source-record.schema.json",
+        "track-metadata.schema.json"
+      ]
+    },
+    "ontology": {
+      "context": "docs/ontology/canonical-context.jsonld",
+      "release": "docs/ontology/canonical-ontology-release-1.0.0.json",
+      "migration_directory": "docs/ontology/migrations"
+    }
+  },
+  "controls": {
+    "no_credentials_or_live_payloads": true,
+    "generated_issue_graph": "project/issues.yaml",
+    "authoritative_data": "validated content-addressed captures, not projections",
+    "disabled_claims": [
+      "network",
+      "timetable",
+      "facility",
+      "national",
+      "clinical",
+      "dispatch"
+    ]
+  },
+  "nonclaims": [
+    "This index does not establish external-user or external-operator usability evidence.",
+    "This index does not establish beta, release-candidate, stable-v1, or accountable-authority approval."
+  ]
+}
