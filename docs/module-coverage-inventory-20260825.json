@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 7886,
-    "covered_statements": 7358,
-    "line_percent": 91.10810810810811,
-    "branches": 3214,
-    "covered_branches": 2755,
+    "statements": 7914,
+    "covered_statements": 7382,
+    "line_percent": 91.06982588404236,
+    "branches": 3228,
+    "covered_branches": 2765,
     "branch_percent": "91"
   },
   "files": [
@@ -462,6 +462,22 @@
       "covered_branches": 4,
       "branch_percent": "100",
       "missing_lines": []
+    },
+    {
+      "module": "src.riopa_provenance.health_longitudinal",
+      "path": "src/riopa_provenance/health_longitudinal.py",
+      "statements": 28,
+      "covered_statements": 24,
+      "line_percent": 80.95238095238095,
+      "branches": 14,
+      "covered_branches": 10,
+      "branch_percent": "81",
+      "missing_lines": [
+        27,
+        34,
+        40,
+        43
+      ]
     },
     {
       "module": "src.riopa_provenance.health_sensitivity",
