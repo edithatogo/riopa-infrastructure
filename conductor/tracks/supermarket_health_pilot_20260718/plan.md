@@ -35,3 +35,7 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Wrap the preregistration test path so the repository quality gate passes (`9db5186`).
