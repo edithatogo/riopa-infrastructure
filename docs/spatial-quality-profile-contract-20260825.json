@@ -1,0 +1,18 @@
+{
+  "schema": "riopa.spatial-quality-profile.v1",
+  "profile_id": "regional-public-preview-v1",
+  "status": "bounded-contract",
+  "scope": "archived public or synthetic regional spatial snapshots",
+  "metrics": [
+    {"id": "geometry_validity", "measure": "invalid geometry count before repair", "threshold": {"warning": 0, "release_block": true}},
+    {"id": "geometry_repair", "measure": "repaired geometry count", "threshold": {"warning": 0, "release_block": false}},
+    {"id": "null_geometry", "measure": "null geometry count", "threshold": {"warning": 0, "release_block": false}},
+    {"id": "stable_identity", "measure": "duplicate stable feature identities", "threshold": {"warning": 0, "release_block": true}},
+    {"id": "source_lineage", "measure": "features with source and capture references", "threshold": {"minimum": 1.0, "release_block": true}}
+  ],
+  "waiver_rules": ["Every non-zero warning requires a recorded reason and affected feature count.", "A release-blocking failure cannot be waived by an agent panel alone.", "Rights uncertainty remains a separate publication gate."],
+  "required_evidence": ["quality report", "source or capture digest", "transformation revision", "rights disposition"],
+  "open_gates": ["heterogeneous real council layers", "historical and boundary concordance", "national-scale completeness", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": ["This contract defines bounded quality thresholds; it is not evidence of national completeness or real-council qualification.", "Missing coverage is pending, not negative evidence."]
+}
