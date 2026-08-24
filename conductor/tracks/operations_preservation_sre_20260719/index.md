@@ -44,6 +44,7 @@
 | `OPS-CAMPAIGN-DEDUPE-20260825` | Cumulative ledgers count identical receipt bytes once when artifact restore exposes multiple paths for the same receipt | `scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py` | Repository control implemented; elapsed, external, preservation and release gates remain pending |
 | `OPS-CAMPAIGN-STATUS-VALIDATION-20260825` | Checked-in campaign status is validated for unique hosted runs, exact RC binding and latest receipt revision | `scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `scripts/ci_quality.sh` | Repository control implemented; elapsed, external, preservation and release gates remain pending |
 | `OPS-DR-EXERCISE-20260824` | Digest-bound restore/DR exercise report protocol with explicit local/hosted/failed status | `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, `tests/test_recovery.py` | Report contract and failure-preservation tests pass; actual production-representative exercise, RPO/RTO receipt and release authority remain open |
+| `OPS-RECOVERY-CONTRACT-CLOSEOUT-20260825` | Repository-owned recovery-successor and disaster-recovery report contracts | `docs/operations-recovery-successor-contract-20260824.json`, `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, and focused tests | State-machine/report validation passes; provider execution, production-representative RPO/RTO, independent target acceptance and release authority remain open |
 
 ## Repository-owned closeout slice (2026-08-24)
 
