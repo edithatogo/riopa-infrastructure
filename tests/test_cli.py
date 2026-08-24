@@ -123,6 +123,38 @@ def test_lineage_nodes_command_reports_page(
     assert len(payload["nodes"]) == 1
 
 
+def test_lineage_query_command_reports_bounded_answer(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    root = Path(__file__).resolve().parents[1]
+    database = tmp_path / "lineage.sqlite"
+    index = cli.LineageIndex(database)
+    index.import_manifest(
+        root / "examples/minimal/snapshot-manifest.json", schema_dir=root / "schemas"
+    )
+    with pytest.raises(SystemExit) as exc:
+        cli.main(
+            [
+                "lineage",
+                "query",
+                "--database",
+                str(database),
+                "--node-id",
+                "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+                "--question",
+                "where",
+                "--page-size",
+                "1",
+            ]
+        )
+    assert exc.value.code == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["question"] == "where"
+    assert payload["cache"]["hit"] is False
+    assert payload["pagination"]["limit"] == 1
+    assert payload["projection"]["freshness"] == "current-for-listed-authoritative-evidence"
+
+
 def test_roadmap_validate_command_reports_success(
     capsys: pytest.CaptureFixture[str],
 ) -> None:

@@ -650,6 +650,34 @@ def _lineage_impact(args: argparse.Namespace) -> int:
     return 0
 
 
+def _lineage_query(args: argparse.Namespace) -> int:
+    """Answer one bounded local query with a cache/projection diagnostic envelope."""
+
+    result = LineageIndex(args.database).query_cached(
+        args.node_id, question=args.question, max_depth=args.max_depth
+    )
+    if args.page_size is not None:
+        answer = result["answer"]
+        if not isinstance(answer, list):
+            raise ValueError("--page-size is only valid for list-valued answers")
+        if args.page_size < 1 or args.page_size > 1000:
+            raise ValueError("--page-size must be between 1 and 1000")
+        offset = args.offset
+        if offset < 0:
+            raise ValueError("--offset must be non-negative")
+        result["answer"] = answer[offset : offset + args.page_size]
+        result["pagination"] = {
+            "limit": args.page_size,
+            "offset": offset,
+            "total": len(answer),
+            "next_offset": (
+                offset + args.page_size if offset + args.page_size < len(answer) else None
+            ),
+        }
+    _print_json(result)
+    return 0
+
+
 def _lineage_export_prov_jsonld(args: argparse.Namespace) -> int:
     output = LineageIndex(args.database).export_prov_jsonld(args.output)
     print(f"PROV JSON-LD projection written to {output}")
@@ -920,6 +948,16 @@ def build_parser() -> argparse.ArgumentParser:
     lineage_impact.add_argument("--node-id", action="append", required=True)
     lineage_impact.add_argument("--max-depth", type=int, default=50)
     lineage_impact.set_defaults(func=_lineage_impact)
+    lineage_query = lineage_subparsers.add_parser(
+        "query", help="answer a bounded local where/why/how query"
+    )
+    lineage_query.add_argument("--database", required=True)
+    lineage_query.add_argument("--node-id", required=True)
+    lineage_query.add_argument("--question", choices=("where", "why", "how"), required=True)
+    lineage_query.add_argument("--max-depth", type=int, default=20)
+    lineage_query.add_argument("--page-size", type=int)
+    lineage_query.add_argument("--offset", type=int, default=0)
+    lineage_query.set_defaults(func=_lineage_query)
     lineage_export = lineage_subparsers.add_parser(
         "export-prov-jsonld",
         help="write a deterministic, non-authoritative PROV JSON-LD projection",
