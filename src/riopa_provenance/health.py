@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
+from typing import Any
+
+from .hashing import sha256_json
 
 
 @dataclass(frozen=True)
@@ -28,6 +32,54 @@ class SourceHealthObservation:
             "disappeared": self.disappeared,
             "age_seconds": self.age_seconds,
         }
+
+
+@dataclass(frozen=True)
+class CapabilityDrift:
+    """Digest-bound field-level comparison of two capability snapshots."""
+
+    previous_digest: str
+    current_digest: str
+    added: tuple[str, ...]
+    removed: tuple[str, ...]
+    changed: tuple[str, ...]
+
+    @property
+    def drifted(self) -> bool:
+        return bool(self.added or self.removed or self.changed)
+
+    def to_record(self) -> dict[str, object]:
+        return {
+            "schema_version": "1.0.0",
+            "record_type": "capability_drift_observation",
+            "previous_digest": self.previous_digest,
+            "current_digest": self.current_digest,
+            "added": list(self.added),
+            "removed": list(self.removed),
+            "changed": list(self.changed),
+            "drifted": self.drifted,
+        }
+
+
+def detect_capability_drift(
+    previous: Mapping[str, Any], current: Mapping[str, Any]
+) -> CapabilityDrift:
+    """Compare top-level capability fields without treating drift as failure."""
+
+    previous_keys = set(previous)
+    current_keys = set(current)
+    added = tuple(sorted(current_keys - previous_keys))
+    removed = tuple(sorted(previous_keys - current_keys))
+    changed = tuple(
+        sorted(key for key in previous_keys & current_keys if previous[key] != current[key])
+    )
+    return CapabilityDrift(
+        previous_digest=sha256_json(dict(previous)),
+        current_digest=sha256_json(dict(current)),
+        added=added,
+        removed=removed,
+        changed=changed,
+    )
 
 
 def observe_source_health(
