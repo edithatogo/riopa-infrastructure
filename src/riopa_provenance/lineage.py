@@ -225,6 +225,7 @@ class LineageIndex:
             "edges": len(edges),
             "sha256": sha256_file(target_path),
             "source_projection_sha256": sha256_file(self.path),
+            "projection_fingerprint": self.projection_fingerprint(),
         }
 
     @staticmethod

@@ -87,6 +87,7 @@ def test_export_duckdb_preserves_projection_rows_and_digest_binding(tmp_path: Pa
     assert receipt["nodes"] == 3
     assert receipt["edges"] == 2
     assert len(receipt["sha256"]) == 64
+    assert receipt["projection_fingerprint"] == index.projection_fingerprint()
     with duckdb.connect(str(target), read_only=True) as connection:
         assert connection.execute("SELECT count(*) FROM manifests").fetchone() == (1,)
         assert connection.execute("SELECT count(*) FROM nodes").fetchone() == (3,)
