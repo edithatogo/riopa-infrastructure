@@ -14,7 +14,7 @@
 
 ## 3. Signing and provenance
 
-- [ ] 3.1 Emit DSSE/in-toto-compatible attestations for builds and releases.
+- [~] 3.1 Emit DSSE/in-toto-compatible attestation envelopes for builds and releases. Evidence: `src/riopa_provenance/attestation.py`, `docs/security-dsse-intoto-contract-20260824.json`, `tests/test_attestation.py`; trusted signing and protected release execution remain pending.
 - [ ] 3.2 Sign release manifests, tags and distributed artifacts using documented policy.
 - [x] 3.3 Provide offline and CI verification commands and negative tests. Evidence: `docs/conformance-and-release-verification.md`, `.github/workflows/release.yml`, `docs/security-offline-verification-contract-20260822.json`, and `tests/test_security_offline_verification_contract.py`; execution remains protected-tag gated.
 
