@@ -1,0 +1,22 @@
+{
+  "schema": "riopa.interoperability-standards-roundtrip-contract.v1",
+  "status": "bounded-repository-contract",
+  "scope": "minimal-public-fixture-and-unsigned-attestation-envelope",
+  "round_trips": ["PROV-O-shaped JSON-LD", "OpenLineage-shaped events", "RO-Crate 1.3", "DSSE/in-toto payload"],
+  "controls": [
+    "research-object verifier checks RO-Crate closure and checksums",
+    "projection validator checks bounded PROV and OpenLineage fields",
+    "DSSE payload is decoded and compared to the canonical in-toto statement",
+    "empty signatures remain release-gated"
+  ],
+  "open_gates": [
+    "external producer/consumer interoperability",
+    "full RDF/SHACL and OpenLineage validator qualification",
+    "trusted release signature and protected-tag attestation"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "A repository round-trip is not an independent standards certification.",
+    "An unsigned DSSE envelope is not signed release evidence or release authority."
+  ]
+}
