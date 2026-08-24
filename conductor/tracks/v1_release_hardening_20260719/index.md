@@ -38,6 +38,7 @@
 | V1-SCOPE-POLICY-20260804 | Owner-authorized scope, participant, elapsed-time and authority policy | `docs/release-scope-and-evidence-policy-20260804.json` | Preparation authorized; promotion remains forbidden until qualifying evidence and a named signed authority decision exist |
 | V1-BETA-ACCELERATION-20260804 | GitHub Actions runs qualifying daily observations alongside a separated retrospective replay lane | `docs/beta-campaign-acceleration-plan-20260804.json`, `.github/workflows/evidence-campaign.yml` | Supplemental replay can accelerate technical learning but contributes zero elapsed-time qualification |
 | V1-FEATURE-FREEZE-VALIDATION-20260822 | Executable validation of the bounded feature-freeze inventory and explicit open findings | `scripts/validate_v1_feature_inventory.py`, `tests/test_v1_release_readiness.py`, `docs/v1-feature-freeze-inventory-20260803.json` | Repository inventory validates; full compatibility diff and external/release gates remain open |
+| V1-NORMATIVE-SURFACE-INVENTORY-20260825 | Repository-wide inventory of public API modules, schemas, ontology bindings, CLI groups and supported file formats | `docs/v1-normative-surface-inventory-20260825.json`, `tests/test_v1_release_readiness.py` | Inventory is complete and path-validated; compatibility diff, external reproduction, elapsed soak and release-authority gates remain open |
 
 ## Blocking defects
 
