@@ -8,7 +8,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [x] 0.1 Restrict packaging, linting, typing and hosted CI to Python 3.14 only (`pyproject.toml`, workflow files and `scripts/verify_github_main_protection.py`).
 - [x] 0.2 Preserve immutable source packets and record their hosted revisions, payload hashes and limitations in the evidence index.
-- [~] 0.3 Build a deterministic bounded review frame; panel disposition remains an evidence gate.
+- [x] 0.3 Build a deterministic bounded review frame; panel disposition remains an evidence gate. (`scripts/build_facility_review_sample.py`, `docs/facility-stratified-review-sample-20260803.json`)
 
 ## 1. Facility/source model
 
@@ -24,7 +24,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 ## 3. Quality and review
 
-- [~] 3.1 Build a deterministic stratified duplicate, classification and coordinate review sample; panel disposition is pending.
+- [x] 3.1 Build a deterministic stratified duplicate, classification and coordinate review sample; panel disposition remains pending. (`scripts/build_facility_review_sample.py`, `docs/facility-stratified-review-sample-20260803.json`)
 - [x] 3.2 Record bounded source sensitivity; performance estimates require a reference sample qualified by the agent panel.
 - [x] 3.3 Implement sensitive/restricted release filtering. (`ad87365`; public-only projection with exclusion ledger)
 
@@ -57,13 +57,15 @@ promote a source to authoritative status without a documented panel disposition.
 - [ ] G.4 Stable registry projection, source-disagreement and coverage reports.
 - [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.
 
-## Hosted merge-policy blocker (2026-08-03)
+## Historical hosted merge-policy blocker (resolved 2026-08-03)
 
-The code and required checks are green, but GitHub reports the protected PR as
+The code and required checks were green, but GitHub reported the protected PR as
 `BLOCKED` after the main-branch check contract changed from Python 3.12/3.13 to
-Python 3.14. This is an external policy-state gate, not an implementation defect.
+Python 3.14. PR #177 subsequently resolved this policy-state issue through an
+owner-authorized administrative merge. The event is historical and is not a
+current track blocker or release evidence.
 
-Options and contingencies:
+Historical options and contingencies (retained for audit):
 
 1. **Recommended:** create a fresh PR from the current clean branch so GitHub
    evaluates the current protection rules against a new pull request head.
