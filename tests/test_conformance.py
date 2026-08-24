@@ -173,3 +173,10 @@ def test_provenance_profile_compatibility_matrix_is_bound_to_migration_fixture()
     assert {entry["path"] for entry in matrix["entries"]} == {
         change["path"] for change in migration["changes"]
     }
+
+
+def test_provenance_plan_closes_migration_contract_without_claiming_release() -> None:
+    root = Path(__file__).resolve().parents[1]
+    plan = (root / "conductor/tracks/provenance_profile_v1_20260718/plan.md").read_text()
+    assert "[x] 4.2 Define the bounded profile compatibility matrix" in plan
+    assert "persistent publication identifier and stable release remain open" in plan
