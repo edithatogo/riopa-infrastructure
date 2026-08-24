@@ -20,6 +20,7 @@
 | `DOCS-TUTORIAL-CONVENTIONS-20260824` | Executable tutorial, example, accessibility and safety conventions | `docs/tutorial-and-example-conventions-20260824.md`, `tests/test_documentation_contract.py` | Contract and negative scope controls pass locally; user/operator studies and RC execution remain open |
 | `DOCS-HOSTED-AGENT-WORKFLOWS-20260825` | Protected-main agent-user-workflows rehearsal | [GitHub Actions run 32739643452](https://github.com/edithatogo/riopa-infrastructure/actions/runs/32739643452), `docs/evidence-campaign-status-20260821.json` | Passed on exact revision `88f5376`; agent rehearsal is bounded evidence and cannot substitute for factual external user/operator participation |
 | `DOCS-INVENTORY-SAFETY-20260825` | Audience/workflow inventory, normative map, tutorial controls and bounded safety review | `docs/documentation-information-architecture-20260824.md`, `docs/documentation-contract-20260824.json`, `docs/documentation-inventory-and-safety-review-20260825.json`, `tests/test_documentation_inventory_review.py` | Repository-owned documentation baseline is qualified for bounded scope; external user/operator, release-candidate and authority gates remain open |
+| `DOCUMENTATION-USAGE-GUIDES-20260825` | User, operator, contributor, maintainer and migration handoff is explicit and scope-bounded | `docs/usage-guides-20260825.md`, `tests/test_usage_guides.py` | Repository-owned guide contract passes; external usability, RC execution and publication remain open |
 
 ## Blocking defects
 

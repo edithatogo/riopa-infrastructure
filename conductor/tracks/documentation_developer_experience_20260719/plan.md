@@ -8,7 +8,7 @@
 
 ## 2. Documentation implementation
 
-- [ ] 2.1 Write user, operator, contributor, maintainer and migration guides.
+- [x] 2.1 Write user, operator, contributor, maintainer and migration guides. (`docs/usage-guides-20260825.md`, `tests/test_usage_guides.py`; bounded technical-preview handoff only)
 - [ ] 2.2 Generate API, CLI, schema and ontology references.
 - [ ] 2.3 Build public/synthetic end-to-end tutorials and troubleshooting diagnostics.
 
