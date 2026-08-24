@@ -51,11 +51,10 @@ planning integration or operational use.
 - Independent reproduction issue #149 has no external-operator response.
 - National authoritative ambulance coverage, supermarket-source rights, agent-panel-qualified
   performance estimates and beta/RC/stable release authority remain open gates.
-- Hosted merge-policy reconciliation is open: PR #175 has passing required checks but
-  remains externally `BLOCKED` after the Python 3.14-only protection update.
 - Hosted merge-policy gate resolved by owner-authorized administrative merge of PR #177
   (`458b53dd6a023cbe15edf7bbb3e24613a13ebbdb`) after all required checks passed; the
-  exception bypasses normal protection and is not release evidence.
+  exception bypasses normal protection and is not release evidence. The superseded
+  PR #175 blocker is retained only in historical review records, not as a current gate.
 
 ## Decisions, exceptions and limitations
 
