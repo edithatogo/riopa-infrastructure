@@ -15,7 +15,7 @@
 ## 3. Standards and compatibility testing
 
 - [ ] 3.1 Add PROV-O, OpenLineage, RO-Crate and attestation round-trip tests.
-- [ ] 3.2 Generate the cross-version and cross-tool compatibility matrix.
+- [x] 3.2 Generate a bounded cross-version and cross-tool compatibility matrix. Evidence: `scripts/build_interoperability_matrix.py` and `docs/ontology/interoperability-compatibility-matrix-20260825.json`; Rust, standards round-trips and external producer/consumer exercises remain open.
 - [ ] 3.3 Run independent producer/consumer interoperability exercises.
 
 ## 4. Stable SDK and conformance release
