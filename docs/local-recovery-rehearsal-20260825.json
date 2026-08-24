@@ -1,0 +1,37 @@
+{
+  "classification": "repository-rehearsal-not-operational-evidence",
+  "non_claims": [
+    "This is not provider-backed backup or restore evidence.",
+    "This is not a production-representative disaster-recovery exercise or RPO/RTO receipt.",
+    "This does not satisfy independent target acceptance or release authority."
+  ],
+  "operations": [
+    {
+      "digest": "69e0df55e615f46d499260c00239d6951822a0765e1a8efdf210b5cbb406ac13",
+      "operation": "snapshot",
+      "source": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/riopa-recovery-69uev7u2/source",
+      "status": "executed-local",
+      "target": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/riopa-recovery-69uev7u2/snapshot"
+    },
+    {
+      "digest": "69e0df55e615f46d499260c00239d6951822a0765e1a8efdf210b5cbb406ac13",
+      "operation": "restore",
+      "source": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/riopa-recovery-69uev7u2/snapshot",
+      "status": "executed-local",
+      "target": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/riopa-recovery-69uev7u2/restored"
+    },
+    {
+      "digest": "7bb8233dd5b53cf98ebaeccaa2c97c0de838d36c4aac8274e15cd8a0bbd8b337",
+      "operation": "rollback",
+      "source": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/riopa-recovery-69uev7u2/current",
+      "status": "executed-local",
+      "target": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/riopa-recovery-69uev7u2/rolled-back"
+    }
+  ],
+  "safety": {
+    "deployment_mutated": false,
+    "independent_target": false,
+    "provider_contacted": false
+  },
+  "status": "passed"
+}
