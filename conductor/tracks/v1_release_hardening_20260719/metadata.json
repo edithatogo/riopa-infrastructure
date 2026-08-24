@@ -41,7 +41,8 @@
     "urn:riopa:evidence:owner-accountability-context:2026-08-21",
     "urn:riopa:evidence:agent-recovery-rehearsal:2026-08-21",
     "urn:riopa:evidence:campaign-status:2026-08-21",
-    "urn:riopa:evidence:hosted-agent-recovery:2026-08-25"
+    "urn:riopa:evidence:hosted-agent-recovery:2026-08-25",
+    "urn:riopa:evidence:rc-candidate-observation:2026-08-25"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

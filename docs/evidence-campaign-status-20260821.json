@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status_id": "urn:riopa:evidence:campaign-status:2026-08-21",
   "status": "hosted-evidence-accumulating-not-release-approval",
-  "source_revision": "88f53769b65c3fa5de15f7e63148ed0c7f325a44",
+  "source_revision": "159b8d77068b3cb170d2ffed99e395f1add7f403",
   "observations": [
     {"lane": "performance-rehearsal", "run_id": "32420107756", "status": "passed", "revision": "5d59b61c8bd9ecebb50516131c6a1ce8eeeed2fe"},
     {"lane": "agent-clean-room", "run_id": "32422142075", "status": "passed", "revision": "054f99d0028912a2b68bb9bda05c470de4c4a5c9"},
@@ -65,7 +65,8 @@
     {"lane": "agent-clean-room", "run_id": "32739052696", "status": "passed", "revision": "2c93f9b50426261f3f7fb97398fd45e3040a4622", "operational_cycle_id": "2026-W35"},
     {"lane": "agent-user-workflows", "run_id": "32739643452", "status": "passed", "revision": "88f53769b65c3fa5de15f7e63148ed0c7f325a44", "operational_cycle_id": "2026-W35"},
     {"lane": "performance-rehearsal", "run_id": "32739642642", "status": "passed", "revision": "88f53769b65c3fa5de15f7e63148ed0c7f325a44", "operational_cycle_id": "2026-W35"},
-    {"lane": "scale-smoke", "run_id": "32739643225", "status": "passed", "revision": "88f53769b65c3fa5de15f7e63148ed0c7f325a44", "operational_cycle_id": "2026-W35"}
+    {"lane": "scale-smoke", "run_id": "32739643225", "status": "passed", "revision": "88f53769b65c3fa5de15f7e63148ed0c7f325a44", "operational_cycle_id": "2026-W35"},
+    {"lane": "rc-soak-observation", "run_id": "32740183479", "status": "passed", "revision": "159b8d77068b3cb170d2ffed99e395f1add7f403", "candidate_revision": "159b8d77068b3cb170d2ffed99e395f1add7f403", "campaign_id": "operational-rc-20260825", "qualification_epoch": "rc-epoch-20260825", "operational_cycle_id": "2026-W35"}
   ],
   "elapsed_gate": {
     "campaign_id": "operational-beta-20260802",
@@ -74,6 +75,14 @@
     "required_operational_cycles": 3,
     "status": "pending-duration-and-cycles",
     "reset_conditions": ["qualifying interruption", "revision change", "failed restoration", "material scope or rights change"]
+  },
+  "rc_gate": {
+    "campaign_id": "operational-rc-20260825",
+    "qualification_epoch": "rc-epoch-20260825",
+    "candidate_revision": "159b8d77068b3cb170d2ffed99e395f1add7f403",
+    "required_days": 30,
+    "status": "pending-duration",
+    "reset_conditions": ["candidate revision change", "qualifying interruption", "failed restoration", "material scope or rights change"]
   },
   "non_claims": [
     "Retrospective and rehearsal lanes do not count as elapsed beta or RC soak.",
