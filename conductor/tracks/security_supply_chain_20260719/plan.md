@@ -21,7 +21,7 @@
 ## 4. Audit and incident exercise
 
 - [ ] 4.1 Conduct orchestrated security agent-panel qualification and resolve findings.
-- [~] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Actual execution receipts remain pending.
+- [~] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Evidence: `src/riopa_provenance/security_exercises.py`, `docs/security-incident-exercise-contract-20260824.json`, `tests/test_security_exercises.py`; actual execution receipts remain pending. (contract commit: `0bd5c74b8a7e0301ad69ebaa87364d1626314856`)
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 
 ## 5. Review fixes
