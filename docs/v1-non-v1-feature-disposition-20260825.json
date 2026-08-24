@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-non-v1-feature-disposition:2026-08-25",
+  "status": "formally-deferred",
+  "release": "1.0.0",
+  "scope": "bounded regional public-datasets-only non-operational technical preview",
+  "owner_authority": "repository owner",
+  "dispositions": [
+    {
+      "surface": "network routing and travel-time claims",
+      "status": "deferred",
+      "reason": "No content-addressed network archive and no hosted national measurement evidence.",
+      "reopen_when": ["network archive exists", "rights and source status are recorded", "bounded validation passes"]
+    },
+    {
+      "surface": "timetable and service-calendar claims",
+      "status": "deferred",
+      "reason": "No exact-edition public timetable archive is incorporated.",
+      "reopen_when": ["timetable archive exists", "timezone/DST contract is approved", "reproduction evidence passes"]
+    },
+    {
+      "surface": "facility completeness or authoritative identity",
+      "status": "deferred",
+      "reason": "Facility source families and authority qualification are incomplete.",
+      "reopen_when": ["required public archives exist", "source identity and rights are verified", "reconciliation panel evidence passes"]
+    },
+    {
+      "surface": "clinical, dispatch and operational recommendations",
+      "status": "excluded",
+      "reason": "The technical-preview boundary prohibits clinical, dispatch and operational claims.",
+      "reopen_when": ["separate governed scope and release gate are approved"]
+    },
+    {
+      "surface": "national completeness or national service performance",
+      "status": "deferred",
+      "reason": "Current national workload is a bounded reference projection, not a service or completeness claim.",
+      "reopen_when": ["required national source archives exist", "resource/cost instrumentation is available", "national measurements are independently verified"]
+    },
+    {
+      "surface": "stable-v1 promotion",
+      "status": "blocked",
+      "reason": "External operator/user evidence, elapsed beta/RC evidence, preservation acceptance and accountable authority decision remain mandatory.",
+      "reopen_when": ["all tier-specific release gates have factual evidence", "repository owner signs the tier decision"]
+    }
+  ],
+  "non_claims": [
+    "A deferral is not evidence that a disabled source, service or facility claim is false.",
+    "Agent panels may assess repository evidence but cannot substitute for factual participant or elapsed-time evidence.",
+    "This record does not promote beta, RC or stable-v1."
+  ]
+}

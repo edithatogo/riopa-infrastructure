@@ -45,7 +45,8 @@
     "urn:riopa:evidence:rc-candidate-observation:2026-08-25",
     "urn:riopa:evidence:rc-candidate-replay:2026-08-25",
     "urn:riopa:evidence:rc-candidate-status-validated:2026-08-25",
-    "urn:riopa:evidence:v1-compatibility-diff:2026-08-25"
+    "urn:riopa:evidence:v1-compatibility-diff:2026-08-25",
+    "urn:riopa:evidence:v1-non-v1-feature-disposition:2026-08-25"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

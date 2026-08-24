@@ -4,7 +4,7 @@
 
 - [x] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. The repository-wide normative surface inventory is recorded and executable-validated; compatibility diffs remain task 1.2. (`docs/v1-normative-surface-inventory-20260825.json`, `tests/test_v1_release_readiness.py`)
 - [x] 1.2 Generate compatibility diffs and resolve unintended breaking changes. The frozen predecessor at `409cbc7` has no removed public surface or changed schema constraint in the current inventory; additive surfaces and enum values are recorded in `docs/v1-compatibility-diff-20260825.json` and validated by `scripts/build_v1_compatibility_diff.py` and `tests/test_v1_compatibility_diff.py`.
-- [ ] 1.3 Close or formally defer non-v1 features.
+- [x] 1.3 Formally defer or exclude non-v1 features and record explicit reopen criteria. The bounded regional public-datasets-only technical-preview boundary, disabled network/timetable/facility/national/clinical/dispatch surfaces and stable-promotion blocker are recorded in `docs/v1-non-v1-feature-disposition-20260825.json` and validated by `tests/test_v1_feature_disposition.py`.
 
 ## 2. Audit and rehearsal
 
