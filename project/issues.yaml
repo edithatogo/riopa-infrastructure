@@ -3338,7 +3338,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `health_outcomes_causal_methods_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define analysis type, DAG, estimand, population, exposure, comparator and outcome records.\n- [ ] 1.2 Define boundary, denominator, time, missing-data and governance requirements.\n- [ ] 1.3 Build preregistration and exploratory/confirmatory labeling templates.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/health_outcomes_causal_methods_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `health_outcomes_causal_methods_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define analysis type, DAG, estimand, population, exposure, comparator and outcome records. (`schemas/health-analysis-design.schema.json`, `fixtures/health-analysis-design-synthetic.json`, `tests/test_health_analysis_design.py`; synthetic non-clinical reference only)\n- [ ] 1.2 Define boundary, denominator, time, missing-data and governance requirements.\n- [ ] 1.3 Build preregistration and exploratory/confirmatory labeling templates.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/health_outcomes_causal_methods_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",

@@ -11,7 +11,9 @@
     "accessibility_network_engine_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/104",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:health-analysis-design-synthetic:2026-08-25"
+  ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,
