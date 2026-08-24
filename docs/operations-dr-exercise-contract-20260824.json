@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:operations:dr-exercise:bounded-preview:1.0",
+  "report_validator": "src/riopa_provenance/recovery.py:validate_exercise_report",
+  "required_fields": [
+    "exercise_id", "operation", "status", "source_revision", "started_at", "ended_at",
+    "recovery_point_sha256", "restored_object_sha256", "raw_log_sha256", "timings", "scope"
+  ],
+  "status_values": ["planned", "executed-local", "executed-hosted", "failed"],
+  "required_timings": ["rpo_seconds", "rto_seconds"],
+  "fail_closed_rules": [
+    "A planned exercise is not execution evidence.",
+    "A failed exercise is preserved and requires a failure reason; it never becomes a pass by editing in place.",
+    "Hosted status requires a hosted run identifier and does not imply production disaster-recovery qualification.",
+    "Restore and rollback claims require distinct recovery-point, restored-object and raw-log hashes.",
+    "A qualifying interruption or failed restoration resets the affected elapsed gate."
+  ],
+  "non_claims": [
+    "This contract does not execute a restore, access credentials or mutate a deployment.",
+    "Local or GitHub technical-preview drills do not prove production DR, national scale, external operator evidence or release authority."
+  ]
+}
