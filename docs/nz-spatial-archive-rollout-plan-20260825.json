@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "plan_id": "urn:riopa:operations:nz-spatial-rollout:2026-08-25",
+  "status": "repository-owned-bounded-plan",
+  "scope": "regional public-datasets-only technical preview",
+  "source_registry": "config/source-registry/nz-spatial-pilot.yaml",
+  "waves": [
+    {
+      "wave": 1,
+      "source_ids": ["urn:riopa:source:linz-data-service"],
+      "endpoints": ["urn:riopa:endpoint:linz:catalog", "urn:riopa:endpoint:linz:api", "urn:riopa:endpoint:linz:csw"],
+      "priority": "metadata-first",
+      "rights_gate": "metadata-and-rights-review-before-payload",
+      "capture_bound": "one declared pilot catalogue slice per run",
+      "backfill_bound": "no historical backfill without an explicit dated manifest",
+      "rate_limit": {"requests_per_second": 1.0, "maximum_concurrency": 1},
+      "owner_role": "spatial data lead"
+    },
+    {
+      "wave": 2,
+      "source_ids": ["urn:riopa:source:linz-data-service"],
+      "endpoints": ["urn:riopa:endpoint:linz:export", "urn:riopa:endpoint:linz:wfs"],
+      "priority": "credential-and-operator-gated",
+      "rights_gate": "credential, rights and allowed-host review before payload",
+      "capture_bound": "one approved export or changeset slice per run",
+      "backfill_bound": "no national or catalogue-complete capture in preview",
+      "rate_limit": {"requests_per_second": 0.2, "maximum_concurrency": 1},
+      "owner_role": "spatial data lead"
+    }
+  ],
+  "exception_workflow": [
+    "record failed attempt and preserve its digest",
+    "quarantine integrity, schema, capability, rights or authority ambiguity",
+    "manual review by the owner or agent panel may classify but may not invent source evidence",
+    "resume only from a new digest-bound manifest after the blocking condition is resolved"
+  ],
+  "retirement_workflow": [
+    "mark source or endpoint retired in a new registry revision",
+    "retain prior manifests and receipts",
+    "stop new capture and publish the limitation before any successor is enabled"
+  ],
+  "nonclaims": [
+    "This plan does not contact endpoints or establish live-source authority.",
+    "It does not prove national coverage, beta SLO duration, preservation acceptance or restore success.",
+    "Credential/operator, external participation and accountable release-authority gates remain open."
+  ]
+}

@@ -39,7 +39,7 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 - [~] **`planning_rules_linkage_20260718`** — Council planning spatial-to-rule linkage (target `0.6.0`, current `M1`, target `M6`, risk Critical; depends on: `nz_spatial_archive_mvp_20260718`, `canonical_domain_schemas_ontology_20260719`)
 - [~] **`planning_system_transition_20260719`** — Planning-system transition and legal continuity (target `0.7.0`, current `M1`, target `M6`, risk Critical; depends on: `planning_rules_linkage_20260718`, `canonical_domain_schemas_ontology_20260719`)
 - [~] **`spatial_quality_temporality_20260718`** — Spatial quality, temporality and change-analysis framework (target `0.7.0`, current `M1`, target `M6`, risk High; depends on: `nz_spatial_archive_mvp_20260718`, `planning_rules_linkage_20260718`, `provenance_query_api_20260719`)
-- [ ] **`nz_spatial_archive_operations_20260719`** — National archive coverage, updates and operations (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `nz_spatial_archive_mvp_20260718`, `spatial_quality_temporality_20260718`, `operations_preservation_sre_20260719`, `nz_spatial_source_registry_20260718`)
+- [~] **`nz_spatial_archive_operations_20260719`** — National archive coverage, updates and operations (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `nz_spatial_archive_mvp_20260718`, `spatial_quality_temporality_20260718`, `operations_preservation_sre_20260719`, `nz_spatial_source_registry_20260718`)
 
 ## Analytics
 
