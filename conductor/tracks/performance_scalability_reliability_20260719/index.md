@@ -1,7 +1,7 @@
 # Evidence index: Performance, scalability and reliability qualification
 
 - **Track ID:** `performance_scalability_reliability_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.9.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -76,7 +76,7 @@ release claim is enabled by this index.
 
 Required agent-panel lenses: Performance analyst, Operations analyst, Security analyst, Data-governance analyst, Quantitative methods analyst, Agent workflow analyst.
 
-This index is deliberately non-assertive while the track remains `specified` at
+This index is deliberately non-assertive while the track remains `active` at
 M1. Status may advance only through `conductor/workflow.md`; evidence must be
 immutable or version-addressed, agent-panel qualified where required, and
 sufficient for the applicable release gates.
