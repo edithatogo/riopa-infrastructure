@@ -4,7 +4,7 @@
   "title": "RIOPA bounded health-analysis design",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "analysis_id", "analysis_type", "domain", "dag", "estimand", "population", "exposure", "comparator", "outcome", "limitations"],
+  "required": ["schema_version", "analysis_id", "analysis_type", "domain", "dag", "estimand", "population", "exposure", "comparator", "outcome", "boundary", "denominator", "time", "missing_data", "governance", "limitations"],
   "properties": {
     "schema_version": {"const": "1.0.0"},
     "analysis_id": {"type": "string", "pattern": "^urn:riopa:analysis:[A-Za-z0-9._:-]+$"},
@@ -16,6 +16,11 @@
     "exposure": {"type": "string", "minLength": 1},
     "comparator": {"type": "string", "minLength": 1},
     "outcome": {"type": "string", "minLength": 1},
+    "boundary": {"type": "object", "additionalProperties": false, "required": ["scope", "units"], "properties": {"scope": {"type": "string", "minLength": 1}, "units": {"type": "string", "minLength": 1}}},
+    "denominator": {"type": "string", "minLength": 1},
+    "time": {"type": "object", "additionalProperties": false, "required": ["start", "end", "basis"], "properties": {"start": {"type": "string", "format": "date"}, "end": {"type": "string", "format": "date"}, "basis": {"enum": ["valid-time", "recorded-time", "simulation-time"]}}},
+    "missing_data": {"type": "object", "additionalProperties": false, "required": ["policy", "allowed"], "properties": {"policy": {"type": "string", "minLength": 1}, "allowed": {"type": "boolean"}}},
+    "governance": {"type": "object", "additionalProperties": false, "required": ["review_status", "rights_scope", "clinical_claims_allowed"], "properties": {"review_status": {"enum": ["synthetic-reference", "pending"]}, "rights_scope": {"const": "public-or-synthetic-fixture"}, "clinical_claims_allowed": {"const": false}}},
     "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
   }
 }
