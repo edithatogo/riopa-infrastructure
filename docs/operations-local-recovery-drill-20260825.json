@@ -1,0 +1,26 @@
+{
+  "evidence_id": "OPS-LOCAL-RECOVERY-DRILL-20260825",
+  "fail_closed": true,
+  "non_claims": [
+    "This is a repository-local synthetic drill, not hosted or production disaster recovery.",
+    "It does not establish RPO/RTO, provider acceptance, preservation acceptance or release authority.",
+    "External operator and external-user evidence remain mandatory for beta, RC and stable-v1."
+  ],
+  "operations": [
+    {
+      "digest": "4592776846c04741937d2298dad3aefd689214245b3042617375226d4bf18c6c",
+      "operation": "snapshot"
+    },
+    {
+      "digest": "4592776846c04741937d2298dad3aefd689214245b3042617375226d4bf18c6c",
+      "operation": "restore"
+    },
+    {
+      "digest": "4592776846c04741937d2298dad3aefd689214245b3042617375226d4bf18c6c",
+      "operation": "rollback"
+    }
+  ],
+  "scope": "bounded-regional-public-datasets-only-technical-preview",
+  "status": "passing-local-synthetic",
+  "tamper_rejection": true
+}
