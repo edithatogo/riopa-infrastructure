@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-repository-audit-matrix:2026-08-25",
+  "status": "bounded-repository-audit-complete-external-gates-pending",
+  "release": "1.0.0",
+  "scope": "repository-owned audit evidence for the bounded technical preview",
+  "audits": [
+    {
+      "domain": "security",
+      "status": "bounded-pass",
+      "evidence": ["docs/github-main-protection-20260825.json", "docs/github-security-observation-20260825.json", "docs/module-coverage-inventory-20260825.json"],
+      "open_gates": ["provider-side scanning activation", "trusted release signing", "factual incident qualification"]
+    },
+    {
+      "domain": "performance",
+      "status": "bounded-pass",
+      "evidence": ["docs/performance-noise-gate-contract-20260824.json", "docs/performance-capacity-model-contract-20260824.json", "docs/v1-compatibility-diff-20260825.json"],
+      "open_gates": ["national-scale measurement", "resource/cost instrumentation", "elapsed soak"]
+    },
+    {
+      "domain": "accessibility",
+      "status": "bounded-reference-only",
+      "evidence": ["tests/test_accessibility.py", "conductor/tracks/accessibility_network_engine_20260719/index.md"],
+      "open_gates": ["network/timetable archives", "facility archive qualification", "enabled accessibility claims"]
+    },
+    {
+      "domain": "governance",
+      "status": "bounded-pass",
+      "evidence": ["docs/v1-non-v1-feature-disposition-20260825.json", "docs/single-person-operating-model-20260821.md", "docs/owner-accountable-authority-20260821.json"],
+      "open_gates": ["tier-specific accountable release decision"]
+    },
+    {
+      "domain": "documentation",
+      "status": "bounded-pass",
+      "evidence": ["docs/v1-normative-surface-inventory-20260825.json", "docs/v1-compatibility-diff-20260825.json", "docs/panel-reports/20260802/orchestrator-synthesis.json"],
+      "open_gates": ["factual external-user/operator workflows", "clean-room reproduction", "stable support handover"]
+    }
+  ],
+  "review_model": "single-developer repository with agent-panel assessment; panels cannot substitute for factual participant, elapsed-time or accountable-authority evidence",
+  "non_claims": [
+    "A bounded repository audit is not a beta, RC or stable-v1 approval.",
+    "Reference-only accessibility evidence does not enable network, timetable, facility or national claims.",
+    "Missing external or elapsed evidence remains pending, not negative evidence."
+  ]
+}
