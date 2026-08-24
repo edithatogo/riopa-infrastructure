@@ -17,6 +17,84 @@ TRANSITION_STATES = {
 }
 TRANSITION_RELATIONSHIPS = {"rename", "merge", "split", "replacement", "partial_continuity"}
 PERSPECTIVES = {"valid_time", "recorded_time", "as_known_at"}
+DISCOVERY_MODES = {"contemporaneous", "retrospective"}
+CONFIDENCE_LEVELS = {"unknown", "low", "medium", "high", "disputed"}
+
+
+def classify_transition_evidence(record: Mapping[str, Any]) -> dict[str, Any]:
+    """Keep discovery timing explicit without treating it as legal authority."""
+
+    mode = record.get("discovery_mode")
+    if mode not in DISCOVERY_MODES:
+        raise ValueError("discovery_mode must be contemporaneous or retrospective")
+    evidence = record.get("evidence")
+    if (
+        not isinstance(evidence, list)
+        or not evidence
+        or any(not isinstance(item, str) for item in evidence)
+    ):
+        raise ValueError("evidence must be a non-empty list of references")
+    return {
+        "discovery_mode": mode,
+        "evidence": list(evidence),
+        "authority_status": "not-established",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Discovery timing does not establish legal effect, authority or completeness.",
+            (
+                "Retrospective evidence is retained separately and is not silently merged "
+                "with contemporaneous evidence."
+            ),
+        ],
+    }
+
+
+def build_continuity_crosswalk(
+    *,
+    predecessor: str,
+    successor: str,
+    confidence: str,
+    scope: str,
+    evidence: Sequence[str],
+    valid_time: Mapping[str, Any],
+    recorded_time: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Build a bounded continuity assertion with explicit confidence and scope."""
+
+    if not predecessor or not successor or predecessor == successor:
+        raise ValueError("predecessor and successor must be distinct non-empty identifiers")
+    if confidence not in CONFIDENCE_LEVELS:
+        raise ValueError(f"confidence must be one of {sorted(CONFIDENCE_LEVELS)}")
+    if not scope.strip():
+        raise ValueError("scope must be non-empty")
+    if not evidence or any(not isinstance(item, str) or not item for item in evidence):
+        raise ValueError("evidence must be a non-empty sequence of references")
+    transition = {
+        "transition_id": "urn:riopa:transition:crosswalk",
+        "relationship": "partial_continuity",
+        "predecessors": [predecessor],
+        "successors": [successor],
+        "state": "transitional",
+        "evidence": list(evidence),
+        "scope": scope,
+        "valid_time": dict(valid_time),
+        "recorded_time": dict(recorded_time),
+    }
+    errors = validate_transition(transition)
+    if errors:
+        raise ValueError("invalid continuity window: " + "; ".join(errors))
+    return {
+        "crosswalk_id": f"urn:riopa:continuity:{predecessor}:{successor}",
+        "predecessor": predecessor,
+        "successor": successor,
+        "relationship": "partial_continuity",
+        "confidence": confidence,
+        "scope": scope,
+        "evidence": list(evidence),
+        "valid_time": dict(valid_time),
+        "recorded_time": dict(recorded_time),
+        "promotion_allowed": False,
+    }
 
 
 def validate_transition(record: Mapping[str, Any]) -> tuple[str, ...]:

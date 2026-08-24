@@ -1,7 +1,12 @@
 import json
 from pathlib import Path
 
-from riopa_provenance.transitions import select_temporal_records, validate_transition
+from riopa_provenance.transitions import (
+    build_continuity_crosswalk,
+    classify_transition_evidence,
+    select_temporal_records,
+    validate_transition,
+)
 
 
 def test_transition_fixture_covers_relationships_and_validates() -> None:
@@ -29,3 +34,22 @@ def test_partial_continuity_requires_scope_and_reversed_window_is_rejected() -> 
     assert "partial_continuity requires an explicit scope" in validate_transition(record)
     record = dict(records[0], valid_time={"from": "2025-01-01", "to": "2024-01-01"})
     assert "valid_time.to must not precede valid_time.from" in validate_transition(record)
+
+
+def test_transition_evidence_and_crosswalk_preserve_discovery_and_scope() -> None:
+    evidence = classify_transition_evidence(
+        {"discovery_mode": "retrospective", "evidence": ["archive:1"]}
+    )
+    assert evidence["authority_status"] == "not-established"
+    crosswalk = build_continuity_crosswalk(
+        predecessor="plan-old",
+        successor="plan-new",
+        confidence="medium",
+        scope="provisions 1-3 only",
+        evidence=["archive:1"],
+        valid_time={"from": "2020-01-01", "to": None},
+        recorded_time={"from": "2022-01-01", "to": None},
+    )
+    assert crosswalk["relationship"] == "partial_continuity"
+    assert crosswalk["scope"] == "provisions 1-3 only"
+    assert crosswalk["promotion_allowed"] is False

@@ -1,0 +1,16 @@
+{
+  "evidence_id": "PLANNING-TRANSITION-EVIDENCE-CROSSWALK-20260825",
+  "status": "bounded-repository-contract",
+  "implementation": "riopa_provenance.transitions.classify_transition_evidence and build_continuity_crosswalk",
+  "controls": [
+    "contemporaneous and retrospective discovery modes are explicit",
+    "continuity assertions require confidence, scope, temporal windows and evidence references",
+    "invalid windows and empty evidence fail closed",
+    "source evidence is not silently merged or upgraded to authority"
+  ],
+  "nonclaims": [
+    "This contract does not establish legal effect or authority.",
+    "Synthetic crosswalks do not reconstruct real planning history.",
+    "Real public-source capture, domain qualification and immutable release evidence remain open."
+  ]
+}

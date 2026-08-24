@@ -9,8 +9,8 @@
 ## 2. Historical reconstruction
 
 - [x] 2.1 Reconstruct one authority reorganisation and one plan replacement. (`fixtures/planning-transition-reconstruction.json`, `tests/test_planning_transition_reconstruction.py`; synthetic reference only)
-- [ ] 2.2 Preserve contemporaneous and retrospectively discovered evidence separately.
-- [ ] 2.3 Build continuity crosswalks with confidence and scope.
+- [~] 2.2 Preserve contemporaneous and retrospectively discovered evidence separately through explicit discovery-mode validation; real historical records remain open (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`).
+- [~] 2.3 Build continuity crosswalks with confidence and scope. Bounded fail-closed crosswalk construction is implemented; real authority histories and immutable public-source evidence remain open (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/planning-transition-evidence-crosswalk-contract-20260825.json`).
 
 ## 3. Temporal query integration
 
