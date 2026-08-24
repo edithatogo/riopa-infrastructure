@@ -8,7 +8,7 @@
 
 ## 2. Reference spatial methods
 
-- [ ] 2.1 Implement descriptive mapping, autocorrelation and multilevel/ecological examples.
+- [x] 2.1 Implement descriptive mapping, autocorrelation and multilevel/ecological examples. Bounded dependency-free summaries are non-clinical and non-causal; public/synthetic source qualification remains open (`src/riopa_provenance/health_spatial.py`, `tests/test_health_spatial.py`).
 - [ ] 2.2 Implement spatial confounding, MAUP and measurement-error sensitivity.
 - [ ] 2.3 Add subgroup/equity and small-cell controls.
 
