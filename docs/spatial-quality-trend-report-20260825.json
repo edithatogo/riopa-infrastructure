@@ -1,0 +1,24 @@
+{
+  "schema": "riopa.spatial-quality-trend-report.v1",
+  "status": "repository-contract",
+  "scope": "synthetic or content-addressed archived evaluations only",
+  "implementation": "src/riopa_provenance/spatial_quality_trend.py:build_spatial_quality_trend",
+  "tests": "tests/test_spatial_quality_trend.py",
+  "controls": [
+    "metric-set mismatches fail closed",
+    "non-finite and duplicate metrics fail closed",
+    "directional regression and explicit tolerance are recorded",
+    "promotion remains disabled"
+  ],
+  "open_gates": [
+    "heterogeneous real-council validation",
+    "national completeness",
+    "external methods qualification",
+    "elapsed release evidence",
+    "accountable release-authority decision"
+  ],
+  "nonclaims": [
+    "This contract does not establish source authority or operational readiness.",
+    "Agent-panel review cannot substitute for factual external participation."
+  ]
+}
