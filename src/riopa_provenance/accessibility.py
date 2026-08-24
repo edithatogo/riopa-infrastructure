@@ -96,9 +96,7 @@ def straight_line_matrix(
             delta_lon = radians(destination_lon - origin_lon)
             haversine = (
                 sin(delta_lat / 2) ** 2
-                + cos(origin_lat_radians)
-                * cos(radians(destination_lat))
-                * sin(delta_lon / 2) ** 2
+                + cos(origin_lat_radians) * cos(radians(destination_lat)) * sin(delta_lon / 2) ** 2
             )
             distance = 2 * radius_km * asin(sqrt(haversine))
             observations[(origin, destination)] = TravelObservation(
