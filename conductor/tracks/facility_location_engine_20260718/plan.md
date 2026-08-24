@@ -15,7 +15,7 @@
 ## 3. Equity, robustness and extensions
 
 - [x] 3.1 Implement subgroup, minimax subgroup-mean and Pareto alternatives. The minimax selector is an explicit bounded equity alternative and does not silently replace the model objective. (`src/riopa_provenance/facility_location.py:minimax_subgroup_alternative`, `tests/test_facility_location.py`; commit `cb92f43`)
-- [ ] 3.2 Add scenario robustness/stochastic and multi-period interfaces.
+- [x] 3.2 Add scenario robustness/stochastic and multi-period interfaces. Evidence: deterministic `RobustScenario`, `evaluate_robust_scenarios` and `MultiPeriodPlan` reference interfaces with tests; no probability, forecast, operational or national claim is made.
 - [ ] 3.3 Add competitive/market-capture reference formulation.
 
 ## 4. Scale and stable API
