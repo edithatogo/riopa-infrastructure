@@ -36,6 +36,16 @@
 | `FACILITY-ACCESSIBILITY-BRIDGE-20260824` | Public-only, non-authoritative facility assertion projection into accessibility opportunity weights | `src/riopa_provenance/accessibility.py:public_facility_opportunities`, `tests/test_accessibility.py` | Restricted rows are excluded and unit weights are explicit; planning integration, capacity and authoritative registry claims remain open |
 | `FACILITY-SNAPSHOT-CORRECTION-20260824` | Content-addressed public-only snapshot and append-successor correction contract | `src/riopa_provenance/facility_registry.py:build_snapshot_record`, `src/riopa_provenance/facility_registry.py:validate_snapshot_record`, `tests/test_facility_registry.py` | Payload integrity and predecessor preservation are validated; publication and accountable release approval remain open |
 
+## Repository-owned closeout slice (2026-08-25)
+
+The bounded public-source facility assertions, deterministic reconciliation,
+history, release filtering, accessibility bridge, disagreement report and
+correction contract are linked above and pass `bash scripts/ci_quality.sh` at
+protected `main` revision `7f6f08ac63b010db5c690688d74bc225dee737ad`. This is a
+non-authoritative regional technical-preview projection. It does not establish
+national completeness, authoritative facility identity, ambulance coverage,
+planning integration or operational use.
+
 ## Blocking defects
 
 - Independent reproduction issue #149 has no external-operator response.
@@ -52,6 +62,11 @@
 - The bounded comparison reports one 5.660 m candidate pair and three source-only assertions.
   It is not a national completeness, currency or accuracy estimate.
 - Accountable review is performed by an orchestrated panel of agent analysts; no second-person sign-off is required.
+- This is a single-developer repository. Agent-panel assessment cannot
+  substitute for factual external operator/user evidence or accountable
+  release-authority approval.
+- Missing geometry, rights, panel disposition, preservation and elapsed-time
+  evidence is pending, not negative evidence.
 
 ## Review and handover
 
