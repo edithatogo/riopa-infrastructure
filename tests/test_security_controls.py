@@ -81,3 +81,13 @@ def test_research_object_attestation_contract_matches_release_workflow() -> None
     assert "gh attestation verify" in workflow
     assert "SHA256SUMS" in workflow
     assert contract["non_claims"]
+
+
+def test_github_security_observation_is_fail_closed() -> None:
+    observation = json.loads(Path("docs/github-security-observation-20260825.json").read_text())
+    endpoints = observation["endpoints"]
+    assert observation["status"] == "observation-only"
+    assert endpoints["secret_scanning_alerts"]["open_alert_count"] == 0
+    assert endpoints["code_scanning_alerts"]["open_alert_count"] == 0
+    assert endpoints["dependabot_alerts"]["alert_count"] >= 0
+    assert observation["non_claims"]

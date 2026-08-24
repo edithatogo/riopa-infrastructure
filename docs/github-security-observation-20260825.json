@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "observation_id": "urn:riopa:evidence:github-security-observation:2026-08-25",
+  "repository": "edithatogo/riopa-infrastructure",
+  "recorded_on": "2026-08-25",
+  "endpoints": {
+    "secret_scanning_alerts": {
+      "path": "/repos/edithatogo/riopa-infrastructure/secret-scanning/alerts",
+      "open_alert_count": 0
+    },
+    "dependabot_alerts": {
+      "path": "/repos/edithatogo/riopa-infrastructure/dependabot/alerts",
+      "alert_count": 2
+    },
+    "code_scanning_alerts": {
+      "path": "/repos/edithatogo/riopa-infrastructure/code-scanning/alerts",
+      "open_alert_count": 0
+    }
+  },
+  "status": "observation-only",
+  "non_claims": [
+    "Dependabot alert details and remediation are not represented by counts alone.",
+    "This observation does not prove Renovate or Codecov app activation, container scanning, or hosted secret-scanning configuration beyond the endpoint response.",
+    "An empty alert list does not establish absence of undiscovered vulnerabilities."
+  ]
+}
