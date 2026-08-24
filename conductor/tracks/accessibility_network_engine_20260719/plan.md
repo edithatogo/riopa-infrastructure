@@ -8,7 +8,7 @@
 
 ## 2. Reference implementations
 
-- [ ] 2.1 Implement straight-line, road/walk/cycle and public-transport adapters.
+- [~] 2.1 Implement straight-line, road/walk/cycle and public-transport adapters. The bounded Haversine coordinate adapter is implemented and tested; road, walk/cycle, timetable and real-network adapters remain disabled pending archived inputs and qualification. (`src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`; `de7a43a`)
 - [x] 2.2 Implement cumulative opportunity, gravity and floating-catchment measures in the dependency-free reference core, with hand-calculated fixtures and fail-closed parameter validation. Real-network and operational qualification remain open. (`src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md`)
 - [ ] 2.3 Add opening-hours, capacity and time-dependent calculations.
 
@@ -31,3 +31,7 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Apply repository formatter to the straight-line adapter after the local quality review (`2b271c0`).

@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
-from math import exp, isfinite
+from math import asin, cos, exp, isfinite, radians, sin, sqrt
 from typing import Any
 
 
@@ -51,6 +51,65 @@ class AccessibilityMatrix:
         if observation is None or observation.status is not TravelStatus.REACHABLE:
             return None
         return observation.impedance
+
+
+def straight_line_matrix(
+    matrix_id: str,
+    coordinates: Mapping[str, tuple[float, float]],
+    origins: tuple[str, ...],
+    destinations: tuple[str, ...],
+) -> AccessibilityMatrix:
+    """Build a bounded Haversine reference matrix from ``(lat, lon)`` pairs.
+
+    This pure adapter intentionally models geometric distance only. It does not
+    infer roads, travel time, timetable service, accessibility, or operational
+    coverage from coordinates.
+    """
+
+    if not matrix_id.strip():
+        raise ValueError("matrix_id must be non-empty")
+    if not origins or not destinations:
+        raise ValueError("origins and destinations must be non-empty")
+    for identifier in (*origins, *destinations):
+        coordinate = coordinates.get(identifier)
+        if coordinate is None or len(coordinate) != 2:
+            raise ValueError(f"missing coordinate for {identifier}")
+        latitude, longitude = coordinate
+        if (
+            not isfinite(latitude)
+            or not isfinite(longitude)
+            or latitude < -90
+            or latitude > 90
+            or longitude < -180
+            or longitude > 180
+        ):
+            raise ValueError(f"invalid coordinate for {identifier}")
+
+    observations: dict[tuple[str, str], TravelObservation] = {}
+    radius_km = 6371.0088
+    for origin in origins:
+        origin_lat, origin_lon = coordinates[origin]
+        origin_lat_radians = radians(origin_lat)
+        for destination in destinations:
+            destination_lat, destination_lon = coordinates[destination]
+            delta_lat = radians(destination_lat - origin_lat)
+            delta_lon = radians(destination_lon - origin_lon)
+            haversine = (
+                sin(delta_lat / 2) ** 2
+                + cos(origin_lat_radians) * cos(radians(destination_lat)) * sin(delta_lon / 2) ** 2
+            )
+            distance = 2 * radius_km * asin(sqrt(haversine))
+            observations[(origin, destination)] = TravelObservation(
+                TravelStatus.REACHABLE, distance
+            )
+    return AccessibilityMatrix(
+        matrix_id,
+        "reference:coordinate-snapshot",
+        "haversine-reference",
+        "1",
+        "straight-line",
+        observations,
+    )
 
 
 def public_facility_opportunities(
