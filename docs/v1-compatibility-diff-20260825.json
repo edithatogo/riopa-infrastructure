@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-compatibility-diff:2026-08-25",
+  "status": "no-unintended-breaking-changes",
+  "baseline_revision": "409cbc7",
+  "current_revision": "b0357be",
+  "surfaces": {
+    "schemas": {
+      "changes": [
+        {
+          "path": "schemas/accessibility-matrix.schema.json",
+          "kind": "schema-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "schemas/accessibility-measure.schema.json",
+          "kind": "schema-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "schemas/accessibility-scenario.schema.json",
+          "kind": "schema-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "schemas/hosted-evidence.schema.json",
+          "kind": "constraint-added",
+          "pointer": "/properties/classification/enum",
+          "old": null,
+          "new": [
+            "hosted-technical-preview-drill",
+            "hosted-retrospective-supplement"
+          ]
+        },
+        {
+          "path": "schemas/hosted-evidence.schema.json",
+          "kind": "constraint-added",
+          "pointer": "/properties/lane/enum",
+          "old": [
+            "recovery-rollback",
+            "agent-clean-room",
+            "scale-smoke",
+            "operational-observation",
+            "rc-soak-observation"
+          ],
+          "new": [
+            "recovery-rollback",
+            "agent-clean-room",
+            "scale-smoke",
+            "operational-observation",
+            "rc-soak-observation",
+            "performance-rehearsal",
+            "agent-user-workflows",
+            "retrospective-replay"
+          ]
+        },
+        {
+          "path": "schemas/interoperability-conformance-contract.schema.json",
+          "kind": "schema-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "schemas/operations-control.schema.json",
+          "kind": "schema-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "schemas/repository-template-contract.schema.json",
+          "kind": "schema-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        }
+      ]
+    },
+    "python_modules": {
+      "changes": [
+        {
+          "path": "src/riopa_provenance/attestation.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/benchmark_gates.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/capacity_models.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/diagnostics.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/quarantine.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/release_signing.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/security_exercises.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/security_panel.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "src/riopa_provenance/web_archive.py",
+          "kind": "module-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        }
+      ]
+    },
+    "ontology_and_bindings": {
+      "changes": [
+        {
+          "path": "docs/ontology/canonical-cross-language-parity-20260824.json",
+          "kind": "surface-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "docs/ontology/canonical-extension-policy-20260825.json",
+          "kind": "surface-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "docs/ontology/canonical-extension-policy-20260825.md",
+          "kind": "surface-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "bindings/typescript/README.md",
+          "kind": "surface-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "bindings/typescript/canonical-crosswalk-v1.d.ts",
+          "kind": "surface-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        },
+        {
+          "path": "bindings/typescript/provenance-event-v1.d.ts",
+          "kind": "surface-added",
+          "pointer": "",
+          "old": null,
+          "new": "present"
+        }
+      ]
+    }
+  },
+  "breaking_changes": [],
+  "non_breaking_changes": [
+    {
+      "path": "schemas/accessibility-matrix.schema.json",
+      "kind": "schema-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "schemas/accessibility-measure.schema.json",
+      "kind": "schema-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "schemas/accessibility-scenario.schema.json",
+      "kind": "schema-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "schemas/hosted-evidence.schema.json",
+      "kind": "constraint-added",
+      "pointer": "/properties/classification/enum",
+      "old": null,
+      "new": [
+        "hosted-technical-preview-drill",
+        "hosted-retrospective-supplement"
+      ]
+    },
+    {
+      "path": "schemas/hosted-evidence.schema.json",
+      "kind": "constraint-added",
+      "pointer": "/properties/lane/enum",
+      "old": [
+        "recovery-rollback",
+        "agent-clean-room",
+        "scale-smoke",
+        "operational-observation",
+        "rc-soak-observation"
+      ],
+      "new": [
+        "recovery-rollback",
+        "agent-clean-room",
+        "scale-smoke",
+        "operational-observation",
+        "rc-soak-observation",
+        "performance-rehearsal",
+        "agent-user-workflows",
+        "retrospective-replay"
+      ]
+    },
+    {
+      "path": "schemas/interoperability-conformance-contract.schema.json",
+      "kind": "schema-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "schemas/operations-control.schema.json",
+      "kind": "schema-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "schemas/repository-template-contract.schema.json",
+      "kind": "schema-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/attestation.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/benchmark_gates.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/capacity_models.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/diagnostics.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/quarantine.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/release_signing.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/security_exercises.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/security_panel.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "src/riopa_provenance/web_archive.py",
+      "kind": "module-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "docs/ontology/canonical-cross-language-parity-20260824.json",
+      "kind": "surface-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "docs/ontology/canonical-extension-policy-20260825.json",
+      "kind": "surface-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "docs/ontology/canonical-extension-policy-20260825.md",
+      "kind": "surface-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "bindings/typescript/README.md",
+      "kind": "surface-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "bindings/typescript/canonical-crosswalk-v1.d.ts",
+      "kind": "surface-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    },
+    {
+      "path": "bindings/typescript/provenance-event-v1.d.ts",
+      "kind": "surface-added",
+      "pointer": "",
+      "old": null,
+      "new": "present"
+    }
+  ],
+  "disposition": "No removed public surface or changed schema constraint was observed.",
+  "non_claims": [
+    "This path-level and schema-constraint diff does not prove runtime behavioural compatibility.",
+    "It does not qualify external clients, clean-room reproduction or release promotion."
+  ]
+}

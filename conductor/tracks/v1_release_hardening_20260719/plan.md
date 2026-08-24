@@ -3,7 +3,7 @@
 ## 1. Feature freeze and normative inventory
 
 - [x] 1.1 Freeze v1 scope and inventory every public API, schema, ontology, CLI and file format. The repository-wide normative surface inventory is recorded and executable-validated; compatibility diffs remain task 1.2. (`docs/v1-normative-surface-inventory-20260825.json`, `tests/test_v1_release_readiness.py`)
-- [ ] 1.2 Generate compatibility diffs and resolve unintended breaking changes.
+- [x] 1.2 Generate compatibility diffs and resolve unintended breaking changes. The frozen predecessor at `409cbc7` has no removed public surface or changed schema constraint in the current inventory; additive surfaces and enum values are recorded in `docs/v1-compatibility-diff-20260825.json` and validated by `scripts/build_v1_compatibility_diff.py` and `tests/test_v1_compatibility_diff.py`.
 - [ ] 1.3 Close or formally defer non-v1 features.
 
 ## 2. Audit and rehearsal

@@ -23,7 +23,7 @@ def test_v1_feature_freeze_inventory_matches_repository_without_overclaiming() -
 def test_v1_normative_surface_inventory_is_complete_and_path_bound() -> None:
     root = Path(__file__).resolve().parents[1]
     inventory = json.loads((root / "docs/v1-normative-surface-inventory-20260825.json").read_text())
-    assert inventory["status"] == "repository-inventory-complete-compatibility-diff-open"
+    assert inventory["status"] == "repository-inventory-and-compatibility-diff-complete"
     assert inventory["runtime"]["python"] == ">=3.14,<3.15"
     for relative in inventory["schemas"] + inventory["ontology_and_bindings"]:
         assert (root / relative).is_file(), relative
