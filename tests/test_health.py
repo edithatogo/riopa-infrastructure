@@ -2,7 +2,7 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 
-from riopa_provenance.health import observe_source_health
+from riopa_provenance.health import detect_capability_drift, observe_source_health
 
 
 def test_source_health_classifies_fresh_change_and_degradation() -> None:
@@ -52,3 +52,24 @@ def test_source_health_rejects_negative_age_window() -> None:
             current_digest=None,
             previous_digest=None,
         )
+
+
+def test_capability_drift_is_digest_bound_and_field_specific() -> None:
+    drift = detect_capability_drift(
+        {"supportsPagination": True, "maxRecordCount": 100, "format": "json"},
+        {"supportsPagination": False, "maxRecordCount": 100, "version": "2.0"},
+    )
+    assert drift.drifted
+    assert drift.added == ("version",)
+    assert drift.removed == ("format",)
+    assert drift.changed == ("supportsPagination",)
+    record = drift.to_record()
+    assert record["record_type"] == "capability_drift_observation"
+    assert record["previous_digest"] != record["current_digest"]
+
+
+def test_capability_drift_reports_identical_snapshots_without_drift() -> None:
+    snapshot = {"supportsPagination": True, "maxRecordCount": 100}
+    drift = detect_capability_drift(snapshot, dict(snapshot))
+    assert not drift.drifted
+    assert drift.added == drift.removed == drift.changed == ()
