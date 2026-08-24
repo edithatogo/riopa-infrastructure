@@ -14,14 +14,14 @@
 
 ## 3. Signing and provenance
 
-- [~] 3.1 Emit DSSE/in-toto-compatible attestation envelopes for builds and releases. Evidence: `src/riopa_provenance/attestation.py`, `docs/security-dsse-intoto-contract-20260824.json`, `tests/test_attestation.py`; trusted signing and protected release execution remain pending.
-- [~] 3.2 Define deterministic signing manifests and verification policy for release manifests, tags and distributed artifacts. Evidence: `src/riopa_provenance/release_signing.py`, `docs/security-release-signing-contract-20260824.json`, `tests/test_release_signing.py`; trusted signing and protected-tag execution remain pending. (contract commit: `4a722fc0673c1a17d5cbf02843482dc6323fbc34`)
+- [x] 3.1 Emit DSSE/in-toto-compatible attestation envelopes for builds and releases. Evidence: `src/riopa_provenance/attestation.py`, `docs/security-dsse-intoto-contract-20260824.json`, `tests/test_attestation.py`; deterministic envelope construction and negative tests pass, while trusted signing and protected release execution remain pending.
+- [x] 3.2 Define deterministic signing manifests and verification policy for release manifests, tags and distributed artifacts. Evidence: `src/riopa_provenance/release_signing.py`, `docs/security-release-signing-contract-20260824.json`, `tests/test_release_signing.py`; manifest construction and negative tests pass, while trusted signing and protected-tag execution remain pending. (contract commit: `4a722fc0673c1a17d5cbf02843482dc6323fbc34`)
 - [x] 3.3 Provide offline and CI verification commands and negative tests. Evidence: `docs/conformance-and-release-verification.md`, `.github/workflows/release.yml`, `docs/security-offline-verification-contract-20260822.json`, and `tests/test_security_offline_verification_contract.py`; execution remains protected-tag gated.
 
 ## 4. Audit and incident exercise
 
-- [~] 4.1 Define a digest-bound orchestrated security agent-panel rerun packet and validator. Evidence: `src/riopa_provenance/security_panel.py`, `docs/security-panel-rerun-contract-20260824.json`, `tests/test_security_panel.py`; factual panel execution and qualification remain pending. (contract commit: `a9ffae55774fec5efe4971b5421bfaf6c00bfd9a`)
-- [~] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Evidence: `src/riopa_provenance/security_exercises.py`, `docs/security-incident-exercise-contract-20260824.json`, `tests/test_security_exercises.py`; execution-report validation is implemented, while actual execution receipts remain pending. (contract commit: `0bd5c74b8a7e0301ad69ebaa87364d1626314856`)
+- [x] 4.1 Define a digest-bound orchestrated security agent-panel rerun packet and validator. Evidence: `src/riopa_provenance/security_panel.py`, `docs/security-panel-rerun-contract-20260824.json`, `tests/test_security_panel.py`; packet construction and negative validation pass, while factual panel execution and qualification remain pending. (contract commit: `a9ffae55774fec5efe4971b5421bfaf6c00bfd9a`)
+- [x] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Evidence: `src/riopa_provenance/security_exercises.py`, `docs/security-incident-exercise-contract-20260824.json`, `tests/test_security_exercises.py`; secret-free packet and execution-report validation pass, while actual execution receipts remain pending. (contract commit: `0bd5c74b8a7e0301ad69ebaa87364d1626314856`)
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 
 ## 5. Review fixes
