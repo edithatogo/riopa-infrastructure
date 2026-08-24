@@ -10,6 +10,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
 from math import exp, isfinite
+from typing import Any
 
 
 class TravelStatus(StrEnum):
@@ -50,6 +51,43 @@ class AccessibilityMatrix:
         if observation is None or observation.status is not TravelStatus.REACHABLE:
             return None
         return observation.impedance
+
+
+def public_facility_opportunities(
+    snapshot: Mapping[str, Any], *, facility_type: str | None = None
+) -> dict[str, float]:
+    """Project public facility assertions into unit opportunity weights.
+
+    The projection is intentionally source-assertion based: one public
+    assertion contributes one unit, while restricted rows are excluded and no
+    authoritative facility identity or capacity is inferred.
+    """
+
+    if snapshot.get("record_type") != "facility_assertions":
+        raise ValueError("snapshot must be a facility_assertions record")
+    if snapshot.get("authoritative") is not False:
+        raise ValueError("only non-authoritative snapshots may be projected")
+    rows = snapshot.get("assertions")
+    if not isinstance(rows, list):
+        raise ValueError("snapshot assertions must be an array")
+    opportunities: dict[str, float] = {}
+    for row in rows:
+        if not isinstance(row, Mapping):
+            raise ValueError("snapshot assertions must contain objects")
+        assertion_id = row.get("assertion_id")
+        row_type = row.get("facility_type")
+        if not isinstance(assertion_id, str) or not assertion_id.strip():
+            raise ValueError("assertions require assertion_id")
+        if not isinstance(row_type, str) or not row_type.strip():
+            raise ValueError("assertions require facility_type")
+        if facility_type is not None and row_type != facility_type:
+            continue
+        if row.get("release_classification", "public") != "public":
+            continue
+        if assertion_id in opportunities:
+            raise ValueError("assertion IDs must be unique")
+        opportunities[assertion_id] = 1.0
+    return opportunities
 
 
 def cumulative_opportunity(
