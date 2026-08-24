@@ -2,7 +2,7 @@
 
 ## 1. Quality profiles and ratchets
 
-- [ ] 1.1 Define profile-specific metrics, thresholds, warnings and waivers.
+- [~] 1.1 Define profile-specific metrics, thresholds, warnings and waivers for the bounded regional public-preview profile. Geometry validity, repair, null geometry, stable identity, lineage and rights boundaries are machine-readable; real-council and national qualification remain open (`docs/spatial-quality-profile-contract-20260825.json`, `tests/test_spatial_quality_profile_contract.py`).
 - [ ] 1.2 Implement geometry, topology, completeness, uniqueness and rights checks.
 - [ ] 1.3 Add release-to-release quality trend and regression reports.
 
