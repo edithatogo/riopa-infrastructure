@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-defect-disposition:2026-08-25",
+  "status": "fail-closed-no-p2-exceptions",
+  "release": "1.0.0",
+  "dispositions": [
+    {
+      "id": "DEFECT-P0-TRACK-MATURITY",
+      "severity": "P0",
+      "status": "open",
+      "description": "All v1-critical tracks remain below M6 and retain track-specific evidence gates.",
+      "evidence": ["docs/parent-track-maturity-report-20260803.json", "conductor/tracks.md"]
+    },
+    {
+      "id": "DEFECT-P0-EXTERNAL-REPRODUCTION",
+      "severity": "P0",
+      "status": "open-external",
+      "description": "External operator/user reproduction remains mandatory for beta, RC and stable-v1.",
+      "evidence": ["docs/release-gate-evidence-matrix.md", "docs/release-scope-and-evidence-policy-20260804.json"]
+    },
+    {
+      "id": "DEFECT-P0-ELAPSED-SOAK",
+      "severity": "P0",
+      "status": "open-elapsed",
+      "description": "The 90-day/three-cycle beta requirement and 30-day exact-RC soak remain incomplete.",
+      "evidence": ["docs/evidence-campaign-status-20260821.json"]
+    },
+    {
+      "id": "DEFECT-P0-PRESERVATION-AUTHORITY",
+      "severity": "P0",
+      "status": "open-external",
+      "description": "Signed preservation acceptance and the accountable tier-specific release decision remain pending.",
+      "evidence": ["docs/preservation-package-contract-20260822.json", "docs/owner-accountable-authority-20260821.json"]
+    },
+    {
+      "id": "DEFECT-P1-NATIONAL-MEASUREMENT",
+      "severity": "P1",
+      "status": "deferred-scope",
+      "description": "National service, facility, network and performance claims are disabled until their archives and measurements exist.",
+      "evidence": ["docs/v1-non-v1-feature-disposition-20260825.json", "docs/national-workload-manifest-20260803.json"]
+    }
+  ],
+  "p2_exceptions": [],
+  "non_claims": [
+    "Agent-panel recommendations do not resolve P0/P1 evidence gates or approve a release.",
+    "No P0 or P1 defect is silently waived by this record.",
+    "A deferred-scope item is not a negative finding about the disabled claim."
+  ]
+}
