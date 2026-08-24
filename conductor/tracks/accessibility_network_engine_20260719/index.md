@@ -1,7 +1,7 @@
 # Evidence index: Multimodal accessibility and travel-matrix engine
 
 - **Track ID:** `accessibility_network_engine_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.6.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -22,6 +22,7 @@
 | `ACCESS-CONTRACT-V1-20260822` | Versioned travel-matrix and reference-only measure contracts with explicit missing/unreachable/censored semantics | `schemas/accessibility-matrix.schema.json`, `schemas/accessibility-measure.schema.json`, `docs/accessibility-contract-v1.md`, `tests/test_accessibility.py` | Contract tests pass; real network/timetable archives, national measurements and operational claims remain disabled |
 | `ACCESS-SCENARIO-CONTRACT-20260824` | Explicit reference-only uncertainty, subgroup and scenario contract | `schemas/accessibility-scenario.schema.json`, `src/riopa_provenance/accessibility.py:validate_scenario_contract`, `tests/test_accessibility.py` | Assumptions, subgroup uniqueness and missing-data semantics are validated; real network, timetable and operational qualification remain open |
 | `ACCESS-SCENARIO-CONTRACT-CLOSEOUT-20260825` | Repository-owned reference-only uncertainty, subgroup and scenario contract | `schemas/accessibility-scenario.schema.json`, `src/riopa_provenance/accessibility.py:validate_scenario_contract`, `tests/test_accessibility.py` | Contract validation passes; real network/timetable archives, national measurements and operational qualification remain open |
+| `ACCESS-REFERENCE-MEASURES-20260825` | Cumulative opportunity, gravity and two-step floating-catchment reference measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Hand-calculated bounded fixtures pass; measures are not national, operational or real-network evidence |
 
 ## Blocking defects
 
@@ -37,4 +38,4 @@
 
 Required agent-panel lenses: API/schema analyst, Data-governance analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at M1. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
