@@ -1409,7 +1409,7 @@
         "maturity:m1",
         "release:0.5.0"
       ],
-      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Provide connector, archive, transformation and analytics adapter examples.\n- [ ] 2.2 Implement template version detection, drift reporting and safe upgrades.\n- [ ] 2.3 Add rollback and local-customisation preservation tests.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `repository_template_adoption_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Provide connector, archive, transformation and analytics adapter examples.\n- [ ] 2.2 Implement read-only template version detection, drift reporting and safe-upgrade recommendations. The report detects missing scaffolding and records mutation-free boundaries; cross-repository upgrade execution remains open (`scripts/check_template_drift.py`, `tests/test_template_drift.py`).\n- [ ] 2.3 Add rollback and local-customisation preservation tests.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/repository_template_adoption_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",

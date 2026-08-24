@@ -9,7 +9,7 @@
 ## 2. Adapters and upgrades
 
 - [ ] 2.1 Provide connector, archive, transformation and analytics adapter examples.
-- [ ] 2.2 Implement template version detection, drift reporting and safe upgrades.
+- [~] 2.2 Implement read-only template version detection, drift reporting and safe-upgrade recommendations. The report detects missing scaffolding and records mutation-free boundaries; cross-repository upgrade execution remains open (`scripts/check_template_drift.py`, `tests/test_template_drift.py`).
 - [ ] 2.3 Add rollback and local-customisation preservation tests.
 
 ## 3. Cross-repository adoption
