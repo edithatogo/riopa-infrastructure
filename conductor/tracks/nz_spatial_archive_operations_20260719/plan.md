@@ -2,9 +2,9 @@
 
 ## 1. Rollout planning
 
-- [ ] 1.1 Prioritise sources by public value, rights, technical readiness and risk.
-- [ ] 1.2 Define per-source schedules, backfill bounds, load limits and owners.
-- [ ] 1.3 Establish exception, manual-review and retirement workflows.
+- [x] 1.1 Prioritise sources by public value, rights, technical readiness and risk in the bounded rollout contract. (`docs/nz-spatial-archive-rollout-plan-20260825.json`; `4b4da7e`)
+- [x] 1.2 Define per-source schedules, backfill bounds, load limits and owners without contacting live endpoints. (`docs/nz-spatial-archive-rollout-plan-20260825.json`; `4b4da7e`)
+- [x] 1.3 Establish exception, manual-review and retirement workflows with fail-closed status transitions. (`docs/nz-spatial-archive-rollout-plan-20260825.json`, `tests/test_nz_spatial_rollout_plan.py`; `4b4da7e`)
 
 ## 2. National automation
 
