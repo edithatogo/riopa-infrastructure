@@ -2,9 +2,9 @@
   "track_id": "publication_validation_20260718",
   "type": "validation",
   "phase": "Publication",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T01:40:00Z",
+  "updated_at": "2026-08-25T06:00:00Z",
   "description": "Convert infrastructure, data and applied work into independently validated, citable releases and manuscripts with reproducible evidence and transparent correction.",
   "depends_on": [
     "repository_template_adoption_20260718",
