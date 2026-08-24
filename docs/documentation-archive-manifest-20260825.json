@@ -1,0 +1,46 @@
+{
+  "manifest_id": "urn:riopa:documentation-archive:2026-08-25",
+  "status": "repository-archive-candidate",
+  "scope": "bounded regional public-datasets-only technical preview",
+  "python": "3.14",
+  "artifacts": [
+    {
+      "path": "docs/usage-guides-20260825.md",
+      "sha256": "759c227a049f6ed3ca80055c7b4bcf7cc40fbf5a0926bf1e4ed941bd5a89f846"
+    },
+    {
+      "path": "docs/reference-index-20260825.json",
+      "sha256": "0e6eefb2c5cfd22d820ab4bee2655d96600e2a9ea52497fc2faaddc91cadf78a"
+    },
+    {
+      "path": "docs/bounded-lineage-tutorial-20260825.md",
+      "sha256": "f770d277bef5f6e13b450590796d2e0c6628c3d75c710705152df90510d13028"
+    },
+    {
+      "path": "docs/documentation-contract-20260824.json",
+      "sha256": "8284be981f301f2345d8b734d0d39f394eece3abb9babcebaa0049480f7fae7c"
+    },
+    {
+      "path": "docs/documentation-support-readiness-20260825.json",
+      "sha256": "f794ef6a284aceb2b03cdbf4a9ff991f00c9480717765551e16c5f3b63626b67"
+    },
+    {
+      "path": "docs/single-developer-agent-panel-review-policy.md",
+      "sha256": "875399e78777a2b4c0b93ada1fdd52b016b26d06e642b1d1e271bee27527ace9"
+    },
+    {
+      "path": "docs/operations-and-support.md",
+      "sha256": "436eff9f852f6d017384ab2d636143174e35995180221289584d9349673ffd9e"
+    }
+  ],
+  "publication": {
+    "status": "not-published",
+    "persistent_identifier": null,
+    "requires_owner_decision": true
+  },
+  "nonclaims": [
+    "This candidate is not a release-candidate or stable-v1 documentation archive.",
+    "A manifest and local hashes do not prove external usability, publication or preservation acceptance.",
+    "External user/operator evidence and accountable release authority remain required."
+  ]
+}

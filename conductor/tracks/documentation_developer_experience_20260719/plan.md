@@ -22,7 +22,7 @@
 
 - [ ] 4.1 Execute every tutorial against release-candidate artifacts.
 - [x] 4.2 Freeze the preview support channels, triage, single-developer ownership and sustainability bounds (`docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py`). Stable support, external participation, RC soak and authority gates remain open.
-- [ ] 4.3 Publish versioned v1 documentation and archival copies.
+- [~] 4.3 Build a content-addressed versioned documentation archive candidate. The manifest is unpublished and explicitly not RC/stable evidence; external usability, preservation acceptance, publication and authority remain open (`scripts/build_documentation_archive_manifest.py`, `docs/documentation-archive-manifest-20260825.json`, `tests/test_documentation_archive_manifest.py`).
 
 ## Track closeout
 
