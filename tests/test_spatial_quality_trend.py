@@ -3,6 +3,7 @@ import pytest
 from riopa_provenance.spatial_quality_trend import (
     SpatialQualityTrendError,
     build_spatial_quality_trend,
+    classify_change_attribution,
 )
 
 
@@ -42,3 +43,20 @@ def test_trend_accepts_changes_within_tolerance() -> None:
 def test_trend_fails_closed_on_metric_mismatch() -> None:
     with pytest.raises(SpatialQualityTrendError, match="metric sets differ"):
         build_spatial_quality_trend(_report("a", 1, 0), {"metrics": []})
+
+
+def test_change_attribution_is_declared_and_ambiguous_by_default() -> None:
+    baseline = {
+        "source_revision": "source-a",
+        "transformation_revision": "transform-a",
+        "schema_revision": "schema-a",
+        "boundary_revision": "boundary-a",
+    }
+    candidate = {**baseline, "transformation_revision": "transform-b"}
+    result = classify_change_attribution(baseline, candidate)
+    assert result["status"] == "single-declared-cause"
+    assert result["candidate_cause"] == "transformation"
+    ambiguous = classify_change_attribution(baseline, {**candidate, "source_revision": "source-b"})
+    assert ambiguous["status"] == "multiple-possible-causes"
+    assert ambiguous["candidate_cause"] is None
+    assert ambiguous["promotion_allowed"] is False

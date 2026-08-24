@@ -9,7 +9,7 @@
 ## 2. Temporal and change engine
 
 - [x] 2.1 Implement explicit valid-time, recorded-time and `as_known_at` selection with fail-closed transition validation (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/spatial-temporal-query-contract-20260825.json`, `tests/test_spatial_temporal_query_contract.py`). Real authority histories, late evidence, external semantics and publication gates remain open.
-- [ ] 2.2 Distinguish source, transformation, schema and boundary-induced changes.
+- [~] 2.2 Distinguish source, transformation, schema and boundary-induced changes using declared revision axes; multiple or missing axes remain ambiguous/insufficient (`src/riopa_provenance/spatial_quality_trend.py`, `tests/test_spatial_quality_trend.py`, `docs/spatial-quality-change-attribution-contract-20260825.json`). Real release-to-release attribution remains open.
 - [ ] 2.3 Test late evidence, correction, supersession and historical gaps.
 
 ## 3. Concordance and uncertainty

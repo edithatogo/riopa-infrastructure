@@ -9,6 +9,36 @@ class SpatialQualityTrendError(ValueError):
     """Raised when a quality trend cannot be compared safely."""
 
 
+def classify_change_attribution(
+    baseline: Mapping[str, Any], candidate: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Classify declared revision changes without inferring undocumented causes."""
+
+    axes = ("source_revision", "transformation_revision", "schema_revision", "boundary_revision")
+    changed = [axis for axis in axes if baseline.get(axis) != candidate.get(axis)]
+    missing = [axis for axis in axes if axis not in baseline or axis not in candidate]
+    if len(changed) == 1:
+        attribution = changed[0].removesuffix("_revision")
+        status = "single-declared-cause"
+    elif len(changed) > 1:
+        attribution = None
+        status = "multiple-possible-causes"
+    else:
+        attribution = None
+        status = "no-declared-change" if not missing else "insufficient-declarations"
+    return {
+        "status": status,
+        "candidate_cause": attribution,
+        "changed_axes": changed,
+        "missing_axes": missing,
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Declared revision differences do not prove causal provenance.",
+            "A missing revision axis is not evidence that the corresponding layer did not change.",
+        ],
+    }
+
+
 def build_spatial_quality_trend(
     baseline: Mapping[str, Any],
     candidate: Mapping[str, Any],
