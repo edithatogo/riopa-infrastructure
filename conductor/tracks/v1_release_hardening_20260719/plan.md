@@ -8,7 +8,7 @@
 
 ## 2. Audit and rehearsal
 
-- [ ] 2.1 Complete security, performance, accessibility, governance and documentation audits.
+- [~] 2.1 Complete the repository-owned security, performance, accessibility, governance and documentation audit slice. The machine-readable audit matrix is complete for bounded technical-preview evidence; external participant, elapsed, national-scale, preservation and accountable-authority gates remain open (`docs/v1-repository-audit-matrix-20260825.json`, `tests/test_v1_audit_matrix.py`).
 - [ ] 2.2 Rehearse upgrade, migration, rollback, restore, correction and withdrawal.
 - [ ] 2.3 Resolve P0/P1 defects and approve bounded P2 exceptions.
 
