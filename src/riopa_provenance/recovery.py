@@ -10,9 +10,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import shutil
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -31,6 +34,56 @@ class RecoveryEvidence:
             "digest": self.digest,
             "status": self.status,
         }
+
+
+_DIGEST = re.compile(r"^[0-9a-f]{64}$")
+_EXERCISE_STATUSES = frozenset({"planned", "executed-local", "executed-hosted", "failed"})
+
+
+def validate_exercise_report(report: Mapping[str, Any] | None) -> tuple[str, ...]:
+    """Validate a digest-bound restore/DR report without asserting its outcome.
+
+    ``executed-local`` and ``executed-hosted`` are evidence classifications,
+    not production qualification.  The validator therefore requires explicit
+    scope, hashes, timestamps and RPO/RTO fields while preserving failed runs.
+    """
+
+    if not isinstance(report, Mapping):
+        return ("exercise report must be an object",)
+    errors: list[str] = []
+    required = ("exercise_id", "operation", "status", "source_revision", "started_at", "ended_at")
+    for field in required:
+        if not isinstance(report.get(field), str) or not str(report[field]).strip():
+            errors.append(f"{field} is required")
+    if report.get("operation") not in {"restore", "rollback", "correction", "withdrawal"}:
+        errors.append("operation is unsupported")
+    if report.get("status") not in _EXERCISE_STATUSES:
+        errors.append("status is unsupported")
+    for field in ("recovery_point_sha256", "restored_object_sha256", "raw_log_sha256"):
+        value = report.get(field)
+        if not isinstance(value, str) or not _DIGEST.fullmatch(value):
+            errors.append(f"{field} must be a lowercase SHA-256 digest")
+    timings = report.get("timings")
+    if not isinstance(timings, Mapping):
+        errors.append("timings are required")
+    else:
+        for field in ("rpo_seconds", "rto_seconds"):
+            value = timings.get(field)
+            if not isinstance(value, (int, float)) or value < 0:
+                errors.append(f"timings.{field} must be non-negative")
+    scope = report.get("scope")
+    invalid_scope = (
+        not isinstance(scope, list)
+        or not scope
+        or any(not isinstance(item, str) or not item for item in scope)
+    )
+    if invalid_scope:
+        errors.append("scope must be a non-empty string array")
+    if report.get("status") == "failed" and not isinstance(report.get("failure_reason"), str):
+        errors.append("failed exercises require failure_reason")
+    if report.get("status") == "executed-hosted" and report.get("hosted_run_id") in (None, ""):
+        errors.append("hosted exercises require hosted_run_id")
+    return tuple(dict.fromkeys(errors))
 
 
 def _digest_tree(root: Path) -> str:
