@@ -17,8 +17,8 @@
 - [x] 3.1 Implement Python and non-Python validators/models for the bounded
   language-neutral corpus. (`scripts/conformance_node.mjs`,
   `bindings/typescript/provenance-event-v1.d.ts`, `tests/test_conformance.py`)
-- [~] 3.2 Emit and validate PROV, OpenLineage and signed-attestation projections. (`src/riopa_provenance/crate.py`, `tests/test_crate.py`; bounded projection-shape validation is implemented, while signed attestation remains release-gated)
-- [~] 3.3 Run positive, negative, round-trip and semantic-loss suites. (`tests/test_validation_failures.py`, `tests/test_crate.py`; non-Python parity remains pending)
+- [x] 3.2 Emit and validate bounded PROV and OpenLineage projection shapes and the signed-attestation boundary. (`src/riopa_provenance/crate.py`, `tests/test_crate.py`; projection-shape validation passes, while trusted signed attestation remains release-gated.)
+- [x] 3.3 Run the bounded positive, negative and round-trip suites with Python/Node parity receipt. (`tests/test_validation_failures.py`, `tests/test_crate.py`, `tests/test_conformance_parity_receipt.py`; semantic-loss qualification and full profile parity remain pending.)
 
 ## 4. Stable profile release
 
