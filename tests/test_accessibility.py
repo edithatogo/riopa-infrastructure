@@ -11,6 +11,7 @@ from riopa_provenance.accessibility import (
     cumulative_opportunity,
     gravity_accessibility,
     public_facility_opportunities,
+    straight_line_matrix,
     two_step_floating_catchment,
     validate_scenario_contract,
 )
@@ -43,6 +44,33 @@ def test_hand_calculated_accessibility_benchmark() -> None:
     assert two_step_floating_catchment(
         matrix, {"a": 100, "b": 50}, {"x": 30, "y": 40}, threshold=10
     ) == {"a": 0.2, "b": 0.2}
+
+
+def test_straight_line_matrix_is_deterministic_and_bounded() -> None:
+    matrix = straight_line_matrix(
+        "coordinates-1",
+        {"origin": (0.0, 0.0), "destination": (0.0, 1.0)},
+        ("origin",),
+        ("destination",),
+    )
+    assert matrix.mode == "straight-line"
+    assert matrix.network_version == "reference:coordinate-snapshot"
+    assert matrix.reachable_impedance("origin", "destination") == pytest.approx(111.195, rel=1e-3)
+
+
+@pytest.mark.parametrize(
+    "coordinates",
+    [
+        {"origin": (91.0, 0.0), "destination": (0.0, 0.0)},
+        {"origin": (0.0, 181.0), "destination": (0.0, 0.0)},
+        {"origin": (0.0, 0.0)},
+    ],
+)
+def test_straight_line_matrix_fails_closed_on_coordinate_errors(
+    coordinates: dict[str, tuple[float, float]],
+) -> None:
+    with pytest.raises(ValueError):
+        straight_line_matrix("coordinates-1", coordinates, ("origin",), ("destination",))
 
 
 def test_public_facility_snapshot_becomes_unit_opportunities_only() -> None:
