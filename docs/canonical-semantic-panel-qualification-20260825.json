@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.canonical-semantic-panel-qualification.v1",
+  "packet_id": "canonical-semantic-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "scope": "repository-owned canonical schemas, ontology descriptors and golden fixtures",
+  "lenses": [
+    {"id": "governance", "finding": "identity, adjudication, review and source-assertion boundaries are explicit", "disposition": "repository-evidence-qualified"},
+    {"id": "api-schema", "finding": "JSON schemas, JSON-LD context, generated TypeScript declarations and golden fixtures are linked", "disposition": "repository-evidence-qualified"},
+    {"id": "data-governance", "finding": "extensions and unresolved semantic collisions remain visible rather than silently normalised", "disposition": "repository-evidence-qualified"},
+    {"id": "external-workflow", "finding": "Python/Node parity is bounded; SHACL and external-client semantic qualification are absent", "disposition": "open"}
+  ],
+  "open_gates": ["qualifying SHACL engine/report", "ontology publication identifier", "migration compatibility execution", "domain-owner or external-client qualification", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": ["This agent-panel packet is not SHACL conformance, ontology publication, domain-owner approval or standards certification.", "Panel agreement cannot create a publication identifier or external semantic evidence."]
+}

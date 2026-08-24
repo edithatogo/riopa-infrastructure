@@ -15,7 +15,8 @@
     "urn:riopa:evidence:canonical-domain-inventory:2026-08-01",
     "urn:riopa:evidence:canonical-typescript-binding:2026-08-21",
     "urn:riopa:evidence:canonical-extension-policy:2026-08-25",
-    "urn:riopa:evidence:canonical-bounded-shacl-contract:2026-08-24"
+    "urn:riopa:evidence:canonical-bounded-shacl-contract:2026-08-24",
+    "urn:riopa:evidence:canonical-semantic-panel:2026-08-25"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
