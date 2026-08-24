@@ -57,3 +57,13 @@ def test_workflows_declare_fail_closed_least_privilege_permissions() -> None:
                 assert value in allowed, (
                     f"unexpected job permission {scope}:{value} in {path}:{job_name}"
                 )
+
+
+def test_security_plan_closes_bounded_contracts_without_claiming_execution() -> None:
+    plan = Path("conductor/tracks/security_supply_chain_20260719/plan.md").read_text()
+    assert "[x] 3.1 Emit DSSE/in-toto-compatible" in plan
+    assert "[x] 3.2 Define deterministic signing" in plan
+    assert "[x] 4.1 Define a digest-bound orchestrated" in plan
+    assert "[x] 4.2 Define and validate credential-compromise" in plan
+    assert "trusted signing and protected release execution remain pending" in plan
+    assert "factual panel execution and qualification remain pending" in plan
