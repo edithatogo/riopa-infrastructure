@@ -110,23 +110,27 @@ def classify_connector_readiness(registry: dict[str, Any]) -> dict[str, Any]:
             authentication = endpoint.get("authentication", {})
             if not isinstance(authentication, dict):
                 raise ValueError(f"authentication must be an object for {endpoint_id}")
-            if not endpoint.get("enabled", False):
+            auth_type = authentication.get("type")
+            if auth_type not in {"none", "api-key", "oauth2", "manual", "restricted"}:
+                status = "unresolved"
+            elif not endpoint.get("enabled", False):
                 status = "disabled"
-            elif authentication.get("type") in {"api-key", "oauth2", "manual", "restricted"}:
+            elif auth_type in {"api-key", "oauth2", "manual", "restricted"}:
                 status = "credential-or-operator-required"
             else:
                 status = "metadata-rehearsal-ready"
+            capabilities = endpoint.get("capabilities", [])
+            if not isinstance(capabilities, list) or any(
+                not isinstance(capability, str) for capability in capabilities
+            ):
+                raise ValueError(f"capabilities must be an array of strings for {endpoint_id}")
             endpoints.append(
                 {
                     "source_id": source_id,
                     "endpoint_id": endpoint_id,
                     "mechanism": mechanism,
                     "status": status,
-                    "capabilities": sorted(
-                        capability
-                        for capability in endpoint.get("capabilities", [])
-                        if isinstance(capability, str)
-                    ),
+                    "capabilities": sorted(capabilities),
                 }
             )
     return {

@@ -18,3 +18,25 @@ def test_pilot_registry_readiness_is_declared_and_fail_closed() -> None:
 def test_readiness_rejects_malformed_endpoint() -> None:
     with pytest.raises(ValueError, match="endpoint_id"):
         classify_connector_readiness({"sources": [{"source_id": "source", "endpoints": [{}]}]})
+
+
+def test_readiness_does_not_promote_unknown_authentication() -> None:
+    report = classify_connector_readiness(
+        {
+            "registry_id": "registry",
+            "sources": [
+                {
+                    "source_id": "source",
+                    "endpoints": [
+                        {
+                            "endpoint_id": "endpoint",
+                            "mechanism": "wfs",
+                            "enabled": True,
+                            "authentication": {"type": "future-auth"},
+                        }
+                    ],
+                }
+            ],
+        }
+    )
+    assert report["endpoints"][0]["status"] == "unresolved"
