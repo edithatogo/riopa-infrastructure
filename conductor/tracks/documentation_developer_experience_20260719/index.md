@@ -22,6 +22,7 @@
 | `DOCS-INVENTORY-SAFETY-20260825` | Audience/workflow inventory, normative map, tutorial controls and bounded safety review | `docs/documentation-information-architecture-20260824.md`, `docs/documentation-contract-20260824.json`, `docs/documentation-inventory-and-safety-review-20260825.json`, `tests/test_documentation_inventory_review.py` | Repository-owned documentation baseline is qualified for bounded scope; external user/operator, release-candidate and authority gates remain open |
 | `DOCUMENTATION-USAGE-GUIDES-20260825` | User, operator, contributor, maintainer and migration handoff is explicit and scope-bounded | `docs/usage-guides-20260825.md`, `tests/test_usage_guides.py` | Repository-owned guide contract passes; external usability, RC execution and publication remain open |
 | `DOCUMENTATION-REFERENCE-INDEX-20260825` | API, CLI, schema and ontology surfaces are versioned and discoverable | `docs/reference-index-20260825.json`, `tests/test_reference_index.py` | Deterministic repository reference index passes; external usability and publication remain open |
+| `DOCUMENTATION-TUTORIAL-20260825` | Public/synthetic end-to-end tutorial includes positive and fail-closed troubleshooting paths | `docs/bounded-lineage-tutorial-20260825.md`, `scripts/run_bounded_lineage_tutorial.py`, `tests/test_bounded_lineage_tutorial.py` | Offline synthetic rehearsal passes; external usability, RC execution and publication remain open |
 
 ## Blocking defects
 
