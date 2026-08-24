@@ -1,0 +1,17 @@
+{
+  "evidence_id": "PLANNING-IDENTITY-LINKAGE-20260824",
+  "status": "bounded-contract-only",
+  "implementation": "riopa_provenance.planning",
+  "identities": ["plan-version", "provision", "planning-link"],
+  "controls": [
+    "plan versions retain source anchors and explicit legal-status values",
+    "provisions retain chapter, citation and source-text references",
+    "links retain confidence, uncertainty, review status and evidence references",
+    "promotion is disabled until separate authority and review evidence exists"
+  ],
+  "nonclaims": [
+    "The contract does not interpret law or establish operative authority.",
+    "Synthetic fixtures do not establish council completeness or current legal status.",
+    "No planning geometry or live document endpoint is contacted by these tests."
+  ]
+}
