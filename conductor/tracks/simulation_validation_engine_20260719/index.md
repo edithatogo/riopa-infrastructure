@@ -21,11 +21,12 @@
 | `SIMULATION-CONTRACT-20260822` | Event/queue protocol, seeded replication, warm-up/convergence semantics and deterministic fixtures | `src/riopa_provenance/analysis.py`, `schemas/analysis-protocol.schema.json`, `examples/wp010-synthetic-benchmark/`, `tests/test_analysis.py` | Repository-owned synthetic contract and fixtures pass; domain adapters, calibration, independent comparison and operational qualification remain open |
 | `SIMULATION-DISPATCH-ADAPTER-20260825` | Synthetic dispatch, backup, relocation and handover adapter contract | `src/riopa_provenance/analysis.py:DispatchScenario`, `src/riopa_provenance/analysis.py:evaluate_dispatch_scenario`, `tests/test_analysis.py` | Deterministic contract passes; no live dispatch, clinical suitability, response guarantee or operational authority is claimed |
 | `SIMULATION-FCFS-ENGINE-CLOSEOUT-20260825` | Bounded generic discrete-event FCFS engine emits ordered events, wait metrics and utilisation | `src/riopa_provenance/analysis.py::simulate_fcfs_queue`, `tests/test_analysis.py` | Bounded synthetic execution is tested; dispatch, hospital/service adapters, empirical calibration and operational claims remain disabled |
+| `SIMULATION-CAPACITY-RESILIENCE-20260825` | Synthetic primary/backup capacity, unmet demand and reserve-gap calculation is deterministic and fail-closed | `src/riopa_provenance/capacity_models.py::evaluate_capacity_resilience`, `tests/test_capacity_models.py` | Bounded service-capacity example passes; no hospital, clinical, dispatch, national-scale or operational claim is made |
 
 ## Blocking defects
 
-- Domain simulation adapters, empirical calibration/validation, independent
-  benchmark comparison and performance qualification remain open.
+- Empirical calibration/validation, independent benchmark comparison and
+  performance qualification remain open.
 
 ## Decisions, exceptions and limitations
 

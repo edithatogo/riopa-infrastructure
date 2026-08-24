@@ -101,3 +101,53 @@ def classify_bottlenecks(observation: Mapping[str, Any] | None) -> dict[str, Any
         "non_assertive": True,
         "source": "bounded-observation",
     }
+
+
+def evaluate_capacity_resilience(
+    *,
+    demand_units: int,
+    primary_capacity: int,
+    backup_capacity: int,
+    primary_available: bool = True,
+    backup_available: bool = True,
+    reserve_target: int = 0,
+) -> dict[str, int | bool | str]:
+    """Evaluate a bounded synthetic primary/backup capacity scenario.
+
+    This deterministic reference calculation is for service-capacity and
+    resilience examples only. It is not a hospital, clinical, dispatch,
+    national-scale, or operational-readiness model.
+    """
+
+    integer_values = {
+        "demand_units": demand_units,
+        "primary_capacity": primary_capacity,
+        "backup_capacity": backup_capacity,
+        "reserve_target": reserve_target,
+    }
+    for name, value in integer_values.items():
+        if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+            raise CapacityModelError(f"{name} must be a non-negative integer")
+    if not isinstance(primary_available, bool) or not isinstance(backup_available, bool):
+        raise CapacityModelError("availability flags must be booleans")
+
+    available_primary = primary_capacity if primary_available else 0
+    available_backup = backup_capacity if backup_available else 0
+    available_capacity = available_primary + available_backup
+    served_units = min(demand_units, available_capacity)
+    unmet_units = demand_units - served_units
+    reserve_after_service = available_capacity - served_units
+    reserve_gap = max(0, reserve_target - reserve_after_service)
+    return {
+        "demand_units": demand_units,
+        "available_primary": available_primary,
+        "available_backup": available_backup,
+        "available_capacity": available_capacity,
+        "served_units": served_units,
+        "unmet_units": unmet_units,
+        "reserve_after_service": reserve_after_service,
+        "reserve_gap": reserve_gap,
+        "fail_closed": unmet_units > 0 or reserve_gap > 0,
+        "non_assertive": True,
+        "source": "bounded-synthetic-capacity",
+    }

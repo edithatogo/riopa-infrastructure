@@ -10,7 +10,7 @@
 
 - [x] 2.1 Implement the bounded generic discrete-event FCFS execution and metrics reference. (`src/riopa_provenance/analysis.py::simulate_fcfs_queue`, `tests/test_analysis.py`; dispatch, clinical/service adapters and operational qualification remain open.)
 - [x] 2.2 Add dispatch, backup coverage, dynamic relocation and handover adapters. Evidence: `DispatchScenario` and `evaluate_dispatch_scenario` in `src/riopa_provenance/analysis.py` with deterministic synthetic tests; live dispatch, clinical, operational and authority gates remain open.
-- [ ] 2.3 Add hospital/service capacity and resilience examples.
+- [x] 2.3 Add a bounded synthetic service-capacity resilience example. (`src/riopa_provenance/capacity_models.py::evaluate_capacity_resilience`, `tests/test_capacity_models.py`; no hospital, clinical, dispatch, national-scale or operational claim is made.)
 
 ## 3. Calibration and validation
 
