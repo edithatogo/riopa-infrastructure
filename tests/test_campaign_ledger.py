@@ -130,3 +130,15 @@ def test_rc_revision_change_resets_segment(tmp_path: Path) -> None:
     )
     ledger = build_ledger([first, second])
     assert len(ledger["segments"]) == 2
+
+
+def test_identical_restored_receipts_count_once(tmp_path: Path) -> None:
+    original = _receipt(
+        tmp_path / "original.json", lane="rc-soak-observation", candidate_revision="a" * 40
+    )
+    duplicate = tmp_path / "duplicate.json"
+    duplicate.write_bytes(original.read_bytes())
+    ledger = build_ledger([original, duplicate])
+    assert len(ledger["observations"]) == 1
+    assert ledger["active_segment"]["observation_count"] == 1
+    assert ledger["duplicate_receipt_count"] == 1
