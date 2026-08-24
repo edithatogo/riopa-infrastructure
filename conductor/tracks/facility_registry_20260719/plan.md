@@ -54,7 +54,7 @@ promote a source to authoritative status without a documented panel disposition.
 - [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.
 - [ ] G.2 Geometry-bearing or explicitly attribute-only disposition for the Hamilton packet.
 - [ ] G.3 A second public health source family with an immutable archive receipt.
-- [ ] G.4 Stable registry projection, source-disagreement and coverage reports.
+- [x] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.
 - [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.
 
 ## Historical hosted merge-policy blocker (resolved 2026-08-03)
