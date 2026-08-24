@@ -4,7 +4,8 @@ from pathlib import Path
 
 def test_meshblock_quality_report_is_bound_to_immutable_projection() -> None:
     root = Path(__file__).resolve().parents[1]
-    report = json.loads((root / "docs/stats-nz-meshblock-projection-quality-report-20260825.json").read_text())
+    report_path = root / "docs/stats-nz-meshblock-projection-quality-report-20260825.json"
+    report = json.loads(report_path.read_text())
     manifest = json.loads(
         (root / "evidence/stats-nz-meshblock-2026-projection/records-manifest.json").read_text()
     )
