@@ -29,6 +29,7 @@
 - [x] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)
 - [x] 4.6 Isolate scheduled, replay and exact-RC campaign runs by campaign, lane and candidate revision so unrelated runs cannot cancel one another. (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`)
 - [x] 4.7 Deduplicate identical receipt bytes restored under multiple artifact paths before calculating elapsed or cycle counts. (`scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py`)
+- [x] 4.8 Validate the checked-in campaign status snapshot for unique runs, exact RC binding and latest receipt revision before release readiness checks. (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `scripts/ci_quality.sh`)
 - [x] 4.5 Bind RC-soak execution to the supplied exact candidate revision so later documentation commits do not silently change the candidate. (`.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_campaign_v2.py`; the 30-day duration remains pending.)
 
 ## Review fixes
