@@ -36,6 +36,7 @@
 | `PUB-VALIDATOR-SELECTION-CONTRACT-20260825` | Agent-panel lenses, execution environments and analyst-independence criteria | `docs/publication-validator-selection-contract-20260825.json`, `tests/test_publication_validator_selection.py` | Selection contract passes; factual participant, preservation, publication and authority gates remain open |
 | `PUB-VALIDATION-PACKET-20260825` | DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence | `docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py` | Preparation packet is not a DOI or preservation receipt; protected attestations, accepted deposit, participant, elapsed and authority gates remain open |
 | `PUB-VERSION-COORDINATION-20260825` | Software, schema, ontology, bounded data, model applicability and research-object versions are coordinated explicitly | `docs/publication-version-coordination-20260825.json`, `tests/test_publication_version_coordination.py` | Candidate manifest validates; release revision, protected attestations, preservation, participant, elapsed and authority gates remain open |
+| `PUB-WORKFLOW-VERIFICATION-20260825` | Discovery, install, query, reproduce and cite paths are verified against repository-owned synthetic fixtures | `docs/publication-workflow-verification-20260825.json`, `tests/test_publication_workflow_verification.py` | Bounded local verification passes; external reproduction, publication, preservation, elapsed and authority gates remain open |
 
 ## Blocking defects
 

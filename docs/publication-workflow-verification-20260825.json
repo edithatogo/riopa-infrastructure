@@ -1,0 +1,18 @@
+{
+  "schema": "riopa.publication-workflow-verification.v1",
+  "packet_id": "urn:riopa:publication-workflow-verification:2026-08-25",
+  "status": "bounded-local-verification",
+  "scope": "synthetic-public-preview",
+  "workflows": [
+    {"name": "discover", "command": ["test", "-f", "docs/reference-index-20260825.json"], "evidence": "docs/reference-index-20260825.json", "result": "pass"},
+    {"name": "install", "command": ["uv", "sync", "--extra", "dev"], "evidence": "uv.lock", "result": "pass"},
+    {"name": "query", "command": ["uv", "run", "python", "scripts/run_bounded_lineage_tutorial.py"], "evidence": "docs/bounded-lineage-tutorial-20260825.md", "result": "pass"},
+    {"name": "reproduce", "command": ["uv", "run", "pytest", "tests/test_bounded_lineage_tutorial.py", "tests/test_wp010_benchmark.py", "-q"], "evidence": "examples/wp010-synthetic-benchmark", "result": "pass"},
+    {"name": "cite", "command": ["test", "-f", "docs/publication-validation-packet-20260825.json"], "evidence": "docs/publication-validation-packet-20260825.json", "result": "pass"}
+  ],
+  "controls": ["Python 3.14 only", "offline synthetic/public fixtures", "no credentials or live payloads", "non-operational scope"],
+  "nonclaims": [
+    "This verifies repository-owned local workflows and is not external reproduction.",
+    "It is not a DOI, publication, preservation receipt, beta/RC qualification or release-authority decision."
+  ]
+}

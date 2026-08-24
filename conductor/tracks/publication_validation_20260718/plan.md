@@ -10,7 +10,7 @@
 
 - [x] 2.1 Coordinate immutable software, schema, ontology, data, model and research-object versions. (`docs/publication-version-coordination-20260825.json`, `tests/test_publication_version_coordination.py`; candidate coordination only, publication gates remain open)
 - [~] 2.2 Prepare DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence. The packet links repository contracts and exact build inputs; protected attestations, accepted deposit/restore, participant evidence and authority remain open (`docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py`).
-- [ ] 2.3 Verify discovery, install, query, reproduce and cite workflows.
+- [x] 2.3 Verify discovery, install, query, reproduce and cite workflows. (`docs/publication-workflow-verification-20260825.json`, `tests/test_publication_workflow_verification.py`; bounded local synthetic verification only)
 
 ## 3. Agent reproduction
 
