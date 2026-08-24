@@ -11,6 +11,7 @@ from riopa_provenance.canonical import (
     validate_bounded_shacl_constraints,
     validate_conformance_corpus,
     validate_conformance_manifest,
+    validate_migration_fixture,
 )
 from riopa_provenance.hashing import sha256_json
 
@@ -155,3 +156,20 @@ def test_bounded_shacl_constraints_reject_string_datatype_drift() -> None:
     assert "SHACL string datatype is missing for mappingId" in validate_bounded_shacl_constraints(
         shape, record
     )
+
+
+def test_provenance_profile_compatibility_matrix_is_bound_to_migration_fixture() -> None:
+    root = Path(__file__).resolve().parents[1]
+    matrix = json.loads(
+        (root / "docs/provenance-profile-compatibility-matrix-20260825.json").read_text()
+    )
+    migration = json.loads(
+        (root / "docs/provenance-profile-migration-1.0.0-to-1.1.0.json").read_text()
+    )
+    assert matrix["status"] == "bounded-draft"
+    assert matrix["source_version"] == migration["from_version"]
+    assert matrix["target_version"] == migration["to_version"]
+    assert validate_migration_fixture(migration) == ()
+    assert {entry["path"] for entry in matrix["entries"]} == {
+        change["path"] for change in migration["changes"]
+    }

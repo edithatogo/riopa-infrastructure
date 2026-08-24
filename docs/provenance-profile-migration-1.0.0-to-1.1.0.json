@@ -1,0 +1,12 @@
+{
+  "migration_id": "urn:riopa:migration:provenance-profile:1.0.0-to-1.1.0",
+  "from_version": "1.0.0",
+  "to_version": "1.1.0",
+  "compatibility": "backward-compatible",
+  "automated": true,
+  "notes": "Bounded fixture for optional provenance facets; stable publication and signed release remain gated.",
+  "changes": [
+    {"path": "/facets/quality", "kind": "additive-optional", "rule": "Permit an optional quality-evidence projection facet."},
+    {"path": "/facets/source_rights", "kind": "additive-optional", "rule": "Permit an optional source-rights projection facet."}
+  ]
+}

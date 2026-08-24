@@ -1,0 +1,15 @@
+{
+  "matrix_id": "urn:riopa:provenance-profile:compatibility:2026-08-25",
+  "profile": "riopa-provenance",
+  "status": "bounded-draft",
+  "source_version": "1.0.0",
+  "target_version": "1.1.0",
+  "compatibility": "backward-compatible",
+  "migration_fixture": "docs/provenance-profile-migration-1.0.0-to-1.1.0.json",
+  "entries": [
+    {"path": "/facets/quality", "change": "additive-optional", "old_behavior": "field may be absent", "new_behavior": "field may contain a quality-evidence facet", "automated": true, "semantic_loss": "none"},
+    {"path": "/facets/source_rights", "change": "additive-optional", "old_behavior": "rights are carried by the source record", "new_behavior": "event may reference a source-rights facet", "automated": true, "semantic_loss": "none"}
+  ],
+  "release_boundary": "This draft is a repository-owned compatibility contract. It is not a stable profile, publication identifier, signed attestation or independent qualification.",
+  "external_gates": ["non-python round-trip", "projection semantic-loss panel qualification", "persistent publication identifier", "signed release attestation", "accountable release-authority decision"]
+}

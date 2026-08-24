@@ -22,6 +22,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `PROVENANCE-CONTRACT-20260801` | Canonical event, retry, lineage and projection contracts | `schemas/provenance-event.schema.json`, `src/riopa_provenance/validation.py`, `src/riopa_provenance/crate.py`, tests | Python validation and projections pass; non-Python and signed-attestation evidence remains pending |
 | `PROVENANCE-CONFORMANCE-20260801` | Bounded conformance status and explicit external-gate boundary | `docs/provenance-profile-conformance-manifest-1.0.0.json`, `tests/test_validation_failures.py` | Python positive/negative suites pass; non-Python parity and signed attestation remain not-run |
 | `PROVENANCE-NONPYTHON-MODEL-20260822` | Bounded non-Python validator/model parity surface | `scripts/conformance_node.mjs`, `bindings/typescript/provenance-event-v1.d.ts`, `tests/test_conformance.py` | Node and Python agree on the language-neutral corpus; full profile parity, independent qualification and signed attestation remain open |
+| `PROVENANCE-COMPATIBILITY-DRAFT-20260825` | Versioned compatibility matrix and executable migration fixture | `docs/provenance-profile-compatibility-matrix-20260825.json`, `docs/provenance-profile-migration-1.0.0-to-1.1.0.json`, `tests/test_conformance.py` | Additive bounded migration is validated; publication identifier, stable profile, signed attestation and independent qualification remain open |
 | `PROVENANCE-PROJECTION-SHAPES-20260824` | Fail-closed shape validation for generated PROV and OpenLineage projections | `src/riopa_provenance/crate.py:validate_provenance_projections`, `tests/test_crate.py` | Bounded projection envelopes and duplicate-entity handling pass; standards semantic qualification and signed attestation remain open |
 
 ## Repository-owned closeout slice (2026-08-24)
@@ -40,6 +41,14 @@ qualification remain open.
 - PROV/OpenLineage semantic-loss agent-panel qualification.
 - Stable profile publication identifier, migration/deprecation release evidence.
 - Signed v1 attestation and orchestrated agent-panel qualification.
+
+## Repository-owned implementation slice (2026-08-25)
+
+The compatibility matrix and migration fixture define an additive, optional
+facet change from profile 1.0.0 to 1.1.0 and are validated by the Python
+contract suite. They are a bounded draft only: they do not claim a published
+profile, non-Python round-trip, semantic-loss qualification, signed attestation
+or release-authority approval.
 
 ## Decisions, exceptions and limitations
 
