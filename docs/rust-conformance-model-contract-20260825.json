@@ -1,0 +1,22 @@
+{
+  "schema": "riopa.rust-conformance-model-contract.v1",
+  "status": "bounded-typed-model",
+  "implementation": "rust/riopa-conformance/src/lib.rs",
+  "validation": "cargo test --manifest-path rust/riopa-conformance/Cargo.toml --locked",
+  "controls": [
+    "empty identity fields fail validation",
+    "unknown confidence requires evidence",
+    "migration cases require source, target and migration fields"
+  ],
+  "open_gates": [
+    "JSON corpus parsing and RFC 8785 parity",
+    "Rust/Python cross-language corpus equivalence",
+    "independent producer/consumer interoperability",
+    "signed release conformance"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This typed model is not an independent conformance certificate.",
+    "Agent-panel assessment cannot substitute for external producer/consumer evidence."
+  ]
+}
