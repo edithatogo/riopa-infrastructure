@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-upgrade-rehearsal-matrix:2026-08-25",
+  "status": "bounded-repository-rehearsal-complete-external-execution-pending",
+  "release": "1.0.0",
+  "scope": "bounded regional public-datasets-only non-operational technical preview",
+  "scenarios": [
+    {
+      "scenario": "upgrade",
+      "status": "bounded-contract",
+      "evidence": ["docs/v1-compatibility-diff-20260825.json", "docs/compatibility-support-policy.md"],
+      "open_gates": ["clean-room upgrade reproduction", "release-candidate validation"]
+    },
+    {
+      "scenario": "migration",
+      "status": "bounded-contract",
+      "evidence": ["docs/provenance-profile-migration-1.0.0-to-1.1.0.json", "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json"],
+      "open_gates": ["cross-language migration reproduction", "stable profile publication"]
+    },
+    {
+      "scenario": "rollback",
+      "status": "hosted-technical-preview-drill",
+      "evidence": ["docs/operations-dr-exercise-contract-20260824.json", "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32753525413"],
+      "open_gates": ["production-representative RPO/RTO", "independent target acceptance"]
+    },
+    {
+      "scenario": "restore",
+      "status": "hosted-technical-preview-drill",
+      "evidence": ["src/riopa_provenance/recovery.py", "tests/test_recovery.py", "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32753525413"],
+      "open_gates": ["provider-backed restore", "production disaster-recovery qualification"]
+    },
+    {
+      "scenario": "correction",
+      "status": "bounded-example",
+      "evidence": ["docs/publication-correction-package-20260803.json", "src/riopa_provenance/publication.py", "tests/test_publication.py"],
+      "open_gates": ["production downstream notification exercise", "preservation-service acceptance"]
+    },
+    {
+      "scenario": "withdrawal",
+      "status": "bounded-contract",
+      "evidence": ["docs/operations-recovery-successor-contract-20260824.json", "src/riopa_provenance/governance.py", "tests/test_operations_recovery_successor_contract.py"],
+      "open_gates": ["verified target reconciliation", "accountable release-authority decision"]
+    }
+  ],
+  "reset_conditions": ["qualifying interruption", "revision change", "failed restoration", "material scope or rights change"],
+  "non_claims": [
+    "Contract and technical-preview drills do not establish production recovery, external-user evidence or release readiness.",
+    "A correction example does not prove downstream notification acceptance.",
+    "Agent panels cannot substitute for factual participant, hosted-provider or accountable-authority evidence."
+  ]
+}
