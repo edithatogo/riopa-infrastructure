@@ -4,7 +4,7 @@
 
 - [x] 1.1 Define agent-panel conformance, clean-room and agent-user workflow protocols. Evidence: `docs/single-developer-agent-panel-review-policy.md`, `docs/independent-reproduction-protocol.md`, `docs/release-gate-evidence-matrix.md`, `tests/test_hosted_evidence.py`.
 - [x] 1.2 Define claim-to-evidence and exploratory/confirmatory classifications. (`docs/publication-claim-classification-contract-20260825.json`, `tests/test_publication_claim_classification.py`; publication, participant and authority gates remain open.)
-- [ ] 1.3 Select agent-panel validators, environments and analyst-independence criteria.
+- [x] 1.3 Select agent-panel validators, environments and analyst-independence criteria. (`docs/publication-validator-selection-contract-20260825.json`, `tests/test_publication_validator_selection.py`; factual participant and authority gates remain open.)
 
 ## 2. Release and citation packages
 
