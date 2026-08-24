@@ -26,6 +26,7 @@
 
 ## 5. Review fixes
 
+- [x] R.6 Correct strict MyPy narrowing in the release-signing manifest validator. Evidence: `src/riopa_provenance/release_signing.py`, focused and full quality validation.
 - [x] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)
 - [x] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)
 - [x] 5.3 Restore evidence-backed task states after review found that commit `7a61d9b` promoted the track without its required dependency or M2-M6 evidence. (`f6e0a1c`; review fix)

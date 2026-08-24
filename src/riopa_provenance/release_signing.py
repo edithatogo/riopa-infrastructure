@@ -90,6 +90,7 @@ def validate_release_signing_manifest(manifest: Mapping[str, Any] | None) -> tup
                 continue
             path = artifact.get("path")
             digest = artifact.get("sha256")
+            path_text = path if isinstance(path, str) else ""
             unsafe_path = (
                 not isinstance(path, str)
                 or not path
@@ -98,10 +99,10 @@ def validate_release_signing_manifest(manifest: Mapping[str, Any] | None) -> tup
             )
             if unsafe_path:
                 errors.append("artifact paths must be relative and traversal-free")
-            elif path in paths:
+            elif path_text in paths:
                 errors.append("artifact paths must be unique")
             else:
-                paths.append(path)
+                paths.append(path_text)
             if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
                 errors.append("each artifact requires a lowercase SHA-256 digest")
             if not isinstance(artifact.get("size"), int) or artifact["size"] < 0:
