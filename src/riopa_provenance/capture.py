@@ -26,7 +26,7 @@ import httpx
 from httpx._transports.base import BaseTransport
 
 from .hashing import sha256_bytes, sha256_json
-from .retry import CircuitBreaker, RetryDecision, RetryPolicy, decide_retry
+from .retry import CircuitBreaker, RateLimiter, RetryDecision, RetryPolicy, decide_retry
 
 
 class CaptureError(RuntimeError):
@@ -362,6 +362,8 @@ class HttpCaptureClient:
         user_agent: str = "riopa-provenance/0.2.1",
         metrics: CaptureMetrics | None = None,
         on_failure: Callable[[CaptureFailure], None] | None = None,
+        rate_limiter: RateLimiter | None = None,
+        sleep: Callable[[float], None] | None = None,
     ) -> None:
         self.client = client
         self.store = store
@@ -369,6 +371,8 @@ class HttpCaptureClient:
         self.user_agent = user_agent
         self.metrics = metrics or CaptureMetrics()
         self.on_failure = on_failure
+        self.rate_limiter = rate_limiter
+        self.sleep = sleep or (lambda _seconds: None)
 
     def _record_failure(
         self,
@@ -412,6 +416,8 @@ class HttpCaptureClient:
             raise
         self.metrics.attempts_total += 1
         started = self.store.clock().astimezone(UTC)
+        if self.rate_limiter is not None:
+            self.sleep(self.rate_limiter.acquire(now=started))
 
         try:
             with self.client.stream(
