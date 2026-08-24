@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "evidence_id": "urn:riopa:evidence:v1-normative-surface-inventory:2026-08-25",
-  "status": "repository-inventory-complete-compatibility-diff-open",
+  "status": "repository-inventory-and-compatibility-diff-complete",
   "release_candidate": "0.2.0",
   "runtime": {"python": ">=3.14,<3.15", "source_of_truth": ["pyproject.toml", "uv.lock"]},
   "schemas": [
@@ -63,12 +63,11 @@
     {"format": "SPDX/CycloneDX", "role": "software bill of materials"}
   ],
   "deferred_or_excluded": [
-    {"surface": "full compatibility diff", "reason": "separate task 1.2 requires a frozen predecessor comparison"},
+    {"surface": "full runtime behavioural compatibility", "reason": "the repository-owned surface diff does not qualify runtime behaviour"},
     {"surface": "national network, timetable and facility claims", "reason": "required archives and qualification evidence do not exist"},
     {"surface": "beta, RC and stable-v1 promotion", "reason": "90-day/three-cycle, 30-day RC soak, external workflows and accountable decision remain mandatory"}
   ],
   "open_findings": [
-    "compatibility diffs and unintended-breaking-change disposition are not complete",
     "external operator/user reproduction remains mandatory",
     "elapsed beta/RC evidence, preservation acceptance and release authority remain pending"
   ]
