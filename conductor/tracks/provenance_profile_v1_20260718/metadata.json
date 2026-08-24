@@ -18,6 +18,7 @@
     "urn:riopa:evidence:provenance-profile-nonpython-model:2026-08-22",
     "urn:riopa:evidence:provenance-profile-compatibility-draft:2026-08-25"
     ,"urn:riopa:evidence:provenance-profile-panel-qualification:2026-08-25"
+    ,"urn:riopa:evidence:provenance-profile-v1-candidate-freeze:2026-08-25"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
