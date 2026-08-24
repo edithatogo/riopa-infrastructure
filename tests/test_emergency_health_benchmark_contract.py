@@ -4,7 +4,8 @@ from pathlib import Path
 
 def test_emergency_health_contract_is_reference_only_and_fail_closed() -> None:
     root = Path(__file__).resolve().parents[1]
-    contract = json.loads((root / "docs/emergency-health-pilot-benchmark-contract-20260825.json").read_text())
+    contract_path = root / "docs/emergency-health-pilot-benchmark-contract-20260825.json"
+    contract = json.loads(contract_path.read_text())
     assert contract["status"] == "bounded-reference-only"
     assert contract["scope"] == "regional public-datasets-only technical preview"
     assert len(contract["scenarios"]) == 3
