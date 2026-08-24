@@ -28,6 +28,7 @@ _SHACL_FIELD_NAMES = {
     "reviewer": "reviewer",
     "evidence": "evidence",
 }
+_SHACL_STRING_PATHS = {"mappingId", "canonicalId", "method", "reviewer"}
 
 
 def _part(value: str) -> str:
@@ -232,6 +233,8 @@ def validate_bounded_shacl_constraints(
         if minimum < 1:
             errors.append(f"SHACL minCount must be positive for {path}")
             continue
+        if path in _SHACL_STRING_PATHS and not string_typed:
+            errors.append(f"SHACL string datatype is missing for {path}")
         value = record.get(field)
         if value is None or (isinstance(value, str) and not value.strip()):
             errors.append(f"missing required SHACL property: {field}")

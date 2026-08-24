@@ -137,3 +137,21 @@ def test_bounded_shacl_constraints_reject_incomplete_shape() -> None:
     errors = validate_bounded_shacl_constraints(shape, record)
     assert any("missing required paths" in error for error in errors)
     assert any("unsupported SHACL property path" in error for error in errors)
+
+
+def test_bounded_shacl_constraints_reject_string_datatype_drift() -> None:
+    root, corpus = _corpus()
+    shape = (root / "docs/ontology/canonical-crosswalk.shacl.ttl").read_text()
+    shape = shape.replace(
+        'sh:datatype <http://www.w3.org/2001/XMLSchema#string>',
+        'sh:datatype <http://www.w3.org/2001/XMLSchema#integer>',
+        1,
+    )
+    record = next(
+        item["instance"]
+        for item in corpus["cases"]
+        if item["case_id"] == "canonical-crosswalk-golden"
+    )
+    assert "SHACL string datatype is missing for mappingId" in validate_bounded_shacl_constraints(
+        shape, record
+    )
