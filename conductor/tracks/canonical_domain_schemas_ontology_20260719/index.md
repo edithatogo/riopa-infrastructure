@@ -22,6 +22,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CANONICAL-INVENTORY-20260801` | Entity, identity, collision and extension inventory | `docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`, `tests/test_canonical.py` | Repository-owned baseline complete; SHACL, non-Python and domain-owner gates remain open |
 | `CANONICAL-CONTRACTS-20260801` | Versioned schemas, context, ontology descriptor, fixtures and identity tests | `schemas/canonical-crosswalk.schema.json`, `docs/ontology/`, `fixtures/canonical-crosswalk-golden.json`, `tests/test_canonical.py`, `tests/test_lineage_identifiers.py` | Python structural/semantic checks pass; SHACL and broader external-client qualification remain pending |
 | `CANONICAL-TYPESCRIPT-BINDING-20260821` | Generated non-Python binding and golden-fixture round trip | `bindings/typescript/`, `scripts/generate_canonical_bindings.py`, `conformance/v1/corpus.json`, `tests/test_canonical_bindings.py`, `tests/test_conformance_parity_receipt.py` | Generated declarations are schema-drift checked; Python and Node reproduce the golden crosswalk digest and structural outcome. Full JSON Schema, SHACL, external-client and stable compatibility qualification remain open |
+| `CANONICAL-EXTENSION-POLICY-20260825` | Bounded namespaced extension and migration policy | `docs/ontology/canonical-extension-policy-20260825.json`, `docs/ontology/canonical-extension-policy-20260825.md`, `tests/test_canonical.py` | Fail-closed policy is machine-checked; SHACL, publication, semantic panel and compatibility execution gates remain open |
 | `CANONICAL-CROSS-LANGUAGE-PARITY-20260824` | Preserved bounded Python/Node parity receipt for the language-neutral corpus | `docs/ontology/canonical-cross-language-parity-20260824.json`, `scripts/verify_conformance_parity.py`, `tests/test_conformance_parity_receipt.py` | Five corpus cases pass in both runners; SHACL, external-client and stable qualification remain open |
 | `CANONICAL-BOUNDED-SHACL-20260824` | Shape-drift and required-property contract for the published Crosswalk SHACL input | `src/riopa_provenance/canonical.py::validate_bounded_shacl_constraints`, `tests/test_conformance.py`, `docs/canonical-crosswalk-validation.md` | Dependency-free bounded contract and negative tests pass; this is not a full RDF/SHACL engine report |
 
@@ -31,6 +32,13 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 - `ontology-publication-identifier` — pending publication decision and persistent identifier.
 - `domain-agent-panel-qualification` — pending orchestrated semantic/domain agent-panel qualification.
 - `migration-compatibility-qualification` — pending compatibility matrix and migration execution.
+
+## Repository-owned implementation slice (2026-08-25)
+
+The canonical profile now has an explicit, versioned extension-policy draft:
+unknown fields are preserved, normative fields cannot be shadowed, and
+malformed extensions fail closed. This improves the bounded contract only; it
+does not claim semantic qualification, publication or stable-v1 compatibility.
 
 ## Decisions, exceptions and limitations
 

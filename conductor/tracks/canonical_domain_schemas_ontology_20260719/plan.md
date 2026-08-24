@@ -21,7 +21,7 @@
 ## 4. Stabilisation and migration
 
 - [ ] 4.1 Run agent-panel semantic qualification and resolve semantic findings.
-- [ ] 4.2 Publish migration tools, compatibility matrix and extension policy.
+- [~] 4.2 Define the bounded migration compatibility and extension policy. (`docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json`, `docs/ontology/canonical-extension-policy-20260825.json`, `docs/ontology/canonical-extension-policy-20260825.md`, `tests/test_canonical.py`; execution qualification and stable publication remain open.)
 - [ ] 4.3 Freeze the v1 normative schema/ontology candidate.
 
 ## Track closeout

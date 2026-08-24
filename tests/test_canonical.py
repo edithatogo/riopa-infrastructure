@@ -167,6 +167,15 @@ def test_migration_fixture_validation_rejects_unsafe_versions_and_paths() -> Non
     assert any("safe JSON Pointer" in error for error in errors)
 
 
+def test_canonical_extension_policy_is_explicit_and_fail_closed() -> None:
+    policy = json.loads(Path("docs/ontology/canonical-extension-policy-20260825.json").read_text())
+    assert policy["status"] == "bounded-draft"
+    rule_ids = {rule["id"] for rule in policy["rules"]}
+    assert rule_ids == {"namespace", "preserve", "no-redefinition", "migration", "fail-closed"}
+    assert all(path.startswith("/") for path in policy["normative_paths"])
+    assert "SHACL engine report" in policy["external_gates"]
+
+
 def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
     descriptor = json.loads(Path("docs/ontology/canonical-ontology-release-1.0.0.json").read_text())
     assert descriptor["version"] == "1.0.0"
