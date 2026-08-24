@@ -33,6 +33,24 @@
 | `SECURITY-INCIDENT-EXECUTION-20260824` | Digest-bound execution-report validator for all required incident controls | `src/riopa_provenance/security_exercises.py:validate_exercise_execution`, `tests/test_security_exercises.py` | Local contract passes; no execution or qualification is claimed |
 | `SECURITY-PANEL-RERUN-20260824` | Digest-bound three-lens panel rerun packet validator with preserved dissent boundary | `src/riopa_provenance/security_panel.py`, `docs/security-panel-rerun-contract-20260824.json`, `tests/test_security_panel.py` | Pending packet and complete-packet negative tests pass; factual panel execution and qualification remain open |
 
+## Repository-owned closeout slice (2026-08-24)
+
+The implementation, focused tests, review fixes and generated project metadata
+for the current repository-owned slice are linked above. The authoritative
+validation command is `bash scripts/ci_quality.sh`; it must pass from the
+protected `main` revision before this slice is treated as publishable.
+
+The following gates are deliberately not inferred from local contracts:
+
+- hosted branch-protection and release-environment verification;
+- protected-tag trusted signing, SBOM publication and independent verification;
+- factual credential-compromise, malicious-input and rollback execution;
+- factual security agent-panel execution and qualification; and
+- accountable release-authority approval for any promotion.
+
+These are external or elapsed evidence gates, not missing implementation. No
+release, beta, RC or stable-v1 promotion is authorized by this record.
+
 ## Blocking defects
 
 - Foundation dependency completion, hosted release-environment verification,
@@ -41,7 +59,12 @@
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The repository is single-developer operated. Review lenses are performed by
+  agent panels; they do not substitute for factual hosted execution,
+  independent reproduction or accountable-authority approval.
+- Public, bounded, non-operational technical-preview scope remains in force.
+- Missing hosted or participant evidence is recorded as pending, never as a
+  negative result or waiver.
 
 ## Review and handover
 
@@ -50,12 +73,16 @@ Required agent-panel lenses: API/schema analyst, Security analyst, Operations an
 ## Review record
 
 - Review scope: current track records, specification acceptance criteria,
-  dependency state, hosted evidence and panel reports through `f6e0a1c`.
+  dependency state, hosted evidence and panel reports through
+  `482bdf8cfadcb4ec4a9f65d13fc6c1baf1c079e7`.
 - High finding: commit `7a61d9b` changed the track from M1/active to M6/complete,
   removed recorded blockers, and marked every task complete without the required
   foundation dependency or M2-M6 evidence.
 - Fix: restored evidence-backed task states, M1/active metadata, the complete
   evidence register and explicit blockers. The track remains unarchived.
+- 2026-08-24 closeout review: implementation and repository-owned validation
+  links were reconciled; C.1, C.2 and C.4 are complete for this slice. C.3
+  remains open because the external and elapsed gates above are unresolved.
 
 This index records the repository-owned M1 implementation slice while the track
 remains `active`. Status may advance only through `conductor/workflow.md`;
