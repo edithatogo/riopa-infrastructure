@@ -1,6 +1,9 @@
 from pathlib import Path
 
+import pytest
+
 from riopa_provenance.release_signing import (
+    ReleaseSigningError,
     build_release_signing_manifest,
     validate_release_signing_manifest,
 )
@@ -33,3 +36,49 @@ def test_release_signing_manifest_rejects_unsafe_or_unverified_artifacts() -> No
     assert any("lowercase SHA-256" in error for error in errors)
     assert any("unique" in error for error in errors)
     assert any("require an attestation" in error for error in errors)
+
+
+def test_build_release_signing_manifest_rejects_empty_inputs(tmp_path: Path) -> None:
+    with pytest.raises(ReleaseSigningError, match="source revision"):
+        build_release_signing_manifest(tmp_path, revision=" ")
+    with pytest.raises(ReleaseSigningError, match="at least one"):
+        build_release_signing_manifest(tmp_path, revision="a" * 40)
+
+
+def test_build_release_signing_manifest_honours_exclusions(tmp_path: Path) -> None:
+    (tmp_path / "release.tar.gz").write_bytes(b"payload")
+    (tmp_path / "signature.sig").write_bytes(b"signature")
+    manifest = build_release_signing_manifest(
+        tmp_path, revision="a" * 40, exclude=("signature.sig",)
+    )
+    assert [item["path"] for item in manifest["artifacts"]] == ["release.tar.gz"]
+
+
+def test_release_signing_manifest_rejects_missing_contract_sections() -> None:
+    errors = validate_release_signing_manifest(
+        {
+            "manifest_id": "urn:test",
+            "revision": "a" * 40,
+            "status": "signed",
+            "artifacts": [],
+        }
+    )
+    assert "artifacts must be a non-empty array" in errors
+    assert "signing policy must require a signature" in errors
+    assert "verification must require an attestation" in errors
+
+
+def test_release_signing_manifest_rejects_non_object_and_invalid_status() -> None:
+    assert validate_release_signing_manifest(None) == ("manifest must be an object",)
+    errors = validate_release_signing_manifest(
+        {
+            "manifest_id": "urn:test",
+            "revision": "a" * 40,
+            "status": "pending",
+            "artifacts": ["release.tar.gz"],
+            "signing_policy": {"required": True},
+            "verification": {"attestation_required": True},
+        }
+    )
+    assert "status must be unsigned-candidate or signed" in errors
+    assert "each artifact must be an object" in errors

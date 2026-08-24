@@ -10,10 +10,10 @@
   },
   "totals": {
     "statements": 7686,
-    "covered_statements": 7150,
-    "line_percent": 90.72908956328645,
+    "covered_statements": 7174,
+    "line_percent": 91.14544781643227,
     "branches": 3122,
-    "covered_branches": 2656,
+    "covered_branches": 2677,
     "branch_percent": "91"
   },
   "files": [
@@ -758,22 +758,13 @@
       "module": "src.riopa_provenance.release_signing",
       "path": "src/riopa_provenance/release_signing.py",
       "statements": 64,
-      "covered_statements": 54,
-      "line_percent": 81.0,
+      "covered_statements": 63,
+      "line_percent": 98.0,
       "branches": 36,
-      "covered_branches": 27,
-      "branch_percent": "81",
+      "covered_branches": 35,
+      "branch_percent": "98",
       "missing_lines": [
-        37,
-        42,
-        46,
-        75,
-        79,
-        81,
-        84,
-        89,
-        90,
-        112
+        79
       ]
     },
     {
@@ -872,29 +863,14 @@
       "module": "src.riopa_provenance.security_panel",
       "path": "src/riopa_provenance/security_panel.py",
       "statements": 57,
-      "covered_statements": 40,
-      "line_percent": 67.01030927835052,
+      "covered_statements": 55,
+      "line_percent": 95.87628865979381,
       "branches": 40,
-      "covered_branches": 25,
-      "branch_percent": "67",
+      "covered_branches": 38,
+      "branch_percent": "96",
       "missing_lines": [
         45,
-        49,
-        51,
-        53,
-        55,
-        58,
-        59,
-        64,
-        65,
-        68,
-        70,
-        76,
-        78,
-        80,
-        82,
-        86,
-        90
+        86
       ]
     },
     {
