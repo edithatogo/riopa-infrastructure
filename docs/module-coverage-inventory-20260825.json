@@ -1024,6 +1024,27 @@
       ]
     },
     {
+      "module": "src.riopa_provenance.spatial_crosswalk",
+      "path": "src/riopa_provenance/spatial_crosswalk.py",
+      "statements": 47,
+      "covered_statements": 38,
+      "line_percent": 80.85106382978724,
+      "branches": 30,
+      "covered_branches": 21,
+      "branch_percent": "70",
+      "missing_lines": [
+        21,
+        25,
+        28,
+        29,
+        32,
+        35,
+        37,
+        56,
+        64
+      ]
+    },
+    {
       "module": "src.riopa_provenance.spatial_quality",
       "path": "src/riopa_provenance/spatial_quality.py",
       "statements": 45,
