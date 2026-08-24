@@ -10,11 +10,14 @@ from riopa_provenance.analysis import (
     AnalysisProtocol,
     AnalysisProtocolError,
     CoverageScenario,
+    DispatchRequest,
+    DispatchScenario,
     Estimand,
     ParameterEvidence,
     ReplicationDesign,
     difference_in_differences,
     evaluate_coverage_scenario,
+    evaluate_dispatch_scenario,
     protocol_record,
     run_seeded_replications,
     simulate_fcfs_queue,
@@ -43,6 +46,24 @@ def test_coverage_scenario_preserves_primary_backup_and_availability() -> None:
     assert result["promotion_allowed"] is False
     with pytest.raises(ValueError, match="threshold"):
         CoverageScenario("bad", ("d",), ("p",), ("b",), {}, {}, -1)
+
+
+def test_dispatch_adapter_preserves_backup_relocation_and_handover_fields() -> None:
+    scenario = DispatchScenario(
+        "synthetic-dispatch",
+        (DispatchRequest("r1", "d1", 0, handover_minutes=5),),
+        ("a", "b", "c"),
+        {("a", "d1"): 1, ("b", "d1"): 1, ("c", "d1"): 2},
+        {"a": True, "b": True, "c": True},
+        2,
+    )
+    result = evaluate_dispatch_scenario(scenario)
+    assignment = result["assignments"][0]
+    assert assignment["primary"] == "a"
+    assert assignment["backup"] == "b"
+    assert assignment["relocation_candidates"] == ["c"]
+    assert assignment["handover_required"] is True
+    assert result["promotion_allowed"] is False
 
 
 def _protocol(*, replications: int = 5) -> AnalysisProtocol:

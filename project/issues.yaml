@@ -3001,7 +3001,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `simulation_validation_engine_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement the bounded generic discrete-event FCFS execution and metrics reference. (`src/riopa_provenance/analysis.py::simulate_fcfs_queue`, `tests/test_analysis.py`; dispatch, clinical/service adapters and operational qualification remain open.)\n- [ ] 2.2 Add dispatch, backup coverage, dynamic relocation and handover adapters.\n- [ ] 2.3 Add hospital/service capacity and resilience examples.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/simulation_validation_engine_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `simulation_validation_engine_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement the bounded generic discrete-event FCFS execution and metrics reference. (`src/riopa_provenance/analysis.py::simulate_fcfs_queue`, `tests/test_analysis.py`; dispatch, clinical/service adapters and operational qualification remain open.)\n- [ ] 2.2 Add dispatch, backup coverage, dynamic relocation and handover adapters. Evidence: `DispatchScenario` and `evaluate_dispatch_scenario` in `src/riopa_provenance/analysis.py` with deterministic synthetic tests; live dispatch, clinical, operational and authority gates remain open.\n- [ ] 2.3 Add hospital/service capacity and resilience examples.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/simulation_validation_engine_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",

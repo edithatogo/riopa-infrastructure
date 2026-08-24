@@ -122,6 +122,104 @@ class CoverageScenario:
             raise ValueError("travel values must be finite and non-negative")
 
 
+@dataclass(frozen=True)
+class DispatchRequest:
+    """Synthetic demand event for the bounded dispatch adapter."""
+
+    request_id: str
+    demand_id: str
+    arrival_time: float
+    handover_minutes: float = 0.0
+
+    def __post_init__(self) -> None:
+        if not self.request_id.strip() or not self.demand_id.strip():
+            raise ValueError("dispatch request IDs must be non-empty")
+        if not math.isfinite(self.arrival_time) or self.arrival_time < 0:
+            raise ValueError("arrival_time must be finite and non-negative")
+        if not math.isfinite(self.handover_minutes) or self.handover_minutes < 0:
+            raise ValueError("handover_minutes must be finite and non-negative")
+
+
+@dataclass(frozen=True)
+class DispatchScenario:
+    """Synthetic stations, requests and travel inputs for dispatch adapters."""
+
+    scenario_id: str
+    requests: tuple[DispatchRequest, ...]
+    locations: tuple[str, ...]
+    travel: Mapping[tuple[str, str], float]
+    availability: Mapping[str, bool]
+    threshold: float
+
+    def __post_init__(self) -> None:
+        if not self.scenario_id.strip() or not self.requests:
+            raise ValueError("dispatch scenario requires an id and requests")
+        if len({request.request_id for request in self.requests}) != len(self.requests):
+            raise ValueError("dispatch request IDs must be unique")
+        if not self.locations or len(set(self.locations)) != len(self.locations):
+            raise ValueError("dispatch locations must be non-empty and unique")
+        if not math.isfinite(self.threshold) or self.threshold < 0:
+            raise ValueError("dispatch threshold must be finite and non-negative")
+        if any(not math.isfinite(value) or value < 0 for value in self.travel.values()):
+            raise ValueError("dispatch travel values must be finite and non-negative")
+
+
+def evaluate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
+    """Return deterministic primary, backup, relocation and handover outputs.
+
+    This adapter is a synthetic contract fixture.  It does not model live
+    dispatch, clinical triage, fleet telemetry, response guarantees or service
+    authority.
+    """
+
+    available = tuple(
+        location for location in scenario.locations if scenario.availability.get(location, False)
+    )
+    assignments: list[dict[str, Any]] = []
+    for request in sorted(scenario.requests, key=lambda item: (item.arrival_time, item.request_id)):
+        eligible = sorted(
+            (
+                scenario.travel[(location, request.demand_id)],
+                location,
+            )
+            for location in available
+            if (location, request.demand_id) in scenario.travel
+            and scenario.travel[(location, request.demand_id)] <= scenario.threshold
+        )
+        primary = eligible[0][1] if eligible else None
+        backup = eligible[1][1] if len(eligible) > 1 else None
+        relocation = [location for _, location in eligible[2:]]
+        assignments.append(
+            {
+                "request_id": request.request_id,
+                "primary": primary,
+                "backup": backup,
+                "relocation_candidates": relocation,
+                "handover_required": request.handover_minutes > 0,
+            }
+        )
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_dispatch_scenario",
+        "scenario_id": scenario.scenario_id,
+        "assignments": assignments,
+        "counts": {
+            "requests": len(assignments),
+            "primary_assigned": sum(item["primary"] is not None for item in assignments),
+            "backup_available": sum(item["backup"] is not None for item in assignments),
+            "handover_required": sum(item["handover_required"] for item in assignments),
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "Synthetic/reference adapter only; no live dispatch, clinical or response "
+                "guarantee is asserted."
+            ),
+            "Relocation and handover fields are contract outputs, not operational instructions.",
+        ],
+    }
+
+
 def evaluate_coverage_scenario(scenario: CoverageScenario) -> dict[str, Any]:
     """Evaluate primary, backup and unavailable demand over supplied fixtures."""
 

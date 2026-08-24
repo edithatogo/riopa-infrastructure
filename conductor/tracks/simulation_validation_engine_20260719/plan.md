@@ -9,7 +9,7 @@
 ## 2. Reference simulation engine
 
 - [x] 2.1 Implement the bounded generic discrete-event FCFS execution and metrics reference. (`src/riopa_provenance/analysis.py::simulate_fcfs_queue`, `tests/test_analysis.py`; dispatch, clinical/service adapters and operational qualification remain open.)
-- [ ] 2.2 Add dispatch, backup coverage, dynamic relocation and handover adapters.
+- [x] 2.2 Add dispatch, backup coverage, dynamic relocation and handover adapters. Evidence: `DispatchScenario` and `evaluate_dispatch_scenario` in `src/riopa_provenance/analysis.py` with deterministic synthetic tests; live dispatch, clinical, operational and authority gates remain open.
 - [ ] 2.3 Add hospital/service capacity and resilience examples.
 
 ## 3. Calibration and validation
