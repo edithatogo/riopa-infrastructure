@@ -1,0 +1,22 @@
+{
+  "schema": "riopa.provenance-query-equivalence-contract.v1",
+  "status": "bounded-repository-contract",
+  "scope": "synthetic-minimal-manifest-and-disposable-projections",
+  "interfaces": ["python", "cli"],
+  "projections": ["sqlite", "duckdb", "prov-jsonld"],
+  "controls": [
+    "walk node identities are compared across Python and CLI",
+    "edge identities and relations are compared across SQLite, DuckDB and PROV-JSON-LD",
+    "projection fingerprints remain bound to the same authoritative manifest"
+  ],
+  "open_gates": [
+    "MCP transport equivalence",
+    "remote access filtering",
+    "real release and external-user qualification"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "Synthetic interface equivalence is not external reproduction or release approval.",
+    "A standards-shaped projection is not RDF/SHACL conformance or source authority."
+  ]
+}
