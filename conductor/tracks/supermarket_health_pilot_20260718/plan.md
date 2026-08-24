@@ -2,7 +2,7 @@
 
 ## 1. Protocol and reproduction
 
-- [ ] 1.1 Preregister baseline estimands, geography, population, exclusions and discrepancy handling.
+- [x] 1.1 Preregister baseline estimands, geography, population, exclusions and discrepancy handling as a synthetic/non-clinical reference template. (`docs/supermarket-health-preregistration-20260825.json`, `tests/test_supermarket_preregistration.py`; `d309f4c`)
 - [ ] 1.2 Reproduce density and population-normalised supermarket analyses.
 - [ ] 1.3 Publish a transparent comparison with the motivating work.
 
@@ -35,3 +35,7 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Wrap the preregistration test path so the repository quality gate passes (`9db5186`).

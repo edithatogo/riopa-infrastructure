@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "urn:riopa:preregistration:supermarket-health-reference-2026-08-25",
+  "domain": "synthetic-non-clinical",
+  "analyses": [
+    {
+      "analysis_id": "supermarket-density-reference",
+      "classification": "reference",
+      "estimand": "count of public source assertions per declared bounded geography unit",
+      "data_edition": "synthetic fixture with candidate-source placeholders; no live supermarket payload",
+      "decision_rule": "report descriptive counts only and never infer completeness or commercial suitability",
+      "analysis_plan": [
+        "declare geography edition and unit definition",
+        "retain source assertion identity and disagreement",
+        "report missing geometry separately",
+        "publish exclusions and deviations"
+      ],
+      "deviations": ["No empirical source payload is included in this reference packet."]
+    },
+    {
+      "analysis_id": "supermarket-population-normalised-reference",
+      "classification": "reference",
+      "estimand": "descriptive assertion count divided by a declared synthetic population denominator",
+      "data_edition": "synthetic population denominator; no population-health linkage",
+      "decision_rule": "report denominator and numerator together; suppress interpretation when either is missing",
+      "analysis_plan": [
+        "declare denominator edition and geography alignment",
+        "exclude units with missing denominator from the rate and report them",
+        "retain sensitivity to alternate bounded denominators"
+      ],
+      "deviations": ["No real population or health outcome is used."]
+    },
+    {
+      "analysis_id": "supermarket-discrepancy-reference",
+      "classification": "exploratory",
+      "estimand": "descriptive disagreement between separately identified public source assertions",
+      "data_edition": "synthetic assertions with source and rights metadata",
+      "decision_rule": "preserve disagreement; do not adjudicate authority from agreement or proximity",
+      "analysis_plan": [
+        "partition by source family and release classification",
+        "report unresolved conflicts and null geometry",
+        "do not promote exploratory differences to health or policy claims"
+      ],
+      "deviations": ["External reproduction and rights-cleared empirical input remain pending."]
+    }
+  ],
+  "limitations": [
+    "Synthetic/non-clinical reference template only; it is not a supermarket study result.",
+    "No health outcome, causal, commercial, planning or accessibility claim is enabled.",
+    "Rights-cleared versioned supermarket inputs, external reproduction and agent-panel qualification remain open."
+  ]
+}

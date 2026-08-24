@@ -52,7 +52,7 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 
 - [~] **`emergency_health_facilities_pilot_20260718`** — Ambulance and hospital facility-planning reference pilots (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `accessibility_network_engine_20260719`, `facility_location_engine_20260718`, `simulation_validation_engine_20260719`)
 - [~] **`health_outcomes_causal_methods_20260719`** — Health-outcomes, spatial epidemiology and causal-methods framework (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `spatial_quality_temporality_20260718`, `accessibility_network_engine_20260719`)
-- [ ] **`supermarket_health_pilot_20260718`** — Supermarket access, zoning and health-geography reference study (target `0.8.0`, current `M1`, target `M6`, risk High; depends on: `planning_rules_linkage_20260718`, `accessibility_network_engine_20260719`, `facility_registry_20260719`, `facility_location_engine_20260718`, `health_outcomes_causal_methods_20260719`)
+- [~] **`supermarket_health_pilot_20260718`** — Supermarket access, zoning and health-geography reference study (target `0.8.0`, current `M1`, target `M6`, risk High; depends on: `planning_rules_linkage_20260718`, `accessibility_network_engine_20260719`, `facility_registry_20260719`, `facility_location_engine_20260718`, `health_outcomes_causal_methods_20260719`)
 
 ## Publication
 
