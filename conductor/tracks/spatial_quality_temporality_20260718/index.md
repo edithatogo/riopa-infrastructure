@@ -23,6 +23,7 @@
 | `SPATIAL-TEMPORAL-QUERY-20260825` | Explicit bitemporal transition validation and valid/recorded/as-known-at query contract | `src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/spatial-temporal-query-contract-20260825.json`, `tests/test_spatial_temporal_query_contract.py` | Synthetic contract passes; real authority histories, late evidence, external semantics and publication gates remain open |
 | `SPATIAL-QUALITY-CHANGE-ATTRIBUTION-20260825` | Declared revision-axis attribution with explicit ambiguity and missingness | `src/riopa_provenance/spatial_quality_trend.py`, `tests/test_spatial_quality_trend.py`, `docs/spatial-quality-change-attribution-contract-20260825.json` | Repository contract passes; causal provenance, real release histories, external qualification and authority remain open |
 | `SPATIAL-TEMPORAL-HISTORY-AUDIT-20260825` | Declared late evidence, correction, supersession, finite-gap and overlapping-window audit | `src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/spatial-temporal-history-audit-contract-20260825.json` | Bounded audit passes and retains overlap findings for adjudication; real historical coverage, authority, external qualification and publication remain open |
+| `SPATIAL-SENSITIVITY-20260824` | Bounded sensitivity summary across declared boundary and denominator revisions | `src/riopa_provenance/spatial_sensitivity.py`, `tests/test_spatial_sensitivity.py`, `docs/spatial-sensitivity-contract-20260824.json` | All supplied observations are retained and promotion is disabled; real MAUP, denominator provenance, authority and national qualification remain open |
 | `SPATIAL-BOUNDARY-CROSSWALK-20260825` | Revision-aware boundary crosswalk and population interpolation contract | `src/riopa_provenance/spatial_crosswalk.py`, `tests/test_spatial_crosswalk.py`, `docs/spatial-boundary-crosswalk-contract-20260825.json` | Local weighted projection passes; MAUP, denominator-version, real-boundary, national, external and authority gates remain open |
 
 ## Blocking defects
@@ -37,4 +38,4 @@
 
 Required agent-panel lenses: Provenance analyst, Data-governance analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

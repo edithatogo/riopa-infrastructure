@@ -1098,6 +1098,20 @@
       ]
     },
     {
+      "module": "src.riopa_provenance.spatial_sensitivity",
+      "path": "src/riopa_provenance/spatial_sensitivity.py",
+      "statements": 24,
+      "covered_statements": 22,
+      "line_percent": 91.66666666666667,
+      "branches": 10,
+      "covered_branches": 8,
+      "branch_percent": "80",
+      "missing_lines": [
+        27,
+        33
+      ]
+    },
+    {
       "module": "src.riopa_provenance.transitions",
       "path": "src/riopa_provenance/transitions.py",
       "statements": 53,

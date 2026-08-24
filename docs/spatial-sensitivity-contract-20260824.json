@@ -1,0 +1,18 @@
+{
+  "evidence_id": "SPATIAL-SENSITIVITY-20260824",
+  "status": "bounded-revision-sensitivity-contract",
+  "implementation": "riopa_provenance.spatial_sensitivity.compare_revision_sensitivity",
+  "axes": ["boundary_revision", "denominator_revision"],
+  "outputs": ["minimum", "maximum", "range", "relative_range", "observations"],
+  "controls": [
+    "all supplied revision observations remain visible",
+    "missing identifiers and non-finite estimates fail closed",
+    "no preferred revision is selected",
+    "promotion remains disabled"
+  ],
+  "nonclaims": [
+    "The result is conditional on supplied synthetic or archived estimates.",
+    "It does not establish boundary authority, denominator provenance or causal effect.",
+    "Real-boundary, national, external and release gates remain open."
+  ]
+}
