@@ -10,11 +10,11 @@
   },
   "totals": {
     "statements": 7686,
-    "covered_statements": 7136,
-    "line_percent": 90.4700222057735,
+    "covered_statements": 7150,
+    "line_percent": 90.72908956328645,
     "branches": 3122,
-    "covered_branches": 2642,
-    "branch_percent": "90"
+    "covered_branches": 2656,
+    "branch_percent": "91"
   },
   "files": [
     {
@@ -725,27 +725,13 @@
       "module": "src.riopa_provenance.recovery",
       "path": "src/riopa_provenance/recovery.py",
       "statements": 84,
-      "covered_statements": 69,
-      "line_percent": 76.19047619047619,
+      "covered_statements": 83,
+      "line_percent": 98.41269841269842,
       "branches": 42,
-      "covered_branches": 27,
-      "branch_percent": "76",
+      "covered_branches": 41,
+      "branch_percent": "98",
       "missing_lines": [
-        52,
-        57,
-        59,
-        61,
-        65,
-        68,
-        73,
-        81,
-        85,
-        100,
-        102,
-        112,
-        114,
-        127,
-        129
+        68
       ]
     },
     {
