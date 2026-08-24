@@ -4,7 +4,7 @@
 
 - [x] 1.1 Define analysis type, DAG, estimand, population, exposure, comparator and outcome records. (`schemas/health-analysis-design.schema.json`, `fixtures/health-analysis-design-synthetic.json`, `tests/test_health_analysis_design.py`; synthetic non-clinical reference only)
 - [x] 1.2 Define boundary, denominator, time, missing-data and governance requirements. (`schemas/health-analysis-design.schema.json`, `fixtures/health-analysis-design-synthetic.json`, `tests/test_health_analysis_design.py`; synthetic non-clinical reference only)
-- [ ] 1.3 Build preregistration and exploratory/confirmatory labeling templates.
+- [x] 1.3 Build preregistration and exploratory/confirmatory labeling templates. (`schemas/analysis-preregistration.schema.json`, `fixtures/analysis-preregistration-synthetic.json`, `tests/test_analysis_preregistration.py`; synthetic reference only)
 
 ## 2. Reference spatial methods
 
