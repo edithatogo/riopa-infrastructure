@@ -1,0 +1,32 @@
+{
+  "schema": "riopa.health-methods-panel-remediation.v1",
+  "packet_id": "health-methods-panel-remediation-20260825",
+  "status": "bounded-repository-remediation-complete",
+  "promotion_allowed": false,
+  "findings": [
+    {
+      "id": "overclaiming",
+      "disposition": "bounded",
+      "controls": ["explicit nonclaims", "synthetic/public-preview scope", "promotion disabled"]
+    },
+    {
+      "id": "sensitivity",
+      "disposition": "bounded",
+      "controls": ["MAUP diagnostic", "measurement-error bounds", "negative-control diagnostic"]
+    },
+    {
+      "id": "privacy",
+      "disposition": "bounded",
+      "controls": ["minimum cell-size suppression", "missing-as-pending semantics", "no clinical data"]
+    }
+  ],
+  "remaining_gates": [
+    "empirical public-data and clinical validity",
+    "independent reproduction and external-user evidence",
+    "accountable release-authority decision"
+  ],
+  "nonclaims": [
+    "Repository remediation does not establish clinical validity, causal identification, or privacy certification.",
+    "Agent-panel agreement and bounded controls cannot close external or accountable-authority gates."
+  ]
+}

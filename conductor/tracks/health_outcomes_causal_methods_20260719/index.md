@@ -28,6 +28,7 @@
 | `HEALTH-DIAGNOSTICS-20260825` | Bounded missingness profile and negative-control contrast diagnostics | `src/riopa_provenance/health_diagnostics.py`, `tests/test_health_diagnostics.py` | Synthetic deterministic diagnostics pass; uncertainty, mechanism, clinical, causal and methods-panel gates remain open |
 | `HEALTH-LONGITUDINAL-SCENARIOS-20260825` | Synthetic opening and closure scenarios exercise the event-study reference workflow | `fixtures/health-longitudinal-scenarios-synthetic.json`, `tests/test_health_longitudinal_scenarios.py` | Deterministic fixture tests pass; real-source, clinical, causal, temporal and methods-panel gates remain open |
 | `HEALTH-METHODS-PANEL-20260825` | Four-lens repository-owned agent-panel assessment of bounded health methods | `docs/health-methods-panel-qualification-20260825.json`, `tests/test_health_methods_panel_qualification.py` | Repository evidence is assessed; empirical, clinical, independent-reproduction, privacy and authority gates remain open |
+| `HEALTH-METHODS-REMEDIATION-20260825` | Bounded remediation matrix for overclaiming, sensitivity and privacy findings | `docs/health-methods-panel-remediation-20260825.json`, `tests/test_health_methods_panel_remediation.py` | Repository controls are recorded; empirical, external and accountable-authority gates remain open |
 
 ## Blocking defects
 
