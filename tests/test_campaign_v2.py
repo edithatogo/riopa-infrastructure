@@ -36,6 +36,14 @@ def test_operational_observation_schedule_is_daily_and_read_only() -> None:
     assert any(step.get("name") == "Build cumulative fail-closed campaign ledger" for step in steps)
 
 
+def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
+    workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
+    steps = workflow["jobs"]["observe"]["steps"]
+    checkout = next(step for step in steps if step.get("name") == "Check out exact revision")
+    assert checkout["with"]["ref"] == "${{ env.EVIDENCE_CANDIDATE_REVISION || github.sha }}"
+    assert any(step.get("name") == "Verify exact RC candidate checkout" for step in steps)
+
+
 def test_normative_track_sources_use_agent_panel_qualification() -> None:
     forbidden = (
         "independent review",

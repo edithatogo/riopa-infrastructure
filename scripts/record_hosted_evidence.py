@@ -81,7 +81,12 @@ def run_lane(lane: str, output_dir: Path) -> dict:
         "%G-W%V"
     )
     candidate_revision = os.getenv("EVIDENCE_CANDIDATE_REVISION") or None
-    source_revision = os.getenv("GITHUB_SHA", "local-uncommitted")
+    try:
+        source_revision = subprocess.run(
+            ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
+        ).stdout.strip()
+    except OSError, subprocess.CalledProcessError:
+        source_revision = os.getenv("GITHUB_SHA", "local-uncommitted")
     if lane == "rc-soak-observation" and candidate_revision != source_revision:
         raise ValueError(
             "rc-soak-observation requires EVIDENCE_CANDIDATE_REVISION to equal GITHUB_SHA"

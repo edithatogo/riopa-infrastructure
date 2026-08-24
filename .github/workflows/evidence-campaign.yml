@@ -62,6 +62,12 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          # RC observations are content-addressed to the supplied candidate;
+          # later documentation commits on main must not change the candidate.
+          ref: ${{ env.EVIDENCE_CANDIDATE_REVISION || github.sha }}
+      - name: Verify exact RC candidate checkout
+        if: env.EVIDENCE_LANE == 'rc-soak-observation'
+        run: test "$(git rev-parse HEAD)" = "$EVIDENCE_CANDIDATE_REVISION"
       - name: Install uv and Python
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
