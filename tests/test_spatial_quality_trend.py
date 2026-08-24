@@ -4,6 +4,7 @@ from riopa_provenance.spatial_quality_trend import (
     SpatialQualityTrendError,
     build_spatial_quality_trend,
     classify_change_attribution,
+    propagate_spatial_temporal_uncertainty,
 )
 
 
@@ -60,3 +61,24 @@ def test_change_attribution_is_declared_and_ambiguous_by_default() -> None:
     assert ambiguous["status"] == "multiple-possible-causes"
     assert ambiguous["candidate_cause"] is None
     assert ambiguous["promotion_allowed"] is False
+
+
+def test_uncertainty_propagation_is_explicit_and_fail_closed() -> None:
+    report = propagate_spatial_temporal_uncertainty(
+        10.0,
+        spatial_error_m=2.0,
+        temporal_error_days=3.0,
+        spatial_sensitivity=0.5,
+        temporal_sensitivity=1.0,
+    )
+    assert report["lower"] == 6.0
+    assert report["upper"] == 14.0
+    assert report["promotion_allowed"] is False
+    with pytest.raises(SpatialQualityTrendError, match="non-negative"):
+        propagate_spatial_temporal_uncertainty(
+            10.0,
+            spatial_error_m=-1,
+            temporal_error_days=0,
+            spatial_sensitivity=1,
+            temporal_sensitivity=1,
+        )

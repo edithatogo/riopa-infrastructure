@@ -16,7 +16,7 @@
 
 - [~] 3.1 Implement revision-aware boundary crosswalk and population interpolation contracts with fail-closed weight and coverage checks. MAUP, denominator-version, real-boundary and authority qualification remain open (`src/riopa_provenance/spatial_crosswalk.py`, `tests/test_spatial_crosswalk.py`, `docs/spatial-boundary-crosswalk-contract-20260825.json`).
 - [x] 3.2 Add bounded boundary/denominator revision sensitivity analysis with fail-closed estimates and explicit non-claims. Real MAUP, denominator provenance and authority qualification remain open. (`src/riopa_provenance/spatial_sensitivity.py`, `tests/test_spatial_sensitivity.py`, `docs/spatial-sensitivity-contract-20260824.json`; commit `a0f2d76`)
-- [ ] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces.
+- [x] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces. Evidence: `propagate_spatial_temporal_uncertainty` returns a declared-sensitivity interval with spatial/temporal components, explicit inputs and promotion disabled; tests cover deterministic output and fail-closed negatives.
 
 ## 4. Agent-panel quality validation
 
