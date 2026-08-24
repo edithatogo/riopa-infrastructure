@@ -1,0 +1,13 @@
+{
+  "schema": "riopa.documentation-inventory-and-safety-review.v1",
+  "packet_id": "documentation-inventory-and-safety-review-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "scope": "single-developer regional public-source non-operational technical preview",
+  "audiences": ["researcher/analyst", "connector operator", "contributor", "maintainer/release authority", "agent-panel analyst"],
+  "workflow_entrypoints": ["README.md", "docs/source-acquisition-runbook.md", "AGENTS.md", "conductor/workflow.md", "docs/conformance-and-release-verification.md"],
+  "normative_maps": ["docs/documentation-information-architecture-20260824.md", "docs/documentation-contract-20260824.json", "docs/tutorial-and-example-conventions-20260824.md"],
+  "safety_findings": ["Python 3.14 and uv workflow is explicit", "public or synthetic fixtures and no-credential controls are explicit", "revision and digest binding plus hosted/publication state separation are explicit", "network, timetable, facility, national, clinical and dispatch claims remain disabled"],
+  "open_gates": ["owner-authorized agent user and operator workflow execution", "external operator reproduction", "release-candidate tutorial execution", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": ["This inventory and panel packet is not factual external-user evidence or an accessibility certification.", "Agent-panel agreement cannot substitute for participant workflows or release authority."]
+}

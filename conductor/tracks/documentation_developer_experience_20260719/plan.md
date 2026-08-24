@@ -15,7 +15,7 @@
 ## 3. Independent usability validation
 
 - [~] 3.1 Run owner-authorized agent user and operator workflow studies. A protected-main agent-user-workflows rehearsal passed at run `32739643452`; factual external-user/operator participation remains mandatory.
-- [ ] 3.2 Run accessibility, terminology, safety and limitations review.
+- [~] 3.2 Run the repository-owned accessibility, terminology, safety and limitations review through a bounded agent-panel packet. External participant and accessibility validation remain open (`docs/documentation-inventory-and-safety-review-20260825.json`, `tests/test_documentation_inventory_review.py`).
 - [ ] 3.3 Resolve or document observed friction and support burden.
 
 ## 4. Stable support readiness
