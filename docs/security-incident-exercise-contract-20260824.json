@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:security:incident-exercise:bounded-preview:1.0",
+  "implementation": "src/riopa_provenance/security_exercises.py",
+  "scenarios": {
+    "credential-compromise": ["revoke", "rotate", "audit", "rollback"],
+    "malicious-input": ["quarantine", "validate", "preserve-failure", "notify"],
+    "rollback": ["verify-fixity", "restore-predecessor", "record-receipt", "revoke"]
+  },
+  "fail_closed_rules": [
+    "Planned, executed and failed statuses are distinct; a plan is not an execution receipt.",
+    "Credential-shaped fields and values are prohibited from packets.",
+    "Scenario controls are fixed and must match the declared scenario.",
+    "Failed exercises remain preserved and require a new successor packet after remediation."
+  ],
+  "non_claims": [
+    "This contract does not exercise a real credential, deployment or production rollback.",
+    "Agent-panel assessment cannot substitute for factual security execution evidence."
+  ]
+}
