@@ -9,7 +9,7 @@
 ## 2. Projection implementation
 
 - [~] 2.1 Implement relational lineage tables and indexes in DuckDB-compatible form. `LineageIndex.export_duckdb` preserves manifests, nodes, edges, indexes and source/projection digests; graph equivalence and production-scale qualification remain open (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`).
-- [ ] 2.2 Implement optional PROV/RDF or property-graph projection.
+- [x] 2.2 Implement a deterministic optional PROV-JSON-LD projection with explicit non-authority boundaries (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/provenance-query-prov-jsonld-contract-20260825.json`). RDF/SHACL, semantic-loss, external-client, access-control, scale and authority gates remain open.
 - [x] 2.3 Add deterministic rebuild and schema-migration tests using a logical projection fingerprint (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/provenance-query-rebuild-contract-20260825.json`). Interface, access-control, production-scale, real-release and external-user gates remain open.
 
 ## 3. Interfaces and performance

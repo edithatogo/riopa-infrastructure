@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -103,6 +104,20 @@ def test_projection_fingerprint_is_stable_across_rebuilds_and_reimports(tmp_path
     connection.commit()
     connection.close()
     assert first.projection_fingerprint() == before
+
+
+def test_export_prov_jsonld_is_deterministic_and_not_authoritative(tmp_path: Path) -> None:
+    index = seeded_index(tmp_path / "source")
+    first = index.export_prov_jsonld(tmp_path / "one.jsonld")
+    second = index.export_prov_jsonld(tmp_path / "two.jsonld")
+    assert first["nodes"] == 3
+    assert first["edges"] == 2
+    assert first["projection_fingerprint"] == second["projection_fingerprint"]
+    assert first["sha256"] == second["sha256"]
+    payload = json.loads((tmp_path / "one.jsonld").read_text())
+    assert payload["riopa:promotionAllowed"] is False
+    assert len(payload["@graph"]) == 5
+    assert any(item["@type"] == "riopa:LineageRelation" for item in payload["@graph"])
 
 
 @pytest.mark.parametrize("depth", [0, 101])
