@@ -15,7 +15,7 @@
 ## 3. Preservation and recovery
 
 - [x] 3.1 Define retention, replicas, fixity cadence and preservation package format. Evidence: `docs/preservation-package-contract-20260822.json`, `tests/test_preservation_package_contract.py`; independent target acceptance and restore execution remain pending.
-- [x] 3.2 Automate backup, restore, correction, supersession and withdrawal paths. Evidence: `docs/operations-recovery-successor-contract-20260824.json`, `tests/test_operations_recovery_successor_contract.py`; provider restore execution and independent target acceptance remain pending. (evidence contract commit: pending)
+- [~] 3.2 Implement the repository recovery-successor contract for backup/restore, correction, supersession and withdrawal paths. Evidence: `docs/operations-recovery-successor-contract-20260824.json`, `tests/test_operations_recovery_successor_contract.py`; executable provider backup/restore, disaster-recovery exercise and independent target acceptance remain pending. (evidence contract commit: `675ddbefa280ae234754b3f2d830235d5df324d2`)
 - [ ] 3.3 Conduct restore and disaster-recovery exercises.
 - [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)
 - [x] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)
