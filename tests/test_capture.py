@@ -20,7 +20,7 @@ from riopa_provenance.capture import (
     validate_capture_url,
     validate_resolved_addresses,
 )
-from riopa_provenance.retry import CircuitBreaker, RetryPolicy
+from riopa_provenance.retry import CircuitBreaker, RateLimiter, RateLimitPolicy, RetryPolicy
 
 
 def policy(**overrides: object) -> CapturePolicy:
@@ -199,6 +199,34 @@ def test_http_capture_exact_bytes_and_redacted_metadata(tmp_path: Path) -> None:
     assert "%3Credacted%3E" in metadata["request"]["url"]
     assert metadata["request"]["headers"]["authorization"] == "<redacted>"
     assert metadata["object"]["sha256"] == result.object_sha256
+
+
+def test_http_capture_applies_injected_rate_limit_without_network_sleep(tmp_path: Path) -> None:
+    sleeps: list[float] = []
+    store = CaptureStore(
+        tmp_path,
+        clock=lambda: datetime(2026, 8, 24, tzinfo=UTC),
+        id_factory=iter(["capture-1", "capture-2"]).__next__,
+    )
+    client = HttpCaptureClient(
+        client=httpx.Client(
+            transport=httpx.MockTransport(
+                lambda request: httpx.Response(200, content=b"ok", request=request)
+            )
+        ),
+        store=store,
+        policy=policy(),
+        rate_limiter=RateLimiter(RateLimitPolicy(requests_per_second=1)),
+        sleep=sleeps.append,
+    )
+    for endpoint in ("one", "two"):
+        client.capture(
+            "GET",
+            "https://data.example.govt.nz/item",
+            source_id="s",
+            endpoint_id=endpoint,
+        )
+    assert sleeps == [0.0, 1.0]
 
 
 def test_http_capture_rejects_redirect_size_bad_length_and_non_json(tmp_path: Path) -> None:

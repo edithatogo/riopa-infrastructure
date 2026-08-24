@@ -44,6 +44,49 @@ class RetryDecision:
     reason: str
 
 
+@dataclass(frozen=True)
+class RateLimitPolicy:
+    """Token-bucket limits for one source or service."""
+
+    requests_per_second: float = 1.0
+    burst: int = 1
+
+    def __post_init__(self) -> None:
+        if not math.isfinite(self.requests_per_second) or self.requests_per_second <= 0:
+            raise ValueError("requests_per_second must be finite and positive")
+        if self.burst < 1:
+            raise ValueError("burst must be positive")
+
+
+@dataclass
+class RateLimiter:
+    """Deterministic token bucket returning a required sleep duration."""
+
+    policy: RateLimitPolicy = RateLimitPolicy()
+    tokens: float | None = None
+    last_at: datetime | None = None
+
+    def acquire(self, *, now: datetime) -> float:
+        current = now.astimezone(UTC)
+        if self.last_at is None or self.tokens is None:
+            self.tokens = float(self.policy.burst - 1)
+            self.last_at = current
+            return 0.0
+        elapsed = max(0.0, (current - self.last_at).total_seconds())
+        tokens = min(
+            float(self.policy.burst),
+            self.tokens + elapsed * self.policy.requests_per_second,
+        )
+        if tokens >= 1.0:
+            self.tokens = tokens - 1.0
+            self.last_at = current
+            return 0.0
+        delay = (1.0 - tokens) / self.policy.requests_per_second
+        self.tokens = 0.0
+        self.last_at = current
+        return delay
+
+
 @dataclass
 class CircuitBreaker:
     """Small deterministic circuit breaker for one source/endpoint pair."""

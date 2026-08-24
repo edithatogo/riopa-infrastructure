@@ -18,7 +18,7 @@
 
 ## 3. Reliability and observability
 
-- [ ] 3.1 Add rate limiting, retries, resume, quarantine and pagination tests.
+- [~] 3.1 Add rate limiting, retries, resume, quarantine and pagination tests. Existing bounded retry/resume/pagination contracts are now supplemented by an injected token-bucket limiter in `HttpCaptureClient` and immutable digest-bound quarantine records. Evidence: `src/riopa_provenance/retry.py`, `src/riopa_provenance/capture.py`, `src/riopa_provenance/quarantine.py`, `tests/test_retry.py`, `tests/test_capture.py`, `tests/test_quarantine.py`; hosted long-running operation and real-source qualification remain pending. (f0f9d1a)
 - [ ] 3.2 Add capability/schema drift detection and source-health events.
 - [ ] 3.3 Add metrics, structured logs and diagnostic bundles.
 
