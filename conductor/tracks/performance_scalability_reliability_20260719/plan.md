@@ -18,7 +18,7 @@
 
 ## 3. Regression and capacity controls
 
-- [ ] 3.1 Add noise-aware performance regression gates.
+- [~] 3.1 Add noise-aware performance regression gates. (`scripts/validate_performance_envelope.py`, `tests/test_wp010_performance_contract.py`; host-specific baselines, resource/cost instrumentation and national-scale measurements remain open.)
 - [ ] 3.2 Publish capacity, scaling and cost models.
 - [ ] 3.3 Resolve bottlenecks without weakening correctness or provenance.
 

@@ -14,6 +14,16 @@ def _runner():
     return module
 
 
+def _envelope_validator():
+    spec = importlib.util.spec_from_file_location(
+        "performance_envelope", ROOT / "scripts/validate_performance_envelope.py"
+    )
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def test_contract_declares_projection_boundary() -> None:
     contract = json.loads((BENCHMARK / "contract.json").read_text())
     assert contract["status"] == "manifest-bound-synthetic-non-operational"
@@ -51,3 +61,14 @@ def test_runner_writes_json(tmp_path: Path) -> None:
     output = tmp_path / "measurement.json"
     report = _runner().run(output)
     assert json.loads(output.read_text())["benchmark_id"] == report["benchmark_id"]
+
+
+def test_noise_aware_envelope_accepts_bounded_rehearsal() -> None:
+    report = _runner().run()
+    assert _envelope_validator().validate(report) == ()
+
+
+def test_noise_aware_envelope_rejects_insufficient_repetitions() -> None:
+    report = _runner().run()
+    report["scenarios"][0]["repetitions"] = 2
+    assert "at least three repetitions" in _envelope_validator().validate(report)[0]
