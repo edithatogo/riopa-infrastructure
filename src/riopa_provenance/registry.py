@@ -12,6 +12,7 @@ from urllib.parse import urlsplit
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+from .hashing import sha256_json
 from .yaml_tools import load_yaml
 
 
@@ -22,6 +23,103 @@ class RegistryValidationResult:
     path: Path
     valid: bool
     errors: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class SourceIdentity:
+    """Stable identity for a declared source endpoint edition."""
+
+    source_id: str
+    endpoint_id: str
+    source_version: str
+    locator: str
+
+    def __post_init__(self) -> None:
+        if any(
+            not value.strip()
+            for value in (self.source_id, self.endpoint_id, self.source_version, self.locator)
+        ):
+            raise ValueError("source identity fields must be non-empty")
+
+    @property
+    def identity_key(self) -> str:
+        """Return a stable, non-secret identity key."""
+
+        return f"{self.source_id}:{self.endpoint_id}:{self.source_version}"
+
+
+def build_source_change_event(
+    previous: dict[str, Any] | None,
+    current: dict[str, Any],
+    *,
+    observed_at: str,
+) -> dict[str, Any]:
+    """Create a digest-only change event for one declared source observation."""
+
+    required = ("source_id", "endpoint_id", "source_version", "locator")
+    for label, observation in (("current", current), ("previous", previous)):
+        if observation is None:
+            continue
+        if not isinstance(observation, dict):
+            raise ValueError(f"{label} observation must be an object")
+        for field in required:
+            if not isinstance(observation.get(field), str) or not observation[field].strip():
+                raise ValueError(f"{label} observation requires {field}")
+    if not isinstance(observed_at, str) or not observed_at.strip():
+        raise ValueError("observed_at must be non-empty")
+    if previous is not None and (previous["source_id"], previous["endpoint_id"]) != (
+        current.get("source_id"),
+        current.get("endpoint_id"),
+    ):
+        raise ValueError("previous and current observations must identify the same endpoint")
+
+    identity = SourceIdentity(
+        current["source_id"],
+        current["endpoint_id"],
+        current["source_version"],
+        current["locator"],
+    )
+    comparable_fields = (
+        "source_version",
+        "locator",
+        "payload_sha256",
+        "schema_sha256",
+        "rights_status",
+    )
+    changed_fields = (
+        [
+            field
+            for field in comparable_fields
+            if previous is not None and previous.get(field) != current.get(field)
+        ]
+        if previous is not None
+        else list(comparable_fields)
+    )
+    change_type = (
+        "initial" if previous is None else ("unchanged" if not changed_fields else "changed")
+    )
+    body = {
+        "schema_version": "1.0.0",
+        "event_type": "source-change",
+        "source_id": identity.source_id,
+        "endpoint_id": identity.endpoint_id,
+        "identity_key": identity.identity_key,
+        "observed_at": observed_at,
+        "change_type": change_type,
+        "changed_fields": changed_fields,
+        "previous": previous,
+        "current": current,
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "A change event records declared observations; it does not prove endpoint "
+                "health, rights or authority."
+            ),
+            "Payload bytes and credentials are not stored in this event.",
+        ],
+    }
+    body["event_id"] = f"urn:riopa:event:source-change:{sha256_json(body)}"
+    return body
 
 
 def _json_compatible(value: Any) -> Any:
