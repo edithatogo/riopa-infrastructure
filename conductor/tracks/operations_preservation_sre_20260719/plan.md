@@ -35,6 +35,7 @@
 ## Review fixes
 
 - [x] R1 Constrain lifecycle transition endpoints to the declared job states and add a negative validation. Evidence: `schemas/operations-control.schema.json`, `tests/test_operations_control_contract.py`. (3af81f0)
+- [x] R2 Record a bounded four-lens agent-panel qualification of operations, preservation and campaign controls without closing provider, elapsed, participant or authority gates (`docs/operations-panel-qualification-20260825.json`, `tests/test_operations_panel_qualification.py`).
 
 ## Track closeout
 
