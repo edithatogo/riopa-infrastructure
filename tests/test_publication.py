@@ -70,6 +70,14 @@ def test_correction_package_validator_accepts_bounded_example_and_rejects_reuse(
     assert any("successor digest" in error for error in validate_correction_package(tampered))
 
 
+def test_publication_plan_closes_bounded_correction_validation_only() -> None:
+    plan = Path("conductor/tracks/publication_validation_20260718/plan.md").read_text(
+        encoding="utf-8"
+    )
+    assert "[x] 4.2 Exercise correction, supersession" in plan
+    assert "production downstream notification remains open" in plan
+
+
 def test_artifact_rights_override_precedes_source_and_global_fallback() -> None:
     records = {
         "source": {"redistribution_status": "open", "attribution": "Source"},
