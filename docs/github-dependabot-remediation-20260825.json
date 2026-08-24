@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "observation_id": "urn:riopa:evidence:github-dependabot-remediation:2026-08-25",
+  "repository": "edithatogo/riopa-infrastructure",
+  "recorded_on": "2026-08-25",
+  "status": "fixed-alerts-verified-in-lockfile",
+  "alerts": [
+    {
+      "number": 2,
+      "advisory": "GHSA-g6cj-pr64-35w5",
+      "package": "cryptography",
+      "severity": "high",
+      "state": "fixed",
+      "first_patched_version": "50.0.0",
+      "locked_version": "50.0.0"
+    },
+    {
+      "number": 1,
+      "advisory": "GHSA-6w46-j5rx-g56g",
+      "package": "pytest",
+      "severity": "medium",
+      "state": "fixed",
+      "first_patched_version": "9.0.3",
+      "locked_version": "9.1.1"
+    }
+  ],
+  "manifest": "uv.lock",
+  "non_claims": [
+    "Fixed Dependabot state and patched lockfile versions do not prove all hosted security controls are active.",
+    "Renovate, Codecov, container scanning and independent release attestation remain separate gates.",
+    "No alert count is treated as a claim that undiscovered vulnerabilities do not exist."
+  ]
+}
