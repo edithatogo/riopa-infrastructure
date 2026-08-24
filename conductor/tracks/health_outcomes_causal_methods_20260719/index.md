@@ -25,6 +25,7 @@
 | `HEALTH-SENSITIVITY-DIAGNOSTICS-20260825` | Bounded spatial-confounding, MAUP and measurement-error diagnostics | `src/riopa_provenance/health_sensitivity.py`, `tests/test_health_sensitivity.py` | Synthetic deterministic diagnostics pass; empirical, calibration, clinical, causal and methods-panel gates remain open |
 | `HEALTH-SUBGROUP-CONTROLS-20260825` | Explicit small-cell suppression and descriptive subgroup-gap controls | `src/riopa_provenance/health_subgroups.py`, `tests/test_health_subgroups.py` | Synthetic deterministic controls pass; privacy, representativeness, clinical, causal and methods-panel gates remain open |
 | `HEALTH-LONGITUDINAL-REFERENCE-20260825` | Declared-reference event-study contrasts with complete treated/control cells | `src/riopa_provenance/health_longitudinal.py`, `tests/test_health_longitudinal.py` | Synthetic deterministic workflow passes; empirical, parallel-trends, clinical, causal and methods-panel gates remain open |
+| `HEALTH-DIAGNOSTICS-20260825` | Bounded missingness profile and negative-control contrast diagnostics | `src/riopa_provenance/health_diagnostics.py`, `tests/test_health_diagnostics.py` | Synthetic deterministic diagnostics pass; uncertainty, mechanism, clinical, causal and methods-panel gates remain open |
 
 ## Blocking defects
 
