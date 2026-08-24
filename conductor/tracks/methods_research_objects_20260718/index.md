@@ -24,14 +24,34 @@
 
 ## Blocking defects
 
-- None recorded.
+- Protected-tag SBOM/signature/attestation execution and independent
+  verification remain open.
+- External profile-validator results, a complete real-data release candidate,
+  clean-room/external reproduction, preservation deposition and publication
+  authority remain open.
+
+## Repository-owned closeout slice (2026-08-24)
+
+The research-object, methods, citation, projection, closure and deterministic
+build contracts are linked above and pass `bash scripts/ci_quality.sh` at
+protected `main` revision `ed69976d815f064843c3492fa2045807381857ca`. This
+establishes repository-owned packaging behavior only; it does not claim signed
+release evidence, external validation, deposition or publication.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This is a single-developer repository. Agent panels may assess research
+  object packets, but cannot substitute for external reproduction or
+  accountable release-authority approval.
+- Synthetic reviewer bundles and local clean-build checks are bounded
+  evidence, not external participant evidence or preservation receipts.
+- Public, bounded, non-operational technical-preview scope remains in force.
 
 ## Review and handover
 
 Required agent-panel lenses: Provenance analyst, Security analyst, Research-object analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at
+M1. Status may advance only through `conductor/workflow.md`; evidence must be
+immutable or version-addressed, agent-panel qualified where required, and
+sufficient for the applicable release gates.
