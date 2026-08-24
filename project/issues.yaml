@@ -3428,7 +3428,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `health_outcomes_causal_methods_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct orchestrated epidemiological/statistical and governance agent-panel qualification.\n- [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.\n- [ ] 4.3 Publish stable methods, reporting and limitation templates.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/health_outcomes_causal_methods_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `health_outcomes_causal_methods_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Conduct the repository-owned orchestrated epidemiological/statistical and governance agent-panel assessment. The packet is bounded and explicitly non-qualifying; empirical, clinical, independent-reproduction and authority gates remain open (`docs/health-methods-panel-qualification-20260825.json`, `tests/test_health_methods_panel_qualification.py`).\n- [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.\n- [ ] 4.3 Publish stable methods, reporting and limitation templates.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/health_outcomes_causal_methods_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",

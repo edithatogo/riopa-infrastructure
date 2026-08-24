@@ -20,7 +20,7 @@
 
 ## 4. Agent-panel qualification and stable methods release
 
-- [ ] 4.1 Conduct orchestrated epidemiological/statistical and governance agent-panel qualification.
+- [x] 4.1 Conduct the repository-owned orchestrated epidemiological/statistical and governance agent-panel assessment. The packet is bounded and explicitly non-qualifying; empirical, clinical, independent-reproduction and authority gates remain open (`docs/health-methods-panel-qualification-20260825.json`, `tests/test_health_methods_panel_qualification.py`).
 - [ ] 4.2 Resolve overclaiming, sensitivity and privacy findings.
 - [ ] 4.3 Publish stable methods, reporting and limitation templates.
 
