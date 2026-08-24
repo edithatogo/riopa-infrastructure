@@ -24,7 +24,8 @@
     "urn:riopa:evidence:hosted-operational-observation:2026-08-25",
     "urn:riopa:evidence:hosted-recovery-observation:2026-08-25",
     "urn:riopa:evidence:rc-candidate-observation:2026-08-25",
-    "urn:riopa:evidence:rc-checkout-binding:2026-08-25"
+    "urn:riopa:evidence:rc-checkout-binding:2026-08-25",
+    "urn:riopa:evidence:campaign-concurrency:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
