@@ -1,0 +1,27 @@
+{
+  "contract_id": "urn:riopa:publication-validator-selection:2026-08-25",
+  "status": "bounded-repository-contract",
+  "operating_model": "single-developer; agent-panel lenses, not additional humans",
+  "required_lenses": [
+    {"id": "provenance", "focus": "digest binding, lineage, correction and reproducibility"},
+    {"id": "methods", "focus": "claim classification, assumptions, uncertainty and limitations"},
+    {"id": "security-operations", "focus": "integrity, rollback, secrets, permissions and operational controls"},
+    {"id": "research-object", "focus": "metadata, citation, preservation and reconstruction"}
+  ],
+  "execution_environments": [
+    {"id": "local-reproducible", "purpose": "deterministic contract and negative-test validation", "status": "available"},
+    {"id": "hosted-ci", "purpose": "clean checkout, immutable revision and artifact retention", "status": "available-for-owner-authorized-agent-runs"},
+    {"id": "archive-restore", "purpose": "reconstruct an archived packet without live endpoints", "status": "requires-preservation-receipt"}
+  ],
+  "independence_criteria": [
+    "Each lens receives the same exact revision and source or archive digest.",
+    "Each lens writes a separate content-addressed report before synthesis.",
+    "The orchestrator preserves dissent and cannot convert missing evidence into a pass.",
+    "Agent-panel agreement cannot create source authority, participant evidence or release approval.",
+    "A factual external operator or user workflow remains a separate required gate for beta, RC and stable-v1."
+  ],
+  "non_claims": [
+    "This contract selects assessment lenses; it is not a factual participant report.",
+    "This contract does not establish publication, preservation acceptance, elapsed qualification or release authority."
+  ]
+}
