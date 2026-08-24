@@ -1,0 +1,41 @@
+{
+  "schema": "riopa.health-methods-panel-qualification.v1",
+  "packet_id": "health-methods-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "revision_basis": "protected-main",
+  "scope": "synthetic and public-preview, non-clinical, non-operational methods reference",
+  "lenses": [
+    {
+      "id": "epidemiology",
+      "finding": "estimands, reference periods, diagnostics and nonclaims are explicit",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "quantitative-methods",
+      "finding": "descriptive, sensitivity and longitudinal calculations are deterministic and fail closed on incomplete cells",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "governance-and-privacy",
+      "finding": "small-cell suppression, missing-as-pending semantics and non-clinical scope are explicit",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "reproducibility",
+      "finding": "fixtures, tests and generated issue/coverage records are revision-addressed",
+      "disposition": "repository-evidence-qualified"
+    }
+  ],
+  "open_gates": [
+    "empirical public-data validation",
+    "clinical and domain validity",
+    "independent reproduction and external-user evidence",
+    "privacy and representativeness qualification",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This packet is a repository-owned agent-panel assessment, not clinical approval or independent external review.",
+    "Panel agreement cannot close empirical, participant, elapsed-time or accountable-authority gates."
+  ]
+}
