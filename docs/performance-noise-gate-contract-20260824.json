@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:performance:noise-gate:bounded-preview:1.0",
+  "implementation": "src/riopa_provenance/benchmark_gates.py:evaluate_regression",
+  "method": {
+    "centre": "median",
+    "noise_estimator": "median absolute deviation",
+    "allowance": "baseline_median * relative_tolerance + 3 * baseline_mad",
+    "minimum_samples": 3,
+    "default_direction": "lower-is-better"
+  },
+  "fail_closed_rules": [
+    "Missing, non-finite, non-positive or insufficient samples fail validation.",
+    "The direction of improvement must be declared for each metric.",
+    "A candidate gate is not a hosted soak, national-scale measurement or release qualification.",
+    "A failed comparison remains recorded and must not be replaced by a selected passing run."
+  ],
+  "non_claims": [
+    "No timing dependency, benchmark service or external library is required by this contract.",
+    "The gate does not establish resource, cost, production or national-scale capacity."
+  ]
+}

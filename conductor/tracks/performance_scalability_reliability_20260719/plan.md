@@ -18,7 +18,7 @@
 
 ## 3. Regression and capacity controls
 
-- [ ] 3.1 Add noise-aware performance regression gates.
+- [~] 3.1 Add a deterministic noise-aware performance regression gate. Evidence: `src/riopa_provenance/benchmark_gates.py`, `docs/performance-noise-gate-contract-20260824.json`, `tests/test_benchmark_gates.py`; hosted soak and national-scale qualification remain pending. (contract commit: `3571af92af89474024c37834358a15e7f19d7ad8`)
 - [ ] 3.2 Publish capacity, scaling and cost models.
 - [ ] 3.3 Resolve bottlenecks without weakening correctness or provenance.
 
