@@ -15,6 +15,7 @@ from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from .capture import CaptureError, CaptureResult, HttpCaptureClient, redact_url
 from .hashing import sha256_json
@@ -22,6 +23,14 @@ from .hashing import sha256_json
 
 class LinzExportError(CaptureError):
     """Raised when an export cannot be archived completely and safely."""
+
+
+def validate_download_url(download_url: str) -> None:
+    """Reject unsafe download URLs before the first redirect is captured."""
+
+    parsed = urlsplit(download_url)
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+        raise LinzExportError("export download URL must be an HTTPS URL without userinfo")
 
 
 @dataclass(frozen=True)
@@ -107,6 +116,7 @@ class LinzExportArchiver:
     ) -> tuple[tuple[CaptureResult, ...], CaptureResult]:
         if max_redirects < 0:
             raise ValueError("max_redirects must be non-negative")
+        validate_download_url(download_url)
         captures: list[CaptureResult] = []
         visited: set[str] = set()
         current = download_url

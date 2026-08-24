@@ -16,6 +16,7 @@ from riopa_provenance.linz_export import (
     _job_identity,
     _job_state,
     _require_object,
+    validate_download_url,
 )
 
 
@@ -100,6 +101,19 @@ def test_export_headers_redact_and_require_api_key() -> None:
     }
     with pytest.raises(ValueError, match="api_key must not be empty"):
         archiver._headers("")
+
+
+@pytest.mark.parametrize(
+    ("url", "message"),
+    [
+        ("http://data.linz.govt.nz/download/1", "HTTPS"),
+        ("https://user:pass@data.linz.govt.nz/download/1", "userinfo"),
+        ("not-a-url", "HTTPS"),
+    ],
+)
+def test_download_url_contract_fails_closed(url: str, message: str) -> None:
+    with pytest.raises(LinzExportError, match=message):
+        validate_download_url(url)
 
 
 @pytest.mark.parametrize(
