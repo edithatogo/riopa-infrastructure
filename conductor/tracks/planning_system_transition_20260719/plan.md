@@ -8,7 +8,7 @@
 
 ## 2. Historical reconstruction
 
-- [ ] 2.1 Reconstruct one authority reorganisation and one plan replacement.
+- [x] 2.1 Reconstruct one authority reorganisation and one plan replacement. (`fixtures/planning-transition-reconstruction.json`, `tests/test_planning_transition_reconstruction.py`; synthetic reference only)
 - [ ] 2.2 Preserve contemporaneous and retrospectively discovered evidence separately.
 - [ ] 2.3 Build continuity crosswalks with confidence and scope.
 

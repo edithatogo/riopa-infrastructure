@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "status": "synthetic-reconstruction",
+  "scope": "bounded-reference-fixture",
+  "cases": [
+    {
+      "case_id": "synthetic-authority-reorganisation-001",
+      "reconstruction_type": "authority-reorganisation",
+      "transition": {"transition_id": "urn:riopa:transition:merge-001", "relationship": "merge", "predecessors": ["urn:riopa:authority:a", "urn:riopa:authority:b"], "successors": ["urn:riopa:authority:c"], "state": "transitional", "valid_time": {"from": "2021-01-01", "to": "2021-12-31"}, "recorded_time": {"from": "2021-02-01", "to": null}, "evidence": ["urn:riopa:evidence:synthetic:authority-reorganisation-001"]},
+      "evidence_class": "synthetic-reference"
+    },
+    {
+      "case_id": "synthetic-plan-replacement-001",
+      "reconstruction_type": "plan-replacement",
+      "transition": {"transition_id": "urn:riopa:transition:replacement-001", "relationship": "replacement", "predecessors": ["urn:riopa:plan:old"], "successors": ["urn:riopa:plan:new"], "state": "superseded", "valid_time": {"from": "2023-01-01", "to": null}, "recorded_time": {"from": "2023-02-01", "to": null}, "evidence": ["urn:riopa:evidence:synthetic:plan-replacement-001"]},
+      "evidence_class": "synthetic-reference"
+    }
+  ],
+  "nonclaims": ["These are synthetic transition records and are not evidence about a real authority or plan.", "No legal, authoritative or retrospective historical claim is made."]
+}
