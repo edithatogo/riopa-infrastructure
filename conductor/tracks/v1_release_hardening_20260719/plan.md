@@ -14,7 +14,7 @@
 
 ## 3. Release candidate validation
 
-- [ ] 3.1 Build, sign, attest and preserve the exact release candidate.
+- [~] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
 - [ ] 3.2 Complete two clean-room reproductions and agent-operated user journeys.
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
 
