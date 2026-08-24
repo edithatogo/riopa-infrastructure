@@ -20,7 +20,7 @@
 
 ## 4. Stabilisation and migration
 
-- [ ] 4.1 Run agent-panel semantic qualification and resolve semantic findings.
+- [~] 4.1 Run the repository-owned four-lens semantic qualification and preserve unresolved findings. Canonical identity, schema, ontology and extension boundaries are qualified for bounded scope; SHACL, publication, migration and external semantic gates remain open (`docs/canonical-semantic-panel-qualification-20260825.json`, `tests/test_canonical_semantic_panel_qualification.py`).
 - [x] 4.2 Define the bounded migration compatibility and extension policy. (`docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json`, `docs/ontology/canonical-extension-policy-20260825.json`, `docs/ontology/canonical-extension-policy-20260825.md`, `tests/test_canonical.py`; fail-closed policy validation passes, while execution qualification and stable publication remain open.)
 - [ ] 4.3 Freeze the v1 normative schema/ontology candidate.
 
