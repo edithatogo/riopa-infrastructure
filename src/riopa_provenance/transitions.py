@@ -97,6 +97,65 @@ def build_continuity_crosswalk(
     }
 
 
+def audit_transition_history(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    """Audit declared late evidence, corrections, supersessions and finite gaps."""
+
+    invalid: list[dict[str, Any]] = []
+    late_evidence: list[str] = []
+    corrections: list[str] = []
+    supersessions: list[str] = []
+    windows: dict[str, list[tuple[date, date | None, str]]] = {}
+    for record in records:
+        transition_id = str(record.get("transition_id", ""))
+        errors = validate_transition(record)
+        if errors:
+            invalid.append({"transition_id": transition_id, "errors": list(errors)})
+            continue
+        valid_start = date.fromisoformat(str(record["valid_time"]["from"]))
+        recorded_start = date.fromisoformat(str(record["recorded_time"]["from"]))
+        if recorded_start > valid_start:
+            late_evidence.append(transition_id)
+        event_type = record.get("event_type")
+        if event_type == "correction":
+            corrections.append(transition_id)
+        if record.get("state") == "superseded" or event_type == "supersession":
+            supersessions.append(transition_id)
+        end_value = record["valid_time"].get("to")
+        end = date.fromisoformat(str(end_value)) if end_value is not None else None
+        group = str(record.get("history_group", "default"))
+        windows.setdefault(group, []).append((valid_start, end, transition_id))
+    gaps: list[dict[str, Any]] = []
+    for group, entries in windows.items():
+        ordered = sorted(entries)
+        for previous, current in zip(ordered, ordered[1:], strict=False):
+            if previous[1] is not None and current[0].toordinal() > previous[1].toordinal() + 1:
+                gaps.append(
+                    {
+                        "history_group": group,
+                        "from": previous[1].isoformat(),
+                        "to": current[0].isoformat(),
+                        "before": previous[2],
+                        "after": current[2],
+                    }
+                )
+    return {
+        "status": "invalid" if invalid else "audited",
+        "invalid": invalid,
+        "late_evidence": sorted(late_evidence),
+        "corrections": sorted(corrections),
+        "supersessions": sorted(supersessions),
+        "historical_gaps": gaps,
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "The audit reports declared temporal observations; it does not establish legal "
+                "effect or source completeness."
+            ),
+            "A finite gap is not evidence that no source existed during that interval.",
+        ],
+    }
+
+
 def validate_transition(record: Mapping[str, Any]) -> tuple[str, ...]:
     """Return contract errors; unknown dates, states and identities fail closed."""
     errors: list[str] = []

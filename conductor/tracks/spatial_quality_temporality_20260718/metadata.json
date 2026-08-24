@@ -19,6 +19,7 @@
     ,"urn:riopa:evidence:spatial-quality-trend:2026-08-25"
     ,"urn:riopa:evidence:spatial-temporal-query:2026-08-25"
     ,"urn:riopa:evidence:spatial-quality-change-attribution:2026-08-25"
+    ,"urn:riopa:evidence:spatial-temporal-history-audit:2026-08-25"
   ],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

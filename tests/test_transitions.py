@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from riopa_provenance.transitions import (
+    audit_transition_history,
     build_continuity_crosswalk,
     classify_transition_evidence,
     select_temporal_records,
@@ -53,3 +54,31 @@ def test_transition_evidence_and_crosswalk_preserve_discovery_and_scope() -> Non
     assert crosswalk["relationship"] == "partial_continuity"
     assert crosswalk["scope"] == "provisions 1-3 only"
     assert crosswalk["promotion_allowed"] is False
+
+
+def test_history_audit_reports_late_correction_supersession_and_gaps() -> None:
+    base = {
+        "relationship": "replacement",
+        "predecessors": ["old"],
+        "successors": ["new"],
+        "state": "operative",
+        "evidence": ["archive:1"],
+        "history_group": "plan",
+        "valid_time": {"from": "2020-01-01", "to": "2020-01-31"},
+        "recorded_time": {"from": "2020-02-01", "to": None},
+    }
+    first = {**base, "transition_id": "urn:riopa:transition:first", "event_type": "correction"}
+    second = {
+        **base,
+        "transition_id": "urn:riopa:transition:second",
+        "state": "superseded",
+        "valid_time": {"from": "2020-03-01", "to": None},
+        "recorded_time": {"from": "2020-03-01", "to": None},
+        "event_type": "supersession",
+    }
+    result = audit_transition_history([first, second])
+    assert result["late_evidence"] == ["urn:riopa:transition:first"]
+    assert result["corrections"] == ["urn:riopa:transition:first"]
+    assert result["supersessions"] == ["urn:riopa:transition:second"]
+    assert len(result["historical_gaps"]) == 1
+    assert result["promotion_allowed"] is False
