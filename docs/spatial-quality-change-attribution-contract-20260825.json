@@ -1,0 +1,17 @@
+{
+  "evidence_id": "SPATIAL-QUALITY-CHANGE-ATTRIBUTION-20260825",
+  "status": "bounded-declared-revision-contract",
+  "implementation": "riopa_provenance.spatial_quality_trend.classify_change_attribution",
+  "revision_axes": ["source_revision", "transformation_revision", "schema_revision", "boundary_revision"],
+  "rules": [
+    "One changed declared axis is reported as a candidate cause.",
+    "Multiple changed axes remain ambiguous.",
+    "Missing axes remain insufficient declarations, not negative evidence.",
+    "No result authorizes promotion."
+  ],
+  "nonclaims": [
+    "The classifier does not prove causal provenance or source authority.",
+    "Real release-to-release source and transformation evidence remains required.",
+    "Boundary and schema attribution still requires content-bound records."
+  ]
+}
