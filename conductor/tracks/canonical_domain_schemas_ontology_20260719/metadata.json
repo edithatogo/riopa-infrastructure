@@ -13,7 +13,8 @@
   "evidence": [
     "urn:riopa:evidence:projection-reconciliation:2026-07-31",
     "urn:riopa:evidence:canonical-domain-inventory:2026-08-01",
-    "urn:riopa:evidence:canonical-typescript-binding:2026-08-21"
+    "urn:riopa:evidence:canonical-typescript-binding:2026-08-21",
+    "urn:riopa:evidence:canonical-bounded-shacl-contract:2026-08-24"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

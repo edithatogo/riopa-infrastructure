@@ -7,7 +7,11 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from riopa_provenance.canonical import validate_conformance_corpus, validate_conformance_manifest
+from riopa_provenance.canonical import (
+    validate_bounded_shacl_constraints,
+    validate_conformance_corpus,
+    validate_conformance_manifest,
+)
 from riopa_provenance.hashing import sha256_json
 
 
@@ -108,3 +112,28 @@ def test_canonical_conformance_manifest_rejects_unbound_artifact() -> None:
         "keys must exactly match" in error
         for error in validate_conformance_manifest(manifest, root=str(root))
     )
+
+
+def test_bounded_shacl_constraints_validate_shape_and_record() -> None:
+    root, corpus = _corpus()
+    shape = (root / "docs/ontology/canonical-crosswalk.shacl.ttl").read_text()
+    record = next(
+        item["instance"]
+        for item in corpus["cases"]
+        if item["case_id"] == "canonical-crosswalk-golden"
+    )
+    assert validate_bounded_shacl_constraints(shape, record) == ()
+    record["evidence"] = []
+    assert "evidence must contain at least one item" in validate_bounded_shacl_constraints(
+        shape, record
+    )
+
+
+def test_bounded_shacl_constraints_reject_incomplete_shape() -> None:
+    root, _ = _corpus()
+    shape = (root / "docs/ontology/canonical-crosswalk.shacl.ttl").read_text()
+    shape = shape.replace("sh:path riopa:reviewer ;", "sh:path riopa:removedReviewer ;")
+    record = json.loads((root / "fixtures/canonical-crosswalk-golden.json").read_text())
+    errors = validate_bounded_shacl_constraints(shape, record)
+    assert any("missing required paths" in error for error in errors)
+    assert any("unsupported SHACL property path" in error for error in errors)
