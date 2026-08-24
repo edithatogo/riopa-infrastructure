@@ -1,0 +1,40 @@
+{
+  "schema": "riopa.provenance-profile-panel-qualification.v1",
+  "packet_id": "provenance-profile-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "scope": "repository-owned provenance profile, bounded public technical preview",
+  "lenses": [
+    {
+      "id": "api-schema",
+      "finding": "canonical event and migration fixture shapes are explicit and executable-validated",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "provenance",
+      "finding": "lineage, projection and additive migration boundaries preserve source-of-truth distinctions",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "security",
+      "finding": "signed-attestation and release-key requirements are fail-closed and no credentials are represented",
+      "disposition": "open"
+    },
+    {
+      "id": "research-object",
+      "finding": "citation and publication identifiers are specified but no persistent publication receipt exists",
+      "disposition": "open"
+    }
+  ],
+  "open_gates": [
+    "non-Python validator and round-trip parity",
+    "PROV/OpenLineage semantic-loss qualification",
+    "persistent publication identifier",
+    "trusted signed v1 attestation",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This agent-panel packet is not standards certification, independent external review or signed release evidence.",
+    "Panel agreement cannot create a publication identifier, trusted attestation or release authority."
+  ]
+}
