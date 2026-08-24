@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "urn:riopa:quality:stats-nz-meshblock-projection:2026-08-25",
+  "status": "bounded-projection-report",
+  "source_manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+  "source_manifest_sha256": "d689fa95e2ed8a6cef30598d454876fca3a499e57fdd569a77add7361129a161",
+  "projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
+  "observations": {
+    "feature_count": 57575,
+    "capture_record_count": 236,
+    "null_geometry_count": 16,
+    "preserved_invalid_geometry_count": 1,
+    "implicit_geometry_repairs": 0,
+    "live_endpoint_contacted": false
+  },
+  "checks": {
+    "geometry_and_topology": {"status": "pass", "basis": "source geometry is preserved; invalid and null geometry are reported"},
+    "completeness": {"status": "pass", "basis": "archived object-ID inventory and page capture records are complete for this packet"},
+    "temporal": {"status": "bounded-not-applicable", "basis": "one exact edition; no historical change series is claimed"},
+    "rights_metadata": {"status": "bounded-metadata-only", "basis": "source rights and release status remain attached; redistribution authority is not inferred"},
+    "lineage": {"status": "pass", "basis": "every normalized feature retains page-level capture lineage and content-addressed records"}
+  },
+  "coverage": {
+    "edition": "Stats NZ Meshblock 2026 supporting geography",
+    "packet_scope": "complete archived packet",
+    "geographic_scope": "national supporting geography only",
+    "population_denominator": "disabled",
+    "council_and_linz_broader_coverage": "not included"
+  },
+  "unresolved": [
+    "historical temporal comparison",
+    "defensible Meshblock-level population denominator",
+    "full LINZ and heterogeneous council archive coverage",
+    "preservation acceptance and DOI publication",
+    "national operational or accessibility claims"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This report does not establish population, accessibility, national performance or legal authority.",
+    "A complete supporting-geography packet is not a complete national analytical dataset."
+  ]
+}
