@@ -24,7 +24,7 @@
 
 - [x] 4.1 Validate equivalent answers across the bounded Python/CLI interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; MCP, remote access filtering, real-release and external-user gates remain open.
 - [ ] 4.2 Conduct user testing on real provenance questions.
-- [ ] 4.3 Freeze the v1 query contract and publish migration guidance.
+- [~] 4.3 Publish bounded migration guidance for the 1.0.0 query contract. Compatibility rules and explicit breaking-change boundaries are documented; v1 freeze, MCP/remote qualification, real-user evidence and release approval remain open (`docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py`).
 
 ## Track closeout
 
