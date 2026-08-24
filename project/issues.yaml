@@ -1256,7 +1256,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Discover ArcGIS, WFS/OGC, Koordinates, ePlan and downloadable-layer mechanisms.\n- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.\n- [ ] 2.3 Preserve capability, metadata, terms and rights snapshots before any source is incorporated into a canonical or analytical projection.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Record the bounded pilot's declared WFS/OGC and Koordinates mechanisms without live discovery or national completeness claims. (`config/source-registry/nz-spatial-pilot.yaml`, `src/riopa_provenance/registry.py:classify_connector_readiness`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)\n- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.\n- [ ] 2.3 Preserve capability, metadata, terms and rights snapshots before any source is incorporated into a canonical or analytical projection.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1286,7 +1286,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement source/service/version identity and change events.\n- [ ] 3.2 Add automated health, disappearance and terms-change checks.\n- [ ] 3.3 Produce connector-readiness and unresolved-source classifications.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement source/service/version identity and change events.\n- [ ] 3.2 Add automated health, disappearance and terms-change checks.\n- [ ] 3.3 Produce connector-readiness and unresolved-source classifications from declared registry fields; live health and authority remain open. (`src/riopa_provenance/registry.py:classify_connector_readiness`, `tests/test_source_registry_readiness.py`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -1316,7 +1316,7 @@
         "maturity:m1",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Complete records for every current authority.\n- [ ] 4.2 Conduct independent sample audit and correct findings.\n- [ ] 4.3 Publish immutable registry and coverage releases.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `nz_spatial_source_registry_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Complete records for every current authority.\n- [ ] 4.2 Conduct independent sample audit and correct findings.\n- [ ] 4.3 Publish immutable registry and coverage releases.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R1 Fail closed on unknown authentication types and malformed capability arrays in readiness projections. (`src/riopa_provenance/registry.py`, `tests/test_source_registry_readiness.py`; commit `f78743a`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/nz_spatial_source_registry_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",

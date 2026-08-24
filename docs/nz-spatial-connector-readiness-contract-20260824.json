@@ -1,0 +1,19 @@
+{
+  "evidence_id": "NZ-SPATIAL-CONNECTOR-READINESS-20260824",
+  "status": "declared-metadata-only-projection",
+  "implementation": "riopa_provenance.registry.classify_connector_readiness",
+  "input": "config/source-registry/nz-spatial-pilot.yaml",
+  "statuses": ["disabled", "credential-or-operator-required", "metadata-rehearsal-ready", "unresolved"],
+  "controls": [
+    "classification is derived only from declared registry fields",
+    "disabled endpoints remain out of scope",
+    "credentialed or restricted endpoints are not contacted",
+    "unknown authentication types remain unresolved",
+    "endpoint identifiers and capabilities are retained"
+  ],
+  "nonclaims": [
+    "This projection does not contact endpoints or establish source health.",
+    "It does not establish rights, completeness, freshness, authority or national coverage.",
+    "Credential-or-operator-required endpoints remain pending separately authorised execution."
+  ]
+}
