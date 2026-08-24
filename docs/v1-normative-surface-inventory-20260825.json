@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v1-normative-surface-inventory:2026-08-25",
+  "status": "repository-inventory-complete-compatibility-diff-open",
+  "release_candidate": "0.2.0",
+  "runtime": {"python": ">=3.14,<3.15", "source_of_truth": ["pyproject.toml", "uv.lock"]},
+  "schemas": [
+    "schemas/accessibility-matrix.schema.json", "schemas/accessibility-measure.schema.json",
+    "schemas/adapter-mapping.schema.json", "schemas/analysis-protocol.schema.json",
+    "schemas/artifact.schema.json", "schemas/canonical-crosswalk.schema.json",
+    "schemas/governance-decision.schema.json", "schemas/hosted-evidence.schema.json",
+    "schemas/interoperability-conformance-contract.schema.json", "schemas/linz-archive-plan.schema.json",
+    "schemas/materialization.schema.json", "schemas/maturity-model.schema.json",
+    "schemas/methods-facts.schema.json", "schemas/operations-control.schema.json",
+    "schemas/planning-transition.schema.json", "schemas/provenance-event.schema.json",
+    "schemas/publication-plan.schema.json", "schemas/quality-report.schema.json",
+    "schemas/release-evidence.schema.json", "schemas/release-roadmap.schema.json",
+    "schemas/repository-template-contract.schema.json", "schemas/rights-inventory.schema.json",
+    "schemas/snapshot-manifest.schema.json", "schemas/source-acquisition-approval.schema.json",
+    "schemas/source-health-observation.schema.json", "schemas/source-record.schema.json",
+    "schemas/source-registry.schema.json", "schemas/spatial-feature-link.schema.json",
+    "schemas/track-metadata.schema.json", "schemas/transformation-run.schema.json",
+    "schemas/v1-gate.schema.json"
+  ],
+  "python_api": {
+    "package_root": "src/riopa_provenance",
+    "modules": [
+      "analysis", "archived_spatial", "arcgis", "capture", "canonical", "crate",
+      "facility_location", "facility_registry", "governance", "hashing", "health",
+      "lineage", "linz", "linz_catalog", "linz_enrichment", "linz_export",
+      "linz_federation", "linz_inventory", "linz_pipeline", "methods", "operational_cycles",
+      "publication", "quarantine", "recovery", "registry", "release_signing", "retry",
+      "roadmap", "security_exercises", "security_panel", "spatial", "transitions", "validation",
+      "web_archive", "wfs"
+    ],
+    "entrypoint": "riopa_provenance.cli:main",
+    "compatibility_policy": "docs/compatibility-support-policy.md"
+  },
+  "cli": {
+    "entrypoint": "riopa_provenance.cli:main",
+    "command_groups": [
+      "validate", "methods", "research-object", "registry", "archive", "spatial",
+      "lineage", "publication", "roadmap"
+    ],
+    "contract_tests": ["tests/test_cli.py"]
+  },
+  "ontology_and_bindings": [
+    "schemas/canonical-crosswalk.schema.json",
+    "bindings/typescript/canonical-crosswalk-v1.d.ts",
+    "bindings/typescript/provenance-event-v1.d.ts",
+    "docs/canonical-domain-inventory-20260801.md",
+    "docs/provenance-and-lineage.md"
+  ],
+  "file_formats": [
+    {"format": "JSON", "role": "contracts, manifests, evidence and projections"},
+    {"format": "YAML", "role": "Conductor and configuration records"},
+    {"format": "Markdown", "role": "methods, runbooks and human-readable reports"},
+    {"format": "CSV", "role": "bounded tabular imports and fixtures"},
+    {"format": "GeoJSON", "role": "bounded spatial interchange"},
+    {"format": "RO-Crate 1.3", "role": "research-object packaging"},
+    {"format": "PROV-JSON-LD", "role": "semantic provenance projection"},
+    {"format": "OpenLineage JSON", "role": "operational lineage projection"},
+    {"format": "SPDX/CycloneDX", "role": "software bill of materials"}
+  ],
+  "deferred_or_excluded": [
+    {"surface": "full compatibility diff", "reason": "separate task 1.2 requires a frozen predecessor comparison"},
+    {"surface": "national network, timetable and facility claims", "reason": "required archives and qualification evidence do not exist"},
+    {"surface": "beta, RC and stable-v1 promotion", "reason": "90-day/three-cycle, 30-day RC soak, external workflows and accountable decision remain mandatory"}
+  ],
+  "open_findings": [
+    "compatibility diffs and unintended-breaking-change disposition are not complete",
+    "external operator/user reproduction remains mandatory",
+    "elapsed beta/RC evidence, preservation acceptance and release authority remain pending"
+  ]
+}
