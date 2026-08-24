@@ -6,11 +6,13 @@ import pytest
 
 from riopa_provenance.accessibility import (
     AccessibilityMatrix,
+    OpeningInterval,
     TravelObservation,
     TravelStatus,
     cumulative_opportunity,
     gravity_accessibility,
     public_facility_opportunities,
+    reachable_capacity_at_departure,
     straight_line_matrix,
     two_step_floating_catchment,
     validate_scenario_contract,
@@ -56,6 +58,48 @@ def test_straight_line_matrix_is_deterministic_and_bounded() -> None:
     assert matrix.mode == "straight-line"
     assert matrix.network_version == "reference:coordinate-snapshot"
     assert matrix.reachable_impedance("origin", "destination") == pytest.approx(111.195, rel=1e-3)
+
+
+def test_opening_hours_capacity_is_arrival_based_and_wraps_midnight() -> None:
+    matrix = AccessibilityMatrix(
+        "minutes-1",
+        "archive:fixture",
+        "reference",
+        "1",
+        "reference-minutes",
+        {
+            ("origin", "day"): TravelObservation(TravelStatus.REACHABLE, 30),
+            ("origin", "night"): TravelObservation(TravelStatus.REACHABLE, 45),
+        },
+    )
+    intervals = {
+        "day": (OpeningInterval(480, 600),),
+        "night": (OpeningInterval(1380, 60),),
+    }
+    assert (
+        reachable_capacity_at_departure(
+            matrix,
+            "origin",
+            {"day": 2.0, "night": 3.0},
+            intervals,
+            departure_minute=450,
+            threshold_minutes=60,
+        )
+        == 2.0
+    )
+    assert (
+        reachable_capacity_at_departure(
+            matrix,
+            "origin",
+            {"day": 2.0, "night": 3.0},
+            intervals,
+            departure_minute=1380,
+            threshold_minutes=60,
+        )
+        == 3.0
+    )
+    with pytest.raises(ValueError, match="equal endpoints"):
+        OpeningInterval(60, 60)
 
 
 @pytest.mark.parametrize(
