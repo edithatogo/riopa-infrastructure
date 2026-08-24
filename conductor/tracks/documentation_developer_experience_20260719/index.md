@@ -1,7 +1,7 @@
 # Evidence index: Documentation, developer experience and user support readiness
 
 - **Track ID:** `documentation_developer_experience_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.9.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -26,6 +26,7 @@
 | `DOCUMENTATION-FRICTION-20260825` | Anticipated friction and support-burden register with mitigations | `docs/documentation-friction-register-20260825.json`, `tests/test_documentation_friction_register.py` | Repository analysis is recorded; external user/operator, accessibility, RC and authority gates remain open |
 | `DOCUMENTATION-SUPPORT-20260825` | Preview support channels, triage priorities, single-developer ownership and sustainability bounds | `docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py` | Preview contract is recorded; stable support, external participation, RC soak, preservation and authority gates remain open |
 | `DOCUMENTATION-ARCHIVE-CANDIDATE-20260825` | Content-addressed versioned documentation archive candidate | `scripts/build_documentation_archive_manifest.py`, `docs/documentation-archive-manifest-20260825.json`, `tests/test_documentation_archive_manifest.py` | Local manifest is deterministic and unpublished; RC execution, external usability, preservation acceptance, publication and authority gates remain open |
+| `DOCUMENTATION-CANDIDATE-TUTORIAL-REHEARSAL-20260825` | Execute every registered tutorial against one exact repository candidate revision | `scripts/run_release_candidate_tutorials.py`, `tests/test_release_candidate_tutorials.py` | Bounded repository rehearsal passes; it is not RC promotion evidence and does not replace external user/operator participation or elapsed soak |
 
 ## Blocking defects
 
@@ -52,7 +53,7 @@ evidence.
 
 Required agent-panel lenses: External-user workflow analyst, API/schema analyst, Research-object analyst, Operations analyst, Interoperability analyst, Governance analyst.
 
-This index is deliberately non-assertive while the track remains `specified` at
+This index is deliberately non-assertive while the track remains `active` at
 M1. Status may advance only through `conductor/workflow.md`; evidence must be
 immutable or version-addressed, agent-panel qualified where required, and
 sufficient for the applicable release gates.

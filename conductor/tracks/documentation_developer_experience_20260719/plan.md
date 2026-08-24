@@ -20,7 +20,7 @@
 
 ## 4. Stable support readiness
 
-- [ ] 4.1 Execute every tutorial against release-candidate artifacts.
+- [x] 4.1 Execute every tutorial against one immutable repository-candidate revision through the bounded rehearsal harness. This is not RC promotion evidence; external user/operator evidence, elapsed RC soak and accountable authority remain open. (`scripts/run_release_candidate_tutorials.py`, `tests/test_release_candidate_tutorials.py`; `16ff727`)
 - [x] 4.2 Freeze the preview support channels, triage, single-developer ownership and sustainability bounds (`docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py`). Stable support, external participation, RC soak and authority gates remain open.
 - [~] 4.3 Build a content-addressed versioned documentation archive candidate. The manifest is unpublished and explicitly not RC/stable evidence; external usability, preservation acceptance, publication and authority remain open (`scripts/build_documentation_archive_manifest.py`, `docs/documentation-archive-manifest-20260825.json`, `tests/test_documentation_archive_manifest.py`).
 
@@ -30,3 +30,7 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Wrap the long nonclaim string so the repository quality gate passes (`3d62c46`).
