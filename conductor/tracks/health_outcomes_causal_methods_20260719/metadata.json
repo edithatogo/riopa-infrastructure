@@ -2,9 +2,9 @@
   "track_id": "health_outcomes_causal_methods_20260719",
   "type": "research",
   "phase": "Applications",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-08-25T05:20:00Z",
   "description": "Provide a rigorous framework for linking access, zoning and facilities to health outcomes while separating ecological description, prediction, causal inference and prescriptive modelling.",
   "depends_on": [
     "spatial_quality_temporality_20260718",
