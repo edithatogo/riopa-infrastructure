@@ -6,7 +6,8 @@ from riopa_provenance.validation import validate_instance
 
 def test_supermarket_preregistration_is_valid_reference_template() -> None:
     root = Path(__file__).resolve().parents[1]
-    packet = json.loads((root / "docs/supermarket-health-preregistration-20260825.json").read_text())
+    packet_path = root / "docs/supermarket-health-preregistration-20260825.json"
+    packet = json.loads(packet_path.read_text())
     schema = json.loads((root / "schemas/analysis-preregistration.schema.json").read_text())
     assert validate_instance(packet, schema) == ()
     assert packet["domain"] == "synthetic-non-clinical"
