@@ -13,6 +13,7 @@ uv run python scripts/check_tracked_secrets.py --root .
 uv run python scripts/validate_repo_context.py --root .
 uv run riopa validate --root .
 uv run riopa registry validate --registry config/source-registry/nz-spatial-pilot.yaml --schema schemas/source-registry.schema.json
+uv run python scripts/validate_campaign_status.py docs/evidence-campaign-status-20260821.json
 uv run riopa roadmap validate --root .
 uv run python scripts/validate_all_track_panel.py \
   docs/panel-reports/20260802/adversarial-analyst.json \
