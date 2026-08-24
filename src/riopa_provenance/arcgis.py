@@ -8,6 +8,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from .capture import (
     CaptureError,
@@ -31,6 +32,27 @@ class ArcGISLayerArchive:
     page_captures: tuple[CaptureResult, ...]
     feature_count: int
     manifest_path: Path
+
+
+def validate_arcgis_request_contract(
+    service_url: str, layer_id: int, where: str, out_fields: str
+) -> None:
+    """Reject unsafe or ambiguous ArcGIS requests before network capture.
+
+    This is a request-shape guard, not source or rights validation.  The
+    capture client's allow-list and DNS policy remain authoritative for
+    network access.
+    """
+
+    parsed = urlsplit(service_url)
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+        raise CaptureError("ArcGIS service URL must be an HTTPS URL without userinfo")
+    if layer_id < 0:
+        raise CaptureError("ArcGIS layer_id must be non-negative")
+    if not where.strip():
+        raise CaptureError("ArcGIS where clause must not be empty")
+    if not out_fields.strip():
+        raise CaptureError("ArcGIS out_fields must not be empty")
 
 
 def _effective_out_fields(out_fields: str, object_id_field: str | None) -> str:
@@ -140,6 +162,7 @@ class ArcGISFeatureLayerArchiver:
         headers: Mapping[str, str] | None = None,
         redact_values: Sequence[str] = (),
     ) -> ArcGISLayerArchive:
+        validate_arcgis_request_contract(service_url, layer_id, where, out_fields)
         base = service_url.rstrip("/")
         persisted_base = redact_text(base, redact_values, replacement="REDACTED")
         common = dict(request_params or {})

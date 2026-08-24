@@ -11,6 +11,7 @@ from riopa_provenance.arcgis import (
     ArcGISFeatureLayerArchiver,
     _effective_out_fields,
     _feature_object_ids,
+    validate_arcgis_request_contract,
 )
 from riopa_provenance.capture import CaptureError, CaptureResult
 
@@ -81,6 +82,23 @@ def test_arcgis_feature_ids_require_integer_attributes() -> None:
         _feature_object_ids([{"attributes": {"OBJECTID": "1"}}], "OBJECTID")
     with pytest.raises(CaptureError, match="invalid integer"):
         _feature_object_ids([{"attributes": {"OBJECTID": True}}], "OBJECTID")
+
+
+@pytest.mark.parametrize(
+    ("url", "layer_id", "where", "out_fields", "message"),
+    [
+        ("http://data.example/FeatureServer", 0, "1=1", "*", "HTTPS"),
+        ("https://user:pass@data.example/FeatureServer", 0, "1=1", "*", "userinfo"),
+        ("https://data.example/FeatureServer", -1, "1=1", "*", "non-negative"),
+        ("https://data.example/FeatureServer", 0, "  ", "*", "where"),
+        ("https://data.example/FeatureServer", 0, "1=1", "  ", "out_fields"),
+    ],
+)
+def test_arcgis_request_contract_fails_closed(
+    url: str, layer_id: int, where: str, out_fields: str, message: str
+) -> None:
+    with pytest.raises(CaptureError, match=message):
+        validate_arcgis_request_contract(url, layer_id, where, out_fields)
 
 
 @pytest.mark.parametrize("max_pages", [0, -1])

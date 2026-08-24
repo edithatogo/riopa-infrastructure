@@ -8,6 +8,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from .capture import (
     CaptureError,
@@ -30,6 +31,18 @@ class WFSFeatureTypeArchive:
     page_captures: tuple[CaptureResult, ...]
     feature_count: int
     manifest_path: Path
+
+
+def validate_wfs_request_contract(service_url: str, type_name: str, version: str) -> None:
+    """Reject unsafe or ambiguous WFS requests before network capture."""
+
+    parsed = urlsplit(service_url)
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+        raise CaptureError("WFS service URL must be an HTTPS URL without userinfo")
+    if not type_name.strip() or any(char in type_name for char in "\r\n\x00"):
+        raise CaptureError("WFS type_name must be a non-empty single-line value")
+    if version != "2.0.0":
+        raise ValueError("the hardened archiver currently supports WFS 2.0.0 only")
 
 
 class WFSFeatureTypeArchiver:
@@ -58,10 +71,9 @@ class WFSFeatureTypeArchiver:
         headers: Mapping[str, str] | None = None,
         redact_values: Sequence[str] = (),
     ) -> WFSFeatureTypeArchive:
+        validate_wfs_request_contract(service_url, type_name, version)
         if page_size < 1 or page_size > 100_000:
             raise ValueError("page_size must be between 1 and 100000")
-        if version != "2.0.0":
-            raise ValueError("the hardened archiver currently supports WFS 2.0.0 only")
 
         common = dict(request_params or {})
         persisted_service_url = redact_text(service_url, redact_values, replacement="REDACTED")
