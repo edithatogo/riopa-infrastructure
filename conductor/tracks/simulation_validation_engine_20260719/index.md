@@ -1,7 +1,7 @@
 # Evidence index: Stochastic service simulation and model validation engine
 
 - **Track ID:** `simulation_validation_engine_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.8.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -35,4 +35,4 @@
 
 Required agent-panel lenses: Provenance analyst, Operations analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at M1. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
