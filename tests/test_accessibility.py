@@ -154,3 +154,10 @@ def test_versioned_accessibility_contract_preserves_missing_semantics() -> None:
         "claim_classification": "reference-only",
     }
     assert validate_instance(measure, measure_schema) == ()
+
+
+def test_accessibility_plan_closes_reference_scenario_contract_without_operational_claim() -> None:
+    root = Path(__file__).resolve().parents[1]
+    plan = (root / "conductor/tracks/accessibility_network_engine_20260719/plan.md").read_text()
+    assert "[x] 1.3 Define uncertainty, subgroup and scenario contracts" in plan
+    assert "real-network and operational qualification remain pending" in plan
