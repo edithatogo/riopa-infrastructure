@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:performance:capacity-model:bounded-preview:1.0",
+  "implementation": "src/riopa_provenance/capacity_models.py",
+  "model": {
+    "form": "bounded-linear-projection",
+    "inputs": ["base_units", "base_seconds", "unit_seconds", "base_cost", "unit_cost", "max_units"],
+    "outputs": ["units", "projected_seconds", "projected_cost"]
+  },
+  "fail_closed_rules": [
+    "Model values must be finite and non-negative, with positive base_units.",
+    "Projections beyond max_units are rejected rather than extrapolated silently.",
+    "Synthetic projections are not empirical national measurements or production cost evidence.",
+    "A model revision or workload change requires a new content-addressed report."
+  ],
+  "non_claims": [
+    "No provider pricing, national capacity, performance SLA or operational budget is inferred.",
+    "This contract does not replace hosted measurement or agent-panel qualification."
+  ]
+}
