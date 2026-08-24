@@ -24,6 +24,7 @@
 | `PROVENANCE-QUERY-PROV-JSONLD-20260825` | Deterministic PROV-JSON-LD projection with digest binding and explicit non-authority controls | `src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/provenance-query-prov-jsonld-contract-20260825.json` | Projection contract passes; RDF/SHACL, semantic-loss, external-client, access, scale and authority gates remain open |
 | `PROVENANCE-QUERY-CLI-20260825` | CLI access to the bounded lineage query and PROV-JSON-LD projection surfaces | `src/riopa_provenance/cli.py`, `tests/test_cli.py` | CLI commands pass repository tests; MCP transport, cross-interface equivalence, access-control and external-user evidence remain open |
 | `PROVENANCE-QUERY-PAGINATION-20260825` | Bounded deterministic node pagination with projection diagnostics | `src/riopa_provenance/lineage.py`, `src/riopa_provenance/cli.py`, `tests/test_lineage.py`, `tests/test_cli.py`, `docs/provenance-query-pagination-diagnostics-contract-20260825.json` | Local contract passes; caching, remote authorization, scale, MCP, external-user and authority gates remain open |
+| `PROVENANCE-QUERY-BENCHMARK-20260825` | Environment-bound timing harness for where/why/impact/page queries | `scripts/benchmark_lineage_queries.py`, `tests/test_provenance_query_benchmark.py` | Local harness passes; release-scale, second-environment, access-control, MCP, external-user and authority gates remain open |
 
 ## Blocking defects
 
