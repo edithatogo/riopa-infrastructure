@@ -67,6 +67,31 @@ def test_lineage_walks_are_sorted_and_cycle_safe(tmp_path: Path) -> None:
     assert "not captured" in impact["projection"]["granularity_limitation"]
 
 
+def test_export_duckdb_preserves_projection_rows_and_digest_binding(tmp_path: Path) -> None:
+    duckdb = pytest.importorskip("duckdb")
+    index = seeded_index(tmp_path)
+    target = tmp_path / "lineage.duckdb"
+    receipt = index.export_duckdb(target)
+
+    assert receipt["manifests"] == 1
+    assert receipt["nodes"] == 3
+    assert receipt["edges"] == 2
+    assert len(receipt["sha256"]) == 64
+    with duckdb.connect(str(target), read_only=True) as connection:
+        assert connection.execute("SELECT count(*) FROM manifests").fetchone() == (1,)
+        assert connection.execute("SELECT count(*) FROM nodes").fetchone() == (3,)
+        assert connection.execute("SELECT count(*) FROM edges").fetchone() == (2,)
+        assert connection.execute(
+            "SELECT count(*) FROM edges WHERE source_id = 'source-1'"
+        ).fetchone() == (1,)
+
+
+def test_export_duckdb_rejects_same_projection_path(tmp_path: Path) -> None:
+    index = seeded_index(tmp_path)
+    with pytest.raises(LineageError, match="must differ"):
+        index.export_duckdb(index.path)
+
+
 @pytest.mark.parametrize("depth", [0, 101])
 def test_lineage_depth_and_identity_fail_closed(tmp_path: Path, depth: int) -> None:
     index = seeded_index(tmp_path)

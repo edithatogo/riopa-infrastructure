@@ -136,6 +136,96 @@ class LineageIndex:
         connection.execute("PRAGMA foreign_keys = ON")
         return connection
 
+    def export_duckdb(self, target: str | Path) -> dict[str, Any]:
+        """Export the current SQLite projection to a deterministic DuckDB index.
+
+        The DuckDB file is a disposable query projection: authoritative
+        manifests and their digests remain the source of truth. Existing
+        lineage tables in the target are replaced, while unrelated tables are
+        left untouched.
+        """
+
+        target_path = Path(target).resolve()
+        if target_path == self.path:
+            raise LineageError("DuckDB target must differ from the SQLite projection")
+        try:
+            import duckdb
+        except ModuleNotFoundError as exc:
+            raise LineageError("DuckDB export requires the optional duckdb dependency") from exc
+        source = self._connect(read_only=True)
+        try:
+            manifests = [
+                tuple(row) for row in source.execute("SELECT * FROM manifests ORDER BY manifest_id")
+            ]
+            nodes = [tuple(row) for row in source.execute("SELECT * FROM nodes ORDER BY node_id")]
+            edges = [
+                tuple(row)
+                for row in source.execute(
+                    "SELECT * FROM edges ORDER BY manifest_id, source_id, target_id, relation"
+                )
+            ]
+        finally:
+            source.close()
+
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        connection = duckdb.connect(str(target_path))
+        try:
+            connection.execute("DROP TABLE IF EXISTS edges")
+            connection.execute("DROP TABLE IF EXISTS nodes")
+            connection.execute("DROP TABLE IF EXISTS manifests")
+            connection.execute(
+                """
+                CREATE TABLE manifests (
+                    manifest_id VARCHAR PRIMARY KEY,
+                    manifest_path VARCHAR NOT NULL,
+                    manifest_sha256 VARCHAR NOT NULL,
+                    snapshot_id VARCHAR NOT NULL,
+                    dataset_id VARCHAR NOT NULL
+                )
+                """
+            )
+            connection.execute(
+                """
+                CREATE TABLE nodes (
+                    node_id VARCHAR PRIMARY KEY,
+                    node_type VARCHAR NOT NULL,
+                    label VARCHAR,
+                    record_path VARCHAR,
+                    metadata_json VARCHAR NOT NULL
+                )
+                """
+            )
+            connection.execute(
+                """
+                CREATE TABLE edges (
+                    source_id VARCHAR NOT NULL,
+                    target_id VARCHAR NOT NULL,
+                    relation VARCHAR NOT NULL,
+                    record_path VARCHAR,
+                    manifest_id VARCHAR NOT NULL
+                )
+                """
+            )
+            if manifests:
+                connection.executemany("INSERT INTO manifests VALUES (?, ?, ?, ?, ?)", manifests)
+            if nodes:
+                connection.executemany("INSERT INTO nodes VALUES (?, ?, ?, ?, ?)", nodes)
+            if edges:
+                connection.executemany("INSERT INTO edges VALUES (?, ?, ?, ?, ?)", edges)
+            connection.execute("CREATE INDEX idx_edges_source ON edges(source_id)")
+            connection.execute("CREATE INDEX idx_edges_target ON edges(target_id)")
+            connection.execute("CREATE INDEX idx_nodes_type ON nodes(node_type)")
+        finally:
+            connection.close()
+        return {
+            "target": str(target_path),
+            "manifests": len(manifests),
+            "nodes": len(nodes),
+            "edges": len(edges),
+            "sha256": sha256_file(target_path),
+            "source_projection_sha256": sha256_file(self.path),
+        }
+
     @staticmethod
     def _put_node(
         connection: sqlite3.Connection,
