@@ -36,6 +36,72 @@ class TravelObservation:
 
 
 @dataclass(frozen=True)
+class OpeningInterval:
+    """A recurring local-time opening interval in minutes after midnight."""
+
+    opens_at: int
+    closes_at: int
+
+    def __post_init__(self) -> None:
+        for value in (self.opens_at, self.closes_at):
+            if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value < 1440:
+                raise ValueError("opening times must be integer minutes in [0, 1440)")
+        if self.opens_at == self.closes_at:
+            raise ValueError("opening intervals must not have equal endpoints")
+
+    def contains(self, minute: float) -> bool:
+        """Return whether a minute falls inside this interval.
+
+        An interval with ``closes_at < opens_at`` crosses midnight.  The
+        representation is intentionally recurrence-only and carries no
+        timezone, holiday, or live-service assertion.
+        """
+
+        if not isfinite(minute):
+            raise ValueError("minute must be finite")
+        position = minute % 1440
+        if self.opens_at < self.closes_at:
+            return self.opens_at <= position < self.closes_at
+        return position >= self.opens_at or position < self.closes_at
+
+
+def reachable_capacity_at_departure(
+    matrix: AccessibilityMatrix,
+    origin: str,
+    capacities: Mapping[str, float],
+    opening_intervals: Mapping[str, tuple[OpeningInterval, ...]],
+    *,
+    departure_minute: float,
+    threshold_minutes: float,
+) -> float:
+    """Sum reference capacity open on arrival for a minute-based matrix.
+
+    The caller must provide an archived/reference matrix whose impedance is
+    explicitly measured in minutes.  This function does not infer opening
+    hours, capacity, timezone, routing, timetable service or operational
+    availability from any source.
+    """
+
+    if not isfinite(departure_minute) or not 0 <= departure_minute < 1440:
+        raise ValueError("departure_minute must be finite and in [0, 1440)")
+    if not isfinite(threshold_minutes) or threshold_minutes < 0:
+        raise ValueError("threshold_minutes must be finite and non-negative")
+    total = 0.0
+    for destination, capacity in capacities.items():
+        if not isfinite(capacity) or capacity < 0:
+            raise ValueError("capacities must be finite and non-negative")
+        intervals = opening_intervals.get(destination)
+        if not intervals:
+            continue
+        impedance = matrix.reachable_impedance(origin, destination)
+        if impedance is None or impedance > threshold_minutes:
+            continue
+        if any(interval.contains(departure_minute + impedance) for interval in intervals):
+            total += capacity
+    return total
+
+
+@dataclass(frozen=True)
 class AccessibilityMatrix:
     """A versioned, mode-specific travel matrix."""
 

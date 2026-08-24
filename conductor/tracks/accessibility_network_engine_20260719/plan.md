@@ -10,7 +10,7 @@
 
 - [~] 2.1 Implement straight-line, road/walk/cycle and public-transport adapters. The bounded Haversine coordinate adapter is implemented and tested; road, walk/cycle, timetable and real-network adapters remain disabled pending archived inputs and qualification. (`src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`; `de7a43a`)
 - [x] 2.2 Implement cumulative opportunity, gravity and floating-catchment measures in the dependency-free reference core, with hand-calculated fixtures and fail-closed parameter validation. Real-network and operational qualification remain open. (`src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md`)
-- [ ] 2.3 Add opening-hours, capacity and time-dependent calculations.
+- [x] 2.3 Add opening-hours, capacity and time-dependent calculations. Evidence: `OpeningInterval` and `reachable_capacity_at_departure` in `src/riopa_provenance/accessibility.py` with arrival-based, midnight-wrapping reference tests; no timezone, holiday, routing, timetable or operational claim is enabled.
 
 ## 3. Benchmark and scale
 
