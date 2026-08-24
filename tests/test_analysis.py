@@ -9,16 +9,40 @@ from jsonschema import Draft202012Validator
 from riopa_provenance.analysis import (
     AnalysisProtocol,
     AnalysisProtocolError,
+    CoverageScenario,
     Estimand,
     ParameterEvidence,
     ReplicationDesign,
     difference_in_differences,
+    evaluate_coverage_scenario,
     protocol_record,
     run_seeded_replications,
     simulate_fcfs_queue,
     synthetic_pilot_report,
     validate_analysis_protocol,
 )
+
+
+def test_coverage_scenario_preserves_primary_backup_and_availability() -> None:
+    scenario = CoverageScenario(
+        "synthetic-coverage",
+        ("d1", "d2"),
+        ("primary",),
+        ("backup",),
+        {("d1", "primary"): 2, ("d1", "backup"): 2, ("d2", "backup"): 2},
+        {"primary": True, "backup": True},
+        2,
+    )
+    result = evaluate_coverage_scenario(scenario)
+    assert result["counts"] == {
+        "demand": 2,
+        "primary_covered": 1,
+        "backup_covered": 2,
+        "uncovered": 1,
+    }
+    assert result["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="threshold"):
+        CoverageScenario("bad", ("d",), ("p",), ("b",), {}, {}, -1)
 
 
 def _protocol(*, replications: int = 5) -> AnalysisProtocol:
