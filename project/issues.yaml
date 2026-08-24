@@ -2329,7 +2329,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define plan, plan-version, chapter, provision, citation and legal-status identities.\n- [ ] 1.2 Preserve official documents, structure and source anchors.\n- [ ] 1.3 Define link evidence, confidence, review and uncertainty.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define plan, plan-version, chapter, provision, citation and legal-status identities. (`src/riopa_provenance/planning.py`, `tests/test_planning.py`, `docs/planning-identity-linkage-contract-20260824.json`; commit `cc384d3`)\n- [ ] 1.2 Preserve official documents, structure and source anchors.\n- [ ] 1.3 Define link evidence, confidence, review and uncertainty. (`src/riopa_provenance/planning.py`, `tests/test_planning.py`, `docs/planning-identity-linkage-contract-20260824.json`; commit `cc384d3`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
