@@ -1,0 +1,33 @@
+{
+  "schema": "riopa.provenance-profile-v1-candidate-freeze.v1",
+  "freeze_id": "provenance-profile-v1-candidate-freeze-20260825",
+  "status": "candidate-frozen-unsigned",
+  "scope": "bounded public-source technical-preview provenance profile",
+  "artifacts": {
+    "schemas/provenance-event.schema.json": "8163c52931c43ecd84da42eb7fbed99f6f74be83c747fe13d6a197fdc62e7e06",
+    "docs/provenance-profile-conformance-manifest-1.0.0.json": "d6091b5096a3d6c7a5fd2e1706c281d062a16b5555c512f0c44646a8320843c5",
+    "docs/provenance-profile-compatibility-matrix-20260825.json": "549f9c7a9802ba1a34bc6c4e396c492588179491673cfc1b68e92abe1ac25cb7",
+    "docs/provenance-profile-migration-1.0.0-to-1.1.0.json": "229dee510812d1f41bf41002ec87d15763022b52956b6d416094765330f937dc",
+    "docs/provenance-profile-panel-qualification-20260825.json": "aad6fd347a529931449425019eb50beadd2296f2830be35963231c7250bc3bd0",
+    "bindings/typescript/provenance-event-v1.d.ts": "672b82632983401e8dadd9420cb614ca06968a037a743b49982362ef77f49c67"
+  },
+  "freeze_rules": [
+    "listed artifacts require a successor candidate and digest update when changed",
+    "additive namespaced extensions only; normative fields cannot be redefined",
+    "native RIOPA events remain normative over interoperability projections",
+    "signature and publication status remain explicit and fail closed"
+  ],
+  "signature": {"status": "not-signed", "required_for": "stable-v1 normative release"},
+  "open_gates": [
+    "trusted signed attestation",
+    "full non-Python and semantic-loss qualification",
+    "persistent publication identifier",
+    "independent external reproduction",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is an unsigned candidate freeze, not a stable normative profile or standards certification.",
+    "Agent-panel assessment cannot substitute for signature, external participation or authority."
+  ]
+}
