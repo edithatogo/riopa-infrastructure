@@ -9,7 +9,7 @@
 ## 2. Reference implementations
 
 - [ ] 2.1 Implement straight-line, road/walk/cycle and public-transport adapters.
-- [ ] 2.2 Implement cumulative opportunity, gravity and floating-catchment measures.
+- [x] 2.2 Implement cumulative opportunity, gravity and floating-catchment measures in the dependency-free reference core, with hand-calculated fixtures and fail-closed parameter validation. Real-network and operational qualification remain open. (`src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md`)
 - [ ] 2.3 Add opening-hours, capacity and time-dependent calculations.
 
 ## 3. Benchmark and scale
