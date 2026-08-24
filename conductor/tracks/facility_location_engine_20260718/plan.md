@@ -2,19 +2,19 @@
 
 ## 1. Problem and solution contracts
 
-- [ ] 1.1 Define demand, candidates, travel, capacity, eligibility, cost and scenario schemas.
-- [ ] 1.2 Define solver evidence, bounds, feasibility, uncertainty and explanation outputs.
-- [ ] 1.3 Implement independent feasibility/objective verifier.
+- [x] 1.1 Define demand, candidates, travel, capacity, eligibility, cost and scenario schemas. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)
+- [x] 1.2 Define solver evidence, bounds, feasibility, uncertainty and explanation outputs. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)
+- [x] 1.3 Implement independent feasibility/objective verifier. (`src/riopa_provenance/facility_location.py:verify_solution`, `tests/test_facility_location.py`)
 
 ## 2. Core model families
 
-- [ ] 2.1 Implement set covering, maximal covering, p-median and p-center.
-- [ ] 2.2 Implement capacity, budget, fixed-site and eligibility constraints.
-- [ ] 2.3 Add benchmark and intentionally corrupted solution suites.
+- [x] 2.1 Implement set covering, maximal covering, p-median and p-center. Bounded exhaustive reference models are implemented; national-scale solver qualification remains open. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)
+- [x] 2.2 Implement capacity, budget, fixed-site and eligibility constraints. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)
+- [x] 2.3 Add benchmark and intentionally corrupted solution suites. Bounded line benchmarks and negative verifier cases pass; trusted external benchmark references remain open. (`tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md`)
 
 ## 3. Equity, robustness and extensions
 
-- [ ] 3.1 Implement subgroup, max-min, inequality and Pareto alternatives.
+- [x] 3.1 Implement subgroup, minimax subgroup-mean and Pareto alternatives. The minimax selector is an explicit bounded equity alternative and does not silently replace the model objective. (`src/riopa_provenance/facility_location.py:minimax_subgroup_alternative`, `tests/test_facility_location.py`; commit `cb92f43`)
 - [ ] 3.2 Add scenario robustness/stochastic and multi-period interfaces.
 - [ ] 3.3 Add competitive/market-capture reference formulation.
 

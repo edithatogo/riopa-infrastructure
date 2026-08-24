@@ -45,7 +45,7 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 
 - [ ] **`accessibility_network_engine_20260719`** — Multimodal accessibility and travel-matrix engine (target `0.6.0`, current `M1`, target `M6`, risk High; depends on: `canonical_domain_schemas_ontology_20260719`, `provenance_profile_v1_20260718`)
 - [ ] **`facility_registry_20260719`** — Versioned multi-source facility registry (target `0.6.0`, current `M1`, target `M6`, risk High; depends on: `canonical_domain_schemas_ontology_20260719`, `connector_runtime_capture_20260719`)
-- [ ] **`facility_location_engine_20260718`** — Inspectable facility-location and allocation engine (target `0.7.0`, current `M1`, target `M6`, risk Critical; depends on: `canonical_domain_schemas_ontology_20260719`, `accessibility_network_engine_20260719`)
+- [~] **`facility_location_engine_20260718`** — Inspectable facility-location and allocation engine (target `0.7.0`, current `M1`, target `M6`, risk Critical; depends on: `canonical_domain_schemas_ontology_20260719`, `accessibility_network_engine_20260719`)
 - [ ] **`simulation_validation_engine_20260719`** — Stochastic service simulation and model validation engine (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `canonical_domain_schemas_ontology_20260719`, `facility_location_engine_20260718`)
 
 ## Applications

@@ -2481,7 +2481,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define demand, candidates, travel, capacity, eligibility, cost and scenario schemas.\n- [ ] 1.2 Define solver evidence, bounds, feasibility, uncertainty and explanation outputs.\n- [ ] 1.3 Implement independent feasibility/objective verifier.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Define demand, candidates, travel, capacity, eligibility, cost and scenario schemas. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)\n- [ ] 1.2 Define solver evidence, bounds, feasibility, uncertainty and explanation outputs. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)\n- [ ] 1.3 Implement independent feasibility/objective verifier. (`src/riopa_provenance/facility_location.py:verify_solution`, `tests/test_facility_location.py`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -2511,7 +2511,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement set covering, maximal covering, p-median and p-center.\n- [ ] 2.2 Implement capacity, budget, fixed-site and eligibility constraints.\n- [ ] 2.3 Add benchmark and intentionally corrupted solution suites.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Implement set covering, maximal covering, p-median and p-center. Bounded exhaustive reference models are implemented; national-scale solver qualification remains open. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)\n- [ ] 2.2 Implement capacity, budget, fixed-site and eligibility constraints. (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`)\n- [ ] 2.3 Add benchmark and intentionally corrupted solution suites. Bounded line benchmarks and negative verifier cases pass; trusted external benchmark references remain open. (`tests/test_facility_location.py`, `reports/wp009-reference-solver-cores.md`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -2541,7 +2541,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement subgroup, max-min, inequality and Pareto alternatives.\n- [ ] 3.2 Add scenario robustness/stochastic and multi-period interfaces.\n- [ ] 3.3 Add competitive/market-capture reference formulation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_location_engine_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement subgroup, minimax subgroup-mean and Pareto alternatives. The minimax selector is an explicit bounded equity alternative and does not silently replace the model objective. (`src/riopa_provenance/facility_location.py:minimax_subgroup_alternative`, `tests/test_facility_location.py`; commit `cb92f43`)\n- [ ] 3.2 Add scenario robustness/stochastic and multi-period interfaces.\n- [ ] 3.3 Add competitive/market-capture reference formulation.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_location_engine_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
