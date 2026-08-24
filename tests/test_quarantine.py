@@ -13,9 +13,7 @@ from riopa_provenance.quarantine import quarantine_capture
 def test_quarantine_record_is_digest_bound_and_idempotent(tmp_path: Path) -> None:
     store = CaptureStore(tmp_path, id_factory=lambda: "capture-1")
     object_sha256, _ = store.write_object(b"payload")
-    store.write_capture(
-        {"capture_id": "urn:uuid:capture-1", "object": {"sha256": object_sha256}}
-    )
+    store.write_capture({"capture_id": "urn:uuid:capture-1", "object": {"sha256": object_sha256}})
     now = datetime(2026, 8, 24, tzinfo=UTC)
     path = quarantine_capture(store, "urn:uuid:capture-1", reason="malformed", now=now)
     assert quarantine_capture(store, "urn:uuid:capture-1", reason="malformed", now=now) == path
@@ -28,9 +26,7 @@ def test_quarantine_record_is_digest_bound_and_idempotent(tmp_path: Path) -> Non
 def test_quarantine_rejects_empty_reason_and_tampered_capture(tmp_path: Path) -> None:
     store = CaptureStore(tmp_path, id_factory=lambda: "capture-1")
     object_sha256, _ = store.write_object(b"payload")
-    store.write_capture(
-        {"capture_id": "urn:uuid:capture-1", "object": {"sha256": object_sha256}}
-    )
+    store.write_capture({"capture_id": "urn:uuid:capture-1", "object": {"sha256": object_sha256}})
     with pytest.raises(ValueError, match="reason"):
         quarantine_capture(
             store,

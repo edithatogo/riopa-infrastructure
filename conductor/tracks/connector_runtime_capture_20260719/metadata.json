@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-24T12:52:58Z",
+  "updated_at": "2026-08-24T13:02:00Z",
   "description": "Provide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.",
   "depends_on": [
     "provenance_profile_v1_20260718",
@@ -17,7 +17,8 @@
     "urn:riopa:evidence:connector-source-health:2026-07-30",
     "urn:riopa:evidence:connector-capture-observability:2026-07-31",
     "urn:riopa:evidence:connector-runtime-contract:2026-08-22",
-    "urn:riopa:evidence:connector-warc-wacz-packaging:2026-08-24"
+    "urn:riopa:evidence:connector-warc-wacz-packaging:2026-08-24",
+    "urn:riopa:evidence:connector-reliability-controls:2026-08-24"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
