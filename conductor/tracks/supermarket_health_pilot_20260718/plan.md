@@ -2,7 +2,7 @@
 
 ## 1. Protocol and reproduction
 
-- [x] 1.1 Preregister baseline estimands, geography, population, exclusions and discrepancy handling as a synthetic/non-clinical reference template. (`docs/supermarket-health-preregistration-20260825.json`, `tests/test_supermarket_preregistration.py`)
+- [x] 1.1 Preregister baseline estimands, geography, population, exclusions and discrepancy handling as a synthetic/non-clinical reference template. (`docs/supermarket-health-preregistration-20260825.json`, `tests/test_supermarket_preregistration.py`; `d309f4c`)
 - [ ] 1.2 Reproduce density and population-normalised supermarket analyses.
 - [ ] 1.3 Publish a transparent comparison with the motivating work.
 
