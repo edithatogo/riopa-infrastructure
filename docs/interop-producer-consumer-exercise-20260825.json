@@ -1,0 +1,24 @@
+{
+  "evidence_id": "INTEROP-PRODUCER-CONSUMER-20260825",
+  "title": "Bounded dependency-free producer/consumer exchange exercise",
+  "wire_format": {
+    "encoding": "UTF-8",
+    "record": "mapping_id TAB source_id TAB canonical_id TAB confidence TAB comma-separated evidence",
+    "alphabet": "fixture fields reject tabs, newlines, carriage returns and commas in evidence"
+  },
+  "directions": [
+    "Rust producer to Python consumer",
+    "Python producer to Rust consumer"
+  ],
+  "evidence": [
+    "rust/riopa-conformance/src/lib.rs",
+    "rust/riopa-conformance/src/bin/conformance_exchange.rs",
+    "tests/test_rust_producer_consumer.py"
+  ],
+  "status": "repository-owned deterministic exercise",
+  "non_claims": [
+    "This is not an external implementation or independent human reproduction.",
+    "This does not establish standards-complete serialization, signed release conformance, or production interoperability."
+  ],
+  "promotion_allowed": false
+}

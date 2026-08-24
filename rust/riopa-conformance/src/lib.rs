@@ -26,9 +26,71 @@ pub enum ValidationError {
     EmptyField(&'static str),
     UnknownConfidence,
     EvidenceRequired,
+    InvalidWireField,
 }
 
 impl Crosswalk {
+    /// Encode the bounded exchange fixture as a deterministic tab-separated record.
+    ///
+    /// This intentionally supports the exercise's restricted fixture alphabet only;
+    /// it is not a general interchange format or a release serialization.
+    pub fn to_wire(&self) -> Result<String, ValidationError> {
+        self.validate().map_err(|errors| errors[0].clone())?;
+        if [&self.mapping_id, &self.source_id, &self.canonical_id]
+            .iter()
+            .any(|value| value.contains(['\t', '\n', '\r']))
+            || self
+                .evidence
+                .iter()
+                .any(|value| value.contains(['\t', '\n', '\r', ',']))
+        {
+            return Err(ValidationError::InvalidWireField);
+        }
+        let confidence = match self.confidence {
+            Confidence::High => "high",
+            Confidence::Medium => "medium",
+            Confidence::Low => "low",
+            Confidence::Unknown => "unknown",
+        };
+        Ok(format!(
+            "{}\t{}\t{}\t{}\t{}",
+            self.mapping_id,
+            self.source_id,
+            self.canonical_id,
+            confidence,
+            self.evidence.join(",")
+        ))
+    }
+
+    /// Decode the restricted exchange fixture emitted by `to_wire`.
+    pub fn from_wire(value: &str) -> Result<Self, ValidationError> {
+        let fields: Vec<&str> = value.split('\t').collect();
+        if fields.len() != 5 || fields.iter().any(|field| field.is_empty()) {
+            return Err(ValidationError::InvalidWireField);
+        }
+        let confidence = match fields[3] {
+            "high" => Confidence::High,
+            "medium" => Confidence::Medium,
+            "low" => Confidence::Low,
+            "unknown" => Confidence::Unknown,
+            _ => return Err(ValidationError::InvalidWireField),
+        };
+        let evidence = if fields[4].is_empty() {
+            Vec::new()
+        } else {
+            fields[4].split(',').map(str::to_owned).collect()
+        };
+        let result = Self {
+            mapping_id: fields[0].to_owned(),
+            source_id: fields[1].to_owned(),
+            canonical_id: fields[2].to_owned(),
+            confidence,
+            evidence,
+        };
+        result.validate().map_err(|errors| errors[0].clone())?;
+        Ok(result)
+    }
+
     pub fn validate(&self) -> Result<(), Vec<ValidationError>> {
         let mut errors = Vec::new();
         if self.mapping_id.is_empty() {
@@ -116,5 +178,19 @@ mod tests {
             migration: "additive-field-preserved".into(),
         };
         assert_eq!(value.validate(), Ok(()));
+    }
+
+    #[test]
+    fn wire_exchange_round_trips() {
+        let value = valid_crosswalk();
+        let encoded = value.to_wire().expect("fixture should encode");
+        assert_eq!(Crosswalk::from_wire(&encoded), Ok(value));
+    }
+
+    #[test]
+    fn wire_exchange_rejects_ambiguous_fields() {
+        let mut value = valid_crosswalk();
+        value.mapping_id.push('\t');
+        assert_eq!(value.to_wire(), Err(ValidationError::InvalidWireField));
     }
 }
