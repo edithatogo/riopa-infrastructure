@@ -1,0 +1,22 @@
+{
+  "schema": "riopa.performance.v1-envelope-freeze.v1",
+  "freeze_id": "urn:riopa:performance:envelope-freeze:2026-08-25",
+  "status": "bounded-candidate-not-promoted",
+  "scope": "regional public-source non-operational technical preview",
+  "source_contracts": ["examples/wp010-performance-benchmark/contract.json", "docs/performance-capacity-model-contract-20260824.json", "docs/performance-noise-gate-contract-20260824.json"],
+  "envelopes": [
+    {"name": "measurement", "policy": "report median of at least three repetitions after one warm-up", "claim": "observed only for executed bounded fixtures"},
+    {"name": "projection", "policy": "linear projection is labelled projection-not-measurement and cannot exceed max_units", "claim": "not national-scale evidence"},
+    {"name": "noise", "policy": "apply median/MAD direction-aware regression gate", "claim": "candidate regression signal, not a release SLO"},
+    {"name": "resource-cost", "policy": "record CPU, memory, storage and cost status; unknown values remain unknown", "claim": "no provider or production cost claim"}
+  ],
+  "operational_actions": [
+    {"condition": "bounded gate fails", "action": "quarantine result, preserve inputs and rerun from the same digest-bound fixture"},
+    {"condition": "projection exceeds max_units", "action": "reject projection and require a new measured workload"},
+    {"condition": "resource or cost status is unknown", "action": "report unknown; do not infer capacity, budget or SLA"},
+    {"condition": "workload or model revision changes", "action": "issue a new freeze record and do not reuse prior envelope"}
+  ],
+  "open_gates": ["second environment", "hosted national-scale measurement", "elapsed soak", "production failure injection", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "nonclaims": ["This freeze is not a national benchmark, production SLO or release approval.", "Facility, network, timetable, clinical and dispatch claims remain disabled."]
+}
