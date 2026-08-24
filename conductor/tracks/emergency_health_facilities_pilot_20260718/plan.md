@@ -9,7 +9,7 @@
 ## 2. Ambulance optimisation and simulation
 
 - [x] 2.1 Implement coverage, backup, availability and location scenarios. Evidence: `CoverageScenario` and `evaluate_coverage_scenario` in `src/riopa_provenance/analysis.py` with synthetic primary/backup/availability tests; dispatch, clinical, operational and national claims remain disabled.
-- [ ] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation.
+- [x] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation. Evidence: `DispatchRequest`, `DispatchScenario`, `evaluate_dispatch_scenario` and `simulate_dispatch_scenario` provide deterministic synthetic adapters; live dispatch, clinical, operational and authority gates remain open.
 - [ ] 2.3 Compare static and simulated performance under stress.
 
 ## 3. Hospital and service planning

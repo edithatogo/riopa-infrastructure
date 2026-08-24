@@ -20,6 +20,7 @@ from riopa_provenance.analysis import (
     evaluate_dispatch_scenario,
     protocol_record,
     run_seeded_replications,
+    simulate_dispatch_scenario,
     simulate_fcfs_queue,
     synthetic_pilot_report,
     validate_analysis_protocol,
@@ -63,6 +64,29 @@ def test_dispatch_adapter_preserves_backup_relocation_and_handover_fields() -> N
     assert assignment["backup"] == "b"
     assert assignment["relocation_candidates"] == ["c"]
     assert assignment["handover_required"] is True
+    assert result["promotion_allowed"] is False
+
+
+def test_dispatch_queue_simulation_is_deterministic_and_bounded() -> None:
+    scenario = DispatchScenario(
+        "synthetic-queue",
+        (
+            DispatchRequest("r1", "d1", 0, service_minutes=10),
+            DispatchRequest("r2", "d1", 1, service_minutes=1),
+        ),
+        ("a",),
+        {("a", "d1"): 1},
+        {"a": True},
+        2,
+    )
+    result = simulate_dispatch_scenario(scenario)
+    assert result["counts"] == {
+        "requests": 2,
+        "assigned": 1,
+        "queued": 1,
+        "handover_required": 0,
+    }
+    assert result["assignments"][1]["queue_wait"] == 9
     assert result["promotion_allowed"] is False
 
 

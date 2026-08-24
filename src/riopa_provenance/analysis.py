@@ -130,6 +130,7 @@ class DispatchRequest:
     demand_id: str
     arrival_time: float
     handover_minutes: float = 0.0
+    service_minutes: float = 0.0
 
     def __post_init__(self) -> None:
         if not self.request_id.strip() or not self.demand_id.strip():
@@ -138,6 +139,8 @@ class DispatchRequest:
             raise ValueError("arrival_time must be finite and non-negative")
         if not math.isfinite(self.handover_minutes) or self.handover_minutes < 0:
             raise ValueError("handover_minutes must be finite and non-negative")
+        if not math.isfinite(self.service_minutes) or self.service_minutes < 0:
+            raise ValueError("service_minutes must be finite and non-negative")
 
 
 @dataclass(frozen=True)
@@ -216,6 +219,69 @@ def evaluate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
                 "guarantee is asserted."
             ),
             "Relocation and handover fields are contract outputs, not operational instructions.",
+        ],
+    }
+
+
+def simulate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
+    """Run a deterministic single-unit-per-location queue over the fixture.
+
+    Queueing and relocation here are contract semantics only.  They do not
+    represent a fleet, clinical triage, dispatch policy or service guarantee.
+    """
+
+    available = tuple(
+        location for location in scenario.locations if scenario.availability.get(location, False)
+    )
+    busy_until = {location: 0.0 for location in available}
+    assignments: list[dict[str, Any]] = []
+    for request in sorted(scenario.requests, key=lambda item: (item.arrival_time, item.request_id)):
+        eligible = sorted(
+            (
+                scenario.travel[(location, request.demand_id)],
+                location,
+            )
+            for location in available
+            if busy_until[location] <= request.arrival_time
+            and (location, request.demand_id) in scenario.travel
+            and scenario.travel[(location, request.demand_id)] <= scenario.threshold
+        )
+        if eligible:
+            primary = eligible[0][1]
+            backup = eligible[1][1] if len(eligible) > 1 else None
+            wait = 0.0
+            busy_until[primary] = request.arrival_time + request.service_minutes
+        else:
+            primary = None
+            backup = None
+            wait = min(
+                (max(0.0, busy_until[location] - request.arrival_time) for location in available),
+                default=0.0,
+            )
+        assignments.append(
+            {
+                "request_id": request.request_id,
+                "primary": primary,
+                "backup": backup,
+                "queue_wait": wait,
+                "handover_required": request.handover_minutes > 0,
+            }
+        )
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_dispatch_queue_simulation",
+        "scenario_id": scenario.scenario_id,
+        "assignments": assignments,
+        "counts": {
+            "requests": len(assignments),
+            "assigned": sum(item["primary"] is not None for item in assignments),
+            "queued": sum(item["primary"] is None for item in assignments),
+            "handover_required": sum(item["handover_required"] for item in assignments),
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Synthetic queue only; no live dispatch, clinical or response guarantee is asserted.",
+            "Queue waits and relocation semantics are not operational instructions.",
         ],
     }
 
