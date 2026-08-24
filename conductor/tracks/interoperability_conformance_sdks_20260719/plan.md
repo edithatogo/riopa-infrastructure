@@ -8,7 +8,7 @@
 
 ## 2. Independent implementations
 
-- [ ] 2.1 Stabilise the Python reference SDK and validator.
+- [x] 2.1 Stabilise the Python reference SDK and validator. Evidence: `src/riopa_provenance/sdk.py`, `tests/test_sdk.py`, and `docs/python-reference-sdk-20260825.md`; deterministic schema/crosswalk reports pass, while independent and release gates remain open.
 - [ ] 2.2 Implement Rust models and conformance validation.
 - [ ] 2.3 Implement a transport-neutral lineage/query client contract.
 

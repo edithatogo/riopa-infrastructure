@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 7992,
-    "covered_statements": 7450,
-    "line_percent": 90.97938144329896,
-    "branches": 3260,
-    "covered_branches": 2787,
+    "statements": 8375,
+    "covered_statements": 7788,
+    "line_percent": 90.64114508342509,
+    "branches": 3432,
+    "covered_branches": 2914,
     "branch_percent": "91"
   },
   "files": [
@@ -31,27 +31,29 @@
     {
       "module": "src.riopa_provenance.accessibility",
       "path": "src/riopa_provenance/accessibility.py",
-      "statements": 102,
-      "covered_statements": 88,
-      "line_percent": 82.5,
-      "branches": 58,
-      "covered_branches": 44,
-      "branch_percent": "82",
+      "statements": 127,
+      "covered_statements": 111,
+      "line_percent": 83.91959798994975,
+      "branches": 72,
+      "covered_branches": 56,
+      "branch_percent": "84",
       "missing_lines": [
-        67,
+        70,
         72,
-        76,
-        80,
-        82,
-        88,
-        97,
-        101,
-        103,
-        109,
-        115,
-        123,
-        129,
-        131
+        126,
+        131,
+        135,
+        139,
+        141,
+        147,
+        156,
+        160,
+        162,
+        168,
+        174,
+        182,
+        188,
+        190
       ]
     },
     {
@@ -305,9 +307,9 @@
     {
       "module": "src.riopa_provenance.cli",
       "path": "src/riopa_provenance/cli.py",
-      "statements": 531,
-      "covered_statements": 520,
-      "line_percent": 96.16,
+      "statements": 548,
+      "covered_statements": 537,
+      "line_percent": 96.26168224299066,
       "branches": 94,
       "covered_branches": 81,
       "branch_percent": "96",
@@ -322,7 +324,7 @@
         365,
         376,
         389,
-        965
+        995
       ]
     },
     {
@@ -373,13 +375,16 @@
     {
       "module": "src.riopa_provenance.facility_location",
       "path": "src/riopa_provenance/facility_location.py",
-      "statements": 230,
-      "covered_statements": 230,
-      "line_percent": 100.0,
-      "branches": 112,
-      "covered_branches": 112,
-      "branch_percent": "100",
-      "missing_lines": []
+      "statements": 243,
+      "covered_statements": 241,
+      "line_percent": 98.89807162534436,
+      "branches": 120,
+      "covered_branches": 118,
+      "branch_percent": "99",
+      "missing_lines": [
+        414,
+        433
+      ]
     },
     {
       "module": "src.riopa_provenance.facility_registry",
@@ -555,23 +560,26 @@
     {
       "module": "src.riopa_provenance.lineage",
       "path": "src/riopa_provenance/lineage.py",
-      "statements": 281,
-      "covered_statements": 271,
-      "line_percent": 94.91094147582697,
-      "branches": 112,
-      "covered_branches": 102,
-      "branch_percent": "95",
+      "statements": 314,
+      "covered_statements": 301,
+      "line_percent": 94.0909090909091,
+      "branches": 126,
+      "covered_branches": 113,
+      "branch_percent": "94",
       "missing_lines": [
         154,
         155,
-        311,
-        319,
-        529,
+        312,
+        320,
         530,
         531,
-        759,
-        760,
-        761
+        532,
+        650,
+        652,
+        743,
+        874,
+        875,
+        876
       ]
     },
     {
@@ -740,6 +748,19 @@
       ]
     },
     {
+      "module": "src.riopa_provenance.planning",
+      "path": "src/riopa_provenance/planning.py",
+      "statements": 52,
+      "covered_statements": 51,
+      "line_percent": 95.45454545454545,
+      "branches": 14,
+      "covered_branches": 12,
+      "branch_percent": "95",
+      "missing_lines": [
+        81
+      ]
+    },
+    {
       "module": "src.riopa_provenance.publication",
       "path": "src/riopa_provenance/publication.py",
       "statements": 310,
@@ -799,20 +820,6 @@
       ]
     },
     {
-      "module": "src.riopa_provenance.planning",
-      "path": "src/riopa_provenance/planning.py",
-      "statements": 52,
-      "covered_statements": 51,
-      "line_percent": 98.07692307692308,
-      "branches": 14,
-      "covered_branches": 12,
-      "branch_percent": "86",
-      "missing_lines": [
-        31,
-        81
-      ]
-    },
-    {
       "module": "src.riopa_provenance.quarantine",
       "path": "src/riopa_provenance/quarantine.py",
       "statements": 27,
@@ -842,21 +849,35 @@
     {
       "module": "src.riopa_provenance.registry",
       "path": "src/riopa_provenance/registry.py",
-      "statements": 94,
-      "covered_statements": 86,
-      "line_percent": 88.88888888888889,
-      "branches": 32,
-      "covered_branches": 26,
-      "branch_percent": "89",
+      "statements": 167,
+      "covered_statements": 145,
+      "line_percent": 82.71604938271605,
+      "branches": 76,
+      "covered_branches": 56,
+      "branch_percent": "83",
       "missing_lines": [
+        42,
         62,
-        63,
-        98,
-        100,
-        102,
-        124,
-        143,
-        148
+        64,
+        67,
+        69,
+        160,
+        161,
+        188,
+        192,
+        196,
+        198,
+        201,
+        207,
+        210,
+        215,
+        224,
+        268,
+        270,
+        272,
+        294,
+        313,
+        318
       ]
     },
     {
@@ -932,6 +953,19 @@
         1477,
         1602,
         1603
+      ]
+    },
+    {
+      "module": "src.riopa_provenance.sdk",
+      "path": "src/riopa_provenance/sdk.py",
+      "statements": 27,
+      "covered_statements": 26,
+      "line_percent": 93.10344827586206,
+      "branches": 2,
+      "covered_branches": 1,
+      "branch_percent": "93",
+      "missing_lines": [
+        52
       ]
     },
     {
@@ -1042,10 +1076,10 @@
       "path": "src/riopa_provenance/spatial_crosswalk.py",
       "statements": 47,
       "covered_statements": 38,
-      "line_percent": 80.85106382978724,
+      "line_percent": 76.62337662337663,
       "branches": 30,
       "covered_branches": 21,
-      "branch_percent": "70",
+      "branch_percent": "77",
       "missing_lines": [
         21,
         25,
@@ -1082,19 +1116,21 @@
     {
       "module": "src.riopa_provenance.spatial_quality_trend",
       "path": "src/riopa_provenance/spatial_quality_trend.py",
-      "statements": 45,
-      "covered_statements": 39,
-      "line_percent": 81.53846153846153,
-      "branches": 20,
-      "covered_branches": 14,
+      "statements": 58,
+      "covered_statements": 50,
+      "line_percent": 81.70731707317073,
+      "branches": 24,
+      "covered_branches": 17,
       "branch_percent": "82",
       "missing_lines": [
-        41,
-        73,
-        77,
-        81,
-        83,
-        85
+        27,
+        28,
+        71,
+        103,
+        107,
+        111,
+        113,
+        115
       ]
     },
     {
@@ -1102,10 +1138,10 @@
       "path": "src/riopa_provenance/spatial_sensitivity.py",
       "statements": 24,
       "covered_statements": 22,
-      "line_percent": 91.66666666666667,
+      "line_percent": 88.23529411764706,
       "branches": 10,
       "covered_branches": 8,
-      "branch_percent": "80",
+      "branch_percent": "88",
       "missing_lines": [
         27,
         33
@@ -1114,23 +1150,32 @@
     {
       "module": "src.riopa_provenance.transitions",
       "path": "src/riopa_provenance/transitions.py",
-      "statements": 53,
-      "covered_statements": 43,
-      "line_percent": 79.01234567901234,
-      "branches": 28,
-      "covered_branches": 21,
-      "branch_percent": "79",
+      "statements": 112,
+      "covered_statements": 93,
+      "line_percent": 79.65116279069767,
+      "branches": 60,
+      "covered_branches": 44,
+      "branch_percent": "80",
       "missing_lines": [
-        30,
-        32,
-        40,
-        42,
-        46,
-        47,
-        53,
-        54,
+        29,
+        36,
         65,
-        70
+        67,
+        69,
+        71,
+        85,
+        112,
+        113,
+        179,
+        181,
+        189,
+        191,
+        195,
+        196,
+        202,
+        203,
+        214,
+        219
       ]
     },
     {
