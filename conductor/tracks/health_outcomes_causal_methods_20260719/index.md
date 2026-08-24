@@ -26,6 +26,7 @@
 | `HEALTH-SUBGROUP-CONTROLS-20260825` | Explicit small-cell suppression and descriptive subgroup-gap controls | `src/riopa_provenance/health_subgroups.py`, `tests/test_health_subgroups.py` | Synthetic deterministic controls pass; privacy, representativeness, clinical, causal and methods-panel gates remain open |
 | `HEALTH-LONGITUDINAL-REFERENCE-20260825` | Declared-reference event-study contrasts with complete treated/control cells | `src/riopa_provenance/health_longitudinal.py`, `tests/test_health_longitudinal.py` | Synthetic deterministic workflow passes; empirical, parallel-trends, clinical, causal and methods-panel gates remain open |
 | `HEALTH-DIAGNOSTICS-20260825` | Bounded missingness profile and negative-control contrast diagnostics | `src/riopa_provenance/health_diagnostics.py`, `tests/test_health_diagnostics.py` | Synthetic deterministic diagnostics pass; uncertainty, mechanism, clinical, causal and methods-panel gates remain open |
+| `HEALTH-LONGITUDINAL-SCENARIOS-20260825` | Synthetic opening and closure scenarios exercise the event-study reference workflow | `fixtures/health-longitudinal-scenarios-synthetic.json`, `tests/test_health_longitudinal_scenarios.py` | Deterministic fixture tests pass; real-source, clinical, causal, temporal and methods-panel gates remain open |
 
 ## Blocking defects
 
