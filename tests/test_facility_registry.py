@@ -7,12 +7,14 @@ from riopa_provenance.facility_registry import (
     apply_review,
     assertions_snapshot,
     assertions_snapshot_json,
+    build_snapshot_record,
     disagreement_coverage_report,
     distance_m,
     history_snapshot,
     name_similarity,
     public_release_snapshot,
     reconcile,
+    validate_snapshot_record,
 )
 
 
@@ -121,6 +123,20 @@ def test_assertions_snapshot_is_sorted_and_non_authoritative() -> None:
     assert assertions_snapshot_json(values).endswith("\n")
     with pytest.raises(ValueError, match="unique"):
         assertions_snapshot((assertion("a", 0, 0), assertion("a", 1, 1)))
+
+
+def test_snapshot_record_is_content_addressed_and_correction_successor_only() -> None:
+    record = build_snapshot_record((assertion("public", 0, 0),), revision="snapshot-1")
+    assert validate_snapshot_record(record) == ()
+    corrected = build_snapshot_record(
+        (assertion("public", 0, 0.1),), revision="snapshot-2", supersedes=record["payload_sha256"]
+    )
+    assert validate_snapshot_record(corrected) == ()
+    tampered = dict(record)
+    payload = dict(record["payload"])  # type: ignore[arg-type]
+    payload["assertions"] = []
+    tampered["payload"] = payload
+    assert any("does not match" in error for error in validate_snapshot_record(tampered))
 
 
 def test_history_records_opening_closure_relocation_rebrand_and_disagreement() -> None:
