@@ -15,6 +15,20 @@ from typing import Any
 from .hashing import sha256_json
 
 _URN_PART = re.compile(r"[^A-Za-z0-9._~-]+")
+_SHACL_PROPERTY = re.compile(r"sh:property\s+\[(?P<body>[^\]]+)\]", re.DOTALL)
+_SHACL_PATH = re.compile(r"sh:path\s+riopa:(?P<path>[A-Za-z][A-Za-z0-9]*)")
+_SHACL_MIN_COUNT = re.compile(r"sh:minCount\s+(?P<count>\d+)")
+_SHACL_DATATYPE = re.compile(r"sh:datatype\s+<[^>]+#string>")
+
+_SHACL_FIELD_NAMES = {
+    "mappingId": "mapping_id",
+    "canonicalId": "canonical_id",
+    "method": "method",
+    "confidence": "confidence",
+    "reviewer": "reviewer",
+    "evidence": "evidence",
+}
+_SHACL_STRING_PATHS = {"mappingId", "canonicalId", "method", "reviewer"}
 
 
 def _part(value: str) -> str:
@@ -177,6 +191,59 @@ def validate_conformance_manifest(
                 f"expected {expected}, found {actual}"
             )
     return tuple(errors)
+
+
+def validate_bounded_shacl_constraints(
+    shape_text: str, record: Mapping[str, Any]
+) -> tuple[str, ...]:
+    """Validate the repository's small, explicit SHACL property subset.
+
+    This is deliberately *not* a SHACL engine. It checks that the published
+    Crosswalk shape has the expected target/property declarations and applies
+    those declarations to one JSON crosswalk record. A real RDF/SHACL runtime
+    and report remain required before the conformance manifest can claim full
+    SHACL conformance.
+    """
+
+    errors: list[str] = []
+    if "sh:targetClass riopa:CrosswalkClaim" not in shape_text:
+        errors.append("shape must target riopa:CrosswalkClaim")
+    properties: dict[str, tuple[int, bool]] = {}
+    for match in _SHACL_PROPERTY.finditer(shape_text):
+        body = match.group("body")
+        path_match = _SHACL_PATH.search(body)
+        count_match = _SHACL_MIN_COUNT.search(body)
+        if path_match is None or count_match is None:
+            errors.append("each SHACL property must declare sh:path and sh:minCount")
+            continue
+        path = path_match.group("path")
+        if path in properties:
+            errors.append(f"duplicate SHACL property path: {path}")
+            continue
+        properties[path] = (int(count_match.group("count")), bool(_SHACL_DATATYPE.search(body)))
+    required_paths = set(_SHACL_FIELD_NAMES)
+    missing_paths = sorted(required_paths - properties.keys())
+    if missing_paths:
+        errors.append("shape is missing required paths: " + ", ".join(missing_paths))
+    for path, (minimum, string_typed) in properties.items():
+        field = _SHACL_FIELD_NAMES.get(path)
+        if field is None:
+            errors.append(f"unsupported SHACL property path: {path}")
+            continue
+        if minimum < 1:
+            errors.append(f"SHACL minCount must be positive for {path}")
+            continue
+        if path in _SHACL_STRING_PATHS and not string_typed:
+            errors.append(f"SHACL string datatype is missing for {path}")
+        value = record.get(field)
+        if value is None or (isinstance(value, str) and not value.strip()):
+            errors.append(f"missing required SHACL property: {field}")
+            continue
+        if field == "evidence" and (not isinstance(value, list) or len(value) < minimum):
+            errors.append("evidence must contain at least one item")
+        elif string_typed and not isinstance(value, str):
+            errors.append(f"SHACL string property must be a string: {field}")
+    return tuple(dict.fromkeys(errors))
 
 
 def validate_conformance_corpus(
