@@ -20,6 +20,7 @@
 | PT-2 | Rename, merge, split, replacement and partial-continuity fixtures | `fixtures/planning-transition-golden.json` | Deterministic fixture validated; not a legal equivalence claim |
 | PT-3 | Temporal perspectives and migration guidance | `docs/planning-system-transition-migration-playbook.md` | Valid-time, recorded-time and as-known-at semantics documented |
 | PT-4 | Downstream zoning and accessibility transition integration | `tests/test_transition_downstream.py`, `docs/planning-transition-downstream-contract.md` | Successor plan is selected at explicit valid time and passed to the dependency-free reference accessibility measure; synthetic only, with network/timetable/facility and legal claims disabled |
+| `PLANNING-RECONSTRUCTION-SYNTHETIC-20260825` | One authority reorganisation and one plan replacement are represented as validated reconstruction cases | `fixtures/planning-transition-reconstruction.json`, `tests/test_planning_transition_reconstruction.py` | Synthetic reference cases validate; real historical evidence, legal authority and panel qualification remain open |
 
 ## Blocking defects
 
