@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-22T00:00:00Z",
+  "updated_at": "2026-08-24T23:59:00Z",
   "description": "Stabilise a cross-language profile that unifies capture, transformation, lineage, manual and AI assistance, integrity, rights and quality without replacing repository-native evidence.",
   "depends_on": [
     "foundation_architecture_20260718",
@@ -43,6 +43,7 @@
     "non-python-validator-parity",
     "projection-agent-panel-qualification",
     "profile-publication-identifier",
-    "signed-v1-attestation"
+    "signed-v1-attestation",
+    "accountable-release-authority-decision"
   ]
 }

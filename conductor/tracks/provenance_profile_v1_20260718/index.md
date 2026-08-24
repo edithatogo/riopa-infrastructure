@@ -24,6 +24,16 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `PROVENANCE-NONPYTHON-MODEL-20260822` | Bounded non-Python validator/model parity surface | `scripts/conformance_node.mjs`, `bindings/typescript/provenance-event-v1.d.ts`, `tests/test_conformance.py` | Node and Python agree on the language-neutral corpus; full profile parity, independent qualification and signed attestation remain open |
 | `PROVENANCE-PROJECTION-SHAPES-20260824` | Fail-closed shape validation for generated PROV and OpenLineage projections | `src/riopa_provenance/crate.py:validate_provenance_projections`, `tests/test_crate.py` | Bounded projection envelopes and duplicate-entity handling pass; standards semantic qualification and signed attestation remain open |
 
+## Repository-owned closeout slice (2026-08-24)
+
+The native provenance contract, Python/Node corpus parity and bounded PROV /
+OpenLineage projection-shape validator are linked above and pass
+`bash scripts/ci_quality.sh` at protected `main` revision
+`ed69976d815f064843c3492fa2045807381857ca`. The projection validator is
+intentionally structural: native RIOPA events remain normative, and standards
+semantic conformance, signed attestation, publication and agent-panel
+qualification remain open.
+
 ## Blocking defects and gates
 
 - Non-Python validator/model parity and round-trip evidence.
@@ -33,7 +43,13 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This is a single-developer repository. Agent panels may assess provenance
+  packets, but cannot substitute for independent external reproduction or
+  accountable release-authority approval.
+- PROV and OpenLineage files are interoperability projections, not source
+  truth or proof of standards certification.
+- The bounded public, non-operational technical-preview scope remains in
+  force; missing non-Python, signed and publication evidence is pending.
 
 ## Review and handover
 
@@ -49,5 +65,6 @@ This index is deliberately non-assertive while the track remains `validating`. S
 - Fix: task states changed to `[~]`; blockers remain explicit above.
 - Validation: focused provenance tests and full roadmap validation passed.
 
-The track is not complete or archive-eligible while the listed conformance,
-publication, attestation and agent-panel qualification gates remain open.
+The track remains `validating` at M1 and is not complete or archive-eligible
+while the listed conformance, publication, attestation and agent-panel
+qualification gates remain open.
