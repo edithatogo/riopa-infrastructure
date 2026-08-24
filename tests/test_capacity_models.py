@@ -2,6 +2,7 @@ import pytest
 
 from riopa_provenance.capacity_models import (
     CapacityModelError,
+    classify_bottlenecks,
     project_capacity,
     validate_capacity_model,
 )
@@ -30,3 +31,18 @@ def test_capacity_model_rejects_invalid_values_and_silent_extrapolation() -> Non
     assert any("base_units must be positive" in error for error in validate_capacity_model(invalid))
     with pytest.raises(CapacityModelError, match="exceed"):
         project_capacity(MODEL, 1001)
+
+
+def test_bottleneck_classification_is_diagnostic_and_fail_closed() -> None:
+    result = classify_bottlenecks(
+        {
+            "latency_ratio": 1.2,
+            "throughput_ratio": 0.8,
+            "memory_ratio": 1.0,
+            "error_rate": 0.0,
+        }
+    )
+    assert result["bottlenecks"] == ["latency", "throughput"]
+    assert result["non_assertive"] is True
+    with pytest.raises(CapacityModelError, match="finite"):
+        classify_bottlenecks({"latency_ratio": "unknown"})

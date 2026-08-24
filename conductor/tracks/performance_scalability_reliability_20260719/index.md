@@ -32,6 +32,7 @@
 | `PERF-BOUNDED-RESILIENCE-REHEARSAL-20260822` | Local deterministic concurrency, retry, cancellation, malformed-input and recovery rehearsal | `scripts/run_bounded_resilience_rehearsal.py`, `tests/test_resilience_matrix.py` | All bounded cases pass without live endpoints; hosted infrastructure, elapsed soak, resource/cost and national-scale evidence remain open |
 | `PERF-NOISE-GATE-20260824` | Median/MAD noise-aware regression gate with explicit metric direction | `src/riopa_provenance/benchmark_gates.py`, `docs/performance-noise-gate-contract-20260824.json`, `tests/test_benchmark_gates.py` | Candidate gate and negative tests pass; hosted soak, national-scale measurements and final panel qualification remain open |
 | `PERF-CAPACITY-MODEL-20260824` | Bounded synthetic capacity, scaling and cost projection with an explicit maximum envelope | `src/riopa_provenance/capacity_models.py`, `docs/performance-capacity-model-contract-20260824.json`, `tests/test_capacity_models.py` | Projection contract and envelope tests pass; provider pricing, empirical national measurements and final panel qualification remain open |
+| `PERF-BOTTLENECK-DIAGNOSTIC-20260824` | Fail-closed diagnostic classification of bounded latency, throughput, memory and error observations | `src/riopa_provenance/capacity_models.py:classify_bottlenecks`, `tests/test_capacity_models.py` | Diagnostic contract passes; no empirical or national-scale qualification is claimed |
 
 ## Blocking defects
 
