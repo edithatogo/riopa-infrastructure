@@ -36,16 +36,44 @@
 | `OPS-RECOVERY-SUCCESSOR-20260824` | Append-only backup/restore successor state machine plus correction, supersession and withdrawal reconciliation | `docs/operations-recovery-successor-contract-20260824.json`, `tests/test_operations_recovery_successor_contract.py`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py` | Task 3.2 repository contract and negative tests pass; provider restore execution, disaster-recovery qualification, independent target acceptance and release authority remain open |
 | `OPS-DR-EXERCISE-20260824` | Digest-bound restore/DR exercise report protocol with explicit local/hosted/failed status | `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, `tests/test_recovery.py` | Report contract and failure-preservation tests pass; actual production-representative exercise, RPO/RTO receipt and release authority remain open |
 
-## Blocking defects
+## Repository-owned closeout slice (2026-08-24)
 
-- None recorded.
+The repository-owned contracts, validators, runbooks and hosted-campaign
+scaffolding linked in the evidence register are current through protected
+`main` revision `c4b85575a7c60871985301c1ab9be463a4ca9709`. The authoritative
+validation command is `bash scripts/ci_quality.sh`.
+
+The remaining gates are explicitly evidence-gated and are not satisfied by
+local contracts or retrospective fixtures:
+
+- provider-backed restore and production-representative disaster-recovery
+  execution, including RPO/RTO receipts and independent target acceptance;
+- the 90-day/three-cycle beta campaign and 30-day exact-RC soak, with reset on
+  qualifying interruption or revision change;
+- hosted national-scale performance and measured SLO/alert reports;
+- configured Hugging Face and Zenodo acceptance receipts for each required
+  preservation target; and
+- accountable release-authority decisions for beta, RC or stable-v1 promotion.
+
+These are external, hosted or elapsed gates. No promotion or operational claim
+is authorized by this index.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This is a single-developer repository. Agent panels may assess packets but
+  cannot substitute for factual hosted execution, external-user/operator
+  evidence or the accountable authority.
+- Scope remains bounded to public-source, non-operational technical-preview
+  work. Network, timetable, facility, national, clinical and dispatch claims
+  remain disabled until separately evidenced.
+- Missing observations are pending, not negative evidence, and retrospective
+  acceleration data cannot advance elapsed clocks.
 
 ## Review and handover
 
 Required agent-panel lenses: Security analyst, Operations analyst, Research-object analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at
+M1. Status may advance only through `conductor/workflow.md`; evidence must be
+immutable or version-addressed, agent-panel qualified where required, and
+sufficient for the applicable release gates.
