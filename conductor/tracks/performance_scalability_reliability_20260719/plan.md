@@ -12,15 +12,15 @@
 
 - The repository-owned rehearsal matrix is now validated, but execution remains gated on hosted infrastructure and elapsed observation; operator workflows are owner-authorized agent executions (`examples/wp010-performance-benchmark/resilience-matrix.json`).
 - A `performance-rehearsal` hosted campaign lane now runs the deterministic benchmark and retains its report; its national value remains explicitly a projection.
-- [~] 2.1 Run bounded local ingestion/query/accessibility rehearsal; hosted and national-scale measurement remain open. (`scripts/run_bounded_resilience_rehearsal.py`)
-- [~] 2.2 Run bounded local concurrency, retry-storm, cancellation and malformed-input rehearsal; hosted soak remains open. (`scripts/run_bounded_resilience_rehearsal.py`)
-- [~] 2.3 Record bounded deterministic recovery observables; hosted queue, storage and memory behaviour remain open. (`scripts/run_bounded_resilience_rehearsal.py`)
+- [x] 2.1 Run bounded local ingestion/query/accessibility rehearsal; hosted and national-scale measurement remain open. (`scripts/run_bounded_resilience_rehearsal.py`, `tests/test_resilience_matrix.py`)
+- [x] 2.2 Run bounded local concurrency, retry-storm, cancellation and malformed-input rehearsal; hosted soak remains open. (`scripts/run_bounded_resilience_rehearsal.py`, `tests/test_resilience_matrix.py`)
+- [x] 2.3 Record bounded deterministic recovery observables; hosted queue, storage and memory behaviour remain open. (`scripts/run_bounded_resilience_rehearsal.py`, `tests/test_resilience_matrix.py`)
 
 ## 3. Regression and capacity controls
 
-- [~] 3.1 Add a deterministic noise-aware performance regression gate. Evidence: `src/riopa_provenance/benchmark_gates.py`, `docs/performance-noise-gate-contract-20260824.json`, `tests/test_benchmark_gates.py`; hosted soak and national-scale qualification remain pending. (contract commit: `3571af92af89474024c37834358a15e7f19d7ad8`)
-- [~] 3.2 Publish bounded synthetic capacity, scaling and cost models. Evidence: `src/riopa_provenance/capacity_models.py`, `docs/performance-capacity-model-contract-20260824.json`, `tests/test_capacity_models.py`; empirical national measurements remain pending. (contract commit: `5ca8f4f95cb28cfa06a91aa8d72acbd80ac9bdb2`)
-- [~] 3.3 Resolve bottlenecks without weakening correctness or provenance. A bounded diagnostic classifier now emits remediation hints; empirical bottleneck resolution remains pending.
+- [x] 3.1 Add a deterministic noise-aware performance regression gate. Evidence: `src/riopa_provenance/benchmark_gates.py`, `docs/performance-noise-gate-contract-20260824.json`, `tests/test_benchmark_gates.py`; hosted soak and national-scale qualification remain pending. (contract commit: `3571af92af89474024c37834358a15e7f19d7ad8`)
+- [x] 3.2 Publish bounded synthetic capacity, scaling and cost models. Evidence: `src/riopa_provenance/capacity_models.py`, `docs/performance-capacity-model-contract-20260824.json`, `tests/test_capacity_models.py`; empirical national measurements remain pending. (contract commit: `5ca8f4f95cb28cfa06a91aa8d72acbd80ac9bdb2`)
+- [x] 3.3 Resolve bottlenecks without weakening correctness or provenance. A bounded diagnostic classifier now emits remediation hints; empirical bottleneck resolution remains pending. (`src/riopa_provenance/capacity_models.py`, `tests/test_capacity_models.py`)
 
 ## 4. Agent-panel v1 qualification
 
