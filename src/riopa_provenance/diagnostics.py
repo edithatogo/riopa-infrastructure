@@ -7,6 +7,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 from .capture import CaptureFailure, _atomic_write, redact_text
 from .hashing import sha256_bytes, sha256_json
@@ -22,6 +23,16 @@ class DiagnosticBundle:
 
     path: Path
     record_sha256: str
+
+
+def _redact_value(value: Any, secrets: Sequence[str]) -> Any:
+    if isinstance(value, str):
+        return redact_text(value, secrets)
+    if isinstance(value, Mapping):
+        return {str(key): _redact_value(item, secrets) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_redact_value(item, secrets) for item in value]
+    return value
 
 
 def write_diagnostic_bundle(
@@ -53,7 +64,7 @@ def write_diagnostic_bundle(
         "source_id": source_id,
         "endpoint_id": endpoint_id,
         "generated_at": generated_at.astimezone(UTC).isoformat().replace("+00:00", "Z"),
-        "metrics": dict(metrics),
+        "metrics": _redact_value(dict(metrics), redact_values),
         "failures": failure_records,
     }
     record["record_sha256"] = sha256_json(record)

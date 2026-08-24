@@ -16,7 +16,7 @@ def test_diagnostic_bundle_is_redacted_and_digest_bound(tmp_path: Path) -> None:
         output,
         source_id="source",
         endpoint_id="endpoint",
-        metrics={"attempts_total": 2, "failures_total": 1},
+        metrics={"attempts_total": 2, "failures_total": 1, "labels": {"token": "secret"}},
         failures=[
             CaptureFailure(
                 CaptureFailureCategory.TRANSPORT,
