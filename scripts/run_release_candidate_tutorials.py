@@ -64,7 +64,10 @@ def run_release_candidate_tutorials(root: Path, output_dir: Path) -> dict[str, A
         "promotion_eligible": False,
         "nonclaims": [
             "This is not release-candidate or stable-v1 evidence.",
-            "An agent or repository rehearsal cannot replace factual external user/operator evidence.",
+            (
+                "An agent or repository rehearsal cannot replace factual external "
+                "user/operator evidence."
+            ),
             "Elapsed RC soak and accountable release-authority approval remain open.",
         ],
     }
