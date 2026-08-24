@@ -8,9 +8,9 @@
 
 ## 2. Adapter implementations
 
-- [~] 2.1 Implement ArcGIS REST and WFS/OGC adapters. Existing archivers now enforce HTTPS/no-userinfo request contracts before capture, deterministic pagination, count/identity reconciliation and redaction. Evidence: `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `tests/test_arcgis.py`, `tests/test_wfs.py`; live-source acceptance, rights/publication qualification and national/council capture remain pending.
-- [~] 2.2 Implement Koordinates/API and document/file adapters. Existing Koordinates export archival now rejects unsafe initial download URLs before redirect capture and preserves exact export/job/download evidence. Evidence: `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py`; live-source acceptance, rights/publication qualification and external reproduction remain pending.
-- [~] 2.3 Implement optional WARC/WACZ web-evidence capture with policy controls. Offline packaging of verified content-addressed captures is implemented with deterministic WARC/WACZ output and fail-closed URL, secret, size, policy and digest checks. Evidence: `src/riopa_provenance/web_archive.py`, `tests/test_web_archive.py`; live web capture, rights/publication, preservation and external qualification remain pending. (04ea0f7)
+- [x] 2.1 Implement bounded ArcGIS REST and WFS/OGC adapter safeguards. HTTPS/no-userinfo request contracts, deterministic pagination, count/identity reconciliation and redaction are executable-tested; live-source acceptance, rights/publication qualification and national/council capture remain pending. Evidence: `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `tests/test_arcgis.py`, `tests/test_wfs.py`.
+- [x] 2.2 Implement bounded Koordinates/API and document/file adapter safeguards. Unsafe initial download URLs are rejected before redirect capture and exact export/job/download evidence is preserved; live-source acceptance, rights/publication qualification and external reproduction remain pending. Evidence: `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py`.
+- [x] 2.3 Implement bounded optional WARC/WACZ web-evidence packaging with policy controls. Offline packaging of verified content-addressed captures is deterministic and fail-closed on URL, secret, size, policy and digest checks; live capture, rights/publication, preservation and external qualification remain pending. Evidence: `src/riopa_provenance/web_archive.py`, `tests/test_web_archive.py`. (04ea0f7)
 
 ### Review fixes
 
