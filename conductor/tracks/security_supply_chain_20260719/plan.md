@@ -21,11 +21,12 @@
 ## 4. Audit and incident exercise
 
 - [ ] 4.1 Conduct orchestrated security agent-panel qualification and resolve findings.
-- [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.
+- [~] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Evidence: `src/riopa_provenance/security_exercises.py`, `docs/security-incident-exercise-contract-20260824.json`, `tests/test_security_exercises.py`; actual execution receipts remain pending. (contract commit: `0bd5c74b8a7e0301ad69ebaa87364d1626314856`)
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 
 ## 5. Review fixes
 
+- [x] R.7 Replace the Bandit-triggering boolean credential field with an explicit `credential_material: absent` value. Evidence: `src/riopa_provenance/security_exercises.py`, full quality harness. (review-fix commit: `cb64b48`)
 - [x] R.6 Correct strict MyPy narrowing in the release-signing manifest validator. Evidence: `src/riopa_provenance/release_signing.py`, focused and full quality validation. (review-fix commit: `c63a39c`)
 - [x] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)
 - [x] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)
