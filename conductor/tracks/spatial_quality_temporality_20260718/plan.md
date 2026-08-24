@@ -8,7 +8,7 @@
 
 ## 2. Temporal and change engine
 
-- [ ] 2.1 Implement valid-time, recorded-time and reconstruction query primitives.
+- [x] 2.1 Implement explicit valid-time, recorded-time and `as_known_at` selection with fail-closed transition validation (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/spatial-temporal-query-contract-20260825.json`, `tests/test_spatial_temporal_query_contract.py`). Real authority histories, late evidence, external semantics and publication gates remain open.
 - [ ] 2.2 Distinguish source, transformation, schema and boundary-induced changes.
 - [ ] 2.3 Test late evidence, correction, supersession and historical gaps.
 

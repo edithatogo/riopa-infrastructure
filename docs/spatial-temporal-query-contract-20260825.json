@@ -1,0 +1,27 @@
+{
+  "schema": "riopa.spatial-temporal-query-contract.v1",
+  "contract_id": "spatial-temporal-query-contract-20260825",
+  "status": "bounded-repository-contract",
+  "implementation": "src/riopa_provenance/transitions.py",
+  "tests": "tests/test_transitions.py",
+  "perspectives": ["valid_time", "recorded_time", "as_known_at"],
+  "controls": [
+    "transition identity, relationship, state and evidence are required",
+    "valid and recorded windows require ISO dates and reject reversed intervals",
+    "unknown perspectives and malformed records fail closed",
+    "partial continuity requires an explicit scope"
+  ],
+  "fixture": "fixtures/planning-transition-golden.json",
+  "open_gates": [
+    "heterogeneous real authority transitions",
+    "late evidence and correction series",
+    "boundary-induced change qualification",
+    "external semantic review",
+    "publication and accountable release authority"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "Synthetic transition selection does not establish historical completeness or legal authority.",
+    "An `as_known_at` result is a recorded-evidence perspective, not proof of contemporaneous truth."
+  ]
+}
