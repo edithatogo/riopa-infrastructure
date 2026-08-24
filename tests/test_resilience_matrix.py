@@ -37,3 +37,16 @@ def test_bounded_rehearsal_executes_local_cases_without_operational_claim() -> N
     }
     assert all(case["status"] == "passed" for case in report["cases"].values())
     assert report["safety"]["live_endpoint_contacted"] is False
+
+
+def test_performance_plan_closes_bounded_tasks_without_closing_hosted_gates() -> None:
+    plan = (
+        ROOT / "conductor/tracks/performance_scalability_reliability_20260719/plan.md"
+    ).read_text()
+    assert "[x] 2.1 Run bounded local" in plan
+    assert "[x] 2.2 Run bounded local" in plan
+    assert "[x] 2.3 Record bounded deterministic" in plan
+    assert "[x] 3.1 Add a deterministic noise-aware" in plan
+    assert "[x] 3.2 Publish bounded synthetic" in plan
+    assert "[x] 3.3 Resolve bottlenecks" in plan
+    assert "hosted and national-scale measurement remain open" in plan
