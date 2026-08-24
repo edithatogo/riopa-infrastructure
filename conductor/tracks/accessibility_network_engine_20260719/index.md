@@ -23,6 +23,7 @@
 | `ACCESS-SCENARIO-CONTRACT-20260824` | Explicit reference-only uncertainty, subgroup and scenario contract | `schemas/accessibility-scenario.schema.json`, `src/riopa_provenance/accessibility.py:validate_scenario_contract`, `tests/test_accessibility.py` | Assumptions, subgroup uniqueness and missing-data semantics are validated; real network, timetable and operational qualification remain open |
 | `ACCESS-SCENARIO-CONTRACT-CLOSEOUT-20260825` | Repository-owned reference-only uncertainty, subgroup and scenario contract | `schemas/accessibility-scenario.schema.json`, `src/riopa_provenance/accessibility.py:validate_scenario_contract`, `tests/test_accessibility.py` | Contract validation passes; real network/timetable archives, national measurements and operational qualification remain open |
 | `ACCESS-REFERENCE-MEASURES-20260825` | Cumulative opportunity, gravity and two-step floating-catchment reference measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Hand-calculated bounded fixtures pass; measures are not national, operational or real-network evidence |
+| `ACCESS-STRAIGHT-LINE-ADAPTER-20260825` | Deterministic Haversine coordinate adapter for bounded reference matrices | `src/riopa_provenance/accessibility.py:straight_line_matrix`, `tests/test_accessibility.py` | Geometry-only reference distances pass; no road, timetable, facility, national or operational claim is enabled |
 
 ## Blocking defects
 
