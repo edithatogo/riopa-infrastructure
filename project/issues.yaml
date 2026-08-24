@@ -541,7 +541,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-1",
@@ -569,7 +569,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-2",
@@ -599,7 +599,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-3",
@@ -629,7 +629,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-4",
@@ -659,7 +659,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "governance_maori_data_sovereignty_20260718:phase-5",
@@ -675,7 +675,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Validate review expiry, conflict-of-interest handling and predecessor preservation fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py; c3579bd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`. (0b062d5)\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. (476ff5a)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `governance_maori_data_sovereignty_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Validate review expiry, conflict-of-interest handling and predecessor preservation fail closed. (src/riopa_provenance/governance.py; tests/test_governance.py; c3579bd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`. (0b062d5)\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. (476ff5a)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains; the foundation dependency and live evidence gates remain open.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating`/M1 because the documented gates are unresolved.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/governance_maori_data_sovereignty_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -689,7 +689,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 0
+      "blocking_defects": 4
     },
     {
       "key": "security_supply_chain_20260719",
