@@ -25,6 +25,7 @@
     ,"urn:riopa:evidence:documentation-reference-index:2026-08-25"
     ,"urn:riopa:evidence:documentation-bounded-lineage-tutorial:2026-08-25"
     ,"urn:riopa:evidence:documentation-friction:2026-08-25"
+    ,"urn:riopa:evidence:documentation-support:2026-08-25"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -1,0 +1,56 @@
+{
+  "schema": "riopa.documentation-support-readiness.v1",
+  "record_id": "documentation-support-readiness-20260825",
+  "status": "preview-support-contract",
+  "repository_model": "single-developer",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "channels": [
+    {
+      "name": "public issue tracker",
+      "route": "https://github.com/edithatogo/riopa-infrastructure/issues",
+      "purpose": "reproducible defects, documentation corrections and bounded feature requests",
+      "intake": "issue template with revision, command, expected result and observed result"
+    },
+    {
+      "name": "security disclosure",
+      "route": "docs/vulnerability-response-policy.md",
+      "purpose": "security-sensitive reports that should not be posted publicly",
+      "intake": "follow the repository security policy"
+    },
+    {
+      "name": "release and correction record",
+      "route": "conductor/tracks/",
+      "purpose": "versioned decisions, limitations, corrections and evidence links",
+      "intake": "maintainer-authored append-only record"
+    }
+  ],
+  "triage": [
+    {"priority": "P0", "action": "disable affected preview path and preserve evidence", "owner": "maintainer"},
+    {"priority": "P1", "action": "fail closed, reproduce on exact revision and record scope", "owner": "maintainer"},
+    {"priority": "P2", "action": "schedule bounded correction or documentation update", "owner": "maintainer"}
+  ],
+  "ownership": {
+    "implementation": "repository owner/maintainer",
+    "triage": "repository owner/maintainer",
+    "release_authority": "named accountable authority decision required per tier",
+    "agent_panels": "advisory analysis only; never factual participant evidence"
+  },
+  "sustainability_bounds": [
+    "best-effort preview support; no guaranteed response time",
+    "support is limited to Python 3.14 and documented bounded workflows",
+    "network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled",
+    "unsupported or expired preview paths may be withdrawn with a correction record"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This contract does not establish stable-v1 support, an SLA, external-user evidence or release approval.",
+    "The listed routes describe repository-owned intake and records; they do not prove an external support operation."
+  ],
+  "open_gates": [
+    "external user/operator workflows",
+    "accessibility validation",
+    "release-candidate execution and soak",
+    "preservation acceptance",
+    "accountable release-authority decision"
+  ]
+}
