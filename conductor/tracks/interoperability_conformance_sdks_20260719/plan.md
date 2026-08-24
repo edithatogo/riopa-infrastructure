@@ -10,7 +10,7 @@
 
 - [x] 2.1 Stabilise the Python reference SDK and validator. Evidence: `src/riopa_provenance/sdk.py`, `tests/test_sdk.py`, and `docs/python-reference-sdk-20260825.md`; deterministic schema/crosswalk reports pass, while independent and release gates remain open.
 - [ ] 2.2 Implement Rust models and conformance validation.
-- [ ] 2.3 Implement a transport-neutral lineage/query client contract.
+- [x] 2.3 Implement a transport-neutral lineage/query client contract. Evidence: `src/riopa_provenance/lineage.py` and `tests/test_lineage.py`; strict versioned request round-trips are local-only and carry no endpoint or credential semantics.
 
 ## 3. Standards and compatibility testing
 
