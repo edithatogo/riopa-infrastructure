@@ -57,7 +57,7 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 ## Publication
 
 - [~] **`documentation_developer_experience_20260719`** — Documentation, developer experience and user support readiness (target `0.9.0`, current `M1`, target `M6`, risk High; depends on: `repository_template_adoption_20260718`, `methods_research_objects_20260718`, `provenance_query_api_20260719`, `interoperability_conformance_sdks_20260719`, `nz_spatial_archive_operations_20260719`, `accessibility_network_engine_20260719`, `facility_location_engine_20260718`)
-- [ ] **`publication_validation_20260718`** — Independent validation, release and publication programme (target `0.9.0`, current `M1`, target `M6`, risk High; depends on: `repository_template_adoption_20260718`, `nz_spatial_archive_mvp_20260718`, `methods_research_objects_20260718`, `security_supply_chain_20260719`)
+- [~] **`publication_validation_20260718`** — Independent validation, release and publication programme (target `0.9.0`, current `M1`, target `M6`, risk High; depends on: `repository_template_adoption_20260718`, `nz_spatial_archive_mvp_20260718`, `methods_research_objects_20260718`, `security_supply_chain_20260719`)
 
 ## Release
 

@@ -1,7 +1,7 @@
 # Evidence index: Independent validation, release and publication programme
 
 - **Track ID:** `publication_validation_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.9.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -71,7 +71,7 @@ participant evidence or promotion authority.
 
 Required agent-panel lenses: Governance analyst, Research-object analyst, Agent workflow analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified` at
+This index is deliberately non-assertive while the track remains `active` at
 M1. Status may advance only through `conductor/workflow.md`; evidence must be
 immutable or version-addressed, agent-panel qualified where required, and
 sufficient for the applicable release gates.
