@@ -656,6 +656,15 @@ def _lineage_export_prov_jsonld(args: argparse.Namespace) -> int:
     return 0
 
 
+def _lineage_nodes(args: argparse.Namespace) -> int:
+    _print_json(
+        LineageIndex(args.database).page_nodes(
+            node_type=args.node_type, limit=args.limit, offset=args.offset
+        )
+    )
+    return 0
+
+
 def _publication_plan(args: argparse.Namespace) -> int:
     overrides: dict[str, str] | None = None
     if args.overrides:
@@ -918,6 +927,14 @@ def build_parser() -> argparse.ArgumentParser:
     lineage_export.add_argument("--database", required=True)
     lineage_export.add_argument("--output", required=True)
     lineage_export.set_defaults(func=_lineage_export_prov_jsonld)
+    lineage_nodes = lineage_subparsers.add_parser(
+        "nodes", help="list a bounded page of lineage nodes with diagnostics"
+    )
+    lineage_nodes.add_argument("--database", required=True)
+    lineage_nodes.add_argument("--node-type")
+    lineage_nodes.add_argument("--limit", type=int, default=100)
+    lineage_nodes.add_argument("--offset", type=int, default=0)
+    lineage_nodes.set_defaults(func=_lineage_nodes)
 
     publication = subparsers.add_parser(
         "publication", help="plan and stage rights-aware federated releases"

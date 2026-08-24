@@ -68,6 +68,15 @@ def test_lineage_walks_are_sorted_and_cycle_safe(tmp_path: Path) -> None:
     assert "not captured" in impact["projection"]["granularity_limitation"]
 
 
+def test_page_nodes_is_bounded_and_reports_diagnostics(tmp_path: Path) -> None:
+    index = seeded_index(tmp_path)
+    page = index.page_nodes(limit=1, offset=1)
+    assert page["pagination"] == {"limit": 1, "offset": 1, "total": 3, "next_offset": 2}
+    assert len(page["nodes"]) == 1
+    assert page["diagnostics"]["projection_sha256"]
+    assert "no remote authorization" in page["access_control"]
+
+
 def test_export_duckdb_preserves_projection_rows_and_digest_binding(tmp_path: Path) -> None:
     duckdb = pytest.importorskip("duckdb")
     index = seeded_index(tmp_path)

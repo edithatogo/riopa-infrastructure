@@ -640,6 +640,30 @@ class LineageIndex:
         finally:
             connection.close()
 
+    def page_nodes(
+        self, *, node_type: str | None = None, limit: int = 100, offset: int = 0
+    ) -> dict[str, Any]:
+        """Return a bounded, deterministic node page with projection diagnostics."""
+
+        if limit < 1 or limit > 1000:
+            raise LineageError("limit must be between 1 and 1000")
+        if offset < 0:
+            raise LineageError("offset must be non-negative")
+        all_nodes = self.nodes(node_type=node_type)
+        page = all_nodes[offset : offset + limit]
+        next_offset = offset + limit if offset + limit < len(all_nodes) else None
+        return {
+            "nodes": [node.__dict__ for node in page],
+            "pagination": {
+                "limit": limit,
+                "offset": offset,
+                "total": len(all_nodes),
+                "next_offset": next_offset,
+            },
+            "diagnostics": self.projection_metadata(),
+            "access_control": "local-filesystem-permissions; no remote authorization asserted",
+        }
+
     def projection_metadata(self) -> dict[str, Any]:
         """Describe the evidence set and granularity represented by this projection."""
 
