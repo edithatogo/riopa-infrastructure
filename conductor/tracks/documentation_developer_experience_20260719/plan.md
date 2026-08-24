@@ -21,7 +21,7 @@
 ## 4. Stable support readiness
 
 - [ ] 4.1 Execute every tutorial against release-candidate artifacts.
-- [ ] 4.2 Freeze support channels, triage, maintainer ownership and sustainability bounds.
+- [x] 4.2 Freeze the preview support channels, triage, single-developer ownership and sustainability bounds (`docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py`). Stable support, external participation, RC soak and authority gates remain open.
 - [ ] 4.3 Publish versioned v1 documentation and archival copies.
 
 ## Track closeout

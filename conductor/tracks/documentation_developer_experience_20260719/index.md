@@ -24,6 +24,7 @@
 | `DOCUMENTATION-REFERENCE-INDEX-20260825` | API, CLI, schema and ontology surfaces are versioned and discoverable | `docs/reference-index-20260825.json`, `tests/test_reference_index.py` | Deterministic repository reference index passes; external usability and publication remain open |
 | `DOCUMENTATION-TUTORIAL-20260825` | Public/synthetic end-to-end tutorial includes positive and fail-closed troubleshooting paths | `docs/bounded-lineage-tutorial-20260825.md`, `scripts/run_bounded_lineage_tutorial.py`, `tests/test_bounded_lineage_tutorial.py` | Offline synthetic rehearsal passes; external usability, RC execution and publication remain open |
 | `DOCUMENTATION-FRICTION-20260825` | Anticipated friction and support-burden register with mitigations | `docs/documentation-friction-register-20260825.json`, `tests/test_documentation_friction_register.py` | Repository analysis is recorded; external user/operator, accessibility, RC and authority gates remain open |
+| `DOCUMENTATION-SUPPORT-20260825` | Preview support channels, triage priorities, single-developer ownership and sustainability bounds | `docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py` | Preview contract is recorded; stable support, external participation, RC soak, preservation and authority gates remain open |
 
 ## Blocking defects
 
