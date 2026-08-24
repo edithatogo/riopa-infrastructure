@@ -164,6 +164,13 @@ def test_facility_index_does_not_restate_superseded_merge_blocker() -> None:
     assert "PR #175 blocker is retained" in index
 
 
+def test_facility_review_frame_tasks_are_implemented_and_merge_history_is_historical() -> None:
+    plan = (ROOT / "conductor/tracks/facility_registry_20260719/plan.md").read_text()
+    assert "[x] 0.3 Build a deterministic bounded review frame" in plan
+    assert "[x] 3.1 Build a deterministic stratified duplicate" in plan
+    assert "Historical hosted merge-policy blocker (resolved 2026-08-03)" in plan
+
+
 def test_facility_review_sample_is_bounded_and_reproducible() -> None:
     evidence = json.loads(
         (ROOT / "docs/facility-stratified-review-sample-20260803.json").read_text()
