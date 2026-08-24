@@ -1,0 +1,34 @@
+{
+  "schema": "riopa.publication-citation-guidance.v1",
+  "record_id": "publication-citation-guidance-20260825",
+  "status": "preview-guidance-not-stable-publication",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "software_citation": {
+    "repository": "https://github.com/edithatogo/riopa-infrastructure",
+    "version": "0.2.0",
+    "revision": "cite-the-exact-merged-main-revision",
+    "include": ["exact revision", "Python 3.14", "source/capture digests", "limitations"]
+  },
+  "data_citation": {
+    "include": ["source family", "edition or capture date", "content digest", "archive locator", "rights status"],
+    "live_endpoint_policy": "cite the archived packet, never a live endpoint as source truth"
+  },
+  "citation_template": "Edithatogo (2026), RIOPA Infrastructure, exact revision <sha>, bounded regional public-source technical preview, <archive/source digest>.",
+  "persistent_identifier": {"status": "pending-for-stable-publication", "required_before": "stable-v1"},
+  "validation_evidence": [
+    "docs/publication-workflow-verification-20260825.json",
+    "docs/publication-validation-packet-20260825.json",
+    "docs/publication-claim-classification-contract-20260825.json"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is citation guidance for the preview, not a stable publication or DOI receipt.",
+    "Citation guidance does not establish source authority, external reproduction, elapsed soak or release approval."
+  ],
+  "open_gates": [
+    "accepted preservation deposit and restore",
+    "external operator/user reproduction",
+    "beta/RC elapsed evidence",
+    "accountable release-authority decision"
+  ]
+}
