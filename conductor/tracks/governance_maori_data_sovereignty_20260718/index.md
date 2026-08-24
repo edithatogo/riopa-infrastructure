@@ -34,7 +34,19 @@
 
 ## Blocking defects
 
-- None recorded for the implemented bounded framework.
+- The foundation dependency remains below M6, and live takedown,
+  publication, applied-pilot and release-authority evidence remain outside
+  the bounded repository implementation.
+
+## Repository-owned closeout slice (2026-08-24)
+
+The governance decision schema, fail-closed publication controls, withdrawal
+drill, scope-trigger audit and rights propagation are linked above and pass
+the repository quality harness at protected `main` revision
+`ed69976d815f064843c3492fa2045807381857ca`. This proves the bounded public,
+non-operational technical-preview framework only; it does not prove live
+community/cultural review, publication approval, operational takedown or
+stable-release authority.
 
 ## Decisions, exceptions and limitations
 
@@ -44,9 +56,16 @@
   declared scope or another applicable obligation.
 - Local target reconciliation is tested; no live distribution/takedown system
   is claimed by the bounded synthetic drill.
+- This is a single-developer repository. Agent panels may assess governance
+  packets, but cannot substitute for factual external participation or the
+  accountable release authority.
+- Public datasets remain the current scope. Non-public acquisition and
+  custodian coordination are closed out for this stage rather than inferred.
 
 ## Review and handover
 
 Required agent-panel lenses: Governance analyst, Security analyst, Data-governance analyst, Scientific-methods analyst.
 
-Implementation is validating. Evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+Implementation is validating at M1. Evidence must be immutable or
+version-addressed, agent-panel qualified where required, and sufficient for
+the applicable release gates.
