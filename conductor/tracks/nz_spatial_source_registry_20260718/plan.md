@@ -9,7 +9,7 @@
 
 ## 2. Service and document discovery
 
-- [x] 2.1 Record the bounded pilot's declared WFS/OGC and Koordinates mechanisms without live discovery or national completeness claims. (`config/source-registry/nz-spatial-pilot.yaml`, `src/riopa_provenance/registry.py:classify_connector_readiness`, `docs/nz-spatial-connector-readiness-contract-20260824.json`)
+- [x] 2.1 Record the bounded pilot's declared WFS/OGC and Koordinates mechanisms without live discovery or national completeness claims. (`config/source-registry/nz-spatial-pilot.yaml`, `src/riopa_provenance/registry.py:classify_connector_readiness`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)
 - [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.
 - [ ] 2.3 Preserve capability, metadata, terms and rights snapshots before any source is incorporated into a canonical or analytical projection.
 
@@ -17,7 +17,7 @@
 
 - [ ] 3.1 Implement source/service/version identity and change events.
 - [ ] 3.2 Add automated health, disappearance and terms-change checks.
-- [x] 3.3 Produce connector-readiness and unresolved-source classifications from declared registry fields; live health and authority remain open. (`src/riopa_provenance/registry.py:classify_connector_readiness`, `tests/test_source_registry_readiness.py`, `docs/nz-spatial-connector-readiness-contract-20260824.json`)
+- [x] 3.3 Produce connector-readiness and unresolved-source classifications from declared registry fields; live health and authority remain open. (`src/riopa_provenance/registry.py:classify_connector_readiness`, `tests/test_source_registry_readiness.py`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)
 
 ## 4. National review and release
 
