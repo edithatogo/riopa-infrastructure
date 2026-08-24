@@ -96,6 +96,94 @@ class SimulationResult:
     observed_customers: int
 
 
+@dataclass(frozen=True)
+class CoverageScenario:
+    """Synthetic location/availability inputs for a bounded coverage check."""
+
+    scenario_id: str
+    demand_ids: tuple[str, ...]
+    primary_locations: tuple[str, ...]
+    backup_locations: tuple[str, ...]
+    travel: Mapping[tuple[str, str], float]
+    availability: Mapping[str, bool]
+    threshold: float
+
+    def __post_init__(self) -> None:
+        if not self.scenario_id.strip() or not self.demand_ids:
+            raise ValueError("scenario requires an id and demand IDs")
+        if len(set(self.demand_ids)) != len(self.demand_ids):
+            raise ValueError("demand IDs must be unique")
+        locations = (*self.primary_locations, *self.backup_locations)
+        if not locations or len(set(locations)) != len(locations):
+            raise ValueError("scenario locations must be non-empty and unique")
+        if not math.isfinite(self.threshold) or self.threshold < 0:
+            raise ValueError("coverage threshold must be finite and non-negative")
+        if any(not math.isfinite(value) or value < 0 for value in self.travel.values()):
+            raise ValueError("travel values must be finite and non-negative")
+
+
+def evaluate_coverage_scenario(scenario: CoverageScenario) -> dict[str, Any]:
+    """Evaluate primary, backup and unavailable demand over supplied fixtures."""
+
+    primary_available = tuple(
+        location
+        for location in scenario.primary_locations
+        if scenario.availability.get(location, False)
+    )
+    backup_available = tuple(
+        location
+        for location in scenario.backup_locations
+        if scenario.availability.get(location, False)
+    )
+    assignments: list[dict[str, Any]] = []
+    for demand_id in scenario.demand_ids:
+        primary = [
+            location
+            for location in primary_available
+            if scenario.travel.get((demand_id, location), math.inf) <= scenario.threshold
+        ]
+        backups = [
+            location
+            for location in backup_available
+            if scenario.travel.get((demand_id, location), math.inf) <= scenario.threshold
+        ]
+        assignments.append(
+            {
+                "demand_id": demand_id,
+                "primary": primary[0] if primary else None,
+                "backup": backups[0] if backups else None,
+            }
+        )
+    covered = sum(item["primary"] is not None for item in assignments)
+    backup_covered = sum(item["backup"] is not None for item in assignments)
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_coverage_scenario",
+        "scenario_id": scenario.scenario_id,
+        "locations": {
+            "primary": list(scenario.primary_locations),
+            "backup": list(scenario.backup_locations),
+            "primary_available": list(primary_available),
+            "backup_available": list(backup_available),
+        },
+        "assignments": assignments,
+        "counts": {
+            "demand": len(assignments),
+            "primary_covered": covered,
+            "backup_covered": backup_covered,
+            "uncovered": len(assignments) - covered,
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "Synthetic/reference calculation only; no dispatch, clinical or response "
+                "guarantee is asserted."
+            ),
+            "The result does not establish national or authoritative service coverage.",
+        ],
+    }
+
+
 def _required_text(value: str, field: str) -> None:
     if not value.strip():
         raise AnalysisProtocolError(f"{field} must be non-empty")

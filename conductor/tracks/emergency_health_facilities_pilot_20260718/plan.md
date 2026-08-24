@@ -8,7 +8,7 @@
 
 ## 2. Ambulance optimisation and simulation
 
-- [ ] 2.1 Implement coverage, backup, availability and location scenarios.
+- [x] 2.1 Implement coverage, backup, availability and location scenarios. Evidence: `CoverageScenario` and `evaluate_coverage_scenario` in `src/riopa_provenance/analysis.py` with synthetic primary/backup/availability tests; dispatch, clinical, operational and national claims remain disabled.
 - [ ] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation.
 - [ ] 2.3 Compare static and simulated performance under stress.
 
