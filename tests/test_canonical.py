@@ -176,6 +176,12 @@ def test_canonical_extension_policy_is_explicit_and_fail_closed() -> None:
     assert "SHACL engine report" in policy["external_gates"]
 
 
+def test_canonical_plan_closes_extension_policy_without_claiming_qualification() -> None:
+    plan = Path("conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md").read_text()
+    assert "[x] 4.2 Define the bounded migration compatibility" in plan
+    assert "execution qualification and stable publication remain open" in plan
+
+
 def test_ontology_release_descriptor_is_versioned_and_unpublished() -> None:
     descriptor = json.loads(Path("docs/ontology/canonical-ontology-release-1.0.0.json").read_text())
     assert descriptor["version"] == "1.0.0"
