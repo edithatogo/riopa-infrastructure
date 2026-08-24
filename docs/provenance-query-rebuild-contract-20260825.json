@@ -1,0 +1,25 @@
+{
+  "schema": "riopa.provenance-query-rebuild-contract.v1",
+  "status": "repository-contract",
+  "scope": "validated manifests and disposable SQLite/DuckDB projections",
+  "implementation": "src/riopa_provenance/lineage.py:LineageIndex.projection_fingerprint",
+  "tests": "tests/test_lineage.py::test_projection_fingerprint_is_stable_across_rebuilds_and_reimports",
+  "controls": [
+    "logical rows are sorted before hashing",
+    "SQLite file layout and migration-sentinel tables do not affect the fingerprint",
+    "rebuild equivalence is checked independently of file path"
+  ],
+  "open_gates": [
+    "language-neutral graph equivalence",
+    "CLI/MCP interface equivalence",
+    "access filtering",
+    "production-scale qualification",
+    "real-release evidence",
+    "external user testing"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "A deterministic projection fingerprint does not make the projection authoritative.",
+    "Agent-panel review cannot substitute for factual external participation."
+  ]
+}

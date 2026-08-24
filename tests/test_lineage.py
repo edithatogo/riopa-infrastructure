@@ -92,6 +92,19 @@ def test_export_duckdb_rejects_same_projection_path(tmp_path: Path) -> None:
         index.export_duckdb(index.path)
 
 
+def test_projection_fingerprint_is_stable_across_rebuilds_and_reimports(tmp_path: Path) -> None:
+    first = seeded_index(tmp_path / "first")
+    second = seeded_index(tmp_path / "second")
+    assert first.projection_fingerprint() == second.projection_fingerprint()
+    before = first.projection_fingerprint()
+    connection = first._connect()
+    connection.execute("CREATE TABLE migration_sentinel (version INTEGER)")
+    connection.execute("INSERT INTO migration_sentinel VALUES (1)")
+    connection.commit()
+    connection.close()
+    assert first.projection_fingerprint() == before
+
+
 @pytest.mark.parametrize("depth", [0, 101])
 def test_lineage_depth_and_identity_fail_closed(tmp_path: Path, depth: int) -> None:
     index = seeded_index(tmp_path)

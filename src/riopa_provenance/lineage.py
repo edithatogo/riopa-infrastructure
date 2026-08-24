@@ -11,6 +11,7 @@ import json
 import sqlite3
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
+from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
@@ -677,6 +678,33 @@ class LineageIndex:
                 else "feature and row lineage were not captured by the authoritative evidence"
             ),
         }
+
+    def projection_fingerprint(self) -> str:
+        """Return a deterministic digest of the logical projection rows.
+
+        SQLite file layout, temporary paths and page allocation are excluded;
+        the digest therefore supports rebuild and migration equivalence checks.
+        """
+        connection = self._connect(read_only=True)
+        try:
+            payload = {
+                "manifests": [
+                    list(row)
+                    for row in connection.execute("SELECT * FROM manifests ORDER BY manifest_id")
+                ],
+                "nodes": [
+                    list(row) for row in connection.execute("SELECT * FROM nodes ORDER BY node_id")
+                ],
+                "edges": [
+                    list(row)
+                    for row in connection.execute(
+                        "SELECT * FROM edges ORDER BY manifest_id, source_id, target_id, relation"
+                    )
+                ],
+            }
+        finally:
+            connection.close()
+        return sha256(_normalise_json(payload).encode("utf-8")).hexdigest()
 
     def query(self, node_id: str, *, question: str, max_depth: int = 20) -> dict[str, Any]:
         """Answer a normative where/why/how query with an explicit evidence envelope."""
