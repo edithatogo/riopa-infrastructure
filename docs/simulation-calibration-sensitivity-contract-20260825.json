@@ -1,0 +1,24 @@
+{
+  "evidence_id": "SIMULATION-CALIBRATION-SENSITIVITY-20260825",
+  "title": "Synthetic simulation parameter evidence, calibration and sensitivity contract",
+  "scope": {
+    "included": [
+      "assumed/fitted/external parameter classification",
+      "caller-supplied synthetic calibration targets",
+      "seeded candidate-grid sensitivity outputs",
+      "explicit confidence and operational-status fields"
+    ],
+    "excluded": [
+      "real-world or clinical calibration",
+      "external source authority",
+      "independent implementation or published benchmark comparison",
+      "operational deployment or release promotion"
+    ]
+  },
+  "evidence": [
+    "src/riopa_provenance/analysis.py",
+    "tests/test_analysis.py"
+  ],
+  "status": "repository-owned synthetic contract validated by Python 3.14 tests",
+  "promotion_allowed": false
+}

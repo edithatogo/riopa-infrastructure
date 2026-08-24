@@ -15,10 +15,13 @@ from riopa_provenance.analysis import (
     Estimand,
     ParameterEvidence,
     ReplicationDesign,
+    calibrate_queue_parameters,
     difference_in_differences,
     evaluate_coverage_scenario,
     evaluate_dispatch_scenario,
+    parameter_evidence_report,
     protocol_record,
+    queue_parameter_sensitivity,
     run_seeded_replications,
     simulate_dispatch_scenario,
     simulate_fcfs_queue,
@@ -132,6 +135,32 @@ def test_protocol_record_is_machine_readable_and_preserves_assumptions() -> None
     assert {item["source"] for item in record["parameters"]} == {"assumed"}
     assert record["operational_status"] == "synthetic-non-operational"
     Draft202012Validator(schema).validate(record)
+
+
+def test_parameter_evidence_report_preserves_source_classes() -> None:
+    protocol = _protocol()
+    report = parameter_evidence_report(protocol)
+    assert report["counts_by_source"] == {"assumed": 2, "fitted": 0, "external": 0}
+    assert report["parameters"][0]["evidence_reference"] is None
+    assert report["promotion_allowed"] is False
+
+
+def test_synthetic_calibration_and_sensitivity_are_reproducible() -> None:
+    protocol = _protocol()
+    candidates = ((2.0, 1.0), (3.0, 1.0))
+    calibration = calibrate_queue_parameters(
+        protocol,
+        observed_mean_wait=0.0,
+        candidates=candidates,
+        customer_count=20,
+        capacity=2,
+    )
+    assert calibration["selected"]["mean_interarrival"] in {2.0, 3.0}
+    sensitivity = queue_parameter_sensitivity(
+        protocol, candidates=candidates, customer_count=20, capacity=2
+    )
+    assert len(sensitivity["candidates"]) == 2
+    assert sensitivity["promotion_allowed"] is False
 
 
 def test_protocol_fails_closed_for_unreferenced_fitted_parameter() -> None:

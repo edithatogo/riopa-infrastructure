@@ -535,6 +535,147 @@ def run_seeded_replications(
     }
 
 
+def parameter_evidence_report(protocol: AnalysisProtocol) -> dict[str, Any]:
+    """Classify declared parameters without inferring missing evidence.
+
+    The report is deliberately descriptive: ``fitted`` and ``external`` values
+    remain invalid unless their references are present in the protocol, and a
+    synthetic report never upgrades an assumed value into empirical evidence.
+    """
+
+    validate_analysis_protocol(protocol)
+    parameters = [
+        {
+            "name": parameter.name,
+            "value": parameter.value,
+            "unit": parameter.unit,
+            "source": parameter.source,
+            "evidence_reference": parameter.evidence_reference,
+        }
+        for parameter in protocol.parameters
+    ]
+    counts = {
+        source: sum(item["source"] == source for item in parameters)
+        for source in (
+            "assumed",
+            "fitted",
+            "external",
+        )
+    }
+    return {
+        "protocol_id": protocol.protocol_id,
+        "parameters": parameters,
+        "counts_by_source": counts,
+        "evidence_status": {
+            "assumed": "declared assumption only",
+            "fitted": "reference required and recorded; fit quality is not established here",
+            "external": "reference required and recorded; authority is not established here",
+        },
+        "operational_status": protocol.operational_status,
+        "promotion_allowed": False,
+    }
+
+
+def calibrate_queue_parameters(
+    protocol: AnalysisProtocol,
+    *,
+    observed_mean_wait: float,
+    candidates: Sequence[tuple[float, float]],
+    customer_count: int,
+    capacity: int,
+) -> dict[str, Any]:
+    """Select the closest synthetic queue candidate against a declared target.
+
+    This is a deterministic calibration *workflow* for contract testing.  The
+    target is caller-supplied and no claim is made that it is an observed or
+    authoritative real-world measurement.
+    """
+
+    if not math.isfinite(observed_mean_wait) or observed_mean_wait < 0:
+        raise ValueError("observed_mean_wait must be finite and non-negative")
+    if not candidates:
+        raise ValueError("at least one calibration candidate is required")
+    reports: list[dict[str, Any]] = []
+    for mean_interarrival, mean_service in candidates:
+        result = run_seeded_replications(
+            protocol,
+            customer_count=customer_count,
+            capacity=capacity,
+            mean_interarrival=mean_interarrival,
+            mean_service=mean_service,
+        )
+        reports.append(
+            {
+                "mean_interarrival": mean_interarrival,
+                "mean_service": mean_service,
+                "estimate_mean_wait": result["estimate_mean_wait"],
+                "absolute_error": abs(result["estimate_mean_wait"] - observed_mean_wait),
+                "replication": result,
+            }
+        )
+    selected = min(
+        reports,
+        key=lambda item: (
+            item["absolute_error"],
+            item["mean_interarrival"],
+            item["mean_service"],
+        ),
+    )
+    return {
+        "protocol_id": protocol.protocol_id,
+        "target_mean_wait": observed_mean_wait,
+        "candidates": reports,
+        "selected": {
+            key: selected[key]
+            for key in ("mean_interarrival", "mean_service", "estimate_mean_wait", "absolute_error")
+        },
+        "target_status": "caller-supplied synthetic calibration target",
+        "operational_status": protocol.operational_status,
+        "promotion_allowed": False,
+    }
+
+
+def queue_parameter_sensitivity(
+    protocol: AnalysisProtocol,
+    *,
+    candidates: Sequence[tuple[float, float]],
+    customer_count: int,
+    capacity: int,
+) -> dict[str, Any]:
+    """Run a deterministic parameter grid and preserve all candidate outputs."""
+
+    if not candidates:
+        raise ValueError("at least one sensitivity candidate is required")
+    reports = []
+    for mean_interarrival, mean_service in candidates:
+        result = run_seeded_replications(
+            protocol,
+            customer_count=customer_count,
+            capacity=capacity,
+            mean_interarrival=mean_interarrival,
+            mean_service=mean_service,
+        )
+        reports.append(
+            {
+                "mean_interarrival": mean_interarrival,
+                "mean_service": mean_service,
+                "estimate_mean_wait": result["estimate_mean_wait"],
+                "confidence_interval_95": result["confidence_interval_95"],
+                "replication_seeds": result["replication_seeds"],
+            }
+        )
+    return {
+        "protocol_id": protocol.protocol_id,
+        "candidates": reports,
+        "ordering": "input order",
+        "interpretation": (
+            "Synthetic parameter sensitivity only; no empirical robustness is established."
+        ),
+        "operational_status": protocol.operational_status,
+        "promotion_allowed": False,
+    }
+
+
 def difference_in_differences(
     *,
     treated_pre: Sequence[float],
