@@ -9,6 +9,9 @@ from riopa_provenance.facility_location import (
     EquityConstraint,
     LocationProblem,
     Model,
+    MultiPeriodPlan,
+    RobustScenario,
+    evaluate_robust_scenarios,
     minimax_subgroup_alternative,
     pareto_alternatives,
     solve,
@@ -56,6 +59,20 @@ def test_independently_calculated_line_benchmarks(
     assert solution.selected == selected
     assert solution.objective == objective
     assert verify_solution(_line_problem(model, p=p, threshold=threshold), solution).valid
+
+
+def test_robust_scenarios_and_multi_period_interface_are_deterministic() -> None:
+    problem = _line_problem("p-median", p=1)
+    scenario = RobustScenario(
+        "slower-c2", travel_delta={("d0", "c2"): 1}, demand_multiplier={"d0": 2}
+    )
+    first = evaluate_robust_scenarios(problem, (scenario,))
+    assert first == evaluate_robust_scenarios(problem, (scenario,))
+    assert first[0].solution is not None
+    plan = MultiPeriodPlan(("baseline", "stress"), {"baseline": problem, "stress": problem})
+    assert [period for period, _ in plan.solve()] == ["baseline", "stress"]
+    with pytest.raises(ValueError, match="exactly one problem"):
+        MultiPeriodPlan(("baseline",), {})
 
 
 def test_capacity_fixed_budget_and_eligibility_are_enforced() -> None:

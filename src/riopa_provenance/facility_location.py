@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass
+from dataclasses import dataclass, field, replace
 from itertools import combinations, product
-from math import isclose
+from math import isclose, isfinite
 from typing import Literal
 
 Model = Literal["set-cover", "maximal-cover", "p-median", "p-center"]
@@ -102,6 +102,83 @@ class Verification:
     valid: bool
     errors: tuple[str, ...]
     recomputed_objective: float | None
+
+
+@dataclass(frozen=True)
+class RobustScenario:
+    """A bounded deterministic perturbation of a reference problem."""
+
+    scenario_id: str
+    travel_delta: Mapping[tuple[str, str], float] = field(default_factory=dict)
+    demand_multiplier: Mapping[str, float] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if not self.scenario_id.strip():
+            raise ValueError("scenario_id must be non-empty")
+        if any(not isfinite(value) for value in self.travel_delta.values()):
+            raise ValueError("travel deltas must be finite")
+        if any(not isfinite(value) or value < 0 for value in self.demand_multiplier.values()):
+            raise ValueError("demand multipliers must be finite and non-negative")
+
+
+@dataclass(frozen=True)
+class ScenarioEvaluation:
+    scenario_id: str
+    solution: LocationSolution | None
+    error: str | None = None
+
+
+@dataclass(frozen=True)
+class MultiPeriodPlan:
+    """Explicit period-to-problem interface for bounded independent solves."""
+
+    periods: tuple[str, ...]
+    problems: Mapping[str, LocationProblem]
+
+    def __post_init__(self) -> None:
+        if not self.periods or len(set(self.periods)) != len(self.periods):
+            raise ValueError("periods must be non-empty and unique")
+        if set(self.problems) != set(self.periods):
+            raise ValueError("problems must provide exactly one problem per period")
+
+    def solve(self) -> tuple[tuple[str, LocationSolution], ...]:
+        """Solve each period independently in declared period order."""
+
+        return tuple((period, solve(self.problems[period])) for period in self.periods)
+
+
+def evaluate_robust_scenarios(
+    problem: LocationProblem, scenarios: tuple[RobustScenario, ...]
+) -> tuple[ScenarioEvaluation, ...]:
+    """Evaluate deterministic perturbations without probability or forecast claims."""
+
+    if len({scenario.scenario_id for scenario in scenarios}) != len(scenarios):
+        raise ValueError("scenario IDs must be unique")
+    evaluations: list[ScenarioEvaluation] = []
+    for scenario in scenarios:
+        travel = dict(problem.travel)
+        for pair, delta in scenario.travel_delta.items():
+            if pair not in travel or travel[pair] + delta < 0:
+                evaluations.append(
+                    ScenarioEvaluation(scenario.scenario_id, None, "scenario travel is invalid")
+                )
+                break
+            travel[pair] += delta
+        else:
+            demands = tuple(
+                replace(
+                    demand,
+                    weight=demand.weight * scenario.demand_multiplier.get(demand.demand_id, 1.0),
+                )
+                for demand in problem.demands
+            )
+            try:
+                solution = solve(replace(problem, demands=demands, travel=travel))
+            except ValueError as error:
+                evaluations.append(ScenarioEvaluation(scenario.scenario_id, None, str(error)))
+            else:
+                evaluations.append(ScenarioEvaluation(scenario.scenario_id, solution))
+    return tuple(evaluations)
 
 
 def _eligible(problem: LocationProblem, demand: Demand, candidate: Candidate) -> bool:
