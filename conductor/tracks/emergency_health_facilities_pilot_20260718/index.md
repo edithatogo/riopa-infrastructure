@@ -1,7 +1,7 @@
 # Evidence index: Ambulance and hospital facility-planning reference pilots
 
 - **Track ID:** `emergency_health_facilities_pilot_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.8.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -19,6 +19,7 @@
 | `WP-010-non-operational-capacity-fixture-20260731` | Capacity simulation outputs carry an explicit non-operational suitability boundary | `src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `reports/wp010-synthetic-methods-core.md` | Synthetic FCFS fixture passes; no ambulance, hospital, clinical or dispatch suitability is claimed |
 | `WP-010-public-source-intake-20260801` | Hospital and ambulance source candidates retain explicit provenance, rights and acquisition state | `config/source-registry/wp010-public-pilot-candidates.yaml`, `tests/test_wp010_benchmark.py` | LINZ hospital-facility metadata is staged; an authoritative national ambulance-station source remains unresolved and no operational use is claimed |
 | `WP-010-regional-ambulance-observation-20260801` | Council and OSM regional observations remain separate by authority and licence | `scripts/capture_wp010_public_sources.py`, `tests/test_wp010_public_sources.py`, `reports/wp010-synthetic-methods-core.md` | Three council and two OSM ambulance POIs observed; no national completeness or dispatch suitability is claimed |
+| `EMERGENCY-HEALTH-BENCHMARK-CONTRACT-20260825` | Bounded public/synthetic ambulance and hospital planning scenarios, assumptions and non-clinical metrics | `docs/emergency-health-pilot-benchmark-contract-20260825.json`, `tests/test_emergency_health_benchmark_contract.py` | Contract is repository-owned and promotion-disabled; authoritative ambulance source, calibrated scenarios, clinical/dispatch safety and external qualification remain open |
 
 ## Blocking defects
 
@@ -34,4 +35,4 @@
 
 Required agent-panel lenses: Governance analyst, Research-object analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at M1. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

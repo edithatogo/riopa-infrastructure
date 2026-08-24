@@ -2,9 +2,9 @@
   "track_id": "emergency_health_facilities_pilot_20260718",
   "type": "research",
   "phase": "Applications",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-07-19T00:00:00Z",
+  "updated_at": "2026-08-25T06:40:00Z",
   "description": "Demonstrate the common location and simulation framework for emergency response and hospital/service planning while preserving safety, uncertainty and controlled-data boundaries.",
   "depends_on": [
     "accessibility_network_engine_20260719",
@@ -12,7 +12,9 @@
     "simulation_validation_engine_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/99",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:emergency-health-benchmark-contract:2026-08-25"
+  ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,

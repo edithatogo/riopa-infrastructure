@@ -2,9 +2,9 @@
 
 ## 1. Public benchmark design
 
-- [ ] 1.1 Define public/synthetic ambulance and hospital/service scenarios and non-deployment statement.
-- [ ] 1.2 Specify demand, fleet, staff, station, facility, travel, capacity and handover assumptions.
-- [ ] 1.3 Define efficiency, tail, equity, rurality, resilience and cost metrics.
+- [x] 1.1 Define public/synthetic ambulance and hospital/service scenarios and a non-deployment statement. (`docs/emergency-health-pilot-benchmark-contract-20260825.json`)
+- [x] 1.2 Specify demand, fleet, staff, station, facility, travel, capacity and handover assumptions as synthetic or candidate-only inputs. (`docs/emergency-health-pilot-benchmark-contract-20260825.json`)
+- [x] 1.3 Define efficiency, tail, equity, rurality, resilience and cost metrics without clinical or dispatch interpretation. (`docs/emergency-health-pilot-benchmark-contract-20260825.json`, `tests/test_emergency_health_benchmark_contract.py`)
 
 ## 2. Ambulance optimisation and simulation
 
