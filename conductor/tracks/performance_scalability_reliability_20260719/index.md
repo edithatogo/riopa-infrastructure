@@ -39,13 +39,36 @@
 - National-scale ingestion/accessibility/optimisation benchmarks, resource and
   cost envelopes, soak tests and stress/recovery evidence remain open.
 
+## Repository-owned closeout slice (2026-08-24)
+
+The benchmark contracts, bounded workload manifest, rehearsal matrix,
+noise-aware gate, capacity model and bottleneck diagnostic are linked above and
+validated by `bash scripts/ci_quality.sh` at protected `main` revision
+`9dc2fe67967c4957fe5aa4dadd9d1b96e7bdec1b`. These artifacts are projections or
+rehearsals until a hosted, production-representative workload produces
+content-bound measurements.
+
+The following gates remain intentionally open: second-environment
+reproduction, hosted national-scale ingestion/query/accessibility measurements,
+resource and cost instrumentation, elapsed soak, production failure injection,
+and final agent-panel qualification. No facility, national, operational or
+release claim is enabled by this index.
+
 ## Decisions, exceptions and limitations
 
 - Exhaustive reference solvers are validation oracles rather than performance
   implementations.
+- This is a single-developer repository. Agent panels provide structured
+  assessment of packets but do not substitute for factual hosted execution or
+  accountable release-authority approval.
+- Retrospective or synthetic acceleration data cannot advance elapsed beta/RC
+  clocks and missing measurements are pending, not negative evidence.
 
 ## Review and handover
 
 Required agent-panel lenses: Performance analyst, Operations analyst, Security analyst, Data-governance analyst, Quantitative methods analyst, Agent workflow analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified` at
+M1. Status may advance only through `conductor/workflow.md`; evidence must be
+immutable or version-addressed, agent-panel qualified where required, and
+sufficient for the applicable release gates.
