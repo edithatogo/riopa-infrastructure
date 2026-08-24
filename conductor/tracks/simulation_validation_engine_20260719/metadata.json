@@ -2,16 +2,19 @@
   "track_id": "simulation_validation_engine_20260719",
   "type": "analytics",
   "phase": "Analytics",
-  "status": "specified",
+  "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T02:00:00Z",
+  "updated_at": "2026-08-25T05:40:00Z",
   "description": "Provide reproducible discrete-event and dispatch simulation for systems where availability, queueing, congestion, handover or dynamic relocation invalidate static location models.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
     "facility_location_engine_20260718"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/94",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:simulation-contract:2026-08-22",
+    "urn:riopa:evidence:simulation-fcfs-engine:2026-08-25"
+  ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,
