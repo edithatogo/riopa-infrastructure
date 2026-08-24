@@ -11,6 +11,7 @@ from riopa_provenance.facility_location import (
     Model,
     MultiPeriodPlan,
     RobustScenario,
+    competitive_capture_reference,
     evaluate_robust_scenarios,
     minimax_subgroup_alternative,
     pareto_alternatives,
@@ -73,6 +74,15 @@ def test_robust_scenarios_and_multi_period_interface_are_deterministic() -> None
     assert [period for period, _ in plan.solve()] == ["baseline", "stress"]
     with pytest.raises(ValueError, match="exactly one problem"):
         MultiPeriodPlan(("baseline",), {})
+
+
+def test_competitive_capture_reference_is_normalized_and_fail_closed() -> None:
+    problem = _line_problem("p-median", p=1)
+    shares = competitive_capture_reference(problem, ("c0", "c4"), decay=0.1)
+    assert set(shares) == {"c0", "c4"}
+    assert sum(shares.values()) == pytest.approx(2.0)
+    with pytest.raises(ValueError, match="decay"):
+        competitive_capture_reference(problem, ("c0",), decay=-1)
 
 
 def test_capacity_fixed_budget_and_eligibility_are_enforced() -> None:

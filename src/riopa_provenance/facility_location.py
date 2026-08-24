@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass, field, replace
 from itertools import combinations, product
-from math import isclose, isfinite
+from math import exp, isclose, isfinite
 from typing import Literal
 
 Model = Literal["set-cover", "maximal-cover", "p-median", "p-center"]
@@ -517,3 +517,38 @@ def minimax_subgroup_alternative(problem: LocationProblem) -> LocationSolution:
             solution.assignments,
         ),
     )
+
+
+def competitive_capture_reference(
+    problem: LocationProblem,
+    selected: tuple[str, ...],
+    *,
+    decay: float,
+) -> dict[str, float]:
+    """Estimate bounded demand shares using a transparent gravity reference.
+
+    This is a mathematical sensitivity formulation, not a market forecast or
+    a claim about real-world competition.  Demand is split among the selected
+    candidates with finite travel observations using ``exp(-decay * distance)``;
+    missing pairs contribute no share and all outputs remain local fixture data.
+    """
+
+    if not selected or len(set(selected)) != len(selected):
+        raise ValueError("selected candidates must be non-empty and unique")
+    if decay < 0 or not isfinite(decay):
+        raise ValueError("decay must be finite and non-negative")
+    candidate_ids = {candidate.candidate_id for candidate in problem.candidates}
+    if any(candidate_id not in candidate_ids for candidate_id in selected):
+        raise ValueError("selected candidates must belong to the problem")
+    totals = {candidate_id: 0.0 for candidate_id in selected}
+    for demand in problem.demands:
+        attractions = {
+            candidate_id: exp(-decay * problem.travel[(demand.demand_id, candidate_id)])
+            for candidate_id in selected
+            if (demand.demand_id, candidate_id) in problem.travel
+        }
+        denominator = sum(attractions.values())
+        if denominator:
+            for candidate_id, attraction in attractions.items():
+                totals[candidate_id] += demand.weight * attraction / denominator
+    return totals
