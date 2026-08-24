@@ -1,0 +1,34 @@
+{
+  "schema": "riopa.documentation-friction-register.v1",
+  "register_id": "documentation-friction-register-20260825",
+  "status": "anticipated-friction-not-external-study",
+  "scope": "bounded regional public-source technical preview",
+  "items": [
+    {
+      "id": "source-edition-selection",
+      "friction": "A user may not know which archived edition and digest to select.",
+      "mitigation": "Require the versioned reference index and source-acquisition runbook before capture or query.",
+      "owner": "maintainer"
+    },
+    {
+      "id": "fail-closed-errors",
+      "friction": "Rights, lineage, missing-data, or scope errors can stop a workflow without a result.",
+      "mitigation": "Provide troubleshooting examples and preserve the explicit pending/open-gate reason.",
+      "owner": "maintainer"
+    },
+    {
+      "id": "preview-boundary",
+      "friction": "Users may mistake synthetic or regional output for authoritative national or clinical evidence.",
+      "mitigation": "Repeat nonclaims at entry points and keep promotion disabled until separate gates pass.",
+      "owner": "release authority"
+    }
+  ],
+  "support_burden": ["edition and digest questions", "scope/rights failures", "reproduction and restoration questions"],
+  "external_study_status": "not conducted",
+  "open_gates": ["factual external user/operator workflows", "accessibility validation", "release-candidate execution", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is an anticipated-friction register, not observed user-study evidence or accessibility certification.",
+    "Agent-panel or maintainer analysis cannot substitute for factual external participation."
+  ]
+}
