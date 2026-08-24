@@ -10,6 +10,7 @@ from riopa_provenance.accessibility import (
     TravelStatus,
     cumulative_opportunity,
     gravity_accessibility,
+    public_facility_opportunities,
     two_step_floating_catchment,
 )
 from riopa_provenance.validation import validate_instance
@@ -41,6 +42,33 @@ def test_hand_calculated_accessibility_benchmark() -> None:
     assert two_step_floating_catchment(
         matrix, {"a": 100, "b": 50}, {"x": 30, "y": 40}, threshold=10
     ) == {"a": 0.2, "b": 0.2}
+
+
+def test_public_facility_snapshot_becomes_unit_opportunities_only() -> None:
+    snapshot = {
+        "record_type": "facility_assertions",
+        "authoritative": False,
+        "assertions": [
+            {
+                "assertion_id": "public:one",
+                "facility_type": "clinic",
+                "release_classification": "public",
+            },
+            {
+                "assertion_id": "restricted:two",
+                "facility_type": "clinic",
+                "release_classification": "restricted",
+            },
+            {
+                "assertion_id": "public:three",
+                "facility_type": "supermarket",
+                "release_classification": "public",
+            },
+        ],
+    }
+    assert public_facility_opportunities(snapshot, facility_type="clinic") == {"public:one": 1.0}
+    with pytest.raises(ValueError, match="non-authoritative"):
+        public_facility_opportunities({**snapshot, "authoritative": True})
 
 
 def test_missing_unreachable_and_censored_remain_distinct() -> None:
