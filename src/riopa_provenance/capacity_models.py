@@ -54,3 +54,50 @@ def project_capacity(model: Mapping[str, Any], units: int) -> dict[str, float]:
         "projected_seconds": float(model["base_seconds"]) + float(model["unit_seconds"]) * scale,
         "projected_cost": float(model["base_cost"]) + float(model["unit_cost"]) * scale,
     }
+
+
+def classify_bottlenecks(observation: Mapping[str, Any] | None) -> dict[str, Any]:
+    """Classify bounded observations into remediation hints without weakening gates.
+
+    Ratios are compared with explicit thresholds.  The result is diagnostic
+    only: it never changes a benchmark verdict, projects national capacity, or
+    treats missing measurements as evidence of absence.
+    """
+
+    if not isinstance(observation, Mapping):
+        raise CapacityModelError("bottleneck observation must be an object")
+    required = ("latency_ratio", "throughput_ratio", "memory_ratio", "error_rate")
+    values: dict[str, float] = {}
+    for field in required:
+        value = observation.get(field)
+        if not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+            raise CapacityModelError(f"{field} must be finite and non-negative")
+        values[field] = float(value)
+    limits = {
+        "latency": float(observation.get("latency_limit", 1.10)),
+        "throughput": float(observation.get("throughput_limit", 0.90)),
+        "memory": float(observation.get("memory_limit", 1.10)),
+        "errors": float(observation.get("error_limit", 0.01)),
+    }
+    if any(not math.isfinite(value) or value < 0 for value in limits.values()):
+        raise CapacityModelError("bottleneck limits must be finite and non-negative")
+    bottlenecks: list[str] = []
+    actions: list[str] = []
+    if values["latency_ratio"] > limits["latency"]:
+        bottlenecks.append("latency")
+        actions.append("profile-query-and-ingestion")
+    if values["throughput_ratio"] < limits["throughput"]:
+        bottlenecks.append("throughput")
+        actions.append("inspect-concurrency-and-backpressure")
+    if values["memory_ratio"] > limits["memory"]:
+        bottlenecks.append("memory")
+        actions.append("inspect-batch-size-and-materialisation")
+    if values["error_rate"] > limits["errors"]:
+        bottlenecks.append("errors")
+        actions.append("preserve-failure-and-stop-promotion")
+    return {
+        "bottlenecks": bottlenecks,
+        "actions": actions,
+        "non_assertive": True,
+        "source": "bounded-observation",
+    }
