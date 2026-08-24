@@ -125,10 +125,21 @@ def audit_transition_history(records: Sequence[Mapping[str, Any]]) -> dict[str, 
         group = str(record.get("history_group", "default"))
         windows.setdefault(group, []).append((valid_start, end, transition_id))
     gaps: list[dict[str, Any]] = []
+    overlaps: list[dict[str, Any]] = []
     for group, entries in windows.items():
         ordered = sorted(entries)
         for previous, current in zip(ordered, ordered[1:], strict=False):
-            if previous[1] is not None and current[0].toordinal() > previous[1].toordinal() + 1:
+            if previous[1] is not None and current[0] <= previous[1]:
+                overlaps.append(
+                    {
+                        "history_group": group,
+                        "from": current[0].isoformat(),
+                        "to": previous[1].isoformat(),
+                        "first": previous[2],
+                        "second": current[2],
+                    }
+                )
+            elif previous[1] is not None and current[0].toordinal() > previous[1].toordinal() + 1:
                 gaps.append(
                     {
                         "history_group": group,
@@ -145,6 +156,7 @@ def audit_transition_history(records: Sequence[Mapping[str, Any]]) -> dict[str, 
         "corrections": sorted(corrections),
         "supersessions": sorted(supersessions),
         "historical_gaps": gaps,
+        "overlapping_windows": overlaps,
         "promotion_allowed": False,
         "nonclaims": [
             (
