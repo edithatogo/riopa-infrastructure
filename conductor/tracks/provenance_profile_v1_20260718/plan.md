@@ -23,7 +23,7 @@
 ## 4. Stable profile release
 
 - [ ] 4.1 Record public consultation evidence and conduct orchestrated agent-panel qualification.
-- [~] 4.2 Define the bounded profile compatibility matrix and migration fixture. (`docs/provenance-profile-compatibility-matrix-20260825.json`, `docs/provenance-profile-migration-1.0.0-to-1.1.0.json`, `tests/test_conformance.py`; persistent publication identifier and stable release remain open.)
+- [x] 4.2 Define the bounded profile compatibility matrix and migration fixture. (`docs/provenance-profile-compatibility-matrix-20260825.json`, `docs/provenance-profile-migration-1.0.0-to-1.1.0.json`, `tests/test_conformance.py`; additive migration validation passes, while the persistent publication identifier and stable release remain open.)
 - [ ] 4.3 Freeze and sign the v1 normative profile candidate.
 
 ## Track closeout
