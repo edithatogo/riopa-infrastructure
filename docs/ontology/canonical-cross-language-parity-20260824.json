@@ -1,0 +1,18 @@
+{
+  "receipt_id": "urn:riopa:evidence:canonical-cross-language-parity:2026-08-24",
+  "schema_version": "1.0.0",
+  "corpus": "conformance/v1/corpus.json",
+  "corpus_version": "1.0.0",
+  "case_count": 5,
+  "runners": [
+    {"name": "python-reference", "status": "passed"},
+    {"name": "node-standard-library", "runtime": "v26.7.0", "status": "passed"}
+  ],
+  "parity": true,
+  "scope": "bounded canonical-hash and schema-outcome corpus",
+  "non_claims": [
+    "This receipt does not establish complete JSON Schema or SHACL conformance.",
+    "This receipt does not establish Rust, external-client, standards-projection or stable SDK qualification.",
+    "The source corpus and receipt are repository fixtures, not an independent external reproduction."
+  ]
+}
