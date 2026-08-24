@@ -650,6 +650,12 @@ def _lineage_impact(args: argparse.Namespace) -> int:
     return 0
 
 
+def _lineage_export_prov_jsonld(args: argparse.Namespace) -> int:
+    output = LineageIndex(args.database).export_prov_jsonld(args.output)
+    print(f"PROV JSON-LD projection written to {output}")
+    return 0
+
+
 def _publication_plan(args: argparse.Namespace) -> int:
     overrides: dict[str, str] | None = None
     if args.overrides:
@@ -905,6 +911,13 @@ def build_parser() -> argparse.ArgumentParser:
     lineage_impact.add_argument("--node-id", action="append", required=True)
     lineage_impact.add_argument("--max-depth", type=int, default=50)
     lineage_impact.set_defaults(func=_lineage_impact)
+    lineage_export = lineage_subparsers.add_parser(
+        "export-prov-jsonld",
+        help="write a deterministic, non-authoritative PROV JSON-LD projection",
+    )
+    lineage_export.add_argument("--database", required=True)
+    lineage_export.add_argument("--output", required=True)
+    lineage_export.set_defaults(func=_lineage_export_prov_jsonld)
 
     publication = subparsers.add_parser(
         "publication", help="plan and stage rights-aware federated releases"

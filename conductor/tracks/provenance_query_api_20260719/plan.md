@@ -14,7 +14,9 @@
 
 ## 3. Interfaces and performance
 
-- [ ] 3.1 Implement CLI, Python and MCP interfaces.
+- [ ] 3.1 Implement CLI, Python and MCP interfaces. The Python reference and
+  CLI lineage build/walk/impact/export commands are repository-owned; an MCP
+  transport and cross-interface equivalence remain open.
 - [ ] 3.2 Add caching, pagination, access filtering and diagnostics.
 - [ ] 3.3 Benchmark representative release and impact queries.
 
