@@ -76,6 +76,74 @@ def write_registry_json(registry: dict[str, Any], output_path: str | Path) -> Pa
     return destination
 
 
+def classify_connector_readiness(registry: dict[str, Any]) -> dict[str, Any]:
+    """Classify declared endpoint readiness without contacting any endpoint.
+
+    The result is a planning projection: ``disabled`` endpoints remain out of
+    scope, credentialed endpoints require an explicitly configured secret, and
+    unauthenticated endpoints are only ready for metadata-only rehearsal.  No
+    classification is a source-health, rights, completeness or authority claim.
+    """
+
+    sources = registry.get("sources")
+    if not isinstance(sources, list):
+        raise ValueError("registry sources must be an array")
+    endpoints: list[dict[str, Any]] = []
+    for source in sources:
+        if not isinstance(source, dict):
+            raise ValueError("registry source entries must be objects")
+        source_id = source.get("source_id")
+        declared = source.get("endpoints", [])
+        if not isinstance(source_id, str) or not source_id:
+            raise ValueError("registry source_id must be a non-empty string")
+        if not isinstance(declared, list):
+            raise ValueError(f"endpoints must be an array for {source_id}")
+        for endpoint in declared:
+            if not isinstance(endpoint, dict):
+                raise ValueError(f"endpoint entries must be objects for {source_id}")
+            endpoint_id = endpoint.get("endpoint_id")
+            mechanism = endpoint.get("mechanism")
+            if not isinstance(endpoint_id, str) or not endpoint_id:
+                raise ValueError(f"endpoint_id must be non-empty for {source_id}")
+            if not isinstance(mechanism, str) or not mechanism:
+                raise ValueError(f"mechanism must be non-empty for {endpoint_id}")
+            authentication = endpoint.get("authentication", {})
+            if not isinstance(authentication, dict):
+                raise ValueError(f"authentication must be an object for {endpoint_id}")
+            if not endpoint.get("enabled", False):
+                status = "disabled"
+            elif authentication.get("type") in {"api-key", "oauth2", "manual", "restricted"}:
+                status = "credential-or-operator-required"
+            else:
+                status = "metadata-rehearsal-ready"
+            endpoints.append(
+                {
+                    "source_id": source_id,
+                    "endpoint_id": endpoint_id,
+                    "mechanism": mechanism,
+                    "status": status,
+                    "capabilities": sorted(
+                        capability
+                        for capability in endpoint.get("capabilities", [])
+                        if isinstance(capability, str)
+                    ),
+                }
+            )
+    return {
+        "registry_id": registry.get("registry_id"),
+        "endpoint_count": len(endpoints),
+        "endpoints": sorted(endpoints, key=lambda item: item["endpoint_id"]),
+        "non_claims": [
+            "This is a declared readiness projection and does not contact endpoints.",
+            "Readiness does not establish source health, rights, completeness or authority.",
+            (
+                "Credential-or-operator-required endpoints remain unexecuted until "
+                "separately authorised."
+            ),
+        ],
+    }
+
+
 def _first(row: dict[str, str], *names: str) -> str | None:
     normalised = {key.strip().casefold().replace(" ", "_"): value for key, value in row.items()}
     for name in names:
