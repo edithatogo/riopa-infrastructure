@@ -722,7 +722,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 6
     },
     {
       "key": "security_supply_chain_20260719:phase-1",
@@ -750,7 +750,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 6
     },
     {
       "key": "security_supply_chain_20260719:phase-2",
@@ -780,7 +780,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 6
     },
     {
       "key": "security_supply_chain_20260719:phase-3",
@@ -810,7 +810,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 6
     },
     {
       "key": "security_supply_chain_20260719:phase-4",
@@ -840,7 +840,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 6
     },
     {
       "key": "security_supply_chain_20260719:phase-5",
@@ -856,7 +856,7 @@
         "maturity:m1",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] R.7 Replace the Bandit-triggering boolean credential field with an explicit `credential_material: absent` value. Evidence: `src/riopa_provenance/security_exercises.py`, full quality harness. (review-fix commit: `cb64b48`)\n- [ ] R.6 Correct strict MyPy narrowing in the release-signing manifest validator. Evidence: `src/riopa_provenance/release_signing.py`, focused and full quality validation. (review-fix commit: `c63a39c`)\n- [ ] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)\n- [ ] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)\n- [ ] 5.3 Restore evidence-backed task states after review found that commit `7a61d9b` promoted the track without its required dependency or M2-M6 evidence. (`f6e0a1c`; review fix)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `security_supply_chain_20260719`.\n\n## Tasks\n\n- [ ] R.7 Replace the Bandit-triggering boolean credential field with an explicit `credential_material: absent` value. Evidence: `src/riopa_provenance/security_exercises.py`, full quality harness. (review-fix commit: `cb64b48`)\n- [ ] R.6 Correct strict MyPy narrowing in the release-signing manifest validator. Evidence: `src/riopa_provenance/release_signing.py`, focused and full quality validation. (review-fix commit: `c63a39c`)\n- [ ] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)\n- [ ] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)\n- [ ] 5.3 Restore evidence-backed task states after review found that commit `7a61d9b` promoted the track without its required dependency or M2-M6 evidence. (`f6e0a1c`; review fix)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned slice; external execution receipts remain explicitly pending.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/security_supply_chain_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
@@ -870,7 +870,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 6
     },
     {
       "key": "connector_runtime_capture_20260719",
