@@ -1,0 +1,33 @@
+{
+  "evidence_id": "TEMPLATE-REPOSITORY-INVENTORY-20260825",
+  "status": "bounded-declared-inventory",
+  "owner_repository": "edithatogo/riopa-infrastructure",
+  "repositories": [
+    {"repository": "edithatogo/conductor-next", "role": "workflow-and-track-governance", "adoption_status": "reference-only"},
+    {"repository": "edithatogo/fyi-cli", "role": "faithful-source-capture", "adoption_status": "adapter-evidence-merged"},
+    {"repository": "edithatogo/fyi-archive", "role": "preservation-and-publication", "adoption_status": "adapter-evidence-merged"},
+    {"repository": "edithatogo/corpus-legislation-nz", "role": "official-legislation-corpus", "adoption_status": "inventory-only"},
+    {"repository": "edithatogo/nlp-policy-nz", "role": "derived-policy-nlp", "adoption_status": "inventory-only"},
+    {"repository": "edithatogo/rulespec-nz", "role": "source-grounded-rules", "adoption_status": "inventory-only"},
+    {"repository": "edithatogo/open_social_data", "role": "public-social-data-catalogue", "adoption_status": "archive-pipeline-evidence"},
+    {"repository": "edithatogo/healthpoint-rs", "role": "facility-service-connector", "adoption_status": "inventory-only"},
+    {"repository": "edithatogo/digitalnz", "role": "reference-workbench", "adoption_status": "reference-only"},
+    {"repository": "edithatogo/ecosystem-docs", "role": "ecosystem-documentation", "adoption_status": "inventory-only"}
+  ],
+  "mapping_rules": [
+    "Inventory entries are hypotheses and coordination metadata, not current repository state.",
+    "Adoption status requires a content-addressed conformance artifact and must not be inferred from a README.",
+    "Dirty or unrelated checkouts must not be modified during adoption work."
+  ],
+  "next_evidence": [
+    "fresh revision and native contract capture for each candidate",
+    "additive adapter or research-object fixture in the candidate repository",
+    "semantic-loss and migration-cost report",
+    "independent reproduction and owner-authorized external workflow evidence"
+  ],
+  "nonclaims": [
+    "This inventory does not claim all listed repositories are current, compatible or adopted.",
+    "It does not grant authority, licensing, publication or cross-repository write permission.",
+    "Agent review cannot substitute for factual adoption or independent reproduction."
+  ]
+}
