@@ -37,10 +37,10 @@ promote a source to authoritative status without a documented panel disposition.
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
-- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded public projection; panel and authority gates remain explicitly pending.
+- [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.
 
 ## Review fixes
 
