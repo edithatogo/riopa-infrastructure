@@ -34,6 +34,7 @@
 | `FACILITY-PUBLIC-RELEASE-FILTER-20260822` | Sensitive/restricted release filtering | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py`, `docs/facility-history-contract.md` | Public-only projection excludes restricted, sensitive and controlled assertions while retaining an exclusion ledger; raw packets remain unchanged |
 | `FACILITY-DISAGREEMENT-COVERAGE-20260822` | Deterministic bounded disagreement and coverage report over archived assertions | `src/riopa_provenance/facility_registry.py`, `tests/test_facility_registry.py` | Report is non-authoritative and scoped to supplied archived assertions; panel adjudication, completeness and release gates remain open |
 | `FACILITY-ACCESSIBILITY-BRIDGE-20260824` | Public-only, non-authoritative facility assertion projection into accessibility opportunity weights | `src/riopa_provenance/accessibility.py:public_facility_opportunities`, `tests/test_accessibility.py` | Restricted rows are excluded and unit weights are explicit; planning integration, capacity and authoritative registry claims remain open |
+| `FACILITY-SNAPSHOT-CORRECTION-20260824` | Content-addressed public-only snapshot and append-successor correction contract | `src/riopa_provenance/facility_registry.py:build_snapshot_record`, `src/riopa_provenance/facility_registry.py:validate_snapshot_record`, `tests/test_facility_registry.py` | Payload integrity and predecessor preservation are validated; publication and accountable release approval remain open |
 
 ## Blocking defects
 
