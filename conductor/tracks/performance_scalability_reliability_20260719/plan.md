@@ -25,7 +25,7 @@
 ## 4. Agent-panel v1 qualification
 
 - [ ] 4.1 Repeat benchmarks in a second environment.
-- [ ] 4.2 Complete orchestrated method-and-results agent-panel qualification.
+- [~] 4.2 Complete the repository-owned orchestrated method-and-results agent-panel qualification. Four bounded lenses assess the existing contracts and preserve open national, second-environment, resource/cost, elapsed and authority gates; this is not independent external evidence (`docs/performance-panel-qualification-20260825.json`, `tests/test_performance_panel_qualification.py`).
 - [ ] 4.3 Freeze v1 performance envelopes, limitations and operational actions.
 
 ## Track closeout
