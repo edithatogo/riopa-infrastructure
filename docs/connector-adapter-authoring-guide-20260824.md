@@ -45,3 +45,8 @@ The current contract does not establish a national or council real-source
 capture, source rights/publication permission, hosted alerting, preservation
 deposit, external operator reproduction, external user workflows, or beta/RC/
 stable release qualification. Those gates remain pending in the Conductor plan.
+
+Local retry, rate-limit, drift and diagnostic tests are bounded contract
+checks. They do not measure hosted queue, memory, alert-delivery or long-running
+operation behaviour; a hosted observation must be bound to the exact revision
+and retained as a separate evidence receipt.
