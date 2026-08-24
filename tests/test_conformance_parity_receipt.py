@@ -23,3 +23,11 @@ def test_preserved_parity_receipt_is_bounded_and_non_assertive() -> None:
     assert receipt["parity"] is True
     assert receipt["scope"] == "bounded canonical-hash and schema-outcome corpus"
     assert any("SHACL" in claim for claim in receipt["non_claims"])
+
+
+def test_provenance_plan_closes_bounded_conformance_without_signed_release_claim() -> None:
+    root = Path(__file__).resolve().parents[1]
+    plan = (root / "conductor/tracks/provenance_profile_v1_20260718/plan.md").read_text()
+    assert "[x] 3.2 Emit and validate bounded PROV" in plan
+    assert "[x] 3.3 Run the bounded positive" in plan
+    assert "trusted signed attestation remains release-gated" in plan
