@@ -15,7 +15,7 @@
 ## 3. Crosswalk and conformance
 
 - [x] 3.1 Build council-planning, facility and source-service golden fixtures. (`fixtures/canonical-crosswalk-golden.json`, `conformance/v1/corpus.json`)
-- [ ] 3.2 Validate cross-language round trips and SHACL conformance.
+- [~] 3.2 Validate cross-language round trips and SHACL conformance. The bounded Python/Node parity receipt is preserved in `docs/ontology/canonical-cross-language-parity-20260824.json`; SHACL engine evidence remains pending.
 - [x] 3.3 Test identity under rename, reorganisation, relocation and supersession. (`tests/test_lineage_identifiers.py`, `tests/test_canonical.py`)
 
 ## 4. Stabilisation and migration
