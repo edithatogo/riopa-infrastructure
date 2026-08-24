@@ -10,7 +10,7 @@
 
 - [x] 2.1 Implement descriptive mapping, autocorrelation and multilevel/ecological examples. Bounded dependency-free summaries are non-clinical and non-causal; public/synthetic source qualification remains open (`src/riopa_provenance/health_spatial.py`, `tests/test_health_spatial.py`).
 - [x] 2.2 Implement spatial confounding, MAUP and measurement-error sensitivity. Bounded diagnostics remain descriptive and non-causal; source, boundary, calibration and empirical qualification remain open (`src/riopa_provenance/health_sensitivity.py`, `tests/test_health_sensitivity.py`).
-- [ ] 2.3 Add subgroup/equity and small-cell controls.
+- [x] 2.3 Add subgroup/equity and small-cell controls. Bounded summaries suppress cells below an explicit threshold and remain descriptive; privacy, representativeness, clinical and causal qualification remain open (`src/riopa_provenance/health_subgroups.py`, `tests/test_health_subgroups.py`).
 
 ## 3. Longitudinal and causal designs
 

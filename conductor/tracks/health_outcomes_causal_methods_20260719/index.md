@@ -23,6 +23,7 @@
 | `HEALTH-PREREGISTRATION-SYNTHETIC-20260825` | Preregistration template labels reference/exploratory work with estimand, data edition, decision rule, plan and deviations | `schemas/analysis-preregistration.schema.json`, `fixtures/analysis-preregistration-synthetic.json`, `tests/test_analysis_preregistration.py` | Synthetic template validates; confirmatory empirical execution, clinical validity and methods-panel gates remain open |
 | `HEALTH-SPATIAL-SUMMARIES-20260825` | Bounded descriptive mapping, spatial autocorrelation and ecological group summaries | `src/riopa_provenance/health_spatial.py`, `tests/test_health_spatial.py` | Synthetic deterministic methods pass; clinical, causal, public-data and methods-panel qualification gates remain open |
 | `HEALTH-SENSITIVITY-DIAGNOSTICS-20260825` | Bounded spatial-confounding, MAUP and measurement-error diagnostics | `src/riopa_provenance/health_sensitivity.py`, `tests/test_health_sensitivity.py` | Synthetic deterministic diagnostics pass; empirical, calibration, clinical, causal and methods-panel gates remain open |
+| `HEALTH-SUBGROUP-CONTROLS-20260825` | Explicit small-cell suppression and descriptive subgroup-gap controls | `src/riopa_provenance/health_subgroups.py`, `tests/test_health_subgroups.py` | Synthetic deterministic controls pass; privacy, representativeness, clinical, causal and methods-panel gates remain open |
 
 ## Blocking defects
 
