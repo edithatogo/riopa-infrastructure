@@ -32,14 +32,37 @@
 
 ## Blocking defects
 
-- None recorded.
+- Claim classification and final release package coordination remain
+  repository-owned work in progress.
+- External reproduction, publication/deposition receipts, correction
+  notification, elapsed beta/RC evidence and accountable release-authority
+  acceptance remain open.
+
+## Repository-owned closeout slice (2026-08-24)
+
+The publication state machine, correction-package validator, clean-room and
+agent-user workflow protocols, and bounded hosted reports are linked above and
+validated by `bash scripts/ci_quality.sh` at protected `main` revision
+`a2f8f93bacc54ddf66203766c15a1c9f2506beb8`. These contracts establish
+reproducibility boundaries; they do not establish publication, independent
+participant evidence or promotion authority.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This is a single-developer repository. Agent panels and owner-authorized
+  agent workflows can assess bounded packets but cannot substitute for factual
+  external operator/user reproduction or accountable release authority.
+- Public-source, bounded non-operational technical-preview scope remains in
+  force; unsupported national, network, timetable, facility, clinical and
+  dispatch claims remain disabled.
+- A fixture, hosted rehearsal, Hugging Face mirror or candidate DOI-ready
+  packet is not a publication or preservation acceptance receipt.
 
 ## Review and handover
 
 Required agent-panel lenses: Governance analyst, Research-object analyst, Agent workflow analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified` at
+M1. Status may advance only through `conductor/workflow.md`; evidence must be
+immutable or version-addressed, agent-panel qualified where required, and
+sufficient for the applicable release gates.

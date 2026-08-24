@@ -4,7 +4,7 @@
   "phase": "Publication",
   "status": "specified",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-22T00:10:00Z",
+  "updated_at": "2026-08-24T23:59:00Z",
   "description": "Convert infrastructure, data and applied work into independently validated, citable releases and manuscripts with reproducible evidence and transparent correction.",
   "depends_on": [
     "repository_template_adoption_20260718",
@@ -43,5 +43,12 @@
     "Agent workflow analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "claim-classification-and-package-coordination",
+    "external-reproduction-and-user-evidence",
+    "publication-and-preservation-acceptance",
+    "correction-notification-execution",
+    "elapsed-beta-rc-evidence",
+    "accountable-release-authority-acceptance"
+  ]
 }
