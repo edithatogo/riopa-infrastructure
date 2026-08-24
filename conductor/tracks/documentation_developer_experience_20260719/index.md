@@ -1,7 +1,7 @@
 # Evidence index: Documentation, developer experience and user support readiness
 
 - **Track ID:** `documentation_developer_experience_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.9.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
