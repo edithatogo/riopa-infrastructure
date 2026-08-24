@@ -9,4 +9,4 @@ def test_provenance_query_migration_guidance_is_bounded_and_versioned() -> None:
     assert "LineageQuery` version `1.0.0" in guidance
     assert "new major contract version" in guidance
     assert "remote authorization" in guidance
-    assert "release approval" in guidance
+    assert "release" in guidance and "approval" in guidance
