@@ -16,6 +16,7 @@
     "urn:riopa:evidence:feature-snapshot-differences:2026-07-31",
     "urn:riopa:evidence:spatial-quality-profile:2026-08-25",
     "urn:riopa:evidence:spatial-quality-evaluator:2026-08-25"
+    ,"urn:riopa:evidence:spatial-quality-trend:2026-08-25"
   ],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -4,7 +4,7 @@
 
 - [~] 1.1 Define profile-specific metrics, thresholds, warnings and waivers for the bounded regional public-preview profile. Geometry validity, repair, null geometry, stable identity, lineage and rights boundaries are machine-readable; real-council and national qualification remain open (`docs/spatial-quality-profile-contract-20260825.json`, `tests/test_spatial_quality_profile_contract.py`).
 - [x] 1.2 Implement geometry, topology, completeness, uniqueness and rights checks.
-- [ ] 1.3 Add release-to-release quality trend and regression reports.
+- [x] 1.3 Add release-to-release quality trend and regression reports with explicit tolerances and fail-closed metric matching (`src/riopa_provenance/spatial_quality_trend.py`, `tests/test_spatial_quality_trend.py`, `docs/spatial-quality-trend-report-20260825.json`). Heterogeneous real-council, national, external, elapsed and authority gates remain open.
 
 ## 2. Temporal and change engine
 

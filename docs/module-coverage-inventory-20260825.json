@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 7940,
-    "covered_statements": 7404,
-    "line_percent": 91.02862254025045,
-    "branches": 3240,
-    "covered_branches": 2773,
+    "statements": 7985,
+    "covered_statements": 7443,
+    "line_percent": 90.9737661182748,
+    "branches": 3260,
+    "covered_branches": 2787,
     "branch_percent": "91"
   },
   "files": [
@@ -1042,6 +1042,24 @@
         55,
         66,
         73
+      ]
+    },
+    {
+      "module": "src.riopa_provenance.spatial_quality_trend",
+      "path": "src/riopa_provenance/spatial_quality_trend.py",
+      "statements": 45,
+      "covered_statements": 39,
+      "line_percent": 81.53846153846153,
+      "branches": 20,
+      "covered_branches": 14,
+      "branch_percent": "82",
+      "missing_lines": [
+        41,
+        73,
+        77,
+        81,
+        83,
+        85
       ]
     },
     {
