@@ -1,0 +1,28 @@
+{
+  "contract_id": "urn:riopa:documentation-contract:2026-08-24",
+  "status": "repository-owned-bounded",
+  "python": "3.14",
+  "audience_inventory": "docs/documentation-information-architecture-20260824.md",
+  "tutorial_conventions": "docs/tutorial-and-example-conventions-20260824.md",
+  "required_controls": [
+    "public-or-synthetic-fixtures",
+    "no-credentials-or-live-payloads",
+    "positive-and-negative-paths",
+    "revision-and-digest-binding",
+    "local-hosted-publication-state-separation",
+    "accessible-copyable-instructions"
+  ],
+  "disabled_claims": [
+    "network",
+    "timetable",
+    "facility",
+    "national",
+    "clinical",
+    "dispatch"
+  ],
+  "external_gates": [
+    "owner-authorized-agent-user-workflows",
+    "external-operator-reproduction",
+    "release-authority-decision"
+  ]
+}

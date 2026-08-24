@@ -16,18 +16,35 @@
 
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
-| _none_ | _Implementation evidence is added only after verification._ |  |  |
+| `DOCS-IA-CONTRACT-20260824` | Audience, workflow, interface and normative-source inventory | `docs/documentation-information-architecture-20260824.md`, `docs/documentation-contract-20260824.json` | Contract is repository-owned and bounded; external usability evidence remains open |
+| `DOCS-TUTORIAL-CONVENTIONS-20260824` | Executable tutorial, example, accessibility and safety conventions | `docs/tutorial-and-example-conventions-20260824.md`, `tests/test_documentation_contract.py` | Contract and negative scope controls pass locally; user/operator studies and RC execution remain open |
 
 ## Blocking defects
 
-- None recorded.
+- User/operator workflow studies, accessibility/terminology review, release-
+  candidate tutorial execution, support ownership and versioned publication
+  remain open.
+
+## Repository-owned closeout slice (2026-08-24)
+
+The information architecture and tutorial conventions are validated by
+`bash scripts/ci_quality.sh` at protected `main` revision
+`ed69976d815f064843c3492fa2045807381857ca`. They establish documentation
+contracts and safety boundaries, not user-study, external-operator or release
+evidence.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- This is a single-developer repository. Agent panels may assess documents,
+  but cannot substitute for factual external user/operator participation.
+- Tutorials remain public/synthetic and non-operational until separately
+  evidenced.
 
 ## Review and handover
 
 Required agent-panel lenses: External-user workflow analyst, API/schema analyst, Research-object analyst, Operations analyst, Interoperability analyst, Governance analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `specified` at
+M1. Status may advance only through `conductor/workflow.md`; evidence must be
+immutable or version-addressed, agent-panel qualified where required, and
+sufficient for the applicable release gates.

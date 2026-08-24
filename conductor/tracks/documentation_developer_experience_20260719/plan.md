@@ -2,9 +2,9 @@
 
 ## 1. Information architecture and contract inventory
 
-- [ ] 1.1 Inventory audiences, workflows, interfaces and required references.
-- [ ] 1.2 Map documentation pages to normative sources and release versions.
-- [ ] 1.3 Define executable tutorial and example conventions.
+- [x] 1.1 Inventory audiences, workflows, interfaces and required references. (`docs/documentation-information-architecture-20260824.md`)
+- [x] 1.2 Map documentation pages to normative sources and release versions. (`docs/documentation-information-architecture-20260824.md`, `docs/documentation-contract-20260824.json`)
+- [x] 1.3 Define executable tutorial and example conventions. (`docs/tutorial-and-example-conventions-20260824.md`, `tests/test_documentation_contract.py`)
 
 ## 2. Documentation implementation
 
