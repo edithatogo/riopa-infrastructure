@@ -33,6 +33,7 @@
 | `OPS-ALERT-CONTRACT-20260822` | Alert ownership, actionable response and expiring suppression contract | `docs/operations-alert-contract-20260822.json`, `tests/test_operations_alert_contract.py` | Task 2.2 passes contract tests; deployed alerting, delivery receipts, measured SLOs and external/elapsed gates remain open |
 | `OPS-RUNBOOK-CATALOG-20260822` | Source, schema, rights, corruption and capacity runbooks with stop conditions and evidence boundaries | `docs/operations-runbook-catalog-20260822.json`, `docs/runbooks/*.md`, `tests/test_operations_runbook_catalog.py` | Task 2.3 passes catalog/path tests; production execution, restore, capacity and external/elapsed gates remain open |
 | `PRESERVATION-PACKAGE-CONTRACT-20260822` | Retention, replica, fixity and research-object package contract | `docs/preservation-package-contract-20260822.json`, `tests/test_preservation_package_contract.py` | Task 3.1 passes contract tests; independent deposit acceptance, restore execution and release authority remain open |
+| `OPS-RECOVERY-SUCCESSOR-20260824` | Append-only backup/restore successor state machine plus correction, supersession and withdrawal reconciliation | `docs/operations-recovery-successor-contract-20260824.json`, `tests/test_operations_recovery_successor_contract.py`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py` | Task 3.2 repository contract and negative tests pass; provider restore execution, disaster-recovery qualification, independent target acceptance and release authority remain open |
 
 ## Blocking defects
 
