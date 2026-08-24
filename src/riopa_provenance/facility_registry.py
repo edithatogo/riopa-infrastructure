@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import date
 from math import asin, cos, radians, sin, sqrt
 from typing import Literal
+
+from .hashing import sha256_json
 
 Authority = Literal["official-reference", "community-reference", "other-reference"]
 Disposition = Literal["candidate-match", "source-only", "reviewed-match", "reviewed-distinct"]
@@ -165,6 +168,60 @@ def assertions_snapshot_json(assertions: tuple[FacilityAssertion, ...]) -> str:
         json.dumps(assertions_snapshot(assertions), ensure_ascii=False, sort_keys=True, indent=2)
         + "\n"
     )
+
+
+def build_snapshot_record(
+    assertions: tuple[FacilityAssertion, ...], *, revision: str, supersedes: str | None = None
+) -> dict[str, object]:
+    """Build a content-addressed, unpublished registry snapshot successor."""
+
+    if not revision.strip():
+        raise ValueError("snapshot revision must be non-empty")
+    payload = public_release_snapshot(assertions)
+    payload_digest = sha256_json(payload)
+    return {
+        "record_type": "facility_registry_snapshot",
+        "revision": revision,
+        "payload": payload,
+        "payload_sha256": payload_digest,
+        "status": "unpublished",
+        "supersedes": supersedes,
+        "correction_policy": "append-successor-preserve-predecessor",
+        "non_claims": [
+            "This snapshot is a public-only source assertion projection, not an "
+            "authoritative registry.",
+            "Corrections create a successor record and never mutate a published predecessor.",
+        ],
+    }
+
+
+def validate_snapshot_record(record: Mapping[str, object] | None) -> tuple[str, ...]:
+    """Validate snapshot integrity and successor-only correction semantics."""
+
+    if not isinstance(record, Mapping):
+        return ("snapshot record must be an object",)
+    errors: list[str] = []
+    if record.get("record_type") != "facility_registry_snapshot":
+        errors.append("record_type is unsupported")
+    if not isinstance(record.get("revision"), str) or not str(record["revision"]).strip():
+        errors.append("revision is required")
+    payload = record.get("payload")
+    if not isinstance(payload, Mapping):
+        errors.append("payload must be an object")
+    else:
+        if (
+            payload.get("authoritative") is not False
+            or payload.get("release_filter") != "public-only"
+        ):
+            errors.append("payload must remain public-only and non-authoritative")
+        digest = record.get("payload_sha256")
+        if not isinstance(digest, str) or digest != sha256_json(payload):
+            errors.append("payload_sha256 does not match payload")
+    if record.get("status") not in {"unpublished", "candidate"}:
+        errors.append("status must remain unpublished or candidate")
+    if record.get("correction_policy") != "append-successor-preserve-predecessor":
+        errors.append("correction policy must preserve predecessors")
+    return tuple(dict.fromkeys(errors))
 
 
 def normalize_name(value: str) -> tuple[str, ...]:
