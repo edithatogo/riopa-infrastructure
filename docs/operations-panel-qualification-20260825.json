@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.operations-panel-qualification.v1",
+  "packet_id": "operations-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "scope": "repository-owned operational controls, preservation contracts and technical-preview campaign",
+  "lenses": [
+    {"id": "security", "finding": "retry, quarantine, permissions and fail-closed lifecycle transitions are contract-tested", "disposition": "repository-evidence-qualified"},
+    {"id": "operations", "finding": "SLO, alert, runbook and campaign-ledger contracts define ownership and reset semantics", "disposition": "repository-evidence-qualified"},
+    {"id": "research-object", "finding": "preservation and redundancy manifests bind artifacts to digests and expose pending target acceptance", "disposition": "repository-evidence-qualified"},
+    {"id": "external-workflow", "finding": "agent-operated hosted drills exist, but factual external participation and provider acceptance are absent", "disposition": "open"}
+  ],
+  "open_gates": ["provider backup/restore and disaster-recovery exercise", "independent Hugging Face and Zenodo acceptance receipts", "90-day/three-cycle beta evidence", "30-day exact-RC soak", "external operator/user reproduction", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": ["This agent-panel packet is not a production disaster-recovery result, preservation acceptance or elapsed qualification.", "Panel agreement cannot substitute for provider receipts, factual participants or release authority."]
+}
