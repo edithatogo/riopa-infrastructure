@@ -10,7 +10,11 @@
 
 - [~] 2.1 Implement ArcGIS REST and WFS/OGC adapters. Existing archivers now enforce HTTPS/no-userinfo request contracts before capture, deterministic pagination, count/identity reconciliation and redaction. Evidence: `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `tests/test_arcgis.py`, `tests/test_wfs.py`; live-source acceptance, rights/publication qualification and national/council capture remain pending.
 - [~] 2.2 Implement Koordinates/API and document/file adapters. Existing Koordinates export archival now rejects unsafe initial download URLs before redirect capture and preserves exact export/job/download evidence. Evidence: `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py`; live-source acceptance, rights/publication qualification and external reproduction remain pending.
-- [ ] 2.3 Implement optional WARC/WACZ web-evidence capture with policy controls.
+- [~] 2.3 Implement optional WARC/WACZ web-evidence capture with policy controls. Offline packaging of verified content-addressed captures is implemented with deterministic WARC/WACZ output and fail-closed URL, secret, size, policy and digest checks. Evidence: `src/riopa_provenance/web_archive.py`, `tests/test_web_archive.py`; live web capture, rights/publication, preservation and external qualification remain pending. (04ea0f7)
+
+### Review fixes
+
+- [x] Prevent overwriting an existing WACZ evidence file and add an immutability regression test. (`107f347`)
 
 ## 3. Reliability and observability
 
