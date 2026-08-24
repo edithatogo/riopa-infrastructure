@@ -27,6 +27,11 @@ The current corpus proves a bounded cross-language canonical-hash and schema
 outcome contract. It does not yet satisfy the track-wide Rust, standards
 projection, SDK, external-client, or signed-report criteria.
 
+The bounded compatibility matrix in
+`docs/ontology/interoperability-compatibility-matrix-20260825.json` records the
+observed Python/Node parity and explicitly leaves Rust, standards round-trips,
+and external producer/consumer exercises unobserved.
+
 ## Release attestations
 
 The protected-tag release workflow builds assets without write credentials,

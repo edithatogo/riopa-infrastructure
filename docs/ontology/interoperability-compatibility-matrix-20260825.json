@@ -1,0 +1,43 @@
+{
+  "matrix_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "scope": "bounded canonical-hash and schema-outcome corpus",
+  "environment": {
+    "python": "3.14.5",
+    "node": "v26.7.0"
+  },
+  "implementations": [
+    {
+      "tool": "riopa-python-reference",
+      "language": "Python",
+      "status": "observed-pass",
+      "cases": 5,
+      "parity": true
+    },
+    {
+      "tool": "conformance_node.mjs",
+      "language": "JavaScript",
+      "status": "observed-pass",
+      "cases": 5,
+      "parity": true
+    },
+    {
+      "tool": "rust-reference",
+      "language": "Rust",
+      "status": "not-implemented",
+      "cases": 0,
+      "parity": false
+    }
+  ],
+  "compatibility": {
+    "python_node_parity": true,
+    "migration_cases_included": true,
+    "external_producer_consumer": "not-observed",
+    "standards_round_trip": "not-observed"
+  },
+  "non_claims": [
+    "This is a bounded repository-owned matrix, not an independent review.",
+    "Rust, standards round-trips and external producer/consumer exercises remain open.",
+    "The matrix does not establish release, operational or preservation acceptance."
+  ]
+}
