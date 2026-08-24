@@ -1,7 +1,7 @@
 # Evidence index: Health-outcomes, spatial epidemiology and causal-methods framework
 
 - **Track ID:** `health_outcomes_causal_methods_20260719`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.8.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -46,4 +46,4 @@
 
 Required agent-panel lenses: Governance analyst, Data-governance analyst, Quantitative methods analyst, Scientific-methods analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active` at M1. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
