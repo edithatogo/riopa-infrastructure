@@ -29,7 +29,14 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
     if lanes not in ({"operational-observation"}, {"rc-soak-observation"}):
         raise ValueError("a ledger must contain exactly one elapsed-evidence lane")
     observations = []
+    seen_receipts: set[str] = set()
+    duplicate_receipt_count = 0
     for path, receipt in loaded:
+        receipt_sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
+        if receipt_sha256 in seen_receipts:
+            duplicate_receipt_count += 1
+            continue
+        seen_receipts.add(receipt_sha256)
         lane = receipt.get("lane")
         revision = receipt.get("source_revision")
         candidate = receipt.get("candidate_revision")
@@ -45,7 +52,7 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
                 "operational_cycle_id": receipt.get("operational_cycle_id"),
                 "started_at": receipt.get("started_at"),
                 "ended_at": receipt.get("ended_at"),
-                "receipt_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "receipt_sha256": receipt_sha256,
             }
         )
     observations.sort(key=lambda item: str(item["started_at"]))
@@ -115,6 +122,7 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
         "schema": "riopa.evidence-campaign-ledger.v1",
         "campaign_id": campaign_ids.pop(),
         "observations": observations,
+        "duplicate_receipt_count": duplicate_receipt_count,
         "chain_head_sha256": previous_chain,
         "segments": segments,
         "active_segment": active,
@@ -133,6 +141,7 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
             "An RC source-revision change starts a new RC segment.",
             "Passing requires bounded observation gaps and the required operational cycles.",
             "Operational observations do not start the RC clock.",
+            "Identical receipt bytes restored under multiple artifact paths count once.",
         ],
     }
 
