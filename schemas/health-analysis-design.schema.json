@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/health-analysis-design/1.0.0",
+  "title": "RIOPA bounded health-analysis design",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "analysis_id", "analysis_type", "domain", "dag", "estimand", "population", "exposure", "comparator", "outcome", "limitations"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "analysis_id": {"type": "string", "pattern": "^urn:riopa:analysis:[A-Za-z0-9._:-]+$"},
+    "analysis_type": {"enum": ["descriptive", "associational", "causal-reference"]},
+    "domain": {"const": "synthetic-non-clinical"},
+    "dag": {"type": "object", "additionalProperties": false, "required": ["nodes", "edges"], "properties": {"nodes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}, "edges": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["from", "to"], "properties": {"from": {"type": "string"}, "to": {"type": "string"}}}}}},
+    "estimand": {"type": "string", "minLength": 1},
+    "population": {"type": "string", "minLength": 1},
+    "exposure": {"type": "string", "minLength": 1},
+    "comparator": {"type": "string", "minLength": 1},
+    "outcome": {"type": "string", "minLength": 1},
+    "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
+  }
+}
