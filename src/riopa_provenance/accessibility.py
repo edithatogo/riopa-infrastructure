@@ -90,6 +90,48 @@ def public_facility_opportunities(
     return opportunities
 
 
+def validate_scenario_contract(contract: Mapping[str, Any] | None) -> tuple[str, ...]:
+    """Validate scenario semantics without treating them as operational claims."""
+
+    if not isinstance(contract, Mapping):
+        return ("scenario contract must be an object",)
+    errors: list[str] = []
+    for field in ("scenario_id", "claim_classification"):
+        if not isinstance(contract.get(field), str) or not str(contract[field]).strip():
+            errors.append(f"{field} is required")
+    if contract.get("claim_classification") not in {"reference-only", "preview-only"}:
+        errors.append("claim_classification must remain reference-only or preview-only")
+    for field in ("assumptions", "subgroup_dimensions"):
+        values = contract.get(field)
+        if not isinstance(values, list) or any(
+            not isinstance(item, str) or not item for item in values
+        ):
+            errors.append(f"{field} must be a string array")
+    dimensions = contract.get("subgroup_dimensions")
+    if isinstance(dimensions, list) and len(dimensions) != len(set(dimensions)):
+        errors.append("subgroup_dimensions must be unique")
+    uncertainty = contract.get("uncertainty")
+    if not isinstance(uncertainty, Mapping):
+        errors.append("uncertainty is required")
+    else:
+        if uncertainty.get("method") not in {
+            "none-declared",
+            "interval",
+            "scenario-range",
+            "censored",
+        }:
+            errors.append("uncertainty.method is unsupported")
+        if uncertainty.get("missing_policy") not in {
+            "report-separately",
+            "exclude-from-denominator",
+            "fail-closed",
+        }:
+            errors.append("uncertainty.missing_policy is unsupported")
+        if uncertainty.get("reporting_unit") not in {"seconds", "minutes", "count", "proportion"}:
+            errors.append("uncertainty.reporting_unit is unsupported")
+    return tuple(dict.fromkeys(errors))
+
+
 def cumulative_opportunity(
     matrix: AccessibilityMatrix,
     origin: str,

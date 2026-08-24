@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/riopa/schema/accessibility-scenario-v1",
+  "title": "RIOPA accessibility uncertainty and scenario contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "scenario_id", "claim_classification", "assumptions", "subgroup_dimensions", "uncertainty"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_type": {"const": "accessibility_scenario"},
+    "scenario_id": {"type": "string", "minLength": 1},
+    "claim_classification": {"enum": ["reference-only", "preview-only"]},
+    "assumptions": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "subgroup_dimensions": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "missing_policy", "reporting_unit"],
+      "properties": {
+        "method": {"enum": ["none-declared", "interval", "scenario-range", "censored"]},
+        "missing_policy": {"enum": ["report-separately", "exclude-from-denominator", "fail-closed"]},
+        "reporting_unit": {"enum": ["seconds", "minutes", "count", "proportion"]}
+      }
+    },
+    "non_claims": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  }
+}
