@@ -9,6 +9,46 @@ class SpatialQualityTrendError(ValueError):
     """Raised when a quality trend cannot be compared safely."""
 
 
+def propagate_spatial_temporal_uncertainty(
+    estimate: float,
+    *,
+    spatial_error_m: float,
+    temporal_error_days: float,
+    spatial_sensitivity: float,
+    temporal_sensitivity: float,
+) -> dict[str, Any]:
+    """Build a conditional downstream interval from declared sensitivities."""
+
+    values = {
+        "estimate": estimate,
+        "spatial_error_m": spatial_error_m,
+        "temporal_error_days": temporal_error_days,
+        "spatial_sensitivity": spatial_sensitivity,
+        "temporal_sensitivity": temporal_sensitivity,
+    }
+    if any(not isfinite(value) for value in values.values()):
+        raise SpatialQualityTrendError("uncertainty inputs must be finite")
+    if any(value < 0 for key, value in values.items() if key != "estimate"):
+        raise SpatialQualityTrendError("uncertainty bounds and sensitivities must be non-negative")
+    spatial_component = spatial_error_m * spatial_sensitivity
+    temporal_component = temporal_error_days * temporal_sensitivity
+    half_width = spatial_component + temporal_component
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "spatial_temporal_uncertainty_propagation",
+        "estimate": estimate,
+        "lower": estimate - half_width,
+        "upper": estimate + half_width,
+        "components": {"spatial": spatial_component, "temporal": temporal_component},
+        "inputs": values,
+        "promotion_allowed": False,
+        "nonclaims": [
+            "The envelope is conditional on declared sensitivities and errors.",
+            "It does not establish source authority, causal uncertainty or operational readiness.",
+        ],
+    }
+
+
 def classify_change_attribution(
     baseline: Mapping[str, Any], candidate: Mapping[str, Any]
 ) -> dict[str, Any]:
