@@ -1,0 +1,40 @@
+{
+  "schema": "riopa.connector-panel-qualification.v1",
+  "packet_id": "connector-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "scope": "repository-owned connector contracts and offline public-source fixtures",
+  "lenses": [
+    {
+      "id": "provenance",
+      "finding": "raw response bytes, digests, retries and quarantine records retain source-faithful lineage",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "security",
+      "finding": "host allowlists, DNS rebinding checks, redaction and response-size controls are tested",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "data-governance",
+      "finding": "rights and publication hooks fail closed and do not infer authority from public metadata",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "operations",
+      "finding": "metrics and diagnostics are deterministic; hosted long-running monitoring is absent",
+      "disposition": "open"
+    }
+  ],
+  "open_gates": [
+    "national and council source capture end to end",
+    "source-specific rights and publication qualification",
+    "accepted preservation receipt",
+    "hosted long-running operation and alert delivery",
+    "external operator/user reproduction"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This agent-panel packet is not live-source capture, rights authority, preservation acceptance or production qualification.",
+    "Panel agreement cannot create source authority or external participant evidence."
+  ]
+}

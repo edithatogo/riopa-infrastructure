@@ -25,7 +25,7 @@
 ## 4. Real-source validation
 
 - [ ] 4.1 Capture one national and one council/planning source end to end.
-- [ ] 4.2 Review security, rights, load and evidence completeness.
+- [~] 4.2 Conduct the repository-owned security, rights, load and evidence-completeness review through a bounded four-lens agent panel. Live-source capture, rights/publication, preservation, hosted monitoring and external participant gates remain open (`docs/connector-panel-qualification-20260825.json`, `tests/test_connector_panel_qualification.py`).
 - [x] 4.3 Publish the bounded adapter contract and authoring guide. `docs/connector-adapter-authoring-guide-20260824.md` and `docs/connector-adapter-contract-20260824.json` describe the implemented surfaces and controls without claiming stable production qualification; live-source, rights/publication, preservation and external gates remain pending. (`tests/test_connector_authoring_contract.py`)
 
 ## Track closeout
