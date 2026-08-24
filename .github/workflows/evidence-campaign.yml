@@ -40,7 +40,10 @@ permissions:
   contents: read
 
 concurrency:
-  group: evidence-campaign-${{ github.event.inputs.lane || 'operational-observation' }}
+  # Keep unrelated campaigns and exact RC candidates isolated.  A manual
+  # replay must not cancel the protected-main beta run, and a new RC
+  # candidate must not cancel observations for the prior candidate.
+  group: evidence-campaign-${{ github.event.inputs.campaign_id || 'operational-beta-20260802' }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event.inputs.candidate_revision || 'head' }}
   cancel-in-progress: true
 
 defaults:

@@ -27,6 +27,7 @@
 - [ ] 4.2 Publish SLO, incident, capacity and preservation reports.
 - [ ] 4.3 Approve stable operational risk and support obligations.
 - [x] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)
+- [x] 4.6 Isolate scheduled, replay and exact-RC campaign runs by campaign, lane and candidate revision so unrelated runs cannot cancel one another. (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`)
 - [x] 4.5 Bind RC-soak execution to the supplied exact candidate revision so later documentation commits do not silently change the candidate. (`.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_campaign_v2.py`; the 30-day duration remains pending.)
 
 ## Review fixes
