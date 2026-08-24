@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 7765,
-    "covered_statements": 7258,
-    "line_percent": 91.34536129682205,
-    "branches": 3154,
-    "covered_branches": 2716,
+    "statements": 7817,
+    "covered_statements": 7300,
+    "line_percent": 91.2264751341031,
+    "branches": 3182,
+    "covered_branches": 2734,
     "branch_percent": "91"
   },
   "files": [
@@ -462,6 +462,28 @@
       "covered_branches": 4,
       "branch_percent": "100",
       "missing_lines": []
+    },
+    {
+      "module": "src.riopa_provenance.health_spatial",
+      "path": "src/riopa_provenance/health_spatial.py",
+      "statements": 52,
+      "covered_statements": 42,
+      "line_percent": 75.0,
+      "branches": 28,
+      "covered_branches": 18,
+      "branch_percent": "75",
+      "missing_lines": [
+        22,
+        28,
+        30,
+        32,
+        55,
+        60,
+        64,
+        70,
+        95,
+        101
+      ]
     },
     {
       "module": "src.riopa_provenance.lineage",
