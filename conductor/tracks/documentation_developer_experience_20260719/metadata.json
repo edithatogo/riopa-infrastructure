@@ -20,6 +20,7 @@
     "urn:riopa:evidence:documentation-information-architecture:2026-08-24",
     "urn:riopa:evidence:tutorial-example-conventions:2026-08-24",
     "urn:riopa:evidence:hosted-agent-user-workflows:2026-08-25"
+    ,"urn:riopa:evidence:documentation-inventory-safety-review:2026-08-25"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
