@@ -41,6 +41,7 @@
   "blocking_defects": [
     "facility-review-panel-disposition pending: docs/facility-panel-qualification-20260803.json and docs/facility-stratified-review-sample-20260803.json",
     "hamilton-geometry-disposition blocked: docs/facility-source-materialization-20260803.json",
+    "stale-pr-175-blocker-wording-repaired: 2026-08-25",
     "public-health-source-family pending: conductor/tracks/facility_registry_20260719/index.md",
     "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md"
   ]

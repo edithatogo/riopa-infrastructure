@@ -158,6 +158,12 @@ def test_facility_panel_preserves_open_adjudication_gate() -> None:
     assert len(evidence["panel"]) == 3
 
 
+def test_facility_index_does_not_restate_superseded_merge_blocker() -> None:
+    index = (ROOT / "conductor/tracks/facility_registry_20260719/index.md").read_text()
+    assert "Hosted merge-policy reconciliation is open" not in index
+    assert "PR #175 blocker is retained" in index
+
+
 def test_facility_review_sample_is_bounded_and_reproducible() -> None:
     evidence = json.loads(
         (ROOT / "docs/facility-stratified-review-sample-20260803.json").read_text()

@@ -76,3 +76,6 @@ Options and contingencies:
 - [x] G.6 Reconcile hosted merge policy through a fresh PR. PR #177 merged on
   2026-08-03 as an explicitly recorded administrative exception after all
   required checks passed; this is not release evidence.
+- [x] G.7 Repair the stale PR #175 blocker wording after confirming the merge-policy
+  resolution and preserve the superseded blocker only as historical context.
+  (`index.md`, review fix 2026-08-25)
