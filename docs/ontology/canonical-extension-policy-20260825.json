@@ -1,0 +1,16 @@
+{
+  "policy_id": "urn:riopa:canonical-extension-policy:2026-08-25",
+  "status": "bounded-draft",
+  "normative_profile": "riopa-canonical-crosswalk",
+  "version": "1.0.0",
+  "rules": [
+    {"id": "namespace", "requirement": "Every extension key uses a versioned absolute URI namespace."},
+    {"id": "preserve", "requirement": "Unknown extension values are preserved byte-for-byte in the extensions object."},
+    {"id": "no-redefinition", "requirement": "Extensions cannot redefine or shadow normative fields."},
+    {"id": "migration", "requirement": "A schema or semantic change requires a versioned migration fixture and compatibility classification."},
+    {"id": "fail-closed", "requirement": "Malformed, unnamespaced or conflicting extensions are rejected rather than silently interpreted."}
+  ],
+  "normative_paths": ["/mappingId", "/sourceAssertions", "/targetEntities", "/evidence", "/review"],
+  "external_gates": ["SHACL engine report", "ontology publication identifier", "semantic agent-panel qualification", "migration compatibility execution"],
+  "release_boundary": "This is a repository-owned bounded policy draft; it does not freeze or publish the v1 ontology."
+}
