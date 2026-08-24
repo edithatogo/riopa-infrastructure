@@ -1,0 +1,26 @@
+{
+  "schema": "riopa.health-methods-reporting-template.v1",
+  "template_id": "health-methods-reporting-template-20260825",
+  "status": "bounded-candidate-not-stable-release",
+  "required_sections": [
+    "scope-and-nonclaims",
+    "source-edition-and-lineage",
+    "estimand-and-reference-period",
+    "methods-and-assumptions",
+    "missingness-and-sensitivity",
+    "subgroup-and-small-cell-controls",
+    "reproducibility-and-fixtures",
+    "open-gates-and-revision-history"
+  ],
+  "required_labels": ["synthetic", "exploratory", "confirmatory", "not-clinical", "not-causal"],
+  "release_constraints": {
+    "promotion_allowed": false,
+    "requires_external_reproduction": true,
+    "requires_accountable_authority": true,
+    "requires_elapsed_evidence": true
+  },
+  "nonclaims": [
+    "The template does not establish clinical validity, causal identification, or stable-v1 approval.",
+    "A completed report remains bounded until empirical, participant, elapsed and authority evidence is present."
+  ]
+}
