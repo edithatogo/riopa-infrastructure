@@ -31,3 +31,7 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Apply repository formatter to the straight-line adapter after the local quality review (`2b271c0`).
