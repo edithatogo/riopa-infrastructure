@@ -799,6 +799,20 @@
       ]
     },
     {
+      "module": "src.riopa_provenance.planning",
+      "path": "src/riopa_provenance/planning.py",
+      "statements": 52,
+      "covered_statements": 51,
+      "line_percent": 98.07692307692308,
+      "branches": 14,
+      "covered_branches": 12,
+      "branch_percent": "86",
+      "missing_lines": [
+        31,
+        81
+      ]
+    },
+    {
       "module": "src.riopa_provenance.quarantine",
       "path": "src/riopa_provenance/quarantine.py",
       "statements": 27,
