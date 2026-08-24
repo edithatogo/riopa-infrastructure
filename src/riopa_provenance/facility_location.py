@@ -399,3 +399,44 @@ def pareto_alternatives(problem: LocationProblem) -> tuple[LocationSolution, ...
             key=lambda item: (item[0], item[1].selected, item[1].assignments),
         )
     )
+
+
+def minimax_subgroup_alternative(problem: LocationProblem) -> LocationSolution:
+    """Select the feasible solution that minimises the worst subgroup mean.
+
+    The returned solution retains the problem's ordinary objective so the
+    independent verifier can validate it without silently changing the
+    mathematical model.  The selection rule is an explicit equity alternative,
+    not a replacement for the model's primary objective or a policy judgment.
+    """
+
+    if problem.model not in {"p-median", "p-center"}:
+        raise ValueError("minimax subgroup alternatives require a p-median or p-center problem")
+    alternatives: list[LocationSolution] = []
+    for selected in _candidate_subsets(problem):
+        for assignments in _feasible_assignments(problem, selected):
+            covered, weighted_sum, worst, subgroup_means = _metrics(problem, assignments)
+            total_weight = sum(demand.weight for demand in problem.demands)
+            objective = weighted_sum / total_weight if problem.model == "p-median" else worst
+            alternatives.append(
+                LocationSolution(
+                    model=problem.model,
+                    selected=tuple(candidate.candidate_id for candidate in selected),
+                    assignments=assignments,
+                    covered=covered,
+                    objective=objective,
+                    subgroup_mean_distance=subgroup_means,
+                    bound=objective,
+                )
+            )
+    if not alternatives:
+        raise ValueError("problem is infeasible under the supplied constraints")
+    return min(
+        alternatives,
+        key=lambda solution: (
+            max((mean for _, mean in solution.subgroup_mean_distance), default=0.0),
+            solution.objective,
+            solution.selected,
+            solution.assignments,
+        ),
+    )

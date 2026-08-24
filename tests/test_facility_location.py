@@ -9,6 +9,7 @@ from riopa_provenance.facility_location import (
     EquityConstraint,
     LocationProblem,
     Model,
+    minimax_subgroup_alternative,
     pareto_alternatives,
     solve,
     verify_solution,
@@ -125,6 +126,26 @@ def test_pareto_frontier_is_deterministic_and_non_dominated() -> None:
     frontier = pareto_alternatives(problem)
     assert tuple(item.selected for item in frontier) == (("urban",), ("middle",))
     assert frontier == pareto_alternatives(problem)
+
+
+def test_minimax_subgroup_alternative_is_explicit_and_verifiable() -> None:
+    problem = LocationProblem(
+        model="p-median",
+        demands=(Demand("r", 1, "rural"), Demand("u", 3, "urban")),
+        candidates=(Candidate("rural"), Candidate("middle"), Candidate("urban")),
+        travel={
+            ("r", "rural"): 0,
+            ("r", "middle"): 3,
+            ("r", "urban"): 8,
+            ("u", "rural"): 6,
+            ("u", "middle"): 3,
+            ("u", "urban"): 0,
+        },
+        p=1,
+    )
+    solution = minimax_subgroup_alternative(problem)
+    assert solution.selected == ("middle",)
+    assert verify_solution(problem, solution).valid
 
 
 def test_infeasible_capacity_returns_bounded_explanation() -> None:
