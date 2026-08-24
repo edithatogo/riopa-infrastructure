@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "synthetic-non-clinical-reference",
+  "scenarios": [
+    {
+      "scenario_id": "public-service-opening",
+      "event": "opening",
+      "observations": [
+        {"period": -1, "treated": true, "outcome": 2.0},
+        {"period": -1, "treated": false, "outcome": 2.0},
+        {"period": 0, "treated": true, "outcome": 3.0},
+        {"period": 0, "treated": false, "outcome": 2.0},
+        {"period": 1, "treated": true, "outcome": 5.0},
+        {"period": 1, "treated": false, "outcome": 2.0}
+      ],
+      "reference_period": -1
+    },
+    {
+      "scenario_id": "public-service-closure",
+      "event": "closure",
+      "observations": [
+        {"period": -1, "treated": true, "outcome": 5.0},
+        {"period": -1, "treated": false, "outcome": 5.0},
+        {"period": 0, "treated": true, "outcome": 4.0},
+        {"period": 0, "treated": false, "outcome": 5.0},
+        {"period": 1, "treated": true, "outcome": 2.0},
+        {"period": 1, "treated": false, "outcome": 5.0}
+      ],
+      "reference_period": -1
+    }
+  ],
+  "nonclaims": [
+    "Scenarios are synthetic and do not represent real service openings, closures, zoning changes, or health outcomes.",
+    "Scenario execution does not establish causal identification, clinical validity, or policy effect."
+  ]
+}

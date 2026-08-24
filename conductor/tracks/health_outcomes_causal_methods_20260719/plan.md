@@ -16,7 +16,7 @@
 
 - [x] 3.1 Implement event-study/interrupted-time-series or difference-in-differences reference workflow. The event-study wrapper requires a declared reference period and both groups per period; it remains descriptive and non-causal (`src/riopa_provenance/health_longitudinal.py`, `tests/test_health_longitudinal.py`).
 - [x] 3.2 Add negative controls, missing-data and assumption diagnostics. Bounded missingness and negative-control summaries are diagnostic only; mechanism, imputation, uncertainty and causal qualification remain open (`src/riopa_provenance/health_diagnostics.py`, `tests/test_health_diagnostics.py`).
-- [ ] 3.3 Test on public/synthetic opening, closure or zoning-change scenarios.
+- [x] 3.3 Test on public/synthetic opening, closure or zoning-change scenarios. Synthetic opening and closure fixtures exercise the bounded event-study workflow; no real service, zoning or health claim is enabled (`fixtures/health-longitudinal-scenarios-synthetic.json`, `tests/test_health_longitudinal_scenarios.py`).
 
 ## 4. Agent-panel qualification and stable methods release
 
