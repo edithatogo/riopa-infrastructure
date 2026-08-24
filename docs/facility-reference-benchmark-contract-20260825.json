@@ -1,0 +1,24 @@
+{
+  "evidence_id": "FACILITY-REFERENCE-BENCHMARK-20260825",
+  "title": "Bounded facility-location reference benchmark contract",
+  "scope": {
+    "included": [
+      "small supplied problem fixtures",
+      "exhaustive p-median and p-center reference solves",
+      "environment-bound wall-clock observations",
+      "problem cardinality and explicit scale classification"
+    ],
+    "excluded": [
+      "national-scale performance",
+      "production cost or SLO claims",
+      "external solver equivalence",
+      "planning or accessibility authority"
+    ]
+  },
+  "evidence": [
+    "src/riopa_provenance/facility_location.py",
+    "tests/test_facility_location.py"
+  ],
+  "status": "repository-owned bounded reference benchmark",
+  "promotion_allowed": false
+}
