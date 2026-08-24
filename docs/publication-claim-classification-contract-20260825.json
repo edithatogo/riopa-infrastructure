@@ -1,0 +1,55 @@
+{
+  "contract_id": "urn:riopa:publication-claim-classification:2026-08-25",
+  "status": "bounded-repository-contract",
+  "scope": "public-source, regional, non-operational technical preview",
+  "claim_classes": [
+    {
+      "id": "reference-only",
+      "meaning": "Descriptive or methodological statement bounded to the archived inputs and declared scope.",
+      "minimum_evidence": ["source_or_capture_digest", "method_record", "limitation_record"]
+    },
+    {
+      "id": "exploratory",
+      "meaning": "Hypothesis-generating analysis that is not presented as a pre-specified confirmatory result.",
+      "minimum_evidence": ["source_or_capture_digest", "analysis_record", "uncertainty_record", "limitation_record"]
+    },
+    {
+      "id": "confirmatory",
+      "meaning": "A pre-specified analysis whose estimand, protocol, data edition and decision rule were frozen before execution.",
+      "minimum_evidence": ["preregistration_or_protocol_digest", "source_or_capture_digest", "analysis_record", "result_record", "deviation_record"]
+    },
+    {
+      "id": "prohibited",
+      "meaning": "A claim outside the approved scope or lacking the required authority, rights, safety or release evidence.",
+      "minimum_evidence": ["explicit_non_claim"]
+    }
+  ],
+  "claim_record_requirements": [
+    "claim_id",
+    "statement",
+    "classification",
+    "evidence_refs",
+    "scope",
+    "limitations",
+    "non_claims"
+  ],
+  "fail_closed_rules": [
+    "A claim without an evidence reference is not publishable.",
+    "A confirmatory classification without a frozen protocol is downgraded to exploratory.",
+    "A prohibited claim cannot be reclassified by agent-panel agreement or retrospective data.",
+    "Missing coverage is recorded as unknown or pending, never as negative evidence."
+  ],
+  "disabled_claims": [
+    "network",
+    "timetable",
+    "facility",
+    "national",
+    "clinical",
+    "dispatch",
+    "authoritative"
+  ],
+  "non_claims": [
+    "This contract does not establish publication, independent reproduction, elapsed-soak qualification or release authority.",
+    "Agent panels may assess claim records but cannot create source authority or participant evidence."
+  ]
+}
