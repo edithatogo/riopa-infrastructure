@@ -143,8 +143,8 @@ def test_bounded_shacl_constraints_reject_string_datatype_drift() -> None:
     root, corpus = _corpus()
     shape = (root / "docs/ontology/canonical-crosswalk.shacl.ttl").read_text()
     shape = shape.replace(
-        'sh:datatype <http://www.w3.org/2001/XMLSchema#string>',
-        'sh:datatype <http://www.w3.org/2001/XMLSchema#integer>',
+        "sh:datatype <http://www.w3.org/2001/XMLSchema#string>",
+        "sh:datatype <http://www.w3.org/2001/XMLSchema#integer>",
         1,
     )
     record = next(
