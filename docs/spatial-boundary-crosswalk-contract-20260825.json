@@ -1,0 +1,16 @@
+{
+  "evidence_id": "SPATIAL-BOUNDARY-CROSSWALK-20260825",
+  "status": "bounded-revision-aware-contract",
+  "implementation": "riopa_provenance.spatial_crosswalk",
+  "controls": [
+    "source weights must sum to one",
+    "source and target revisions are required",
+    "population values must be finite and non-negative",
+    "unmapped source population fails closed"
+  ],
+  "nonclaims": [
+    "Interpolation is not a geometry, legal-boundary or authority assertion.",
+    "The contract does not establish national completeness, MAUP robustness or denominator authority.",
+    "No promotion, publication or operational decision follows from the projection."
+  ]
+}

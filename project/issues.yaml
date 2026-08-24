@@ -2878,7 +2878,7 @@
         "maturity:m1",
         "release:0.7.0"
       ],
-      "body": "Implementation phase for Conductor track `spatial_quality_temporality_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement boundary crosswalk and population interpolation contracts.\n- [ ] 3.2 Add MAUP and denominator-version sensitivity analyses.\n- [ ] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/spatial_quality_temporality_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `spatial_quality_temporality_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement revision-aware boundary crosswalk and population interpolation contracts with fail-closed weight and coverage checks. MAUP, denominator-version, real-boundary and authority qualification remain open (`src/riopa_provenance/spatial_crosswalk.py`, `tests/test_spatial_crosswalk.py`, `docs/spatial-boundary-crosswalk-contract-20260825.json`).\n- [ ] 3.2 Add MAUP and denominator-version sensitivity analyses.\n- [ ] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/spatial_quality_temporality_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",

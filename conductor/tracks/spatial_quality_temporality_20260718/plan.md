@@ -14,7 +14,7 @@
 
 ## 3. Concordance and uncertainty
 
-- [ ] 3.1 Implement boundary crosswalk and population interpolation contracts.
+- [~] 3.1 Implement revision-aware boundary crosswalk and population interpolation contracts with fail-closed weight and coverage checks. MAUP, denominator-version, real-boundary and authority qualification remain open (`src/riopa_provenance/spatial_crosswalk.py`, `tests/test_spatial_crosswalk.py`, `docs/spatial-boundary-crosswalk-contract-20260825.json`).
 - [ ] 3.2 Add MAUP and denominator-version sensitivity analyses.
 - [ ] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces.
 
