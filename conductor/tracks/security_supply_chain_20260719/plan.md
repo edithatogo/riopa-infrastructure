@@ -15,7 +15,7 @@
 ## 3. Signing and provenance
 
 - [~] 3.1 Emit DSSE/in-toto-compatible attestation envelopes for builds and releases. Evidence: `src/riopa_provenance/attestation.py`, `docs/security-dsse-intoto-contract-20260824.json`, `tests/test_attestation.py`; trusted signing and protected release execution remain pending.
-- [ ] 3.2 Sign release manifests, tags and distributed artifacts using documented policy.
+- [~] 3.2 Define deterministic signing manifests and verification policy for release manifests, tags and distributed artifacts. Evidence: `src/riopa_provenance/release_signing.py`, `docs/security-release-signing-contract-20260824.json`, `tests/test_release_signing.py`; trusted signing and protected-tag execution remain pending. (contract commit: `4a722fc0673c1a17d5cbf02843482dc6323fbc34`)
 - [x] 3.3 Provide offline and CI verification commands and negative tests. Evidence: `docs/conformance-and-release-verification.md`, `.github/workflows/release.yml`, `docs/security-offline-verification-contract-20260822.json`, and `tests/test_security_offline_verification_contract.py`; execution remains protected-tag gated.
 
 ## 4. Audit and incident exercise
@@ -26,6 +26,7 @@
 
 ## 5. Review fixes
 
+- [x] R.6 Correct strict MyPy narrowing in the release-signing manifest validator. Evidence: `src/riopa_provenance/release_signing.py`, focused and full quality validation. (review-fix commit: `c63a39c`)
 - [x] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)
 - [x] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)
 - [x] 5.3 Restore evidence-backed task states after review found that commit `7a61d9b` promoted the track without its required dependency or M2-M6 evidence. (`f6e0a1c`; review fix)

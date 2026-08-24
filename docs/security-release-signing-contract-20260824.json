@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:security:release-signing:bounded-preview:1.0",
+  "candidate_manifest": "src/riopa_provenance/release_signing.py:build_release_signing_manifest",
+  "validator": "src/riopa_provenance/release_signing.py:validate_release_signing_manifest",
+  "policy": {
+    "required_scheme": "github-artifact-attestation",
+    "protected_environment": "release",
+    "tag_binding": true,
+    "checksum_algorithm": "sha256",
+    "key_material": "external-keyless-signer"
+  },
+  "required_sequence": [
+    "build candidate manifest from exact release assets",
+    "bind manifest and assets to the exact protected tag revision",
+    "obtain protected signing receipt",
+    "verify every asset and manifest independently before publication"
+  ],
+  "fail_closed_rules": [
+    "Unsigned-candidate status cannot satisfy a release-signing gate.",
+    "Missing, duplicate, absolute or traversal-containing artifact paths are invalid.",
+    "A checksum match without a trusted attestation is insufficient for signed release evidence.",
+    "No signing key, token or credential may be stored in the repository."
+  ],
+  "non_claims": [
+    "This repository contract does not create a signature or publish a release.",
+    "Protected tag execution and accountable release authority remain pending."
+  ]
+}
