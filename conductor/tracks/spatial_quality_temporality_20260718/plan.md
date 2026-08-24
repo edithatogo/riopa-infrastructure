@@ -15,7 +15,7 @@
 ## 3. Concordance and uncertainty
 
 - [~] 3.1 Implement revision-aware boundary crosswalk and population interpolation contracts with fail-closed weight and coverage checks. MAUP, denominator-version, real-boundary and authority qualification remain open (`src/riopa_provenance/spatial_crosswalk.py`, `tests/test_spatial_crosswalk.py`, `docs/spatial-boundary-crosswalk-contract-20260825.json`).
-- [ ] 3.2 Add MAUP and denominator-version sensitivity analyses.
+- [x] 3.2 Add bounded boundary/denominator revision sensitivity analysis with fail-closed estimates and explicit non-claims. Real MAUP, denominator provenance and authority qualification remain open. (`src/riopa_provenance/spatial_sensitivity.py`, `tests/test_spatial_sensitivity.py`, `docs/spatial-sensitivity-contract-20260824.json`; commit `a0f2d76`)
 - [ ] 3.3 Propagate spatial/temporal uncertainty to downstream interfaces.
 
 ## 4. Agent-panel quality validation
@@ -30,3 +30,7 @@
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Register the new spatial-sensitivity module in the Python 3.14 coverage inventory after CI discovery. (`docs/module-coverage-inventory-20260825.json`; commit `cd0bd72`)
