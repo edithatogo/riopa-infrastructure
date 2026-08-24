@@ -44,6 +44,56 @@ class LineageEdge:
     record_path: str | None
 
 
+@dataclass(frozen=True)
+class LineageQuery:
+    """Transport-neutral request shared by local lineage clients.
+
+    This is a serialisable request contract only.  It carries no endpoint,
+    credentials or remote-authority semantics; a client remains responsible
+    for executing it against a validated local projection.
+    """
+
+    node_id: str
+    question: str
+    max_depth: int = 20
+
+    def __post_init__(self) -> None:
+        if not self.node_id.strip():
+            raise LineageError("node_id must not be empty")
+        if self.question not in {"where", "why", "how"}:
+            raise LineageError("question must be one of: where, why, how")
+        if self.max_depth < 1 or self.max_depth > 100:
+            raise LineageError("max_depth must be between 1 and 100")
+
+    def to_payload(self) -> dict[str, object]:
+        """Return a stable JSON-compatible request payload."""
+
+        return {
+            "contract_version": "1.0.0",
+            "node_id": self.node_id,
+            "question": self.question,
+            "max_depth": self.max_depth,
+        }
+
+    @classmethod
+    def from_payload(cls, payload: Mapping[str, Any]) -> LineageQuery:
+        """Parse a request and reject unknown or malformed contract fields."""
+
+        if payload.get("contract_version") != "1.0.0":
+            raise LineageError("unsupported lineage query contract version")
+        expected = {"contract_version", "node_id", "question", "max_depth"}
+        if set(payload) != expected:
+            raise LineageError("lineage query fields must match the 1.0.0 contract")
+        node_id = payload["node_id"]
+        question = payload["question"]
+        max_depth = payload["max_depth"]
+        if not isinstance(node_id, str) or not isinstance(question, str):
+            raise LineageError("node_id and question must be strings")
+        if not isinstance(max_depth, int) or isinstance(max_depth, bool):
+            raise LineageError("max_depth must be an integer")
+        return cls(node_id=node_id, question=question, max_depth=max_depth)
+
+
 _ID_KEYS = (
     "event_id",
     "run_id",

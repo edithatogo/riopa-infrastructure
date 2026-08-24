@@ -10,6 +10,7 @@ from riopa_provenance.lineage import (
     _SCHEMA,
     LineageError,
     LineageIndex,
+    LineageQuery,
     _identifier,
     _label,
     _normalise_json,
@@ -48,6 +49,15 @@ def seeded_index(tmp_path: Path) -> LineageIndex:
     connection.commit()
     connection.close()
     return index
+
+
+def test_transport_neutral_lineage_query_round_trip_is_strict() -> None:
+    query = LineageQuery(node_id="source-1", question="where", max_depth=4)
+    assert LineageQuery.from_payload(query.to_payload()) == query
+    with pytest.raises(LineageError, match="fields must match"):
+        LineageQuery.from_payload({**query.to_payload(), "extra": True})
+    with pytest.raises(LineageError, match="unsupported"):
+        LineageQuery.from_payload({**query.to_payload(), "contract_version": "2.0.0"})
 
 
 def test_lineage_walks_are_sorted_and_cycle_safe(tmp_path: Path) -> None:
