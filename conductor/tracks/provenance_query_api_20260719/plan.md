@@ -8,7 +8,7 @@
 
 ## 2. Projection implementation
 
-- [ ] 2.1 Implement relational lineage tables and indexes in DuckDB-compatible form.
+- [~] 2.1 Implement relational lineage tables and indexes in DuckDB-compatible form. `LineageIndex.export_duckdb` preserves manifests, nodes, edges, indexes and source/projection digests; graph equivalence and production-scale qualification remain open (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`).
 - [ ] 2.2 Implement optional PROV/RDF or property-graph projection.
 - [ ] 2.3 Add deterministic rebuild and schema-migration tests.
 
