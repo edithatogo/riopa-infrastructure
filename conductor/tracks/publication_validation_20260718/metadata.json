@@ -25,6 +25,7 @@
     ,"urn:riopa:evidence:publication-validation-packet:2026-08-25"
     ,"urn:riopa:evidence:publication-version-coordination:2026-08-25"
     ,"urn:riopa:evidence:publication-workflow-verification:2026-08-25"
+    ,"urn:riopa:evidence:publication-citation-guidance:2026-08-25"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

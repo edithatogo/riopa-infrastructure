@@ -22,7 +22,7 @@
 
 - [ ] 4.1 Complete infrastructure/methods, data descriptor and applied publication packages.
 - [x] 4.2 Exercise correction, supersession and downstream-impact notification. Bounded predecessor/successor package validation and digest-reuse rejection pass; production downstream notification remains open. (`validate_correction_package`, tests)
-- [ ] 4.3 Publish validation evidence and stable citation guidance.
+- [x] 4.3 Publish bounded preview citation guidance and validation-evidence references (`docs/publication-citation-guidance-20260825.json`, `tests/test_publication_citation_guidance.py`). Stable publication, preservation, external reproduction, elapsed and authority gates remain open.
 
 ## 5. Bounded agent-panel preparation
 
