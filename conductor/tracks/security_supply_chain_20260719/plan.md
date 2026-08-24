@@ -20,7 +20,7 @@
 
 ## 4. Audit and incident exercise
 
-- [~] 4.1 Define a digest-bound orchestrated security agent-panel rerun packet and validator. Factual panel execution and qualification remain pending.
+- [~] 4.1 Define a digest-bound orchestrated security agent-panel rerun packet and validator. Evidence: `src/riopa_provenance/security_panel.py`, `docs/security-panel-rerun-contract-20260824.json`, `tests/test_security_panel.py`; factual panel execution and qualification remain pending. (contract commit: `a9ffae55774fec5efe4971b5421bfaf6c00bfd9a`)
 - [~] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Evidence: `src/riopa_provenance/security_exercises.py`, `docs/security-incident-exercise-contract-20260824.json`, `tests/test_security_exercises.py`; actual execution receipts remain pending. (contract commit: `0bd5c74b8a7e0301ad69ebaa87364d1626314856`)
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 

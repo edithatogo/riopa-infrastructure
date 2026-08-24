@@ -30,6 +30,7 @@
 | `SECURITY-DSSE-INTOTO-20260824` | Deterministic DSSE/in-toto-compatible envelope builder with fail-closed unsigned boundary | `src/riopa_provenance/attestation.py`, `docs/security-dsse-intoto-contract-20260824.json`, `tests/test_attestation.py` | Repository envelope and negative tests pass; trusted signing, protected release execution and independent verification remain open |
 | `SECURITY-RELEASE-SIGNING-20260824` | Deterministic release signing manifest and fail-closed verification policy | `src/riopa_provenance/release_signing.py`, `docs/security-release-signing-contract-20260824.json`, `tests/test_release_signing.py` | Candidate manifest and negative tests pass; trusted signing, protected-tag execution and accountable release approval remain open |
 | `SECURITY-INCIDENT-EXERCISE-20260824` | Secret-free credential-compromise, malicious-input and rollback exercise packet contract | `src/riopa_provenance/security_exercises.py`, `docs/security-incident-exercise-contract-20260824.json`, `tests/test_security_exercises.py` | Planned packet and negative tests pass; factual execution, hosted rollback and agent-panel qualification remain open |
+| `SECURITY-PANEL-RERUN-20260824` | Digest-bound three-lens panel rerun packet validator with preserved dissent boundary | `src/riopa_provenance/security_panel.py`, `docs/security-panel-rerun-contract-20260824.json`, `tests/test_security_panel.py` | Pending packet and complete-packet negative tests pass; factual panel execution and qualification remain open |
 
 ## Blocking defects
 
