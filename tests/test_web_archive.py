@@ -99,3 +99,16 @@ def test_wacz_policy_rejects_disabled_missing_or_mutated_capture(tmp_path: Path)
             output_path=tmp_path / "mutated.wacz",
             policy=_policy(),
         )
+
+
+def test_wacz_does_not_overwrite_existing_evidence(tmp_path: Path) -> None:
+    output = tmp_path / "archive.wacz"
+    output.write_bytes(b"existing")
+    with pytest.raises(WebArchiveError, match="already exists"):
+        package_capture_as_wacz(
+            _capture(tmp_path),
+            target_url="https://data.example/records/1",
+            output_path=output,
+            policy=_policy(),
+        )
+    assert output.read_bytes() == b"existing"

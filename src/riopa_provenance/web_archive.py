@@ -126,6 +126,8 @@ def package_capture_as_wacz(
     }
     package_bytes = canonical_json_bytes(package) + b"\n"
     path = Path(output_path)
+    if path.exists():
+        raise WebArchiveError(f"web-archive output already exists: {path}")
     path.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for name, data, media_type in (
