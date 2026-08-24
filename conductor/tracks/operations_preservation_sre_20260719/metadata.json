@@ -28,7 +28,8 @@
     "urn:riopa:evidence:rc-checkout-binding:2026-08-25",
     "urn:riopa:evidence:campaign-concurrency:2026-08-25",
     "urn:riopa:evidence:campaign-deduplication:2026-08-25",
-    "urn:riopa:evidence:campaign-status-validation:2026-08-25"
+    "urn:riopa:evidence:campaign-status-validation:2026-08-25",
+    "urn:riopa:evidence:rc-candidate-status-validated:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
