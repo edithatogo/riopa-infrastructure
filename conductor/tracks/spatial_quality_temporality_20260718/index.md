@@ -20,6 +20,7 @@
 | `SPATIAL-QUALITY-PROFILE-20260825` | Bounded profile metrics, thresholds, warnings, waivers and required evidence | `docs/spatial-quality-profile-contract-20260825.json`, `tests/test_spatial_quality_profile_contract.py` | Repository contract is validated; heterogeneous real-council, historical/boundary and national completeness gates remain open |
 | `SPATIAL-QUALITY-EVALUATOR-20260825` | Fail-closed evaluation of profile metrics with lineage, transformation and rights prerequisites | `src/riopa_provenance/spatial_quality.py`, `tests/test_spatial_quality.py` | Synthetic evaluator tests pass; real-council, historical/boundary and national completeness gates remain open |
 | `SPATIAL-QUALITY-TREND-20260825` | Release-to-release trend and regression report contract with explicit tolerances | `src/riopa_provenance/spatial_quality_trend.py`, `tests/test_spatial_quality_trend.py`, `docs/spatial-quality-trend-report-20260825.json` | Repository contract passes on synthetic evaluations; heterogeneous real-council, national, external, elapsed and authority gates remain open |
+| `SPATIAL-TEMPORAL-QUERY-20260825` | Explicit bitemporal transition validation and valid/recorded/as-known-at query contract | `src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/spatial-temporal-query-contract-20260825.json`, `tests/test_spatial_temporal_query_contract.py` | Synthetic contract passes; real authority histories, late evidence, external semantics and publication gates remain open |
 
 ## Blocking defects
 
