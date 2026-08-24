@@ -72,3 +72,10 @@ def test_correction_validator_rejects_in_place_mutation() -> None:
     assert validate_correction_package(package) == ()
     package["bounded_example"]["successor"]["sha256"] = "a" * 64
     assert any("successor digest" in error for error in validate_correction_package(package))
+
+
+def test_operations_plan_closes_recovery_contracts_without_claiming_execution() -> None:
+    plan = (ROOT / "conductor/tracks/operations_preservation_sre_20260719/plan.md").read_text()
+    assert "[x] 3.2 Implement the repository recovery-successor" in plan
+    assert "[x] 3.3 Define and validate restore/disaster-recovery" in plan
+    assert "production-representative execution remains pending" in plan
