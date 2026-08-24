@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:research-object:attestation-contract:2026-08-25",
+  "status": "repository-workflow-ready-hosted-execution-pending",
+  "subjects": [
+    "release wheel", "release source archive", "CycloneDX SBOM", "SHA256SUMS"
+  ],
+  "build_requirements": [
+    "locked Python 3.14 environment",
+    "deterministic research-object verification",
+    "CycloneDX SBOM generation",
+    "checksum generation and self-verification"
+  ],
+  "attestation_requirements": [
+    "protected tag or explicitly authorized release workflow",
+    "GitHub artifact attestation for every subject",
+    "independent gh attestation verify invocation for every subject"
+  ],
+  "workflow": ".github/workflows/release.yml",
+  "offline_contract": "docs/security-offline-verification-contract-20260822.json",
+  "non_claims": [
+    "This contract does not claim that a protected tag, release environment or attestation provider has executed.",
+    "A valid checksum or attestation does not establish source factual truth, preservation or release authority.",
+    "Publication and stable-v1 promotion remain separately gated."
+  ]
+}
