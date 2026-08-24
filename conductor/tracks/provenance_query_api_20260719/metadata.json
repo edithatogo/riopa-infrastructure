@@ -18,6 +18,7 @@
     ,"urn:riopa:evidence:provenance-query-rebuild:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-duckdb:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-prov-jsonld:2026-08-25"
+    ,"urn:riopa:evidence:provenance-query-pagination:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-cli:2026-08-25"
   ],
   "target_release": "0.6.0",

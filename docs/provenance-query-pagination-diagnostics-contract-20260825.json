@@ -1,0 +1,22 @@
+{
+  "evidence_id": "PROVENANCE-QUERY-PAGINATION-20260825",
+  "status": "bounded-repository-contract",
+  "implementation": "LineageIndex.page_nodes and `riopa lineage nodes`",
+  "controls": {
+    "limits": "page size 1..1000 and non-negative offset",
+    "ordering": "nodes retain deterministic node_id ordering",
+    "diagnostics": "each page carries projection metadata and freshness/granularity limits",
+    "access": "local filesystem permissions only; no remote authorization asserted"
+  },
+  "nonclaims": [
+    "Pagination does not establish remote access control or tenancy isolation.",
+    "Local synthetic tests do not establish production-scale latency or external-user usability.",
+    "The page is a disposable projection and is not authoritative evidence."
+  ],
+  "remaining_gates": [
+    "MCP transport and cross-interface equivalence",
+    "remote authorization design and test",
+    "representative release-scale benchmark",
+    "external user/operator reproduction and accountable release authority"
+  ]
+}
