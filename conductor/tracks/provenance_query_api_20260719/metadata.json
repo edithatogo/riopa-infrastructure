@@ -15,6 +15,7 @@
     "urn:riopa:evidence:lineage-query-envelope:2026-07-31",
     "urn:riopa:evidence:projection-reconciliation:2026-07-31",
     "urn:riopa:evidence:provenance-query-corpus:2026-08-22"
+    ,"urn:riopa:evidence:provenance-query-rebuild:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-duckdb:2026-08-25"
   ],
   "target_release": "0.6.0",

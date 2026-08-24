@@ -9,9 +9,9 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 7985,
-    "covered_statements": 7443,
-    "line_percent": 90.9737661182748,
+    "statements": 7992,
+    "covered_statements": 7450,
+    "line_percent": 90.97938144329896,
     "branches": 3260,
     "covered_branches": 2787,
     "branch_percent": "91"
@@ -555,23 +555,23 @@
     {
       "module": "src.riopa_provenance.lineage",
       "path": "src/riopa_provenance/lineage.py",
-      "statements": 274,
-      "covered_statements": 264,
-      "line_percent": 94.81865284974093,
+      "statements": 281,
+      "covered_statements": 271,
+      "line_percent": 94.91094147582697,
       "branches": 112,
       "covered_branches": 102,
       "branch_percent": "95",
       "missing_lines": [
-        153,
         154,
-        310,
-        318,
-        528,
+        155,
+        311,
+        319,
         529,
         530,
-        731,
-        732,
-        733
+        531,
+        759,
+        760,
+        761
       ]
     },
     {
