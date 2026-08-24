@@ -1,0 +1,16 @@
+{
+  "schema": "riopa.publication-version-coordination.v1",
+  "manifest_id": "urn:riopa:publication-version-coordination:2026-08-25",
+  "status": "candidate-coordination",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "components": [
+    {"kind": "software", "identifier": "riopa-provenance", "version_source": "pyproject.toml", "version": "0.2.0", "integrity": "release-build-and-sbom-required"},
+    {"kind": "schema", "identifier": "riopa-schema-set", "version_source": "schemas/*.schema.json", "version": "versioned-files-at-release-revision", "integrity": "release-revision-required"},
+    {"kind": "ontology", "identifier": "canonical-ontology-release-1.0.0", "version_source": "docs/ontology/canonical-ontology-release-1.0.0.json", "version": "1.0.0", "integrity": "content-addressed-at-release-revision"},
+    {"kind": "data", "identifier": "examples/minimal", "version_source": "examples/minimal/snapshot-manifest.json", "version": "2026.07.18-example", "integrity": "fixture-digest-required", "scope": "synthetic-reference-only"},
+    {"kind": "model", "identifier": "none", "version_source": "not-applicable", "version": "not-applicable", "integrity": "no-model-in-bounded-technical-preview", "scope": "non-operational"},
+    {"kind": "research-object", "identifier": "publication-validation-packet-20260825", "version_source": "docs/publication-validation-packet-20260825.json", "version": "pre-publication", "integrity": "protected-attestation-and-preservation-receipt-required"}
+  ],
+  "required_before_publication": ["freeze exact release revision", "record source and fixture digests", "verify build and SBOM", "obtain protected attestations", "record accepted preservation identifier and restore receipt", "obtain the tier-specific accountable release-authority decision"],
+  "nonclaims": ["This coordination manifest is not a publication, DOI or preservation receipt.", "External operator/user reproduction and elapsed beta/RC evidence remain mandatory."]
+}
