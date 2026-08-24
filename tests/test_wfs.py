@@ -8,7 +8,7 @@ from typing import Any
 import pytest
 
 from riopa_provenance.capture import CaptureError, CaptureResult
-from riopa_provenance.wfs import WFSFeatureTypeArchiver
+from riopa_provenance.wfs import WFSFeatureTypeArchiver, validate_wfs_request_contract
 
 
 def _capture(tmp_path: Path, endpoint: str, digest: str) -> CaptureResult:
@@ -71,6 +71,27 @@ def test_wfs_request_contract_rejects_invalid_page_size_and_version() -> None:
             type_name="layer",
             version="1.1.0",
         )
+
+
+@pytest.mark.parametrize(
+    ("url", "type_name", "version", "message"),
+    [
+        ("http://data.example/wfs", "layer", "2.0.0", "HTTPS"),
+        ("https://user:pass@data.example/wfs", "layer", "2.0.0", "userinfo"),
+        ("https://data.example/wfs", "", "2.0.0", "type_name"),
+        ("https://data.example/wfs", "layer\nother", "2.0.0", "type_name"),
+    ],
+)
+def test_wfs_request_contract_fails_closed(
+    url: str, type_name: str, version: str, message: str
+) -> None:
+    with pytest.raises(CaptureError, match=message):
+        validate_wfs_request_contract(url, type_name, version)
+
+
+def test_wfs_request_contract_rejects_unsupported_version() -> None:
+    with pytest.raises(ValueError, match="WFS 2.0.0 only"):
+        validate_wfs_request_contract("https://data.example/wfs", "layer", "1.1.0")
 
 
 def test_wfs_archive_pages_with_property_ids_and_manifest(tmp_path: Path) -> None:
