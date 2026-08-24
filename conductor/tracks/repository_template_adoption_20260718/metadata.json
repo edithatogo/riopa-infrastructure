@@ -13,7 +13,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/44",
   "evidence": [
-    "urn:riopa:evidence:repository-template-contract:2026-08-22"
+    "urn:riopa:evidence:repository-template-contract:2026-08-22",
+    "urn:riopa:evidence:repository-template-drift:2026-08-25"
   ],
   "target_release": "0.5.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
