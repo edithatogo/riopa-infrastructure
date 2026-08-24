@@ -2,12 +2,13 @@
   "evidence_id": "SPATIAL-TEMPORAL-HISTORY-AUDIT-20260825",
   "status": "bounded-declared-history-contract",
   "implementation": "riopa_provenance.transitions.audit_transition_history",
-  "reported_observations": ["late_evidence", "corrections", "supersessions", "historical_gaps"],
+  "reported_observations": ["late_evidence", "corrections", "supersessions", "historical_gaps", "overlapping_windows"],
   "controls": [
     "invalid transitions are retained with errors",
     "late evidence is identified by recorded start after valid start",
     "correction and supersession markers are explicit event/state declarations",
-    "finite valid-time windows are compared within an explicit history group"
+    "finite valid-time windows are compared within an explicit history group",
+    "overlapping declared windows are retained for adjudication rather than silently resolved"
   ],
   "nonclaims": [
     "The audit does not establish legal effect, source completeness or absence during a gap.",

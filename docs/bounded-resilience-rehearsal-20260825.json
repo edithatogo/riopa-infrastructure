@@ -1,0 +1,58 @@
+{
+  "cases": {
+    "baseline": {
+      "checksum": 2665628609,
+      "elapsed_ns": 2459750,
+      "records": 128,
+      "status": "passed"
+    },
+    "cancellation": {
+      "cancelled_before_external_effect": true,
+      "status": "passed"
+    },
+    "concurrency": {
+      "checksums": [
+        2665628609,
+        2665628609
+      ],
+      "status": "passed",
+      "workers": 2
+    },
+    "malformed-input": {
+      "error": "records and iterations must be positive",
+      "status": "passed"
+    },
+    "recovery": {
+      "after_checksum": 2665628609,
+      "before_checksum": 2665628609,
+      "restore_target": "in-memory deterministic fixture",
+      "status": "passed"
+    },
+    "retry-storm": {
+      "attempts": 3,
+      "checksum": 2665628609,
+      "failure_injection": "deterministic-local-before-final-attempt",
+      "status": "passed"
+    },
+    "stressed": {
+      "checksum": 1065125825,
+      "elapsed_ns": 20406500,
+      "records": 512,
+      "status": "passed"
+    }
+  },
+  "classification": "repository-rehearsal-not-operational-evidence",
+  "matrix_id": "urn:riopa:benchmark:wp010:resilience-matrix:1.0.0",
+  "non_claims": [
+    "This is not hosted infrastructure evidence.",
+    "This is not national-scale measurement or production failure injection.",
+    "This is not external operator/user reproduction or release authority."
+  ],
+  "safety": {
+    "live_endpoint_contacted": false,
+    "national_scale_measurement": false,
+    "network_timetable_facility_claims": false,
+    "production_failure_injection": false
+  },
+  "scope": "bounded regional public-data technical preview"
+}
