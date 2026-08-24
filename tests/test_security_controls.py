@@ -67,3 +67,17 @@ def test_security_plan_closes_bounded_contracts_without_claiming_execution() -> 
     assert "[x] 4.2 Define and validate credential-compromise" in plan
     assert "trusted signing and protected release execution remain pending" in plan
     assert "factual panel execution and qualification remain pending" in plan
+
+
+def test_research_object_attestation_contract_matches_release_workflow() -> None:
+    contract = json.loads(
+        Path("docs/research-object-attestation-contract-20260825.json").read_text()
+    )
+    workflow = Path(".github/workflows/release.yml").read_text()
+    assert contract["status"] == "repository-workflow-ready-hosted-execution-pending"
+    assert contract["workflow"] == ".github/workflows/release.yml"
+    assert "scripts/build_sbom.sh" in workflow
+    assert "actions/attest@" in workflow
+    assert "gh attestation verify" in workflow
+    assert "SHA256SUMS" in workflow
+    assert contract["non_claims"]

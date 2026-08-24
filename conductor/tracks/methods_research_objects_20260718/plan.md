@@ -14,7 +14,7 @@
 
 ## 3. Integrity and external validation
 
-- [ ] 3.1 Generate SBOMs, signatures and attestations and verify them independently.
+- [~] 3.1 Define and test the SBOM, checksum and attestation workflow contract. The protected-tag workflow generates and independently verifies release subjects; hosted tag execution, preservation acceptance and release authority remain pending. (`docs/research-object-attestation-contract-20260825.json`, `.github/workflows/release.yml`, `tests/test_security_controls.py`)
 - [ ] 3.2 Run external profile validators and record exact versions/results.
 - [x] 3.3 Test deterministic and tolerance-equivalent clean builds. Evidence: `tests/test_crate.py::test_research_object_build_is_content_deterministic`.
 
