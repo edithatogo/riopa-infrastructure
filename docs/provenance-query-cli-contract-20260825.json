@@ -1,0 +1,29 @@
+{
+  "evidence_id": "PROVENANCE-QUERY-CLI-20260825",
+  "title": "Bounded local provenance query CLI contract",
+  "scope": {
+    "included": [
+      "local SQLite projection",
+      "where, why and how query dispatch",
+      "bounded answer pagination",
+      "projection and cache diagnostics"
+    ],
+    "excluded": [
+      "MCP transport",
+      "remote authorization or access filtering",
+      "production-scale performance",
+      "external-user or independent reproduction evidence",
+      "release promotion or authority"
+    ]
+  },
+  "contract": {
+    "command": "riopa lineage query",
+    "questions": ["where", "why", "how"],
+    "max_depth": {"minimum": 1, "maximum": 100},
+    "page_size": {"minimum": 1, "maximum": 1000},
+    "answer_order": "deterministic source implementation order",
+    "cache": "bounded in-process cache keyed by projection fingerprint and query parameters"
+  },
+  "status": "repository-owned contract validated by tests/test_cli.py",
+  "promotion_allowed": false
+}
