@@ -26,7 +26,7 @@
 
 ## 5. Review fixes
 
-- [x] R.7 Replace the Bandit-triggering boolean credential field with an explicit `credential_material: absent` value. Evidence: `src/riopa_provenance/security_exercises.py`, full quality harness.
+- [x] R.7 Replace the Bandit-triggering boolean credential field with an explicit `credential_material: absent` value. Evidence: `src/riopa_provenance/security_exercises.py`, full quality harness. (review-fix commit: `cb64b48`)
 - [x] R.6 Correct strict MyPy narrowing in the release-signing manifest validator. Evidence: `src/riopa_provenance/release_signing.py`, focused and full quality validation. (review-fix commit: `c63a39c`)
 - [x] 5.1 Add a machine-readable repository security-control manifest and immutable-action regression tests. (security-control-manifest.json; tests/test_security_controls.py)
 - [x] 5.2 Correct the control manifest and remove duplicate plan numbering. (review fix)
