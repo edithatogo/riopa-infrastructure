@@ -1,0 +1,42 @@
+import pytest
+
+from riopa_provenance.attestation import (
+    AttestationError,
+    build_dsse_envelope,
+    build_in_toto_statement,
+    decode_dsse_payload,
+)
+
+
+def test_build_and_decode_unsigned_dsse_intoto_envelope() -> None:
+    statement = build_in_toto_statement(
+        [{"name": "dist/package.whl", "digest": {"sha256": "a" * 64}}],
+        predicate_type="https://riopa.example/predicate/build/v1",
+        predicate={"builder": "github-actions", "signed": False},
+    )
+    envelope = build_dsse_envelope(statement)
+    assert envelope["payloadType"] == "application/vnd.in-toto+json"
+    assert envelope["signatures"] == []
+    assert decode_dsse_payload(envelope) == statement
+
+
+def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> None:
+    with pytest.raises(AttestationError, match="sha256 digest"):
+        build_in_toto_statement(
+            [{"name": "dist/package.whl", "digest": {}}],
+            predicate_type="https://riopa.example/predicate/build/v1",
+            predicate={},
+        )
+    with pytest.raises(AttestationError, match="valid base64 JSON"):
+        decode_dsse_payload(
+            {"payloadType": "application/vnd.in-toto+json", "payload": "!", "signatures": []}
+        )
+
+
+def test_unsigned_envelope_is_explicitly_not_a_signed_receipt() -> None:
+    statement = build_in_toto_statement(
+        [{"name": "release.json", "digest": {"sha256": "b" * 64}}],
+        predicate_type="https://riopa.example/predicate/release/v1",
+        predicate={},
+    )
+    assert build_dsse_envelope(statement)["signatures"] == []

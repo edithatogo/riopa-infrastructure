@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:security:dsse-intoto:bounded-preview:1.0",
+  "format": {
+    "envelope": "DSSE v1-compatible",
+    "payload_type": "application/vnd.in-toto+json",
+    "statement_type": "https://in-toto.io/Statement/v1",
+    "subject_digest": "sha256"
+  },
+  "repository_capability": {
+    "builder": "src/riopa_provenance/attestation.py",
+    "tests": "tests/test_attestation.py",
+    "signatures": "empty-until-protected-signer"
+  },
+  "fail_closed_rules": [
+    "Subjects require a name and a SHA-256 digest.",
+    "The envelope payload is canonical JSON and is never silently rewritten.",
+    "An empty signatures array is an unsigned candidate, not release evidence.",
+    "Release qualification requires a trusted protected signer and independent verification.",
+    "This contract does not claim hosted signing, tag protection, release authority or publication acceptance."
+  ],
+  "non_claims": [
+    "No private key, credential or signing service is stored in the repository.",
+    "Agent-panel assessment cannot substitute for a trusted release signature."
+  ]
+}

@@ -27,6 +27,7 @@
 | `SEC-RENOVATE-CODECOV-CONTEXT-20260803` | Dependency automation, coverage thresholds and solo-maintainer security context are declared without claiming hosted activation | `renovate.json`, `codecov.yml`, `docs/renovate-codecov-rollout-20260803.json`, `docs/security-control-manifest.json` | Repository configuration is complete; Renovate app, Codecov repository and hosted secret-scanning receipts remain external |
 | `SECURITY-WORKFLOW-PERMISSIONS-20260822` | Fail-closed top-level and job-level workflow permissions | `tests/test_security_controls.py`, `.github/workflows/*.yml` | Repository policy passes; hosted branch-protection configuration and agent-panel qualification remain external gates |
 | `SECURITY-OFFLINE-VERIFY-20260822` | Checksums and GitHub attestation verification commands are documented with required inputs and non-claims | `docs/security-offline-verification-contract-20260822.json`, `docs/conformance-and-release-verification.md`, `.github/workflows/release.yml`, `tests/test_security_offline_verification_contract.py` | Repository contract passes; protected-tag execution, signed release assets and independent verification remain open |
+| `SECURITY-DSSE-INTOTO-20260824` | Deterministic DSSE/in-toto-compatible envelope builder with fail-closed unsigned boundary | `src/riopa_provenance/attestation.py`, `docs/security-dsse-intoto-contract-20260824.json`, `tests/test_attestation.py` | Repository envelope and negative tests pass; trusted signing, protected release execution and independent verification remain open |
 
 ## Blocking defects
 
