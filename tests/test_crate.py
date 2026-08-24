@@ -10,6 +10,7 @@ from riopa_provenance.crate import (
     _parse_checksums,
     build_research_object,
     build_ro_crate,
+    validate_provenance_projections,
     verify_research_object,
 )
 from riopa_provenance.hashing import sha256_file
@@ -54,6 +55,16 @@ def test_research_object_build_is_content_deterministic(tmp_path: Path) -> None:
     left = build_research_object(manifest, tmp_path / "left")
     right = build_research_object(manifest, tmp_path / "right")
     assert (left / "checksums.sha256").read_bytes() == (right / "checksums.sha256").read_bytes()
+
+
+def test_provenance_projection_contract_is_bounded_and_fail_closed(tmp_path: Path) -> None:
+    root = Path(__file__).resolve().parents[1]
+    output = build_research_object(root / "examples/minimal/snapshot-manifest.json", tmp_path)
+    prov = json.loads((output / "prov.jsonld").read_text(encoding="utf-8"))
+    lineage = json.loads((output / "openlineage-events.json").read_text(encoding="utf-8"))
+    assert validate_provenance_projections(prov, lineage) == ()
+    lineage["events"][0]["eventType"] = "INVALID"
+    assert any("eventType" in error for error in validate_provenance_projections(prov, lineage))
 
 
 def test_research_object_build_rejects_source_output_and_invalid_closure(

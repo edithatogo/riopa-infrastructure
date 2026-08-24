@@ -413,7 +413,11 @@ def _prov_projection(manifest: Mapping[str, Any], base: Path) -> dict[str, Any]:
             }
         )
         for output in run["outputs"]:
-            graph.append({"@id": output, "prov:wasGeneratedBy": {"@id": run["run_id"]}})
+            existing = next((item for item in graph if item.get("@id") == output), None)
+            if existing is None:
+                graph.append({"@id": output, "prov:wasGeneratedBy": {"@id": run["run_id"]}})
+            else:
+                existing["prov:wasGeneratedBy"] = {"@id": run["run_id"]}
     return {
         "@context": {
             "prov": "http://www.w3.org/ns/prov#",
@@ -467,6 +471,55 @@ def _openlineage_projection(manifest: Mapping[str, Any], base: Path) -> dict[str
         "disclaimer": "Interoperability projection; native RIOPA events remain normative.",
         "events": events,
     }
+
+
+def validate_provenance_projections(
+    prov: Mapping[str, Any] | None, openlineage: Mapping[str, Any] | None
+) -> tuple[str, ...]:
+    """Validate bounded PROV and OpenLineage projection envelopes.
+
+    This checks shape and referential uniqueness only.  It deliberately does
+    not claim standards conformance, semantic equivalence or signed evidence.
+    """
+
+    if not isinstance(prov, Mapping):
+        return ("PROV projection must be an object",)
+    if not isinstance(openlineage, Mapping):
+        return ("OpenLineage projection must be an object",)
+    errors: list[str] = []
+    context = prov.get("@context")
+    if not isinstance(context, Mapping) or context.get("prov") != "http://www.w3.org/ns/prov#":
+        errors.append("PROV projection must declare the W3C PROV namespace")
+    graph = prov.get("@graph")
+    if not isinstance(graph, list) or not graph:
+        errors.append("PROV projection graph must be non-empty")
+    else:
+        ids: list[str] = []
+        for item in graph:
+            if not isinstance(item, Mapping) or not isinstance(item.get("@id"), str):
+                errors.append("PROV graph entries require string @id")
+                continue
+            if item["@id"] in ids:
+                errors.append("PROV graph identifiers must be unique")
+            ids.append(item["@id"])
+    if not str(openlineage.get("projection", "")).startswith("candidate-openlineage-"):
+        errors.append("OpenLineage projection must declare a candidate version")
+    if not isinstance(openlineage.get("disclaimer"), str) or not openlineage["disclaimer"].strip():
+        errors.append("OpenLineage projection requires a disclaimer")
+    events = openlineage.get("events")
+    if not isinstance(events, list):
+        errors.append("OpenLineage events must be an array")
+    else:
+        for event in events:
+            if not isinstance(event, Mapping):
+                errors.append("OpenLineage events must be objects")
+                continue
+            if event.get("eventType") not in {"START", "COMPLETE", "FAIL", "ABORT", "OTHER"}:
+                errors.append("OpenLineage eventType is unsupported")
+            for field in ("run", "job", "inputs", "outputs", "producer", "schemaURL"):
+                if field not in event:
+                    errors.append(f"OpenLineage event requires {field}")
+    return tuple(dict.fromkeys(errors))
 
 
 def _research_object_readme(manifest: Mapping[str, Any]) -> str:
