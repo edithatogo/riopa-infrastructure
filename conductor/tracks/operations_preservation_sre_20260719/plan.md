@@ -16,7 +16,7 @@
 
 - [x] 3.1 Define retention, replicas, fixity cadence and preservation package format. Evidence: `docs/preservation-package-contract-20260822.json`, `tests/test_preservation_package_contract.py`; independent target acceptance and restore execution remain pending.
 - [~] 3.2 Implement the repository recovery-successor contract for backup/restore, correction, supersession and withdrawal paths. Evidence: `docs/operations-recovery-successor-contract-20260824.json`, `tests/test_operations_recovery_successor_contract.py`; executable provider backup/restore, disaster-recovery exercise and independent target acceptance remain pending. (evidence contract commit: `675ddbefa280ae234754b3f2d830235d5df324d2`)
-- [~] 3.3 Define and validate restore/disaster-recovery exercise reports. Actual production-representative execution remains pending.
+- [~] 3.3 Define and validate restore/disaster-recovery exercise reports. Evidence: `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, `tests/test_recovery.py`; actual production-representative execution remains pending. (contract commit: `437d50c1efcb883a95a3dcdf838f5c63624dcc32`)
 - [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)
 - [x] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)
 - [ ] 3.6 Configure repository credentials and verify independent Hugging Face and Zenodo acceptance receipts.
