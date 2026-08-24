@@ -2236,7 +2236,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `provenance_query_api_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Implement CLI, Python and MCP interfaces.\n- [ ] 3.2 Add caching, pagination, access filtering and diagnostics.\n- [ ] 3.3 Benchmark representative release and impact queries.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_query_api_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `provenance_query_api_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Implement CLI, Python and MCP interfaces. The Python reference and\n- [ ] 3.2 Add caching, pagination, access filtering and diagnostics.\n- [ ] 3.3 Benchmark representative release and impact queries.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_query_api_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",

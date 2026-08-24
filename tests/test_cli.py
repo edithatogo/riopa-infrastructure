@@ -79,6 +79,33 @@ def test_research_object_command_writes_output(
     assert "Research object written" in capsys.readouterr().out
 
 
+def test_lineage_export_prov_jsonld_command_writes_output(
+    capsys: pytest.CaptureFixture[str], tmp_path: Path
+) -> None:
+    root = Path(__file__).resolve().parents[1]
+    database = tmp_path / "lineage.sqlite"
+    output = tmp_path / "prov.jsonld"
+    index = cli.LineageIndex(database)
+    index.import_manifest(
+        root / "examples/minimal/snapshot-manifest.json", schema_dir=root / "schemas"
+    )
+    with pytest.raises(SystemExit) as exc:
+        cli.main(
+            [
+                "lineage",
+                "export-prov-jsonld",
+                "--database",
+                str(database),
+                "--output",
+                str(output),
+            ]
+        )
+    assert exc.value.code == 0
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["riopa:promotionAllowed"] is False
+    assert "PROV JSON-LD projection written" in capsys.readouterr().out
+
+
 def test_roadmap_validate_command_reports_success(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
