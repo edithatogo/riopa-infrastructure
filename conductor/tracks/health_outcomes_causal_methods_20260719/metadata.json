@@ -22,6 +22,7 @@
     ,"urn:riopa:evidence:health-diagnostics:2026-08-25"
     ,"urn:riopa:evidence:health-longitudinal-scenarios:2026-08-25"
     ,"urn:riopa:evidence:health-methods-panel:2026-08-25"
+    ,"urn:riopa:evidence:health-methods-remediation:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
