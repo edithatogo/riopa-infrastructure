@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "urn:riopa:operations:recovery-successor:bounded-preview:1.0",
+  "scope": "bounded-regional-public-datasets-only-technical-preview",
+  "state_machine": {
+    "states": ["captured", "replicated", "verified", "superseded", "withdrawn", "quarantined"],
+    "terminal_states": ["superseded", "withdrawn", "quarantined"],
+    "transitions": [
+      {"from": "captured", "to": "replicated", "evidence": ["source_digest", "replica_manifest"]},
+      {"from": "replicated", "to": "verified", "evidence": ["fixity_check", "restore_check"]},
+      {"from": "verified", "to": "superseded", "evidence": ["successor_record", "predecessor_digest", "notification_record"]},
+      {"from": "verified", "to": "withdrawn", "evidence": ["withdrawal_record", "target_reconciliation"]},
+      {"from": "captured", "to": "quarantined", "evidence": ["failure_record", "quarantine_reason"]},
+      {"from": "replicated", "to": "quarantined", "evidence": ["failure_record", "quarantine_reason"]}
+    ]
+  },
+  "required_record_fields": [
+    "evidence_id", "state", "source_digest", "predecessor_id", "successor_id",
+    "target_status", "fixity_status", "rights_status", "recorded_at"
+  ],
+  "fail_closed_rules": [
+    "Never overwrite a predecessor evidence record.",
+    "A restore transition requires a digest-bound fixity result; a planned restore is not execution evidence.",
+    "A correction must have a distinct successor digest and an append-only notification record.",
+    "A withdrawal may only reconcile declared targets and must preserve the withdrawn predecessor.",
+    "Missing, conflicting, expired or unverified target receipts keep the state below verified.",
+    "This contract does not assert hosted provider acceptance, disaster-recovery qualification, elapsed soak or release authority."
+  ],
+  "implementation": {
+    "governance_helpers": [
+      "src/riopa_provenance/governance.py:record_supersession",
+      "src/riopa_provenance/governance.py:record_withdrawal",
+      "src/riopa_provenance/governance.py:reconcile_withdrawal_targets"
+    ],
+    "correction_validator": "src/riopa_provenance/publication.py:validate_correction_package",
+    "tests": "tests/test_operations_recovery_successor_contract.py"
+  },
+  "non_claims": [
+    "No provider upload, restore, backup, Zenodo deposition or Hugging Face acceptance is performed by this contract.",
+    "Agent-panel assessment cannot substitute for factual external operator or external-user evidence.",
+    "Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}
