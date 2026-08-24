@@ -18,6 +18,7 @@
 |---|---|---|---|
 | `WP-005-feature-differences-20260731` | Added, removed, attribute, exact-geometry, tolerance-geometry and schema differences | `src/riopa_provenance/spatial.py`, `tests/test_spatial.py`, `docs/change-and-impact-queries.md` | Synthetic deterministic fixtures pass; real historical and boundary-concordance evidence remains open |
 | `SPATIAL-QUALITY-PROFILE-20260825` | Bounded profile metrics, thresholds, warnings, waivers and required evidence | `docs/spatial-quality-profile-contract-20260825.json`, `tests/test_spatial_quality_profile_contract.py` | Repository contract is validated; heterogeneous real-council, historical/boundary and national completeness gates remain open |
+| `SPATIAL-QUALITY-EVALUATOR-20260825` | Fail-closed evaluation of profile metrics with lineage, transformation and rights prerequisites | `src/riopa_provenance/spatial_quality.py`, `tests/test_spatial_quality.py` | Synthetic evaluator tests pass; real-council, historical/boundary and national completeness gates remain open |
 
 ## Blocking defects
 

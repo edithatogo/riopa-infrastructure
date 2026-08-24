@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 7686,
-    "covered_statements": 7190,
-    "line_percent": 91.45077720207254,
-    "branches": 3122,
-    "covered_branches": 2694,
+    "statements": 7765,
+    "covered_statements": 7258,
+    "line_percent": 91.34536129682205,
+    "branches": 3154,
+    "covered_branches": 2716,
     "branch_percent": "91"
   },
   "files": [
@@ -466,21 +466,23 @@
     {
       "module": "src.riopa_provenance.lineage",
       "path": "src/riopa_provenance/lineage.py",
-      "statements": 240,
-      "covered_statements": 232,
-      "line_percent": 95.63953488372093,
-      "branches": 104,
-      "covered_branches": 97,
-      "branch_percent": "96",
+      "statements": 274,
+      "covered_statements": 264,
+      "line_percent": 94.81865284974093,
+      "branches": 112,
+      "covered_branches": 102,
+      "branch_percent": "95",
       "missing_lines": [
-        220,
-        228,
-        438,
-        439,
-        440,
-        641,
-        642,
-        643
+        153,
+        154,
+        310,
+        318,
+        528,
+        529,
+        530,
+        731,
+        732,
+        733
       ]
     },
     {
@@ -930,6 +932,27 @@
         737,
         738,
         742
+      ]
+    },
+    {
+      "module": "src.riopa_provenance.spatial_quality",
+      "path": "src/riopa_provenance/spatial_quality.py",
+      "statements": 45,
+      "covered_statements": 36,
+      "line_percent": 76.81159420289855,
+      "branches": 24,
+      "covered_branches": 17,
+      "branch_percent": "77",
+      "missing_lines": [
+        26,
+        40,
+        43,
+        51,
+        52,
+        53,
+        55,
+        66,
+        73
       ]
     },
     {
