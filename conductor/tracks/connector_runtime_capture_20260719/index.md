@@ -26,6 +26,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CONNECTOR-RUNTIME-CONTRACT-20260822` | Adapter lifecycle, capture/raw-object, evidence-redaction and rights/publication hook definitions | `src/riopa_provenance/capture.py`, `src/riopa_provenance/retry.py`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py`, `schemas/source-acquisition-approval.schema.json`, `docs/source-acquisition-runbook.md`, `tests/test_capture.py`, `tests/test_retry.py` | Tasks 1.1–1.3 are reconciled to executable repository contracts; live adapter coverage, real-source validation, external rights and publication gates remain open |
 | `CONNECTOR-ADAPTER-CONTRACT-20260824` | ArcGIS REST and WFS/OGC adapter request-shape and deterministic capture safeguards | `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `tests/test_arcgis.py`, `tests/test_wfs.py` | HTTPS/no-userinfo preflight, bounded identifiers, deterministic pagination and reconciliation are executable-tested; live-source, rights, publication and external qualification gates remain open |
 | `CONNECTOR-KOORDINATES-DOWNLOAD-CONTRACT-20260824` | Koordinates export/download URL preflight and redirect-safe evidence | `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py` | HTTPS/no-userinfo preflight and exact export/job/download capture are executable-tested; live-source, rights, publication and external qualification gates remain open |
+| `CONNECTOR-WARC-WACZ-PACKAGING-20260824` | Policy-controlled offline WARC/WACZ packaging of verified captures | `src/riopa_provenance/web_archive.py`, `tests/test_web_archive.py` | Deterministic single-record package and negative policy/integrity tests pass; no live web capture, rights/publication, preservation or external qualification is claimed |
 
 ## Blocking defects
 
@@ -39,4 +40,4 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 
 Required agent-panel lenses: Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
