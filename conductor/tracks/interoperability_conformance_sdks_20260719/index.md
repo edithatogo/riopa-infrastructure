@@ -22,6 +22,7 @@
 | `PYTHON-SDK-20260825` | Deterministic Python producer-side validation for schema and bounded crosswalk contracts | `src/riopa_provenance/sdk.py`, `tests/test_sdk.py`, `docs/python-reference-sdk-20260825.md` | Local fixture and semantic checks pass; this does not establish independent implementation, external-client, signed-report or release conformance |
 | `LINEAGE-QUERY-CONTRACT-20260825` | Strict, versioned, transport-neutral lineage query request | `src/riopa_provenance/lineage.py`, `tests/test_lineage.py` | Local serialization round-trip passes; no remote endpoint, authorization, external client or release evidence is claimed |
 | `INTEROP-COMPATIBILITY-MATRIX-20260825` | Cross-version/tool compatibility status is recorded from the bounded Python/Node corpus | `scripts/build_interoperability_matrix.py`, `docs/ontology/interoperability-compatibility-matrix-20260825.json`, `tests/test_interoperability_matrix.py` | Python/Node parity observed locally; Rust, standards round-trips and external producer/consumer exercises remain unobserved |
+| `INTEROP-STANDARDS-ROUNDTRIP-20260825` | Bounded PROV-O-shaped, OpenLineage-shaped, RO-Crate and DSSE/in-toto payloads round-trip through repository validators | `docs/interoperability-standards-roundtrip-contract-20260825.json`, `tests/test_standards_roundtrip_contract.py` | Repository-owned round-trips pass; external producer/consumer interoperability, full validator qualification and trusted signing remain open |
 
 ## Blocking defects
 
