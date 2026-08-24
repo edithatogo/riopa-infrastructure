@@ -21,7 +21,7 @@
 ## 4. Audit and incident exercise
 
 - [ ] 4.1 Conduct orchestrated security agent-panel qualification and resolve findings.
-- [ ] 4.2 Exercise credential compromise, malicious input and rollback scenarios.
+- [~] 4.2 Define and validate credential-compromise, malicious-input and rollback exercise packets. Actual execution receipts remain pending.
 - [x] 4.3 Publish the supported-version and vulnerability-response policy. (docs/vulnerability-response-policy.md)
 
 ## 5. Review fixes
