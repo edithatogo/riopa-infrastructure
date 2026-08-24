@@ -1,0 +1,25 @@
+{
+  "schema": "riopa.provenance-query-prov-jsonld-contract.v1",
+  "contract_id": "provenance-query-prov-jsonld-contract-20260825",
+  "status": "bounded-interoperability-projection",
+  "implementation": "src/riopa_provenance/lineage.py:LineageIndex.export_prov_jsonld",
+  "tests": "tests/test_lineage.py::test_export_prov_jsonld_is_deterministic_and_not_authoritative",
+  "controls": [
+    "nodes and edges are sorted before serialization",
+    "projection digest is bound to the logical SQLite fingerprint",
+    "PROV Entity/Activity types and explicit source/target relations are emitted",
+    "promotion remains disabled and native RIOPA records remain authoritative"
+  ],
+  "open_gates": [
+    "RDF/SHACL engine conformance",
+    "standards semantic-loss qualification",
+    "external producer/consumer interoperability",
+    "access filtering and production-scale qualification",
+    "external reproduction and accountable release authority"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This JSON-LD is an interoperability projection, not standards certification or source truth.",
+    "Agent-panel assessment cannot substitute for external client or participant evidence."
+  ]
+}

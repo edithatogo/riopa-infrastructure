@@ -706,6 +706,96 @@ class LineageIndex:
             connection.close()
         return sha256(_normalise_json(payload).encode("utf-8")).hexdigest()
 
+    def export_prov_jsonld(self, target: str | Path) -> dict[str, Any]:
+        """Export a deterministic PROV-JSON-LD interoperability projection.
+
+        Native RIOPA records and validated manifests remain authoritative. The
+        JSON-LD file is a disposable, standards-shaped projection whose digest
+        is bound to the logical SQLite projection fingerprint.
+        """
+        target_path = Path(target).resolve()
+        if target_path == self.path:
+            raise LineageError("JSON-LD target must differ from the SQLite projection")
+        connection = self._connect(read_only=True)
+        try:
+            nodes = [
+                dict(row)
+                for row in connection.execute(
+                    "SELECT node_id, node_type, label, record_path FROM nodes ORDER BY node_id"
+                )
+            ]
+            edges = [
+                dict(row)
+                for row in connection.execute(
+                    "SELECT source_id, target_id, relation, record_path, manifest_id "
+                    "FROM edges ORDER BY manifest_id, source_id, target_id, relation"
+                )
+            ]
+        finally:
+            connection.close()
+        graph: list[dict[str, Any]] = []
+        for node in nodes:
+            item: dict[str, Any] = {
+                "@id": node["node_id"],
+                "@type": (
+                    "prov:Activity"
+                    if node["node_type"] in {"run", "transformation", "provenance_event"}
+                    else "prov:Entity"
+                ),
+                "riopa:nodeType": node["node_type"],
+            }
+            if node["label"] is not None:
+                item["rdfs:label"] = node["label"]
+            if node["record_path"] is not None:
+                item["riopa:recordPath"] = node["record_path"]
+            graph.append(item)
+        for edge in edges:
+            edge_key = _normalise_json(
+                [edge["manifest_id"], edge["source_id"], edge["target_id"], edge["relation"]]
+            )
+            graph.append(
+                {
+                    "@id": f"urn:riopa:lineage-edge:{sha256(edge_key.encode()).hexdigest()}",
+                    "@type": "riopa:LineageRelation",
+                    "riopa:source": {"@id": edge["source_id"]},
+                    "riopa:target": {"@id": edge["target_id"]},
+                    "riopa:relation": edge["relation"],
+                    "riopa:manifest": {"@id": edge["manifest_id"]},
+                    **(
+                        {"riopa:recordPath": edge["record_path"]}
+                        if edge["record_path"] is not None
+                        else {}
+                    ),
+                }
+            )
+        payload = {
+            "@context": {
+                "prov": "http://www.w3.org/ns/prov#",
+                "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                "riopa": "https://w3id.org/riopa/ontology/",
+            },
+            "riopa:projectionFingerprint": self.projection_fingerprint(),
+            "riopa:authoritativeEvidence": self.projection_metadata()["authoritative_evidence"],
+            "riopa:promotionAllowed": False,
+            "riopa:nonClaims": [
+                "This is an interoperability projection, not authoritative provenance.",
+                "The projection does not establish external reproduction, authority "
+                "or release approval.",
+            ],
+            "@graph": graph,
+        }
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        target_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+        )
+        return {
+            "target": str(target_path),
+            "nodes": len(nodes),
+            "edges": len(edges),
+            "projection_fingerprint": self.projection_fingerprint(),
+            "sha256": sha256_file(target_path),
+        }
+
     def query(self, node_id: str, *, question: str, max_depth: int = 20) -> dict[str, Any]:
         """Answer a normative where/why/how query with an explicit evidence envelope."""
 
