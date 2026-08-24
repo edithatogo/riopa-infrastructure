@@ -1,0 +1,26 @@
+{
+  "schema": "riopa.github-branch-protection.v1",
+  "recorded_at": "2026-08-25T03:00:00Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "branch": "main",
+  "enabled": true,
+  "strict_status_checks": true,
+  "required_checks": [
+    "Analyze Python",
+    "Quality, contracts, and packaging",
+    "Tests on Python 3.14"
+  ],
+  "enforce_for_administrators": true,
+  "required_pull_request_reviews": false,
+  "required_conversation_resolution": true,
+  "required_linear_history": true,
+  "allow_force_pushes": false,
+  "allow_deletions": false,
+  "single_developer_boundary": "Changes require hosted checks but no second-person or human-review approval. Repository assessment uses the orchestrated agent panel.",
+  "source_observation": "Live GitHub GraphQL branch-protection verifier passed on the recorded date.",
+  "verifier": "scripts/verify_github_main_protection.py",
+  "non_claims": [
+    "This receipt does not prove hosted secret scanning, Renovate, Codecov, signed release execution or agent-panel qualification.",
+    "Branch protection does not substitute for factual external operator or user evidence."
+  ]
+}

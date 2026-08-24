@@ -47,3 +47,13 @@ def test_approving_review_requirement_fails_closed() -> None:
 def test_required_check_drift_is_detected() -> None:
     errors = MODULE.validate(_payload(requiredStatusCheckContexts=[]))
     assert any(error.startswith("required checks differ") for error in errors)
+
+
+def test_current_protection_receipt_is_fail_closed_and_matches_contract() -> None:
+    receipt = __import__("json").loads(
+        (ROOT / "docs/github-main-protection-20260825.json").read_text()
+    )
+    assert receipt["enabled"] is True
+    assert receipt["required_pull_request_reviews"] is False
+    assert set(receipt["required_checks"]) == MODULE.EXPECTED_CHECKS
+    assert receipt["non_claims"]
