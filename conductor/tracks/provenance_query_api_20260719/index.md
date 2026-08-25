@@ -28,6 +28,7 @@
 | `PROVENANCE-QUERY-BENCHMARK-20260825` | Environment-bound timing harness for where/why/impact/page queries | `scripts/benchmark_lineage_queries.py`, `tests/test_provenance_query_benchmark.py` | Local harness passes; release-scale, second-environment, access-control, MCP, external-user and authority gates remain open |
 | `PROVENANCE-QUERY-EQUIVALENCE-20260825` | Bounded Python/CLI answers and SQLite/DuckDB/PROV-JSON-LD edge projections agree on the synthetic manifest | `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py` | Repository-owned equivalence passes; MCP transport, remote access filtering, real-release and external-user evidence remain open |
 | `PROVENANCE-QUERY-CACHE-20260825` | In-process query cache is bounded, deep-copying and keyed by logical projection fingerprint | `src/riopa_provenance/lineage.py::QueryCache`, `src/riopa_provenance/lineage.py::LineageIndex.query_cached`, `docs/provenance-query-cache-contract-20260825.json`, `tests/test_lineage.py` | Local cache contract passes; distributed/persistent cache, remote authorization, access filtering and production-scale performance remain open |
+| `PROVENANCE-QUERY-MIGRATION-20260825` | Versioned migration and compatibility guidance for the bounded 1.0.0 local query contract | `docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py` | Guidance is repository-owned; v1 freeze, MCP/remote qualification, real-user evidence and release approval remain open |
 
 ## Blocking defects
 
