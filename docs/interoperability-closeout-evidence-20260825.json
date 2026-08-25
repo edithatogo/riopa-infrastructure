@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.interoperability-closeout-evidence.v1",
+  "packet_id": "interoperability-closeout-evidence-20260825",
+  "track_id": "interoperability_conformance_sdks_20260719",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded cross-language public technical preview",
+  "evidence_categories": {
+    "implementation": ["src/riopa_provenance/sdk.py", "src/riopa_provenance/lineage.py", "rust/riopa-conformance/"],
+    "tests": ["tests/test_sdk.py", "tests/test_rust_producer_consumer.py", "tests/test_standards_roundtrip_contract.py"],
+    "review": ["docs/interoperability-findings-ledger-contract-20260825.json", "docs/interoperability-v1-sdk-support-contract-20260825.json"],
+    "migration": ["docs/interoperability-compatibility-matrix-20260825.json", "docs/interoperability-v1-sdk-support-and-reporting-20260825.md"],
+    "release_candidate": ["docs/interop-producer-consumer-exercise-20260825.json", "docs/interoperability-standards-roundtrip-contract-20260825.json"]
+  },
+  "open_gates": ["full Rust corpus parity and standards-complete serialization", "independent external producer/consumer implementation", "trusted signed conformance report", "preservation/publication acceptance", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains bounded exercises and report guidance, not a signed conformance release.",
+    "Repository tests and agent panels cannot substitute for independent external implementations, trusted signing, preservation acceptance or release authority.",
+    "This packet does not enable authoritative, operational or stable-v1 claims."
+  ]
+}
