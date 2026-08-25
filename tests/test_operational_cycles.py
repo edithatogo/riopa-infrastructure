@@ -55,6 +55,29 @@ def test_cycle_requires_ordered_timestamps_and_paired_recovery() -> None:
             1,
             [Cycle(1, "2026-08-02T00:00:00Z", "2026-08-01T00:00:00Z", "failed")],
         )
+
+
+def test_soak_rejects_empty_scope_negative_duration_and_invalid_cycle_fields() -> None:
+    with pytest.raises(ValueError, match="scope"):
+        record_soak("", 1, 1, [])
+    with pytest.raises(ValueError, match="non-negative"):
+        record_soak("fixture", -1, 0, [])
+    with pytest.raises(ValueError, match="outcomes"):
+        record_soak(
+            "fixture",
+            1,
+            1,
+            [Cycle(1, "2026-08-01T00:00:00Z", "2026-08-01T00:01:00Z", "")],
+        )
+    with pytest.raises(ValueError, match="ISO 8601"):
+        record_soak("fixture", 1, 1, [Cycle(1, "bad", "bad", "failed")])
+    with pytest.raises(ValueError, match="timezone-aware"):
+        record_soak(
+            "fixture",
+            1,
+            1,
+            [Cycle(1, "2026-08-01T00:00:00", "2026-08-01T00:01:00", "failed")],
+        )
     with pytest.raises(ValueError, match="recorded together"):
         record_soak(
             "fixture",

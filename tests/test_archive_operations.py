@@ -8,6 +8,7 @@ from riopa_provenance.archive_operations import (
     build_coverage_report,
     build_delta_decision,
 )
+from riopa_provenance.hashing import sha256_json
 
 
 def observation(source_id: str = "linz-addresses") -> dict[str, object]:
@@ -28,6 +29,12 @@ def observation(source_id: str = "linz-addresses") -> dict[str, object]:
         "schema": {"geometry": "Point", "id": "string"},
         "capabilities": {"paging": True, "format": "application/json"},
     }
+
+
+def resign(decision: dict[str, object]) -> None:
+    decision["decision_sha256"] = sha256_json(
+        {key: value for key, value in decision.items() if key != "decision_sha256"}
+    )
 
 
 def test_delta_decision_detects_change_without_claiming_promotion() -> None:
@@ -68,6 +75,36 @@ def test_reconstructed_backfill_requires_explicit_reconstruction_time() -> None:
         build_delta_decision(None, current, observed_at="2026-08-25T00:00:00Z")
 
 
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ({"owner_role": ""}, "owner_role"),
+        ({"rights_status": "invented"}, "rights_status"),
+        ({"availability_status": "invented"}, "availability_status"),
+        ({"capture_kind": "historical"}, "capture_kind"),
+        ({"schema": "not-an-object"}, "schema object"),
+        ({"payload_sha256": "short"}, "64-character"),
+        ({"payload_sha256": "z" * 64}, "hexadecimal"),
+    ],
+)
+def test_delta_decision_rejects_malformed_observations(
+    mutation: dict[str, object], message: str
+) -> None:
+    current = observation()
+    current.update(mutation)
+    with pytest.raises(ArchiveOperationsError, match=message):
+        build_delta_decision(None, current, observed_at="2026-08-25T00:00:00Z")
+
+
+def test_delta_decision_rejects_empty_time_and_identity_change() -> None:
+    with pytest.raises(ArchiveOperationsError, match="observed_at"):
+        build_delta_decision(None, observation(), observed_at="")
+    with pytest.raises(ArchiveOperationsError, match="different endpoints"):
+        build_delta_decision(
+            observation("old-source"), observation(), observed_at="2026-08-25T00:00:00Z"
+        )
+
+
 def test_partial_release_excludes_quarantine_and_binds_decision_digests() -> None:
     clear = build_delta_decision(None, observation(), observed_at="2026-08-25T00:00:00Z")
     unsafe_row = observation("linz-parcels")
@@ -90,16 +127,48 @@ def test_partial_release_excludes_quarantine_and_binds_decision_digests() -> Non
 
 
 def test_partial_release_rejects_self_hashed_semantically_invalid_decision() -> None:
-    from riopa_provenance.hashing import sha256_json
-
     malformed = build_delta_decision(None, observation(), observed_at="2026-08-25T00:00:00Z")
     malformed["promotion_allowed"] = True
-    malformed["decision_sha256"] = sha256_json(
-        {key: value for key, value in malformed.items() if key != "decision_sha256"}
-    )
+    resign(malformed)
     with pytest.raises(ArchiveOperationsError, match="prohibit promotion"):
         assemble_partial_release(
             [malformed], release_id="fixture-release", assembled_at="2026-08-25T01:00:00Z"
+        )
+
+
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ({"record_type": "unknown"}, "archive delta decisions"),
+        ({"action": "publish"}, "unsupported decision action"),
+        ({"quarantine_reasons": "bad"}, "invalid quarantine reasons"),
+        ({"action": "quarantine", "quarantine_reasons": []}, "lacks reasons"),
+        ({"quarantine_reasons": ["unexpected"]}, "clear decision has"),
+        ({"current_payload_sha256": None}, "lacks payload digest"),
+        ({"current_payload_sha256": "bad"}, "64-character"),
+    ],
+)
+def test_partial_release_rejects_invalid_decision_semantics(
+    mutation: dict[str, object], message: str
+) -> None:
+    decision = build_delta_decision(None, observation(), observed_at="2026-08-25T00:00:00Z")
+    decision.update(mutation)
+    resign(decision)
+    with pytest.raises(ArchiveOperationsError, match=message):
+        assemble_partial_release(
+            [decision], release_id="fixture-release", assembled_at="2026-08-25T01:00:00Z"
+        )
+
+
+def test_release_assembly_rejects_empty_and_duplicate_inputs() -> None:
+    with pytest.raises(ArchiveOperationsError, match="non-empty"):
+        assemble_partial_release([], release_id="", assembled_at="")
+    with pytest.raises(ArchiveOperationsError, match="at least one"):
+        assemble_partial_release([], release_id="fixture", assembled_at="2026-08-25")
+    decision = build_delta_decision(None, observation(), observed_at="2026-08-25T00:00:00Z")
+    with pytest.raises(ArchiveOperationsError, match="unique identities"):
+        assemble_partial_release(
+            [decision, decision], release_id="fixture", assembled_at="2026-08-25"
         )
 
 
@@ -129,3 +198,10 @@ def test_coverage_report_rejects_duplicate_source_identity() -> None:
         build_coverage_report(
             [observation(), observation()], report_id="fixture", generated_at="2026-08-25"
         )
+
+
+def test_coverage_report_rejects_empty_metadata_and_observations() -> None:
+    with pytest.raises(ArchiveOperationsError, match="non-empty"):
+        build_coverage_report([observation()], report_id="", generated_at="")
+    with pytest.raises(ArchiveOperationsError, match="at least one"):
+        build_coverage_report([], report_id="fixture", generated_at="2026-08-25")
