@@ -1,0 +1,32 @@
+{
+  "source_id": "urn:riopa:source:rangitikei:public-facilities",
+  "name": "Rangitīkei public ambulance-facility assertions",
+  "source_family": "public-ambulance-facility-reference",
+  "publisher": "Rangitīkei District Council",
+  "landing_page": "https://www.rangitikei.govt.nz/",
+  "source_url": "https://services8.arcgis.com/rH83DoI7Xdq2nG28/ArcGIS/rest/services/CIVIC_civic_facilities_viewing_view/FeatureServer/3",
+  "source_edition": "June 2023 bounded pilot capture",
+  "rights": {
+    "status": "attribution-required",
+    "licence": "CC-BY-4.0",
+    "basis": "config/source-registry/wp010-public-pilot-candidates.yaml"
+  },
+  "archive": {
+    "repository": "Zenodo",
+    "record_url": "https://zenodo.org/records/21737563",
+    "doi": "10.5281/zenodo.21737563",
+    "packet_sha256": "e0dcf5eb08e9b4530929da92a439d2cb97ced51bfe34f4848d1a2ef94c15abe5",
+    "manifest_path": "evidence/wp010-bounded-pilot/manifest.json",
+    "payload_sha256": "ece91d56518e618670c7c9d04c13a43530eeb653ba25386ca0d25e737fdca277",
+    "payload_bytes": 861
+  },
+  "status": "archived-source-specific-assertions",
+  "non_claim": "Three regional ambulance points are a non-authoritative reference only; they do not establish national, current, complete, clinical, dispatch or operational ambulance coverage.",
+  "disabled_use": [
+    "authoritative-ambulance-register",
+    "national-ambulance-coverage",
+    "clinical-or-dispatch-decision",
+    "operational-capacity-claim"
+  ],
+  "promotion_allowed": false
+}

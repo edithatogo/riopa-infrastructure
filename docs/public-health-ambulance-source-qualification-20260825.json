@@ -1,0 +1,35 @@
+{
+  "evidence_id": "FACILITY-PUBLIC-HEALTH-SOURCE-FAMILIES-20260825",
+  "status": "two-public-families-archived",
+  "families": [
+    {
+      "source_id": "urn:riopa:source:moh:certified-public-hospitals",
+      "family": "certified-public-hospital-provider",
+      "evidence": "evidence/wp007-real-slice/manifest.json",
+      "payload_status": "content-addressed-capture"
+    },
+    {
+      "source_id": "urn:riopa:source:rangitikei:public-facilities",
+      "family": "public-ambulance-facility-reference",
+      "evidence": "config/archive-sources/rangitikei-public-ambulance-2023.json",
+      "payload_status": "Zenodo-successor-packet-with-digest"
+    }
+  ],
+  "archive_receipts": {
+    "hospital_packet": "evidence/wp007-real-slice/manifest.json",
+    "ambulance_packet": "Zenodo 10.5281/zenodo.21737563"
+  },
+  "qualification": {
+    "second_public_health_family": true,
+    "reconciliation": "not-run",
+    "geometry_and_completeness": "not-claimed",
+    "authoritative_ambulance_coverage": false,
+    "operational_or_dispatch_use": false
+  },
+  "promotion_allowed": false,
+  "open_gates": [
+    "source reconciliation and panel disposition",
+    "national/current/authoritative coverage",
+    "external reproduction and release authority"
+  ]
+}

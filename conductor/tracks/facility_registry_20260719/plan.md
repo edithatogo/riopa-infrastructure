@@ -14,7 +14,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [x] 1.1 Define facility assertion identities in the bounded reference contract; operator, service and stable registry identities remain release work.
 - [x] 1.2 Define source coordinates, optional uncertainty, rights, authority and observation fields for bounded source assertions; temporal registry state remains release work.
-- [~] 1.3 Register rights-cleared public supermarket and health-service source families; three public food-retail families are archived, while a second public health family remains open.
+- [x] 1.3 Register rights-cleared public supermarket and health-service source families; three public food-retail families and two distinct public health families are archived. Reconciliation, currentness and authority remain release gates.
 
 ## 2. Acquisition and reconciliation
 
@@ -53,7 +53,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 - [~] G.1 Agent-panel qualification of the deterministic 741-row review frame is recorded in `docs/facility-panel-frame-qualification-20260825.json`; factual pair/sample adjudication remains open and no promotion is enabled.
 - [x] G.2 Record the Hamilton packet as explicitly attribute-only because all 3,245 archived assertions have null geometry (`docs/facility-panel-qualification-20260803.json`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py`). No geometry, completeness or authoritative facility claim is enabled.
-- [ ] G.3 A second public health source family with an immutable archive receipt.
+- [x] G.3 A second public health source family with an immutable archive receipt. The bounded Rangitīkei public ambulance-facility assertions are registered from the preserved Zenodo successor packet with a verified payload digest (`config/archive-sources/rangitikei-public-ambulance-2023.json`, `docs/public-health-ambulance-source-qualification-20260825.json`, `tests/test_public_dataset_archive_plan.py`). Reconciliation, currentness, completeness, authoritative ambulance coverage and operational use remain disabled.
 - [x] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.
 - [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.
 

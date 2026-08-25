@@ -44,6 +44,24 @@ def test_non_public_healthpoint_payloads_are_excluded() -> None:
     assert "Licensed Healthpoint payloads are excluded" in health["excluded_source"]
 
 
+def test_public_health_source_families_include_archived_ambulance_packet() -> None:
+    health = next(
+        dataset
+        for dataset in _plan()["datasets"]
+        if dataset["id"] == "public-health-and-ambulance-facilities"
+    )
+    assert health["status"] == "two-public-health-families-archived-ambulance-authority-pending"
+    assert "rangitikei-public-ambulance-2023.json" in health["source"][1]
+    descriptor = json.loads(
+        (ROOT / "config/archive-sources/rangitikei-public-ambulance-2023.json").read_text()
+    )
+    assert descriptor["archive"]["doi"] == "10.5281/zenodo.21737563"
+    assert descriptor["archive"]["payload_sha256"] == (
+        "ece91d56518e618670c7c9d04c13a43530eeb653ba25386ca0d25e737fdca277"
+    )
+    assert descriptor["promotion_allowed"] is False
+
+
 def test_stats_nz_meshblock_archive_is_revision_and_digest_bound() -> None:
     meshblocks = next(
         dataset
