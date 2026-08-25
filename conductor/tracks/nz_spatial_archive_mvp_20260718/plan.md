@@ -2,7 +2,7 @@
 
 ## 1. Real source capture
 
-- [ ] 1.1 Select councils after national source inventory and record heterogeneity rationale.
+- [x] 1.1 Select Wellington City, Queenstown Lakes, New Plymouth and Tasman after the national source inventory, using four materially different official publication mechanisms while keeping rights, capture, legal-status and representativeness gates open (`docs/nz-spatial-council-selection-20260825.json`, `tests/test_nz_spatial_council_selection.py`; `e37b398`).
 - [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
 - [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.
 - [x] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.
@@ -44,3 +44,4 @@
 - [x] R1 Wrap the quality-report test path so the repository quality gate passes (`edc1fb7`).
 - [x] R2 Bind restored materializations to safe receipt paths, sizes and digests; execute packet-bound PyArrow and DuckDB identity/count/null-geometry checks; and correct the documented query columns (`1abb123`).
 - [x] R3 Verify the receipt/manifest/projection digest chain and add hermetic CI coverage for successful artifact queries, tamper rejection and unsafe receipt paths (`a466a49`).
+- [x] R4 Restore the canonical all-release roadmap status after detecting a mistakenly narrowed regeneration (`f3cf453`).
