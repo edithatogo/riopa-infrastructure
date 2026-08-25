@@ -49,6 +49,11 @@ The 2026-08-25 closeout packet links the canonical implementation, test,
 review, migration and unsigned candidate-freeze evidence. It does not advance
 the track beyond M1 or make the candidate a published normative release.
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; it does not change the candidate’s maturity or external
+semantic, authority and release gates (`docs/canonical-domain-conductor-regeneration-20260825.json`).
+
 ## Decisions, exceptions and limitations
 
 - None recorded.

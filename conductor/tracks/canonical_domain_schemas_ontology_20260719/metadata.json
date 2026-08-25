@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "validating",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T06:00:00Z",
+  "updated_at": "2026-08-25T07:25:00Z",
   "description": "Define stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.",
   "depends_on": [
     "foundation_architecture_20260718"
@@ -18,7 +18,8 @@
     "urn:riopa:evidence:canonical-bounded-shacl-contract:2026-08-24",
     "urn:riopa:evidence:canonical-semantic-panel:2026-08-25",
     "urn:riopa:evidence:canonical-v1-candidate-freeze:2026-08-25",
-    "urn:riopa:evidence:canonical-closeout:2026-08-25"
+    "urn:riopa:evidence:canonical-closeout:2026-08-25",
+    "urn:riopa:evidence:canonical-domain-conductor-regeneration:2026-08-25"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
