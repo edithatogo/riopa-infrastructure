@@ -1,0 +1,10 @@
+{
+  "schema": "riopa.planning-concept-crosswalk.v1",
+  "packet_id": "planning-concept-crosswalk-contract-20260825",
+  "status": "bounded-contract-only",
+  "scope": "regional public-source non-operational technical preview",
+  "mapping_fields": ["source_id", "source_label", "canonical_id", "method", "confidence", "reviewer", "valid_from", "evidence"],
+  "controls": ["canonical crosswalk contract validation", "sorted mapping identifiers", "records_sha256", "promotion_allowed=false", "source assertion retained"],
+  "open_gates": ["source-faithful council records", "semantic equivalence review", "two-council validation", "authority and completeness evidence"],
+  "non_claims": ["A mapping does not establish semantic equivalence, legal effect or authoritative identity.", "Agent-panel or unreviewed mappings do not substitute for external validation."]
+}

@@ -347,3 +347,71 @@ def build_rule_structure_record(
             "Unresolved states are retained and are not treated as negative evidence.",
         ],
     }
+
+
+def build_planning_concept_crosswalk(
+    concepts: Sequence[Mapping[str, Any]],
+    *,
+    crosswalk_id: str,
+    captured_at: str,
+) -> dict[str, Any]:
+    """Build a batch of original-to-canonical planning concept mappings."""
+    if not crosswalk_id.strip() or not captured_at.strip():
+        raise ValueError("crosswalk_id and captured_at must be non-empty")
+    if not concepts:
+        raise ValueError("concepts must be non-empty")
+    from .canonical import build_crosswalk, validate_crosswalk_contract
+
+    required = (
+        "source_id",
+        "source_label",
+        "canonical_id",
+        "method",
+        "confidence",
+        "reviewer",
+        "valid_from",
+    )
+    records: list[dict[str, Any]] = []
+    for concept in concepts:
+        if not isinstance(concept, Mapping):
+            raise ValueError("planning concept records must be objects")
+        missing = [field for field in required if field not in concept]
+        if missing:
+            raise ValueError(f"planning concept record missing fields: {', '.join(missing)}")
+        for field in required:
+            if not isinstance(concept[field], str) or not concept[field].strip():
+                raise ValueError(f"planning concept field must be a non-empty string: {field}")
+        evidence = concept.get("evidence", [])
+        if not isinstance(evidence, list) or any(
+            not isinstance(item, str) or not item.strip() for item in evidence
+        ):
+            raise ValueError("planning concept evidence must be a list of non-empty strings")
+        record = build_crosswalk(
+            source_id=concept["source_id"],
+            source_label=concept["source_label"],
+            canonical_id=concept["canonical_id"],
+            method=concept["method"],
+            confidence=concept["confidence"],
+            reviewer=concept["reviewer"],
+            valid_from=concept["valid_from"],
+            valid_to=concept.get("valid_to"),
+            evidence=evidence,
+        )
+        errors = validate_crosswalk_contract(record)
+        if errors:
+            raise ValueError("invalid planning concept crosswalk: " + "; ".join(errors))
+        records.append(record)
+    records.sort(key=lambda item: str(item["mapping_id"]))
+    return {
+        "record_type": "planning-concept-crosswalk",
+        "crosswalk_id": crosswalk_id,
+        "captured_at": captured_at,
+        "records": records,
+        "records_sha256": sha256_json(records),
+        "status": "bounded-unreviewed",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Mappings preserve original assertions but do not establish semantic equivalence.",
+            "Unreviewed crosswalks do not establish legal effect, completeness or authority.",
+        ],
+    }
