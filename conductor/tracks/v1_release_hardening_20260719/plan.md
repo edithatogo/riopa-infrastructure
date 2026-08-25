@@ -16,11 +16,13 @@
 
 - [x] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
 - [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and factual external operator/user evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
+- [x] 3.2a Add a deterministic exact-candidate continuity evaluator. It identifies three individually valid RC observations across three candidate revisions and therefore records a required reset without combining their duration (`scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py`).
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
 
 ## 4. General availability and handover
 
 - [ ] 4.1 Approve all machine-readable v1 release gates and governance decisions.
+- [x] 4.1a Reconcile current track, stable-gate, campaign, release-evidence and authority state into a non-authorizing machine-readable snapshot. The result is blocked and permits no promotion (`docs/v1-stable-release-gate-snapshot-20260825.json`).
 - [ ] 4.2 Publish stable artifacts, DOI/citations, support, deprecation and maintenance plan.
 - [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.
 

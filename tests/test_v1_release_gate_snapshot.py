@@ -1,3 +1,4 @@
+import json
 from copy import deepcopy
 from pathlib import Path
 
@@ -102,6 +103,8 @@ def test_candidate_continuity_rejects_malformed_campaign(campaign: dict[str, obj
 def test_snapshot_rejects_invalid_revision_and_writes_deterministically(tmp_path: Path) -> None:
     with pytest.raises(V1GateSnapshotError, match="evaluated_revision"):
         build_snapshot(ROOT, evaluated_revision="BAD", generated_at="now")
+    with pytest.raises(V1GateSnapshotError, match="generated_at"):
+        build_snapshot(ROOT, evaluated_revision=REVISION, generated_at="now")
     snapshot = build_snapshot(
         ROOT, evaluated_revision=REVISION, generated_at="2026-08-25T11:30:00Z"
     )
@@ -110,3 +113,14 @@ def test_snapshot_rejects_invalid_revision_and_writes_deterministically(tmp_path
     write_snapshot(snapshot, first)
     write_snapshot(snapshot, second)
     assert first.read_bytes() == second.read_bytes()
+
+
+def test_committed_snapshot_is_reproducible() -> None:
+    artifact = json.loads(
+        (ROOT / "docs/v1-stable-release-gate-snapshot-20260825.json").read_text(encoding="utf-8")
+    )
+    assert artifact == build_snapshot(
+        ROOT,
+        evaluated_revision=artifact["evaluated_revision"],
+        generated_at=artifact["generated_at"],
+    )

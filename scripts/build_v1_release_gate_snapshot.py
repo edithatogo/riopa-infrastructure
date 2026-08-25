@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 from collections.abc import Mapping
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,7 @@ class V1GateSnapshotError(ValueError):
 
 
 SHA40_RE = re.compile(r"^[0-9a-f]{40}$")
+UTC_TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 
 def _load_object(path: Path) -> dict[str, Any]:
@@ -28,6 +30,16 @@ def _load_object(path: Path) -> dict[str, Any]:
         raise V1GateSnapshotError(f"cannot load gate input: {path}") from exc
     if not isinstance(value, dict):
         raise V1GateSnapshotError(f"gate input must be an object: {path}")
+    return value
+
+
+def _validate_generated_at(value: str) -> str:
+    if not UTC_TIMESTAMP_RE.fullmatch(value):
+        raise V1GateSnapshotError("generated_at must be a second-precision UTC timestamp")
+    try:
+        datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=UTC)
+    except ValueError as exc:
+        raise V1GateSnapshotError("generated_at is not a valid UTC timestamp") from exc
     return value
 
 
@@ -97,8 +109,7 @@ def build_snapshot(root: Path, *, evaluated_revision: str, generated_at: str) ->
     base = root.resolve()
     if not SHA40_RE.fullmatch(evaluated_revision):
         raise V1GateSnapshotError("evaluated_revision must be a lowercase 40-character SHA")
-    if not generated_at.strip():
-        raise V1GateSnapshotError("generated_at must be non-empty")
+    evaluated_at = _validate_generated_at(generated_at.strip())
     gate = _load_object(base / "conductor/v1-gate.json")
     campaign = _load_object(base / "docs/evidence-campaign-status-20260821.json")
     required_tracks = gate.get("required_tracks")
@@ -106,18 +117,34 @@ def build_snapshot(root: Path, *, evaluated_revision: str, generated_at: str) ->
     if not isinstance(required_tracks, list) or not isinstance(required_gate_ids, list):
         raise V1GateSnapshotError("v1 gate requires track and gate arrays")
 
-    track_rows: list[dict[str, Any]] = []
+    track_metadata: dict[str, dict[str, Any]] = {}
     for track_id in required_tracks:
         if not isinstance(track_id, str) or not track_id:
             raise V1GateSnapshotError("required track identifiers must be non-empty strings")
-        metadata = _load_object(base / "conductor/tracks" / track_id / "metadata.json")
+        track_metadata[track_id] = _load_object(
+            base / "conductor/tracks" / track_id / "metadata.json"
+        )
+
+    track_rows: list[dict[str, Any]] = []
+    for track_id, metadata in track_metadata.items():
         blockers = metadata.get("blocking_defects")
         if not isinstance(blockers, list):
             raise V1GateSnapshotError(f"track {track_id} blocking_defects must be an array")
+        evidence = metadata.get("evidence")
+        dependencies = metadata.get("depends_on")
+        if not isinstance(evidence, list) or not isinstance(dependencies, list):
+            raise V1GateSnapshotError(f"track {track_id} evidence and dependencies must be arrays")
+        dependencies_at_required_maturity = all(
+            dependency in track_metadata
+            and track_metadata[dependency].get("current_maturity") == gate.get("required_maturity")
+            for dependency in dependencies
+        )
         qualified = (
             metadata.get("status") in {"complete", "archived"}
             and metadata.get("current_maturity") == gate.get("required_maturity")
             and not blockers
+            and bool(evidence)
+            and dependencies_at_required_maturity
         )
         track_rows.append(
             {
@@ -125,6 +152,8 @@ def build_snapshot(root: Path, *, evaluated_revision: str, generated_at: str) ->
                 "status": metadata.get("status"),
                 "current_maturity": metadata.get("current_maturity"),
                 "blocking_defects": blockers,
+                "linked_evidence_present": bool(evidence),
+                "dependencies_at_required_maturity": dependencies_at_required_maturity,
                 "qualified": qualified,
             }
         )
@@ -168,7 +197,7 @@ def build_snapshot(root: Path, *, evaluated_revision: str, generated_at: str) ->
     body: dict[str, Any] = {
         "schema_version": "1.0.0",
         "record_type": "v1_stable_release_gate_snapshot",
-        "generated_at": generated_at.strip(),
+        "generated_at": evaluated_at,
         "evaluated_revision": evaluated_revision,
         "release": "1.0.0",
         "status": "evidence-ready" if evidence_ready else "blocked",

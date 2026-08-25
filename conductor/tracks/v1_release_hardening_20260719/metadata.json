@@ -49,11 +49,12 @@
     "urn:riopa:evidence:v1-non-v1-feature-disposition:2026-08-25",
     "urn:riopa:evidence:v1-repository-audit-matrix:2026-08-25",
     "urn:riopa:evidence:v1-upgrade-rehearsal-matrix:2026-08-25",
-    "urn:riopa:evidence:v1-defect-disposition:2026-08-25"
-    ,"urn:riopa:evidence:v1-release-candidate-packet:2026-08-25"
-    ,"urn:riopa:evidence:v1-release-conductor-regeneration:2026-08-25"
-    ,"urn:riopa:evidence:v1-release-closeout:2026-08-25"
-    ,"urn:riopa:evidence:v1-agent-operated-journeys:2026-08-25"
+    "urn:riopa:evidence:v1-defect-disposition:2026-08-25",
+    "urn:riopa:evidence:v1-release-candidate-packet:2026-08-25",
+    "urn:riopa:evidence:v1-release-conductor-regeneration:2026-08-25",
+    "urn:riopa:evidence:v1-release-closeout:2026-08-25",
+    "urn:riopa:evidence:v1-agent-operated-journeys:2026-08-25",
+    "urn:riopa:evidence:v1-stable-release-gate-snapshot:2026-08-25"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -98,6 +99,7 @@
     "clean-room-agent-reproduction",
     "agent-user-workflow-validation",
     "operational-and-release-candidate-soak",
+    "rc-candidate-continuity-reset",
     "signed-preserved-stable-release",
     "release-authority-decision"
   ]
