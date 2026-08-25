@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "SUPERMARKET-REFERENCE-COMPARISON-20260825",
+  "record_type": "supermarket-study-comparison",
+  "implementation": "src/riopa_provenance/supermarket.py::compare_declared_study_reference",
+  "test": "tests/test_supermarket_density.py",
+  "status": "descriptor-aligned-not-reproduced",
+  "reference_input": {
+    "record_type": "supermarket-density-reference",
+    "comparison_fields": {
+      "estimand": "count per area",
+      "geography": "synthetic bounded region",
+      "population_denominator": "synthetic population edition",
+      "facility_definition": "public source assertion",
+      "exclusions": ["missing geometry"],
+      "missing_data_policy": "report missing, never zero"
+    }
+  },
+  "declared_study_input": {
+    "record_type": "declared-motivating-study",
+    "study_id": "study-not-supplied",
+    "comparison_fields": {
+      "estimand": "count per area",
+      "geography": "synthetic bounded region",
+      "population_denominator": "synthetic population edition",
+      "facility_definition": "public source assertion",
+      "exclusions": ["missing geometry"],
+      "missing_data_policy": "report missing, never zero"
+    }
+  },
+  "claim_classification": "reference-only",
+  "promotion_allowed": false,
+  "limitations": [
+    "No motivating-study source payload or locator was supplied.",
+    "Field alignment is not reproduction, independent factual participation or health evidence.",
+    "Rights-cleared supermarket archives, external reproduction, health analysis and release authority remain open."
+  ]
+}
