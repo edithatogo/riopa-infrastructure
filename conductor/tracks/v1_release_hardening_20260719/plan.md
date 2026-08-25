@@ -16,11 +16,13 @@
 
 - [x] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
 - [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and factual external operator/user evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
+- [x] 3.2a Add a deterministic exact-candidate continuity evaluator. It identifies three individually valid RC observations across three candidate revisions and therefore records a required reset without combining their duration (`scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py`).
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
 
 ## 4. General availability and handover
 
 - [ ] 4.1 Approve all machine-readable v1 release gates and governance decisions.
+- [x] 4.1a Reconcile current track, stable-gate, campaign, release-evidence and authority state into a non-authorizing machine-readable snapshot. The result is blocked and permits no promotion (`docs/v1-stable-release-gate-snapshot-20260825.json`).
 - [ ] 4.2 Publish stable artifacts, DOI/citations, support, deprecation and maintenance plan.
 - [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.
 
@@ -43,6 +45,7 @@
 - [x] 5.13 Close the quality-frontier parent issue with a dated, fail-closed scope record after subissues #145 and #146 were completed. (`docs/quality-frontier-closeout-20260821.json`)
 - [x] 5.14 Require the two agent-journey packet references to resolve to existing workflows and evidence documents, preventing stale journey claims.
 - [x] 5.15 Refresh the Python 3.14 module and branch-aware coverage inventory after the bounded accessibility, planning, replication and journey slices (`docs/module-coverage-inventory-20260825.json`).
+- [x] 5.16 Harden the stable-gate snapshot review findings: validate revision and UTC timestamp syntax, include evidence and dependency maturity in track qualification, expose continuity failure reasons and verify the content digest. (`7553a18`, `0411449`)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).

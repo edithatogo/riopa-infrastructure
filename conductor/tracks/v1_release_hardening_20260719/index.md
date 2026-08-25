@@ -48,6 +48,7 @@
 | V1-MODULE-COVERAGE-INVENTORY-20260825 | Full Python 3.14 module-by-module branch-aware coverage inventory | `scripts/build_module_coverage_inventory.py`, `docs/module-coverage-inventory-20260825.json`, `tests/test_module_coverage_inventory.py` | Full suite meets the unchanged 90% branch-aware gate; coverage does not close external, operational or release gates |
 | V1-CLOSEOUT-EVIDENCE-20260825 | Bounded implementation, test, panel, migration and release evidence linkage packet | `docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py` | Linkage is complete for the candidate packet; external workflows, elapsed beta/RC, national scale, preservation and accountable authority remain open |
 | V1-AGENT-OPERATED-JOURNEYS-20260825 | Two distinct owner-authorized agent-operated journey rehearsals with explicit non-substitution boundaries | `docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`, `scripts/run_provenance_query_agent_workflow.py`, `scripts/run_template_journey.py` | Local journeys pass for bounded scope; external operator/user participation, clean-room reproduction, elapsed soak, preservation and authority remain open |
+| V1-STABLE-GATE-SNAPSHOT-20260825 | Deterministic reconciliation of stable-v1 tracks, gates, operational campaign, evidence and authority | `scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py` | 0/28 tracks and 0/14 gates qualify; the three RC observations span three candidate revisions and require a fresh exact-candidate soak; promotion remains forbidden |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -56,7 +57,7 @@ remain open (`docs/v1-release-conductor-regeneration-20260825.json`).
 
 ## Blocking defects
 
-- Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision.
+- Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision. The current RC ledger also requires a continuity reset because its three observations bind three different candidate revisions.
 
 ## Campaign gate capability map
 
@@ -98,3 +99,13 @@ This index records a bounded repository-owned readiness baseline while the track
   and its non-substitutable external/elapsed evidence requirement.
 - Follow-up: adopted the single-developer agent-panel policy, recorded the live
   GitHub/Hugging Face assessment, library decision, options and contingencies.
+- Review scope: stable-v1 gate snapshot implementation, committed evidence,
+  Conductor state and generated issue projection through `0411449`.
+- Finding: initial track qualification omitted linked-evidence and dependency
+  maturity checks, and snapshot timestamps were not syntax validated.
+- Fix: aligned the per-track summary with stable-v1 evidence/dependency rules,
+  enforced exact SHA and UTC timestamp syntax, exposed RC continuity failures
+  and added digest recomputation plus committed-artifact reproducibility tests.
+- Result: no unresolved repository-owned review finding remains. The track is
+  intentionally still active/M1 because factual elapsed, external,
+  preservation and accountable-authority gates remain unresolved.
