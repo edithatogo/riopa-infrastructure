@@ -9,6 +9,8 @@ from math import exp, isclose, isfinite
 from time import perf_counter
 from typing import Literal
 
+from .accessibility import AccessibilityMatrix
+
 Model = Literal["set-cover", "maximal-cover", "p-median", "p-center"]
 
 
@@ -80,6 +82,47 @@ class LocationProblem:
             raise ValueError("budget must be non-negative")
         if any(value < 0 for value in self.travel.values()):
             raise ValueError("travel impedance must be non-negative")
+
+
+def apply_bounded_reference_inputs(
+    problem: LocationProblem,
+    matrix: AccessibilityMatrix,
+    *,
+    max_impedance: float | None = None,
+    planning_eligible: Mapping[str, bool] | None = None,
+) -> LocationProblem:
+    """Apply archived accessibility and planning-feasibility inputs.
+
+    Only reachable observations from the supplied reference matrix become
+    travel pairs.  An optional threshold censors observations above the
+    declared bound, and ``planning_eligible`` explicitly removes candidates
+    marked false.  The adapter does not infer roads, timetables, legal status,
+    capacity, accessibility, or operational availability.
+    """
+
+    if max_impedance is not None and (not isfinite(max_impedance) or max_impedance < 0):
+        raise ValueError("max_impedance must be finite and non-negative")
+    eligibility = planning_eligible or {
+        candidate.candidate_id: True for candidate in problem.candidates
+    }
+    if set(eligibility) != {candidate.candidate_id for candidate in problem.candidates}:
+        raise ValueError("planning_eligible must cover exactly the problem candidates")
+    if any(not isinstance(value, bool) for value in eligibility.values()):
+        raise ValueError("planning_eligible values must be boolean")
+    candidates = tuple(
+        candidate for candidate in problem.candidates if eligibility[candidate.candidate_id]
+    )
+    if any(candidate.fixed and candidate not in candidates for candidate in problem.candidates):
+        raise ValueError("planning feasibility cannot remove a fixed candidate")
+    candidate_ids = {candidate.candidate_id for candidate in candidates}
+    demand_ids = {demand.demand_id for demand in problem.demands}
+    travel: dict[tuple[str, str], float] = {}
+    for demand_id in demand_ids:
+        for candidate_id in candidate_ids:
+            impedance = matrix.reachable_impedance(demand_id, candidate_id)
+            if impedance is not None and (max_impedance is None or impedance <= max_impedance):
+                travel[(demand_id, candidate_id)] = impedance
+    return replace(problem, candidates=candidates, travel=travel)
 
 
 @dataclass(frozen=True)
