@@ -1,0 +1,21 @@
+{
+  "evidence_id": "NZ-SOURCE-REGISTRY-RELEASE-CANDIDATE-20260825",
+  "record_type": "source-registry-release-candidate",
+  "implementation": "riopa_provenance.registry.build_registry_release_candidate",
+  "status": "repository-owned candidate",
+  "scope": "declared registry metadata and deterministic coverage projection",
+  "controls": [
+    "source records are unique and sorted by source_id",
+    "endpoint identifiers are preserved without contacting endpoints",
+    "registry and candidate SHA-256 digests are recorded",
+    "promotion_allowed is false"
+  ],
+  "not_claimed": [
+    "national authority completeness",
+    "source health or payload preservation",
+    "rights clearance or publication",
+    "accountable release-authority approval"
+  ],
+  "gate_owner": "single repository owner",
+  "next_gate": "complete current-authority records, preserve source packets, and obtain target-specific release decision"
+}

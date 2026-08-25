@@ -531,3 +531,94 @@ def build_declared_plan_discovery(registry: Mapping[str, Any]) -> dict[str, Any]
             ),
         ],
     }
+
+
+def build_registry_release_candidate(
+    registry: Mapping[str, Any], *, release_id: str, prepared_at: str
+) -> dict[str, Any]:
+    """Build a deterministic, unpublished registry release candidate.
+
+    This packages the currently archived registry metadata and a compact
+    coverage projection.  It deliberately does not contact sources, infer
+    national completeness, or grant publication permission; those remain
+    separate evidence and authority gates.
+    """
+
+    if not isinstance(release_id, str) or not release_id.strip():
+        raise ValueError("release_id must be non-empty")
+    if not isinstance(prepared_at, str) or not prepared_at.strip():
+        raise ValueError("prepared_at must be non-empty")
+    if registry.get("record_type") != "source_registry":
+        raise ValueError("registry must be a source_registry record")
+    sources = registry.get("sources")
+    if not isinstance(sources, list):
+        raise ValueError("registry sources must be an array")
+
+    source_records: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    status_counts: dict[str, int] = {}
+    family_counts: dict[str, int] = {}
+    for source in sources:
+        if not isinstance(source, Mapping):
+            raise ValueError("registry sources must contain objects")
+        source_id = source.get("source_id")
+        if not isinstance(source_id, str) or not source_id.strip():
+            raise ValueError("registry source_id must be non-empty")
+        if source_id in seen_ids:
+            raise ValueError("registry source_id values must be unique")
+        seen_ids.add(source_id)
+        status = source.get("status", "not-observed")
+        family = source.get("source_family", "not-classified")
+        if not isinstance(status, str) or not status.strip():
+            raise ValueError(f"status must be non-empty for {source_id}")
+        if not isinstance(family, str) or not family.strip():
+            raise ValueError(f"source_family must be non-empty for {source_id}")
+        endpoints = source.get("endpoints", [])
+        if not isinstance(endpoints, list):
+            raise ValueError(f"endpoints must be an array for {source_id}")
+        endpoint_ids = []
+        for endpoint in endpoints:
+            if not isinstance(endpoint, Mapping) or not isinstance(
+                endpoint.get("endpoint_id"), str
+            ):
+                raise ValueError(f"endpoint entries require endpoint_id for {source_id}")
+            endpoint_ids.append(endpoint["endpoint_id"])
+        source_records.append(
+            {
+                "source_id": source_id,
+                "status": status,
+                "source_family": family,
+                "jurisdiction": source.get("jurisdiction", "not-observed"),
+                "endpoint_count": len(endpoint_ids),
+                "endpoint_ids": sorted(endpoint_ids),
+            }
+        )
+        status_counts[status] = status_counts.get(status, 0) + 1
+        family_counts[family] = family_counts.get(family, 0) + 1
+
+    source_records.sort(key=lambda item: item["source_id"])
+    body: dict[str, Any] = {
+        "schema_version": "1.0.0",
+        "record_type": "source-registry-release-candidate",
+        "release_id": release_id,
+        "prepared_at": prepared_at,
+        "registry_id": registry.get("registry_id", "not-observed"),
+        "source_count": len(source_records),
+        "coverage": {
+            "status_counts": dict(sorted(status_counts.items())),
+            "source_family_counts": dict(sorted(family_counts.items())),
+            "sources": source_records,
+        },
+        "registry_sha256": sha256_json(dict(registry)),
+        "promotion_allowed": False,
+        "nonclaims": [
+            "This is an unpublished metadata release candidate, not a source archive.",
+            (
+                "Coverage counts describe declared records only and do not establish "
+                "national completeness."
+            ),
+            "Publication, rights, preservation and accountable-authority decisions remain open.",
+        ],
+    }
+    body["candidate_sha256"] = sha256_json(body)
+    return body
