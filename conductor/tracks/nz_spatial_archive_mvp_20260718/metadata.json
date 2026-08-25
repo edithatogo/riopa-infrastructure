@@ -17,7 +17,8 @@
     "urn:riopa:evidence:linz-sharded-pipeline:2026-07-31",
     "urn:riopa:evidence:wp007-real-slice:2026-07-31",
     "urn:riopa:evidence:meshblock-quality-report:2026-08-25",
-    "urn:riopa:evidence:nz-archive-mvp-conductor-regeneration:2026-08-25"
+    "urn:riopa:evidence:nz-archive-mvp-conductor-regeneration:2026-08-25",
+    "urn:riopa:evidence:meshblock-materialization-receipt-validation:2026-08-26"
   ],
   "target_release": "0.5.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

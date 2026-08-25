@@ -1,0 +1,19 @@
+{
+  "non_claims": [
+    "This validates metadata and digest links; it does not restore bulk artifacts.",
+    "The projection is not population, national authority, or operational evidence."
+  ],
+  "open_gates": [
+    "bulk artifact restoration and independent target acceptance",
+    "national authority and completeness evidence",
+    "external reproduction and accountable release decision"
+  ],
+  "projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
+  "projection_record": "evidence/stats-nz-meshblock-2026-projection/projection-records/sha256/64/64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f.json",
+  "promotion_allowed": false,
+  "receipt": "evidence/stats-nz-meshblock-2026-projection/materialization-receipt.json",
+  "receipt_sha256": "ac44bde7402a98f6b18c8f2722a8db3776565fede19e72b3689e71c816f3c14b",
+  "records_manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+  "schema": "riopa.meshblock-materialization-receipt-validation.v1",
+  "status": "receipt-and-projection-links-validated"
+}
