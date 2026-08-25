@@ -1,7 +1,7 @@
 # Evidence index: Council planning spatial-to-rule linkage
 
 - **Track ID:** `planning_rules_linkage_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.6.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
@@ -28,6 +28,7 @@
 | `PLANNING-VERSIONED-METHODS-20260825` | Publish the bounded versioned-link method sequence and non-authority limitations | `docs/planning-versioned-links-methods-20260825.md`, `tests/test_planning_versioned_methods.py` | Documentation candidate is tested; source capture, panel review, legal interpretation, preservation and authority remain open |
 | `PLANNING-LINK-SAMPLE-PANEL-20260825` | Four-lens agent-panel review and bounded error accounting over two structurally different synthetic fixtures | `docs/planning-link-sample-panel-review-20260825.json`, `tests/test_planning_link_sample_panel_review.py` | Synthetic contracts are qualified with unresolved feasibility retained; real council evidence, factual external participation, legal interpretation and authority remain open |
 | `PLANNING-LINKAGE-ERROR-LEDGER-20260825` | Fail-closed quantification of missing link targets, crosswalk sources and feasibility provisions | `src/riopa_provenance/planning.py::build_planning_linkage_error_report`, `docs/planning-linkage-error-ledger-20260825.json`, `tests/test_planning_linkage_error_report.py` | Consistent and mutated synthetic packets are measured deterministically; no repair, legal interpretation, completeness or authority claim is made |
+| `PLANNING-RULES-CLOSEOUT-20260825` | Link implementation, tests, agent-panel, migration and release-candidate evidence for the bounded planning contract | `docs/planning-rules-closeout-evidence-20260825.json`, `tests/test_planning_closeout_evidence.py` | Repository-owned closeout slice is linked and promotion-disabled; real council bytes, legal authority, external participation and release authority remain open |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -36,11 +37,13 @@ gates remain open (`docs/planning-rules-conductor-regeneration-20260825.json`).
 
 ## Blocking defects
 
-- None recorded.
+- Real council document bytes, source-faithful preservation, legal authority,
+  external participation and release-authority evidence remain open.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- The closeout packet records only repository-owned contracts and synthetic
+  fixtures. It does not resolve real council, legal or release gates.
 
 ## Review and handover
 
