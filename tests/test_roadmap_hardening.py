@@ -699,6 +699,23 @@ def test_stable_release_can_be_proven_ready_with_full_qualification_evidence(
     assert "Gates: 14/14" in markdown
 
 
+def test_archiving_a_complete_stable_track_preserves_release_qualification(
+    tmp_path: Path,
+) -> None:
+    root = copy_roadmap(tmp_path)
+    make_stable_ready(root)
+    source = root / "conductor/tracks" / FIRST_TRACK
+    destination = root / "conductor/archive" / FIRST_TRACK
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(source, destination)
+    metadata_path = destination / "metadata.json"
+    metadata = read_json(metadata_path)
+    metadata["status"] = "archived"
+    write_json(metadata_path, metadata)
+
+    assert release_readiness(root, "1.0.0").ready
+
+
 def test_stable_release_requires_content_bound_evidence_references(tmp_path: Path) -> None:
     root = copy_roadmap(tmp_path)
     evidence = make_stable_ready(root)
