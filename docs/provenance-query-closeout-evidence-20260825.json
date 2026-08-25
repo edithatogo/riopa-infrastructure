@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.provenance-query-closeout-evidence.v1",
+  "packet_id": "provenance-query-closeout-evidence-20260825",
+  "track_id": "provenance_query_api_20260719",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded provenance query contract for the regional public-source technical preview",
+  "evidence_categories": {
+    "implementation": ["src/riopa_provenance/lineage.py", "src/riopa_provenance/cli.py", "docs/provenance-query-cli-contract-20260825.json"],
+    "tests": ["tests/test_lineage.py", "tests/test_cli.py", "tests/test_provenance_query_equivalence.py", "tests/test_provenance_query_migration.py"],
+    "review": ["docs/provenance-query-equivalence-contract-20260825.json", "docs/provenance-query-cache-contract-20260825.json"],
+    "migration": ["docs/provenance-query-migration-guidance-20260825.md", "tests/test_provenance_query_migration.py"],
+    "release_candidate": ["docs/provenance-query-rebuild-contract-20260825.json", "docs/provenance-query-benchmark-contract-20260825.json"]
+  },
+  "open_gates": ["MCP and cross-interface equivalence", "remote authorization and access filtering", "release-scale and second-environment measurements", "real-data release reproduction and factual external user testing", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains bounded local contracts and synthetic benchmarks, not a release or production query service.",
+    "Repository tests and agent panels cannot substitute for remote authorization, real-data reproduction, factual external users or release authority.",
+    "This packet does not enable authoritative, operational or national claims."
+  ]
+}
