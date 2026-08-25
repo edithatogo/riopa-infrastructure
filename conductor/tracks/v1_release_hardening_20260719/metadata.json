@@ -4,7 +4,7 @@
   "phase": "Release",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T01:40:00Z",
+  "updated_at": "2026-08-25T07:55:00Z",
   "description": "Freeze, audit, migrate, reproduce, operate and publish the complete programme as a supported stable v1.0 with explicit compatibility, security, service and scientific boundaries.",
   "depends_on": [
     "accessibility_network_engine_20260719",
@@ -51,6 +51,7 @@
     "urn:riopa:evidence:v1-upgrade-rehearsal-matrix:2026-08-25",
     "urn:riopa:evidence:v1-defect-disposition:2026-08-25"
     ,"urn:riopa:evidence:v1-release-candidate-packet:2026-08-25"
+    ,"urn:riopa:evidence:v1-release-conductor-regeneration:2026-08-25"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

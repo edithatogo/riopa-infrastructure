@@ -1,0 +1,11 @@
+{
+  "schema": "riopa.conductor-regeneration-receipt.v1",
+  "receipt_id": "planning-rules-conductor-regeneration-20260825",
+  "track_id": "planning_rules_linkage_20260718",
+  "status": "repository-validation-passed",
+  "source_revision": "origin/main",
+  "commands": ["uv run riopa methods --manifest examples/minimal/snapshot-manifest.json --output <temporary-file>", "uv run riopa roadmap status --root . --release 1.0.0", "uv run riopa roadmap generate-issues --root .", "uv run riopa roadmap validate --root .", "bash scripts/ci_quality.sh"],
+  "methods_sha256": "99ed98b89dd3cd5dfe990a4effd73df9ef3882c6360fbda88c9745bbec8fa58b",
+  "roadmap_release": "1.0.0", "roadmap_ready": false, "issue_graph_regenerated": true, "quality_status": "passed",
+  "non_claims": ["The methods output was temporary and is not a release artifact.", "Planning authority, source, national, operational and release gates remain open."]
+}
