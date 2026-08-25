@@ -45,4 +45,4 @@
 - [x] R2 Bind restored materializations to safe receipt paths, sizes and digests; execute packet-bound PyArrow and DuckDB identity/count/null-geometry checks; and correct the documented query columns (`1abb123`).
 - [x] R3 Verify the receipt/manifest/projection digest chain and add hermetic CI coverage for successful artifact queries, tamper rejection and unsafe receipt paths (`a466a49`).
 - [x] R4 Restore the canonical all-release roadmap status after detecting a mistakenly narrowed regeneration (`f3cf453`).
-- [x] R5 Complete the whole-change repository review after two remediation loops with no remaining High/Critical repository-owned finding; full tests, quality and reproducibility pass (`docs/nz-spatial-archive-review-remediation-20260825.json`).
+- [x] R5 Complete the whole-change repository review after two remediation loops with no remaining High/Critical repository-owned finding; full tests, quality and reproducibility pass (`docs/nz-spatial-archive-review-remediation-20260825.json`; `e53b9b0`).
