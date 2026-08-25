@@ -29,7 +29,7 @@
 - [x] C.1 Link implementation, test, agent-panel, migration and release evidence in `index.md` for the repository-owned bounded slice (`docs/planning-rules-closeout-evidence-20260825.json`, `tests/test_planning_closeout_evidence.py`). Real council, legal-authority, external-participation and release gates remain open.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/planning-rules-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.6.0`, with real council-source capture, legal interpretation, external participation, preservation and accountable-authority gates unresolved.
 
 ## Review fixes
 
