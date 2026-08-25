@@ -183,6 +183,32 @@ def test_stochastic_dispatch_replications_are_seeded_and_report_uncertainty() ->
         )
 
 
+def test_stochastic_dispatch_validation_and_zero_coverage_uncertainty() -> None:
+    with pytest.raises(ValueError, match="at least two"):
+        StochasticDispatchDesign(1, 1, {})
+    with pytest.raises(ValueError, match="probabilities"):
+        StochasticDispatchDesign(1, 2, {"a": 2})
+    with pytest.raises(ValueError, match="weight"):
+        DispatchRequest("r", "d", 0, weight=0)
+    with pytest.raises(ValueError, match="subgroup"):
+        DispatchRequest("r", "d", 0, subgroup=" ")
+
+    result = run_stochastic_dispatch_replications(
+        DispatchScenario(
+            "zero-coverage",
+            (DispatchRequest("r", "d", 0),),
+            ("a",),
+            {("a", "d"): 1},
+            {"a": True},
+            1,
+        ),
+        StochasticDispatchDesign(1, 2, {"a": 0}),
+    )
+    response_uncertainty = result["uncertainty"]["mean_response_time"]
+    assert response_uncertainty["sample_size"] == 0
+    assert response_uncertainty["confidence_interval_95"] is None
+
+
 def test_pre_horizon_posting_policy_changes_bounded_reference_coverage() -> None:
     scenario = DispatchScenario(
         "synthetic-posting",
@@ -211,6 +237,34 @@ def test_pre_horizon_posting_policy_changes_bounded_reference_coverage() -> None
         }
     ]
     assert result["promotion_allowed"] is False
+
+
+def test_posting_policy_validation_fails_closed() -> None:
+    with pytest.raises(ValueError, match="id and postings"):
+        DispatchPostingPolicy(" ", {}, {})
+    with pytest.raises(ValueError, match="destinations"):
+        DispatchPostingPolicy("bad", {"a": "x", "b": "x"}, {"a": 0, "b": 0})
+    with pytest.raises(ValueError, match="finite"):
+        DispatchPostingPolicy("bad", {"a": "x"}, {"a": -1})
+
+    scenario = DispatchScenario(
+        "posting-validation",
+        (DispatchRequest("r", "d", 0),),
+        ("a", "b"),
+        {("a", "d"): 1, ("b", "d"): 1, ("x", "d"): 1},
+        {"a": True, "b": True},
+        1,
+    )
+    with pytest.raises(ValueError, match="unknown origins"):
+        compare_dispatch_posting_policy(
+            scenario, DispatchPostingPolicy("bad", {"missing": "x"}, {"missing": 0})
+        )
+    with pytest.raises(ValueError, match="requires relocation"):
+        compare_dispatch_posting_policy(scenario, DispatchPostingPolicy("bad", {"a": "x"}, {}))
+    with pytest.raises(ValueError, match="remain unique"):
+        compare_dispatch_posting_policy(
+            scenario, DispatchPostingPolicy("bad", {"a": "b"}, {"a": 0})
+        )
 
 
 def test_static_and_simulated_stress_comparison_preserves_queue_delta() -> None:
