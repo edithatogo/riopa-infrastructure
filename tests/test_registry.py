@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from riopa_provenance.registry import (
+    build_declared_plan_discovery,
     import_district_plans_csv,
     load_registry,
     validate_registry,
@@ -78,7 +79,6 @@ def test_district_plan_import_rejects_missing_authority_and_bad_url(tmp_path: Pa
             generated_at="2026-07-20T00:00:00Z",
             catalogue_url="https://catalogue.example/plans.csv",
         )
-
     bad = tmp_path / "bad.csv"
     bad.write_text("Council,Plan URL\nExample,not-a-url\n", encoding="utf-8")
     with pytest.raises(ValueError, match="invalid plan URL"):
@@ -86,6 +86,54 @@ def test_district_plan_import_rejects_missing_authority_and_bad_url(tmp_path: Pa
             bad,
             generated_at="2026-07-20T00:00:00Z",
             catalogue_url="https://catalogue.example/plans.csv",
+        )
+
+
+def test_declared_plan_discovery_is_non_contacting_and_fail_closed() -> None:
+    registry = {
+        "record_type": "source_registry",
+        "sources": [
+            {
+                "source_id": "source:council",
+                "rights": {"redistribution_status": "review-required"},
+                "endpoints": [
+                    {
+                        "endpoint_id": "source:council:plan",
+                        "url": "https://example.govt.nz/plan.pdf",
+                        "capabilities": ["planning-document"],
+                    },
+                    {
+                        "endpoint_id": "source:council:gis",
+                        "url": "https://example.govt.nz/map",
+                        "capabilities": ["spatial-discovery"],
+                    },
+                ],
+            }
+        ],
+    }
+    report = build_declared_plan_discovery(registry)
+    assert report["record_count"] == 1
+    row = report["records"][0]
+    assert row["discovery_status"] == "declared-only"
+    assert row["document_bytes"] == "not-observed"
+    assert row["provision_structure"] == "not-observed"
+    assert row["legal_status"] == "not-observed"
+    assert row["terms_status"] == "review-required"
+    assert report["promotion_allowed"] is False
+
+
+def test_declared_plan_discovery_rejects_malformed_capabilities() -> None:
+    with pytest.raises(ValueError, match="capabilities"):
+        build_declared_plan_discovery(
+            {
+                "record_type": "source_registry",
+                "sources": [
+                    {
+                        "source_id": "source",
+                        "endpoints": [{"endpoint_id": "endpoint", "capabilities": [1]}],
+                    }
+                ],
+            }
         )
 
 

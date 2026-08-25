@@ -457,3 +457,77 @@ def import_district_plans_csv(
         "catalogue_url": catalogue_url,
         "sources": sources,
     }
+
+
+def build_declared_plan_discovery(registry: Mapping[str, Any]) -> dict[str, Any]:
+    """Project declared planning-document endpoints without contacting them.
+
+    The result is a discovery queue, not extracted plan content.  Provision
+    structure, legal status, source health and rights remain explicitly
+    ``not-observed`` until an authorised archival capture supplies evidence.
+    """
+
+    if registry.get("record_type") != "source_registry":
+        raise ValueError("registry must be a source_registry record")
+    sources = registry.get("sources")
+    if not isinstance(sources, list):
+        raise ValueError("registry sources must be an array")
+    records: list[dict[str, Any]] = []
+    for source in sources:
+        if not isinstance(source, Mapping):
+            raise ValueError("registry sources must contain objects")
+        source_id = source.get("source_id")
+        if not isinstance(source_id, str) or not source_id.strip():
+            raise ValueError("registry source_id must be non-empty")
+        endpoints = source.get("endpoints", [])
+        if not isinstance(endpoints, list):
+            raise ValueError(f"endpoints must be an array for {source_id}")
+        rights = source.get("rights", {})
+        if not isinstance(rights, Mapping):
+            raise ValueError(f"rights must be an object for {source_id}")
+        for endpoint in endpoints:
+            if not isinstance(endpoint, Mapping):
+                raise ValueError(f"endpoint entries must be objects for {source_id}")
+            capabilities = endpoint.get("capabilities", [])
+            if not isinstance(capabilities, list) or any(
+                not isinstance(item, str) or not item.strip() for item in capabilities
+            ):
+                raise ValueError(f"endpoint capabilities must be non-empty strings for {source_id}")
+            if "planning-document" not in capabilities:
+                continue
+            endpoint_id = endpoint.get("endpoint_id")
+            locator = endpoint.get("url")
+            if not isinstance(endpoint_id, str) or not endpoint_id.strip():
+                raise ValueError(f"planning endpoint_id must be non-empty for {source_id}")
+            if not isinstance(locator, str) or not locator.strip():
+                raise ValueError(f"planning endpoint URL must be non-empty for {source_id}")
+            records.append(
+                {
+                    "source_id": source_id,
+                    "endpoint_id": endpoint_id,
+                    "locator": locator,
+                    "discovery_status": "declared-only",
+                    "document_bytes": "not-observed",
+                    "provision_structure": "not-observed",
+                    "legal_status": "not-observed",
+                    "source_health": "not-observed",
+                    "terms_status": rights.get("redistribution_status", "not-observed"),
+                    "promotion_allowed": False,
+                }
+            )
+    records.sort(key=lambda item: (str(item["source_id"]), str(item["endpoint_id"])))
+    return {
+        "record_type": "declared-plan-discovery",
+        "record_count": len(records),
+        "records": records,
+        "status": "declared-only",
+        "promotion_allowed": False,
+        "non_claims": [
+            "The queue does not contact endpoints or contain plan/document bytes.",
+            "Not-observed legal status and provision structure are not negative evidence.",
+            (
+                "The queue does not establish authority, completeness, rights or "
+                "publication permission."
+            ),
+        ],
+    }
