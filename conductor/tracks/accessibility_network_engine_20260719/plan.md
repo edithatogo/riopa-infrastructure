@@ -15,7 +15,7 @@
 ## 3. Benchmark and scale
 
 - [ ] 3.1 Build public reference instances and cross-engine comparisons from named archived network, timetable, demand and facility snapshots.
-- [ ] 3.2 Implement partitioning, caching and incremental recomputation.
+- [~] 3.2 Implement deterministic origin partitioning, fingerprint-aware caching and changed-row incremental recomputation for the dependency-free reference matrix. Real network, timetable, national-scale and operational qualification remain open (`src/riopa_provenance/accessibility.py`, `docs/accessibility-partition-cache-contract-20260825.json`, `tests/test_accessibility.py`).
 - [ ] 3.3 Benchmark national-scale performance, storage and cost.
 - [x] 3.4 Preserve the complete Stats NZ Meshblock 2026 supporting geography as an immutable input candidate while keeping demand, destination, network and performance claims open.
 
@@ -27,7 +27,7 @@
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [x] C.1 Link implementation, test, review, migration and bounded partition/cache evidence in `index.md` (`docs/accessibility-partition-cache-contract-20260825.json`, `tests/test_accessibility.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/accessibility-network-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

@@ -6,11 +6,15 @@ import pytest
 
 from riopa_provenance.accessibility import (
     AccessibilityMatrix,
+    AccessibilityResultCache,
     OpeningInterval,
     TravelObservation,
     TravelStatus,
+    changed_origins,
     cumulative_opportunity,
     gravity_accessibility,
+    incremental_cumulative_opportunity,
+    partition_matrix,
     public_facility_opportunities,
     reachable_capacity_at_departure,
     straight_line_matrix,
@@ -46,6 +50,67 @@ def test_hand_calculated_accessibility_benchmark() -> None:
     assert two_step_floating_catchment(
         matrix, {"a": 100, "b": 50}, {"x": 30, "y": 40}, threshold=10
     ) == {"a": 0.2, "b": 0.2}
+
+
+def test_partitioning_is_deterministic_and_preserves_rows() -> None:
+    partitions = partition_matrix(_matrix(), origins_per_partition=1)
+    assert [partition.partition_id for partition in partitions] == [
+        "benchmark-1:partition:0000",
+        "benchmark-1:partition:0001",
+    ]
+    assert [partition.origins for partition in partitions] == [("a",), ("b",)]
+    assert sum(len(partition.observations) for partition in partitions) == 4
+    with pytest.raises(ValueError, match="positive"):
+        partition_matrix(_matrix(), origins_per_partition=0)
+
+
+def test_cache_is_fingerprint_aware_and_incremental_recompute_changes_one_origin() -> None:
+    matrix = _matrix()
+    cache = AccessibilityResultCache()
+    calls = 0
+
+    def compute() -> float:
+        nonlocal calls
+        calls += 1
+        return cumulative_opportunity(matrix, "a", {"x": 10}, threshold=10)
+
+    assert (
+        cache.get_or_compute(
+            matrix,
+            origin="a",
+            measure="cumulative",
+            parameters={"threshold": 10},
+            compute=compute,
+        )
+        == 10
+    )
+    assert (
+        cache.get_or_compute(
+            matrix,
+            origin="a",
+            measure="cumulative",
+            parameters={"threshold": 10},
+            compute=compute,
+        )
+        == 10
+    )
+    assert calls == 1
+    changed = AccessibilityMatrix(
+        matrix.matrix_id,
+        matrix.network_version,
+        matrix.engine,
+        matrix.engine_version,
+        matrix.mode,
+        {**matrix.observations, ("b", "x"): TravelObservation(TravelStatus.REACHABLE, 2)},
+    )
+    assert changed_origins(matrix, changed) == ("b",)
+    assert incremental_cumulative_opportunity(
+        matrix,
+        changed,
+        {"a": 10, "b": 0},
+        {"x": 10, "y": 20},
+        threshold=10,
+    ) == {"a": 10, "b": 10}
 
 
 def test_straight_line_matrix_is_deterministic_and_bounded() -> None:

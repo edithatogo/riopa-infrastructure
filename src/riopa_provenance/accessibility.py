@@ -6,11 +6,13 @@ preferences belong in :mod:`riopa_provenance.facility_location`.
 
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 from enum import StrEnum
 from math import asin, cos, exp, isfinite, radians, sin, sqrt
-from typing import Any
+from typing import Any, TypeVar
+
+from .hashing import sha256_json
 
 
 class TravelStatus(StrEnum):
@@ -117,6 +119,142 @@ class AccessibilityMatrix:
         if observation is None or observation.status is not TravelStatus.REACHABLE:
             return None
         return observation.impedance
+
+
+@dataclass(frozen=True)
+class AccessibilityPartition:
+    """Deterministic subset of a matrix, keyed by sorted origin identifiers."""
+
+    partition_id: str
+    matrix_id: str
+    origins: tuple[str, ...]
+    observations: Mapping[tuple[str, str], TravelObservation]
+
+
+def partition_matrix(
+    matrix: AccessibilityMatrix, *, origins_per_partition: int
+) -> tuple[AccessibilityPartition, ...]:
+    """Partition observations by sorted origins without changing missing semantics."""
+    if origins_per_partition < 1:
+        raise ValueError("origins_per_partition must be positive")
+    origins = sorted({origin for origin, _ in matrix.observations})
+    partitions: list[AccessibilityPartition] = []
+    for index in range(0, len(origins), origins_per_partition):
+        selected = tuple(origins[index : index + origins_per_partition])
+        selected_set = set(selected)
+        observations = {
+            pair: observation
+            for pair, observation in matrix.observations.items()
+            if pair[0] in selected_set
+        }
+        partitions.append(
+            AccessibilityPartition(
+                partition_id=f"{matrix.matrix_id}:partition:{index // origins_per_partition:04d}",
+                matrix_id=matrix.matrix_id,
+                origins=selected,
+                observations=observations,
+            )
+        )
+    return tuple(partitions)
+
+
+def changed_origins(previous: AccessibilityMatrix, current: AccessibilityMatrix) -> tuple[str, ...]:
+    """Return changed origin rows; incompatible matrix metadata invalidates all rows."""
+    all_origins = sorted(
+        {origin for origin, _ in previous.observations}
+        | {origin for origin, _ in current.observations}
+    )
+    if (
+        previous.matrix_id != current.matrix_id
+        or previous.network_version != current.network_version
+        or previous.engine != current.engine
+        or previous.engine_version != current.engine_version
+        or previous.mode != current.mode
+    ):
+        return tuple(all_origins)
+    return tuple(
+        origin
+        for origin in all_origins
+        if {
+            pair: observation
+            for pair, observation in previous.observations.items()
+            if pair[0] == origin
+        }
+        != {
+            pair: observation
+            for pair, observation in current.observations.items()
+            if pair[0] == origin
+        }
+    )
+
+
+_Result = TypeVar("_Result")
+
+
+class AccessibilityResultCache:
+    """Small deterministic cache keyed by matrix fingerprint and calculation inputs."""
+
+    def __init__(self) -> None:
+        self._values: dict[str, object] = {}
+
+    def get_or_compute(
+        self,
+        matrix: AccessibilityMatrix,
+        *,
+        origin: str,
+        measure: str,
+        parameters: Mapping[str, float],
+        compute: Callable[[], _Result],
+    ) -> _Result:
+        key = sha256_json(
+            {
+                "matrix": {
+                    "matrix_id": matrix.matrix_id,
+                    "network_version": matrix.network_version,
+                    "engine": matrix.engine,
+                    "engine_version": matrix.engine_version,
+                    "mode": matrix.mode,
+                    "observations": [
+                        {
+                            "origin": pair[0],
+                            "destination": pair[1],
+                            "status": observation.status.value,
+                            "impedance": observation.impedance,
+                        }
+                        for pair, observation in sorted(matrix.observations.items())
+                    ],
+                },
+                "origin": origin,
+                "measure": measure,
+                "parameters": dict(parameters),
+            }
+        )
+        if key not in self._values:
+            self._values[key] = compute()
+        return self._values[key]  # type: ignore[return-value]
+
+    def clear(self) -> None:
+        """Drop cached values after an explicit caller-controlled invalidation."""
+        self._values.clear()
+
+
+def incremental_cumulative_opportunity(
+    previous: AccessibilityMatrix | None,
+    current: AccessibilityMatrix,
+    previous_results: Mapping[str, float],
+    opportunities: Mapping[str, float],
+    *,
+    threshold: float,
+) -> dict[str, float]:
+    """Recompute cumulative opportunity only for changed origins."""
+    if threshold < 0:
+        raise ValueError("threshold must be non-negative")
+    all_origins = {origin for origin, _ in current.observations}
+    changed = all_origins if previous is None else set(changed_origins(previous, current))
+    result = {origin: value for origin, value in previous_results.items() if origin not in changed}
+    for origin in sorted(changed):
+        result[origin] = cumulative_opportunity(current, origin, opportunities, threshold=threshold)
+    return result
 
 
 def straight_line_matrix(

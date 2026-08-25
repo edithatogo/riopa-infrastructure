@@ -1,0 +1,16 @@
+{
+  "schema": "riopa.accessibility-partition-cache-contract.v1",
+  "evidence_id": "accessibility-partition-cache-contract-20260825",
+  "track_id": "accessibility_network_engine_20260719",
+  "implementation": "src/riopa_provenance/accessibility.py",
+  "tests": "tests/test_accessibility.py",
+  "scope": "dependency-free reference matrix observations",
+  "partitioning": "sorted origin rows with deterministic partition identifiers",
+  "cache": "content-addressed matrix metadata and observation fingerprint",
+  "incremental_recompute": "changed origin rows only",
+  "promotion_allowed": false,
+  "non_claims": [
+    "This contract does not provide road, timetable, facility, national-scale or operational evidence.",
+    "Timing and capacity claims require named archived inputs and separate qualification."
+  ]
+}
