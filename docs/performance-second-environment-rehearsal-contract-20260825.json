@@ -1,0 +1,18 @@
+{
+  "evidence_id": "PERFORMANCE-SECOND-ENVIRONMENT-20260825",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "lane": "performance-rehearsal",
+  "environments": ["ubuntu-latest", "macos-latest"],
+  "trigger": "workflow_dispatch",
+  "controls": [
+    "Python 3.14 and locked uv environment",
+    "exact checkout revision",
+    "hosted receipt schema validation",
+    "90-day artifact retention"
+  ],
+  "nonclaims": [
+    "The rehearsal is not a national-scale measurement.",
+    "The rehearsal is not a production SLO or release approval."
+  ],
+  "promotion_allowed": false
+}
