@@ -92,7 +92,7 @@
   },
   "campaign": {
     "beta": {
-      "campaign_id": "operational-beta-20260802",
+      "campaign_id": "operational-beta-20260825-26bc0b4",
       "required_days": 90,
       "required_operational_cycles": 3,
       "status": "pending-duration-and-cycles"
@@ -120,7 +120,7 @@
     }
   },
   "evaluated_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
-  "generated_at": "2026-08-25T14:01:49Z",
+  "generated_at": "2026-08-25T14:04:40Z",
   "nonclaims": [
     "This snapshot evaluates declared repository evidence and does not grant release authority.",
     "Hosted observations do not substitute for elapsed duration, external reproduction or preservation acceptance.",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "1a4103baa7c20f7106faa06f5b14ba813375beff659d5e1b68db354e6b0d26df",
+  "snapshot_sha256": "f5c32f85a0a0400dc9f7a4a1ef3654917f6e9e2d533952ed39cfddf366a9aaf4",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,

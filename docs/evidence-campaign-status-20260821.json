@@ -71,11 +71,12 @@
     {"lane": "rc-soak-observation", "run_id": "32743048406", "status": "passed", "revision": "bc571ca3ed1791a573c1722492b9c15419c80667", "candidate_revision": "bc571ca3ed1791a573c1722492b9c15419c80667", "campaign_id": "operational-rc-20260825", "qualification_epoch": "rc-epoch-20260825", "operational_cycle_id": "2026-W35"},
     {"lane": "agent-clean-room", "run_id": "32856533103", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "v1-candidate-validation-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
     {"lane": "agent-user-workflows", "run_id": "32856537212", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "v1-candidate-validation-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
-    {"lane": "rc-soak-observation", "run_id": "32856370956", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-rc-20260825-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"}
+    {"lane": "rc-soak-observation", "run_id": "32856370956", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-rc-20260825-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
+    {"lane": "operational-observation", "run_id": "32857084789", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"}
   ],
   "elapsed_gate": {
-    "campaign_id": "operational-beta-20260802",
-    "qualification_epoch": "beta-epoch-20260802",
+    "campaign_id": "operational-beta-20260825-26bc0b4",
+    "qualification_epoch": "beta-epoch-20260825-26bc0b4",
     "required_days": 90,
     "required_operational_cycles": 3,
     "status": "pending-duration-and-cycles",

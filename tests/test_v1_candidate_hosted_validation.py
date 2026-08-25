@@ -10,6 +10,18 @@ def test_candidate_hosted_validation_is_exact_and_fail_closed() -> None:
         (ROOT / "docs/v1-candidate-hosted-validation-20260825.json").read_text(encoding="utf-8")
     )
     assert record["candidate_revision"] == CANDIDATE
+    beta = record["beta_campaign"]
+    assert beta["status"] == "passed"
+    assert beta["receipt_schema_validated"] is True
+    assert beta["source_revisions"] == [CANDIDATE]
+    assert beta["observation_count"] == 1
+    assert beta["operational_cycles"] == 1
+    assert beta["duration_status"] == "pending-duration"
+    assert beta["operational_cycles_status"] == "pending-cycles"
+    assert beta["elapsed_seconds"] < beta["required_elapsed_days"] * 86_400
+    assert beta["operational_cycles"] < beta["required_operational_cycles"]
+    assert len(beta["chain_head_sha256"]) == 64
+    assert len(beta["receipt_sha256"]) == 64
     rc = record["rc_campaign"]
     assert rc["status"] == "passed"
     assert rc["candidate_checkout_verified"] is True
@@ -28,6 +40,11 @@ def test_candidate_hosted_validation_is_exact_and_fail_closed() -> None:
         item["status"] == "passed" and item["source_revision"] == CANDIDATE
         for item in record["candidate_workflows"]
     )
+    scheduled = record["scheduled_automation"]
+    assert scheduled["candidate_revision"] == CANDIDATE
+    assert scheduled["campaign_id"] == record["beta_campaign"]["campaign_id"]
+    assert scheduled["qualification_epoch"] == record["beta_campaign"]["qualification_epoch"]
+    assert scheduled["status"] == "configured-not-yet-observed-after-change"
     assert record["blockers"]
     assert any("not independent external" in item for item in record["non_claims"])
 
@@ -38,6 +55,19 @@ def test_campaign_status_points_to_the_fresh_candidate_segment() -> None:
     )
     assert status["source_revision"] == CANDIDATE
     gate = status["rc_gate"]
+    elapsed_gate = status["elapsed_gate"]
+    assert elapsed_gate["campaign_id"] == "operational-beta-20260825-26bc0b4"
+    assert elapsed_gate["qualification_epoch"] == "beta-epoch-20260825-26bc0b4"
+    assert elapsed_gate["required_days"] == 90
+    assert elapsed_gate["required_operational_cycles"] == 3
+    beta = [
+        item
+        for item in status["observations"]
+        if item.get("campaign_id") == elapsed_gate["campaign_id"]
+    ]
+    assert len(beta) == 1
+    assert beta[0]["run_id"] == "32857084789"
+    assert beta[0]["revision"] == CANDIDATE
     assert gate["campaign_id"] == "operational-rc-20260825-26bc0b4"
     assert gate["qualification_epoch"] == "rc-epoch-20260825-26bc0b4"
     assert gate["candidate_revision"] == CANDIDATE

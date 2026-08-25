@@ -34,6 +34,15 @@ def test_operational_observation_schedule_is_daily_and_read_only() -> None:
     assert workflow["permissions"] == {"actions": "read", "contents": "read"}
     steps = workflow["jobs"]["observe"]["steps"]
     assert any(step.get("name") == "Build cumulative fail-closed campaign ledger" for step in steps)
+    inputs = triggers["workflow_dispatch"]["inputs"]
+    candidate = "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
+    assert inputs["campaign_id"]["default"] == "operational-beta-20260825-26bc0b4"
+    assert inputs["candidate_revision"]["default"] == candidate
+    assert inputs["qualification_epoch"]["default"] == "beta-epoch-20260825-26bc0b4"
+    environment = workflow["jobs"]["observe"]["env"]
+    assert candidate in environment["EVIDENCE_CANDIDATE_REVISION"]
+    assert "operational-beta-20260825-26bc0b4" in environment["EVIDENCE_CAMPAIGN_ID"]
+    assert "beta-epoch-20260825-26bc0b4" in environment["EVIDENCE_QUALIFICATION_EPOCH"]
 
 
 def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
