@@ -21,7 +21,7 @@
 
 ## 4. Stable accessibility interface
 
-- [ ] 4.1 Integrate only with content-addressed real NZ archive, network/timetable and facility-registry versions.
+- [~] 4.1 Guard integration behind content-addressed network, timetable, facility and demand archive metadata (`src/riopa_provenance/accessibility.py::validate_content_addressed_archive_bundle`, `docs/accessibility-archive-bundle-readiness-20260825.json`, `tests/test_accessibility.py`). Actual payload integration, rights/authority and operational qualification remain open.
 - [~] 4.2 Conduct repository-owned four-lens agent-panel qualification of reference semantics and limitations (`docs/accessibility-agent-panel-qualification-20260825.json`, `tests/test_accessibility_agent_panel_qualification.py`). Real network/timetable qualification, external workflow evidence and operational approval remain open.
 - [~] 4.3 Freeze the bounded, reference-only v1 accessibility contract and examples (`docs/accessibility-v1-contract-freeze-20260825.json`, `tests/test_accessibility_v1_contract_freeze.py`). Real archived inputs, independent real-engine qualification, national scale, external workflows, elapsed evidence and accountable authority remain open.
 
