@@ -4,6 +4,7 @@ from riopa_provenance.planning import (
     PlanningLink,
     PlanVersion,
     ProvisionIdentity,
+    build_feature_provision_linkage,
     build_plan_source_intake,
     build_provision_extraction_record,
 )
@@ -89,6 +90,50 @@ def test_provision_extraction_requires_hashes_and_ai_tool_identity() -> None:
             method="ai-assisted",
             extracted_fields={"citation": "Rule 1"},
             uncertainty="unreviewed",
+        )
+
+
+def test_feature_provision_linkage_is_sorted_digest_bound_and_non_authoritative() -> None:
+    linkage = build_feature_provision_linkage(
+        [
+            {
+                "feature_id": "zone:b",
+                "feature_kind": "zone",
+                "feature_source_ref": "archive:plan#zone-b",
+                "provision_version_id": "plan:wcc:2024",
+                "evidence": ["archive:plan#rule-2", "archive:plan#rule-2"],
+                "confidence": "medium",
+            },
+            {
+                "feature_id": "overlay:a",
+                "feature_kind": "overlay",
+                "feature_source_ref": "archive:plan#overlay-a",
+                "provision_version_id": "plan:wcc:2024",
+                "evidence": ["archive:plan#rule-1"],
+                "confidence": "unknown",
+            },
+        ],
+        linkage_id="linkage-1",
+        captured_at="2026-08-25T00:00:00Z",
+    )
+    assert [row["feature_id"] for row in linkage["records"]] == ["overlay:a", "zone:b"]
+    assert linkage["records"][1]["evidence"] == ["archive:plan#rule-2"]
+    assert len(linkage["records_sha256"]) == 64
+    assert linkage["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="feature_kind"):
+        build_feature_provision_linkage(
+            [
+                {
+                    "feature_id": "bad",
+                    "feature_kind": "parcel",
+                    "feature_source_ref": "archive:bad",
+                    "provision_version_id": "plan:wcc:2024",
+                    "evidence": ["archive:bad"],
+                    "confidence": "low",
+                }
+            ],
+            linkage_id="linkage-1",
+            captured_at="now",
         )
 
 

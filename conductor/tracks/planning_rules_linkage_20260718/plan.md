@@ -9,7 +9,7 @@
 ## 2. Extraction and linkage
 
 - [~] 2.1 Implement structured/manual/AI-assisted provision extraction records with text/input hashes, uncertainty and tool identity. Records remain unreviewed and promotion-disabled; real source extraction, legal interpretation and panel qualification remain open (`src/riopa_provenance/planning.py:build_provision_extraction_record`, `docs/planning-provision-extraction-contract-20260825.json`, `tests/test_planning.py`).
-- [ ] 2.2 Link zone, overlay, precinct and designation features to provision versions.
+- [~] 2.2 Record digest-bound links from zone, overlay, precinct and designation feature references to provision versions without legal interpretation (`src/riopa_provenance/planning.py:build_feature_provision_linkage`, `docs/planning-feature-provision-linkage-contract-20260825.json`, `tests/test_planning.py`). Real council payloads, authority and linkage review remain open.
 - [ ] 2.3 Represent hierarchy, exceptions, combined rules and unresolved states.
 
 ## 3. Crosswalk and feasibility

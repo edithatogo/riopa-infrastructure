@@ -13,6 +13,7 @@ from .hashing import sha256_json
 LegalStatus = Literal["draft", "proposed", "operative", "superseded", "unknown"]
 LinkRelation = Literal["contains", "implements", "amends", "replaces", "crosswalk"]
 Confidence = Literal["unknown", "low", "medium", "high", "disputed"]
+PlanningFeatureKind = Literal["zone", "overlay", "precinct", "designation"]
 
 
 @dataclass(frozen=True)
@@ -201,5 +202,86 @@ def build_provision_extraction_record(
                 "interpretation."
             ),
             "Unreviewed extraction does not establish operative status, authority or completeness.",
+        ],
+    }
+
+
+def build_feature_provision_linkage(
+    features: Sequence[Mapping[str, Any]],
+    *,
+    linkage_id: str,
+    captured_at: str,
+) -> dict[str, Any]:
+    """Build a bounded feature-to-provision linkage packet.
+
+    The packet records declared feature and provision references only. It does
+    not fetch, interpret or assert the legal effect of a plan.
+    """
+    if not linkage_id.strip() or not captured_at.strip():
+        raise ValueError("linkage_id and captured_at must be non-empty")
+    if not features:
+        raise ValueError("features must be non-empty")
+    allowed_kinds = {"zone", "overlay", "precinct", "designation"}
+    required = (
+        "feature_id",
+        "feature_kind",
+        "feature_source_ref",
+        "provision_version_id",
+        "evidence",
+        "confidence",
+    )
+    normalized: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for feature in features:
+        if not isinstance(feature, Mapping):
+            raise ValueError("feature linkage records must be objects")
+        missing = [field for field in required if field not in feature]
+        if missing:
+            raise ValueError(f"feature linkage record missing fields: {', '.join(missing)}")
+        feature_id = feature["feature_id"]
+        if not isinstance(feature_id, str) or not feature_id.strip() or feature_id in seen:
+            raise ValueError("feature_id values must be unique non-empty strings")
+        feature_kind = feature["feature_kind"]
+        if feature_kind not in allowed_kinds:
+            raise ValueError("feature_kind must be zone, overlay, precinct or designation")
+        source_ref = feature["feature_source_ref"]
+        provision_version_id = feature["provision_version_id"]
+        if not isinstance(source_ref, str) or not source_ref.strip():
+            raise ValueError("feature_source_ref must be a non-empty string")
+        if not isinstance(provision_version_id, str) or not provision_version_id.strip():
+            raise ValueError("provision_version_id must be a non-empty string")
+        evidence = feature["evidence"]
+        if not isinstance(evidence, Sequence) or isinstance(evidence, (str, bytes)) or not evidence:
+            raise ValueError("feature linkage evidence must be a non-empty sequence")
+        if any(not isinstance(item, str) or not item.strip() for item in evidence):
+            raise ValueError("feature linkage evidence entries must be non-empty strings")
+        confidence = feature["confidence"]
+        if confidence not in {"unknown", "low", "medium", "high", "disputed"}:
+            raise ValueError("feature linkage confidence is invalid")
+        seen.add(feature_id)
+        normalized.append(
+            {
+                "feature_id": feature_id,
+                "feature_kind": feature_kind,
+                "feature_source_ref": source_ref,
+                "provision_version_id": provision_version_id,
+                "evidence": sorted(set(evidence)),
+                "confidence": confidence,
+                "review_status": "unreviewed",
+                "resolution": "declared-reference-only",
+            }
+        )
+    normalized.sort(key=lambda item: str(item["feature_id"]))
+    return {
+        "record_type": "planning-feature-provision-linkage",
+        "linkage_id": linkage_id,
+        "captured_at": captured_at,
+        "records": normalized,
+        "records_sha256": sha256_json(normalized),
+        "status": "bounded-unreviewed",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Feature references do not establish zoning, legal or operative status.",
+            "Unreviewed links do not establish completeness, authority or enforceability.",
         ],
     }
