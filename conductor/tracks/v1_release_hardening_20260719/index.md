@@ -99,3 +99,13 @@ This index records a bounded repository-owned readiness baseline while the track
   and its non-substitutable external/elapsed evidence requirement.
 - Follow-up: adopted the single-developer agent-panel policy, recorded the live
   GitHub/Hugging Face assessment, library decision, options and contingencies.
+- Review scope: stable-v1 gate snapshot implementation, committed evidence,
+  Conductor state and generated issue projection through `0411449`.
+- Finding: initial track qualification omitted linked-evidence and dependency
+  maturity checks, and snapshot timestamps were not syntax validated.
+- Fix: aligned the per-track summary with stable-v1 evidence/dependency rules,
+  enforced exact SHA and UTC timestamp syntax, exposed RC continuity failures
+  and added digest recomputation plus committed-artifact reproducibility tests.
+- Result: no unresolved repository-owned review finding remains. The track is
+  intentionally still active/M1 because factual elapsed, external,
+  preservation and accountable-authority gates remain unresolved.
