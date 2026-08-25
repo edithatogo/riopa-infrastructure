@@ -1,0 +1,10 @@
+{
+  "schema": "riopa.accessibility-reference-matrix-comparison.v1",
+  "packet_id": "accessibility-reference-comparison-contract-20260825",
+  "status": "bounded-contract-only",
+  "scope": "regional public-datasets-only non-operational technical preview",
+  "outputs": ["pair rows", "status mismatches", "comparable pair count", "maximum absolute impedance delta", "engine metadata"],
+  "controls": ["sorted pair rows", "missing/unreachable states retained", "claim_classification=reference-only", "promotion_allowed=false"],
+  "open_gates": ["named archived network/timetable/demand/facility inputs", "independent real engines", "national-scale measurement", "operational qualification"],
+  "non_claims": ["A comparison does not select an authoritative engine or establish accuracy.", "Reference differences do not establish operational or national accessibility validity."]
+}

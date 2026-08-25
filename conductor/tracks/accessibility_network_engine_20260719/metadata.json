@@ -15,7 +15,8 @@
     "urn:riopa:evidence:accessibility-reference-measures:2026-08-25",
     "urn:riopa:evidence:accessibility-conductor-regeneration:2026-08-25",
     "urn:riopa:evidence:accessibility-partition-cache:2026-08-25",
-    "urn:riopa:evidence:accessibility-agent-panel:2026-08-25"
+    "urn:riopa:evidence:accessibility-agent-panel:2026-08-25",
+    "urn:riopa:evidence:accessibility-reference-comparison:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
