@@ -24,6 +24,11 @@
 | `PLANNING-RECONSTRUCTION-SYNTHETIC-20260825` | One authority reorganisation and one plan replacement are represented as validated reconstruction cases | `fixtures/planning-transition-reconstruction.json`, `tests/test_planning_transition_reconstruction.py` | Synthetic reference cases validate; real historical evidence, legal authority and panel qualification remain open |
 | `PLANNING-TRANSITION-PANEL-20260825` | Four-lens planning-transition contract qualification | `docs/planning-transition-panel-qualification-20260825.json`, `tests/test_planning_transition_panel_qualification.py` | Repository-owned bounded contract qualified; real-source, preservation, reproduction and authority gates remain open |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; transition authority, operational, external and elapsed-
+time gates remain open (`docs/planning-transition-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - Real authority reorganisation and plan replacement reconstructions remain

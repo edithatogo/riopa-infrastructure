@@ -47,6 +47,11 @@
 | V1-RC-PACKET-20260825 | Exact protected-main release-candidate packet and protected signing sequence | `docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py` | Candidate packet is preparation-only and unsigned; protected signing, preservation, participant, soak and authority gates remain open |
 | V1-MODULE-COVERAGE-INVENTORY-20260825 | Full Python 3.14 module-by-module branch-aware coverage inventory | `scripts/build_module_coverage_inventory.py`, `docs/module-coverage-inventory-20260825.json`, `tests/test_module_coverage_inventory.py` | Full suite meets the unchanged 90% branch-aware gate; coverage does not close external, operational or release gates |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; beta, RC, soak, external and accountable-authority gates
+remain open (`docs/v1-release-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision.

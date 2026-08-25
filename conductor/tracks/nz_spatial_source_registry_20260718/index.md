@@ -23,6 +23,11 @@
 | `NZ-CONNECTOR-READINESS-20260824` | Declared pilot endpoint mechanisms are classified for metadata rehearsal versus credential/operator-gated execution | `src/riopa_provenance/registry.py:classify_connector_readiness`, `tests/test_source_registry_readiness.py`, `docs/nz-spatial-connector-readiness-contract-20260824.json` | Projection is fail-closed and non-contacting; live discovery, health, rights, completeness and authority remain open |
 | `NZ-SOURCE-CHANGE-EVENTS-20260825` | Stable source/service/version identity and digest-only change events | `src/riopa_provenance/registry.py:SourceIdentity`, `src/riopa_provenance/registry.py:build_source_change_event`, `tests/test_source_registry_readiness.py` | Pure contract tests pass; endpoint health, rights, authority and completeness remain open |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; source authority, rights, preservation and release gates
+remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - Live national catalogue/authority coverage and all other archive packets listed in the public-dataset plan remain pending; the Meshblock 2026 geography slice is complete.
