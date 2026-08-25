@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.planning-transition-release-packet-contract.v1",
+  "evidence_id": "planning-transition-release-packet-contract-20260825",
+  "track_id": "planning_system_transition_20260719",
+  "implementation": "src/riopa_provenance/transitions.py:build_transition_release_packet",
+  "test": "tests/test_transitions.py",
+  "status": "unpublished-candidate",
+  "integrity": "records_sha256 over normalized transition records",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The candidate packet does not establish legal effect, authority or completeness.",
+    "Real historical-source evidence, preservation acceptance and release approval remain open."
+  ]
+}

@@ -4,10 +4,22 @@ from pathlib import Path
 from riopa_provenance.transitions import (
     audit_transition_history,
     build_continuity_crosswalk,
+    build_transition_release_packet,
     classify_transition_evidence,
     select_temporal_records,
     validate_transition,
 )
+
+
+def test_transition_release_packet_is_digest_bound_and_unpublished() -> None:
+    records = json.loads(Path("fixtures/planning-transition-golden.json").read_text())
+    packet = build_transition_release_packet(records, revision="candidate-1")
+    assert packet["status"] == "unpublished-candidate"
+    assert len(packet["records_sha256"]) == 64
+    assert packet["promotion_allowed"] is False
+    assert [record["transition_id"] for record in packet["records"]] == sorted(
+        record["transition_id"] for record in records
+    )
 
 
 def test_transition_fixture_covers_relationships_and_validates() -> None:

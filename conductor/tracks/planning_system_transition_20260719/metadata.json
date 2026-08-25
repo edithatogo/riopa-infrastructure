@@ -4,7 +4,7 @@
   "phase": "NZ Spatial",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T07:55:00Z",
+  "updated_at": "2026-08-25T12:00:00Z",
   "description": "Represent legislation, authority, plan and provision transitions so longitudinal analyses remain reproducible through planning reform, reorganisation and partial legal succession.",
   "depends_on": [
     "planning_rules_linkage_20260718",
@@ -16,7 +16,8 @@
     "urn:riopa:evidence:planning-transition-reconstruction-synthetic:2026-08-25",
     "urn:riopa:evidence:planning-transition-evidence-crosswalk:2026-08-25",
     "urn:riopa:evidence:planning-transition-panel-qualification:2026-08-25",
-    "urn:riopa:evidence:planning-transition-conductor-regeneration:2026-08-25"
+    "urn:riopa:evidence:planning-transition-conductor-regeneration:2026-08-25",
+    "urn:riopa:evidence:planning-transition-release-packet:2026-08-25"
   ],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

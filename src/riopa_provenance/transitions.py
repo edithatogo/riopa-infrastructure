@@ -6,6 +6,8 @@ from collections.abc import Mapping, Sequence
 from datetime import date
 from typing import Any
 
+from .hashing import sha256_json
+
 TRANSITION_STATES = {
     "proposed",
     "notified",
@@ -204,6 +206,43 @@ def validate_transition(record: Mapping[str, Any]) -> tuple[str, ...]:
     if record.get("relationship") == "partial_continuity" and not record.get("scope"):
         errors.append("partial_continuity requires an explicit scope")
     return tuple(dict.fromkeys(errors))
+
+
+def build_transition_release_packet(
+    records: Sequence[Mapping[str, Any]], *, revision: str
+) -> dict[str, Any]:
+    """Build an immutable, unpublished candidate packet for transition records."""
+    if not revision.strip():
+        raise ValueError("revision must be non-empty")
+    if not records:
+        raise ValueError("records must be non-empty")
+    normalized = [dict(record) for record in records]
+    errors: dict[str, list[str]] = {}
+    for record in normalized:
+        record_errors = validate_transition(record)
+        if record_errors:
+            errors[str(record.get("transition_id", ""))] = list(record_errors)
+    if errors:
+        raise ValueError(f"invalid transition records: {errors}")
+    normalized.sort(key=lambda record: str(record["transition_id"]))
+    return {
+        "record_type": "planning_transition_release_packet",
+        "revision": revision,
+        "status": "unpublished-candidate",
+        "records": normalized,
+        "records_sha256": sha256_json(normalized),
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "This packet is an immutable candidate and does not establish legal effect "
+                "or authority."
+            ),
+            (
+                "Real historical-source completeness, preservation acceptance and release "
+                "approval remain open."
+            ),
+        ],
+    }
 
 
 def select_temporal_records(
