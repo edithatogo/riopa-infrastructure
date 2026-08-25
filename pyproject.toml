@@ -99,4 +99,5 @@ max_stack_depth = 8
 [dependency-groups]
 dev = [
     "mutmut>=3.3,<4",
+    "pyshacl>=0.40.1",
 ]

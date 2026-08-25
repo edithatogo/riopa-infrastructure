@@ -1,0 +1,19 @@
+{
+  "evidence_id": "CANONICAL-SHACL-EXECUTION-20260825",
+  "runtime": "pinned pyshacl and rdflib development dependencies",
+  "fixture": "fixtures/canonical-crosswalk-golden.json",
+  "shape": "docs/ontology/canonical-crosswalk.shacl.ttl",
+  "controls": [
+    "fixture and shape SHA-256 digests",
+    "RDF graph construction is explicit and source-field preserving",
+    "SHACL inference is disabled",
+    "promotion remains fail-closed"
+  ],
+  "open_gates": [
+    "external semantic qualification",
+    "cross-language and external-client compatibility",
+    "persistent publication identifier",
+    "authority decision"
+  ],
+  "promotion_allowed": false
+}

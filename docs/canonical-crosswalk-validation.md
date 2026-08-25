@@ -18,6 +18,12 @@ introducing an RDF dependency or claiming that the repository contains a full
 SHACL processor. The conformance manifest therefore remains `bounded-pending`
 until a real SHACL runtime produces an immutable report.
 
+The pinned PySHACL/rdflib runner in `scripts/validate_canonical_shacl.py`
+converts the digest-bound golden JSON fixture into an explicit RDF graph and
+executes the published shape with inference disabled. Its report records both
+input digests and remains promotion-blocked; the conformance manifest remains
+`not-run` until external semantic evidence is available.
+
 The versioned migration fixture under `docs/ontology/migrations/` is a
 machine-readable compatibility example. It records retained source values and
 the evidence constraint; it does not establish support for any non-Python

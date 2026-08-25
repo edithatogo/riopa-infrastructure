@@ -1,0 +1,18 @@
+{
+  "evidence_id": "CANONICAL-SHACL-EXECUTION-20260825",
+  "runtime": {
+    "pyshacl": "0.40.1",
+    "rdflib": "7.6.0"
+  },
+  "fixture": "fixtures/canonical-crosswalk-golden.json",
+  "fixture_sha256": "0a5ce20c85fd43c29dc47ec8e6baafe72af1f297929d2c5285381a0e0ec85e74",
+  "shape": "docs/ontology/canonical-crosswalk.shacl.ttl",
+  "shape_sha256": "f43ee9a29112136abe0719977bfcde75fb907e4f8809329c7643594c5bc2bf25",
+  "conforms": true,
+  "results_text": "Validation Report\nConforms: True",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is a bounded RDF/SHACL execution for the supplied fixture.",
+    "It is not external semantic qualification, publication or authority approval."
+  ]
+}
