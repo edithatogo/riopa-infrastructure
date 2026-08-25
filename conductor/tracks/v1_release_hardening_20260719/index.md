@@ -110,3 +110,14 @@ This index records a bounded repository-owned readiness baseline while the track
 - Result: no unresolved repository-owned review finding remains. The track is
   intentionally still active/M1 because factual elapsed, external,
   preservation and accountable-authority gates remain unresolved.
+- Review scope: candidate-bound hosted evidence, campaign transition, gate
+  snapshot, Conductor metadata and generated issue projection through
+  `80bf631`.
+- Finding: the existing stable-gate evidence row retained the superseded
+  three-candidate reset description after the isolated campaign began.
+- Fix: reconciled the row and machine-readable blocker list to the single
+  `26bc0b4` candidate while retaining the pending 30-day duration and all
+  external, preservation and authority gates.
+- Result: no unresolved repository-owned finding remains in this evidence
+  increment; the hosted technical-preview receipts are not classified as
+  independent or external evidence.

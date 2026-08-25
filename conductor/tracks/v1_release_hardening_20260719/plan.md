@@ -48,6 +48,7 @@
 - [x] 5.14 Require the two agent-journey packet references to resolve to existing workflows and evidence documents, preventing stale journey claims.
 - [x] 5.15 Refresh the Python 3.14 module and branch-aware coverage inventory after the bounded accessibility, planning, replication and journey slices (`docs/module-coverage-inventory-20260825.json`).
 - [x] 5.16 Harden the stable-gate snapshot review findings: validate revision and UTC timestamp syntax, include evidence and dependency maturity in track qualification, expose continuity failure reasons and verify the content digest. (`7553a18`, `0411449`)
+- [x] 5.17 Correct the stale multi-candidate reset claim after starting the isolated `26bc0b4` RC campaign; retain explicit duration, external-evidence, preservation and authority boundaries. (`80bf631`)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
