@@ -40,15 +40,22 @@ def _text(record: Mapping[str, Any], field: str) -> str:
     return value.strip()
 
 
-def _number(record: Mapping[str, Any], field: str, *, positive: bool = False) -> float:
+def _number(
+    record: Mapping[str, Any], field: str, *, positive: bool = False, non_negative: bool = False
+) -> float:
     value = record.get(field)
     if (
         not isinstance(value, (int, float))
         or isinstance(value, bool)
         or not isfinite(float(value))
         or (positive and value <= 0)
+        or (non_negative and value < 0)
     ):
-        qualifier = "finite and positive" if positive else "finite"
+        qualifier = (
+            "finite and positive"
+            if positive
+            else ("finite and non-negative" if non_negative else "finite")
+        )
         raise SupermarketPilotError(f"{field} must be {qualifier}")
     return float(value)
 
@@ -84,6 +91,8 @@ def build_access_health_reference(
             raise SupermarketPilotError("facility assertions must be classified as supermarket")
         if assertion.get("release_classification", "public") != "public":
             raise SupermarketPilotError("facility snapshot contains a non-public assertion")
+        for field in ("source_id", "licence", "observed_at"):
+            _text(assertion, field)
         assertion_ids.append(assertion_id)
     if len(set(assertion_ids)) != len(assertion_ids):
         raise SupermarketPilotError("facility assertion identities must be unique")
@@ -107,16 +116,28 @@ def build_access_health_reference(
         assert isinstance(measures, Mapping)
         assert isinstance(context, Mapping)
         assert isinstance(health, Mapping)
-        normalized_measures = {field: _number(measures, field) for field in _ACCESS_MEASURES}
+        normalized_measures = {
+            field: _number(measures, field, non_negative=True) for field in _ACCESS_MEASURES
+        }
         normalized_context = {field: _text(context, field) for field in _CONTEXT_FIELDS}
         if health.get("ecological") is not True:
             raise SupermarketPilotError("health records must be explicitly ecological")
+        small_cell_status = _text(health, "small_cell_status")
+        if small_cell_status not in {"eligible", "suppressed"}:
+            raise SupermarketPilotError("small_cell_status must be eligible or suppressed")
+        outcome = health.get("outcome_rate")
+        if small_cell_status == "suppressed":
+            if outcome is not None:
+                raise SupermarketPilotError("suppressed health records must not expose a rate")
+            outcome_rate = None
+        else:
+            outcome_rate = _number(health, "outcome_rate", non_negative=True)
         normalized_health = {
-            "outcome_rate": _number(health, "outcome_rate"),
+            "outcome_rate": outcome_rate,
             "denominator": _number(health, "denominator", positive=True),
             "source_ref": _text(health, "source_ref"),
             "ecological": True,
-            "small_cell_status": _text(health, "small_cell_status"),
+            "small_cell_status": small_cell_status,
         }
         normalized.append(
             {
@@ -133,6 +154,10 @@ def build_access_health_reference(
         raise SupermarketPilotError(
             "sensitivities must contain spatial confounding, MAUP and measurement error records"
         )
+    for sensitivity in sensitivities:
+        nonclaims = sensitivity.get("nonclaims")
+        if not isinstance(nonclaims, list) or not nonclaims:
+            raise SupermarketPilotError("sensitivity records must retain nonclaims")
     normalized.sort(key=lambda row: str(row["area_id"]))
     body: dict[str, Any] = {
         "schema_version": "1.0.0",
@@ -177,9 +202,9 @@ def build_planning_alternatives_reference(
 
     if not packet_id.strip() or not generated_at.strip():
         raise SupermarketPilotError("packet_id and generated_at must be non-empty")
-    constraints = tuple(sorted(set(non_modelled_constraints)))
-    if any(not isinstance(item, str) or not item.strip() for item in constraints):
+    if any(not isinstance(item, str) or not item.strip() for item in non_modelled_constraints):
         raise SupermarketPilotError("non-modelled constraints must be non-empty strings")
+    constraints = tuple(sorted(set(non_modelled_constraints)))
     if _REQUIRED_NON_MODELLED.difference(constraints):
         raise SupermarketPilotError("market, land, community and consent constraints are required")
     if not feasibility_records:
@@ -216,6 +241,23 @@ def build_planning_alternatives_reference(
             raise SupermarketPilotError(
                 "planning feasibility must require authority and prohibit promotion"
             )
+        if any(not isinstance(rule, Mapping) for rule in rules):
+            raise SupermarketPilotError("planning feasibility rules must be objects")
+        rule_statuses = {rule.get("status") for rule in rules}
+        if not rule_statuses <= {"permitted", "discretionary", "prohibited", "unresolved"}:
+            raise SupermarketPilotError("cited planning rule status is invalid")
+        if "unresolved" in rule_statuses or (
+            "prohibited" in rule_statuses and rule_statuses - {"prohibited"}
+        ):
+            derived_status = "unresolved"
+        elif "prohibited" in rule_statuses:
+            derived_status = "prohibited"
+        elif "discretionary" in rule_statuses:
+            derived_status = "discretionary"
+        else:
+            derived_status = "permitted"
+        if status != derived_status:
+            raise SupermarketPilotError("planning decision_status does not match cited rules")
         if status in {"permitted", "discretionary"}:
             eligible.add(candidate_id)
         dispositions.append(
@@ -226,6 +268,8 @@ def build_planning_alternatives_reference(
                 "authority_required": True,
             }
         )
+    if not alternatives or any(not isinstance(item, Mapping) for item in alternatives):
+        raise SupermarketPilotError("alternatives must be non-empty objects")
     alternative_ids = {str(item.get("candidate_id", "")) for item in alternatives}
     if not alternative_ids or alternative_ids - eligible:
         raise SupermarketPilotError(
@@ -235,6 +279,14 @@ def build_planning_alternatives_reference(
         metrics = alternative.get("metrics")
         if not isinstance(metrics, Mapping) or set(metrics) != set(_ALTERNATIVE_METRICS):
             raise SupermarketPilotError("alternatives require the complete trade-off metric set")
+        if any(
+            not isinstance(value, (int, float))
+            or isinstance(value, bool)
+            or not isfinite(float(value))
+            or value < 0
+            for value in metrics.values()
+        ):
+            raise SupermarketPilotError("alternative metrics must be finite and non-negative")
     pareto = build_service_pareto_report(
         alternatives,
         maximize=("capacity_served", "competition_balance"),

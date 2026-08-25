@@ -24,7 +24,10 @@ def facility_snapshot() -> dict[str, object]:
         "assertions": [
             {
                 "assertion_id": "source:market-a",
+                "source_id": "source",
                 "facility_type": "supermarket",
+                "licence": "fixture-public",
+                "observed_at": "2026-08-25T00:00:00Z",
                 "release_classification": "public",
             }
         ],
@@ -51,7 +54,7 @@ def area_record(area_id: str = "area-a") -> dict[str, object]:
             "denominator": 100.0,
             "source_ref": "fixture:aggregate-health-v1",
             "ecological": True,
-            "small_cell_status": "not-small",
+            "small_cell_status": "eligible",
         },
     }
 
@@ -164,6 +167,31 @@ def test_access_health_reference_rejects_non_ecological_or_incomplete_area() -> 
         )
 
 
+def test_access_health_reference_rejects_negative_measure_and_protects_small_cells() -> None:
+    negative = area_record()
+    negative["access_measures"] = {**negative["access_measures"], "distance": -1.0}  # type: ignore[dict-item]
+    with pytest.raises(SupermarketPilotError, match="non-negative"):
+        build_access_health_reference(
+            facility_snapshot(), [negative], sensitivities(), packet_id="p", generated_at="now"
+        )
+    suppressed = area_record()
+    suppressed["health"] = {
+        **suppressed["health"],  # type: ignore[dict-item]
+        "small_cell_status": "suppressed",
+        "outcome_rate": None,
+    }
+    packet = build_access_health_reference(
+        facility_snapshot(), [suppressed], sensitivities(), packet_id="p", generated_at="now"
+    )
+    assert packet["areas"][0]["health"]["outcome_rate"] is None
+    exposed = deepcopy(suppressed)
+    exposed["health"]["outcome_rate"] = 0.2  # type: ignore[index]
+    with pytest.raises(SupermarketPilotError, match="must not expose"):
+        build_access_health_reference(
+            facility_snapshot(), [exposed], sensitivities(), packet_id="p", generated_at="now"
+        )
+
+
 def test_planning_alternatives_report_complete_pareto_tradeoffs() -> None:
     packet = build_planning_alternatives_reference(
         [feasibility("candidate-b", "discretionary"), feasibility("candidate-a")],
@@ -186,6 +214,27 @@ def test_planning_alternatives_excludes_unresolved_and_tampered_planning_evidenc
         build_planning_alternatives_reference(
             [feasibility("candidate-a", "unresolved")],
             [alternative("candidate-a", 10.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=("market", "land", "community", "consent"),
+        )
+
+
+def test_planning_alternatives_rederives_status_and_rejects_malformed_rows() -> None:
+    inconsistent = feasibility("candidate-a")
+    inconsistent["decision_status"] = "discretionary"
+    with pytest.raises(SupermarketPilotError, match="does not match"):
+        build_planning_alternatives_reference(
+            [inconsistent],
+            [alternative("candidate-a", 10.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=("market", "land", "community", "consent"),
+        )
+    with pytest.raises(SupermarketPilotError, match="non-empty objects"):
+        build_planning_alternatives_reference(
+            [feasibility("candidate-a")],
+            ["bad"],  # type: ignore[list-item]
             packet_id="p",
             generated_at="now",
             non_modelled_constraints=("market", "land", "community", "consent"),
@@ -221,4 +270,13 @@ def test_planning_alternatives_requires_complete_metrics_and_real_world_constrai
             packet_id="p",
             generated_at="now",
             non_modelled_constraints=("market",),
+        )
+    negative = alternative("candidate-a", -1.0)
+    with pytest.raises(SupermarketPilotError, match="finite and non-negative"):
+        build_planning_alternatives_reference(
+            [feasibility("candidate-a")],
+            [negative],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=("market", "land", "community", "consent"),
         )
