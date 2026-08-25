@@ -23,6 +23,7 @@
     ,"urn:riopa:evidence:provenance-query-cli:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-closeout:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-conductor-regeneration:2026-08-25"
+    ,"urn:riopa:evidence:provenance-query-agent-workflow:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
