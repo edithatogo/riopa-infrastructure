@@ -122,6 +122,43 @@ def build_source_change_event(
     return body
 
 
+def evaluate_declared_source_health(
+    previous: dict[str, Any] | None,
+    current: dict[str, Any],
+    *,
+    observed_at: str,
+) -> dict[str, Any]:
+    """Evaluate an archived source-health observation without endpoint contact.
+
+    ``availability_status`` is a declared observation, not a connectivity
+    assertion. Missing, degraded, or terms-changed observations quarantine the
+    source for the next controlled wave; only a healthy observation permits a
+    metadata-only rehearsal to continue.
+    """
+
+    status = current.get("availability_status")
+    if status not in {"healthy", "degraded", "missing", "terms-changed", "not-observed"}:
+        raise ValueError("availability_status is unsupported")
+    event = build_source_change_event(previous, current, observed_at=observed_at)
+    action = "continue-metadata-rehearsal" if status == "healthy" else "quarantine-source"
+    return {
+        "record_type": "declared-source-health",
+        "event_id": event["event_id"],
+        "identity_key": event["identity_key"],
+        "availability_status": status,
+        "changed_fields": event["changed_fields"],
+        "action": action,
+        "promotion_allowed": False,
+        "source": "archived-declared-observation",
+        "nonclaims": [
+            "This record evaluates declared archived observations and does not contact "
+            "or prove endpoint health.",
+            "Quarantine is fail-closed and does not establish source authority, "
+            "completeness or rights permission.",
+        ],
+    }
+
+
 def _json_compatible(value: Any) -> Any:
     """Round-trip a value through JSON to reject non-JSON YAML types."""
 

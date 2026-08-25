@@ -16,7 +16,7 @@
 ## 3. Versioning and health
 
 - [x] 3.1 Implement source/service/version identity and digest-only change events without endpoint contact. (`src/riopa_provenance/registry.py`, `tests/test_source_registry_readiness.py`; `97857fd`)
-- [ ] 3.2 Add automated health, disappearance and terms-change checks.
+- [~] 3.2 Add automated health, disappearance and terms-change checks. Archived declared observations now produce fail-closed quarantine actions for degraded, missing, terms-changed and not-observed statuses; live health and authority remain open (`src/riopa_provenance/registry.py:evaluate_declared_source_health`, `docs/nz-source-health-quarantine-contract-20260825.json`).
 - [x] 3.3 Produce connector-readiness and unresolved-source classifications from declared registry fields; live health and authority remain open. (`src/riopa_provenance/registry.py:classify_connector_readiness`, `tests/test_source_registry_readiness.py`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)
 
 ## 4. National review and release

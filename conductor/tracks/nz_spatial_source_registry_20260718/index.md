@@ -28,6 +28,8 @@ roadmap status, generated issue graph and full quality harness. This closes only
 the bookkeeping task; source authority, rights, preservation and release gates
 remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
 
+| `NZ-SOURCE-HEALTH-QUARANTINE-20260825` | Fail-closed health, disappearance and terms-change evaluation over declared archived observations | `src/riopa_provenance/registry.py:evaluate_declared_source_health`, `docs/nz-source-health-quarantine-contract-20260825.json`, `tests/test_source_registry_readiness.py` | Missing, degraded, terms-changed and not-observed records quarantine; no live health, authority, completeness or national claim is made |
+
 ## Blocking defects
 
 - Live national catalogue/authority coverage and all other archive packets listed in the public-dataset plan remain pending; the Meshblock 2026 geography slice is complete.

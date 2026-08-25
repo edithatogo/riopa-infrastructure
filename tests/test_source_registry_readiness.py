@@ -5,6 +5,7 @@ import pytest
 from riopa_provenance.registry import (
     build_source_change_event,
     classify_connector_readiness,
+    evaluate_declared_source_health,
     load_registry,
 )
 
@@ -75,4 +76,38 @@ def test_source_change_event_rejects_cross_endpoint_comparison() -> None:
     with pytest.raises(ValueError, match="same endpoint"):
         build_source_change_event(
             {**observation, "endpoint_id": "other"}, observation, observed_at="now"
+        )
+
+
+def test_declared_source_health_quarantines_missing_and_terms_changes() -> None:
+    previous = {
+        "source_id": "source",
+        "endpoint_id": "endpoint",
+        "source_version": "1",
+        "locator": "https://example.test/archive/1",
+        "availability_status": "healthy",
+        "rights_status": "review-required",
+    }
+    missing = {**previous, "availability_status": "missing"}
+    result = evaluate_declared_source_health(previous, missing, observed_at="2026-08-25T00:00:00Z")
+    assert result["action"] == "quarantine-source"
+    assert result["promotion_allowed"] is False
+    changed = {**previous, "availability_status": "terms-changed", "rights_status": "withdrawn"}
+    terms = evaluate_declared_source_health(previous, changed, observed_at="2026-08-25T00:00:00Z")
+    assert terms["availability_status"] == "terms-changed"
+    assert "rights_status" in terms["changed_fields"]
+
+
+def test_declared_source_health_rejects_unknown_status() -> None:
+    with pytest.raises(ValueError, match="availability_status"):
+        evaluate_declared_source_health(
+            None,
+            {
+                "source_id": "source",
+                "endpoint_id": "endpoint",
+                "source_version": "1",
+                "locator": "https://example.test/archive/1",
+                "availability_status": "unknown",
+            },
+            observed_at="now",
         )
