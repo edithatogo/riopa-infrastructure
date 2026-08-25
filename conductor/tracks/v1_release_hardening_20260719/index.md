@@ -121,3 +121,13 @@ This index records a bounded repository-owned readiness baseline while the track
 - Result: no unresolved repository-owned finding remains in this evidence
   increment; the hosted technical-preview receipts are not classified as
   independent or external evidence.
+- Review scope: isolated beta campaign evidence and scheduled workflow changes
+  through `bf84ef6`.
+- Finding: the prior schedule still followed moving `main`, so it could not
+  accumulate the newly isolated beta segment; the candidate input description
+  also understated its beta use.
+- Fix: pinned scheduled and default dispatch state to the immutable candidate,
+  campaign and qualification epoch, retained manual overrides, and validated
+  workflow syntax, policy and exact configuration in tests.
+- Result: no unresolved repository-owned finding remains in the schedule
+  increment; actual duration and cycle accumulation remain future evidence.
