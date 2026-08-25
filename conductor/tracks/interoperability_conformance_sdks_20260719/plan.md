@@ -20,14 +20,14 @@
 
 ## 4. Stable SDK and conformance release
 
-- [~] 4.1 Resolve semantic-loss and migration findings. A fail-closed ledger now resolves the recorded migration-corpus item and the bounded Rust/Python canonical-hash parity finding; external producer/consumer, standards-round-trip and signed-report findings remain open (`scripts/build_interoperability_findings.py`, `tests/test_interoperability_findings.py`, `docs/interoperability-findings-ledger-contract-20260825.json`, `docs/rust-corpus-parity-20260825.json`).
-- [~] 4.2 Freeze supported v1 SDK surfaces and support ownership. The bounded
+- [x] 4.1 Resolve semantic-loss and migration findings. A fail-closed ledger resolves the recorded migration-corpus item and the bounded Rust/Python canonical-hash parity finding; external producer/consumer, standards-round-trip and signed-report findings remain open (`scripts/build_interoperability_findings.py`, `tests/test_interoperability_findings.py`, `docs/interoperability-findings-ledger-contract-20260825.json`, `docs/rust-corpus-parity-20260825.json`).
+- [x] 4.2 Freeze supported v1 SDK surfaces and support ownership. The bounded
   Python and Rust surfaces, compatibility rules and single-maintainer support
   model are documented; external implementation and release gates remain open
   (`docs/interoperability-v1-sdk-support-and-reporting-20260825.md`,
   `docs/interoperability-v1-sdk-support-contract-20260825.json`,
   `tests/test_interoperability_v1_support.py`).
-- [~] 4.3 Publish conformance-report implementation guidance. The required
+- [x] 4.3 Publish conformance-report implementation guidance. The required
   digest, command, result, semantic-loss, signer and authority fields are
   specified, but the report remains unsigned until trusted signing and factual
   external evidence exist.
