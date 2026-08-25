@@ -1,0 +1,19 @@
+{
+  "evidence_id": "PUB-RECEIPT-RECONCILIATION-20260825",
+  "implementation": "riopa_provenance.publication.reconcile_publication_receipts",
+  "scope": "repository-owned reconciliation of immutable GitHub, Hugging Face and Zenodo receipt records",
+  "controls": [
+    "receipts are sorted by target_id before application",
+    "every receipt remains bound to the publication plan hash and target operation key",
+    "identical replays are no-ops",
+    "conflicting target receipts fail closed",
+    "non-object receipt entries fail closed"
+  ],
+  "status": "repository-owned contract",
+  "not_claimed": [
+    "remote upload or deposit",
+    "target acceptance or preservation",
+    "DOI or persistent identifier issuance",
+    "publication authority"
+  ]
+}

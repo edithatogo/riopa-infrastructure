@@ -9,7 +9,7 @@
 ## 2. Release and citation packages
 
 - [x] 2.1 Coordinate immutable software, schema, ontology, data, model and research-object versions. (`docs/publication-version-coordination-20260825.json`, `tests/test_publication_version_coordination.py`; candidate coordination only, publication gates remain open)
-- [~] 2.2 Prepare DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence. The packet links repository contracts and exact build inputs; protected attestations, accepted deposit/restore, participant evidence and authority remain open (`docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py`).
+- [~] 2.2 Prepare DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence. The packet links repository contracts and exact build inputs; deterministic multi-target receipt reconciliation is now covered by `src/riopa_provenance/publication.py::reconcile_publication_receipts`, `docs/publication-receipt-reconciliation-contract-20260825.json` and `tests/test_publication.py`. Protected attestations, accepted deposit/restore, participant evidence and authority remain open (`docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py`).
 - [x] 2.3 Verify discovery, install, query, reproduce and cite workflows. (`docs/publication-workflow-verification-20260825.json`, `tests/test_publication_workflow_verification.py`; bounded local synthetic verification only)
 
 ## 3. Agent reproduction
@@ -36,3 +36,7 @@
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.
+
+## Review fixes
+
+- [x] R1 Review receipt-batch ordering, replay idempotence, plan/operation binding and malformed-entry rejection. (`src/riopa_provenance/publication.py::reconcile_publication_receipts`, `tests/test_publication.py`, `docs/publication-receipt-reconciliation-contract-20260825.json`)

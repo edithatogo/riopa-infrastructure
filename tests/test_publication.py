@@ -15,6 +15,7 @@ from riopa_provenance.publication import (
     _narrow_decision,
     build_publication_plan,
     initialise_publication_state,
+    reconcile_publication_receipts,
     record_publication_receipt,
     stage_publication,
     validate_correction_package,
@@ -139,6 +140,32 @@ def test_publication_state_rejects_duplicate_target_conflicts() -> None:
     conflicting = {**receipt, "identifier": "https://doi.org/10.5281/zenodo.2"}
     with pytest.raises(PublicationError, match="conflicting publication receipt"):
         record_publication_receipt(published, conflicting)
+
+
+def test_publication_receipt_batch_reconciles_in_target_order_and_replays() -> None:
+    plan = _ready_plan("zenodo", "github")
+    state = initialise_publication_state(plan)
+    receipts = [
+        {
+            "target_id": target_id,
+            "operation_key": state["targets"][target_id]["operation_key"],
+            "plan_sha256": plan["plan_sha256"],
+            "identifier": f"https://example.test/{target_id}",
+            "revision": "a" * 64,
+            "recorded_at": "2026-08-25T00:00:00Z",
+        }
+        for target_id in ("zenodo", "github")
+    ]
+    reconciled = reconcile_publication_receipts(state, list(reversed(receipts)))
+    assert reconciled["status"] == "published"
+    assert all(item["status"] == "published" for item in reconciled["targets"].values())
+    assert reconcile_publication_receipts(reconciled, receipts) == reconciled
+
+
+def test_publication_receipt_batch_rejects_non_object_receipts() -> None:
+    state = initialise_publication_state(_ready_plan("github"))
+    with pytest.raises(PublicationError, match="contain objects"):
+        reconcile_publication_receipts(state, ["not-a-receipt"])  # type: ignore[list-item]
 
 
 def test_publication_state_rejects_unready_or_unbound_work() -> None:
