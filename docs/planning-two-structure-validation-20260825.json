@@ -1,0 +1,28 @@
+{
+  "schema": "riopa.planning.two-structure-validation.v1",
+  "validation_id": "urn:riopa:planning:two-structure-validation:2026-08-25",
+  "status": "bounded-synthetic-validation",
+  "fixtures": [
+    {"name": "district", "structure_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+    {"name": "hybrid", "structure_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}
+  ],
+  "contracts_exercised": [
+    "build_plan_source_intake",
+    "build_rule_structure_record",
+    "build_feature_provision_linkage",
+    "build_planning_concept_crosswalk",
+    "build_planning_feasibility_record"
+  ],
+  "evidence": "tests/test_planning_structural_validation.py",
+  "promotion_allowed": false,
+  "open_gates": [
+    "real council documents and source-faithful bytes",
+    "independent link sample review",
+    "legal interpretation and planning authority",
+    "national coverage and release approval"
+  ],
+  "nonclaims": [
+    "The fixtures exercise structural variation only; they are not council evidence.",
+    "Unresolved feasibility is retained and is not a legal or consent decision."
+  ]
+}
