@@ -28,6 +28,11 @@
 | `TEMPLATE-JOURNEY-REHEARSAL-20260825` | Read-only onboarding and release-scaffolding rehearsal over the local template contract | `scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json` | Local rehearsal passes; another-repository onboarding, hosted execution, independent reproduction and release authority remain open |
 | `TEMPLATE-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate rehearsal evidence for the bounded template slice | `docs/repository-template-closeout-evidence-20260825.json`, `tests/test_repository_template_closeout_evidence.py` | Evidence categories are linked and fail-closed; cross-repository adoption, independent reproduction, feedback and authority gates remain open |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; external adoption, preservation and release-authority
+gates remain open (`docs/repository-template-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - None recorded for the bounded WP-008 adapter slice.

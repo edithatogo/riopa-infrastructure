@@ -27,7 +27,7 @@
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; real-council, national, external and authority gates remain explicitly pending (`docs/spatial-quality-closeout-evidence-20260825.json`, `tests/test_spatial_quality_closeout_evidence.py`; `f6c99da`).
-- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
+- [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/spatial-quality-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
 
