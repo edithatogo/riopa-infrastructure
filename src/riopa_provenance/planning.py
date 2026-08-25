@@ -285,3 +285,65 @@ def build_feature_provision_linkage(
             "Unreviewed links do not establish completeness, authority or enforceability.",
         ],
     }
+
+
+def build_rule_structure_record(
+    provisions: Sequence[Mapping[str, Any]],
+    *,
+    structure_id: str,
+    captured_at: str,
+) -> dict[str, Any]:
+    """Preserve rule hierarchy and exception references without interpretation."""
+    if not structure_id.strip() or not captured_at.strip():
+        raise ValueError("structure_id and captured_at must be non-empty")
+    if not provisions:
+        raise ValueError("provisions must be non-empty")
+    normalized: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for provision in provisions:
+        if not isinstance(provision, Mapping):
+            raise ValueError("rule structure records must be objects")
+        provision_id = provision.get("provision_id")
+        if not isinstance(provision_id, str) or not provision_id.strip() or provision_id in seen:
+            raise ValueError("provision_id values must be unique non-empty strings")
+        parent = provision.get("parent_provision_id")
+        if parent is not None and (not isinstance(parent, str) or not parent.strip()):
+            raise ValueError("parent_provision_id must be a non-empty string when present")
+        if parent == provision_id:
+            raise ValueError("a provision cannot be its own parent")
+        values = {
+            name: provision.get(name, ())
+            for name in ("exception_refs", "combined_with", "unresolved_reasons")
+        }
+        for name, entries in values.items():
+            if not isinstance(entries, Sequence) or isinstance(entries, (str, bytes)):
+                raise ValueError(f"{name} must be a sequence")
+            if any(not isinstance(item, str) or not item.strip() for item in entries):
+                raise ValueError(f"{name} entries must be non-empty strings")
+        seen.add(provision_id)
+        normalized.append(
+            {
+                "provision_id": provision_id,
+                "parent_provision_id": parent,
+                "exception_refs": sorted(set(values["exception_refs"])),
+                "combined_with": sorted(set(values["combined_with"])),
+                "unresolved_reasons": sorted(set(values["unresolved_reasons"])),
+                "resolution_status": "unresolved"
+                if values["unresolved_reasons"]
+                else "declared-structure",
+            }
+        )
+    normalized.sort(key=lambda item: str(item["provision_id"]))
+    return {
+        "record_type": "planning-rule-structure",
+        "structure_id": structure_id,
+        "captured_at": captured_at,
+        "records": normalized,
+        "records_sha256": sha256_json(normalized),
+        "status": "bounded-structure-only",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Hierarchy and exception references do not establish legal effect or precedence.",
+            "Unresolved states are retained and are not treated as negative evidence.",
+        ],
+    }

@@ -1,0 +1,10 @@
+{
+  "schema": "riopa.planning-rule-structure.v1",
+  "packet_id": "planning-rule-structure-contract-20260825",
+  "status": "bounded-contract-only",
+  "scope": "regional public-source non-operational technical preview",
+  "record_fields": ["provision_id", "parent_provision_id", "exception_refs", "combined_with", "unresolved_reasons", "resolution_status"],
+  "controls": ["sorted provision identifiers", "deduplicated references", "records_sha256", "promotion_allowed=false", "unresolved states retained"],
+  "open_gates": ["source-faithful rule text", "legal precedence interpretation", "council-specific validation", "panel-reviewed hierarchy and exception sample"],
+  "non_claims": ["Structure references do not establish legal effect, precedence or operative status.", "Unresolved records are not negative evidence and do not establish completeness."]
+}
