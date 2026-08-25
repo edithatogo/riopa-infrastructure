@@ -415,3 +415,81 @@ def build_planning_concept_crosswalk(
             "Unreviewed crosswalks do not establish legal effect, completeness or authority.",
         ],
     }
+
+
+def build_planning_feasibility_record(
+    rules: Sequence[Mapping[str, Any]],
+    *,
+    query_id: str,
+    feature_ref: str,
+    captured_at: str,
+) -> dict[str, Any]:
+    """Return cited rule statuses without reducing them to legal advice."""
+    if not query_id.strip() or not feature_ref.strip() or not captured_at.strip():
+        raise ValueError("query_id, feature_ref and captured_at must be non-empty")
+    if not rules:
+        raise ValueError("rules must be non-empty")
+    allowed_statuses = {"permitted", "discretionary", "prohibited", "unresolved"}
+    allowed_confidence = {"unknown", "low", "medium", "high", "disputed"}
+    normalized: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for rule in rules:
+        if not isinstance(rule, Mapping):
+            raise ValueError("feasibility rules must be objects")
+        required = ("provision_id", "status", "confidence", "evidence", "caveats")
+        missing = [field for field in required if field not in rule]
+        if missing:
+            raise ValueError(f"feasibility rule missing fields: {', '.join(missing)}")
+        provision_id = rule["provision_id"]
+        if not isinstance(provision_id, str) or not provision_id.strip() or provision_id in seen:
+            raise ValueError("provision_id values must be unique non-empty strings")
+        status = rule["status"]
+        if status not in allowed_statuses:
+            raise ValueError("feasibility status is invalid")
+        confidence = rule["confidence"]
+        if confidence not in allowed_confidence:
+            raise ValueError("feasibility confidence is invalid")
+        for field in ("evidence", "caveats"):
+            values = rule[field]
+            if not isinstance(values, list) or any(
+                not isinstance(item, str) or not item.strip() for item in values
+            ):
+                raise ValueError(f"feasibility {field} must be a list of non-empty strings")
+        if not rule["evidence"]:
+            raise ValueError("feasibility evidence must not be empty")
+        seen.add(provision_id)
+        normalized.append(
+            {
+                "provision_id": provision_id,
+                "status": status,
+                "confidence": confidence,
+                "evidence": sorted(set(rule["evidence"])),
+                "caveats": sorted(set(rule["caveats"])),
+            }
+        )
+    normalized.sort(key=lambda item: str(item["provision_id"]))
+    statuses = {str(item["status"]) for item in normalized}
+    if "unresolved" in statuses or ("prohibited" in statuses and statuses - {"prohibited"}):
+        decision_status = "unresolved"
+    elif "prohibited" in statuses:
+        decision_status = "prohibited"
+    elif "discretionary" in statuses:
+        decision_status = "discretionary"
+    else:
+        decision_status = "permitted"
+    return {
+        "record_type": "planning-feasibility-query",
+        "query_id": query_id,
+        "feature_ref": feature_ref,
+        "captured_at": captured_at,
+        "rules": normalized,
+        "rules_sha256": sha256_json(normalized),
+        "decision_status": decision_status,
+        "authority_required": True,
+        "status": "bounded-cited-reference",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "The status is a cited reference result, not legal advice or a consent decision.",
+            "Conflicting or unresolved rules are not silently collapsed into permission.",
+        ],
+    }

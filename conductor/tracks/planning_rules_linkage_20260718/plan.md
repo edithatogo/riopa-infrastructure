@@ -15,7 +15,7 @@
 ## 3. Crosswalk and feasibility
 
 - [~] 3.1 Build digest-bound original-to-canonical planning concept crosswalk records using the canonical contract (`src/riopa_provenance/planning.py:build_planning_concept_crosswalk`, `docs/planning-concept-crosswalk-contract-20260825.json`, `tests/test_planning.py`). Source-faithful council records, semantic review and authority remain open.
-- [ ] 3.2 Implement cited feasibility queries with status and uncertainty.
+- [~] 3.2 Implement cited feasibility records that retain rule sources, status, confidence and caveats, and fail closed on conflicts (`src/riopa_provenance/planning.py:build_planning_feasibility_record`, `docs/planning-feasibility-contract-20260825.json`, `tests/test_planning.py`). Legal interpretation, council validation and authority remain open.
 - [ ] 3.3 Validate on two structurally different councils.
 
 ## 4. Review and stable release
