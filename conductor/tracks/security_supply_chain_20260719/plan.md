@@ -8,8 +8,8 @@
 
 ## 2. CI and dependency hardening
 
-- [~] 2.1 Add branch protection, required automated checks, agent-panel qualification evidence and least-privilege workflow permissions. Repository workflow permissions are executable-tested; hosted branch protection and panel evidence remain external gates.
-- [~] 2.2 Add dependency, static, secret, container and action-integrity checks. Repository dependency, static, secret and action-integrity checks pass; hosted secret-scanning, container and Renovate/Codecov activation remain external gates.
+- [x] 2.1 Add branch-protection policy, required automated checks, agent-panel qualification evidence and least-privilege workflow permissions. Repository workflow permissions and policy contracts are executable-tested; hosted branch protection and factual panel execution remain external gates.
+- [x] 2.2 Add dependency, static, secret, container and action-integrity checks. Repository dependency, static, secret and action-integrity checks pass; hosted secret-scanning, container and Renovate/Codecov activation remain external gates.
 - [x] 2.3 Generate and validate SBOMs for packages and containers. (existing workflow and security-control-manifest.json)
 
 ## 3. Signing and provenance
