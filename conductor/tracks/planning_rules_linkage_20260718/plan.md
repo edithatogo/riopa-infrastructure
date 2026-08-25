@@ -8,7 +8,7 @@
 
 ## 2. Extraction and linkage
 
-- [ ] 2.1 Implement structured/manual/AI-assisted provision extraction with provenance.
+- [~] 2.1 Implement structured/manual/AI-assisted provision extraction records with text/input hashes, uncertainty and tool identity. Records remain unreviewed and promotion-disabled; real source extraction, legal interpretation and panel qualification remain open (`src/riopa_provenance/planning.py:build_provision_extraction_record`, `docs/planning-provision-extraction-contract-20260825.json`, `tests/test_planning.py`).
 - [ ] 2.2 Link zone, overlay, precinct and designation features to provision versions.
 - [ ] 2.3 Represent hierarchy, exceptions, combined rules and unresolved states.
 
