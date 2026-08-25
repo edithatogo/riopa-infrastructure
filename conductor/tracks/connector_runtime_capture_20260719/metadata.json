@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-24T23:59:00Z",
+  "updated_at": "2026-08-26T06:00:00Z",
   "description": "Provide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.",
   "depends_on": [
     "provenance_profile_v1_20260718",
