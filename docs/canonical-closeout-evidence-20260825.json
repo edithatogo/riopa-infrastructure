@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.canonical-closeout-evidence.v1",
+  "packet_id": "canonical-closeout-evidence-20260825",
+  "track_id": "canonical_domain_schemas_ontology_20260719",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded canonical schemas and ontology candidate for the regional public-source technical preview",
+  "evidence_categories": {
+    "implementation": ["schemas/canonical-crosswalk.schema.json", "docs/ontology/canonical-context.jsonld", "docs/ontology/canonical-ontology-release-1.0.0.json", "src/riopa_provenance/canonical.py"],
+    "tests": ["tests/test_canonical.py", "tests/test_lineage_identifiers.py", "tests/test_canonical_bindings.py", "tests/test_conformance_parity_receipt.py"],
+    "review": ["docs/canonical-semantic-panel-qualification-20260825.json", "tests/test_canonical_semantic_panel_qualification.py"],
+    "migration": ["docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json", "docs/ontology/canonical-extension-policy-20260825.json"],
+    "release_candidate": ["docs/canonical-v1-candidate-freeze-20260825.json", "tests/test_canonical_candidate_freeze.py"]
+  },
+  "open_gates": ["full RDF/SHACL semantic and cross-runtime qualification", "external semantic/client reproduction", "persistent publication identifier and preservation acceptance", "trusted signed attestation", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category is an unsigned unpublished candidate, not a stable normative release.",
+    "Repository tests and agent panels cannot substitute for external semantic evidence, trusted signing, preservation acceptance or release authority.",
+    "This packet does not enable authoritative or operational claims."
+  ]
+}
