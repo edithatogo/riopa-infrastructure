@@ -1,0 +1,32 @@
+{
+  "schema": "riopa.supermarket-density-reference.v1",
+  "contract_id": "urn:riopa:supermarket:density-reference:2026-08-25",
+  "status": "bounded-candidate-not-promoted",
+  "scope": "synthetic or caller-supplied public-reference records; non-clinical technical preview",
+  "implementation": "src/riopa_provenance/supermarket.py:build_density_reference",
+  "inputs": {
+    "supermarket_counts": "explicit non-negative counts keyed by area",
+    "population": "explicit positive denominators keyed by area",
+    "missingness": "the union of keys is retained and missing rows have null density"
+  },
+  "output": {
+    "measure": "count divided by supplied denominator multiplied by per_population",
+    "default_per_population": 1000,
+    "ordering": "area identifiers sorted lexicographically",
+    "claim_classification": "reference-only"
+  },
+  "disabled_claims": [
+    "reproduction of a motivating study",
+    "health, causal or clinical association",
+    "population completeness or denominator authority",
+    "national-scale or operational supermarket coverage",
+    "release promotion"
+  ],
+  "open_gates": [
+    "rights-cleared versioned supermarket source archive",
+    "exact-edition population and geography linkage",
+    "real-data reproduction and transparent comparison",
+    "external reproduction and accountable release authority"
+  ],
+  "promotion_allowed": false
+}
