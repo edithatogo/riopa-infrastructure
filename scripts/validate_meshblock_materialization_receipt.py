@@ -11,6 +11,8 @@ from typing import Any
 import duckdb
 import pyarrow.parquet as pq
 
+from riopa_provenance.hashing import sha256_json
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -113,6 +115,16 @@ def build_report(root: Path, artifact_root: Path | None = None) -> dict[str, Any
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     manifest = json.loads(records_manifest_path.read_text(encoding="utf-8"))
     projection = json.loads(projection_path.read_text(encoding="utf-8"))
+    if manifest.get("materialization_receipt_sha256") != sha256(receipt_path):
+        raise ValueError("records manifest materialization receipt digest does not match")
+    if manifest.get("projection_record_sha256") != sha256(projection_path):
+        raise ValueError("records manifest projection record digest does not match")
+    manifest_payload = {key: value for key, value in manifest.items() if key != "manifest_sha256"}
+    if manifest.get("manifest_sha256") != sha256_json(manifest_payload):
+        raise ValueError("records manifest self-digest does not match")
+    receipt_payload = {key: value for key, value in receipt.items() if key != "receipt_sha256"}
+    if receipt.get("receipt_sha256") != sha256_json(receipt_payload):
+        raise ValueError("materialization receipt self-digest does not match")
     if receipt.get("record_type") != "spatial_materialization_receipt":
         raise ValueError("unexpected materialization receipt type")
     if manifest.get("projection_id") != receipt.get("projection_id"):
