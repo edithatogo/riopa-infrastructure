@@ -34,7 +34,7 @@
 - [x] C.1 Link implementation, test, review, migration, bounded stress-comparison and release evidence in `index.md` for the repository-owned closeout slice; stress, safety, authoritative-source, external and authority gates remain explicitly pending (`docs/emergency-health-closeout-evidence-20260825.json`, `docs/emergency-health-stress-comparison-contract-20260825.json`, `tests/test_emergency_health_closeout_evidence.py`; `1f84f9c`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/emergency-health-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.8.0`, with authoritative-source, clinical/safety, operational, preservation, external participation and accountable-authority gates unresolved.
 
 ## Review fixes
 
