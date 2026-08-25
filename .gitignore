@@ -5,6 +5,7 @@ __pycache__/
 .coverage
 htmlcov/
 dist/
+/rust/riopa-conformance/target/
 .mutmut-cache
 mutants/
 build/

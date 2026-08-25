@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass
+from datetime import datetime
 from pathlib import Path
 
 
@@ -42,11 +43,26 @@ def record_soak(
     cycles: list[Cycle],
 ) -> SoakEvidence:
     """Build a fail-closed record; this function does not run deployments."""
+    if not scope.strip():
+        raise ValueError("scope must be non-empty")
     if required_days < 0 or observed_days < 0:
         raise ValueError("duration values must be non-negative")
-    if any(cycle.sequence < 1 for cycle in cycles):
-        raise ValueError("cycle sequence numbers must be positive")
-    status = "qualified-synthetic" if observed_days >= required_days else "pending-duration"
+    if [cycle.sequence for cycle in cycles] != list(range(1, len(cycles) + 1)):
+        raise ValueError("cycle sequence numbers must be contiguous and ordered")
+    for cycle in cycles:
+        if not cycle.outcome.strip():
+            raise ValueError("cycle outcomes must be non-empty")
+        try:
+            started = datetime.fromisoformat(cycle.started_at.replace("Z", "+00:00"))
+            ended = datetime.fromisoformat(cycle.ended_at.replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise ValueError("cycle timestamps must be ISO 8601") from exc
+        if started.tzinfo is None or ended.tzinfo is None or ended < started:
+            raise ValueError("cycle timestamps must be timezone-aware and ordered")
+        if (cycle.failure is None) != (cycle.recovery is None):
+            raise ValueError("failure and recovery evidence must be recorded together")
+    duration_met = observed_days >= required_days
+    status = "synthetic-duration-met" if duration_met and cycles else "pending-duration"
     return SoakEvidence(scope, required_days, observed_days, tuple(cycles), status)
 
 
