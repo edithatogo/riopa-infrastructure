@@ -21,6 +21,7 @@ from riopa_provenance.analysis import (
     difference_in_differences,
     evaluate_coverage_scenario,
     evaluate_dispatch_scenario,
+    evaluate_service_constraints,
     evaluate_service_scenario,
     parameter_evidence_report,
     protocol_record,
@@ -142,6 +143,37 @@ def test_multi_service_capacity_referral_and_workforce_scenario_is_bounded() -> 
     assert result["promotion_allowed"] is False
     with pytest.raises(ValueError, match="services must be unique"):
         ServiceScenario("bad", ("urgent", "urgent"), {}, {}, {}, {})
+
+
+def test_service_constraints_report_volume_reserve_transition_and_phases() -> None:
+    scenario = ServiceScenario(
+        "synthetic-constraints",
+        ("urgent",),
+        {("rural", "urgent"): 1},
+        {("hospital-a", "urgent"): 2},
+        {"hospital-a": 2},
+        {("rural", "urgent"): ("hospital-a",)},
+    )
+    result = evaluate_service_constraints(
+        scenario,
+        minimum_volume={"urgent": 1},
+        resilience_fraction=0.5,
+        transition_costs={"hospital-a": 3},
+        phase_investments=({("hospital-a", "urgent"): 2}, {("hospital-a", "urgent"): 1}),
+    )
+    assert result["minimum_volume"]["met"] == {"urgent": True}
+    assert result["resilience"]["met"] == {"hospital-a|urgent": True}
+    assert result["transition"]["total_cost"] == 3
+    assert result["phased_investment"]["phase_totals"] == [2, 1]
+    assert result["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="resilience_fraction"):
+        evaluate_service_constraints(
+            scenario,
+            minimum_volume={},
+            resilience_fraction=2,
+            transition_costs={},
+            phase_investments=(),
+        )
 
 
 def _protocol(*, replications: int = 5) -> AnalysisProtocol:

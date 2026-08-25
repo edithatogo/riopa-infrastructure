@@ -239,6 +239,10 @@ def evaluate_service_scenario(scenario: ServiceScenario) -> dict[str, Any]:
             "served": sum(item["served"] for item in assignments),
             "unmet": sum(item["unmet"] for item in assignments),
         },
+        "capacity_remaining": {
+            f"{facility}|{service}": value
+            for (facility, service), value in sorted(remaining_capacity.items())
+        },
         "promotion_allowed": False,
         "nonclaims": [
             (
@@ -248,6 +252,78 @@ def evaluate_service_scenario(scenario: ServiceScenario) -> dict[str, Any]:
             (
                 "Capacity and workforce units are caller-supplied assumptions, not observed "
                 "service data."
+            ),
+        ],
+    }
+
+
+def evaluate_service_constraints(
+    scenario: ServiceScenario,
+    *,
+    minimum_volume: Mapping[str, float],
+    resilience_fraction: float,
+    transition_costs: Mapping[str, float],
+    phase_investments: tuple[Mapping[tuple[str, str], float], ...],
+) -> dict[str, Any]:
+    """Check synthetic service constraints without selecting an operational plan."""
+    if not math.isfinite(resilience_fraction) or not 0 <= resilience_fraction <= 1:
+        raise ValueError("resilience_fraction must be finite and in [0, 1]")
+    if any(not math.isfinite(value) or value < 0 for value in minimum_volume.values()):
+        raise ValueError("minimum_volume values must be finite and non-negative")
+    if any(not math.isfinite(value) or value < 0 for value in transition_costs.values()):
+        raise ValueError("transition_costs values must be finite and non-negative")
+    if any(
+        not math.isfinite(value) or value < 0
+        for phase in phase_investments
+        for value in phase.values()
+    ):
+        raise ValueError("phase investments must be finite and non-negative")
+    result = evaluate_service_scenario(scenario)
+    served_by_service = {
+        service: sum(item["served"] for item in result["assignments"] if item["service"] == service)
+        for service in scenario.services
+    }
+    minimum_volume_met = {
+        service: served_by_service.get(service, 0.0) >= required
+        for service, required in sorted(minimum_volume.items())
+    }
+    reserve_met: dict[str, bool] = {}
+    for (facility, service), initial in sorted(scenario.capacity.items()):
+        remaining = float(result["capacity_remaining"].get(f"{facility}|{service}", 0.0))
+        reserve_met[f"{facility}|{service}"] = (
+            initial == 0 or remaining / initial >= resilience_fraction
+        )
+    phase_totals = [sum(investment.values()) for investment in phase_investments]
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_service_constraints",
+        "scenario_id": scenario.scenario_id,
+        "minimum_volume": {
+            "required": dict(sorted(minimum_volume.items())),
+            "served": served_by_service,
+            "met": minimum_volume_met,
+        },
+        "resilience": {
+            "reserve_fraction": resilience_fraction,
+            "met": reserve_met,
+        },
+        "transition": {
+            "costs": dict(sorted(transition_costs.items())),
+            "total_cost": sum(transition_costs.values()),
+        },
+        "phased_investment": {
+            "phase_totals": phase_totals,
+            "phase_count": len(phase_totals),
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "Synthetic constraint checks only; no operational plan or clinical "
+                "recommendation is produced."
+            ),
+            (
+                "Constraint satisfaction does not establish feasibility, safety, authority "
+                "or external validity."
             ),
         ],
     }
