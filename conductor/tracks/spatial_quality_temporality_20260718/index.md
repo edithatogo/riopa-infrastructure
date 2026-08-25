@@ -33,6 +33,8 @@ roadmap status, generated issue graph and full quality harness. This closes only
 the bookkeeping task; national, authoritative, operational, external and release
 gates remain open (`docs/spatial-quality-conductor-regeneration-20260825.json`).
 
+| `SPATIAL-QUALITY-WAIVER-GOVERNANCE-20260825` | Expiry-checked quality waiver contract that cannot waive release-blocking metrics | `src/riopa_provenance/spatial_quality.py:evaluate_quality_waiver`, `docs/spatial-quality-waiver-governance-contract-20260825.json`, `tests/test_spatial_quality.py` | Bounded governance checks pass; real-council, national, authority and release qualification remain open |
+
 ## Blocking defects
 
 - None recorded.

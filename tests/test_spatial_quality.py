@@ -1,4 +1,4 @@
-from riopa_provenance.spatial_quality import evaluate_spatial_quality
+from riopa_provenance.spatial_quality import evaluate_quality_waiver, evaluate_spatial_quality
 
 
 def _fixtures() -> tuple[dict, dict]:
@@ -46,3 +46,32 @@ def test_spatial_quality_fails_closed_on_integrity_and_lineage() -> None:
     assert result["status"] == "fail"
     assert "geometry_validity failed" in result["errors"]
     assert any("missing required evidence" in error for error in result["errors"])
+
+
+def test_quality_waiver_requires_owner_rationale_and_expiry() -> None:
+    waiver = {
+        "waiver_id": "waiver-1",
+        "metric_id": "geometry_repair",
+        "rationale": "bounded preview fixture",
+        "owner": "repository-owner",
+        "expires_on": "2026-12-31",
+        "release_blocking": False,
+    }
+    result = evaluate_quality_waiver(waiver, as_of="2026-08-25")
+    assert result["status"] == "active"
+    assert result["promotion_allowed"] is False
+
+
+def test_quality_waiver_rejects_expired_and_release_blocking_waivers() -> None:
+    waiver = {
+        "waiver_id": "waiver-2",
+        "metric_id": "geometry_validity",
+        "rationale": "not permitted",
+        "owner": "repository-owner",
+        "expires_on": "2026-01-01",
+        "release_blocking": True,
+    }
+    result = evaluate_quality_waiver(waiver, as_of="2026-08-25")
+    assert result["status"] == "invalid-or-expired"
+    assert any("expired" in error for error in result["errors"])
+    assert any("release-blocking" in error for error in result["errors"])

@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.spatial-quality-waiver-governance-contract.v1",
+  "evidence_id": "spatial-quality-waiver-governance-contract-20260825",
+  "track_id": "spatial_quality_temporality_20260718",
+  "implementation": "src/riopa_provenance/spatial_quality.py:evaluate_quality_waiver",
+  "test": "tests/test_spatial_quality.py",
+  "required_fields": ["waiver_id", "metric_id", "rationale", "owner", "expires_on"],
+  "rules": ["expired waivers fail closed", "release-blocking metrics cannot be waived", "promotion remains disabled"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The evaluator is a bounded governance contract, not a quality qualification or release approval.",
+    "Real-council, national, authority and external evidence remain separate gates."
+  ]
+}
