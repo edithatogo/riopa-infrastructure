@@ -1,20 +1,23 @@
 {
   "duckdb": {
+    "path": "meshblocks-2026.duckdb",
     "reproducibility_class": "deterministic-semantics",
-    "sha256": "cf0cae2f64fda05969bb4dc29adaab82b8ad181381fdc092fc46e6e4a8f50804",
+    "sha256": "0a6140079adb3bb8c119975b9b4cc435f03af78086242e9ad1ef1ecedd92e238",
     "size_bytes": 297021440
   },
   "geoparquet": {
+    "path": "meshblocks-2026.parquet",
     "profile": "GeoParquet 1.1.0",
     "sha256": "713868f5f63c56c8ce7ff179e84ba6aec67608a3af2a4761f4bcbae796e2d649",
     "size_bytes": 230509833
   },
   "projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
   "quality_report": {
-    "sha256": "a7810eb59e5fef8e0660f09f666c58d7bbcfc60b0054a5316dc449a9a1e73a64",
+    "path": "meshblocks-2026.quality.json",
+    "sha256": "14b1ce1150a2c36bfc460e8e76d5dbf59974f70b694ab97355a9c5119848d9d4",
     "size_bytes": 23427
   },
-  "receipt_sha256": "6139e8d9777593bdb20f0a3fffa0706cd1b36123f7ac641ecae53735a238bbb8",
+  "receipt_sha256": "6e3490cec78b539e1df23482946e0a393e8459cfd3337df2b64d145b47287260",
   "record_type": "spatial_materialization_receipt",
   "schema_version": "1.0.0"
 }

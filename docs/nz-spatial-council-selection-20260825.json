@@ -1,0 +1,64 @@
+{
+  "schema": "riopa.nz-spatial-council-selection.v1",
+  "evidence_id": "urn:riopa:evidence:nz-spatial-council-selection:2026-08-25",
+  "track_id": "nz_spatial_archive_mvp_20260718",
+  "verified_at": "2026-08-25T10:35:53Z",
+  "selection_basis": "Exercise materially different official publication and acquisition mechanisms after the national-source inventory; selection is not capture, rights clearance or legal-status qualification.",
+  "councils": [
+    {
+      "council": "Wellington City Council",
+      "jurisdiction": "Wellington City",
+      "mechanism": "arcgis-rest-map-service",
+      "official_source": "https://gis.wcc.govt.nz/arcgis/rest/services/2024DistrictPlan/2024DistrictPlan/MapServer",
+      "selection_rationale": "Paged service metadata and feature acquisition exercise the existing ArcGIS capture adapter and an already bounded one-feature archive slice.",
+      "current_evidence": "evidence/wp007-real-slice/manifest.json",
+      "capture_status": "bounded-one-feature-only"
+    },
+    {
+      "council": "Queenstown Lakes District Council",
+      "jurisdiction": "Queenstown Lakes District",
+      "mechanism": "hosted-eplan-application",
+      "official_source": "https://webadmin.qldc.govt.nz/your-council/district-plan/eplans/",
+      "selection_rationale": "Separate operative and proposed hosted ePlans exercise application discovery, map/text association and version/status boundaries rather than a direct feature API.",
+      "capture_status": "discovery-only"
+    },
+    {
+      "council": "New Plymouth District Council",
+      "jurisdiction": "New Plymouth District",
+      "mechanism": "static-pdf-map-series",
+      "official_source": "https://www.npdc.govt.nz/planning-our-future/district-plan/operative-district-plan-2005/volume-3-maps/",
+      "selection_rationale": "Individually downloadable planning-map PDFs exercise document enumeration, stable file identity and map-sheet coverage without pretending that raster pages are vector features.",
+      "capture_status": "discovery-only"
+    },
+    {
+      "council": "Tasman District Council",
+      "jurisdiction": "Tasman District",
+      "mechanism": "open-data-catalogue-and-online-plan",
+      "official_source": "https://www.tasman.govt.nz/my-region/maps",
+      "plan_source": "https://www.tasman.govt.nz/my-council/key-documents/tasman-resource-management-plan",
+      "selection_rationale": "The council exposes a data-download catalogue alongside an online resource-management plan, exercising catalogue-to-plan identity links and distinct spatial/document status.",
+      "capture_status": "discovery-only"
+    }
+  ],
+  "required_capture_evidence_per_council": [
+    "source and authority identity",
+    "capability or document inventory",
+    "exact source bytes and retrieval receipts",
+    "rights and redistribution disposition",
+    "publication, operative, valid and superseded time assertions",
+    "coverage and unresolved-item report"
+  ],
+  "open_gates": [
+    "source-specific rights review",
+    "exact-version full capture",
+    "canonical transformation and materialization",
+    "planning-status and legal uncertainty review",
+    "external validation and preservation acceptance"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "Discovery and selection do not establish source completeness, currency, operative legal status or redistribution permission.",
+    "The four selected mechanisms are an acquisition test frame, not a nationally representative council sample.",
+    "No live planning interpretation or legal advice is produced."
+  ]
+}

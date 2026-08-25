@@ -4,7 +4,7 @@
   "phase": "NZ Spatial",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T08:10:00Z",
+  "updated_at": "2026-08-25T10:40:04Z",
   "description": "Publish a complete, temporally explicit spatial and planning research object using heterogeneous national and council sources, from raw evidence to portable materialisations.",
   "depends_on": [
     "connector_runtime_capture_20260719",
@@ -19,7 +19,9 @@
     "urn:riopa:evidence:meshblock-quality-report:2026-08-25",
     "urn:riopa:evidence:nz-archive-mvp-conductor-regeneration:2026-08-25",
     "urn:riopa:evidence:meshblock-materialization-receipt-validation:2026-08-26",
-    "urn:riopa:evidence:meshblock-query-contract:2026-08-26"
+    "urn:riopa:evidence:meshblock-query-contract:2026-08-26",
+    "urn:riopa:evidence:nz-spatial-archive-review-remediation:2026-08-25",
+    "urn:riopa:evidence:nz-spatial-council-selection:2026-08-25"
   ],
   "target_release": "0.5.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -43,5 +45,13 @@
     "Operations analyst",
     "Research-object analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "blocking-dependencies-not-complete",
+    "four-council-two-national-capture-to-release-pending",
+    "external-research-object-validation-pending",
+    "second-clean-environment-reproduction-pending",
+    "spatial-alpha-release-gates-and-cycles-pending",
+    "durable-preservation-and-publication-acceptance-pending",
+    "accountable-release-authority-pending"
+  ]
 }

@@ -1,0 +1,65 @@
+{
+  "schema": "riopa.nz-spatial-archive-review-remediation.v1",
+  "evidence_id": "urn:riopa:evidence:nz-spatial-archive-review-remediation:2026-08-25",
+  "track_id": "nz_spatial_archive_mvp_20260718",
+  "recorded_at": "2026-08-25T10:35:53Z",
+  "scope": "Repository-owned materialization receipt, restored-artifact and cross-tool query validation",
+  "commits": [
+    "1abb123",
+    "a466a49"
+  ],
+  "validated_artifacts": {
+    "feature_count": 57575,
+    "distinct_object_ids": 57575,
+    "null_geometry_count": 16,
+    "projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
+    "materialization_receipt_sha256": "d20698dd557a5e78916e9ae62662bffc08fe57f565d1b73e5815bd7fda91a1b0",
+    "records_manifest_file_sha256": "27f278ca5a537b2d97eff92e13d0bf51ef7ae8ae256ca8a4e6cf453adc48ec0e"
+  },
+  "review_fixes": [
+    "Bind materialization receipts to safe relative artifact paths as well as sizes and SHA-256 digests.",
+    "Verify receipt, projection and records-manifest digest chains before opening bulk artifacts.",
+    "Execute read-only PyArrow and DuckDB checks over digest-matched artifacts.",
+    "Correct documented query columns to the emitted RIOPA schema.",
+    "Exercise artifact validation, tamper rejection and path rejection in a hermetic CI fixture."
+  ],
+  "review": {
+    "status": "repository-review-passed",
+    "high_or_critical_findings_remaining": 0,
+    "fix_validation_loops": 2,
+    "general_code_style": "pass",
+    "markdown_style": "pass",
+    "external_or_human_review": false
+  },
+  "validation": [
+    {
+      "command": "uv run pytest --cov=riopa_provenance --cov-branch --cov-report=term --cov-fail-under=90",
+      "status": "passed",
+      "tests": 1076,
+      "coverage_percent": 90.08
+    },
+    {
+      "command": "bash scripts/ci_quality.sh",
+      "status": "passed"
+    },
+    {
+      "command": "bash scripts/ci_reproducibility.sh",
+      "status": "passed"
+    }
+  ],
+  "open_gates": [
+    "blocking dependency completion",
+    "four heterogeneous council and two national source-family capture-to-release evidence",
+    "external research-object validation",
+    "second clean-environment reproduction",
+    "all four 0.5.0 release exit gates and three scheduled operational cycles",
+    "durable preservation and publication acceptance",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "Local artifact restoration and agent review are repository-owned evidence, not independent reproduction.",
+    "The Meshblock projection is supporting geography and is not population, council, planning-law or national completeness evidence.",
+    "No dataset was published and no release, DOI, preservation or authority approval is claimed."
+  ]
+}

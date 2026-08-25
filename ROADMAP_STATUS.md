@@ -20,7 +20,7 @@ Stable target: `1.0.0`
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 13/28
+- Tracks qualified: 12/28
 - Gates: 4/4 passed
 - Blockers:
   - track canonical_domain_schemas_ontology_20260719 has blocking defects
@@ -31,6 +31,7 @@ Stable target: `1.0.0`
   - track foundation_architecture_20260718 has blocking defects
   - track governance_maori_data_sovereignty_20260718 has blocking defects
   - track methods_research_objects_20260718 has blocking defects
+  - track nz_spatial_archive_mvp_20260718 has blocking defects
   - track operations_preservation_sre_20260719 has blocking defects
   - track performance_scalability_reliability_20260719 has blocking defects
   - track planning_system_transition_20260719 has blocking defects

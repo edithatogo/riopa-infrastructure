@@ -247,6 +247,10 @@ def test_builds_content_addressed_records_and_repair_free_projection(tmp_path: P
     assert result.projection_record["archive_only"] is True
     assert result.projection_record["live_endpoint_contacted"] is False
     assert result.projection_record["manifest_sha256"] == descriptor.manifest_sha256
+    receipt = json.loads(result.materialization_receipt_path.read_text())
+    assert receipt["geoparquet"]["path"] == "meshblocks.parquet"
+    assert receipt["duckdb"]["path"] == "meshblocks.duckdb"
+    assert receipt["quality_report"]["path"] == "meshblocks.quality.json"
 
     source_envelope = json.loads(result.source_record_path.read_text())
     assert source_envelope["record_id"].endswith(source_envelope["record_sha256"])
