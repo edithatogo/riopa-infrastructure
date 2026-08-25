@@ -1,7 +1,7 @@
 # Evidence index: Spatial quality, temporality and change-analysis framework
 
 - **Track ID:** `spatial_quality_temporality_20260718`
-- **Status:** `specified`
+- **Status:** `active`
 - **Target release:** `0.7.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
