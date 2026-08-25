@@ -19,7 +19,7 @@
 - [x] 3.3 Define and validate restore/disaster-recovery exercise reports. Evidence: `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, `tests/test_recovery.py`; report construction and failure-preservation validation pass, while actual production-representative execution remains pending. (contract commit: `437d50c1efcb883a95a3dcdf838f5c63624dcc32`)
 - [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)
 - [x] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)
-- [ ] 3.6 Configure repository credentials and verify independent Hugging Face and Zenodo acceptance receipts.
+- [~] 3.6 Validate the required GitHub Actions, Hugging Face and Zenodo acceptance-receipt shape against one exact bundle digest. The validator is repository-owned and does not create target receipts; credentials, factual target acceptance and preservation qualification remain open (`scripts/build_redundancy_manifest.py:validate_replication_receipts`, `docs/replication-receipt-validation-contract-20260825.json`).
 
 ## 4. Beta operation and stable gate
 

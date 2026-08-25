@@ -51,6 +51,8 @@
 | `OPS-RECOVERY-CONTRACT-CLOSEOUT-20260825` | Repository-owned recovery-successor and disaster-recovery report contracts | `docs/operations-recovery-successor-contract-20260824.json`, `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, and focused tests | State-machine/report validation passes; provider execution, production-representative RPO/RTO, independent target acceptance and release authority remain open |
 | `OPS-PANEL-QUALIFICATION-20260825` | Bounded four-lens qualification of operational, preservation and campaign controls | `docs/operations-panel-qualification-20260825.json`, `tests/test_operations_panel_qualification.py` | Repository evidence is qualified for bounded scope; provider receipts, preservation acceptance, elapsed, participant and authority gates remain open |
 
+| `OPERATIONS-REPLICATION-RECEIPT-VALIDATION-20260825` | Required-target acceptance receipts must match the exact bundle digest and carry a locator | `scripts/build_redundancy_manifest.py:validate_replication_receipts`, `docs/replication-receipt-validation-contract-20260825.json`, `tests/test_redundancy_manifest.py` | Shape validation passes; no Hugging Face/Zenodo acceptance or preservation qualification is claimed |
+
 ## Repository-owned closeout slice (2026-08-24)
 
 The repository-owned contracts, validators, runbooks and hosted-campaign

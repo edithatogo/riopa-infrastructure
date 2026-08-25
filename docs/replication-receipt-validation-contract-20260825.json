@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.replication-receipt-validation-contract.v1",
+  "evidence_id": "replication-receipt-validation-contract-20260825",
+  "track_id": "operations_preservation_sre_20260719",
+  "implementation": "scripts/build_redundancy_manifest.py:validate_replication_receipts",
+  "test": "tests/test_redundancy_manifest.py",
+  "required_receipt_fields": ["kind", "status", "bundle_id", "bundle_sha256", "locator"],
+  "required_targets": ["github-actions-artifact", "huggingface-dataset", "zenodo"],
+  "accepted_status": "accepted",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The validator does not contact Hugging Face or Zenodo and does not create acceptance receipts.",
+    "Preservation remains unqualified until factual target receipts are supplied and independently verified."
+  ]
+}

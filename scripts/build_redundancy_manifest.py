@@ -17,6 +17,16 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _bundle_digest(bundle_id: str, files: list[dict[str, object]]) -> str:
+    payload = json.dumps(
+        {"bundle_id": bundle_id, "files": files},
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
 def build_manifest(root: Path, *, bundle_id: str) -> dict[str, object]:
     files = []
     for path in sorted(p for p in root.rglob("*") if p.is_file()):
@@ -27,7 +37,7 @@ def build_manifest(root: Path, *, bundle_id: str) -> dict[str, object]:
                 "bytes": path.stat().st_size,
             }
         )
-    return {
+    manifest = {
         "schema": "riopa.evidence-redundancy-manifest.v1",
         "bundle_id": bundle_id,
         "created_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
@@ -43,6 +53,44 @@ def build_manifest(root: Path, *, bundle_id: str) -> dict[str, object]:
             "Pending targets must be verified by a later receipt before preservation is qualified.",
         ],
     }
+    manifest["bundle_sha256"] = _bundle_digest(bundle_id, files)
+    return manifest
+
+
+def validate_replication_receipts(
+    manifest: dict[str, object], receipts: list[dict[str, object]]
+) -> tuple[str, ...]:
+    """Validate exact accepted-target receipts without contacting targets."""
+
+    bundle_id = manifest.get("bundle_id")
+    bundle_sha256 = manifest.get("bundle_sha256")
+    if not isinstance(bundle_id, str) or not bundle_id:
+        return ("manifest requires bundle_id",)
+    if not isinstance(bundle_sha256, str) or len(bundle_sha256) != 64:
+        return ("manifest requires a bundle_sha256",)
+    errors: list[str] = []
+    required = {
+        str(target["kind"])
+        for target in manifest.get("replication_targets", [])
+        if isinstance(target, dict) and target.get("required") is True
+    }
+    seen: set[str] = set()
+    for receipt in receipts:
+        target = receipt.get("kind")
+        if not isinstance(target, str) or target not in required:
+            errors.append("receipt kind is not a required replication target")
+            continue
+        seen.add(target)
+        if receipt.get("status") != "accepted":
+            errors.append(f"{target} receipt is not accepted")
+        if receipt.get("bundle_id") != bundle_id:
+            errors.append(f"{target} receipt bundle_id does not match")
+        if receipt.get("bundle_sha256") != bundle_sha256:
+            errors.append(f"{target} receipt digest does not match")
+        if not isinstance(receipt.get("locator"), str) or not receipt["locator"].strip():
+            errors.append(f"{target} receipt requires a locator")
+    errors.extend(f"missing accepted receipt for {target}" for target in sorted(required - seen))
+    return tuple(dict.fromkeys(errors))
 
 
 def main() -> None:
