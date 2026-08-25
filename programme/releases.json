@@ -12,6 +12,7 @@
       "objective": "Make the path to stable v1 explicit, dependency-complete and machine-enforceable.",
       "required_tracks": [
         "accessibility_network_engine_20260719",
+        "bounded_roadmap_technical_preview_release_20260826",
         "canonical_domain_schemas_ontology_20260719",
         "connector_runtime_capture_20260719",
         "documentation_developer_experience_20260719",

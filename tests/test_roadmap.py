@@ -65,14 +65,18 @@ def test_generated_issue_graph_covers_all_tracks_and_phases() -> None:
     issues = config["issues"]
     assert config["version"] == 3
     assert len([item for item in issues if item.get("parent") == "program-epic"]) == 28
+    assert not any(
+        item.get("track_id") == "bounded_roadmap_technical_preview_release_20260826"
+        for item in issues
+    )
     assert len([item for item in issues if ":phase-" in item["key"]]) >= 112
     assert len({item["key"] for item in issues}) == len(issues)
 
 
 def test_current_development_release_is_blocked_but_stable_is_not() -> None:
     status = roadmap_status(ROOT)
-    assert status["tracks"]["total"] == 28
-    assert status["tracks"]["by_current_maturity"] == {"M1": 28}
+    assert status["tracks"]["total"] == 29
+    assert status["tracks"]["by_current_maturity"] == {"M1": 29}
     assert status["releases"][0]["ready"] is False
     assert status["releases"][0]["blockers"]
     assert all(not release["ready"] for release in status["releases"][1:])

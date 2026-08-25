@@ -185,7 +185,7 @@ def test_roadmap_status_json_reports_stable_target(
     assert exc.value.code == 0
     payload = __import__("json").loads(capsys.readouterr().out)
     assert payload["stable_release"] == "1.0.0"
-    assert payload["tracks"]["total"] == 28
+    assert payload["tracks"]["total"] == 29
     assert payload["releases"][0]["ready"] is False
 
 

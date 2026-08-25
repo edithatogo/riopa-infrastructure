@@ -110,8 +110,7 @@ def test_archived_track_remains_discoverable_and_validates(tmp_path: Path) -> No
     assert tracks[FIRST_TRACK]["_collection"] == "archive"
     assert tracks[FIRST_TRACK]["_path"] == metadata_path.as_posix()
     issues = generate_issue_configuration(root)
-    parent = next(item for item in issues["issues"] if item["key"] == FIRST_TRACK)
-    assert f"conductor/archive/{FIRST_TRACK}/spec.md" in parent["body"]
+    assert not any(item["key"] == FIRST_TRACK for item in issues["issues"])
     write_issue_configuration(root)
     assert validate_roadmap(root) == ()
 
@@ -771,7 +770,9 @@ def test_nonstable_release_rejects_proposed_status_and_unknown_version(tmp_path:
     root = copy_roadmap(tmp_path)
     plan = read_json(root / "conductor/releases.json")
     release = next(item for item in plan["releases"] if item["version"] == "0.3.0")
-    for track_id in load_tracks(root):
+    for track_id, metadata in load_tracks(root).items():
+        if metadata["_collection"] == "archive":
+            continue
         path, data = track_metadata(root, track_id)
         data["current_maturity"] = "M2"
         data["status"] = "active"

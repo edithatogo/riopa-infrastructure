@@ -4,13 +4,14 @@ This is the programme-level source of truth for the stable, hardened and support
 
 ## Status summary
 
-- **Total tracks:** 28
+- **Total tracks:** 29 (28 continuing stable-v1 tracks plus 1 archived historical closeout)
 - **Complete:** 0
 - **Active:** 12
 - **Validating:** 4
 - **Ready:** 0
 - **Specified:** 12
 - **Proposed:** 0
+- **Archived:** 1
 - **V1-critical:** 28
 
 Track completion is not equivalent to release readiness. Stable v1 additionally requires the machine-readable maturity, cross-track and release-authority gates in `conductor/maturity-model.json`, `conductor/releases.json` and `conductor/v1-gate.json`.
@@ -64,6 +65,10 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 - [~] **`performance_scalability_reliability_20260719`** — Performance, scalability and reliability qualification (target `0.9.0`, current `M1`, target `M6`, risk Critical; depends on: `connector_runtime_capture_20260719`, `provenance_query_api_20260719`, `nz_spatial_archive_operations_20260719`, `accessibility_network_engine_20260719`, `facility_location_engine_20260718`, `simulation_validation_engine_20260719`, `operations_preservation_sre_20260719`)
 - [~] **`v1_release_hardening_20260719`** — Stable v1 release hardening and general availability (target `1.0.0`, current `M1`, target `M6`, risk Critical; depends on: `accessibility_network_engine_20260719`, `canonical_domain_schemas_ontology_20260719`, `connector_runtime_capture_20260719`, `documentation_developer_experience_20260719`, `emergency_health_facilities_pilot_20260718`, `facility_location_engine_20260718`, `facility_registry_20260719`, `foundation_architecture_20260718`, `governance_maori_data_sovereignty_20260718`, `health_outcomes_causal_methods_20260719`, `interoperability_conformance_sdks_20260719`, `methods_research_objects_20260718`, `nz_spatial_archive_mvp_20260718`, `nz_spatial_archive_operations_20260719`, `nz_spatial_source_registry_20260718`, `operations_preservation_sre_20260719`, `performance_scalability_reliability_20260719`, `planning_rules_linkage_20260718`, `planning_system_transition_20260719`, `provenance_profile_v1_20260718`, `provenance_query_api_20260719`, `publication_validation_20260718`, `repository_template_adoption_20260718`, `security_supply_chain_20260719`, `simulation_validation_engine_20260719`, `spatial_quality_temporality_20260718`, `supermarket_health_pilot_20260718`)
 
+## Archived historical closeout
+
+- [x] **`bounded_roadmap_technical_preview_release_20260826`** — Published and archived the bounded v0.2.0 M1 roadmap technical preview; no effect on later tracks (target/current/target maturity `0.2.0`/`M1`/`M1`)
+
 ## Critical-path and parallelisation rule
 
 Normative contracts, governance, security and faithful capture are upstream of publication. Accessibility, optimisation, simulation, performance and conformance implementations may progress against synthetic or public benchmarks in parallel, but they cannot close without real-data integration, migration, operational and independent-verification evidence.
@@ -73,4 +78,4 @@ Normative contracts, governance, security and faithful capture are upstream of p
 Stable v1.0 requires every v1-critical track to reach its declared maturity target, all blocking `1.0.0` gates to pass, the global v1 gate to pass, no prohibited defect or expired waiver, and a signed release-authority decision. See `docs/v1-definition-of-done.md`.
 
 *Programme configuration version: 0.2.0*  
-*Updated: 2026-07-19*
+*Updated: 2026-08-26*

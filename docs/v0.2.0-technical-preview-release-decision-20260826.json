@@ -5,12 +5,12 @@
   "channel": "technical-preview",
   "maturity": "M1",
   "source_revision": "4ffe73eb144c5c1a4acad34706a5f5937491d1ad",
-  "decision": "authorized-for-publication-after-hosted-verification",
+  "decision": "published-bounded-technical-preview",
   "authority": {
     "role": "Repository owner",
     "approval_recorded_at": "2026-08-25T14:46:02Z",
     "approval_basis": "Direct owner instruction approving the recommended bounded preview and requiring later tracks to continue.",
-    "signature_state": "pending-content-binding-by-merged-commit-and-github-oidc-release-attestations"
+    "signature_state": "github-oidc-assets-attested-annotated-git-tag-unsigned"
   },
   "scope": [
     "M1 roadmap and maturity architecture",
@@ -36,6 +36,18 @@
     "GitHub release is marked as a prerelease and states all exclusions"
   ],
   "support_policy": "docs/v0.2.0-technical-preview-support-20260826.md",
+  "publication_evidence": {
+    "release_url": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.2.0",
+    "published_at": "2026-08-25T15:27:39Z",
+    "support_ends_at": "2027-08-25T15:27:39Z",
+    "tag_object": "c444e79397f2455071c2b930e56b7887c29e0c40",
+    "tag_target": "4ffe73eb144c5c1a4acad34706a5f5937491d1ad",
+    "workflow_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32865862594",
+    "asset_sha256": "9e71e585289e0480907f699daf94f425dcb38517b81babf0a52c80b938ee79d1",
+    "checksum_asset_sha256": "5e58dcd0e36aaad158b4e3560634b677ba43918037c60ef83247681ed8ffce9b",
+    "attestation": "verified-github-oidc-slsa-provenance-with-rekor-timestamp",
+    "doi": "not-deposited-no-zenodo-credential"
+  },
   "later_track_policy": {
     "pre_existing_track_count": 28,
     "effect": "none",
