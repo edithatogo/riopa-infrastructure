@@ -752,6 +752,72 @@ def simulate_fcfs_queue(
     )
 
 
+def compare_fcfs_reference_implementations(
+    arrival_times: Sequence[float],
+    service_times: Sequence[float],
+    *,
+    capacity: int,
+    warm_up_customers: int = 0,
+) -> dict[str, Any]:
+    """Cross-check the queue core with a separate availability-list implementation.
+
+    The alternate path deliberately uses no event heap or ``SimulationResult``
+    internals.  It is a bounded repository cross-check, not an external or
+    operational validation and cannot authorize promotion.
+    """
+
+    primary = simulate_fcfs_queue(
+        arrival_times,
+        service_times,
+        capacity=capacity,
+        warm_up_customers=warm_up_customers,
+    )
+    availability = [0.0] * capacity
+    alternate_waits: list[float] = []
+    alternate_busy = 0.0
+    alternate_last_end = 0.0
+    for customer, (arrival, duration) in enumerate(zip(arrival_times, service_times, strict=True)):
+        resource = min(range(capacity), key=lambda item: (availability[item], item))
+        start = max(arrival, availability[resource])
+        end = start + duration
+        availability[resource] = end
+        if customer >= warm_up_customers:
+            alternate_waits.append(start - arrival)
+            alternate_busy += duration
+            alternate_last_end = max(alternate_last_end, end)
+    observed_start = arrival_times[warm_up_customers]
+    observed_window = max(0.0, alternate_last_end - observed_start)
+    alternate_utilisation = (
+        alternate_busy / (capacity * observed_window) if observed_window else 0.0
+    )
+    alternate_mean = statistics.fmean(alternate_waits)
+    wait_deltas = [left - right for left, right in zip(primary.waits, alternate_waits, strict=True)]
+    deltas: dict[str, object] = {
+        "waits": wait_deltas,
+        "mean_wait": primary.mean_wait - alternate_mean,
+        "maximum_wait": primary.maximum_wait - max(alternate_waits),
+        "utilisation": primary.utilisation - alternate_utilisation,
+    }
+    float_parity = all(value == 0 for value in deltas.values() if isinstance(value, float))
+    parity = all(value == 0 for value in wait_deltas) and float_parity
+    return {
+        "record_type": "simulation-reference-crosscheck",
+        "capacity": capacity,
+        "customer_count": len(arrival_times),
+        "warm_up_customers": warm_up_customers,
+        "primary": "simulate_fcfs_queue",
+        "alternate": "availability-list-reference",
+        "parity": parity,
+        "deltas": deltas,
+        "claim_classification": "bounded-reference-only",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "This is an internal deterministic cross-check, not external implementation evidence.",
+            "It does not establish clinical, dispatch, national-scale or operational validity.",
+        ],
+    }
+
+
 def _replication_seed(master_seed: int, replication: int) -> int:
     material = f"riopa-simulation-v1:{master_seed}:{replication}".encode()
     return int.from_bytes(hashlib.sha256(material).digest()[:8], "big")

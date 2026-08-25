@@ -16,7 +16,7 @@
 
 - [~] 3.1 Define fitted, assumed and externally sourced parameter evidence. `parameter_evidence_report` preserves each declared source class and required references; no empirical or source-authority claim is made (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`).
 - [~] 3.2 Add calibration, holdout validation and sensitivity workflows. Synthetic caller-supplied calibration and seeded candidate-grid sensitivity are implemented; real-data holdout and external validation remain open (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `docs/simulation-calibration-sensitivity-contract-20260825.json`).
-- [ ] 3.3 Compare independent implementation or published benchmark behaviour.
+- [~] 3.3 Compare the FCFS engine with a separate availability-list reference path (`src/riopa_provenance/analysis.py::compare_fcfs_reference_implementations`, `docs/simulation-reference-crosscheck-20260825.json`, `tests/test_analysis.py`). This is an internal bounded cross-check; external implementation, published benchmark, real-data and operational validation remain open.
 
 ## 4. Integration and stable release
 

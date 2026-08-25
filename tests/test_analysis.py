@@ -18,6 +18,7 @@ from riopa_provenance.analysis import (
     ServiceScenario,
     build_service_pareto_report,
     calibrate_queue_parameters,
+    compare_fcfs_reference_implementations,
     compare_static_simulated_stress,
     difference_in_differences,
     evaluate_coverage_scenario,
@@ -300,6 +301,25 @@ def test_deterministic_fcfs_queue_events_and_warm_up_metrics() -> None:
     assert result.mean_wait == 2.0
     assert result.observed_customers == 2
     assert result.utilisation == pytest.approx(0.5)
+
+
+def test_alternate_fcfs_reference_path_matches_primary() -> None:
+    report = compare_fcfs_reference_implementations(
+        [0.0, 0.0, 1.0, 4.0],
+        [2.0, 1.0, 1.0, 2.0],
+        capacity=2,
+        warm_up_customers=1,
+    )
+    assert report["primary"] == "simulate_fcfs_queue"
+    assert report["alternate"] == "availability-list-reference"
+    assert report["parity"] is True
+    assert report["deltas"]["waits"] == [0.0, 0.0, 0.0]
+    assert report["promotion_allowed"] is False
+
+
+def test_alternate_fcfs_reference_path_preserves_primary_validation() -> None:
+    with pytest.raises(ValueError, match="equal lengths"):
+        compare_fcfs_reference_implementations([0.0], [], capacity=1)
 
 
 @pytest.mark.parametrize(
