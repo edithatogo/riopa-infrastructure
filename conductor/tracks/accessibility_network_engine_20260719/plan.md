@@ -35,3 +35,4 @@
 ## Review fixes
 
 - [x] R1 Apply repository formatter to the straight-line adapter after the local quality review (`2b271c0`).
+- [x] R2 Reject boolean and non-integer partition sizes in the workload-envelope accounting path so invalid caller inputs cannot silently become a valid partition count (`b7c985b`).
