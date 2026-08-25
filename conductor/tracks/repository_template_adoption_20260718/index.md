@@ -26,6 +26,7 @@
 | `TEMPLATE-ADOPTION-MIGRATION-LEDGER-20260825` | Adapter semantic-loss ledger with explicit not-collected feedback and not-measured migration costs | `scripts/build_adoption_migration_ledger.py`, `tests/test_adoption_migration_ledger.py`, `docs/repository-adoption-migration-ledger-contract-20260825.json` | Repository fixtures are summarized without inference; contributor feedback, measured migration effort, adoption and independent reproduction remain open |
 | `TEMPLATE-SUPPORT-POLICY-20260825` | Versioned compatibility, support and safe-upgrade policy tied to read-only drift inspection | `docs/repository-template-support-policy-20260825.md`, `tests/test_template_support_policy.py`, `docs/repository-template-support-policy-contract-20260825.json` | Repository policy passes; external onboarding, independent reproduction, adoption and release qualification remain open |
 | `TEMPLATE-JOURNEY-REHEARSAL-20260825` | Read-only onboarding and release-scaffolding rehearsal over the local template contract | `scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json` | Local rehearsal passes; another-repository onboarding, hosted execution, independent reproduction and release authority remain open |
+| `TEMPLATE-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate rehearsal evidence for the bounded template slice | `docs/repository-template-closeout-evidence-20260825.json`, `tests/test_repository_template_closeout_evidence.py` | Evidence categories are linked and fail-closed; cross-repository adoption, independent reproduction, feedback and authority gates remain open |
 
 ## Blocking defects
 
@@ -35,6 +36,10 @@
 
 - This evidence is bounded to the two adapter contracts and does not establish
   template adoption or release conformance for either complete repository.
+
+The 2026-08-25 closeout packet links the bounded template contract, drift,
+adoption-profile, migration-ledger, support-policy and journey evidence. It
+does not establish adoption, independent reproduction or a stable release.
 
 ## Review and handover
 
