@@ -1,0 +1,57 @@
+{
+  "schema": "riopa.bounded-technical-preview-closeout.v1",
+  "track_id": "bounded_roadmap_technical_preview_release_20260826",
+  "release": "0.2.0",
+  "result": "complete-and-archived-at-m1",
+  "source_revision": "4ffe73eb144c5c1a4acad34706a5f5937491d1ad",
+  "tag_object": "c444e79397f2455071c2b930e56b7887c29e0c40",
+  "release_url": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.2.0",
+  "published_at": "2026-08-25T15:27:39Z",
+  "support_ends_at": "2027-08-25T15:27:39Z",
+  "hosted_verification": {
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32865862594",
+    "conclusion": "success",
+    "historical_validation": "passed",
+    "checksum_verification": "passed",
+    "github_attestation_verification": "passed"
+  },
+  "assets": [
+    {
+      "name": "riopa-example-research-object.tar.gz",
+      "sha256": "9e71e585289e0480907f699daf94f425dcb38517b81babf0a52c80b938ee79d1"
+    },
+    {
+      "name": "SHA256SUMS",
+      "sha256": "5e58dcd0e36aaad158b4e3560634b677ba43918037c60ef83247681ed8ffce9b"
+    }
+  ],
+  "external_participant_programme": {
+    "issue": "https://github.com/edithatogo/riopa-infrastructure/issues/605",
+    "roles_requested": 3,
+    "completion_evidence": 0,
+    "effect_on_preview": "recruitment-open-not-a-publication-blocker",
+    "effect_on_later_gates": "none-until-factual-participant-evidence-exists"
+  },
+  "review": {
+    "method": "conductor-review",
+    "findings_resolved": [
+      "gateway-only historical lock transport",
+      "gateway-specific artifact path mapping",
+      "explicit write-permission allowlist",
+      "missing repository context for gh release creation"
+    ],
+    "accepted_limitations": [
+      "annotated Git tag has no personal GPG or SSH signature",
+      "no Zenodo credential was available and no DOI deposit is claimed"
+    ],
+    "unresolved_track_blockers": []
+  },
+  "later_tracks": {
+    "pre_existing_count": 28,
+    "promoted": 0,
+    "completed": 0,
+    "retargeted": 0,
+    "archived": 0,
+    "policy": "continue unchanged through releases 0.3.0 to 1.0.0"
+  }
+}

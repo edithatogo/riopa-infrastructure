@@ -1106,7 +1106,11 @@ def generate_issue_configuration(root: str | Path) -> dict[str, Any]:
     """Generate deterministic programme, track, and phase issues from Conductor files."""
 
     base = Path(root).resolve()
-    tracks = load_tracks(base)
+    tracks = {
+        track_id: metadata
+        for track_id, metadata in load_tracks(base).items()
+        if metadata.get("status") != "archived"
+    }
     releases = _load(base / "conductor/releases.json")
     programme_version = releases["programme_version"]
     stable_release = releases["stable_release"]

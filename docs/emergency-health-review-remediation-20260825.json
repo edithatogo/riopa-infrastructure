@@ -15,9 +15,9 @@
   "artifact_sha256": {
     "scripts/capture_wp010_public_sources.py": "fe1efdee48819c7588beeb5fd4163aea9bec7d5bca0ac45d2d67a7cfea58521d",
     "src/riopa_provenance/analysis.py": "5937443001035f50a7fe2071f1bfaced4213f6534c84a788ef2c3268f8ffaf7b",
-    "src/riopa_provenance/roadmap.py": "fba17cf20d6025e05918ee2f2a12a7f37174bc035c661f8e7f336a0c1458fcdd",
+    "src/riopa_provenance/roadmap.py": "3c0dbb0261c76515ee39944e75daed4bc12be072042a2950e787841df43c4a70",
     "tests/test_analysis.py": "bb99d693cf3491673ee3c408fed79e4ce282afa5e26395967167144e215d52fb",
-    "tests/test_roadmap_hardening.py": "083a2b827fa704117f5b510437d5116d04d390e554e00434ef5182efe78b8bfc",
+    "tests/test_roadmap_hardening.py": "b0a6e015c7bdddbd542550034b02af8e4836ceb9eb3c4996f5d6e079854f5147",
     "tests/test_wp010_raw_source_preservation.py": "ed227fa23b4e53b0a676f357211c1b46b35f8bafe78ec86e83a4d8c70421df6c"
   },
   "review_lenses": [
