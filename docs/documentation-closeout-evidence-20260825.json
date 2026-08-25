@@ -1,0 +1,26 @@
+{
+  "schema": "riopa.documentation-closeout-evidence.v1",
+  "packet_id": "documentation-closeout-evidence-20260825",
+  "track_id": "documentation_developer_experience_20260719",
+  "status": "repository-owned-closeout-slice",
+  "scope": "regional public-source non-operational technical preview",
+  "evidence_categories": {
+    "implementation": ["docs/usage-guides-20260825.md", "docs/reference-index-20260825.json", "docs/bounded-lineage-tutorial-20260825.md", "docs/documentation-support-readiness-20260825.json"],
+    "tests": ["tests/test_usage_guides.py", "tests/test_reference_index.py", "tests/test_bounded_lineage_tutorial.py", "tests/test_documentation_support_readiness.py"],
+    "review": ["docs/documentation-inventory-and-safety-review-20260825.json", "tests/test_documentation_inventory_review.py"],
+    "migration": ["docs/documentation-information-architecture-20260824.md", "docs/documentation-contract-20260824.json"],
+    "release_candidate": ["scripts/run_release_candidate_tutorials.py", "tests/test_release_candidate_tutorials.py", "docs/documentation-archive-manifest-20260825.json"]
+  },
+  "validation": {
+    "roadmap": "uv run riopa roadmap validate --root .",
+    "quality": "bash scripts/ci_quality.sh",
+    "scope": "all listed artifacts are repository-owned and content-addressed or versioned"
+  },
+  "open_gates": ["factual external user and operator workflows", "external accessibility validation", "elapsed exact-RC soak", "preservation acceptance and publication identifier", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains a rehearsal and unpublished archive candidate, not RC or stable release evidence.",
+    "Agent panels and repository tests cannot substitute for factual external participants, elapsed soak, preservation acceptance or accountable authority.",
+    "This packet does not enable network, timetable, facility, national, clinical, dispatch or authoritative claims."
+  ]
+}
