@@ -1,0 +1,37 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1323008,
+      "path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.duckdb",
+      "sha256": "b892592af88844cc28307dbd4319cf4cfc0bf9c461fe10059de71773cde7c9c2"
+    },
+    {
+      "bytes": 18963,
+      "path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.parquet",
+      "sha256": "eaa2c0cab0e76afeb28e808f7b451df32c646462f6dfb31dd35e728c035fab48"
+    },
+    {
+      "bytes": 1250,
+      "path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.quality.json",
+      "sha256": "7f5c4f28284ff02c4f42a9c22fb0e21563efc2133c4e7ca0512994ce311e4566"
+    }
+  ],
+  "candidate": "docs/publication-real-data-release-candidate-20260825.json",
+  "candidate_id": "publication-real-data-release-candidate-20260825",
+  "non_claims": [
+    "Digest validation is not a publication, preservation receipt, or external reproduction.",
+    "The bounded council slice is not coverage or national evidence."
+  ],
+  "open_gates": [
+    "clean-room or external reproduction",
+    "protected artifact attestation",
+    "preservation deposit and anonymous restore",
+    "elapsed beta/RC qualification",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "schema": "riopa.publication-real-data-release-candidate-validation.v1",
+  "source_manifest": "evidence/wp007-real-slice/manifest.json",
+  "source_manifest_sha256": "2b773fc68fd630aec197bb5e266e8332e14c15eb251cdfde94ee01a4ee8f20ba",
+  "status": "digest-validated-promotion-disabled"
+}
