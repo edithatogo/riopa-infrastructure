@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.facility-public-planning-adapter-contract.v1",
+  "evidence_id": "facility-public-planning-adapter-contract-20260825",
+  "track_id": "facility_registry_20260719",
+  "implementation": "src/riopa_provenance/facility_location.py:candidates_from_public_facility_snapshot",
+  "test": "tests/test_facility_location.py",
+  "input_requirements": ["record_type=facility_assertions", "authoritative=false", "release_filter=public-only"],
+  "identity_rule": "candidate_id equals source assertion_id",
+  "inferred_fields": [],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The adapter does not infer canonical facility identity, capacity, legal status, authority or service availability.",
+    "Planning, national, operational and release qualification remain separate gates."
+  ]
+}

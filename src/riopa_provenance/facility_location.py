@@ -126,6 +126,48 @@ def apply_bounded_reference_inputs(
     return replace(problem, candidates=candidates, travel=travel)
 
 
+def candidates_from_public_facility_snapshot(
+    snapshot: Mapping[str, object], *, facility_type: str | None = None
+) -> tuple[Candidate, ...]:
+    """Build bounded planning candidates from a public assertion snapshot.
+
+    Candidate identity remains the source assertion identity. The adapter does
+    not infer canonical facilities, capacity, legal status, authority or service
+    availability; those fields must be supplied separately by a bounded caller.
+    """
+
+    if snapshot.get("record_type") != "facility_assertions":
+        raise ValueError("snapshot must be a facility_assertions record")
+    if (
+        snapshot.get("authoritative") is not False
+        or snapshot.get("release_filter") != "public-only"
+    ):
+        raise ValueError("snapshot must be public-only and non-authoritative")
+    rows = snapshot.get("assertions")
+    if not isinstance(rows, list):
+        raise ValueError("snapshot assertions must be an array")
+    candidates: list[Candidate] = []
+    seen: set[str] = set()
+    for row in rows:
+        if not isinstance(row, Mapping):
+            raise ValueError("snapshot assertions must contain objects")
+        assertion_id = row.get("assertion_id")
+        row_type = row.get("facility_type")
+        if not isinstance(assertion_id, str) or not assertion_id.strip():
+            raise ValueError("assertions require assertion_id")
+        if assertion_id in seen:
+            raise ValueError("assertion IDs must be unique")
+        seen.add(assertion_id)
+        if not isinstance(row_type, str) or not row_type.strip():
+            raise ValueError("assertions require facility_type")
+        if facility_type is not None and row_type != facility_type:
+            continue
+        if row.get("release_classification", "public") != "public":
+            raise ValueError("snapshot contains a non-public assertion")
+        candidates.append(Candidate(assertion_id))
+    return tuple(sorted(candidates, key=lambda candidate: candidate.candidate_id))
+
+
 @dataclass(frozen=True)
 class LocationSolution:
     model: Model

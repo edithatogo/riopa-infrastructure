@@ -30,7 +30,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 ## 4. Stable registry release
 
-- [~] 4.1 Integrate registry versions with accessibility and planning queries. A public-only, non-authoritative assertion projection now supplies unit opportunity weights to accessibility measures; planning integration and authoritative registry identity remain pending.
+- [~] 4.1 Integrate registry versions with accessibility and planning queries. Public-only, non-authoritative assertions now supply accessibility opportunity weights and bounded planning candidates; planning authority, canonical registry identity and operational availability remain pending (`src/riopa_provenance/facility_location.py:candidates_from_public_facility_snapshot`, `docs/facility-public-planning-adapter-contract-20260825.json`).
 - [x] 4.2 Generate bounded source disagreement and coverage reports over
   archived assertions. (`disagreement_coverage_report`, tests)
 - [~] 4.3 Release immutable registry snapshot and correction process. A content-addressed public-only snapshot record and append-successor validator are implemented; publication and accountable release approval remain pending.
