@@ -9,7 +9,7 @@
 ## 2. Independent implementations
 
 - [x] 2.1 Stabilise the Python reference SDK and validator. Evidence: `src/riopa_provenance/sdk.py`, `tests/test_sdk.py`, and `docs/python-reference-sdk-20260825.md`; deterministic schema/crosswalk reports pass, while independent and release gates remain open.
-- [~] 2.2 Implement a bounded Rust typed model and validation. The Rust runner now parses the checked-in corpus and matches all five canonical SHA-256 fixtures (`rust/riopa-conformance/src/bin/conformance_corpus.rs`, `docs/rust-corpus-parity-20260825.json`, `tests/test_rust_producer_consumer.py`). Schema-validity parity, full RFC 8785 number handling, independent producer/consumer interoperability and signed release conformance remain open.
+- [x] 2.2 Implement a bounded Rust typed model and validation. The Rust runner parses the checked-in corpus and matches all five canonical SHA-256 fixtures (`rust/riopa-conformance/src/bin/conformance_corpus.rs`, `docs/rust-corpus-parity-20260825.json`, `tests/test_rust_producer_consumer.py`). Schema-validity parity, full RFC 8785 number handling, independent producer/consumer interoperability and signed release conformance remain open.
 - [x] 2.3 Implement a transport-neutral lineage/query client contract. Evidence: `src/riopa_provenance/lineage.py` and `tests/test_lineage.py`; strict versioned request round-trips are local-only and carry no endpoint or credential semantics.
 
 ## 3. Standards and compatibility testing
