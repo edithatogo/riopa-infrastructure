@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 9470,
-    "covered_statements": 8751,
-    "line_percent": 89.87238462679923,
-    "branches": 4008,
-    "covered_branches": 3362,
+    "statements": 9616,
+    "covered_statements": 8892,
+    "line_percent": 90.01168224299066,
+    "branches": 4080,
+    "covered_branches": 3436,
     "branch_percent": "90"
   },
   "files": [
@@ -367,12 +367,12 @@
     {
       "module": "src.riopa_provenance.cli",
       "path": "src/riopa_provenance/cli.py",
-      "statements": 571,
-      "covered_statements": 558,
-      "line_percent": 95.69093610698366,
+      "statements": 578,
+      "covered_statements": 562,
+      "line_percent": 95.29411764705883,
       "branches": 102,
       "covered_branches": 86,
-      "branch_percent": "96",
+      "branch_percent": "95",
       "missing_lines": [
         187,
         244,
@@ -384,9 +384,12 @@
         365,
         376,
         389,
-        662,
-        664,
-        667
+        654,
+        656,
+        657,
+        669,
+        671,
+        674
       ]
     },
     {
@@ -650,27 +653,18 @@
       "module": "src.riopa_provenance.lineage",
       "path": "src/riopa_provenance/lineage.py",
       "statements": 377,
-      "covered_statements": 359,
-      "line_percent": 93.14285714285714,
+      "covered_statements": 368,
+      "line_percent": 97.33333333333333,
       "branches": 148,
-      "covered_branches": 130,
-      "branch_percent": "93",
+      "covered_branches": 143,
+      "branch_percent": "97",
       "missing_lines": [
-        91,
-        93,
-        95,
-        120,
-        122,
         234,
         235,
-        392,
         400,
         610,
         611,
         612,
-        730,
-        732,
-        823,
         968,
         969,
         970
@@ -818,6 +812,17 @@
       ]
     },
     {
+      "module": "src.riopa_provenance.mcp",
+      "path": "src/riopa_provenance/mcp.py",
+      "statements": 85,
+      "covered_statements": 85,
+      "line_percent": 100.0,
+      "branches": 40,
+      "covered_branches": 40,
+      "branch_percent": "100",
+      "missing_lines": []
+    },
+    {
       "module": "src.riopa_provenance.methods",
       "path": "src/riopa_provenance/methods.py",
       "statements": 76,
@@ -858,11 +863,11 @@
     {
       "module": "src.riopa_provenance.publication",
       "path": "src/riopa_provenance/publication.py",
-      "statements": 310,
-      "covered_statements": 263,
-      "line_percent": 80.09049773755656,
-      "branches": 132,
-      "covered_branches": 91,
+      "statements": 320,
+      "covered_statements": 272,
+      "line_percent": 80.34934497816595,
+      "branches": 138,
+      "covered_branches": 96,
       "branch_percent": "80",
       "missing_lines": [
         30,
@@ -911,7 +916,8 @@
         631,
         633,
         635,
-        637
+        637,
+        672
       ]
     },
     {
@@ -944,12 +950,12 @@
     {
       "module": "src.riopa_provenance.registry",
       "path": "src/riopa_provenance/registry.py",
-      "statements": 232,
-      "covered_statements": 197,
-      "line_percent": 80.45977011494253,
-      "branches": 116,
-      "covered_branches": 83,
-      "branch_percent": "80",
+      "statements": 276,
+      "covered_statements": 231,
+      "line_percent": 78.94736842105263,
+      "branches": 142,
+      "covered_branches": 99,
+      "branch_percent": "79",
       "missing_lines": [
         43,
         63,
@@ -985,7 +991,17 @@
         487,
         490,
         501,
-        503
+        503,
+        548,
+        550,
+        552,
+        555,
+        563,
+        566,
+        573,
+        575,
+        578,
+        584
       ]
     },
     {

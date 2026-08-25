@@ -1,0 +1,17 @@
+{
+  "evidence_id": "PROVENANCE-QUERY-MCP-TRANSPORT-20260826",
+  "title": "Bounded local provenance-query MCP-style transport",
+  "transport": "newline-delimited JSON-RPC over stdio",
+  "tools": ["lineage_query", "lineage_walk", "lineage_impact"],
+  "properties": [
+    "read-only",
+    "deterministic dispatch over LineageIndex",
+    "bounded request size and depth",
+    "no network, credentials or remote authorization"
+  ],
+  "non_claims": [
+    "This is not remote MCP deployment or authorization evidence.",
+    "This does not establish external-client interoperability or production scale."
+  ],
+  "promotion_allowed": false
+}

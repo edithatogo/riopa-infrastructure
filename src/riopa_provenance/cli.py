@@ -650,6 +650,13 @@ def _lineage_impact(args: argparse.Namespace) -> int:
     return 0
 
 
+def _lineage_mcp_stdio(args: argparse.Namespace) -> int:
+    from .mcp import serve_stdio
+
+    serve_stdio(LineageIndex(args.database))
+    return 0
+
+
 def _lineage_query(args: argparse.Namespace) -> int:
     """Answer one bounded local query with a cache/projection diagnostic envelope."""
 
@@ -948,6 +955,11 @@ def build_parser() -> argparse.ArgumentParser:
     lineage_impact.add_argument("--node-id", action="append", required=True)
     lineage_impact.add_argument("--max-depth", type=int, default=50)
     lineage_impact.set_defaults(func=_lineage_impact)
+    lineage_mcp = lineage_subparsers.add_parser(
+        "mcp-stdio", help="serve bounded read-only lineage tools over JSON-RPC stdio"
+    )
+    lineage_mcp.add_argument("--database", required=True)
+    lineage_mcp.set_defaults(func=_lineage_mcp_stdio)
     lineage_query = lineage_subparsers.add_parser(
         "query", help="answer a bounded local where/why/how query"
     )
