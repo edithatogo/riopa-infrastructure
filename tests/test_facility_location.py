@@ -14,6 +14,7 @@ from riopa_provenance.facility_location import (
     RobustScenario,
     apply_bounded_reference_inputs,
     benchmark_reference_solvers,
+    candidates_from_public_facility_snapshot,
     competitive_capture_reference,
     evaluate_robust_scenarios,
     minimax_subgroup_alternative,
@@ -109,6 +110,30 @@ def test_bounded_reference_inputs_apply_accessibility_and_planning_feasibility()
     assert tuple(candidate.candidate_id for candidate in bounded.candidates) == ("c0", "c4")
     assert ("d0", "c4") not in bounded.travel
     assert solve(bounded).selected == ("c0",)
+
+
+def test_public_facility_snapshot_becomes_non_authoritative_candidates() -> None:
+    snapshot = {
+        "record_type": "facility_assertions",
+        "authoritative": False,
+        "release_filter": "public-only",
+        "assertions": [
+            {
+                "assertion_id": "public:b",
+                "facility_type": "clinic",
+                "release_classification": "public",
+            },
+            {
+                "assertion_id": "public:a",
+                "facility_type": "market",
+                "release_classification": "public",
+            },
+        ],
+    }
+    candidates = candidates_from_public_facility_snapshot(snapshot, facility_type="clinic")
+    assert [candidate.candidate_id for candidate in candidates] == ["public:b"]
+    with pytest.raises(ValueError, match="public-only"):
+        candidates_from_public_facility_snapshot({**snapshot, "authoritative": True})
 
 
 def test_reference_benchmark_records_bounded_nonclaims() -> None:
