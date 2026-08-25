@@ -18,6 +18,7 @@
 |---|---|---|---|
 | `WP-007-wcc-plan-source-pair-20260731` | One real WCC District Plan zone feature and the official National Planning Standards document are separately preserved | `evidence/wp007-real-slice/manifest.json`, `reports/wp007-bounded-real-slice.md` | Source preservation passes; no provision link, legal interpretation, operative-status assertion or agent-panel-qualified extraction is claimed |
 | `PLANNING-IDENTITY-LINKAGE-20260824` | Bounded plan-version, provision and planning-link identity contracts preserve source anchors, uncertainty and non-authority controls | `src/riopa_provenance/planning.py`, `tests/test_planning.py`, `docs/planning-identity-linkage-contract-20260824.json` | Contract and negative tests pass; real council coverage, legal interpretation, geometry linkage, panel qualification and authority remain open |
+| `PLANNING-SOURCE-INTAKE-20260825` | Digest-bound declared plan-document, structure and source-anchor intake | `src/riopa_provenance/planning.py:build_plan_source_intake`, `docs/planning-source-intake-contract-20260825.json`, `tests/test_planning.py` | Non-contacting candidate intake passes; actual bytes, preservation, legal status and council-specific evidence remain open |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only

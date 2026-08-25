@@ -3,7 +3,7 @@
 ## 1. Legal/document identity model
 
 - [x] 1.1 Define plan, plan-version, chapter, provision, citation and legal-status identities. (`src/riopa_provenance/planning.py`, `tests/test_planning.py`, `docs/planning-identity-linkage-contract-20260824.json`; commit `cc384d3`)
-- [ ] 1.2 Preserve official documents, structure and source anchors.
+- [~] 1.2 Preserve declared official-document, structure and source-anchor records before interpretation. The intake is digest-bound, non-contacting and promotion-disabled; actual document bytes, preservation acceptance and council-specific evidence remain open (`src/riopa_provenance/planning.py:build_plan_source_intake`, `docs/planning-source-intake-contract-20260825.json`, `tests/test_planning.py`).
 - [x] 1.3 Define link evidence, confidence, review and uncertainty. (`src/riopa_provenance/planning.py`, `tests/test_planning.py`, `docs/planning-identity-linkage-contract-20260824.json`; commit `cc384d3`)
 
 ## 2. Extraction and linkage
