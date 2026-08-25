@@ -4,7 +4,7 @@
   "phase": "Analytics",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T07:25:00Z",
+  "updated_at": "2026-08-25T12:10:00Z",
   "description": "Provide reusable, versioned and benchmarked travel matrices and accessibility measures for walking, cycling, driving, public transport and capacity-aware service access.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
@@ -13,7 +13,8 @@
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/54",
   "evidence": [
     "urn:riopa:evidence:accessibility-reference-measures:2026-08-25",
-    "urn:riopa:evidence:accessibility-conductor-regeneration:2026-08-25"
+    "urn:riopa:evidence:accessibility-conductor-regeneration:2026-08-25",
+    "urn:riopa:evidence:accessibility-partition-cache:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
