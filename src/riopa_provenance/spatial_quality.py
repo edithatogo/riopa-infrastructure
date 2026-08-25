@@ -130,3 +130,60 @@ def evaluate_spatial_quality(
             "Does not replace external operator or accountable release-authority evidence.",
         ],
     }
+
+
+def build_quality_benchmark_report(
+    observations: list[Mapping[str, Any]],
+    profile: Mapping[str, Any],
+    *,
+    profile_id: str,
+    revision: str,
+) -> dict[str, Any]:
+    """Summarize bounded quality observations without creating a release gate."""
+
+    if not observations:
+        raise SpatialQualityError("observations must not be empty")
+    if not profile_id.strip() or not revision.strip():
+        raise SpatialQualityError("profile_id and revision must be non-empty")
+    results: list[dict[str, Any]] = []
+    for observation in observations:
+        if not isinstance(observation, Mapping):
+            raise SpatialQualityError("observations must contain objects")
+        observation_id = observation.get("observation_id")
+        report = observation.get("report")
+        if not isinstance(observation_id, str) or not observation_id.strip():
+            raise SpatialQualityError("observations require observation_id")
+        if not isinstance(report, Mapping):
+            raise SpatialQualityError("observations require report objects")
+        result = evaluate_spatial_quality(
+            report,
+            profile,
+            transformation_revision=observation.get("transformation_revision"),
+            rights_disposition=observation.get("rights_disposition"),
+        )
+        results.append(
+            {
+                "observation_id": observation_id,
+                "status": result["status"],
+                "errors": result["errors"],
+                "warnings": result["warnings"],
+            }
+        )
+    results.sort(key=lambda item: item["observation_id"])
+    passed = sum(item["status"] == "pass" for item in results)
+    return {
+        "record_type": "bounded_spatial_quality_benchmark",
+        "profile_id": profile_id,
+        "revision": revision,
+        "observation_count": len(results),
+        "passed_count": passed,
+        "failed_count": len(results) - passed,
+        "observations": results,
+        "scale_class": "bounded-reference-or-archived-sample",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "This report summarizes supplied quality observations and does not establish "
+            "real-council or national qualification.",
+            "It does not establish source authority, operational readiness or release approval.",
+        ],
+    }
