@@ -22,6 +22,7 @@
 - [x] 3.3a Start a fresh isolated exact-candidate RC segment at `26bc0b4`. The first schema-validated hosted observation passes with one candidate revision and one 11-second observation; the 30-day duration gate remains pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32856370956`).
 - [x] 3.3b Start a fresh isolated beta operational segment at `26bc0b4`. Its first schema-validated hosted observation passes with one candidate revision, one second and one operational cycle; the 90-day and three-cycle gates remain pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32857084789`).
 - [x] 3.3c Pin the daily hosted operational schedule to the isolated beta campaign, qualification epoch and immutable `26bc0b4` candidate so later `main` changes do not reset its accumulating segment (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`).
+- [x] 3.3d Verify the merged workflow defaults without supplying campaign, epoch or candidate inputs. The cumulative ledger advances to two observations over 428 seconds at one candidate and epoch; the actual scheduled event remains pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32857832666`).
 
 ## 4. General availability and handover
 
