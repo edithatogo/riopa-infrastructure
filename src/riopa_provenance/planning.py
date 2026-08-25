@@ -347,3 +347,63 @@ def build_rule_structure_record(
             "Unresolved states are retained and are not treated as negative evidence.",
         ],
     }
+
+
+def build_planning_concept_crosswalk(
+    concepts: Sequence[Mapping[str, Any]],
+    *,
+    crosswalk_id: str,
+    captured_at: str,
+) -> dict[str, Any]:
+    """Build a batch of original-to-canonical planning concept mappings."""
+    if not crosswalk_id.strip() or not captured_at.strip():
+        raise ValueError("crosswalk_id and captured_at must be non-empty")
+    if not concepts:
+        raise ValueError("concepts must be non-empty")
+    from .canonical import build_crosswalk, validate_crosswalk_contract
+
+    required = (
+        "source_id",
+        "source_label",
+        "canonical_id",
+        "method",
+        "confidence",
+        "reviewer",
+        "valid_from",
+    )
+    records: list[dict[str, Any]] = []
+    for concept in concepts:
+        if not isinstance(concept, Mapping):
+            raise ValueError("planning concept records must be objects")
+        missing = [field for field in required if field not in concept]
+        if missing:
+            raise ValueError(f"planning concept record missing fields: {', '.join(missing)}")
+        record = build_crosswalk(
+            source_id=str(concept["source_id"]),
+            source_label=str(concept["source_label"]),
+            canonical_id=str(concept["canonical_id"]),
+            method=str(concept["method"]),
+            confidence=str(concept["confidence"]),
+            reviewer=str(concept["reviewer"]),
+            valid_from=str(concept["valid_from"]),
+            valid_to=(str(concept["valid_to"]) if concept.get("valid_to") is not None else None),
+            evidence=list(concept.get("evidence", [])),
+        )
+        errors = validate_crosswalk_contract(record)
+        if errors:
+            raise ValueError("invalid planning concept crosswalk: " + "; ".join(errors))
+        records.append(record)
+    records.sort(key=lambda item: str(item["mapping_id"]))
+    return {
+        "record_type": "planning-concept-crosswalk",
+        "crosswalk_id": crosswalk_id,
+        "captured_at": captured_at,
+        "records": records,
+        "records_sha256": sha256_json(records),
+        "status": "bounded-unreviewed",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Mappings preserve original assertions but do not establish semantic equivalence.",
+            "Unreviewed crosswalks do not establish legal effect, completeness or authority.",
+        ],
+    }

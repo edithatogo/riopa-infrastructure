@@ -6,6 +6,7 @@ from riopa_provenance.planning import (
     ProvisionIdentity,
     build_feature_provision_linkage,
     build_plan_source_intake,
+    build_planning_concept_crosswalk,
     build_provision_extraction_record,
     build_rule_structure_record,
 )
@@ -161,6 +162,45 @@ def test_rule_structure_preserves_hierarchy_exceptions_and_unresolved_state() ->
         build_rule_structure_record(
             [{"provision_id": "rule:self", "parent_provision_id": "rule:self"}],
             structure_id="structure-1",
+            captured_at="now",
+        )
+
+
+def test_planning_concept_crosswalk_is_digest_bound_and_preserves_source_assertions() -> None:
+    packet = build_planning_concept_crosswalk(
+        [
+            {
+                "source_id": "council:zone:residential",
+                "source_label": "Residential zone",
+                "canonical_id": "urn:riopa:concept:planning:residential",
+                "method": "declared-reference",
+                "confidence": "unknown",
+                "reviewer": "agent-panel:unreviewed",
+                "valid_from": "2024-01-01",
+                "evidence": ["archive:plan#zone-residential"],
+            }
+        ],
+        crosswalk_id="crosswalk-1",
+        captured_at="2026-08-25T00:00:00Z",
+    )
+    assert packet["records"][0]["source_assertion"]["label"] == "Residential zone"
+    assert packet["status"] == "bounded-unreviewed"
+    assert packet["promotion_allowed"] is False
+    assert len(packet["records_sha256"]) == 64
+    with pytest.raises(ValueError, match="invalid planning concept"):
+        build_planning_concept_crosswalk(
+            [
+                {
+                    "source_id": "source",
+                    "source_label": "x",
+                    "canonical_id": "not-canonical",
+                    "method": "manual",
+                    "confidence": "medium",
+                    "reviewer": "agent",
+                    "valid_from": "2024-01-01",
+                }
+            ],
+            crosswalk_id="crosswalk-1",
             captured_at="now",
         )
 
