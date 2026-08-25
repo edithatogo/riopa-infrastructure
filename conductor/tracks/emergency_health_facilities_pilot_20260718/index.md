@@ -22,6 +22,7 @@
 | `WP-010-COVERAGE-SCENARIO-20260825` | Synthetic primary/backup/availability/location scenario contract | `src/riopa_provenance/analysis.py:CoverageScenario`, `src/riopa_provenance/analysis.py:evaluate_coverage_scenario`, `tests/test_analysis.py` | Deterministic fixture passes; no dispatch, clinical suitability, response guarantee, national completeness or authority claim is made |
 | `WP-010-DISPATCH-QUEUE-20260825` | Synthetic dispatch, queueing, handover and dynamic-relocation adapter contract | `src/riopa_provenance/analysis.py:DispatchRequest`, `src/riopa_provenance/analysis.py:simulate_dispatch_scenario`, `tests/test_analysis.py` | Deterministic queue fixture passes; no live dispatch, clinical, response, national or operational claim is made |
 | `EMERGENCY-HEALTH-BENCHMARK-CONTRACT-20260825` | Bounded public/synthetic ambulance and hospital planning scenarios, assumptions and non-clinical metrics | `docs/emergency-health-pilot-benchmark-contract-20260825.json`, `tests/test_emergency_health_benchmark_contract.py` | Contract is repository-owned and promotion-disabled; authoritative ambulance source, calibrated scenarios, clinical/dispatch safety and external qualification remain open |
+| `EMERGENCY-HEALTH-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded emergency-health slice | `docs/emergency-health-closeout-evidence-20260825.json`, `tests/test_emergency_health_closeout_evidence.py` | Evidence categories are linked and fail-closed; stress, safety, authoritative-source, external and authority gates remain open |
 
 ## Blocking defects
 
@@ -32,6 +33,11 @@
 
 - The generic queue fixture cannot be used as an emergency-service or clinical
   decision system.
+
+The 2026-08-25 closeout packet links the bounded coverage, dispatch-simulation,
+source-candidate and benchmark-contract evidence. It does not establish
+calibrated stress performance, clinical or dispatch suitability, authoritative
+source completeness, operational safety or a stable release.
 
 ## Review and handover
 

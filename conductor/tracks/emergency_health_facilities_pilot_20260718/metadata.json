@@ -13,7 +13,8 @@
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/99",
   "evidence": [
-    "urn:riopa:evidence:emergency-health-benchmark-contract:2026-08-25"
+    "urn:riopa:evidence:emergency-health-benchmark-contract:2026-08-25",
+    "urn:riopa:evidence:emergency-health-closeout:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
