@@ -20,7 +20,7 @@
 
 ## 4. Agent-panel qualification and migration readiness
 
-- [ ] 4.1 Conduct planning-domain agent-panel qualification and resolve model findings.
+- [x] 4.1 Conduct planning-domain agent-panel qualification and resolve model findings. The four-lens repository-owned packet qualifies the bounded transition contract and records unresolved real-source, preservation, reproduction and authority gates (`docs/planning-transition-panel-qualification-20260825.json`, `tests/test_planning_transition_panel_qualification.py`; `e8ab512`).
 - [x] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)
 - [ ] 4.3 Release transition data and limitations with immutable evidence.
 
@@ -28,6 +28,7 @@
 
 - [x] 5.1 Correct the migration-playbook evidence SHA and record pending reconstruction/review gates explicitly. (review fix)
 - [x] 5.2 Align the decisions register with the completed bounded downstream integration evidence and retain only the real-data, panel and immutable-source blockers. (review fix; 2026-08-22)
+- [x] 5.3 Apply the repository formatter to the new panel qualification test after review (`68807d4`).
 
 ## Track closeout
 
