@@ -178,6 +178,10 @@ def assemble_partial_release(
     excluded: list[dict[str, Any]] = []
     seen: set[str] = set()
     for decision in decisions:
+        if decision.get("record_type") != "archive_delta_decision":
+            raise ArchiveOperationsError("release assembly requires archive delta decisions")
+        if decision.get("promotion_allowed") is not False:
+            raise ArchiveOperationsError("release decisions must prohibit promotion")
         identity = decision.get("identity_key")
         if not isinstance(identity, str) or not identity.strip() or identity in seen:
             raise ArchiveOperationsError("release decisions require unique identities")
@@ -188,14 +192,28 @@ def assemble_partial_release(
             raise ArchiveOperationsError(f"decision digest mismatch for {identity}")
         action = decision.get("action")
         payload = decision.get("current_payload_sha256")
-        if action in {"store-delta", "no-change"} and isinstance(payload, str):
+        if action not in {"store-delta", "no-change", "quarantine"}:
+            raise ArchiveOperationsError(f"unsupported decision action for {identity}")
+        reasons = decision.get("quarantine_reasons")
+        if not isinstance(reasons, list) or any(
+            not isinstance(reason, str) or not reason for reason in reasons
+        ):
+            raise ArchiveOperationsError(f"invalid quarantine reasons for {identity}")
+        if action == "quarantine" and not reasons:
+            raise ArchiveOperationsError(f"quarantine decision lacks reasons for {identity}")
+        if action != "quarantine" and reasons:
+            raise ArchiveOperationsError(f"clear decision has quarantine reasons for {identity}")
+        if action in {"store-delta", "no-change"}:
+            if not isinstance(payload, str):
+                raise ArchiveOperationsError(f"clear decision lacks payload digest for {identity}")
+            _digest({"payload": payload}, "payload", required=True)
             included.append({"identity_key": identity, "payload_sha256": payload})
         else:
             excluded.append(
                 {
                     "identity_key": identity,
                     "action": action,
-                    "reasons": list(decision.get("quarantine_reasons", [])),
+                    "reasons": list(reasons),
                 }
             )
     included.sort(key=lambda item: item["identity_key"])

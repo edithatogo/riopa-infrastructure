@@ -89,6 +89,20 @@ def test_partial_release_excludes_quarantine_and_binds_decision_digests() -> Non
         )
 
 
+def test_partial_release_rejects_self_hashed_semantically_invalid_decision() -> None:
+    from riopa_provenance.hashing import sha256_json
+
+    malformed = build_delta_decision(None, observation(), observed_at="2026-08-25T00:00:00Z")
+    malformed["promotion_allowed"] = True
+    malformed["decision_sha256"] = sha256_json(
+        {key: value for key, value in malformed.items() if key != "decision_sha256"}
+    )
+    with pytest.raises(ArchiveOperationsError, match="prohibit promotion"):
+        assemble_partial_release(
+            [malformed], release_id="fixture-release", assembled_at="2026-08-25T01:00:00Z"
+        )
+
+
 def test_coverage_report_is_multidimensional_and_bounded() -> None:
     second = observation("linz-parcels")
     second.update(
