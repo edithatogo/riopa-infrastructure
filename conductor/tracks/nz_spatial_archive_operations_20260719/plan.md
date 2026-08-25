@@ -9,12 +9,14 @@
 ## 2. National automation
 
 - [ ] 2.1 Deploy permitted machine-readable connectors in controlled waves.
-- [ ] 2.2 Implement delta capture, schema/capability drift and quarantine.
+- [x] 2.2 Implement the repository-owned delta decision, schema/capability drift and fail-closed quarantine core. (`src/riopa_provenance/archive_operations.py`, `tests/test_archive_operations.py`; `be70b30`) Live connector execution and incident resolution remain under 2.1, 3.2 and 3.3.
 - [ ] 2.3 Build national snapshot assembly and partial-release handling.
+  - [x] Implement digest-verified partial-release assembly that retains explicit exclusions and cannot authorize promotion. (`src/riopa_provenance/archive_operations.py`, `tests/test_archive_operations.py`; `be70b30`)
 
 ## 3. Coverage and operations evidence
 
 - [ ] 3.1 Publish multidimensional coverage, freshness, quality, rights and status reports.
+  - [x] Implement a bounded report generator that keeps authority, layer type, time depth, legal status, rights, quality, disposition and availability separate and never infers a national percentage. (`src/riopa_provenance/archive_operations.py`, `tests/test_archive_operations.py`; `be70b30`)
 - [ ] 3.2 Operate for the required beta SLO evidence period.
 - [ ] 3.3 Resolve or formally accept operational exceptions.
 
@@ -26,7 +28,7 @@
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [x] C.1 Link the current implementation and test evidence in `index.md`; review, migration and release evidence remain explicitly unavailable.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/nz-archive-operations-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

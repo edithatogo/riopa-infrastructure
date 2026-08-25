@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "nz_spatial_archive_operations_contract",
+  "track_id": "nz_spatial_archive_operations_20260719",
+  "evidence_id": "urn:riopa:evidence:nz-spatial-archive-operations-core:2026-08-25",
+  "scope": "repository-owned deterministic operations core",
+  "implemented_controls": [
+    {
+      "control": "delta-and-drift-decision",
+      "implementation": "riopa_provenance.archive_operations.build_delta_decision",
+      "guarantees": [
+        "payload changes are digest-bound",
+        "schema or capability drift is quarantined until resolved",
+        "unhealthy, unobserved, restricted or digest-less sources fail closed",
+        "reconstructed backfills require an explicit reconstruction timestamp"
+      ]
+    },
+    {
+      "control": "partial-release-assembly",
+      "implementation": "riopa_provenance.archive_operations.assemble_partial_release",
+      "guarantees": [
+        "decision digests are verified before assembly",
+        "quarantined sources remain explicitly excluded with reasons",
+        "duplicate source identities are rejected",
+        "repository evidence cannot authorize promotion"
+      ]
+    },
+    {
+      "control": "multidimensional-coverage-report",
+      "implementation": "riopa_provenance.archive_operations.build_coverage_report",
+      "guarantees": [
+        "authority, layer, time depth, legal, rights, quality, disposition and availability counts remain separate",
+        "every supplied source retains an owner role and operational disposition",
+        "no single national coverage percentage is inferred"
+      ]
+    }
+  ],
+  "validation": {
+    "tests": "tests/test_archive_operations.py",
+    "negative_cases": [
+      "unresolved schema drift",
+      "unresolved capability drift",
+      "restricted rights",
+      "degraded availability",
+      "missing backfill reconstruction time",
+      "tampered decision digest",
+      "duplicate source identity"
+    ]
+  },
+  "remaining_gates": [
+    "complete all blocking dependency tracks",
+    "inventory every current authority and source",
+    "obtain source-specific rights and credentials where required",
+    "deploy and observe permitted connectors in controlled waves",
+    "publish reports from current national observations",
+    "complete the required beta SLO evidence period",
+    "review or remediate all operational exceptions",
+    "complete national-scale restore, correction, retirement, preservation and capacity exercises",
+    "obtain accountable approval and publish the stable operating model",
+    "satisfy the target release readiness evaluator"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This contract does not contact endpoints, deploy connectors, preserve payloads or establish national coverage.",
+    "Repository tests do not replace elapsed operational evidence, source permission, external reproduction or accountable approval."
+  ]
+}
