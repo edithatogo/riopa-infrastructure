@@ -29,7 +29,7 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; external usability, preservation and release-authority gates remain explicitly pending (`docs/documentation-closeout-evidence-20260825.json`, `tests/test_documentation_closeout_evidence.py`; `c79bda0`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/documentation-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.9.0`, with external usability, preservation, RC-soak and authority gates unresolved.
 
 ## Review fixes
 
