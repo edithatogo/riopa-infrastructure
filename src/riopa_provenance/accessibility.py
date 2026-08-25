@@ -121,6 +121,67 @@ class AccessibilityMatrix:
         return observation.impedance
 
 
+def compare_reference_matrices(
+    left: AccessibilityMatrix, right: AccessibilityMatrix
+) -> dict[str, object]:
+    """Compare two caller-supplied matrices without treating either as truth."""
+    pairs = sorted(set(left.observations) | set(right.observations))
+    rows: list[dict[str, object]] = []
+    status_mismatches = 0
+    comparable = 0
+    deltas: list[float] = []
+    for pair in pairs:
+        left_observation = left.observations.get(pair)
+        right_observation = right.observations.get(pair)
+        left_status = left_observation.status.value if left_observation else "missing"
+        right_status = right_observation.status.value if right_observation else "missing"
+        delta: float | None = None
+        if left_status != right_status:
+            status_mismatches += 1
+        elif left_observation and right_observation:
+            comparable += 1
+            if left_observation.impedance is not None and right_observation.impedance is not None:
+                delta = right_observation.impedance - left_observation.impedance
+                deltas.append(delta)
+        rows.append(
+            {
+                "origin": pair[0],
+                "destination": pair[1],
+                "left_status": left_status,
+                "right_status": right_status,
+                "impedance_delta": delta,
+            }
+        )
+    metadata_compatible = all(
+        getattr(left, field) == getattr(right, field) for field in ("network_version", "mode")
+    )
+    return {
+        "record_type": "accessibility-reference-matrix-comparison",
+        "left_matrix_id": left.matrix_id,
+        "right_matrix_id": right.matrix_id,
+        "left_engine": f"{left.engine}@{left.engine_version}",
+        "right_engine": f"{right.engine}@{right.engine_version}",
+        "metadata_compatible": metadata_compatible,
+        "pairs": rows,
+        "pair_count": len(rows),
+        "comparable_pair_count": comparable,
+        "status_mismatch_count": status_mismatches,
+        "max_abs_impedance_delta": max((abs(value) for value in deltas), default=None),
+        "claim_classification": "reference-only",
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "A comparison reports differences between supplied matrices; it does not "
+                "select an authoritative engine."
+            ),
+            (
+                "Reference comparisons do not establish national-scale, operational or "
+                "timetable validity."
+            ),
+        ],
+    }
+
+
 @dataclass(frozen=True)
 class AccessibilityPartition:
     """Deterministic subset of a matrix, keyed by sorted origin identifiers."""

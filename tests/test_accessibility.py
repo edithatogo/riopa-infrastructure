@@ -11,6 +11,7 @@ from riopa_provenance.accessibility import (
     TravelObservation,
     TravelStatus,
     changed_origins,
+    compare_reference_matrices,
     cumulative_opportunity,
     gravity_accessibility,
     incremental_cumulative_opportunity,
@@ -62,6 +63,34 @@ def test_partitioning_is_deterministic_and_preserves_rows() -> None:
     assert sum(len(partition.observations) for partition in partitions) == 4
     with pytest.raises(ValueError, match="positive"):
         partition_matrix(_matrix(), origins_per_partition=0)
+
+
+def test_reference_matrix_comparison_preserves_statuses_and_deltas() -> None:
+    left = _matrix()
+    right = AccessibilityMatrix(
+        "benchmark-2",
+        "network-2026",
+        "independent-table",
+        "2",
+        "walk",
+        {
+            ("a", "x"): TravelObservation(TravelStatus.REACHABLE, 7),
+            ("a", "y"): TravelObservation(TravelStatus.UNREACHABLE),
+            ("b", "x"): TravelObservation(TravelStatus.REACHABLE, 10),
+            ("c", "z"): TravelObservation(TravelStatus.MISSING),
+        },
+    )
+    report = compare_reference_matrices(left, right)
+    assert report["pair_count"] == 5
+    assert report["comparable_pair_count"] == 2
+    assert report["status_mismatch_count"] == 2
+    assert report["max_abs_impedance_delta"] == 2
+    assert report["metadata_compatible"] is True
+    assert report["promotion_allowed"] is False
+    incompatible = AccessibilityMatrix(
+        "other", "network-other", "engine", "1", "cycle", left.observations
+    )
+    assert compare_reference_matrices(left, incompatible)["metadata_compatible"] is False
 
 
 def test_cache_is_fingerprint_aware_and_incremental_recompute_changes_one_origin() -> None:
