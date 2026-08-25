@@ -1,0 +1,41 @@
+{
+  "schema": "riopa.emergency-health-panel-qualification.v1",
+  "packet_id": "emergency-health-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "revision_basis": "protected-main",
+  "scope": "regional public-datasets-only non-operational technical preview",
+  "lenses": [
+    {
+      "id": "operational-safety",
+      "finding": "Synthetic coverage, queue, service and Pareto contracts are explicitly non-operational; clinical and dispatch safety evidence is absent.",
+      "disposition": "open"
+    },
+    {
+      "id": "quantitative-methods",
+      "finding": "Deterministic bounded scenarios preserve assumptions, unmet demand, residual reserve and non-modelled constraints.",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "governance",
+      "finding": "Promotion is disabled and authoritative ambulance/service-source, rights and accountable-authority boundaries are explicit.",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "reproducibility",
+      "finding": "Fixtures, tests and candidate manifest are version-addressed; external reproduction and preservation acceptance are absent.",
+      "disposition": "open"
+    }
+  ],
+  "open_gates": [
+    "authoritative ambulance and service-source evidence",
+    "external operator and user reproduction",
+    "clinical and operational safety review",
+    "hosted recovery and preservation acceptance",
+    "elapsed beta/RC evidence and accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This repository-owned panel packet is not independent external evidence or clinical approval.",
+    "Agent-panel agreement cannot close hosted, participant, elapsed or accountable-authority gates."
+  ]
+}
