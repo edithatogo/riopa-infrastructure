@@ -20,7 +20,7 @@
 
 ## 4. Review and stable release
 
-- [ ] 4.1 Conduct panel-of-agents link sample review and error analysis; factual external participation and authority remain open.
+- [~] 4.1 Conduct a panel-of-agents link sample review and bounded error analysis over the two synthetic council-shaped fixtures (`docs/planning-link-sample-panel-review-20260825.json`, `tests/test_planning_link_sample_panel_review.py`). Factual external participation, real council evidence, legal interpretation and authority remain open.
 - [ ] 4.2 Resolve or quantify missing/incorrect linkage.
 - [~] 4.3 Publish the bounded versioned-link methods and non-authority limitations (`docs/planning-versioned-links-methods-20260825.md`, `tests/test_planning_versioned_methods.py`). Panel-of-agents review, real source capture, legal interpretation, preservation and authority remain open.
 

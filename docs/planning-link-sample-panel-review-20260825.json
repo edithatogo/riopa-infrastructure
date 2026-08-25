@@ -1,0 +1,55 @@
+{
+  "schema": "riopa.planning.link-sample-panel-review.v1",
+  "packet_id": "planning-link-sample-panel-review-20260825",
+  "status": "bounded-synthetic-agent-panel-qualified-open-gates",
+  "scope": "two structurally different synthetic council-shaped fixtures",
+  "sample": {
+    "fixture_names": ["district", "hybrid"],
+    "contract_families": [
+      "source intake",
+      "rule structure",
+      "feature-provision linkage",
+      "concept crosswalk",
+      "feasibility"
+    ],
+    "positive_cases": 10,
+    "expected_unresolved_feasibility_cases": 2,
+    "negative_mutation_cases": 2
+  },
+  "panel": [
+    {
+      "lens": "governance",
+      "finding": "Synthetic records preserve declared status and do not assert legal effect, council authority or operative rules.",
+      "disposition": "qualified"
+    },
+    {
+      "lens": "schema",
+      "finding": "Both fixture structures exercise the same fail-closed contracts and retain source anchors, hashes and uncertainty.",
+      "disposition": "qualified"
+    },
+    {
+      "lens": "data",
+      "finding": "The sample distinguishes structurally different inputs and keeps unresolved feasibility explicit; it is not a completeness or accuracy estimate.",
+      "disposition": "qualified-with-limitation"
+    },
+    {
+      "lens": "methods",
+      "finding": "Mutation cases reject malformed linkage and missing evidence deterministically; no legal interpretation is performed.",
+      "disposition": "qualified-with-limitation"
+    }
+  ],
+  "decisions": {
+    "synthetic_contracts_qualified": true,
+    "factual_council_link_review": false,
+    "legal_interpretation": false,
+    "national_completeness": false,
+    "promotion_allowed": false
+  },
+  "open_gates": [
+    "real council documents and source-faithful bytes",
+    "factual external participant evidence",
+    "legal interpretation and planning authority",
+    "preservation/publication acceptance",
+    "accountable release-authority decision"
+  ]
+}
