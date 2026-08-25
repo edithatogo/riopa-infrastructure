@@ -40,3 +40,4 @@
 ## Review fixes
 
 - [x] R.6 Reconcile the programme status summary with the 28 track metadata states: 12 active, 4 validating and 12 specified; no track is promoted by this documentation correction. (`conductor/tracks.md`)
+- [x] R.7 Replace independent-analyst wording with distinct agent-panel lenses for the single-developer repository, while preserving factual external-participant and release-authority gates. (`docs/foundation-agent-panel-wording-correction-20260825.json`)
