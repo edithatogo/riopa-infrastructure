@@ -1,0 +1,42 @@
+{
+  "schema": "riopa.planning-rules-closeout-evidence.v1",
+  "packet_id": "planning-rules-closeout-evidence-20260825",
+  "track_id": "planning_rules_linkage_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "evidence_categories": {
+    "implementation": [
+      "src/riopa_provenance/planning.py",
+      "docs/planning-source-intake-contract-20260825.json",
+      "docs/planning-feasibility-contract-20260825.json"
+    ],
+    "tests": [
+      "tests/test_planning.py",
+      "tests/test_planning_structural_validation.py",
+      "tests/test_planning_linkage_error_report.py"
+    ],
+    "agent_panel": [
+      "docs/planning-link-sample-panel-review-20260825.json",
+      "tests/test_planning_link_sample_panel_review.py"
+    ],
+    "migration": [
+      "docs/planning-versioned-links-methods-20260825.md",
+      "docs/planning-rules-conductor-regeneration-20260825.json"
+    ],
+    "release_candidate": [
+      "docs/planning-versioned-links-methods-20260825.md",
+      "docs/planning-linkage-error-ledger-20260825.json"
+    ]
+  },
+  "open_gates": [
+    "real council document bytes and source-faithful preservation",
+    "legal interpretation and planning authority",
+    "external participation and release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains bounded contracts and synthetic fixtures, not a legal or production release.",
+    "Agent-panel qualification cannot substitute for council authority, factual external participation or release authority.",
+    "Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}
