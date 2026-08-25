@@ -4,7 +4,7 @@
   "phase": "Applications",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T08:10:00Z",
+  "updated_at": "2026-08-25T17:15:00Z",
   "description": "Reproduce and extend supermarket density/access analysis with open code, multi-source facilities, zoning feasibility, health outcomes, causal restraint and transparent location alternatives.",
   "depends_on": [
     "planning_rules_linkage_20260718",
@@ -17,6 +17,7 @@
   "evidence": [
     "urn:riopa:evidence:supermarket-density-reference:2026-08-25",
     "urn:riopa:evidence:supermarket-preregistration:2026-08-25",
+    "urn:riopa:evidence:supermarket-reference-comparison:2026-08-25",
     "urn:riopa:evidence:supermarket-conductor-regeneration:2026-08-25"
   ],
   "target_release": "0.8.0",
