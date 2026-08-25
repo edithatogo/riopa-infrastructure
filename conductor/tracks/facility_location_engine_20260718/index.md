@@ -25,6 +25,7 @@
 | `FACILITY-V1-API-POLICY-20260825` | Bounded v1 model registry, compatibility rules and fail-closed migration policy | `docs/facility-location-v1-api-migration-policy-20260825.md`, `docs/facility-location-v1-api-migration-contract-20260825.json`, `tests/test_facility_location_v1_policy.py` | Four reference model names and breaking-change controls are explicit; national-scale, planning/accessibility, operational, external-solver and release gates remain open |
 | `FACILITY-BOUNDED-INPUT-ADAPTER-20260825` | Apply archived accessibility observations and explicit planning feasibility to bounded location problems | `src/riopa_provenance/facility_location.py:apply_bounded_reference_inputs`, `docs/facility-location-bounded-input-adapter-20260825.md`, `docs/facility-location-bounded-input-adapter-contract-20260825.json`, `tests/test_facility_location.py` | Fail-closed matrix/eligibility transformation passes; live network/timetable, planning authority, national-scale, operational and release evidence remain open |
 | `FACILITY-LOCATION-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded location slice | `docs/facility-location-closeout-evidence-20260825.json`, `tests/test_facility_location_closeout_evidence.py` | Evidence categories are linked and fail-closed; national scale, external benchmark, authority and release gates remain open |
+| `FACILITY-LOCATION-CONDUCTOR-REGENERATION-20260825` | Locked methods, roadmap status, issue graph and quality regeneration receipt | `docs/facility-location-conductor-regeneration-20260825.json` | Repository generation passed; temporary methods output is not a release artifact and roadmap readiness remains false |
 
 ## Blocking defects
 
@@ -39,6 +40,10 @@
 The 2026-08-25 closeout packet links the bounded implementation, test, review,
 migration and candidate-contract evidence. It does not establish national-scale
 performance, external solver equivalence, planning authority or production use.
+
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; it does not change the track’s maturity or external gates.
 
 ## Review and handover
 
