@@ -341,6 +341,69 @@ def partition_matrix(
     return tuple(partitions)
 
 
+def build_reference_workload_envelope(
+    matrix: AccessibilityMatrix,
+    *,
+    origins_per_partition: int,
+    observed_elapsed_seconds: float,
+    bytes_per_observation: int,
+    cost_per_second: float = 0.0,
+) -> dict[str, object]:
+    """Describe a bounded matrix workload without extrapolating to a nation.
+
+    The caller supplies the observed runtime and accounting rates. This helper
+    derives only cardinality, deterministic partition count, storage and a
+    transparent cost estimate from the supplied matrix. It does not run a
+    network engine, infer national coverage or turn a fixture into an SLO.
+    """
+
+    if not isfinite(observed_elapsed_seconds) or observed_elapsed_seconds <= 0:
+        raise ValueError("observed_elapsed_seconds must be finite and positive")
+    if isinstance(origins_per_partition, bool) or not isinstance(origins_per_partition, int):
+        raise ValueError("origins_per_partition must be a positive integer")
+    if origins_per_partition <= 0:
+        raise ValueError("origins_per_partition must be a positive integer")
+    if isinstance(bytes_per_observation, bool) or not isinstance(bytes_per_observation, int):
+        raise ValueError("bytes_per_observation must be a positive integer")
+    if bytes_per_observation <= 0:
+        raise ValueError("bytes_per_observation must be a positive integer")
+    if not isfinite(cost_per_second) or cost_per_second < 0:
+        raise ValueError("cost_per_second must be finite and non-negative")
+    partitions = partition_matrix(matrix, origins_per_partition=origins_per_partition)
+    observation_count = len(matrix.observations)
+    storage_bytes = observation_count * bytes_per_observation
+    return {
+        "record_type": "accessibility-reference-workload-envelope",
+        "matrix_id": matrix.matrix_id,
+        "network_version": matrix.network_version,
+        "mode": matrix.mode,
+        "origin_count": len({origin for origin, _ in matrix.observations}),
+        "destination_count": len({destination for _, destination in matrix.observations}),
+        "observation_count": observation_count,
+        "partition_count": len(partitions),
+        "origins_per_partition": origins_per_partition,
+        "observed_elapsed_seconds": observed_elapsed_seconds,
+        "observations_per_second": observation_count / observed_elapsed_seconds,
+        "bytes_per_observation": bytes_per_observation,
+        "estimated_storage_bytes": storage_bytes,
+        "cost_per_second": cost_per_second,
+        "estimated_cost": observed_elapsed_seconds * cost_per_second,
+        "claim_classification": "reference-only",
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "This is a caller-supplied bounded workload envelope, not a national-scale "
+                "measurement."
+            ),
+            (
+                "Storage and cost are estimates from declared rates, not provider invoices "
+                "or SLO evidence."
+            ),
+            "The envelope does not establish road, timetable, facility or operational validity.",
+        ],
+    }
+
+
 def changed_origins(previous: AccessibilityMatrix, current: AccessibilityMatrix) -> tuple[str, ...]:
     """Return changed origin rows; incompatible matrix metadata invalidates all rows."""
     all_origins = sorted(
