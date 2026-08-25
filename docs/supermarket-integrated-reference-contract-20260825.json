@@ -13,6 +13,7 @@
         "distance, network, multimodal, capacity and competition measures remain explicit",
         "deprivation, demographic and rurality context remains separate from access",
         "health records are explicitly ecological and retain denominator, source and small-cell status",
+        "suppressed small-cell records cannot expose an outcome rate",
         "spatial confounding, MAUP and measurement-error sensitivity records are required"
       ]
     },
@@ -33,9 +34,12 @@
     "negative_cases": [
       "authoritative or unversioned facility registry",
       "non-ecological health record",
+      "negative access or alternative metric",
+      "exposed suppressed-cell outcome rate",
       "missing sensitivity family",
       "unresolved planning candidate",
       "tampered planning-rule digest",
+      "declared planning status inconsistent with cited rules",
       "incomplete trade-off metrics",
       "omitted real-world constraints"
     ]
