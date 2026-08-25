@@ -1,7 +1,7 @@
 # Evidence index: Canonical domain schemas, identifiers and ontology
 
 - **Track ID:** `canonical_domain_schemas_ontology_20260719`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
 - **Current maturity:** `M1`
 - **Maturity target:** `M6`
