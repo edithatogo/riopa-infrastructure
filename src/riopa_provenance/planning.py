@@ -378,16 +378,24 @@ def build_planning_concept_crosswalk(
         missing = [field for field in required if field not in concept]
         if missing:
             raise ValueError(f"planning concept record missing fields: {', '.join(missing)}")
+        for field in required:
+            if not isinstance(concept[field], str) or not concept[field].strip():
+                raise ValueError(f"planning concept field must be a non-empty string: {field}")
+        evidence = concept.get("evidence", [])
+        if not isinstance(evidence, list) or any(
+            not isinstance(item, str) or not item.strip() for item in evidence
+        ):
+            raise ValueError("planning concept evidence must be a list of non-empty strings")
         record = build_crosswalk(
-            source_id=str(concept["source_id"]),
-            source_label=str(concept["source_label"]),
-            canonical_id=str(concept["canonical_id"]),
-            method=str(concept["method"]),
-            confidence=str(concept["confidence"]),
-            reviewer=str(concept["reviewer"]),
-            valid_from=str(concept["valid_from"]),
-            valid_to=(str(concept["valid_to"]) if concept.get("valid_to") is not None else None),
-            evidence=list(concept.get("evidence", [])),
+            source_id=concept["source_id"],
+            source_label=concept["source_label"],
+            canonical_id=concept["canonical_id"],
+            method=concept["method"],
+            confidence=concept["confidence"],
+            reviewer=concept["reviewer"],
+            valid_from=concept["valid_from"],
+            valid_to=concept.get("valid_to"),
+            evidence=evidence,
         )
         errors = validate_crosswalk_contract(record)
         if errors:
