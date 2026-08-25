@@ -121,6 +121,64 @@ class AccessibilityMatrix:
         return observation.impedance
 
 
+def bind_public_facility_registry(
+    matrix: AccessibilityMatrix, registry_snapshot: Mapping[str, Any]
+) -> dict[str, object]:
+    """Bind a reference matrix to one public-only facility snapshot.
+
+    The binding is intentionally metadata-only: it does not select a facility,
+    infer service availability, or turn source assertions into an authoritative
+    registry.  Every matrix destination must be present in the supplied
+    ``public_release_snapshot`` so a stale or private destination fails closed.
+    """
+
+    if registry_snapshot.get("record_type") != "facility_assertions":
+        raise ValueError("registry snapshot must contain facility assertions")
+    if registry_snapshot.get("authoritative") is not False:
+        raise ValueError("facility registry binding requires non-authoritative evidence")
+    if registry_snapshot.get("release_filter") != "public-only":
+        raise ValueError("facility registry binding requires a public-only snapshot")
+    registry_version = registry_snapshot.get("registry_version")
+    if not isinstance(registry_version, str) or not registry_version.strip():
+        raise ValueError("public facility snapshots require a non-empty registry_version")
+    rows = registry_snapshot.get("assertions")
+    if not isinstance(rows, list):
+        raise ValueError("facility registry snapshot assertions must be a list")
+    facility_ids: set[str] = set()
+    for row in rows:
+        if not isinstance(row, Mapping):
+            raise ValueError("facility registry assertions must be objects")
+        assertion_id = row.get("assertion_id")
+        if not isinstance(assertion_id, str) or not assertion_id.strip():
+            raise ValueError("facility registry assertions require assertion_id")
+        if assertion_id in facility_ids:
+            raise ValueError("facility registry assertion IDs must be unique")
+        facility_ids.add(assertion_id)
+    destinations = {destination for _, destination in matrix.observations}
+    unknown = sorted(destinations - facility_ids)
+    if unknown:
+        raise ValueError(f"matrix destinations are absent from public registry: {unknown}")
+    return {
+        "record_type": "accessibility-facility-registry-binding",
+        "matrix_id": matrix.matrix_id,
+        "network_version": matrix.network_version,
+        "registry_version": registry_version,
+        "facility_assertion_ids": sorted(facility_ids),
+        "claim_classification": "reference-only",
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "The binding does not establish authoritative facility identity or "
+                "service availability."
+            ),
+            (
+                "The binding does not establish network, timetable, national-scale or "
+                "operational validity."
+            ),
+        ],
+    }
+
+
 def compare_reference_matrices(
     left: AccessibilityMatrix, right: AccessibilityMatrix
 ) -> dict[str, object]:

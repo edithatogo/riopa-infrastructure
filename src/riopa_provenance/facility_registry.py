@@ -120,7 +120,9 @@ def history_snapshot(events: tuple[FacilityHistoryEvent, ...]) -> dict[str, obje
     return {"record_type": "facility_history", "authoritative": False, "events": rows}
 
 
-def public_release_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[str, object]:
+def public_release_snapshot(
+    assertions: tuple[FacilityAssertion, ...], *, registry_version: str | None = None
+) -> dict[str, object]:
     """Project only public assertions and retain excluded IDs as an audit ledger."""
 
     public = tuple(item for item in assertions if item.release_classification == "public")
@@ -130,6 +132,10 @@ def public_release_snapshot(assertions: tuple[FacilityAssertion, ...]) -> dict[s
     snapshot = assertions_snapshot(public)
     snapshot["excluded_assertion_ids"] = excluded
     snapshot["release_filter"] = "public-only"
+    if registry_version is not None:
+        if not registry_version.strip():
+            raise ValueError("registry_version must be non-empty when supplied")
+        snapshot["registry_version"] = registry_version
     return snapshot
 
 

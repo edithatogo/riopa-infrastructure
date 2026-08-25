@@ -1,0 +1,22 @@
+{
+  "evidence_id": "FACILITY-ACCESSIBILITY-BINDING-20260825",
+  "scope": "bounded public-only reference projection",
+  "contract": "bind_public_facility_registry",
+  "inputs": {
+    "registry_record_type": "facility_assertions",
+    "release_filter": "public-only",
+    "registry_version_required": true,
+    "matrix_destinations_must_be_public_assertion_ids": true
+  },
+  "outcomes": {
+    "stale_or_private_destinations": "fail-closed",
+    "authoritative_identity_inferred": false,
+    "service_availability_inferred": false,
+    "promotion_allowed": false
+  },
+  "limitations": [
+    "This binds supplied reference metadata only; it does not capture a live or archived network.",
+    "Network, timetable, facility, national-scale and operational validity remain disabled.",
+    "External participant evidence and accountable release-authority decisions remain open."
+  ]
+}

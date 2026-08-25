@@ -10,6 +10,7 @@ from riopa_provenance.accessibility import (
     OpeningInterval,
     TravelObservation,
     TravelStatus,
+    bind_public_facility_registry,
     changed_origins,
     compare_reference_matrices,
     cumulative_opportunity,
@@ -320,6 +321,55 @@ def test_versioned_accessibility_contract_preserves_missing_semantics() -> None:
         "claim_classification": "reference-only",
     }
     assert validate_instance(measure, measure_schema) == ()
+
+
+def test_public_registry_binding_is_versioned_and_reference_only() -> None:
+    matrix = AccessibilityMatrix(
+        "matrix:fixture",
+        "network:fixture",
+        "reference",
+        "1",
+        "walk",
+        {("origin:1", "facility:1"): TravelObservation(TravelStatus.REACHABLE, 4)},
+    )
+    binding = bind_public_facility_registry(
+        matrix,
+        {
+            "record_type": "facility_assertions",
+            "authoritative": False,
+            "release_filter": "public-only",
+            "registry_version": "registry:fixture@2026-08-25",
+            "assertions": [{"assertion_id": "facility:1"}],
+        },
+    )
+    assert binding["registry_version"] == "registry:fixture@2026-08-25"
+    assert binding["facility_assertion_ids"] == ["facility:1"]
+    assert binding["claim_classification"] == "reference-only"
+    assert binding["promotion_allowed"] is False
+
+
+def test_public_registry_binding_rejects_stale_or_non_public_destinations() -> None:
+    matrix = AccessibilityMatrix(
+        "matrix:fixture",
+        "network:fixture",
+        "reference",
+        "1",
+        "walk",
+        {("origin:1", "facility:stale"): TravelObservation(TravelStatus.REACHABLE, 4)},
+    )
+    snapshot = {
+        "record_type": "facility_assertions",
+        "authoritative": False,
+        "release_filter": "public-only",
+        "registry_version": "registry:fixture@2026-08-25",
+        "assertions": [{"assertion_id": "facility:public"}],
+    }
+    with pytest.raises(ValueError, match="absent from public registry"):
+        bind_public_facility_registry(matrix, snapshot)
+    private = dict(snapshot)
+    private["release_filter"] = "all"
+    with pytest.raises(ValueError, match="public-only"):
+        bind_public_facility_registry(matrix, private)
 
 
 def test_accessibility_plan_closes_reference_scenario_contract_without_operational_claim() -> None:
