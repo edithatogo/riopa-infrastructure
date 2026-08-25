@@ -23,6 +23,30 @@
     "Correct documented query columns to the emitted RIOPA schema.",
     "Exercise artifact validation, tamper rejection and path rejection in a hermetic CI fixture."
   ],
+  "review": {
+    "status": "repository-review-passed",
+    "high_or_critical_findings_remaining": 0,
+    "fix_validation_loops": 2,
+    "general_code_style": "pass",
+    "markdown_style": "pass",
+    "external_or_human_review": false
+  },
+  "validation": [
+    {
+      "command": "uv run pytest --cov=riopa_provenance --cov-branch --cov-report=term --cov-fail-under=90",
+      "status": "passed",
+      "tests": 1076,
+      "coverage_percent": 90.08
+    },
+    {
+      "command": "bash scripts/ci_quality.sh",
+      "status": "passed"
+    },
+    {
+      "command": "bash scripts/ci_reproducibility.sh",
+      "status": "passed"
+    }
+  ],
   "open_gates": [
     "blocking dependency completion",
     "four heterogeneous council and two national source-family capture-to-release evidence",
