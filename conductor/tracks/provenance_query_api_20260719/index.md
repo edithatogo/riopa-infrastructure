@@ -29,10 +29,16 @@
 | `PROVENANCE-QUERY-EQUIVALENCE-20260825` | Bounded Python/CLI answers and SQLite/DuckDB/PROV-JSON-LD edge projections agree on the synthetic manifest | `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py` | Repository-owned equivalence passes; MCP transport, remote access filtering, real-release and external-user evidence remain open |
 | `PROVENANCE-QUERY-CACHE-20260825` | In-process query cache is bounded, deep-copying and keyed by logical projection fingerprint | `src/riopa_provenance/lineage.py::QueryCache`, `src/riopa_provenance/lineage.py::LineageIndex.query_cached`, `docs/provenance-query-cache-contract-20260825.json`, `tests/test_lineage.py` | Local cache contract passes; distributed/persistent cache, remote authorization, access filtering and production-scale performance remain open |
 | `PROVENANCE-QUERY-MIGRATION-20260825` | Versioned migration and compatibility guidance for the bounded 1.0.0 local query contract | `docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py` | Guidance is repository-owned; v1 freeze, MCP/remote qualification, real-user evidence and release approval remain open |
+| `PROVENANCE-QUERY-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded query slice | `docs/provenance-query-closeout-evidence-20260825.json`, `tests/test_provenance_query_closeout_evidence.py` | Evidence categories are linked and fail-closed; MCP, access-control, scale, real-user and authority gates remain open |
 
 ## Blocking defects
 
 - None recorded.
+
+The 2026-08-25 closeout packet links the bounded lineage implementation, CLI,
+projection, migration and synthetic benchmark evidence. It does not establish
+an MCP service, remote authorization, production-scale performance, real-user
+testing or a stable release.
 
 ## Decisions, exceptions and limitations
 
