@@ -20,17 +20,17 @@ on:
       campaign_id:
         description: Stable evidence-campaign identifier
         required: true
-        default: operational-beta-20260802
+        default: operational-beta-20260825-26bc0b4
         type: string
       candidate_revision:
-        description: Required exact 40-character revision for an RC-soak observation
+        description: Exact candidate; pinned by default for beta and required for RC soak
         required: false
-        default: ""
+        default: "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
         type: string
       qualification_epoch:
         description: Change only when a material beta candidate or instrumentation change resets the clock
         required: true
-        default: beta-epoch-20260802
+        default: beta-epoch-20260825-26bc0b4
         type: string
   schedule:
     - cron: "17 14 * * *"
@@ -43,7 +43,7 @@ concurrency:
   # Keep unrelated campaigns and exact RC candidates isolated.  A manual
   # replay must not cancel the protected-main beta run, and a new RC
   # candidate must not cancel observations for the prior candidate.
-  group: evidence-campaign-${{ github.event.inputs.campaign_id || 'operational-beta-20260802' }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event.inputs.candidate_revision || 'head' }}
+  group: evidence-campaign-${{ github.event.inputs.campaign_id || 'operational-beta-20260825-26bc0b4' }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event.inputs.candidate_revision || '26bc0b49bcd84f409bf24b527e1049fd396c94a6' }}
   cancel-in-progress: true
 
 defaults:
@@ -57,9 +57,9 @@ jobs:
     timeout-minutes: 45
     env:
       EVIDENCE_LANE: ${{ github.event.inputs.lane || 'operational-observation' }}
-      EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || 'operational-beta-20260802' }}
-      EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || '' }}
-      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || 'beta-epoch-20260802' }}
+      EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || 'operational-beta-20260825-26bc0b4' }}
+      EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || '26bc0b49bcd84f409bf24b527e1049fd396c94a6' }}
+      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || 'beta-epoch-20260825-26bc0b4' }}
     steps:
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

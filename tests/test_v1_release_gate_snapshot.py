@@ -36,17 +36,18 @@ def test_current_v1_gate_snapshot_is_explicitly_blocked() -> None:
     assert digest == sha256_json(snapshot)
 
 
-def test_current_rc_observations_require_reset_for_candidate_changes() -> None:
+def test_current_rc_observations_start_one_fresh_candidate_segment() -> None:
     snapshot = build_snapshot(
         ROOT, evaluated_revision=REVISION, generated_at="2026-08-25T11:30:00Z"
     )
     rc = snapshot["campaign"]["rc"]
-    assert rc["observation_count"] == 3
-    assert len(rc["candidate_revisions"]) == 3
+    assert rc["observation_count"] == 1
+    assert rc["candidate_revisions"] == ["26bc0b49bcd84f409bf24b527e1049fd396c94a6"]
     assert rc["observation_bindings_valid"] is True
     assert rc["exact_candidate_continuity_met"] is False
-    assert rc["reset_required"] is True
-    assert "rc:exact-candidate-reset-required" in snapshot["blockers"]["operational_campaign"]
+    assert rc["reset_required"] is False
+    assert "rc:exact-candidate-reset-required" not in snapshot["blockers"]["operational_campaign"]
+    assert "rc:exact-candidate-continuity-not-met" in snapshot["blockers"]["operational_campaign"]
 
 
 def test_candidate_continuity_can_only_pass_for_one_declared_candidate() -> None:

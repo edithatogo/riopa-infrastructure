@@ -48,7 +48,8 @@
 | V1-MODULE-COVERAGE-INVENTORY-20260825 | Full Python 3.14 module-by-module branch-aware coverage inventory | `scripts/build_module_coverage_inventory.py`, `docs/module-coverage-inventory-20260825.json`, `tests/test_module_coverage_inventory.py` | Full suite meets the unchanged 90% branch-aware gate; coverage does not close external, operational or release gates |
 | V1-CLOSEOUT-EVIDENCE-20260825 | Bounded implementation, test, panel, migration and release evidence linkage packet | `docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py` | Linkage is complete for the candidate packet; external workflows, elapsed beta/RC, national scale, preservation and accountable authority remain open |
 | V1-AGENT-OPERATED-JOURNEYS-20260825 | Two distinct owner-authorized agent-operated journey rehearsals with explicit non-substitution boundaries | `docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`, `scripts/run_provenance_query_agent_workflow.py`, `scripts/run_template_journey.py` | Local journeys pass for bounded scope; external operator/user participation, clean-room reproduction, elapsed soak, preservation and authority remain open |
-| V1-STABLE-GATE-SNAPSHOT-20260825 | Deterministic reconciliation of stable-v1 tracks, gates, operational campaign, evidence and authority | `scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py` | 0/28 tracks and 0/14 gates qualify; the three RC observations span three candidate revisions and require a fresh exact-candidate soak; promotion remains forbidden |
+| V1-STABLE-GATE-SNAPSHOT-20260825 | Deterministic reconciliation of stable-v1 tracks, gates, operational campaign, evidence and authority | `scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py` | 0/28 tracks and 0/14 gates qualify; the current isolated RC segment binds one candidate and remains pending duration; promotion remains forbidden |
+| V1-CANDIDATE-HOSTED-VALIDATION-20260825 | Exact-candidate beta/RC reset, clean-room rehearsal, agent-user journey and pinned daily schedule | `docs/v1-candidate-hosted-validation-20260825.json`, `.github/workflows/evidence-campaign.yml`, [RC run 32856370956](https://github.com/edithatogo/riopa-infrastructure/actions/runs/32856370956), [beta run 32857084789](https://github.com/edithatogo/riopa-infrastructure/actions/runs/32857084789), [clean-room run 32856533103](https://github.com/edithatogo/riopa-infrastructure/actions/runs/32856533103), [agent-user run 32856537212](https://github.com/edithatogo/riopa-infrastructure/actions/runs/32856537212) | All four hosted lanes pass at candidate `26bc0b4`; beta and RC each have one isolated observation, and the daily beta schedule is candidate-pinned; elapsed duration/cycles, independent external reproduction and external user/operator evidence remain open |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -57,7 +58,7 @@ remain open (`docs/v1-release-conductor-regeneration-20260825.json`).
 
 ## Blocking defects
 
-- Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision. The current RC ledger also requires a continuity reset because its three observations bind three different candidate revisions.
+- Stable-v1 completion remains blocked by the gates listed in the readiness baseline, including external reproduction, user validation, operational soak, preserved signed release and release-authority decision. The prior multi-candidate RC ledger has been replaced by an isolated campaign at candidate `26bc0b4`; its first 11-second observation passes, so continuity reset is no longer a separate blocker while the 30-day duration requirement remains open.
 
 ## Campaign gate capability map
 
@@ -109,3 +110,24 @@ This index records a bounded repository-owned readiness baseline while the track
 - Result: no unresolved repository-owned review finding remains. The track is
   intentionally still active/M1 because factual elapsed, external,
   preservation and accountable-authority gates remain unresolved.
+- Review scope: candidate-bound hosted evidence, campaign transition, gate
+  snapshot, Conductor metadata and generated issue projection through
+  `80bf631`.
+- Finding: the existing stable-gate evidence row retained the superseded
+  three-candidate reset description after the isolated campaign began.
+- Fix: reconciled the row and machine-readable blocker list to the single
+  `26bc0b4` candidate while retaining the pending 30-day duration and all
+  external, preservation and authority gates.
+- Result: no unresolved repository-owned finding remains in this evidence
+  increment; the hosted technical-preview receipts are not classified as
+  independent or external evidence.
+- Review scope: isolated beta campaign evidence and scheduled workflow changes
+  through `bf84ef6`.
+- Finding: the prior schedule still followed moving `main`, so it could not
+  accumulate the newly isolated beta segment; the candidate input description
+  also understated its beta use.
+- Fix: pinned scheduled and default dispatch state to the immutable candidate,
+  campaign and qualification epoch, retained manual overrides, and validated
+  workflow syntax, policy and exact configuration in tests.
+- Result: no unresolved repository-owned finding remains in the schedule
+  increment; actual duration and cycle accumulation remain future evidence.

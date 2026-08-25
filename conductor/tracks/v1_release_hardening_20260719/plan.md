@@ -17,7 +17,11 @@
 - [x] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
 - [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and factual external operator/user evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
 - [x] 3.2a Add a deterministic exact-candidate continuity evaluator. It identifies three individually valid RC observations across three candidate revisions and therefore records a required reset without combining their duration (`scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py`).
+- [x] 3.2b Execute the bounded clean-room rehearsal and agent-user journey lanes against the exact frozen candidate `26bc0b4`. Both hosted runs pass, but their receipts explicitly do not constitute independent external reproduction or external user/operator evidence (`docs/v1-candidate-hosted-validation-20260825.json`; runs `32856533103` and `32856537212`).
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
+- [x] 3.3a Start a fresh isolated exact-candidate RC segment at `26bc0b4`. The first schema-validated hosted observation passes with one candidate revision and one 11-second observation; the 30-day duration gate remains pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32856370956`).
+- [x] 3.3b Start a fresh isolated beta operational segment at `26bc0b4`. Its first schema-validated hosted observation passes with one candidate revision, one second and one operational cycle; the 90-day and three-cycle gates remain pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32857084789`).
+- [x] 3.3c Pin the daily hosted operational schedule to the isolated beta campaign, qualification epoch and immutable `26bc0b4` candidate so later `main` changes do not reset its accumulating segment (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`).
 
 ## 4. General availability and handover
 
@@ -46,6 +50,8 @@
 - [x] 5.14 Require the two agent-journey packet references to resolve to existing workflows and evidence documents, preventing stale journey claims.
 - [x] 5.15 Refresh the Python 3.14 module and branch-aware coverage inventory after the bounded accessibility, planning, replication and journey slices (`docs/module-coverage-inventory-20260825.json`).
 - [x] 5.16 Harden the stable-gate snapshot review findings: validate revision and UTC timestamp syntax, include evidence and dependency maturity in track qualification, expose continuity failure reasons and verify the content digest. (`7553a18`, `0411449`)
+- [x] 5.17 Correct the stale multi-candidate reset claim after starting the isolated `26bc0b4` RC campaign; retain explicit duration, external-evidence, preservation and authority boundaries. (`80bf631`)
+- [x] 5.18 Correct the moving-main beta schedule so daily observations remain bound to the isolated campaign, qualification epoch and immutable candidate; clarify the shared beta/RC dispatch input. (`bf84ef6`)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).

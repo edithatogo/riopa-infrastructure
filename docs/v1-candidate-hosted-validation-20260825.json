@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "urn:riopa:evidence:v1-candidate-hosted-validation:2026-08-25",
+  "status": "bounded-hosted-validation-passed-external-and-duration-gates-open",
+  "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "qualification_epoch": "rc-epoch-20260825-26bc0b4",
+  "beta_campaign": {
+    "campaign_id": "operational-beta-20260825-26bc0b4",
+    "qualification_epoch": "beta-epoch-20260825-26bc0b4",
+    "run_id": "32857084789",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32857084789",
+    "status": "passed",
+    "receipt_schema_validated": true,
+    "observation_count": 1,
+    "elapsed_seconds": 1,
+    "required_elapsed_days": 90,
+    "operational_cycles": 1,
+    "required_operational_cycles": 3,
+    "duration_status": "pending-duration",
+    "operational_cycles_status": "pending-cycles",
+    "source_revisions": [
+      "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
+    ],
+    "chain_head_sha256": "3083e74b99547549e91e1d0e750688ac93931c36890281989687e2fec8c8b319",
+    "receipt_sha256": "c3be19233553860a55d7e9705733cbe9641d9690fa25f6dad5dd869f653a1307"
+  },
+  "rc_campaign": {
+    "campaign_id": "operational-rc-20260825-26bc0b4",
+    "run_id": "32856370956",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32856370956",
+    "status": "passed",
+    "receipt_schema_validated": true,
+    "candidate_checkout_verified": true,
+    "observation_count": 1,
+    "elapsed_seconds": 11,
+    "required_elapsed_days": 30,
+    "duration_status": "pending-duration",
+    "source_revisions": [
+      "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
+    ],
+    "chain_head_sha256": "36ad365e832942d69a267a6ed9f25eb12129235e12e57362b8e3bfc7002be5ef",
+    "receipt_sha256": "ac2f8dfa9b901a33b476ed5db79617108086bd2fff2f2fe5931c46460639ef1e"
+  },
+  "candidate_workflows": [
+    {
+      "lane": "agent-clean-room",
+      "run_id": "32856533103",
+      "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32856533103",
+      "status": "passed",
+      "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+      "classification": "hosted-technical-preview-drill"
+    },
+    {
+      "lane": "agent-user-workflows",
+      "run_id": "32856537212",
+      "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32856537212",
+      "status": "passed",
+      "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+      "classification": "hosted-technical-preview-drill"
+    }
+  ],
+  "scheduled_automation": {
+    "workflow": ".github/workflows/evidence-campaign.yml",
+    "cron": "17 14 * * *",
+    "lane": "operational-observation",
+    "campaign_id": "operational-beta-20260825-26bc0b4",
+    "qualification_epoch": "beta-epoch-20260825-26bc0b4",
+    "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+    "status": "configured-not-yet-observed-after-change"
+  },
+  "blockers": [
+    "30-day exact-candidate RC soak has only just started",
+    "90-day beta evidence and three qualifying operational cycles are incomplete",
+    "two clean-room reproductions including one independent external reproduction are absent",
+    "qualifying external user and operator workflows are absent",
+    "stable signed and preserved release evidence is absent",
+    "unanimous signed release-authority approval is absent"
+  ],
+  "non_claims": [
+    "These hosted technical-preview drills are not independent external reproduction.",
+    "These agent-operated rehearsals are not external user or operator evidence.",
+    "One passing RC observation does not satisfy 30 elapsed days.",
+    "This record does not authorize signing, publication, promotion or release."
+  ]
+}
