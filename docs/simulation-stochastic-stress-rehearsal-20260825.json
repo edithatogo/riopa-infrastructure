@@ -1,0 +1,25 @@
+{
+  "schema": "riopa.simulation-stochastic-stress-rehearsal.v1",
+  "evidence_id": "simulation-stochastic-stress-rehearsal-20260825",
+  "track_id": "simulation_validation_engine_20260719",
+  "implementation": "src/riopa_provenance/facility_location.py:stochastic_stress_test",
+  "test": "tests/test_simulation_stochastic_stress.py",
+  "fixture": "two-demand/two-candidate p-median reference fixture",
+  "seed": 7,
+  "replications": 4,
+  "perturbation": {
+    "travel_jitter": 0.2,
+    "demand_jitter": 0.1,
+    "distribution": "uniform-caller-supplied"
+  },
+  "observed": {
+    "successful_replications": 4,
+    "infeasible_replications": 0,
+    "promotion_allowed": false
+  },
+  "claim_classification": "synthetic-stress-rehearsal",
+  "non_claims": [
+    "This is a seeded reference-fixture sensitivity rehearsal, not a calibrated probability model.",
+    "It does not establish national-scale performance, operational suitability, safety, external reproduction or release authority."
+  ]
+}

@@ -20,7 +20,7 @@
 
 ## 4. Integration and stable release
 
-- [ ] 4.1 Stress-test facility-location solutions under stochastic scenarios.
+- [~] 4.1 Stress-test facility-location solutions under stochastic scenarios. A seeded, caller-supplied perturbation rehearsal now covers bounded reference fixtures; calibrated, hosted, national-scale and operational stress evidence remains open (`docs/simulation-stochastic-stress-rehearsal-20260825.json`, `tests/test_simulation_stochastic_stress.py`).
 - [ ] 4.2 Validate controlled/public data boundaries and performance.
 - [~] 4.3 Freeze the bounded v1 simulation and result contracts. Supported
   synthetic/reference surfaces, compatibility rules and required seed,

@@ -19,6 +19,7 @@ from riopa_provenance.facility_location import (
     minimax_subgroup_alternative,
     pareto_alternatives,
     solve,
+    stochastic_stress_test,
     verify_solution,
 )
 
@@ -77,6 +78,21 @@ def test_robust_scenarios_and_multi_period_interface_are_deterministic() -> None
     assert [period for period, _ in plan.solve()] == ["baseline", "stress"]
     with pytest.raises(ValueError, match="exactly one problem"):
         MultiPeriodPlan(("baseline",), {})
+
+
+def test_stochastic_stress_rehearsal_is_seeded_and_promotion_disabled() -> None:
+    problem = _line_problem("p-median", p=1)
+    first = stochastic_stress_test(
+        problem, seed=42, replications=5, travel_jitter=0.25, demand_jitter=0.1
+    )
+    assert first == stochastic_stress_test(
+        problem, seed=42, replications=5, travel_jitter=0.25, demand_jitter=0.1
+    )
+    assert first["successful_replications"] == 5
+    assert first["scale_class"] == "bounded-reference-fixture"
+    assert first["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="demand_jitter"):
+        stochastic_stress_test(problem, seed=1, demand_jitter=1.1)
 
 
 def test_bounded_reference_inputs_apply_accessibility_and_planning_feasibility() -> None:
