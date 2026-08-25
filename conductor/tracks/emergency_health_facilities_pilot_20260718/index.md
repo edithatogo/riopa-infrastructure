@@ -23,6 +23,7 @@
 | `WP-010-DISPATCH-QUEUE-20260825` | Synthetic dispatch, queueing, handover and dynamic-relocation adapter contract | `src/riopa_provenance/analysis.py:DispatchRequest`, `src/riopa_provenance/analysis.py:simulate_dispatch_scenario`, `tests/test_analysis.py` | Deterministic queue fixture passes; no live dispatch, clinical, response, national or operational claim is made |
 | `EMERGENCY-HEALTH-BENCHMARK-CONTRACT-20260825` | Bounded public/synthetic ambulance and hospital planning scenarios, assumptions and non-clinical metrics | `docs/emergency-health-pilot-benchmark-contract-20260825.json`, `tests/test_emergency_health_benchmark_contract.py` | Contract is repository-owned and promotion-disabled; authoritative ambulance source, calibrated scenarios, clinical/dispatch safety and external qualification remain open |
 | `EMERGENCY-HEALTH-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded emergency-health slice | `docs/emergency-health-closeout-evidence-20260825.json`, `tests/test_emergency_health_closeout_evidence.py` | Evidence categories are linked and fail-closed; stress, safety, authoritative-source, external and authority gates remain open |
+| `EMERGENCY-HEALTH-CONDUCTOR-REGENERATION-20260825` | Locked methods, roadmap status, issue graph and quality regeneration receipt | `docs/emergency-health-conductor-regeneration-20260825.json` | Repository generation passed; temporary methods output is not a release artifact and roadmap readiness remains false |
 
 ## Blocking defects
 
@@ -38,6 +39,10 @@ The 2026-08-25 closeout packet links the bounded coverage, dispatch-simulation,
 source-candidate and benchmark-contract evidence. It does not establish
 calibrated stress performance, clinical or dispatch suitability, authoritative
 source completeness, operational safety or a stable release.
+
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; it does not change the track’s maturity or external gates.
 
 ## Review and handover
 
