@@ -2315,7 +2315,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "planning_rules_linkage_20260718:phase-1",
@@ -2343,7 +2343,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "planning_rules_linkage_20260718:phase-2",
@@ -2373,7 +2373,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "planning_rules_linkage_20260718:phase-3",
@@ -2403,7 +2403,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "planning_rules_linkage_20260718:phase-4",
@@ -2433,7 +2433,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 1
+      "blocking_defects": 0
     },
     {
       "key": "facility_location_engine_20260718",

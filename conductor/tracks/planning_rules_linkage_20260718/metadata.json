@@ -40,7 +40,5 @@
     "Data-governance analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": [
-    "feature-provision-linkage-contract is repository-owned and promotion-disabled: docs/planning-feature-provision-linkage-contract-20260825.json; council payloads and authority remain open"
-  ]
+  "blocking_defects": []
 }
