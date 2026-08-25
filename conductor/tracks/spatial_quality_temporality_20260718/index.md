@@ -28,6 +28,11 @@
 | `SPATIAL-QUALITY-UNCERTAINTY-PROPAGATION-20260825` | Declared spatial/temporal error propagation to a downstream uncertainty envelope | `src/riopa_provenance/spatial_quality_trend.py:propagate_spatial_temporal_uncertainty`, `tests/test_spatial_quality_trend.py` | Deterministic conditional envelope passes; sensitivities must be supplied and no authority, causal or operational claim is made |
 | `SPATIAL-QUALITY-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded quality slice | `docs/spatial-quality-closeout-evidence-20260825.json`, `tests/test_spatial_quality_closeout_evidence.py` | Evidence categories are linked and fail-closed; real-council, national, external and authority gates remain open |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; national, authoritative, operational, external and release
+gates remain open (`docs/spatial-quality-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - None recorded.

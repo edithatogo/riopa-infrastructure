@@ -29,6 +29,11 @@
 | `INTEROP-V1-SDK-SUPPORT-20260825` | Bounded Python/Rust SDK surfaces, compatibility policy and conformance-report fields | `docs/interoperability-v1-sdk-support-and-reporting-20260825.md`, `docs/interoperability-v1-sdk-support-contract-20260825.json`, `tests/test_interoperability_v1_support.py` | Support surface and report template are explicit; external implementations, trusted signing, preservation acceptance and release promotion remain open |
 | `INTEROP-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate exercise evidence for the bounded interoperability slice | `docs/interoperability-closeout-evidence-20260825.json`, `tests/test_interoperability_closeout_evidence.py` | Evidence categories are linked and fail-closed; external implementations, signing, preservation and authority gates remain open |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; it does not establish external conformance or signed
+release evidence (`docs/interoperability-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - None recorded for the bounded WP-008 adapter slice.
