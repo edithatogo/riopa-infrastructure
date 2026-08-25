@@ -1,0 +1,144 @@
+name: Recover bounded v0.2.0 technical-preview release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: v020-release-recovery
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+env:
+  RELEASE_TAG: v0.2.0
+  RELEASE_SHA: 4ffe73eb144c5c1a4acad34706a5f5937491d1ad
+
+jobs:
+  build:
+    name: Verify and build immutable historical source
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out exact historical source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.RELEASE_SHA }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify immutable tag identity
+        run: |
+          test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
+          test "$(git rev-list -n 1 "$RELEASE_TAG")" = "$RELEASE_SHA"
+      - name: Install uv and historical Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          python-version: "3.13"
+          version: "0.11.16"
+      - name: Install locked environment with bounded gateway retries
+        run: |
+          for attempt in 1 2 3 4 5
+          do
+            if uv sync --extra dev --frozen
+            then
+              exit 0
+            fi
+            test "$attempt" -lt 5
+            sleep "$((attempt * 5))"
+          done
+      - name: Run historical validation contract
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+          uv run riopa validate --root .
+          uv run riopa roadmap validate --root .
+          uv run pytest
+      - name: Build historical example research object
+        run: >-
+          uv run riopa research-object
+          --manifest examples/minimal/snapshot-manifest.json
+          --output-dir dist/example-research-object
+      - name: Verify and package deterministic asset
+        run: |
+          cd dist/example-research-object
+          sha256sum --check checksums.sha256
+          cd ../..
+          tar \
+            --sort=name \
+            --mtime='UTC 1970-01-01' \
+            --owner=0 \
+            --group=0 \
+            --numeric-owner \
+            -cf dist/riopa-example-research-object.tar \
+            -C dist/example-research-object .
+          gzip -n -f dist/riopa-example-research-object.tar
+          cd dist
+          sha256sum riopa-example-research-object.tar.gz > SHA256SUMS
+          sha256sum --check SHA256SUMS
+      - name: Upload immutable release candidate
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: v020-release-candidate
+          path: |
+            dist/riopa-example-research-object.tar.gz
+            dist/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 90
+
+  publish:
+    name: Attest and publish bounded prerelease
+    needs: build
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.ref == 'refs/heads/main' &&
+      'refs/tags/v0.2.0' != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: release
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      - name: Download verified release candidate
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: v020-release-candidate
+          path: dist
+          digest-mismatch: error
+      - name: Reverify release checksums
+        run: |
+          cd dist
+          sha256sum --check SHA256SUMS
+      - name: Attest release assets
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: |
+            dist/riopa-example-research-object.tar.gz
+            dist/SHA256SUMS
+      - name: Verify registered attestations
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh attestation verify dist/riopa-example-research-object.tar.gz \
+            --repo "$GITHUB_REPOSITORY"
+          gh attestation verify dist/SHA256SUMS \
+            --repo "$GITHUB_REPOSITORY"
+      - name: Publish bounded GitHub prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            dist/riopa-example-research-object.tar.gz \
+            dist/SHA256SUMS \
+            --verify-tag \
+            --prerelease \
+            --title "v0.2.0 - M1 roadmap technical preview" \
+            --notes $'Bounded historical technical preview from exact commit 4ffe73eb144c5c1a4acad34706a5f5937491d1ad.\n\nScope: M1 roadmap, maturity architecture, issue graph, validation tooling, and example research object.\n\nNot evidence of stable v1, M2-M6 maturity, real-data authority, national coverage, clinical/planning/causal/operational fitness, independent external reproduction, or external user/operator acceptance. Later Conductor tracks continue unchanged.\n\nSupport: twelve calendar months from this release publication timestamp under docs/v0.2.0-technical-preview-support-20260826.md on the default branch. The Git tag is annotated but not personally GPG/SSH-signed; the published assets carry GitHub OIDC provenance attestations.'

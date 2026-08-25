@@ -51,7 +51,13 @@ def test_workflows_declare_fail_closed_least_privilege_permissions() -> None:
             for scope, value in job_permissions.items():
                 if scope == "security-events" and value == "write":
                     continue
-                if path.name == "release.yml" and job_name == "publish" and value == "write":
+                if (
+                    path.name,
+                    job_name,
+                ) in {
+                    ("release.yml", "publish"),
+                    ("v020-release-recovery.yml", "publish"),
+                } and value == "write":
                     assert scope in release_write_allowlist
                     continue
                 assert value in allowed, (
