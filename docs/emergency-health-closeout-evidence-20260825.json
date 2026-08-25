@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.emergency-health-closeout-evidence.v1",
+  "packet_id": "emergency-health-closeout-evidence-20260825",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded public/synthetic non-operational technical preview",
+  "evidence_categories": {
+    "implementation": ["src/riopa_provenance/analysis.py", "docs/emergency-health-pilot-benchmark-contract-20260825.json"],
+    "tests": ["tests/test_analysis.py", "tests/test_emergency_health_benchmark_contract.py", "tests/test_wp010_benchmark.py", "tests/test_wp010_public_sources.py"],
+    "review": ["config/source-registry/wp010-public-pilot-candidates.yaml", "reports/wp010-synthetic-methods-core.md"],
+    "migration": ["docs/emergency-health-pilot-benchmark-contract-20260825.json", "config/source-registry/wp010-public-pilot-candidates.yaml"],
+    "release_candidate": ["reports/wp010-synthetic-methods-core.md", "docs/emergency-health-pilot-benchmark-contract-20260825.json"]
+  },
+  "open_gates": ["calibrated stress comparison", "hospital/service planning implementation", "operational and safety review", "authoritative ambulance source", "clinical/dispatch/operational qualification", "external reproduction and accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains synthetic and candidate-only benchmark contracts, not clinical, dispatch, operational or emergency-service qualification.",
+    "Repository tests and agent panels cannot substitute for authoritative sources, calibrated stress evidence, safety review, external reproduction or release authority.",
+    "Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}
