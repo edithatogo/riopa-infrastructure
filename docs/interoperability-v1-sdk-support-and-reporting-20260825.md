@@ -7,9 +7,9 @@ technical preview and explains how a future conformance report must be built.
 
 The Python surface is `riopa_provenance.sdk` and is limited to canonical hash,
 Draft 2020-12 instance validation, and the bounded canonical crosswalk. The
-Rust surface is the dependency-free typed model under
-`rust/riopa-conformance`; its supported command is the locked Cargo test
-command in that crate's README. Both surfaces are fixture-oriented and must
+Rust surface is the typed model and bounded canonical-hash runner under
+`rust/riopa-conformance`; its supported commands are the locked Cargo test and
+`conformance_corpus` commands in that crate's README. Both surfaces are fixture-oriented and must
 preserve unknown or uncertain mappings rather than silently upgrading them.
 
 Support ownership for this repository is the single maintainer. Agent-panel

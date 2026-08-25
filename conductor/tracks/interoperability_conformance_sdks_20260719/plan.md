@@ -9,7 +9,7 @@
 ## 2. Independent implementations
 
 - [x] 2.1 Stabilise the Python reference SDK and validator. Evidence: `src/riopa_provenance/sdk.py`, `tests/test_sdk.py`, and `docs/python-reference-sdk-20260825.md`; deterministic schema/crosswalk reports pass, while independent and release gates remain open.
-- [~] 2.2 Implement a bounded dependency-free Rust typed model and validation. Evidence: `rust/riopa-conformance/`, `docs/rust-conformance-model-contract-20260825.json`, and the hosted `Run bounded Rust conformance model` check; JSON corpus parity, independent producer/consumer interoperability and signed release conformance remain open.
+- [~] 2.2 Implement a bounded Rust typed model and validation. The Rust runner now parses the checked-in corpus and matches all five canonical SHA-256 fixtures (`rust/riopa-conformance/src/bin/conformance_corpus.rs`, `docs/rust-corpus-parity-20260825.json`, `tests/test_rust_producer_consumer.py`). Schema-validity parity, full RFC 8785 number handling, independent producer/consumer interoperability and signed release conformance remain open.
 - [x] 2.3 Implement a transport-neutral lineage/query client contract. Evidence: `src/riopa_provenance/lineage.py` and `tests/test_lineage.py`; strict versioned request round-trips are local-only and carry no endpoint or credential semantics.
 
 ## 3. Standards and compatibility testing
@@ -20,7 +20,7 @@
 
 ## 4. Stable SDK and conformance release
 
-- [~] 4.1 Resolve semantic-loss and migration findings. A fail-closed ledger now resolves only the recorded migration-corpus item and keeps Rust parity, external producer/consumer and standards-round-trip findings open (`scripts/build_interoperability_findings.py`, `tests/test_interoperability_findings.py`, `docs/interoperability-findings-ledger-contract-20260825.json`).
+- [~] 4.1 Resolve semantic-loss and migration findings. A fail-closed ledger now resolves the recorded migration-corpus item and the bounded Rust/Python canonical-hash parity finding; external producer/consumer, standards-round-trip and signed-report findings remain open (`scripts/build_interoperability_findings.py`, `tests/test_interoperability_findings.py`, `docs/interoperability-findings-ledger-contract-20260825.json`, `docs/rust-corpus-parity-20260825.json`).
 - [~] 4.2 Freeze supported v1 SDK surfaces and support ownership. The bounded
   Python and Rust surfaces, compatibility rules and single-maintainer support
   model are documented; external implementation and release gates remain open
@@ -38,3 +38,7 @@
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/interoperability-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+
+## Review fixes
+
+- [x] R1 Review the Rust corpus runner for deterministic ordering, corpus binding, unsupported-number fail-closed behavior and non-promotion language. (`rust/riopa-conformance/src/{lib.rs,bin/conformance_corpus.rs}`, `tests/test_rust_producer_consumer.py`, `docs/rust-corpus-parity-20260825.json`)
