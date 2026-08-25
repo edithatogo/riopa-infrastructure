@@ -3,7 +3,6 @@
     "operational_campaign": [
       "beta:pending-duration-and-cycles",
       "rc:pending-duration",
-      "rc:exact-candidate-reset-required",
       "rc:exact-candidate-continuity-not-met"
     ],
     "release_authority": [
@@ -99,41 +98,29 @@
       "status": "pending-duration-and-cycles"
     },
     "rc": {
-      "campaign_id": "operational-rc-20260825",
+      "campaign_id": "operational-rc-20260825-26bc0b4",
       "candidate_revisions": [
-        "159b8d77068b3cb170d2ffed99e395f1add7f403",
-        "b572d7a554d2289c2ac6b563e303cc5a78357bf1",
-        "bc571ca3ed1791a573c1722492b9c15419c80667"
+        "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
       ],
-      "declared_candidate_revision": "bc571ca3ed1791a573c1722492b9c15419c80667",
+      "declared_candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
       "declared_status": "pending-duration",
       "exact_candidate_continuity_met": false,
       "observation_bindings_valid": true,
-      "observation_count": 3,
+      "observation_count": 1,
       "observations": [
         {
-          "candidate_revision": "159b8d77068b3cb170d2ffed99e395f1add7f403",
-          "revision": "159b8d77068b3cb170d2ffed99e395f1add7f403",
-          "run_id": "32740183479"
-        },
-        {
-          "candidate_revision": "b572d7a554d2289c2ac6b563e303cc5a78357bf1",
-          "revision": "b572d7a554d2289c2ac6b563e303cc5a78357bf1",
-          "run_id": "32741649873"
-        },
-        {
-          "candidate_revision": "bc571ca3ed1791a573c1722492b9c15419c80667",
-          "revision": "bc571ca3ed1791a573c1722492b9c15419c80667",
-          "run_id": "32743048406"
+          "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+          "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+          "run_id": "32856370956"
         }
       ],
-      "qualification_epoch": "rc-epoch-20260825",
+      "qualification_epoch": "rc-epoch-20260825-26bc0b4",
       "required_days": 30,
-      "reset_required": true
+      "reset_required": false
     }
   },
-  "evaluated_revision": "bb10f7422772d7ed70491d7775da85bfaec844a4",
-  "generated_at": "2026-08-25T11:18:41Z",
+  "evaluated_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "generated_at": "2026-08-25T14:01:49Z",
   "nonclaims": [
     "This snapshot evaluates declared repository evidence and does not grant release authority.",
     "Hosted observations do not substitute for elapsed duration, external reproduction or preservation acceptance.",
@@ -144,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "9c8ce93dbe3290e80094a889399b0223f3632c1b86d79d47fff0b0a9b5148710",
+  "snapshot_sha256": "1a4103baa7c20f7106faa06f5b14ba813375beff659d5e1b68db354e6b0d26df",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -525,7 +512,6 @@
           "clean-room-agent-reproduction",
           "agent-user-workflow-validation",
           "operational-and-release-candidate-soak",
-          "rc-candidate-continuity-reset",
           "signed-preserved-stable-release",
           "release-authority-decision"
         ],

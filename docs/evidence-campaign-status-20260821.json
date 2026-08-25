@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status_id": "urn:riopa:evidence:campaign-status:2026-08-21",
   "status": "hosted-evidence-accumulating-not-release-approval",
-  "source_revision": "bc571ca3ed1791a573c1722492b9c15419c80667",
+  "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
   "observations": [
     {"lane": "performance-rehearsal", "run_id": "32420107756", "status": "passed", "revision": "5d59b61c8bd9ecebb50516131c6a1ce8eeeed2fe"},
     {"lane": "agent-clean-room", "run_id": "32422142075", "status": "passed", "revision": "054f99d0028912a2b68bb9bda05c470de4c4a5c9"},
@@ -68,7 +68,10 @@
     {"lane": "scale-smoke", "run_id": "32739643225", "status": "passed", "revision": "88f53769b65c3fa5de15f7e63148ed0c7f325a44", "operational_cycle_id": "2026-W35"},
     {"lane": "rc-soak-observation", "run_id": "32740183479", "status": "passed", "revision": "159b8d77068b3cb170d2ffed99e395f1add7f403", "candidate_revision": "159b8d77068b3cb170d2ffed99e395f1add7f403", "campaign_id": "operational-rc-20260825", "qualification_epoch": "rc-epoch-20260825", "operational_cycle_id": "2026-W35"},
     {"lane": "rc-soak-observation", "run_id": "32741649873", "status": "passed", "revision": "b572d7a554d2289c2ac6b563e303cc5a78357bf1", "candidate_revision": "b572d7a554d2289c2ac6b563e303cc5a78357bf1", "campaign_id": "operational-rc-20260825", "qualification_epoch": "rc-epoch-20260825", "operational_cycle_id": "2026-W35"},
-    {"lane": "rc-soak-observation", "run_id": "32743048406", "status": "passed", "revision": "bc571ca3ed1791a573c1722492b9c15419c80667", "candidate_revision": "bc571ca3ed1791a573c1722492b9c15419c80667", "campaign_id": "operational-rc-20260825", "qualification_epoch": "rc-epoch-20260825", "operational_cycle_id": "2026-W35"}
+    {"lane": "rc-soak-observation", "run_id": "32743048406", "status": "passed", "revision": "bc571ca3ed1791a573c1722492b9c15419c80667", "candidate_revision": "bc571ca3ed1791a573c1722492b9c15419c80667", "campaign_id": "operational-rc-20260825", "qualification_epoch": "rc-epoch-20260825", "operational_cycle_id": "2026-W35"},
+    {"lane": "agent-clean-room", "run_id": "32856533103", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "v1-candidate-validation-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
+    {"lane": "agent-user-workflows", "run_id": "32856537212", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "v1-candidate-validation-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
+    {"lane": "rc-soak-observation", "run_id": "32856370956", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-rc-20260825-26bc0b4", "qualification_epoch": "rc-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"}
   ],
   "elapsed_gate": {
     "campaign_id": "operational-beta-20260802",
@@ -79,9 +82,9 @@
     "reset_conditions": ["qualifying interruption", "revision change", "failed restoration", "material scope or rights change"]
   },
   "rc_gate": {
-    "campaign_id": "operational-rc-20260825",
-    "qualification_epoch": "rc-epoch-20260825",
-    "candidate_revision": "bc571ca3ed1791a573c1722492b9c15419c80667",
+    "campaign_id": "operational-rc-20260825-26bc0b4",
+    "qualification_epoch": "rc-epoch-20260825-26bc0b4",
+    "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
     "required_days": 30,
     "status": "pending-duration",
     "reset_conditions": ["candidate revision change", "qualifying interruption", "failed restoration", "material scope or rights change"]

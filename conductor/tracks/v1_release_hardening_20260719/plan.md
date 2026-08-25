@@ -17,7 +17,9 @@
 - [x] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
 - [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and factual external operator/user evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
 - [x] 3.2a Add a deterministic exact-candidate continuity evaluator. It identifies three individually valid RC observations across three candidate revisions and therefore records a required reset without combining their duration (`scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py`).
+- [x] 3.2b Execute the bounded clean-room rehearsal and agent-user journey lanes against the exact frozen candidate `26bc0b4`. Both hosted runs pass, but their receipts explicitly do not constitute independent external reproduction or external user/operator evidence (`docs/v1-candidate-hosted-validation-20260825.json`; runs `32856533103` and `32856537212`).
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
+- [x] 3.3a Start a fresh isolated exact-candidate RC segment at `26bc0b4`. The first schema-validated hosted observation passes with one candidate revision and one 11-second observation; the 30-day duration gate remains pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32856370956`).
 
 ## 4. General availability and handover
 
