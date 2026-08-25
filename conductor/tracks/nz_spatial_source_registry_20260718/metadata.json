@@ -19,7 +19,8 @@
     "urn:riopa:evidence:nz-source-health-quarantine:2026-08-25",
     "urn:riopa:evidence:nz-source-metadata-snapshot:2026-08-25",
     "urn:riopa:evidence:nz-declared-plan-discovery:2026-08-25",
-    "urn:riopa:evidence:nz-source-registry-release-candidate:2026-08-25"
+    "urn:riopa:evidence:nz-source-registry-release-candidate:2026-08-25",
+    "urn:riopa:evidence:nz-source-registry-closeout:2026-08-26"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

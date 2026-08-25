@@ -1,0 +1,43 @@
+{
+  "schema": "riopa.nz-source-registry-closeout-evidence.v1",
+  "packet_id": "nz-source-registry-closeout-evidence-20260826",
+  "track_id": "nz_spatial_source_registry_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "evidence_categories": {
+    "implementation": [
+      "src/riopa_provenance/registry.py",
+      "config/source-registry/nz-spatial-pilot.yaml",
+      "docs/nz-source-metadata-snapshot-contract-20260825.json",
+      "docs/nz-source-health-quarantine-contract-20260825.json"
+    ],
+    "tests": [
+      "tests/test_registry.py",
+      "tests/test_source_registry_readiness.py",
+      "tests/test_nz_spatial_registry_baseline.py"
+    ],
+    "agent_panel": [
+      "docs/panel-reports/20260802/evidence-auditor.json",
+      "docs/panel-reports/20260802/orchestrator-synthesis.json"
+    ],
+    "migration": [
+      "docs/source-registry-conductor-regeneration-20260825.json",
+      "docs/nz-source-health-quarantine-contract-20260825.json"
+    ],
+    "release_candidate": [
+      "docs/nz-source-registry-release-candidate-contract-20260825.json",
+      "tests/test_registry.py"
+    ]
+  },
+  "open_gates": [
+    "complete current-authority inventory and independent sample audit",
+    "payload capture, rights and preservation acceptance",
+    "external participation and accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This packet links repository-owned contracts and a declared registry candidate; it is not a national authority inventory or release.",
+    "Agent-panel assessment cannot substitute for factual authority, external participation or preservation acceptance.",
+    "Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}
