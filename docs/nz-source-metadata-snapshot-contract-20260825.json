@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.nz-source-metadata-snapshot-contract.v1",
+  "evidence_id": "nz-source-metadata-snapshot-contract-20260825",
+  "track_id": "nz_spatial_source_registry_20260718",
+  "implementation": "src/riopa_provenance/registry.py:build_declared_source_snapshot",
+  "test": "tests/test_source_registry_readiness.py",
+  "scope": "declared source metadata, capability, terms and rights observations",
+  "integrity": "records_sha256 over sorted identity records",
+  "contact_policy": "no endpoint contact",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The snapshot does not establish source health, authority, completeness or publication permission.",
+    "Payload capture, preservation acceptance and current-authority coverage remain open."
+  ]
+}
