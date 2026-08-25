@@ -6,6 +6,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, field, replace
 from itertools import combinations, product
 from math import exp, isclose, isfinite
+from random import Random
 from time import perf_counter
 from typing import Literal
 
@@ -223,6 +224,95 @@ def evaluate_robust_scenarios(
             else:
                 evaluations.append(ScenarioEvaluation(scenario.scenario_id, solution))
     return tuple(evaluations)
+
+
+def stochastic_stress_test(
+    problem: LocationProblem,
+    *,
+    seed: int,
+    replications: int = 10,
+    travel_jitter: float = 0.0,
+    demand_jitter: float = 0.0,
+) -> dict[str, object]:
+    """Run a seeded stochastic stress rehearsal over a bounded reference problem.
+
+    The perturbations are deliberately caller-supplied and uniform.  This is a
+    reproducibility and sensitivity surface for small reference fixtures, not a
+    calibrated probability model or a national/operational performance claim.
+    """
+
+    if replications < 1:
+        raise ValueError("replications must be positive")
+    if not isfinite(travel_jitter) or travel_jitter < 0:
+        raise ValueError("travel_jitter must be finite and non-negative")
+    if not isfinite(demand_jitter) or demand_jitter < 0 or demand_jitter > 1:
+        raise ValueError("demand_jitter must be finite and between zero and one")
+
+    rng = Random(seed)  # nosec B311 - deterministic non-security simulation seed
+    outcomes: list[dict[str, object]] = []
+    for replication in range(replications):
+        travel = {
+            pair: max(0.0, value + rng.uniform(-travel_jitter, travel_jitter))
+            for pair, value in problem.travel.items()
+        }
+        demands = tuple(
+            replace(
+                demand,
+                weight=demand.weight * max(1e-12, 1.0 + rng.uniform(-demand_jitter, demand_jitter)),
+            )
+            for demand in problem.demands
+        )
+        stressed = replace(problem, demands=demands, travel=travel)
+        try:
+            solution = solve(stressed)
+        except ValueError as error:
+            outcomes.append(
+                {"replication": replication, "status": "infeasible", "error": str(error)}
+            )
+        else:
+            outcomes.append(
+                {
+                    "replication": replication,
+                    "status": solution.status,
+                    "objective": solution.objective,
+                    "selected": list(solution.selected),
+                }
+            )
+
+    successful = [item for item in outcomes if item["status"] == "optimal"]
+    objectives: list[float] = []
+    for item in successful:
+        objective = item.get("objective")
+        if isinstance(objective, (int, float)):
+            objectives.append(float(objective))
+    selected_frequency: dict[str, int] = {}
+    for item in successful:
+        selected = item.get("selected")
+        if isinstance(selected, list):
+            for candidate in selected:
+                selected_frequency[str(candidate)] = selected_frequency.get(str(candidate), 0) + 1
+    return {
+        "record_type": "bounded_facility_stochastic_stress_rehearsal",
+        "seed": seed,
+        "replications": replications,
+        "perturbation": {
+            "travel_jitter": travel_jitter,
+            "demand_jitter": demand_jitter,
+            "distribution": "uniform-caller-supplied",
+        },
+        "outcomes": outcomes,
+        "successful_replications": len(successful),
+        "infeasible_replications": replications - len(successful),
+        "objective_summary": {
+            "minimum": min(objectives) if objectives else None,
+            "maximum": max(objectives) if objectives else None,
+            "mean": sum(objectives) / len(objectives) if objectives else None,
+        },
+        "selected_frequency": selected_frequency,
+        "scale_class": "bounded-reference-fixture",
+        "claim_classification": "synthetic-stress-rehearsal",
+        "promotion_allowed": False,
+    }
 
 
 def benchmark_reference_solvers(

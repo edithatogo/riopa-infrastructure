@@ -3061,7 +3061,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `simulation_validation_engine_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Stress-test facility-location solutions under stochastic scenarios.\n- [ ] 4.2 Validate controlled/public data boundaries and performance.\n- [ ] 4.3 Freeze the bounded v1 simulation and result contracts. Supported\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/simulation_validation_engine_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `simulation_validation_engine_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Stress-test facility-location solutions under stochastic scenarios. A seeded, caller-supplied perturbation rehearsal now covers bounded reference fixtures; calibrated, hosted, national-scale and operational stress evidence remains open (`docs/simulation-stochastic-stress-rehearsal-20260825.json`, `tests/test_simulation_stochastic_stress.py`).\n- [ ] 4.2 Validate controlled/public data boundaries and performance.\n- [ ] 4.3 Freeze the bounded v1 simulation and result contracts. Supported\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/simulation_validation_engine_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
