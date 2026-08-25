@@ -30,6 +30,7 @@
     ,"urn:riopa:evidence:publication-receipt-reconciliation:2026-08-25"
     ,"urn:riopa:evidence:publication-real-data-candidate:2026-08-25"
     ,"urn:riopa:evidence:publication-applied-benchmark:2026-08-25"
+    ,"urn:riopa:evidence:publication-deviations-limitations:2026-08-25"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
