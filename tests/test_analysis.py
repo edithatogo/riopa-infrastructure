@@ -10,6 +10,7 @@ from riopa_provenance.analysis import (
     AnalysisProtocol,
     AnalysisProtocolError,
     CoverageScenario,
+    DispatchPostingPolicy,
     DispatchRequest,
     DispatchScenario,
     Estimand,
@@ -19,6 +20,7 @@ from riopa_provenance.analysis import (
     StochasticDispatchDesign,
     build_service_pareto_report,
     calibrate_queue_parameters,
+    compare_dispatch_posting_policy,
     compare_fcfs_reference_implementations,
     compare_static_simulated_stress,
     difference_in_differences,
@@ -170,11 +172,45 @@ def test_stochastic_dispatch_replications_are_seeded_and_report_uncertainty() ->
     assert first == second
     assert len(first["replications"]) == 8
     assert first["uncertainty"]["coverage_rate"]["confidence_interval_95"] is not None
+    lower, upper = first["uncertainty"]["coverage_rate"]["confidence_interval_95"]
+    assert 0 <= lower <= upper <= 1
+    assert first["uncertainty"]["coverage_rate"]["sample_size"] == 8
+    assert first["uncertainty"]["mean_response_time"]["condition"].startswith("assigned")
     assert first["promotion_allowed"] is False
     with pytest.raises(ValueError, match="unknown locations"):
         run_stochastic_dispatch_replications(
             scenario, StochasticDispatchDesign(42, 2, {"missing": 0.5})
         )
+
+
+def test_pre_horizon_posting_policy_changes_bounded_reference_coverage() -> None:
+    scenario = DispatchScenario(
+        "synthetic-posting",
+        (DispatchRequest("r1", "rural", 0, rurality="rural"),),
+        ("urban-base",),
+        {("urban-base", "rural"): 10, ("rural-post", "rural"): 2},
+        {"urban-base": True},
+        5,
+    )
+    result = compare_dispatch_posting_policy(
+        scenario,
+        DispatchPostingPolicy(
+            "rural-standby",
+            {"urban-base": "rural-post"},
+            {"urban-base": 30},
+        ),
+    )
+    assert result["baseline"]["counts"]["unreachable"] == 1
+    assert result["posted"]["counts"]["assigned"] == 1
+    assert result["posting_events"] == [
+        {
+            "origin": "urban-base",
+            "destination": "rural-post",
+            "relocation_minutes": 30,
+            "timing": "completed-before-demand-horizon",
+        }
+    ]
+    assert result["promotion_allowed"] is False
 
 
 def test_static_and_simulated_stress_comparison_preserves_queue_delta() -> None:
@@ -265,7 +301,7 @@ def test_service_constraints_report_volume_reserve_transition_and_phases() -> No
     assert result["resilience"]["facility_failures"]["hospital-a"]["met"] is False
     assert result["transition"]["total_cost"] == 3
     assert result["phased_investment"]["phase_totals"] == [2, 1]
-    assert result["phased_investment"]["results"][0]["all_demand_met"] is True
+    assert result["phased_investment"]["results"][0]["demand_coverage_met"] is True
     assert result["promotion_allowed"] is False
     with pytest.raises(ValueError, match="resilience_fraction"):
         evaluate_service_constraints(

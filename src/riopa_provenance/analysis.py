@@ -193,6 +193,28 @@ class StochasticDispatchDesign:
 
 
 @dataclass(frozen=True)
+class DispatchPostingPolicy:
+    """Pre-horizon synthetic unit postings for a bounded policy comparison."""
+
+    policy_id: str
+    postings: Mapping[str, str]
+    relocation_minutes: Mapping[str, float]
+
+    def __post_init__(self) -> None:
+        if not self.policy_id.strip() or not self.postings:
+            raise ValueError("posting policy requires an id and postings")
+        if len(set(self.postings.values())) != len(self.postings):
+            raise ValueError("posting destinations must be unique")
+        if any(not origin or not destination for origin, destination in self.postings.items()):
+            raise ValueError("posting origins and destinations must be non-empty")
+        if any(
+            not math.isfinite(duration) or duration < 0
+            for duration in self.relocation_minutes.values()
+        ):
+            raise ValueError("relocation minutes must be finite and non-negative")
+
+
+@dataclass(frozen=True)
 class ServiceScenario:
     """Synthetic multi-service capacity, referral and workforce inputs."""
 
@@ -375,7 +397,11 @@ def evaluate_service_constraints(
                     for (facility, service), value in sorted(cumulative_capacity.items())
                 },
                 "counts": phase_result["counts"],
-                "all_demand_met": phase_result["counts"]["unmet"] == 0,
+                "demand_coverage_met": phase_result["counts"]["unmet"] == 0,
+                "limitations": (
+                    "This phase result evaluates demand coverage only; minimum-volume, "
+                    "failure-resilience and transition-cost constraints require separate review."
+                ),
             }
         )
     return {
@@ -744,20 +770,25 @@ def run_stochastic_dispatch_replications(
             }
         )
 
-    def uncertainty(values: Sequence[float]) -> dict[str, Any]:
+    def uncertainty(values: Sequence[float], *, bounded: bool) -> dict[str, Any]:
         estimate = statistics.fmean(values) if values else None
         standard_error = (
             statistics.stdev(values) / math.sqrt(len(values)) if len(values) > 1 else None
         )
         half_width = 1.96 * standard_error if standard_error is not None else None
+        interval = (
+            [estimate - half_width, estimate + half_width]
+            if estimate is not None and half_width is not None
+            else None
+        )
+        if bounded and interval is not None:
+            interval = [max(0.0, interval[0]), min(1.0, interval[1])]
         return {
             "estimate": estimate,
+            "sample_size": len(values),
             "standard_error": standard_error,
-            "confidence_interval_95": (
-                [estimate - half_width, estimate + half_width]
-                if estimate is not None and half_width is not None
-                else None
-            ),
+            "confidence_interval_95": interval,
+            "method": "normal-mean-95-clamped" if bounded else "normal-mean-95",
         }
 
     return {
@@ -767,13 +798,79 @@ def run_stochastic_dispatch_replications(
         "master_seed": design.master_seed,
         "replications": replications,
         "uncertainty": {
-            "coverage_rate": uncertainty(coverage_rates),
-            "mean_response_time": uncertainty(mean_responses),
+            "coverage_rate": uncertainty(coverage_rates, bounded=True),
+            "mean_response_time": {
+                **uncertainty(mean_responses, bounded=False),
+                "condition": "assigned demand in replications with nonzero coverage",
+            },
         },
         "promotion_allowed": False,
         "nonclaims": [
             "Seeded synthetic busy availability does not establish operational performance.",
             "Clinical calibration, external validation and dispatch authority remain absent.",
+        ],
+    }
+
+
+def compare_dispatch_posting_policy(
+    scenario: DispatchScenario, policy: DispatchPostingPolicy
+) -> dict[str, Any]:
+    """Compare base locations with declared pre-horizon synthetic postings.
+
+    Posting relocation is assumed to finish before the first demand event. The
+    declared relocation duration is retained as a policy cost, not subtracted
+    from response time. Dynamic en-route relocation remains out of scope.
+    """
+
+    unknown = set(policy.postings) - set(scenario.locations)
+    if unknown:
+        raise ValueError("posting policy names unknown origins")
+    missing_duration = set(policy.postings) - set(policy.relocation_minutes)
+    if missing_duration:
+        raise ValueError("every posting requires relocation minutes")
+    posted_locations = tuple(
+        policy.postings.get(location, location) for location in scenario.locations
+    )
+    if len(set(posted_locations)) != len(posted_locations):
+        raise ValueError("posted and retained locations must remain unique")
+    posted_availability = {
+        policy.postings.get(location, location): scenario.availability.get(location, False)
+        for location in scenario.locations
+    }
+    posted = replace(
+        scenario,
+        scenario_id=f"{scenario.scenario_id}:{policy.policy_id}",
+        locations=posted_locations,
+        availability=posted_availability,
+    )
+    baseline_result = simulate_dispatch_scenario(scenario)
+    posted_result = simulate_dispatch_scenario(posted)
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_dispatch_posting_comparison",
+        "scenario_id": scenario.scenario_id,
+        "policy_id": policy.policy_id,
+        "posting_events": [
+            {
+                "origin": origin,
+                "destination": destination,
+                "relocation_minutes": policy.relocation_minutes[origin],
+                "timing": "completed-before-demand-horizon",
+            }
+            for origin, destination in sorted(policy.postings.items())
+        ],
+        "baseline": {
+            "counts": baseline_result["counts"],
+            "metrics": baseline_result["metrics"],
+        },
+        "posted": {
+            "counts": posted_result["counts"],
+            "metrics": posted_result["metrics"],
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            "This pre-horizon synthetic posting comparison is not live dynamic relocation.",
+            "It does not establish dispatch feasibility, clinical safety or operational benefit.",
         ],
     }
 
