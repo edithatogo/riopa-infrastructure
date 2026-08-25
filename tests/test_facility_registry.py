@@ -125,6 +125,16 @@ def test_assertions_snapshot_is_sorted_and_non_authoritative() -> None:
         assertions_snapshot((assertion("a", 0, 0), assertion("a", 1, 1)))
 
 
+def test_public_release_snapshot_can_bind_a_registry_version() -> None:
+    snapshot = public_release_snapshot(
+        (assertion("a", 0, 0),), registry_version="registry:fixture@2026-08-25"
+    )
+    assert snapshot["release_filter"] == "public-only"
+    assert snapshot["registry_version"] == "registry:fixture@2026-08-25"
+    with pytest.raises(ValueError, match="non-empty"):
+        public_release_snapshot((assertion("a", 0, 0),), registry_version=" ")
+
+
 def test_snapshot_record_is_content_addressed_and_correction_successor_only() -> None:
     record = build_snapshot_record((assertion("public", 0, 0),), revision="snapshot-1")
     assert validate_snapshot_record(record) == ()

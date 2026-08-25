@@ -1,0 +1,41 @@
+{
+  "schema": "riopa.facility-accessibility-binding-panel-review.v1",
+  "packet_id": "facility-accessibility-binding-panel-review-20260825",
+  "status": "bounded-agent-panel-qualified-open-gates",
+  "scope": "repository-owned public-only reference binding",
+  "panel": [
+    {
+      "lens": "accessibility",
+      "finding": "The binding preserves matrix identity and rejects destinations absent from the supplied public registry.",
+      "disposition": "qualified"
+    },
+    {
+      "lens": "provenance",
+      "finding": "A non-empty registry version and public-only release filter are required; source assertion IDs remain visible.",
+      "disposition": "qualified"
+    },
+    {
+      "lens": "governance",
+      "finding": "The result is explicitly reference-only and promotion-disabled; no authoritative facility or operational claim is created.",
+      "disposition": "promotion-disabled"
+    },
+    {
+      "lens": "reproducibility",
+      "finding": "Positive and stale/private negative cases are deterministic and covered by Python 3.14 tests.",
+      "disposition": "qualified"
+    }
+  ],
+  "decisions": {
+    "binding_contract_qualified": true,
+    "real_network_or_timetable_validity": false,
+    "national_completeness": false,
+    "external_participation": false,
+    "promotion_allowed": false
+  },
+  "open_gates": [
+    "real archived network, timetable and facility-source integration",
+    "external operator/user reproduction",
+    "preservation/publication acceptance",
+    "accountable release-authority decision"
+  ]
+}
