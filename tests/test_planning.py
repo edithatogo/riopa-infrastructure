@@ -7,6 +7,7 @@ from riopa_provenance.planning import (
     build_feature_provision_linkage,
     build_plan_source_intake,
     build_planning_concept_crosswalk,
+    build_planning_feasibility_record,
     build_provision_extraction_record,
     build_rule_structure_record,
 )
@@ -201,6 +202,49 @@ def test_planning_concept_crosswalk_is_digest_bound_and_preserves_source_asserti
                 }
             ],
             crosswalk_id="crosswalk-1",
+            captured_at="now",
+        )
+
+
+def test_planning_feasibility_preserves_citations_and_fails_closed_on_conflict() -> None:
+    record = build_planning_feasibility_record(
+        [
+            {
+                "provision_id": "rule:permitted",
+                "status": "permitted",
+                "confidence": "medium",
+                "evidence": ["archive:plan#rule-1"],
+                "caveats": ["operative status not independently verified"],
+            },
+            {
+                "provision_id": "rule:exception",
+                "status": "prohibited",
+                "confidence": "unknown",
+                "evidence": ["archive:plan#rule-2"],
+                "caveats": ["exception scope unresolved"],
+            },
+        ],
+        query_id="query-1",
+        feature_ref="zone:wcc:residential",
+        captured_at="2026-08-25T00:00:00Z",
+    )
+    assert record["decision_status"] == "unresolved"
+    assert record["authority_required"] is True
+    assert record["promotion_allowed"] is False
+    assert len(record["rules_sha256"]) == 64
+    with pytest.raises(ValueError, match="evidence must not be empty"):
+        build_planning_feasibility_record(
+            [
+                {
+                    "provision_id": "rule:missing",
+                    "status": "permitted",
+                    "confidence": "unknown",
+                    "evidence": [],
+                    "caveats": [],
+                }
+            ],
+            query_id="query-1",
+            feature_ref="zone:wcc:residential",
             captured_at="now",
         )
 

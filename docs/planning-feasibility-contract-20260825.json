@@ -1,0 +1,11 @@
+{
+  "schema": "riopa.planning-feasibility-query.v1",
+  "packet_id": "planning-feasibility-contract-20260825",
+  "status": "bounded-contract-only",
+  "scope": "regional public-source non-operational technical preview",
+  "rule_fields": ["provision_id", "status", "confidence", "evidence", "caveats"],
+  "statuses": ["permitted", "discretionary", "prohibited", "unresolved"],
+  "controls": ["all rules retained", "conflicts become unresolved", "rules_sha256", "authority_required=true", "promotion_allowed=false"],
+  "open_gates": ["source-faithful rule text", "legal interpretation", "council-specific validation", "authority decision"],
+  "non_claims": ["A feasibility result is not legal advice or a consent decision.", "Unresolved and conflicting rules are not negative evidence and cannot be promoted to permission."]
+}
