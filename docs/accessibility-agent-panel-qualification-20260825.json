@@ -1,0 +1,16 @@
+{
+  "schema": "riopa.accessibility-agent-panel-qualification.v1",
+  "packet_id": "accessibility-agent-panel-qualification-20260825",
+  "status": "bounded-agent-panel-qualified-open-gates",
+  "revision_basis": "protected-main",
+  "scope": "regional public-datasets-only non-operational technical preview",
+  "panel": [
+    {"id": "api-schema", "finding": "Travel observations, measure parameters and missing/unreachable/censored states are explicit and validated by the reference contracts.", "disposition": "repository-evidence-qualified"},
+    {"id": "data-governance", "finding": "Reference matrices and facility opportunities are non-authoritative; restricted rows are excluded and archived inputs are required before integration.", "disposition": "repository-evidence-qualified"},
+    {"id": "quantitative-methods", "finding": "Hand-calculated cumulative, gravity and floating-catchment fixtures plus partition/cache tests support deterministic reference behaviour.", "disposition": "bounded-reference-qualified"},
+    {"id": "scientific-methods", "finding": "Straight-line and minute-based opening/capacity adapters are suitable only for bounded reference use; routing, timetable, calibration and operational validity are absent.", "disposition": "open"}
+  ],
+  "decisions": {"reference_contracts": true, "real_network_qualification": false, "timetable_qualification": false, "national_scale": false, "operational_accessibility": false, "promotion_allowed": false},
+  "open_gates": ["archived road/walk/cycle and timetable inputs", "named facility and demand snapshots", "cross-engine and national-scale measurements", "external user/operator reproduction", "preservation and accountable release-authority decision"],
+  "non_claims": ["This agent-panel packet qualifies repository-owned reference semantics only.", "Agent-panel assessment is not external participant evidence, operational safety approval or release authority."]
+}
