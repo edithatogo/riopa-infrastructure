@@ -4,7 +4,7 @@
   "phase": "NZ Spatial",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T05:00:00Z",
+  "updated_at": "2026-08-25T08:10:00Z",
   "description": "Scale the reference vertical slice into a maintained national archive with explicit automation, exceptions, freshness, backfill, coverage and preservation status.",
   "depends_on": [
     "nz_spatial_archive_mvp_20260718",
@@ -16,7 +16,8 @@
   "evidence": [
     "urn:riopa:evidence:linz-sharded-pipeline:2026-07-31",
     "urn:riopa:evidence:linz-full-export-reconciliation:2026-07-31",
-    "urn:riopa:evidence:nz-spatial-rollout-plan:2026-08-25"
+    "urn:riopa:evidence:nz-spatial-rollout-plan:2026-08-25",
+    "urn:riopa:evidence:nz-archive-operations-conductor-regeneration:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

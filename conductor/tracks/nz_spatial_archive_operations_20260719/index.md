@@ -19,6 +19,11 @@
 | `WP-004-resume-budget-reconcile-20260731` | Sharded retries, storage/egress bounds and periodic full-export reconciliation | `src/riopa_provenance/linz_pipeline.py`, `src/riopa_provenance/linz.py`, `tests/test_linz_pipeline.py`, `tests/test_linz.py` | Synthetic orchestration and semantic divergence tests pass; operational period remains open |
 | `NZ-SPATIAL-ROLLOUT-PLAN-20260825` | Prioritised source waves, bounded schedules/load limits, exception review and retirement workflow | `docs/nz-spatial-archive-rollout-plan-20260825.json`, `tests/test_nz_spatial_rollout_plan.py` | Repository-owned planning contract passes; no live capture, national coverage, preservation acceptance or beta SLO evidence is claimed |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; hosted recovery, preservation, elapsed-soak, external
+operation and authority gates remain open (`docs/nz-archive-operations-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - Live connector deployment, source rights/credential gates, beta SLO duration, national restore and accountable release approval remain open.
