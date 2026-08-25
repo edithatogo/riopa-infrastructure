@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.nz-source-health-quarantine-contract.v1",
+  "evidence_id": "nz-source-health-quarantine-contract-20260825",
+  "track_id": "nz_spatial_source_registry_20260718",
+  "implementation": "src/riopa_provenance/registry.py:evaluate_declared_source_health",
+  "test": "tests/test_source_registry_readiness.py",
+  "accepted_statuses": ["healthy", "degraded", "missing", "terms-changed", "not-observed"],
+  "quarantine_statuses": ["degraded", "missing", "terms-changed", "not-observed"],
+  "source": "archived-declared-observation",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The evaluator does not contact or prove endpoint health.",
+    "Quarantine does not establish source authority, completeness, rights permission or national coverage."
+  ]
+}
