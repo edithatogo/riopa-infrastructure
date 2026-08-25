@@ -177,13 +177,18 @@ def assertions_snapshot_json(assertions: tuple[FacilityAssertion, ...]) -> str:
 
 
 def build_snapshot_record(
-    assertions: tuple[FacilityAssertion, ...], *, revision: str, supersedes: str | None = None
+    assertions: tuple[FacilityAssertion, ...],
+    *,
+    revision: str,
+    supersedes: str | None = None,
+    registry_version: str | None = None,
 ) -> dict[str, object]:
     """Build a content-addressed, unpublished registry snapshot successor."""
 
     if not revision.strip():
         raise ValueError("snapshot revision must be non-empty")
-    payload = public_release_snapshot(assertions)
+    version = registry_version or revision
+    payload = public_release_snapshot(assertions, registry_version=version)
     payload_digest = sha256_json(payload)
     return {
         "record_type": "facility_registry_snapshot",
@@ -220,6 +225,11 @@ def validate_snapshot_record(record: Mapping[str, object] | None) -> tuple[str, 
             or payload.get("release_filter") != "public-only"
         ):
             errors.append("payload must remain public-only and non-authoritative")
+        if (
+            not isinstance(payload.get("registry_version"), str)
+            or not str(payload["registry_version"]).strip()
+        ):
+            errors.append("payload must include a non-empty registry_version")
         digest = record.get("payload_sha256")
         if not isinstance(digest, str) or digest != sha256_json(payload):
             errors.append("payload_sha256 does not match payload")
@@ -227,6 +237,11 @@ def validate_snapshot_record(record: Mapping[str, object] | None) -> tuple[str, 
         errors.append("status must remain unpublished or candidate")
     if record.get("correction_policy") != "append-successor-preserve-predecessor":
         errors.append("correction policy must preserve predecessors")
+    supersedes = record.get("supersedes")
+    if supersedes is not None and (
+        not isinstance(supersedes, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", supersedes)
+    ):
+        errors.append("supersedes must be a SHA-256 payload digest when supplied")
     return tuple(dict.fromkeys(errors))
 
 

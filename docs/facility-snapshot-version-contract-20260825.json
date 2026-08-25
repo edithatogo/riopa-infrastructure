@@ -1,0 +1,22 @@
+{
+  "schema": "riopa.facility.snapshot-version-contract.v1",
+  "evidence_id": "FACILITY-SNAPSHOT-VERSION-20260825",
+  "scope": "public-only non-authoritative registry candidates",
+  "contract": "build_snapshot_record / validate_snapshot_record",
+  "requirements": {
+    "registry_version": "required in payload; defaults to revision when omitted",
+    "payload_digest": "SHA-256 over the exact public snapshot payload",
+    "correction": "append-successor-preserve-predecessor",
+    "supersedes": "optional SHA-256 predecessor payload digest"
+  },
+  "promotion_allowed": false,
+  "open_gates": [
+    "publication and preservation acceptance",
+    "factual completeness and panel adjudication",
+    "accountable release-authority decision"
+  ],
+  "nonclaims": [
+    "A versioned snapshot is not an authoritative facility registry.",
+    "Successor validation does not prove that a correction is factually right."
+  ]
+}

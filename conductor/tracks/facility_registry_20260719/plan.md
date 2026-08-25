@@ -33,7 +33,7 @@ promote a source to authoritative status without a documented panel disposition.
 - [~] 4.1 Integrate registry versions with accessibility and planning queries. Public-only, non-authoritative assertions now supply accessibility opportunity weights and bounded planning candidates; the accessibility matrix binding now requires an explicit public registry version and fails closed on stale/private destinations. Planning authority, canonical registry identity, real-network integration and operational availability remain pending (`src/riopa_provenance/facility_location.py:candidates_from_public_facility_snapshot`, `src/riopa_provenance/accessibility.py::bind_public_facility_registry`, `docs/facility-public-planning-adapter-contract-20260825.json`, `docs/facility-accessibility-binding-20260825.json`).
 - [x] 4.2 Generate bounded source disagreement and coverage reports over
   archived assertions. (`disagreement_coverage_report`, tests)
-- [~] 4.3 Release immutable registry snapshot and correction process. A content-addressed public-only snapshot record and append-successor validator are implemented; publication and accountable release approval remain pending.
+- [~] 4.3 Release immutable registry snapshot and correction process. Content-addressed public-only snapshot records now require an explicit registry version and validate optional predecessor digests (`src/riopa_provenance/facility_registry.py`, `docs/facility-snapshot-version-contract-20260825.json`, `tests/test_facility_registry.py`); publication and accountable release approval remain pending.
 
 ## Track closeout
 
