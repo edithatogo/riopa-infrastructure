@@ -155,11 +155,11 @@
     {
       "id": "public-health-and-ambulance-facilities",
       "authority": "Verified public health agencies and public source assertions",
-      "source": "evidence/wp007-real-slice/manifest.json",
+      "source": ["evidence/wp007-real-slice/manifest.json", "config/archive-sources/rangitikei-public-ambulance-2023.json"],
       "upstream_owner": "edithatogo/riopa-infrastructure",
-      "archive_action": "Retain the existing certified-provider snapshot, identify a second rights-cleared public health source, and archive any verified public ambulance-station source before facility reconciliation.",
+      "archive_action": "Retain the certified-provider snapshot and the separately archived Rangitīkei public ambulance reference packet before facility reconciliation.",
       "incorporation": ["facility_registry_20260719", "emergency_health_facilities_pilot_20260718"],
-      "status": "one-health-family-archived-ambulance-authority-pending",
+      "status": "two-public-health-families-archived-ambulance-authority-pending",
       "excluded_source": "Licensed Healthpoint payloads are excluded; healthpoint-rs issue 52 remains a data-light contract path only.",
       "non_claim": "OSM or public web assertions cannot be promoted to authoritative national ambulance coverage."
     }

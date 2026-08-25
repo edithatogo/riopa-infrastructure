@@ -19,7 +19,8 @@
     "urn:riopa:evidence:facility-public-planning-adapter:2026-08-25",
     "urn:riopa:evidence:facility-panel-frame-qualification:2026-08-25",
     "urn:riopa:evidence:facility-snapshot-version:2026-08-25",
-    "urn:riopa:evidence:facility-accessibility-binding:2026-08-25"
+    "urn:riopa:evidence:facility-accessibility-binding:2026-08-25",
+    "urn:riopa:evidence:facility-public-health-source-families:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -47,7 +48,7 @@
     "facility-review-panel-disposition pending: docs/facility-panel-qualification-20260803.json and docs/facility-stratified-review-sample-20260803.json",
     "hamilton-geometry-disposition blocked: docs/facility-source-materialization-20260803.json",
     "stale-pr-175-blocker-wording-repaired: 2026-08-25",
-    "public-health-source-family pending: conductor/tracks/facility_registry_20260719/index.md",
+    "public-health-source-family archived: config/archive-sources/rangitikei-public-ambulance-2023.json; reconciliation and authority remain pending",
     "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
     "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; factual adjudication remains open"
   ]
