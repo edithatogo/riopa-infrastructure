@@ -20,7 +20,8 @@
     "urn:riopa:evidence:planning-rule-structure:2026-08-25",
     "urn:riopa:evidence:planning-concept-crosswalk:2026-08-25",
     "urn:riopa:evidence:planning-feasibility:2026-08-25",
-    "urn:riopa:evidence:planning-two-structure-validation:2026-08-25"
+    "urn:riopa:evidence:planning-two-structure-validation:2026-08-25",
+    "urn:riopa:evidence:planning-versioned-methods:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
