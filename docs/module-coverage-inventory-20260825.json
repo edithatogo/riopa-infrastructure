@@ -9,11 +9,11 @@
     "stable_gate_unchanged": true
   },
   "totals": {
-    "statements": 9913,
-    "covered_statements": 9181,
-    "line_percent": 90.2002405717116,
-    "branches": 4220,
-    "covered_branches": 3567,
+    "statements": 10064,
+    "covered_statements": 9327,
+    "line_percent": 90.29497704188117,
+    "branches": 4310,
+    "covered_branches": 3652,
     "branch_percent": "90"
   },
   "files": [
@@ -1321,6 +1321,23 @@
         119,
         124,
         126
+      ]
+    },
+    {
+      "module": "src.riopa_provenance.supermarket_pilot",
+      "path": "src/riopa_provenance/supermarket_pilot.py",
+      "statements": 151,
+      "covered_statements": 146,
+      "line_percent": 95.850622406639,
+      "branches": 90,
+      "covered_branches": 85,
+      "branch_percent": "96",
+      "missing_lines": [
+        106,
+        115,
+        236,
+        245,
+        254
       ]
     },
     {

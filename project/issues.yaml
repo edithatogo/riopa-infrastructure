@@ -3509,7 +3509,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-1",
@@ -3537,7 +3537,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-2",
@@ -3567,7 +3567,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-3",
@@ -3597,7 +3597,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-4",
@@ -3627,7 +3627,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-5",
@@ -3643,7 +3643,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Register public-data candidates and fail closed where supermarket source rights are undeclared. (bdb3af6)\n- [ ] 5.2 Capture a local-only OSM regional sensitivity observation without authoritative or completeness claims. (37510dd)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/supermarket-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R1 Wrap the preregistration test path so the repository quality gate passes (`9db5186`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `supermarket_health_pilot_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Register public-data candidates and fail closed where supermarket source rights are undeclared. (bdb3af6)\n- [ ] 5.2 Capture a local-only OSM regional sensitivity observation without authoritative or completeness claims. (37510dd)\n- [ ] C.1 Link current implementation, test and Conductor review evidence in `index.md`; migration, empirical, independent-reproduction and release evidence remain explicitly unavailable.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/supermarket-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.\n- [ ] R1 Wrap the preregistration test path so the repository quality gate passes (`9db5186`).\n- [ ] R2 Reject negative measures, protect suppressed small-cell rates, re-derive planning dispositions from cited rules, validate metric domains and preserve domain-specific errors for malformed alternatives. (`25ac176`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/supermarket_health_pilot_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",
@@ -3657,7 +3657,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "operations_preservation_sre_20260719",
