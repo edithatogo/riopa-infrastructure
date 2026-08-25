@@ -21,7 +21,7 @@
 ## 4. Integration and stable release
 
 - [~] 4.1 Stress-test facility-location solutions under stochastic scenarios. A seeded, caller-supplied perturbation rehearsal now covers bounded reference fixtures; calibrated, hosted, national-scale and operational stress evidence remains open (`docs/simulation-stochastic-stress-rehearsal-20260825.json`, `tests/test_simulation_stochastic_stress.py`).
-- [ ] 4.2 Validate controlled/public data boundaries and performance.
+- [~] 4.2 Validate controlled/public data boundaries and performance. A fail-closed validator now rejects live inputs, requires rights/governance references and blocks performance extrapolation beyond observed envelopes; hosted, national-scale and operational evidence remains open (`src/riopa_provenance/capacity_models.py:validate_simulation_boundary`, `docs/simulation-boundary-performance-contract-20260825.json`).
 - [~] 4.3 Freeze the bounded v1 simulation and result contracts. Supported
   synthetic/reference surfaces, compatibility rules and required seed,
   parameter-evidence, uncertainty and missingness controls are documented;
