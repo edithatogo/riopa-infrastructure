@@ -1,0 +1,19 @@
+{
+  "evidence_id": "REPOSITORY-TEMPLATE-SUPPORT-POLICY-20260825",
+  "title": "Template compatibility, support and safe-upgrade policy",
+  "scope": [
+    "single-developer RIOPA template",
+    "Python 3.14 bounded technical-preview contracts",
+    "read-only drift inspection and separate upgrade work"
+  ],
+  "non_claims": [
+    "No related repository adoption is inferred.",
+    "External onboarding and independent reproduction remain open.",
+    "The policy does not authorize release promotion."
+  ],
+  "evidence": [
+    "docs/repository-template-support-policy-20260825.md",
+    "tests/test_template_support_policy.py"
+  ],
+  "promotion_allowed": false
+}
