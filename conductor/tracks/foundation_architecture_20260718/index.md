@@ -29,6 +29,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | C.3 | M1 closeout audit | `docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md` | Repository-owned blocker, waiver and limitation checks pass; later maturity and external gates remain open |
 | M2-prep | Executable acceptance checklist | `docs/architecture-reviews/foundation-m2-evidence-checklist.md` | Defines bounded proof and explicit non-claims for the next maturity gate |
 | M2-READINESS-20260801 | Machine-readable M2 readiness and later-gate boundary | `docs/foundation-maturity-readiness-20260801.json` | Repository-owned M2 preparation passes; promotion remains false |
+| `FOUNDATION-AGENT-PANEL-WORDING-20260825` | Single-developer repository wording correction for agent-panel coverage | `docs/foundation-agent-panel-wording-correction-20260825.json` | Agent panels are repository assessors only; external participation, elapsed evidence and accountable authority remain separate gates |
 
 ## Blocking maturity gates
 
@@ -65,7 +66,7 @@ M1 against an M6 target and does not promote any track.
 
 ## Review and handover
 
-Required analyst coverage: two independent analysts with distinct identities and scopes; governance, API/schema and external-user perspectives remain recommended coverage.
+Required analyst coverage: distinct agent-panel lenses with separate scopes and recorded dispositions; governance, API/schema and external-user perspectives remain recommended coverage. Agent panels assess repository evidence only and do not substitute for factual external participation or accountable release authority.
 
 The bounded M1 architecture baseline is ratified; implementation remains
 validating at M1. Evidence must be immutable or version-addressed, qualified by

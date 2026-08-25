@@ -1,0 +1,16 @@
+{
+  "schema": "riopa.foundation.agent-panel-wording-correction.v1",
+  "evidence_id": "FOUNDATION-AGENT-PANEL-WORDING-20260825",
+  "scope": "single-developer repository governance language",
+  "status": "corrected",
+  "change": "Use distinct agent-panel lenses and recorded dispositions for repository assessment.",
+  "preserved_gates": [
+    "factual external operator and user evidence",
+    "elapsed beta and release-candidate evidence",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "Agent-panel assessment is repository evidence and does not create external participation or authority approval."
+  ]
+}
