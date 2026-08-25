@@ -1,0 +1,34 @@
+{
+  "evidence_id": "V1-AGENT-OPERATED-JOURNEYS-20260825",
+  "track_id": "v1_release_hardening_20260719",
+  "status": "repository-owned-agent-journey-rehearsal",
+  "observed_revision": "9cf96821a6248b4b47144eb9bf8ac8e1823ad35f9",
+  "journeys": [
+    {
+      "journey_id": "provenance-query-where-why-how",
+      "workflow": "scripts/run_provenance_query_agent_workflow.py",
+      "evidence": "docs/provenance-query-agent-workflow-20260825.json",
+      "scope": "local digest-bound projection questions",
+      "status": "passed-bounded-local"
+    },
+    {
+      "journey_id": "repository-template-read-only-release",
+      "workflow": "scripts/run_template_journey.py",
+      "evidence": "docs/repository-template-journey-contract-20260825.json",
+      "scope": "read-only template and release-journey checks",
+      "status": "passed-bounded-local"
+    }
+  ],
+  "claim_classification": "repository-reference-only",
+  "promotion_allowed": false,
+  "open_gates": [
+    "two qualifying clean-room reproductions",
+    "factual external operator and external-user participation",
+    "elapsed beta and exact-RC soak",
+    "preserved signed release and accountable release-authority decision"
+  ],
+  "nonclaims": [
+    "These are owner-authorized agent-operated rehearsals, not external participant evidence.",
+    "The journeys do not establish production usability, national scale, operational fitness or release approval."
+  ]
+}
