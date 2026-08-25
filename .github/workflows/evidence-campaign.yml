@@ -140,3 +140,42 @@ jobs:
       - name: Fail when the bounded lane failed
         if: always() && steps.execute.outcome != 'success'
         run: exit 1
+
+  performance-second-environment:
+    name: Repeat bounded performance rehearsal on macOS
+    if: github.event_name == 'workflow_dispatch' && inputs.lane == 'performance-rehearsal'
+    runs-on: macos-latest
+    timeout-minutes: 45
+    env:
+      EVIDENCE_LANE: performance-rehearsal
+      EVIDENCE_CAMPAIGN_ID: ${{ inputs.campaign_id }}
+      EVIDENCE_QUALIFICATION_EPOCH: ${{ inputs.qualification_epoch }}
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          enable-cache: true
+          python-version: "3.14"
+          version: "0.11.16"
+      - name: Install locked environment
+        run: uv sync --extra dev --extra spatial --frozen
+      - name: Execute bounded performance rehearsal
+        run: >-
+          uv run python scripts/record_hosted_evidence.py performance-rehearsal
+          --output-dir "dist/hosted-evidence/${GITHUB_RUN_ID}"
+      - name: Validate receipt schema
+        run: >-
+          uv run jsonschema
+          --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/performance-rehearsal.receipt.json"
+          schemas/hosted-evidence.schema.json
+      - name: Upload second-environment evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: performance-second-environment-${{ github.run_id }}
+          path: dist/hosted-evidence/
+          if-no-files-found: error
+          retention-days: 90
