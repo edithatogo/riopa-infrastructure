@@ -2,7 +2,7 @@
   "schema": "riopa.provenance-query-equivalence-contract.v1",
   "status": "bounded-repository-contract",
   "scope": "synthetic-minimal-manifest-and-disposable-projections",
-  "interfaces": ["python", "cli"],
+  "interfaces": ["python", "cli", "mcp-stdio"],
   "projections": ["sqlite", "duckdb", "prov-jsonld"],
   "controls": [
     "walk node identities are compared across Python and CLI",
@@ -10,8 +10,7 @@
     "projection fingerprints remain bound to the same authoritative manifest"
   ],
   "open_gates": [
-    "MCP transport equivalence",
-    "remote access filtering",
+    "remote transport authorization and access filtering",
     "real release and external-user qualification"
   ],
   "promotion_allowed": false,
