@@ -24,13 +24,11 @@
 
 ## 4. Agent-panel v1 qualification
 
-- [~] 4.1 Repeat benchmarks in a second environment. A manually triggered
-  `performance-rehearsal` lane now repeats the locked Python 3.14 benchmark on
-  `macos-latest` alongside the existing Ubuntu lane, with schema-validated
-  retained receipts; a successful hosted run is still required before treating
-  the second-environment gate as observed (`.github/workflows/evidence-campaign.yml`,
-  `docs/performance-second-environment-rehearsal-contract-20260825.json`,
-  `tests/test_performance_second_environment_workflow.py`).
+- [x] 4.1 Repeat benchmarks in a second environment. The locked Python 3.14
+  `performance-rehearsal` lane passed on Ubuntu and macOS for the same exact
+  revision, with schema-validated retained receipts. This closes only the
+  second-environment observation; national-scale, SLO, soak, failure-injection
+  and authority gates remain open (`docs/performance-second-environment-rehearsal-20260825.json`).
 - [x] 4.2 Complete the repository-owned orchestrated method-and-results agent-panel qualification. Four bounded lenses assess the existing contracts and preserve open national, second-environment, resource/cost, elapsed and authority gates; this is not independent external evidence (`docs/performance-panel-qualification-20260825.json`, `tests/test_performance_panel_qualification.py`).
 - [x] 4.3 Freeze v1 performance envelopes, limitations and operational actions. (`docs/performance-v1-envelope-freeze-20260825.json`, `tests/test_performance_v1_envelope_freeze.py`; bounded candidate only, promotion remains disallowed)
 

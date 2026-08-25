@@ -1,0 +1,33 @@
+{
+  "evidence_id": "PERFORMANCE-SECOND-ENVIRONMENT-20260825",
+  "workflow_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32795555160",
+  "source_revision": "2e0fa2995183924cfdc5d75caa374d7bcd18e3c3",
+  "campaign_id": "performance-second-env-20260825",
+  "qualification_epoch": "performance-epoch-20260825",
+  "lane": "performance-rehearsal",
+  "receipts": [
+    {
+      "runner_os": "Linux",
+      "architecture": "x86_64",
+      "status": "passed",
+      "receipt_sha256": "85746e619c626f2d83b10f55c7ee8f586092e11e7b28c91b6abd755cf5f2bd6d"
+    },
+    {
+      "runner_os": "macOS",
+      "architecture": "arm64",
+      "status": "passed",
+      "receipt_sha256": "ce1a880ac8d887ec49f4496c79019086626caac585e583139102521c0e8a91a6"
+    }
+  ],
+  "artifact_names": [
+    "evidence-campaign-performance-second-env-20260825-performance-rehearsal-32795555160",
+    "performance-second-environment-32795555160"
+  ],
+  "status": "hosted-second-environment-observed",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is a bounded hosted rehearsal, not a national-scale measurement.",
+    "The benchmark retains projection-not-measurement classification for national values.",
+    "This does not establish production SLOs, elapsed soak, recovery qualification or release approval."
+  ]
+}
