@@ -22,7 +22,7 @@
 
 - [x] 4.1 Conduct planning-domain agent-panel qualification and resolve model findings. The four-lens repository-owned packet qualifies the bounded transition contract and records unresolved real-source, preservation, reproduction and authority gates (`docs/planning-transition-panel-qualification-20260825.json`, `tests/test_planning_transition_panel_qualification.py`; `e8ab512`).
 - [x] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)
-- [ ] 4.3 Release transition data and limitations with immutable evidence.
+- [~] 4.3 Release transition data and limitations with immutable evidence. Digest-bound packet construction and validation are implemented; publication, real historical-source and authority gates remain open (`src/riopa_provenance/transitions.py:build_transition_release_packet`, `docs/planning-transition-release-packet-contract-20260825.json`).
 
 ## 5. Review fixes
 
@@ -32,7 +32,7 @@
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [x] C.1 Link implementation, test, review, migration and unpublished release-candidate evidence in `index.md` (`docs/planning-transition-release-packet-contract-20260825.json`, `tests/test_transitions.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/planning-transition-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
