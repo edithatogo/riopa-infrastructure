@@ -1,0 +1,56 @@
+{
+  "schema": "riopa.facility-panel-frame-qualification.v1",
+  "packet_id": "facility-panel-frame-qualification-20260825",
+  "status": "bounded-agent-panel-frame-qualified-open-gates",
+  "revision_basis": "protected-main",
+  "scope": "regional public-datasets-only non-operational technical preview",
+  "input_frame": {
+    "evidence_id": "facility-stratified-review-sample-20260803",
+    "candidate_matches": 39,
+    "total_population": 14068,
+    "total_sample_size": 741,
+    "selection_frame_sha256": "051093fdea15b7bed41206e6669566d1fba242f76b55c969c0e23047666fef32"
+  },
+  "panel": [
+    {
+      "id": "methods",
+      "finding": "The selection frame is deterministic, bounded and reproducible from its recorded digest; it is suitable for a future factual review, not an accuracy estimate.",
+      "disposition": "frame-qualified"
+    },
+    {
+      "id": "provenance",
+      "finding": "The frame points to archived reconciliation evidence and preserves the Hamilton null-geometry boundary; no live endpoint or mutable payload is introduced.",
+      "disposition": "frame-qualified"
+    },
+    {
+      "id": "governance",
+      "finding": "The packet is public-only and non-authoritative; agent analysis cannot provide external operator, community or accountable-authority evidence.",
+      "disposition": "promotion-disabled"
+    },
+    {
+      "id": "reproducibility",
+      "finding": "The sample counts and digest are recorded, but no source-row adjudications or independent reproduction have been asserted.",
+      "disposition": "open"
+    }
+  ],
+  "decisions": {
+    "frame_reproducible": true,
+    "reviewed_matches": 0,
+    "factual_pair_adjudication": false,
+    "authoritative_registry": false,
+    "national_completeness": false,
+    "spatial_accessibility_claim": false,
+    "promotion_allowed": false
+  },
+  "open_gates": [
+    "factual review of the 39 candidate pairs and bounded sample",
+    "second public health source family with immutable archive receipt",
+    "preservation/publication acceptance",
+    "external operator and user reproduction",
+    "accountable release-authority decision"
+  ],
+  "non_claims": [
+    "This agent-panel packet qualifies only the review frame, not the underlying facility identities or classifications.",
+    "Agent-panel assessment is not independent external evidence, operator/user participation or release-authority approval."
+  ]
+}

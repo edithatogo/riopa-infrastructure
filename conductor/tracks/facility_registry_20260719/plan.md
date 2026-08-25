@@ -51,7 +51,7 @@ promote a source to authoritative status without a documented panel disposition.
 
 ## Evidence gates still open
 
-- [ ] G.1 Agent-panel disposition of the 39 candidate pairs and the deterministic review sample.
+- [~] G.1 Agent-panel qualification of the deterministic 741-row review frame is recorded in `docs/facility-panel-frame-qualification-20260825.json`; factual pair/sample adjudication remains open and no promotion is enabled.
 - [x] G.2 Record the Hamilton packet as explicitly attribute-only because all 3,245 archived assertions have null geometry (`docs/facility-panel-qualification-20260803.json`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py`). No geometry, completeness or authoritative facility claim is enabled.
 - [ ] G.3 A second public health source family with an immutable archive receipt.
 - [x] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.
