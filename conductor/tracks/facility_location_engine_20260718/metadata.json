@@ -4,14 +4,16 @@
   "phase": "Analytics",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-24T21:07:56Z",
+  "updated_at": "2026-08-25T07:00:00Z",
   "description": "Provide reusable, independently verifiable optimisation for coverage, average access, worst-case equity, capacity, competition, robustness and multi-period decisions.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
     "accessibility_network_engine_20260719"
   ],
   "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/79",
-  "evidence": [],
+  "evidence": [
+    "urn:riopa:evidence:facility-location-closeout:2026-08-25"
+  ],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
   "v1_critical": true,
