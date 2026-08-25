@@ -151,6 +151,7 @@ jobs:
           gh release create "$RELEASE_TAG" \
             dist/riopa-example-research-object.tar.gz \
             dist/SHA256SUMS \
+            --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
             --prerelease \
             --title "v0.2.0 - M1 roadmap technical preview" \
