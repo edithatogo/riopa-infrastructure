@@ -46,7 +46,7 @@ jobs:
           cp uv.lock /tmp/riopa-v020-original.lock
           test "$(grep -c 'packages.applied-caas-gateway1.internal.api.openai.org' uv.lock)" -gt 0
           sed -i \
-            -e 's#https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages#https://files.pythonhosted.org/packages#g' \
+            -e 's#https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages#https://files.pythonhosted.org/packages#g' \
             -e 's#https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/simple#https://pypi.org/simple#g' \
             uv.lock
           test "$(grep -c 'packages.applied-caas-gateway1.internal.api.openai.org' uv.lock || true)" -eq 0
