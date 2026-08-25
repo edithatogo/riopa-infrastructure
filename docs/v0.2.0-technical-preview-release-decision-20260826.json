@@ -1,0 +1,49 @@
+{
+  "schema": "riopa.bounded-technical-preview-release-decision.v1",
+  "decision_id": "urn:riopa:decision:v0.2.0-bounded-technical-preview:2026-08-26",
+  "release": "0.2.0",
+  "channel": "technical-preview",
+  "maturity": "M1",
+  "source_revision": "4ffe73eb144c5c1a4acad34706a5f5937491d1ad",
+  "decision": "authorized-for-publication-after-hosted-verification",
+  "authority": {
+    "role": "Repository owner",
+    "approval_recorded_at": "2026-08-25T14:46:02Z",
+    "approval_basis": "Direct owner instruction approving the recommended bounded preview and requiring later tracks to continue.",
+    "signature_state": "pending-content-binding-by-merged-commit-and-github-oidc-release-attestations"
+  },
+  "scope": [
+    "M1 roadmap and maturity architecture",
+    "machine-readable release train and track graph",
+    "roadmap validation and issue-generation tooling",
+    "example research-object build"
+  ],
+  "excluded_claims": [
+    "M2-M6 maturity",
+    "stable-v1 readiness",
+    "complete or authoritative real data",
+    "national archive coverage",
+    "clinical, dispatch, planning, causal or operational fitness",
+    "independent external reproduction",
+    "external user or operator acceptance",
+    "DOI preservation deposit"
+  ],
+  "publication_conditions": [
+    "tag v0.2.0 resolves to the exact source revision",
+    "hosted tag workflow passes",
+    "published asset checksums verify",
+    "GitHub OIDC provenance attestations verify",
+    "GitHub release is marked as a prerelease and states all exclusions"
+  ],
+  "support_policy": "docs/v0.2.0-technical-preview-support-20260826.md",
+  "later_track_policy": {
+    "pre_existing_track_count": 28,
+    "effect": "none",
+    "requirement": "All pre-existing tracks retain their status, maturity target, release target and acceptance criteria."
+  },
+  "rollback_and_withdrawal": [
+    "withdraw or replace affected assets when checksum or attestation verification fails",
+    "publish a correction or security notice for material defects",
+    "retain the tag and provenance record when withdrawing support so history remains auditable"
+  ]
+}
