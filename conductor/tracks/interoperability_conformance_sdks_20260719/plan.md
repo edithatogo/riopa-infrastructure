@@ -37,7 +37,7 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; external implementation, signing, preservation and authority gates remain explicitly pending (`docs/interoperability-closeout-evidence-20260825.json`, `tests/test_interoperability_closeout_evidence.py`; `22945ef`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/interoperability-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with external implementations, signing, preservation and authority gates unresolved.
 
 ## Review fixes
 
