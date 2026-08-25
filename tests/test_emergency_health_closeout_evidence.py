@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 
@@ -33,7 +34,8 @@ def test_review_remediation_is_digest_bound_and_keeps_external_gates_open() -> N
     assert packet["archive_eligible"] is False
     assert packet["promotion_allowed"] is False
     assert len(packet["review_lenses"]) == 4
-    assert all(len(value) == 64 for value in packet["artifact_sha256"].values())
+    for relative_path, expected_digest in packet["artifact_sha256"].items():
+        assert hashlib.sha256(Path(relative_path).read_bytes()).hexdigest() == expected_digest
     gates = " ".join(packet["remaining_blocking_gates"])
     for boundary in (
         "dependencies",

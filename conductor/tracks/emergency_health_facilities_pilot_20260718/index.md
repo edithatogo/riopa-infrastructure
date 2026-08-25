@@ -59,6 +59,8 @@ The review-remediation successor corrects the earlier closeout packet's stale
 references to missing hospital/service implementation and stress comparison.
 It adds executable bounded semantics and exact blocker metadata without changing
 the track's `active`/M1 status or treating agent review as external approval.
+The second review added a pre-horizon posting comparison and bounded uncertainty
+reporting; live en-route relocation remains outside the qualified reference scope.
 
 ## Review and handover
 
