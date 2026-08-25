@@ -23,6 +23,7 @@
     "urn:riopa:evidence:connector-diagnostic-bundles:2026-08-24",
     "urn:riopa:evidence:connector-authoring-guide:2026-08-24"
     ,"urn:riopa:evidence:connector-panel-qualification:2026-08-25"
+    ,"urn:riopa:evidence:connector-archived-real-source-pair:2026-08-26"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

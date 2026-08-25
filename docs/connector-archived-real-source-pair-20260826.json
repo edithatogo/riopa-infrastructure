@@ -1,0 +1,35 @@
+{
+  "file_sha256": {
+    "evidence/stats-nz-meshblock-2026-projection/capture-records.jsonl": "49793b8c1517564bdffda1305cda432dc1e53bd8bc28906e5f12bd6b197c3540",
+    "evidence/stats-nz-meshblock-2026-projection/records-manifest.json": "92b38767943694f42f18fd5b9b1efc398ea9164c2580b27ca776b641aec8d8c1",
+    "evidence/wp007-real-slice/manifest.json": "2b773fc68fd630aec197bb5e266e8332e14c15eb251cdfde94ee01a4ee8f20ba",
+    "evidence/wp007-real-slice/store/capture-sets/b973595d-0aaf-4b18-a594-db973507195b.json": "294c5de4debc2cdd2351d064f71d1e57b35e7016a68951996ed856899f80e44b"
+  },
+  "non_claims": [
+    "Archived packets are not evidence of a current live endpoint.",
+    "This packet does not establish national coverage, authority, or release approval."
+  ],
+  "open_gates": [
+    "fresh live-source acceptance and rights qualification",
+    "preservation target acceptance and anonymous restore",
+    "hosted monitoring and external reproduction"
+  ],
+  "promotion_allowed": false,
+  "schema": "riopa.connector-archived-real-source-pair.v1",
+  "scope": "one national public source and one council planning source",
+  "sources": {
+    "council_planning": {
+      "capture_set": "evidence/wp007-real-slice/store/capture-sets/b973595d-0aaf-4b18-a594-db973507195b.json",
+      "feature_count": 1,
+      "manifest": "evidence/wp007-real-slice/manifest.json",
+      "source_id": "urn:riopa:source:wcc:2024-district-plan-zones"
+    },
+    "national": {
+      "capture_record_count": 236,
+      "capture_records": "evidence/stats-nz-meshblock-2026-projection/capture-records.jsonl",
+      "manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+      "source_id": "urn:riopa:source:stats-nz:meshblock-2026"
+    }
+  },
+  "status": "archived-inputs-validated-live-acceptance-pending"
+}
