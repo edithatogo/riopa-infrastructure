@@ -1,0 +1,19 @@
+{
+  "schema": "riopa.simulation-boundary-performance-contract.v1",
+  "evidence_id": "simulation-boundary-performance-contract-20260825",
+  "track_id": "simulation_validation_engine_20260719",
+  "implementation": "src/riopa_provenance/capacity_models.py:validate_simulation_boundary",
+  "test": "tests/test_capacity_models.py",
+  "accepted_classes": ["public", "synthetic", "controlled"],
+  "rules": [
+    "public inputs require archived source status and rights reference",
+    "controlled inputs require controlled pathway and governance decision reference",
+    "live source status is rejected",
+    "observed units may not exceed the declared performance envelope"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The validator is a repository contract, not source authority or rights approval.",
+    "Passing a bounded envelope does not establish national-scale, operational, external or release performance."
+  ]
+}

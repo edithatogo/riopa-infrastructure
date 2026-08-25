@@ -6,6 +6,7 @@ from riopa_provenance.capacity_models import (
     evaluate_capacity_resilience,
     project_capacity,
     validate_capacity_model,
+    validate_simulation_boundary,
 )
 
 MODEL = {
@@ -88,3 +89,36 @@ def test_capacity_resilience_rejects_non_boolean_availability() -> None:
             backup_capacity=1,
             primary_available=1,  # type: ignore[arg-type]
         )
+
+
+def test_simulation_boundary_validates_public_archived_envelope() -> None:
+    result = validate_simulation_boundary(
+        {
+            "classification": "public",
+            "pathway": "public",
+            "source_status": "archived",
+            "rights_ref": "rights-1",
+            "observed_units": 100,
+            "max_units": 100,
+            "elapsed_seconds": 2.5,
+        }
+    )
+    assert result["valid"] is True
+    assert result["promotion_allowed"] is False
+
+
+def test_simulation_boundary_rejects_live_controlled_and_extrapolated_inputs() -> None:
+    result = validate_simulation_boundary(
+        {
+            "classification": "controlled",
+            "pathway": "public",
+            "source_status": "live",
+            "observed_units": 101,
+            "max_units": 100,
+            "elapsed_seconds": 1,
+        }
+    )
+    assert result["valid"] is False
+    assert any("live source" in error for error in result["errors"])
+    assert any("controlled pathway" in error for error in result["errors"])
+    assert any("exceed" in error for error in result["errors"])

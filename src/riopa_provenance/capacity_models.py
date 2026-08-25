@@ -11,6 +11,78 @@ class CapacityModelError(ValueError):
     """Raised when a capacity model is incomplete or non-physical."""
 
 
+def validate_simulation_boundary(record: Mapping[str, Any] | None) -> dict[str, Any]:
+    """Validate source classification and bounded performance observations.
+
+    This validator is deliberately descriptive.  It rejects live-source claims,
+    requires rights/governance references for the applicable pathway, and never
+    permits an observed workload to be silently extrapolated beyond its envelope.
+    """
+
+    errors: list[str] = []
+    if not isinstance(record, Mapping):
+        return {
+            "valid": False,
+            "errors": ["simulation boundary must be an object"],
+            "promotion_allowed": False,
+            "source": "bounded-input-boundary",
+        }
+    classification = record.get("classification")
+    if classification not in {"public", "synthetic", "controlled"}:
+        errors.append("classification must be public, synthetic or controlled")
+    pathway = record.get("pathway", "public")
+    if pathway not in {"public", "controlled"}:
+        errors.append("pathway must be public or controlled")
+    source_status = record.get("source_status", "synthetic")
+    if source_status == "live":
+        errors.append("live source status is not permitted")
+    if classification == "controlled":
+        if pathway != "controlled":
+            errors.append("controlled classification requires controlled pathway")
+        if not isinstance(record.get("governance_decision_ref"), str):
+            errors.append("controlled classification requires governance_decision_ref")
+    elif classification == "public":
+        if not isinstance(record.get("rights_ref"), str):
+            errors.append("public classification requires rights_ref")
+        if source_status != "archived":
+            errors.append("public classification requires archived source_status")
+    elif classification == "synthetic" and source_status not in {"synthetic", "archived"}:
+        errors.append("synthetic classification requires synthetic or archived source_status")
+
+    observed_units = record.get("observed_units")
+    max_units = record.get("max_units")
+    elapsed_seconds = record.get("elapsed_seconds")
+    for field, value in (
+        ("observed_units", observed_units),
+        ("max_units", max_units),
+        ("elapsed_seconds", elapsed_seconds),
+    ):
+        if (
+            not isinstance(value, (int, float))
+            or isinstance(value, bool)
+            or not math.isfinite(value)
+        ):
+            errors.append(f"{field} must be finite and numeric")
+        elif value < 0:
+            errors.append(f"{field} must be non-negative")
+    if (
+        isinstance(observed_units, (int, float))
+        and isinstance(max_units, (int, float))
+        and observed_units > max_units
+    ):
+        errors.append("observed_units exceed the declared performance envelope")
+    return {
+        "valid": not errors,
+        "errors": list(dict.fromkeys(errors)),
+        "classification": classification,
+        "pathway": pathway,
+        "source_status": source_status,
+        "promotion_allowed": False,
+        "claim_classification": "reference-only",
+        "source": "bounded-input-boundary",
+    }
+
+
 _NUMERIC_FIELDS = (
     "base_units",
     "base_seconds",
