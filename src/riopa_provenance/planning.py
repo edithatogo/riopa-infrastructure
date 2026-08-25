@@ -160,3 +160,46 @@ def build_plan_source_intake(
             ),
         ],
     }
+
+
+def build_provision_extraction_record(
+    *,
+    provision_id: str,
+    source_ref: str,
+    text_sha256: str,
+    input_sha256: str,
+    method: Literal["structured", "manual", "ai-assisted"],
+    extracted_fields: Mapping[str, Any],
+    uncertainty: str,
+    tool_identity: str | None = None,
+) -> dict[str, Any]:
+    """Record a provenance-bearing extraction without interpreting legal meaning."""
+    if not provision_id.strip() or not source_ref.strip() or not uncertainty.strip():
+        raise ValueError("provision_id, source_ref and uncertainty must be non-empty")
+    for field, digest in (("text_sha256", text_sha256), ("input_sha256", input_sha256)):
+        if not re.fullmatch(r"[0-9a-fA-F]{64}", digest):
+            raise ValueError(f"{field} must be a SHA-256 hex digest")
+    if not extracted_fields:
+        raise ValueError("extracted_fields must be non-empty")
+    if method == "ai-assisted" and not tool_identity:
+        raise ValueError("ai-assisted extraction requires tool_identity")
+    return {
+        "record_type": "planning-provision-extraction",
+        "provision_id": provision_id,
+        "source_ref": source_ref,
+        "text_sha256": text_sha256.lower(),
+        "input_sha256": input_sha256.lower(),
+        "method": method,
+        "tool_identity": tool_identity,
+        "extracted_fields": dict(extracted_fields),
+        "uncertainty": uncertainty,
+        "review_status": "unreviewed",
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "The record preserves an extraction method and hashes; it is not a legal "
+                "interpretation."
+            ),
+            "Unreviewed extraction does not establish operative status, authority or completeness.",
+        ],
+    }

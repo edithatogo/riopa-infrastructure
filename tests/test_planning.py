@@ -5,6 +5,7 @@ from riopa_provenance.planning import (
     PlanVersion,
     ProvisionIdentity,
     build_plan_source_intake,
+    build_provision_extraction_record,
 )
 
 
@@ -62,6 +63,32 @@ def test_plan_source_intake_is_digest_bound_and_preserves_rights_fields() -> Non
             [{**records[0], "document_sha256": "not-a-digest"}],
             intake_id="intake-1",
             captured_at="now",
+        )
+
+
+def test_provision_extraction_requires_hashes_and_ai_tool_identity() -> None:
+    record = build_provision_extraction_record(
+        provision_id="provision:wcc:1",
+        source_ref="archive:plan#rule-1",
+        text_sha256="a" * 64,
+        input_sha256="b" * 64,
+        method="ai-assisted",
+        extracted_fields={"citation": "Rule 1"},
+        uncertainty="text anchor preserved; legal status not assessed",
+        tool_identity="agent-panel:extractor-v1",
+    )
+    assert record["method"] == "ai-assisted"
+    assert record["review_status"] == "unreviewed"
+    assert record["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="tool_identity"):
+        build_provision_extraction_record(
+            provision_id="provision:wcc:1",
+            source_ref="archive:plan#rule-1",
+            text_sha256="a" * 64,
+            input_sha256="b" * 64,
+            method="ai-assisted",
+            extracted_fields={"citation": "Rule 1"},
+            uncertainty="unreviewed",
         )
 
 

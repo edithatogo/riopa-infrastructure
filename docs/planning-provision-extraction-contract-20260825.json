@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.planning-provision-extraction-contract.v1",
+  "evidence_id": "planning-provision-extraction-contract-20260825",
+  "track_id": "planning_rules_linkage_20260718",
+  "implementation": "src/riopa_provenance/planning.py:build_provision_extraction_record",
+  "test": "tests/test_planning.py",
+  "methods": ["structured", "manual", "ai-assisted"],
+  "integrity": "text_sha256 and input_sha256 are required",
+  "review_status": "unreviewed by default",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The record is not a legal interpretation or operative-status assertion.",
+    "Unreviewed extraction does not establish authority, completeness or publication permission."
+  ]
+}
