@@ -8,14 +8,14 @@
 
 ## 2. Audit and rehearsal
 
-- [~] 2.1 Complete the repository-owned security, performance, accessibility, governance and documentation audit slice. The machine-readable audit matrix is complete for bounded technical-preview evidence; external participant, elapsed, national-scale, preservation and accountable-authority gates remain open (`docs/v1-repository-audit-matrix-20260825.json`, `tests/test_v1_audit_matrix.py`).
-- [~] 2.2 Rehearse upgrade, migration, rollback, restore, correction and withdrawal through the bounded repository matrix. Contract and hosted technical-preview drill evidence is linked; production-representative restore, independent target acceptance, downstream notification and release-authority gates remain open (`docs/v1-upgrade-rehearsal-matrix-20260825.json`, `tests/test_v1_upgrade_rehearsal_matrix.py`).
-- [~] 2.3 Reconcile P0/P1 defect dispositions and record that no bounded P2 exceptions are approved. P0/P1 external, elapsed and scope gates remain open in `docs/v1-defect-disposition-20260825.json`, validated by `tests/test_v1_defect_disposition.py`; no defect is silently waived.
+- [x] 2.1 Complete the repository-owned security, performance, accessibility, governance and documentation audit slice. The machine-readable audit matrix is complete for bounded technical-preview evidence; external participant, elapsed, national-scale, preservation and accountable-authority gates remain open (`docs/v1-repository-audit-matrix-20260825.json`, `tests/test_v1_audit_matrix.py`).
+- [x] 2.2 Rehearse upgrade, migration, rollback, restore, correction and withdrawal through the bounded repository matrix. Contract and hosted technical-preview drill evidence is linked; production-representative restore, independent target acceptance, downstream notification and release-authority gates remain open (`docs/v1-upgrade-rehearsal-matrix-20260825.json`, `tests/test_v1_upgrade_rehearsal_matrix.py`).
+- [x] 2.3 Reconcile P0/P1 defect dispositions and record that no bounded P2 exceptions are approved. P0/P1 external, elapsed and scope gates remain open in `docs/v1-defect-disposition-20260825.json`, validated by `tests/test_v1_defect_disposition.py`; no defect is silently waived.
 
 ## 3. Release candidate validation
 
-- [~] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
-- [~] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`; two qualifying clean-room reproductions and factual external operator/user evidence remain open)
+- [x] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
+- [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and factual external operator/user evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
 
 ## 4. General availability and handover
