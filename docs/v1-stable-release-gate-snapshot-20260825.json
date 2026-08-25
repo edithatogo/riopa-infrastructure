@@ -3,7 +3,8 @@
     "operational_campaign": [
       "beta:pending-duration-and-cycles",
       "rc:pending-duration",
-      "rc:exact-candidate-reset-required"
+      "rc:exact-candidate-reset-required",
+      "rc:exact-candidate-continuity-not-met"
     ],
     "release_authority": [
       "signed-unanimous-decision-not-qualified"
@@ -143,7 +144,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "5cba405926f434b411991b8b1509a5444bb5bf4096f238c94d64177de1827ca3",
+  "snapshot_sha256": "9c8ce93dbe3290e80094a889399b0223f3632c1b86d79d47fff0b0a9b5148710",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,

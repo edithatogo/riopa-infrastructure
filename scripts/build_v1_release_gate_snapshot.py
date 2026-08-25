@@ -184,6 +184,16 @@ def build_snapshot(root: Path, *, evaluated_revision: str, generated_at: str) ->
             f"beta:{operational_gate.get('status')}",
             f"rc:{continuity['declared_status']}",
             "rc:exact-candidate-reset-required" if continuity["reset_required"] else None,
+            (
+                "rc:observation-binding-invalid"
+                if not continuity["observation_bindings_valid"]
+                else None
+            ),
+            (
+                "rc:exact-candidate-continuity-not-met"
+                if not continuity["exact_candidate_continuity_met"]
+                else None
+            ),
         ],
         "release_evidence": [] if stable_evidence_present else ["stable-release-record-absent"],
         "release_authority": (

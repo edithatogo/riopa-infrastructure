@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 
+from riopa_provenance.hashing import sha256_json
 from scripts.build_v1_release_gate_snapshot import (
     V1GateSnapshotError,
     build_snapshot,
@@ -31,7 +32,8 @@ def test_current_v1_gate_snapshot_is_explicitly_blocked() -> None:
     }
     assert snapshot["stable_release_evidence_present"] is False
     assert "stable-release-record-absent" in snapshot["blockers"]["release_evidence"]
-    assert len(snapshot["snapshot_sha256"]) == 64
+    digest = snapshot.pop("snapshot_sha256")
+    assert digest == sha256_json(snapshot)
 
 
 def test_current_rc_observations_require_reset_for_candidate_changes() -> None:
