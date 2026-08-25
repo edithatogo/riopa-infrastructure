@@ -60,6 +60,31 @@ def test_transport_neutral_lineage_query_round_trip_is_strict() -> None:
     with pytest.raises(LineageError, match="unsupported"):
         LineageQuery.from_payload({**query.to_payload(), "contract_version": "2.0.0"})
 
+    for invalid in (
+        {**query.to_payload(), "node_id": " "},
+        {**query.to_payload(), "question": "what"},
+        {**query.to_payload(), "max_depth": 0},
+        {**query.to_payload(), "max_depth": 101},
+        {**query.to_payload(), "node_id": 4},
+        {**query.to_payload(), "max_depth": True},
+    ):
+        with pytest.raises(LineageError):
+            LineageQuery.from_payload(invalid)
+
+
+def test_import_manifest_rejects_non_object_root(monkeypatch, tmp_path: Path) -> None:
+    index = LineageIndex(tmp_path / "lineage.sqlite")
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text("[]")
+    monkeypatch.setattr(
+        lineage_module,
+        "validate_manifest_closure",
+        lambda *_args, **_kwargs: ValidationResult(path=manifest, schema=None, errors=()),
+    )
+    monkeypatch.setattr(lineage_module, "load_json", lambda *_args, **_kwargs: [])
+    with pytest.raises(LineageError, match="manifest root"):
+        index.import_manifest(manifest)
+
 
 def test_lineage_walks_are_sorted_and_cycle_safe(tmp_path: Path) -> None:
     index = seeded_index(tmp_path)
@@ -77,6 +102,10 @@ def test_lineage_walks_are_sorted_and_cycle_safe(tmp_path: Path) -> None:
     assert [item["node_id"] for item in impact["impacted"]] == ["artifact-1", "snapshot-1"]
     assert impact["projection"]["lineage_granularities"] == ["dataset"]
     assert "not captured" in impact["projection"]["granularity_limitation"]
+    combined = index.rebuild_impact(["source-1", "artifact-1", "snapshot-1"])
+    assert [item["node_id"] for item in combined["impacted"]] == ["artifact-1", "snapshot-1"]
+    with pytest.raises(LineageError, match="max_depth"):
+        index.downstream("source-1", max_depth=0)
 
 
 def test_page_nodes_is_bounded_and_reports_diagnostics(tmp_path: Path) -> None:
@@ -86,6 +115,10 @@ def test_page_nodes_is_bounded_and_reports_diagnostics(tmp_path: Path) -> None:
     assert len(page["nodes"]) == 1
     assert page["diagnostics"]["projection_sha256"]
     assert "no remote authorization" in page["access_control"]
+    with pytest.raises(LineageError, match="limit"):
+        index.page_nodes(limit=0)
+    with pytest.raises(LineageError, match="offset"):
+        index.page_nodes(offset=-1)
 
 
 def test_query_cache_is_bounded_and_projection_fingerprint_aware(tmp_path: Path) -> None:
@@ -137,6 +170,12 @@ def test_export_duckdb_rejects_same_projection_path(tmp_path: Path) -> None:
     index = seeded_index(tmp_path)
     with pytest.raises(LineageError, match="must differ"):
         index.export_duckdb(index.path)
+    empty = LineageIndex(tmp_path / "empty.sqlite")
+    connection = empty._connect()
+    connection.executescript(_SCHEMA)
+    connection.close()
+    receipt = empty.export_duckdb(tmp_path / "empty.duckdb")
+    assert receipt["manifests"] == receipt["nodes"] == receipt["edges"] == 0
 
 
 def test_projection_fingerprint_is_stable_across_rebuilds_and_reimports(tmp_path: Path) -> None:
@@ -162,6 +201,8 @@ def test_export_prov_jsonld_is_deterministic_and_not_authoritative(tmp_path: Pat
     assert first["sha256"] == second["sha256"]
     payload = json.loads((tmp_path / "one.jsonld").read_text())
     assert payload["riopa:promotionAllowed"] is False
+    with pytest.raises(LineageError, match="must differ"):
+        index.export_prov_jsonld(index.path)
     assert len(payload["@graph"]) == 5
     assert any(item["@type"] == "riopa:LineageRelation" for item in payload["@graph"])
 

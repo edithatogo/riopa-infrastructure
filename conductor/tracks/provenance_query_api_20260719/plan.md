@@ -14,9 +14,12 @@
 
 ## 3. Interfaces and performance
 
-- [~] 3.1 Implement CLI, Python and MCP interfaces. The Python reference and
-  bounded CLI lineage build/query/walk/impact/export commands are repository-owned;
-  an MCP transport and cross-interface equivalence remain open (`src/riopa_provenance/cli.py`, `docs/provenance-query-cli-contract-20260825.json`).
+- [~] 3.1 Implement CLI, Python and MCP interfaces. The Python reference, bounded
+  CLI commands and local read-only MCP-style stdio transport are repository-owned;
+  cross-interface equivalence, remote transport/authorization and external-client
+  qualification remain open (`src/riopa_provenance/cli.py`, `src/riopa_provenance/mcp.py`,
+  `tests/test_provenance_query_mcp.py`, `docs/provenance-query-cli-contract-20260825.json`,
+  `docs/provenance-query-mcp-transport-contract-20260826.json`).
 - [~] 3.2 Add caching, pagination, access filtering and diagnostics. Deterministic local pagination, projection diagnostics and fingerprint-aware bounded caching are implemented; remote authorization and access filtering remain open (`src/riopa_provenance/lineage.py`, `src/riopa_provenance/cli.py`, `docs/provenance-query-pagination-diagnostics-contract-20260825.json`, `docs/provenance-query-cache-contract-20260825.json`).
 - [~] 3.3 Benchmark representative release and impact queries. A deterministic local timing harness covers where/why/impact/page cases; representative release-scale, second-environment and production measurements remain open (`scripts/benchmark_lineage_queries.py`, `tests/test_provenance_query_benchmark.py`).
 
