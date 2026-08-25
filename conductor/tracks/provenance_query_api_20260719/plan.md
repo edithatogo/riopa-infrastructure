@@ -16,8 +16,9 @@
 
 - [~] 3.1 Implement CLI, Python and MCP interfaces. The Python reference, bounded
   CLI commands and local read-only MCP-style stdio transport are repository-owned;
-  cross-interface equivalence, remote transport/authorization and external-client
-  qualification remain open (`src/riopa_provenance/cli.py`, `src/riopa_provenance/mcp.py`,
+  bounded cross-interface equivalence is now tested, while remote transport/authorization
+  and external-client qualification remain open (`src/riopa_provenance/cli.py`,
+  `src/riopa_provenance/mcp.py`,
   `tests/test_provenance_query_mcp.py`, `docs/provenance-query-cli-contract-20260825.json`,
   `docs/provenance-query-mcp-transport-contract-20260826.json`).
 - [~] 3.2 Add caching, pagination, access filtering and diagnostics. Deterministic local pagination, projection diagnostics and fingerprint-aware bounded caching are implemented; remote authorization and access filtering remain open (`src/riopa_provenance/lineage.py`, `src/riopa_provenance/cli.py`, `docs/provenance-query-pagination-diagnostics-contract-20260825.json`, `docs/provenance-query-cache-contract-20260825.json`).
@@ -25,7 +26,7 @@
 
 ## 4. Stable query release
 
-- [x] 4.1 Validate equivalent answers across the bounded Python/CLI interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; MCP, remote access filtering, real-release and external-user gates remain open.
+- [x] 4.1 Validate equivalent answers across the bounded Python/CLI/MCP interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; remote access filtering, real-release and external-user gates remain open.
 - [x] 4.2 Run a bounded owner-authorized agent-user workflow over representative where/why/how provenance questions. The deterministic workflow and content-bound report are repository-owned evidence; external user/operator workflows, remote access control, MCP and release evidence remain open (`scripts/run_provenance_query_agent_workflow.py`, `docs/provenance-query-agent-workflow-20260825.json`, `tests/test_provenance_query_agent_workflow.py`).
 - [x] 4.3 Publish bounded migration guidance for the 1.0.0 query contract. Compatibility rules and explicit breaking-change boundaries are documented as repository-owned guidance; v1 freeze, MCP/remote qualification, real-user evidence and release approval remain open (`docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py`).
 

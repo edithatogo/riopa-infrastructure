@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 
 from riopa_provenance.lineage import LineageIndex
+from riopa_provenance.mcp import McpLineageServer
 
 
 def test_python_cli_and_disposable_projections_have_equivalent_bounded_answers(
@@ -41,6 +42,23 @@ def test_python_cli_and_disposable_projections_have_equivalent_bounded_answers(
     )
     cli_nodes = [item["node_id"] for item in json.loads(cli.stdout)["nodes"]]
     assert cli_nodes == python_nodes
+
+    mcp = McpLineageServer(index).handle(
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "tools/call",
+            "params": {
+                "name": "lineage_walk",
+                "arguments": {"node_id": source_id, "direction": "downstream"},
+            },
+        }
+    )
+    assert mcp is not None
+    mcp_nodes = [
+        item["node_id"] for item in json.loads(mcp["result"]["content"][0]["text"])["nodes"]
+    ]
+    assert mcp_nodes == python_nodes
 
     duckdb_path = tmp_path / "lineage.duckdb"
     receipt = index.export_duckdb(duckdb_path)
@@ -79,4 +97,5 @@ def test_equivalence_contract_is_bounded_and_non_assertive() -> None:
         (root / "docs/provenance-query-equivalence-contract-20260825.json").read_text()
     )
     assert contract["promotion_allowed"] is False
-    assert "MCP transport equivalence" in contract["open_gates"]
+    assert "MCP transport equivalence" not in contract["open_gates"]
+    assert "remote transport authorization and access filtering" in contract["open_gates"]
