@@ -25,6 +25,7 @@
 | `ACCESS-REFERENCE-MEASURES-20260825` | Cumulative opportunity, gravity and two-step floating-catchment reference measures | `src/riopa_provenance/accessibility.py`, `tests/test_accessibility.py`, `reports/wp009-reference-solver-cores.md` | Hand-calculated bounded fixtures pass; measures are not national, operational or real-network evidence |
 | `ACCESS-STRAIGHT-LINE-ADAPTER-20260825` | Deterministic Haversine coordinate adapter for bounded reference matrices | `src/riopa_provenance/accessibility.py:straight_line_matrix`, `tests/test_accessibility.py` | Geometry-only reference distances pass; no road, timetable, facility, national or operational claim is enabled |
 | `ACCESS-TIME-CAPACITY-20260825` | Arrival-based opening-interval and capacity projection for an explicitly minute-based reference matrix | `src/riopa_provenance/accessibility.py:OpeningInterval`, `src/riopa_provenance/accessibility.py:reachable_capacity_at_departure`, `tests/test_accessibility.py` | Bounded recurring intervals and midnight wrapping pass; timezone, holiday, routing, timetable, live capacity and operational claims remain disabled |
+| `ACCESS-CONDUCTOR-REGENERATION-20260825` | Locked methods, roadmap status, issue graph and quality regeneration receipt | `docs/accessibility-network-conductor-regeneration-20260825.json` | Repository generation passed; temporary methods output is not a release artifact and roadmap readiness remains false |
 
 ## Blocking defects
 

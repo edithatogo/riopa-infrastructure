@@ -48,6 +48,11 @@ release-candidate rehearsal evidence for the same bounded slice. Its release
 references remain an unpublished candidate and do not advance the track beyond
 M1.
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; it does not substitute for external-user, operator or
+release-authority evidence (`docs/documentation-conductor-regeneration-20260825.json`).
+
 ## Decisions, exceptions and limitations
 
 - This is a single-developer repository. Agent panels may assess documents,
