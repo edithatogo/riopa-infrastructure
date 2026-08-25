@@ -24,6 +24,7 @@
 | `FACILITY-REFERENCE-BENCHMARK-20260825` | Bounded p-median and p-center reference benchmark records cardinality and environment-bound timing | `src/riopa_provenance/facility_location.py:benchmark_reference_solvers`, `tests/test_facility_location.py`, `docs/facility-reference-benchmark-contract-20260825.json` | Local bounded benchmark passes; national-scale, production SLO/cost, external solver and planning-authority evidence remain open |
 | `FACILITY-V1-API-POLICY-20260825` | Bounded v1 model registry, compatibility rules and fail-closed migration policy | `docs/facility-location-v1-api-migration-policy-20260825.md`, `docs/facility-location-v1-api-migration-contract-20260825.json`, `tests/test_facility_location_v1_policy.py` | Four reference model names and breaking-change controls are explicit; national-scale, planning/accessibility, operational, external-solver and release gates remain open |
 | `FACILITY-BOUNDED-INPUT-ADAPTER-20260825` | Apply archived accessibility observations and explicit planning feasibility to bounded location problems | `src/riopa_provenance/facility_location.py:apply_bounded_reference_inputs`, `docs/facility-location-bounded-input-adapter-20260825.md`, `docs/facility-location-bounded-input-adapter-contract-20260825.json`, `tests/test_facility_location.py` | Fail-closed matrix/eligibility transformation passes; live network/timetable, planning authority, national-scale, operational and release evidence remain open |
+| `FACILITY-LOCATION-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded location slice | `docs/facility-location-closeout-evidence-20260825.json`, `tests/test_facility_location_closeout_evidence.py` | Evidence categories are linked and fail-closed; national scale, external benchmark, authority and release gates remain open |
 
 ## Blocking defects
 
@@ -34,6 +35,10 @@
 
 - Exhaustive enumeration is intentionally bounded to small correctness fixtures
   and must not be represented as an operational planning engine.
+
+The 2026-08-25 closeout packet links the bounded implementation, test, review,
+migration and candidate-contract evidence. It does not establish national-scale
+performance, external solver equivalence, planning authority or production use.
 
 ## Review and handover
 

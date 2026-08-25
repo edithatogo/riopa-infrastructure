@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.facility-location-closeout-evidence.v1",
+  "packet_id": "facility-location-closeout-evidence-20260825",
+  "track_id": "facility_location_engine_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "evidence_categories": {
+    "implementation": ["src/riopa_provenance/facility_location.py", "docs/facility-location-bounded-input-adapter-20260825.md"],
+    "tests": ["tests/test_facility_location.py", "tests/test_facility_location_v1_policy.py"],
+    "review": ["docs/facility-reference-benchmark-contract-20260825.json", "docs/facility-location-v1-api-migration-contract-20260825.json"],
+    "migration": ["docs/facility-location-v1-api-migration-policy-20260825.md", "docs/facility-location-v1-api-migration-contract-20260825.json"],
+    "release_candidate": ["docs/facility-reference-benchmark-contract-20260825.json", "docs/facility-location-v1-api-migration-contract-20260825.json"]
+  },
+  "open_gates": ["national-scale workloads and production resource/cost measurements", "independent external solver or benchmark reproduction", "live network/timetable/planning-authority evidence", "operational qualification and accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains bounded contracts and local reference benchmarks, not a release or production planning qualification.",
+    "Repository tests and agent panels cannot substitute for national measurements, external solver evidence, planning authority or release authority.",
+    "Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}
