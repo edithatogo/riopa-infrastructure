@@ -1,0 +1,49 @@
+{
+  "schema": "riopa.publication-applied-benchmark-reproduction.v1",
+  "evidence_id": "urn:riopa:evidence:publication-applied-benchmark:2026-08-25",
+  "status": "owner-agent-reproduced-bounded-benchmark",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "software_revision": "64aa89beb543bfd6591115c25a8145dba07baa44",
+  "runtime": "CPython 3.14.5",
+  "benchmark": {
+    "id": "urn:riopa:benchmark:wp010:performance-contract:1.0.0",
+    "contract": "examples/wp010-performance-benchmark/contract.json",
+    "workload": "examples/wp010-performance-benchmark/workload.json",
+    "workload_sha256": "3e289d601e39ce00268f5e837ca70c864ca71c27f13a8d4973cd3fc53a2e031c",
+    "national_manifest_sha256": "096f30d8cc4cf08646233b5cca81d3a3a7f922f7a6f3a317c1d03f7bab8e385d",
+    "run_log_sha256": "fe77ab9f7c36c47f671ae436afb9bcb42795ab3b8f32e0224d3dc127d9eee897",
+    "environment_capture_sha256": "aeb5bed52014dfe643e55f623e3fe8c0ab05ac74a17d8fab26abb9a7d8fdc5ab"
+  },
+  "execution": {
+    "operator": "owner-authorized agent",
+    "command": "python examples/wp010-performance-benchmark/run.py --output <path>",
+    "supporting_checks": [
+      "uv run pytest -q tests/test_wp010_performance_contract.py tests/test_resilience_matrix.py tests/test_hosted_evidence.py",
+      "uv run python scripts/validate_resilience_matrix.py"
+    ],
+    "result": "pass",
+    "independent": false,
+    "external_participant_evidence": false,
+    "network_contacted": false
+  },
+  "interpretation": {
+    "regional": "measured-regional-synthetic",
+    "national": "projection-not-measurement",
+    "network": "disabled-no-archive",
+    "timetable": "disabled-no-archive",
+    "facility": "disabled-no-archive"
+  },
+  "promotion_allowed": false,
+  "open_gates": [
+    "national-scale workload measurement with resource and cost metrics",
+    "external reproduction",
+    "preservation deposit and anonymous restore",
+    "elapsed beta/RC qualification",
+    "accountable release-authority decision"
+  ],
+  "non_claims": [
+    "The projected national result is not an observed national-scale run.",
+    "Synthetic timing does not establish operational SLOs, production resilience or real-world accessibility.",
+    "Owner-authorized agent execution cannot substitute for factual external participant evidence."
+  ]
+}

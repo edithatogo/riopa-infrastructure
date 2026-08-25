@@ -15,7 +15,7 @@
 ## 3. Agent reproduction
 
 - [x] 3.1 Reproduce one real-data archive release with an owner-authorized agent. The WP-007 bounded real-data packet and three materialized artifacts are digest-bound at the protected-main revision in `docs/publication-real-data-release-candidate-20260825.json`; external participation and publication remain open.
-- [ ] 3.2 Reproduce one applied benchmark with an owner-authorized agent.
+- [x] 3.2 Reproduce one applied benchmark with an owner-authorized agent. The manifest-bound WP-010 benchmark and resilience contract pass on protected `origin/main`; the run and environment are recorded by digest in `docs/publication-applied-benchmark-reproduction-20260825.json`. The national result remains a projection and cannot close the national-scale gate.
 - [ ] 3.3 Resolve findings and publish deviations/limitations.
 
 ## 4. Publications and correction
