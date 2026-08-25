@@ -1,0 +1,24 @@
+{
+  "evidence_id": "REPOSITORY-ADOPTION-PROFILE-20260825",
+  "title": "Read-only staged additive adoption profile",
+  "scope": {
+    "included": [
+      "required scaffold detection",
+      "local research-object entrypoint detection",
+      "semantic-loss and non-overwrite boundaries",
+      "staged profile and research-object waves"
+    ],
+    "excluded": [
+      "cross-repository mutation",
+      "source adoption or authority",
+      "native conformance of another repository",
+      "independent reproduction or release qualification"
+    ]
+  },
+  "evidence": [
+    "scripts/build_adoption_profile.py",
+    "tests/test_adoption_profile.py"
+  ],
+  "status": "repository-owned read-only contract",
+  "promotion_allowed": false
+}

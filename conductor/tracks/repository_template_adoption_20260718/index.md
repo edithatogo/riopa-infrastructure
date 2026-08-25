@@ -22,6 +22,7 @@
 | `TEMPLATE-ADAPTER-EXAMPLES-20260825` | Connector, archive, transformation and analytics adapter boundaries are demonstrated additively | `examples/template-adapters/adapter-examples.json`, `examples/template-adapters/README.md`, `tests/test_template_adapter_examples.py` | Synthetic contract fixture passes; live source, cross-repository adoption and independent reproduction remain open |
 | `TEMPLATE-ROLLBACK-PRESERVATION-20260825` | Drift inspection preserves local customisations and never-overwrite files without mutation | `scripts/check_template_drift.py`, `tests/test_template_drift.py` | Repository-owned preservation test passes; cross-repository upgrade, rollback execution and independent reproduction remain open |
 | `TEMPLATE-REPOSITORY-INVENTORY-20260825` | Bounded map of related repositories, roles and adoption evidence status | `docs/repository-adoption-inventory-20260825.json`, `tests/test_repository_adoption_inventory.py` | Inventory is explicit and non-authoritative; fresh revision capture, native conformance, staged adoption, migration cost and independent reproduction remain open |
+| `TEMPLATE-ADOPTION-PROFILE-20260825` | Read-only staged profile and research-object readiness emission with semantic-loss and non-overwrite boundaries | `scripts/build_adoption_profile.py`, `tests/test_adoption_profile.py`, `docs/repository-adoption-profile-contract-20260825.json` | Local emitter passes; cross-repository execution, native conformance, adoption, migration costs and independent reproduction remain open |
 
 ## Blocking defects
 
