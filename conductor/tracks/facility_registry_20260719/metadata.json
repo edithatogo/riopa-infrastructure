@@ -4,7 +4,7 @@
   "phase": "Analytics",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T10:30:00Z",
+  "updated_at": "2026-08-25T12:00:00Z",
   "description": "Reconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
@@ -16,7 +16,8 @@
     "urn:riopa:evidence:facility-history-events:2026-08-22",
     "urn:riopa:evidence:facility-public-release-filter:2026-08-22",
     "urn:riopa:evidence:facility-hamilton-disposition:2026-08-25",
-    "urn:riopa:evidence:facility-public-planning-adapter:2026-08-25"
+    "urn:riopa:evidence:facility-public-planning-adapter:2026-08-25",
+    "urn:riopa:evidence:facility-panel-frame-qualification:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -45,6 +46,7 @@
     "hamilton-geometry-disposition blocked: docs/facility-source-materialization-20260803.json",
     "stale-pr-175-blocker-wording-repaired: 2026-08-25",
     "public-health-source-family pending: conductor/tracks/facility_registry_20260719/index.md",
-    "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md"
+    "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
+    "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; factual adjudication remains open"
   ]
 }
