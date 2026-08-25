@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.repository-template-closeout-evidence.v1",
+  "packet_id": "repository-template-closeout-evidence-20260825",
+  "track_id": "repository_template_adoption_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "single-developer repository template and bounded public technical preview",
+  "evidence_categories": {
+    "implementation": ["schemas/repository-template-contract.schema.json", "scripts/check_template_drift.py", "scripts/build_adoption_profile.py", "scripts/build_adoption_migration_ledger.py"],
+    "tests": ["tests/test_repository_template_contract.py", "tests/test_template_drift.py", "tests/test_adoption_profile.py", "tests/test_adoption_migration_ledger.py", "tests/test_template_journey.py"],
+    "review": ["docs/repository-adoption-inventory-20260825.json", "docs/repository-adoption-migration-ledger-contract-20260825.json"],
+    "migration": ["docs/repository-template-support-policy-20260825.md", "docs/repository-template-support-policy-contract-20260825.json"],
+    "release_candidate": ["docs/repository-template-journey-contract-20260825.json", "docs/repository-template-contract-20260822.json"]
+  },
+  "open_gates": ["fresh related-repository revision capture", "native cross-repository adoption execution", "measured migration cost and contributor feedback", "independent reproduction", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains local read-only rehearsal and policy contracts, not adoption or release evidence for related repositories.",
+    "Repository tests and agent panels cannot substitute for cross-repository execution, independent reproduction, factual feedback or release authority.",
+    "This packet does not enable authoritative, operational or stable-v1 claims."
+  ]
+}
