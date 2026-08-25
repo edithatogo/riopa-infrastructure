@@ -3215,7 +3215,7 @@
         "maturity:m1",
         "release:0.8.0"
       ],
-      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement multi-service location, capacity, referral and workforce scenarios.\n- [ ] 3.2 Add minimum volume, resilience, transition and phased investment constraints.\n- [ ] 3.3 Report Pareto alternatives and non-modelled clinical constraints.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `emergency_health_facilities_pilot_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement a bounded synthetic multi-service location, capacity, referral and workforce scenario evaluator. Deterministic residual allocation and unmet-demand reporting are covered; real service data, clinical interpretation and operational qualification remain open (`src/riopa_provenance/analysis.py:ServiceScenario`, `src/riopa_provenance/analysis.py:evaluate_service_scenario`, `docs/emergency-health-services-contract-20260825.json`, `tests/test_analysis.py`).\n- [ ] 3.2 Add minimum volume, resilience, transition and phased investment constraints.\n- [ ] 3.3 Report Pareto alternatives and non-modelled clinical constraints.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/emergency_health_facilities_pilot_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Applications",

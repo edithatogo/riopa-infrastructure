@@ -167,6 +167,92 @@ class DispatchScenario:
             raise ValueError("dispatch travel values must be finite and non-negative")
 
 
+@dataclass(frozen=True)
+class ServiceScenario:
+    """Synthetic multi-service capacity, referral and workforce inputs."""
+
+    scenario_id: str
+    services: tuple[str, ...]
+    demand: Mapping[tuple[str, str], float]
+    capacity: Mapping[tuple[str, str], float]
+    workforce: Mapping[str, float]
+    referrals: Mapping[tuple[str, str], tuple[str, ...]]
+
+    def __post_init__(self) -> None:
+        if not self.scenario_id.strip() or not self.services:
+            raise ValueError("service scenario requires an id and services")
+        if len(set(self.services)) != len(self.services):
+            raise ValueError("services must be unique")
+        if any(not math.isfinite(value) or value < 0 for value in self.demand.values()):
+            raise ValueError("demand values must be finite and non-negative")
+        if any(not math.isfinite(value) or value < 0 for value in self.capacity.values()):
+            raise ValueError("capacity values must be finite and non-negative")
+        if any(not math.isfinite(value) or value < 0 for value in self.workforce.values()):
+            raise ValueError("workforce values must be finite and non-negative")
+        if any(
+            service not in self.services or not zone or not facilities
+            for (zone, service), facilities in self.referrals.items()
+        ):
+            raise ValueError("referrals must name a service and at least one facility")
+
+
+def evaluate_service_scenario(scenario: ServiceScenario) -> dict[str, Any]:
+    """Allocate synthetic service demand against declared capacity and workforce."""
+    remaining_capacity = dict(scenario.capacity)
+    remaining_workforce = dict(scenario.workforce)
+    assignments: list[dict[str, Any]] = []
+    for (zone, service), requested in sorted(scenario.demand.items()):
+        eligible = sorted(
+            facility
+            for facility in scenario.referrals.get((zone, service), ())
+            if remaining_capacity.get((facility, service), 0.0) > 0
+            and remaining_workforce.get(facility, 0.0) > 0
+        )
+        facility = eligible[0] if eligible else None
+        served = 0.0
+        if facility is not None:
+            served = min(
+                requested,
+                remaining_capacity[(facility, service)],
+                remaining_workforce[facility],
+            )
+            remaining_capacity[(facility, service)] -= served
+            remaining_workforce[facility] -= served
+        assignments.append(
+            {
+                "zone": zone,
+                "service": service,
+                "facility": facility,
+                "requested": requested,
+                "served": served,
+                "unmet": requested - served,
+            }
+        )
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_multi_service_scenario",
+        "scenario_id": scenario.scenario_id,
+        "assignments": assignments,
+        "counts": {
+            "service_demands": len(assignments),
+            "requested": sum(item["requested"] for item in assignments),
+            "served": sum(item["served"] for item in assignments),
+            "unmet": sum(item["unmet"] for item in assignments),
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "Synthetic service allocation only; no clinical, operational or referral "
+                "guarantee is asserted."
+            ),
+            (
+                "Capacity and workforce units are caller-supplied assumptions, not observed "
+                "service data."
+            ),
+        ],
+    }
+
+
 def evaluate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
     """Return deterministic primary, backup, relocation and handover outputs.
 

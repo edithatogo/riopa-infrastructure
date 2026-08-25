@@ -15,11 +15,13 @@ from riopa_provenance.analysis import (
     Estimand,
     ParameterEvidence,
     ReplicationDesign,
+    ServiceScenario,
     calibrate_queue_parameters,
     compare_static_simulated_stress,
     difference_in_differences,
     evaluate_coverage_scenario,
     evaluate_dispatch_scenario,
+    evaluate_service_scenario,
     parameter_evidence_report,
     protocol_record,
     queue_parameter_sensitivity,
@@ -116,6 +118,30 @@ def test_static_and_simulated_stress_comparison_preserves_queue_delta() -> None:
     assert result["promotion_allowed"] is False
     with pytest.raises(ValueError, match="stress_profile"):
         compare_static_simulated_stress(scenario, stress_profile=" ")
+
+
+def test_multi_service_capacity_referral_and_workforce_scenario_is_bounded() -> None:
+    scenario = ServiceScenario(
+        "synthetic-services",
+        ("urgent", "routine"),
+        {("rural", "urgent"): 3, ("rural", "routine"): 2},
+        {("hospital-a", "urgent"): 2, ("hospital-a", "routine"): 4},
+        {"hospital-a": 3},
+        {
+            ("rural", "urgent"): ("hospital-a",),
+            ("rural", "routine"): ("hospital-a",),
+        },
+    )
+    result = evaluate_service_scenario(scenario)
+    assert result["counts"] == {
+        "service_demands": 2,
+        "requested": 5,
+        "served": 3,
+        "unmet": 2,
+    }
+    assert result["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="services must be unique"):
+        ServiceScenario("bad", ("urgent", "urgent"), {}, {}, {}, {})
 
 
 def _protocol(*, replications: int = 5) -> AnalysisProtocol:

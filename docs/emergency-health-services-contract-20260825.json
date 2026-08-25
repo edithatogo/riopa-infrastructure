@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.emergency-health-services-contract.v1",
+  "evidence_id": "emergency-health-services-contract-20260825",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "implementation": "src/riopa_provenance/analysis.py:ServiceScenario,evaluate_service_scenario",
+  "test": "tests/test_analysis.py",
+  "scope": "caller-supplied synthetic services, capacity, referrals and workforce",
+  "allocation": "deterministic sorted referral selection with residual capacity and workforce",
+  "promotion_allowed": false,
+  "non_claims": [
+    "This contract does not establish clinical, operational or referral guarantees.",
+    "Capacity and workforce units are assumptions; authoritative and real-data evidence remains open."
+  ]
+}
