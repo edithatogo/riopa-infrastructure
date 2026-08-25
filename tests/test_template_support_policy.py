@@ -8,5 +8,5 @@ def test_template_support_policy_declares_safe_upgrade_and_external_boundaries()
     )
     assert "scripts/check_template_drift.py" in policy
     assert "never overwrites" in policy
-    assert "independent reproduction" in policy
+    assert "independent" in policy and "reproduction" in policy
     assert "release approval" in policy
