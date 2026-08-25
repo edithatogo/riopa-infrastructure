@@ -17,7 +17,7 @@
 
 ## 3. Materialisation and quality
 
-- [~] 3.1 Validate the GeoParquet and DuckDB Spatial materialization receipt and query-ready projection links from the content-addressed archived packet, with packet-bound read-only query examples. Bulk artifact restoration and independent target acceptance remain open (`scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py`, `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py`).
+- [x] 3.1 Validate the GeoParquet and DuckDB Spatial materialization receipt and query-ready projection links from the content-addressed archived packet, with packet-bound read-only query examples. The 57,575-feature local restoration is path-, size- and digest-bound and passes PyArrow/DuckDB readback; independent target acceptance remains open (`scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py`, `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py`; `1abb123`, `a466a49`).
 - [x] 3.2 Run bounded geometry, topology, completeness, temporal, rights-metadata and lineage checks over the immutable Meshblock projection. Population, national authority and broader source checks remain open. (`tests/test_meshblock_projection_evidence.py`, `docs/stats-nz-meshblock-projection-quality-report-20260825.json`; `cdd5a8f`)
 - [x] 3.3 Produce bounded coverage, fidelity and unresolved-status reports without promoting supporting geography to population or national evidence. (`docs/stats-nz-meshblock-projection-quality-report-20260825.json`, `tests/test_meshblock_projection_quality_report.py`; `cdd5a8f`)
 - [x] 3.4 Validate the complete offline projection and commit bounded evidence while keeping bulk spatial outputs outside Git (`evidence/stats-nz-meshblock-2026-projection/records-manifest.json`).
@@ -37,8 +37,10 @@
 - [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/nz-archive-mvp-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; the track remains `active`/M1 with exact dependency, coverage, external-validation, reproduction, release-cycle, preservation/publication and authority blockers.
 
 ## Review fixes
 
 - [x] R1 Wrap the quality-report test path so the repository quality gate passes (`edc1fb7`).
+- [x] R2 Bind restored materializations to safe receipt paths, sizes and digests; execute packet-bound PyArrow and DuckDB identity/count/null-geometry checks; and correct the documented query columns (`1abb123`).
+- [x] R3 Verify the receipt/manifest/projection digest chain and add hermetic CI coverage for successful artifact queries, tamper rejection and unsafe receipt paths (`a466a49`).

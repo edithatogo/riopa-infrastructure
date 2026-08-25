@@ -23,8 +23,9 @@
 | `STATS-NZ-MESHBLOCK-PROJECTION-20260803` | Content-addressed RIOPA source/capture records and a complete normalized feature projection are built only from the immutable packet | `evidence/stats-nz-meshblock-2026-projection/records-manifest.json`; projection `urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f` | 57,575 features, 236 capture records, page-level lineage, 16 null geometries, one invalid geometry preserved and zero implicit repairs; population, LINZ and council coverage remain open |
 | `NATIONAL-WORKLOAD-MANIFEST-20260803` | The exact Meshblock geography and provisional subnational population packets are combined into a bounded national reference workload without an unsupported join | `docs/national-workload-manifest-20260803.json`; manifest SHA-256 `2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67` | Both packets are immutable and public; the workload permits readback and alignment checks but prohibits Meshblock population assignment, downscaling and national completeness claims |
 | `STATS-NZ-MESHBLOCK-QUALITY-20260825` | Bounded geometry, completeness, fidelity, rights-metadata and lineage report over the immutable Meshblock projection | `docs/stats-nz-meshblock-projection-quality-report-20260825.json`, `tests/test_meshblock_projection_quality_report.py` | Projection checks pass; temporal history, population denominator, council/national source coverage, preservation acceptance and publication remain open |
-| `STATS-NZ-MESHBLOCK-MATERIALIZATION-VALIDATION-20260826` | Validate receipt, projection identity and GeoParquet/DuckDB materialization links | `scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py` | Metadata links pass; bulk artifact restoration, independent acceptance, national authority and release gates remain open |
-| `STATS-NZ-MESHBLOCK-QUERY-CONTRACT-20260826` | Document packet-bound, read-only query examples for the verified projection | `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py` | Interface contract is documented; execution against restored bulk artifacts, independent acceptance, national authority and release gates remain open |
+| `STATS-NZ-MESHBLOCK-MATERIALIZATION-VALIDATION-20260826` | Validate receipt, projection identity and GeoParquet/DuckDB materialization links | `scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py` | The local 57,575-feature restore passes path, size, digest-chain, schema and cross-tool query checks; independent acceptance, national authority and release gates remain open |
+| `STATS-NZ-MESHBLOCK-QUERY-CONTRACT-20260826` | Document packet-bound, read-only query examples for the verified projection | `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py` | Interface columns are matched to the emitted schema and locally executed; independent acceptance, national authority and release gates remain open |
+| `NZ-SPATIAL-ARCHIVE-REVIEW-REMEDIATION-20260825` | Review and remediate receipt binding, digest-chain validation, restored-artifact queries and CI failure coverage | `docs/nz-spatial-archive-review-remediation-20260825.json`, `src/riopa_provenance/archived_spatial.py`, `scripts/validate_meshblock_materialization_receipt.py`, `tests/test_meshblock_materialization_receipt_validation.py` | Repository defects are fixed and commit/digest-bound; external, dependency, release-cycle, preservation and authority gates remain open |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -33,7 +34,12 @@ release gates remain open (`docs/nz-archive-mvp-conductor-regeneration-20260825.
 
 ## Blocking defects
 
-- Full LINZ and four heterogeneous council archives, durable preservation beyond the revision-addressed Hugging Face mirror, and any defensible Meshblock-level population denominator remain pending. The workload manifest is a bounded reference input, not population or national analytical evidence.
+- All four blocking dependency tracks remain incomplete.
+- Four heterogeneous council and two national source-family capture-to-release chains remain incomplete.
+- External research-object validation and a second clean-environment reproduction remain absent.
+- The four `0.5.0` release gates, including three scheduled archive cycles with change and recovery evidence, remain unpassed.
+- Durable preservation/publication acceptance and accountable release-authority approval remain absent.
+- Any defensible Meshblock-level population denominator remains pending. The workload manifest is a bounded reference input, not population or national analytical evidence.
 
 ## Decisions, exceptions and limitations
 
