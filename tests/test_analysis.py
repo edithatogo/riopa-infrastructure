@@ -16,6 +16,7 @@ from riopa_provenance.analysis import (
     ParameterEvidence,
     ReplicationDesign,
     ServiceScenario,
+    build_service_pareto_report,
     calibrate_queue_parameters,
     compare_static_simulated_stress,
     difference_in_differences,
@@ -173,6 +174,30 @@ def test_service_constraints_report_volume_reserve_transition_and_phases() -> No
             resilience_fraction=2,
             transition_costs={},
             phase_investments=(),
+        )
+
+
+def test_service_pareto_report_preserves_frontier_and_non_modelled_constraints() -> None:
+    report = build_service_pareto_report(
+        [
+            {"candidate_id": "a", "metrics": {"coverage": 10, "cost": 5}},
+            {"candidate_id": "b", "metrics": {"coverage": 9, "cost": 6}},
+            {"candidate_id": "c", "metrics": {"coverage": 8, "cost": 4}},
+        ],
+        maximize=("coverage",),
+        minimize=("cost",),
+        non_modelled_constraints=("clinical safety", "community continuity"),
+    )
+    assert [candidate["candidate_id"] for candidate in report["frontier"]] == ["a", "c"]
+    assert report["dominated_candidate_ids"] == ["b"]
+    assert report["non_modelled_constraints"] == ["clinical safety", "community continuity"]
+    assert report["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="both maximized"):
+        build_service_pareto_report(
+            [{"candidate_id": "a", "metrics": {"x": 1}}],
+            maximize=("x",),
+            minimize=("x",),
+            non_modelled_constraints=(),
         )
 
 

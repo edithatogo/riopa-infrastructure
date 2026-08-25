@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.emergency-health-pareto-contract.v1",
+  "evidence_id": "emergency-health-pareto-contract-20260825",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "implementation": "src/riopa_provenance/analysis.py:build_service_pareto_report",
+  "test": "tests/test_analysis.py",
+  "scope": "caller-supplied synthetic service alternatives",
+  "output": "deterministic frontier, dominated candidate identifiers and non-modelled constraints",
+  "promotion_allowed": false,
+  "non_claims": [
+    "This report is not a clinical, operational or commercial recommendation.",
+    "Non-modelled constraints are recorded, not resolved or waived."
+  ]
+}

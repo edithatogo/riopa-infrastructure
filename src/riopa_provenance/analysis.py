@@ -329,6 +329,83 @@ def evaluate_service_constraints(
     }
 
 
+def build_service_pareto_report(
+    alternatives: Sequence[Mapping[str, Any]],
+    *,
+    maximize: tuple[str, ...],
+    minimize: tuple[str, ...],
+    non_modelled_constraints: tuple[str, ...],
+) -> dict[str, Any]:
+    """Return a deterministic Pareto frontier over caller-supplied synthetic alternatives."""
+    if not alternatives:
+        raise ValueError("alternatives must be non-empty")
+    if set(maximize) & set(minimize):
+        raise ValueError("a metric cannot be both maximized and minimized")
+    metrics = (*maximize, *minimize)
+    if not metrics:
+        raise ValueError("at least one metric is required")
+    prepared: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for alternative in alternatives:
+        candidate_id = str(alternative.get("candidate_id", ""))
+        values = alternative.get("metrics")
+        if not candidate_id or candidate_id in seen or not isinstance(values, Mapping):
+            raise ValueError("alternatives require unique candidate_id and metrics")
+        seen.add(candidate_id)
+        if any(
+            metric not in values
+            or not isinstance(values[metric], (int, float))
+            or isinstance(values[metric], bool)
+            or not math.isfinite(float(values[metric]))
+            for metric in metrics
+        ):
+            raise ValueError("all selected metrics must be finite numbers")
+        prepared.append({"candidate_id": candidate_id, "metrics": dict(values)})
+
+    def dominates(left: Mapping[str, Any], right: Mapping[str, Any]) -> bool:
+        left_metrics = left["metrics"]
+        right_metrics = right["metrics"]
+        no_worse = all(
+            left_metrics[metric] >= right_metrics[metric] for metric in maximize
+        ) and all(left_metrics[metric] <= right_metrics[metric] for metric in minimize)
+        strictly_better = any(
+            left_metrics[metric] > right_metrics[metric] for metric in maximize
+        ) or any(left_metrics[metric] < right_metrics[metric] for metric in minimize)
+        return no_worse and strictly_better
+
+    frontier = [
+        candidate
+        for candidate in prepared
+        if not any(
+            other["candidate_id"] != candidate["candidate_id"] and dominates(other, candidate)
+            for other in prepared
+        )
+    ]
+    frontier.sort(key=lambda candidate: candidate["candidate_id"])
+    frontier_ids = {candidate["candidate_id"] for candidate in frontier}
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_service_pareto_report",
+        "alternatives": prepared,
+        "frontier": frontier,
+        "dominated_candidate_ids": sorted(
+            candidate["candidate_id"]
+            for candidate in prepared
+            if candidate["candidate_id"] not in frontier_ids
+        ),
+        "objectives": {"maximize": list(maximize), "minimize": list(minimize)},
+        "non_modelled_constraints": list(non_modelled_constraints),
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "Synthetic Pareto comparison only; it is not a clinical, operational or "
+                "commercial recommendation."
+            ),
+            "Non-modelled constraints are recorded, not resolved or waived.",
+        ],
+    }
+
+
 def evaluate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
     """Return deterministic primary, backup, relocation and handover outputs.
 
