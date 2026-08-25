@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T00:20:00Z",
+  "updated_at": "2026-08-25T17:55:00Z",
   "description": "Stabilise a cross-language profile that unifies capture, transformation, lineage, manual and AI assistance, integrity, rights and quality without replacing repository-native evidence.",
   "depends_on": [
     "foundation_architecture_20260718",
