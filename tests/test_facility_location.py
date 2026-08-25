@@ -3,6 +3,7 @@ from typing import cast
 
 import pytest
 
+from riopa_provenance.accessibility import straight_line_matrix
 from riopa_provenance.facility_location import (
     Candidate,
     Demand,
@@ -11,6 +12,7 @@ from riopa_provenance.facility_location import (
     Model,
     MultiPeriodPlan,
     RobustScenario,
+    apply_bounded_reference_inputs,
     benchmark_reference_solvers,
     competitive_capture_reference,
     evaluate_robust_scenarios,
@@ -75,6 +77,22 @@ def test_robust_scenarios_and_multi_period_interface_are_deterministic() -> None
     assert [period for period, _ in plan.solve()] == ["baseline", "stress"]
     with pytest.raises(ValueError, match="exactly one problem"):
         MultiPeriodPlan(("baseline",), {})
+
+
+def test_bounded_reference_inputs_apply_accessibility_and_planning_feasibility() -> None:
+    problem = _line_problem("p-median", p=1)
+    matrix = straight_line_matrix(
+        "matrix-1",
+        {"d0": (0, 0), "d4": (0, 0.01), "c0": (0, 0), "c2": (0, 0.02), "c4": (0, 0.04)},
+        ("d0", "d4"),
+        ("c0", "c2", "c4"),
+    )
+    bounded = apply_bounded_reference_inputs(
+        problem, matrix, max_impedance=2.0, planning_eligible={"c0": True, "c2": False, "c4": True}
+    )
+    assert tuple(candidate.candidate_id for candidate in bounded.candidates) == ("c0", "c4")
+    assert ("d0", "c4") not in bounded.travel
+    assert solve(bounded).selected == ("c0",)
 
 
 def test_reference_benchmark_records_bounded_nonclaims() -> None:

@@ -1,0 +1,23 @@
+{
+  "evidence_id": "FACILITY-BOUNDED-INPUT-ADAPTER-20260825",
+  "function": "riopa_provenance.facility_location.apply_bounded_reference_inputs",
+  "inputs": [
+    "archived AccessibilityMatrix",
+    "explicit boolean planning_eligible mapping",
+    "optional non-negative impedance threshold"
+  ],
+  "semantics": [
+    "reachable matrix observations become travel pairs",
+    "thresholded observations are censored",
+    "ineligible candidates are removed",
+    "missing pairs remain missing"
+  ],
+  "nonclaims": [
+    "road or timetable routing",
+    "legal or planning authority",
+    "facility capacity or operational availability",
+    "national-scale performance",
+    "release promotion"
+  ],
+  "promotion_allowed": false
+}
