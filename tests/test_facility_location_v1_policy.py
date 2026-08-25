@@ -14,7 +14,7 @@ def test_v1_registry_and_migration_policy_is_explicit_and_fail_closed() -> None:
         assert model in policy
         assert model in contract["registry"]
     assert "breaking change" in policy
-    assert "semantic-loss" in policy
+    assert "semantic loss" in policy
     assert contract["compatibility"]["semantic_or_unit_change"] == "breaking version required"
     for excluded in ("national-scale", "planning", "accessibility", "operational", "promotion"):
         assert excluded in policy
