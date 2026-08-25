@@ -29,6 +29,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CANONICAL-MIGRATION-CONTRACT-CLOSEOUT-20260825` | Repository-owned namespaced extension and additive migration policy | `docs/ontology/canonical-extension-policy-20260825.json`, `docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json`, `tests/test_canonical.py` | Fail-closed policy validation passes; SHACL engine evidence, semantic qualification, compatibility execution and stable publication remain open |
 | `CANONICAL-SHACL-EXECUTION-20260825` | Pinned SHACL runtime validates the digest-bound canonical golden fixture | `scripts/validate_canonical_shacl.py`, `docs/canonical-shacl-execution-report-20260825.json`, `docs/canonical-shacl-execution-contract-20260825.json`, `tests/test_canonical_shacl_execution.py`, `docs/ontology/canonical-conformance-manifest-1.0.0.json` | Repository-owned fixture conforms with inference disabled; external semantic qualification, cross-runtime compatibility, publication and authority remain open |
 | `CANONICAL-V1-CANDIDATE-FREEZE-20260825` | Digest-bound unpublished candidate freeze for normative schema, ontology, SHACL input, migration and conformance fixtures | `docs/canonical-v1-candidate-freeze-20260825.json`, `tests/test_canonical_candidate_freeze.py` | Candidate integrity passes; SHACL execution, external-client, migration, semantic, publication and authority gates remain open |
+| `CANONICAL-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded canonical slice | `docs/canonical-closeout-evidence-20260825.json`, `tests/test_canonical_closeout_evidence.py` | Evidence categories are linked and fail-closed; semantic, publication, signing and authority gates remain open |
 
 ## Blocking defects and gates
 
@@ -43,6 +44,10 @@ The canonical profile now has an explicit, versioned extension-policy draft:
 unknown fields are preserved, normative fields cannot be shadowed, and
 malformed extensions fail closed. This improves the bounded contract only; it
 does not claim semantic qualification, publication or stable-v1 compatibility.
+
+The 2026-08-25 closeout packet links the canonical implementation, test,
+review, migration and unsigned candidate-freeze evidence. It does not advance
+the track beyond M1 or make the candidate a published normative release.
 
 ## Decisions, exceptions and limitations
 
