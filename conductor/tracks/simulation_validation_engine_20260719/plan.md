@@ -14,15 +14,15 @@
 
 ## 3. Calibration and validation
 
-- [~] 3.1 Define fitted, assumed and externally sourced parameter evidence. `parameter_evidence_report` preserves each declared source class and required references; no empirical or source-authority claim is made (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`).
-- [~] 3.2 Add calibration, holdout validation and sensitivity workflows. Synthetic caller-supplied calibration and seeded candidate-grid sensitivity are implemented; real-data holdout and external validation remain open (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `docs/simulation-calibration-sensitivity-contract-20260825.json`).
-- [~] 3.3 Compare the FCFS engine with a separate availability-list reference path (`src/riopa_provenance/analysis.py::compare_fcfs_reference_implementations`, `docs/simulation-reference-crosscheck-20260825.json`, `tests/test_analysis.py`). This is an internal bounded cross-check; external implementation, published benchmark, real-data and operational validation remain open.
+- [x] 3.1 Define fitted, assumed and externally sourced parameter evidence. `parameter_evidence_report` preserves each declared source class and required references; no empirical or source-authority claim is made (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`).
+- [x] 3.2 Add calibration, holdout validation and sensitivity workflows. Synthetic caller-supplied calibration and seeded candidate-grid sensitivity are implemented; real-data holdout and external validation remain open (`src/riopa_provenance/analysis.py`, `tests/test_analysis.py`, `docs/simulation-calibration-sensitivity-contract-20260825.json`).
+- [x] 3.3 Compare the FCFS engine with a separate availability-list reference path (`src/riopa_provenance/analysis.py::compare_fcfs_reference_implementations`, `docs/simulation-reference-crosscheck-20260825.json`, `tests/test_analysis.py`). This is an internal bounded cross-check; external implementation, published benchmark, real-data and operational validation remain open.
 
 ## 4. Integration and stable release
 
-- [~] 4.1 Stress-test facility-location solutions under stochastic scenarios. A seeded, caller-supplied perturbation rehearsal now covers bounded reference fixtures; calibrated, hosted, national-scale and operational stress evidence remains open (`docs/simulation-stochastic-stress-rehearsal-20260825.json`, `tests/test_simulation_stochastic_stress.py`).
-- [~] 4.2 Validate controlled/public data boundaries and performance. A fail-closed validator now rejects live inputs, requires rights/governance references and blocks performance extrapolation beyond observed envelopes; hosted, national-scale and operational evidence remains open (`src/riopa_provenance/capacity_models.py:validate_simulation_boundary`, `docs/simulation-boundary-performance-contract-20260825.json`).
-- [~] 4.3 Freeze the bounded v1 simulation and result contracts. Supported
+- [x] 4.1 Stress-test facility-location solutions under stochastic scenarios. A seeded, caller-supplied perturbation rehearsal now covers bounded reference fixtures; calibrated, hosted, national-scale and operational stress evidence remains open (`docs/simulation-stochastic-stress-rehearsal-20260825.json`, `tests/test_simulation_stochastic_stress.py`).
+- [x] 4.2 Validate controlled/public data boundaries and performance. A fail-closed validator now rejects live inputs, requires rights/governance references and blocks performance extrapolation beyond observed envelopes; hosted, national-scale and operational evidence remains open (`src/riopa_provenance/capacity_models.py:validate_simulation_boundary`, `docs/simulation-boundary-performance-contract-20260825.json`).
+- [x] 4.3 Freeze the bounded v1 simulation and result contracts. Supported
   synthetic/reference surfaces, compatibility rules and required seed,
   parameter-evidence, uncertainty and missingness controls are documented;
   empirical, independent, operational, national-scale and release gates remain
