@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -155,6 +156,61 @@ def evaluate_declared_source_health(
             "or prove endpoint health.",
             "Quarantine is fail-closed and does not establish source authority, "
             "completeness or rights permission.",
+        ],
+    }
+
+
+def build_declared_source_snapshot(
+    records: Sequence[Mapping[str, Any]], *, snapshot_id: str, captured_at: str
+) -> dict[str, Any]:
+    """Build a content-addressed snapshot of declared metadata without endpoint contact."""
+    if not snapshot_id.strip() or not captured_at.strip():
+        raise ValueError("snapshot_id and captured_at must be non-empty")
+    if not records:
+        raise ValueError("records must be non-empty")
+    required = ("source_id", "endpoint_id", "source_version", "locator")
+    normalized: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+    for record in records:
+        if not isinstance(record, Mapping):
+            raise ValueError("snapshot records must be objects")
+        missing = [field for field in required if not isinstance(record.get(field), str)]
+        if missing:
+            raise ValueError(f"snapshot record missing fields: {', '.join(missing)}")
+        identity = (
+            str(record["source_id"]),
+            str(record["endpoint_id"]),
+            str(record["source_version"]),
+        )
+        if any(not value.strip() for value in identity) or identity in seen:
+            raise ValueError("snapshot records require unique non-empty source identities")
+        seen.add(identity)
+        normalized.append(dict(record))
+    normalized.sort(
+        key=lambda item: (
+            str(item["source_id"]),
+            str(item["endpoint_id"]),
+            str(item["source_version"]),
+        )
+    )
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "declared-source-metadata-snapshot",
+        "snapshot_id": snapshot_id,
+        "captured_at": captured_at,
+        "records": normalized,
+        "records_sha256": sha256_json(normalized),
+        "source": "archived-declared-observation",
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "The snapshot preserves declared metadata, capability, terms and rights "
+                "fields; it does not contact endpoints."
+            ),
+            (
+                "A content digest does not establish source health, authority, completeness "
+                "or permission to publish payloads."
+            ),
         ],
     }
 

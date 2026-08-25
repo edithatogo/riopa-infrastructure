@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from riopa_provenance.registry import (
+    build_declared_source_snapshot,
     build_source_change_event,
     classify_connector_readiness,
     evaluate_declared_source_health,
@@ -110,4 +111,43 @@ def test_declared_source_health_rejects_unknown_status() -> None:
                 "availability_status": "unknown",
             },
             observed_at="now",
+        )
+
+
+def test_declared_source_snapshot_is_sorted_digest_bound_and_non_contacting() -> None:
+    records = [
+        {
+            "source_id": "z-source",
+            "endpoint_id": "endpoint-b",
+            "source_version": "2",
+            "locator": "https://example.test/b",
+            "capabilities": ["query"],
+            "terms_status": "review-required",
+            "rights_status": "review-required",
+        },
+        {
+            "source_id": "a-source",
+            "endpoint_id": "endpoint-a",
+            "source_version": "1",
+            "locator": "https://example.test/a",
+            "capabilities": ["metadata"],
+            "terms_status": "declared",
+            "rights_status": "public-candidate",
+        },
+    ]
+    snapshot = build_declared_source_snapshot(
+        list(reversed(records)),
+        snapshot_id="snapshot-1",
+        captured_at="2026-08-25T00:00:00Z",
+    )
+    assert [record["source_id"] for record in snapshot["records"]] == [
+        "a-source",
+        "z-source",
+    ]
+    assert len(snapshot["records_sha256"]) == 64
+    assert snapshot["source"] == "archived-declared-observation"
+    assert snapshot["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="unique"):
+        build_declared_source_snapshot(
+            [records[0], records[0]], snapshot_id="snapshot-1", captured_at="now"
         )
