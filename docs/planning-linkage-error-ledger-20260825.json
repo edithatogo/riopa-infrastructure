@@ -1,0 +1,33 @@
+{
+  "schema": "riopa.planning.linkage-error-ledger.v1",
+  "evidence_id": "PLANNING-LINKAGE-ERROR-LEDGER-20260825",
+  "status": "bounded-synthetic-contract-qualified",
+  "scope": "caller-supplied two-structure planning packets",
+  "checks": {
+    "consistent_packet": {
+      "missing_link_targets": 0,
+      "unlinked_crosswalk_sources": 0,
+      "missing_feasibility_provisions": 0,
+      "status": "no-unresolved-references"
+    },
+    "mutated_packet": {
+      "missing_link_targets": 1,
+      "unlinked_crosswalk_sources": 1,
+      "missing_feasibility_provisions": 1,
+      "status": "quantified-unresolved"
+    }
+  },
+  "contract": "src/riopa_provenance/planning.py::build_planning_linkage_error_report",
+  "promotion_allowed": false,
+  "open_gates": [
+    "real council source-faithful documents and authority",
+    "factual external participant evidence",
+    "legal interpretation and completeness",
+    "preservation/publication acceptance",
+    "accountable release-authority decision"
+  ],
+  "nonclaims": [
+    "The ledger quantifies identifier mismatches and does not repair or infer links.",
+    "A zero-finding synthetic packet is not evidence of council completeness or legal authority."
+  ]
+}

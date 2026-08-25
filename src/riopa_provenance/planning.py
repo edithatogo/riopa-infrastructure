@@ -493,3 +493,96 @@ def build_planning_feasibility_record(
             "Conflicting or unresolved rules are not silently collapsed into permission.",
         ],
     }
+
+
+def build_planning_linkage_error_report(
+    *,
+    source_intake: Mapping[str, Any],
+    structure: Mapping[str, Any],
+    linkage: Mapping[str, Any],
+    crosswalk: Mapping[str, Any],
+    feasibility: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Quantify unresolved references across one bounded planning packet.
+
+    This report compares identifiers already present in caller-supplied packets;
+    it never repairs, infers or promotes a planning link.  Missing references
+    remain explicit so a later source-faithful review can resolve them.
+    """
+
+    packets = {
+        "source_intake": (source_intake, "declared-plan-source-intake", "records"),
+        "structure": (structure, "planning-rule-structure", "records"),
+        "linkage": (linkage, "planning-feature-provision-linkage", "records"),
+        "crosswalk": (crosswalk, "planning-concept-crosswalk", "records"),
+        "feasibility": (feasibility, "planning-feasibility-query", "rules"),
+    }
+    for name, (packet, record_type, field) in packets.items():
+        if packet.get("record_type") != record_type:
+            raise ValueError(f"{name} has unexpected record_type")
+        if not isinstance(packet.get(field), list):
+            raise ValueError(f"{name}.{field} must be a list")
+
+    source_versions = {
+        str(item["version_id"])
+        for item in source_intake["records"]
+        if isinstance(item, Mapping) and isinstance(item.get("version_id"), str)
+    }
+    provision_ids = {
+        str(item["provision_id"])
+        for item in structure["records"]
+        if isinstance(item, Mapping) and isinstance(item.get("provision_id"), str)
+    }
+    feature_ids = {
+        str(item["feature_id"])
+        for item in linkage["records"]
+        if isinstance(item, Mapping) and isinstance(item.get("feature_id"), str)
+    }
+    missing_link_targets = sorted(
+        str(item.get("provision_version_id"))
+        for item in linkage["records"]
+        if isinstance(item, Mapping) and item.get("provision_version_id") not in source_versions
+    )
+    unlinked_crosswalk_sources = sorted(
+        str(
+            item.get("source_assertion", {}).get("source_id")
+            if isinstance(item.get("source_assertion"), Mapping)
+            else None
+        )
+        for item in crosswalk["records"]
+        if isinstance(item, Mapping)
+        and (
+            not isinstance(item.get("source_assertion"), Mapping)
+            or item["source_assertion"].get("source_id") not in feature_ids
+        )
+    )
+    missing_feasibility_provisions = sorted(
+        str(item.get("provision_id"))
+        for item in feasibility["rules"]
+        if isinstance(item, Mapping) and item.get("provision_id") not in provision_ids
+    )
+    findings = {
+        "missing_link_targets": missing_link_targets,
+        "unlinked_crosswalk_sources": unlinked_crosswalk_sources,
+        "missing_feasibility_provisions": missing_feasibility_provisions,
+    }
+    return {
+        "record_type": "planning-linkage-error-report",
+        "packet_record_counts": {
+            name: len(packet[field]) for name, (packet, _, field) in packets.items()
+        },
+        "findings": findings,
+        "finding_counts": {name: len(values) for name, values in findings.items()},
+        "total_finding_count": sum(len(values) for values in findings.values()),
+        "scope": "caller-supplied bounded planning packets",
+        "status": "quantified-unresolved" if any(findings.values()) else "no-unresolved-references",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "The report quantifies identifier mismatches; it does not repair or infer links.",
+            (
+                "Zero findings in a synthetic packet do not establish council completeness "
+                "or legal authority."
+            ),
+        ],
+        "report_sha256": sha256_json(findings),
+    }
