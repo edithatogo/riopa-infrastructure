@@ -20,7 +20,7 @@
 
 ## 4. Publications and correction
 
-- [ ] 4.1 Complete infrastructure/methods, data descriptor and applied publication packages.
+- [~] 4.1 Prepare infrastructure, methods, data-descriptor and applied publication package matrices. Candidate references and required checks are now explicit; protected attestation, preservation acceptance, external reproduction, elapsed qualification and authority remain open (`docs/publication-package-preparation-20260825.json`, `tests/test_publication_package_preparation.py`).
 - [x] 4.2 Exercise correction, supersession and downstream-impact notification. Bounded predecessor/successor package validation and digest-reuse rejection pass; production downstream notification remains open. (`validate_correction_package`, tests)
 - [x] 4.3 Publish bounded preview citation guidance and validation-evidence references (`docs/publication-citation-guidance-20260825.json`, `tests/test_publication_citation_guidance.py`). Stable publication, preservation, external reproduction, elapsed and authority gates remain open.
 

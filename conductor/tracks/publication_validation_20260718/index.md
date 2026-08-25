@@ -38,6 +38,7 @@
 | `PUB-VERSION-COORDINATION-20260825` | Software, schema, ontology, bounded data, model applicability and research-object versions are coordinated explicitly | `docs/publication-version-coordination-20260825.json`, `tests/test_publication_version_coordination.py` | Candidate manifest validates; release revision, protected attestations, preservation, participant, elapsed and authority gates remain open |
 | `PUB-WORKFLOW-VERIFICATION-20260825` | Discovery, install, query, reproduce and cite paths are verified against repository-owned synthetic fixtures | `docs/publication-workflow-verification-20260825.json`, `tests/test_publication_workflow_verification.py` | Bounded local verification passes; external reproduction, publication, preservation, elapsed and authority gates remain open |
 | `PUB-CITATION-GUIDANCE-20260825` | Versioned preview citation guidance and validation-evidence references | `docs/publication-citation-guidance-20260825.json`, `tests/test_publication_citation_guidance.py` | Preview guidance passes; stable publication identifier, preservation, external reproduction, elapsed and authority gates remain open |
+| `PUB-PACKAGE-PREPARATION-20260825` | Candidate infrastructure, methods, data-descriptor and applied publication package matrix | `docs/publication-package-preparation-20260825.json`, `tests/test_publication_package_preparation.py` | Package references and required checks are explicit; no deposit, DOI, external reproduction, elapsed qualification or authority decision is claimed |
 
 ## Blocking defects
 
