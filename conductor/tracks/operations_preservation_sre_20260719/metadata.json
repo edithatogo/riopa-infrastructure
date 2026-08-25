@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T01:20:00Z",
+  "updated_at": "2026-08-25T10:00:00Z",
   "description": "Operate captures, transformations, releases and preservation as a measured service with observable health, explicit SLOs, fixity, recovery and sustainable cost controls.",
   "depends_on": [
     "foundation_architecture_20260718",
@@ -32,6 +32,7 @@
     "urn:riopa:evidence:rc-candidate-status-validated:2026-08-25",
     "urn:riopa:evidence:hosted-recovery-post-merge:2026-08-25"
     ,"urn:riopa:evidence:operations-panel-qualification:2026-08-25"
+    ,"urn:riopa:evidence:replication-receipt-validation:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
