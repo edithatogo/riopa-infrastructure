@@ -1,8 +1,8 @@
 # Archived Meshblock projection query examples
 
 These examples are a read-only interface contract for the content-addressed
-Stats NZ Meshblock projection. They are illustrative SQL, not a claim that the
-bulk GeoParquet or DuckDB files are present in this Git checkout.
+Stats NZ Meshblock projection. They were executed against the locally restored,
+digest-matched bulk products; those products remain excluded from Git.
 
 ## Input and identity contract
 
@@ -35,14 +35,14 @@ FROM read_parquet($projection_path)
 WHERE geometry IS NULL;
 
 -- bounded lineage inspection
-SELECT OBJECTID, capture_record_id, source_geometry_sha256
+SELECT OBJECTID, _riopa_capture_ids, _riopa_source_geometry_sha256
 FROM read_parquet($projection_path)
 ORDER BY OBJECTID
 LIMIT 20;
 ```
 
-The exact column names and physical format must be checked against the restored
-artifact schema before execution; these examples intentionally do not infer
+The validator checks these exact columns and both DuckDB and PyArrow readback
+before recording success. These examples intentionally do not infer
 population, accessibility, facilities, network, timetable, national
 completeness, or operational authority.
 

@@ -23,10 +23,10 @@ produced:
   `713868f5f63c56c8ce7ff179e84ba6aec67608a3af2a4761f4bcbae796e2d649`
   (230,509,833 bytes).
 - DuckDB SHA-256
-  `cf0cae2f64fda05969bb4dc29adaab82b8ad181381fdc092fc46e6e4a8f50804`
+  `0a6140079adb3bb8c119975b9b4cc435f03af78086242e9ad1ef1ecedd92e238`
   (297,021,440 bytes; deterministic semantics).
 - Quality-report SHA-256
-  `a7810eb59e5fef8e0660f09f666c58d7bbcfc60b0054a5316dc449a9a1e73a64`.
+  `14b1ce1150a2c36bfc460e8e76d5dbf59974f70b694ab97355a9c5119848d9d4`.
 
 These physical file hashes belong to this build's materialization receipt.
 DuckDB promises deterministic semantics rather than byte-identical database

@@ -560,16 +560,19 @@ def build_archived_arcgis_projection(
         "record_type": "spatial_materialization_receipt",
         "projection_id": projection_envelope["projection_id"],
         "geoparquet": {
+            "path": materialization.geoparquet_path.name,
             "sha256": materialization.geoparquet_sha256,
             "size_bytes": materialization.geoparquet_path.stat().st_size,
             "profile": "GeoParquet 1.1.0",
         },
         "duckdb": {
+            "path": materialization.duckdb_path.name,
             "sha256": materialization.duckdb_sha256,
             "size_bytes": materialization.duckdb_path.stat().st_size,
             "reproducibility_class": "deterministic-semantics",
         },
         "quality_report": {
+            "path": materialization.quality_report_path.name,
             "sha256": sha256_file(materialization.quality_report_path),
             "size_bytes": materialization.quality_report_path.stat().st_size,
         },

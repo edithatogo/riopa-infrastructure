@@ -81,7 +81,7 @@
         "source_stable_during_capture": true,
         "readback_verified": true,
         "riopa_records_manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
-        "riopa_records_manifest_sha256": "d689fa95e2ed8a6cef30598d454876fca3a499e57fdd569a77add7361129a161",
+        "riopa_records_manifest_sha256": "709c8c18bb55943616a4f6b41ebbdb9e4c9c29bf724635981011b8542cb92925",
         "riopa_projection_id": "urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f",
         "normalized_semantic_sha256": "1b0a0e6a9ffde6b065dcbee5f65e8bd31d141c927895edb34b98d9499b0ea69f",
         "projection_features": 57575,
