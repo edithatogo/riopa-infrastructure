@@ -20,7 +20,7 @@
 
 ## 4. Stable developer experience
 
-- [ ] 4.1 Conduct clean onboarding and release journeys on supported environments.
+- [~] 4.1 Conduct a read-only clean onboarding and release-journey rehearsal. The local contract, drift, issue-graph and release-scaffolding checks pass; another-repository onboarding, hosted execution and independent reproduction remain open (`scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json`).
 - [ ] 4.2 Reach the required adoption and independent reproduction levels.
 - [~] 4.3 Publish template support, compatibility and safe-upgrade policy. The policy is repository-owned and tied to the read-only drift checker; external onboarding, independent reproduction, adoption and release qualification remain open (`docs/repository-template-support-policy-20260825.md`, `tests/test_template_support_policy.py`, `docs/repository-template-support-policy-contract-20260825.json`).
 
