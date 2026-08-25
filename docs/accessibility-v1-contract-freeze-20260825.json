@@ -1,0 +1,70 @@
+{
+  "schema": "riopa.accessibility.v1-contract-freeze.v1",
+  "freeze_id": "urn:riopa:accessibility:v1-contract-freeze:2026-08-25",
+  "status": "bounded-candidate-not-promoted",
+  "scope": "bounded regional, public-datasets-only, non-operational technical preview",
+  "supported_contracts": [
+    "schemas/accessibility-matrix.schema.json",
+    "schemas/accessibility-measure.schema.json",
+    "schemas/accessibility-scenario.schema.json"
+  ],
+  "supported_reference_operations": [
+    {
+      "name": "straight_line_matrix",
+      "implementation": "src/riopa_provenance/accessibility.py:straight_line_matrix",
+      "semantics": "Haversine distance over caller-supplied coordinates",
+      "example": "tests/test_accessibility.py::test_straight_line_matrix_is_deterministic_and_bounded"
+    },
+    {
+      "name": "reference_measures",
+      "implementation": "src/riopa_provenance/accessibility.py",
+      "semantics": "cumulative opportunity, gravity and two-step floating-catchment measures",
+      "example": "tests/test_accessibility.py::test_hand_calculated_accessibility_benchmark"
+    },
+    {
+      "name": "reference_matrix_comparison",
+      "implementation": "src/riopa_provenance/accessibility.py:compare_reference_matrices",
+      "semantics": "status-preserving pairwise comparison with impedance deltas",
+      "example": "tests/test_accessibility.py::test_reference_matrix_comparison_preserves_statuses_and_deltas"
+    },
+    {
+      "name": "partition_and_incremental_recompute",
+      "implementation": "src/riopa_provenance/accessibility.py",
+      "semantics": "deterministic origin partitions and fingerprint-aware changed-row recomputation",
+      "example": "tests/test_accessibility.py::test_cache_is_fingerprint_aware_and_incremental_recompute_changes_one_origin"
+    },
+    {
+      "name": "time_capacity_reference_projection",
+      "implementation": "src/riopa_provenance/accessibility.py:reachable_capacity_at_departure",
+      "semantics": "minute-based arrival/opening projection using caller-supplied intervals and capacities",
+      "example": "tests/test_accessibility.py::test_opening_hours_capacity_is_arrival_based_and_wraps_midnight"
+    }
+  ],
+  "required_semantics": {
+    "travel_statuses": ["reachable", "unreachable", "missing", "censored"],
+    "missing_data": "preserve missing and unreachable as distinct; never infer negative evidence",
+    "uncertainty": "caller supplies scenario assumptions, subgroup dimensions and uncertainty method",
+    "provenance": "inputs must be versioned or content-addressed by the caller",
+    "authority": "reference outputs are descriptive and non-authoritative"
+  },
+  "disabled_adapters_and_claims": [
+    "real road, walk, cycle or public-transport routing",
+    "timetable and timezone or holiday service interpretation",
+    "facility availability or live capacity",
+    "national-scale performance measurement",
+    "operational accessibility or dispatch decisions",
+    "beta, release-candidate or stable-v1 promotion"
+  ],
+  "open_gates": [
+    "named archived network, timetable and facility inputs",
+    "independent real-engine qualification",
+    "national-scale measurement",
+    "external operator and user evidence",
+    "elapsed beta/RC evidence and accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This freeze defines a bounded interface and reference examples; it is not a release approval.",
+    "The reference operations do not establish national coverage, service availability, routing validity or authoritative accessibility."
+  ]
+}
