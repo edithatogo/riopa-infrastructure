@@ -1,0 +1,18 @@
+{
+  "evidence_id": "RUST-CORPUS-PARITY-20260825",
+  "record_type": "cross-language-conformance-receipt",
+  "status": "bounded-hash-parity-passed",
+  "corpus": "conformance/v1/corpus.json",
+  "corpus_sha256": "f2e5618fc52c718d4711af53262d3c6a273f6eeabbb7c0dccc0d487e47552487",
+  "case_count": 5,
+  "runner": "rust/riopa-conformance/src/bin/conformance_corpus.rs",
+  "validation": "cargo test --manifest-path rust/riopa-conformance/Cargo.toml --locked; cargo run --manifest-path rust/riopa-conformance/Cargo.toml --locked --bin conformance_corpus",
+  "scope": "recursive key-sorted canonical JSON and SHA-256 parity for the checked-in corpus",
+  "open_gates": [
+    "schema-validity parity in the Rust runner",
+    "RFC 8785 number canonicalisation beyond the corpus subset",
+    "independent external producer/consumer implementation",
+    "trusted signing, preservation acceptance and release authority"
+  ],
+  "promotion_allowed": false
+}

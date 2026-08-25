@@ -1,8 +1,58 @@
 //! Bounded Rust models for the RIOPA conformance contract.
 //!
-//! This crate validates typed values only. It deliberately does not parse the
-//! repository JSON corpus or claim cross-language parity until a separate
-//! corpus runner and producer/consumer exercise exist.
+//! This crate validates typed values and the bounded canonical-hash corpus
+//! runner. It does not claim standards-complete serialization or independent
+//! external conformance.
+
+use sha2::{Digest, Sha256};
+
+/// Canonicalise the JSON value subset used by the checked-in conformance corpus.
+///
+/// Object keys are sorted recursively and scalar values use serde_json's JSON
+/// representation. The corpus contains integers, booleans, nulls, arrays and
+/// strings; floating-point canonicalisation is intentionally not widened here
+/// without a corresponding corpus contract.
+pub fn canonical_json(value: &serde_json::Value) -> Result<String, ValidationError> {
+    match value {
+        serde_json::Value::Null => Ok("null".to_owned()),
+        serde_json::Value::Bool(value) => Ok(value.to_string()),
+        serde_json::Value::Number(value) => {
+            if value.is_f64() {
+                return Err(ValidationError::InvalidWireField);
+            }
+            Ok(value.to_string())
+        }
+        serde_json::Value::String(value) => {
+            serde_json::to_string(value).map_err(|_| ValidationError::InvalidWireField)
+        }
+        serde_json::Value::Array(values) => {
+            let encoded = values
+                .iter()
+                .map(canonical_json)
+                .collect::<Result<Vec<_>, _>>()?;
+            Ok(format!("[{}]", encoded.join(",")))
+        }
+        serde_json::Value::Object(values) => {
+            let mut keys: Vec<&String> = values.keys().collect();
+            keys.sort();
+            let mut encoded = Vec::with_capacity(keys.len());
+            for key in keys {
+                let value = canonical_json(&values[key])?;
+                let encoded_key =
+                    serde_json::to_string(key).map_err(|_| ValidationError::InvalidWireField)?;
+                encoded.push(format!("{encoded_key}:{value}"));
+            }
+            Ok(format!("{{{}}}", encoded.join(",")))
+        }
+    }
+}
+
+/// Return a SHA-256 digest over the bounded canonical JSON representation.
+pub fn canonical_json_sha256(value: &serde_json::Value) -> Result<String, ValidationError> {
+    let canonical = canonical_json(value)?;
+    let digest = Sha256::digest(canonical.as_bytes());
+    Ok(format!("{digest:x}"))
+}
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Crosswalk {

@@ -2,7 +2,7 @@
   "evidence_id": "INTEROP-V1-SDK-SUPPORT-20260825",
   "supported_surfaces": {
     "python": "riopa_provenance.sdk canonical hash, instance validation and bounded crosswalk",
-    "rust": "rust/riopa-conformance dependency-free typed model"
+    "rust": "rust/riopa-conformance typed model and bounded corpus-hash runner"
   },
   "compatibility": {
     "optional_field": "compatible only when semantic loss is absent",
