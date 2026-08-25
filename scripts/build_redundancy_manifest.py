@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -66,19 +67,30 @@ def validate_replication_receipts(
     bundle_sha256 = manifest.get("bundle_sha256")
     if not isinstance(bundle_id, str) or not bundle_id:
         return ("manifest requires bundle_id",)
-    if not isinstance(bundle_sha256, str) or len(bundle_sha256) != 64:
+    if not isinstance(bundle_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", bundle_sha256):
         return ("manifest requires a bundle_sha256",)
     errors: list[str] = []
-    required = {
-        str(target["kind"])
-        for target in manifest.get("replication_targets", [])
-        if isinstance(target, dict) and target.get("required") is True
-    }
+    targets = manifest.get("replication_targets")
+    if not isinstance(targets, list):
+        return ("manifest requires a replication_targets list",)
+    required: set[str] = set()
+    for target in targets:
+        if not isinstance(target, dict) or not isinstance(target.get("kind"), str):
+            errors.append("manifest replication target requires a kind")
+            continue
+        if target.get("required") is True:
+            required.add(target["kind"])
     seen: set[str] = set()
     for receipt in receipts:
+        if not isinstance(receipt, dict):
+            errors.append("receipt must be an object")
+            continue
         target = receipt.get("kind")
         if not isinstance(target, str) or target not in required:
             errors.append("receipt kind is not a required replication target")
+            continue
+        if target in seen:
+            errors.append(f"duplicate accepted receipt for {target}")
             continue
         seen.add(target)
         if receipt.get("status") != "accepted":
