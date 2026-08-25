@@ -8,9 +8,8 @@ Stable target: `1.0.0`
 
 - Total: **28**
 - v1-critical: **28**
-- active: **5**
-- specified: **18**
-- validating: **5**
+- active: **24**
+- validating: **4**
 
 ### Current maturity
 
@@ -21,14 +20,22 @@ Stable target: `1.0.0`
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 21/28
+- Tracks qualified: 13/28
 - Gates: 4/4 passed
 - Blockers:
   - track canonical_domain_schemas_ontology_20260719 has blocking defects
+  - track connector_runtime_capture_20260719 has blocking defects
+  - track documentation_developer_experience_20260719 has blocking defects
+  - track emergency_health_facilities_pilot_20260718 has blocking defects
   - track facility_registry_20260719 has blocking defects
   - track foundation_architecture_20260718 has blocking defects
+  - track governance_maori_data_sovereignty_20260718 has blocking defects
+  - track methods_research_objects_20260718 has blocking defects
+  - track operations_preservation_sre_20260719 has blocking defects
+  - track performance_scalability_reliability_20260719 has blocking defects
   - track planning_system_transition_20260719 has blocking defects
   - track provenance_profile_v1_20260718 has blocking defects
+  - track publication_validation_20260718 has blocking defects
   - track security_supply_chain_20260719 has blocking defects
   - track v1_release_hardening_20260719 has blocking defects
 

@@ -9,7 +9,7 @@
 ## 2. Ambulance optimisation and simulation
 
 - [x] 2.1 Implement coverage, backup, availability and location scenarios. Evidence: `CoverageScenario` and `evaluate_coverage_scenario` in `src/riopa_provenance/analysis.py` with synthetic primary/backup/availability tests; dispatch, clinical, operational and national claims remain disabled.
-- [x] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation. Evidence: `DispatchRequest`, `DispatchScenario`, `evaluate_dispatch_scenario` and `simulate_dispatch_scenario` provide deterministic synthetic adapters; live dispatch, clinical, operational and authority gates remain open.
+- [x] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation. Evidence: `DispatchRequest`, `DispatchScenario`, `StochasticDispatchDesign`, `evaluate_dispatch_scenario`, `simulate_dispatch_scenario` and `run_stochastic_dispatch_replications` provide bounded seeded synthetic adapters; live dispatch, clinical, operational and authority gates remain open.
 - [x] 2.3 Compare static and simulated performance under a named synthetic stress profile. The bounded comparison reports assignment deltas, queue counts, maximum wait and changed assignments; calibrated, hosted, national-scale and operational-safety evidence remain open (`src/riopa_provenance/analysis.py:compare_static_simulated_stress`, `docs/emergency-health-stress-comparison-contract-20260825.json`, `tests/test_analysis.py`).
 
 ## 3. Hospital and service planning
@@ -39,3 +39,8 @@
 ## Review fixes
 
 - [x] R1 Wrap the benchmark-contract test path so the repository quality gate passes (`8c5c308`).
+- [x] R2 Correct queue conservation, eligible-unit waits, travel/service/handover occupancy, seeded busy-availability uncertainty, separate tail/subgroup/rurality metrics, referral-chain allocation, facility-specific volume, failure-resilience and phased-capacity checks (`d506151`).
+- [x] R3 Preserve exact fetched source bytes, content digests and bounded redacted response metadata separately from canonical JSON projections (`1afa3d4`).
+- [x] R4 Preserve Conductor discovery, validation and issue links when an eligible completed track is moved to `conductor/archive/`, without weakening release-readiness gates (`66be5ba`).
+- [x] R5 Record the independent operational-safety, quantitative-methods and governance/reproducibility review remediation, including exact remaining external and dependency gates (`docs/emergency-health-review-remediation-20260825.json`).
+- [x] R6 Add an explicit bounded pre-horizon posting-policy comparison, bounded and labelled coverage intervals, effective sample counts and demand-coverage-only phase wording after the second review, with boundary coverage restored above the 90% gate (`be2c275`, `11176bb`).
