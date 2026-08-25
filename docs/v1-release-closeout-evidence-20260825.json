@@ -1,0 +1,42 @@
+{
+  "schema": "riopa.v1-release-closeout-evidence.v1",
+  "evidence_id": "urn:riopa:evidence:v1-release-closeout:2026-08-25",
+  "status": "bounded-candidate-not-promoted",
+  "scope": "bounded regional, public-datasets-only, non-operational technical preview",
+  "implementation": [
+    "docs/v1-normative-surface-inventory-20260825.json",
+    "docs/v1-compatibility-diff-20260825.json",
+    "docs/v1-non-v1-feature-disposition-20260825.json",
+    "docs/v1-repository-audit-matrix-20260825.json",
+    "docs/v1-upgrade-rehearsal-matrix-20260825.json",
+    "docs/v1-release-candidate-packet-20260825.json"
+  ],
+  "tests_and_review": [
+    "tests/test_v1_release_readiness.py",
+    "tests/test_v1_compatibility_diff.py",
+    "tests/test_v1_feature_disposition.py",
+    "tests/test_v1_audit_matrix.py",
+    "tests/test_v1_upgrade_rehearsal_matrix.py",
+    "tests/test_v1_release_candidate_packet.py",
+    "docs/panel-reports/20260802/orchestrator-synthesis.json"
+  ],
+  "migration_and_release": [
+    "docs/v1-upgrade-rehearsal-matrix-20260825.json",
+    "docs/v1-release-candidate-packet-20260825.json",
+    "docs/v1-release-conductor-regeneration-20260825.json",
+    "docs/evidence-campaign-status-20260821.json"
+  ],
+  "open_gates": [
+    "external operator and user workflows",
+    "90-day and three-cycle beta evidence",
+    "30-day exact-RC soak",
+    "national-scale measurements",
+    "accepted signed preservation/deposition",
+    "accountable tier-specific release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This packet links repository evidence; it is not a stable-v1 approval.",
+    "Agent panels assess repository packets but cannot substitute for factual participant evidence, elapsed time or the owner's accountable decision."
+  ]
+}

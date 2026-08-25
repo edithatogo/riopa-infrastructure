@@ -46,6 +46,7 @@
 | V1-DEFECT-DISPOSITION-20260825 | Fail-closed P0/P1 defect disposition with no bounded P2 exceptions | `docs/v1-defect-disposition-20260825.json`, `tests/test_v1_defect_disposition.py` | All listed P0/P1 gates remain open, deferred or external; no P2 waiver is recorded |
 | V1-RC-PACKET-20260825 | Exact protected-main release-candidate packet and protected signing sequence | `docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py` | Candidate packet is preparation-only and unsigned; protected signing, preservation, participant, soak and authority gates remain open |
 | V1-MODULE-COVERAGE-INVENTORY-20260825 | Full Python 3.14 module-by-module branch-aware coverage inventory | `scripts/build_module_coverage_inventory.py`, `docs/module-coverage-inventory-20260825.json`, `tests/test_module_coverage_inventory.py` | Full suite meets the unchanged 90% branch-aware gate; coverage does not close external, operational or release gates |
+| V1-CLOSEOUT-EVIDENCE-20260825 | Bounded implementation, test, panel, migration and release evidence linkage packet | `docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py` | Linkage is complete for the candidate packet; external workflows, elapsed beta/RC, national scale, preservation and accountable authority remain open |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
