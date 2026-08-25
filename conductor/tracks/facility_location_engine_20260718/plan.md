@@ -41,4 +41,4 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; scale, external benchmark, authority and release gates remain explicitly pending (`docs/facility-location-closeout-evidence-20260825.json`, `tests/test_facility_location_closeout_evidence.py`; `045831f`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/facility-location-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.7.0`, with national-scale, external benchmark, authority and release gates unresolved.
