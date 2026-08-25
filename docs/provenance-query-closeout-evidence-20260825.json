@@ -5,13 +5,13 @@
   "status": "repository-owned-closeout-slice",
   "scope": "bounded provenance query contract for the regional public-source technical preview",
   "evidence_categories": {
-    "implementation": ["src/riopa_provenance/lineage.py", "src/riopa_provenance/cli.py", "docs/provenance-query-cli-contract-20260825.json"],
+    "implementation": ["src/riopa_provenance/lineage.py", "src/riopa_provenance/cli.py", "src/riopa_provenance/mcp.py", "docs/provenance-query-cli-contract-20260825.json", "docs/provenance-query-mcp-transport-contract-20260826.json"],
     "tests": ["tests/test_lineage.py", "tests/test_cli.py", "tests/test_provenance_query_equivalence.py", "tests/test_provenance_query_migration.py"],
     "review": ["docs/provenance-query-equivalence-contract-20260825.json", "docs/provenance-query-cache-contract-20260825.json"],
     "migration": ["docs/provenance-query-migration-guidance-20260825.md", "tests/test_provenance_query_migration.py"],
     "release_candidate": ["docs/provenance-query-rebuild-contract-20260825.json", "docs/provenance-query-benchmark-contract-20260825.json"]
   },
-  "open_gates": ["MCP and cross-interface equivalence", "remote authorization and access filtering", "release-scale and second-environment measurements", "real-data release reproduction and factual external user testing", "accountable release-authority decision"],
+  "open_gates": ["remote authorization and access filtering", "release-scale and second-environment measurements", "real-data release reproduction and factual external user testing", "accountable release-authority decision"],
   "promotion_allowed": false,
   "non_claims": [
     "The release_candidate category contains bounded local contracts and synthetic benchmarks, not a release or production query service.",
