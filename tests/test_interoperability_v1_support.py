@@ -13,6 +13,6 @@ def test_sdk_support_surface_and_unsigned_report_boundary_are_explicit() -> None
     assert "rust/riopa-conformance" in guidance
     assert contract["support_owner"] == "single repository maintainer"
     assert contract["agent_panel_role"] == "evidence assessment and findings only"
-    assert "external producer/consumer reproduction" in guidance
+    assert "external producer/consumer reproduction" in guidance.lower()
     assert "unsigned repository evidence" in guidance
     assert contract["promotion_allowed"] is False
