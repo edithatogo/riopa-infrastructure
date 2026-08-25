@@ -2,6 +2,7 @@ from copy import deepcopy
 
 import pytest
 
+from riopa_provenance.hashing import sha256_json
 from riopa_provenance.health_sensitivity import (
     maup_sensitivity,
     measurement_error_sensitivity,
@@ -143,6 +144,51 @@ def test_access_health_reference_rejects_invalid_registry(
         )
 
 
+@pytest.mark.parametrize(
+    ("assertions", "message"),
+    [
+        (["bad"], "must be objects"),
+        ([{"assertion_id": "a", "facility_type": "clinic"}], "classified as supermarket"),
+        (
+            [
+                {
+                    "assertion_id": "a",
+                    "facility_type": "supermarket",
+                    "release_classification": "private",
+                }
+            ],
+            "non-public",
+        ),
+    ],
+)
+def test_access_health_reference_rejects_malformed_assertions(
+    assertions: list[object], message: str
+) -> None:
+    snapshot = facility_snapshot()
+    snapshot["assertions"] = assertions
+    with pytest.raises(SupermarketPilotError, match=message):
+        build_access_health_reference(
+            snapshot, [area_record()], sensitivities(), packet_id="p", generated_at="now"
+        )
+
+
+def test_access_health_reference_rejects_empty_packet_area_and_duplicate_assertion() -> None:
+    with pytest.raises(SupermarketPilotError, match="packet_id"):
+        build_access_health_reference(
+            facility_snapshot(), [area_record()], sensitivities(), packet_id="", generated_at=""
+        )
+    with pytest.raises(SupermarketPilotError, match="area records"):
+        build_access_health_reference(
+            facility_snapshot(), [], sensitivities(), packet_id="p", generated_at="now"
+        )
+    snapshot = facility_snapshot()
+    snapshot["assertions"] = snapshot["assertions"] * 2  # type: ignore[operator]
+    with pytest.raises(SupermarketPilotError, match="identities must be unique"):
+        build_access_health_reference(
+            snapshot, [area_record()], sensitivities(), packet_id="p", generated_at="now"
+        )
+
+
 def test_access_health_reference_rejects_non_ecological_or_incomplete_area() -> None:
     row = area_record()
     health = dict(row["health"])  # type: ignore[arg-type]
@@ -190,6 +236,25 @@ def test_access_health_reference_rejects_negative_measure_and_protects_small_cel
         build_access_health_reference(
             facility_snapshot(), [exposed], sensitivities(), packet_id="p", generated_at="now"
         )
+    invalid_status = area_record()
+    invalid_status["health"] = {
+        **invalid_status["health"],  # type: ignore[dict-item]
+        "small_cell_status": "unknown",
+    }
+    with pytest.raises(SupermarketPilotError, match="eligible or suppressed"):
+        build_access_health_reference(
+            facility_snapshot(),
+            [invalid_status],
+            sensitivities(),
+            packet_id="p",
+            generated_at="now",
+        )
+    no_nonclaims = sensitivities()
+    no_nonclaims[0]["nonclaims"] = []
+    with pytest.raises(SupermarketPilotError, match="retain nonclaims"):
+        build_access_health_reference(
+            facility_snapshot(), [area_record()], no_nonclaims, packet_id="p", generated_at="now"
+        )
 
 
 def test_planning_alternatives_report_complete_pareto_tradeoffs() -> None:
@@ -230,6 +295,67 @@ def test_planning_alternatives_rederives_status_and_rejects_malformed_rows() -> 
             packet_id="p",
             generated_at="now",
             non_modelled_constraints=("market", "land", "community", "consent"),
+        )
+
+
+def test_planning_alternatives_rejects_invalid_contract_and_cited_rule_status() -> None:
+    constraints = ("market", "land", "community", "consent")
+    with pytest.raises(SupermarketPilotError, match="packet_id"):
+        build_planning_alternatives_reference(
+            [], [], packet_id="", generated_at="", non_modelled_constraints=constraints
+        )
+    with pytest.raises(SupermarketPilotError, match="non-empty strings"):
+        build_planning_alternatives_reference(
+            [], [], packet_id="p", generated_at="now", non_modelled_constraints=(*constraints, "")
+        )
+    with pytest.raises(SupermarketPilotError, match="feasibility records"):
+        build_planning_alternatives_reference(
+            [],
+            [alternative("candidate-a", 1.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=constraints,
+        )
+    with pytest.raises(SupermarketPilotError, match="planning-feasibility-query"):
+        build_planning_alternatives_reference(
+            [{}],
+            [alternative("candidate-a", 1.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=constraints,
+        )
+    invalid = feasibility("candidate-a")
+    invalid["rules"][0]["status"] = "invented"  # type: ignore[index]
+    invalid["rules_sha256"] = sha256_json(invalid["rules"])
+    with pytest.raises(SupermarketPilotError, match="cited planning rule status"):
+        build_planning_alternatives_reference(
+            [invalid],
+            [alternative("candidate-a", 1.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=constraints,
+        )
+
+
+def test_planning_alternatives_rejects_duplicate_candidate_and_promotion() -> None:
+    constraints = ("market", "land", "community", "consent")
+    record = feasibility("candidate-a")
+    with pytest.raises(SupermarketPilotError, match="identities must be unique"):
+        build_planning_alternatives_reference(
+            [record, record],
+            [alternative("candidate-a", 1.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=constraints,
+        )
+    record["promotion_allowed"] = True
+    with pytest.raises(SupermarketPilotError, match="prohibit promotion"):
+        build_planning_alternatives_reference(
+            [record],
+            [alternative("candidate-a", 1.0)],
+            packet_id="p",
+            generated_at="now",
+            non_modelled_constraints=constraints,
         )
     with pytest.raises(SupermarketPilotError, match="non-empty objects"):
         build_planning_alternatives_reference(
