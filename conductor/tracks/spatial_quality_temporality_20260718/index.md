@@ -26,10 +26,16 @@
 | `SPATIAL-SENSITIVITY-20260824` | Bounded sensitivity summary across declared boundary and denominator revisions | `src/riopa_provenance/spatial_sensitivity.py`, `tests/test_spatial_sensitivity.py`, `docs/spatial-sensitivity-contract-20260824.json` | All supplied observations are retained and promotion is disabled; real MAUP, denominator provenance, authority and national qualification remain open |
 | `SPATIAL-BOUNDARY-CROSSWALK-20260825` | Revision-aware boundary crosswalk and population interpolation contract | `src/riopa_provenance/spatial_crosswalk.py`, `tests/test_spatial_crosswalk.py`, `docs/spatial-boundary-crosswalk-contract-20260825.json` | Local weighted projection passes; MAUP, denominator-version, real-boundary, national, external and authority gates remain open |
 | `SPATIAL-QUALITY-UNCERTAINTY-PROPAGATION-20260825` | Declared spatial/temporal error propagation to a downstream uncertainty envelope | `src/riopa_provenance/spatial_quality_trend.py:propagate_spatial_temporal_uncertainty`, `tests/test_spatial_quality_trend.py` | Deterministic conditional envelope passes; sensitivities must be supplied and no authority, causal or operational claim is made |
+| `SPATIAL-QUALITY-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded quality slice | `docs/spatial-quality-closeout-evidence-20260825.json`, `tests/test_spatial_quality_closeout_evidence.py` | Evidence categories are linked and fail-closed; real-council, national, external and authority gates remain open |
 
 ## Blocking defects
 
 - None recorded.
+
+The 2026-08-25 closeout packet links the bounded profile, evaluator, trend,
+temporal, crosswalk, sensitivity and uncertainty evidence. It does not
+establish heterogeneous real-council validation, national completeness, MAUP
+qualification, external semantics or a stable release.
 
 ## Decisions, exceptions and limitations
 

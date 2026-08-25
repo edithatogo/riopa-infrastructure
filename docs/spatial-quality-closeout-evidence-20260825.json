@@ -1,0 +1,21 @@
+{
+  "schema": "riopa.spatial-quality-closeout-evidence.v1",
+  "packet_id": "spatial-quality-closeout-evidence-20260825",
+  "track_id": "spatial_quality_temporality_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "evidence_categories": {
+    "implementation": ["src/riopa_provenance/spatial_quality.py", "src/riopa_provenance/spatial_quality_trend.py", "src/riopa_provenance/spatial_crosswalk.py", "src/riopa_provenance/spatial_sensitivity.py"],
+    "tests": ["tests/test_spatial_quality.py", "tests/test_spatial_quality_trend.py", "tests/test_spatial_crosswalk.py", "tests/test_spatial_sensitivity.py"],
+    "review": ["docs/spatial-quality-profile-contract-20260825.json", "docs/spatial-quality-change-attribution-contract-20260825.json"],
+    "migration": ["docs/spatial-temporal-query-contract-20260825.json", "docs/spatial-temporal-history-audit-contract-20260825.json"],
+    "release_candidate": ["docs/spatial-quality-trend-report-20260825.json", "docs/spatial-sensitivity-contract-20260824.json"]
+  },
+  "open_gates": ["heterogeneous real council layers", "real historical and boundary concordance evidence", "national completeness and MAUP qualification", "external semantic qualification", "accountable release-authority decision"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "The release_candidate category contains bounded synthetic contracts and trend/sensitivity reports, not heterogeneous real-council or national qualification.",
+    "Repository tests and agent panels cannot substitute for real source evidence, external qualification, preservation acceptance or release authority.",
+    "This packet does not enable network, timetable, facility, national, clinical, dispatch or authoritative claims."
+  ]
+}
