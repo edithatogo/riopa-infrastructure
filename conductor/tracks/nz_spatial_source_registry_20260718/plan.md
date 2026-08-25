@@ -10,7 +10,7 @@
 ## 2. Service and document discovery
 
 - [x] 2.1 Record the bounded pilot's declared WFS/OGC and Koordinates mechanisms without live discovery or national completeness claims. (`config/source-registry/nz-spatial-pilot.yaml`, `src/riopa_provenance/registry.py:classify_connector_readiness`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)
-- [ ] 2.2 Discover plan documents, provision structures and legal-status evidence.
+- [~] 2.2 Build a non-contacting declared-plan discovery queue from supplied registry metadata (`src/riopa_provenance/registry.py::build_declared_plan_discovery`, `docs/nz-declared-plan-discovery-contract-20260825.json`, `tests/test_registry.py`). Document bytes, provision structures, legal status and authority remain not observed and open.
 - [~] 2.3 Preserve a content-addressed declared capability, metadata, terms and rights snapshot before source incorporation. The snapshot builder is non-contacting and promotion-disabled; payload capture, preservation acceptance and current-authority coverage remain open (`src/riopa_provenance/registry.py:build_declared_source_snapshot`, `docs/nz-source-metadata-snapshot-contract-20260825.json`, `tests/test_source_registry_readiness.py`).
 
 ## 3. Versioning and health

@@ -1,0 +1,30 @@
+{
+  "schema": "riopa.nz.declared-plan-discovery.v1",
+  "evidence_id": "NZ-DECLARED-PLAN-DISCOVERY-20260825",
+  "scope": "declared planning-document endpoints from a supplied source registry",
+  "contract": "src/riopa_provenance/registry.py::build_declared_plan_discovery",
+  "status": "declared-only",
+  "recorded_fields": [
+    "source_id",
+    "endpoint_id",
+    "locator",
+    "terms_status",
+    "discovery_status",
+    "document_bytes",
+    "provision_structure",
+    "legal_status",
+    "source_health"
+  ],
+  "not_observed_fields_are_not_negative_evidence": true,
+  "promotion_allowed": false,
+  "open_gates": [
+    "content-addressed document capture",
+    "provision-structure extraction",
+    "legal-status evidence and authority",
+    "preservation/publication acceptance"
+  ],
+  "nonclaims": [
+    "The discovery queue does not contact endpoints or contain source bytes.",
+    "Declared locators do not establish currentness, completeness, rights or legal effect."
+  ]
+}

@@ -30,6 +30,7 @@ remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
 
 | `NZ-SOURCE-HEALTH-QUARANTINE-20260825` | Fail-closed health, disappearance and terms-change evaluation over declared archived observations | `src/riopa_provenance/registry.py:evaluate_declared_source_health`, `docs/nz-source-health-quarantine-contract-20260825.json`, `tests/test_source_registry_readiness.py` | Missing, degraded, terms-changed and not-observed records quarantine; no live health, authority, completeness or national claim is made |
 | `NZ-SOURCE-METADATA-SNAPSHOT-20260825` | Content-addressed declared metadata, capability, terms and rights snapshot | `src/riopa_provenance/registry.py:build_declared_source_snapshot`, `docs/nz-source-metadata-snapshot-contract-20260825.json`, `tests/test_source_registry_readiness.py` | Non-contacting snapshot contract passes; payload capture, preservation acceptance and authority coverage remain open |
+| `NZ-DECLARED-PLAN-DISCOVERY-20260825` | Non-contacting queue for declared planning-document endpoints and explicit not-observed fields | `src/riopa_provenance/registry.py::build_declared_plan_discovery`, `docs/nz-declared-plan-discovery-contract-20260825.json`, `tests/test_registry.py` | Discovery metadata is preserved and promotion-disabled; document capture, provision extraction, legal status, authority and preservation remain open |
 
 ## Blocking defects
 
