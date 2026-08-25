@@ -23,7 +23,7 @@
 
 - [ ] 4.1 Integrate only with content-addressed real NZ archive, network/timetable and facility-registry versions.
 - [~] 4.2 Conduct repository-owned four-lens agent-panel qualification of reference semantics and limitations (`docs/accessibility-agent-panel-qualification-20260825.json`, `tests/test_accessibility_agent_panel_qualification.py`). Real network/timetable qualification, external workflow evidence and operational approval remain open.
-- [ ] 4.3 Freeze the v1 accessibility contract and examples.
+- [~] 4.3 Freeze the bounded, reference-only v1 accessibility contract and examples (`docs/accessibility-v1-contract-freeze-20260825.json`, `tests/test_accessibility_v1_contract_freeze.py`). Real archived inputs, independent real-engine qualification, national scale, external workflows, elapsed evidence and accountable authority remain open.
 
 ## Track closeout
 
