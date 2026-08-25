@@ -1,0 +1,29 @@
+{
+  "schema": "riopa.publication-real-data-release-candidate.v1",
+  "candidate_id": "publication-real-data-release-candidate-20260825",
+  "status": "owner-agent-reproduced-bounded-candidate",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "software_revision": "2a643868d926f9e7a48f4b775990a4d85cfe92ef",
+  "runtime": "Python 3.14",
+  "source_packet": {
+    "manifest": "evidence/wp007-real-slice/manifest.json",
+    "manifest_sha256": "2b773fc68fd630aec197bb5e266e8332e14c15eb251cdfde94ee01a4ee8f20ba",
+    "record_type": "bounded_real_vertical_slice",
+    "publication_status": "not-attempted"
+  },
+  "artifacts": [
+    {"path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.duckdb", "sha256": "b892592af88844cc28307dbd4319cf4cfc0bf9c461fe10059de71773cde7c9c2"},
+    {"path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.parquet", "sha256": "eaa2c0cab0e76afeb28e808f7b451df32c646462f6dfb31dd35e728c035fab48"},
+    {"path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.quality.json", "sha256": "7f5c4f28284ff02c4f42a9c22fb0e21563efc2133c4e7ca0512994ce311e4566"}
+  ],
+  "reproduction": {
+    "operator": "owner-authorized agent",
+    "method": "bash scripts/ci_reproducibility.sh plus exact manifest and artifact digest verification",
+    "result": "pass",
+    "independent": false,
+    "external_participant_evidence": false
+  },
+  "promotion_allowed": false,
+  "open_gates": ["clean-room or external reproduction", "protected artifact attestation", "preservation deposit and anonymous restore", "elapsed beta/RC qualification", "accountable release-authority decision"],
+  "non_claims": ["The council slice is one deliberately selected feature and is not coverage evidence.", "This candidate is not a publication, DOI, preservation receipt or stable release.", "Owner-authorized agent reproduction cannot substitute for factual external participant evidence."]
+}

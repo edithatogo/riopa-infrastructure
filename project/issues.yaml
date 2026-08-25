@@ -4231,7 +4231,7 @@
         "maturity:m1",
         "release:0.9.0"
       ],
-      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Reproduce one real-data archive release with an owner-authorized agent.\n- [ ] 3.2 Reproduce one applied benchmark with an owner-authorized agent.\n- [ ] 3.3 Resolve findings and publish deviations/limitations.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `publication_validation_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Reproduce one real-data archive release with an owner-authorized agent. The WP-007 bounded real-data packet and three materialized artifacts are digest-bound at the protected-main revision in `docs/publication-real-data-release-candidate-20260825.json`; external participation and publication remain open.\n- [ ] 3.2 Reproduce one applied benchmark with an owner-authorized agent.\n- [ ] 3.3 Resolve findings and publish deviations/limitations.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/publication_validation_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Publication",
