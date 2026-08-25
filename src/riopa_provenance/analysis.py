@@ -286,6 +286,54 @@ def simulate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
     }
 
 
+def compare_static_simulated_stress(
+    scenario: DispatchScenario, *, stress_profile: str
+) -> dict[str, Any]:
+    """Compare static assignments with the bounded queue under a named stress profile.
+
+    The comparison is descriptive evidence over caller-supplied synthetic inputs.  It does
+    not extrapolate to a fleet, clinical response, live dispatch or national workload.
+    """
+    if not stress_profile.strip():
+        raise ValueError("stress_profile must be non-empty")
+    static = evaluate_dispatch_scenario(scenario)
+    simulated = simulate_dispatch_scenario(scenario)
+    static_assignments = {item["request_id"]: item["primary"] for item in static["assignments"]}
+    simulated_assignments = {
+        item["request_id"]: item["primary"] for item in simulated["assignments"]
+    }
+    changed = sorted(
+        request_id
+        for request_id in static_assignments
+        if static_assignments[request_id] != simulated_assignments.get(request_id)
+    )
+    waits = [float(item["queue_wait"]) for item in simulated["assignments"]]
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_dispatch_stress_comparison",
+        "scenario_id": scenario.scenario_id,
+        "stress_profile": stress_profile,
+        "static": static["counts"],
+        "simulated": simulated["counts"],
+        "comparison": {
+            "primary_assignment_delta": (
+                simulated["counts"]["assigned"] - static["counts"]["primary_assigned"]
+            ),
+            "queued_requests": simulated["counts"]["queued"],
+            "maximum_queue_wait": max(waits, default=0.0),
+            "primary_assignment_changes": changed,
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            (
+                "Synthetic stress comparison only; no live dispatch, clinical or response "
+                "guarantee is asserted."
+            ),
+            "The result does not establish national-scale performance or operational safety.",
+        ],
+    }
+
+
 def evaluate_coverage_scenario(scenario: CoverageScenario) -> dict[str, Any]:
     """Evaluate primary, backup and unavailable demand over supplied fixtures."""
 

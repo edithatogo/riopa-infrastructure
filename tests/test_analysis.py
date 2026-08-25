@@ -16,6 +16,7 @@ from riopa_provenance.analysis import (
     ParameterEvidence,
     ReplicationDesign,
     calibrate_queue_parameters,
+    compare_static_simulated_stress,
     difference_in_differences,
     evaluate_coverage_scenario,
     evaluate_dispatch_scenario,
@@ -91,6 +92,30 @@ def test_dispatch_queue_simulation_is_deterministic_and_bounded() -> None:
     }
     assert result["assignments"][1]["queue_wait"] == 9
     assert result["promotion_allowed"] is False
+
+
+def test_static_and_simulated_stress_comparison_preserves_queue_delta() -> None:
+    scenario = DispatchScenario(
+        "synthetic-stress",
+        (
+            DispatchRequest("r1", "d1", 0, service_minutes=10),
+            DispatchRequest("r2", "d1", 1, service_minutes=1),
+        ),
+        ("a",),
+        {("a", "d1"): 1},
+        {"a": True},
+        2,
+    )
+    result = compare_static_simulated_stress(scenario, stress_profile="bounded-concurrency-fixture")
+    assert result["comparison"] == {
+        "primary_assignment_delta": -1,
+        "queued_requests": 1,
+        "maximum_queue_wait": 9.0,
+        "primary_assignment_changes": ["r2"],
+    }
+    assert result["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="stress_profile"):
+        compare_static_simulated_stress(scenario, stress_profile=" ")
 
 
 def _protocol(*, replications: int = 5) -> AnalysisProtocol:

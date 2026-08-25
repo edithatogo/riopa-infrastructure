@@ -10,7 +10,7 @@
 
 - [x] 2.1 Implement coverage, backup, availability and location scenarios. Evidence: `CoverageScenario` and `evaluate_coverage_scenario` in `src/riopa_provenance/analysis.py` with synthetic primary/backup/availability tests; dispatch, clinical, operational and national claims remain disabled.
 - [x] 2.2 Implement dispatch, queueing, handover and dynamic-relocation simulation. Evidence: `DispatchRequest`, `DispatchScenario`, `evaluate_dispatch_scenario` and `simulate_dispatch_scenario` provide deterministic synthetic adapters; live dispatch, clinical, operational and authority gates remain open.
-- [ ] 2.3 Compare static and simulated performance under stress.
+- [~] 2.3 Compare static and simulated performance under a named synthetic stress profile. The bounded comparison reports assignment deltas, queue counts, maximum wait and changed assignments; calibrated, hosted, national-scale and operational-safety evidence remain open (`src/riopa_provenance/analysis.py:compare_static_simulated_stress`, `docs/emergency-health-stress-comparison-contract-20260825.json`, `tests/test_analysis.py`).
 
 ## 3. Hospital and service planning
 
@@ -31,7 +31,7 @@
 
 ## Track closeout
 
-- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; stress, safety, authoritative-source, external and authority gates remain explicitly pending (`docs/emergency-health-closeout-evidence-20260825.json`, `tests/test_emergency_health_closeout_evidence.py`; `1f84f9c`).
+- [x] C.1 Link implementation, test, review, migration, bounded stress-comparison and release evidence in `index.md` for the repository-owned closeout slice; stress, safety, authoritative-source, external and authority gates remain explicitly pending (`docs/emergency-health-closeout-evidence-20260825.json`, `docs/emergency-health-stress-comparison-contract-20260825.json`, `tests/test_emergency_health_closeout_evidence.py`; `1f84f9c`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/emergency-health-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.

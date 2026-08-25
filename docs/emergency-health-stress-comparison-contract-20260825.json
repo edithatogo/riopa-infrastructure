@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.emergency-health-stress-comparison-contract.v1",
+  "evidence_id": "emergency-health-stress-comparison-contract-20260825",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "implementation": "src/riopa_provenance/analysis.py:compare_static_simulated_stress",
+  "test": "tests/test_analysis.py",
+  "scope": "caller-supplied synthetic dispatch scenarios",
+  "comparison": "static assignment counts against deterministic queue simulation",
+  "promotion_allowed": false,
+  "non_claims": [
+    "This comparison does not establish live dispatch, clinical or response performance.",
+    "National-scale, operational-safety, authoritative-source and external-participant evidence remain open."
+  ]
+}
