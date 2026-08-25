@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 PACKET = Path("docs/emergency-health-closeout-evidence-20260825.json")
+REMEDIATION = Path("docs/emergency-health-review-remediation-20260825.json")
 
 
 def test_emergency_health_closeout_links_required_evidence_categories() -> None:
@@ -24,3 +25,22 @@ def test_emergency_health_closeout_preserves_safety_and_authority_gates() -> Non
     assert "not clinical" in text
     assert "cannot substitute" in text
     assert "authoritative claims" in text
+
+
+def test_review_remediation_is_digest_bound_and_keeps_external_gates_open() -> None:
+    packet = json.loads(REMEDIATION.read_text(encoding="utf-8"))
+    assert packet["status"] == "repository-review-remediated-external-gates-open"
+    assert packet["archive_eligible"] is False
+    assert packet["promotion_allowed"] is False
+    assert len(packet["review_lenses"]) == 4
+    assert all(len(value) == 64 for value in packet["artifact_sha256"].values())
+    gates = " ".join(packet["remaining_blocking_gates"])
+    for boundary in (
+        "dependencies",
+        "clinical",
+        "external reproduction",
+        "preservation",
+        "elapsed",
+        "release-authority",
+    ):
+        assert boundary in gates

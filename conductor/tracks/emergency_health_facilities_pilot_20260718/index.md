@@ -30,11 +30,16 @@
 | `EMERGENCY-HEALTH-BENCHMARK-CONTRACT-20260825` | Bounded public/synthetic ambulance and hospital planning scenarios, assumptions and non-clinical metrics | `docs/emergency-health-pilot-benchmark-contract-20260825.json`, `tests/test_emergency_health_benchmark_contract.py` | Contract is repository-owned and promotion-disabled; authoritative ambulance source, calibrated scenarios, clinical/dispatch safety and external qualification remain open |
 | `EMERGENCY-HEALTH-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded emergency-health slice | `docs/emergency-health-closeout-evidence-20260825.json`, `tests/test_emergency_health_closeout_evidence.py` | Evidence categories are linked and fail-closed; stress, safety, authoritative-source, external and authority gates remain open |
 | `EMERGENCY-HEALTH-CONDUCTOR-REGENERATION-20260825` | Locked methods, roadmap status, issue graph and quality regeneration receipt | `docs/emergency-health-conductor-regeneration-20260825.json` | Repository generation passed; temporary methods output is not a release artifact and roadmap readiness remains false |
+| `EMERGENCY-HEALTH-REVIEW-REMEDIATION-20260825` | Independent review and repository-owned remediation of dispatch, referral, metrics, raw-capture and archive-continuity defects | `docs/emergency-health-review-remediation-20260825.json`, `tests/test_analysis.py`, `tests/test_wp010_raw_source_preservation.py`, `tests/test_roadmap_hardening.py` | Repository fixes are commit- and digest-bound; dependencies, calibration, clinical/operational safety, external reproduction, preservation/elapsed evidence and authority remain blocking |
 
 ## Blocking defects
 
-- A national authoritative ambulance-station source, ambulance and hospital scenarios, dispatch/handover/relocation behaviour,
-  calibrated stress tests and operational/safety review remain open.
+- Blocking dependencies have not reached their required maturity or completion state.
+- Authoritative service-source evidence and externally calibrated validation remain absent.
+- Clinical and operational-safety approval remains absent.
+- Independent external reproduction and external-user evidence remain absent.
+- Hosted preservation/recovery acceptance and required elapsed beta/RC evidence remain absent.
+- Accountable release-authority approval remains absent.
 
 ## Decisions, exceptions and limitations
 
@@ -49,6 +54,11 @@ source completeness, operational safety or a stable release.
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
 the bookkeeping task; it does not change the track’s maturity or external gates.
+
+The review-remediation successor corrects the earlier closeout packet's stale
+references to missing hospital/service implementation and stress comparison.
+It adds executable bounded semantics and exact blocker metadata without changing
+the track's `active`/M1 status or treating agent review as external approval.
 
 ## Review and handover
 

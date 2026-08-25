@@ -1,0 +1,61 @@
+{
+  "schema": "riopa.emergency-health-review-remediation.v1",
+  "evidence_id": "urn:riopa:evidence:emergency-health-review-remediation:2026-08-25",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "status": "repository-review-remediated-external-gates-open",
+  "reviewed_at": "2026-08-25T10:10:14Z",
+  "revision_commits": {
+    "analysis": "d506151f8f60140a33978e178771cf83df460acb",
+    "raw_capture": "1afa3d4780cf2368309e5fed01e653064fec3b3f",
+    "archive_continuity": "66be5bab40024541a00ec0deba019fadb861a86f"
+  },
+  "artifact_sha256": {
+    "scripts/capture_wp010_public_sources.py": "fe1efdee48819c7588beeb5fd4163aea9bec7d5bca0ac45d2d67a7cfea58521d",
+    "src/riopa_provenance/analysis.py": "a094e5a4869099f7af600c9fafb42f492fae3d404db2b04584e058cd515f36ea",
+    "src/riopa_provenance/roadmap.py": "fba17cf20d6025e05918ee2f2a12a7f37174bc035c661f8e7f336a0c1458fcdd",
+    "tests/test_analysis.py": "5bece11cac7fbd8e8bc5c29f1b0d5cbda66567baffe5f00470ec4970bfebc523",
+    "tests/test_roadmap_hardening.py": "f41bac928a25503e2eb32c0b66dd0d5223c45d3645b8efd25110892cae47ccbc",
+    "tests/test_wp010_raw_source_preservation.py": "ed227fa23b4e53b0a676f357211c1b46b35f8bafe78ec86e83a4d8c70421df6c"
+  },
+  "review_lenses": [
+    {
+      "id": "operational-safety",
+      "disposition": "bounded-repository-fixes-pass",
+      "finding": "Queued requests now remain assigned to route-eligible units and outbound travel, service and handover occupy the unit; unreachable requests remain explicit. Return-to-base travel, clinical calibration and operational safety remain open."
+    },
+    {
+      "id": "quantitative-methods",
+      "disposition": "bounded-repository-fixes-pass",
+      "finding": "Referral chains conserve demand across eligible facilities; seeded busy-availability replications report uncertainty; weighted average, tail, subgroup and rurality results are separate; facility-specific volume, failure and phase checks are executable."
+    },
+    {
+      "id": "governance",
+      "disposition": "bounded-repository-fixes-pass",
+      "finding": "Exact fetched bytes and redacted transport metadata are preserved separately from canonical projections, and archived track discovery retains registry continuity. Rights, safety and release decisions remain open."
+    },
+    {
+      "id": "reproducibility",
+      "disposition": "repository-reproducible-external-open",
+      "finding": "Fixes are commit- and digest-bound with deterministic tests; independent external reproduction and preservation acceptance remain absent."
+    }
+  ],
+  "supersedes_open_gate_wording_in": [
+    "docs/emergency-health-closeout-evidence-20260825.json",
+    "conductor/tracks/emergency_health_facilities_pilot_20260718/index.md"
+  ],
+  "remaining_blocking_gates": [
+    "blocking dependencies have not reached their required maturity or completion state",
+    "authoritative service-source evidence and externally calibrated validation are absent",
+    "clinical and operational-safety approval is absent",
+    "independent external reproduction and external-user evidence are absent",
+    "hosted preservation acceptance and recovery evidence are absent",
+    "required elapsed beta and release-candidate evidence is absent",
+    "accountable release-authority approval is absent"
+  ],
+  "archive_eligible": false,
+  "promotion_allowed": false,
+  "non_claims": [
+    "Repository fixes and agent review do not establish clinical or operational suitability.",
+    "This evidence does not complete dependencies, external reproduction, preservation, elapsed evidence or release authority."
+  ]
+}

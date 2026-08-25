@@ -4,7 +4,7 @@
   "phase": "Applications",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T17:30:00Z",
+  "updated_at": "2026-08-25T10:10:14Z",
   "description": "Demonstrate the common location and simulation framework for emergency response and hospital/service planning while preserving safety, uncertainty and controlled-data boundaries.",
   "depends_on": [
     "accessibility_network_engine_20260719",
@@ -21,7 +21,8 @@
     "urn:riopa:evidence:emergency-health-constraints:2026-08-25",
     "urn:riopa:evidence:emergency-health-pareto:2026-08-25",
     "urn:riopa:evidence:emergency-health-panel:2026-08-25",
-    "urn:riopa:evidence:emergency-health-research-object:2026-08-25"
+    "urn:riopa:evidence:emergency-health-research-object:2026-08-25",
+    "urn:riopa:evidence:emergency-health-review-remediation:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -45,5 +46,13 @@
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "blocking-dependencies-not-complete",
+    "authoritative-source-and-external-calibration-pending",
+    "clinical-operational-safety-approval-pending",
+    "independent-external-reproduction-pending",
+    "hosted-preservation-and-recovery-acceptance-pending",
+    "elapsed-beta-release-candidate-evidence-pending",
+    "accountable-release-authority-pending"
+  ]
 }
