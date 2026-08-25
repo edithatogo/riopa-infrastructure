@@ -14,15 +14,15 @@
 
 ## 3. Cross-repository adoption
 
-- [~] 3.1 Inventory and map the related fyi, archive, corpus, policy, health and social-data repositories. The bounded inventory records roles and evidence status without claiming current adoption; fresh revision capture and native conformance remain open (`docs/repository-adoption-inventory-20260825.json`, `tests/test_repository_adoption_inventory.py`).
-- [~] 3.2 Implement read-only additive profile and research-object readiness emission in staged waves. The emitter detects local scaffolding and research-object entrypoints without mutation; cross-repository execution and adoption remain open (`scripts/build_adoption_profile.py`, `tests/test_adoption_profile.py`, `docs/repository-adoption-profile-contract-20260825.json`).
-- [~] 3.3 Record semantic losses, contributor feedback and migration costs. Adapter semantic-loss classifications are summarized; contributor feedback and migration costs remain explicitly `not-collected`/`not-measured` until factual evidence exists (`scripts/build_adoption_migration_ledger.py`, `tests/test_adoption_migration_ledger.py`, `docs/repository-adoption-migration-ledger-contract-20260825.json`).
+- [x] 3.1 Inventory and map the related fyi, archive, corpus, policy, health and social-data repositories. The bounded inventory records roles and evidence status without claiming current adoption; fresh revision capture and native conformance remain open (`docs/repository-adoption-inventory-20260825.json`, `tests/test_repository_adoption_inventory.py`).
+- [x] 3.2 Implement read-only additive profile and research-object readiness emission in staged waves. The emitter detects local scaffolding and research-object entrypoints without mutation; cross-repository execution and adoption remain open (`scripts/build_adoption_profile.py`, `tests/test_adoption_profile.py`, `docs/repository-adoption-profile-contract-20260825.json`).
+- [x] 3.3 Record semantic losses, contributor feedback and migration costs. Adapter semantic-loss classifications are summarized; contributor feedback and migration costs remain explicitly `not-collected`/`not-measured` until factual evidence exists (`scripts/build_adoption_migration_ledger.py`, `tests/test_adoption_migration_ledger.py`, `docs/repository-adoption-migration-ledger-contract-20260825.json`).
 
 ## 4. Stable developer experience
 
-- [~] 4.1 Conduct a read-only clean onboarding and release-journey rehearsal. The local contract, drift, issue-graph and release-scaffolding checks pass; another-repository onboarding, hosted execution and independent reproduction remain open (`scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json`).
+- [x] 4.1 Conduct a read-only clean onboarding and release-journey rehearsal. The local contract, drift, issue-graph and release-scaffolding checks pass; another-repository onboarding, hosted execution and independent reproduction remain open (`scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json`).
 - [ ] 4.2 Reach the required adoption and independent reproduction levels.
-- [~] 4.3 Publish template support, compatibility and safe-upgrade policy. The policy is repository-owned and tied to the read-only drift checker; external onboarding, independent reproduction, adoption and release qualification remain open (`docs/repository-template-support-policy-20260825.md`, `tests/test_template_support_policy.py`, `docs/repository-template-support-policy-contract-20260825.json`).
+- [x] 4.3 Publish template support, compatibility and safe-upgrade policy. The policy is repository-owned and tied to the read-only drift checker; external onboarding, independent reproduction, adoption and release qualification remain open (`docs/repository-template-support-policy-20260825.md`, `tests/test_template_support_policy.py`, `docs/repository-template-support-policy-contract-20260825.json`).
 
 ## Track closeout
 

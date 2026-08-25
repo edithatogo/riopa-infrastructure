@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T07:45:00Z",
+  "updated_at": "2026-08-26T07:00:00Z",
   "description": "Make provenance-first setup, Conductor governance, CI, releases and staged adoption easy across existing and future repositories without destructive rewrites.",
   "depends_on": [
     "provenance_profile_v1_20260718",
