@@ -43,4 +43,4 @@
 - [x] R3 Preserve exact fetched source bytes, content digests and bounded redacted response metadata separately from canonical JSON projections (`1afa3d4`).
 - [x] R4 Preserve Conductor discovery, validation and issue links when an eligible completed track is moved to `conductor/archive/`, without weakening release-readiness gates (`66be5ba`).
 - [x] R5 Record the independent operational-safety, quantitative-methods and governance/reproducibility review remediation, including exact remaining external and dependency gates (`docs/emergency-health-review-remediation-20260825.json`).
-- [x] R6 Add an explicit bounded pre-horizon posting-policy comparison, bounded and labelled coverage intervals, effective sample counts and demand-coverage-only phase wording after the second review (`be2c275`).
+- [x] R6 Add an explicit bounded pre-horizon posting-policy comparison, bounded and labelled coverage intervals, effective sample counts and demand-coverage-only phase wording after the second review, with boundary coverage restored above the 90% gate (`be2c275`, `11176bb`).
