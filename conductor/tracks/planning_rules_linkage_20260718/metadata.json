@@ -4,7 +4,7 @@
   "phase": "NZ Spatial",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T14:10:00Z",
+  "updated_at": "2026-08-25T15:00:00Z",
   "description": "Link zoning, overlays, precincts and other planning geometries to versioned plans and provisions with transparent evidence, review, confidence and legal-status limitations.",
   "depends_on": [
     "nz_spatial_archive_mvp_20260718",
@@ -15,7 +15,8 @@
     "urn:riopa:evidence:wp007-wcc-plan-source-pair:2026-07-31",
     "urn:riopa:evidence:planning-rules-conductor-regeneration:2026-08-25",
     "urn:riopa:evidence:planning-source-intake:2026-08-25",
-    "urn:riopa:evidence:planning-provision-extraction:2026-08-25"
+    "urn:riopa:evidence:planning-provision-extraction:2026-08-25",
+    "urn:riopa:evidence:planning-feature-provision-linkage:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -39,5 +40,7 @@
     "Data-governance analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "feature-provision-linkage-contract is repository-owned and promotion-disabled: docs/planning-feature-provision-linkage-contract-20260825.json; council payloads and authority remain open"
+  ]
 }

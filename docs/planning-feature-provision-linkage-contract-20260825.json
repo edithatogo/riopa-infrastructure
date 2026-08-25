@@ -1,0 +1,11 @@
+{
+  "schema": "riopa.planning-feature-provision-linkage.v1",
+  "packet_id": "planning-feature-provision-linkage-contract-20260825",
+  "status": "bounded-contract-only",
+  "scope": "regional public-source non-operational technical preview",
+  "feature_kinds": ["zone", "overlay", "precinct", "designation"],
+  "required_fields": ["feature_id", "feature_kind", "feature_source_ref", "provision_version_id", "evidence", "confidence"],
+  "record_properties": ["sorted feature identifiers", "deduplicated evidence references", "records_sha256", "review_status=unreviewed", "promotion_allowed=false"],
+  "open_gates": ["archived council feature and plan-document payloads", "legal/authority interpretation", "panel-reviewed linkage sample", "completeness and operative-status evidence"],
+  "non_claims": ["A linkage record is not a legal interpretation or authoritative zoning answer.", "The contract does not contact live sources or substitute for council-specific evidence."]
+}
