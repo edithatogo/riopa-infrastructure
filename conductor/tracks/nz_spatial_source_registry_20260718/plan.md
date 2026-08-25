@@ -23,7 +23,7 @@
 
 - [ ] 4.1 Complete records for every current authority.
 - [ ] 4.2 Conduct independent sample audit and correct findings.
-- [ ] 4.3 Publish immutable registry and coverage releases.
+- [~] 4.3 Build an immutable, unpublished registry and coverage release candidate. The deterministic candidate and coverage projection are content-addressed and promotion-disabled (`src/riopa_provenance/registry.py::build_registry_release_candidate`, `docs/nz-source-registry-release-candidate-contract-20260825.json`, `tests/test_registry.py`). Publication, preservation, current-authority completeness and accountable release authority remain open.
 
 ## Track closeout
 
@@ -35,3 +35,4 @@
 ## Review fixes
 
 - [x] R1 Fail closed on unknown authentication types and malformed capability arrays in readiness projections. (`src/riopa_provenance/registry.py`, `tests/test_source_registry_readiness.py`; commit `f78743a`)
+- [x] R2 Review the registry release candidate for deterministic ordering, duplicate-source rejection, digest binding and publication fail-closed semantics. (`src/riopa_provenance/registry.py::build_registry_release_candidate`, `tests/test_registry.py`, `docs/nz-source-registry-release-candidate-contract-20260825.json`)

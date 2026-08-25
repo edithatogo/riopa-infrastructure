@@ -8,6 +8,7 @@ import pytest
 
 from riopa_provenance.registry import (
     build_declared_plan_discovery,
+    build_registry_release_candidate,
     import_district_plans_csv,
     load_registry,
     validate_registry,
@@ -135,6 +136,52 @@ def test_declared_plan_discovery_rejects_malformed_capabilities() -> None:
                 ],
             }
         )
+
+
+def test_registry_release_candidate_is_content_addressed_and_fail_closed() -> None:
+    registry = {
+        "record_type": "source_registry",
+        "registry_id": "urn:riopa:registry:test",
+        "sources": [
+            {
+                "source_id": "source:b",
+                "status": "disabled",
+                "source_family": "network",
+                "jurisdiction": "national",
+                "endpoints": [{"endpoint_id": "source:b:one"}],
+            },
+            {
+                "source_id": "source:a",
+                "status": "archived",
+                "source_family": "population",
+                "jurisdiction": "regional",
+                "endpoints": [],
+            },
+        ],
+    }
+    candidate = build_registry_release_candidate(
+        registry, release_id="2026-08-25", prepared_at="2026-08-25T00:00:00Z"
+    )
+    assert candidate["source_count"] == 2
+    assert [row["source_id"] for row in candidate["coverage"]["sources"]] == [
+        "source:a",
+        "source:b",
+    ]
+    assert candidate["coverage"]["status_counts"] == {"archived": 1, "disabled": 1}
+    assert candidate["promotion_allowed"] is False
+    assert len(candidate["candidate_sha256"]) == 64
+
+
+def test_registry_release_candidate_rejects_duplicate_sources() -> None:
+    registry = {
+        "record_type": "source_registry",
+        "sources": [
+            {"source_id": "source:a", "endpoints": []},
+            {"source_id": "source:a", "endpoints": []},
+        ],
+    }
+    with pytest.raises(ValueError, match="unique"):
+        build_registry_release_candidate(registry, release_id="r", prepared_at="t")
 
 
 def test_validation_returns_schema_errors(tmp_path: Path) -> None:
