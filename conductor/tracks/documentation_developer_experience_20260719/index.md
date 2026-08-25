@@ -27,6 +27,7 @@
 | `DOCUMENTATION-SUPPORT-20260825` | Preview support channels, triage priorities, single-developer ownership and sustainability bounds | `docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py` | Preview contract is recorded; stable support, external participation, RC soak, preservation and authority gates remain open |
 | `DOCUMENTATION-ARCHIVE-CANDIDATE-20260825` | Content-addressed versioned documentation archive candidate | `scripts/build_documentation_archive_manifest.py`, `docs/documentation-archive-manifest-20260825.json`, `tests/test_documentation_archive_manifest.py` | Local manifest is deterministic and unpublished; RC execution, external usability, preservation acceptance, publication and authority gates remain open |
 | `DOCUMENTATION-CANDIDATE-TUTORIAL-REHEARSAL-20260825` | Execute every registered tutorial against one exact repository candidate revision | `scripts/run_release_candidate_tutorials.py`, `tests/test_release_candidate_tutorials.py` | Bounded repository rehearsal passes; it is not RC promotion evidence and does not replace external user/operator participation or elapsed soak |
+| `DOCUMENTATION-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate rehearsal evidence for the repository-owned slice | `docs/documentation-closeout-evidence-20260825.json`, `tests/test_documentation_closeout_evidence.py` | Evidence categories are linked and fail-closed; external usability, preservation acceptance, elapsed soak and release-authority gates remain open |
 
 ## Blocking defects
 
@@ -41,6 +42,11 @@ The information architecture and tutorial conventions are validated by
 `ed69976d815f064843c3492fa2045807381857ca`. They establish documentation
 contracts and safety boundaries, not user-study, external-operator or release
 evidence.
+
+The 2026-08-25 closeout packet links implementation, test, review, migration and
+release-candidate rehearsal evidence for the same bounded slice. Its release
+references remain an unpublished candidate and do not advance the track beyond
+M1.
 
 ## Decisions, exceptions and limitations
 

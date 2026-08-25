@@ -4,7 +4,7 @@
   "phase": "Publication",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T04:00:00Z",
+  "updated_at": "2026-08-25T05:00:00Z",
   "description": "Make installation, contribution, operation, analysis, migration and troubleshooting independently usable through tested documentation, examples, support channels and accessibility review.",
   "depends_on": [
     "repository_template_adoption_20260718",
@@ -27,6 +27,7 @@
     ,"urn:riopa:evidence:documentation-friction:2026-08-25"
     ,"urn:riopa:evidence:documentation-support:2026-08-25"
     ,"urn:riopa:evidence:documentation-archive-candidate:2026-08-25"
+    ,"urn:riopa:evidence:documentation-closeout:2026-08-25"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
