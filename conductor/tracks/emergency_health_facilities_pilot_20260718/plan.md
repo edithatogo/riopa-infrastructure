@@ -20,9 +20,9 @@
 
 ## 4. Safety and publication review
 
-- [ ] 4.1 Conduct operational/safety, methods, governance and reproducibility review.
-- [ ] 4.2 Resolve or bound all deployment-risk findings.
-- [ ] 4.3 Publish benchmark research objects and explicit non-operational limitations.
+- [~] 4.1 Conduct the repository-owned four-lens operational-safety, methods, governance and reproducibility panel review. The bounded packet qualifies repository contracts while leaving clinical, external, hosted, preservation and authority gates open (`docs/emergency-health-panel-qualification-20260825.json`, `tests/test_emergency_health_panel_qualification.py`).
+- [~] 4.2 Resolve or bound deployment-risk findings. The packet records explicit non-operational boundaries and unresolved safety findings; it does not approve deployment (`docs/emergency-health-panel-qualification-20260825.json`).
+- [~] 4.3 Prepare an unpublished benchmark research-object candidate and explicit non-operational limitations. Publication and preservation acceptance remain open (`docs/emergency-health-research-object-candidate-20260825.json`, `tests/test_emergency_health_panel_qualification.py`).
 
 ## 5. Bounded WP-010 evidence
 

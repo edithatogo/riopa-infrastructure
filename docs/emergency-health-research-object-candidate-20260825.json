@@ -1,0 +1,22 @@
+{
+  "schema": "riopa.emergency-health-research-object-candidate.v1",
+  "packet_id": "emergency-health-research-object-candidate-20260825",
+  "status": "unpublished-candidate",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "scope": "bounded synthetic and public-source technical-preview contracts",
+  "included_artifacts": [
+    "docs/emergency-health-pilot-benchmark-contract-20260825.json",
+    "docs/emergency-health-stress-comparison-contract-20260825.json",
+    "docs/emergency-health-services-contract-20260825.json",
+    "docs/emergency-health-constraints-contract-20260825.json",
+    "docs/emergency-health-pareto-contract-20260825.json",
+    "docs/emergency-health-panel-qualification-20260825.json",
+    "src/riopa_provenance/analysis.py",
+    "tests/test_analysis.py"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This candidate is not a published or preserved research object.",
+    "It does not contain authoritative operational, clinical or national evidence."
+  ]
+}
