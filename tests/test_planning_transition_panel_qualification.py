@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-
 PACKET = Path("docs/planning-transition-panel-qualification-20260825.json")
 
 
