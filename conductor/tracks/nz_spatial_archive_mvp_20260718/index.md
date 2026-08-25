@@ -24,6 +24,11 @@
 | `NATIONAL-WORKLOAD-MANIFEST-20260803` | The exact Meshblock geography and provisional subnational population packets are combined into a bounded national reference workload without an unsupported join | `docs/national-workload-manifest-20260803.json`; manifest SHA-256 `2576fb0f4711b57a1847ba5b0617d352ee80cbd7a6f0c3cafcf7f4abc672eb67` | Both packets are immutable and public; the workload permits readback and alignment checks but prohibits Meshblock population assignment, downscaling and national completeness claims |
 | `STATS-NZ-MESHBLOCK-QUALITY-20260825` | Bounded geometry, completeness, fidelity, rights-metadata and lineage report over the immutable Meshblock projection | `docs/stats-nz-meshblock-projection-quality-report-20260825.json`, `tests/test_meshblock_projection_quality_report.py` | Projection checks pass; temporal history, population denominator, council/national source coverage, preservation acceptance and publication remain open |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; national source, rights, preservation, population and
+release gates remain open (`docs/nz-archive-mvp-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - Full LINZ and four heterogeneous council archives, durable preservation beyond the revision-addressed Hugging Face mirror, and any defensible Meshblock-level population denominator remain pending. The workload manifest is a bounded reference input, not population or national analytical evidence.

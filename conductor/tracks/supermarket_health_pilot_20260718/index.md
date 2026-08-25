@@ -21,6 +21,11 @@
 | `WP-010-osm-regional-observation-20260801` | A bounded OSM sensitivity source is captured locally without being treated as authoritative | `scripts/capture_wp010_public_sources.py`, `tests/test_wp010_public_sources.py`, `reports/wp010-synthetic-methods-core.md` | Nine regional supermarket POIs observed; raw geometry remains local and completeness is not claimed |
 | `SUPERMARKET-PREREGISTRATION-20260825` | Reference-only baseline estimands, geography, population, exclusions and discrepancy handling | `docs/supermarket-health-preregistration-20260825.json`, `tests/test_supermarket_preregistration.py` | Synthetic/non-clinical template validates; no supermarket dataset, empirical health finding, causal claim or external reproduction is enabled |
 
+The same revision’s Conductor regeneration receipt records the methods hash,
+roadmap status, generated issue graph and full quality harness. This closes only
+the bookkeeping task; public food-retail acquisition, rights, national,
+operational, external and release gates remain open (`docs/supermarket-conductor-regeneration-20260825.json`).
+
 ## Blocking defects
 
 - Rights-cleared versioned supermarket inputs, baseline reproduction, access/health analysis,
