@@ -27,6 +27,7 @@
 | `INTEROP-PRODUCER-CONSUMER-20260825` | Dependency-free Rust/Python producer and consumer exchange exercise passes in both directions | `rust/riopa-conformance/src/bin/conformance_exchange.rs`, `tests/test_rust_producer_consumer.py`, `docs/interop-producer-consumer-exercise-20260825.json` | Repository-owned wire-format exercise passes; external independent implementations, standards-complete serialization and signed release conformance remain open |
 | `INTEROP-FINDINGS-LEDGER-20260825` | Fail-closed semantic-loss and migration findings ledger derived from the compatibility matrix | `scripts/build_interoperability_findings.py`, `tests/test_interoperability_findings.py`, `docs/interoperability-findings-ledger-contract-20260825.json` | Migration-corpus finding resolves; Rust parity, external producer/consumer, standards-round-trip and signed-report gates remain open |
 | `INTEROP-V1-SDK-SUPPORT-20260825` | Bounded Python/Rust SDK surfaces, compatibility policy and conformance-report fields | `docs/interoperability-v1-sdk-support-and-reporting-20260825.md`, `docs/interoperability-v1-sdk-support-contract-20260825.json`, `tests/test_interoperability_v1_support.py` | Support surface and report template are explicit; external implementations, trusted signing, preservation acceptance and release promotion remain open |
+| `INTEROP-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate exercise evidence for the bounded interoperability slice | `docs/interoperability-closeout-evidence-20260825.json`, `tests/test_interoperability_closeout_evidence.py` | Evidence categories are linked and fail-closed; external implementations, signing, preservation and authority gates remain open |
 
 ## Blocking defects
 
@@ -43,6 +44,10 @@ or archived until its M2–M6 acceptance evidence is recorded.
 
 - The adapters do not upgrade approximate, extension-only or unmapped fields to
   exact equivalence and do not constitute a full conformance certificate.
+
+The 2026-08-25 closeout packet links the bounded SDK, Rust/Python exchange,
+compatibility, findings and report-guidance evidence. It does not establish an
+external implementation, signed conformance release or stable-v1 promotion.
 
 ## Review and handover
 
