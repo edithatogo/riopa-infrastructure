@@ -1,0 +1,38 @@
+{
+  "schema": "riopa.publication-deviations-limitations.v1",
+  "evidence_id": "urn:riopa:evidence:publication-deviations-limitations:2026-08-25",
+  "status": "resolved-with-explicit-open-gates",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "inputs": [
+    "docs/publication-real-data-release-candidate-20260825.json",
+    "docs/publication-applied-benchmark-reproduction-20260825.json"
+  ],
+  "findings": [
+    {
+      "id": "F-REAL-DATA-SLICE",
+      "disposition": "pass-with-limitations",
+      "finding": "The WP-007 packet and materialized artifacts are digest-bound and reproducible by an owner-authorized agent.",
+      "limitation": "The council slice is one deliberately selected feature; it is not coverage, authority, independent reproduction or publication evidence."
+    },
+    {
+      "id": "F-APPLIED-BENCHMARK",
+      "disposition": "pass-with-limitations",
+      "finding": "The manifest-bound WP-010 benchmark and resilience contract execute successfully without contacting live endpoints.",
+      "limitation": "Timing is synthetic regional measurement and the national value is a linear projection; resource, cost, national-scale and production resilience evidence are absent."
+    }
+  ],
+  "resolutions": [
+    "Published both findings with exact input and run digests.",
+    "Kept promotion disabled and retained network, timetable and facility exclusions.",
+    "Kept external participant, preservation, elapsed and accountable-authority gates open."
+  ],
+  "open_gates": [
+    "factual external operator and user reproduction",
+    "protected artifact attestation",
+    "preservation deposit and anonymous restore",
+    "90-day/three-cycle beta evidence and 30-day exact-RC soak",
+    "national-scale workload measurement with resource and cost metrics",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false
+}
