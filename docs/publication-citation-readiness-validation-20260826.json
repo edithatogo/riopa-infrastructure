@@ -1,0 +1,28 @@
+{
+  "schema": "riopa.publication-citation-readiness-validation.v1",
+  "status": "bounded-citation-contract-validated",
+  "guidance": "docs/publication-citation-guidance-20260825.json",
+  "candidate": "docs/publication-real-data-release-candidate-20260825.json",
+  "checks": {
+    "preview_status": true,
+    "candidate_is_not_publication": true,
+    "revision_is_content_bound": true,
+    "source_digest_is_required": true,
+    "archived_packet_is_source_truth": true,
+    "template_has_required_placeholders": true,
+    "promotion_disabled": true,
+    "persistent_identifier_deferred": true
+  },
+  "promotion_allowed": false,
+  "open_gates": [
+    "clean-room or external reproduction",
+    "protected artifact attestation",
+    "preservation deposit and anonymous restore",
+    "elapsed beta/RC qualification",
+    "accountable release-authority decision"
+  ],
+  "nonclaims": [
+    "This validates citation readiness for a bounded preview only.",
+    "It does not create a DOI, preservation receipt, external reproduction, or release approval."
+  ]
+}
