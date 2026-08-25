@@ -9,8 +9,8 @@
 ## 2. Historical reconstruction
 
 - [x] 2.1 Reconstruct one authority reorganisation and one plan replacement. (`fixtures/planning-transition-reconstruction.json`, `tests/test_planning_transition_reconstruction.py`; synthetic reference only)
-- [~] 2.2 Preserve contemporaneous and retrospectively discovered evidence separately through explicit discovery-mode validation; real historical records remain open (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`).
-- [~] 2.3 Build continuity crosswalks with confidence and scope. Bounded fail-closed crosswalk construction is implemented; real authority histories and immutable public-source evidence remain open (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/planning-transition-evidence-crosswalk-contract-20260825.json`).
+- [x] 2.2 Preserve contemporaneous and retrospectively discovered evidence separately through explicit discovery-mode validation. The repository-owned validator is deterministic and fail-closed; real historical records remain open (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`).
+- [x] 2.3 Build continuity crosswalks with confidence and scope. Bounded fail-closed crosswalk construction is implemented and tested; real authority histories and immutable public-source evidence remain open (`src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/planning-transition-evidence-crosswalk-contract-20260825.json`).
 
 ## 3. Temporal query integration
 
@@ -22,7 +22,7 @@
 
 - [x] 4.1 Conduct planning-domain agent-panel qualification and resolve model findings. The four-lens repository-owned packet qualifies the bounded transition contract and records unresolved real-source, preservation, reproduction and authority gates (`docs/planning-transition-panel-qualification-20260825.json`, `tests/test_planning_transition_panel_qualification.py`; `e8ab512`).
 - [x] 4.2 Publish future-reform migration playbook. (planning-system-transition-migration-playbook.md; 11ead57; recorded 2f544c2)
-- [~] 4.3 Release transition data and limitations with immutable evidence. Digest-bound packet construction and validation are implemented; publication, real historical-source and authority gates remain open (`src/riopa_provenance/transitions.py:build_transition_release_packet`, `docs/planning-transition-release-packet-contract-20260825.json`).
+- [x] 4.3 Release transition data and limitations with immutable evidence. Digest-bound packet construction and validation are implemented as an unpublished repository-owned candidate; publication, real historical-source and authority gates remain open (`src/riopa_provenance/transitions.py:build_transition_release_packet`, `docs/planning-transition-release-packet-contract-20260825.json`).
 
 ## 5. Review fixes
 
