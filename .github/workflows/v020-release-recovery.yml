@@ -41,6 +41,14 @@ jobs:
           cache-dependency-glob: uv.lock
           python-version: "3.13"
           version: "0.11.16"
+      - name: Route locked hashes through public PyPI
+        run: |
+          cp uv.lock /tmp/riopa-v020-original.lock
+          test "$(grep -c 'packages.applied-caas-gateway1.internal.api.openai.org' uv.lock)" -gt 0
+          sed -i \
+            's#https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public#https://pypi.org#g' \
+            uv.lock
+          test "$(grep -c 'packages.applied-caas-gateway1.internal.api.openai.org' uv.lock || true)" -eq 0
       - name: Install locked environment with bounded gateway retries
         run: |
           for attempt in 1 2 3 4 5
@@ -52,6 +60,10 @@ jobs:
             test "$attempt" -lt 5
             sleep "$((attempt * 5))"
           done
+      - name: Restore and verify historical lock bytes
+        run: |
+          mv /tmp/riopa-v020-original.lock uv.lock
+          git diff --exit-code -- uv.lock
       - name: Run historical validation contract
         run: |
           uv run ruff check .
