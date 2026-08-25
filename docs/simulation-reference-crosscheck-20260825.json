@@ -1,0 +1,29 @@
+{
+  "schema": "riopa.simulation.reference-crosscheck.v1",
+  "evidence_id": "SIMULATION-REFERENCE-CROSSCHECK-20260825",
+  "status": "bounded-internal-reference-crosscheck",
+  "contract": "src/riopa_provenance/analysis.py::compare_fcfs_reference_implementations",
+  "fixture": {
+    "arrival_times": [0.0, 0.0, 1.0, 4.0],
+    "service_times": [2.0, 1.0, 1.0, 2.0],
+    "capacity": 2,
+    "warm_up_customers": 1
+  },
+  "outcome": {
+    "primary": "simulate_fcfs_queue",
+    "alternate": "availability-list-reference",
+    "parity": true,
+    "maximum_absolute_delta": 0.0
+  },
+  "promotion_allowed": false,
+  "open_gates": [
+    "external implementation or published benchmark comparison",
+    "real-data calibration and holdout validation",
+    "clinical/dispatch/operational qualification",
+    "national-scale performance and release authority"
+  ],
+  "nonclaims": [
+    "The alternate path is an internal repository cross-check, not external validation.",
+    "Synthetic parity does not establish real-world performance or operational safety."
+  ]
+}

@@ -15,7 +15,8 @@
     "urn:riopa:evidence:simulation-contract:2026-08-22",
     "urn:riopa:evidence:simulation-fcfs-engine:2026-08-25",
     "urn:riopa:evidence:simulation-stochastic-stress:2026-08-25",
-    "urn:riopa:evidence:simulation-boundary-performance:2026-08-25"
+    "urn:riopa:evidence:simulation-boundary-performance:2026-08-25",
+    "urn:riopa:evidence:simulation-reference-crosscheck:2026-08-25"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
