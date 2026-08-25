@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.emergency-health-constraints-contract.v1",
+  "evidence_id": "emergency-health-constraints-contract-20260825",
+  "track_id": "emergency_health_facilities_pilot_20260718",
+  "implementation": "src/riopa_provenance/analysis.py:evaluate_service_constraints",
+  "test": "tests/test_analysis.py",
+  "scope": "caller-supplied synthetic service scenarios",
+  "constraints": ["minimum_volume", "resilience_reserve", "transition_cost", "phased_investment"],
+  "promotion_allowed": false,
+  "non_claims": [
+    "Constraint satisfaction does not produce an operational plan or clinical recommendation.",
+    "Real service, safety, authority and external-validity evidence remains open."
+  ]
+}
