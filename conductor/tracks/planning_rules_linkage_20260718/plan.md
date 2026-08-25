@@ -22,7 +22,7 @@
 
 - [ ] 4.1 Conduct panel-of-agents link sample review and error analysis; factual external participation and authority remain open.
 - [ ] 4.2 Resolve or quantify missing/incorrect linkage.
-- [ ] 4.3 Publish versioned links, methods and non-authority limitations.
+- [~] 4.3 Publish the bounded versioned-link methods and non-authority limitations (`docs/planning-versioned-links-methods-20260825.md`, `tests/test_planning_versioned_methods.py`). Panel-of-agents review, real source capture, legal interpretation, preservation and authority remain open.
 
 ## Track closeout
 
