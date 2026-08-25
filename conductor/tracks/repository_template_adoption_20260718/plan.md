@@ -16,7 +16,7 @@
 
 - [~] 3.1 Inventory and map the related fyi, archive, corpus, policy, health and social-data repositories. The bounded inventory records roles and evidence status without claiming current adoption; fresh revision capture and native conformance remain open (`docs/repository-adoption-inventory-20260825.json`, `tests/test_repository_adoption_inventory.py`).
 - [~] 3.2 Implement read-only additive profile and research-object readiness emission in staged waves. The emitter detects local scaffolding and research-object entrypoints without mutation; cross-repository execution and adoption remain open (`scripts/build_adoption_profile.py`, `tests/test_adoption_profile.py`, `docs/repository-adoption-profile-contract-20260825.json`).
-- [ ] 3.3 Record semantic losses, contributor feedback and migration costs.
+- [~] 3.3 Record semantic losses, contributor feedback and migration costs. Adapter semantic-loss classifications are summarized; contributor feedback and migration costs remain explicitly `not-collected`/`not-measured` until factual evidence exists (`scripts/build_adoption_migration_ledger.py`, `tests/test_adoption_migration_ledger.py`, `docs/repository-adoption-migration-ledger-contract-20260825.json`).
 
 ## 4. Stable developer experience
 

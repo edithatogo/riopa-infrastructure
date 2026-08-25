@@ -1,0 +1,24 @@
+{
+  "evidence_id": "REPOSITORY-ADOPTION-MIGRATION-LEDGER-20260825",
+  "title": "Fail-closed semantic-loss and migration-cost ledger",
+  "scope": {
+    "included": [
+      "recorded adapter classification counts",
+      "semantic-loss field listing",
+      "explicit unknown contributor-feedback status",
+      "explicit unmeasured migration-cost dimensions"
+    ],
+    "excluded": [
+      "inferred contributor feedback",
+      "invented migration effort",
+      "cross-repository mutation or adoption",
+      "release qualification"
+    ]
+  },
+  "evidence": [
+    "scripts/build_adoption_migration_ledger.py",
+    "tests/test_adoption_migration_ledger.py"
+  ],
+  "status": "repository-owned fail-closed ledger",
+  "promotion_allowed": false
+}
