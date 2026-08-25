@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.planning-source-intake-contract.v1",
+  "evidence_id": "planning-source-intake-contract-20260825",
+  "track_id": "planning_rules_linkage_20260718",
+  "implementation": "src/riopa_provenance/planning.py:build_plan_source_intake",
+  "test": "tests/test_planning.py",
+  "scope": "declared plan documents, structure anchors, terms and rights fields",
+  "integrity": "records_sha256 over sorted plan-version records",
+  "contact_policy": "no source contact or interpretation",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The intake does not establish legal status, completeness, authority or publication permission.",
+    "Actual document bytes, preservation acceptance and council-specific evidence remain open."
+  ]
+}

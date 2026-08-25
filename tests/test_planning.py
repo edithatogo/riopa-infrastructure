@@ -1,6 +1,11 @@
 import pytest
 
-from riopa_provenance.planning import PlanningLink, PlanVersion, ProvisionIdentity
+from riopa_provenance.planning import (
+    PlanningLink,
+    PlanVersion,
+    ProvisionIdentity,
+    build_plan_source_intake,
+)
 
 
 def test_planning_identities_preserve_version_anchor_and_non_authority() -> None:
@@ -30,6 +35,34 @@ def test_planning_identities_preserve_version_anchor_and_non_authority() -> None
     )
     assert provision.plan_version_id == plan.version_id
     assert link.as_dict()["promotion_allowed"] is False
+
+
+def test_plan_source_intake_is_digest_bound_and_preserves_rights_fields() -> None:
+    records = [
+        {
+            "plan_id": "plan:wcc",
+            "version_id": "plan:wcc:2024",
+            "source_ref": "archive:wcc-plan",
+            "locator": "https://example.test/wcc-plan",
+            "document_sha256": "a" * 64,
+            "structure_sha256": "b" * 64,
+            "terms_status": "review-required",
+            "rights_status": "public-candidate",
+        }
+    ]
+    intake = build_plan_source_intake(
+        records, intake_id="intake-1", captured_at="2026-08-25T00:00:00Z"
+    )
+    assert intake["status"] == "archived-declared-candidate"
+    assert len(intake["records_sha256"]) == 64
+    assert intake["records"][0]["rights_status"] == "public-candidate"
+    assert intake["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="SHA-256"):
+        build_plan_source_intake(
+            [{**records[0], "document_sha256": "not-a-digest"}],
+            intake_id="intake-1",
+            captured_at="now",
+        )
 
 
 @pytest.mark.parametrize(
