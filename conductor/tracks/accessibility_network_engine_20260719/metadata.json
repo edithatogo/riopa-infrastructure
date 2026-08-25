@@ -17,7 +17,8 @@
     "urn:riopa:evidence:accessibility-partition-cache:2026-08-25",
     "urn:riopa:evidence:accessibility-agent-panel:2026-08-25",
     "urn:riopa:evidence:accessibility-reference-comparison:2026-08-25",
-    "urn:riopa:evidence:accessibility-v1-contract-freeze:2026-08-25"
+    "urn:riopa:evidence:accessibility-v1-contract-freeze:2026-08-25",
+    "urn:riopa:evidence:accessibility-archive-bundle-readiness:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

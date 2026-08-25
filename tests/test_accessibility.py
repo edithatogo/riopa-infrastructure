@@ -21,6 +21,7 @@ from riopa_provenance.accessibility import (
     reachable_capacity_at_departure,
     straight_line_matrix,
     two_step_floating_catchment,
+    validate_content_addressed_archive_bundle,
     validate_scenario_contract,
 )
 from riopa_provenance.validation import validate_instance
@@ -370,6 +371,51 @@ def test_public_registry_binding_rejects_stale_or_non_public_destinations() -> N
     private["release_filter"] = "all"
     with pytest.raises(ValueError, match="public-only"):
         bind_public_facility_registry(matrix, private)
+
+
+def test_archive_bundle_guard_requires_all_content_addressed_families() -> None:
+    ready = validate_content_addressed_archive_bundle(
+        {
+            "archives": {
+                family: {
+                    "version": f"{family}:2026",
+                    "payload_sha256": "a" * 64,
+                    "locator": f"archive:{family}",
+                    "status": "archived",
+                }
+                for family in ("network", "timetable", "facility", "demand")
+            }
+        }
+    )
+    assert ready["status"] == "ready-for-reference-integration"
+    assert ready["missing_families"] == []
+    assert ready["malformed_families"] == []
+    assert ready["promotion_allowed"] is False
+
+
+def test_archive_bundle_guard_fails_closed_for_missing_and_malformed_families() -> None:
+    report = validate_content_addressed_archive_bundle(
+        {
+            "archives": {
+                "network": {
+                    "version": "network:2026",
+                    "payload_sha256": "not-a-digest",
+                    "locator": "archive:network",
+                    "status": "archived",
+                },
+                "facility": {
+                    "version": "facility:2026",
+                    "payload_sha256": "b" * 64,
+                    "locator": "archive:facility",
+                    "status": "archived",
+                },
+            }
+        }
+    )
+    assert report["status"] == "blocked-missing-archive-evidence"
+    assert report["missing_families"] == ["timetable", "demand"]
+    assert report["malformed_families"] == ["network"]
+    assert report["promotion_allowed"] is False
 
 
 def test_accessibility_plan_closes_reference_scenario_contract_without_operational_claim() -> None:

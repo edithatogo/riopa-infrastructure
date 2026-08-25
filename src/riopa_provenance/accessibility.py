@@ -6,6 +6,7 @@ preferences belong in :mod:`riopa_provenance.facility_location`.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 from enum import StrEnum
@@ -174,6 +175,69 @@ def bind_public_facility_registry(
             (
                 "The binding does not establish network, timetable, national-scale or "
                 "operational validity."
+            ),
+        ],
+    }
+
+
+def validate_content_addressed_archive_bundle(
+    bundle: Mapping[str, Any],
+) -> dict[str, object]:
+    """Check readiness of the four archive families required for integration.
+
+    This guard validates only declared archive metadata.  It never contacts a
+    source, reads live endpoints, or promotes a bundle into an accessibility
+    result.  Missing families stay visible as a blocking readiness outcome.
+    """
+
+    required = ("network", "timetable", "facility", "demand")
+    archives = bundle.get("archives")
+    if not isinstance(archives, Mapping):
+        raise ValueError("archive bundle must contain an archives object")
+    malformed: list[str] = []
+    missing: list[str] = []
+    accepted: dict[str, dict[str, str]] = {}
+    for family in required:
+        entry = archives.get(family)
+        if not isinstance(entry, Mapping):
+            missing.append(family)
+            continue
+        version = entry.get("version")
+        digest = entry.get("payload_sha256")
+        locator = entry.get("locator")
+        status = entry.get("status")
+        if (
+            not isinstance(version, str)
+            or not version.strip()
+            or not isinstance(digest, str)
+            or not re.fullmatch(r"[0-9a-fA-F]{64}", digest)
+            or not isinstance(locator, str)
+            or not locator.strip()
+            or status != "archived"
+        ):
+            malformed.append(family)
+            continue
+        accepted[family] = {
+            "version": version,
+            "payload_sha256": digest.lower(),
+            "locator": locator,
+        }
+    ready = not missing and not malformed
+    return {
+        "record_type": "accessibility-archive-bundle-readiness",
+        "required_families": list(required),
+        "accepted": accepted,
+        "missing_families": missing,
+        "malformed_families": malformed,
+        "status": "ready-for-reference-integration"
+        if ready
+        else "blocked-missing-archive-evidence",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Readiness metadata does not prove payload contents, rights, authority or currentness.",
+            (
+                "A ready bundle still requires reference-engine, external, scale and "
+                "operational qualification."
             ),
         ],
     }

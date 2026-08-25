@@ -1,0 +1,28 @@
+{
+  "schema": "riopa.accessibility.archive-bundle-readiness.v1",
+  "evidence_id": "ACCESSIBILITY-ARCHIVE-BUNDLE-READINESS-20260825",
+  "scope": "declared content-addressed reference inputs",
+  "contract": "src/riopa_provenance/accessibility.py::validate_content_addressed_archive_bundle",
+  "required_families": ["network", "timetable", "facility", "demand"],
+  "checks": [
+    "non-empty version",
+    "SHA-256 payload digest",
+    "non-empty archive locator",
+    "status=archived"
+  ],
+  "outcomes": {
+    "complete_bundle": "ready-for-reference-integration",
+    "missing_or_malformed_bundle": "blocked-missing-archive-evidence"
+  },
+  "promotion_allowed": false,
+  "open_gates": [
+    "actual archived network/timetable/facility/demand payloads",
+    "rights and authority qualification",
+    "external workflow and operational evidence",
+    "national-scale performance and release authority"
+  ],
+  "nonclaims": [
+    "Metadata readiness does not prove payload contents, rights, authority or currentness.",
+    "A ready bundle does not establish accessibility validity or operational service."
+  ]
+}
