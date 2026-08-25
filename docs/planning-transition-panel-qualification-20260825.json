@@ -1,0 +1,48 @@
+{
+  "schema": "riopa.planning-transition-panel-qualification.v1",
+  "packet_id": "planning-transition-panel-qualification-20260825",
+  "status": "bounded-agent-panel-not-qualified",
+  "revision_basis": "protected-main",
+  "scope": "regional public-source non-operational technical preview",
+  "evidence_refs": [
+    "fixtures/planning-transition-reconstruction.json",
+    "src/riopa_provenance/transitions.py",
+    "tests/test_planning_transition_reconstruction.py",
+    "tests/test_transitions.py",
+    "docs/planning-transition-evidence-crosswalk-contract-20260825.json"
+  ],
+  "lenses": [
+    {
+      "id": "governance",
+      "finding": "transition records expose discovery mode, confidence, scope and unresolved legal-status boundaries",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "api-schema",
+      "finding": "transition identity, valid-time, recorded-time and as-known-at selectors are explicit and executable-validated",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "data-governance",
+      "finding": "synthetic reconstruction is separated from contemporaneous or retrospective public-source evidence and no authority is inferred",
+      "disposition": "repository-evidence-qualified"
+    },
+    {
+      "id": "scientific-methods",
+      "finding": "continuity and downstream integration preserve confidence, scope and non-equivalence semantics without making legal or operational claims",
+      "disposition": "repository-evidence-qualified"
+    }
+  ],
+  "open_gates": [
+    "real public-source authority reorganisation and plan-replacement records",
+    "immutable source capture and preservation receipt for transition evidence",
+    "independent or external reproduction of a real-data transition case",
+    "accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This packet qualifies only the repository-owned bounded contract and synthetic fixtures; it is not legal review, source authority, or real-data reconstruction.",
+    "Agent-panel agreement cannot create public-source evidence, preservation acceptance, external participation, or release authority.",
+    "Network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}

@@ -22,21 +22,24 @@
 | `PLANNING-TRANSITION-EVIDENCE-CROSSWALK-20260825` | Explicit discovery timing and confidence/scope-bounded continuity crosswalk contract | `src/riopa_provenance/transitions.py`, `tests/test_transitions.py`, `docs/planning-transition-evidence-crosswalk-contract-20260825.json` | Repository contract passes; real public-source history, legal authority, panel qualification and immutable release gates remain open |
 | PT-4 | Downstream zoning and accessibility transition integration | `tests/test_transition_downstream.py`, `docs/planning-transition-downstream-contract.md` | Successor plan is selected at explicit valid time and passed to the dependency-free reference accessibility measure; synthetic only, with network/timetable/facility and legal claims disabled |
 | `PLANNING-RECONSTRUCTION-SYNTHETIC-20260825` | One authority reorganisation and one plan replacement are represented as validated reconstruction cases | `fixtures/planning-transition-reconstruction.json`, `tests/test_planning_transition_reconstruction.py` | Synthetic reference cases validate; real historical evidence, legal authority and panel qualification remain open |
+| `PLANNING-TRANSITION-PANEL-20260825` | Four-lens planning-transition contract qualification | `docs/planning-transition-panel-qualification-20260825.json`, `tests/test_planning_transition_panel_qualification.py` | Repository-owned bounded contract qualified; real-source, preservation, reproduction and authority gates remain open |
 
 ## Blocking defects
 
 - Real authority reorganisation and plan replacement reconstructions remain
-  pending; public-source capture and planning-domain agent-panel qualification
-  are required before validation. The downstream integration slice is bounded
-  synthetic evidence, not real-data or operational qualification.
+  pending; public-source capture, preservation and real-data reproduction are
+  required before validation. The planning-domain agent-panel qualification is
+  complete only for the repository-owned bounded contract. The downstream
+  integration slice is bounded synthetic evidence, not real-data or operational
+  qualification.
 
 ## Decisions, exceptions and limitations
 
-- The repository-owned contract and fixtures are complete for the current slice.
-  Historical authority/plan reconstruction, planning-domain agent-panel
-  qualification and immutable public-source evidence are still blocking
-  validation. The downstream integration evidence is bounded synthetic coverage
-  and does not satisfy the real-data gate.
+- The repository-owned contract, fixtures and four-lens panel packet are complete
+  for the current slice. Historical authority/plan reconstruction, immutable
+  public-source evidence, real-data reproduction and release authority are still
+  blocking validation. The downstream integration evidence is bounded synthetic
+  coverage and does not satisfy the real-data gate.
 
 ## Review and handover
 
@@ -52,5 +55,9 @@ Required agent-panel lenses: Governance analyst, API/schema analyst, Data-govern
 - Fix: corrected the evidence reference and recorded the blockers explicitly.
 - Additional fix: aligned the decisions register with PT-4 while retaining the
   real-data and external qualification boundaries.
+- Current review: the new panel packet and test passed focused tests, roadmap
+  validation and the full quality harness; the formatter correction is recorded
+  as review fix `68807d4`. No external authority, preservation or real-data gate
+  was inferred.
 
 This index records the repository-owned implementation slice while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
