@@ -1,0 +1,30 @@
+{
+  "evidence_id": "ACCESSIBILITY-WORKLOAD-ENVELOPE-20260825",
+  "record_type": "accessibility-reference-workload-envelope",
+  "implementation": "src/riopa_provenance/accessibility.py::build_reference_workload_envelope",
+  "tests": "tests/test_accessibility.py",
+  "scope": "bounded regional public-datasets-only non-operational technical preview",
+  "outputs": [
+    "origin and destination cardinality",
+    "observation and partition counts",
+    "observed throughput",
+    "declared storage estimate",
+    "declared cost estimate"
+  ],
+  "controls": [
+    "caller-supplied elapsed time and accounting rates",
+    "deterministic partition count",
+    "claim_classification=reference-only",
+    "promotion_allowed=false"
+  ],
+  "open_gates": [
+    "national-scale workload manifest",
+    "provider-backed cost evidence",
+    "production SLO and operational qualification",
+    "network, timetable and facility archive integration"
+  ],
+  "non_claims": [
+    "A bounded envelope is not a national-scale measurement.",
+    "Declared storage and cost are not provider invoices or release approval."
+  ]
+}

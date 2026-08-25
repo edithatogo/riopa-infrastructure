@@ -11,6 +11,7 @@ from riopa_provenance.accessibility import (
     TravelObservation,
     TravelStatus,
     bind_public_facility_registry,
+    build_reference_workload_envelope,
     changed_origins,
     compare_reference_matrices,
     cumulative_opportunity,
@@ -65,6 +66,46 @@ def test_partitioning_is_deterministic_and_preserves_rows() -> None:
     assert sum(len(partition.observations) for partition in partitions) == 4
     with pytest.raises(ValueError, match="positive"):
         partition_matrix(_matrix(), origins_per_partition=0)
+
+
+def test_reference_workload_envelope_reports_bounded_storage_and_cost() -> None:
+    report = build_reference_workload_envelope(
+        _matrix(),
+        origins_per_partition=1,
+        observed_elapsed_seconds=2.0,
+        bytes_per_observation=100,
+        cost_per_second=0.25,
+    )
+    assert report["observation_count"] == 4
+    assert report["partition_count"] == 2
+    assert report["estimated_storage_bytes"] == 400
+    assert report["observations_per_second"] == 2.0
+    assert report["estimated_cost"] == 0.5
+    assert report["promotion_allowed"] is False
+
+
+def test_reference_workload_envelope_rejects_invalid_accounting_inputs() -> None:
+    with pytest.raises(ValueError, match="observed_elapsed_seconds"):
+        build_reference_workload_envelope(
+            _matrix(),
+            origins_per_partition=1,
+            observed_elapsed_seconds=0,
+            bytes_per_observation=100,
+        )
+    with pytest.raises(ValueError, match="bytes_per_observation"):
+        build_reference_workload_envelope(
+            _matrix(),
+            origins_per_partition=1,
+            observed_elapsed_seconds=1,
+            bytes_per_observation=0,
+        )
+    with pytest.raises(ValueError, match="origins_per_partition"):
+        build_reference_workload_envelope(
+            _matrix(),
+            origins_per_partition=True,
+            observed_elapsed_seconds=1,
+            bytes_per_observation=100,
+        )
 
 
 def test_reference_matrix_comparison_preserves_statuses_and_deltas() -> None:

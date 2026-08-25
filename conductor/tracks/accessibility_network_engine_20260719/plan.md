@@ -16,7 +16,7 @@
 
 - [~] 3.1 Build deterministic comparisons for caller-supplied reference matrices (`src/riopa_provenance/accessibility.py:compare_reference_matrices`, `docs/accessibility-reference-comparison-contract-20260825.json`, `tests/test_accessibility.py`). Named archived inputs, independent real engines, national-scale and operational qualification remain open.
 - [~] 3.2 Implement deterministic origin partitioning, fingerprint-aware caching and changed-row incremental recomputation for the dependency-free reference matrix. Real network, timetable, national-scale and operational qualification remain open (`src/riopa_provenance/accessibility.py`, `docs/accessibility-partition-cache-contract-20260825.json`, `tests/test_accessibility.py`).
-- [ ] 3.3 Benchmark national-scale performance, storage and cost.
+- [~] 3.3 Define a bounded workload-envelope benchmark for cardinality, partitioning, storage and declared cost. (`src/riopa_provenance/accessibility.py::build_reference_workload_envelope`, `tests/test_accessibility.py`, `docs/accessibility-workload-envelope-contract-20260825.json`; national-scale, provider-backed cost and operational measurements remain open)
 - [x] 3.4 Preserve the complete Stats NZ Meshblock 2026 supporting geography as an immutable input candidate while keeping demand, destination, network and performance claims open.
 
 ## 4. Stable accessibility interface
@@ -35,3 +35,4 @@
 ## Review fixes
 
 - [x] R1 Apply repository formatter to the straight-line adapter after the local quality review (`2b271c0`).
+- [x] R2 Reject boolean and non-integer partition sizes in the workload-envelope accounting path so invalid caller inputs cannot silently become a valid partition count (`b7c985b`).
