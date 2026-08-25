@@ -1,0 +1,15 @@
+{
+  "schema": "riopa.publication-package-preparation.v1",
+  "packet_id": "publication-package-preparation-20260825",
+  "status": "candidate-preparation-only",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "packages": [
+    {"package_id": "infrastructure", "purpose": "installable software, schemas, workflows and security controls", "references": ["pyproject.toml", "README.md", ".github/workflows/release.yml", "docs/conformance-and-release-verification.md"], "required_checks": ["python-3.14-quality", "sbom", "attestation", "protected-release-revision"]},
+    {"package_id": "methods", "purpose": "versioned methods, contracts, limitations and citation guidance", "references": ["docs/publication-validation-packet-20260825.json", "docs/publication-claim-classification-contract-20260825.json", "docs/publication-citation-guidance-20260825.json"], "required_checks": ["exact-revision", "methods-output", "agent-panel-assessment", "external-reproduction"]},
+    {"package_id": "data-descriptor", "purpose": "content-addressed public-source descriptors and bounded workload records", "references": ["docs/national-workload-manifest-20260803.json", "evidence/stats-nz-meshblock-2026-projection/records-manifest.json", "docs/public-dataset-archive-incorporation-plan-20260802.json"], "required_checks": ["source-digest", "rights-record", "archive-restore", "coverage-limitations"]},
+    {"package_id": "applied-benchmark", "purpose": "bounded reproducible synthetic/reference benchmark and result interpretation", "references": ["examples/wp010-performance-benchmark/contract.json", "examples/wp010-performance-benchmark/workload.json", "docs/simulation-v1-reference-contract-20260825.json"], "required_checks": ["deterministic-reproduction", "performance-envelope", "non-operational-boundary", "external-reproduction"]}
+  ],
+  "pending_gates": ["protected artifact attestation", "accepted preservation deposit and anonymous restore", "factual external operator/user reproduction", "elapsed beta/RC qualification", "tier-specific accountable release-authority decision"],
+  "publication_ready": false,
+  "non_claims": ["This matrix prepares candidate packages; it is not a publication, DOI, deposit receipt or stable release.", "Agent panels and owner-authorized workflows cannot substitute for factual external participation or accountable authority."]
+}
