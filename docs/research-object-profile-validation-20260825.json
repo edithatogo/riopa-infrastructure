@@ -1,0 +1,42 @@
+{
+  "schema": "riopa.research-object-profile-validation.v1",
+  "evidence_id": "urn:riopa:evidence:research-object-profile-validation:2026-08-25",
+  "status": "bounded-tooling-validation",
+  "runtime": {
+    "python": "3.14 only",
+    "jsonschema": "4.26.0",
+    "pyshacl": "0.40.1",
+    "rdflib": "7.6.0"
+  },
+  "checks": [
+    {
+      "profile": "JSON Schema Draft 2020-12",
+      "schema": "schemas/source-record.schema.json",
+      "schema_sha256": "7ecbe2e182a3dc4bbec3670d9c16122536644c89e8d9629af55853a1d241e94c",
+      "instance": "examples/minimal/source-record.json",
+      "instance_sha256": "bf9558814943ef191cedb5e31e647b2ac9f9432716644441f2aa01332a8d6171",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "RDF/SHACL canonical crosswalk fixture",
+      "report": "docs/canonical-shacl-execution-report-20260825.json",
+      "fixture_sha256": "0a5ce20c85fd43c29dc47ec8e6baafe72af1f297929d2c5285381a0e0ec85e74",
+      "shape_sha256": "f43ee9a29112136abe0719977bfcde75fb907e4f8809329c7643594c5bc2bf25",
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "external_acceptance": false,
+  "promotion_allowed": false,
+  "open_gates": [
+    "external profile-validator or non-Python implementation acceptance",
+    "complete real-data release candidate",
+    "signed preservation/deposition",
+    "external reproduction and accountable release authority"
+  ],
+  "nonclaims": [
+    "Repository-executed validators demonstrate bounded tooling compatibility only.",
+    "A passing local validator is not external semantic, publication or authority approval."
+  ]
+}
