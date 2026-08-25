@@ -9,6 +9,7 @@ import json
 import urllib.parse
 import urllib.request
 from collections.abc import Callable
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -27,10 +28,26 @@ OVERPASS_QUERY = """[out:json][timeout:60];
 out center tags;
 """
 
-Fetch = Callable[[str, bytes | None], bytes]
+SAFE_RESPONSE_HEADERS = frozenset(
+    {"content-length", "content-type", "date", "etag", "last-modified"}
+)
 
 
-def _fetch(url: str, data: bytes | None = None) -> bytes:
+@dataclass(frozen=True)
+class FetchResponse:
+    """Fetched bytes plus a deliberately bounded set of transport metadata."""
+
+    body: bytes
+    status: int | None
+    final_url: str
+    headers: dict[str, str]
+
+
+type FetchResult = bytes | FetchResponse
+type Fetch = Callable[[str, bytes | None], FetchResult]
+
+
+def _fetch(url: str, data: bytes | None = None) -> FetchResponse:
     request = urllib.request.Request(
         url,
         data=data,
@@ -38,7 +55,75 @@ def _fetch(url: str, data: bytes | None = None) -> bytes:
         method="POST" if data is not None else "GET",
     )
     with urllib.request.urlopen(request, timeout=90) as response:  # nosec B310
-        return bytes(response.read())
+        return FetchResponse(
+            body=bytes(response.read()),
+            status=response.status,
+            final_url=response.geturl(),
+            headers={key: value for key, value in response.headers.items()},
+        )
+
+
+def _safe_url(url: str) -> str:
+    """Remove credentials, query parameters and fragments from receipt URLs."""
+    parsed = urllib.parse.urlsplit(url)
+    hostname = parsed.hostname or ""
+    if ":" in hostname:
+        hostname = f"[{hostname}]"
+    netloc = f"{hostname}:{parsed.port}" if parsed.port is not None else hostname
+    return urllib.parse.urlunsplit((parsed.scheme, netloc, parsed.path, "", ""))
+
+
+def _safe_header_value(value: str) -> str:
+    cleaned = "".join(character if ord(character) >= 32 else " " for character in value)
+    return cleaned[:512]
+
+
+def _coerce_response(result: FetchResult, *, requested_url: str) -> FetchResponse:
+    if isinstance(result, bytes):
+        return FetchResponse(body=result, status=None, final_url=requested_url, headers={})
+    return result
+
+
+def _response_metadata(response: FetchResponse, *, method: str) -> dict[str, Any]:
+    headers = {
+        key.lower(): _safe_header_value(value)
+        for key, value in response.headers.items()
+        if key.lower() in SAFE_RESPONSE_HEADERS
+    }
+    return {
+        "method": method,
+        "status": response.status,
+        "final_url": _safe_url(response.final_url),
+        "headers": dict(sorted(headers.items())),
+    }
+
+
+def _preserve_raw(output: Path, payload: bytes) -> tuple[str, str]:
+    """Persist exact response bytes at a content-addressed, append-safe path."""
+    digest = hashlib.sha256(payload).hexdigest()
+    relative_path = Path("raw") / "sha256" / f"{digest}.bin"
+    destination = output / relative_path
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        if destination.read_bytes() != payload:
+            raise ValueError(f"content-addressed raw object mismatch: {relative_path}")
+    else:
+        destination.write_bytes(payload)
+    return relative_path.as_posix(), digest
+
+
+def _capture_json(
+    output: Path,
+    *,
+    url: str,
+    data: bytes | None,
+    fetch: Fetch,
+) -> tuple[bytes, dict[str, Any], str, str, dict[str, Any]]:
+    response = _coerce_response(fetch(url, data), requested_url=url)
+    raw_file, raw_digest = _preserve_raw(output, response.body)
+    canonical_bytes, parsed = _canonical_json(response.body)
+    metadata = _response_metadata(response, method="POST" if data is not None else "GET")
+    return canonical_bytes, parsed, raw_file, raw_digest, metadata
 
 
 def _canonical_json(payload: bytes) -> tuple[bytes, dict[str, Any]]:
@@ -62,9 +147,19 @@ def capture(output: Path, fetch: Fetch = _fetch) -> dict[str, Any]:
             "outSR": "4326",
         }
     )
-    arcgis_bytes, arcgis = _canonical_json(fetch(f"{ARCGIS_URL}?{arcgis_query}", None))
-    overpass_bytes, overpass = _canonical_json(
-        fetch(OVERPASS_URL, urllib.parse.urlencode({"data": OVERPASS_QUERY}).encode())
+    arcgis_bytes, arcgis, arcgis_raw_file, arcgis_raw_digest, arcgis_response = _capture_json(
+        output,
+        url=f"{ARCGIS_URL}?{arcgis_query}",
+        data=None,
+        fetch=fetch,
+    )
+    overpass_bytes, overpass, overpass_raw_file, overpass_raw_digest, overpass_response = (
+        _capture_json(
+            output,
+            url=OVERPASS_URL,
+            data=urllib.parse.urlencode({"data": OVERPASS_QUERY}).encode(),
+            fetch=fetch,
+        )
     )
     (output / "rangitikei-ambulance.geojson").write_bytes(arcgis_bytes)
     (output / "osm-regional-pois.json").write_bytes(overpass_bytes)
@@ -92,6 +187,11 @@ def capture(output: Path, fetch: Fetch = _fetch) -> dict[str, Any]:
                 "source_id": "urn:riopa:source:rangitikei:public-facilities",
                 "local_file": "rangitikei-ambulance.geojson",
                 "sha256": hashlib.sha256(arcgis_bytes).hexdigest(),
+                "canonical_file": "rangitikei-ambulance.geojson",
+                "canonical_sha256": hashlib.sha256(arcgis_bytes).hexdigest(),
+                "raw_file": arcgis_raw_file,
+                "raw_sha256": arcgis_raw_digest,
+                "response": arcgis_response,
                 "record_count": len(features) if isinstance(features, list) else 0,
                 "licence": "CC-BY-4.0",
                 "authority": "regional-council-reference",
@@ -100,6 +200,11 @@ def capture(output: Path, fetch: Fetch = _fetch) -> dict[str, Any]:
                 "source_id": "urn:riopa:source:osm:nz-regional-pilot-pois",
                 "local_file": "osm-regional-pois.json",
                 "sha256": hashlib.sha256(overpass_bytes).hexdigest(),
+                "canonical_file": "osm-regional-pois.json",
+                "canonical_sha256": hashlib.sha256(overpass_bytes).hexdigest(),
+                "raw_file": overpass_raw_file,
+                "raw_sha256": overpass_raw_digest,
+                "response": overpass_response,
                 "record_count": len(elements) if isinstance(elements, list) else 0,
                 "classification_counts": osm_counts,
                 "licence": "ODbL-1.0",
