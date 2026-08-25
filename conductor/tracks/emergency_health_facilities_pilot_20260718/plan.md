@@ -16,7 +16,7 @@
 
 - [~] 3.1 Implement a bounded synthetic multi-service location, capacity, referral and workforce scenario evaluator. Deterministic residual allocation and unmet-demand reporting are covered; real service data, clinical interpretation and operational qualification remain open (`src/riopa_provenance/analysis.py:ServiceScenario`, `src/riopa_provenance/analysis.py:evaluate_service_scenario`, `docs/emergency-health-services-contract-20260825.json`, `tests/test_analysis.py`).
 - [~] 3.2 Add bounded synthetic minimum-volume, residual-resilience, transition-cost and phased-investment constraint checks. The checker reports constraint status without selecting an operational plan; real service data, clinical interpretation and operational qualification remain open (`src/riopa_provenance/analysis.py:evaluate_service_constraints`, `docs/emergency-health-constraints-contract-20260825.json`, `tests/test_analysis.py`).
-- [ ] 3.3 Report Pareto alternatives and non-modelled clinical constraints.
+- [~] 3.3 Report deterministic Pareto alternatives and explicitly non-modelled clinical/community constraints for caller-supplied synthetic candidates. The report is descriptive and promotion-disabled; real alternatives, safety review and operational interpretation remain open (`src/riopa_provenance/analysis.py:build_service_pareto_report`, `docs/emergency-health-pareto-contract-20260825.json`, `tests/test_analysis.py`).
 
 ## 4. Safety and publication review
 
