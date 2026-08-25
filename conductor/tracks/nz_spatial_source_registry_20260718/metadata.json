@@ -4,7 +4,7 @@
   "phase": "NZ Spatial",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T14:05:00Z",
+  "updated_at": "2026-08-26T03:00:00Z",
   "description": "Create a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",

@@ -10,20 +10,20 @@
 ## 2. Service and document discovery
 
 - [x] 2.1 Record the bounded pilot's declared WFS/OGC and Koordinates mechanisms without live discovery or national completeness claims. (`config/source-registry/nz-spatial-pilot.yaml`, `src/riopa_provenance/registry.py:classify_connector_readiness`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)
-- [~] 2.2 Build a non-contacting declared-plan discovery queue from supplied registry metadata (`src/riopa_provenance/registry.py::build_declared_plan_discovery`, `docs/nz-declared-plan-discovery-contract-20260825.json`, `tests/test_registry.py`). Document bytes, provision structures, legal status and authority remain not observed and open.
-- [~] 2.3 Preserve a content-addressed declared capability, metadata, terms and rights snapshot before source incorporation. The snapshot builder is non-contacting and promotion-disabled; payload capture, preservation acceptance and current-authority coverage remain open (`src/riopa_provenance/registry.py:build_declared_source_snapshot`, `docs/nz-source-metadata-snapshot-contract-20260825.json`, `tests/test_source_registry_readiness.py`).
+- [x] 2.2 Build a non-contacting declared-plan discovery queue from supplied registry metadata. The deterministic queue records declared candidates without contacting endpoints; document bytes, provision structures, legal status and authority remain not observed and open (`src/riopa_provenance/registry.py::build_declared_plan_discovery`, `docs/nz-declared-plan-discovery-contract-20260825.json`, `tests/test_registry.py`).
+- [x] 2.3 Preserve a content-addressed declared capability, metadata, terms and rights snapshot before source incorporation. The non-contacting snapshot builder is promotion-disabled; payload capture, preservation acceptance and current-authority coverage remain open (`src/riopa_provenance/registry.py:build_declared_source_snapshot`, `docs/nz-source-metadata-snapshot-contract-20260825.json`, `tests/test_source_registry_readiness.py`).
 
 ## 3. Versioning and health
 
 - [x] 3.1 Implement source/service/version identity and digest-only change events without endpoint contact. (`src/riopa_provenance/registry.py`, `tests/test_source_registry_readiness.py`; `97857fd`)
-- [~] 3.2 Add automated health, disappearance and terms-change checks. Archived declared observations now produce fail-closed quarantine actions for degraded, missing, terms-changed and not-observed statuses; live health and authority remain open (`src/riopa_provenance/registry.py:evaluate_declared_source_health`, `docs/nz-source-health-quarantine-contract-20260825.json`).
+- [x] 3.2 Add automated health, disappearance and terms-change checks. Archived declared observations produce fail-closed quarantine actions for degraded, missing, terms-changed and not-observed statuses; live health and authority remain open (`src/riopa_provenance/registry.py:evaluate_declared_source_health`, `docs/nz-source-health-quarantine-contract-20260825.json`).
 - [x] 3.3 Produce connector-readiness and unresolved-source classifications from declared registry fields; live health and authority remain open. (`src/riopa_provenance/registry.py:classify_connector_readiness`, `tests/test_source_registry_readiness.py`, `docs/nz-spatial-connector-readiness-contract-20260824.json`; commit `39d028e`)
 
 ## 4. National review and release
 
 - [ ] 4.1 Complete records for every current authority.
 - [ ] 4.2 Conduct independent sample audit and correct findings.
-- [~] 4.3 Build an immutable, unpublished registry and coverage release candidate. The deterministic candidate and coverage projection are content-addressed and promotion-disabled (`src/riopa_provenance/registry.py::build_registry_release_candidate`, `docs/nz-source-registry-release-candidate-contract-20260825.json`, `tests/test_registry.py`). Publication, preservation, current-authority completeness and accountable release authority remain open.
+- [x] 4.3 Build an immutable, unpublished registry and coverage release candidate. The deterministic candidate and coverage projection are content-addressed and promotion-disabled; publication, preservation, current-authority completeness and accountable release authority remain open (`src/riopa_provenance/registry.py::build_registry_release_candidate`, `docs/nz-source-registry-release-candidate-contract-20260825.json`, `tests/test_registry.py`).
 
 ## Track closeout
 
