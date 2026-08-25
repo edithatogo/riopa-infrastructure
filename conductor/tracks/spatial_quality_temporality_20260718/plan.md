@@ -21,7 +21,7 @@
 ## 4. Agent-panel quality validation
 
 - [ ] 4.1 Validate profiles on heterogeneous real council layers.
-- [ ] 4.2 Review blocking thresholds and waiver governance.
+- [~] 4.2 Review blocking thresholds and waiver governance. A bounded expiry-checked waiver evaluator now requires owner/rationale evidence and rejects expired or release-blocking waivers; real-council and release-authority review remains open (`src/riopa_provenance/spatial_quality.py:evaluate_quality_waiver`, `docs/spatial-quality-waiver-governance-contract-20260825.json`).
 - [ ] 4.3 Publish quality framework and benchmark reports.
 
 ## Track closeout

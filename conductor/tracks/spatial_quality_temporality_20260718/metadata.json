@@ -4,7 +4,7 @@
   "phase": "NZ Spatial",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T07:45:00Z",
+  "updated_at": "2026-08-25T11:00:00Z",
   "description": "Make geometry, topology, completeness, positional, temporal and semantic quality measurable and support defensible historical, boundary and change analyses.",
   "depends_on": [
     "nz_spatial_archive_mvp_20260718",
@@ -23,6 +23,7 @@
     ,"urn:riopa:evidence:spatial-boundary-crosswalk:2026-08-25"
     ,"urn:riopa:evidence:spatial-quality-closeout:2026-08-25"
     ,"urn:riopa:evidence:spatial-quality-conductor-regeneration:2026-08-25"
+    ,"urn:riopa:evidence:spatial-quality-waiver-governance:2026-08-25"
   ],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

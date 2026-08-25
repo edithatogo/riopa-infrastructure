@@ -1,11 +1,50 @@
 """Evaluate bounded spatial-quality reports without implying release qualification."""
 
 from collections.abc import Mapping
+from datetime import date
 from typing import Any
 
 
 class SpatialQualityError(ValueError):
     """Raised when a spatial-quality report cannot be evaluated safely."""
+
+
+def evaluate_quality_waiver(waiver: Mapping[str, Any] | None, *, as_of: str) -> dict[str, Any]:
+    """Evaluate a bounded quality waiver without permitting release bypass."""
+
+    required = ("waiver_id", "metric_id", "rationale", "owner", "expires_on")
+    errors: list[str] = []
+    if not isinstance(waiver, Mapping):
+        errors.append("waiver must be an object")
+        waiver = {}
+    for field in required:
+        if not isinstance(waiver.get(field), str) or not str(waiver[field]).strip():
+            errors.append(f"waiver requires {field}")
+    try:
+        review_date = date.fromisoformat(as_of)
+        expiry = date.fromisoformat(str(waiver.get("expires_on", "")))
+    except ValueError:
+        errors.append("as_of and expires_on must be ISO dates")
+        review_date = date.min
+        expiry = date.min
+    if expiry < review_date:
+        errors.append("waiver is expired")
+    if waiver.get("release_blocking") is True:
+        errors.append("release-blocking metrics cannot be waived")
+    status = "active" if not errors else "invalid-or-expired"
+    return {
+        "waiver_id": waiver.get("waiver_id"),
+        "metric_id": waiver.get("metric_id"),
+        "status": status,
+        "errors": list(dict.fromkeys(errors)),
+        "promotion_allowed": False,
+        "source": "bounded-quality-waiver",
+        "nonclaims": [
+            "A waiver records bounded rationale and expiry; it does not establish quality, "
+            "authority or release approval.",
+            "Release-blocking metrics and expired waivers remain fail-closed.",
+        ],
+    }
 
 
 def evaluate_spatial_quality(
