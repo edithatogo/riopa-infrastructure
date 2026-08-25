@@ -7,6 +7,7 @@ from riopa_provenance.planning import (
     build_feature_provision_linkage,
     build_plan_source_intake,
     build_provision_extraction_record,
+    build_rule_structure_record,
 )
 
 
@@ -133,6 +134,33 @@ def test_feature_provision_linkage_is_sorted_digest_bound_and_non_authoritative(
                 }
             ],
             linkage_id="linkage-1",
+            captured_at="now",
+        )
+
+
+def test_rule_structure_preserves_hierarchy_exceptions_and_unresolved_state() -> None:
+    record = build_rule_structure_record(
+        [
+            {
+                "provision_id": "rule:child",
+                "parent_provision_id": "rule:root",
+                "exception_refs": ["rule:exception"],
+                "combined_with": ["rule:other"],
+                "unresolved_reasons": ["operative status not captured"],
+            },
+            {"provision_id": "rule:root"},
+        ],
+        structure_id="structure-1",
+        captured_at="2026-08-25T00:00:00Z",
+    )
+    assert [row["provision_id"] for row in record["records"]] == ["rule:child", "rule:root"]
+    assert record["records"][0]["resolution_status"] == "unresolved"
+    assert record["promotion_allowed"] is False
+    assert len(record["records_sha256"]) == 64
+    with pytest.raises(ValueError, match="own parent"):
+        build_rule_structure_record(
+            [{"provision_id": "rule:self", "parent_provision_id": "rule:self"}],
+            structure_id="structure-1",
             captured_at="now",
         )
 
