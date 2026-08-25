@@ -1,0 +1,25 @@
+{
+  "evidence_id": "REPOSITORY-TEMPLATE-JOURNEY-20260825",
+  "title": "Read-only onboarding and release-journey rehearsal",
+  "scope": {
+    "included": [
+      "template contract presence",
+      "scaffold drift",
+      "generated issue graph presence",
+      "release workflow presence"
+    ],
+    "excluded": [
+      "cross-repository onboarding",
+      "hosted release execution",
+      "independent reproduction",
+      "external-user evidence",
+      "release authority"
+    ]
+  },
+  "evidence": [
+    "scripts/run_template_journey.py",
+    "tests/test_template_journey.py"
+  ],
+  "status": "repository-owned read-only rehearsal",
+  "promotion_allowed": false
+}
