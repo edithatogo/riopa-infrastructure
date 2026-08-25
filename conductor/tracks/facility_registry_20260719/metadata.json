@@ -16,7 +16,8 @@
     "urn:riopa:evidence:facility-history-events:2026-08-22",
     "urn:riopa:evidence:facility-public-release-filter:2026-08-22",
     "urn:riopa:evidence:facility-hamilton-disposition:2026-08-25",
-    "urn:riopa:evidence:facility-public-planning-adapter:2026-08-25"
+    "urn:riopa:evidence:facility-public-planning-adapter:2026-08-25",
+    "urn:riopa:evidence:facility-panel-frame-qualification:2026-08-25"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
