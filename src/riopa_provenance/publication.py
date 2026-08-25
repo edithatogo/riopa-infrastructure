@@ -654,3 +654,29 @@ def record_publication_receipt(
     updated["status"] = "published" if statuses == {"published"} else "in-progress"
     updated["state_sha256"] = sha256_json(updated, omit_keys={"state_sha256"})
     return updated
+
+
+def reconcile_publication_receipts(
+    state: Mapping[str, Any], receipts: Sequence[Mapping[str, Any]]
+) -> dict[str, Any]:
+    """Apply a receipt batch deterministically across all publication targets.
+
+    Receipts are sorted by target identifier before reconciliation.  Identical
+    replayed receipts are idempotent; a conflicting receipt for a target is
+    rejected by :func:`record_publication_receipt`.  The operation never
+    contacts a remote target and keeps every receipt bound to the same plan
+    hash and operation key.
+    """
+
+    if not isinstance(receipts, Sequence) or isinstance(receipts, (str, bytes)):
+        raise PublicationError("publication receipts must be an array")
+    ordered = sorted(
+        receipts,
+        key=lambda item: str(item.get("target_id", "")) if isinstance(item, Mapping) else "",
+    )
+    result = dict(state)
+    for receipt in ordered:
+        if not isinstance(receipt, Mapping):
+            raise PublicationError("publication receipts must contain objects")
+        result = record_publication_receipt(result, receipt)
+    return result
