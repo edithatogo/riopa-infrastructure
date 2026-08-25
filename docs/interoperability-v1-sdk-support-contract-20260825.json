@@ -1,0 +1,27 @@
+{
+  "evidence_id": "INTEROP-V1-SDK-SUPPORT-20260825",
+  "supported_surfaces": {
+    "python": "riopa_provenance.sdk canonical hash, instance validation and bounded crosswalk",
+    "rust": "rust/riopa-conformance dependency-free typed model"
+  },
+  "compatibility": {
+    "optional_field": "compatible only when semantic loss is absent",
+    "major_profile_or_semantic_change": "breaking version and migration evidence required"
+  },
+  "support_owner": "single repository maintainer",
+  "agent_panel_role": "evidence assessment and findings only",
+  "report_required_fields": [
+    "commit and corpus digest",
+    "tool versions and commands",
+    "positive and negative results",
+    "semantic-loss findings",
+    "signer and accountable authority"
+  ],
+  "open_gates": [
+    "external producer/consumer reproduction",
+    "standards-complete serialization",
+    "trusted signing and preservation acceptance",
+    "beta, RC and stable promotion"
+  ],
+  "promotion_allowed": false
+}
