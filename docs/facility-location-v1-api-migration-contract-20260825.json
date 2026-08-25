@@ -1,0 +1,25 @@
+{
+  "evidence_id": "FACILITY-V1-API-POLICY-20260825",
+  "title": "Bounded facility-location v1 API registry and migration policy",
+  "registry": ["set-cover", "maximal-cover", "p-median", "p-center"],
+  "compatibility": {
+    "additive_optional_field": "compatible",
+    "new_model_name": "additive opt-in",
+    "semantic_or_unit_change": "breaking version required"
+  },
+  "required_migration_controls": [
+    "source and contract version identification",
+    "semantic-loss enumeration",
+    "deterministic fixture comparison",
+    "fail-closed provenance, rights and scale checks"
+  ],
+  "excluded_claims": [
+    "national-scale performance",
+    "planning or accessibility authority",
+    "operational deployment",
+    "external solver equivalence",
+    "beta, RC, stable-v1 or general-availability promotion"
+  ],
+  "status": "repository-owned bounded technical-preview policy",
+  "promotion_allowed": false
+}

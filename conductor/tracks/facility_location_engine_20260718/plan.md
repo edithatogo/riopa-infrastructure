@@ -22,7 +22,12 @@
 
 - [~] 4.1 Benchmark bounded reference workloads and alternative exhaustive models. The local harness records cardinality and environment-bound timing; national-scale workloads, external solvers and production qualification remain open (`src/riopa_provenance/facility_location.py`, `tests/test_facility_location.py`, `docs/facility-reference-benchmark-contract-20260825.json`).
 - [ ] 4.2 Integrate planning feasibility and accessibility inputs.
-- [ ] 4.3 Freeze v1 API, model registry and migration policy.
+- [~] 4.3 Freeze v1 API, model registry and migration policy. Supported bounded
+  reference model names and compatibility/breaking-change rules are documented;
+  national-scale, planning/accessibility, external-solver, operational and
+  release gates remain open (`docs/facility-location-v1-api-migration-policy-20260825.md`,
+  `docs/facility-location-v1-api-migration-contract-20260825.json`,
+  `tests/test_facility_location_v1_policy.py`).
 
 ## Track closeout
 
