@@ -28,7 +28,7 @@
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; MCP, access-control, real-user, scale and authority gates remain explicitly pending (`docs/provenance-query-closeout-evidence-20260825.json`, `tests/test_provenance_query_closeout_evidence.py`; `8ec0385`).
 - [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
