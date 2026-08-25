@@ -1,0 +1,14 @@
+{
+  "schema": "riopa.spatial-quality-benchmark-report-contract.v1",
+  "evidence_id": "spatial-quality-benchmark-report-contract-20260825",
+  "track_id": "spatial_quality_temporality_20260718",
+  "implementation": "src/riopa_provenance/spatial_quality.py:build_quality_benchmark_report",
+  "test": "tests/test_spatial_quality.py",
+  "required_fields": ["profile_id", "revision", "observation_id", "transformation_revision", "rights_disposition"],
+  "ordering": "observation_id ascending",
+  "promotion_allowed": false,
+  "non_claims": [
+    "The report summarizes supplied observations and does not establish real-council or national qualification.",
+    "Source authority, operational readiness and release approval remain separate gates."
+  ]
+}

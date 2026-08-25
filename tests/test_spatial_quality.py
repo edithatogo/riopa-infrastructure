@@ -1,4 +1,8 @@
-from riopa_provenance.spatial_quality import evaluate_quality_waiver, evaluate_spatial_quality
+from riopa_provenance.spatial_quality import (
+    build_quality_benchmark_report,
+    evaluate_quality_waiver,
+    evaluate_spatial_quality,
+)
 
 
 def _fixtures() -> tuple[dict, dict]:
@@ -75,3 +79,30 @@ def test_quality_waiver_rejects_expired_and_release_blocking_waivers() -> None:
     assert result["status"] == "invalid-or-expired"
     assert any("expired" in error for error in result["errors"])
     assert any("release-blocking" in error for error in result["errors"])
+
+
+def test_quality_benchmark_report_is_deterministic_and_bounded() -> None:
+    report, profile = _fixtures()
+    packet = build_quality_benchmark_report(
+        [
+            {
+                "observation_id": "b",
+                "report": report,
+                "transformation_revision": "rev-1",
+                "rights_disposition": "public-preview",
+            },
+            {
+                "observation_id": "a",
+                "report": report,
+                "transformation_revision": "rev-1",
+                "rights_disposition": "public-preview",
+            },
+        ],
+        profile,
+        profile_id="preview-profile",
+        revision="rev-1",
+    )
+    assert packet["observation_count"] == 2
+    assert packet["passed_count"] == 2
+    assert [item["observation_id"] for item in packet["observations"]] == ["a", "b"]
+    assert packet["promotion_allowed"] is False

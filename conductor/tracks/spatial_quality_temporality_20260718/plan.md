@@ -22,7 +22,7 @@
 
 - [ ] 4.1 Validate profiles on heterogeneous real council layers.
 - [~] 4.2 Review blocking thresholds and waiver governance. A bounded expiry-checked waiver evaluator now requires owner/rationale evidence and rejects expired or release-blocking waivers; real-council and release-authority review remains open (`src/riopa_provenance/spatial_quality.py:evaluate_quality_waiver`, `docs/spatial-quality-waiver-governance-contract-20260825.json`).
-- [ ] 4.3 Publish quality framework and benchmark reports.
+- [~] 4.3 Generate deterministic bounded quality benchmark reports from supplied observations. Reports preserve profile/revision/rights context and remain promotion-disabled; real-council, national and release qualification remain open (`src/riopa_provenance/spatial_quality.py:build_quality_benchmark_report`, `docs/spatial-quality-benchmark-report-contract-20260825.json`).
 
 ## Track closeout
 

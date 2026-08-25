@@ -35,6 +35,8 @@ gates remain open (`docs/spatial-quality-conductor-regeneration-20260825.json`).
 
 | `SPATIAL-QUALITY-WAIVER-GOVERNANCE-20260825` | Expiry-checked quality waiver contract that cannot waive release-blocking metrics | `src/riopa_provenance/spatial_quality.py:evaluate_quality_waiver`, `docs/spatial-quality-waiver-governance-contract-20260825.json`, `tests/test_spatial_quality.py` | Bounded governance checks pass; real-council, national, authority and release qualification remain open |
 
+| `SPATIAL-QUALITY-BENCHMARK-REPORT-20260825` | Deterministic benchmark summary over supplied spatial-quality observations | `src/riopa_provenance/spatial_quality.py:build_quality_benchmark_report`, `docs/spatial-quality-benchmark-report-contract-20260825.json`, `tests/test_spatial_quality.py` | Bounded report ordering and summaries pass; real-council, national and release qualification remain open |
+
 ## Blocking defects
 
 - None recorded.
