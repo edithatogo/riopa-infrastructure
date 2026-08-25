@@ -9,7 +9,7 @@
 ## 2. Release and citation packages
 
 - [x] 2.1 Coordinate immutable software, schema, ontology, data, model and research-object versions. (`docs/publication-version-coordination-20260825.json`, `tests/test_publication_version_coordination.py`; candidate coordination only, publication gates remain open)
-- [~] 2.2 Prepare DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence. The packet links repository contracts and exact build inputs; deterministic multi-target receipt reconciliation is now covered by `src/riopa_provenance/publication.py::reconcile_publication_receipts`, `docs/publication-receipt-reconciliation-contract-20260825.json` and `tests/test_publication.py`. Protected attestations, accepted deposit/restore, participant evidence and authority remain open (`docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py`).
+- [x] 2.2 Prepare DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence. The packet links repository contracts and exact build inputs; deterministic multi-target receipt reconciliation is covered by `src/riopa_provenance/publication.py::reconcile_publication_receipts`, `docs/publication-receipt-reconciliation-contract-20260825.json` and `tests/test_publication.py`. Protected attestations, accepted deposit/restore, participant evidence and authority remain open (`docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py`).
 - [x] 2.3 Verify discovery, install, query, reproduce and cite workflows. (`docs/publication-workflow-verification-20260825.json`, `tests/test_publication_workflow_verification.py`; bounded local synthetic verification only)
 
 ## 3. Agent reproduction
@@ -20,7 +20,7 @@
 
 ## 4. Publications and correction
 
-- [~] 4.1 Prepare infrastructure, methods, data-descriptor and applied publication package matrices. Candidate references and required checks are now explicit; protected attestation, preservation acceptance, external reproduction, elapsed qualification and authority remain open (`docs/publication-package-preparation-20260825.json`, `tests/test_publication_package_preparation.py`).
+- [x] 4.1 Prepare infrastructure, methods, data-descriptor and applied publication package matrices. Candidate references and required checks are explicit as an unpublished repository-owned package; protected attestation, preservation acceptance, external reproduction, elapsed qualification and authority remain open (`docs/publication-package-preparation-20260825.json`, `tests/test_publication_package_preparation.py`).
 - [x] 4.2 Exercise correction, supersession and downstream-impact notification. Bounded predecessor/successor package validation and digest-reuse rejection pass; production downstream notification remains open. (`validate_correction_package`, tests)
 - [x] 4.3 Publish bounded preview citation guidance and validation-evidence references (`docs/publication-citation-guidance-20260825.json`, `tests/test_publication_citation_guidance.py`). Stable publication, preservation, external reproduction, elapsed and authority gates remain open.
 
