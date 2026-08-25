@@ -16,6 +16,7 @@ from riopa_provenance.analysis import (
     ParameterEvidence,
     ReplicationDesign,
     ServiceScenario,
+    StochasticDispatchDesign,
     build_service_pareto_report,
     calibrate_queue_parameters,
     compare_fcfs_reference_implementations,
@@ -29,6 +30,7 @@ from riopa_provenance.analysis import (
     protocol_record,
     queue_parameter_sensitivity,
     run_seeded_replications,
+    run_stochastic_dispatch_replications,
     simulate_dispatch_scenario,
     simulate_fcfs_queue,
     synthetic_pilot_report,
@@ -91,12 +93,88 @@ def test_dispatch_queue_simulation_is_deterministic_and_bounded() -> None:
     result = simulate_dispatch_scenario(scenario)
     assert result["counts"] == {
         "requests": 2,
-        "assigned": 1,
+        "assigned": 2,
         "queued": 1,
+        "unreachable": 0,
         "handover_required": 0,
     }
-    assert result["assignments"][1]["queue_wait"] == 9
+    assert result["assignments"][1]["queue_wait"] == 10
+    assert result["assignments"][1]["completion_time"] == 13
     assert result["promotion_allowed"] is False
+
+
+def test_dispatch_queue_ignores_ineligible_idle_units_and_applies_handover() -> None:
+    scenario = DispatchScenario(
+        "synthetic-eligible-queue",
+        (
+            DispatchRequest("r1", "d1", 0, handover_minutes=5, service_minutes=4),
+            DispatchRequest("r2", "d1", 1, service_minutes=1),
+        ),
+        ("reachable", "route-less"),
+        {("reachable", "d1"): 2},
+        {"reachable": True, "route-less": True},
+        3,
+    )
+    result = simulate_dispatch_scenario(scenario)
+    assert result["assignments"][0]["completion_time"] == 11
+    assert result["assignments"][1]["primary"] == "reachable"
+    assert result["assignments"][1]["queue_wait"] == 10
+
+
+def test_dispatch_queue_reports_unreachable_without_a_false_wait() -> None:
+    result = simulate_dispatch_scenario(
+        DispatchScenario(
+            "synthetic-unreachable",
+            (DispatchRequest("r1", "d1", 0),),
+            ("route-less",),
+            {},
+            {"route-less": True},
+            3,
+        )
+    )
+    assert result["counts"]["unreachable"] == 1
+    assert result["assignments"][0]["queue_wait"] is None
+
+
+def test_dispatch_metrics_separate_tail_subgroup_and_rurality_results() -> None:
+    scenario = DispatchScenario(
+        "synthetic-strata",
+        (
+            DispatchRequest("r1", "urban", 0, weight=2, subgroup="a", rurality="urban"),
+            DispatchRequest("r2", "rural", 0, weight=1, subgroup="b", rurality="rural"),
+        ),
+        ("unit",),
+        {("unit", "urban"): 1, ("unit", "rural"): 3},
+        {"unit": True},
+        3,
+    )
+    metrics = simulate_dispatch_scenario(scenario)["metrics"]
+    assert metrics["overall"]["mean_response_time"] == 2
+    assert metrics["overall"]["p95_response_time"] == 4
+    assert metrics["subgroups"]["a"]["mean_response_time"] == 1
+    assert metrics["rurality"]["rural"]["worst_response_time"] == 4
+
+
+def test_stochastic_dispatch_replications_are_seeded_and_report_uncertainty() -> None:
+    scenario = DispatchScenario(
+        "synthetic-stochastic",
+        (DispatchRequest("r1", "d1", 0),),
+        ("a", "b"),
+        {("a", "d1"): 1, ("b", "d1"): 2},
+        {"a": True, "b": True},
+        2,
+    )
+    design = StochasticDispatchDesign(42, 8, {"a": 0.5, "b": 0.75})
+    first = run_stochastic_dispatch_replications(scenario, design)
+    second = run_stochastic_dispatch_replications(scenario, design)
+    assert first == second
+    assert len(first["replications"]) == 8
+    assert first["uncertainty"]["coverage_rate"]["confidence_interval_95"] is not None
+    assert first["promotion_allowed"] is False
+    with pytest.raises(ValueError, match="unknown locations"):
+        run_stochastic_dispatch_replications(
+            scenario, StochasticDispatchDesign(42, 2, {"missing": 0.5})
+        )
 
 
 def test_static_and_simulated_stress_comparison_preserves_queue_delta() -> None:
@@ -113,10 +191,10 @@ def test_static_and_simulated_stress_comparison_preserves_queue_delta() -> None:
     )
     result = compare_static_simulated_stress(scenario, stress_profile="bounded-concurrency-fixture")
     assert result["comparison"] == {
-        "primary_assignment_delta": -1,
+        "primary_assignment_delta": 0,
         "queued_requests": 1,
-        "maximum_queue_wait": 9.0,
-        "primary_assignment_changes": ["r2"],
+        "maximum_queue_wait": 10.0,
+        "primary_assignment_changes": [],
     }
     assert result["promotion_allowed"] is False
     with pytest.raises(ValueError, match="stress_profile"):
@@ -147,6 +225,25 @@ def test_multi_service_capacity_referral_and_workforce_scenario_is_bounded() -> 
         ServiceScenario("bad", ("urgent", "urgent"), {}, {}, {}, {})
 
 
+def test_multi_service_allocation_uses_the_declared_referral_chain() -> None:
+    scenario = ServiceScenario(
+        "synthetic-referral-chain",
+        ("urgent",),
+        {("rural", "urgent"): 5},
+        {("hospital-b", "urgent"): 3, ("hospital-a", "urgent"): 2},
+        {"hospital-a": 2, "hospital-b": 3},
+        {("rural", "urgent"): ("hospital-b", "hospital-a")},
+    )
+    result = evaluate_service_scenario(scenario)
+    assignment = result["assignments"][0]
+    assert assignment["allocations"] == [
+        {"facility": "hospital-b", "served": 3},
+        {"facility": "hospital-a", "served": 2},
+    ]
+    assert assignment["served"] == 5
+    assert assignment["unmet"] == 0
+
+
 def test_service_constraints_report_volume_reserve_transition_and_phases() -> None:
     scenario = ServiceScenario(
         "synthetic-constraints",
@@ -164,9 +261,11 @@ def test_service_constraints_report_volume_reserve_transition_and_phases() -> No
         phase_investments=({("hospital-a", "urgent"): 2}, {("hospital-a", "urgent"): 1}),
     )
     assert result["minimum_volume"]["met"] == {"urgent": True}
-    assert result["resilience"]["met"] == {"hospital-a|urgent": True}
+    assert result["resilience"]["capacity_reserve_met"] == {"hospital-a|urgent": True}
+    assert result["resilience"]["facility_failures"]["hospital-a"]["met"] is False
     assert result["transition"]["total_cost"] == 3
     assert result["phased_investment"]["phase_totals"] == [2, 1]
+    assert result["phased_investment"]["results"][0]["all_demand_met"] is True
     assert result["promotion_allowed"] is False
     with pytest.raises(ValueError, match="resilience_fraction"):
         evaluate_service_constraints(
@@ -176,6 +275,29 @@ def test_service_constraints_report_volume_reserve_transition_and_phases() -> No
             transition_costs={},
             phase_investments=(),
         )
+
+
+def test_service_constraints_enforce_facility_specific_minimum_volume() -> None:
+    scenario = ServiceScenario(
+        "synthetic-volume",
+        ("urgent",),
+        {("north", "urgent"): 3, ("south", "urgent"): 3},
+        {("a", "urgent"): 3, ("b", "urgent"): 3},
+        {"a": 3, "b": 3},
+        {("north", "urgent"): ("a",), ("south", "urgent"): ("b",)},
+    )
+    result = evaluate_service_constraints(
+        scenario,
+        minimum_volume={"urgent": 5, "a|urgent": 5},
+        resilience_fraction=0.5,
+        transition_costs={},
+        phase_investments=({("a", "urgent"): 2},),
+    )
+    assert result["minimum_volume"]["met"] == {"a|urgent": False, "urgent": True}
+    assert result["phased_investment"]["results"][0]["cumulative_capacity"] == {
+        "a|urgent": 5,
+        "b|urgent": 3,
+    }
 
 
 def test_service_pareto_report_preserves_frontier_and_non_modelled_constraints() -> None:

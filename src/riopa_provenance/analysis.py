@@ -14,7 +14,7 @@ import math
 import random
 import statistics
 from collections.abc import Mapping, Sequence
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from typing import Any, Literal, cast
 
 ParameterSource = Literal["assumed", "fitted", "external"]
@@ -131,6 +131,9 @@ class DispatchRequest:
     arrival_time: float
     handover_minutes: float = 0.0
     service_minutes: float = 0.0
+    weight: float = 1.0
+    subgroup: str = "all"
+    rurality: str = "unspecified"
 
     def __post_init__(self) -> None:
         if not self.request_id.strip() or not self.demand_id.strip():
@@ -141,6 +144,10 @@ class DispatchRequest:
             raise ValueError("handover_minutes must be finite and non-negative")
         if not math.isfinite(self.service_minutes) or self.service_minutes < 0:
             raise ValueError("service_minutes must be finite and non-negative")
+        if not math.isfinite(self.weight) or self.weight <= 0:
+            raise ValueError("weight must be finite and positive")
+        if not self.subgroup.strip() or not self.rurality.strip():
+            raise ValueError("subgroup and rurality must be non-empty")
 
 
 @dataclass(frozen=True)
@@ -165,6 +172,24 @@ class DispatchScenario:
             raise ValueError("dispatch threshold must be finite and non-negative")
         if any(not math.isfinite(value) or value < 0 for value in self.travel.values()):
             raise ValueError("dispatch travel values must be finite and non-negative")
+
+
+@dataclass(frozen=True)
+class StochasticDispatchDesign:
+    """Seeded busy-availability design for bounded dispatch replications."""
+
+    master_seed: int
+    replications: int
+    availability_probability: Mapping[str, float]
+
+    def __post_init__(self) -> None:
+        if self.replications < 2:
+            raise ValueError("stochastic dispatch requires at least two replications")
+        if any(
+            not math.isfinite(probability) or not 0 <= probability <= 1
+            for probability in self.availability_probability.values()
+        ):
+            raise ValueError("availability probabilities must be finite and in [0, 1]")
 
 
 @dataclass(frozen=True)
@@ -202,30 +227,30 @@ def evaluate_service_scenario(scenario: ServiceScenario) -> dict[str, Any]:
     remaining_workforce = dict(scenario.workforce)
     assignments: list[dict[str, Any]] = []
     for (zone, service), requested in sorted(scenario.demand.items()):
-        eligible = sorted(
-            facility
-            for facility in scenario.referrals.get((zone, service), ())
-            if remaining_capacity.get((facility, service), 0.0) > 0
-            and remaining_workforce.get(facility, 0.0) > 0
-        )
-        facility = eligible[0] if eligible else None
-        served = 0.0
-        if facility is not None:
-            served = min(
-                requested,
-                remaining_capacity[(facility, service)],
-                remaining_workforce[facility],
-            )
-            remaining_capacity[(facility, service)] -= served
-            remaining_workforce[facility] -= served
+        residual = requested
+        allocations: list[dict[str, Any]] = []
+        for facility in scenario.referrals.get((zone, service), ()):
+            capacity = remaining_capacity.get((facility, service), 0.0)
+            workforce = remaining_workforce.get(facility, 0.0)
+            allocated = min(residual, capacity, workforce)
+            if allocated <= 0:
+                continue
+            remaining_capacity[(facility, service)] -= allocated
+            remaining_workforce[facility] -= allocated
+            residual -= allocated
+            allocations.append({"facility": facility, "served": allocated})
+            if residual == 0:
+                break
+        served = requested - residual
         assignments.append(
             {
                 "zone": zone,
                 "service": service,
-                "facility": facility,
+                "facility": allocations[0]["facility"] if allocations else None,
+                "allocations": allocations,
                 "requested": requested,
                 "served": served,
-                "unmet": requested - served,
+                "unmet": residual,
             }
         )
     return {
@@ -283,9 +308,24 @@ def evaluate_service_constraints(
         service: sum(item["served"] for item in result["assignments"] if item["service"] == service)
         for service in scenario.services
     }
+    served_by_facility_service: dict[str, float] = {}
+    for assignment in result["assignments"]:
+        service = str(assignment["service"])
+        for allocation in assignment["allocations"]:
+            key = f"{allocation['facility']}|{service}"
+            served_by_facility_service[key] = (
+                served_by_facility_service.get(key, 0.0) + allocation["served"]
+            )
+    observed_volume = {
+        key: (
+            served_by_facility_service.get(key, 0.0)
+            if "|" in key
+            else served_by_service.get(key, 0.0)
+        )
+        for key in minimum_volume
+    }
     minimum_volume_met = {
-        service: served_by_service.get(service, 0.0) >= required
-        for service, required in sorted(minimum_volume.items())
+        key: observed_volume[key] >= required for key, required in sorted(minimum_volume.items())
     }
     reserve_met: dict[str, bool] = {}
     for (facility, service), initial in sorted(scenario.capacity.items()):
@@ -293,27 +333,76 @@ def evaluate_service_constraints(
         reserve_met[f"{facility}|{service}"] = (
             initial == 0 or remaining / initial >= resilience_fraction
         )
-    phase_totals = [sum(investment.values()) for investment in phase_investments]
+    requested_total = float(result["counts"]["requested"])
+    facility_failures: dict[str, dict[str, Any]] = {}
+    for facility in sorted(scenario.workforce):
+        failed_capacity = {
+            key: (0.0 if key[0] == facility else value) for key, value in scenario.capacity.items()
+        }
+        failed_workforce = {
+            key: (0.0 if key == facility else value) for key, value in scenario.workforce.items()
+        }
+        failed = evaluate_service_scenario(
+            replace(scenario, capacity=failed_capacity, workforce=failed_workforce)
+        )
+        served_fraction = (
+            float(failed["counts"]["served"]) / requested_total if requested_total else 1.0
+        )
+        facility_failures[facility] = {
+            "served": failed["counts"]["served"],
+            "unmet": failed["counts"]["unmet"],
+            "served_fraction": served_fraction,
+            "met": served_fraction >= resilience_fraction,
+        }
+
+    cumulative_capacity = dict(scenario.capacity)
+    phase_results: list[dict[str, Any]] = []
+    for phase_number, investment in enumerate(phase_investments, start=1):
+        for capacity_key, value in investment.items():
+            cumulative_capacity[capacity_key] = cumulative_capacity.get(capacity_key, 0.0) + value
+        phase_result = evaluate_service_scenario(
+            replace(scenario, capacity=dict(cumulative_capacity))
+        )
+        phase_results.append(
+            {
+                "phase": phase_number,
+                "added_capacity": {
+                    f"{facility}|{service}": value
+                    for (facility, service), value in sorted(investment.items())
+                },
+                "cumulative_capacity": {
+                    f"{facility}|{service}": value
+                    for (facility, service), value in sorted(cumulative_capacity.items())
+                },
+                "counts": phase_result["counts"],
+                "all_demand_met": phase_result["counts"]["unmet"] == 0,
+            }
+        )
     return {
         "schema_version": "1.0.0",
         "record_type": "bounded_service_constraints",
         "scenario_id": scenario.scenario_id,
         "minimum_volume": {
             "required": dict(sorted(minimum_volume.items())),
-            "served": served_by_service,
+            "observed": observed_volume,
+            "served_by_service": served_by_service,
+            "served_by_facility_service": dict(sorted(served_by_facility_service.items())),
             "met": minimum_volume_met,
+            "key_semantics": "facility|service keys are facility-specific; other keys are services",
         },
         "resilience": {
-            "reserve_fraction": resilience_fraction,
-            "met": reserve_met,
+            "required_fraction": resilience_fraction,
+            "capacity_reserve_met": reserve_met,
+            "facility_failures": facility_failures,
         },
         "transition": {
             "costs": dict(sorted(transition_costs.items())),
             "total_cost": sum(transition_costs.values()),
         },
         "phased_investment": {
-            "phase_totals": phase_totals,
-            "phase_count": len(phase_totals),
+            "phase_totals": [sum(investment.values()) for investment in phase_investments],
+            "phase_count": len(phase_results),
+            "results": phase_results,
         },
         "promotion_allowed": False,
         "nonclaims": [
@@ -467,6 +556,9 @@ def simulate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
 
     Queueing and relocation here are contract semantics only.  They do not
     represent a fleet, clinical triage, dispatch policy or service guarantee.
+    A unit is occupied from dispatch until the declared outbound travel,
+    service and handover durations have elapsed.  Return-to-base travel is not
+    modelled and remains a caller-visible limitation.
     """
 
     available = tuple(
@@ -477,35 +569,52 @@ def simulate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
     for request in sorted(scenario.requests, key=lambda item: (item.arrival_time, item.request_id)):
         eligible = sorted(
             (
+                max(request.arrival_time, busy_until[location]),
                 scenario.travel[(location, request.demand_id)],
                 location,
             )
             for location in available
-            if busy_until[location] <= request.arrival_time
-            and (location, request.demand_id) in scenario.travel
+            if (location, request.demand_id) in scenario.travel
             and scenario.travel[(location, request.demand_id)] <= scenario.threshold
         )
         if eligible:
-            primary = eligible[0][1]
-            backup = eligible[1][1] if len(eligible) > 1 else None
-            wait = 0.0
-            busy_until[primary] = request.arrival_time + request.service_minutes
+            dispatch_time, travel_minutes, primary = eligible[0]
+            backup = eligible[1][2] if len(eligible) > 1 else None
+            wait = dispatch_time - request.arrival_time
+            arrival_at_demand = dispatch_time + travel_minutes
+            completion_time = arrival_at_demand + request.service_minutes + request.handover_minutes
+            busy_until[primary] = completion_time
         else:
             primary = None
             backup = None
-            wait = min(
-                (max(0.0, busy_until[location] - request.arrival_time) for location in available),
-                default=0.0,
-            )
+            dispatch_time = None
+            travel_minutes = None
+            arrival_at_demand = None
+            completion_time = None
+            wait = None
         assignments.append(
             {
                 "request_id": request.request_id,
+                "demand_id": request.demand_id,
                 "primary": primary,
                 "backup": backup,
                 "queue_wait": wait,
+                "dispatch_time": dispatch_time,
+                "travel_minutes": travel_minutes,
+                "arrival_at_demand": arrival_at_demand,
+                "completion_time": completion_time,
                 "handover_required": request.handover_minutes > 0,
+                "weight": request.weight,
+                "subgroup": request.subgroup,
+                "rurality": request.rurality,
+                "response_time": (
+                    arrival_at_demand - request.arrival_time
+                    if arrival_at_demand is not None
+                    else None
+                ),
             }
         )
+    metrics = _dispatch_outcome_metrics(assignments)
     return {
         "schema_version": "1.0.0",
         "record_type": "bounded_dispatch_queue_simulation",
@@ -514,13 +623,157 @@ def simulate_dispatch_scenario(scenario: DispatchScenario) -> dict[str, Any]:
         "counts": {
             "requests": len(assignments),
             "assigned": sum(item["primary"] is not None for item in assignments),
-            "queued": sum(item["primary"] is None for item in assignments),
+            "queued": sum(
+                item["queue_wait"] is not None and item["queue_wait"] > 0 for item in assignments
+            ),
+            "unreachable": sum(item["primary"] is None for item in assignments),
             "handover_required": sum(item["handover_required"] for item in assignments),
         },
+        "metrics": metrics,
         "promotion_allowed": False,
         "nonclaims": [
             "Synthetic queue only; no live dispatch, clinical or response guarantee is asserted.",
-            "Queue waits and relocation semantics are not operational instructions.",
+            (
+                "Queue waits and relocation semantics are not operational instructions; "
+                "return-to-base travel is not modelled."
+            ),
+        ],
+    }
+
+
+def _weighted_quantile(values: Sequence[tuple[float, float]], quantile: float) -> float | None:
+    if not values:
+        return None
+    ordered = sorted(values)
+    threshold = sum(weight for _, weight in ordered) * quantile
+    cumulative = 0.0
+    for value, weight in ordered:
+        cumulative += weight
+        if cumulative >= threshold:
+            return value
+    return ordered[-1][0]
+
+
+def _dispatch_metric_slice(assignments: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    total_weight = sum(float(item["weight"]) for item in assignments)
+    assigned = [item for item in assignments if item["response_time"] is not None]
+    assigned_weight = sum(float(item["weight"]) for item in assigned)
+    responses = [(float(item["response_time"]), float(item["weight"])) for item in assigned]
+    waits = [
+        (float(item["queue_wait"]), float(item["weight"]))
+        for item in assigned
+        if item["queue_wait"] is not None
+    ]
+    return {
+        "demand_weight": total_weight,
+        "assigned_weight": assigned_weight,
+        "coverage_rate": assigned_weight / total_weight if total_weight else 0.0,
+        "mean_response_time": (
+            sum(value * weight for value, weight in responses) / assigned_weight
+            if assigned_weight
+            else None
+        ),
+        "p95_response_time": _weighted_quantile(responses, 0.95),
+        "worst_response_time": max((value for value, _ in responses), default=None),
+        "mean_queue_wait": (
+            sum(value * weight for value, weight in waits) / assigned_weight
+            if assigned_weight
+            else None
+        ),
+    }
+
+
+def _dispatch_outcome_metrics(assignments: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    subgroup_names = sorted({str(item["subgroup"]) for item in assignments})
+    rurality_names = sorted({str(item["rurality"]) for item in assignments})
+    return {
+        "overall": _dispatch_metric_slice(assignments),
+        "subgroups": {
+            name: _dispatch_metric_slice([item for item in assignments if item["subgroup"] == name])
+            for name in subgroup_names
+        },
+        "rurality": {
+            name: _dispatch_metric_slice([item for item in assignments if item["rurality"] == name])
+            for name in rurality_names
+        },
+        "limitations": [
+            "Groups are caller-declared synthetic strata and are not protected-class evidence.",
+            (
+                "Small-cell suppression is not applied; controlled or person-level inputs "
+                "are prohibited."
+            ),
+        ],
+    }
+
+
+def run_stochastic_dispatch_replications(
+    scenario: DispatchScenario, design: StochasticDispatchDesign
+) -> dict[str, Any]:
+    """Run seeded busy-availability replications with explicit uncertainty.
+
+    The only stochastic mechanism is caller-declared unit availability.  Demand,
+    travel, service and handover values remain fixed synthetic inputs.
+    """
+
+    unknown = set(design.availability_probability) - set(scenario.locations)
+    if unknown:
+        raise ValueError("availability probabilities name unknown locations")
+    replications: list[dict[str, Any]] = []
+    coverage_rates: list[float] = []
+    mean_responses: list[float] = []
+    for replication in range(design.replications):
+        seed = _replication_seed(design.master_seed, replication)
+        rng = random.Random(seed)  # nosec B311
+        availability = {
+            location: scenario.availability.get(location, False)
+            and rng.random() < design.availability_probability.get(location, 1.0)
+            for location in scenario.locations
+        }
+        result = simulate_dispatch_scenario(replace(scenario, availability=availability))
+        overall = result["metrics"]["overall"]
+        coverage_rates.append(float(overall["coverage_rate"]))
+        if overall["mean_response_time"] is not None:
+            mean_responses.append(float(overall["mean_response_time"]))
+        replications.append(
+            {
+                "replication": replication,
+                "seed": seed,
+                "availability": availability,
+                "counts": result["counts"],
+                "metrics": result["metrics"],
+            }
+        )
+
+    def uncertainty(values: Sequence[float]) -> dict[str, Any]:
+        estimate = statistics.fmean(values) if values else None
+        standard_error = (
+            statistics.stdev(values) / math.sqrt(len(values)) if len(values) > 1 else None
+        )
+        half_width = 1.96 * standard_error if standard_error is not None else None
+        return {
+            "estimate": estimate,
+            "standard_error": standard_error,
+            "confidence_interval_95": (
+                [estimate - half_width, estimate + half_width]
+                if estimate is not None and half_width is not None
+                else None
+            ),
+        }
+
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_stochastic_dispatch_replications",
+        "scenario_id": scenario.scenario_id,
+        "master_seed": design.master_seed,
+        "replications": replications,
+        "uncertainty": {
+            "coverage_rate": uncertainty(coverage_rates),
+            "mean_response_time": uncertainty(mean_responses),
+        },
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Seeded synthetic busy availability does not establish operational performance.",
+            "Clinical calibration, external validation and dispatch authority remain absent.",
         ],
     }
 
@@ -546,7 +799,11 @@ def compare_static_simulated_stress(
         for request_id in static_assignments
         if static_assignments[request_id] != simulated_assignments.get(request_id)
     )
-    waits = [float(item["queue_wait"]) for item in simulated["assignments"]]
+    waits = [
+        float(item["queue_wait"])
+        for item in simulated["assignments"]
+        if item["queue_wait"] is not None
+    ]
     return {
         "schema_version": "1.0.0",
         "record_type": "bounded_dispatch_stress_comparison",
