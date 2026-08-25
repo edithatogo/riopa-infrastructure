@@ -45,3 +45,28 @@ def test_replication_receipts_require_exact_accepted_target_digests(tmp_path: Pa
         "zenodo receipt digest" in error
         for error in validate_replication_receipts(manifest, tampered)
     )
+
+
+def test_replication_receipts_reject_duplicate_targets_and_malformed_manifest() -> None:
+    manifest = {
+        "bundle_id": "run-4",
+        "bundle_sha256": "a" * 64,
+        "replication_targets": [{"kind": "zenodo", "required": True}],
+    }
+    receipt = {
+        "kind": "zenodo",
+        "status": "accepted",
+        "bundle_id": "run-4",
+        "bundle_sha256": "a" * 64,
+        "locator": "https://example.test/zenodo",
+    }
+    assert any(
+        "duplicate accepted receipt" in error
+        for error in validate_replication_receipts(manifest, [receipt, receipt])
+    )
+    assert validate_replication_receipts(
+        {**manifest, "bundle_sha256": "not-a-digest"}, [receipt]
+    ) == ("manifest requires a bundle_sha256",)
+    assert validate_replication_receipts({**manifest, "replication_targets": None}, [receipt]) == (
+        "manifest requires a replication_targets list",
+    )

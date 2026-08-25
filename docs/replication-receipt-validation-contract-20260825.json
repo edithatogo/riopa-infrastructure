@@ -5,6 +5,11 @@
   "implementation": "scripts/build_redundancy_manifest.py:validate_replication_receipts",
   "test": "tests/test_redundancy_manifest.py",
   "required_receipt_fields": ["kind", "status", "bundle_id", "bundle_sha256", "locator"],
+  "integrity_controls": [
+    "bundle_sha256 must be a lowercase 64-character hexadecimal digest",
+    "replication_targets must be a list of typed target objects",
+    "duplicate target receipts are rejected"
+  ],
   "required_targets": ["github-actions-artifact", "huggingface-dataset", "zenodo"],
   "accepted_status": "accepted",
   "promotion_allowed": false,
