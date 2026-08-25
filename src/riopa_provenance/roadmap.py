@@ -129,19 +129,28 @@ def _parse_datetime(value: str) -> datetime:
 
 
 def load_tracks(root: str | Path) -> dict[str, dict[str, Any]]:
-    """Load all Conductor track metadata keyed by track ID."""
+    """Load active and archived Conductor metadata keyed by track ID."""
 
     base = Path(root)
     tracks: dict[str, dict[str, Any]] = {}
-    for path in sorted((base / "conductor/tracks").glob("*/metadata.json")):
-        item = _load(path)
-        track_id = item.get("track_id", path.parent.name)
-        if track_id in tracks:
-            raise ValueError(f"duplicate track id: {track_id}")
-        item["_directory"] = path.parent.name
-        item["_path"] = path.as_posix()
-        tracks[track_id] = item
+    for collection in ("tracks", "archive"):
+        for path in sorted((base / "conductor" / collection).glob("*/metadata.json")):
+            item = _load(path)
+            track_id = item.get("track_id", path.parent.name)
+            if track_id in tracks:
+                previous = tracks[track_id]["_path"]
+                raise ValueError(f"duplicate track id {track_id}: {previous} and {path.as_posix()}")
+            item["_collection"] = collection
+            item["_directory"] = path.parent.name
+            item["_path"] = path.as_posix()
+            tracks[track_id] = item
     return tracks
+
+
+def _track_directory(item: dict[str, Any]) -> Path:
+    """Return the discovered directory containing one track's artifacts."""
+
+    return Path(str(item["_path"])).parent
 
 
 def _detect_cycle(dependencies: dict[str, set[str]]) -> list[str] | None:
@@ -209,12 +218,10 @@ def _stability_label(value: str) -> str:
 
 
 def _validate_track_documents(
-    base: Path,
-    track_id: str,
     item: dict[str, Any],
     problems: list[RoadmapProblem],
 ) -> None:
-    track_dir = base / "conductor/tracks" / track_id
+    track_dir = _track_directory(item)
     spec_path = track_dir / "spec.md"
     plan_path = track_dir / "plan.md"
     index_path = track_dir / "index.md"
@@ -762,6 +769,7 @@ def validate_roadmap(
     track_index_text = (base / "conductor/tracks.md").read_text(encoding="utf-8")
     for track_id, item in tracks.items():
         location = item.get("_path", track_id)
+        track_dir = _track_directory(item)
         candidate = {key: value for key, value in item.items() if not key.startswith("_")}
         for error in _schema_errors(candidate, track_schema):
             problems.append(RoadmapProblem("schema", location, error))
@@ -769,8 +777,26 @@ def validate_roadmap(
             problems.append(
                 RoadmapProblem("directory-id", location, "track_id must match its directory")
             )
+        collection = item.get("_collection")
+        status = item.get("status")
+        if collection == "archive" and status != "archived":
+            problems.append(
+                RoadmapProblem(
+                    "archive-status",
+                    location,
+                    "tracks under conductor/archive must have archived status",
+                )
+            )
+        if collection == "tracks" and status == "archived":
+            problems.append(
+                RoadmapProblem(
+                    "archive-location",
+                    location,
+                    "archived tracks must be moved under conductor/archive",
+                )
+            )
         for filename in ("spec.md", "plan.md", "metadata.json", "index.md"):
-            path = base / "conductor/tracks" / track_id / filename
+            path = track_dir / filename
             if not path.is_file():
                 problems.append(
                     RoadmapProblem(
@@ -853,13 +879,13 @@ def validate_roadmap(
                     f"v1-critical tracks must target {maturity_ids[-1]}",
                 )
             )
-        if item.get("status") == "complete":
+        if item.get("status") in {"complete", "archived"}:
             if not item.get("evidence"):
                 problems.append(
                     RoadmapProblem(
                         "complete-without-evidence",
                         location,
-                        "complete tracks require linked evidence",
+                        "complete or archived tracks require linked evidence",
                     )
                 )
             if current_maturity != target_maturity:
@@ -867,10 +893,10 @@ def validate_roadmap(
                     RoadmapProblem(
                         "complete-before-target",
                         location,
-                        "complete tracks must reach their target maturity",
+                        "complete or archived tracks must reach their target maturity",
                     )
                 )
-        _validate_track_documents(base, track_id, item, problems)
+        _validate_track_documents(item, problems)
 
     cycle = _detect_cycle(dependencies)
     if cycle:
@@ -1136,8 +1162,10 @@ def generate_issue_configuration(root: str | Path) -> dict[str, Any]:
         key=lambda pair: (_semver_key(pair[1]["target_release"]), pair[1]["phase"], pair[0]),
     )
     for track_id, metadata in sorted_tracks:
-        spec_path = base / "conductor/tracks" / track_id / "spec.md"
-        plan_path = base / "conductor/tracks" / track_id / "plan.md"
+        track_dir = _track_directory(metadata)
+        relative_track_dir = track_dir.relative_to(base).as_posix()
+        spec_path = track_dir / "spec.md"
+        plan_path = track_dir / "plan.md"
         spec = spec_path.read_text(encoding="utf-8")
         plan = plan_path.read_text(encoding="utf-8")
         title_match = re.search(r"^# Track:\s*(.+?)\s*$", spec, re.MULTILINE)
@@ -1182,10 +1210,10 @@ def generate_issue_configuration(root: str | Path) -> dict[str, Any]:
             f"## Dependencies\n\n{dependency_text}\n\n"
             f"## Acceptance criteria\n\n{acceptance_text}\n\n"
             "## Source of truth\n\n"
-            f"- `conductor/tracks/{track_id}/spec.md`\n"
-            f"- `conductor/tracks/{track_id}/plan.md`\n"
-            f"- `conductor/tracks/{track_id}/metadata.json`\n"
-            f"- `conductor/tracks/{track_id}/index.md`"
+            f"- `{relative_track_dir}/spec.md`\n"
+            f"- `{relative_track_dir}/plan.md`\n"
+            f"- `{relative_track_dir}/metadata.json`\n"
+            f"- `{relative_track_dir}/index.md`"
         )
         common_fields = {
             "project": True,
@@ -1239,7 +1267,7 @@ def generate_issue_configuration(root: str | Path) -> dict[str, Any]:
                         f"## Tasks\n\n{task_text}\n\n"
                         "## Evidence\n\n"
                         "Link code, tests, reports, decisions, migrations and immutable release "
-                        f"artifacts in `conductor/tracks/{track_id}/index.md` before closing."
+                        f"artifacts in `{relative_track_dir}/index.md` before closing."
                     ),
                     "mirror_to_umbrella": False,
                     **common_fields,
@@ -1293,7 +1321,7 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
             blockers.append(f"track {track_id} is missing")
             continue
         current_level = track.get("current_maturity", "M0")
-        if required_rank < 6 and track.get("status") in {"proposed", "archived"}:
+        if required_rank < 6 and track.get("status") == "proposed":
             blockers.append(
                 f"track {track_id} status {track.get('status')} is incompatible with the release"
             )
@@ -1307,9 +1335,10 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
         if required_rank >= 2 and not track.get("evidence"):
             blockers.append(f"track {track_id} has no linked implementation evidence")
             continue
-        if required_rank == 6 and track.get("status") != "complete":
+        if required_rank == 6 and track.get("status") not in {"complete", "archived"}:
             blockers.append(
-                f"track {track_id} is {track.get('status')}; complete is required for stable v1"
+                f"track {track_id} is {track.get('status')}; complete or archived is required "
+                "for stable v1"
             )
             continue
         incomplete_dependencies = [

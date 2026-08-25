@@ -89,6 +89,48 @@ def test_plan_phases_retain_completed_tasks() -> None:
     assert [phase["tasks"] for phase in phases] == [["Completed"], ["In progress"]]
 
 
+def test_archived_track_remains_discoverable_and_validates(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    source = root / "conductor/tracks" / FIRST_TRACK
+    destination = root / "conductor/archive" / FIRST_TRACK
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(source, destination)
+
+    metadata_path = destination / "metadata.json"
+    metadata = read_json(metadata_path)
+    metadata["status"] = "archived"
+    metadata["current_maturity"] = metadata["maturity_target"]
+    write_json(metadata_path, metadata)
+    index_path = destination / "index.md"
+    index = index_path.read_text(encoding="utf-8")
+    index = index.replace("`validating`", "`archived`").replace("`M1`", "`M6`", 1)
+    index_path.write_text(index, encoding="utf-8")
+
+    tracks = load_tracks(root)
+    assert tracks[FIRST_TRACK]["_collection"] == "archive"
+    assert tracks[FIRST_TRACK]["_path"] == metadata_path.as_posix()
+    issues = generate_issue_configuration(root)
+    parent = next(item for item in issues["issues"] if item["key"] == FIRST_TRACK)
+    assert f"conductor/archive/{FIRST_TRACK}/spec.md" in parent["body"]
+    write_issue_configuration(root)
+    assert validate_roadmap(root) == ()
+
+    readiness = release_readiness(root, metadata["target_release"])
+    assert not any(
+        f"track {FIRST_TRACK} status archived is incompatible" in blocker
+        for blocker in readiness.blockers
+    )
+
+
+def test_track_cannot_exist_in_active_and_archive_collections(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    archived = root / "conductor/archive" / FIRST_TRACK
+    shutil.copytree(root / "conductor/tracks" / FIRST_TRACK, archived)
+
+    with pytest.raises(ValueError, match=f"duplicate track id {FIRST_TRACK}"):
+        load_tracks(root)
+
+
 def iso(delta: timedelta = timedelta()) -> str:
     return (datetime.now(UTC) + delta).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
@@ -703,7 +745,7 @@ def test_release_readiness_reports_track_and_dependency_blockers(tmp_path: Path)
     assert f"track {a} is missing" in text
     assert f"track {b} has blocking defects" in text
     assert f"track {c} has no linked implementation evidence" in text
-    assert "complete is required for stable v1" in text
+    assert "complete or archived is required for stable v1" in text
     assert "M6 is required" in text
     assert "dependencies below M6" in text
 
