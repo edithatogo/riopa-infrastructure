@@ -22,6 +22,7 @@
 | `SUPERMARKET-PREREGISTRATION-20260825` | Reference-only baseline estimands, geography, population, exclusions and discrepancy handling | `docs/supermarket-health-preregistration-20260825.json`, `tests/test_supermarket_preregistration.py` | Synthetic/non-clinical template validates; no supermarket dataset, empirical health finding, causal claim or external reproduction is enabled |
 | `SUPERMARKET-DENSITY-REFERENCE-20260825` | Deterministic density and population-normalised reference calculation preserves missing facility and denominator coverage | `src/riopa_provenance/supermarket.py`, `tests/test_supermarket_density.py`, `docs/supermarket-density-reference-contract-20260825.json` | Caller-supplied reference helper passes; real archives, study reproduction, population authority, health linkage and release gates remain open |
 | `SUPERMARKET-REFERENCE-COMPARISON-20260825` | Compare declared reference and motivating-study fields while preserving mismatch and missing-field evidence | `src/riopa_provenance/supermarket.py`, `tests/test_supermarket_density.py`, `docs/supermarket-reference-comparison-20260825.json` | Descriptor alignment is reported as not reproduced; no motivating-study payload, external reproduction, empirical health evidence or promotion is enabled |
+| `SUPERMARKET-INTEGRATED-REFERENCE-CORE-20260825` | Versioned public facility binding, distinct access/context/ecological-health constructs, sensitivity families, cited planning exclusions and complete Pareto trade-offs | `src/riopa_provenance/supermarket_pilot.py`, `tests/test_supermarket_pilot.py`, `docs/supermarket-integrated-reference-contract-20260825.json`, `tests/test_supermarket_integrated_reference_contract.py` | Repository-owned integration and negative tests pass over fixtures/caller-supplied records; no acquisition, empirical analysis, legal status, preferred site, qualification or promotion is claimed |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -30,12 +31,16 @@ operational, external and release gates remain open (`docs/supermarket-conductor
 
 ## Blocking defects
 
-- Rights-cleared versioned supermarket inputs, baseline reproduction, access/health analysis,
-  planning alternatives, research objects and orchestrated agent-panel qualification remain open.
+- All five dependencies remain incomplete at M1: planning rules, accessibility, facility registry, facility location and causal health methods.
+- Rights-cleared versioned supermarket/population inputs and factual motivating-study reproduction remain unavailable.
+- Representative multimodal access, facility reconciliation, empirical ecological-health and sensitivity analyses have not been executed.
+- Operative planning linkage, authority review and representative solver/robustness alternatives remain unavailable.
+- Agent-panel qualification, a complete preserved research object, independent reproduction, publication and release authority remain open.
 
 ## Decisions, exceptions and limitations
 
 - Synthetic contract evidence is not a supermarket pilot result.
+- Bounded integration accepts only public, non-authoritative facility assertions and caller-supplied aggregate records; it cannot establish completeness, individual or causal health effects, planning permission, consent certainty, commercial viability or a preferred location.
 
 ## Review and handover
 

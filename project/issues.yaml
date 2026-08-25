@@ -3509,7 +3509,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-1",
@@ -3537,7 +3537,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-2",
@@ -3567,7 +3567,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-3",
@@ -3597,7 +3597,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-4",
@@ -3627,7 +3627,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "supermarket_health_pilot_20260718:phase-5",
@@ -3657,7 +3657,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Research lead",
-      "blocking_defects": 0
+      "blocking_defects": 5
     },
     {
       "key": "operations_preservation_sre_20260719",

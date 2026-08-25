@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "supermarket_integrated_reference_contract",
+  "track_id": "supermarket_health_pilot_20260718",
+  "evidence_id": "urn:riopa:evidence:supermarket-integrated-reference-core:2026-08-25",
+  "scope": "repository-owned deterministic integration over caller-supplied records",
+  "implemented_controls": [
+    {
+      "control": "access-health-binding",
+      "implementation": "riopa_provenance.supermarket_pilot.build_access_health_reference",
+      "guarantees": [
+        "facility inputs are versioned, public-only and non-authoritative",
+        "distance, network, multimodal, capacity and competition measures remain explicit",
+        "deprivation, demographic and rurality context remains separate from access",
+        "health records are explicitly ecological and retain denominator, source and small-cell status",
+        "spatial confounding, MAUP and measurement-error sensitivity records are required"
+      ]
+    },
+    {
+      "control": "planning-alternatives-binding",
+      "implementation": "riopa_provenance.supermarket_pilot.build_planning_alternatives_reference",
+      "guarantees": [
+        "planning rules are citation-digest bound and retain authority-required status",
+        "prohibited and unresolved candidates cannot enter the alternatives frontier",
+        "average, worst-case, subgroup, capacity, competition, cost and robustness metrics are all required",
+        "market, land, community and consent constraints remain outside the model",
+        "no preferred site or promotion decision is produced"
+      ]
+    }
+  ],
+  "validation": {
+    "tests": "tests/test_supermarket_pilot.py",
+    "negative_cases": [
+      "authoritative or unversioned facility registry",
+      "non-ecological health record",
+      "missing sensitivity family",
+      "unresolved planning candidate",
+      "tampered planning-rule digest",
+      "incomplete trade-off metrics",
+      "omitted real-world constraints"
+    ]
+  },
+  "remaining_gates": [
+    "complete all five blocking dependency tracks",
+    "obtain rights-cleared versioned supermarket and population inputs",
+    "reproduce the motivating study or fully resolve empirical discrepancies",
+    "execute representative multimodal accessibility and facility reconciliation",
+    "link operative planning provisions and complete authority review",
+    "execute empirical ecological-health analyses under the causal-methods framework",
+    "run representative alternatives with externally reviewed assumptions",
+    "complete the required agent-panel and independent reproduction",
+    "build and preserve a complete research object",
+    "obtain publication and release authority"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "The contract does not acquire data, establish registry completeness, reproduce a study or estimate a health effect.",
+    "Fixture and caller-supplied records do not establish planning permission, consent certainty, commercial viability or a preferred location.",
+    "Repository validation is not independent reproduction, agent-panel qualification or publication approval."
+  ]
+}
