@@ -17,7 +17,8 @@
     "urn:riopa:evidence:wp007-preserved-real-inputs:2026-07-31",
     "urn:riopa:evidence:ro-contract:2026-08-22",
     "urn:riopa:evidence:research-object-profile-validation:2026-08-25",
-    "urn:riopa:evidence:research-object-attestation-contract:2026-08-25"
+    "urn:riopa:evidence:research-object-attestation-contract:2026-08-25",
+    "urn:riopa:evidence:publication-real-data-candidate-validation:2026-08-26"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

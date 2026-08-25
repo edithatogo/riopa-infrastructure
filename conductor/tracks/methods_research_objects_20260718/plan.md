@@ -20,7 +20,7 @@
 
 ## 4. Publication workflow
 
-- [ ] 4.1 Produce one complete real-data release candidate.
+- [~] 4.1 Validate one bounded real-data release candidate. The archived Wellington slice, source manifest and three materialized artifacts are now digest-verified as a promotion-disabled candidate; clean-room/external reproduction, attestation, preservation and accountable publication gates remain open (`scripts/validate_real_data_release_candidate.py`, `docs/publication-real-data-release-candidate-validation-20260826.json`, `tests/test_real_data_release_candidate_validation.py`).
 - [ ] 4.2 Conduct clean-room verification and citation usability review.
 - [ ] 4.3 Publish stable packaging, preservation and migration guidance.
 
