@@ -22,7 +22,13 @@
 
 - [ ] 4.1 Stress-test facility-location solutions under stochastic scenarios.
 - [ ] 4.2 Validate controlled/public data boundaries and performance.
-- [ ] 4.3 Freeze the v1 simulation and result contracts.
+- [~] 4.3 Freeze the bounded v1 simulation and result contracts. Supported
+  synthetic/reference surfaces, compatibility rules and required seed,
+  parameter-evidence, uncertainty and missingness controls are documented;
+  empirical, independent, operational, national-scale and release gates remain
+  open (`docs/simulation-v1-reference-contract-20260825.md`,
+  `docs/simulation-v1-reference-contract-20260825.json`,
+  `tests/test_simulation_v1_contract.py`).
 
 ## 5. Bounded WP-010 evidence
 

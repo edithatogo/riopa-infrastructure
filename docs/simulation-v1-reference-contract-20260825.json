@@ -1,0 +1,28 @@
+{
+  "evidence_id": "SIMULATION-V1-REFERENCE-CONTRACT-20260825",
+  "supported_surfaces": [
+    "deterministic FCFS queue",
+    "seeded replication and convergence helpers",
+    "synthetic dispatch and coverage adapters",
+    "synthetic capacity-resilience calculation",
+    "caller-supplied calibration and sensitivity workflows"
+  ],
+  "compatibility": {
+    "optional_metadata": "compatible when results are unchanged",
+    "event_metric_seed_or_unit_change": "breaking version and migration evidence required"
+  },
+  "required_controls": [
+    "protocol version pin",
+    "master seed retention",
+    "parameter evidence classification",
+    "uncertainty and missingness retention"
+  ],
+  "open_gates": [
+    "real or clinical calibration",
+    "independent implementation or published benchmark comparison",
+    "operational qualification",
+    "national-scale performance",
+    "beta, RC and stable-v1 promotion"
+  ],
+  "promotion_allowed": false
+}
