@@ -1,0 +1,24 @@
+{
+  "evidence_id": "INTEROPERABILITY-FINDINGS-LEDGER-20260825",
+  "title": "Fail-closed semantic-loss and migration findings ledger",
+  "scope": {
+    "included": [
+      "migration-corpus status",
+      "Rust corpus-parity status",
+      "external producer/consumer status",
+      "standards round-trip status"
+    ],
+    "excluded": [
+      "independent conformance",
+      "external-user evidence",
+      "signed release reports",
+      "release authority"
+    ]
+  },
+  "evidence": [
+    "scripts/build_interoperability_findings.py",
+    "tests/test_interoperability_findings.py"
+  ],
+  "status": "repository-owned findings ledger",
+  "promotion_allowed": false
+}

@@ -20,7 +20,7 @@
 
 ## 4. Stable SDK and conformance release
 
-- [ ] 4.1 Resolve semantic-loss and migration findings.
+- [~] 4.1 Resolve semantic-loss and migration findings. A fail-closed ledger now resolves only the recorded migration-corpus item and keeps Rust parity, external producer/consumer and standards-round-trip findings open (`scripts/build_interoperability_findings.py`, `tests/test_interoperability_findings.py`, `docs/interoperability-findings-ledger-contract-20260825.json`).
 - [ ] 4.2 Freeze supported v1 SDK surfaces and support ownership.
 - [ ] 4.3 Publish signed conformance reports and implementation guidance.
 
