@@ -136,12 +136,20 @@ def test_public_release_snapshot_can_bind_a_registry_version() -> None:
 
 
 def test_snapshot_record_is_content_addressed_and_correction_successor_only() -> None:
-    record = build_snapshot_record((assertion("public", 0, 0),), revision="snapshot-1")
+    record = build_snapshot_record(
+        (assertion("public", 0, 0),), revision="snapshot-1", registry_version="registry:1"
+    )
     assert validate_snapshot_record(record) == ()
+    assert record["payload"]["registry_version"] == "registry:1"  # type: ignore[index]
     corrected = build_snapshot_record(
-        (assertion("public", 0, 0.1),), revision="snapshot-2", supersedes=record["payload_sha256"]
+        (assertion("public", 0, 0.1),),
+        revision="snapshot-2",
+        supersedes=record["payload_sha256"],
     )
     assert validate_snapshot_record(corrected) == ()
+    invalid_successor = dict(corrected)
+    invalid_successor["supersedes"] = "not-a-digest"
+    assert any("supersedes" in error for error in validate_snapshot_record(invalid_successor))
     tampered = dict(record)
     payload = dict(record["payload"])  # type: ignore[arg-type]
     payload["assertions"] = []
