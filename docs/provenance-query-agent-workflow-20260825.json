@@ -1,0 +1,78 @@
+{
+  "evidence_id": "PROVENANCE-QUERY-AGENT-WORKFLOW-20260825",
+  "record_type": "provenance-query-agent-workflow",
+  "status": "bounded-local-agent-workflow",
+  "node_id": "urn:riopa:artifact:sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "node_count": 15,
+  "questions": [
+    {
+      "question": "where",
+      "answer_keys": [
+        "answer",
+        "cache",
+        "node_id",
+        "projection",
+        "question"
+      ],
+      "answer_count": 6,
+      "cache_hit": false,
+      "has_projection_diagnostic": true
+    },
+    {
+      "question": "why",
+      "answer_keys": [
+        "answer",
+        "cache",
+        "node_id",
+        "projection",
+        "question"
+      ],
+      "answer_count": 2,
+      "cache_hit": false,
+      "has_projection_diagnostic": true
+    },
+    {
+      "question": "how",
+      "answer_keys": [
+        "answer",
+        "cache",
+        "node_id",
+        "projection",
+        "question"
+      ],
+      "answer_count": 5,
+      "cache_hit": false,
+      "has_projection_diagnostic": true
+    }
+  ],
+  "impact_count": 6,
+  "page_total": 15,
+  "projection": {
+    "authoritative_evidence": [
+      {
+        "manifest_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+        "manifest_sha256": "83887002096a2e951fd4f3a8768c36cb2cc73d28b1c9742f77f2ceea755fca77",
+        "snapshot_id": "urn:riopa:snapshot:nz-spatial-example:2026.07.18:example",
+        "dataset_id": "urn:riopa:dataset:nz-spatial-example"
+      }
+    ],
+    "projection_sha256": "cf598e188d39f09ff2bf8fbef30b3f8b2de847d59005ff4f4cb7ceb490ed10ad",
+    "freshness": "current-for-listed-authoritative-evidence",
+    "lineage_granularities": [
+      "dataset"
+    ],
+    "granularity_limitation": "feature and row lineage were not captured by the authoritative evidence"
+  },
+  "claim_classification": "repository-reference-only",
+  "promotion_allowed": false,
+  "open_gates": [
+    "external user/operator workflows",
+    "remote access-control qualification",
+    "MCP transport qualification",
+    "production-scale and release-authority evidence"
+  ],
+  "nonclaims": [
+    "Agent-user questions exercise the local interface and do not substitute for external participants.",
+    "The projection is not an authoritative source of truth or a production service."
+  ]
+}
