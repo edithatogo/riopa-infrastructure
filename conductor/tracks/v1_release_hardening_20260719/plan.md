@@ -53,6 +53,13 @@
 - [x] 5.16 Harden the stable-gate snapshot review findings: validate revision and UTC timestamp syntax, include evidence and dependency maturity in track qualification, expose continuity failure reasons and verify the content digest. (`7553a18`, `0411449`)
 - [x] 5.17 Correct the stale multi-candidate reset claim after starting the isolated `26bc0b4` RC campaign; retain explicit duration, external-evidence, preservation and authority boundaries. (`80bf631`)
 - [x] 5.18 Correct the moving-main beta schedule so daily observations remain bound to the isolated campaign, qualification epoch and immutable candidate; clarify the shared beta/RC dispatch input. (`bf84ef6`)
+- [x] 5.19 Assemble the exact-revision `0.3.0` experimental M2 release-evidence
+  record, close its four repository-owned core gates without waivers, and retain
+  every `0.4.0` through stable-v1 blocker. (`conductor/release-evidence/0.3.0.json`,
+  `tests/test_v030_release_evidence.py`)
+- [x] 5.20 Normalize the release-hardening metadata timestamp to UTC without
+  changing the v0.3 evidence decision or any later release boundary. (Conductor
+  review fix)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).

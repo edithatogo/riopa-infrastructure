@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:release-evidence:0.3.0:experimental-m2",
+  "release": "0.3.0",
+  "evaluated_at": "2026-08-27T07:02:44+10:00",
+  "evaluated_by": "RIOPA roadmap validator, repository owner and Conductor agent review",
+  "machine_readable": true,
+  "immutable_evidence_identifiers": false,
+  "source_revision": "4c4214b348449ddf7f5d249ffa1d91f4eef7a59d",
+  "governance_decision_refs": [
+    "urn:riopa:evidence:governance-m2-promotion:2026-08-26"
+  ],
+  "tool": {
+    "name": "riopa-provenance",
+    "version": "0.2.0",
+    "environment": "locked uv environment; Python 3.14; protected GitHub main"
+  },
+  "gates": [
+    {
+      "gate_id": "core-schema-conformance",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:canonical-m2-promotion",
+          "kind": "review",
+          "location": "docs/canonical-m2-promotion-20260826.json",
+          "sha256": "4f3b227a06e39f2388fcd2e8b29179ea595b79b37f6b52dc3e4267aac1012ac1",
+          "immutable": false,
+          "generated_at": "2026-08-26T10:01:03Z",
+          "description": "Exact-tree schema, ontology, identity, negative-fixture and cross-language M2 qualification."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:canonical-shacl-execution",
+          "kind": "test-report",
+          "location": "docs/canonical-shacl-execution-report-20260825.json",
+          "sha256": "553aa66d1a6ca797878ecf2351b3d693e5ac317e34fec16e4af57119c62ce0e8",
+          "immutable": false,
+          "generated_at": "2026-08-25T00:00:00Z",
+          "description": "Pinned SHACL runtime result for the digest-bound canonical fixture."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:canonical-migration-fixture",
+          "kind": "artifact",
+          "location": "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json",
+          "sha256": "942538b5c57038ee9d2bffea129a6548b55886fcd0af26051be8415f4e33ea59",
+          "immutable": false,
+          "generated_at": "2026-08-25T00:00:00Z",
+          "description": "Fail-closed additive canonical migration fixture."
+        }
+      ],
+      "reviewed_at": "2026-08-27T07:02:44+10:00",
+      "reviewer": "Repository owner with Conductor agent review",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Candidate schema corpus, pinned ontology validation and migration fixtures satisfy the experimental M2 gate only."
+    },
+    {
+      "gate_id": "core-provenance-integrity",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:provenance-m2-promotion",
+          "kind": "review",
+          "location": "docs/provenance-m2-promotion-20260827.json",
+          "sha256": "1df3f5eba570f323a2544a87175347b08408859f4d94290bad4a25666b93c772",
+          "immutable": false,
+          "generated_at": "2026-08-27T00:00:00Z",
+          "description": "Exact-tree event, retry, lineage, assistance, negative-test and Python-Node M2 qualification."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:provenance-conformance-corpus",
+          "kind": "test-report",
+          "location": "docs/provenance-profile-conformance-manifest-1.0.0.json",
+          "sha256": "d6091b5096a3d6c7a5fd2e1706c281d062a16b5555c512f0c44646a8320843c5",
+          "immutable": false,
+          "generated_at": "2026-08-01T00:00:00Z",
+          "description": "Golden event corpus and positive and negative conformance manifest."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:provenance-lineage-granularity",
+          "kind": "documentation",
+          "location": "docs/provenance-profile-mapping-inventory-20260801.md",
+          "sha256": "288d0f1ee1f904e9ce07967c977ac6480ea3688a185b0b966cbd0e1f18994e7c",
+          "immutable": false,
+          "generated_at": "2026-08-01T00:00:00Z",
+          "description": "Native evidence mapping and declared lineage-granularity boundaries."
+        }
+      ],
+      "reviewed_at": "2026-08-27T07:02:44+10:00",
+      "reviewer": "Repository owner with Conductor agent review",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Representative synthetic event patterns, tamper failures, concurrency semantics and granularity declarations satisfy the experimental M2 gate only."
+    },
+    {
+      "gate_id": "core-security-baseline",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:security-m2-promotion",
+          "kind": "security-report",
+          "location": "docs/security-m2-promotion-20260826.json",
+          "sha256": "030511cf698a410b279d29bc474cb89fe87336a19379cd910863d651ce0a9bf8",
+          "immutable": false,
+          "generated_at": "2026-08-26T05:16:07Z",
+          "description": "Exact-tree threat, control, immutable-action, negative-test, SBOM and signing-design M2 qualification."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:security-threat-model",
+          "kind": "security-report",
+          "location": "docs/security-threat-model.md",
+          "sha256": "fba455d6af8ddda2ed1e6beb0b71e78598d6c96561a61b525c6a87345cb5b77d",
+          "immutable": false,
+          "generated_at": "2026-08-01T00:00:00Z",
+          "description": "Repository threat model and mitigation baseline."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:security-control-manifest",
+          "kind": "artifact",
+          "location": "docs/security-control-manifest.json",
+          "sha256": "1fe94e37975d50ba711b9de3970d365cd4d4a677acc659ecf7b94c322ccc612e",
+          "immutable": false,
+          "generated_at": "2026-08-01T00:00:00Z",
+          "description": "Machine-readable dependency, secret-handling and workflow control inventory."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:release-signing-design",
+          "kind": "documentation",
+          "location": "docs/security-release-signing-contract-20260824.json",
+          "sha256": "75cedf532453e0cae444c067c637370d2074cfed6eaabdb6c4f051ce76eecaa2",
+          "immutable": false,
+          "generated_at": "2026-08-24T00:00:00Z",
+          "description": "Fail-closed release-signing design and unsigned-candidate boundary."
+        }
+      ],
+      "reviewed_at": "2026-08-27T07:02:44+10:00",
+      "reviewer": "Repository owner with Conductor agent review",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "No unmitigated critical finding is recorded; protected signing execution remains a later maturity gate."
+    },
+    {
+      "gate_id": "core-governance-baseline",
+      "status": "passed",
+      "evidence": [
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:governance-m2-promotion",
+          "kind": "review",
+          "location": "docs/governance-m2-promotion-20260826.json",
+          "sha256": "e01cdc09409ea7c96064a0cfe17ff9ef7d687cca0c3b24689c809072b18617f6",
+          "immutable": false,
+          "generated_at": "2026-08-26T02:54:34Z",
+          "description": "Exact-tree rights, privacy, public-controlled separation and withdrawal M2 qualification."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:governance-decision-framework",
+          "kind": "documentation",
+          "location": "docs/governance-decision-framework.md",
+          "sha256": "bd6d5d77ad903ab7340575888ae898a336b86ea12c8a5006c52f21611d876387",
+          "immutable": false,
+          "generated_at": "2026-08-01T00:00:00Z",
+          "description": "Rights, privacy, review-trigger, decision and escalation contract."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:governance-withdrawal-drill",
+          "kind": "test-report",
+          "location": "reports/governance-withdrawal-drill.md",
+          "sha256": "4b890ff34e2e46a5ee04805dd76e6a0ccc4ccd646b3958f1305e6678a4cb533a",
+          "immutable": false,
+          "generated_at": "2026-08-01T00:00:00Z",
+          "description": "Synthetic withdrawal and public-controlled decision-path drill."
+        },
+        {
+          "evidence_id": "urn:riopa:evidence:0.3.0:governance-scope-trigger-audit",
+          "kind": "review",
+          "location": "reports/governance-scope-trigger-audit.md",
+          "sha256": "43f8ba63b9379794fa17d8a46df85de003c4382788d9454dc7eb59b777cbe671",
+          "immutable": false,
+          "generated_at": "2026-08-24T00:00:00Z",
+          "description": "Scope-triggered cultural and community review activation audit."
+        }
+      ],
+      "reviewed_at": "2026-08-27T07:02:44+10:00",
+      "reviewer": "Repository owner with Conductor agent review",
+      "expires_at": null,
+      "waiver": null,
+      "notes": "Embedded rights, privacy, review-trigger and release-decision hooks satisfy the experimental M2 gate only."
+    }
+  ],
+  "defects": {
+    "open_p0": 0,
+    "open_p1": 0,
+    "release_blocking_p2": 0,
+    "critical_security_findings": 0,
+    "governance_prohibitions": 0,
+    "expired_waivers": 0
+  },
+  "metrics": {
+    "agent_panel_analysts": 4,
+    "clean_room_reproductions": 0,
+    "external_reproductions": 0,
+    "external_user_workflows": 0,
+    "external_operator_workflows": 0,
+    "operational_cycles": 0,
+    "operational_evidence_days": 0,
+    "release_candidate_soak_days": 0
+  },
+  "approvals": [
+    {
+      "role": "Repository owner and programme maintainer",
+      "reviewer": "RIOPA repository owner",
+      "decision": "approve",
+      "decided_at": "2026-08-27T07:02:44+10:00",
+      "signed_decision_ref": null,
+      "notes": "Approves the bounded experimental M2 evidence decision only; this is not stable-v1 authority or a signed release approval."
+    }
+  ],
+  "release_artifacts": [
+    {
+      "evidence_id": "urn:riopa:evidence:0.3.0:foundation-track",
+      "kind": "artifact",
+      "location": "docs/foundation-m2-promotion-20260826.json",
+      "sha256": "c6971d527facb65a4a0df2abb036e8848252c4a0b71bdf9ac673494b20b39ddd",
+      "immutable": false,
+      "generated_at": "2026-08-26T00:00:00Z",
+      "description": "Foundation architecture experimental M2 promotion record."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.3.0:canonical-track",
+      "kind": "artifact",
+      "location": "docs/canonical-m2-promotion-20260826.json",
+      "sha256": "4f3b227a06e39f2388fcd2e8b29179ea595b79b37f6b52dc3e4267aac1012ac1",
+      "immutable": false,
+      "generated_at": "2026-08-26T10:01:03Z",
+      "description": "Canonical schema and ontology experimental M2 promotion record."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.3.0:provenance-track",
+      "kind": "artifact",
+      "location": "docs/provenance-m2-promotion-20260827.json",
+      "sha256": "1df3f5eba570f323a2544a87175347b08408859f4d94290bad4a25666b93c772",
+      "immutable": false,
+      "generated_at": "2026-08-27T00:00:00Z",
+      "description": "Provenance profile experimental M2 promotion record."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.3.0:security-track",
+      "kind": "artifact",
+      "location": "docs/security-m2-promotion-20260826.json",
+      "sha256": "030511cf698a410b279d29bc474cb89fe87336a19379cd910863d651ce0a9bf8",
+      "immutable": false,
+      "generated_at": "2026-08-26T05:16:07Z",
+      "description": "Security and supply-chain experimental M2 promotion record."
+    },
+    {
+      "evidence_id": "urn:riopa:evidence:0.3.0:governance-track",
+      "kind": "artifact",
+      "location": "docs/governance-m2-promotion-20260826.json",
+      "sha256": "e01cdc09409ea7c96064a0cfe17ff9ef7d687cca0c3b24689c809072b18617f6",
+      "immutable": false,
+      "generated_at": "2026-08-26T02:54:34Z",
+      "description": "Governance and data-sovereignty experimental M2 promotion record."
+    }
+  ],
+  "known_limitations": [
+    "Release 0.3.0 is an experimental normative-core evidence milestone, not a stable supported release.",
+    "Evidence paths are Git-revision-bound but are not published immutable identifiers or preservation deposits.",
+    "Representative real-data integration, repeated operation, external user or operator evidence, and elapsed soak remain absent.",
+    "No independent external reproduction, protected release signature, persistent profile identifier or stable-v1 authority is claimed.",
+    "All five tracks remain validating toward M6 and are not complete or archive-eligible."
+  ],
+  "notes": "This record closes the four 0.3.0 experimental M2 gates without waiving or satisfying any M3-M6 track or release requirement."
+}

@@ -79,7 +79,9 @@ def test_current_development_release_is_blocked_but_stable_is_not() -> None:
     assert status["tracks"]["by_current_maturity"] == {"M1": 24, "M2": 5}
     assert status["releases"][0]["ready"] is False
     assert status["releases"][0]["blockers"]
-    assert all(not release["ready"] for release in status["releases"][1:])
+    assert status["releases"][1]["version"] == "0.3.0"
+    assert status["releases"][1]["ready"] is True
+    assert all(not release["ready"] for release in status["releases"][2:])
 
     stable = release_readiness(ROOT, "1.0.0")
     assert not stable.ready

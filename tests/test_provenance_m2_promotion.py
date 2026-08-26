@@ -42,7 +42,8 @@ def test_provenance_m2_promotion_is_exact_tree_and_fail_closed() -> None:
     assert not any(
         "track provenance_profile_v1_20260718" in blocker for blocker in readiness.blockers
     )
-    assert len(readiness.blockers) == 4
+    assert readiness.passed_gates == readiness.required_gates == 4
+    assert readiness.blockers == ()
 
 
 def test_programme_registry_reports_provenance_m2_only() -> None:

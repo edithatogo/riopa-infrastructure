@@ -39,16 +39,11 @@ Stable target: `1.0.0`
   - track supermarket_health_pilot_20260718 has blocking defects
   - track v1_release_hardening_20260719 has blocking defects
 
-### 0.3.0 — normative core alpha (NOT READY)
+### 0.3.0 — normative core alpha (READY)
 
 - Maturity gate: `M2`
 - Tracks qualified: 5/5
-- Gates: 0/4 passed
-- Blockers:
-  - gate core-schema-conformance is not passed with current evidence
-  - gate core-provenance-integrity is not passed with current evidence
-  - gate core-security-baseline is not passed with current evidence
-  - gate core-governance-baseline is not passed with current evidence
+- Gates: 4/4 passed
 
 ### 0.4.0 — real capture-to-research-object alpha (NOT READY)
 
