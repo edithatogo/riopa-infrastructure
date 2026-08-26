@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:foundation-m2-promotion:2026-08-26",
+  "track_id": "foundation_architecture_20260718",
+  "evaluated_at": "2026-08-26T08:46:25Z",
+  "decision": "promote-to-m2",
+  "compatibility": {
+    "classification": "backward-compatible-additive",
+    "rule": "A declared maturity threshold blocks that maturity and later releases; an omitted threshold preserves the legacy behavior and blocks every release."
+  },
+  "authority": {
+    "kind": "repository-owner-instruction",
+    "instruction": "Proceed with the recommended next repository-owned step.",
+    "signature_claimed": false
+  },
+  "source_revision": {
+    "merged_commit": "ee185a9947f45c2fe411d55793ac66b5f9073ec4",
+    "validated_head_commit": "61ae22f5d9a8a1fa45c3f7745b41c7f173684119",
+    "tree_sha": "24e798d8daf53b99ea4cb5f868875f790f19a70b",
+    "pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/614"
+  },
+  "m2_repository_owned": {
+    "executable_boundary_validation": "passed",
+    "negative_and_failure_tests": "passed",
+    "issue_graph_determinism": "passed",
+    "contract_ownership": "recorded",
+    "decision_traceability": "passed",
+    "locked_python_runtime": "passed",
+    "maturity_scoped_defect_evaluation": "passed"
+  },
+  "validation": {
+    "roadmap": "passed",
+    "quality_contracts_and_packaging": "passed",
+    "tests": {
+      "status": "passed",
+      "count": 1149,
+      "coverage_percent": 92.68,
+      "minimum_coverage_percent": 90
+    },
+    "reproducibility": "passed",
+    "hosted_required_checks": {
+      "status": "passed",
+      "count": 5,
+      "actions_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32949281831",
+      "codeql_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32949281893"
+    }
+  },
+  "remaining_blocking_gates": [
+    "m3-real-data-and-failure-evidence",
+    "m4-operational-and-external-use-evidence",
+    "m5-rc-soak-and-independent-review",
+    "m6-stable-support-and-release-authority"
+  ],
+  "non_claims": [
+    "This promotion records experimental M2 executable proof only.",
+    "It does not establish real-data integration, operational maturity, external use, independent reproduction or stable release authority.",
+    "It does not make release 0.3.0 ready; the other required tracks and all four release gates remain pending."
+  ]
+}

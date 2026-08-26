@@ -766,6 +766,54 @@ def test_release_readiness_reports_track_and_dependency_blockers(tmp_path: Path)
     assert "dependencies below M6" in text
 
 
+def test_release_readiness_scopes_future_defects_by_maturity(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    plan = read_json(root / "conductor/releases.json")
+    release = next(item for item in plan["releases"] if item["version"] == "0.3.0")
+    for track_id in release["required_tracks"]:
+        path, data = track_metadata(root, track_id)
+        data["current_maturity"] = "M2"
+        data["status"] = "active"
+        data["evidence"] = [f"urn:test:{track_id}"]
+        data["blocking_defects"] = []
+        data.pop("blocking_defect_maturity", None)
+        write_json(path, data)
+
+    track_id = release["required_tracks"][0]
+    path, data = track_metadata(root, track_id)
+    data["blocking_defects"] = ["future-m3-gate"]
+    data["blocking_defect_maturity"] = {"future-m3-gate": "M3"}
+    write_json(path, data)
+
+    readiness = release_readiness(root, "0.3.0")
+    assert readiness.qualified_tracks == len(release["required_tracks"])
+    assert not any(f"track {track_id} has blocking defects" in item for item in readiness.blockers)
+
+    data["blocking_defect_maturity"]["future-m3-gate"] = "M2"
+    write_json(path, data)
+    readiness = release_readiness(root, "0.3.0")
+    assert f"track {track_id} has blocking defects" in readiness.blockers
+
+
+def test_validator_rejects_orphaned_defect_maturity_threshold(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    path, data = track_metadata(root)
+    data["blocking_defect_maturity"] = {"undeclared-defect": "M3"}
+    write_json(path, data)
+
+    assert "blocking-defect-maturity" in codes(root)
+
+
+def test_validator_rejects_unknown_defect_maturity_level(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    path, data = track_metadata(root)
+    data["blocking_defects"] = ["future-gate"]
+    data["blocking_defect_maturity"] = {"future-gate": "M7"}
+    write_json(path, data)
+
+    assert "schema" in codes(root)
+
+
 def test_nonstable_release_rejects_proposed_status_and_unknown_version(tmp_path: Path) -> None:
     root = copy_roadmap(tmp_path)
     plan = read_json(root / "conductor/releases.json")

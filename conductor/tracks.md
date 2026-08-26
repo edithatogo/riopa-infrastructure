@@ -29,7 +29,7 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 
 ## Foundation
 
-- [~] **`foundation_architecture_20260718`** — Foundation architecture and programme governance (target `0.3.0`, current `M1`, target `M6`, risk High; depends on: none)
+- [~] **`foundation_architecture_20260718`** — Foundation architecture and programme governance (target `0.3.0`, current `M2`, target `M6`, risk High; depends on: none)
 - [~] **`governance_maori_data_sovereignty_20260718`** — Rights, privacy and scope-triggered data governance framework (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`)
 - [~] **`security_supply_chain_20260719`** — Security, integrity and software supply-chain hardening (target `0.3.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`)
 - [~] **`operations_preservation_sre_20260719`** — Operations, service reliability and digital preservation (target `0.8.0`, current `M1`, target `M6`, risk Critical; depends on: `foundation_architecture_20260718`, `security_supply_chain_20260719`)

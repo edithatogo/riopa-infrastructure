@@ -200,6 +200,16 @@
         "type": "string",
         "minLength": 1
       }
+    },
+    "blocking_defect_maturity": {
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^M[0-6]$"
+      }
     }
   }
 }

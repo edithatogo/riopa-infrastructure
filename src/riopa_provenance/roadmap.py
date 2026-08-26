@@ -853,6 +853,18 @@ def validate_roadmap(
                     f"unknown dimensions: {sorted(unknown_dimensions)}",
                 )
             )
+        defect_maturity = item.get("blocking_defect_maturity", {})
+        if isinstance(defect_maturity, dict):
+            orphaned_defects = set(defect_maturity) - set(item.get("blocking_defects", []))
+            if orphaned_defects:
+                problems.append(
+                    RoadmapProblem(
+                        "blocking-defect-maturity",
+                        location,
+                        "maturity thresholds reference undeclared blocking defects: "
+                        f"{sorted(orphaned_defects)}",
+                    )
+                )
         dependencies[track_id] = set(item.get("depends_on", []))
         if track_id in dependencies[track_id]:
             problems.append(
@@ -1333,7 +1345,16 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
         if _maturity_rank(current_level) < required_rank:
             blockers.append(f"track {track_id} is {current_level}; {required_level} is required")
             continue
-        if track.get("blocking_defects"):
+        defect_maturity = track.get("blocking_defect_maturity", {})
+        applicable_defects = [
+            defect
+            for defect in track.get("blocking_defects", [])
+            if required_rank
+            >= _maturity_rank(
+                defect_maturity.get(defect, "M0") if isinstance(defect_maturity, dict) else "M0"
+            )
+        ]
+        if applicable_defects:
             blockers.append(f"track {track_id} has blocking defects")
             continue
         if required_rank >= 2 and not track.get("evidence"):
