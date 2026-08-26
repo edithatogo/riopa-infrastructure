@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0.0",
   "setup_mode": "greenfield-architecture",
-  "programme_version": "0.2.0",
+  "programme_version": "0.3.0",
   "stable_target": "1.0.0",
-  "current_maturity": "M1",
-  "last_successful_step": "v0.2.0-roadmap-evidence-and-validation-complete",
-  "generated_at": "2026-07-19T00:00:00Z",
+  "current_maturity": "M2",
+  "last_successful_step": "v0.3.0-normative-core-evidence-qualified",
+  "generated_at": "2026-08-26T21:14:18Z",
   "track_count": 28,
-  "remote_github_state": "not-created-by-this-bundle",
-  "next_gate": "0.3.0 normative core alpha: schemas, ontology, provenance, security and governance"
+  "remote_github_state": "active-and-protected",
+  "next_gate": "0.4.0 real capture-to-research-object alpha"
 }

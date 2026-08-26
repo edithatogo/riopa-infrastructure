@@ -130,9 +130,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: >-
-          gh release create "$RELEASE_TAG"
-          dist/release/*
-          --verify-tag
-          --generate-notes
-          --title "$RELEASE_TAG"
+        run: |
+          release_flags=()
+          if [[ "$RELEASE_TAG" == v0.* || "$RELEASE_TAG" == *-* ]]; then
+            release_flags+=(--prerelease)
+          fi
+          gh release create "$RELEASE_TAG" \
+            dist/release/* \
+            --verify-tag \
+            --generate-notes \
+            --title "$RELEASE_TAG" \
+            "${release_flags[@]}"

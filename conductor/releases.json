@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "programme_version": "0.2.0",
-  "current_release": "0.2.0",
+  "programme_version": "0.3.0",
+  "current_release": "0.3.0",
   "stable_release": "1.0.0",
   "releases": [
     {

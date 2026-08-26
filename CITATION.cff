@@ -7,8 +7,8 @@ authors:
     given-names: Dylan
 repository-code: "https://github.com/edithatogo/riopa-infrastructure"
 url: "https://github.com/edithatogo/riopa-infrastructure"
-version: 0.2.0
-date-released: 2026-07-19
+version: 0.3.0
+date-released: 2026-08-27
 license: MIT
 keywords:
   - provenance

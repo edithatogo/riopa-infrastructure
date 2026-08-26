@@ -2,8 +2,10 @@
 
 > Open, modular, provenance-first infrastructure for reproducible public-data research and decision analytics in Aotearoa New Zealand.
 
-**Roadmap bundle:** `0.2.0` — 19 July 2026  
-**Current programme maturity:** M1, specified prototype  
+**Current release:** `0.3.0` — 27 August 2026
+
+**Current programme maturity:** M2, experimental normative-core alpha
+
 **Destination:** M6, stable and supported v1.0
 
 RIOPA Infrastructure is a federated research-infrastructure programme. It preserves raw source evidence, acquisition and transformation lineage, rights and quality decisions, temporal state, analytical specifications and computational environments so that public-data research can be cited, reproduced, corrected and extended.
@@ -20,7 +22,11 @@ The first complete reference implementation is a New Zealand spatial and plannin
 - The existing provenance, schema validation, methods generation and research-object reference implementation.
 - Detailed plans for national spatial/planning capture, facility reconciliation, accessibility, optimisation, simulation, health methods, security, performance, preservation, interoperability, documentation and support.
 
-The local 0.2.0 evidence record passes its four M1 roadmap gates; all later releases remain blocked by unimplemented capabilities and absent qualification evidence. This repository does **not** claim that those planned systems or their stable-release evidence already exist. The current software is a tested provenance and roadmap foundation for building them.
+The `0.3.0` evidence record passes five required M2 tracks and four bounded
+normative-core gates. Releases `0.4.0` through stable `1.0.0` remain blocked by
+their unimplemented or unqualified capabilities and evidence. This repository
+does **not** claim operational maturity, external reproduction, stable
+publication or stable-release authority from the experimental M2 milestone.
 
 ## Stable-v1 invariant
 

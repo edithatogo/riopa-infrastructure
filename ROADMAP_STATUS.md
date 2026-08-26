@@ -1,7 +1,9 @@
 # RIOPA Roadmap Status
 
-Programme configuration: `0.2.0`  
-Current roadmap release: `0.2.0`  
+Programme configuration: `0.3.0`
+
+Current roadmap release: `0.3.0`
+
 Stable target: `1.0.0`
 
 ## Tracks

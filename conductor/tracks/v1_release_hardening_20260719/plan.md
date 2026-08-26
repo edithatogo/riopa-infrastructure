@@ -60,6 +60,13 @@
 - [x] 5.20 Normalize the release-hardening metadata timestamp to UTC without
   changing the v0.3 evidence decision or any later release boundary. (Conductor
   review fix)
+- [x] 5.21 Coordinate the package, citation, CodeMeta, programme and release-note
+  surfaces for the protected `v0.3.0` tag, with an executable version-drift and
+  later-release-boundary test. (`tests/test_v030_release_preparation.py`)
+- [x] 5.22 Make the protected publisher mark experimental `v0.*` and explicit
+  prerelease tags as GitHub prereleases without affecting future stable tags.
+  (`.github/workflows/release.yml`, `tests/test_v030_release_preparation.py`;
+  Conductor review fix)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
