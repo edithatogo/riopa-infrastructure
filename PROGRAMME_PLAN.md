@@ -1,8 +1,11 @@
 # RIOPA Infrastructure: programme roadmap to stable v1.0
 
-**Roadmap configuration:** 0.2.0  
-**Updated:** 19 July 2026  
-**Current programme maturity:** M1 — specified prototype  
+**Roadmap configuration:** 0.3.0
+
+**Updated:** 27 August 2026
+
+**Current programme maturity:** M2 — experimental normative-core alpha
+
 **Target:** M6 — stable v1 general availability
 
 ## Mission

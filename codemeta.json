@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "name": "RIOPA Infrastructure",
   "description": "Open, modular, provenance-first infrastructure for reproducible public-data research and decision analytics in Aotearoa New Zealand.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dateCreated": "2026-07-18",
   "codeRepository": "https://github.com/edithatogo/riopa-infrastructure",
   "license": "https://spdx.org/licenses/MIT.html",
@@ -26,5 +26,5 @@
     "facility location",
     "health geography"
   ],
-  "dateModified": "2026-07-19"
+  "dateModified": "2026-08-27"
 }

@@ -2,6 +2,33 @@
 
 Software, schema, dataset, analytical-model and research-object versions remain independent unless a release explicitly relates them.
 
+## 0.3.0 — 2026-08-27
+
+### Added
+
+- Experimental M2 canonical schemas, ontology, identity and migration contracts
+  with bounded Python/Node and pinned SHACL conformance evidence.
+- Experimental M2 provenance event, retry, lineage, assistance and projection
+  contracts with positive, negative and cross-language fixtures.
+- Machine-readable `0.3.0` evidence linking all five required tracks and four
+  normative-core release gates without waivers.
+- Repository-owned governance, threat, supply-chain, signing-design and
+  reproducibility evidence for the bounded core alpha.
+
+### Changed
+
+- The programme release advances from the M1 roadmap preview to the M2
+  experimental normative-core alpha.
+- Roadmap reporting now records `0.3.0` as ready while every later release
+  remains fail-closed.
+
+### Boundaries
+
+- This release does not claim representative real-data integration, repeated
+  operations, external user or operator evidence, independent external
+  reproduction, stable publication, or stable-v1 release authority.
+- All five core tracks remain `validating` toward M6 and unarchived.
+
 ## Unreleased handoff — 2026-07-27
 
 ### Added
