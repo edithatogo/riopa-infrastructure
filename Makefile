@@ -46,10 +46,10 @@ bootstrap-dry-run:
 .PHONY: codex-next codex-status codex-bootstrap-dry-run
 
 codex-next:
-	python scripts/codex_orchestrator.py next --write
+	uv run python scripts/codex_orchestrator.py next --write
 
 codex-status:
-	python scripts/codex_orchestrator.py status
+	uv run python scripts/codex_orchestrator.py status
 
 codex-bootstrap-dry-run:
 	bash scripts/bootstrap_codex_handoff.sh --skip-quality

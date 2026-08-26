@@ -134,6 +134,42 @@ def render_work_packet(item: WorkPackage, status: str) -> str:
     return "\n".join(lines)
 
 
+def render_terminal_packet(queue: list[WorkPackage], state: dict[str, Any]) -> str:
+    """Render a fail-closed packet when no configured package can be selected."""
+
+    complete = [item for item in queue if package_state(state, item.identifier) == "complete"]
+    blocked = [item for item in queue if package_state(state, item.identifier) == "blocked"]
+    unavailable = len(queue) - len(complete) - len(blocked)
+    lines = [
+        "# No unblocked Codex work package",
+        "",
+        "All configured work packages are complete or blocked. This terminal packet",
+        "replaces any earlier next-work packet so stale instructions cannot be mistaken",
+        "for an executable assignment.",
+        "",
+        "## Status summary",
+        "",
+        f"- Complete: {len(complete)}",
+        f"- Blocked: {len(blocked)}",
+        f"- Other selectable states: {unavailable}",
+    ]
+    if blocked:
+        lines.extend(["", "## Blocked packages", ""])
+        lines.extend(f"- `{item.identifier}` — {item.title}" for item in blocked)
+    lines.extend(
+        [
+            "",
+            "## Continuation rule",
+            "",
+            "Do not execute an earlier packet. Reconcile the blocking evidence against",
+            "the current Conductor tracks, or add an explicitly authorised work package",
+            "before continuing.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
 def status_command(queue: list[WorkPackage], state: dict[str, Any]) -> int:
     for item in queue:
         state_name = package_state(state, item.identifier)
@@ -145,6 +181,10 @@ def next_command(queue: list[WorkPackage], state: dict[str, Any], *, write: bool
     item = choose_next(queue, state)
     if item is None:
         print("All work packages are complete or blocked.")
+        if write:
+            LOCAL_DIR.mkdir(parents=True, exist_ok=True)
+            NEXT_PATH.write_text(render_terminal_packet(queue, state), encoding="utf-8")
+            print(NEXT_PATH.relative_to(ROOT))
         return 0
     text = render_work_packet(item, package_state(state, item.identifier))
     if write:
