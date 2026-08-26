@@ -2,14 +2,25 @@
 
 This is the programme-level source of truth for the stable, hardened and supported RIOPA v1 roadmap. Each track has a specification, phased implementation plan, validated metadata and evidence index.
 
+## Repository ownership and review model
+
+RIOPA Infrastructure is a single-developer repository. The sole human developer
+may seek structured advice from AI agents using named analytical lenses, but no
+other human advice, review, consultation, user/operator participation or
+approval is assumed or claimed without explicit content-bound evidence. Agent
+panels are repository-owned advisory tools: they are not independent humans,
+external stakeholders or release authorities and cannot satisfy genuinely
+external or human evidence gates. This rule applies to every continuing track;
+see the [single-developer and agent-advisory policy](../docs/single-developer-agent-advisory-policy-20260826.md).
+
 ## Status summary
 
 - **Total tracks:** 29 (28 continuing stable-v1 tracks plus 1 archived historical closeout)
 - **Complete:** 0
-- **Active:** 12
+- **Active:** 24
 - **Validating:** 4
 - **Ready:** 0
-- **Specified:** 12
+- **Specified:** 0
 - **Proposed:** 0
 - **Archived:** 1
 - **V1-critical:** 28

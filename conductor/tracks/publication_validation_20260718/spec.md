@@ -39,7 +39,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Requirements
 
 - **R01.** Each scientific claim has a traceable analysis, data, code, environment and limitation record.
-- **R02.** Independent agent analysts use preserved public inputs and documented interfaces.
+- **R02.** Separately prompted advisory agents use preserved public inputs and documented interfaces; their output is repository-owned advice, not independent human or external validation.
 - **R03.** Failures and deviations are published rather than normalised away.
 - **R04.** Software, schemas, data and papers cite exact immutable versions.
 - **R05.** Corrections preserve prior versions and explain downstream impact.

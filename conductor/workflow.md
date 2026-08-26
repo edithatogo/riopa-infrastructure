@@ -74,6 +74,11 @@ A release may advance only when:
 
 ## Implementation rules
 
+0. Every track follows the repository's
+   [single-developer and agent-advisory policy](../docs/single-developer-agent-advisory-policy-20260826.md):
+   the sole human developer remains accountable; agent panels provide advice
+   only; and no other human or external participation is claimed without exact
+   evidence.
 1. Raw/source evidence is immutable; corrections create successor evidence.
 2. Normative schema changes require positive/negative fixtures, migrations and compatibility classification.
 3. Connector work requires rights/access review, load policy, offline fixtures and source-health handling.

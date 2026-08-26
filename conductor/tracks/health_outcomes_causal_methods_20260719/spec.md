@@ -49,7 +49,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Spatial confounding, autocorrelation, MAUP and measurement-error sensitivity are demonstrated.
 - [ ] Negative control, missing-data and subgroup/equity plans are included where applicable.
 - [ ] Preregistered pilot analyses distinguish exploratory from confirmatory results.
-- [ ] An orchestrated methods-and-governance agent panel approves claims or requires bounded language.
+- [ ] An orchestrated methods-and-governance agent panel advises on claims and recommends bounded language; the sole developer records the disposition, and no human peer or external approval is claimed.
 
 ## Hardening and maturity gates
 

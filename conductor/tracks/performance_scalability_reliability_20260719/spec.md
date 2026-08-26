@@ -54,7 +54,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Stress, cancellation and dependency-failure tests show graceful degradation and successful recovery.
 - [ ] A reproducible cost and capacity model covers reference deployment and clean-room reproduction.
 - [ ] CI detects material performance regressions using noise-aware thresholds and retained baselines.
-- [ ] An independent multi-agent panel verifies benchmark method, correctness controls and reported limitations.
+- [ ] A multi-agent advisory panel reviews benchmark method, correctness controls and reported limitations, and the sole developer records each finding's disposition; this is not independent human verification.
 
 ## Hardening and maturity gates
 
