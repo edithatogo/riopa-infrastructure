@@ -3,7 +3,7 @@
 - **Track ID:** `canonical_domain_schemas_ontology_20260719`
 - **Status:** `validating`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Normative`
 - **Risk / priority:** `High` / `P0`
@@ -30,13 +30,21 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CANONICAL-SHACL-EXECUTION-20260825` | Pinned SHACL runtime validates the digest-bound canonical golden fixture | `scripts/validate_canonical_shacl.py`, `docs/canonical-shacl-execution-report-20260825.json`, `docs/canonical-shacl-execution-contract-20260825.json`, `tests/test_canonical_shacl_execution.py`, `docs/ontology/canonical-conformance-manifest-1.0.0.json` | Repository-owned fixture conforms with inference disabled; external semantic qualification, cross-runtime compatibility, publication and authority remain open |
 | `CANONICAL-V1-CANDIDATE-FREEZE-20260825` | Digest-bound unpublished candidate freeze for normative schema, ontology, SHACL input, migration and conformance fixtures | `docs/canonical-v1-candidate-freeze-20260825.json`, `tests/test_canonical_candidate_freeze.py` | Candidate integrity passes; SHACL execution, external-client, migration, semantic, publication and authority gates remain open |
 | `CANONICAL-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded canonical slice | `docs/canonical-closeout-evidence-20260825.json`, `tests/test_canonical_closeout_evidence.py` | Evidence categories are linked and fail-closed; semantic, publication, signing and authority gates remain open |
+| `CANONICAL-M2-PROMOTION-20260826` | Exact-tree schema/identity controls, negative fixtures, Python/Node parity, pinned SHACL execution and digest-bound candidate evidence | `docs/canonical-m2-promotion-20260826.json`, `tests/test_canonical_m2_promotion.py`, [PR #617](https://github.com/edithatogo/riopa-infrastructure/pull/617) | Promoted to experimental M2 only; representative migration, repeated external use, RC qualification and stable publication/authority remain open |
 
-## Blocking defects and gates
+## Blocking maturity gates
 
-- `shacl-conformance-report` — pending qualifying SHACL engine/report.
-- `ontology-publication-identifier` — pending publication decision and persistent identifier.
-- `domain-agent-panel-qualification` — pending orchestrated semantic/domain agent-panel qualification.
-- `migration-compatibility-qualification` — pending compatibility matrix and migration execution.
+- M3 requires representative real-data/cross-runtime conformance and migration
+  compatibility execution.
+- M4 requires repeated external schema use and SLO evidence.
+- M5 requires frozen cross-language semantic qualification, an orchestrated
+  agent-panel rerun and RC soak.
+- M6 requires the published ontology identifier and accountable stable-release
+  authority.
+
+The pinned repository-owned SHACL execution and bounded semantic agent-panel
+evidence satisfy this experimental M2 boundary only. The foundation dependency
+is M2; dependency maturity remains evaluated separately at later thresholds.
 
 ## Repository-owned implementation slice (2026-08-25)
 
@@ -46,8 +54,9 @@ malformed extensions fail closed. This improves the bounded contract only; it
 does not claim semantic qualification, publication or stable-v1 compatibility.
 
 The 2026-08-25 closeout packet links the canonical implementation, test,
-review, migration and unsigned candidate-freeze evidence. It does not advance
-the track beyond M1 or make the candidate a published normative release.
+review, migration and unsigned candidate-freeze evidence. The later exact-tree
+promotion advances the repository-owned contract to experimental M2 but does
+not make the candidate a published normative release.
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -62,7 +71,12 @@ semantic, authority and release gates (`docs/canonical-domain-conductor-regenera
 
 Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index remains fail-closed while the track is `validating` at experimental
+M2. The executable schemas, negative cases, bounded cross-language parity,
+pinned SHACL fixture execution and digest-bound candidate satisfy M2 only.
+Evidence for M3-M6 must be immutable or version-addressed, agent-panel
+qualified where required, and sufficient for the applicable later release
+gates.
 
 ## Review record
 

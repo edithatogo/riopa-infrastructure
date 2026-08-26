@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "validating",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-25T19:00:00Z",
+  "updated_at": "2026-08-26T10:01:03Z",
   "description": "Define stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.",
   "depends_on": [
     "foundation_architecture_20260718"
@@ -19,7 +19,8 @@
     "urn:riopa:evidence:canonical-semantic-panel:2026-08-25",
     "urn:riopa:evidence:canonical-v1-candidate-freeze:2026-08-25",
     "urn:riopa:evidence:canonical-closeout:2026-08-25",
-    "urn:riopa:evidence:canonical-domain-conductor-regeneration:2026-08-25"
+    "urn:riopa:evidence:canonical-domain-conductor-regeneration:2026-08-25",
+    "urn:riopa:evidence:canonical-m2-promotion:2026-08-26"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -35,7 +36,7 @@
   "risk": "High",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "owner_role": "Core platform maintainer",
   "review_roles": [
     "Governance analyst",
@@ -44,9 +45,19 @@
     "External-user workflow analyst"
   ],
   "blocking_defects": [
-    "shacl-conformance-report",
+    "representative-real-data-and-cross-runtime-conformance",
+    "migration-compatibility-qualification",
+    "repeated-external-schema-use-and-slo-evidence",
+    "rc-cross-language-semantic-panel-and-soak-qualification",
     "ontology-publication-identifier",
-    "domain-agent-panel-qualification",
-    "migration-compatibility-qualification"
-  ]
+    "accountable-stable-release-authority"
+  ],
+  "blocking_defect_maturity": {
+    "representative-real-data-and-cross-runtime-conformance": "M3",
+    "migration-compatibility-qualification": "M3",
+    "repeated-external-schema-use-and-slo-evidence": "M4",
+    "rc-cross-language-semantic-panel-and-soak-qualification": "M5",
+    "ontology-publication-identifier": "M6",
+    "accountable-stable-release-authority": "M6"
+  }
 }

@@ -14,18 +14,17 @@ Stable target: `1.0.0`
 
 ### Current maturity
 
-- `M1`: **26**
-- `M2`: **3**
+- `M1`: **25**
+- `M2`: **4**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 14/29
+- Tracks qualified: 15/29
 - Gates: 4/4 passed
 - Blockers:
-  - track canonical_domain_schemas_ontology_20260719 has blocking defects
   - track connector_runtime_capture_20260719 has blocking defects
   - track documentation_developer_experience_20260719 has blocking defects
   - track emergency_health_facilities_pilot_20260718 has blocking defects
@@ -44,10 +43,9 @@ Stable target: `1.0.0`
 ### 0.3.0 — normative core alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 3/5
+- Tracks qualified: 4/5
 - Gates: 0/4 passed
 - Blockers:
-  - track canonical_domain_schemas_ontology_20260719 is M1; M2 is required
   - track provenance_profile_v1_20260718 is M1; M2 is required
   - gate core-schema-conformance is not passed with current evidence
   - gate core-provenance-integrity is not passed with current evidence
@@ -138,7 +136,7 @@ Stable target: `1.0.0`
 - Gates: 0/10 passed
 - Blockers:
   - track accessibility_network_engine_20260719 is M1; M5 is required
-  - track canonical_domain_schemas_ontology_20260719 is M1; M5 is required
+  - track canonical_domain_schemas_ontology_20260719 is M2; M5 is required
   - track connector_runtime_capture_20260719 is M1; M5 is required
   - track documentation_developer_experience_20260719 is M1; M5 is required
   - track emergency_health_facilities_pilot_20260718 is M1; M5 is required
@@ -183,7 +181,7 @@ Stable target: `1.0.0`
 - Gates: 0/14 passed
 - Blockers:
   - track accessibility_network_engine_20260719 is M1; M6 is required
-  - track canonical_domain_schemas_ontology_20260719 is M1; M6 is required
+  - track canonical_domain_schemas_ontology_20260719 is M2; M6 is required
   - track connector_runtime_capture_20260719 is M1; M6 is required
   - track documentation_developer_experience_20260719 is M1; M6 is required
   - track emergency_health_facilities_pilot_20260718 is M1; M6 is required

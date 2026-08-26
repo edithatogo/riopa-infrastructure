@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:canonical-m2-promotion:2026-08-26",
+  "track_id": "canonical_domain_schemas_ontology_20260719",
+  "evaluated_at": "2026-08-26T10:01:03Z",
+  "decision": "promote-to-m2",
+  "compatibility": {
+    "classification": "metadata-only-backward-compatible",
+    "rule": "No normative schema, ontology, fixture or binding bytes change in this promotion; maturity thresholds classify when known later evidence gates become release-blocking."
+  },
+  "authority": {
+    "kind": "repository-owner-instruction",
+    "instruction": "Proceed with the next recommended repository-owned step.",
+    "signature_claimed": false
+  },
+  "source_revision": {
+    "merged_commit": "a836ac309ed15085868abac321bb9fda7f5df7fe",
+    "validated_head_commit": "1921b6c13e6858d8666a0df045b389ce8df65d94",
+    "tree_sha": "584519fe37540e2c6853592e99aa015ce86aa24c",
+    "pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/617"
+  },
+  "dependency_boundary": {
+    "track_id": "foundation_architecture_20260718",
+    "required_maturity": "M2",
+    "observed_maturity": "M2",
+    "status": "satisfied"
+  },
+  "m2_repository_owned": {
+    "versioned_schema_and_identity_controls": "passed",
+    "original_value_and_uncertainty_preservation": "passed",
+    "negative_and_collision_tests": "passed",
+    "python_node_golden_fixture_parity": "passed",
+    "pinned_shacl_fixture_execution": "passed",
+    "migration_and_extension_policy": "passed",
+    "digest_bound_candidate_integrity": "passed",
+    "bounded_semantic_agent_panel": "passed",
+    "decision_traceability": "passed"
+  },
+  "validation": {
+    "roadmap": "passed",
+    "quality_contracts_and_packaging": "passed",
+    "tests": {
+      "status": "passed",
+      "count": 1155,
+      "coverage_percent": 92.68,
+      "minimum_coverage_percent": 90
+    },
+    "reproducibility": "passed",
+    "hosted_required_checks": {
+      "status": "passed",
+      "count": 5,
+      "actions_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32953343487",
+      "codeql_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32953343480"
+    }
+  },
+  "remaining_blocking_gates": {
+    "representative-real-data-and-cross-runtime-conformance": "M3",
+    "migration-compatibility-qualification": "M3",
+    "repeated-external-schema-use-and-slo-evidence": "M4",
+    "rc-cross-language-semantic-panel-and-soak-qualification": "M5",
+    "ontology-publication-identifier": "M6",
+    "accountable-stable-release-authority": "M6"
+  },
+  "non_claims": [
+    "This promotion records experimental M2 executable proof only.",
+    "Golden-fixture SHACL and Python/Node parity do not establish representative real-data, external-client or broad cross-runtime conformance.",
+    "The digest-bound candidate is unpublished and does not have a persistent ontology identifier or stable release authority.",
+    "It does not make release 0.3.0 ready; provenance and all four release gates remain pending."
+  ]
+}

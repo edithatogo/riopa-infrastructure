@@ -35,7 +35,7 @@
       "labels": [
         "type:track",
         "phase:core",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0",
         "risk:high",
         "stability:normative",
@@ -43,13 +43,13 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `canonical_domain_schemas_ontology_20260719`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nDefine stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas cover authority, jurisdiction, service, endpoint, layer, plan, provision, feature/version, facility/assertion, mapping, review and analytical run.\n- [ ] A versioned ontology and SHACL validation suite are published with original-to-canonical crosswalk fixtures.\n- [ ] Identifier rules survive source renames, authority reorganisation, facility relocation and plan replacement.\n- [ ] Python and Rust or another non-Python binding round-trip golden fixtures without semantic loss.\n- [ ] At least two heterogeneous council and two facility-source examples validate the model.\n- [ ] Stable 1.x schema and ontology migration rules pass backward-compatibility tests.\n\n## Source of truth\n\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md`",
+      "body": "Conductor track: `canonical_domain_schemas_ontology_20260719`  \nPhase: **Core**  \nTarget release: **0.3.0**  \nCurrent maturity: **M2**  \nMaturity target: **M6**  \nStability class: **Normative**\n\n## Goal\n\nDefine stable, versioned identities and semantics for authorities, services, plans, provisions, spatial features, facilities, assertions, mappings and analytical runs.\n\n## Dependencies\n\n- `foundation_architecture_20260718`\n\n## Acceptance criteria\n\n- [ ] Schemas cover authority, jurisdiction, service, endpoint, layer, plan, provision, feature/version, facility/assertion, mapping, review and analytical run.\n- [ ] A versioned ontology and SHACL validation suite are published with original-to-canonical crosswalk fixtures.\n- [ ] Identifier rules survive source renames, authority reorganisation, facility relocation and plan replacement.\n- [ ] Python and Rust or another non-Python binding round-trip golden fixtures without semantic loss.\n- [ ] At least two heterogeneous council and two facility-source examples validate the model.\n- [ ] Stable 1.x schema and ontology migration rules pass backward-compatibility tests.\n\n## Source of truth\n\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/spec.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/plan.md`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/metadata.json`\n- `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
       "track_id": "canonical_domain_schemas_ontology_20260719",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Normative",
@@ -57,7 +57,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 4
+      "blocking_defects": 6
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-1",
@@ -68,7 +68,7 @@
         "type:implementation",
         "phase:core",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Inventory entities and identifiers across existing connector, archive, policy and health repositories. (`docs/canonical-domain-inventory-20260801.md`)\n- [ ] 1.2 Define identity, version identity, source assertion and adjudication rules. (`docs/canonical-domain-inventory-20260801.md`, `src/riopa_provenance/canonical.py`)\n- [ ] 1.3 Record unresolved semantic collisions and extension needs. (`docs/canonical-domain-inventory-20260801.md`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
@@ -77,7 +77,7 @@
       "phase": "Core",
       "track_id": "canonical_domain_schemas_ontology_20260719",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Normative",
@@ -85,7 +85,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 4
+      "blocking_defects": 6
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-2",
@@ -98,7 +98,7 @@
         "type:implementation",
         "phase:core",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement canonical JSON Schemas, JSON-LD contexts, SKOS concepts and SHACL shapes. (`schemas/canonical-crosswalk.schema.json`, `docs/ontology/canonical-context.jsonld`, `docs/ontology/canonical-ontology-release-1.0.0.json`; SHACL execution remains pending)\n- [ ] 2.2 Add bitemporal, original-value, confidence, review and governance fields. (`src/riopa_provenance/canonical.py`, `tests/test_canonical.py`)\n- [ ] 2.3 Generate language bindings and documentation. (`2a7cd96`; generated TypeScript declaration, drift test and bounded Python/Node golden-fixture parity)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
@@ -107,7 +107,7 @@
       "phase": "Core",
       "track_id": "canonical_domain_schemas_ontology_20260719",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Normative",
@@ -115,7 +115,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 4
+      "blocking_defects": 6
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-3",
@@ -128,7 +128,7 @@
         "type:implementation",
         "phase:core",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Build council-planning, facility and source-service golden fixtures. (`fixtures/canonical-crosswalk-golden.json`, `conformance/v1/corpus.json`)\n- [ ] 3.2 Validate cross-language round trips and SHACL conformance. The bounded Python/Node parity receipt is preserved in `docs/ontology/canonical-cross-language-parity-20260824.json`; the pinned PySHACL/rdflib execution validates the digest-bound golden fixture (`scripts/validate_canonical_shacl.py`, `docs/canonical-shacl-execution-report-20260825.json`), while external semantic and cross-runtime gates remain open.\n- [ ] 3.3 Test identity under rename, reorganisation, relocation and supersession. (`tests/test_lineage_identifiers.py`, `tests/test_canonical.py`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
@@ -137,7 +137,7 @@
       "phase": "Core",
       "track_id": "canonical_domain_schemas_ontology_20260719",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Normative",
@@ -145,7 +145,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 4
+      "blocking_defects": 6
     },
     {
       "key": "canonical_domain_schemas_ontology_20260719:phase-4",
@@ -158,16 +158,16 @@
         "type:validation",
         "phase:core",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Run the repository-owned four-lens semantic qualification and preserve unresolved findings. Canonical identity, schema, ontology and extension boundaries are qualified for bounded scope; SHACL, publication, migration and external semantic gates remain open (`docs/canonical-semantic-panel-qualification-20260825.json`, `tests/test_canonical_semantic_panel_qualification.py`).\n- [ ] 4.2 Define the bounded migration compatibility and extension policy. (`docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json`, `docs/ontology/canonical-extension-policy-20260825.json`, `docs/ontology/canonical-extension-policy-20260825.md`, `tests/test_canonical.py`; fail-closed policy validation passes, while execution qualification and stable publication remain open.)\n- [ ] 4.3 Freeze the v1 normative schema/ontology candidate as a digest-bound unpublished candidate (`docs/canonical-v1-candidate-freeze-20260825.json`, `tests/test_canonical_candidate_freeze.py`). SHACL, cross-language, migration, semantic qualification, publication and authority gates remain open.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; SHACL, semantic, publication and authority gates remain explicitly pending (`docs/canonical-closeout-evidence-20260825.json`, `tests/test_canonical_closeout_evidence.py`; `2de0ab1`).\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/canonical-domain-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `validating`/M1 for target release `0.3.0`, with SHACL, semantic, migration, publication and authority gates unresolved.\n- [ ] R.1 Add digest-bound SHACL shape preparation while preserving the\n- [ ] R.2 Verify the updated manifest, ontology descriptor and tests under the\n- [ ] R.3 Correct the TypeScript binding documentation so hosted pytest drift\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `canonical_domain_schemas_ontology_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Run the repository-owned four-lens semantic qualification and preserve unresolved findings. Canonical identity, schema, ontology and extension boundaries are qualified for bounded scope; SHACL, publication, migration and external semantic gates remain open (`docs/canonical-semantic-panel-qualification-20260825.json`, `tests/test_canonical_semantic_panel_qualification.py`).\n- [ ] 4.2 Define the bounded migration compatibility and extension policy. (`docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json`, `docs/ontology/canonical-extension-policy-20260825.json`, `docs/ontology/canonical-extension-policy-20260825.md`, `tests/test_canonical.py`; fail-closed policy validation passes, while execution qualification and stable publication remain open.)\n- [ ] 4.3 Freeze the v1 normative schema/ontology candidate as a digest-bound unpublished candidate (`docs/canonical-v1-candidate-freeze-20260825.json`, `tests/test_canonical_candidate_freeze.py`). SHACL, cross-language, migration, semantic qualification, publication and authority gates remain open.\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; SHACL, semantic, publication and authority gates remain explicitly pending (`docs/canonical-closeout-evidence-20260825.json`, `tests/test_canonical_closeout_evidence.py`; `2de0ab1`).\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/canonical-domain-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains; M3 representative migration/cross-runtime, M4 repeated external use, M5 RC semantic qualification and M6 publication/authority gates remain open while the foundation dependency now satisfies M2.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; the initial closeout remained `validating`/M1 before the bounded R.4 promotion to M2.\n- [ ] R.1 Add digest-bound SHACL shape preparation while preserving the\n- [ ] R.2 Verify the updated manifest, ontology descriptor and tests under the\n- [ ] R.3 Correct the TypeScript binding documentation so hosted pytest drift\n- [ ] R.4 Revalidate the canonical schemas, identity and migration policies,\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/canonical_domain_schemas_ontology_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
       "track_id": "canonical_domain_schemas_ontology_20260719",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Normative",
@@ -175,7 +175,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 4
+      "blocking_defects": 6
     },
     {
       "key": "provenance_profile_v1_20260718",

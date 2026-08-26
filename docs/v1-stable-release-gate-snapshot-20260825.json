@@ -13,7 +13,7 @@
     ],
     "roadmap": [
       "track accessibility_network_engine_20260719 is M1; M6 is required",
-      "track canonical_domain_schemas_ontology_20260719 is M1; M6 is required",
+      "track canonical_domain_schemas_ontology_20260719 is M2; M6 is required",
       "track connector_runtime_capture_20260719 is M1; M6 is required",
       "track documentation_developer_experience_20260719 is M1; M6 is required",
       "track emergency_health_facilities_pilot_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "b5fc89d15a8c4980c796cd39c55a31fe8ed9556877e360f4d918e0b6093a1fd2",
+  "snapshot_sha256": "69777dad5f1c43458159e44547aa1053a9659114b38397cb26954df2fb1cc0fb",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -169,12 +169,14 @@
       },
       {
         "blocking_defects": [
-          "shacl-conformance-report",
+          "representative-real-data-and-cross-runtime-conformance",
+          "migration-compatibility-qualification",
+          "repeated-external-schema-use-and-slo-evidence",
+          "rc-cross-language-semantic-panel-and-soak-qualification",
           "ontology-publication-identifier",
-          "domain-agent-panel-qualification",
-          "migration-compatibility-qualification"
+          "accountable-stable-release-authority"
         ],
-        "current_maturity": "M1",
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,
