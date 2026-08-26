@@ -6,21 +6,22 @@ Stable target: `1.0.0`
 
 ## Tracks
 
-- Total: **28**
+- Total: **29**
 - v1-critical: **28**
 - active: **24**
+- archived: **1**
 - validating: **4**
 
 ### Current maturity
 
-- `M1`: **28**
+- `M1`: **29**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 12/28
+- Tracks qualified: 11/29
 - Gates: 4/4 passed
 - Blockers:
   - track canonical_domain_schemas_ontology_20260719 has blocking defects
@@ -32,12 +33,14 @@ Stable target: `1.0.0`
   - track governance_maori_data_sovereignty_20260718 has blocking defects
   - track methods_research_objects_20260718 has blocking defects
   - track nz_spatial_archive_mvp_20260718 has blocking defects
+  - track nz_spatial_archive_operations_20260719 has blocking defects
   - track operations_preservation_sre_20260719 has blocking defects
   - track performance_scalability_reliability_20260719 has blocking defects
   - track planning_system_transition_20260719 has blocking defects
   - track provenance_profile_v1_20260718 has blocking defects
   - track publication_validation_20260718 has blocking defects
   - track security_supply_chain_20260719 has blocking defects
+  - track supermarket_health_pilot_20260718 has blocking defects
   - track v1_release_hardening_20260719 has blocking defects
 
 ### 0.3.0 — normative core alpha (NOT READY)

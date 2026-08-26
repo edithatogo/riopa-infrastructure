@@ -73,6 +73,11 @@ repository: AI agents provide repository-owned advice, the sole developer
 dispositions findings and remains accountable, and no second-human or external
 participation is claimed without exact evidence.
 
+The continuation-state repair makes the machine-local next-work packet fail
+closed when every configured package is complete or blocked, uses the locked
+Python 3.14 environment for Make targets and refreshes the tracked roadmap
+summary without changing track maturity or release readiness.
+
 The bounded M1 architecture baseline is ratified; implementation remains
 validating at M1. Evidence must be immutable or version-addressed, qualified by
 the orchestrated agent panel where required, and sufficient for each later maturity and release gate.
