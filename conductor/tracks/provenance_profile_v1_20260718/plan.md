@@ -31,9 +31,19 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned projection slice; signed, publication and panel gates remain explicitly pending.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating`/M1 because the documented gates are unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor
+  workflow; the initial closeout remained `validating`/M1 before the bounded R.2
+  promotion to M2.
 
 ## Review fixes
 
 - [x] R.1 Correct partial conformance task states so pending signed-attestation
   and non-Python evidence cannot be represented as complete. (`ef25920`)
+- [x] R.2 Revalidate the canonical event, retry, lineage and assistance contracts,
+  negative fixtures, Python/Node parity, bounded projections, migration contract
+  and digest-bound candidate on the merged tree, then promote only this track to
+  experimental M2. (`docs/provenance-m2-promotion-20260827.json`,
+  `tests/test_provenance_m2_promotion.py`)
+- [x] R.3 Reconcile C.4 and the evidence index with the bounded M2 decision while
+  retaining all M3-M6 integration, operation, publication, reproduction and
+  authority gates. (Conductor review fix)

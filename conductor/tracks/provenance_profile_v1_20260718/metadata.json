@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T17:55:00Z",
+  "updated_at": "2026-08-27T00:00:00Z",
   "description": "Stabilise a cross-language profile that unifies capture, transformation, lineage, manual and AI assistance, integrity, rights and quality without replacing repository-native evidence.",
   "depends_on": [
     "foundation_architecture_20260718",
@@ -19,6 +19,7 @@
     "urn:riopa:evidence:provenance-profile-compatibility-draft:2026-08-25"
     ,"urn:riopa:evidence:provenance-profile-panel-qualification:2026-08-25"
     ,"urn:riopa:evidence:provenance-profile-v1-candidate-freeze:2026-08-25"
+    ,"urn:riopa:evidence:provenance-m2-promotion:2026-08-27"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -34,7 +35,7 @@
   "risk": "Critical",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "owner_role": "Core platform maintainer",
   "review_roles": [
     "API/schema analyst",
@@ -43,10 +44,21 @@
     "Research-object analyst"
   ],
   "blocking_defects": [
-    "non-python-validator-parity",
-    "projection-agent-panel-qualification",
-    "profile-publication-identifier",
-    "signed-v1-attestation",
-    "accountable-release-authority-decision"
-  ]
+    "representative-real-data-and-cross-runtime-conformance",
+    "representative-migration-and-failure-handling",
+    "repeated-external-profile-use-and-slo-evidence",
+    "rc-semantic-security-recovery-panel-and-soak-qualification",
+    "stable-profile-publication-identifier-and-signed-attestation",
+    "independent-external-reproduction",
+    "accountable-stable-release-authority"
+  ],
+  "blocking_defect_maturity": {
+    "representative-real-data-and-cross-runtime-conformance": "M3",
+    "representative-migration-and-failure-handling": "M3",
+    "repeated-external-profile-use-and-slo-evidence": "M4",
+    "rc-semantic-security-recovery-panel-and-soak-qualification": "M5",
+    "stable-profile-publication-identifier-and-signed-attestation": "M6",
+    "independent-external-reproduction": "M6",
+    "accountable-stable-release-authority": "M6"
+  }
 }
