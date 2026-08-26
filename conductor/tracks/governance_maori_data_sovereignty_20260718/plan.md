@@ -32,5 +32,9 @@
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md`. (0b062d5)
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. (476ff5a)
-- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains; the foundation dependency and live evidence gates remain open.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating`/M1 because the documented gates are unresolved.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains; M3 applied-pilot, M4 live-operation and M6 release-authority gates remain open while the foundation dependency now satisfies M2.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; the initial closeout remained `validating`/M1 before the bounded R.1 promotion.
+
+## Review fixes
+
+- [x] R.1 Revalidate the executable governance framework, controlled/public separation, negative tests, withdrawal exercise and traceability on the merged tree and promote only this track from M1 to experimental M2. (`docs/governance-m2-promotion-20260826.json`, `tests/test_governance_m2_promotion.py`)

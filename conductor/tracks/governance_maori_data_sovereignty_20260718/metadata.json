@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-24T23:59:00Z",
+  "updated_at": "2026-08-26T09:12:10Z",
   "description": "Embed lawful reuse, privacy, safety and withdrawal decisions into source registration, analysis and publication gates, with cultural or community review triggered by documented scope and risk.",
   "depends_on": [
     "foundation_architecture_20260718"
@@ -21,7 +21,8 @@
     "urn:riopa:evidence:governance-release-pilot-audit:2026-07-29",
     "urn:riopa:evidence:governance-review-fix:f914a38",
     "urn:riopa:evidence:governance-use-case-review:c3579bd",
-    "urn:riopa:evidence:governance-reference-propagation:0095dc0"
+    "urn:riopa:evidence:governance-reference-propagation:0095dc0",
+    "urn:riopa:evidence:governance-m2-promotion:2026-08-26"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -37,7 +38,7 @@
   "risk": "Critical",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "owner_role": "Programme owner",
   "review_roles": [
     "Governance analyst",
@@ -46,9 +47,13 @@
     "Scientific-methods analyst"
   ],
   "blocking_defects": [
-    "foundation-dependency-below-m6",
     "live-takedown-and-publication-evidence",
     "applied-pilot-governance-evidence",
     "accountable-release-authority-decision"
-  ]
+  ],
+  "blocking_defect_maturity": {
+    "live-takedown-and-publication-evidence": "M4",
+    "applied-pilot-governance-evidence": "M3",
+    "accountable-release-authority-decision": "M6"
+  }
 }

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:governance-m2-promotion:2026-08-26",
+  "track_id": "governance_maori_data_sovereignty_20260718",
+  "evaluated_at": "2026-08-26T09:12:10Z",
+  "decision": "promote-to-m2",
+  "compatibility": {
+    "classification": "metadata-only-backward-compatible",
+    "rule": "Existing governance decisions and public or controlled pathway behavior are unchanged; maturity thresholds only classify when known future evidence gates become release-blocking."
+  },
+  "authority": {
+    "kind": "repository-owner-instruction",
+    "instruction": "Proceed with the next recommended repository-owned step.",
+    "signature_claimed": false
+  },
+  "source_revision": {
+    "merged_commit": "f1cc4daa9efd8fd722e8e61ba90ae851a9c57e55",
+    "validated_head_commit": "49806bbd24690a57d2f11be03db81019701af117",
+    "tree_sha": "afc6b589fd70f4d11944dbb06bf3ff6d6cbcf0aa",
+    "pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/615"
+  },
+  "dependency_boundary": {
+    "track_id": "foundation_architecture_20260718",
+    "required_maturity": "M2",
+    "observed_maturity": "M2",
+    "status": "satisfied"
+  },
+  "m2_repository_owned": {
+    "versioned_decision_framework": "passed",
+    "fail_closed_publication_controls": "passed",
+    "controlled_public_separation": "passed",
+    "negative_and_expiry_tests": "passed",
+    "synthetic_withdrawal_and_supersession": "passed",
+    "manifest_reference_propagation": "passed",
+    "decision_traceability": "passed"
+  },
+  "validation": {
+    "roadmap": "passed",
+    "quality_contracts_and_packaging": "passed",
+    "tests": {
+      "status": "passed",
+      "count": 1151,
+      "coverage_percent": 92.68,
+      "minimum_coverage_percent": 90
+    },
+    "reproducibility": "passed",
+    "hosted_required_checks": {
+      "status": "passed",
+      "count": 5,
+      "actions_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32950749348",
+      "codeql_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32950749346"
+    }
+  },
+  "remaining_blocking_gates": {
+    "applied-pilot-governance-evidence": "M3",
+    "live-takedown-and-publication-evidence": "M4",
+    "accountable-release-authority-decision": "M6"
+  },
+  "non_claims": [
+    "This promotion records experimental M2 executable proof only.",
+    "The synthetic drill is not live takedown, publication or repeated operational evidence.",
+    "No external cultural or community participation, applied-pilot approval or stable release-authority decision is claimed.",
+    "It does not make release 0.3.0 ready; three other required tracks and all four release gates remain pending."
+  ]
+}

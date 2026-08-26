@@ -20,7 +20,7 @@
       "track facility_location_engine_20260718 is M1; M6 is required",
       "track facility_registry_20260719 is M1; M6 is required",
       "track foundation_architecture_20260718 is M2; M6 is required",
-      "track governance_maori_data_sovereignty_20260718 is M1; M6 is required",
+      "track governance_maori_data_sovereignty_20260718 is M2; M6 is required",
       "track health_outcomes_causal_methods_20260719 is M1; M6 is required",
       "track interoperability_conformance_sdks_20260719 is M1; M6 is required",
       "track methods_research_objects_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "bb5737c79b42e79ce7f32460489e73b7179abfa1b03b74d7338bb6afa8a6b1aa",
+  "snapshot_sha256": "7dd945a5b97aa1742a3cc38b5def14ac1c8103497290e96b91739c3e6a05c0b7",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -268,12 +268,11 @@
       },
       {
         "blocking_defects": [
-          "foundation-dependency-below-m6",
           "live-takedown-and-publication-evidence",
           "applied-pilot-governance-evidence",
           "accountable-release-authority-decision"
         ],
-        "current_maturity": "M1",
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,

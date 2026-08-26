@@ -3,7 +3,7 @@
 - **Track ID:** `governance_maori_data_sovereignty_20260718`
 - **Status:** `validating`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Governance`
 - **Risk / priority:** `Critical` / `P0`
@@ -31,12 +31,17 @@
 | R01, R02, R04 | Metadata-only custodian and authority request boundary | `docs/source-authority-request-packet.md`, `docs/external-dependency-register.md` | Prepared, unsent; no acquisition, credentials or authority inferred |
 | R01, R02, R03, R04 | Acquisition approval record boundary | `docs/source-acquisition-approval-template.md` | Requires recipient, source, rights, scope and expiry before acquisition |
 | R05 | Planned facility, health, deprivation and culturally sensitive geography review | `reports/governance-use-case-review.md` | All remain `review-required`; no publication approval inferred |
+| `GOVERNANCE-M2-PROMOTION-20260826` | Exact-tree executable framework, controlled/public separation, negative tests, withdrawal exercise and owner-authorized maturity decision | `docs/governance-m2-promotion-20260826.json`, `tests/test_governance_m2_promotion.py`, [PR #615](https://github.com/edithatogo/riopa-infrastructure/pull/615) | Promoted to experimental M2 only; real applied-pilot, live operational and stable-authority evidence remain open |
 
-## Blocking defects
+## Blocking maturity gates
 
-- The foundation dependency remains below M6, and live takedown,
-  publication, applied-pilot and release-authority evidence remain outside
-  the bounded repository implementation.
+- M3 requires representative applied-pilot governance evidence.
+- M4 requires live operational takedown and publication evidence.
+- M6 requires the accountable stable-release authority decision.
+
+The foundation dependency is M2 and therefore satisfies this experimental M2
+boundary. Dependency maturity remains evaluated separately for every later
+release threshold.
 
 ## Repository-owned closeout slice (2026-08-24)
 
@@ -66,6 +71,8 @@ stable-release authority.
 
 Required agent-panel lenses: Governance analyst, Security analyst, Data-governance analyst, Scientific-methods analyst.
 
-Implementation is validating at M1. Evidence must be immutable or
-version-addressed, agent-panel qualified where required, and sufficient for
-the applicable release gates.
+Implementation remains `validating`, now at experimental M2. The executable
+framework, controlled/public separation, negative tests and synthetic
+withdrawal evidence satisfy the repository-owned M2 boundary. Evidence for
+M3-M6 must remain immutable or version-addressed, agent-panel qualified where
+required, and sufficient for the applicable later release gates.

@@ -14,15 +14,15 @@ Stable target: `1.0.0`
 
 ### Current maturity
 
-- `M1`: **28**
-- `M2`: **1**
+- `M1`: **27**
+- `M2`: **2**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 12/29
+- Tracks qualified: 13/29
 - Gates: 4/4 passed
 - Blockers:
   - track canonical_domain_schemas_ontology_20260719 has blocking defects
@@ -30,7 +30,6 @@ Stable target: `1.0.0`
   - track documentation_developer_experience_20260719 has blocking defects
   - track emergency_health_facilities_pilot_20260718 has blocking defects
   - track facility_registry_20260719 has blocking defects
-  - track governance_maori_data_sovereignty_20260718 has blocking defects
   - track methods_research_objects_20260718 has blocking defects
   - track nz_spatial_archive_mvp_20260718 has blocking defects
   - track nz_spatial_archive_operations_20260719 has blocking defects
@@ -46,10 +45,9 @@ Stable target: `1.0.0`
 ### 0.3.0 — normative core alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 1/5
+- Tracks qualified: 2/5
 - Gates: 0/4 passed
 - Blockers:
-  - track governance_maori_data_sovereignty_20260718 is M1; M2 is required
   - track security_supply_chain_20260719 is M1; M2 is required
   - track canonical_domain_schemas_ontology_20260719 is M1; M2 is required
   - track provenance_profile_v1_20260718 is M1; M2 is required
@@ -149,7 +147,7 @@ Stable target: `1.0.0`
   - track facility_location_engine_20260718 is M1; M5 is required
   - track facility_registry_20260719 is M1; M5 is required
   - track foundation_architecture_20260718 is M2; M5 is required
-  - track governance_maori_data_sovereignty_20260718 is M1; M5 is required
+  - track governance_maori_data_sovereignty_20260718 is M2; M5 is required
   - track health_outcomes_causal_methods_20260719 is M1; M5 is required
   - track interoperability_conformance_sdks_20260719 is M1; M5 is required
   - track methods_research_objects_20260718 is M1; M5 is required
@@ -194,7 +192,7 @@ Stable target: `1.0.0`
   - track facility_location_engine_20260718 is M1; M6 is required
   - track facility_registry_20260719 is M1; M6 is required
   - track foundation_architecture_20260718 is M2; M6 is required
-  - track governance_maori_data_sovereignty_20260718 is M1; M6 is required
+  - track governance_maori_data_sovereignty_20260718 is M2; M6 is required
   - track health_outcomes_causal_methods_20260719 is M1; M6 is required
   - track interoperability_conformance_sdks_20260719 is M1; M6 is required
   - track methods_research_objects_20260718 is M1; M6 is required

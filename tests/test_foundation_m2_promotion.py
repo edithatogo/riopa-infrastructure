@@ -37,7 +37,7 @@ def test_foundation_m2_promotion_is_exact_tree_and_fail_closed() -> None:
     assert receipt["evidence_id"] in metadata["evidence"]
 
     readiness = release_readiness(ROOT, "0.3.0")
-    assert readiness.qualified_tracks == 1
+    assert readiness.qualified_tracks >= 1
     assert not any("foundation_architecture_20260718" in item for item in readiness.blockers)
 
 
