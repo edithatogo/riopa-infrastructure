@@ -28,8 +28,8 @@
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; SHACL, semantic, publication and authority gates remain explicitly pending (`docs/canonical-closeout-evidence-20260825.json`, `tests/test_canonical_closeout_evidence.py`; `2de0ab1`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/canonical-domain-conductor-regeneration-20260825.json`).
-- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `validating`/M1 for target release `0.3.0`, with SHACL, semantic, migration, publication and authority gates unresolved.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains; M3 representative migration/cross-runtime, M4 repeated external use, M5 RC semantic qualification and M6 publication/authority gates remain open while the foundation dependency now satisfies M2.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; the initial closeout remained `validating`/M1 before the bounded R.4 promotion to M2.
 
 ## Review fixes
 
@@ -40,3 +40,8 @@
 - [x] R.3 Correct the TypeScript binding documentation so hosted pytest drift
   enforcement and the equivalent local `--check` command are distinguished.
   (`913f683`; review fix)
+- [x] R.4 Revalidate the canonical schemas, identity and migration policies,
+  negative fixtures, Python/Node parity, pinned SHACL execution and digest-bound
+  candidate on the merged tree, then promote only this track to experimental
+  M2. (`docs/canonical-m2-promotion-20260826.json`,
+  `tests/test_canonical_m2_promotion.py`)
