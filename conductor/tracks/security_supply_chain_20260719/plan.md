@@ -36,5 +36,9 @@
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned slice; external execution receipts remain explicitly pending.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
-- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains; M3 hosted execution, M4 repeated operation, M5 recovery/panel qualification and M6 release-authority gates remain open while the foundation dependency now satisfies M2.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; the initial closeout remained `active`/M1 before the bounded R.8 transition to `validating`/M2.
+
+## M2 promotion
+
+- [x] R.8 Revalidate the threat/control contracts, immutable-action and workflow policies, deterministic attestation/signing manifests, negative tests, SBOM construction and secret-free exercise packets on the merged tree, then promote only this track to experimental M2. (`docs/security-m2-promotion-20260826.json`, `tests/test_security_m2_promotion.py`)

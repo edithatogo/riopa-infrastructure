@@ -76,7 +76,7 @@ def test_generated_issue_graph_covers_all_tracks_and_phases() -> None:
 def test_current_development_release_is_blocked_but_stable_is_not() -> None:
     status = roadmap_status(ROOT)
     assert status["tracks"]["total"] == 29
-    assert status["tracks"]["by_current_maturity"] == {"M1": 27, "M2": 2}
+    assert status["tracks"]["by_current_maturity"] == {"M1": 26, "M2": 3}
     assert status["releases"][0]["ready"] is False
     assert status["releases"][0]["blockers"]
     assert all(not release["ready"] for release in status["releases"][1:])
