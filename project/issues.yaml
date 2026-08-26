@@ -338,20 +338,20 @@
       "labels": [
         "type:track",
         "phase:foundation",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0",
         "risk:high",
         "stability:governance",
         "v1-critical",
         "rights-governance"
       ],
-      "body": "Conductor track: `foundation_architecture_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nRatify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.\n\n## Dependencies\n\n- None.\n\n## Acceptance criteria\n\n- [ ] All architecture decisions are accepted, superseded or explicitly deferred with rationale and owner.\n- [ ] Every v1-critical track has a repository owner, dependencies, target release, maturity target and checkable evidence contract.\n- [ ] The track and release dependency graphs are acyclic and validated automatically.\n- [ ] The v1 scope, non-claims, compatibility contract, support window and release authority are approved.\n- [ ] At least two separately prompted advisory agent analysts complete architecture qualification. Each analyst must have a distinct identity, scope or method, and the sole developer must resolve or record their findings; this is not second-person review.\n- [ ] A contributor can regenerate the issue graph and roadmap status from a clean checkout.\n\n## Source of truth\n\n- `conductor/tracks/foundation_architecture_20260718/spec.md`\n- `conductor/tracks/foundation_architecture_20260718/plan.md`\n- `conductor/tracks/foundation_architecture_20260718/metadata.json`\n- `conductor/tracks/foundation_architecture_20260718/index.md`",
+      "body": "Conductor track: `foundation_architecture_20260718`  \nPhase: **Foundation**  \nTarget release: **0.3.0**  \nCurrent maturity: **M2**  \nMaturity target: **M6**  \nStability class: **Governance**\n\n## Goal\n\nRatify the v1 product boundary, federated responsibility model, version axes, decision rights, release train and machine-checkable programme governance.\n\n## Dependencies\n\n- None.\n\n## Acceptance criteria\n\n- [ ] All architecture decisions are accepted, superseded or explicitly deferred with rationale and owner.\n- [ ] Every v1-critical track has a repository owner, dependencies, target release, maturity target and checkable evidence contract.\n- [ ] The track and release dependency graphs are acyclic and validated automatically.\n- [ ] The v1 scope, non-claims, compatibility contract, support window and release authority are approved.\n- [ ] At least two separately prompted advisory agent analysts complete architecture qualification. Each analyst must have a distinct identity, scope or method, and the sole developer must resolve or record their findings; this is not second-person review.\n- [ ] A contributor can regenerate the issue graph and roadmap status from a clean checkout.\n\n## Source of truth\n\n- `conductor/tracks/foundation_architecture_20260718/spec.md`\n- `conductor/tracks/foundation_architecture_20260718/plan.md`\n- `conductor/tracks/foundation_architecture_20260718/metadata.json`\n- `conductor/tracks/foundation_architecture_20260718/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Foundation",
       "track_id": "foundation_architecture_20260718",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Governance",
@@ -359,7 +359,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "foundation_architecture_20260718:phase-1",
@@ -370,7 +370,7 @@
         "type:implementation",
         "phase:foundation",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 1.1 Reconcile all v0.1 ADRs with the revised v1 maturity and release model. (docs/adr/README.md; 42adef0)\n- [ ] 1.2 Define platform, dataset, analytics and application release boundaries and non-claims. (docs/v1-scope-and-boundaries.md; 43805ba)\n- [ ] 1.3 Record responsibility, ownership and version axes for every component. (docs/v1-scope-and-boundaries.md; docs/architecture.md; 43805ba)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
@@ -379,7 +379,7 @@
       "phase": "Foundation",
       "track_id": "foundation_architecture_20260718",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Governance",
@@ -387,7 +387,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "foundation_architecture_20260718:phase-2",
@@ -400,7 +400,7 @@
         "type:implementation",
         "phase:foundation",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 2.1 Define maintainers, approvers, agent-panel lenses, release authority and exception expiry. (docs/governance-and-sustainability.md; f95b827)\n- [ ] 2.2 Define issue, Conductor, ADR and release-evidence sources of truth. (docs/governance-and-sustainability.md; f95b827)\n- [ ] 2.3 Establish sustainability, succession and contribution expectations. (docs/governance-and-sustainability.md; f95b827)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
@@ -409,7 +409,7 @@
       "phase": "Foundation",
       "track_id": "foundation_architecture_20260718",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Governance",
@@ -417,7 +417,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "foundation_architecture_20260718:phase-3",
@@ -430,7 +430,7 @@
         "type:implementation",
         "phase:foundation",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 3.1 Implement machine validation for tracks, dependencies, maturity and release gates. (src/riopa_provenance/roadmap.py; existing baseline)\n- [ ] 3.2 Generate the GitHub issue graph from Conductor artifacts and reject drift. (scripts/create_issues.py; project/issues.yaml; existing baseline)\n- [ ] 3.3 Add architecture fitness checks for source-of-truth and version-boundary violations. (src/riopa_provenance/roadmap.py; tests/test_roadmap_hardening.py; c5f66bc)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
@@ -439,7 +439,7 @@
       "phase": "Foundation",
       "track_id": "foundation_architecture_20260718",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Governance",
@@ -447,7 +447,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "foundation_architecture_20260718:phase-4",
@@ -460,7 +460,7 @@
         "type:implementation",
         "phase:foundation",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
       "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct two separately prompted advisory agent-lens architecture assessments; no second-person review is claimed. (docs/architecture-reviews/; 4f1560e)\n- [ ] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)\n- [ ] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
@@ -469,7 +469,7 @@
       "phase": "Foundation",
       "track_id": "foundation_architecture_20260718",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Governance",
@@ -477,7 +477,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "foundation_architecture_20260718:phase-5",
@@ -490,16 +490,16 @@
         "type:validation",
         "phase:foundation",
         "risk:high",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.3.0"
       ],
-      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)\n- [ ] 5.2 Register external dependencies, closure evidence, owners and bounded fallbacks. (docs/external-dependency-register.md; f614b40)\n- [ ] 5.3 Align the closeout wording with the validating status and machine-readable M2 readiness boundary. (601940f; review fix)\n- [ ] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)\n- [ ] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)\n- [ ] R.6 Reconcile the programme status summary with the 28 track metadata states: 12 active, 4 validating and 12 specified; no track is promoted by this documentation correction. (`conductor/tracks.md`)\n- [ ] R.7 Replace independent-analyst wording with distinct agent-panel lenses for the single-developer repository, while preserving factual external-participant and release-authority gates. (`docs/foundation-agent-panel-wording-correction-20260825.json`)\n- [ ] R.8 Establish the programme-wide single-developer and agent-advisory contract, correct ambiguous agent-independence/approval wording, and preserve genuinely external evidence gates. (`docs/single-developer-agent-advisory-policy-20260826.md`, `tests/test_single_developer_agent_advisory_policy.py`)\n- [ ] R.9 Make terminal orchestrator selection replace stale executable packets, restore the Python 3.14 `uv` invocation contract, and regenerate the current roadmap status. (`scripts/codex_orchestrator.py`, `tests/test_codex_orchestrator.py`, `Makefile`, `ROADMAP_STATUS.md`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `foundation_architecture_20260718`.\n\n## Tasks\n\n- [ ] 5.1 Record task SHAs, evidence identifiers and active blockers in the track metadata and plan. (7448786; review fix)\n- [ ] 5.2 Register external dependencies, closure evidence, owners and bounded fallbacks. (docs/external-dependency-register.md; f614b40)\n- [ ] 5.3 Align the closeout wording with the validating status and machine-readable M2 readiness boundary. (601940f; review fix)\n- [ ] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)\n- [ ] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)\n- [ ] R.6 Reconcile the programme status summary with the 28 track metadata states: 12 active, 4 validating and 12 specified; no track is promoted by this documentation correction. (`conductor/tracks.md`)\n- [ ] R.7 Replace independent-analyst wording with distinct agent-panel lenses for the single-developer repository, while preserving factual external-participant and release-authority gates. (`docs/foundation-agent-panel-wording-correction-20260825.json`)\n- [ ] R.8 Establish the programme-wide single-developer and agent-advisory contract, correct ambiguous agent-independence/approval wording, and preserve genuinely external evidence gates. (`docs/single-developer-agent-advisory-policy-20260826.md`, `tests/test_single_developer_agent_advisory_policy.py`)\n- [ ] R.9 Make terminal orchestrator selection replace stale executable packets, restore the Python 3.14 `uv` invocation contract, and regenerate the current roadmap status. (`scripts/codex_orchestrator.py`, `tests/test_codex_orchestrator.py`, `Makefile`, `ROADMAP_STATUS.md`)\n- [ ] R.10 Revalidate the executable, negative-test, traceability and clean-checkout evidence on the merged tree and promote only the foundation track from M1 to experimental M2. (`docs/foundation-m2-promotion-20260826.json`, `tests/test_foundation_m2_promotion.py`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/foundation_architecture_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Foundation",
       "track_id": "foundation_architecture_20260718",
       "target_release": "0.3.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "High",
       "stability_class": "Governance",
@@ -507,7 +507,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Programme owner",
-      "blocking_defects": 5
+      "blocking_defects": 4
     },
     {
       "key": "governance_maori_data_sovereignty_20260718",

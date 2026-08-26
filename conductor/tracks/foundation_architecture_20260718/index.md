@@ -3,7 +3,7 @@
 - **Track ID:** `foundation_architecture_20260718`
 - **Status:** `validating`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Governance`
 - **Risk / priority:** `High` / `P0`
@@ -30,10 +30,10 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | M2-prep | Executable acceptance checklist | `docs/architecture-reviews/foundation-m2-evidence-checklist.md` | Defines bounded proof and explicit non-claims for the next maturity gate |
 | M2-READINESS-20260801 | Machine-readable M2 readiness and later-gate boundary | `docs/foundation-maturity-readiness-20260801.json` | Repository-owned M2 preparation passes; promotion remains false |
 | `FOUNDATION-AGENT-PANEL-WORDING-20260825` | Single-developer repository wording correction for agent-panel coverage | `docs/foundation-agent-panel-wording-correction-20260825.json` | Agent panels are repository assessors only; external participation, elapsed evidence and accountable authority remain separate gates |
+| `FOUNDATION-M2-PROMOTION-20260826` | Exact-tree M2 executable proof, negative tests, traceability and owner-authorized maturity decision | `docs/foundation-m2-promotion-20260826.json`, `tests/test_foundation_m2_promotion.py`, [PR #614](https://github.com/edithatogo/riopa-infrastructure/pull/614) | Promoted to experimental M2 only; M3-M6 evidence and release 0.3.0 gates remain open |
 
 ## Blocking maturity gates
 
-- M2 executable proof, negative tests and traceable evidence.
 - M3 real-data integration and representative failure handling.
 - M4 repeated operation, external use and SLO evidence.
 - M5 orchestrated agent-panel qualification, recovery qualification and RC soak.
@@ -78,9 +78,12 @@ closed when every configured package is complete or blocked, uses the locked
 Python 3.14 environment for Make targets and refreshes the tracked roadmap
 summary without changing track maturity or release readiness.
 
-The bounded M1 architecture baseline is ratified; implementation remains
-validating at M1. Evidence must be immutable or version-addressed, qualified by
-the orchestrated agent panel where required, and sufficient for each later maturity and release gate.
+The bounded M1 architecture baseline remains the historical ratification point.
+Exact-tree executable proof, negative tests and traceability now advance the
+track to experimental M2 while its lifecycle status remains `validating`.
+Evidence for M3-M6 must still be immutable or version-addressed, qualified by
+the orchestrated agent panel where required, and sufficient for each later
+maturity and release gate.
 
-Target-release metadata and evidence were revalidated on 2026-08-01; status is
-`validating` by design until M2–M6 gates are evidenced.
+Target-release metadata and evidence were revalidated on 2026-08-26; status is
+`validating` by design while M3-M6 gates remain unresolved.
