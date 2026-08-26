@@ -31,7 +31,7 @@
       "track performance_scalability_reliability_20260719 is M1; M6 is required",
       "track planning_rules_linkage_20260718 is M1; M6 is required",
       "track planning_system_transition_20260719 is M1; M6 is required",
-      "track provenance_profile_v1_20260718 is M1; M6 is required",
+      "track provenance_profile_v1_20260718 is M2; M6 is required",
       "track provenance_query_api_20260719 is M1; M6 is required",
       "track publication_validation_20260718 is M1; M6 is required",
       "track repository_template_adoption_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "69777dad5f1c43458159e44547aa1053a9659114b38397cb26954df2fb1cc0fb",
+  "snapshot_sha256": "ec348b4c8945df7ce1f0ff7d82f329bda12b7218acf40257729384c694b110ae",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -410,13 +410,15 @@
       },
       {
         "blocking_defects": [
-          "non-python-validator-parity",
-          "projection-agent-panel-qualification",
-          "profile-publication-identifier",
-          "signed-v1-attestation",
-          "accountable-release-authority-decision"
+          "representative-real-data-and-cross-runtime-conformance",
+          "representative-migration-and-failure-handling",
+          "repeated-external-profile-use-and-slo-evidence",
+          "rc-semantic-security-recovery-panel-and-soak-qualification",
+          "stable-profile-publication-identifier-and-signed-attestation",
+          "independent-external-reproduction",
+          "accountable-stable-release-authority"
         ],
-        "current_maturity": "M1",
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,

@@ -14,15 +14,15 @@ Stable target: `1.0.0`
 
 ### Current maturity
 
-- `M1`: **25**
-- `M2`: **4**
+- `M1`: **24**
+- `M2`: **5**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 15/29
+- Tracks qualified: 16/29
 - Gates: 4/4 passed
 - Blockers:
   - track connector_runtime_capture_20260719 has blocking defects
@@ -35,7 +35,6 @@ Stable target: `1.0.0`
   - track operations_preservation_sre_20260719 has blocking defects
   - track performance_scalability_reliability_20260719 has blocking defects
   - track planning_system_transition_20260719 has blocking defects
-  - track provenance_profile_v1_20260718 has blocking defects
   - track publication_validation_20260718 has blocking defects
   - track supermarket_health_pilot_20260718 has blocking defects
   - track v1_release_hardening_20260719 has blocking defects
@@ -43,10 +42,9 @@ Stable target: `1.0.0`
 ### 0.3.0 — normative core alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 4/5
+- Tracks qualified: 5/5
 - Gates: 0/4 passed
 - Blockers:
-  - track provenance_profile_v1_20260718 is M1; M2 is required
   - gate core-schema-conformance is not passed with current evidence
   - gate core-provenance-integrity is not passed with current evidence
   - gate core-security-baseline is not passed with current evidence
@@ -154,7 +152,7 @@ Stable target: `1.0.0`
   - track performance_scalability_reliability_20260719 is M1; M5 is required
   - track planning_rules_linkage_20260718 is M1; M5 is required
   - track planning_system_transition_20260719 is M1; M5 is required
-  - track provenance_profile_v1_20260718 is M1; M5 is required
+  - track provenance_profile_v1_20260718 is M2; M5 is required
   - track provenance_query_api_20260719 is M1; M5 is required
   - track publication_validation_20260718 is M1; M5 is required
   - track repository_template_adoption_20260718 is M1; M5 is required
@@ -199,7 +197,7 @@ Stable target: `1.0.0`
   - track performance_scalability_reliability_20260719 is M1; M6 is required
   - track planning_rules_linkage_20260718 is M1; M6 is required
   - track planning_system_transition_20260719 is M1; M6 is required
-  - track provenance_profile_v1_20260718 is M1; M6 is required
+  - track provenance_profile_v1_20260718 is M2; M6 is required
   - track provenance_query_api_20260719 is M1; M6 is required
   - track publication_validation_20260718 is M1; M6 is required
   - track repository_template_adoption_20260718 is M1; M6 is required

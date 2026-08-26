@@ -1,9 +1,9 @@
 # Evidence index: Shared provenance, transformation and quality profile v1
 
 - **Track ID:** `provenance_profile_v1_20260718`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Normative`
 - **Risk / priority:** `Critical` / `P0`
@@ -28,6 +28,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `PROVENANCE-MIGRATION-CONTRACT-CLOSEOUT-20260825` | Repository-owned additive profile compatibility matrix and migration fixture | `docs/provenance-profile-compatibility-matrix-20260825.json`, `docs/provenance-profile-migration-1.0.0-to-1.1.0.json`, `tests/test_conformance.py` | Migration contract passes; publication identifier, signed attestation, independent qualification and stable release remain open |
 | `PROVENANCE-PANEL-QUALIFICATION-20260825` | Bounded four-lens agent-panel qualification of the provenance profile and migration contract | `docs/provenance-profile-panel-qualification-20260825.json`, `tests/test_provenance_profile_panel_qualification.py` | Repository evidence is qualified for bounded scope; non-Python parity, semantic-loss, publication, signed-attestation and authority gates remain open |
 | `PROVENANCE-V1-CANDIDATE-FREEZE-20260825` | Digest-bound unsigned candidate freeze for the native profile, compatibility, migration, panel and TypeScript artifacts | `docs/provenance-profile-v1-candidate-freeze-20260825.json`, `tests/test_provenance_profile_candidate_freeze.py` | Candidate integrity passes; trusted signature, full semantic/non-Python, publication, external reproduction and authority gates remain open |
+| `PROVENANCE-M2-PROMOTION-20260827` | Exact-tree event, hashing, retry, lineage, assistance, negative-fixture, Python/Node parity, projection, migration and candidate evidence | `docs/provenance-m2-promotion-20260827.json`, `tests/test_provenance_m2_promotion.py`, [PR #619](https://github.com/edithatogo/riopa-infrastructure/pull/619) | Promoted to experimental M2 only; representative integration, repeated external use, RC qualification, publication, external reproduction and stable authority remain open |
 
 ## Repository-owned closeout slice (2026-08-24)
 
@@ -39,12 +40,19 @@ intentionally structural: native RIOPA events remain normative, and standards
 semantic conformance, signed attestation, publication and agent-panel
 qualification remain open.
 
-## Blocking defects and gates
+## Blocking maturity gates
 
-- Non-Python validator/model parity and round-trip evidence.
-- PROV/OpenLineage semantic-loss agent-panel qualification.
-- Stable profile publication identifier, migration/deprecation release evidence.
-- Signed v1 attestation and orchestrated agent-panel qualification.
+- M3 requires representative real-data/cross-runtime conformance and migration
+  and failure-handling evidence.
+- M4 requires repeated external profile use and SLO evidence.
+- M5 requires RC semantic, security, recovery, agent-panel and soak qualification.
+- M6 requires a stable published identifier, signed attestation, independent
+  external reproduction and accountable stable-release authority.
+
+The repository-owned executable and negative tests, bounded Python/Node parity,
+projection validation, migration fixture, agent-panel advice and digest-bound
+candidate satisfy this experimental M2 boundary only. Both dependencies are M2;
+dependency maturity remains evaluated separately at later thresholds.
 
 ## Repository-owned implementation slice (2026-08-25)
 
@@ -68,7 +76,10 @@ or release-authority approval.
 
 Required agent-panel lenses: API/schema analyst, Provenance analyst, Security analyst, Research-object analyst.
 
-This index is deliberately non-assertive while the track remains `validating`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately non-assertive while the track remains `validating`
+at experimental M2. Status may advance only through `conductor/workflow.md`;
+evidence must be immutable or version-addressed, agent-panel qualified where
+required, and sufficient for the applicable later release gates.
 
 ## Review record
 
@@ -78,6 +89,7 @@ This index is deliberately non-assertive while the track remains `validating`. S
 - Fix: task states changed to `[~]`; blockers remain explicit above.
 - Validation: focused provenance tests and full roadmap validation passed.
 
-The track remains `validating` at M1 and is not complete or archive-eligible
-while the listed conformance, publication, attestation and agent-panel
-qualification gates remain open.
+The track remains `validating` at M2 and is not complete or archive-eligible.
+The exact-tree promotion closes only the experimental executable-proof boundary;
+M3-M6 integration, operation, RC, publication, reproduction and authority gates
+remain open.
