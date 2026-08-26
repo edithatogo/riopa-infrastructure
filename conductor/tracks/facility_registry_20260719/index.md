@@ -68,7 +68,7 @@ planning integration or operational use.
 
 - The bounded comparison reports one 5.660 m candidate pair and three source-only assertions.
   It is not a national completeness, currency or accuracy estimate.
-- Accountable review is performed by an orchestrated panel of agent analysts; no second-person sign-off is required.
+- Advisory review is performed by an orchestrated panel of agent analysts; the sole developer remains accountable, and no second-human sign-off is claimed or required for repository-owned review.
 - This is a single-developer repository. Agent-panel assessment cannot
   substitute for factual external operator/user evidence or accountable
   release-authority approval.

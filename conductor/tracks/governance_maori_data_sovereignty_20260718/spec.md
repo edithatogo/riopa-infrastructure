@@ -38,7 +38,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - **R01.** Rights and governance status travel with sources, artifacts, transformations and releases.
 - **R02.** Public visibility is never treated as permission to redistribute or infer.
 - **R03.** Governance triggers can block capture, transformation, linkage, analysis or publication independently.
-- **R04.** Agent-panel review decisions identify analyst role, evidence, date, expiry and scope.
+- **R04.** Agent-panel advisory findings identify analyst role, evidence, date, expiry and scope; the sole developer records the accountable disposition.
 - **R05.** Derived products are reviewed for new harms even when inputs are individually open.
 
 ## Acceptance criteria

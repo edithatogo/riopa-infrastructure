@@ -68,6 +68,11 @@ M1 against an M6 target and does not promote any track.
 
 Required analyst coverage: distinct agent-panel lenses with separate scopes and recorded dispositions; governance, API/schema and external-user perspectives remain recommended coverage. Agent panels assess repository evidence only and do not substitute for factual external participation or accountable release authority.
 
+The programme-wide 2026-08-26 policy records that this is a single-developer
+repository: AI agents provide repository-owned advice, the sole developer
+dispositions findings and remains accountable, and no second-human or external
+participation is claimed without exact evidence.
+
 The bounded M1 architecture baseline is ratified; implementation remains
 validating at M1. Evidence must be immutable or version-addressed, qualified by
 the orchestrated agent panel where required, and sufficient for each later maturity and release gate.

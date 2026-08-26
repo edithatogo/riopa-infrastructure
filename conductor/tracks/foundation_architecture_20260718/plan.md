@@ -20,7 +20,7 @@
 
 ## 4. Ratification and handover
 
-- [x] 4.1 Conduct two independent agent-analyst architecture assessments. (docs/architecture-reviews/; 4f1560e)
+- [x] 4.1 Conduct two separately prompted advisory agent-lens architecture assessments; no second-person review is claimed. (docs/architecture-reviews/; 4f1560e)
 - [x] 4.2 Resolve or explicitly defer findings with named owners and revisit dates. (docs/adr/README.md; docs/contract-ownership-matrix.md; docs/architecture-reviews/)
 - [x] 4.3 Publish the bounded M1 architecture and v1 programme baseline without implying stable-release approval. (docs/architecture-baseline-ratification.md; 31cffd0)
 
@@ -41,3 +41,4 @@
 
 - [x] R.6 Reconcile the programme status summary with the 28 track metadata states: 12 active, 4 validating and 12 specified; no track is promoted by this documentation correction. (`conductor/tracks.md`)
 - [x] R.7 Replace independent-analyst wording with distinct agent-panel lenses for the single-developer repository, while preserving factual external-participant and release-authority gates. (`docs/foundation-agent-panel-wording-correction-20260825.json`)
+- [x] R.8 Establish the programme-wide single-developer and agent-advisory contract, correct ambiguous agent-independence/approval wording, and preserve genuinely external evidence gates. (`docs/single-developer-agent-advisory-policy-20260826.md`, `tests/test_single_developer_agent_advisory_policy.py`)
