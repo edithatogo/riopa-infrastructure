@@ -8,21 +8,21 @@ Stable target: `1.0.0`
 
 - Total: **29**
 - v1-critical: **28**
-- active: **24**
+- active: **23**
 - archived: **1**
-- validating: **4**
+- validating: **5**
 
 ### Current maturity
 
-- `M1`: **27**
-- `M2`: **2**
+- `M1`: **26**
+- `M2`: **3**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 13/29
+- Tracks qualified: 14/29
 - Gates: 4/4 passed
 - Blockers:
   - track canonical_domain_schemas_ontology_20260719 has blocking defects
@@ -38,17 +38,15 @@ Stable target: `1.0.0`
   - track planning_system_transition_20260719 has blocking defects
   - track provenance_profile_v1_20260718 has blocking defects
   - track publication_validation_20260718 has blocking defects
-  - track security_supply_chain_20260719 has blocking defects
   - track supermarket_health_pilot_20260718 has blocking defects
   - track v1_release_hardening_20260719 has blocking defects
 
 ### 0.3.0 — normative core alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 2/5
+- Tracks qualified: 3/5
 - Gates: 0/4 passed
 - Blockers:
-  - track security_supply_chain_20260719 is M1; M2 is required
   - track canonical_domain_schemas_ontology_20260719 is M1; M2 is required
   - track provenance_profile_v1_20260718 is M1; M2 is required
   - gate core-schema-conformance is not passed with current evidence
@@ -162,7 +160,7 @@ Stable target: `1.0.0`
   - track provenance_query_api_20260719 is M1; M5 is required
   - track publication_validation_20260718 is M1; M5 is required
   - track repository_template_adoption_20260718 is M1; M5 is required
-  - track security_supply_chain_20260719 is M1; M5 is required
+  - track security_supply_chain_20260719 is M2; M5 is required
   - track simulation_validation_engine_20260719 is M1; M5 is required
   - track spatial_quality_temporality_20260718 is M1; M5 is required
   - track supermarket_health_pilot_20260718 is M1; M5 is required
@@ -207,7 +205,7 @@ Stable target: `1.0.0`
   - track provenance_query_api_20260719 is M1; M6 is required
   - track publication_validation_20260718 is M1; M6 is required
   - track repository_template_adoption_20260718 is M1; M6 is required
-  - track security_supply_chain_20260719 is M1; M6 is required
+  - track security_supply_chain_20260719 is M2; M6 is required
   - track simulation_validation_engine_20260719 is M1; M6 is required
   - track spatial_quality_temporality_20260718 is M1; M6 is required
   - track supermarket_health_pilot_20260718 is M1; M6 is required

@@ -1,9 +1,9 @@
 # Evidence index: Security, integrity and software supply-chain hardening
 
 - **Track ID:** `security_supply_chain_20260719`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.3.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Governance`
 - **Risk / priority:** `Critical` / `P0`
@@ -39,6 +39,7 @@
 | `SECURITY-NEGATIVE-COVERAGE-20260825` | Expanded fail-closed negative coverage for panel and release-signing contracts | `tests/test_security_panel.py`, `tests/test_release_signing.py`, `docs/module-coverage-inventory-20260825.json` | Invalid packet, role, digest, artifact, policy and verification paths are exercised; trusted signing, hosted execution and factual qualification remain open |
 | `SECURITY-EXERCISE-NEGATIVE-COVERAGE-20260825` | Expanded fail-closed negative coverage for planned incident and execution-report contracts | `tests/test_security_exercises.py`, `docs/module-coverage-inventory-20260825.json` | Scenario, control, environment, credential-shaped and execution-report failure paths are exercised; factual execution and hosted rollback remain open |
 | `SECURITY-BOUNDED-CONTRACT-CLOSEOUT-20260825` | Repository-owned attestation, release-signing, incident-exercise and panel-packet contracts are complete with explicit non-claims | `src/riopa_provenance/attestation.py`, `src/riopa_provenance/release_signing.py`, `src/riopa_provenance/security_exercises.py`, `src/riopa_provenance/security_panel.py`, and focused tests | Deterministic construction and negative validation pass; trusted signing, hosted execution and factual qualification remain open |
+| `SECURITY-M2-PROMOTION-20260826` | Exact-tree threat/control, immutable-action, attestation/signing, negative-test, SBOM and exercise-packet evidence | `docs/security-m2-promotion-20260826.json`, `tests/test_security_m2_promotion.py`, [PR #616](https://github.com/edithatogo/riopa-infrastructure/pull/616) | Promoted to experimental M2 only; hosted execution, repeated operation, recovery/panel qualification and stable authority remain open |
 
 ## Repository-owned closeout slice (2026-08-24)
 
@@ -58,11 +59,18 @@ The following gates are deliberately not inferred from local contracts:
 These are external or elapsed evidence gates, not missing implementation. No
 release, beta, RC or stable-v1 promotion is authorized by this record.
 
-## Blocking defects
+## Blocking maturity gates
 
-- Foundation dependency completion, hosted release-environment verification,
-  SBOM/signature execution, credential-compromise and rollback exercise, and
-  security agent-panel qualification remain pending.
+- M3 requires hosted protection/release-environment verification and factual
+  SBOM, signature and provenance execution.
+- M4 requires repeated security operation and SLO evidence.
+- M5 requires credential-compromise/rollback recovery qualification and the
+  orchestrated security agent-panel qualification.
+- M6 requires accountable stable-release authority approval.
+
+The foundation dependency is M2 and therefore satisfies this experimental M2
+boundary. Dependency maturity remains evaluated separately for every later
+release threshold.
 
 ## Decisions, exceptions and limitations
 
@@ -91,7 +99,9 @@ Required agent-panel lenses: API/schema analyst, Security analyst, Operations an
   links were reconciled; C.1, C.2 and C.4 are complete for this slice. C.3
   remains open because the external and elapsed gates above are unresolved.
 
-This index records the repository-owned M1 implementation slice while the track
-remains `active`. Status may advance only through `conductor/workflow.md`;
-evidence must be immutable or version-addressed, agent-panel qualified where
-required, and sufficient for the applicable release gates.
+This index records the repository-owned implementation at experimental M2 while
+the track remains `validating`. The executable controls, deterministic
+attestation/signing contracts, negative tests, SBOM construction and exercise
+packet validators satisfy M2 only. Evidence for M3-M6 must be immutable or
+version-addressed, agent-panel qualified where required, and sufficient for the
+applicable later release gates.

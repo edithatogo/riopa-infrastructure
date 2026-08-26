@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:security-m2-promotion:2026-08-26",
+  "track_id": "security_supply_chain_20260719",
+  "evaluated_at": "2026-08-26T09:25:15Z",
+  "decision": "promote-to-m2",
+  "compatibility": {
+    "classification": "metadata-only-backward-compatible",
+    "rule": "Existing security controls and release behavior are unchanged; maturity thresholds only classify when known future evidence gates become release-blocking."
+  },
+  "authority": {
+    "kind": "repository-owner-instruction",
+    "instruction": "Proceed with the next recommended repository-owned step.",
+    "signature_claimed": false
+  },
+  "source_revision": {
+    "merged_commit": "91c7eda48c14e1bc95cdc3b542b2a214c6f80186",
+    "validated_head_commit": "958d3190953e3ed416c6b2ef2d8c689ada484c5f",
+    "tree_sha": "e51ccde9ab52c3832d1f3b69d9ea768a4f61090c",
+    "pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/616"
+  },
+  "dependency_boundary": {
+    "track_id": "foundation_architecture_20260718",
+    "required_maturity": "M2",
+    "observed_maturity": "M2",
+    "status": "satisfied"
+  },
+  "m2_repository_owned": {
+    "threat_and_trust_model": "passed",
+    "immutable_action_and_workflow_policy": "passed",
+    "dependency_static_and_secret_controls": "passed",
+    "deterministic_dsse_and_signing_manifests": "passed",
+    "negative_and_tamper_tests": "passed",
+    "package_sbom_construction": "passed",
+    "secret_free_exercise_packets": "passed",
+    "decision_traceability": "passed"
+  },
+  "validation": {
+    "roadmap": "passed",
+    "quality_contracts_and_packaging": "passed",
+    "tests": {
+      "status": "passed",
+      "count": 1153,
+      "coverage_percent": 92.68,
+      "minimum_coverage_percent": 90
+    },
+    "reproducibility": "passed",
+    "hosted_required_checks": {
+      "status": "passed",
+      "count": 5,
+      "actions_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32952541386",
+      "codeql_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/32952541383"
+    }
+  },
+  "remaining_blocking_gates": {
+    "hosted-protection-and-release-environment-verification": "M3",
+    "sbom-signature-and-provenance-execution": "M3",
+    "repeated-security-operation-and-slo-evidence": "M4",
+    "credential-compromise-and-rollback-exercise": "M5",
+    "security-agent-panel-qualification": "M5",
+    "accountable-release-authority-approval": "M6"
+  },
+  "non_claims": [
+    "This promotion records experimental M2 executable proof only.",
+    "Locally constructed SBOM, attestation, signing and exercise packets are not protected-tag execution or authenticated release evidence.",
+    "No factual credential-compromise exercise, repeated operation, independent verification, external participant or stable release-authority approval is claimed.",
+    "It does not make release 0.3.0 ready; two other required tracks and all four release gates remain pending."
+  ]
+}

@@ -35,7 +35,7 @@
       "track provenance_query_api_20260719 is M1; M6 is required",
       "track publication_validation_20260718 is M1; M6 is required",
       "track repository_template_adoption_20260718 is M1; M6 is required",
-      "track security_supply_chain_20260719 is M1; M6 is required",
+      "track security_supply_chain_20260719 is M2; M6 is required",
       "track simulation_validation_engine_20260719 is M1; M6 is required",
       "track spatial_quality_temporality_20260718 is M1; M6 is required",
       "track supermarket_health_pilot_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "7dd945a5b97aa1742a3cc38b5def14ac1c8103497290e96b91739c3e6a05c0b7",
+  "snapshot_sha256": "b5fc89d15a8c4980c796cd39c55a31fe8ed9556877e360f4d918e0b6093a1fd2",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -457,18 +457,18 @@
       },
       {
         "blocking_defects": [
-          "foundation-dependency-not-complete",
           "hosted-protection-and-release-environment-verification",
           "sbom-signature-and-provenance-execution",
+          "repeated-security-operation-and-slo-evidence",
           "credential-compromise-and-rollback-exercise",
           "security-agent-panel-qualification",
           "accountable-release-authority-approval"
         ],
-        "current_maturity": "M1",
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,
-        "status": "active",
+        "status": "validating",
         "track_id": "security_supply_chain_20260719"
       },
       {
