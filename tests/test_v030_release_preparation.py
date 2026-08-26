@@ -73,6 +73,10 @@ def test_v030_release_notes_preserve_nonclaims() -> None:
 def test_v0_tags_are_published_as_github_prereleases() -> None:
     workflow = (ROOT / ".github/workflows/release.yml").read_text(encoding="utf-8")
 
+    checkout = workflow.index("Check out tagged source for tag verification")
+    download = workflow.index("Download verified release candidate", checkout)
+    publish = workflow.index("Publish GitHub release", download)
+    assert checkout < download < publish
     assert '[[ "$RELEASE_TAG" == v0.* || "$RELEASE_TAG" == *-* ]]' in workflow
     assert "release_flags+=(--prerelease)" in workflow
     assert '"${release_flags[@]}"' in workflow

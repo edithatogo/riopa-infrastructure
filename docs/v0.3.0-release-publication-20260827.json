@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v0.3.0-release-publication:2026-08-27",
+  "release": "0.3.0",
+  "channel": "experimental-prerelease",
+  "published_at": "2026-08-26T21:39:55Z",
+  "release_url": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.3.0",
+  "tag": {
+    "name": "v0.3.0",
+    "object": "a0cd5fdbecff586beddd598b584d6cfbbcc384e1",
+    "target_commit": "8fccbf7bc3af88c347b00a6ce39b8b48a4dce39c",
+    "kind": "annotated-unsigned"
+  },
+  "preparation": {
+    "pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/622",
+    "head_commit": "15c846058b1179f94fe77c7dca7cca6730742b27",
+    "merge_commit": "8fccbf7bc3af88c347b00a6ce39b8b48a4dce39c",
+    "required_checks": 5,
+    "status": "passed"
+  },
+  "release_workflow": {
+    "run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33016204338",
+    "conclusion": "failure",
+    "build_quality_tests_reproducibility": "passed",
+    "asset_build_and_checksum_verification": "passed",
+    "github_oidc_attestation": "passed",
+    "independent_attestation_verification": "passed",
+    "automated_publication": "failed",
+    "failure": "The publish job had no Git checkout, so gh release create --verify-tag could not locate a Git repository."
+  },
+  "recovery": {
+    "kind": "bounded-manual-publication-of-exact-workflow-artifact",
+    "status": "passed",
+    "source_run": 33016204338,
+    "tag_verified": true,
+    "checksums_reverified_before_publication": true,
+    "published_as_prerelease": true,
+    "workflow_fix": ".github/workflows/release.yml now checks out the tagged source before publication."
+  },
+  "assets": [
+    {
+      "name": "riopa-example-research-object.tar.gz",
+      "sha256": "963c89b35aac6cf06f19c912f1db6caff0ae363402acdfc0b500df6489b74776",
+      "size": 34262
+    },
+    {
+      "name": "riopa-provenance.cdx.json",
+      "sha256": "d77f84b33b8ae4f97514e5dc4e9fb4246d9ece3f84bd1ff3a2f8a7bb78de2f09",
+      "size": 140881
+    },
+    {
+      "name": "riopa_provenance-0.3.0-py3-none-any.whl",
+      "sha256": "d4b9cf96ff534270e91c600ab0304e5235d8695605802cfec4f97db71a710db8",
+      "size": 238192
+    },
+    {
+      "name": "riopa_provenance-0.3.0.tar.gz",
+      "sha256": "99266aa51fd179d4f744ea743a8dfe1a2ce2e3c052e79bb6a1a04bbe7e44bc11",
+      "size": 2286199
+    },
+    {
+      "name": "SHA256SUMS",
+      "sha256": "e3d68b0f11de5eaa1c9b65164aa09da5428bf8434924a8b52faf1e15e7a1597c",
+      "size": 397
+    }
+  ],
+  "post_publication_verification": {
+    "all_assets_downloaded": true,
+    "sha256sums_passed": true,
+    "release_is_draft": false,
+    "release_is_prerelease": true
+  },
+  "non_claims": [
+    "The automated release workflow did not pass overall; its publication step failed and recovery is recorded explicitly.",
+    "The annotated tag is not described as GPG- or SSH-signed.",
+    "GitHub OIDC attestations cover the registered release subjects but do not constitute stable-v1 authority.",
+    "No DOI, preservation deposit, external reproduction, external user or operator evidence, or operational maturity is claimed.",
+    "Later releases and all five continuing M2 tracks remain unchanged and unarchived."
+  ]
+}
