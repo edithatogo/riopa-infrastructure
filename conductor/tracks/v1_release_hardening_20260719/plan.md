@@ -67,6 +67,13 @@
   prerelease tags as GitHub prereleases without affecting future stable tags.
   (`.github/workflows/release.yml`, `tests/test_v030_release_preparation.py`;
   Conductor review fix)
+- [x] 5.23 Publish the exact `v0.3.0` workflow artifacts after checksum,
+  attestation and tag verification; record the automated publication failure,
+  bounded manual recovery and asset digests without claiming a fully passed
+  release workflow. (`docs/v0.3.0-release-publication-20260827.json`)
+- [x] 5.24 Add the missing tagged-source checkout to the protected publish job so
+  future `--verify-tag` publication runs have Git context. (`.github/workflows/release.yml`;
+  review fix)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
