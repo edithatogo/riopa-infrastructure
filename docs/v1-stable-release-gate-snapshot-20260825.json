@@ -23,7 +23,7 @@
       "track governance_maori_data_sovereignty_20260718 is M2; M6 is required",
       "track health_outcomes_causal_methods_20260719 is M1; M6 is required",
       "track interoperability_conformance_sdks_20260719 is M1; M6 is required",
-      "track methods_research_objects_20260718 is M1; M6 is required",
+      "track methods_research_objects_20260718 is M2; M6 is required",
       "track nz_spatial_archive_mvp_20260718 is M1; M6 is required",
       "track nz_spatial_archive_operations_20260719 is M1; M6 is required",
       "track nz_spatial_source_registry_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "ec348b4c8945df7ce1f0ff7d82f329bda12b7218acf40257729384c694b110ae",
+  "snapshot_sha256": "78faaca1cabe9f89b02553bd0006c3659b22af458584d0d111402d6afe92aca4",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -301,17 +301,19 @@
       },
       {
         "blocking_defects": [
-          "protected-signing-and-attestation-execution",
-          "external-profile-validation",
-          "real-data-release-candidate",
-          "external-reproduction-and-preservation-deposition",
-          "accountable-publication-authority"
+          "complete-real-data-research-object",
+          "representative-clean-environment-reproduction",
+          "repeated-external-use-and-preservation-operation",
+          "release-candidate-security-recovery-panel-and-soak-qualification",
+          "stable-signed-and-preserved-publication",
+          "independent-external-reproduction",
+          "accountable-stable-release-authority"
         ],
-        "current_maturity": "M1",
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,
-        "status": "active",
+        "status": "validating",
         "track_id": "methods_research_objects_20260718"
       },
       {

@@ -29,4 +29,8 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned package slice; signing, external validation and publication gates remain explicitly pending.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.
+- [x] C.4 Promote the repository-owned executable-proof boundary to experimental M2. The track remains `validating`; real vertical-slice, repeated-operation, stable-publication, independent-reproduction and accountable-authority gates remain assigned to M3-M6 (`docs/methods-research-objects-m2-promotion-20260827.json`, `tests/test_methods_research_objects_m2_promotion.py`).
+
+## Review fixes
+
+- [x] R1 Keep hosted required checks explicitly pending until the exact PR head passes Actions; do not infer them from local validation.

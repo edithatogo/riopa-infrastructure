@@ -1,9 +1,9 @@
 # Evidence index: Research objects, methods supplements and citation automation
 
 - **Track ID:** `methods_research_objects_20260718`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.4.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Platform`
 - **Risk / priority:** `Critical` / `P0`
@@ -26,14 +26,23 @@
 | `RO-PROFILE-VALIDATION-20260825` | Repository-available JSON Schema and RDF/SHACL profile validators run with exact versions and digest-bound fixtures | `scripts/run_profile_validators.py`, `docs/research-object-profile-validation-20260825.json`, `tests/test_research_object_profile_validation.py` | Bounded tooling validation passes; external/non-Python acceptance, preservation, real-data release and authority remain open |
 | `RO-REAL-DATA-CANDIDATE-VALIDATION-20260826` | Digest-verify the bounded real-data publication candidate and its materialized artifacts | `scripts/validate_real_data_release_candidate.py`, `docs/publication-real-data-release-candidate-20260825.json`, `docs/publication-real-data-release-candidate-validation-20260826.json`, `tests/test_real_data_release_candidate_validation.py` | Candidate hashes pass and promotion remains disabled; clean-room/external reproduction, attestation, preservation and authority remain open |
 | `RO-PACKAGING-GUIDANCE-20260826` | Publish reproducible packaging, preservation, restore and append-only migration guidance for the bounded preview | `docs/research-object-packaging-preservation-migration-20260826.md`, `tests/test_research_object_packaging_guidance.py` | Guidance is repository-owned and fail-closed; provider acceptance, signed attestation, external reproduction, elapsed qualification and authority remain open |
+| `RO-M2-PROMOTION-20260827` | Qualify the experimental executable-proof boundary against an exact source tree | `docs/methods-research-objects-m2-promotion-20260827.json`, `tests/test_methods_research_objects_m2_promotion.py` | Repository-owned positive, negative, deterministic, profile, integrity and hosted-release evidence passes; M3-M6 gates remain open |
 
-## Blocking defects
+## Blocking maturity gates
 
-- Protected-tag SBOM/signature/attestation execution and independent
-  verification remain open.
-- External profile-validator results, a complete real-data release candidate,
-  clean-room/external reproduction, preservation deposition and publication
-  authority remain open.
+- M3 requires a complete representative real-data research object and clean
+  environment reproduction with failure handling.
+- M4 requires repeated external use, preservation operation and SLO evidence.
+- M5 requires release-candidate security, recovery, panel and soak qualification.
+- M6 requires a stable signed and preserved publication, independent external
+  reproduction and accountable stable-release authority.
+
+The generic validation, deterministic packaging, negative tests, bounded
+real-data candidate, repository-available profile validation, protected-tag
+attestation execution and independent GitHub verification satisfy the
+experimental M2 boundary only. The published v0.3.0 example research object is
+release evidence for these mechanics; it is not the complete v0.4 real-source
+vertical slice.
 
 ## Repository-owned closeout slice (2026-08-24)
 
@@ -56,7 +65,16 @@ release evidence, external validation, deposition or publication.
 
 Required agent-panel lenses: Provenance analyst, Security analyst, Research-object analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `active` at
-M1. Status may advance only through `conductor/workflow.md`; evidence must be
+This index is deliberately non-assertive while the track remains `validating`
+at experimental M2. Status may advance only through `conductor/workflow.md`; evidence must be
 immutable or version-addressed, agent-panel qualified where required, and
 sufficient for the applicable release gates.
+
+## Review record
+
+- Review scope: exact-tree experimental M2 promotion only.
+- Boundary: no normative research-object interface or package bytes change.
+- Non-claim: this does not pass any v0.4 release gate or establish human/external evidence.
+- Validation: focused promotion tests, full test suite, quality and reproducibility pass locally; all five hosted required checks passed on implementation commit `dec7ac4` in PR #624.
+
+The track remains `validating` at M2 and is not complete or archive-eligible.

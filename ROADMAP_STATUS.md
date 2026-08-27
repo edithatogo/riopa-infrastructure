@@ -3,35 +3,33 @@
 Programme configuration: `0.3.0`
 
 Current roadmap release: `0.3.0`
-
 Stable target: `1.0.0`
 
 ## Tracks
 
 - Total: **29**
 - v1-critical: **28**
-- active: **23**
+- active: **22**
 - archived: **1**
-- validating: **5**
+- validating: **6**
 
 ### Current maturity
 
-- `M1`: **24**
-- `M2`: **5**
+- `M1`: **23**
+- `M2`: **6**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 16/29
+- Tracks qualified: 17/29
 - Gates: 4/4 passed
 - Blockers:
   - track connector_runtime_capture_20260719 has blocking defects
   - track documentation_developer_experience_20260719 has blocking defects
   - track emergency_health_facilities_pilot_20260718 has blocking defects
   - track facility_registry_20260719 has blocking defects
-  - track methods_research_objects_20260718 has blocking defects
   - track nz_spatial_archive_mvp_20260718 has blocking defects
   - track nz_spatial_archive_operations_20260719 has blocking defects
   - track operations_preservation_sre_20260719 has blocking defects
@@ -50,10 +48,9 @@ Stable target: `1.0.0`
 ### 0.4.0 — real capture-to-research-object alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 0/3
+- Tracks qualified: 1/3
 - Gates: 0/4 passed
 - Blockers:
-  - track methods_research_objects_20260718 is M1; M2 is required
   - track connector_runtime_capture_20260719 is M1; M2 is required
   - track nz_spatial_source_registry_20260718 is M1; M2 is required
   - gate capture-real-sources is not passed with current evidence
@@ -141,7 +138,7 @@ Stable target: `1.0.0`
   - track governance_maori_data_sovereignty_20260718 is M2; M5 is required
   - track health_outcomes_causal_methods_20260719 is M1; M5 is required
   - track interoperability_conformance_sdks_20260719 is M1; M5 is required
-  - track methods_research_objects_20260718 is M1; M5 is required
+  - track methods_research_objects_20260718 is M2; M5 is required
   - track nz_spatial_archive_mvp_20260718 is M1; M5 is required
   - track nz_spatial_archive_operations_20260719 is M1; M5 is required
   - track nz_spatial_source_registry_20260718 is M1; M5 is required
@@ -186,7 +183,7 @@ Stable target: `1.0.0`
   - track governance_maori_data_sovereignty_20260718 is M2; M6 is required
   - track health_outcomes_causal_methods_20260719 is M1; M6 is required
   - track interoperability_conformance_sdks_20260719 is M1; M6 is required
-  - track methods_research_objects_20260718 is M1; M6 is required
+  - track methods_research_objects_20260718 is M2; M6 is required
   - track nz_spatial_archive_mvp_20260718 is M1; M6 is required
   - track nz_spatial_archive_operations_20260719 is M1; M6 is required
   - track nz_spatial_source_registry_20260718 is M1; M6 is required
