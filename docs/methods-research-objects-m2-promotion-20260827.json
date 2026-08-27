@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:methods-research-objects-m2-promotion:2026-08-27",
+  "track_id": "methods_research_objects_20260718",
+  "evaluated_at": "2026-08-27T00:00:00Z",
+  "decision": "promote-to-m2",
+  "compatibility": {
+    "classification": "metadata-only-backward-compatible",
+    "rule": "No normative research-object interface, schema, fixture or package bytes change; the promotion classifies existing exact-tree evidence against the experimental M2 threshold."
+  },
+  "authority": {
+    "kind": "repository-owner-instruction",
+    "instruction": "Proceed with the next recommended repository-owned step.",
+    "signature_claimed": false
+  },
+  "source_revision": {
+    "commit": "80bffd34c18d279733c7ff5252d257477137e6de",
+    "tree_sha": "dd24bf834e8e7ab5ec39b6d466c4b2cb4c8db162",
+    "release": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.3.0",
+    "release_workflow": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33016204338",
+    "release_publication_receipt": "docs/v0.3.0-release-publication-20260827.json"
+  },
+  "dependency_boundary": {
+    "required_maturity": "M2",
+    "tracks": {
+      "provenance_profile_v1_20260718": "M2",
+      "security_supply_chain_20260719": "M2"
+    },
+    "status": "satisfied"
+  },
+  "m2_repository_owned": {
+    "generic_schema_driven_bundle_validation": "passed",
+    "negative_path_integrity_and_rights_tests": "passed",
+    "deterministic_non_circular_packaging": "passed",
+    "methods_citation_and_machine_facts_consistency": "passed",
+    "repository_available_profile_validation": "passed",
+    "bounded_real_data_candidate_integrity": "passed",
+    "protected_tag_sbom_checksum_and_attestation_execution": "passed",
+    "independent_github_attestation_verification": "passed",
+    "public_example_research_object_and_checksum_publication": "passed",
+    "decision_traceability": "passed"
+  },
+  "validation": {
+    "roadmap": "passed",
+    "quality_contracts_and_packaging": "passed",
+    "tests": {
+      "status": "passed",
+      "count": 1164,
+      "coverage_percent": 90,
+      "minimum_coverage_percent": 90
+    },
+    "reproducibility": "passed",
+    "hosted_required_checks": {
+      "status": "pending-current-change-validation",
+      "count": 5
+    }
+  },
+  "remaining_blocking_gates": {
+    "complete-real-data-research-object": "M3",
+    "representative-clean-environment-reproduction": "M3",
+    "repeated-external-use-and-preservation-operation": "M4",
+    "release-candidate-security-recovery-panel-and-soak-qualification": "M5",
+    "stable-signed-and-preserved-publication": "M6",
+    "independent-external-reproduction": "M6",
+    "accountable-stable-release-authority": "M6"
+  },
+  "non_claims": [
+    "This promotion records experimental M2 executable proof only.",
+    "The published v0.3.0 example research object is not the complete v0.4 real-source vertical slice.",
+    "Repository validation and GitHub attestation verification do not constitute an independent external-user reproduction or preservation-provider acceptance.",
+    "Agent advice does not constitute other-human review or accountable stable-release authority.",
+    "No v0.4 release gate is passed by this track promotion alone."
+  ]
+}

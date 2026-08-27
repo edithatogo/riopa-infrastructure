@@ -2,9 +2,9 @@
   "track_id": "methods_research_objects_20260718",
   "type": "platform",
   "phase": "Core",
-  "status": "active",
+  "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-25T21:00:00Z",
+  "updated_at": "2026-08-27T00:00:00Z",
   "description": "Generate concise citable methods and publication-grade supplementary evidence from the same validated release facts and package them as complete, externally verifiable research objects.",
   "depends_on": [
     "provenance_profile_v1_20260718",
@@ -20,7 +20,8 @@
     "urn:riopa:evidence:research-object-attestation-contract:2026-08-25",
     "urn:riopa:evidence:publication-real-data-candidate-validation:2026-08-26",
     "urn:riopa:evidence:publication-citation-readiness:2026-08-26",
-    "urn:riopa:evidence:research-object-packaging-guidance:2026-08-26"
+    "urn:riopa:evidence:research-object-packaging-guidance:2026-08-26",
+    "urn:riopa:evidence:methods-research-objects-m2-promotion:2026-08-27"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -36,7 +37,7 @@
   "risk": "Critical",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "owner_role": "Core platform maintainer",
   "review_roles": [
     "Provenance analyst",
@@ -45,10 +46,21 @@
     "External-user workflow analyst"
   ],
   "blocking_defects": [
-    "protected-signing-and-attestation-execution",
-    "external-profile-validation",
-    "real-data-release-candidate",
-    "external-reproduction-and-preservation-deposition",
-    "accountable-publication-authority"
-  ]
+    "complete-real-data-research-object",
+    "representative-clean-environment-reproduction",
+    "repeated-external-use-and-preservation-operation",
+    "release-candidate-security-recovery-panel-and-soak-qualification",
+    "stable-signed-and-preserved-publication",
+    "independent-external-reproduction",
+    "accountable-stable-release-authority"
+  ],
+  "blocking_defect_maturity": {
+    "complete-real-data-research-object": "M3",
+    "representative-clean-environment-reproduction": "M3",
+    "repeated-external-use-and-preservation-operation": "M4",
+    "release-candidate-security-recovery-panel-and-soak-qualification": "M5",
+    "stable-signed-and-preserved-publication": "M6",
+    "independent-external-reproduction": "M6",
+    "accountable-stable-release-authority": "M6"
+  }
 }
