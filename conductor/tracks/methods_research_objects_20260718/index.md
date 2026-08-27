@@ -75,6 +75,6 @@ sufficient for the applicable release gates.
 - Review scope: exact-tree experimental M2 promotion only.
 - Boundary: no normative research-object interface or package bytes change.
 - Non-claim: this does not pass any v0.4 release gate or establish human/external evidence.
-- Validation: focused promotion tests, full test suite, quality and reproducibility pass locally; hosted required checks are pending the exact PR head.
+- Validation: focused promotion tests, full test suite, quality and reproducibility pass locally; all five hosted required checks passed on implementation commit `dec7ac4` in PR #624.
 
 The track remains `validating` at M2 and is not complete or archive-eligible.

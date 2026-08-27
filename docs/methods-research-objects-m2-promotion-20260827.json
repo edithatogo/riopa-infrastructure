@@ -16,6 +16,8 @@
   "source_revision": {
     "commit": "80bffd34c18d279733c7ff5252d257477137e6de",
     "tree_sha": "dd24bf834e8e7ab5ec39b6d466c4b2cb4c8db162",
+    "validated_implementation_commit": "dec7ac4",
+    "pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/624",
     "release": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.3.0",
     "release_workflow": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33016204338",
     "release_publication_receipt": "docs/v0.3.0-release-publication-20260827.json"
@@ -51,8 +53,10 @@
     },
     "reproducibility": "passed",
     "hosted_required_checks": {
-      "status": "pending-current-change-validation",
-      "count": 5
+      "status": "passed",
+      "count": 5,
+      "actions_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33054013779",
+      "codeql_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33054013787"
     }
   },
   "remaining_blocking_gates": {
