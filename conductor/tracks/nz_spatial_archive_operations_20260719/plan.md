@@ -31,4 +31,4 @@
 - [x] C.1 Link the current implementation and test evidence in `index.md`; review, migration and release evidence remain explicitly unavailable.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/nz-archive-operations-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.8.0`, with hosted recovery, preservation, beta SLO duration, national restore/cost evidence, external operation and accountable-authority gates unresolved.
