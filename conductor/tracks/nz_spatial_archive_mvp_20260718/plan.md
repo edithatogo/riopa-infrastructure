@@ -34,7 +34,7 @@
 
 ## Track closeout
 
-- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md`.
+- [x] C.1 Link implementation, test, panel, migration and release-candidate evidence in `index.md` for the bounded archive slice; full source coverage, restoration, preservation, external validation and release-authority gates remain explicitly open (`docs/nz-archive-mvp-closeout-evidence-20260829.json`, `tests/test_nz_archive_mvp_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/nz-archive-mvp-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; the track remains `active`/M1 with exact dependency, coverage, external-validation, reproduction, release-cycle, preservation/publication and authority blockers.
