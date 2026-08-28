@@ -160,8 +160,8 @@ Stable target: `1.0.0`
   - gate rc-performance-qualification is not passed with current evidence
   - gate rc-operational-soak is not passed with current evidence
   - gate rc-interoperability-qualification is not passed with current evidence
-  - gate rc-documentation-user-validation is not passed with current evidence
-  - gate rc-independent-reproduction is not passed with current evidence
+  - gate rc-agent-workflow-validation is not passed with current evidence
+  - gate rc-panel-clean-room-reproduction is not passed with current evidence
   - gate rc-publication-preservation is not passed with current evidence
   - gate rc-scientific-and-governance-review is not passed with current evidence
   - gate rc-defect-threshold is not passed with current evidence
@@ -212,6 +212,6 @@ Stable target: `1.0.0`
   - gate stable-usability is not passed with current evidence
   - gate stable-analytics is not passed with current evidence
   - gate stable-science is not passed with current evidence
-  - gate stable-independent-reproduction is not passed with current evidence
+  - gate stable-panel-clean-room-reproduction is not passed with current evidence
   - gate stable-release-authority is not passed with current evidence
   - stable release evidence record is absent

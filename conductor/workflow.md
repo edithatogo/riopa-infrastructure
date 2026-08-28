@@ -116,4 +116,4 @@ A release may advance only when:
 - Feature/normative inventory and API/schema/ontology diff.
 - Security, performance, documentation and governance audit.
 - Migration, rollback, restore, correction and withdrawal rehearsal.
-- Clean-room reproduction and external-user validation.
+- Isolated multi-agent clean-room reproduction and role-separated agent-operated user/operator journeys.

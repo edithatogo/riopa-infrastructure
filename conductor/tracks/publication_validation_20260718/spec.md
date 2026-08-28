@@ -33,7 +33,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 ## Out of scope
 
-- Treating a DOI or passing unit tests as sufficient independent reproduction.
+- Treating a DOI or passing unit tests as sufficient isolated multi-agent clean-room reproduction.
 - Coupling every software release to a manuscript release.
 
 ## Requirements

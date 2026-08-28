@@ -59,7 +59,7 @@
     "stable-usability",
     "stable-analytics",
     "stable-science",
-    "stable-independent-reproduction",
+    "stable-panel-clean-room-reproduction",
     "stable-release-authority"
   ],
   "defect_policy": {
@@ -71,14 +71,15 @@
     "maximum_expired_waivers": 0
   },
   "evidence_policy": {
-    "minimum_agent_panel_analysts": 2,
+    "minimum_agent_panel_analysts": 5,
     "minimum_clean_room_reproductions": 2,
-    "minimum_external_reproductions": 1,
-    "minimum_external_user_workflows": 2,
-    "minimum_external_operator_workflows": 1,
+    "minimum_agent_user_journeys": 2,
+    "minimum_agent_operator_journeys": 1,
     "minimum_operational_cycles": 3,
     "minimum_operational_evidence_days": 90,
+    "minimum_operational_daily_observations": 90,
     "minimum_release_candidate_soak_days": 30,
+    "minimum_release_candidate_daily_observations": 30,
     "maximum_gate_evidence_age_days": 120,
     "machine_readable_evidence_required": true,
     "immutable_evidence_identifiers_required": true
@@ -105,14 +106,18 @@
     "expired_waiver_blocks_release": true
   },
   "release_authority": {
-    "required_roles": [
-      "Release manager",
-      "Security analyst",
-      "Governance analyst",
-      "Scientific-methods analyst",
-      "Independent reproducibility analyst"
+    "required_panel_roles": [
+      "clean-room-reproducer",
+      "adversarial-reviewer",
+      "evidence-auditor",
+      "domain-reviewer",
+      "synthesizer"
     ],
-    "unanimous_for_non_waivable_categories": true,
+    "required_roles": [
+      "Sole repository owner"
+    ],
+    "agent_panel_advice_required": true,
+    "owner_disposition_of_dissent_required": true,
     "signed_decision_required": true
   },
   "post_release_policy": {

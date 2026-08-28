@@ -1,7 +1,9 @@
-# Independent reproduction protocol
+# Isolated multi-agent clean-room reproduction protocol
 
-This protocol defines a bounded clean-room review. It does not appoint a
-reviewer, assert independence, or approve a release.
+This protocol defines the repository's bounded clean-room reproduction gate for
+a sole-developer project. Process separation is provided by separately prompted
+subagents; it does not claim another human or organisation participated and it
+does not approve a release.
 
 ## Frozen subject
 
@@ -13,14 +15,13 @@ The requester supplies:
 - supported Python version; and
 - an issue or immutable record to receive the result.
 
-The reviewer must not use the implementer's virtual environment, dependency
+Each reproducer subagent must not use the implementation virtual environment, dependency
 cache, uncommitted files, generated local state, or unpublished credentials.
 
 ## Procedure
 
-1. Record reviewer identity or stable pseudonym, organisation if applicable,
-   relationship to the implementer, conflicts, operating system, architecture,
-   Python version and UTC start time.
+1. Record agent role, session and model identity, prompt digest, conflicts,
+   operating system, architecture, Python version and UTC start time.
 2. Obtain a clean checkout at the exact commit and confirm `git status
    --porcelain` is empty.
 3. Build the reviewer bundle twice and confirm byte identity:
@@ -40,16 +41,19 @@ cache, uncommitted files, generated local state, or unpublished credentials.
 6. State one decision: `pass`, `pass-with-limitations`, or `fail`. A pass covers
    only the fixed synthetic calculation and deterministic handoff.
 
-## Independence criteria
+## Isolation and panel criteria
 
-An external reproduction must be performed outside the implementation run by a
-person or organisation able to report adverse findings without instruction from
-the implementer. Agents may add review depth but do not replace the required
-external person/operator. Conflicts of interest must be disclosed.
+Two reproducer subagents run outside the implementation context with distinct
+prompts and clean environments. An adversarial reviewer challenges failure
+paths, an evidence auditor checks hashes, provenance, rights, limitations and
+claim alignment, a relevant domain reviewer assesses bounded use, and a
+synthesizer records agreement and dissent without overriding it. The sole
+repository owner dispositions every finding and remains the release authority.
 
 ## Required evidence record
 
-The returned report must contain the exact commit and bundle SHA-256, reviewer
-and environment fields, commands, results, findings, decision, UTC completion
-time, and a signature, platform attestation, or content-bound persistent URL.
-Mutable comments without a digest do not satisfy the stable gate.
+The content-bound panel manifest must contain the exact commit and bundle
+SHA-256, agent/session/model/prompt and environment fields, commands, results,
+findings, dissent, remediation, rerun outcome, decision and UTC completion time.
+The sole owner signs or attests the manifest digest. Mutable comments without a
+digest do not satisfy the stable gate.

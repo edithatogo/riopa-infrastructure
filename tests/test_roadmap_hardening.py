@@ -204,14 +204,15 @@ def stable_evidence(root: Path) -> dict[str, Any]:
     gate_ids = [item["id"] for item in stable["exit_gates"] if item.get("blocking", True)]
     v1_gate = read_json(root / "conductor/v1-gate.json")
     metrics = {
-        "agent_panel_analysts": 2,
+        "agent_panel_analysts": 5,
         "clean_room_reproductions": 2,
-        "external_reproductions": 1,
-        "external_user_workflows": 2,
-        "external_operator_workflows": 1,
+        "agent_user_journeys": 2,
+        "agent_operator_journeys": 1,
         "operational_cycles": 3,
         "operational_evidence_days": 90,
+        "operational_daily_observations": 90,
         "release_candidate_soak_days": 30,
+        "release_candidate_daily_observations": 30,
     }
     return {
         "schema_version": "1.0.0",
@@ -222,6 +223,15 @@ def stable_evidence(root: Path) -> dict[str, Any]:
         "machine_readable": True,
         "immutable_evidence_identifiers": True,
         "source_revision": "swh:1:rev:0000000000000000000000000000000000000000",
+        "agent_panel_manifest_ref": evidence_reference("panel-manifest")["evidence_id"],
+        "agent_panel_roles": [
+            "clean-room-reproducer",
+            "adversarial-reviewer",
+            "evidence-auditor",
+            "domain-reviewer",
+            "synthesizer",
+        ],
+        "owner_dissent_disposition_ref": evidence_reference("owner-disposition")["evidence_id"],
         "tool": {
             "name": "riopa-provenance",
             "version": "1.0.0",
@@ -248,7 +258,11 @@ def stable_evidence(root: Path) -> dict[str, Any]:
             }
             for index, role in enumerate(v1_gate["release_authority"]["required_roles"], start=1)
         ],
-        "release_artifacts": [evidence_reference("stable-release-artifact")],
+        "release_artifacts": [
+            evidence_reference("stable-release-artifact"),
+            evidence_reference("panel-manifest"),
+            evidence_reference("owner-disposition"),
+        ],
         "known_limitations": ["Synthetic qualification fixture for testing only."],
         "notes": "Synthetic qualification fixture for testing only.",
     }
@@ -927,8 +941,19 @@ def test_stable_qualification_metrics_defects_approvals_and_decision_are_enforce
     evidence["machine_readable"] = False
     evidence["immutable_evidence_identifiers"] = False
     evidence["source_revision"] = "uncommitted:test"
-    evidence["approvals"] = evidence["approvals"][:-1]
-    evidence["approvals"][0]["signed_decision_ref"] = None
+    evidence["agent_panel_manifest_ref"] = None
+    evidence["agent_panel_roles"] = ["synthesizer"]
+    evidence["owner_dissent_disposition_ref"] = None
+    evidence["approvals"] = [
+        {
+            "role": "Advisory observer",
+            "reviewer": "Test observer",
+            "decision": "approve",
+            "decided_at": iso(),
+            "signed_decision_ref": None,
+            "notes": None,
+        }
+    ]
     evidence["release_artifacts"] = []
     write_json(root / "conductor/release-evidence/1.0.0.json", evidence)
 
@@ -941,6 +966,9 @@ def test_stable_qualification_metrics_defects_approvals_and_decision_are_enforce
     assert "not declared machine-readable" in text
     assert "does not require immutable identifiers" in text
     assert "source revision is absent or not immutable" in text
+    assert "agent-panel manifest is missing from immutable evidence" in text
+    assert "agent-panel roles are missing" in text
+    assert "owner dissent disposition is missing from immutable evidence" in text
     assert "approvals missing roles" in text
     assert "approvals are unsigned" in text
     assert "no immutable release artifacts" in text

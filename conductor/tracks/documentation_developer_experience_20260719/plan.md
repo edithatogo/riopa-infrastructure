@@ -14,13 +14,13 @@
 
 ## 3. Independent usability validation
 
-- [~] 3.1 Run owner-authorized agent user and operator workflow studies. A protected-main agent-user-workflows rehearsal passed at run `32739643452`; factual external-user/operator participation remains mandatory.
-- [x] 3.2 Run the repository-owned accessibility, terminology, safety and limitations review through a bounded agent-panel packet. The packet and deterministic checks are repository-owned evidence; external participant and accessibility validation remain open (`docs/documentation-inventory-and-safety-review-20260825.json`, `tests/test_documentation_inventory_review.py`).
-- [x] 3.3 Document anticipated friction and support burden from bounded workflows. The register is explicitly not an external user study; factual participant evidence remains open (`docs/documentation-friction-register-20260825.json`, `tests/test_documentation_friction_register.py`).
+- [~] 3.1 Run owner-authorized agent user and operator workflow studies. A protected-main agent-user-workflows rehearsal passed at run `32739643452`; role-separated agent user/operator journey evidence remains mandatory.
+- [x] 3.2 Run the repository-owned accessibility, terminology, safety and limitations review through a bounded agent-panel packet. The packet and deterministic checks are repository-owned evidence; other-human participant and accessibility validation remain open (`docs/documentation-inventory-and-safety-review-20260825.json`, `tests/test_documentation_inventory_review.py`).
+- [x] 3.3 Document anticipated friction and support burden from bounded workflows. The historical register was not another-human user evidence; prospectively the required role-separated agent user/operator journeys are governed by the programme panel policy (`docs/documentation-friction-register-20260825.json`, `tests/test_documentation_friction_register.py`).
 
 ## 4. Stable support readiness
 
-- [x] 4.1 Execute every tutorial against one immutable repository-candidate revision through the bounded rehearsal harness. This is not RC promotion evidence; external user/operator evidence, elapsed RC soak and accountable authority remain open. (`scripts/run_release_candidate_tutorials.py`, `tests/test_release_candidate_tutorials.py`; `16ff727`)
+- [x] 4.1 Execute every tutorial against one immutable repository-candidate revision through the bounded rehearsal harness. This is not RC promotion evidence; agent-operated user/operator journey evidence, elapsed RC soak and accountable authority remain open. (`scripts/run_release_candidate_tutorials.py`, `tests/test_release_candidate_tutorials.py`; `16ff727`)
 - [x] 4.2 Freeze the preview support channels, triage, single-developer ownership and sustainability bounds (`docs/documentation-support-readiness-20260825.json`, `tests/test_documentation_support_readiness.py`). Stable support, external participation, RC soak and authority gates remain open.
 - [x] 4.3 Build a content-addressed versioned documentation archive candidate. The manifest is content-addressed, unpublished and explicitly not RC/stable evidence; external usability, preservation acceptance, publication and authority remain open (`scripts/build_documentation_archive_manifest.py`, `docs/documentation-archive-manifest-20260825.json`, `tests/test_documentation_archive_manifest.py`).
 

@@ -454,10 +454,10 @@
         {
           "id": "applied-pilot-reproducibility",
           "category": "usability",
-          "requirement": "Supermarket and emergency/hospital reference pilots are independently reproducible and clearly non-operational.",
+          "requirement": "Supermarket and emergency/hospital reference pilots pass isolated multi-agent clean-room reproduction and remain clearly non-operational.",
           "evidence_contract": [
             "Pilot research objects",
-            "External reproduction",
+            "Content-bound subagent-panel reproduction",
             "Intended-use and limitation statements"
           ],
           "blocking": true
@@ -480,7 +480,7 @@
       "name": "v1 release candidate",
       "channel": "release-candidate",
       "maturity_level": "M5",
-      "objective": "Freeze all v1 contracts and qualify the complete system through security, performance, operations, usability and independent reproduction.",
+      "objective": "Freeze all v1 contracts and qualify the complete system through security, performance, operations, usability and isolated multi-agent clean-room reproduction.",
       "required_tracks": [
         "accessibility_network_engine_20260719",
         "canonical_domain_schemas_ontology_20260719",
@@ -548,10 +548,10 @@
         {
           "id": "rc-operational-soak",
           "category": "operations",
-          "requirement": "Operational components provide at least ninety consecutive days of representative beta evidence, followed by a minimum thirty-day release-candidate soak with SLO, recovery, freshness, preservation and defect evidence.",
+          "requirement": "Operational components provide at least ninety consecutive days and ninety daily observations of representative beta evidence, including three operating cycles and one injected failure, backfill and recovery exercise, followed by a minimum thirty-day exact-release-candidate soak with thirty daily observations and SLO, recovery, freshness, preservation and defect evidence.",
           "evidence_contract": [
             "Ninety-day beta SLO report",
-            "Thirty-day release-candidate soak report",
+            "Thirty-day exact-release-candidate soak report",
             "Incident, exclusion, recovery and defect register"
           ],
           "blocking": true
@@ -568,22 +568,22 @@
           "blocking": true
         },
         {
-          "id": "rc-documentation-user-validation",
+          "id": "rc-agent-workflow-validation",
           "category": "usability",
-          "requirement": "External users and an operator complete distinct documented workflows using only release-candidate artifacts.",
+          "requirement": "Role-separated user-journey and operator-journey subagents complete distinct documented workflows in isolated environments using only release-candidate artifacts.",
           "evidence_contract": [
-            "User validation reports",
-            "Operator exercise",
+            "Agent user-journey reports",
+            "Agent operator-journey report",
             "Documentation test report"
           ],
           "blocking": true
         },
         {
-          "id": "rc-independent-reproduction",
+          "id": "rc-panel-clean-room-reproduction",
           "category": "provenance",
-          "requirement": "Two clean-room reproductions, including one external operator, reproduce a real archive release and applied benchmark.",
+          "requirement": "Two isolated clean-room reproducer subagents reproduce a real archive release and applied benchmark; adversarial and evidence-auditor subagents verify equivalence, limitations and remediations.",
           "evidence_contract": [
-            "Independent reproduction reports",
+            "Content-bound multi-agent panel reproduction reports",
             "Output comparisons",
             "Resolved findings"
           ],
@@ -745,7 +745,7 @@
           "evidence_contract": [
             "Cross-language conformance",
             "Compatibility matrix",
-            "Independent consumer report"
+            "Isolated consumer-subagent report"
           ],
           "blocking": true
         },
@@ -763,9 +763,9 @@
         {
           "id": "stable-usability",
           "category": "usability",
-          "requirement": "External users and operators complete supported workflows and named maintainers, support channels and sustainability bounds are active.",
+          "requirement": "Role-separated user-journey and operator-journey subagents complete supported workflows and the sole maintainer, support channels and sustainability bounds are active.",
           "evidence_contract": [
-            "External workflow reports",
+            "Agent-operated workflow reports",
             "Maintainer roster",
             "Support and sustainability policy"
           ],
@@ -794,11 +794,11 @@
           "blocking": true
         },
         {
-          "id": "stable-independent-reproduction",
+          "id": "stable-panel-clean-room-reproduction",
           "category": "reproducibility",
-          "requirement": "At least two clean-room reproductions, including an external party, reproduce a complete real-data release and one applied benchmark.",
+          "requirement": "At least two isolated clean-room reproducer subagents reproduce a complete real-data release and one applied benchmark; adversarial, evidence-auditor and domain subagents review the results and the sole owner dispositions every finding and dissent.",
           "evidence_contract": [
-            "External reproduction reports",
+            "Content-bound multi-agent panel reproduction reports",
             "Output equivalence decisions",
             "Resolved reproducibility findings"
           ],
@@ -807,7 +807,7 @@
         {
           "id": "stable-release-authority",
           "category": "release",
-          "requirement": "All tracks and gates pass, defect and waiver thresholds are met, artifacts are immutable, and the named release authority approves GA.",
+          "requirement": "All tracks and gates pass, defect and waiver thresholds are met, artifacts are immutable, the required agent panel advises, and the sole repository owner signs the GA decision.",
           "evidence_contract": [
             "Machine-readable v1 gate result",
             "Defect/waiver register",

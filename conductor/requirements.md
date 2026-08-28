@@ -70,7 +70,7 @@
 - **R-063** Package manifests and checksums use a documented non-circular integrity design.
 - **R-064** External conformance is claimed only when the representation is emitted and validated.
 - **R-065** Stable releases have immutable version identity, DOI-ready metadata and correction/supersession relationships.
-- **R-066** At least one external party reproduces a real-data release and an applied benchmark before v1 GA.
+- **R-066** Two isolated clean-room reproducer subagents reproduce a real-data release and an applied benchmark before v1 GA; adversarial, evidence-auditor and domain subagents review the results.
 - **R-067** Every local stable-v1 evidence reference has a verified digest; every external stable-v1 evidence reference has a digest or recognised content-addressed persistent identifier.
 
 ## Governance, rights and safety
@@ -97,6 +97,6 @@
 
 - **R-090** Greenfield and brownfield repository setup is documented, testable and non-destructive.
 - **R-091** Generated configuration has clear ownership and drift detection.
-- **R-092** At least three existing repositories dual-emit the profile, two package research objects and one reaches independent reproduction.
-- **R-093** At least two external users complete distinct stable workflows from documentation.
+- **R-092** At least three existing repositories dual-emit the profile, two package research objects and one passes isolated multi-agent clean-room reproduction.
+- **R-093** At least two role-separated user-journey subagents and one operator-journey subagent complete distinct stable workflows from documentation.
 - **R-094** V1 has named maintainers, support/security channels, correction process and a twelve-month critical-fix window.

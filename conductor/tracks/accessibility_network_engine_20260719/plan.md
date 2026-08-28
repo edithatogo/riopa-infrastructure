@@ -22,15 +22,15 @@
 ## 4. Stable accessibility interface
 
 - [x] 4.1 Guard integration behind content-addressed network, timetable, facility and demand archive metadata (`src/riopa_provenance/accessibility.py::validate_content_addressed_archive_bundle`, `docs/accessibility-archive-bundle-readiness-20260825.json`, `tests/test_accessibility.py`). Actual payload integration, rights/authority and operational qualification remain open.
-- [x] 4.2 Conduct repository-owned four-lens agent-panel qualification of reference semantics and limitations (`docs/accessibility-agent-panel-qualification-20260825.json`, `tests/test_accessibility_agent_panel_qualification.py`). Real network/timetable qualification, external workflow evidence and operational approval remain open.
-- [x] 4.3 Freeze the bounded, reference-only v1 accessibility contract and examples (`docs/accessibility-v1-contract-freeze-20260825.json`, `tests/test_accessibility_v1_contract_freeze.py`). Real archived inputs, independent real-engine qualification, national scale, external workflows, elapsed evidence and accountable authority remain open.
+- [x] 4.2 Conduct repository-owned four-lens agent-panel qualification of reference semantics and limitations (`docs/accessibility-agent-panel-qualification-20260825.json`, `tests/test_accessibility_agent_panel_qualification.py`). Real network/timetable qualification, agent-operated workflow evidence and operational approval remain open.
+- [x] 4.3 Freeze the bounded, reference-only v1 accessibility contract and examples (`docs/accessibility-v1-contract-freeze-20260825.json`, `tests/test_accessibility_v1_contract_freeze.py`). Real archived inputs, independent real-engine qualification, national scale, agent-operated workflows, elapsed evidence and accountable authority remain open.
 
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and bounded partition/cache evidence in `index.md` (`docs/accessibility-partition-cache-contract-20260825.json`, `tests/test_accessibility.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/accessibility-network-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with real engines, national-scale, external workflow and authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with real engines, national-scale, agent-operated workflow and authority gates unresolved.
 
 ## Review fixes
 

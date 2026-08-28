@@ -19,6 +19,18 @@ Upstream outage, approved maintenance and blocked rights/governance states may b
 
 ## Stable qualification period
 
-Before the 0.9.0 release candidate, operational components must provide at least **90 consecutive days** of representative beta evidence and at least three complete operating cycles, including a source or dependency failure, backfill and recovery. The exact candidate then completes at least **30 days** of soak.
+Before the 0.9.0 release candidate, operational components must provide at least
+**90 consecutive calendar days** with at least **90 daily hosted observations**
+and three complete operating cycles, including an injected source or dependency
+failure, backfill and recovery. The unchanged exact candidate then completes at
+least **7 consecutive calendar days** with at least **7 daily hosted
+observations**. A candidate revision change restarts its soak segment.
+
+“Hosted” means a scheduled workflow actually ran outside the developer laptop
+against an exact revision and emitted an immutable receipt. “Elapsed” means the
+receipts span real calendar time; it is not command runtime and cannot be
+simulated with future timestamps. An SLO is the measured target for the
+repository-operated capture, freshness, release, fixity, restore and alerting
+pipeline. Upstream failures and approved exclusions remain counted and visible.
 
 The release record includes SLO calculations, raw observations, exclusions, incidents, restore evidence, cost/capacity evidence and unresolved operational risk. Targets remain candidate requirements until measured evidence is published; they are never presented as current achievements by the roadmap alone.

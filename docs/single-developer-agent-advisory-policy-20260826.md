@@ -6,13 +6,21 @@ reviewer, consultant, user, operator, clinician, community representative or
 release authority is assumed or claimed unless a future content-bound evidence
 record explicitly identifies that participation.
 
-## Agent advice
+## Structured agent panels
 
-The developer may seek structured advice from AI agents assigned named lenses
+The developer uses structured advice from separately prompted AI subagents assigned named lenses
 such as security, governance, quantitative methods, operations or
 reproducibility. These agents are advisory tools. Separately prompted agents can
 provide useful challenge and process separation, but they are not independent
 humans, external stakeholders or accountable decision-makers.
+
+Repository-defined review, user-journey, operator-journey and clean-room
+reproduction gates are satisfied by a role-separated subagent panel. A panel
+must include, as applicable, a clean-room reproducer, adversarial reviewer,
+evidence auditor, domain reviewer and synthesizer. Its content-bound manifest
+records each role, session and model identity, exact revision and artifact
+digests, environment, commands, results, findings, dissent, remediation and
+rerun outcome. A synthesizer cannot silently override dissent.
 
 The developer decides how to disposition agent findings and remains accountable
 for repository changes and release decisions. An agent may prepare or review a
@@ -20,20 +28,34 @@ decision packet, but cannot approve it on the developer's behalf.
 
 ## Evidence boundaries
 
-Agent advice may support repository-owned review evidence. It cannot by itself
-establish any of the following:
+Agent-panel evidence may satisfy the repository's prospective review,
+agent-operated workflow and isolated clean-room reproduction requirements. It
+does not claim another human participated. Agents cannot establish:
 
-- independent external reproduction;
-- factual external user or operator experience;
 - human peer, clinical, legal, cultural or community review;
+- source ownership, licence scope, redistribution permission or legal authority;
 - third-party conformance or preservation acceptance;
 - elapsed operational evidence; or
 - accountable human approval.
 
-Any track criterion or release gate that explicitly requires one of those facts
-remains pending until matching evidence exists or the governing contract is
-prospectively and transparently changed. The absence of other human advice is
-not concealed by relabelling agent output as human or external evidence.
+No active or future track requires a second human, external person, external
+user or external operator. References to independent reproduction in historical
+evidence describe the contract in force at that time; prospectively,
+independence means isolation of agent role, prompt, environment, checkout,
+cache and uncommitted implementation state. The absence of other human advice
+is never concealed by relabelling agent output as human evidence.
+
+Where a proposed scope would genuinely require clinical, legal, cultural or
+community authority, the sole owner must either obtain content-bound factual
+evidence of that participation or exclude the affected scope with a signed
+non-applicability rationale. An agent panel cannot convert such a scope-triggered
+fact into repository-owned evidence.
+
+External facts remain external facts. GitHub Actions execution, upstream source
+responses and terms, package or dataset publication, OIDC attestations,
+persistent identifiers, preservation-provider acceptance and elapsed calendar
+observations require evidence from those systems. A subagent panel validates
+the evidence but does not manufacture it.
 
 ## Applicability
 

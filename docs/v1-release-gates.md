@@ -21,17 +21,17 @@ Candidate qualification includes:
 - frozen normative inventory and conformance corpus;
 - security and supply-chain qualification;
 - national/reference performance and resilience qualification;
-- at least 90 consecutive days of representative operational-beta evidence;
-- at least 30 days of release-candidate soak;
-- two clean-room reproductions, including at least one external reproduction;
-- agent-operated user and operator workflows;
+- at least 90 consecutive days and 90 daily hosted observations of representative operational-beta evidence;
+- at least 30 days and 30 daily hosted observations on the unchanged release candidate;
+- two isolated clean-room reproductions by separately prompted reproducer subagents;
+- role-separated agent-operated user and operator journeys plus adversarial, evidence-audit and domain review;
 - migration, rollback, restore, correction and withdrawal rehearsals;
 - complete publication and preservation objects;
 - no prohibited defect or expired waiver.
 
 ## General availability: 1.0.0 / M6
 
-General availability is a separate release-authority decision. It requires all 28 v1-critical tracks, all 14 stable gate families, the global defect/evidence/waiver policy and signed release-authority approval.
+General availability is a separate decision by the sole repository owner. It requires all 28 v1-critical tracks, all 14 stable gate families, the global defect/evidence/waiver policy, required subagent-panel advice and the owner's signed approval.
 
 The release authority may publish 1.0.0 only when:
 
