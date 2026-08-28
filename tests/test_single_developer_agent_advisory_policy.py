@@ -51,5 +51,5 @@ def test_panel_governance_preserves_external_fact_boundaries() -> None:
         "exact_candidate_daily_hosted_observations": 30,
     }
     assert "Churton Park Village Supermarket" in rights
-    assert "no licence is declared" in " ".join(rights.split())
+    assert "declares `CC-BY-3.0-NZ`" in " ".join(rights.split())
     assert "cannot grant a missing licence" in rights

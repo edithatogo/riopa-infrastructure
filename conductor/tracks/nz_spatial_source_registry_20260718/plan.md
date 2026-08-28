@@ -31,10 +31,12 @@
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/source-registry-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Promote the bounded registry executable-proof boundary to experimental M2. The track remains `validating`; current-authority completeness, live rights/health evidence, repeated hosted monitoring, preservation, panel reproduction and accountable-owner gates remain assigned to M3-M6 (`docs/nz-source-registry-m2-promotion-20260829.json`, `tests/test_nz_source_registry_m2_promotion.py`).
+- [x] C.5 Group missing and existing licence decisions into permissive public-archive tiers, separating copyright permission from authority, completeness and safety (`docs/source-rights-publication-decision-matrix-20260829.json`, `tests/test_source_rights_publication_decision_matrix.py`).
 
 ## M2 review fixes
 
 - [x] R3 Apply the sole-developer subagent-panel policy while preserving factual source-rights, hosted-observation, preservation and owner-authority boundaries.
+- [x] R4 Replace blanket permission holds with exact-item and publisher-wide open-licence decisions for the WCC Churton layer, NZ ambulance prototype and Greater Wellington GIS, while retaining provenance, authority and safety limitations (`docs/source-rights-publication-decision-matrix-20260829.json`, `tests/test_source_rights_publication_decision_matrix.py`).
 
 ## Review fixes
 

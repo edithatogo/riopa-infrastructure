@@ -34,6 +34,7 @@ remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
 | `NZ-SOURCE-REGISTRY-RELEASE-CANDIDATE-20260825` | Deterministic content-addressed registry and coverage release candidate | `src/riopa_provenance/registry.py::build_registry_release_candidate`, `docs/nz-source-registry-release-candidate-contract-20260825.json`, `tests/test_registry.py` | Candidate is unpublished and promotion-disabled; current-authority completeness, payload preservation, rights, publication and accountable release decision remain open |
 | `NZ-SOURCE-REGISTRY-CLOSEOUT-20260826` | Link implementation, tests, agent-panel, migration and release-candidate evidence for the bounded registry slice | `docs/nz-source-registry-closeout-evidence-20260826.json`, `tests/test_nz_source_registry_closeout_evidence.py` | Repository-owned closeout links pass; current-authority completeness, payload preservation, external participation and accountable release remain open |
 | `NZ-SOURCE-REGISTRY-M2-PROMOTION-20260829` | Qualify the experimental registry executable-proof boundary against an exact source tree | `docs/nz-source-registry-m2-promotion-20260829.json`, `tests/test_nz_source_registry_m2_promotion.py` | Repository-owned registry, negative-path, snapshot, health and candidate evidence passes; M3-M6 gates remain open |
+| `SOURCE-RIGHTS-PUBLICATION-DECISION-20260829` | Group missing and existing licences into maximum-lawful public archive tiers | `docs/source-rights-publication-decision-matrix-20260829.json`, `docs/source-rights-publication-decision-matrix-20260829.md`, `tests/test_source_rights_publication_decision_matrix.py` | Exact open terms permit Tier A publication for WCC Churton, the ambulance prototype and Greater Wellington GIS; authority, freshness, completeness and operational claims remain separate |
 
 ## Blocking maturity gates
 
@@ -50,7 +51,12 @@ catalogue/authority coverage and archive packets remain pending.
 
 ## Decisions, exceptions and limitations
 
-- None recorded.
+- Public payloads are preferred whenever exact-item or applicable
+  publisher-wide open terms permit them. Unresolved payload rights default to
+  public metadata, terms, receipts and digests rather than suppressing the
+  source record.
+- Exact-item exceptions, privacy, safety and restricted LINZ product terms
+  override general open-data terms.
 
 ## Review and handover
 

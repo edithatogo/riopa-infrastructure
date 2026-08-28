@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "source_rights_publication_decision_matrix",
+  "record_id": "urn:riopa:decision:source-rights-publication:2026-08-29",
+  "decided_at": "2026-08-29T00:00:00Z",
+  "decision_owner": "sole repository owner",
+  "policy": {
+    "objective": "Archive and publish the maximum material permitted by exact source terms while keeping authority, completeness, privacy, safety and legal-status claims separate.",
+    "default": "public-metadata-and-receipts",
+    "rules": [
+      "Publish payloads and derivatives when an exact-item licence or applicable publisher-wide licence permits reuse and no item-specific exception applies.",
+      "When payload redistribution is unresolved, publish source metadata, public URLs, terms snapshots, digests, negative receipts and decision records; retain payload privately only when acquisition and retention are permitted.",
+      "When acquisition or retention is not permitted or is unclear, preserve discovery metadata only and do not fetch the payload.",
+      "Authority, completeness, freshness, privacy, safety and legal effect are independent of copyright permission.",
+      "Logos, emblems, photographs, third-party material and personal or restricted data are excluded unless separately licensed."
+    ]
+  },
+  "tiers": {
+    "A": "public payload, metadata, receipts and permitted derivatives",
+    "B": "public metadata, terms, receipts and digests; payload after exact-item qualification",
+    "C": "private payload only when retention is permitted; public metadata and non-reconstructive evidence",
+    "D": "discovery record only; no payload acquisition",
+    "E": "public metadata or safe aggregate only because privacy, safety or operational sensitivity overrides copyright permission"
+  },
+  "decisions": [
+    {
+      "source": "Stats NZ produced material and declared datasets",
+      "licence": "CC-BY-4.0",
+      "tier": "A",
+      "recommendation": "Publicly archive exact-version payloads, metadata, receipts and derivatives with Stats NZ attribution, unless the item has a specific exception.",
+      "contingency": "Downgrade an excepted item to B, C, D or E according to its exact terms and content.",
+      "non_claims": ["official-statistic status unless declared", "completeness", "fitness for purpose"],
+      "terms_url": "https://www.stats.govt.nz/about-us/copyright/"
+    },
+    {
+      "source": "Ministry for the Environment produced website material",
+      "licence": "CC-BY-4.0",
+      "tier": "A",
+      "recommendation": "Publicly archive exact publication bytes, metadata and derivatives with Ministry attribution.",
+      "contingency": "Exclude photographs, logos, design elements and identified third-party material; downgrade those components pending permission.",
+      "non_claims": ["legal interpretation", "current legal effect"],
+      "terms_url": "https://environment.govt.nz/about-this-site/copyright/"
+    },
+    {
+      "source": "Ministry of Health items carrying an item-level CC BY notice",
+      "licence": "CC-BY-4.0",
+      "tier": "A",
+      "recommendation": "Publicly archive the exact noticed item and derivatives with attribution.",
+      "contingency": "Treat health information containing personal, confidential or third-party material as E or the exact narrower tier.",
+      "non_claims": ["national completeness", "current capacity", "clinical or operational suitability"],
+      "terms_url": "https://www.health.govt.nz/"
+    },
+    {
+      "source": "OpenStreetMap data",
+      "licence": "ODbL-1.0",
+      "tier": "A",
+      "recommendation": "Publicly archive bounded database extracts and permitted derivatives with OpenStreetMap contributor attribution and applicable ODbL share-alike notices.",
+      "contingency": "Keep produced-work and derived-database treatment explicit; exclude mirror-only additions that lack compatible provenance.",
+      "non_claims": ["authority", "completeness", "currency"],
+      "terms_url": "https://www.openstreetmap.org/copyright"
+    },
+    {
+      "source": "Greater Wellington GIS data",
+      "licence": "CC-BY-4.0 unless specifically stated otherwise",
+      "tier": "A",
+      "recommendation": "Publicly archive exact-version GIS payloads and derivatives after recording the item metadata and confirming no specific exception is stated.",
+      "contingency": "If the layer carries different or third-party terms, use those terms and downgrade as needed.",
+      "non_claims": ["national coverage", "operational authority", "freshness"],
+      "terms_url": "https://www.gw.govt.nz/environment/environmental-data-and-information/geographic-mapping-information/"
+    },
+    {
+      "source": "Wellington City Council GIS data",
+      "licence": "CC-BY-3.0-NZ where the GIS metadata applies",
+      "tier": "A",
+      "recommendation": "Publicly archive exact GIS layers and derivatives when the layer or applicable GIS metadata identifies CC BY 3.0 NZ.",
+      "contingency": "A catalogue record with no licence is B until its layer identity is bound to the applicable WCC GIS licence; identified third-party content remains excluded.",
+      "non_claims": ["operative legal status", "statutory interpretation"],
+      "terms_url": "https://wellington.govt.nz/~/media/maps/gis/gis-data-metadata.pdf"
+    },
+    {
+      "source": "LINZ Data Service items",
+      "licence": "item-specific; commonly CC-BY-4.0",
+      "tier": "B",
+      "recommendation": "Publish catalogue metadata, licence records, terms snapshots and receipts immediately; promote each payload to A when its exact item licence is captured.",
+      "contingency": "Personal, owner-name, DVR or other specially licensed data remains C, D or E and must not inherit the common CC BY treatment.",
+      "non_claims": ["uniform licensing across LINZ", "permission for personal or restricted data"],
+      "terms_url": "https://data.linz.govt.nz/"
+    },
+    {
+      "source": "Churton Park Village Supermarket catalogue record",
+      "licence": "CC-BY-3.0-NZ on exact ArcGIS item aed53628016540388abfbe018da439b6",
+      "tier": "A",
+      "recommendation": "Publicly archive the exact layer payload, metadata, licence receipt and permitted derivatives with Wellington City Council attribution.",
+      "contingency": "If the item licence changes or a component is identified as third-party material, quarantine that component and retain public decision evidence where permitted.",
+      "non_claims": ["operative district-plan status", "supermarket status or currency"],
+      "terms_url": "https://www.arcgis.com/home/item.html?id=aed53628016540388abfbe018da439b6"
+    },
+    {
+      "source": "NZ ambulance prototype and provider location candidates",
+      "licence": "CC-BY-4.0 on exact ArcGIS prototype item e5b22c07d197417495c8012e945c41da; other provider candidates remain unlicensed",
+      "tier": "A",
+      "recommendation": "Publicly archive the exact prototype payload and rights receipt with attribution and its mixed-source, non-authoritative disclaimer; keep other provider candidates at B-D until separately licensed.",
+      "contingency": "Use E if a documented safety review identifies sensitive operational detail, or quarantine affected features if provenance or licensor authority is successfully challenged.",
+      "non_claims": ["provider ownership", "national completeness", "operational authority", "freshness"],
+      "terms_url": "https://www.arcgis.com/home/item.html?id=e5b22c07d197417495c8012e945c41da"
+    },
+    {
+      "source": "Hamilton and Marlborough council food-register archive packets",
+      "licence": "source-specific terms preserved with receipts",
+      "tier": "B",
+      "recommendation": "Keep public metadata, receipts and bounded assertions; publish full payloads when the preserved terms receipt explicitly permits redistribution.",
+      "contingency": "If the existing public archive already contains payloads without an explicit redistribution decision, quarantine payload publication while retaining non-reconstructive evidence.",
+      "non_claims": ["national coverage", "current licensing or trading status"],
+      "terms_url": "https://github.com/edithatogo/riopa-public-data-archive"
+    }
+  ]
+}

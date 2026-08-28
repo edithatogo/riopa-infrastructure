@@ -55,11 +55,12 @@ sources:
       url: https://wellington.govt.nz/
     jurisdiction: Wellington City
     source_family: council-planning-reference
-    status: rights-blocked
+    status: staged-rights-cleared
     rights:
-      access_status: public-metadata
-      redistribution_status: prohibited-until-reviewed
-      notes: "The data.govt.nz catalogue record declares no licence. Keep payload acquisition and redistribution disabled until the source agency terms are captured and reviewed."
+      access_status: public
+      spdx_or_uri: CC-BY-3.0-NZ
+      redistribution_status: attribution-required
+      notes: "The data.govt.nz record omits a licence, but its exact linked ArcGIS item aed53628016540388abfbe018da439b6 declares Creative Commons 3.0 (NZ), Wellington City Council ownership and Corporate GIS custodianship. Payload capture remains staged until an exact-version receipt is created; no operative-plan or current-supermarket inference is permitted."
     endpoints:
       - endpoint_id: urn:riopa:endpoint:wcc:churton-supermarket-metadata
         mechanism: catalogue-record
