@@ -51,7 +51,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] GeoParquet and DuckDB Spatial rebuild deterministically and pass cross-tool query tests.
 - [ ] Quality and coverage reports expose missing, unresolved, non-statutory and legally uncertain content.
 - [ ] A complete externally validated research object and methods supplement are produced.
-- [ ] A second clean environment reproduces the snapshot or documents tolerance-equivalent differences.
+- [ ] Two isolated clean-room reproducer subagents reproduce the snapshot or document tolerance-equivalent differences.
 
 ## Hardening and maturity gates
 

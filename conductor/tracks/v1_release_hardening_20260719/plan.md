@@ -8,16 +8,16 @@
 
 ## 2. Audit and rehearsal
 
-- [x] 2.1 Complete the repository-owned security, performance, accessibility, governance and documentation audit slice. The machine-readable audit matrix is complete for bounded technical-preview evidence; external participant, elapsed, national-scale, preservation and accountable-authority gates remain open (`docs/v1-repository-audit-matrix-20260825.json`, `tests/test_v1_audit_matrix.py`).
+- [x] 2.1 Complete the repository-owned security, performance, accessibility, governance and documentation audit slice. The machine-readable audit matrix is complete for bounded technical-preview evidence; other-human participant, elapsed, national-scale, preservation and accountable-authority gates remain open (`docs/v1-repository-audit-matrix-20260825.json`, `tests/test_v1_audit_matrix.py`).
 - [x] 2.2 Rehearse upgrade, migration, rollback, restore, correction and withdrawal through the bounded repository matrix. Contract and hosted technical-preview drill evidence is linked; production-representative restore, independent target acceptance, downstream notification and release-authority gates remain open (`docs/v1-upgrade-rehearsal-matrix-20260825.json`, `tests/test_v1_upgrade_rehearsal_matrix.py`).
 - [x] 2.3 Reconcile P0/P1 defect dispositions and record that no bounded P2 exceptions are approved. P0/P1 external, elapsed and scope gates remain open in `docs/v1-defect-disposition-20260825.json`, validated by `tests/test_v1_defect_disposition.py`; no defect is silently waived.
 
 ## 3. Release candidate validation
 
 - [x] 3.1 Prepare the exact release-candidate packet and protected signing sequence. The fail-closed packet binds the current protected-main revision and lists signing, attestation, preservation, participant, soak and authority gates; protected signing and accepted preservation remain external (`docs/v1-release-candidate-packet-20260825.json`, `tests/test_v1_release_candidate_packet.py`).
-- [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and factual external operator/user evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
+- [x] 3.2 Record two distinct owner-authorized agent-operated journeys against repository-bound workflows. The journeys are repository-owned rehearsal evidence; two qualifying clean-room reproductions and role-separated agent operator/user journey evidence remain open (`docs/v1-agent-operated-journeys-20260825.json`, `tests/test_v1_agent_operated_journeys.py`).
 - [x] 3.2a Add a deterministic exact-candidate continuity evaluator. It identifies three individually valid RC observations across three candidate revisions and therefore records a required reset without combining their duration (`scripts/build_v1_release_gate_snapshot.py`, `docs/v1-stable-release-gate-snapshot-20260825.json`, `tests/test_v1_release_gate_snapshot.py`).
-- [x] 3.2b Execute the bounded clean-room rehearsal and agent-user journey lanes against the exact frozen candidate `26bc0b4`. Both hosted runs pass, but their receipts explicitly do not constitute independent external reproduction or external user/operator evidence (`docs/v1-candidate-hosted-validation-20260825.json`; runs `32856533103` and `32856537212`).
+- [x] 3.2b Execute the bounded clean-room rehearsal and agent-user journey lanes against the exact frozen candidate `26bc0b4`. Both hosted runs pass, but their receipts explicitly do not constitute isolated multi-agent clean-room reproduction or agent-operated user/operator journey evidence (`docs/v1-candidate-hosted-validation-20260825.json`; runs `32856533103` and `32856537212`).
 - [ ] 3.3 Operate the candidate under stable SLOs and record incidents/deviations.
 - [x] 3.3a Start a fresh isolated exact-candidate RC segment at `26bc0b4`. The first schema-validated hosted observation passes with one candidate revision and one 11-second observation; the 30-day duration gate remains pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32856370956`).
 - [x] 3.3b Start a fresh isolated beta operational segment at `26bc0b4`. Its first schema-validated hosted observation passes with one candidate revision, one second and one operational cycle; the 90-day and three-cycle gates remain pending (`docs/v1-candidate-hosted-validation-20260825.json`; run `32857084789`).
@@ -37,7 +37,7 @@
 
 - [x] 5.1 Record a machine-readable, fail-closed v1 readiness baseline and explicit release blockers. (v1-release-readiness-baseline-20260801.json)
 - [x] 5.2 Correct the readiness baseline boundary so it does not overstate completion of the normative inventory. (review fix)
-- [x] 5.3 Record the capability/boundary map for hosted recovery, soak, scale, external workflows and release authority. (review fix)
+- [x] 5.3 Record the capability/boundary map for hosted recovery, soak, scale, agent-operated workflows and release authority. (review fix)
 - [x] 5.4 Adopt the single-developer agent-panel policy and record a fail-closed GitHub/Hugging Face remaining-gates plan with library options and contingencies. (review fix)
 - [x] 5.5 Reconcile all normative review language to agent-panel qualification, stage daily hosted observations and record the GitHub/Hugging Face campaign-v2 plan. (review fix)
 - [x] 5.6 Synchronise the validated issue graph to GitHub and record exact-head hosted check evidence. (`docs/github-issue-sync-20260802.json`)
@@ -78,4 +78,4 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `1.0.0`, with elapsed soak, external workflows, preservation, performance, independent reproduction and accountable-authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `1.0.0`, with elapsed soak, agent-operated workflows, preservation, performance, isolated multi-agent clean-room reproduction and accountable-authority gates unresolved.

@@ -73,7 +73,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Normative APIs, schemas, ontology, CLI, configuration and file formats pass frozen conformance suites.
 - [ ] Upgrade, migration, rollback, restore, correction and withdrawal rehearsals pass on representative releases.
 - [ ] Security, performance, operations, accessibility, documentation, governance and scientific audits have no unresolved blocker.
-- [ ] Two clean-room reproductions, including one agent-operated workflow, pass the release candidate.
+- [ ] Two isolated clean-room reproducer subagents and the required adversarial, evidence-auditor, domain and synthesizer panel roles pass the release candidate.
 - [ ] At least two agent-operated workflows complete distinct documented journeys.
 - [ ] The stable release is signed, attested, checksummed, preserved, DOI-ready and accompanied by support/deprecation/sustainability policies.
 

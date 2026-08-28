@@ -1544,6 +1544,33 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
                     )
 
             required_roles = set(v1_gate.get("release_authority", {}).get("required_roles", []))
+            authority_policy = v1_gate.get("release_authority", {})
+            stable_reference_ids = {
+                _evidence_identifier(reference)
+                for reference in stable_references
+                if isinstance(reference, dict)
+            }
+            panel_manifest_ref = evidence_payload.get("agent_panel_manifest_ref")
+            if authority_policy.get("agent_panel_advice_required") and (
+                not panel_manifest_ref or panel_manifest_ref not in stable_reference_ids
+            ):
+                blockers.append(
+                    "stable release agent-panel manifest is missing from immutable evidence"
+                )
+            required_panel_roles = set(authority_policy.get("required_panel_roles", []))
+            observed_panel_roles = set(evidence_payload.get("agent_panel_roles", []))
+            missing_panel_roles = required_panel_roles - observed_panel_roles
+            if missing_panel_roles:
+                blockers.append(
+                    f"stable release agent-panel roles are missing: {sorted(missing_panel_roles)}"
+                )
+            owner_disposition_ref = evidence_payload.get("owner_dissent_disposition_ref")
+            if authority_policy.get("owner_disposition_of_dissent_required") and (
+                not owner_disposition_ref or owner_disposition_ref not in stable_reference_ids
+            ):
+                blockers.append(
+                    "stable release owner dissent disposition is missing from immutable evidence"
+                )
             approvals = [
                 approval
                 for approval in evidence_payload.get("approvals", [])
@@ -1553,7 +1580,7 @@ def release_readiness(root: str | Path, version: str) -> ReleaseReadiness:
             missing_roles = required_roles - approved_roles
             if missing_roles:
                 blockers.append(f"stable release approvals missing roles: {sorted(missing_roles)}")
-            if v1_gate.get("release_authority", {}).get("signed_decision_required"):
+            if authority_policy.get("signed_decision_required"):
                 unsigned_roles = sorted(
                     str(approval.get("role"))
                     for approval in approvals

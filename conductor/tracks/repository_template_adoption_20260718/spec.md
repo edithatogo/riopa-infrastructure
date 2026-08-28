@@ -27,7 +27,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - Greenfield and brownfield repository scaffolding.
 - Conductor files, track metadata, issue generation, CI, security and release workflows.
 - Adapter templates for connectors, archives, transformations and analytics.
-- Adoption levels from inventory through independent reproduction.
+- Adoption levels from inventory through isolated multi-agent clean-room reproduction.
 - Automated upgrade, drift detection and migration support.
 
 ## Out of scope
@@ -47,7 +47,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - [ ] One command creates a valid greenfield repository with Conductor, CI, security, release and documentation baseline.
 - [ ] Brownfield mode inventories and documents existing systems before proposing changes.
-- [ ] At least three existing repositories reach dual-emission adoption, two package research objects and one is independently reproduced.
+- [ ] At least three existing repositories reach dual-emission adoption, two package research objects and one passes isolated multi-agent clean-room reproduction.
 - [ ] Template upgrades detect drift and preserve approved local customisation.
 - [ ] Contributor setup and release workflows pass documentation tests on Linux and one additional supported environment.
 - [ ] Cross-repository issues, dependencies and evidence links remain synchronised.

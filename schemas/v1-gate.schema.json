@@ -117,12 +117,13 @@
       "required": [
         "minimum_agent_panel_analysts",
         "minimum_clean_room_reproductions",
-        "minimum_external_reproductions",
-        "minimum_external_user_workflows",
-        "minimum_external_operator_workflows",
+        "minimum_agent_user_journeys",
+        "minimum_agent_operator_journeys",
         "minimum_operational_cycles",
         "minimum_operational_evidence_days",
+        "minimum_operational_daily_observations",
         "minimum_release_candidate_soak_days",
+        "minimum_release_candidate_daily_observations",
         "maximum_gate_evidence_age_days",
         "machine_readable_evidence_required",
         "immutable_evidence_identifiers_required"
@@ -136,15 +137,11 @@
           "type": "integer",
           "minimum": 2
         },
-        "minimum_external_reproductions": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "minimum_external_user_workflows": {
+        "minimum_agent_user_journeys": {
           "type": "integer",
           "minimum": 2
         },
-        "minimum_external_operator_workflows": {
+        "minimum_agent_operator_journeys": {
           "type": "integer",
           "minimum": 1
         },
@@ -153,6 +150,10 @@
           "minimum": 3
         },
         "minimum_release_candidate_soak_days": {
+          "type": "integer",
+          "minimum": 30
+        },
+        "minimum_release_candidate_daily_observations": {
           "type": "integer",
           "minimum": 30
         },
@@ -169,7 +170,11 @@
         },
         "minimum_operational_evidence_days": {
           "type": "integer",
-          "minimum": 60
+          "minimum": 90
+        },
+        "minimum_operational_daily_observations": {
+          "type": "integer",
+          "minimum": 90
         }
       }
     },
@@ -216,20 +221,41 @@
       "additionalProperties": false,
       "required": [
         "required_roles",
-        "unanimous_for_non_waivable_categories",
+        "required_panel_roles",
+        "agent_panel_advice_required",
+        "owner_disposition_of_dissent_required",
         "signed_decision_required"
       ],
       "properties": {
-        "required_roles": {
+        "required_panel_roles": {
           "type": "array",
           "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "clean-room-reproducer",
+              "adversarial-reviewer",
+              "evidence-auditor",
+              "domain-reviewer",
+              "synthesizer"
+            ]
+          }
+        },
+        "required_roles": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
           "uniqueItems": true,
           "items": {
             "type": "string",
             "minLength": 3
           }
         },
-        "unanimous_for_non_waivable_categories": {
+        "agent_panel_advice_required": {
+          "const": true
+        },
+        "owner_disposition_of_dissent_required": {
           "const": true
         },
         "signed_decision_required": {

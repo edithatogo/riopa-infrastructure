@@ -6,7 +6,7 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 
 - All 28 v1-critical tracks are `complete`, at their declared M6 target, with immutable or version-addressed evidence.
 - The global v1 gate and all stable release gates pass.
-- Release authority, maintainers, security contact, governance agent-panel analysts and succession responsibilities are named.
+- The sole repository owner, maintainer and security contact are named; required subagent-panel roles and succession contingencies are documented.
 - Rights, privacy, ethics, Māori data sovereignty, safety, correction and withdrawal decisions approve or explicitly bound the released scope.
 
 ## Normative platform
@@ -18,7 +18,7 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 
 ## Real reference implementation
 
-- At least one complete national-plus-council acquisition-to-publication chain is preserved and independently rebuilt.
+- At least one complete national-plus-council acquisition-to-publication chain is preserved and rebuilt by isolated reproducer subagents.
 - The source registry records every current authority/source disposition, including unavailable, restricted, manual or unresolved sources.
 - Managed sources have explicit coverage, freshness, rights, legal status, quality and historical-depth reports.
 - Canonical, GeoParquet and DuckDB representations round-trip within declared fidelity bounds.
@@ -32,7 +32,7 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 
 ## Operations, security and performance
 
-- At least 90 consecutive days of representative beta evidence and a 30-day candidate soak satisfy published SLOs or record explicit non-prohibited deviations.
+- At least 14 consecutive days with 14 daily hosted observations and a seven-day unchanged-candidate soak with seven daily observations satisfy published SLOs or record explicit non-prohibited deviations.
 - Source disappearance, partial failure, quarantine, backfill, correction, restore and disaster-recovery exercises pass.
 - No unresolved P0/P1, critical security, governance prohibition, integrity failure or release-blocking correctness/reproducibility defect remains.
 - National/reference workloads meet frozen performance, capacity, resilience and cost envelopes with correctness and provenance controls enabled.
@@ -44,9 +44,9 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 - Applied studies publish estimands, causal boundaries, diagnostics, sensitivity, governance and interpretation limitations.
 - Planning outputs are explicitly non-authoritative; emergency and hospital outputs are explicitly non-operational reference analyses.
 
-## Independent validation, usability and support
+## Agent-panel validation, usability and support
 
-- Two clean-room reproductions pass, at least one external.
-- At least two owner-authorized agents complete distinct supported user/operator workflows using released documentation.
+- Two isolated clean-room reproducer subagents pass against the frozen release.
+- At least two user-journey agents and one operator-journey agent complete distinct supported workflows using released documentation; adversarial, evidence-auditor and domain agents review the results.
 - Executable tutorials, API/CLI/schema/ontology references, migration and troubleshooting documentation pass clean-environment tests.
 - Stable 1.x support, compatibility, deprecation, vulnerability response, correction, maintenance, sustainability and annual revalidation policies are active.

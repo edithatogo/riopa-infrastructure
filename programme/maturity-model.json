@@ -37,11 +37,11 @@
     {
       "id": "M3",
       "name": "Operational beta",
-      "definition": "The capability operates repeatedly with monitoring, recovery, migration and external-use evidence while compatibility may still change with notice.",
+      "definition": "The capability operates repeatedly with monitoring, recovery, migration and agent-operated workflow evidence while compatibility may still change with notice.",
       "exit_criteria": [
         "At least three representative operational cycles complete.",
         "Source or dependency failures, backfills and recovery are exercised.",
-        "External users or independent consumers complete documented workflows.",
+        "Role-separated subagents complete documented user and operator journeys in isolated environments.",
         "Quality, coverage, cost and operational limitations are public."
       ]
     },
@@ -59,11 +59,11 @@
     {
       "id": "M5",
       "name": "Release candidate",
-      "definition": "Normative interfaces are frozen, all critical work is feature-complete, and candidate artifacts are undergoing independent reproduction and soak.",
+      "definition": "Normative interfaces are frozen, all critical work is feature-complete, and candidate artifacts are undergoing isolated multi-agent clean-room reproduction and soak.",
       "exit_criteria": [
         "Normative inventory and conformance suites are frozen.",
         "No P0, P1, critical security or prohibited governance finding remains.",
-        "Release-candidate soak, clean-room reproduction and external workflow validation pass.",
+        "Release-candidate soak, isolated multi-agent clean-room reproduction and agent-operated workflow validation pass.",
         "Signed, attested and preservation-ready artifacts are available."
       ]
     },
@@ -173,7 +173,7 @@
     {
       "id": "usability",
       "name": "Documentation, developer experience and support",
-      "stable_v1_outcome": "External users and operators can install, reproduce, troubleshoot and extend supported workflows using versioned documentation and named support channels.",
+      "stable_v1_outcome": "Role-separated user-journey and operator-journey subagents can install, reproduce, troubleshoot and extend supported workflows using versioned documentation and named support channels.",
       "required_evidence": [
         "Machine-readable gate result linked to immutable artifacts.",
         "Agent-panel synthesis or release-authority decision.",

@@ -12,7 +12,7 @@
 
 Build open, modular, provenance-first research infrastructure that converts heterogeneous public and appropriately governed data into citable, reproducible and maintainable research objects and decision analyses. The first full reference implementation is a temporally versioned New Zealand spatial and planning archive supporting supermarket and health geography, ambulance-system analysis and hospital-facility planning.
 
-This roadmap deliberately distinguishes a convincing prototype from a mature release. The programme does not reach v1.0 merely because features exist. It reaches v1.0 only after its contracts, software, data operations, analytical methods, governance, security, performance, documentation, preservation and independent reproduction have all passed evidence-based gates.
+This roadmap deliberately distinguishes a convincing prototype from a mature release. The programme does not reach v1.0 merely because features exist. It reaches v1.0 only after its contracts, software, data operations, analytical methods, governance, security, performance, documentation, preservation and isolated multi-agent clean-room reproduction have all passed evidence-based gates.
 
 ## Stable-v1 contract
 
@@ -23,11 +23,11 @@ Stable v1.0 must be all of the following at the same time:
 - **Secure and trustworthy:** source capture, credentials, dependencies, builds, releases and incident response follow an exercised threat and supply-chain model.
 - **Operational:** source change, scheduled updates, retries, quarantine, correction, backfill, monitoring, recovery and cost control have been exercised over repeated cycles.
 - **Performant within bounds:** reference workloads meet published throughput, latency, resource, scale, resilience and cost envelopes without disabling evidence or correctness controls.
-- **Interoperable:** at least two implementations and an independent consumer pass language-neutral conformance fixtures and standards-projection tests.
+- **Interoperable:** at least two separately implemented runtimes and an isolated consumer subagent pass language-neutral conformance fixtures and standards-projection tests.
 - **Preservable and citable:** releases contain complete research objects, methods, quality, rights, software/environment evidence, signatures, attestations, persistent identifiers and tested restoration.
 - **Usable and supportable:** people outside the founding team can install, reproduce, operate, troubleshoot and extend supported workflows using released documentation and named support channels.
 - **Governed:** rights, privacy, ethics, benefit, sensitive locations and Māori data sovereignty are release decisions, not afterthoughts.
-- **Independently reproduced:** two clean-room reproductions, including one external operator, reproduce a real-data archive release and an applied analytical benchmark.
+- **Panel reproduced:** two isolated clean-room reproducer subagents reproduce a real-data archive release and an applied analytical benchmark; adversarial, evidence-auditor and domain subagents review equivalence and limitations.
 
 Feature completion without those properties is not v1.0.
 
@@ -52,9 +52,9 @@ Raw evidence and append-only provenance are authoritative. Databases, graphs, in
 | M0 | Concept | Problem and intended benefit identified; no binding contract. |
 | M1 | Specified prototype | Scope, risks, dependencies, interfaces, acceptance and evidence contracts validate. |
 | M2 | Integrated alpha | Executable real or representative workflow, negative tests and traceable evidence exist; interfaces remain experimental. |
-| M3 | Operational beta | Repeated cycles, migration, failure/recovery and external-use evidence exist. |
+| M3 | Operational beta | Repeated cycles, migration, failure/recovery and agent-operated workflow evidence exist. |
 | M4 | Hardened beta | Security, performance, preservation, scientific and compatibility hardening pass; interfaces approach freeze. |
-| M5 | Release candidate | Normative interfaces are frozen; candidate artifacts pass soak, independent reproduction and external workflow validation. |
+| M5 | Release candidate | Normative interfaces are frozen; candidate artifacts pass soak, isolated multi-agent clean-room reproduction and agent-operated workflow validation. |
 | M6 | Stable v1 GA | Supported compatibility, named maintainers, signed and preserved releases and post-release obligations are in force. |
 
 Maturity is assessed across 12 dimensions: governance, contracts, provenance, security, data, operations, performance, interoperability, publication, usability, analytics and science. No dimension can be silently averaged away by strength in another.
@@ -191,15 +191,15 @@ Every track transition is supported by its `index.md`. Release evidence records 
 - zero critical security findings;
 - zero governance prohibitions;
 - zero expired waivers;
-- at least two independent reviewers;
-- two clean-room reproductions, including one external;
-- two external user workflows and one external operator workflow;
+- a role-separated panel with reproducer, adversarial, evidence-auditor, domain and synthesizer subagents;
+- two isolated clean-room reproductions;
+- two agent user journeys and one agent operator journey;
 - at least three operational cycles;
-- at least 90 consecutive days of representative operational evidence;
-- at least 30 days of release-candidate soak;
+- at least 90 consecutive days and 90 daily hosted observations of representative operational evidence;
+- at least 30 days and 30 daily hosted observations on the unchanged release candidate;
 - gate evidence no older than 120 days unless a stricter policy applies;
 - immutable evidence identifiers and machine-readable release decisions;
-- signed approvals from release management, security, governance, scientific-method and independent-reproducibility roles.
+- a signed decision from the sole repository owner after dispositioning panel findings and dissent.
 
 Critical security, governance prohibition, integrity failure and unresolved P0/P1 categories are not waivable. Other exceptions must be scoped, approved, mitigated, public where safe and expire within 90 days.
 

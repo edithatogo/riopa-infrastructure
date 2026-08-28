@@ -52,7 +52,7 @@
       "gate stable-usability is not passed with current evidence",
       "gate stable-analytics is not passed with current evidence",
       "gate stable-science is not passed with current evidence",
-      "gate stable-independent-reproduction is not passed with current evidence",
+      "gate stable-panel-clean-room-reproduction is not passed with current evidence",
       "gate stable-release-authority is not passed with current evidence",
       "stable release evidence record is absent"
     ],
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "78faaca1cabe9f89b02553bd0006c3659b22af458584d0d111402d6afe92aca4",
+  "snapshot_sha256": "706b97b1b42f3fb366199812acbffb9c649450a8ee868d3d0d08db53f31f5ce4",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -148,7 +148,7 @@
       "stable-usability",
       "stable-analytics",
       "stable-science",
-      "stable-independent-reproduction",
+      "stable-panel-clean-room-reproduction",
       "stable-release-authority"
     ]
   },

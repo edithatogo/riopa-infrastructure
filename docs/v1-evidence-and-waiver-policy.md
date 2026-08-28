@@ -14,7 +14,7 @@ contains:
 - one result for every evaluated gate, including status, reviewer, review date,
   expiry and evidence references;
 - defect counts using the same field names as the global v1 policy;
-- qualification metrics for orchestrated agent-panel qualification, clean-room/external reproduction,
+- qualification metrics for orchestrated agent-panel qualification and isolated multi-agent clean-room reproduction,
   agent-operated user/operator workflows, operational cycles, operational evidence and RC soak;
 - role-specific approvals and signed decision references;
 - immutable release-artifact references; and
@@ -54,19 +54,20 @@ A waiver does not mark a requirement complete. It records a bounded exception fo
 specific release. Its evidence, reviewer and expiry are evaluated like a passed gate.
 Expired, overlong, unsigned or prohibited waivers block release.
 
-## Independence
+## Role separation
 
-M5 and M6 cannot be established entirely by the implementer. Stable v1 requires at
-least two independent agent analysts, two clean-room reproductions including one external
-reproduction, two agent-operated user workflows and one agent-operated operator workflow.
-Conflicts of interest are disclosed in the release decision.
+M5 and M6 require a content-bound, role-separated subagent panel rather than a
+second human. Stable v1 requires at least five panel roles, two isolated
+clean-room reproductions, two agent-operated user journeys and one
+agent-operated operator journey. Conflicts and dissent are disclosed and the
+sole owner records their disposition in the release decision.
 
 ## Release authority
 
-Stable approval is role based. Release management, security, governance,
-scientific-method and independent-reproducibility roles must each approve and provide
-a signed or attested decision reference. Missing, rejecting, abstaining or unsigned
-required roles block general availability.
+Stable approval belongs to the sole repository owner. Security, governance,
+scientific-method, operations and reproducibility subagents provide advisory
+findings but cannot approve on the owner's behalf. Missing panel evidence,
+undispositioned dissent or an unsigned owner decision blocks general availability.
 
 ## Evidence maintenance
 

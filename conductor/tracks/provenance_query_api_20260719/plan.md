@@ -10,7 +10,7 @@
 
 - [x] 2.1 Implement relational lineage tables and indexes in DuckDB-compatible form. `LineageIndex.export_duckdb` preserves manifests, nodes, edges, indexes and source/projection digests, including the logical projection fingerprint; graph equivalence and production-scale qualification remain open (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`; commit `811c5e9`).
 - [x] 2.2 Implement a deterministic optional PROV-JSON-LD projection with explicit non-authority boundaries (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/provenance-query-prov-jsonld-contract-20260825.json`). RDF/SHACL, semantic-loss, external-client, access-control, scale and authority gates remain open.
-- [x] 2.3 Add deterministic rebuild and schema-migration tests using a logical projection fingerprint (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/provenance-query-rebuild-contract-20260825.json`). Interface, access-control, production-scale, real-release and external-user gates remain open.
+- [x] 2.3 Add deterministic rebuild and schema-migration tests using a logical projection fingerprint (`src/riopa_provenance/lineage.py`, `tests/test_lineage.py`, `docs/provenance-query-rebuild-contract-20260825.json`). Interface, access-control, production-scale, real-release and agent-user-journey gates remain open.
 
 ## 3. Interfaces and performance
 
@@ -26,8 +26,8 @@
 
 ## 4. Stable query release
 
-- [x] 4.1 Validate equivalent answers across the bounded Python/CLI/MCP interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; remote access filtering, real-release and external-user gates remain open.
-- [x] 4.2 Run a bounded owner-authorized agent-user workflow over representative where/why/how provenance questions. The deterministic workflow and content-bound report are repository-owned evidence; external user/operator workflows, remote access control, MCP and release evidence remain open (`scripts/run_provenance_query_agent_workflow.py`, `docs/provenance-query-agent-workflow-20260825.json`, `tests/test_provenance_query_agent_workflow.py`).
+- [x] 4.1 Validate equivalent answers across the bounded Python/CLI/MCP interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; remote access filtering, real-release and agent-user-journey gates remain open.
+- [x] 4.2 Run a bounded owner-authorized agent-user workflow over representative where/why/how provenance questions. The deterministic workflow and content-bound report are repository-owned evidence; agent-operated user/operator journeys, remote access control, MCP and release evidence remain open (`scripts/run_provenance_query_agent_workflow.py`, `docs/provenance-query-agent-workflow-20260825.json`, `tests/test_provenance_query_agent_workflow.py`).
 - [x] 4.3 Publish bounded migration guidance for the 1.0.0 query contract. Compatibility rules and explicit breaking-change boundaries are documented as repository-owned guidance; v1 freeze, MCP/remote qualification, real-user evidence and release approval remain open (`docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py`).
 
 ## Track closeout
@@ -35,4 +35,4 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; remote access-control, real-user, scale and authority gates remain explicitly pending (`docs/provenance-query-closeout-evidence-20260825.json`, `tests/test_provenance_query_closeout_evidence.py`; `8ec0385`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/provenance-query-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with remote access, scale, external-user and authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with remote access, scale, agent-user-journey and authority gates unresolved.

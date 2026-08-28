@@ -80,8 +80,10 @@ def test_machine_readable_gate_uses_agent_panel_metric() -> None:
     evidence = json.loads(
         (ROOT / "conductor/release-evidence/1.0.0.template.json.example").read_text()
     )
-    assert gate["evidence_policy"]["minimum_agent_panel_analysts"] == 2
+    assert gate["evidence_policy"]["minimum_agent_panel_analysts"] == 5
     assert "minimum_independent_reviewers" not in gate["evidence_policy"]
+    assert "minimum_external_reproductions" not in gate["evidence_policy"]
+    assert gate["release_authority"]["required_roles"] == ["Sole repository owner"]
     assert "agent_panel_analysts" in evidence["metrics"]
 
 

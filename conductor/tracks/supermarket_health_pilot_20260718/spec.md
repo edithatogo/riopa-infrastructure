@@ -52,7 +52,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - [ ] Planning feasibility cites source provisions and represents overlays, status and uncertainty.
 - [ ] Health analyses comply with the causal-methods framework and make ecological limitations prominent.
 - [ ] Location alternatives report average, worst-case, subgroup, capacity, competition, cost and robustness trade-offs.
-- [ ] Code, data or resolvable inputs, methods, quality, governance and research object are independently reproducible.
+- [ ] Code, data or resolvable inputs, methods, quality, governance and research object pass isolated multi-agent clean-room reproduction.
 
 ## Hardening and maturity gates
 
@@ -68,7 +68,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 - Preregistered reproduction/extension protocol.
 - Facility, access, zoning and health analysis packages.
 - Sensitivity, equity, causal-limitation and governance reports.
-- Complete research object and independent reproduction.
+- Complete research object and isolated multi-agent clean-room reproduction by the required subagent panel.
 
 ## Risks
 

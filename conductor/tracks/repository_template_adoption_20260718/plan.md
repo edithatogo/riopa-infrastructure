@@ -20,13 +20,13 @@
 
 ## 4. Stable developer experience
 
-- [x] 4.1 Conduct a read-only clean onboarding and release-journey rehearsal. The local contract, drift, issue-graph and release-scaffolding checks pass; another-repository onboarding, hosted execution and independent reproduction remain open (`scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json`).
-- [ ] 4.2 Reach the required adoption and independent reproduction levels.
-- [x] 4.3 Publish template support, compatibility and safe-upgrade policy. The policy is repository-owned and tied to the read-only drift checker; external onboarding, independent reproduction, adoption and release qualification remain open (`docs/repository-template-support-policy-20260825.md`, `tests/test_template_support_policy.py`, `docs/repository-template-support-policy-contract-20260825.json`).
+- [x] 4.1 Conduct a read-only clean onboarding and release-journey rehearsal. The local contract, drift, issue-graph and release-scaffolding checks pass; another-repository onboarding, hosted execution and isolated multi-agent clean-room reproduction remain open (`scripts/run_template_journey.py`, `tests/test_template_journey.py`, `docs/repository-template-journey-contract-20260825.json`).
+- [ ] 4.2 Reach the required adoption and isolated multi-agent clean-room reproduction levels.
+- [x] 4.3 Publish template support, compatibility and safe-upgrade policy. The policy is repository-owned and tied to the read-only drift checker; isolated agent onboarding, isolated multi-agent clean-room reproduction, adoption and release qualification remain open (`docs/repository-template-support-policy-20260825.md`, `tests/test_template_support_policy.py`, `docs/repository-template-support-policy-contract-20260825.json`).
 
 ## Track closeout
 
-- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; cross-repository adoption, independent reproduction and authority gates remain explicitly pending (`docs/repository-template-closeout-evidence-20260825.json`, `tests/test_repository_template_closeout_evidence.py`; `3f2113c`).
+- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; cross-repository adoption, isolated multi-agent clean-room reproduction and authority gates remain explicitly pending (`docs/repository-template-closeout-evidence-20260825.json`, `tests/test_repository_template_closeout_evidence.py`; `3f2113c`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/repository-template-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.5.0`, with cross-repository adoption, independent reproduction, preservation and accountable-authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.5.0`, with cross-repository adoption, isolated multi-agent clean-room reproduction, preservation and accountable-authority gates unresolved.

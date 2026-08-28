@@ -7,6 +7,9 @@
   "machine_readable": true,
   "immutable_evidence_identifiers": false,
   "source_revision": "uncommitted:REPLACE-WITH-IMMUTABLE-REVISION",
+  "agent_panel_manifest_ref": null,
+  "agent_panel_roles": [],
+  "owner_dissent_disposition_ref": null,
   "tool": {
     "name": "riopa-provenance",
     "version": "1.0.0",
@@ -111,7 +114,7 @@
       "reviewer": null,
       "expires_at": null,
       "waiver": null,
-      "notes": "External users and operators complete supported workflows and named maintainers, support channels and sustainability bounds are active."
+      "notes": "Role-separated user-journey and operator-journey subagents complete supported workflows and the sole maintainer, support channels and sustainability bounds are active."
     },
     {
       "gate_id": "stable-analytics",
@@ -134,14 +137,14 @@
       "notes": "Applied outputs pass scientific-method, causal-boundary, sensitivity, interpretation and non-operational-use review."
     },
     {
-      "gate_id": "stable-independent-reproduction",
+      "gate_id": "stable-panel-clean-room-reproduction",
       "status": "planned",
       "evidence": [],
       "reviewed_at": null,
       "reviewer": null,
       "expires_at": null,
       "waiver": null,
-      "notes": "At least two clean-room reproductions, including an external party, reproduce a complete real-data release and one applied benchmark."
+      "notes": "At least two isolated clean-room reproducer subagents reproduce a complete real-data release and one applied benchmark; adversarial, evidence-auditor and domain subagents review the results."
     },
     {
       "gate_id": "stable-release-authority",
@@ -151,7 +154,7 @@
       "reviewer": null,
       "expires_at": null,
       "waiver": null,
-      "notes": "All tracks and gates pass, defect and waiver thresholds are met, artifacts are immutable, and the named release authority approves GA."
+      "notes": "All tracks and gates pass, defect and waiver thresholds are met, artifacts are immutable, the required panel advises and the sole repository owner signs the GA decision."
     }
   ],
   "defects": {
@@ -165,12 +168,13 @@
   "metrics": {
     "agent_panel_analysts": 0,
     "clean_room_reproductions": 0,
-    "external_reproductions": 0,
-    "external_user_workflows": 0,
-    "external_operator_workflows": 0,
+    "agent_user_journeys": 0,
+    "agent_operator_journeys": 0,
     "operational_cycles": 0,
     "operational_evidence_days": 0,
-    "release_candidate_soak_days": 0
+    "operational_daily_observations": 0,
+    "release_candidate_soak_days": 0,
+    "release_candidate_daily_observations": 0
   },
   "approvals": [],
   "release_artifacts": [],

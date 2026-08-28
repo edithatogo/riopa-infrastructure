@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "decision_id": "urn:riopa:decision:sole-developer-panel-governance:2026-08-27",
+  "effective_at": "2026-08-27T00:00:00Z",
+  "scope": "All active and future RIOPA tracks and releases",
+  "decision": "replace-other-human-gates-with-role-separated-subagent-panels",
+  "accountable_authority": "Sole repository owner",
+  "required_panel_roles": [
+    "clean-room-reproducer",
+    "adversarial-reviewer",
+    "evidence-auditor",
+    "domain-reviewer",
+    "synthesizer"
+  ],
+  "panel_evidence_requires": [
+    "role-session-model-and-prompt-identity",
+    "exact-revision-and-artifact-digests",
+    "isolated-environment-and-command-record",
+    "findings-severity-dissent-and-remediation",
+    "rerun-outcome-and-owner-disposition"
+  ],
+  "agents_cannot_establish": [
+    "source-ownership-or-licence-rights",
+    "third-party-publication-or-preservation-acceptance",
+    "hosted-execution-that-did-not-occur",
+    "elapsed-calendar-observations-that-did-not-occur",
+    "human-clinical-legal-cultural-or-community-participation",
+    "accountable-owner-approval"
+  ],
+  "historical_evidence_policy": "Historical and archived evidence remains unchanged and is interpreted under its recorded contract.",
+  "prospective_gate_id_migrations": {
+    "rc-documentation-user-validation": "rc-agent-workflow-validation",
+    "rc-independent-reproduction": "rc-panel-clean-room-reproduction",
+    "stable-independent-reproduction": "stable-panel-clean-room-reproduction"
+  },
+  "rights_disposition": "docs/v0.4-source-rights-disposition-20260827.md",
+  "operational_thresholds": {
+    "beta_consecutive_days": 90,
+    "beta_daily_hosted_observations": 90,
+    "minimum_operational_cycles": 3,
+    "failure_backfill_recovery_exercises": 1,
+    "exact_candidate_soak_days": 30,
+    "exact_candidate_daily_hosted_observations": 30
+  }
+}
