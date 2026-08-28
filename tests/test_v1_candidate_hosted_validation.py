@@ -67,7 +67,14 @@ def test_campaign_status_points_to_the_fresh_candidate_segment() -> None:
         for item in status["observations"]
         if item.get("campaign_id") == elapsed_gate["campaign_id"]
     ]
-    assert [item["run_id"] for item in beta] == ["32857084789", "32857832666"]
+    assert [item["run_id"] for item in beta] == [
+        "32857084789",
+        "32857832666",
+        "32863847331",
+        "32986291754",
+        "33127553189",
+        "33220839876",
+    ]
     assert all(item["revision"] == CANDIDATE for item in beta)
     assert gate["campaign_id"] == "operational-rc-20260825-26bc0b4"
     assert gate["qualification_epoch"] == "rc-epoch-20260825-26bc0b4"
