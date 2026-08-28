@@ -14,7 +14,7 @@
     "roadmap": [
       "track accessibility_network_engine_20260719 is M1; M6 is required",
       "track canonical_domain_schemas_ontology_20260719 is M2; M6 is required",
-      "track connector_runtime_capture_20260719 is M1; M6 is required",
+      "track connector_runtime_capture_20260719 is M2; M6 is required",
       "track documentation_developer_experience_20260719 is M1; M6 is required",
       "track emergency_health_facilities_pilot_20260718 is M1; M6 is required",
       "track facility_location_engine_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "706b97b1b42f3fb366199812acbffb9c649450a8ee868d3d0d08db53f31f5ce4",
+  "snapshot_sha256": "8801960f49cce031625bc558ab0463a741643461770eb6a13cf2caf307c2f5de",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -185,17 +185,19 @@
       },
       {
         "blocking_defects": [
-          "live-national-and-council-capture",
-          "rights-and-publication-qualification",
-          "preservation-acceptance",
-          "hosted-long-running-operation-and-alert-delivery",
-          "external-operator-user-reproduction"
+          "live-national-and-council-capture-with-rights",
+          "representative-migration-and-failure-handling",
+          "repeated-hosted-operation-and-alert-delivery",
+          "release-candidate-security-performance-recovery-and-soak",
+          "stable-signed-and-preserved-release",
+          "isolated-agent-panel-reproduction",
+          "accountable-stable-release-authority"
         ],
-        "current_maturity": "M1",
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,
-        "status": "active",
+        "status": "validating",
         "track_id": "connector_runtime_capture_20260719"
       },
       {

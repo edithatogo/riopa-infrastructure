@@ -1,7 +1,6 @@
 # RIOPA Roadmap Status
 
 Programme configuration: `0.3.0`
-
 Current roadmap release: `0.3.0`
 Stable target: `1.0.0`
 
@@ -9,24 +8,23 @@ Stable target: `1.0.0`
 
 - Total: **29**
 - v1-critical: **28**
-- active: **22**
+- active: **21**
 - archived: **1**
-- validating: **6**
+- validating: **7**
 
 ### Current maturity
 
-- `M1`: **23**
-- `M2`: **6**
+- `M1`: **22**
+- `M2`: **7**
 
 ## Release readiness
 
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 17/29
+- Tracks qualified: 18/29
 - Gates: 4/4 passed
 - Blockers:
-  - track connector_runtime_capture_20260719 has blocking defects
   - track documentation_developer_experience_20260719 has blocking defects
   - track emergency_health_facilities_pilot_20260718 has blocking defects
   - track facility_registry_20260719 has blocking defects
@@ -48,10 +46,9 @@ Stable target: `1.0.0`
 ### 0.4.0 — real capture-to-research-object alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 1/3
+- Tracks qualified: 2/3
 - Gates: 0/4 passed
 - Blockers:
-  - track connector_runtime_capture_20260719 is M1; M2 is required
   - track nz_spatial_source_registry_20260718 is M1; M2 is required
   - gate capture-real-sources is not passed with current evidence
   - gate research-object-complete is not passed with current evidence
@@ -129,7 +126,7 @@ Stable target: `1.0.0`
 - Blockers:
   - track accessibility_network_engine_20260719 is M1; M5 is required
   - track canonical_domain_schemas_ontology_20260719 is M2; M5 is required
-  - track connector_runtime_capture_20260719 is M1; M5 is required
+  - track connector_runtime_capture_20260719 is M2; M5 is required
   - track documentation_developer_experience_20260719 is M1; M5 is required
   - track emergency_health_facilities_pilot_20260718 is M1; M5 is required
   - track facility_location_engine_20260718 is M1; M5 is required
@@ -174,7 +171,7 @@ Stable target: `1.0.0`
 - Blockers:
   - track accessibility_network_engine_20260719 is M1; M6 is required
   - track canonical_domain_schemas_ontology_20260719 is M2; M6 is required
-  - track connector_runtime_capture_20260719 is M1; M6 is required
+  - track connector_runtime_capture_20260719 is M2; M6 is required
   - track documentation_developer_experience_20260719 is M1; M6 is required
   - track emergency_health_facilities_pilot_20260718 is M1; M6 is required
   - track facility_location_engine_20260718 is M1; M6 is required
