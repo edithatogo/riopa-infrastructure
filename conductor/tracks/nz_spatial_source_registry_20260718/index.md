@@ -35,6 +35,7 @@ remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
 | `NZ-SOURCE-REGISTRY-CLOSEOUT-20260826` | Link implementation, tests, agent-panel, migration and release-candidate evidence for the bounded registry slice | `docs/nz-source-registry-closeout-evidence-20260826.json`, `tests/test_nz_source_registry_closeout_evidence.py` | Repository-owned closeout links pass; current-authority completeness, payload preservation, external participation and accountable release remain open |
 | `NZ-SOURCE-REGISTRY-M2-PROMOTION-20260829` | Qualify the experimental registry executable-proof boundary against an exact source tree | `docs/nz-source-registry-m2-promotion-20260829.json`, `tests/test_nz_source_registry_m2_promotion.py` | Repository-owned registry, negative-path, snapshot, health and candidate evidence passes; M3-M6 gates remain open |
 | `SOURCE-RIGHTS-PUBLICATION-DECISION-20260829` | Group missing and existing licences into maximum-lawful public archive tiers | `docs/source-rights-publication-decision-matrix-20260829.json`, `docs/source-rights-publication-decision-matrix-20260829.md`, `tests/test_source_rights_publication_decision_matrix.py` | Exact open terms permit Tier A publication for WCC Churton, the ambulance prototype and Greater Wellington GIS; authority, freshness, completeness and operational claims remain separate |
+| `SOURCE-RIGHTS-ARCHIVE-DEFAULT-20260829` | Default to complete lawful capture and private preservation unless explicitly restricted | `docs/source-rights-archive-default-20260829.json`, `docs/source-rights-archive-default-20260829.md`, `tests/test_source_rights_archive_default.py` | Missing licences no longer block lawful capture or private preservation; full public payloads still require an affirmative legal basis |
 
 ## Blocking maturity gates
 
@@ -57,6 +58,10 @@ catalogue/authority coverage and archive packets remain pending.
   source record.
 - Exact-item exceptions, privacy, safety and restricted LINZ product terms
   override general open-data terms.
+- Complete lawful capture and private preservation are the default unless an
+  explicit restriction or applicable law, privacy, safety or technical limit
+  requires narrower handling. Copyright silence alone is not public-copying
+  permission.
 
 ## Review and handover
 
