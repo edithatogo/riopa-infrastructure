@@ -1,9 +1,9 @@
 # Evidence index: New Zealand spatial source and authority registry
 
 - **Track ID:** `nz_spatial_source_registry_20260718`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.4.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Operational`
 - **Risk / priority:** `High` / `P0`
@@ -33,10 +33,20 @@ remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
 | `NZ-DECLARED-PLAN-DISCOVERY-20260825` | Non-contacting queue for declared planning-document endpoints and explicit not-observed fields | `src/riopa_provenance/registry.py::build_declared_plan_discovery`, `docs/nz-declared-plan-discovery-contract-20260825.json`, `tests/test_registry.py` | Discovery metadata is preserved and promotion-disabled; document capture, provision extraction, legal status, authority and preservation remain open |
 | `NZ-SOURCE-REGISTRY-RELEASE-CANDIDATE-20260825` | Deterministic content-addressed registry and coverage release candidate | `src/riopa_provenance/registry.py::build_registry_release_candidate`, `docs/nz-source-registry-release-candidate-contract-20260825.json`, `tests/test_registry.py` | Candidate is unpublished and promotion-disabled; current-authority completeness, payload preservation, rights, publication and accountable release decision remain open |
 | `NZ-SOURCE-REGISTRY-CLOSEOUT-20260826` | Link implementation, tests, agent-panel, migration and release-candidate evidence for the bounded registry slice | `docs/nz-source-registry-closeout-evidence-20260826.json`, `tests/test_nz_source_registry_closeout_evidence.py` | Repository-owned closeout links pass; current-authority completeness, payload preservation, external participation and accountable release remain open |
+| `NZ-SOURCE-REGISTRY-M2-PROMOTION-20260829` | Qualify the experimental registry executable-proof boundary against an exact source tree | `docs/nz-source-registry-m2-promotion-20260829.json`, `tests/test_nz_source_registry_m2_promotion.py` | Repository-owned registry, negative-path, snapshot, health and candidate evidence passes; M3-M6 gates remain open |
 
-## Blocking defects
+## Blocking maturity gates
 
-- Live national catalogue/authority coverage and all other archive packets listed in the public-dataset plan remain pending; the Meshblock 2026 geography slice is complete.
+- M3 requires current-authority completeness, live source-rights and health
+  validation, migration and representative failure handling.
+- M4 requires repeated hosted health monitoring, SLO evidence and role-separated
+  agent-operated workflows.
+- M5 requires release-candidate security, recovery, panel and soak qualification.
+- M6 requires a stable signed and preserved registry release, isolated
+  multi-agent clean-room reproduction and the sole owner's signed decision.
+
+The Meshblock 2026 geography slice is complete, but the remaining national
+catalogue/authority coverage and archive packets remain pending.
 
 ## Decisions, exceptions and limitations
 
@@ -46,4 +56,8 @@ remain open (`docs/source-registry-conductor-regeneration-20260825.json`).
 
 Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, Operations analyst.
 
-This index is deliberately bounded while the track remains `active`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.
+This index is deliberately bounded while the track remains `validating` at
+experimental M2. Status may advance only through `conductor/workflow.md`;
+evidence must be immutable or version-addressed, agent-panel qualified where
+required, and sufficient for the applicable release gates. The track is not
+complete or archive-eligible, and this promotion passes no v0.4 release gate.
