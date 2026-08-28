@@ -1,9 +1,9 @@
 # Evidence index: Common connector runtime and faithful capture framework
 
 - **Track ID:** `connector_runtime_capture_20260719`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.4.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Platform`
 - **Risk / priority:** `Critical` / `P0`
@@ -36,12 +36,18 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CONNECTOR-RELIABILITY-CONTRACT-CLOSEOUT-20260825` | Repository-owned retry/rate-limit/quarantine, capability-drift and diagnostic-bundle controls | `src/riopa_provenance/retry.py`, `src/riopa_provenance/health.py`, `src/riopa_provenance/diagnostics.py`, `src/riopa_provenance/quarantine.py`, and focused tests | Bounded controls pass; hosted long-running operation, live monitoring, alert delivery and real-source qualification remain open |
 | `CONNECTOR-ADAPTER-SAFEGUARDS-CLOSEOUT-20260825` | Repository-owned ArcGIS/WFS, Koordinates and offline WARC/WACZ adapter safeguards | `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `src/riopa_provenance/linz_export.py`, `src/riopa_provenance/web_archive.py`, and focused tests | Bounded request, pagination, redirect, integrity and packaging checks pass; live-source, rights/publication, preservation and external qualification remain open |
 | `CONNECTOR-ARCHIVED-REAL-SOURCE-PAIR-20260826` | Content-addressed national and council/planning source packets validated without network access | `scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py` | Archived-input candidate passes; fresh live capture, rights/publication, preservation, hosted monitoring and external reproduction remain open |
+| `CONNECTOR-M2-PROMOTION-20260829` | Qualify the experimental executable-proof boundary against an exact source tree | `docs/connector-runtime-m2-promotion-20260829.json`, `tests/test_connector_runtime_m2_promotion.py` | Repository-owned adapter, negative-path, reliability, diagnostic and archived-pair evidence passes; M3-M6 gates remain open |
 
-## Blocking defects
+## Blocking maturity gates
 
-- Live national and council/planning capture, rights/publication qualification,
-  preservation acceptance, hosted long-running operation, alert delivery and
-  external reproduction remain open.
+- M3 requires fresh national and council capture with exact rights evidence,
+  representative migration and failure handling.
+- M4 requires repeated hosted operation, alert delivery, SLO evidence and
+  role-separated agent-operated workflows.
+- M5 requires frozen interfaces, security/performance/recovery qualification
+  and release-candidate soak.
+- M6 requires a stable signed and preserved release, isolated multi-agent
+  clean-room reproduction and the sole owner's signed release decision.
 
 ## Repository-owned closeout slice (2026-08-24)
 
@@ -71,7 +77,10 @@ dispatch claim is enabled here.
 
 Required agent-panel lenses: Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, External-user workflow analyst.
 
-This index is deliberately non-assertive while the track remains `active` at
-M1. Status may advance only through `conductor/workflow.md`; evidence must be
+This index is deliberately non-assertive while the track remains `validating`
+at experimental M2. Status may advance only through `conductor/workflow.md`; evidence must be
 immutable or version-addressed, agent-panel qualified where required, and
 sufficient for the applicable release gates.
+
+The track is not complete or archive-eligible. The exact-tree promotion closes
+only the experimental executable-proof boundary and passes no v0.4 release gate.

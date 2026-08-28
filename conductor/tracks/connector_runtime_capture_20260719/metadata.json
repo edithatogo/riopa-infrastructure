@@ -2,9 +2,9 @@
   "track_id": "connector_runtime_capture_20260719",
   "type": "platform",
   "phase": "Core",
-  "status": "active",
+  "status": "validating",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-26T06:00:00Z",
+  "updated_at": "2026-08-29T00:00:00Z",
   "description": "Provide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.",
   "depends_on": [
     "provenance_profile_v1_20260718",
@@ -21,9 +21,10 @@
     "urn:riopa:evidence:connector-reliability-controls:2026-08-24",
     "urn:riopa:evidence:connector-capability-drift:2026-08-24",
     "urn:riopa:evidence:connector-diagnostic-bundles:2026-08-24",
-    "urn:riopa:evidence:connector-authoring-guide:2026-08-24"
-    ,"urn:riopa:evidence:connector-panel-qualification:2026-08-25"
-    ,"urn:riopa:evidence:connector-archived-real-source-pair:2026-08-26"
+    "urn:riopa:evidence:connector-authoring-guide:2026-08-24",
+    "urn:riopa:evidence:connector-panel-qualification:2026-08-25",
+    "urn:riopa:evidence:connector-archived-real-source-pair:2026-08-26",
+    "urn:riopa:evidence:connector-runtime-m2-promotion:2026-08-29"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -40,20 +41,31 @@
   "risk": "Critical",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "owner_role": "Core platform maintainer",
   "review_roles": [
     "Provenance analyst",
     "Security analyst",
     "Data-governance analyst",
     "Operations analyst",
-    "External-user workflow analyst"
+    "Agent user-journey analyst"
   ],
   "blocking_defects": [
-    "live-national-and-council-capture",
-    "rights-and-publication-qualification",
-    "preservation-acceptance",
-    "hosted-long-running-operation-and-alert-delivery",
-    "external-operator-user-reproduction"
-  ]
+    "live-national-and-council-capture-with-rights",
+    "representative-migration-and-failure-handling",
+    "repeated-hosted-operation-and-alert-delivery",
+    "release-candidate-security-performance-recovery-and-soak",
+    "stable-signed-and-preserved-release",
+    "isolated-agent-panel-reproduction",
+    "accountable-stable-release-authority"
+  ],
+  "blocking_defect_maturity": {
+    "live-national-and-council-capture-with-rights": "M3",
+    "representative-migration-and-failure-handling": "M3",
+    "repeated-hosted-operation-and-alert-delivery": "M4",
+    "release-candidate-security-performance-recovery-and-soak": "M5",
+    "stable-signed-and-preserved-release": "M6",
+    "isolated-agent-panel-reproduction": "M6",
+    "accountable-stable-release-authority": "M6"
+  }
 }

@@ -883,7 +883,7 @@
       "labels": [
         "type:track",
         "phase:core",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.4.0",
         "risk:critical",
         "stability:platform",
@@ -892,13 +892,13 @@
         "geospatial",
         "rights-governance"
       ],
-      "body": "Conductor track: `connector_runtime_capture_20260719`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M1**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nProvide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] A common adapter interface supports at least ArcGIS REST, WFS/OGC, Koordinates/API, document download and web-archive capture classes.\n- [ ] Captures record method, URL template, safe parameters, relevant headers, status, pagination, timing, bytes, digest, ETag and source/service identity.\n- [ ] Retry, resume, idempotency, throttling, malformed response and partial failure tests pass.\n- [ ] Rights/governance and authentication policies can block acquisition or publication independently.\n- [ ] Source health and schema/capability drift generate actionable events and alerts.\n- [ ] At least one real national and one council source complete the capture contract.\n\n## Source of truth\n\n- `conductor/tracks/connector_runtime_capture_20260719/spec.md`\n- `conductor/tracks/connector_runtime_capture_20260719/plan.md`\n- `conductor/tracks/connector_runtime_capture_20260719/metadata.json`\n- `conductor/tracks/connector_runtime_capture_20260719/index.md`",
+      "body": "Conductor track: `connector_runtime_capture_20260719`  \nPhase: **Core**  \nTarget release: **0.4.0**  \nCurrent maturity: **M2**  \nMaturity target: **M6**  \nStability class: **Platform**\n\n## Goal\n\nProvide a reusable, secure and observable connector runtime that preserves exact acquisition evidence while keeping source-specific access logic modular.\n\n## Dependencies\n\n- `provenance_profile_v1_20260718`\n- `security_supply_chain_20260719`\n\n## Acceptance criteria\n\n- [ ] A common adapter interface supports at least ArcGIS REST, WFS/OGC, Koordinates/API, document download and web-archive capture classes.\n- [ ] Captures record method, URL template, safe parameters, relevant headers, status, pagination, timing, bytes, digest, ETag and source/service identity.\n- [ ] Retry, resume, idempotency, throttling, malformed response and partial failure tests pass.\n- [ ] Rights/governance and authentication policies can block acquisition or publication independently.\n- [ ] Source health and schema/capability drift generate actionable events and alerts.\n- [ ] At least one real national and one council source complete the capture contract.\n\n## Source of truth\n\n- `conductor/tracks/connector_runtime_capture_20260719/spec.md`\n- `conductor/tracks/connector_runtime_capture_20260719/plan.md`\n- `conductor/tracks/connector_runtime_capture_20260719/metadata.json`\n- `conductor/tracks/connector_runtime_capture_20260719/index.md`",
       "mirror_to_umbrella": true,
       "project": true,
       "phase": "Core",
       "track_id": "connector_runtime_capture_20260719",
       "target_release": "0.4.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "Critical",
       "stability_class": "Platform",
@@ -906,7 +906,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 7
     },
     {
       "key": "connector_runtime_capture_20260719:phase-1",
@@ -917,7 +917,7 @@
         "type:implementation",
         "phase:core",
         "risk:critical",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.4.0"
       ],
       "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 1.1 Define adapter lifecycle, capture attempts, idempotency and raw object interfaces. Evidence: `src/riopa_provenance/capture.py`, `src/riopa_provenance/retry.py`, `tests/test_capture.py`, `tests/test_retry.py`. (ad5aef7)\n- [ ] 1.2 Define HTTP/service/document evidence and secret-redaction rules. Evidence: `src/riopa_provenance/capture.py::CapturePolicy`, `redact_url`, `redact_text`, `tests/test_capture.py`, `docs/source-acquisition-runbook.md`. (ad5aef7)\n- [ ] 1.3 Define rights, governance and publication hooks. Evidence: `schemas/source-acquisition-approval.schema.json`, `src/riopa_provenance/governance.py`, `src/riopa_provenance/publication.py`, `docs/source-acquisition-runbook.md`. (ad5aef7)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
@@ -926,7 +926,7 @@
       "phase": "Core",
       "track_id": "connector_runtime_capture_20260719",
       "target_release": "0.4.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "Critical",
       "stability_class": "Platform",
@@ -934,7 +934,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 7
     },
     {
       "key": "connector_runtime_capture_20260719:phase-2",
@@ -947,7 +947,7 @@
         "type:implementation",
         "phase:core",
         "risk:critical",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.4.0"
       ],
       "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 2.1 Implement bounded ArcGIS REST and WFS/OGC adapter safeguards. HTTPS/no-userinfo request contracts, deterministic pagination, count/identity reconciliation and redaction are executable-tested; live-source acceptance, rights/publication qualification and national/council capture remain pending. Evidence: `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `tests/test_arcgis.py`, `tests/test_wfs.py`.\n- [ ] 2.2 Implement bounded Koordinates/API and document/file adapter safeguards. Unsafe initial download URLs are rejected before redirect capture and exact export/job/download evidence is preserved; live-source acceptance, rights/publication qualification and external reproduction remain pending. Evidence: `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py`.\n- [ ] 2.3 Implement bounded optional WARC/WACZ web-evidence packaging with policy controls. Offline packaging of verified content-addressed captures is deterministic and fail-closed on URL, secret, size, policy and digest checks; live capture, rights/publication, preservation and external qualification remain pending. Evidence: `src/riopa_provenance/web_archive.py`, `tests/test_web_archive.py`. (04ea0f7)\n- [ ] Prevent overwriting an existing WACZ evidence file and add an immutability regression test. (`107f347`)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
@@ -956,7 +956,7 @@
       "phase": "Core",
       "track_id": "connector_runtime_capture_20260719",
       "target_release": "0.4.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "Critical",
       "stability_class": "Platform",
@@ -964,7 +964,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 7
     },
     {
       "key": "connector_runtime_capture_20260719:phase-3",
@@ -977,7 +977,7 @@
         "type:implementation",
         "phase:core",
         "risk:critical",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.4.0"
       ],
       "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 3.1 Add rate limiting, retries, resume, quarantine and pagination tests. Existing bounded retry/resume/pagination contracts are supplemented by an injected token-bucket limiter in `HttpCaptureClient` and immutable digest-bound quarantine records. Evidence: `src/riopa_provenance/retry.py`, `src/riopa_provenance/capture.py`, `src/riopa_provenance/quarantine.py`, `tests/test_retry.py`, `tests/test_capture.py`, `tests/test_quarantine.py`; hosted long-running operation and real-source qualification remain pending. (f0f9d1a)\n- [ ] 3.2 Add capability/schema drift detection and source-health events. Digest-bound, field-specific capability drift records and the source-health observation contract are executable-tested. Evidence: `src/riopa_provenance/health.py`, `tests/test_health.py`; source-specific live monitoring and hosted alert delivery remain pending. (18ab881)\n- [ ] 3.3 Add metrics, structured logs and diagnostic bundles. Metrics/failure callbacks serialize into immutable diagnostic bundles with recursive redaction and no-overwrite protection. Evidence: `src/riopa_provenance/capture.py`, `src/riopa_provenance/diagnostics.py`, `tests/test_capture.py`, `tests/test_diagnostics.py`; hosted log aggregation and operational alert delivery remain pending. (0ebf57f; review fix 354aba3)\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
@@ -986,7 +986,7 @@
       "phase": "Core",
       "track_id": "connector_runtime_capture_20260719",
       "target_release": "0.4.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "Critical",
       "stability_class": "Platform",
@@ -994,7 +994,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 7
     },
     {
       "key": "connector_runtime_capture_20260719:phase-4",
@@ -1007,16 +1007,16 @@
         "type:validation",
         "phase:core",
         "risk:critical",
-        "maturity:m1",
+        "maturity:m2",
         "release:0.4.0"
       ],
-      "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Validate archived national and council/planning capture packets end to end. The Stats NZ Meshblock packet and Wellington District Plan capture set are content-addressed and validated without network access; fresh live capture, rights/publication qualification, preservation, hosted monitoring and external reproduction remain open (`scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py`).\n- [ ] 4.2 Conduct the repository-owned security, rights, load and evidence-completeness review through a bounded four-lens agent panel. The packet and deterministic checks are repository-owned evidence; live-source capture, rights/publication, preservation, hosted monitoring and agent-panel qualification gates remain open (`docs/connector-panel-qualification-20260825.json`, `tests/test_connector_panel_qualification.py`).\n- [ ] 4.3 Publish the bounded adapter contract and authoring guide. `docs/connector-adapter-authoring-guide-20260824.md` and `docs/connector-adapter-contract-20260824.json` describe the implemented surfaces and controls without claiming stable production qualification; live-source, rights/publication, preservation and external gates remain pending. (`tests/test_connector_authoring_contract.py`)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned contract slice; live-source and external gates remain explicitly pending.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `connector_runtime_capture_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Validate archived national and council/planning capture packets end to end. The Stats NZ Meshblock packet and Wellington District Plan capture set are content-addressed and validated without network access; fresh live capture, rights/publication qualification, preservation, hosted monitoring and external reproduction remain open (`scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py`).\n- [ ] 4.2 Conduct the repository-owned security, rights, load and evidence-completeness review through a bounded four-lens agent panel. The packet and deterministic checks are repository-owned evidence; live-source capture, rights/publication, preservation, hosted monitoring and agent-panel qualification gates remain open (`docs/connector-panel-qualification-20260825.json`, `tests/test_connector_panel_qualification.py`).\n- [ ] 4.3 Publish the bounded adapter contract and authoring guide. `docs/connector-adapter-authoring-guide-20260824.md` and `docs/connector-adapter-contract-20260824.json` describe the implemented surfaces and controls without claiming stable production qualification; live-source, rights/publication, preservation and external gates remain pending. (`tests/test_connector_authoring_contract.py`)\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned contract slice; live-source and external gates remain explicitly pending.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Promote the repository-owned connector executable-proof boundary to experimental M2. The track remains `validating`; live integration, repeated hosted operation, RC soak, stable publication and owner-authority gates remain assigned to M3-M6 (`docs/connector-runtime-m2-promotion-20260829.json`, `tests/test_connector_runtime_m2_promotion.py`).\n- [ ] R1 Preserve source-rights, hosted-execution and elapsed-operation facts while replacing other-human workflow requirements with role-separated subagent-panel evidence.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/connector_runtime_capture_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
       "track_id": "connector_runtime_capture_20260719",
       "target_release": "0.4.0",
-      "current_maturity": "M1",
+      "current_maturity": "M2",
       "maturity_target": "M6",
       "risk": "Critical",
       "stability_class": "Platform",
@@ -1024,7 +1024,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 5
+      "blocking_defects": 7
     },
     {
       "key": "methods_research_objects_20260718",

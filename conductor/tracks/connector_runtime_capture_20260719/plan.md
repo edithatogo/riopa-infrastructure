@@ -33,4 +33,8 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned contract slice; live-source and external gates remain explicitly pending.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.
+- [x] C.4 Promote the repository-owned connector executable-proof boundary to experimental M2. The track remains `validating`; live integration, repeated hosted operation, RC soak, stable publication and owner-authority gates remain assigned to M3-M6 (`docs/connector-runtime-m2-promotion-20260829.json`, `tests/test_connector_runtime_m2_promotion.py`).
+
+## Review fixes
+
+- [x] R1 Preserve source-rights, hosted-execution and elapsed-operation facts while replacing other-human workflow requirements with role-separated subagent-panel evidence.
