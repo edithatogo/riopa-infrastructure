@@ -65,13 +65,11 @@ def test_public_pilot_candidates_fail_closed() -> None:
     assert validate_registry(registry_path, ROOT / "schemas" / "source-registry.schema.json").valid
     registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
     sources = {source["source_id"]: source for source in registry["sources"]}
-    blocked = [source for source in sources.values() if source["status"] == "rights-blocked"]
-    assert len(blocked) == 1
-    assert all(
-        source["rights"]["redistribution_status"] == "prohibited-until-reviewed"
-        for source in blocked
-    )
-    assert all(not endpoint["enabled"] for source in blocked for endpoint in source["endpoints"])
+    churton = sources["urn:riopa:source:wcc:churton-park-village-supermarket"]
+    assert churton["status"] == "staged-rights-cleared"
+    assert churton["rights"]["spdx_or_uri"] == "CC-BY-3.0-NZ"
+    assert churton["rights"]["redistribution_status"] == "attribution-required"
+    assert churton["endpoints"][0]["enabled"] is False
     enabled = {
         source["source_id"]
         for source in sources.values()
