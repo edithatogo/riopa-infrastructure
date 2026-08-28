@@ -15,7 +15,8 @@ sources:
     rights:
       access_status: registered
       spdx_or_uri: CC-BY-4.0
-      redistribution_status: review-required
+      redistribution_status: item-licence-required
+      notes: "Catalogue metadata, public URLs, licence records, terms snapshots and receipts may be published. Each payload follows its exact item licence; restricted LINZ products do not inherit a general CC-BY disposition."
     endpoints:
       - endpoint_id: urn:riopa:endpoint:linz:catalog
         mechanism: koordinates-catalog

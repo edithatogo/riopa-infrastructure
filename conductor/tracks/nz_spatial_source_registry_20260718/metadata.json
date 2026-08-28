@@ -21,7 +21,8 @@
     "urn:riopa:evidence:nz-declared-plan-discovery:2026-08-25",
     "urn:riopa:evidence:nz-source-registry-release-candidate:2026-08-25",
     "urn:riopa:evidence:nz-source-registry-closeout:2026-08-26",
-    "urn:riopa:evidence:nz-source-registry-m2-promotion:2026-08-29"
+    "urn:riopa:evidence:nz-source-registry-m2-promotion:2026-08-29",
+    "urn:riopa:decision:source-rights-publication:2026-08-29"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
