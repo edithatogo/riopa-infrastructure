@@ -26,7 +26,7 @@
       "track methods_research_objects_20260718 is M2; M6 is required",
       "track nz_spatial_archive_mvp_20260718 is M1; M6 is required",
       "track nz_spatial_archive_operations_20260719 is M1; M6 is required",
-      "track nz_spatial_source_registry_20260718 is M1; M6 is required",
+      "track nz_spatial_source_registry_20260718 is M2; M6 is required",
       "track operations_preservation_sre_20260719 is M1; M6 is required",
       "track performance_scalability_reliability_20260719 is M1; M6 is required",
       "track planning_rules_linkage_20260718 is M1; M6 is required",
@@ -131,7 +131,7 @@
   "release": "1.0.0",
   "release_ready": false,
   "schema_version": "1.0.0",
-  "snapshot_sha256": "8801960f49cce031625bc558ab0463a741643461770eb6a13cf2caf307c2f5de",
+  "snapshot_sha256": "24dda2aff7ed8b493eddc955b7cfd854720e4c9c251a2cc88246f18c162bffea",
   "stable_gate_summary": {
     "passed": 0,
     "required": 14,
@@ -351,12 +351,20 @@
         "track_id": "nz_spatial_archive_operations_20260719"
       },
       {
-        "blocking_defects": [],
-        "current_maturity": "M1",
+        "blocking_defects": [
+          "current-authority-completeness-and-live-rights-validation",
+          "representative-migration-and-failure-handling",
+          "repeated-hosted-health-monitoring-and-slo-evidence",
+          "release-candidate-security-recovery-panel-and-soak",
+          "stable-signed-and-preserved-registry-release",
+          "isolated-agent-panel-reproduction",
+          "accountable-stable-release-authority"
+        ],
+        "current_maturity": "M2",
         "dependencies_at_required_maturity": false,
         "linked_evidence_present": true,
         "qualified": false,
-        "status": "active",
+        "status": "validating",
         "track_id": "nz_spatial_source_registry_20260718"
       },
       {

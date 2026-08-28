@@ -8,14 +8,14 @@ Stable target: `1.0.0`
 
 - Total: **29**
 - v1-critical: **28**
-- active: **21**
+- active: **20**
 - archived: **1**
-- validating: **7**
+- validating: **8**
 
 ### Current maturity
 
-- `M1`: **22**
-- `M2`: **7**
+- `M1`: **21**
+- `M2`: **8**
 
 ## Release readiness
 
@@ -46,10 +46,9 @@ Stable target: `1.0.0`
 ### 0.4.0 — real capture-to-research-object alpha (NOT READY)
 
 - Maturity gate: `M2`
-- Tracks qualified: 2/3
+- Tracks qualified: 3/3
 - Gates: 0/4 passed
 - Blockers:
-  - track nz_spatial_source_registry_20260718 is M1; M2 is required
   - gate capture-real-sources is not passed with current evidence
   - gate research-object-complete is not passed with current evidence
   - gate vertical-slice-reproduction is not passed with current evidence
@@ -138,7 +137,7 @@ Stable target: `1.0.0`
   - track methods_research_objects_20260718 is M2; M5 is required
   - track nz_spatial_archive_mvp_20260718 is M1; M5 is required
   - track nz_spatial_archive_operations_20260719 is M1; M5 is required
-  - track nz_spatial_source_registry_20260718 is M1; M5 is required
+  - track nz_spatial_source_registry_20260718 is M2; M5 is required
   - track operations_preservation_sre_20260719 is M1; M5 is required
   - track performance_scalability_reliability_20260719 is M1; M5 is required
   - track planning_rules_linkage_20260718 is M1; M5 is required
@@ -183,7 +182,7 @@ Stable target: `1.0.0`
   - track methods_research_objects_20260718 is M2; M6 is required
   - track nz_spatial_archive_mvp_20260718 is M1; M6 is required
   - track nz_spatial_archive_operations_20260719 is M1; M6 is required
-  - track nz_spatial_source_registry_20260718 is M1; M6 is required
+  - track nz_spatial_source_registry_20260718 is M2; M6 is required
   - track operations_preservation_sre_20260719 is M1; M6 is required
   - track performance_scalability_reliability_20260719 is M1; M6 is required
   - track planning_rules_linkage_20260718 is M1; M6 is required

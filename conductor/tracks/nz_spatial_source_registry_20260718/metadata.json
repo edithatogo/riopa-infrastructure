@@ -2,9 +2,9 @@
   "track_id": "nz_spatial_source_registry_20260718",
   "type": "data",
   "phase": "NZ Spatial",
-  "status": "active",
+  "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-26T03:00:00Z",
+  "updated_at": "2026-08-29T00:00:00Z",
   "description": "Create a versioned national inventory of authorities, plans, GIS/ePlan services, documents, source status, rights, update evidence and connector readiness.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
@@ -20,7 +20,8 @@
     "urn:riopa:evidence:nz-source-metadata-snapshot:2026-08-25",
     "urn:riopa:evidence:nz-declared-plan-discovery:2026-08-25",
     "urn:riopa:evidence:nz-source-registry-release-candidate:2026-08-25",
-    "urn:riopa:evidence:nz-source-registry-closeout:2026-08-26"
+    "urn:riopa:evidence:nz-source-registry-closeout:2026-08-26",
+    "urn:riopa:evidence:nz-source-registry-m2-promotion:2026-08-29"
   ],
   "target_release": "0.4.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -36,7 +37,7 @@
   "risk": "High",
   "priority": "P0",
   "mirror_to_umbrella": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "owner_role": "Spatial data lead",
   "review_roles": [
     "Governance analyst",
@@ -44,5 +45,22 @@
     "Data-governance analyst",
     "Operations analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "current-authority-completeness-and-live-rights-validation",
+    "representative-migration-and-failure-handling",
+    "repeated-hosted-health-monitoring-and-slo-evidence",
+    "release-candidate-security-recovery-panel-and-soak",
+    "stable-signed-and-preserved-registry-release",
+    "isolated-agent-panel-reproduction",
+    "accountable-stable-release-authority"
+  ],
+  "blocking_defect_maturity": {
+    "current-authority-completeness-and-live-rights-validation": "M3",
+    "representative-migration-and-failure-handling": "M3",
+    "repeated-hosted-health-monitoring-and-slo-evidence": "M4",
+    "release-candidate-security-recovery-panel-and-soak": "M5",
+    "stable-signed-and-preserved-registry-release": "M6",
+    "isolated-agent-panel-reproduction": "M6",
+    "accountable-stable-release-authority": "M6"
+  }
 }
