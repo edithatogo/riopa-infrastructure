@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "source_rights_archive_default",
+  "record_id": "urn:riopa:decision:source-rights-archive-default:2026-08-29",
+  "supersedes_policy_portion_of": "urn:riopa:decision:source-rights-publication:2026-08-29",
+  "decided_at": "2026-08-29T00:00:00Z",
+  "decision_owner": "sole repository owner",
+  "objective": "Preserve every lawfully accessible dataset as fully as possible and publish every component for which public copying is authorised.",
+  "defaults": {
+    "lawful_acquisition": "capture when a public download interface, source terms, owner permission or law affirmatively authorises acquisition; an explicit prohibition always excludes it",
+    "private_full_preservation": "preserve every complete lawfully acquired payload unless an explicit retention restriction, law, privacy, safety or storage constraint prohibits it",
+    "public_evidence": "publish metadata, public URLs, terms observations, receipts, checksums, schemas, non-reconstructive statistics and decision records unless expressly restricted or sensitive",
+    "public_full_payload": "publish when copying and public issue are affirmatively authorised by an exact-item licence, applicable publisher-wide licence, owner permission, public-domain or no-known-rights status, or a documented statutory permission"
+  },
+  "clarifications": [
+    "The absence of an explicit prohibition is sufficient for neither copyright permission nor a claim that no copyright exists.",
+    "A missing redistribution licence does not undo a separate lawful acquisition basis; after lawful acquisition, preserve privately by default unless retention is explicitly restricted.",
+    "A takedown contingency supplements a valid publication basis and is not a substitute for one.",
+    "Authority, completeness, freshness, privacy, safety, endorsement and legal effect remain independent of copyright permission."
+  ],
+  "public_payload_bases": [
+    "exact-item open licence",
+    "applicable publisher-wide open licence with no item exception",
+    "recorded permission from the rights owner or authorised licensor",
+    "public domain or documented no-known-rights status",
+    "documented statutory permission applicable to the exact archival publication"
+  ],
+  "full_archive_exclusions": [
+    "explicit prohibition on acquisition, retention, copying or public redistribution",
+    "access requiring circumvention or use outside authorised credentials",
+    "personal, confidential, culturally restricted, security-sensitive or operationally sensitive content requiring narrower handling",
+    "third-party components outside the source's licence",
+    "technical or storage limits recorded with a resumable capture plan"
+  ],
+  "operational_contingencies": {
+    "missing_publication_basis": "capture and preserve privately when lawful; publish complete evidence and seek or discover an affirmative basis",
+    "terms_change": "quarantine affected public payloads, preserve the historical terms and decision trail where lawful, and issue a successor decision",
+    "rights_challenge": "temporarily restrict the challenged payload, retain non-reconstructive evidence, investigate provenance, and restore public access if the basis survives",
+    "mixed_rights": "split the package so authorised components remain public and only affected components are restricted"
+  },
+  "legal_baseline": {
+    "jurisdiction": "New Zealand",
+    "copyright_act": "https://www.legislation.govt.nz/act/public/1994/0143/latest/DLM345923.html",
+    "official_permission_guidance": "https://www.iponz.govt.nz/get-ip/copyright/getting-permission/",
+    "government_open_licensing_guidance": "https://www.digital.govt.nz/standards-and-guidance/governance/copyright-and-licensing"
+  }
+}
