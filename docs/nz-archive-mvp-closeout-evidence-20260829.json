@@ -1,0 +1,44 @@
+{
+  "schema": "riopa.nz-archive-mvp-closeout-evidence.v1",
+  "packet_id": "nz-archive-mvp-closeout-evidence-20260829",
+  "track_id": "nz_spatial_archive_mvp_20260718",
+  "status": "repository-owned-closeout-slice",
+  "scope": "bounded regional public-source non-operational technical preview",
+  "evidence_categories": {
+    "implementation": [
+      "src/riopa_provenance/linz_pipeline.py",
+      "src/riopa_provenance/spatial.py",
+      "docs/linz-archive-pipeline.md"
+    ],
+    "tests": [
+      "tests/test_linz_pipeline.py",
+      "tests/test_linz.py",
+      "tests/test_meshblock_materialization_receipt_validation.py",
+      "tests/test_meshblock_projection_query_examples.py"
+    ],
+    "agent_panel": [
+      "docs/panel-reports/20260802/evidence-auditor.json",
+      "docs/panel-reports/20260802/orchestrator-synthesis.json"
+    ],
+    "migration": [
+      "docs/nz-archive-mvp-conductor-regeneration-20260825.json",
+      "docs/meshblock-materialization-receipt-validation-20260826.json"
+    ],
+    "release_candidate": [
+      "docs/meshblock-materialization-receipt-validation-20260826.json",
+      "docs/meshblock-projection-query-examples-20260826.md"
+    ]
+  },
+  "open_gates": [
+    "full LINZ and heterogeneous council source coverage",
+    "bulk artifact restoration and independent clean-environment acceptance",
+    "durable preservation/provider acceptance and publication",
+    "external participation and accountable release-authority decision"
+  ],
+  "promotion_allowed": false,
+  "non_claims": [
+    "This packet links repository-owned contracts, tests and bounded archived projections; it is not a complete national spatial archive or production release.",
+    "Agent-panel assessment cannot substitute for factual source authority, external validation, preservation acceptance or release authority.",
+    "Population assignment, network, timetable, facility, national, clinical, dispatch and authoritative claims remain disabled."
+  ]
+}
