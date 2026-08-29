@@ -68,8 +68,9 @@
     "urn:riopa:release-evidence:0.3.0:experimental-m2",
     "urn:riopa:evidence:v0.3.0-release-preparation:2026-08-27",
     "urn:riopa:evidence:v0.3.0-release-publication:2026-08-27",
-    "V1-RC-PACKET-VALIDATION-20260829"
-    ,"V1-RELEASE-DECISION-READINESS-VALIDATION-20260829"
+    "V1-RC-PACKET-VALIDATION-20260829",
+    "V1-RELEASE-DECISION-READINESS-VALIDATION-20260829",
+    "urn:riopa:evidence:v1-stable-gate-snapshot:2026-08-29:1fa16a6"
   ],
   "target_release": "1.0.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -31,6 +31,7 @@
 - [x] 4.1b Refresh the non-authorizing gate snapshot against protected-main revision `898c5c2` while preserving the historical snapshot; the successor remains blocked at 0/28 tracks and 0/14 gates (`docs/v1-stable-release-gate-snapshot-20260829.json`).
 - [x] 4.1c Refresh the non-authorizing snapshot from the exact clean merged reconciliation revision `40ef0515`; `v0.4.0` preview preservation is reconciled while stable v1 remains blocked at 0/28 tracks and 0/14 gates (`docs/v1-stable-release-gate-snapshot-20260829-40ef0515.json`, `tests/test_v1_release_gate_snapshot.py`).
 - [x] 4.1d Refresh the non-authorizing snapshot after the facility manifest hardening merge at exact revision `9267c1c`; stable-v1 remains blocked at 0/28 tracks and 0/14 gates; RC exact-candidate continuity remains unmet (`docs/v1-stable-release-gate-snapshot-20260829-9267c1c.json`).
+- [x] 4.1e Refresh the non-authorizing snapshot at exact merged revision `1fa16a6`; stable-v1 remains blocked at 0/28 tracks and 0/14 gates, with beta/RC, signing, preservation and authority blockers explicit (`docs/v1-stable-release-gate-snapshot-20260829-1fa16a6.json`, `tests/test_v1_release_gate_snapshot.py`).
 - [ ] 4.2 Publish stable artifacts, DOI/citations, support, deprecation and maintenance plan.
 - [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.
 
