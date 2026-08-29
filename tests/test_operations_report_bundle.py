@@ -53,3 +53,10 @@ def test_bundle_validator_rejects_missing_identity_fields() -> None:
     errors = validate_bundle(bundle)
     assert "report_id must be non-empty" in errors
     assert "generated_at must be non-empty" in errors
+
+
+def test_bundle_validator_rejects_non_json_values_without_raising() -> None:
+    bundle = build_bundle({}, report_id="ops", generated_at="2026-08-29")
+    bundle["unexpected"] = object()
+    errors = validate_bundle(bundle)
+    assert "bundle_sha256 does not match bundle content" in errors

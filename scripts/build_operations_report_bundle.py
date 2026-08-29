@@ -41,7 +41,7 @@ def validate_bundle(bundle: object) -> tuple[str, ...]:
     unsigned = {key: value for key, value in bundle.items() if key != "bundle_sha256"}
     if not isinstance(supplied, str) or not _SHA256.fullmatch(supplied):
         errors.append("bundle_sha256 must be a lowercase SHA-256 digest")
-    elif supplied != sha256_json(unsigned):
+    elif not _digest_matches(unsigned, supplied):
         errors.append("bundle_sha256 does not match bundle content")
     components = bundle.get("components")
     if not isinstance(components, dict) or set(components) != set(COMPONENTS):
@@ -68,6 +68,15 @@ def validate_bundle(bundle: object) -> tuple[str, ...]:
     ):
         errors.append("nonclaims must retain the unqualified-input boundary")
     return tuple(dict.fromkeys(errors))
+
+
+def _digest_matches(value: dict[str, Any], supplied: str) -> bool:
+    """Return digest equality, failing closed when the value is not JSON-safe."""
+
+    try:
+        return supplied == sha256_json(value)
+    except TypeError, ValueError:
+        return False
 
 
 def build_bundle(payload: dict[str, Any], *, report_id: str, generated_at: str) -> dict[str, Any]:
