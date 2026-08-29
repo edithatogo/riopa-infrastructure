@@ -41,5 +41,8 @@
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "Scalable solver adapters and certificate interchange remain open.",
+    "National workloads and independent external benchmark verification remain open."
+  ]
 }

@@ -43,5 +43,8 @@
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "Empirical calibration and validation remain open.",
+    "Independent benchmark comparison and performance qualification remain open."
+  ]
 }

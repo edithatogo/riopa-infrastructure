@@ -43,5 +43,8 @@
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "Real road, walk, cycle and timetable engines remain open.",
+    "Real-engine, external workflow, national-scale and operational qualification remain open."
+  ]
 }
