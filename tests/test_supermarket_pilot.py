@@ -12,8 +12,46 @@ from riopa_provenance.planning import build_planning_feasibility_record
 from riopa_provenance.supermarket_pilot import (
     SupermarketPilotError,
     build_access_health_reference,
+    build_archived_supermarket_snapshot,
     build_planning_alternatives_reference,
 )
+
+
+def test_archived_supermarket_snapshot_filters_publisher_classification() -> None:
+    snapshot = build_archived_supermarket_snapshot(
+        {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "id": 2,
+                    "properties": {"Premise_Type": "Dairy or Supermarket", "Status": "Active"},
+                    "geometry": {"type": "Point", "coordinates": [175.27, -37.78]},
+                },
+                {"id": 3, "properties": {"Premise_Type": "Restaurant"}},
+            ],
+        },
+        source_id="hamilton-food-premise-register",
+        registry_version="hf:001137c0@hamilton",
+        licence="CC-BY-4.0",
+        observed_at="2026-08-02T15:30:08Z",
+    )
+    assert len(snapshot["assertions"]) == 1
+    assertion = snapshot["assertions"][0]
+    assert assertion["facility_type"] == "supermarket"
+    assert assertion["source_status"] == "Active"
+    assert snapshot["authoritative"] is False
+    assert snapshot["promotion_allowed"] is False
+
+
+def test_archived_supermarket_snapshot_rejects_invalid_payload() -> None:
+    with pytest.raises(SupermarketPilotError, match="FeatureCollection"):
+        build_archived_supermarket_snapshot(
+            {"type": "Feature"},
+            source_id="source",
+            registry_version="v1",
+            licence="CC-BY-4.0",
+            observed_at="now",
+        )
 
 
 def facility_snapshot() -> dict[str, object]:

@@ -33,6 +33,86 @@ _SENSITIVITY_TYPES = {
 }
 
 
+def build_archived_supermarket_snapshot(
+    payload: Mapping[str, Any],
+    *,
+    source_id: str,
+    registry_version: str,
+    licence: str,
+    observed_at: str,
+) -> dict[str, Any]:
+    """Convert an archived GeoJSON food-premise payload into bounded assertions.
+
+    The payload must already have been retrieved from a content-addressed
+    archive. This function never contacts a source and treats the publisher's
+    premise type as a classification, not proof of operation or authority.
+    """
+
+    for name, value in (
+        ("source_id", source_id),
+        ("registry_version", registry_version),
+        ("licence", licence),
+        ("observed_at", observed_at),
+    ):
+        if not isinstance(value, str) or not value.strip():
+            raise SupermarketPilotError(f"{name} must be a non-empty string")
+    if payload.get("type") != "FeatureCollection":
+        raise SupermarketPilotError("archived payload must be a GeoJSON FeatureCollection")
+    features = payload.get("features")
+    if not isinstance(features, list):
+        raise SupermarketPilotError("archived payload features must be a list")
+    assertions: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for index, feature in enumerate(features):
+        if not isinstance(feature, Mapping):
+            raise SupermarketPilotError("archived features must be objects")
+        properties = feature.get("properties")
+        if not isinstance(properties, Mapping):
+            raise SupermarketPilotError("archived features require properties")
+        premise_type = properties.get("Premise_Type")
+        if not isinstance(premise_type, str) or "supermarket" not in premise_type.casefold():
+            continue
+        feature_id = feature.get("id")
+        if feature_id is None:
+            feature_id = properties.get("FID", index)
+        assertion_id = f"{source_id}:{feature_id}"
+        if assertion_id in seen:
+            raise SupermarketPilotError("archived supermarket assertion identities must be unique")
+        seen.add(assertion_id)
+        assertion: dict[str, Any] = {
+            "assertion_id": assertion_id,
+            "source_id": source_id,
+            "facility_type": "supermarket",
+            "licence": licence,
+            "observed_at": observed_at,
+            "release_classification": "public",
+            "source_premise_type": premise_type,
+        }
+        status = properties.get("Status")
+        if isinstance(status, str) and status.strip():
+            assertion["source_status"] = status.strip()
+        geometry = feature.get("geometry")
+        if isinstance(geometry, Mapping):
+            assertion["geometry"] = dict(geometry)
+        assertions.append(assertion)
+    assertions.sort(key=lambda item: str(item["assertion_id"]))
+    return {
+        "record_type": "facility_assertions",
+        "authoritative": False,
+        "release_filter": "public-only",
+        "registry_version": registry_version.strip(),
+        "source_id": source_id.strip(),
+        "assertions": assertions,
+        "claim_classification": "bounded-public-reference",
+        "promotion_allowed": False,
+        "nonclaims": [
+            "Source premise classifications do not prove current operation or authority.",
+            "The snapshot is not a complete or national supermarket registry.",
+            "No live endpoint was contacted; callers must bind this output to an archived payload.",
+        ],
+    }
+
+
 def _text(record: Mapping[str, Any], field: str) -> str:
     value = record.get(field)
     if not isinstance(value, str) or not value.strip():
