@@ -27,10 +27,13 @@ The current corpus proves a bounded cross-language canonical-hash and schema
 outcome contract. It does not yet satisfy the track-wide Rust, standards
 projection, SDK, external-client, or signed-report criteria.
 
-The bounded compatibility matrix in
-`docs/ontology/interoperability-compatibility-matrix-20260825.json` records the
-observed Python/Node parity and explicitly leaves Rust, standards round-trips,
-and external producer/consumer exercises unobserved.
+The predecessor compatibility matrix in
+`docs/ontology/interoperability-compatibility-matrix-20260825.json` is retained
+as a historical snapshot. The successor matrix in
+`docs/ontology/interoperability-compatibility-matrix-20260829.json` records the
+observed bounded Python/Node/Rust parity, including schema and RFC 8785 vectors.
+This remains repository-owned evidence and does not establish external
+standards acceptance or producer/consumer use.
 
 ## Release attestations
 
