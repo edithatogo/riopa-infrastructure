@@ -41,6 +41,7 @@
 - [x] 4.15 Require every supplemental observation to carry a strict revision while keeping candidate revision optional-but-validated; record an immutable successor evidence artifact (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-supplemental-revision-validation-20260830.json`).
 - [x] 4.16 Record fresh hosted supplemental beta and exact-candidate RC observations with receipt/log digests; retain their technical-preview classification and all elapsed, recovery, external, preservation and authority gates (`docs/hosted-beta-rc-campaign-observation-20260829-ddec941.json`, runs 33259405506/33259407593).
 - [x] 4.17 Record the fresh hosted control-matrix supplemental drills with receipt/log digests; retain their technical-preview classification and all elapsed, production-recovery, national-scale, external, preservation and authority gates (`docs/hosted-control-matrix-observation-20260829-3b2fbf4.json`, runs 33259809069/33259810861/33259813004/33259815211/33259817003).
+- [x] 4.18 Record the fresh hosted supplemental operational-observation drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close recovery, national-scale, external, preservation or authority gates (`docs/hosted-supplemental-operational-observation-20260830-692545e.json`, run 33260680164).
 
 ## Review fixes
 
