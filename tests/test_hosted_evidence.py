@@ -2,6 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 
+import pytest
 from jsonschema import Draft202012Validator
 
 from scripts.record_hosted_evidence import LANES, run_lane
@@ -20,6 +21,25 @@ def test_hosted_receipt_is_content_bound_and_fail_closed(tmp_path: Path) -> None
     assert receipt["qualification_epoch"]
     assert receipt["operational_cycle_id"]
     assert len(receipt["non_claims"]) >= 4
+
+
+def test_qualifying_observation_requires_explicit_activation(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("EVIDENCE_QUALIFYING", "true")
+    monkeypatch.setenv("EVIDENCE_ACTIVATION_AUTHORITY", "Sole repository owner")
+    monkeypatch.setenv("EVIDENCE_ACTIVATED_AT", "2026-08-29T12:00:00Z")
+    monkeypatch.setenv("GITHUB_RUN_ID", "12345")
+    receipt = run_lane("operational-observation", tmp_path)
+    assert receipt["classification"] == "qualifying-beta-observation"
+    assert receipt["hosted_run_id"] == "12345"
+    assert receipt["campaign_activation"]["status"] == "activated"
+
+
+def test_qualifying_non_observation_lane_fails_closed(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("EVIDENCE_QUALIFYING", "true")
+    monkeypatch.setenv("EVIDENCE_ACTIVATION_AUTHORITY", "Sole repository owner")
+    monkeypatch.setenv("EVIDENCE_ACTIVATED_AT", "2026-08-29T12:00:00Z")
+    with pytest.raises(ValueError, match="only beta and RC observation lanes"):
+        run_lane("scale-smoke", tmp_path)
 
 
 def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:

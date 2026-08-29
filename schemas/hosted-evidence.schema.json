@@ -36,7 +36,7 @@
         "retrospective-replay"
       ]
     },
-    "classification": {"enum": ["hosted-technical-preview-drill", "hosted-retrospective-supplement"]},
+    "classification": {"enum": ["hosted-technical-preview-drill", "hosted-retrospective-supplement", "qualifying-beta-observation", "qualifying-rc-observation"]},
     "status": {"enum": ["passed", "failed"]},
     "command": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "started_at": {"type": "string", "format": "date-time"},
@@ -61,6 +61,18 @@
         "architecture": {"type": "string"}
       }
     },
+    "hosted_run_id": {"type": ["string", "null"], "minLength": 1},
+    "campaign_activation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["status", "authority", "activated_at", "campaign_id"],
+      "properties": {
+        "status": {"const": "activated"},
+        "authority": {"type": "string", "minLength": 1},
+        "activated_at": {"type": "string", "format": "date-time"},
+        "campaign_id": {"type": "string", "minLength": 3}
+      }
+    },
     "log": {
       "type": "object",
       "additionalProperties": false,
@@ -73,6 +85,10 @@
     "non_claims": {"type": "array", "minItems": 4, "items": {"type": "string"}}
   },
   "allOf": [
+    {
+      "if": {"properties": {"classification": {"enum": ["qualifying-beta-observation", "qualifying-rc-observation"]}}},
+      "then": {"required": ["hosted_run_id", "campaign_activation"], "properties": {"hosted_run_id": {"type": "string"}, "campaign_activation": {"type": "object"}}}
+    },
     {
       "if": {"properties": {"schema_version": {"const": "1.1.0"}}},
       "then": {

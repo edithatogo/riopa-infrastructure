@@ -11,6 +11,7 @@ import platform
 import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 LANES: dict[str, list[str]] = {
     "agent-user-workflows": [
@@ -74,7 +75,7 @@ def _now() -> str:
     return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
-def run_lane(lane: str, output_dir: Path) -> dict:
+def run_lane(lane: str, output_dir: Path) -> dict[str, Any]:
     command = LANES[lane]
     campaign_id = os.getenv("EVIDENCE_CAMPAIGN_ID", "adhoc-technical-preview")
     qualification_epoch = os.getenv("EVIDENCE_QUALIFICATION_EPOCH", campaign_id)
@@ -82,6 +83,9 @@ def run_lane(lane: str, output_dir: Path) -> dict:
         "%G-W%V"
     )
     candidate_revision = os.getenv("EVIDENCE_CANDIDATE_REVISION") or None
+    qualifying = os.getenv("EVIDENCE_QUALIFYING", "false").lower() == "true"
+    if qualifying and lane not in {"operational-observation", "rc-soak-observation"}:
+        raise ValueError("only beta and RC observation lanes may be qualifying")
     try:
         source_revision = subprocess.run(
             ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
@@ -140,6 +144,30 @@ def run_lane(lane: str, output_dir: Path) -> dict:
     log_path = output_dir / f"{lane}.log"
     log_path.write_text(log)
     log_digest = hashlib.sha256(log.encode()).hexdigest()
+    classification = (
+        "qualifying-rc-observation"
+        if qualifying and lane == "rc-soak-observation"
+        else "qualifying-beta-observation"
+        if qualifying and lane == "operational-observation"
+        else "hosted-retrospective-supplement"
+        if lane == "retrospective-replay"
+        else "hosted-technical-preview-drill"
+    )
+    campaign_activation = None
+    if qualifying:
+        authority = os.getenv("EVIDENCE_ACTIVATION_AUTHORITY", "").strip()
+        activated_at = os.getenv("EVIDENCE_ACTIVATED_AT", "").strip()
+        if not authority or not activated_at:
+            raise ValueError(
+                "qualifying observations require EVIDENCE_ACTIVATION_AUTHORITY and "
+                "EVIDENCE_ACTIVATED_AT"
+            )
+        campaign_activation = {
+            "status": "activated",
+            "authority": authority,
+            "activated_at": activated_at,
+            "campaign_id": campaign_id,
+        }
     receipt = {
         "schema_version": "1.1.0",
         "campaign_id": campaign_id,
@@ -147,11 +175,7 @@ def run_lane(lane: str, output_dir: Path) -> dict:
         "operational_cycle_id": operational_cycle_id,
         "candidate_revision": candidate_revision,
         "lane": lane,
-        "classification": (
-            "hosted-retrospective-supplement"
-            if lane == "retrospective-replay"
-            else "hosted-technical-preview-drill"
-        ),
+        "classification": classification,
         "status": "passed" if completed.returncode == 0 else "failed",
         "command": command,
         "started_at": started_at,
@@ -166,6 +190,8 @@ def run_lane(lane: str, output_dir: Path) -> dict:
             "runner_os": os.getenv("RUNNER_OS", platform.system()),
             "architecture": platform.machine(),
         },
+        "hosted_run_id": os.getenv("GITHUB_RUN_ID") if qualifying else None,
+        "campaign_activation": campaign_activation,
         "log": {"path": log_path.name, "sha256": log_digest},
         "non_claims": [
             "This receipt is not production disaster-recovery qualification.",
