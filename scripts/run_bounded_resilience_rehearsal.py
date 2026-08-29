@@ -39,6 +39,12 @@ def timed(records: int, iterations: int) -> dict[str, Any]:
     }
 
 
+def unavailable_dependency() -> int:
+    """Represent a deterministic local dependency outage for the rehearsal."""
+
+    raise RuntimeError("deterministic local dependency unavailable")
+
+
 def run(output: Path | None = None) -> dict[str, Any]:
     matrix = json.loads(MATRIX.read_text(encoding="utf-8"))
     cases: dict[str, dict[str, Any]] = {
@@ -46,12 +52,16 @@ def run(output: Path | None = None) -> dict[str, Any]:
         "stressed": timed(512, 400),
     }
     try:
-        checksum(0, 200)
+        unavailable_dependency()
     except ValueError as exc:
+        cases["degraded"] = {"status": "failed", "error": str(exc)}
+    except RuntimeError as exc:
+        fallback = timed(64, 100)
         cases["degraded"] = {
             "status": "passed",
-            "dependency_failure": "deterministic-local-checksum-input",
-            "fallback": "bounded error receipt",
+            "dependency_failure": "deterministic-local-unavailable-dependency",
+            "fallback": "bounded local checksum",
+            "fallback_checksum": fallback["checksum"],
             "error": str(exc),
         }
     else:  # pragma: no cover - defensive contract failure
