@@ -1,0 +1,17 @@
+{
+  "evidence_id": "WP006-PROV-IDENTITY-VALIDATION-20260829",
+  "schema": "riopa.wp006.prov-identity-validation.v1",
+  "scope": "bounded repository-owned PROV-O-shaped projection envelope",
+  "validator": "src/riopa_provenance/crate.py:validate_provenance_projections",
+  "requirement": "every PROV graph entity has a non-empty string @id",
+  "observed_status": "negative-contract-test-pass",
+  "promotion_allowed": false,
+  "open_gates": [
+    "full RDF/SHACL and PROV-O validator qualification",
+    "external producer/consumer acceptance",
+    "trusted stable-candidate signing and preservation"
+  ],
+  "nonclaims": [
+    "Bounded identity validation is not external standards certification or production operation."
+  ]
+}
