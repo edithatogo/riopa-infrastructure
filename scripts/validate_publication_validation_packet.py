@@ -23,10 +23,21 @@ def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
         errors.append("metadata_contracts must be non-empty")
     else:
         for path_value in contracts:
-            if not isinstance(path_value, str) or not (root / path_value).is_file():
+            if not isinstance(path_value, str) or not path_value.strip():
+                errors.append(f"metadata contract is missing: {path_value}")
+                continue
+            candidate = Path(path_value)
+            resolved = (root / candidate).resolve()
+            if candidate.is_absolute() or ".." in candidate.parts or root not in resolved.parents:
+                errors.append(f"metadata contract path escapes root: {path_value}")
+            elif not resolved.is_file():
                 errors.append(f"metadata contract is missing: {path_value}")
     pending = packet.get("pending_gates")
-    pending_text = " ".join(str(item) for item in pending) if isinstance(pending, list) else ""
+    pending_text = (
+        " ".join(pending)
+        if isinstance(pending, list) and all(isinstance(item, str) for item in pending)
+        else ""
+    )
     for phrase in (
         "protected artifact attestations",
         "accepted preservation",
@@ -37,7 +48,11 @@ def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
         if phrase not in pending_text:
             errors.append(f"pending_gates omits {phrase}")
     claims = packet.get("non_claims")
-    claims_text = " ".join(str(item) for item in claims) if isinstance(claims, list) else ""
+    claims_text = (
+        " ".join(claims)
+        if isinstance(claims, list) and all(isinstance(item, str) for item in claims)
+        else ""
+    )
     if "not a DOI" not in claims_text or "external acceptance" not in claims_text:
         errors.append("non_claims must retain unpublished/external-acceptance boundaries")
     return tuple(errors)
