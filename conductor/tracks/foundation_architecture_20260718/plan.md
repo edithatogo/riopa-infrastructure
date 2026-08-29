@@ -39,7 +39,7 @@
 
 ## Review fixes
 
-- [x] R.6 Reconcile the programme status summary with the 28 track metadata states: 12 active, 4 validating and 12 specified; no track is promoted by this documentation correction. (`conductor/tracks.md`)
+- [x] R.6 Reconcile the programme status summary with the current 28 continuing-track metadata states: 19 active and 9 validating (plus 1 archived historical closeout); no track is promoted by this documentation correction. (`conductor/tracks.md`, `ROADMAP_STATUS.md`)
 - [x] R.7 Replace independent-analyst wording with distinct agent-panel lenses for the single-developer repository, while preserving factual external-participant and release-authority gates. (`docs/foundation-agent-panel-wording-correction-20260825.json`)
 - [x] R.8 Establish the programme-wide single-developer and agent-advisory contract, correct ambiguous agent-independence/approval wording, and preserve genuinely external evidence gates. (`docs/single-developer-agent-advisory-policy-20260826.md`, `tests/test_single_developer_agent_advisory_policy.py`)
 - [x] R.9 Make terminal orchestrator selection replace stale executable packets, restore the Python 3.14 `uv` invocation contract, and regenerate the current roadmap status. (`scripts/codex_orchestrator.py`, `tests/test_codex_orchestrator.py`, `Makefile`, `ROADMAP_STATUS.md`)
