@@ -138,7 +138,7 @@ def test_successor_snapshot_digest_is_self_consistent() -> None:
 
 def test_latest_exact_merged_revision_snapshot_matches_current_inputs() -> None:
     artifact = json.loads(
-        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-f1dcdf9.json").read_text(
+        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-4d598a91.json").read_text(
             encoding="utf-8"
         )
     )
@@ -147,6 +147,6 @@ def test_latest_exact_merged_revision_snapshot_matches_current_inputs() -> None:
         evaluated_revision=artifact["evaluated_revision"],
         generated_at=artifact["generated_at"],
     )
-    assert artifact["evaluated_revision"] == "f1dcdf9ca8b33335add11984efb62763f37ccc77"
+    assert artifact["evaluated_revision"] == "4d598a91d369ffbd3a0e909a1e6faf3dab1a498f"
     assert artifact["track_summary"]["qualified"] == 0
     assert artifact["stable_gate_summary"]["passed"] == 0
