@@ -1,0 +1,10 @@
+{
+  "evidence_id": "SOURCE-REGISTRY-ENDPOINT-INTEGRITY-20260829",
+  "schema": "riopa.source-registry-endpoint-integrity.v1",
+  "scope": "bounded repository-owned registry release candidate",
+  "requirement": "endpoint identifiers are non-empty and unique within each source",
+  "observed_status": "negative-contract-tests-pass",
+  "promotion_allowed": false,
+  "open_gates": ["live source health", "authority completeness", "preservation and release authority"],
+  "nonclaims": ["Endpoint identity validation does not establish source availability, authority or national completeness."]
+}

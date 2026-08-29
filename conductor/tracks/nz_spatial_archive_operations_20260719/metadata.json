@@ -19,6 +19,7 @@
     "urn:riopa:evidence:nz-spatial-rollout-plan:2026-08-25",
     "urn:riopa:evidence:nz-archive-operations-conductor-regeneration:2026-08-25",
     "urn:riopa:evidence:nz-spatial-archive-operations-core:2026-08-25"
+    ,"OPS-COVERAGE-REPORT-INTEGRITY-20260829"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

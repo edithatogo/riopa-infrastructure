@@ -280,3 +280,49 @@ def build_coverage_report(
     }
     body["report_sha256"] = sha256_json(body)
     return body
+
+
+def validate_coverage_report(report: object) -> tuple[str, ...]:
+    """Validate a coverage report's shape and content digest without promotion."""
+
+    if not isinstance(report, Mapping):
+        return ("coverage report must be an object",)
+    errors: list[str] = []
+    if report.get("schema_version") != "1.0.0":
+        errors.append("schema_version must be 1.0.0")
+    if report.get("record_type") != "archive_coverage_report":
+        errors.append("record_type must be archive_coverage_report")
+    supplied_digest = report.get("report_sha256")
+    unsigned = {key: value for key, value in report.items() if key != "report_sha256"}
+    if not isinstance(supplied_digest, str) or supplied_digest != sha256_json(unsigned):
+        errors.append("report_sha256 does not match report content")
+    if report.get("promotion_allowed") is not False:
+        errors.append("coverage reports must prohibit promotion")
+    if report.get("national_coverage_percentage") is not None:
+        errors.append("national coverage percentage must remain null")
+    source_count = report.get("source_count")
+    sources = report.get("sources")
+    if type(source_count) is not int or source_count < 1:
+        errors.append("source_count must be a positive integer")
+    if not isinstance(sources, list) or len(sources) != source_count:
+        errors.append("sources must match source_count")
+    else:
+        identities = [row.get("identity_key") for row in sources if isinstance(row, Mapping)]
+        if len(identities) != len(sources) or any(
+            not isinstance(identity, str) or not identity.strip() for identity in identities
+        ):
+            errors.append("sources require non-empty identity keys")
+        elif len(set(identities)) != len(identities):
+            errors.append("sources require unique identity keys")
+    dimensions = report.get("dimensions")
+    if not isinstance(dimensions, Mapping) or any(
+        not isinstance(dimensions.get(dimension), Mapping) for dimension in _DIMENSIONS
+    ):
+        errors.append("dimensions must contain every bounded dimension")
+    nonclaims = report.get("nonclaims")
+    if not isinstance(nonclaims, list) or not any(
+        isinstance(item, str) and "not all current New Zealand authorities" in item
+        for item in nonclaims
+    ):
+        errors.append("nonclaims must retain the bounded supplied-observation statement")
+    return tuple(dict.fromkeys(errors))

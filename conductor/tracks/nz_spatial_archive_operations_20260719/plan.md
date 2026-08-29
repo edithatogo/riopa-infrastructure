@@ -26,6 +26,10 @@
 - [ ] 4.2 Validate capacity, preservation and cost controls.
 - [ ] 4.3 Approve and publish the stable operating model and coverage limitations.
 
+## Review fixes
+
+- [x] R1 Validate bounded coverage reports against their content digest, source-count shape and non-promotable national-coverage boundary (`src/riopa_provenance/archive_operations.py`, `tests/test_archive_operations.py`, `docs/operations-coverage-report-integrity-20260829.json`). Hosted national observations and release gates remain open.
+
 ## Track closeout
 
 - [x] C.1 Link the current implementation and test evidence in `index.md`; review, migration and release evidence remain explicitly unavailable.

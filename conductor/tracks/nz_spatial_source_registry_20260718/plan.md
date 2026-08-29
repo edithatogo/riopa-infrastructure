@@ -45,3 +45,4 @@
 
 - [x] R1 Fail closed on unknown authentication types and malformed capability arrays in readiness projections. (`src/riopa_provenance/registry.py`, `tests/test_source_registry_readiness.py`; commit `f78743a`)
 - [x] R2 Review the registry release candidate for deterministic ordering, duplicate-source rejection, digest binding and publication fail-closed semantics. (`src/riopa_provenance/registry.py::build_registry_release_candidate`, `tests/test_registry.py`, `docs/nz-source-registry-release-candidate-contract-20260825.json`)
+- [x] R6 Reject empty and duplicate endpoint identifiers in registry release candidates (`src/riopa_provenance/registry.py`, `tests/test_registry.py`, `docs/source-registry-endpoint-integrity-20260829.json`).
