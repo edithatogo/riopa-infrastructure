@@ -50,6 +50,6 @@
     "stale-pr-175-blocker-wording-repaired: 2026-08-25",
     "public-health-source-family archived: config/archive-sources/rangitikei-public-ambulance-2023.json; reconciliation and authority remain pending",
     "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
-    "panel-frame-qualification-complete: docs/facility-panel-frame-qualification-20260825.json; factual adjudication remains open"
+    "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; content-bound panel manifest and factual adjudication remain open"
   ]
 }
