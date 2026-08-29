@@ -168,6 +168,21 @@ def test_publication_receipt_batch_rejects_non_object_receipts() -> None:
         reconcile_publication_receipts(state, ["not-a-receipt"])  # type: ignore[list-item]
 
 
+def test_publication_receipt_batch_rejects_duplicate_target_ids() -> None:
+    plan = _ready_plan("github")
+    state = initialise_publication_state(plan)
+    receipt = {
+        "target_id": "github",
+        "operation_key": state["targets"]["github"]["operation_key"],
+        "plan_sha256": plan["plan_sha256"],
+        "identifier": "https://example.test/github",
+        "revision": "a" * 64,
+        "recorded_at": "2026-08-25T00:00:00Z",
+    }
+    with pytest.raises(PublicationError, match="target_id values must be unique"):
+        reconcile_publication_receipts(state, [receipt, receipt])
+
+
 def test_publication_state_rejects_unready_or_unbound_work() -> None:
     with pytest.raises(PublicationError, match="ready plan"):
         initialise_publication_state(

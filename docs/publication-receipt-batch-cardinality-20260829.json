@@ -1,0 +1,11 @@
+{
+  "evidence_id": "PUB-RECEIPT-BATCH-CARDINALITY-20260829",
+  "schema": "riopa.publication.receipt-batch-cardinality.v1",
+  "scope": "repository-owned publication receipt reconciliation",
+  "requirement": "Each receipt target may occur at most once per reconciliation batch; separate identical replays remain idempotent.",
+  "implementation": "riopa_provenance.publication.reconcile_publication_receipts",
+  "observed_status": "duplicate-target-negative-test-passes",
+  "promotion_allowed": false,
+  "open_gates": ["remote target acceptance", "preservation", "external reproduction", "elapsed qualification", "release authority"],
+  "nonclaims": ["Batch cardinality validation does not contact targets or establish publication acceptance."]
+}

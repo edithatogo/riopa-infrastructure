@@ -670,6 +670,17 @@ def reconcile_publication_receipts(
 
     if not isinstance(receipts, Sequence) or isinstance(receipts, (str, bytes)):
         raise PublicationError("publication receipts must be an array")
+    receipt_target_ids = [
+        receipt.get("target_id") for receipt in receipts if isinstance(receipt, Mapping)
+    ]
+    if any(
+        not isinstance(target_id, str) or not target_id.strip() for target_id in receipt_target_ids
+    ):
+        raise PublicationError(
+            "publication receipt batch target_id values must be non-empty strings"
+        )
+    if len(receipt_target_ids) != len(set(receipt_target_ids)):
+        raise PublicationError("publication receipt batch target_id values must be unique")
     ordered = sorted(
         receipts,
         key=lambda item: str(item.get("target_id", "")) if isinstance(item, Mapping) else "",

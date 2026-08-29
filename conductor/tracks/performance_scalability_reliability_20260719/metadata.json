@@ -32,6 +32,7 @@
     ,"urn:riopa:evidence:performance-panel-qualification:2026-08-25"
     ,"urn:riopa:evidence:performance-v1-envelope-freeze:2026-08-25"
     ,"PERF-RETRY-INPUT-HARDENING-20260829"
+    ,"PERF-RESILIENCE-MATRIX-INPUT-VALIDATION-20260829"
   ],
   "target_release": "0.9.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

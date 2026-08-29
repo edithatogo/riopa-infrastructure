@@ -38,6 +38,13 @@
 
 ## Review fixes
 
+- [x] R6 Validate operations report bundles by self-digest, exact component
+  categories, candidate/pending statuses and explicit nonclaims
+  (`scripts/build_operations_report_bundle.py::validate_bundle`,
+  `tests/test_operations_report_bundle.py`,
+  `docs/operations-report-bundle-integrity-20260829.json`). Hosted SLO,
+  preservation, elapsed and authority gates remain open.
+
 - [x] R5 Validate bounded coverage reports against their content digest, source-count shape and non-promotable national-coverage boundary (`src/riopa_provenance/archive_operations.py`, `tests/test_archive_operations.py`, `docs/operations-coverage-report-integrity-20260829.json`). Hosted national observations and release gates remain open.
 
 - [x] R1 Constrain lifecycle transition endpoints to the declared job states and add a negative validation. Evidence: `schemas/operations-control.schema.json`, `tests/test_operations_control_contract.py`. (3af81f0)

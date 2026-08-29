@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "examples/wp010-performance-benchmark/resilience-matrix.json"
@@ -21,12 +20,16 @@ REQUIRED_CASES = {
 }
 
 
-def validate(matrix: dict[str, Any]) -> None:
+def validate(matrix: object) -> None:
+    if not isinstance(matrix, dict):
+        raise ValueError("resilience matrix must be an object")
     if matrix.get("classification") != "repository-rehearsal-plan-not-operational-evidence":
         raise ValueError("resilience matrix must remain a rehearsal plan")
     if set(matrix.get("required_cases", [])) != REQUIRED_CASES:
         raise ValueError("resilience matrix case coverage is incomplete")
     safety = matrix.get("safety", {})
+    if not isinstance(safety, dict):
+        raise ValueError("resilience matrix safety must be an object")
     if any(
         safety.get(key) is not False
         for key in (
@@ -38,6 +41,8 @@ def validate(matrix: dict[str, Any]) -> None:
     ):
         raise ValueError("resilience matrix safety boundary must be fail-closed")
     completion = matrix.get("completion", {})
+    if not isinstance(completion, dict):
+        raise ValueError("resilience matrix completion must be an object")
     if completion.get("status") != "not-run":
         raise ValueError("unexecuted resilience matrix must remain not-run")
 

@@ -33,6 +33,14 @@
 - [x] 4.3 Freeze v1 performance envelopes, limitations and operational actions. (`docs/performance-v1-envelope-freeze-20260825.json`, `tests/test_performance_v1_envelope_freeze.py`; bounded candidate only, promotion remains disallowed)
 - [x] R1 Harden retry decision inputs against non-string method/header values with controlled fail-closed behavior (`src/riopa_provenance/retry.py`, `tests/test_retry.py`, `docs/performance-retry-input-hardening-20260829.json`).
 
+### Review fixes (2026-08-29)
+
+- [x] Harden resilience-matrix validation to reject non-object matrix, safety,
+  and completion sections before field access; negative tests pass
+  (`PERF-RESILIENCE-MATRIX-INPUT-VALIDATION-20260829`).
+- [ ] Keep hosted execution, elapsed soak, national-scale, and authority gates
+  open; this is repository-owned plan validation only.
+
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned slice; hosted and panel gates remain explicitly pending.
