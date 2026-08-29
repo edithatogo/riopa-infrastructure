@@ -2,9 +2,9 @@
   "track_id": "interoperability_conformance_sdks_20260719",
   "type": "platform",
   "phase": "Core",
-  "status": "active",
+  "status": "validating",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-29T03:50:00Z",
+  "updated_at": "2026-08-29T04:10:00Z",
   "description": "Prove cross-language and standards interoperability through normative fixtures, conformance runners, compatibility matrices and supported Python, Rust and API client surfaces.",
   "depends_on": [
     "provenance_profile_v1_20260718",
@@ -33,7 +33,7 @@
     "Research-object analyst"
   ],
   "v1_critical": true,
-  "current_maturity": "M1",
+  "current_maturity": "M2",
   "maturity_target": "M6",
   "maturity_dimensions": [
     "contracts",

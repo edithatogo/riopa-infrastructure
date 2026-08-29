@@ -56,6 +56,7 @@ jobs:
           uv build --out-dir dist/release
           uv run twine check dist/release/*
           scripts/build_sbom.sh dist/release/riopa-provenance.cdx.json
+          uv run python scripts/build_release_conformance_report.py dist/release/riopa-conformance-report.json
           uv run riopa research-object \
             --manifest examples/minimal/snapshot-manifest.json \
             --output-dir dist/research-object
@@ -118,6 +119,7 @@ jobs:
             dist/release/*.whl
             dist/release/*.tar.gz
             dist/release/*.cdx.json
+            dist/release/riopa-conformance-report.json
             dist/release/SHA256SUMS
       - name: Independently verify registered attestations
         env:
@@ -127,6 +129,7 @@ jobs:
             dist/release/*.whl \
             dist/release/*.tar.gz \
             dist/release/*.cdx.json \
+            dist/release/riopa-conformance-report.json \
             dist/release/SHA256SUMS
           do
             gh attestation verify "$asset" --repo "$GITHUB_REPOSITORY"

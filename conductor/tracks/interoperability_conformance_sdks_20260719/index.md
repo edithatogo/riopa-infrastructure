@@ -1,9 +1,9 @@
 # Evidence index: Interoperability, conformance suites and supported SDKs
 
 - **Track ID:** `interoperability_conformance_sdks_20260719`
-- **Status:** `active`
+- **Status:** `validating`
 - **Target release:** `0.6.0`
-- **Current maturity:** `M1`
+- **Current maturity:** `M2`
 - **Maturity target:** `M6`
 - **Stability class:** `Platform`
 - **Risk / priority:** `High` / `P0`
@@ -32,6 +32,7 @@
 | `WP006-EXTERNAL-ROCRATE-VALIDATION-20260829` | Independently maintained RO-Crate validator checks published and remediated research objects | `docs/wp006-external-rocrate-validation-20260829.json`, `src/riopa_provenance/crate.py`, `tests/test_crate.py` | v0.3.0 failure preserved; prospective output passes 65/65 required RO-Crate 1.2 checks; separate producer/consumer, preservation and release gates remain open |
 | `WP006-HOSTED-SBOM-VALIDATION-20260829` | Exact merged revision executes strict CycloneDX 1.6 validation in a dedicated hosted security lane | `docs/wp006-hosted-sbom-validation-20260829.json`, [run 33232065327](https://github.com/edithatogo/riopa-infrastructure/actions/runs/33232065327) | Hosted run and digest-bearing artifact pass; the official locked validator is not represented as a separate external implementation |
 | `SEPARATE-RUST-CLIENT-WORKFLOW-20260829` | Separately implemented client completes capture, validation and lineage-query workflows | `rust/riopa-conformance/src/bin/client_workflow.rs`, `conformance/v1/client-workflow.json`, `tests/test_rust_producer_consumer.py`, `docs/separate-rust-client-workflow-20260829.json` | Repository-owned Rust implementation passes positive and negative workflows; satisfies the separately implemented branch without claiming external authorship, live operation or release conformance |
+| `INTEROP-M2-TECHNICAL-PREVIEW-20260829` | Owner-approved experimental M2 transition and protected technical-preview conformance asset | `scripts/build_release_conformance_report.py`, `.github/workflows/release.yml`, `tests/test_v040_release_preparation.py` | M2/validating only; M3-M6, programme 0.4.0 data gates, preservation and stable-v1 gates remain open |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only

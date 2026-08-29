@@ -2,6 +2,18 @@
 
 Software, schema, dataset, analytical-model and research-object versions remain independent unless a release explicitly relates them.
 
+## 0.4.0 — 2026-08-29
+
+### Added
+
+- Corrected RO-Crate 1.2 research objects, strict hosted CycloneDX 1.6 validation, a separately implemented Rust client and a machine-readable attested conformance report.
+
+### Boundaries
+
+- This is a public software/interoperability technical preview, not passage of the programme's real-data `0.4.0` milestone.
+- It does not claim stable-v1 readiness, production operation, preservation-provider acceptance, a DOI, clinical authority or elapsed beta/RC qualification.
+- The 90-day beta and 30-day exact-candidate RC requirements remain unchanged for stable v1 only.
+
 ## 0.3.0 — 2026-08-27
 
 ### Added
