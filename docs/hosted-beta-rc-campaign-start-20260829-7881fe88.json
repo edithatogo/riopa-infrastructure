@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:hosted-beta-rc-campaign-start:2026-08-29-7881fe88",
+  "record_type": "hosted_elapsed_campaign_observation",
+  "repository": "edithatogo/riopa-infrastructure",
+  "candidate_revision": "7881fe881b6050c8c053a604ef36a180a2f6892b",
+  "beta": {
+    "campaign_id": "operational-beta-20260829-7881fe88",
+    "qualification_epoch": "beta-epoch-7881fe88",
+    "operational_cycle_id": "2026-W35",
+    "run_id": "33238674349",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33238674349",
+    "receipt_sha256": "b20bfdf3e329af86fb13842eb0fdf9554e248a18b582893e3337462c38b89319",
+    "log_sha256": "99db33d5c94c6f7da021687c7391181685cc33299c5435b1c861e2db3be3ec87",
+    "status": "passed"
+  },
+  "rc": {
+    "campaign_id": "operational-rc-20260829-7881fe88",
+    "qualification_epoch": "rc-epoch-7881fe88",
+    "operational_cycle_id": "2026-W35",
+    "run_id": "33238675792",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33238675792",
+    "receipt_sha256": "74465f9bf4e02627b951042d44b29bd42b19ba5d897693315919848754e06e7e",
+    "log_sha256": "2d8addc0a70e124bbc5a761075668848824cab64e22308d7a047b815711c17c5",
+    "status": "passed"
+  },
+  "gate_status": {
+    "beta_required_days": 90,
+    "beta_required_operational_cycles": 3,
+    "beta_status": "pending-duration-and-cycles",
+    "rc_required_days": 30,
+    "rc_status": "pending-duration",
+    "reset_on_revision_change": true
+  },
+  "non_claims": [
+    "A passed observation is not elapsed-time qualification.",
+    "These lanes do not establish production disaster recovery, external participant evidence, preservation-provider acceptance or release authority."
+  ]
+}
