@@ -85,3 +85,18 @@ def test_v040_release_workflow_attests_conformance_report():
     workflow = (ROOT / ".github/workflows/release.yml").read_text()
     assert "scripts/build_release_conformance_report.py" in workflow
     assert "dist/release/riopa-conformance-report.json" in workflow
+
+
+def test_v040_publication_receipt_preserves_preview_boundaries():
+    receipt = json.loads((ROOT / "docs/v0.4.0-release-publication-20260829.json").read_text())
+    assert receipt["release_workflow"]["conclusion"] == "success"
+    assert len(receipt["assets"]) == 6
+    assert receipt["post_publication_verification"]["all_six_oidc_attestations_verified"]
+    assert receipt["post_publication_verification"]["ro_crate_1_2_required_checks"] == {
+        "passed": 65,
+        "failed": 0,
+        "total": 65,
+    }
+    assert receipt["preservation"]["zenodo"].startswith("not_attempted")
+    assert receipt["preservation"]["hugging_face"].startswith("not_attempted")
+    assert any("90-day beta" in claim for claim in receipt["non_claims"])

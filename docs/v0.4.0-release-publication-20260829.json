@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v0.4.0-release-publication:2026-08-29",
+  "release": "0.4.0",
+  "channel": "public-technical-preview",
+  "published_at": "2026-08-29T05:26:58Z",
+  "release_url": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.4.0",
+  "tag": {
+    "name": "v0.4.0",
+    "object": "fc8aa0a1debe60fd300ebe455579d6bca7a2767c",
+    "target_commit": "8dfd7d6064eb14ef1612d23eb3161b1456cf2670",
+    "kind": "annotated-unsigned"
+  },
+  "preparation": {
+    "pull_requests": [
+      "https://github.com/edithatogo/riopa-infrastructure/pull/661",
+      "https://github.com/edithatogo/riopa-infrastructure/pull/662"
+    ],
+    "required_checks": 5,
+    "status": "passed"
+  },
+  "release_workflow": {
+    "run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33236124879",
+    "conclusion": "success",
+    "build_quality_tests_reproducibility": "passed",
+    "asset_build_and_checksum_verification": "passed",
+    "github_oidc_attestation": "passed",
+    "independent_attestation_verification": "passed",
+    "automated_publication": "passed"
+  },
+  "failed_candidate_recovery": {
+    "run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33235956908",
+    "published_assets": false,
+    "failure": "Relative evidence paths were not resolved against the repository root.",
+    "fix_pull_request": "https://github.com/edithatogo/riopa-infrastructure/pull/662",
+    "failed_tag_target": "0d3de0226a630ee7385285615d10521e8ea1e57a",
+    "replacement_tag_target": "8dfd7d6064eb14ef1612d23eb3161b1456cf2670"
+  },
+  "assets": [
+    {"name": "riopa-conformance-report.json", "sha256": "2db8ff71b769019bcba6038043e7554147b78eb3b3b7572e5648f709540403bc", "size": 2463},
+    {"name": "riopa-example-research-object.tar.gz", "sha256": "219be59cd2f4fd2fd6551d4a7e5459a55a9cf5c227e89d2411809187596d03d9", "size": 35665},
+    {"name": "riopa-provenance.cdx.json", "sha256": "f2918e2dd87dfb6e313ebd03ff6a86d2452e2eeaba3b7745d8cf716044d0a839", "size": 140881},
+    {"name": "riopa_provenance-0.4.0-py3-none-any.whl", "sha256": "77fa6400b413051afe3b517f0701a2a7cfcabef1e953b3f00328e47cb7d816f9", "size": 239594},
+    {"name": "riopa_provenance-0.4.0.tar.gz", "sha256": "086fee4f0f5282f787be0b0d17902a812c95b1d5bf1c49eee5672a705e924bae", "size": 2340271},
+    {"name": "SHA256SUMS", "sha256": "407d8174b6af59bc04f19ee429095b23eb899b8905eae8e3b719462020c56e9e", "size": 493}
+  ],
+  "post_publication_verification": {
+    "all_assets_downloaded": true,
+    "sha256sums_passed": true,
+    "all_six_oidc_attestations_verified": true,
+    "ro_crate_validator": "roc-validator==0.11.3",
+    "ro_crate_1_2_required_checks": {"passed": 65, "failed": 0, "total": 65},
+    "release_is_draft": false,
+    "release_is_prerelease": true
+  },
+  "preservation": {
+    "github_release": "published",
+    "zenodo": "not_attempted_no_shell_or_repository_credential",
+    "hugging_face": "not_attempted_no_shell_or_repository_credential",
+    "contingency": "Retain the public GitHub release and its OIDC-attested checksum-bound assets; deposit an exact successor copy when credentials are configured without changing this receipt."
+  },
+  "non_claims": [
+    "This technical preview does not pass the separate programme real-data 0.4.0 milestone.",
+    "M2/validating is experimental interoperability maturity, not stable-v1 conformance.",
+    "The stable-v1 90-day beta and 30-day release-candidate requirements remain open.",
+    "No Zenodo DOI or Hugging Face deposit is claimed for this release.",
+    "The annotated tag is not described as GPG- or SSH-signed."
+  ]
+}
