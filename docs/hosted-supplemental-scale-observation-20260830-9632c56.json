@@ -1,0 +1,22 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-SCALE-OBSERVATION-20260830-9632C56",
+  "schema_version": "1.0.0",
+  "source_revision": "9632c567637baea1a75232ee57080f13f9c41323",
+  "campaign_id": "supplemental-scale-20260830-9632c56",
+  "qualification_epoch": "supplemental-scale-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [
+    {
+      "lane": "scale-smoke",
+      "run_id": "33261927414",
+      "architecture": "x86_64",
+      "receipt_sha256": "35fc909751d768cee2d0168822020a3c355447f97ff171a531ec7f68760d5e38",
+      "log_sha256": "9352925e5e271773731e7ca3a390daf15479f6b144d2d059ca8d677d62821619"
+    }
+  ],
+  "non_claims": [
+    "This supplemental scale smoke does not establish national-scale performance or advance the beta or RC elapsed clocks.",
+    "It does not establish production disaster recovery, external participation, preservation acceptance or release authority."
+  ]
+}
