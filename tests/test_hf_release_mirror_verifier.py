@@ -70,3 +70,71 @@ def test_verify_fails_on_source_receipt_drift(tmp_path: Path) -> None:
     )
     with pytest.raises(RuntimeError, match="historical publication receipt"):
         verify(receipt_path, mirror_path)
+
+
+def test_verify_fails_closed_on_payload_mismatch(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    receipt_path = tmp_path / "receipt.json"
+    receipt_path.write_text(
+        json.dumps(
+            {
+                "release": "v0.4.0",
+                "assets": [{"name": "one.txt", "sha256": hashlib.sha256(b"one").hexdigest()}],
+            }
+        ),
+        encoding="utf-8",
+    )
+    mirror_path = tmp_path / "mirror.json"
+    mirror_path.write_text(
+        json.dumps(
+            {
+                "source_publication_receipt": {
+                    "sha256": hashlib.sha256(receipt_path.read_bytes()).hexdigest()
+                },
+                "mirror": {
+                    "repository": "owner/dataset",
+                    "commit": "abc123",
+                    "path": "releases/v0.4.0",
+                    "release_metadata_sha256": hashlib.sha256(b"metadata").hexdigest(),
+                },
+                "qualification": {"does_not_establish": []},
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr("scripts.verify_hf_release_mirror.fetch_bytes", lambda _url: b"tampered")
+    with pytest.raises(RuntimeError, match="digest mismatch"):
+        verify(receipt_path, mirror_path)
+
+
+def test_verify_fails_closed_on_transport_error(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    receipt_path = tmp_path / "receipt.json"
+    receipt_path.write_text(json.dumps({"release": "v0.4.0", "assets": []}), encoding="utf-8")
+    mirror_path = tmp_path / "mirror.json"
+    mirror_path.write_text(
+        json.dumps(
+            {
+                "source_publication_receipt": {
+                    "sha256": hashlib.sha256(receipt_path.read_bytes()).hexdigest()
+                },
+                "mirror": {
+                    "repository": "owner/dataset",
+                    "commit": "abc123",
+                    "path": "releases/v0.4.0",
+                    "release_metadata_sha256": "0" * 64,
+                },
+                "qualification": {"does_not_establish": []},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    def fail_fetch(_url: str) -> bytes:
+        raise RuntimeError("mirror download failed")
+
+    monkeypatch.setattr("scripts.verify_hf_release_mirror.fetch_bytes", fail_fetch)
+    with pytest.raises(RuntimeError, match="mirror download failed"):
+        verify(receipt_path, mirror_path)
