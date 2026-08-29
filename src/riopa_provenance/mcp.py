@@ -140,7 +140,7 @@ class McpLineageServer:
                 result = {
                     "protocolVersion": "riopa-bounded-1",
                     "capabilities": {"tools": {}},
-                    "serverInfo": {"name": "riopa-lineage", "version": "0.3.0"},
+                    "serverInfo": {"name": "riopa-lineage", "version": "0.4.0"},
                 }
             elif method == "notifications/initialized":
                 return None

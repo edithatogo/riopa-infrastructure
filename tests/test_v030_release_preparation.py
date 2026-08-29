@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VERSION = "0.3.0"
 
 
-def test_v030_release_versions_are_synchronized() -> None:
+def test_current_software_versions_are_synchronized_after_v030() -> None:
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     citation = yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))
     codemeta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
@@ -21,25 +21,24 @@ def test_v030_release_versions_are_synchronized() -> None:
     programme_releases = json.loads((ROOT / "programme/releases.json").read_text(encoding="utf-8"))
     setup = json.loads((ROOT / "conductor/setup_state.json").read_text(encoding="utf-8"))
 
-    assert pyproject["project"]["version"] == VERSION
-    assert riopa_provenance.__version__ == VERSION
-    assert citation["version"] == VERSION
-    assert str(citation["date-released"]) == "2026-08-27"
-    assert codemeta["version"] == VERSION
-    assert codemeta["dateModified"] == "2026-08-27"
+    assert pyproject["project"]["version"] == "0.4.0"
+    assert riopa_provenance.__version__ == "0.4.0"
+    assert citation["version"] == "0.4.0"
+    assert str(citation["date-released"]) == "2026-08-29"
+    assert codemeta["version"] == "0.4.0"
     assert releases["programme_version"] == releases["current_release"] == VERSION
     assert programme_releases == releases
     assert setup["programme_version"] == VERSION
     assert setup["current_maturity"] == "M2"
 
 
-def test_v030_tag_contract_and_later_release_boundaries() -> None:
+def test_v030_readiness_remains_historical_and_current_tag_matches() -> None:
     result = subprocess.run(
         [
             sys.executable,
             str(ROOT / "scripts/check_release_version.py"),
             "--tag",
-            "v0.3.0",
+            "v0.4.0",
             "--pyproject",
             str(ROOT / "pyproject.toml"),
         ],
@@ -49,7 +48,7 @@ def test_v030_tag_contract_and_later_release_boundaries() -> None:
     )
 
     assert result.returncode == 0, result.stderr
-    assert "Release tag matches package version: v0.3.0" in result.stdout
+    assert "Release tag matches package version: v0.4.0" in result.stdout
     assert release_readiness(ROOT, VERSION).ready is True
     for version in ("0.4.0", "0.5.0", "0.6.0", "0.7.0", "0.8.0", "0.9.0", "1.0.0"):
         readiness = release_readiness(ROOT, version)

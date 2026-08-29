@@ -60,6 +60,11 @@ jobs:
             --manifest examples/minimal/snapshot-manifest.json \
             --output-dir dist/research-object
           uv run riopa research-object-verify --root dist/research-object
+          uv run python scripts/build_release_conformance_report.py dist/release/riopa-conformance-report.json \
+            --evidence docs/rust-corpus-parity-20260825.json \
+            --evidence docs/separate-rust-client-workflow-20260829.json \
+            --evidence docs/wp006-external-rocrate-validation-20260829.json \
+            --evidence dist/release/riopa-provenance.cdx.json
           export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"
           tar \
             --sort=name \
@@ -118,6 +123,7 @@ jobs:
             dist/release/*.whl
             dist/release/*.tar.gz
             dist/release/*.cdx.json
+            dist/release/riopa-conformance-report.json
             dist/release/SHA256SUMS
       - name: Independently verify registered attestations
         env:
@@ -127,6 +133,7 @@ jobs:
             dist/release/*.whl \
             dist/release/*.tar.gz \
             dist/release/*.cdx.json \
+            dist/release/riopa-conformance-report.json \
             dist/release/SHA256SUMS
           do
             gh attestation verify "$asset" --repo "$GITHUB_REPOSITORY"
