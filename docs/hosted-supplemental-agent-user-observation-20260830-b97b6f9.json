@@ -1,0 +1,14 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-AGENT-USER-OBSERVATION-20260830-B97B6F9",
+  "schema_version": "1.0.0",
+  "source_revision": "b97b6f9a9f4f0d85c2902e4833dd9f0ff9d66606",
+  "campaign_id": "supplemental-agent-user-20260830-b97b6f9",
+  "qualification_epoch": "supplemental-agent-user-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [{"lane": "agent-user-workflows", "run_id": "33262456945", "architecture": "x86_64", "receipt_sha256": "bde6cce559491b025c97271cf47652401b858ecd757430a8debee2c3358725f9", "log_sha256": "1bc54bc7f07fd71eeba14eac8ba468c130c48c8c3be9728859c60f7065264f1e", "receipt_path": "docs/hosted-evidence/33262456945/agent-user-workflows.receipt.json", "log_path": "docs/hosted-evidence/33262456945/agent-user-workflows.log"}],
+  "non_claims": [
+    "This supplemental rehearsal is not external participant evidence and does not advance the beta or RC elapsed clocks.",
+    "It does not establish production disaster recovery, national-scale performance, preservation acceptance or release authority."
+  ]
+}

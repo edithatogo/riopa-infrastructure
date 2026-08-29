@@ -1,0 +1,41 @@
+{
+  "campaign_activation": null,
+  "campaign_id": "supplemental-agent-user-20260830-b97b6f9",
+  "candidate_revision": "b97b6f9a9f4f0d85c2902e4833dd9f0ff9d66606",
+  "classification": "hosted-technical-preview-drill",
+  "command": [
+    "uv",
+    "run",
+    "python",
+    "scripts/validate_resilience_matrix.py"
+  ],
+  "ended_at": "2026-08-29T16:15:34.854239Z",
+  "exit_code": 0,
+  "host": {
+    "architecture": "x86_64",
+    "provider": "github-actions",
+    "run_attempt": "1",
+    "run_id": "33262456945",
+    "runner_name": "GitHub Actions 1000381649",
+    "runner_os": "Linux"
+  },
+  "hosted_run_id": null,
+  "lane": "agent-user-workflows",
+  "log": {
+    "path": "agent-user-workflows.log",
+    "sha256": "1bc54bc7f07fd71eeba14eac8ba468c130c48c8c3be9728859c60f7065264f1e"
+  },
+  "non_claims": [
+    "This receipt is not production disaster-recovery qualification.",
+    "This receipt is hosted-system evidence, not a role-separated agent user/operator journey.",
+    "This receipt does not satisfy elapsed soak duration by itself.",
+    "This receipt is not an accountable release-authority decision.",
+    "Retrospective supplements do not count as elapsed beta or RC soak observations."
+  ],
+  "operational_cycle_id": "2026-W35",
+  "qualification_epoch": "supplemental-agent-user-epoch-20260830",
+  "schema_version": "1.1.0",
+  "source_revision": "b97b6f9a9f4f0d85c2902e4833dd9f0ff9d66606",
+  "started_at": "2026-08-29T16:15:33.683359Z",
+  "status": "passed"
+}
