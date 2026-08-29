@@ -20,11 +20,23 @@ def test_ro_crate_projection(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
     output = build_ro_crate(root / "examples/minimal/snapshot-manifest.json", tmp_path)
     payload = json.loads(output.read_text(encoding="utf-8"))
-    assert payload["@context"] == "https://w3id.org/ro/crate/1.3/context"
+    assert payload["@context"] == "https://w3id.org/ro/crate/1.2/context"
     assert any(item.get("@id") == "./" for item in payload["@graph"])
     assert any(
         item.get("@id") == "urn:riopa:rights-inventory:nz-spatial-example:2026.07.18"
         for item in payload["@graph"]
+    )
+    root_entity = next(item for item in payload["@graph"] if item.get("@id") == "./")
+    assert root_entity["conformsTo"] == {"@id": "https://w3id.org/ro/crate/1.2"}
+    assert all("@id" in value and len(value) == 1 for value in root_entity["hasPart"])
+    assert all(
+        "@id" in value and len(value) == 1
+        for item in payload["@graph"]
+        for value in (
+            item.get("additionalProperty", [])
+            if isinstance(item.get("additionalProperty", []), list)
+            else [item["additionalProperty"]]
+        )
     )
 
 

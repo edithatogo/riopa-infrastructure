@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:wp006-external-rocrate-validation:2026-08-29",
+  "track_id": "interoperability_conformance_sdks_20260719",
+  "observed_at": "2026-08-29T03:20:25Z",
+  "subject": {"release": "v0.3.0", "repository": "edithatogo/riopa-infrastructure", "historical_result": "failed_external_ro_crate_validation", "historical_checks": {"passed": 59, "failed": 6, "total": 65}},
+  "validator": {"name": "rocrate-validator", "distribution": "roc-validator", "version": "0.11.3", "profile": "https://w3id.org/ro/crate/1.2", "command": "uvx --from roc-validator==0.11.3 rocrate-validator validate CRATE --no-paging --output-format json"},
+  "findings": [
+    "the release declared the unsupported RO-Crate 1.3 context",
+    "PropertyValue nodes were embedded instead of flattened",
+    "non-profile standards were declared as root conformsTo profiles",
+    "semantic data entities were not all reachable through root hasPart",
+    "the SoftwareSourceCode entity omitted the required File type"
+  ],
+  "remediation": {"status": "passed_on_working_tree", "checks": {"passed": 65, "failed": 0, "total": 65}, "internal_checksum_inventory": "passed", "scope": "prospective generator output only", "historical_release_mutated": false},
+  "limitations": [
+    "This local third-party-tool result does not establish a separate external producer or consumer implementation.",
+    "It does not establish preservation-provider acceptance, a DOI, trusted release signing or stable-release authority.",
+    "The CycloneDX external validator could not be installed locally because its PyICU dependency requires a system ICU development toolchain; existing schema and attestation evidence is unchanged."
+  ]
+}
