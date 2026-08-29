@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "public_archive_publication_receipt",
+  "record_id": "urn:riopa:evidence:public-tier-a-archive-publication:2026-08-29",
+  "published_at": "2026-08-29T00:08:39Z",
+  "repository": {
+    "provider": "huggingface-dataset",
+    "id": "edithatogo/riopa-public-data-archive",
+    "visibility": "public",
+    "revision": "001137c0df64e9f8a7b0539fd0286a7cd5819ce7",
+    "url": "https://huggingface.co/datasets/edithatogo/riopa-public-data-archive"
+  },
+  "review": {
+    "pull_request": "https://huggingface.co/datasets/edithatogo/riopa-public-data-archive/discussions/1",
+    "status": "merged",
+    "hosted_candidate_validation": "all checksums passed after anonymous download from refs/pr/1"
+  },
+  "packets": [
+    {
+      "source_id": "urn:riopa:source:wcc:churton-park-village-supermarket",
+      "path": "snapshots/wcc-churton-park-village-supermarket-20260829",
+      "manifest_sha256": "d263e7c80f395f439ae4cf2e9a3ec6932b1eda3b21a0cfa19ac6cf426d15da52",
+      "capture_set_id": "urn:uuid:55c2ec4b-f977-4b6a-bce7-844b71c2d93b",
+      "feature_count": 1,
+      "licence": "CC-BY-3.0-NZ",
+      "attribution": "Wellington City Council"
+    },
+    {
+      "source_id": "urn:riopa:source:arcgis:nz-ambulance-stations-prototype",
+      "path": "snapshots/nz-ambulance-stations-prototype-20260829",
+      "manifest_sha256": "6e25e0b3544ab4cc406636500e957a289bc19a83ffa3fd4b76c33a24c2d87b7f",
+      "capture_set_id": "urn:uuid:ae358c29-0d89-49d1-898d-1eb0f9b91ae3",
+      "feature_count": 224,
+      "licence": "CC-BY-4.0",
+      "attribution": "nzemgeo; exact ArcGIS item acknowledgements preserved"
+    },
+    {
+      "source_id": "urn:riopa:source:greater-wellington:ambulance-stations",
+      "path": "snapshots/greater-wellington-ambulance-stations-20260829",
+      "manifest_sha256": "fe7d6a692ecd2ba90cc08a22f1ccca2a7d8f28d079be5349731e7f0a42f8b3a6",
+      "capture_set_id": "urn:uuid:62a07a7e-8cde-429f-aaaa-a51ff5f4c5e0",
+      "feature_count": 5,
+      "licence": "CC-BY-4.0",
+      "attribution": "Greater Wellington Regional Council"
+    }
+  ],
+  "validation": {
+    "registry_schema": "passed",
+    "content_addressed_capture_integrity": "passed",
+    "hosted_pr_checksum_verification": "passed",
+    "merged_revision_manifest_verification": "passed",
+    "static_query_capture_regression": "passed"
+  },
+  "non_claims": [
+    "Publication does not establish national completeness, currentness, provider authority or operational suitability.",
+    "The WCC layer is not represented as an operative legal interpretation or proof of current supermarket operation.",
+    "The national ambulance prototype retains its mixed-source, non-ownership and accuracy caveats.",
+    "The Greater Wellington layer remains a bounded regional reference."
+  ]
+}

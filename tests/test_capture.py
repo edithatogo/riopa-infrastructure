@@ -70,6 +70,32 @@ def test_capture_store_verifies_archived_object_integrity(tmp_path: Path) -> Non
         store.verify_capture_integrity(result.capture_id)
 
 
+def test_capture_preserves_static_query_when_additional_params_are_empty(
+    tmp_path: Path,
+) -> None:
+    observed: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        observed.append(str(request.url))
+        return httpx.Response(200, json={"ok": True}, request=request)
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as http_client:
+        result = HttpCaptureClient(
+            client=http_client,
+            store=CaptureStore(tmp_path, id_factory=lambda: "static-query"),
+            policy=policy(),
+        ).capture(
+            "GET",
+            "https://data.example.govt.nz/item?f=json",
+            source_id="s",
+            endpoint_id="e",
+            params={},
+        )
+
+    assert observed == ["https://data.example.govt.nz/item?f=json"]
+    assert result.object_path.read_bytes() == b'{"ok":true}'
+
+
 def test_connection_time_resolution_rejects_private_or_invalid_addresses() -> None:
     assert validate_resolved_addresses("data.example.govt.nz", ["8.8.8.8"]) == ("8.8.8.8",)
     with pytest.raises(CaptureError, match="non-public"):

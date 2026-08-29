@@ -408,7 +408,16 @@ class HttpCaptureClient:
         request_headers = {"User-Agent": self.user_agent, "Accept-Encoding": "identity"}
         if headers:
             request_headers.update(headers)
-        request = self.client.build_request(method, url, params=params, headers=request_headers)
+        # httpx treats an empty params mapping as a request to replace the URL's
+        # existing query string. Registry endpoints commonly carry static format
+        # selectors such as ``?f=json``; preserve them when no additional query
+        # parameters were supplied.
+        request = self.client.build_request(
+            method,
+            url,
+            params=params if params else None,
+            headers=request_headers,
+        )
         try:
             validate_capture_url(request.url, self.policy)
         except CaptureError as exc:
