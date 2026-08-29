@@ -56,5 +56,5 @@ def test_programme_registry_reports_security_validating_m2_only() -> None:
     )
     assert "current `M2`" in security_line
     assert "target `M6`" in security_line
-    assert "**Active:** 23" in tracks
-    assert "**Validating:** 5" in tracks
+    assert "**Active:** 19" in tracks
+    assert "**Validating:** 9" in tracks
