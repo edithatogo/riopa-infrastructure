@@ -74,6 +74,10 @@
 - [x] 5.24 Add the missing tagged-source checkout to the protected publish job so
   future `--verify-tag` publication runs have Git context. (`.github/workflows/release.yml`;
   review fix)
+- [x] 5.25 Add a revision-bound stable-v1 readiness plan with all 14 gate families,
+  beta/RC clock-reset rules, preservation fallback and explicit non-substitutions;
+  keep the record preparation-only and promotion fail-closed. (`docs/stable-v1-readiness-plan-20260829.json`,
+  `docs/stable-v1-readiness-plan-20260829.md`, `tests/test_stable_v1_readiness_plan.py`)
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
