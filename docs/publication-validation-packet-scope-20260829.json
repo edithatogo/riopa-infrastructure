@@ -1,0 +1,12 @@
+{
+  "evidence_id": "PUB-VALIDATION-PACKET-SCOPE-20260829",
+  "schema": "riopa.publication-validation-packet-scope.v1",
+  "validator": "scripts/validate_publication_validation_packet.py",
+  "observed_status": "bounded-scope-enforced",
+  "scope_control": "bounded-regional-public-datasets-only-non-operational-technical-preview",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This successor control validates packet scope only.",
+    "It does not create a DOI, publication, preservation acceptance, external participant evidence or release authority."
+  ]
+}

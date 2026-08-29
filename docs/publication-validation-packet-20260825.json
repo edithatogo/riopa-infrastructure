@@ -2,7 +2,7 @@
   "schema": "riopa.publication-validation-packet.v1",
   "packet_id": "publication-validation-packet-20260825",
   "status": "doi-ready-preparation-only",
-  "scope": "bounded regional public-source non-operational technical preview",
+  "scope": "bounded-regional-public-datasets-only-non-operational-technical-preview",
   "software": {
     "package": "riopa-provenance",
     "runtime": "Python 3.14",
