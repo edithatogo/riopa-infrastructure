@@ -31,3 +31,18 @@ def test_v040_preservation_receipts_retain_stable_boundary() -> None:
     assert any(
         "stable-v1 non-claim" in error for error in validate_reconciliation(record, root=ROOT)
     )
+
+
+def test_v040_preservation_receipts_reject_duplicate_provider() -> None:
+    record = _record()
+    receipts = record["verified_receipts"]
+    assert isinstance(receipts, list)
+    receipts.append(dict(receipts[0]))
+    assert any(
+        "exactly one receipt per provider" in error
+        for error in validate_reconciliation(record, root=ROOT)
+    )
+
+
+def test_v040_preservation_receipts_reject_non_object() -> None:
+    assert validate_reconciliation([], root=ROOT) == ("preservation record must be a JSON object",)

@@ -13,7 +13,6 @@ import hashlib
 import json
 import re
 from pathlib import Path
-from typing import Any
 
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _EXPECTED = {
@@ -30,21 +29,23 @@ def _digest(path: Path) -> str:
     return digest.hexdigest()
 
 
-def validate_reconciliation(record: dict[str, Any], *, root: Path) -> tuple[str, ...]:
+def validate_reconciliation(record: object, *, root: Path) -> tuple[str, ...]:
+    if not isinstance(record, dict):
+        return ("preservation record must be a JSON object",)
     errors: list[str] = []
     if record.get("release") != "0.4.0" or record.get("channel") != "public-technical-preview":
         errors.append("record must describe the v0.4.0 public technical preview")
     receipts = record.get("verified_receipts")
     if not isinstance(receipts, list) or not receipts:
         return ("verified_receipts must be a non-empty list",)
-    providers: set[str] = set()
+    providers: dict[str, int] = {}
     for index, item in enumerate(receipts):
         prefix = f"verified_receipts[{index}]"
         if not isinstance(item, dict):
             errors.append(f"{prefix} must be an object")
             continue
         provider = item.get("provider")
-        providers.add(str(provider))
+        providers[str(provider)] = providers.get(str(provider), 0) + 1
         if provider not in _EXPECTED:
             errors.append(f"{prefix}.provider is not an expected public provider")
         elif item.get("result") != _EXPECTED[provider]:
@@ -66,8 +67,10 @@ def validate_reconciliation(record: dict[str, Any], *, root: Path) -> tuple[str,
             errors.append(f"{prefix}.sha256 is not a lowercase SHA-256 digest")
         elif _digest(path) != digest:
             errors.append(f"{prefix}.sha256 does not match {path_value}")
-    if providers != set(_EXPECTED):
+    if set(providers) != set(_EXPECTED):
         errors.append("reconciliation must contain exactly one Hugging Face and one Zenodo receipt")
+    elif any(count != 1 for count in providers.values()):
+        errors.append("reconciliation must contain exactly one receipt per provider")
     nonclaims = record.get("nonclaims")
     if not isinstance(nonclaims, list) or not any("stable-v1" in str(item) for item in nonclaims):
         errors.append("record must retain the stable-v1 non-claim")
@@ -90,7 +93,10 @@ def main() -> int:
         record = json.loads(record_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         parser.error(f"unable to read preservation record: {exc}")
-    errors = validate_reconciliation(record, root=root)
+    if not isinstance(record, dict):
+        errors = ("preservation record must be a JSON object",)
+    else:
+        errors = validate_reconciliation(record, root=root)
     result = {"schema": "riopa.v040-preservation-receipts-validation.v1", "errors": list(errors)}
     if not errors:
         result.update(
