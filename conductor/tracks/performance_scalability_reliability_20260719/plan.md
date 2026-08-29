@@ -35,15 +35,10 @@
 
 ### Review fixes (2026-08-29)
 
-- [x] Add the declared deterministic degraded-dependency case to the bounded
-  rehearsal output and test matrix/report coverage (`PERF-DEGRADED-REHEARSAL-CASE-20260829`).
+- [x] Add the declared deterministic degraded-dependency case to the bounded rehearsal output and test matrix/report coverage (`PERF-DEGRADED-REHEARSAL-CASE-20260829`).
 - [ ] Keep hosted, elapsed-soak, national-scale, and authority gates open.
 
-### Review fixes (2026-08-29)
-
-- [x] Harden resilience-matrix validation to reject non-object matrix, safety,
-  and completion sections before field access; negative tests pass
-  (`PERF-RESILIENCE-MATRIX-INPUT-VALIDATION-20260829`).
+- [x] Harden resilience-matrix validation to reject non-object matrix, safety, and completion sections before field access; negative tests pass (`PERF-RESILIENCE-MATRIX-INPUT-VALIDATION-20260829`).
 - [ ] Keep hosted execution, elapsed soak, national-scale, and authority gates
   open; this is repository-owned plan validation only.
 
