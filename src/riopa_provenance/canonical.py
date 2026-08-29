@@ -280,7 +280,7 @@ def validate_conformance_corpus(
         else:
             seen.add(case_id)
         case_class = case.get("case_class")
-        if case_class not in _CONFORMANCE_CASE_CLASSES:
+        if not isinstance(case_class, str) or case_class not in _CONFORMANCE_CASE_CLASSES:
             errors.append(
                 f"case {index} case_class must be one of {sorted(_CONFORMANCE_CASE_CLASSES)}"
             )

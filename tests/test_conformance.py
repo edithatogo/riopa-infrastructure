@@ -52,6 +52,10 @@ def test_corpus_envelope_rejects_unknown_case_class() -> None:
     errors = validate_conformance_corpus(tampered, root=str(root / "conformance/v1"))
     assert any("case_class must be one of" in error for error in errors)
 
+    tampered["cases"][0]["case_class"] = []
+    errors = validate_conformance_corpus(tampered, root=str(root / "conformance/v1"))
+    assert any("case_class must be one of" in error for error in errors)
+
 
 def test_corpus_envelope_requires_each_case_class() -> None:
     root, corpus = _corpus()
