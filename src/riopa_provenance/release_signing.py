@@ -18,6 +18,7 @@ class ReleaseSigningError(ValueError):
 
 
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
+_REVISION = re.compile(r"^[0-9a-f]{40}$")
 
 
 def _sha256(path: Path) -> str:
@@ -33,8 +34,9 @@ def build_release_signing_manifest(
 ) -> dict[str, Any]:
     """Build a sorted, unsigned candidate manifest for regular files in ``root``."""
 
-    if not revision or not revision.strip():
-        raise ReleaseSigningError("source revision is required")
+    if not isinstance(revision, str) or not _REVISION.fullmatch(revision.strip()):
+        raise ReleaseSigningError("source revision must be a 40-character lowercase Git SHA-1")
+    revision = revision.strip()
     excluded = set(exclude)
     artifacts: list[dict[str, Any]] = []
     for path in sorted(root.rglob("*")):
@@ -77,6 +79,8 @@ def validate_release_signing_manifest(manifest: Mapping[str, Any] | None) -> tup
     for field in ("manifest_id", "revision", "status"):
         if not isinstance(manifest.get(field), str) or not str(manifest[field]).strip():
             errors.append(f"{field} is required")
+    if not _REVISION.fullmatch(str(manifest.get("revision", ""))):
+        errors.append("revision must be a 40-character lowercase Git SHA-1")
     if manifest.get("status") not in {"unsigned-candidate", "signed"}:
         errors.append("status must be unsigned-candidate or signed")
     artifacts = manifest.get("artifacts")
@@ -116,4 +120,25 @@ def validate_release_signing_manifest(manifest: Mapping[str, Any] | None) -> tup
         or verification.get("attestation_required") is not True
     ):
         errors.append("verification must require an attestation")
+    if manifest.get("status") == "signed":
+        signature = manifest.get("signature")
+        if (
+            not isinstance(signature, Mapping)
+            or signature.get("status") != "verified"
+            or not isinstance(signature.get("provider"), str)
+            or not str(signature["provider"]).strip()
+            or not isinstance(signature.get("attestation_id"), str)
+            or not str(signature["attestation_id"]).strip()
+        ):
+            errors.append("signed manifests require a verified provider and attestation_id")
+        else:
+            if signature.get("revision") != manifest.get("revision"):
+                errors.append("signed attestation revision must match the manifest revision")
+            declared = signature.get("artifact_digests")
+            if isinstance(artifacts, list) and all(isinstance(item, Mapping) for item in artifacts):
+                expected = [
+                    {"path": item.get("path"), "sha256": item.get("sha256")} for item in artifacts
+                ]
+                if declared != expected:
+                    errors.append("signed attestation artifact digests must match the manifest")
     return tuple(dict.fromkeys(errors))

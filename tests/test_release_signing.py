@@ -43,6 +43,10 @@ def test_build_release_signing_manifest_rejects_empty_inputs(tmp_path: Path) -> 
         build_release_signing_manifest(tmp_path, revision=" ")
     with pytest.raises(ReleaseSigningError, match="at least one"):
         build_release_signing_manifest(tmp_path, revision="a" * 40)
+    with pytest.raises(ReleaseSigningError, match="40-character"):
+        build_release_signing_manifest(tmp_path, revision="not-a-revision")
+    with pytest.raises(ReleaseSigningError, match="40-character"):
+        build_release_signing_manifest(tmp_path, revision=None)  # type: ignore[arg-type]
 
 
 def test_build_release_signing_manifest_honours_exclusions(tmp_path: Path) -> None:
@@ -82,3 +86,65 @@ def test_release_signing_manifest_rejects_non_object_and_invalid_status() -> Non
     )
     assert "status must be unsigned-candidate or signed" in errors
     assert "each artifact must be an object" in errors
+
+
+def test_signed_manifest_requires_verified_attestation_binding() -> None:
+    manifest = {
+        "manifest_id": "urn:test",
+        "revision": "a" * 40,
+        "status": "signed",
+        "artifacts": [{"path": "release.tar.gz", "sha256": "b" * 64, "size": 1}],
+        "signing_policy": {"required": True},
+        "verification": {"attestation_required": True},
+    }
+    errors = validate_release_signing_manifest(manifest)
+    assert "signed manifests require a verified provider and attestation_id" in errors
+    manifest["signature"] = {
+        "status": "verified",
+        "provider": "github",
+        "attestation_id": "attestation-1",
+        "revision": manifest["revision"],
+        "artifact_digests": [{"path": "release.tar.gz", "sha256": "b" * 64}],
+    }
+    assert validate_release_signing_manifest(manifest) == ()
+
+
+def test_signed_manifest_rejects_attestation_drift() -> None:
+    manifest = {
+        "manifest_id": "urn:test",
+        "revision": "a" * 40,
+        "status": "signed",
+        "artifacts": [{"path": "release.tar.gz", "sha256": "b" * 64, "size": 1}],
+        "signing_policy": {"required": True},
+        "verification": {"attestation_required": True},
+        "signature": {
+            "status": "verified",
+            "provider": "github",
+            "attestation_id": "attestation-1",
+            "revision": "c" * 40,
+            "artifact_digests": [{"path": "release.tar.gz", "sha256": "c" * 64}],
+        },
+    }
+    errors = validate_release_signing_manifest(manifest)
+    assert "signed attestation revision must match the manifest revision" in errors
+    assert "signed attestation artifact digests must match the manifest" in errors
+
+
+def test_signed_manifest_with_malformed_artifacts_returns_errors() -> None:
+    manifest = {
+        "manifest_id": "urn:test",
+        "revision": "a" * 40,
+        "status": "signed",
+        "artifacts": None,
+        "signing_policy": {"required": True},
+        "verification": {"attestation_required": True},
+        "signature": {
+            "status": "verified",
+            "provider": "github",
+            "attestation_id": "attestation-1",
+            "revision": "a" * 40,
+            "artifact_digests": [],
+        },
+    }
+    errors = validate_release_signing_manifest(manifest)
+    assert "artifacts must be a non-empty array" in errors
