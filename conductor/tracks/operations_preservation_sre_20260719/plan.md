@@ -44,6 +44,7 @@
 - [x] 4.18 Record the fresh hosted supplemental operational-observation drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close recovery, national-scale, external, preservation or authority gates (`docs/hosted-supplemental-operational-observation-20260830-692545e.json`, run 33260680164).
 - [x] 4.19 Record the fresh hosted supplemental recovery-rollback drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close production-recovery, national-scale, external, preservation or authority gates (`docs/hosted-supplemental-recovery-observation-20260830-92b405c.json`, run 33261028041).
 - [x] 4.20 Record the fresh hosted architecture-diverse supplemental performance rehearsal with both receipt/log digest pairs; the receipts are from one workflow run and are identified by `x86_64` and `arm64`; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close national-scale, production-recovery, external, preservation or authority gates (`docs/hosted-supplemental-performance-observation-20260830-31e304a.json`, run 33261328505).
+- [x] 4.21 Record the fresh hosted supplemental scale-smoke drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close national-scale, production-recovery, external, preservation or authority gates (`docs/hosted-supplemental-scale-observation-20260830-9632c56.json`, run 33261927414).
 
 ## Review fixes
 

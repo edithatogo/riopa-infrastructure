@@ -1,0 +1,43 @@
+{
+  "campaign_activation": null,
+  "campaign_id": "supplemental-scale-20260830-9632c56",
+  "candidate_revision": "9632c567637baea1a75232ee57080f13f9c41323",
+  "classification": "hosted-technical-preview-drill",
+  "command": [
+    "uv",
+    "run",
+    "pytest",
+    "-q",
+    "tests/test_accessibility.py",
+    "tests/test_facility_location.py"
+  ],
+  "ended_at": "2026-08-29T16:03:55.000411Z",
+  "exit_code": 0,
+  "host": {
+    "architecture": "x86_64",
+    "provider": "github-actions",
+    "run_attempt": "1",
+    "run_id": "33261927414",
+    "runner_name": "GitHub Actions 1000381570",
+    "runner_os": "Linux"
+  },
+  "hosted_run_id": null,
+  "lane": "scale-smoke",
+  "log": {
+    "path": "scale-smoke.log",
+    "sha256": "9352925e5e271773731e7ca3a390daf15479f6b144d2d059ca8d677d62821619"
+  },
+  "non_claims": [
+    "This receipt is not production disaster-recovery qualification.",
+    "This receipt is hosted-system evidence, not a role-separated agent user/operator journey.",
+    "This receipt does not satisfy elapsed soak duration by itself.",
+    "This receipt is not an accountable release-authority decision.",
+    "Retrospective supplements do not count as elapsed beta or RC soak observations."
+  ],
+  "operational_cycle_id": "2026-W35",
+  "qualification_epoch": "supplemental-scale-epoch-20260830",
+  "schema_version": "1.1.0",
+  "source_revision": "9632c567637baea1a75232ee57080f13f9c41323",
+  "started_at": "2026-08-29T16:03:53.216779Z",
+  "status": "passed"
+}
