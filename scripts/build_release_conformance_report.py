@@ -54,7 +54,10 @@ def main() -> int:
         "source_revision": revision,
         "fixture_sha256": sha256_file(fixture),
         "evidence_bindings": evidence_bindings,
-        "interpretation": "Evidence inventory; recorded statuses are copied from the bound receipts and are not newly executed results.",
+        "interpretation": (
+            "Evidence inventory; recorded statuses are copied from the bound receipts and are "
+            "not newly executed results."
+        ),
         "limitations": [
             "repository-owned bounded evidence, not external production use",
             "not stable-v1, preservation-provider or DOI evidence",
