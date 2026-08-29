@@ -1,0 +1,14 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-RC-OBSERVATION-20260830-26BC0B4",
+  "schema_version": "1.0.0",
+  "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "campaign_id": "supplemental-rc-20260830-26bc0b4",
+  "qualification_epoch": "supplemental-rc-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [{"lane": "rc-soak-observation", "run_id": "33262668117", "architecture": "x86_64", "receipt_sha256": "fadd34a654e4db8f9a1cf30b7d503108c5f8d135d96375a880d59a7c55d93d1b", "log_sha256": "75714dae81a19ff356fc462619bae1ce8741376da686e235699f14922dd42700", "receipt_path": "docs/hosted-evidence/33262668117/rc-soak-observation.receipt.json", "log_path": "docs/hosted-evidence/33262668117/rc-soak-observation.log"}],
+  "non_claims": [
+    "This supplemental RC rehearsal does not advance the exact-RC elapsed clock.",
+    "It does not establish production disaster recovery, external operator or user evidence, preservation acceptance or release authority."
+  ]
+}

@@ -47,6 +47,7 @@
 - [x] 4.21 Record the fresh hosted supplemental scale-smoke drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close national-scale, production-recovery, external, preservation or authority gates (`docs/hosted-supplemental-scale-observation-20260830-9632c56.json`, run 33261927414).
 - [x] 4.22 Record the fresh hosted supplemental agent-clean-room rehearsal with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close independent reproduction, production-recovery, national-scale, preservation or authority gates (`docs/hosted-supplemental-cleanroom-observation-20260830-17aaec8.json`, run 33262213373).
 - [x] 4.23 Record the fresh hosted supplemental agent-user workflow rehearsal with raw receipt/log paths; retain its technical-preview classification, do not treat it as external participant evidence, and do not advance beta/RC elapsed clocks or close production-recovery, national-scale, preservation or authority gates (`docs/hosted-supplemental-agent-user-observation-20260830-b97b6f9.json`, run 33262456945).
+- [x] 4.24 Record the fresh hosted supplemental exact-RC rehearsal with raw receipt/log paths; retain its technical-preview classification and do not advance the exact-RC elapsed clock or close production-recovery, external operator/user, preservation or authority gates (`docs/hosted-supplemental-rc-observation-20260830-26bc0b4.json`, run 33262668117).
 
 ## Review fixes
 
