@@ -1,0 +1,40 @@
+{
+  "schema": "riopa.supermarket-archived-source-qualification.v1",
+  "record_id": "urn:riopa:evidence:supermarket-archived-source:2026-08-29",
+  "source": {
+    "source_id": "hamilton-food-premise-register",
+    "archive_provider": "huggingface-dataset",
+    "archive_repository": "edithatogo/riopa-public-data-archive",
+    "archive_revision": "001137c0df64e9f8a7b0539fd0286a7cd5819ce7",
+    "archive_path": "snapshots/hamilton-food-premise-register/payload",
+    "payload_sha256": "618933f1c27d6931d89dd6e79d26c421a449af012b38e164902d7423ae14d2e1",
+    "terms_url": "https://data.hamilton.govt.nz/",
+    "observed_at": "2026-08-02T15:30:08Z"
+  },
+  "archive_validation": {
+    "status": "captured-and-content-addressed",
+    "payload_type": "GeoJSON FeatureCollection",
+    "feature_count": 3245,
+    "premise_type_matching_supermarket_case_insensitive": 241,
+    "matching_status_counts": {
+      "Active": 108,
+      "Inactive": 132,
+      "Suspended - Voluntary": 1
+    },
+    "manifest_receipt_status": 200
+  },
+  "qualification": {
+    "status": "bounded-public-reference-input",
+    "usable_for": [
+      "versioned descriptive reference calculations",
+      "reproducible source-disposition and status stratification"
+    ],
+    "promotion_allowed": false
+  },
+  "non_claims": [
+    "Premise_Type is a source classification and does not prove a currently operating supermarket.",
+    "The Hamilton snapshot is regional and does not establish national completeness or representativeness.",
+    "This packet does not establish affordability, food availability, health effects, planning permission or commercial viability.",
+    "No live endpoint was used; all counts are derived from the immutable archived payload."
+  ]
+}
