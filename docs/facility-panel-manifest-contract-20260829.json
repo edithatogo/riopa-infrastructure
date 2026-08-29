@@ -1,0 +1,20 @@
+{
+  "evidence_id": "FACILITY-PANEL-MANIFEST-CONTRACT-20260829",
+  "schema": "riopa.facility-panel-manifest-contract.v1",
+  "purpose": "Fail-closed contract for a future content-bound facility panel rerun",
+  "required_bindings": [
+    "exact source revision",
+    "facility frame packet SHA-256",
+    "unique role, session and model identity per panel member",
+    "environment and commands",
+    "results, findings and artifact SHA-256 digests",
+    "dissent, remediation and rerun outcome",
+    "orchestrator synthesis",
+    "promotion_allowed=false"
+  ],
+  "current_status": "contract-only; the 2026-08-25 frame packet lacks these bindings and remains partially qualified",
+  "non_claims": [
+    "A valid manifest qualifies panel evidence shape, not factual facility identity or accuracy.",
+    "Agent evidence does not create external participant, preservation-provider or accountable-authority facts."
+  ]
+}

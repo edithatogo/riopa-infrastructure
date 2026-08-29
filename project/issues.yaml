@@ -1856,7 +1856,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 6
+      "blocking_defects": 7
     },
     {
       "key": "facility_registry_20260719:phase-1",
@@ -1884,7 +1884,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 6
+      "blocking_defects": 7
     },
     {
       "key": "facility_registry_20260719:phase-2",
@@ -1914,7 +1914,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 6
+      "blocking_defects": 7
     },
     {
       "key": "facility_registry_20260719:phase-3",
@@ -1944,7 +1944,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 6
+      "blocking_defects": 7
     },
     {
       "key": "facility_registry_20260719:phase-4",
@@ -1960,7 +1960,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate registry versions with accessibility and planning queries. Public-only, non-authoritative assertions supply accessibility opportunity weights and bounded planning candidates; the accessibility matrix binding requires an explicit public registry version and fails closed on stale/private destinations. Planning authority, canonical registry identity, real-network integration and operational availability remain pending (`src/riopa_provenance/facility_location.py:candidates_from_public_facility_snapshot`, `src/riopa_provenance/accessibility.py::bind_public_facility_registry`, `docs/facility-public-planning-adapter-contract-20260825.json`, `docs/facility-accessibility-binding-20260825.json`).\n- [ ] 4.2 Generate bounded source disagreement and coverage reports over\n- [ ] 4.3 Release immutable registry snapshot and correction process. Content-addressed public-only snapshot records require an explicit registry version and validate optional predecessor digests as an unpublished repository-owned candidate; publication and accountable release approval remain pending (`src/riopa_provenance/facility_registry.py`, `docs/facility-snapshot-version-contract-20260825.json`, `tests/test_facility_registry.py`).\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded public projection; panel and authority gates remain explicitly pending.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.\n- [ ] 5.1 Enforce the history event-type union at runtime, add a negative test,\n- [ ] 5.2 Verify the public-only release projection, preserve the exclusion\n- [ ] 5.3 Reconcile G.1 with the available panel packet: retain the partial\n- [ ] 5.4 Validate historical stable-gate snapshots by their self-contained\n- [ ] G.1 Agent-panel qualification of the deterministic 741-row review frame is partially recorded in `docs/facility-panel-frame-qualification-20260825.json`; the required content-bound roles/session manifest and factual pair/sample adjudication remain open, and no promotion is enabled.\n- [ ] G.2 Record the Hamilton packet as explicitly attribute-only because all 3,245 archived assertions have null geometry (`docs/facility-panel-qualification-20260803.json`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py`). No geometry, completeness or authoritative facility claim is enabled.\n- [ ] G.3 A second public health source family with an immutable archive receipt. The bounded Rangitīkei public ambulance-facility assertions are registered from the preserved Zenodo successor packet with a verified payload digest (`config/archive-sources/rangitikei-public-ambulance-2023.json`, `docs/public-health-ambulance-source-qualification-20260825.json`, `tests/test_public_dataset_archive_plan.py`). Reconciliation, currentness, completeness, authoritative ambulance coverage and operational use remain disabled.\n- [ ] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.\n- [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.\n- [ ] G.6 Reconcile hosted merge policy through a fresh PR. PR #177 merged on\n- [ ] G.7 Repair the stale PR #175 blocker wording after confirming the merge-policy\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `facility_registry_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Integrate registry versions with accessibility and planning queries. Public-only, non-authoritative assertions supply accessibility opportunity weights and bounded planning candidates; the accessibility matrix binding requires an explicit public registry version and fails closed on stale/private destinations. Planning authority, canonical registry identity, real-network integration and operational availability remain pending (`src/riopa_provenance/facility_location.py:candidates_from_public_facility_snapshot`, `src/riopa_provenance/accessibility.py::bind_public_facility_registry`, `docs/facility-public-planning-adapter-contract-20260825.json`, `docs/facility-accessibility-binding-20260825.json`).\n- [ ] 4.2 Generate bounded source disagreement and coverage reports over\n- [ ] 4.3 Release immutable registry snapshot and correction process. Content-addressed public-only snapshot records require an explicit registry version and validate optional predecessor digests as an unpublished repository-owned candidate; publication and accountable release approval remain pending (`src/riopa_provenance/facility_registry.py`, `docs/facility-snapshot-version-contract-20260825.json`, `tests/test_facility_registry.py`).\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded public projection; panel and authority gates remain explicitly pending.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `active`/M1 because the documented gates are unresolved.\n- [ ] 5.1 Enforce the history event-type union at runtime, add a negative test,\n- [ ] 5.2 Verify the public-only release projection, preserve the exclusion\n- [ ] 5.3 Reconcile G.1 with the available panel packet: retain the partial\n- [ ] 5.4 Validate historical stable-gate snapshots by their self-contained\n- [ ] 5.5 Add a fail-closed contract validator for the missing facility panel\n- [ ] G.1 Agent-panel qualification of the deterministic 741-row review frame is partially recorded in `docs/facility-panel-frame-qualification-20260825.json`; the required content-bound roles/session manifest and factual pair/sample adjudication remain open, and no promotion is enabled.\n- [ ] G.2 Record the Hamilton packet as explicitly attribute-only because all 3,245 archived assertions have null geometry (`docs/facility-panel-qualification-20260803.json`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py`). No geometry, completeness or authoritative facility claim is enabled.\n- [ ] G.3 A second public health source family with an immutable archive receipt. The bounded Rangitīkei public ambulance-facility assertions are registered from the preserved Zenodo successor packet with a verified payload digest (`config/archive-sources/rangitikei-public-ambulance-2023.json`, `docs/public-health-ambulance-source-qualification-20260825.json`, `tests/test_public_dataset_archive_plan.py`). Reconciliation, currentness, completeness, authoritative ambulance coverage and operational use remain disabled.\n- [ ] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.\n- [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.\n- [ ] G.6 Reconcile hosted merge policy through a fresh PR. PR #177 merged on\n- [ ] G.7 Repair the stale PR #175 blocker wording after confirming the merge-policy\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/facility_registry_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Analytics",
@@ -1974,7 +1974,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Methods and analytics lead",
-      "blocking_defects": 6
+      "blocking_defects": 7
     },
     {
       "key": "interoperability_conformance_sdks_20260719",
