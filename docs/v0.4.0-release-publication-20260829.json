@@ -56,14 +56,24 @@
   "preservation": {
     "github_release": "published",
     "zenodo": "not_attempted_no_shell_or_repository_credential",
-    "hugging_face": "not_attempted_no_shell_or_repository_credential",
-    "contingency": "Retain the public GitHub release and its OIDC-attested checksum-bound assets; deposit an exact successor copy when credentials are configured without changing this receipt."
+    "hugging_face": {
+      "status": "published_and_publicly_reverified",
+      "repository": "edithatogo/riopa-evidence-campaign",
+      "path": "releases/v0.4.0",
+      "commit": "ebecf6d38084aa459b27ef2bf753505003b08a16",
+      "commit_url": "https://huggingface.co/datasets/edithatogo/riopa-evidence-campaign/commit/ebecf6d38084aa459b27ef2bf753505003b08a16",
+      "authenticated_publisher": "hf 1.15.0 stored CLI session for edithatogo",
+      "public_anonymous_byte_matches": 7,
+      "release_assets": 6,
+      "release_metadata_sha256": "f0eee330ac23067b92f0eef64fb9c69028f79ea1161fdd846e2b446b8761445d"
+    },
+    "contingency": "Retain the public GitHub and Hugging Face copies; add an exact Zenodo successor deposit when a credential is configured."
   },
   "non_claims": [
     "This technical preview does not pass the separate programme real-data 0.4.0 milestone.",
     "M2/validating is experimental interoperability maturity, not stable-v1 conformance.",
     "The stable-v1 90-day beta and 30-day release-candidate requirements remain open.",
-    "No Zenodo DOI or Hugging Face deposit is claimed for this release.",
+    "No Zenodo DOI is claimed for this release; Hugging Face is a byte-preserving public mirror and does not itself establish DOI preservation.",
     "The annotated tag is not described as GPG- or SSH-signed."
   ]
 }
