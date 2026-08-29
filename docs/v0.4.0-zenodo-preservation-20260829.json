@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v0.4.0-zenodo-preservation:2026-08-29",
+  "record_type": "successor_zenodo_preservation_receipt",
+  "release": "0.4.0",
+  "channel": "public-technical-preview",
+  "published_at": "2026-08-29T06:48:45.252729Z",
+  "predecessors": [
+    {
+      "path": "docs/v0.4.0-release-publication-20260829.json",
+      "sha256": "eedd8cfd2c907619d0074d3c97a07830b4ca4c4c442de853199f5e798ec1c767",
+      "mutated": false
+    },
+    {
+      "path": "docs/v0.4.0-release-mirror-20260829.json",
+      "sha256": "ad3944e450b6ee4854e71b82e74a5451d7e55c8ba6500ffcaaf5c6e9d4f16ed6",
+      "mutated": false
+    }
+  ],
+  "deposit": {
+    "provider": "zenodo",
+    "record_id": 22156988,
+    "doi": "10.5281/zenodo.22156988",
+    "doi_url": "https://doi.org/10.5281/zenodo.22156988",
+    "record_url": "https://zenodo.org/records/22156988",
+    "state": "done",
+    "submitted": true,
+    "release_assets": 6
+  },
+  "metadata": {
+    "title": "RIOPA Infrastructure v0.4.0 public technical preview",
+    "upload_type": "software",
+    "version": "0.4.0",
+    "license": "MIT",
+    "creator": "Mordaunt, Dylan",
+    "related_github_release": "https://github.com/edithatogo/riopa-infrastructure/releases/tag/v0.4.0"
+  },
+  "public_verification": {
+    "authentication_used": false,
+    "files_downloaded": 6,
+    "byte_matches": 6,
+    "sha256sums_passed": true,
+    "manifest_sha256": "407d8174b6af59bc04f19ee429095b23eb899b8905eae8e3b719462020c56e9e"
+  },
+  "non_claims": [
+    "This preservation record covers the public technical preview, not stable-v1.",
+    "This does not pass the separate programme real-data 0.4.0 milestone.",
+    "This does not satisfy the stable-v1 90-day beta or 30-day release-candidate requirements.",
+    "Zenodo preservation does not establish external participant or production-operation evidence."
+  ]
+}

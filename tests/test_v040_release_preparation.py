@@ -127,3 +127,22 @@ def test_v040_mirror_receipt_is_a_successor_record() -> None:
     assert mirror["mirror"]["public_anonymous_byte_matches"] == 7
     assert mirror["mirror"]["sha256sums_passed"] is True
     assert mirror["qualification"]["classification"] == "byte_preserving_public_mirror"
+
+
+def test_v040_zenodo_receipt_is_a_verified_successor_record() -> None:
+    receipt = json.loads(
+        (ROOT / "docs/v0.4.0-zenodo-preservation-20260829.json").read_text()
+    )
+    for predecessor in receipt["predecessors"]:
+        path = ROOT / predecessor["path"]
+        assert predecessor["sha256"] == hashlib.sha256(path.read_bytes()).hexdigest()
+        assert predecessor["mutated"] is False
+    assert receipt["deposit"]["doi"] == "10.5281/zenodo.22156988"
+    assert receipt["deposit"]["submitted"] is True
+    assert receipt["public_verification"] == {
+        "authentication_used": False,
+        "files_downloaded": 6,
+        "byte_matches": 6,
+        "sha256sums_passed": True,
+        "manifest_sha256": "407d8174b6af59bc04f19ee429095b23eb899b8905eae8e3b719462020c56e9e",
+    }
