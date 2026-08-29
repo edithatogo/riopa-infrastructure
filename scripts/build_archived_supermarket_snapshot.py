@@ -7,6 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
+from riopa_provenance.hashing import sha256_bytes
 from riopa_provenance.supermarket_pilot import build_archived_supermarket_snapshot
 
 
@@ -21,7 +22,13 @@ def main() -> int:
     parser.add_argument("--payload-sha256", required=True)
     args = parser.parse_args()
 
-    payload = json.loads(args.payload.read_text(encoding="utf-8"))
+    payload_bytes = args.payload.read_bytes()
+    actual_digest = sha256_bytes(payload_bytes)
+    if actual_digest != args.payload_sha256:
+        parser.error(
+            f"payload SHA-256 mismatch: expected {args.payload_sha256}, got {actual_digest}"
+        )
+    payload = json.loads(payload_bytes)
     snapshot = build_archived_supermarket_snapshot(
         payload,
         source_id=args.source_id,
