@@ -1,0 +1,20 @@
+{
+  "evidence_id": "OPS-HOSTED-CONTROL-MATRIX-OBSERVATION-20260829-3B2FBF4",
+  "schema_version": "1.0.0",
+  "source_revision": "3b2fbf40655c584cd5c7e92562cad8a60a5ae6fc",
+  "operational_cycle": "2026-W35",
+  "campaign_id": "operational-beta-20260825-26bc0b4",
+  "qualification_epoch": "beta-epoch-20260825-26bc0b4",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [
+    {"lane": "recovery-rollback", "run_id": "33259809069", "receipt_sha256": "bbd90dc8c71cada28af85ec62301acc1a1c5948c2807a575afdbb5732a9754dc", "log_sha256": "a2a3c4b68aa70416fb312e4aaae8e14c352c367fc692b27c4622eb9644d825cf"},
+    {"lane": "performance-rehearsal", "run_id": "33259810861", "receipt_sha256": "1214b44051c9ba3884e3278a4cf972763e9a4e0515fe706d1200a832b3458a2b", "log_sha256": "f60b448f2a57204fb7be206568ba24f2a32bcbeb0976ec6c9c3dc6b95ddf739a"},
+    {"lane": "scale-smoke", "run_id": "33259813004", "receipt_sha256": "577fb9f91c3288b5ca49d7fda8f89e8ab36206b864a956777519a3264dac5d57", "log_sha256": "9352925e5e271773731e7ca3a390daf15479f6b144d2d059ca8d677d62821619"},
+    {"lane": "agent-clean-room", "run_id": "33259815211", "receipt_sha256": "5b2ef4378b769edd19c63d8b0ae69d385efdf686ae050b19b8bf9b30c54afa67", "log_sha256": "c4b808d34f4db00b333696dec1f3a43a2887d8bfe0cb7af07a3cb98ff43a7830"},
+    {"lane": "agent-user-workflows", "run_id": "33259817003", "receipt_sha256": "abb0437276820fbe8d3ef285db6bdb3e5cab495f63b7bacbfa785470a2a74c88", "log_sha256": "1bc54bc7f07fd71eeba14eac8ba468c130c48c8c3be9728859c60f7065264f1e"}
+  ],
+  "non_claims": [
+    "These supplemental drills do not satisfy 90-day/three-cycle beta or 30-day exact-RC duration.",
+    "They do not establish production disaster recovery, national-scale performance, external participation, preservation acceptance or release authority."
+  ]
+}
