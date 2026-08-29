@@ -26,7 +26,7 @@
 
 ## 5. Bounded agent-panel preparation
 
-- [x] 5.4 Harden citation-readiness validation to require a lowercase exact 40-character hexadecimal revision (`scripts/validate_publication_citation_readiness.py`, `tests/test_publication_citation_readiness.py`, `docs/publication-citation-revision-validation-20260829.json`).
+- [x] 5.4 Harden citation-readiness validation to require a lowercase exact 40-character hexadecimal revision that resolves to a commit; CI uses full history so historical candidate bindings can be verified (`scripts/validate_publication_citation_readiness.py`, `.github/workflows/validate.yml`, `tests/test_publication_citation_readiness.py`, `docs/publication-citation-revision-validation-20260829.json`).
   Git revision rather than only a 40-character placeholder, with negative
   coverage and an explicit non-publication boundary
   (`scripts/validate_publication_citation_readiness.py`,
