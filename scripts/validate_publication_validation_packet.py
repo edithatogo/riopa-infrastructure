@@ -8,6 +8,18 @@ import json
 from pathlib import Path
 
 EXPECTED_SCOPE = "bounded-regional-public-datasets-only-non-operational-technical-preview"
+REQUIRED_CITATION_FIELDS = {
+    "title",
+    "creator",
+    "version",
+    "release_date",
+    "description",
+    "scope_and_non_claims",
+    "software_revision",
+    "source_and_capture_digests",
+    "licence_and_rights_record",
+    "citation_identifier",
+}
 
 
 def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
@@ -37,6 +49,14 @@ def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
                 errors.append(f"metadata contract path escapes root: {path_value}")
             elif not resolved.is_file():
                 errors.append(f"metadata contract is missing: {path_value}")
+    citation_fields = packet.get("citation_fields")
+    if not isinstance(citation_fields, list) or not all(
+        isinstance(item, str) and item.strip() for item in citation_fields
+    ):
+        errors.append("citation_fields must be a non-empty list of strings")
+    elif REQUIRED_CITATION_FIELDS.difference(citation_fields):
+        missing = sorted(REQUIRED_CITATION_FIELDS.difference(citation_fields))
+        errors.append(f"citation_fields omit required fields: {', '.join(missing)}")
     pending = packet.get("pending_gates")
     pending_text = (
         " ".join(pending)

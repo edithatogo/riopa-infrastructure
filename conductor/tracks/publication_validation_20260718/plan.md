@@ -27,6 +27,7 @@
 ## 5. Bounded agent-panel preparation
 
 - [x] 5.5 Validate the DOI-ready preparation packet's referenced contracts, exact bounded scope, unpublished status and explicit pending external/elapsed gates (`scripts/validate_publication_validation_packet.py`, `docs/publication-validation-packet-integrity-20260829.json`, `docs/publication-validation-packet-scope-20260829.json`, `tests/test_publication_validation_packet_validator.py`).
+- [x] 5.6 Require every declared citation field in the DOI-ready preparation packet, with negative coverage for missing and malformed fields; publication, preservation, participant, elapsed and authority gates remain open (`scripts/validate_publication_validation_packet.py`, `tests/test_publication_validation_packet_validator.py`, `docs/publication-citation-fields-validation-20260830.json`).
 
 - [x] 5.4 Harden citation-readiness validation to require a lowercase exact 40-character hexadecimal revision that resolves to a commit; CI uses full history so historical candidate bindings can be verified (`scripts/validate_publication_citation_readiness.py`, `.github/workflows/validate.yml`, `tests/test_publication_citation_readiness.py`, `docs/publication-citation-revision-validation-20260829.json`).
   Git revision rather than only a 40-character placeholder, with negative

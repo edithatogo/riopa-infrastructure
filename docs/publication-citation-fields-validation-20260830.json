@@ -1,0 +1,23 @@
+{
+  "evidence_id": "PUB-CITATION-FIELDS-VALIDATION-20260830",
+  "schema": "riopa.publication-citation-fields-validation.v1",
+  "validator": "scripts/validate_publication_validation_packet.py",
+  "observed_status": "required-citation-fields-validated",
+  "required_fields": [
+    "title",
+    "creator",
+    "version",
+    "release_date",
+    "description",
+    "scope_and_non_claims",
+    "software_revision",
+    "source_and_capture_digests",
+    "licence_and_rights_record",
+    "citation_identifier"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This validates preparation metadata structure only.",
+    "It does not create a DOI, publication, preservation acceptance, participant evidence or release authority."
+  ]
+}

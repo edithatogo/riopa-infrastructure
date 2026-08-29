@@ -38,6 +38,7 @@
 | `PUB-VALIDATION-PACKET-20260825` | DOI-ready metadata, citation, provenance, SBOM, attestation and preservation sequence | `docs/publication-validation-packet-20260825.json`, `tests/test_publication_validation_packet.py` | Preparation packet is not a DOI or preservation receipt; protected attestations, accepted deposit, participant, elapsed and authority gates remain open |
 | `PUB-VALIDATION-PACKET-INTEGRITY-20260829` | Machine-check the unpublished validation packet and referenced local contracts | `scripts/validate_publication_validation_packet.py`, `docs/publication-validation-packet-integrity-20260829.json`, `tests/test_publication_validation_packet_validator.py` | Historical packet integrity record remains immutable; DOI, publication, preservation, participant, elapsed and authority gates remain open |
 | `PUB-VALIDATION-PACKET-SCOPE-20260829` | Successor scope control for the unpublished validation packet | `scripts/validate_publication_validation_packet.py`, `docs/publication-validation-packet-scope-20260829.json`, `tests/test_publication_validation_packet_validator.py` | Exact bounded regional public-datasets-only non-operational preview scope is enforced; DOI, publication, preservation, participant, elapsed and authority gates remain open |
+| `PUB-CITATION-FIELDS-VALIDATION-20260830` | Machine-check all required citation fields in the DOI-ready preparation packet | `scripts/validate_publication_validation_packet.py`, `tests/test_publication_validation_packet_validator.py`, `docs/publication-citation-fields-validation-20260830.json` | Missing and malformed citation fields fail closed locally; DOI, publication, preservation, participant, elapsed and authority gates remain open |
 | `PUB-VERSION-COORDINATION-20260825` | Software, schema, ontology, bounded data, model applicability and research-object versions are coordinated explicitly | `docs/publication-version-coordination-20260825.json`, `tests/test_publication_version_coordination.py` | Candidate manifest validates; release revision, protected attestations, preservation, participant, elapsed and authority gates remain open |
 | `PUB-WORKFLOW-VERIFICATION-20260825` | Discovery, install, query, reproduce and cite paths are verified against repository-owned synthetic fixtures | `docs/publication-workflow-verification-20260825.json`, `tests/test_publication_workflow_verification.py` | Bounded local verification passes; isolated role-separated clean-room agent reproduction, publication, preservation, elapsed and authority gates remain open |
 | `PUB-CITATION-GUIDANCE-20260825` | Versioned preview citation guidance and validation-evidence references | `docs/publication-citation-guidance-20260825.json`, `tests/test_publication_citation_guidance.py` | Preview guidance passes; stable publication identifier, preservation, isolated role-separated clean-room agent reproduction, elapsed and authority gates remain open |
@@ -50,12 +51,13 @@
 
 ## Blocking defects
 
-- Claim classification and final release package coordination remain
-  repository-owned work in progress.
+- The repository-owned claim-classification and publication-package contracts
+  are implemented and validated; they do not constitute publication or release
+  acceptance.
 - Exact stable-candidate isolated role-separated clean-room agent reproduction,
-  publication/deposition receipts, correction
-  notification, elapsed beta/RC evidence and accountable release-authority
-  acceptance remain open.
+  publication/deposition and restore acceptance, correction notification,
+  elapsed beta/RC evidence and accountable release-authority acceptance remain
+  open.
 
 ## Repository-owned closeout slice (2026-08-24)
 
