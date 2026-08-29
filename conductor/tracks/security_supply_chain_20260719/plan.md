@@ -42,3 +42,4 @@
 ## M2 promotion
 
 - [x] R.8 Revalidate the threat/control contracts, immutable-action and workflow policies, deterministic attestation/signing manifests, negative tests, SBOM construction and secret-free exercise packets on the merged tree, then promote only this track to experimental M2. (`docs/security-m2-promotion-20260826.json`, `tests/test_security_m2_promotion.py`)
+- [x] R.9 Replace the SBOM builder's shallow field assertions with locked official CycloneDX 1.6 strict-schema validation and fail-closed negative tests; the existing quality and security workflows execute the validator in hosted CI (`scripts/validate_cyclonedx_sbom.py`, `scripts/build_sbom.sh`, `tests/test_cyclonedx_validation.py`).
