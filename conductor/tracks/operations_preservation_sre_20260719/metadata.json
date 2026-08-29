@@ -34,6 +34,7 @@
     ,"urn:riopa:evidence:operations-panel-qualification:2026-08-25"
     ,"urn:riopa:evidence:replication-receipt-validation:2026-08-25"
     ,"urn:riopa:evidence:beta-campaign-schedule-hardening:2026-08-29"
+    ,"urn:riopa:evidence:hf-mirror-verifier:2026-08-29"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
