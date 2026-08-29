@@ -79,6 +79,12 @@
     {"lane": "operational-observation", "run_id": "33127553189", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
     {"lane": "operational-observation", "run_id": "33220839876", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"}
   ],
+  "supplemental_observations": [
+    {"lane": "operational-observation", "run_id": "33250861383", "status": "passed", "revision": "75319d0ff0aca74c154518f0e771b9774ab2260e", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4"},
+    {"lane": "rc-soak-observation", "run_id": "33250862861", "status": "passed", "revision": "75319d0ff0aca74c154518f0e771b9774ab2260e", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4"},
+    {"lane": "agent-clean-room", "run_id": "33250864446", "status": "passed", "revision": "75319d0ff0aca74c154518f0e771b9774ab2260e", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4"},
+    {"lane": "scale-smoke", "run_id": "33250865820", "status": "passed", "revision": "75319d0ff0aca74c154518f0e771b9774ab2260e", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4"}
+  ],
   "elapsed_gate": {
     "campaign_id": "operational-beta-20260825-26bc0b4",
     "qualification_epoch": "beta-epoch-20260825-26bc0b4",
