@@ -45,3 +45,17 @@ def test_publication_packet_validator_rejects_non_string_gate_and_claim_values()
     errors = validate_packet(packet, root=ROOT)
     assert "pending_gates omits protected artifact attestations" in errors
     assert "non_claims must retain unpublished/external-acceptance boundaries" in errors
+
+
+def test_publication_packet_validator_requires_complete_citation_fields() -> None:
+    packet = _packet()
+    packet["citation_fields"] = ["title"]
+    errors = validate_packet(packet, root=ROOT)
+    assert any("citation_fields omit required fields" in error for error in errors)
+
+
+def test_publication_packet_validator_rejects_malformed_citation_fields() -> None:
+    packet = _packet()
+    packet["citation_fields"] = ["title", None]
+    errors = validate_packet(packet, root=ROOT)
+    assert "citation_fields must be a non-empty list of strings" in errors

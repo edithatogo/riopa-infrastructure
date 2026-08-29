@@ -4,7 +4,7 @@
   "phase": "Publication",
   "status": "active",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-29T07:16:15Z",
+  "updated_at": "2026-08-30T12:00:00Z",
   "description": "Convert infrastructure, data and applied work into independently validated, citable releases and manuscripts with reproducible evidence and transparent correction.",
   "depends_on": [
     "repository_template_adoption_20260718",
@@ -31,6 +31,7 @@
     ,"PUB-CITATION-REVISION-VALIDATION-20260829"
     ,"PUB-VALIDATION-PACKET-INTEGRITY-20260829"
     ,"PUB-VALIDATION-PACKET-SCOPE-20260829"
+    ,"PUB-CITATION-FIELDS-VALIDATION-20260830"
     ,"PUB-RECEIPT-BATCH-CARDINALITY-20260829"
     ,"urn:riopa:evidence:publication-real-data-candidate:2026-08-25"
     ,"urn:riopa:evidence:publication-applied-benchmark:2026-08-25"
@@ -60,7 +61,6 @@
     "Scientific-methods analyst"
   ],
   "blocking_defects": [
-    "claim-classification-and-package-coordination",
     "agent-clean-room-and-agent-operated-user-journey-evidence",
     "stable-candidate-publication-preservation-and-restore-acceptance",
     "correction-notification-execution",
