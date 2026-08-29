@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:wp006-hosted-sbom-validation:2026-08-29",
+  "track_ids": [
+    "interoperability_conformance_sdks_20260719",
+    "security_supply_chain_20260719"
+  ],
+  "observed_at": "2026-08-29T03:42:41Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "source_revision": "ec8bfdf636c1bb919d433055667e1b5f877381f3",
+  "workflow": {
+    "name": "Dependency and supply-chain audit",
+    "event": "workflow_dispatch",
+    "run_id": 33232065327,
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33232065327",
+    "job_id": 99046486965,
+    "conclusion": "success",
+    "strict_cyclonedx_step": "success"
+  },
+  "artifact": {
+    "id": 9708787886,
+    "name": "dependency-audit",
+    "digest": "sha256:8f3a9cac2ac4a812e8eef316468cde28a94d87359eef0a843e5bd4cddd163135",
+    "size_in_bytes": 22079,
+    "expires_at": "2026-11-27T03:42:17Z"
+  },
+  "result": "passed",
+  "limitations": [
+    "The hosted run validates the generated SBOM with the locked official CycloneDX 1.6 schema validator; it is not a separately implemented external validator.",
+    "The retained GitHub artifact is time-limited and is not preservation-provider acceptance.",
+    "This receipt does not establish trusted signing, a protected release execution, external producer/consumer interoperability or stable-release authority."
+  ]
+}
