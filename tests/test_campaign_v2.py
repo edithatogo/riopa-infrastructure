@@ -65,6 +65,17 @@ def test_campaign_revision_preflight_rejects_uppercase_and_short_shas() -> None:
     assert not pattern.fullmatch("a" * 39)
 
 
+def test_performance_second_environment_binds_exact_candidate_revision() -> None:
+    workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
+    job = workflow["jobs"]["performance-second-environment"]
+    assert "EVIDENCE_CANDIDATE_REVISION" in job["env"]
+    steps = job["steps"]
+    validate = next(step for step in steps if step.get("name") == "Validate exact revision input")
+    assert "[0-9a-f]{40}" in validate["run"]
+    checkout = next(step for step in steps if step.get("name") == "Check out exact revision")
+    assert checkout["with"]["ref"] == "${{ env.EVIDENCE_CANDIDATE_REVISION }}"
+
+
 def test_supplemental_elapsed_lanes_are_retained_as_artifacts() -> None:
     workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
     upload = next(
