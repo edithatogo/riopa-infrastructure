@@ -70,3 +70,18 @@ def test_release_conformance_report_rejects_missing_boundary(tmp_path: Path) -> 
     )
     assert result.returncode == 1
     assert "limitations" in result.stdout
+
+
+def test_release_conformance_report_rejects_tampered_fixture_digest(tmp_path: Path) -> None:
+    report = _build(tmp_path)
+    payload = json.loads(report.read_text())
+    payload["fixture_sha256"] = "0" * 64
+    report.write_text(json.dumps(payload))
+    result = subprocess.run(
+        [sys.executable, "scripts/validate_release_conformance_report.py", str(report)],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 1
+    assert "fixture_sha256 does not match" in result.stdout

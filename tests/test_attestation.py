@@ -1,6 +1,7 @@
 import pytest
 
 from riopa_provenance.attestation import (
+    DSSE_PAYLOAD_TYPE,
     AttestationError,
     build_dsse_envelope,
     build_in_toto_statement,
@@ -21,6 +22,24 @@ def test_build_and_decode_unsigned_dsse_intoto_envelope() -> None:
 
 
 def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> None:
+    with pytest.raises(AttestationError, match="predicate type"):
+        build_in_toto_statement(
+            [{"name": "dist/package.whl", "digest": {"sha256": "a" * 64}}],
+            predicate_type=None,  # type: ignore[arg-type]
+            predicate={},
+        )
+    with pytest.raises(AttestationError, match="predicate must be an object"):
+        build_in_toto_statement(
+            [{"name": "dist/package.whl", "digest": {"sha256": "a" * 64}}],
+            predicate_type="https://riopa.example/predicate/build/v1",
+            predicate=None,  # type: ignore[arg-type]
+        )
+    with pytest.raises(AttestationError, match="each subject requires a name"):
+        build_in_toto_statement(
+            [{"name": [], "digest": {"sha256": "a" * 64}}],
+            predicate_type="https://riopa.example/predicate/build/v1",
+            predicate={},
+        )
     with pytest.raises(AttestationError, match="sha256 digest"):
         build_in_toto_statement(
             [{"name": "dist/package.whl", "digest": {}}],
@@ -43,6 +62,10 @@ def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> Non
         decode_dsse_payload(
             {"payloadType": "application/vnd.in-toto+json", "payload": "!", "signatures": []}
         )
+    with pytest.raises(AttestationError, match="envelope must be an object"):
+        decode_dsse_payload(None)  # type: ignore[arg-type]
+    with pytest.raises(AttestationError, match="valid base64 JSON"):
+        decode_dsse_payload({"payloadType": DSSE_PAYLOAD_TYPE, "payload": None, "signatures": []})
 
 
 def test_unsigned_envelope_is_explicitly_not_a_signed_receipt() -> None:

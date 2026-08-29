@@ -35,11 +35,17 @@ def build_in_toto_statement(
 
     if not subjects:
         raise AttestationError("at least one attestation subject is required")
-    if not predicate_type.strip():
+    if not isinstance(predicate_type, str) or not predicate_type.strip():
         raise AttestationError("predicate type is required")
+    if not isinstance(predicate, Mapping):
+        raise AttestationError("predicate must be an object")
     normalised: list[dict[str, Any]] = []
     for subject in subjects:
-        if not isinstance(subject, Mapping) or not subject.get("name"):
+        if (
+            not isinstance(subject, Mapping)
+            or not isinstance(subject.get("name"), str)
+            or not subject["name"].strip()
+        ):
             raise AttestationError("each subject requires a name")
         digest = subject.get("digest")
         sha256 = digest.get("sha256") if isinstance(digest, Mapping) else None
@@ -75,15 +81,20 @@ def build_dsse_envelope(statement: Mapping[str, Any]) -> dict[str, Any]:
 def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
     """Decode and validate the in-toto payload without trusting signatures."""
 
+    if not isinstance(envelope, Mapping):
+        raise AttestationError("DSSE envelope must be an object")
     if envelope.get("payloadType") != DSSE_PAYLOAD_TYPE:
         raise AttestationError("unsupported DSSE payload type")
     signatures = envelope.get("signatures")
     if not isinstance(signatures, list):
         raise AttestationError("DSSE signatures must be an array")
+    payload = envelope.get("payload")
+    if not isinstance(payload, str) or not payload:
+        raise AttestationError("DSSE payload is not valid base64 JSON")
     try:
-        decoded = base64.b64decode(str(envelope["payload"]), validate=True)
+        decoded = base64.b64decode(payload, validate=True)
         value = json.loads(decoded)
-    except (KeyError, ValueError, json.JSONDecodeError) as exc:
+    except (ValueError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise AttestationError("DSSE payload is not valid base64 JSON") from exc
     if not isinstance(value, dict) or value.get("_type") != IN_TOTO_STATEMENT_TYPE:
         raise AttestationError("DSSE payload is not an in-toto Statement/v1 object")

@@ -19,6 +19,7 @@
     "SECURITY-RELEASE-SIGNING-HARDENING-20260829",
     "SECURITY-RELEASE-SIGNING-BINDING-20260829",
     "SECURITY-RELEASE-SIGNING-ROBUSTNESS-20260829",
+    "WP006-DSSE-INPUT-ROBUSTNESS-20260829",
     "urn:riopa:evidence:security-incident-exercise:2026-08-24",
     "urn:riopa:evidence:security-panel-rerun:2026-08-24",
     "urn:riopa:evidence:security-bounded-contract-closeout:2026-08-25",

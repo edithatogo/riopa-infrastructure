@@ -34,6 +34,12 @@ def validate_report(report: dict[str, Any], *, root: Path) -> tuple[str, ...]:
     fixture_digest = report.get("fixture_sha256")
     if not isinstance(fixture_digest, str) or not _SHA256.fullmatch(fixture_digest):
         errors.append("fixture_sha256 must be a lowercase SHA-256 digest")
+    else:
+        fixture = root / "conformance/v1/client-workflow.json"
+        if not fixture.is_file():
+            errors.append("bound conformance fixture does not exist")
+        elif sha256_file(fixture) != fixture_digest:
+            errors.append("fixture_sha256 does not match conformance/v1/client-workflow.json")
     bindings = report.get("evidence_bindings")
     if not isinstance(bindings, list) or not bindings:
         errors.append("evidence_bindings must be a non-empty list")
