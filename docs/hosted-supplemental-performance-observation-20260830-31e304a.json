@@ -1,0 +1,17 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-PERFORMANCE-OBSERVATION-20260830-31E304A",
+  "schema_version": "1.0.0",
+  "source_revision": "31e304ad2e0ad369847a2864b3e1aa47289603a1",
+  "campaign_id": "supplemental-performance-20260830-31e304a",
+  "qualification_epoch": "supplemental-performance-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [
+    {"lane": "performance-rehearsal", "run_id": "33261328505", "architecture": "x86_64", "receipt_sha256": "8d85688d0214a263c8ee5db339e0a77487f5ca7755a13106c6bb56843b10af25", "receipt_path": "docs/hosted-evidence/33261328505/performance-rehearsal-x86_64.receipt.json", "log_sha256": "f60b448f2a57204fb7be206568ba24f2a32bcbeb0976ec6c9c3dc6b95ddf739a", "log_path": "docs/hosted-evidence/33261328505/performance-rehearsal.log"},
+    {"lane": "performance-rehearsal", "run_id": "33261328505", "architecture": "arm64", "receipt_sha256": "c46f3dcf5e9bbd372d251f936de30ae07b8ae247f1bca3424f65fe37fe53557", "receipt_path": "docs/hosted-evidence/33261328505/performance-rehearsal-arm64.receipt.json", "log_sha256": "f60b448f2a57204fb7be206568ba24f2a32bcbeb0976ec6c9c3dc6b95ddf739a", "log_path": "docs/hosted-evidence/33261328505/performance-rehearsal.log"}
+  ],
+  "non_claims": [
+    "This supplemental rehearsal does not advance the beta or RC elapsed clocks.",
+    "It does not establish national-scale performance, production disaster recovery, external participation, preservation acceptance or release authority."
+  ]
+}
