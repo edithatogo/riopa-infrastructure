@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
 GUIDANCE = Path("docs/publication-citation-guidance-20260825.json")
 CANDIDATE = Path("docs/publication-real-data-release-candidate-20260825.json")
 OUTPUT = Path("docs/publication-citation-readiness-validation-20260826.json")
+REVISION = re.compile(r"^[0-9a-f]{40}$")
 
 
 def build_report(root: Path) -> dict[str, Any]:
@@ -21,7 +23,8 @@ def build_report(root: Path) -> dict[str, Any]:
         "preview_status": guidance["status"] == "preview-guidance-not-stable-publication",
         "candidate_is_not_publication": candidate["status"]
         == "owner-agent-reproduced-bounded-candidate",
-        "revision_is_content_bound": len(revision) == 40
+        "revision_is_content_bound": isinstance(revision, str)
+        and REVISION.fullmatch(revision) is not None
         and "exact revision" in guidance["software_citation"]["include"],
         "source_digest_is_required": "content digest" in guidance["data_citation"]["include"],
         "archived_packet_is_source_truth": "archived packet"

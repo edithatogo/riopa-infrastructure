@@ -1,0 +1,18 @@
+{
+  "evidence_id": "DOCUMENTATION-AGENT-WORKFLOW-REPORT-VALIDATION-20260829",
+  "schema": "riopa.documentation-agent-workflow-report-validation.v1",
+  "validator": "scripts/validate_agent_user_workflow_report.py",
+  "observed_status": "bounded-report-shape-validated",
+  "scope": "owner-authorized agent workflow rehearsal",
+  "promotion_allowed": false,
+  "open_gates": [
+    "role-separated external user/operator evidence",
+    "exact stable-candidate workflow evidence",
+    "elapsed beta/RC qualification",
+    "accountable release authority"
+  ],
+  "nonclaims": [
+    "Report validation is not factual external participant evidence.",
+    "Agent workflow rehearsal does not authorize promotion."
+  ]
+}

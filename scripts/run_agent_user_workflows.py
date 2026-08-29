@@ -49,6 +49,7 @@ def run(output_dir: Path) -> dict[str, Any]:
         "scope": "bounded-regional-public-datasets-only-non-operational-technical-preview",
         "non_claims": [
             "This report is not independent human review.",
+            "This report is not external participant evidence.",
             "This report does not satisfy elapsed beta or RC soak duration.",
             "This report does not authorize promotion.",
             "Network, timetable, facility, national, clinical and dispatch claims remain disabled.",

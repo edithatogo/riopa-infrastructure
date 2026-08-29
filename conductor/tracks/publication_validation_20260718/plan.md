@@ -26,6 +26,13 @@
 
 ## 5. Bounded agent-panel preparation
 
+- [x] 5.4 Harden citation-readiness validation to require a lowercase exact
+  Git revision rather than only a 40-character placeholder, with negative
+  coverage and an explicit non-publication boundary
+  (`scripts/validate_publication_citation_readiness.py`,
+  `docs/publication-citation-revision-validation-20260829.json`,
+  `tests/test_publication_citation_readiness.py`).
+
 - [x] 5.1 Define the WP-010 clean-room procedure, independence criteria and content-bound evidence record. (37510dd)
 - [x] 5.2 Define the staged Software Heritage plus artifact-repository preservation sequence without claiming a deposit. (37510dd)
 - [x] 5.3 Execute three isolated agent lenses across all 28 tracks and publish the fail-closed orchestrator synthesis. (`docs/panel-reports/20260802/manifest.json`)

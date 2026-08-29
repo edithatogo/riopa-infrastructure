@@ -25,6 +25,7 @@
     ,"urn:riopa:evidence:spatial-quality-conductor-regeneration:2026-08-25"
     ,"urn:riopa:evidence:spatial-quality-waiver-governance:2026-08-25"
     ,"urn:riopa:evidence:spatial-quality-benchmark-report:2026-08-25"
+    ,"SPATIAL-QUALITY-INPUT-HARDENING-20260829"
   ],
   "target_release": "0.7.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

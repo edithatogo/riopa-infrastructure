@@ -1,0 +1,11 @@
+{
+  "evidence_id": "PUB-CITATION-REVISION-VALIDATION-20260829",
+  "schema": "riopa.publication-citation-revision-validation.v1",
+  "validator": "scripts/validate_publication_citation_readiness.py",
+  "observed_status": "lowercase-exact-revision-required",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "does not create a publication identifier or acceptance receipt",
+    "does not establish external reproduction, elapsed qualification, or release authority"
+  ]
+}

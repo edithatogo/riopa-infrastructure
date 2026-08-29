@@ -34,3 +34,4 @@
 ## Review fixes
 
 - [x] R1 Register the new spatial-sensitivity module in the Python 3.14 coverage inventory after CI discovery. (`docs/module-coverage-inventory-20260825.json`; commit `cd0bd72`)
+- [x] R2 Reject non-object quality reports and profiles before evaluation with controlled fail-closed errors (`src/riopa_provenance/spatial_quality.py`, `tests/test_spatial_quality.py`, `docs/spatial-quality-input-hardening-20260829.json`).
