@@ -29,6 +29,10 @@ def validate_bundle(bundle: object) -> tuple[str, ...]:
         errors.append("schema_version must be 1.0.0")
     if bundle.get("record_type") != "operations_report_bundle":
         errors.append("record_type must be operations_report_bundle")
+    if not isinstance(bundle.get("report_id"), str) or not bundle["report_id"].strip():
+        errors.append("report_id must be non-empty")
+    if not isinstance(bundle.get("generated_at"), str) or not bundle["generated_at"].strip():
+        errors.append("generated_at must be non-empty")
     if bundle.get("publication_status") != "candidate-not-published":
         errors.append("publication_status must remain candidate-not-published")
     if bundle.get("promotion_allowed") is not False:
@@ -37,7 +41,7 @@ def validate_bundle(bundle: object) -> tuple[str, ...]:
     unsigned = {key: value for key, value in bundle.items() if key != "bundle_sha256"}
     if not isinstance(supplied, str) or not _SHA256.fullmatch(supplied):
         errors.append("bundle_sha256 must be a lowercase SHA-256 digest")
-    elif supplied != sha256_json(unsigned):
+    elif not _digest_matches(unsigned, supplied):
         errors.append("bundle_sha256 does not match bundle content")
     components = bundle.get("components")
     if not isinstance(components, dict) or set(components) != set(COMPONENTS):
@@ -64,6 +68,15 @@ def validate_bundle(bundle: object) -> tuple[str, ...]:
     ):
         errors.append("nonclaims must retain the unqualified-input boundary")
     return tuple(dict.fromkeys(errors))
+
+
+def _digest_matches(value: dict[str, Any], supplied: str) -> bool:
+    """Return digest equality, failing closed when the value is not JSON-safe."""
+
+    try:
+        return supplied == sha256_json(value)
+    except TypeError, ValueError:
+        return False
 
 
 def build_bundle(payload: dict[str, Any], *, report_id: str, generated_at: str) -> dict[str, Any]:

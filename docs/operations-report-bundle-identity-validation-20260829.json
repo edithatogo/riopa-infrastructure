@@ -1,0 +1,11 @@
+{
+  "evidence_id": "OPS-REPORT-BUNDLE-IDENTITY-VALIDATION-20260829",
+  "schema": "riopa.operations-report-bundle-identity-validation.v1",
+  "validator": "scripts/build_operations_report_bundle.py::validate_bundle",
+  "observed_status": "report-identity-fields-required",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This validates report identity fields only and is not an operational observation.",
+    "It does not establish elapsed SLO history, provider restoration or release authority."
+  ]
+}

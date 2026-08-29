@@ -44,6 +44,7 @@
   `tests/test_operations_report_bundle.py`,
   `docs/operations-report-bundle-integrity-20260829.json`). Hosted SLO,
   preservation, elapsed and authority gates remain open.
+- [x] R7 Require non-empty report identity and generation fields in the candidate bundle validator, with negative coverage (`scripts/build_operations_report_bundle.py`, `tests/test_operations_report_bundle.py`, `docs/operations-report-bundle-identity-validation-20260829.json`).
 
 - [x] R5 Validate bounded coverage reports against their content digest, source-count shape and non-promotable national-coverage boundary (`src/riopa_provenance/archive_operations.py`, `tests/test_archive_operations.py`, `docs/operations-coverage-report-integrity-20260829.json`). Hosted national observations and release gates remain open.
 
