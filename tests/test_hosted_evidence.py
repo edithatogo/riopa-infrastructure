@@ -65,6 +65,9 @@ def test_current_hosted_pipeline_observation_preserves_recovery_gate() -> None:
         (ROOT / "docs/hosted-recovery-observation-20260829.json").read_text(encoding="utf-8")
     )
     assert evidence["status"] == "passed"
+    assert evidence["lane"] == "publication-linz-pipeline"
+    assert evidence["workflow_lane"] == "recovery-rollback"
+    assert evidence["source_artifact"].endswith("recovery-rollback-33236847804")
     assert evidence["qualification"]["exit_code"] == 0
     assert evidence["qualification"]["recovery_rollback_execution"] is False
     assert evidence["qualification"]["production_disaster_recovery"] is False
