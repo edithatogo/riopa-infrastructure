@@ -1,3 +1,4 @@
+import hashlib
 import json
 import subprocess
 import sys
@@ -42,9 +43,22 @@ def test_v040_tag_and_conformance_report(tmp_path):
     assert report["channel"] == "technical-preview"
     assert "results" not in report
     assert len(report["evidence_bindings"]) == 3
-    assert all(binding["sha256"] for binding in report["evidence_bindings"])
+    assert len(report["source_revision"]) == 40
+    assert all(char in "0123456789abcdef" for char in report["source_revision"])
+    for binding in report["evidence_bindings"]:
+        evidence_path = ROOT / binding["path"]
+        assert evidence_path.is_file()
+        assert binding["sha256"] == hashlib.sha256(evidence_path.read_bytes()).hexdigest()
     assert "not newly executed results" in report["interpretation"]
     assert report["limitations"]
+
+    repeat = tmp_path / "report-repeat.json"
+    subprocess.run(
+        [sys.executable, "scripts/build_release_conformance_report.py", str(repeat)],
+        cwd=ROOT,
+        check=True,
+    )
+    assert output.read_bytes() == repeat.read_bytes()
 
 
 def test_v040_report_fails_closed_for_missing_evidence(tmp_path):
@@ -98,5 +112,8 @@ def test_v040_publication_receipt_preserves_preview_boundaries():
         "total": 65,
     }
     assert receipt["preservation"]["zenodo"].startswith("not_attempted")
-    assert receipt["preservation"]["hugging_face"].startswith("not_attempted")
+    hugging_face = receipt["preservation"]["hugging_face"]
+    assert hugging_face["status"] == "published_and_publicly_reverified"
+    assert len(hugging_face["commit"]) == 40
+    assert hugging_face["public_anonymous_byte_matches"] == 7
     assert any("90-day beta" in claim for claim in receipt["non_claims"])
