@@ -18,7 +18,8 @@
     "urn:riopa:evidence:simulation-boundary-performance:2026-08-25",
     "urn:riopa:evidence:simulation-reference-crosscheck:2026-08-25",
     "urn:riopa:evidence:simulation-calibration-sensitivity:2026-08-25",
-    "urn:riopa:evidence:simulation-v1-reference-contract:2026-08-25"
+    "urn:riopa:evidence:simulation-v1-reference-contract:2026-08-25",
+    "urn:riopa:evidence:wp010-single-developer-closeout:2026-08-29"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

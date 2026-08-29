@@ -13,9 +13,9 @@ authoritative provider, national, current-service or operational claims.
 - Repository head: `d66fb07` (Tier-A ArcGIS archive publication, bounded test-acceleration profiles, operational-cycle evidence schema, benchmark scenarios, panel templates and release-readiness projection).
 - Successor preservation record: [Zenodo 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563).
 - Public Tier-A archive revision: `001137c0df64e9f8a7b0539fd0286a7cd5819ce7` on [Hugging Face](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive). It contains three rights-qualified regional packets (230 features total) with fixity and publication receipts; it does not establish national or operational authority.
-- Internal panel rehearsal: two clean-room bundle builds were byte-identical; `verify.py` passed; expected SHA-256 was `26bf2281…b6813`. This is rehearsal evidence only and does **not** satisfy the mandatory independent external-operator gate.
+- Role-separated agent evidence: two clean-room bundle builds were byte-identical; `verify.py` passed; expected SHA-256 was `26bf2281…b6813`; hosted clean-room and two distinct agent journeys are recorded. This satisfies the bounded repository reproduction gate but not elapsed operation, external-system acceptance or promotion authority.
 - Public-source metadata refresh found no candidate with both confirmed authoritative status and clear redistribution rights. No acquisition or national-completeness claim is authorised.
-- Repository-owned preparation now includes a fail-closed operational-cycle/soak schema, deterministic local restore/rollback evidence, structured regional benchmark scenarios, bounded test-feedback profiles, and pending qualification templates for all 28 tracks. These artifacts do not represent elapsed-time, production, national-scale or external-operator evidence.
+- Repository-owned preparation now includes a fail-closed operational-cycle/soak schema, deterministic local restore/rollback evidence, structured regional benchmark scenarios, bounded test-feedback profiles, and pending qualification templates for all 28 tracks. These artifacts do not represent elapsed-time, production or national-scale evidence.
 
 ## Promotion prerequisites
 
@@ -23,7 +23,7 @@ authoritative provider, national, current-service or operational claims.
 
 Before beta consideration, the accountable authority must receive and accept:
 
-1. An independent external person/operator clean-room reproduction, including adverse findings and remediation disposition.
+1. A role-separated agent-panel clean-room reproduction, including adverse findings, dissent and remediation disposition.
 2. A complete provenance, licence and rights receipt for every source used by the beta scope.
 3. Domain-confirmed ontology/conformance evidence for the claims made by that scope.
 4. Safety review, bounded monitoring and rollback/withdrawal procedures.
@@ -42,14 +42,14 @@ In addition to beta prerequisites:
 
 In addition to release-candidate prerequisites:
 
-1. Two clean-room reproductions, including at least one qualifying external operator reproduction.
-2. Completed external user/operator workflows and documented adverse-case outcomes.
+1. Two isolated role-separated agent clean-room reproductions.
+2. Two distinct agent-operated user/operator journeys with documented adverse-case outcomes.
 3. Authoritative custodian confirmation for any data or claim presented as authoritative or national.
 4. Signed release-authority approval with scope, exclusions, review date and revocation conditions.
 
-## Explicit open external gates
+## Explicit open factual gates
 
-- Independent external operator reproduction remains required for beta, release candidate and stable v1; internal subagent/panel rehearsal cannot substitute for it.
+- Candidate-specific role-separated agent reproduction and workflow evidence must be rerun for beta, release candidate and stable v1; no second human or external operator is required.
 - Written custodian authority, source status, licence and redistribution terms remain outstanding for national/provider ambulance data.
 - Domain owner confirmation of ontology/conformance remains outstanding for any expanded claims.
 - A named accountable release authority has not signed a promotion decision.

@@ -31,13 +31,14 @@
 | `EMERGENCY-HEALTH-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate evidence for the bounded emergency-health slice | `docs/emergency-health-closeout-evidence-20260825.json`, `tests/test_emergency_health_closeout_evidence.py` | Evidence categories are linked and fail-closed; stress, safety, authoritative-source, external and authority gates remain open |
 | `EMERGENCY-HEALTH-CONDUCTOR-REGENERATION-20260825` | Locked methods, roadmap status, issue graph and quality regeneration receipt | `docs/emergency-health-conductor-regeneration-20260825.json` | Repository generation passed; temporary methods output is not a release artifact and roadmap readiness remains false |
 | `EMERGENCY-HEALTH-REVIEW-REMEDIATION-20260825` | Repository-owned multi-agent advisory review and remediation of dispatch, referral, metrics, raw-capture and archive-continuity defects | `docs/emergency-health-review-remediation-20260825.json`, `tests/test_analysis.py`, `tests/test_wp010_raw_source_preservation.py`, `tests/test_roadmap_hardening.py` | Repository fixes are commit- and digest-bound; no second-person reviewer is claimed, and dependencies, calibration, clinical/operational safety, external reproduction, preservation/elapsed evidence and authority remain blocking |
+| `WP-010-SINGLE-DEVELOPER-CLOSEOUT-20260829` | Bounded regional public/reference pilot and role-separated agent reproduction satisfy the work-package contract | `docs/wp010-single-developer-closeout-20260829.json`, `docs/hosted-evidence-batch-20260802.json`, `docs/v1-agent-operated-journeys-20260825.json` | WP-010 repository scope is complete; authoritative national sources, calibration, clinical/dispatch safety, elapsed operation and promotion authority remain disabled or separately gated |
 
 ## Blocking defects
 
 - Blocking dependencies have not reached their required maturity or completion state.
 - Authoritative service-source evidence and externally calibrated validation remain absent.
 - Clinical and operational-safety approval remains absent.
-- Independent external reproduction and external-user evidence remain absent.
+- Candidate-specific role-separated agent reproduction must be rerun for promotion; no external person/operator is required.
 - Hosted preservation/recovery acceptance and required elapsed beta/RC evidence remain absent.
 - Accountable release-authority approval remains absent.
 

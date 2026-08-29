@@ -20,7 +20,7 @@
 
 ## 4. Safety and publication review
 
-- [x] 4.1 Conduct the repository-owned four-lens operational-safety, methods, governance and reproducibility panel review. The bounded packet qualifies repository contracts while leaving clinical, external, hosted, preservation and authority gates open (`docs/emergency-health-panel-qualification-20260825.json`, `tests/test_emergency_health_panel_qualification.py`).
+- [x] 4.1 Conduct the repository-owned four-lens operational-safety, methods, governance and reproducibility panel review. The bounded packet qualifies repository contracts while leaving clinical, hosted, preservation and authority gates open (`docs/emergency-health-panel-qualification-20260825.json`, `tests/test_emergency_health_panel_qualification.py`).
 - [x] 4.2 Resolve or bound deployment-risk findings. The packet records explicit non-operational boundaries and unresolved safety findings; it does not approve deployment (`docs/emergency-health-panel-qualification-20260825.json`).
 - [x] 4.3 Prepare an unpublished benchmark research-object candidate and explicit non-operational limitations. Publication and preservation acceptance remain open (`docs/emergency-health-research-object-candidate-20260825.json`, `tests/test_emergency_health_panel_qualification.py`).
 
@@ -31,10 +31,11 @@
 
 ## Track closeout
 
-- [x] C.1 Link implementation, test, review, migration, bounded stress-comparison and release evidence in `index.md` for the repository-owned closeout slice; stress, safety, authoritative-source, external and authority gates remain explicitly pending (`docs/emergency-health-closeout-evidence-20260825.json`, `docs/emergency-health-stress-comparison-contract-20260825.json`, `tests/test_emergency_health_closeout_evidence.py`; `1f84f9c`).
+- [x] C.1 Link implementation, test, review, migration, bounded stress-comparison and release evidence in `index.md` for the repository-owned closeout slice; stress, safety, authoritative-source and authority gates remain explicitly pending (`docs/emergency-health-closeout-evidence-20260825.json`, `docs/emergency-health-stress-comparison-contract-20260825.json`, `tests/test_emergency_health_closeout_evidence.py`; `1f84f9c`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/emergency-health-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.8.0`, with authoritative-source, clinical/safety, operational, preservation, external participation and accountable-authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.8.0`, with authoritative-source, clinical/safety, operational, preservation and accountable-authority gates unresolved.
+- [x] C.5 Close the bounded WP-010 work-package scope under the sole-developer role-separated agent policy; authoritative national sources, clinical/dispatch safety, elapsed operation and promotion authority remain track-level gates (`docs/wp010-single-developer-closeout-20260829.json`, `tests/test_wp010_single_developer_closeout.py`).
 
 ## Review fixes
 

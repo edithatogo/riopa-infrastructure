@@ -1,11 +1,12 @@
 # Evidence completion plan
 
-This plan separates repository-owned preparation from evidence that must be
-supplied by an external operator, source custodian or release authority.
+This plan separates repository-owned agent-panel evidence from facts that must
+be supplied by a source custodian, hosted system, preservation provider or the
+sole accountable release authority.
 
-| Evidence lane | Repository preparation | Required external evidence | Current state | Fallback |
+| Evidence lane | Repository preparation | Required closure evidence | Current state | Fallback |
 |---|---|---|---|---|
-| WP-010 reproduction | Frozen handoff, approval record, digest-bound validator and report template | Independent operator, clean-room logs, exact revision/bundle digest, findings, safety/rights adjudication and immutable report | Blocked; issue #149 remains open; internal panel remains rehearsal only | Technical-preview/pilot only |
+| WP-010 reproduction | Frozen handoff, digest-bound validator, hosted clean-room run and two distinct owner-authorized agent journeys | Role-separated agent logs, exact revision/bundle digest, findings, dissent/disposition and content-bound synthesis for each promotion candidate | **Complete for the bounded work package**; issue #149 is superseded by the sole-developer policy | Re-run the agent panel when a promotion candidate changes; do not infer elapsed operation or external-system acceptance |
 | Source authority | Metadata-only request packet, acquisition schema and fail-closed validator | Custodian, exact revision, rights, coverage, freshness, exclusions, withdrawal route and expiry | Deferred; no acquisition authorised | Regional-only scope |
 | Ontology/conformance | Versioned fixture, migration tests, digest-bound manifest and structural validator | Persistent publication ID, licence, SHACL result and non-Python round-trip | Unpublished/bounded-pending | Python-only unpublished profile |
 | Pilot governance | Decision record, rights inventory, source disposition and Zenodo record | Review/adjudication on or before 2026-08-31, earlier on material change | Approved bounded pilot | Preserve current packet; issue successor on change |
@@ -17,7 +18,7 @@ supplied by an external operator, source custodian or release authority.
 
 ## Operating sequence
 
-1. Obtain the external reproduction report.
+1. Re-run the role-separated agent panel for any changed promotion candidate.
 2. Complete the bounded-pilot review by 2026-08-31 or sooner on trigger.
 3. Publish and qualify the ontology if formal authority is required.
 4. Seek national source authority only if scope expansion is approved.

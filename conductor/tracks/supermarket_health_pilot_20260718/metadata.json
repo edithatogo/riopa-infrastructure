@@ -19,7 +19,8 @@
     "urn:riopa:evidence:supermarket-preregistration:2026-08-25",
     "urn:riopa:evidence:supermarket-reference-comparison:2026-08-25",
     "urn:riopa:evidence:supermarket-conductor-regeneration:2026-08-25",
-    "urn:riopa:evidence:supermarket-integrated-reference-core:2026-08-25"
+    "urn:riopa:evidence:supermarket-integrated-reference-core:2026-08-25",
+    "urn:riopa:evidence:wp010-single-developer-closeout:2026-08-29"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

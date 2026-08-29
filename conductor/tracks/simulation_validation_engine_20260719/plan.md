@@ -40,3 +40,4 @@
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains active/M1 because domain, calibration, independent and operational gates are unresolved.
+- [x] C.5 Close the bounded WP-010 work-package scope under the sole-developer role-separated agent policy; empirical calibration, elapsed operation and promotion authority remain track-level gates (`docs/wp010-single-developer-closeout-20260829.json`, `tests/test_wp010_single_developer_closeout.py`).
