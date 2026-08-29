@@ -7,7 +7,9 @@
     "facility frame packet SHA-256",
     "unique role, session and model identity per panel member",
     "environment and commands",
+    "UTC evaluation timestamp",
     "results, findings and artifact SHA-256 digests",
+    "unique safe-relative artifact paths",
     "dissent, remediation and rerun outcome",
     "orchestrator synthesis",
     "promotion_allowed=false"

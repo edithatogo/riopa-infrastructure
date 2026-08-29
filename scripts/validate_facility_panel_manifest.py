@@ -11,7 +11,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from pathlib import Path
+from datetime import UTC, datetime
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
@@ -52,6 +53,13 @@ def validate(path: Path) -> list[str]:
         errors.append("source_revision must be a 40-character lowercase Git SHA-1")
     if not SHA256.fullmatch(str(manifest.get("packet_sha256", ""))):
         errors.append("packet_sha256 must be a 64-character lowercase SHA-256")
+    evaluated_at = str(manifest.get("evaluated_at", ""))
+    try:
+        parsed_time = datetime.fromisoformat(evaluated_at.replace("Z", "+00:00"))
+        if parsed_time.tzinfo != UTC or not evaluated_at.endswith("Z"):
+            raise ValueError
+    except ValueError:
+        errors.append("evaluated_at must be an ISO-8601 UTC timestamp ending in Z")
     panel = manifest.get("panel")
     if not isinstance(panel, list) or not panel:
         errors.append("panel must be a non-empty list")
@@ -72,6 +80,8 @@ def validate(path: Path) -> list[str]:
         for field in ("commands", "findings", "dissent", "remediation"):
             if not isinstance(member.get(field), list):
                 errors.append(f"{prefix}.{field} must be a list")
+        if not isinstance(member.get("commands"), list) or not member["commands"]:
+            errors.append(f"{prefix}.commands must be a non-empty list")
         if not isinstance(member.get("results"), dict) or not member["results"]:
             errors.append(f"{prefix}.results must be a non-empty object")
         if not isinstance(member.get("rerun_outcome"), str) or not member["rerun_outcome"].strip():
@@ -86,6 +96,7 @@ def validate(path: Path) -> list[str]:
         if not isinstance(digests, list) or not digests:
             errors.append(f"{prefix}.artifact_digests must be a non-empty list")
         else:
+            artifact_paths: list[str] = []
             for digest_index, digest in enumerate(digests):
                 if not isinstance(digest, dict) or not isinstance(digest.get("path"), str):
                     errors.append(
@@ -93,6 +104,22 @@ def validate(path: Path) -> list[str]:
                     )
                 elif not SHA256.fullmatch(str(digest.get("sha256", ""))):
                     errors.append(f"{prefix}.artifact_digests[{digest_index}].sha256 is invalid")
+                else:
+                    artifact_path = digest["path"]
+                    parsed_path = PurePosixPath(artifact_path)
+                    if (
+                        parsed_path.is_absolute()
+                        or ".." in parsed_path.parts
+                        or not artifact_path
+                        or str(parsed_path) != artifact_path
+                    ):
+                        errors.append(
+                            f"{prefix}.artifact_digests[{digest_index}].path must be a safe "
+                            "canonical relative path"
+                        )
+                    artifact_paths.append(artifact_path)
+            if len(artifact_paths) != len(set(artifact_paths)):
+                errors.append(f"{prefix}.artifact_digests paths must be unique")
     if len(roles) != len(set(roles)):
         errors.append("panel roles must be unique")
     if set(roles) != EXPECTED_ROLES:

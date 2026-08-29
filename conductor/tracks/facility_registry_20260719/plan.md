@@ -57,6 +57,8 @@ promote a source to authoritative status without a documented panel disposition.
   roles/session manifest; retain G.1 partial until a real content-bound rerun
   supplies those fields. (`scripts/validate_facility_panel_manifest.py`,
   `docs/facility-panel-manifest-contract-20260829.json`)
+- [x] 5.6 Harden the panel manifest contract with exact four-lens cardinality,
+  UTC timestamps and safe unique artifact paths (review fix; 2026-08-29).
 
 ## Evidence gates still open
 
