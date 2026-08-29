@@ -1,0 +1,22 @@
+{
+  "evidence_id": "FACILITY-SNAPSHOT-NESTED-VALIDATION-20260829",
+  "schema": "riopa.facility.snapshot-validation.v1",
+  "scope": "repository-owned validation of supplied public facility snapshot candidates",
+  "requirement": "Snapshot validators must fail closed on malformed assertion rows, duplicate identities, non-public rows, and malformed exclusion ledgers.",
+  "implementation": [
+    "src/riopa_provenance/facility_registry.py::validate_snapshot_record",
+    "tests/test_facility_registry.py::test_snapshot_record_rejects_malformed_nested_assertions_and_ledger"
+  ],
+  "observed_status": "negative-contract-tests-pass",
+  "validation": "uv run pytest -q tests/test_facility_registry.py",
+  "promotion_allowed": false,
+  "open_gates": [
+    "G.5 accountable release-authority decision",
+    "publication and factual completeness",
+    "independent reproduction issue #149"
+  ],
+  "nonclaims": [
+    "This validates only the structure of a supplied candidate payload.",
+    "It does not establish source authority, completeness, currentness, or external acceptance."
+  ]
+}

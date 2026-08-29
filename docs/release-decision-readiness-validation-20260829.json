@@ -1,0 +1,11 @@
+{
+  "evidence_id": "V1-RELEASE-DECISION-READINESS-VALIDATION-20260829",
+  "schema": "riopa.release-decision-readiness-validation.v1",
+  "validator": "scripts/validate_release_decision_readiness.py",
+  "observed_status": "non-authorising-projection-validated",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This validates projection structure only and does not approve any release tier.",
+    "It does not replace accountable authority, external participant, preservation or elapsed evidence."
+  ]
+}
