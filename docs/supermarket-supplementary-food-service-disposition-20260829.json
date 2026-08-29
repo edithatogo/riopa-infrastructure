@@ -1,0 +1,41 @@
+{
+  "schema": "riopa.supermarket-supplementary-food-service-disposition.v1",
+  "record_id": "urn:riopa:evidence:supermarket-supplementary-food-service:2026-08-29",
+  "source": {
+    "source_id": "osm-new-zealand-food-service",
+    "archive_provider": "huggingface-dataset",
+    "archive_repository": "edithatogo/riopa-public-data-archive",
+    "archive_revision": "001137c0df64e9f8a7b0539fd0286a7cd5819ce7",
+    "archive_path": "snapshots/osm-new-zealand-food-service/payload",
+    "payload_sha256": "67ae6bf14b3d7283ecdedb5ca8392a993c170e442e84ff97b143e84cd3d02eab",
+    "terms_url": "https://c0mm0.com/entry/food-services-new-zealand-osm-data/",
+    "observed_at": "2026-08-02T15:20:56Z"
+  },
+  "archive_validation": {
+    "status": "captured-and-content-addressed",
+    "record_count": 13650,
+    "record_shape": "JSON array of OSM food-service records",
+    "type_counts": {
+      "restaurant": 4646,
+      "fast_food": 3825,
+      "cafe": 3649,
+      "bar": 665,
+      "pub": 648,
+      "ice_cream": 160,
+      "food_court": 45,
+      "biergarten": 12
+    },
+    "exact_supermarket_type_count": 0
+  },
+  "disposition": {
+    "usable_for": ["context-only sensitivity reference"],
+    "supermarket_registry_input": false,
+    "promotion_allowed": false
+  },
+  "non_claims": [
+    "The packet contains generic food-service records, not a supermarket registry.",
+    "OSM records do not establish completeness, currentness, authority, affordability or operation.",
+    "No supermarket records are inferred from restaurant, cafe or fast-food types.",
+    "No live endpoint was used; all counts are derived from the immutable archived payload."
+  ]
+}
