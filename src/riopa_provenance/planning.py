@@ -6,7 +6,7 @@ import re
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import date
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 from .hashing import sha256_json
 
@@ -606,22 +606,23 @@ def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
         "missing_feasibility_provisions",
     )
     valid_findings = isinstance(findings, Mapping) and set(findings) == set(expected)
+    finding_map = cast(Mapping[str, Any], findings) if valid_findings else None
     if not valid_findings:
         errors.append("findings must contain the three bounded categories")
     else:
         for name in expected:
-            values = findings[name]
+            values = finding_map[name]
             if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
                 errors.append(f"findings.{name} must be a list of strings")
         valid_findings = all(
-            isinstance(findings[name], list)
-            and all(isinstance(value, str) for value in findings[name])
+            isinstance(finding_map[name], list)
+            and all(isinstance(value, str) for value in finding_map[name])
             for name in expected
         )
     if not isinstance(counts, Mapping) or any(
-        counts.get(name) != len(findings[name])
+        counts.get(name) != len(finding_map[name])
         for name in expected
-        if isinstance(findings, Mapping) and isinstance(findings.get(name), list)
+        if finding_map is not None and isinstance(finding_map.get(name), list)
     ):
         errors.append("finding_counts must match findings")
     valid_counts = isinstance(counts, Mapping) and all(
@@ -634,7 +635,7 @@ def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
         if total != sum(counts.get(name, 0) for name in expected):
             errors.append("total_finding_count must match finding_counts")
         supplied_digest = report.get("report_sha256")
-        if supplied_digest != sha256_json(dict(findings)):
+        if supplied_digest != sha256_json(dict(finding_map)):
             errors.append("report_sha256 does not match findings")
     status = report.get("status")
     if status not in {"quantified-unresolved", "no-unresolved-references"}:
