@@ -124,6 +124,7 @@ def test_historical_snapshot_digest_is_self_consistent() -> None:
     )
     digest = artifact.pop("snapshot_sha256")
     assert digest == sha256_json(artifact)
+    assert artifact["status"] == "blocked"
 
 
 def test_successor_snapshot_digest_is_self_consistent() -> None:
@@ -132,3 +133,4 @@ def test_successor_snapshot_digest_is_self_consistent() -> None:
     )
     digest = artifact.pop("snapshot_sha256")
     assert digest == sha256_json(artifact)
+    assert artifact["status"] == "blocked"

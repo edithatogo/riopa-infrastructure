@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "validating",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-26T09:25:15Z",
+  "updated_at": "2026-08-29T07:16:15Z",
   "description": "Make source capture, CI, release and distribution trustworthy through threat modelling, least privilege, signed artifacts, dependency integrity and exercised incident response.",
   "depends_on": [
     "foundation_architecture_20260718"
@@ -21,7 +21,8 @@
     "urn:riopa:evidence:security-bounded-contract-closeout:2026-08-25",
     "urn:riopa:evidence:security-negative-coverage:2026-08-25",
     "urn:riopa:evidence:security-exercise-negative-coverage:2026-08-25",
-    "urn:riopa:evidence:security-m2-promotion:2026-08-26"
+    "urn:riopa:evidence:security-m2-promotion:2026-08-26",
+    "urn:riopa:evidence:v0.4.0-preservation-wp006-reconciliation:2026-08-29"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

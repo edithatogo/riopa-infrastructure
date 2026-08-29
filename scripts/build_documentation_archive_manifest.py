@@ -46,7 +46,10 @@ def build(root: Path) -> dict[str, Any]:
                 "A manifest and local hashes do not prove external usability, publication "
                 "or preservation acceptance."
             ),
-            "External user/operator evidence and accountable release authority remain required.",
+            (
+                "Owner-authorized agent-operated user/operator journey evidence and "
+                "accountable release authority remain required."
+            ),
         ],
     }
 

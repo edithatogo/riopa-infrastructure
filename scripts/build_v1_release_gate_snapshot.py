@@ -240,8 +240,9 @@ def build_snapshot(root: Path, *, evaluated_revision: str, generated_at: str) ->
                 "release authority."
             ),
             (
-                "Hosted observations do not substitute for elapsed duration, external "
-                "reproduction or preservation acceptance."
+                "Hosted observations do not substitute for elapsed duration, isolated "
+                "role-separated clean-room agent reproduction or stable-candidate "
+                "preservation acceptance."
             ),
             (
                 "A candidate revision change resets exact-candidate soak; observations "

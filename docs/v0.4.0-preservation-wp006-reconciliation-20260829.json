@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "preservation_and_work_package_reconciliation",
+  "evidence_id": "urn:riopa:evidence:v0.4.0-preservation-wp006-reconciliation:2026-08-29",
+  "generated_at": "2026-08-29T07:16:15Z",
+  "evaluated_revision": "ca3df8dccd00519c0e92b8321643283a9864e758",
+  "release": "0.4.0",
+  "channel": "public-technical-preview",
+  "verified_receipts": [
+    {
+      "path": "docs/v0.4.0-release-mirror-20260829.json",
+      "sha256": "ad3944e450b6ee4854e71b82e74a5451d7e55c8ba6500ffcaaf5c6e9d4f16ed6",
+      "provider": "huggingface",
+      "result": "published-and-anonymously-byte-reverified"
+    },
+    {
+      "path": "docs/v0.4.0-zenodo-preservation-20260829.json",
+      "sha256": "b47bff2cf776de0426c9362f8bdf3c9dcb248987aba1c42422963445fa8fd154",
+      "provider": "zenodo",
+      "result": "published-doi-and-anonymously-byte-reverified"
+    }
+  ],
+  "resolved_blockers": [
+    "v0.4.0-hugging-face-public-mirror-pending",
+    "v0.4.0-zenodo-deposition-pending",
+    "v0.4.0-hugging-face-and-zenodo-acceptance-receipts-pending"
+  ],
+  "wp006": {
+    "status": "active",
+    "repository_owned_work": "partial",
+    "public_preview_preservation_preparation": "complete",
+    "preservation_slice": "complete-for-v0.4.0-public-technical-preview",
+    "remaining_acceptance": [
+      "standards-complete producer-consumer conformance for every claimed profile",
+      "trusted signed conformance report bound to the eventual stable candidate",
+      "stable-candidate signed artifacts and preservation receipts",
+      "provider-backed restore or separate-failure-domain recovery evidence where claimed"
+    ]
+  },
+  "agent_panel_policy": {
+    "path": "docs/single-developer-agent-advisory-policy-20260826.md",
+    "sha256": "899731b551a6ffe95e3b4a2335108085c0573c43dbf6adb1fe2b8be214d29c38",
+    "prospective_reproduction_gate": "isolated-role-separated-subagent-panel",
+    "other_human_required": false
+  },
+  "nonclaims": [
+    "The v0.4.0 receipts do not preserve an eventual stable-v1 candidate.",
+    "Public byte verification does not prove provider-backed restore, production disaster recovery, elapsed operation or stable release authority.",
+    "A role-separated subagent panel is repository-owned advisory evidence, not a human, third-party implementation or external-system receipt."
+  ]
+}

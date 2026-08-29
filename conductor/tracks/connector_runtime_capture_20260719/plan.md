@@ -9,7 +9,7 @@
 ## 2. Adapter implementations
 
 - [x] 2.1 Implement bounded ArcGIS REST and WFS/OGC adapter safeguards. HTTPS/no-userinfo request contracts, deterministic pagination, count/identity reconciliation and redaction are executable-tested; live-source acceptance, rights/publication qualification and national/council capture remain pending. Evidence: `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `tests/test_arcgis.py`, `tests/test_wfs.py`.
-- [x] 2.2 Implement bounded Koordinates/API and document/file adapter safeguards. Unsafe initial download URLs are rejected before redirect capture and exact export/job/download evidence is preserved; live-source acceptance, rights/publication qualification and external reproduction remain pending. Evidence: `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py`.
+- [x] 2.2 Implement bounded Koordinates/API and document/file adapter safeguards. Unsafe initial download URLs are rejected before redirect capture and exact export/job/download evidence is preserved; live-source acceptance, rights/publication qualification and isolated role-separated clean-room agent reproduction remain pending. Evidence: `src/riopa_provenance/linz_export.py`, `tests/test_linz_export.py`.
 - [x] 2.3 Implement bounded optional WARC/WACZ web-evidence packaging with policy controls. Offline packaging of verified content-addressed captures is deterministic and fail-closed on URL, secret, size, policy and digest checks; live capture, rights/publication, preservation and external qualification remain pending. Evidence: `src/riopa_provenance/web_archive.py`, `tests/test_web_archive.py`. (04ea0f7)
 
 ### Review fixes
@@ -24,7 +24,7 @@
 
 ## 4. Real-source validation
 
-- [~] 4.1 Validate archived national and council/planning capture packets end to end. The Stats NZ Meshblock packet and Wellington District Plan capture set are content-addressed and validated without network access; fresh live capture, rights/publication qualification, preservation, hosted monitoring and external reproduction remain open (`scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py`).
+- [~] 4.1 Validate archived national and council/planning capture packets end to end. The Stats NZ Meshblock packet and Wellington District Plan capture set are content-addressed and validated without network access; fresh live capture, rights/publication qualification, preservation, hosted monitoring and isolated role-separated clean-room agent reproduction remain open (`scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py`).
 - [x] 4.2 Conduct the repository-owned security, rights, load and evidence-completeness review through a bounded four-lens agent panel. The packet and deterministic checks are repository-owned evidence; live-source capture, rights/publication, preservation, hosted monitoring and agent-panel qualification gates remain open (`docs/connector-panel-qualification-20260825.json`, `tests/test_connector_panel_qualification.py`).
 - [x] 4.3 Publish the bounded adapter contract and authoring guide. `docs/connector-adapter-authoring-guide-20260824.md` and `docs/connector-adapter-contract-20260824.json` describe the implemented surfaces and controls without claiming stable production qualification; live-source, rights/publication, preservation and external gates remain pending. (`tests/test_connector_authoring_contract.py`)
 

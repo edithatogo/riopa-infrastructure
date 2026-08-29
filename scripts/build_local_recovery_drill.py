@@ -68,7 +68,8 @@ def build_report() -> dict[str, Any]:
                 "acceptance or release authority."
             ),
             (
-                "External operator and external-user evidence remain mandatory for "
+                "Role-separated agent-operator and agent-user journey evidence remains "
+                "mandatory for "
                 "beta, RC and stable-v1."
             ),
         ],

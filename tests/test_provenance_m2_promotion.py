@@ -34,7 +34,11 @@ def test_provenance_m2_promotion_is_exact_tree_and_fail_closed() -> None:
 
     assert metadata["status"] == "validating"
     assert metadata["current_maturity"] == "M2"
-    assert metadata["blocking_defect_maturity"] == receipt["remaining_blocking_gates"]
+    expected_gates = dict(receipt["remaining_blocking_gates"])
+    expected_gates["isolated-role-separated-clean-room-agent-reproduction"] = expected_gates.pop(
+        "independent-external-reproduction"
+    )
+    assert metadata["blocking_defect_maturity"] == expected_gates
     assert receipt["evidence_id"] in metadata["evidence"]
 
     readiness = release_readiness(ROOT, "0.3.0")

@@ -34,7 +34,7 @@
   "owner_repository": "edithatogo/riopa-infrastructure",
   "owner_role": "Publication and validation lead",
   "review_roles": [
-    "External-user workflow analyst",
+    "User-workflow analyst",
     "API/schema analyst",
     "Research-object analyst",
     "Operations analyst",

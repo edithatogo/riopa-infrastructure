@@ -19,7 +19,7 @@
 - [x] 3.3 Define and validate restore/disaster-recovery exercise reports. Evidence: `docs/operations-dr-exercise-contract-20260824.json`, `src/riopa_provenance/recovery.py`, `tests/test_recovery.py`; report construction and failure-preservation validation pass, while actual production-representative execution remains pending. (contract commit: `437d50c1efcb883a95a3dcdf838f5c63624dcc32`)
 - [x] 3.4 Define content-addressed multi-target replication with GitHub Actions, Hugging Face and Zenodo contingencies. (`docs/evidence-redundancy-plan-20260805.json`, `scripts/build_redundancy_manifest.py`)
 - [x] 3.5 Generate a digest manifest for every hosted evidence bundle and expose pending target acceptance explicitly. (`tests/test_redundancy_manifest.py`)
-- [x] 3.6 Validate the required GitHub Actions, Hugging Face and Zenodo acceptance-receipt shape against one exact bundle digest. The validator is repository-owned and does not create target receipts; credentials, factual target acceptance and preservation qualification remain open (`scripts/build_redundancy_manifest.py:validate_replication_receipts`, `docs/replication-receipt-validation-contract-20260825.json`).
+- [x] 3.6 Validate the required GitHub Actions, Hugging Face and Zenodo acceptance-receipt shape against one exact bundle digest. The validator is repository-owned; successor receipts now prove public target acceptance for the exact `v0.4.0` release assets, while per-campaign bundles, the eventual stable candidate and provider-backed restore remain open (`scripts/build_redundancy_manifest.py:validate_replication_receipts`, `docs/replication-receipt-validation-contract-20260825.json`, `docs/v0.4.0-preservation-wp006-reconciliation-20260829.json`).
 
 ## 4. Beta operation and stable gate
 
@@ -34,6 +34,7 @@
 - [x] 4.5 Bind RC-soak execution to the supplied exact candidate revision so later documentation commits do not silently change the candidate. (`.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_campaign_v2.py`; the 30-day duration remains pending.)
 - [x] 4.9 Bind scheduled protected-main observations to the current `github.sha` and derive revision-specific campaign/qualification identifiers so merges automatically reset elapsed segments (`docs/beta-campaign-schedule-hardening-20260829.json`, `.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`).
 - [x] 4.10 Verify the immutable public Hugging Face release mirror from an unauthenticated scheduled workflow, failing closed on receipt drift, HTTP errors or byte mismatches (`scripts/verify_hf_release_mirror.py`, `.github/workflows/verify-release-mirror.yml`, `docs/hf-release-mirror-verifier-20260829.json`, `tests/test_hf_release_mirror_verifier.py`). This improves redundancy observability but does not establish preservation acceptance or stable-v1 gates.
+- [x] 4.11 Reconcile the anonymously verified Hugging Face mirror and Zenodo DOI as complete preservation evidence for the `v0.4.0` public technical preview only; retain stable-candidate replication, provider restore, elapsed-operation and authority gates (`docs/v0.4.0-preservation-wp006-reconciliation-20260829.json`, `tests/test_v040_preservation_wp006_reconciliation.py`).
 
 ## Review fixes
 

@@ -28,7 +28,14 @@ def test_methods_research_objects_m2_promotion_is_exact_tree_and_fail_closed() -
 
     assert metadata["status"] == "validating"
     assert metadata["current_maturity"] == "M2"
-    assert metadata["blocking_defect_maturity"] == receipt["remaining_blocking_gates"]
+    expected_gates = dict(receipt["remaining_blocking_gates"])
+    expected_gates["repeated-supported-environment-use-and-preservation-operation"] = (
+        expected_gates.pop("repeated-external-use-and-preservation-operation")
+    )
+    expected_gates["isolated-role-separated-clean-room-agent-reproduction"] = expected_gates.pop(
+        "independent-external-reproduction"
+    )
+    assert metadata["blocking_defect_maturity"] == expected_gates
     assert receipt["evidence_id"] in metadata["evidence"]
 
     readiness = release_readiness(ROOT, "0.4.0")

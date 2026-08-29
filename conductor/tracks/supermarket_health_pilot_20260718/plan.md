@@ -4,7 +4,7 @@
 
 - [x] 1.1 Preregister baseline estimands, geography, population, exclusions and discrepancy handling as a synthetic/non-clinical reference template. (`docs/supermarket-health-preregistration-20260825.json`, `tests/test_supermarket_preregistration.py`; `d309f4c`)
 - [x] 1.2 Implement the fail-closed density and population-normalised reference calculation over caller-supplied records (`src/riopa_provenance/supermarket.py`, `tests/test_supermarket_density.py`, `docs/supermarket-density-reference-contract-20260825.json`). Real supermarket archives, motivating-study reproduction and population authority remain open.
-- [x] 1.3 Publish a transparent descriptor comparison with the motivating work, without claiming reproduction when the motivating-study source payload is absent. (`src/riopa_provenance/supermarket.py`, `tests/test_supermarket_density.py`, `docs/supermarket-reference-comparison-20260825.json`; rights-cleared source archives, factual external reproduction and empirical health evidence remain open)
+- [x] 1.3 Publish a transparent descriptor comparison with the motivating work, without claiming reproduction when the motivating-study source payload is absent. (`src/riopa_provenance/supermarket.py`, `tests/test_supermarket_density.py`, `docs/supermarket-reference-comparison-20260825.json`; rights-cleared source archives, isolated role-separated clean-room agent reproduction and empirical health evidence remain open)
 
 ## 2. Access and health geography
 

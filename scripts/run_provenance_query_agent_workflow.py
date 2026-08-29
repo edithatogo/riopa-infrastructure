@@ -48,7 +48,7 @@ def run(manifest: Path, schema_dir: Path | None, database: Path) -> dict[str, An
         "claim_classification": "repository-reference-only",
         "promotion_allowed": False,
         "open_gates": [
-            "external user/operator workflows",
+            "owner-authorized agent-operated user/operator workflows",
             "remote access-control qualification",
             "MCP transport qualification",
             "production-scale and release-authority evidence",

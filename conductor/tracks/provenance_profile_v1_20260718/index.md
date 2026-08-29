@@ -27,8 +27,8 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `PROVENANCE-CONFORMANCE-CONTRACT-CLOSEOUT-20260825` | Repository-owned bounded projection-shape and positive/negative/round-trip conformance suite | `src/riopa_provenance/crate.py`, `tests/test_crate.py`, `tests/test_validation_failures.py`, `tests/test_conformance_parity_receipt.py` | Bounded checks and Python/Node parity receipt pass; semantic-loss qualification, trusted signed attestation and full-profile qualification remain open |
 | `PROVENANCE-MIGRATION-CONTRACT-CLOSEOUT-20260825` | Repository-owned additive profile compatibility matrix and migration fixture | `docs/provenance-profile-compatibility-matrix-20260825.json`, `docs/provenance-profile-migration-1.0.0-to-1.1.0.json`, `tests/test_conformance.py` | Migration contract passes; publication identifier, signed attestation, independent qualification and stable release remain open |
 | `PROVENANCE-PANEL-QUALIFICATION-20260825` | Bounded four-lens agent-panel qualification of the provenance profile and migration contract | `docs/provenance-profile-panel-qualification-20260825.json`, `tests/test_provenance_profile_panel_qualification.py` | Repository evidence is qualified for bounded scope; non-Python parity, semantic-loss, publication, signed-attestation and authority gates remain open |
-| `PROVENANCE-V1-CANDIDATE-FREEZE-20260825` | Digest-bound unsigned candidate freeze for the native profile, compatibility, migration, panel and TypeScript artifacts | `docs/provenance-profile-v1-candidate-freeze-20260825.json`, `tests/test_provenance_profile_candidate_freeze.py` | Candidate integrity passes; trusted signature, full semantic/non-Python, publication, external reproduction and authority gates remain open |
-| `PROVENANCE-M2-PROMOTION-20260827` | Exact-tree event, hashing, retry, lineage, assistance, negative-fixture, Python/Node parity, projection, migration and candidate evidence | `docs/provenance-m2-promotion-20260827.json`, `tests/test_provenance_m2_promotion.py`, [PR #619](https://github.com/edithatogo/riopa-infrastructure/pull/619) | Promoted to experimental M2 only; representative integration, repeated external use, RC qualification, publication, external reproduction and stable authority remain open |
+| `PROVENANCE-V1-CANDIDATE-FREEZE-20260825` | Digest-bound unsigned candidate freeze for the native profile, compatibility, migration, panel and TypeScript artifacts | `docs/provenance-profile-v1-candidate-freeze-20260825.json`, `tests/test_provenance_profile_candidate_freeze.py` | Candidate integrity passes; trusted signature, full semantic/non-Python, publication, isolated role-separated clean-room agent reproduction and authority gates remain open |
+| `PROVENANCE-M2-PROMOTION-20260827` | Exact-tree event, hashing, retry, lineage, assistance, negative-fixture, Python/Node parity, projection, migration and candidate evidence | `docs/provenance-m2-promotion-20260827.json`, `tests/test_provenance_m2_promotion.py`, [PR #619](https://github.com/edithatogo/riopa-infrastructure/pull/619) | Promoted to experimental M2 only; representative integration, repeated external use, RC qualification, publication, isolated role-separated clean-room agent reproduction and stable authority remain open |
 
 ## Repository-owned closeout slice (2026-08-24)
 
@@ -47,7 +47,7 @@ qualification remain open.
 - M4 requires repeated external profile use and SLO evidence.
 - M5 requires RC semantic, security, recovery, agent-panel and soak qualification.
 - M6 requires a stable published identifier, signed attestation, independent
-  external reproduction and accountable stable-release authority.
+  isolated role-separated clean-room agent reproduction and accountable stable-release authority.
 
 The repository-owned executable and negative tests, bounded Python/Node parity,
 projection validation, migration fixture, agent-panel advice and digest-bound
@@ -64,9 +64,10 @@ or release-authority approval.
 
 ## Decisions, exceptions and limitations
 
-- This is a single-developer repository. Agent panels may assess provenance
-  packets, but cannot substitute for independent external reproduction or
-  accountable release-authority approval.
+- This is a single-developer repository. Role-separated subagent panels provide
+  the repository clean-room reproduction evidence but cannot substitute for
+  trusted signing, external-system receipts or accountable release-authority
+  approval.
 - PROV and OpenLineage files are interoperability projections, not source
   truth or proof of standards certification.
 - The bounded public, non-operational technical-preview scope remains in

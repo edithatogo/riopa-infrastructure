@@ -35,7 +35,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | `CONNECTOR-PANEL-QUALIFICATION-20260825` | Bounded four-lens security, rights, load and evidence-completeness qualification | `docs/connector-panel-qualification-20260825.json`, `tests/test_connector_panel_qualification.py` | Repository evidence is qualified for bounded scope; live-source, preservation, hosted monitoring and external gates remain open |
 | `CONNECTOR-RELIABILITY-CONTRACT-CLOSEOUT-20260825` | Repository-owned retry/rate-limit/quarantine, capability-drift and diagnostic-bundle controls | `src/riopa_provenance/retry.py`, `src/riopa_provenance/health.py`, `src/riopa_provenance/diagnostics.py`, `src/riopa_provenance/quarantine.py`, and focused tests | Bounded controls pass; hosted long-running operation, live monitoring, alert delivery and real-source qualification remain open |
 | `CONNECTOR-ADAPTER-SAFEGUARDS-CLOSEOUT-20260825` | Repository-owned ArcGIS/WFS, Koordinates and offline WARC/WACZ adapter safeguards | `src/riopa_provenance/arcgis.py`, `src/riopa_provenance/wfs.py`, `src/riopa_provenance/linz_export.py`, `src/riopa_provenance/web_archive.py`, and focused tests | Bounded request, pagination, redirect, integrity and packaging checks pass; live-source, rights/publication, preservation and external qualification remain open |
-| `CONNECTOR-ARCHIVED-REAL-SOURCE-PAIR-20260826` | Content-addressed national and council/planning source packets validated without network access | `scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py` | Archived-input candidate passes; fresh live capture, rights/publication, preservation, hosted monitoring and external reproduction remain open |
+| `CONNECTOR-ARCHIVED-REAL-SOURCE-PAIR-20260826` | Content-addressed national and council/planning source packets validated without network access | `scripts/validate_archived_real_source_pair.py`, `docs/connector-archived-real-source-pair-20260826.json`, `tests/test_archived_real_source_pair.py` | Archived-input candidate passes; fresh live capture, rights/publication, preservation, hosted monitoring and isolated role-separated clean-room agent reproduction remain open |
 | `CONNECTOR-M2-PROMOTION-20260829` | Qualify the experimental executable-proof boundary against an exact source tree | `docs/connector-runtime-m2-promotion-20260829.json`, `tests/test_connector_runtime_m2_promotion.py` | Repository-owned adapter, negative-path, reliability, diagnostic and archived-pair evidence passes; M3-M6 gates remain open |
 
 ## Blocking maturity gates
@@ -66,16 +66,17 @@ dispatch claim is enabled here.
 
 ## Decisions, exceptions and limitations
 
-- This is a single-developer repository. Agent-panel lenses may assess
-  packets, but cannot substitute for factual external operator/user evidence,
-  hosted execution or accountable release-authority approval.
+- This is a single-developer repository. General agent-panel review does not by
+  itself establish a candidate-bound role-separated user/operator journey; the
+  journey must be executed and content-bound. Panels cannot manufacture hosted
+  execution or accountable release-authority approval.
 - Offline fixtures and deterministic packaging are not live-source evidence.
 - Missing rights, source status, hosted receipts or participant evidence are
   pending rather than negative evidence.
 
 ## Review and handover
 
-Required agent-panel lenses: Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, External-user workflow analyst.
+Required agent-panel lenses: Provenance analyst, Security analyst, Data-governance analyst, Operations analyst, User-workflow analyst.
 
 This index is deliberately non-assertive while the track remains `validating`
 at experimental M2. Status may advance only through `conductor/workflow.md`; evidence must be

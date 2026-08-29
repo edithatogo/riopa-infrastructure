@@ -168,7 +168,10 @@ def run_lane(lane: str, output_dir: Path) -> dict:
         "log": {"path": log_path.name, "sha256": log_digest},
         "non_claims": [
             "This receipt is not production disaster-recovery qualification.",
-            "This receipt is not external operator or external user evidence.",
+            (
+                "This receipt is hosted-system evidence, not a role-separated agent "
+                "user/operator journey."
+            ),
             "This receipt does not satisfy elapsed soak duration by itself.",
             "This receipt is not an accountable release-authority decision.",
             "Retrospective supplements do not count as elapsed beta or RC soak observations.",

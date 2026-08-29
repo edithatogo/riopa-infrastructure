@@ -24,7 +24,7 @@
 
 - [x] 4.1 Conduct the repository-owned orchestrated agent-panel qualification. Four lenses assess the bounded profile and preserve open non-Python, semantic-loss, publication, signed-attestation and authority gates; this does not substitute for those gates (`docs/provenance-profile-panel-qualification-20260825.json`, `tests/test_provenance_profile_panel_qualification.py`).
 - [x] 4.2 Define the bounded profile compatibility matrix and migration fixture. (`docs/provenance-profile-compatibility-matrix-20260825.json`, `docs/provenance-profile-migration-1.0.0-to-1.1.0.json`, `tests/test_conformance.py`; additive migration validation passes, while the persistent publication identifier and stable release remain open.)
-- [x] 4.3 Freeze an unsigned, digest-bound v1 normative profile candidate (`docs/provenance-profile-v1-candidate-freeze-20260825.json`, `tests/test_provenance_profile_candidate_freeze.py`). Signing, publication, full semantic/non-Python, external reproduction and authority gates remain open.
+- [x] 4.3 Freeze an unsigned, digest-bound v1 normative profile candidate (`docs/provenance-profile-v1-candidate-freeze-20260825.json`, `tests/test_provenance_profile_candidate_freeze.py`). Signing, publication, full semantic/non-Python, isolated role-separated clean-room agent reproduction and authority gates remain open.
 
 ## Track closeout
 
