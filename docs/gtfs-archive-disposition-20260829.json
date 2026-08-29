@@ -1,0 +1,33 @@
+{
+  "schema": "riopa.gtfs-archive-disposition.v1",
+  "record_id": "urn:riopa:evidence:gtfs-archive-disposition:2026-08-29",
+  "archive_repository": "edithatogo/riopa-public-data-archive",
+  "archive_revision": "001137c0df64e9f8a7b0539fd0286a7cd5819ce7",
+  "sources": [
+    {
+      "source_id": "auckland-transport-static-gtfs",
+      "manifest_path": "snapshots/auckland-transport-static-gtfs/manifest.json",
+      "archive_status": "unavailable",
+      "upstream_status": 404,
+      "payload_present": false
+    },
+    {
+      "source_id": "metro-christchurch-static-gtfs",
+      "manifest_path": "snapshots/metro-christchurch-static-gtfs/manifest.json",
+      "archive_status": "unavailable",
+      "upstream_status": 401,
+      "payload_present": false
+    }
+  ],
+  "disposition": {
+    "network_claims_enabled": false,
+    "timetable_claims_enabled": false,
+    "next_action": "acquire an exact-edition public payload and terms receipt before conversion",
+    "promotion_allowed": false
+  },
+  "non_claims": [
+    "Unavailable dispositions are not timetable archives and cannot support routing, frequency or service-date claims.",
+    "No live endpoint was used by RIOPA analysis; these statuses are archived receipts from the public archive packet.",
+    "Regional GTFS acquisition does not establish national completeness or operational validity."
+  ]
+}
