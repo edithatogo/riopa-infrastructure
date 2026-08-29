@@ -74,14 +74,21 @@ def validate_status(document: Any) -> tuple[str, ...]:
             if not isinstance(observation, dict):
                 errors.append(f"{prefix} must be an object")
                 continue
-            for field in ("revision", "candidate_revision"):
-                value = observation.get(field)
-                if value is not None and (
-                    not isinstance(value, str) or _REVISION.fullmatch(value) is None
-                ):
-                    errors.append(
-                        f"{prefix}.{field} must be a 40-character lowercase hexadecimal revision"
-                    )
+            revision = observation.get("revision")
+            if not isinstance(revision, str) or not revision.strip():
+                errors.append(f"{prefix}.revision is required")
+            elif _REVISION.fullmatch(revision) is None:
+                errors.append(
+                    f"{prefix}.revision must be a 40-character lowercase hexadecimal revision"
+                )
+            candidate = observation.get("candidate_revision")
+            if candidate is not None and (
+                not isinstance(candidate, str) or _REVISION.fullmatch(candidate) is None
+            ):
+                errors.append(
+                    f"{prefix}.candidate_revision must be a 40-character lowercase "
+                    "hexadecimal revision"
+                )
     rc_gate = document.get("rc_gate")
     if not isinstance(rc_gate, dict):
         errors.append("rc_gate must be an object")

@@ -128,3 +128,22 @@ def test_campaign_status_rejects_malformed_supplemental_revisions() -> None:
         "lowercase hexadecimal" in error
         for error in errors
     )
+
+
+def test_campaign_status_requires_supplemental_revision() -> None:
+    document = {
+        "source_revision": "a" * 40,
+        "observations": [
+            {
+                "run_id": "1",
+                "lane": "operational-observation",
+                "status": "passed",
+                "revision": "a" * 40,
+            }
+        ],
+        "supplemental_observations": [{}],
+        "elapsed_gate": {},
+        "rc_gate": {},
+    }
+    errors = validate_status(document)
+    assert "supplemental_observations[0].revision is required" in errors

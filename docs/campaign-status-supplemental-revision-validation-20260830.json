@@ -1,0 +1,14 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-SUPPLEMENTAL-REVISION-VALIDATION-20260830",
+  "schema": "riopa.campaign-status-supplemental-revision-validation.v1",
+  "validator": "scripts/validate_campaign_status.py",
+  "supersedes": "docs/campaign-status-revision-validation-20260830.json",
+  "observed_status": "supplemental-revision-required-and-format-validated",
+  "required_fields": ["supplemental_observations[].revision"],
+  "optional_validated_fields": ["supplemental_observations[].candidate_revision"],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This validates campaign status input syntax only.",
+    "It does not establish hosted execution, elapsed qualification, preservation acceptance or release authority."
+  ]
+}
