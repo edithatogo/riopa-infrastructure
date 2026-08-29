@@ -48,5 +48,8 @@
     "Quantitative methods analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "Empirical/public-data design, spatial confounding and MAUP sensitivity remain open.",
+    "Missing-data workflow, preregistration and methods agent-panel qualification remain open."
+  ]
 }
