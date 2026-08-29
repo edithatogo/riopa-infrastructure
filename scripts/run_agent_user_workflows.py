@@ -74,7 +74,12 @@ def main() -> int:
             }
         )
     )
-    return 0 if all(r["status"] == "passed" for r in report["workflows"]) else 1
+    from scripts.validate_agent_user_workflow_report import validate_report
+
+    errors = validate_report(report)
+    for error in errors:
+        print(error)
+    return 1 if errors else 0
 
 
 if __name__ == "__main__":

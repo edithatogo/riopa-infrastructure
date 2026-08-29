@@ -6,12 +6,13 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Any
 
 _CLASSIFICATION = "owner-authorized-agent-workflows-not-independent-human-evidence"
 
 
-def validate_report(report: dict[str, Any]) -> tuple[str, ...]:
+def validate_report(report: object) -> tuple[str, ...]:
+    if not isinstance(report, dict):
+        return ("report must be a JSON object",)
     errors: list[str] = []
     if report.get("schema_version") != "1.0.0":
         errors.append("schema_version must be 1.0.0")
@@ -34,12 +35,21 @@ def validate_report(report: dict[str, Any]) -> tuple[str, ...]:
             errors.append(f"{prefix}.workflow_id must be unique")
         else:
             identifiers.add(workflow_id)
-        if not isinstance(workflow.get("command"), list) or not workflow["command"]:
+        command = workflow.get("command")
+        if not isinstance(command, list) or not command:
             errors.append(f"{prefix}.command must be non-empty")
-        if workflow.get("status") not in {"passed", "failed"}:
+        elif any(not isinstance(item, str) or not item.strip() for item in command):
+            errors.append(f"{prefix}.command must contain non-empty strings")
+        status = workflow.get("status")
+        if status not in {"passed", "failed"}:
             errors.append(f"{prefix}.status must be passed or failed")
-        if not isinstance(workflow.get("exit_code"), int):
+        exit_code = workflow.get("exit_code")
+        if type(exit_code) is not int:
             errors.append(f"{prefix}.exit_code must be an integer")
+        elif status == "passed" and exit_code != 0:
+            errors.append(f"{prefix}.passed status requires exit_code 0")
+        elif status == "failed" and exit_code == 0:
+            errors.append(f"{prefix}.failed status requires non-zero exit_code")
     nonclaims = report.get("non_claims")
     text = " ".join(str(item) for item in nonclaims) if isinstance(nonclaims, list) else ""
     if "not external participant evidence" not in text:
