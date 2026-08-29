@@ -1,8 +1,18 @@
+import pytest
+
 from riopa_provenance.spatial_quality import (
+    SpatialQualityError,
     build_quality_benchmark_report,
     evaluate_quality_waiver,
     evaluate_spatial_quality,
 )
+
+
+def test_spatial_quality_rejects_non_object_inputs() -> None:
+    with pytest.raises(SpatialQualityError, match="quality report must be an object"):
+        evaluate_spatial_quality([], {})  # type: ignore[arg-type]
+    with pytest.raises(SpatialQualityError, match="quality profile must be an object"):
+        evaluate_spatial_quality({}, [])  # type: ignore[arg-type]
 
 
 def _fixtures() -> tuple[dict, dict]:

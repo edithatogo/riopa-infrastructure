@@ -1,0 +1,10 @@
+{
+  "evidence_id": "SPATIAL-QUALITY-INPUT-HARDENING-20260829",
+  "schema": "riopa.spatial-quality-input-hardening.v1",
+  "scope": "bounded repository-owned quality evaluation inputs",
+  "requirement": "non-object quality reports and profiles fail with controlled validation errors",
+  "observed_status": "negative-contract-tests-pass",
+  "promotion_allowed": false,
+  "open_gates": ["heterogeneous real-council validation", "national completeness", "external and release authority"],
+  "nonclaims": ["Input-shape hardening is not real-data quality or national-scale evidence."]
+}

@@ -60,6 +60,10 @@ def evaluate_spatial_quality(
     ``promotion_allowed=False`` until the applicable external and elapsed-time
     evidence exists.
     """
+    if not isinstance(report, Mapping):
+        raise SpatialQualityError("quality report must be an object")
+    if not isinstance(profile, Mapping):
+        raise SpatialQualityError("quality profile must be an object")
     metrics = profile.get("metrics")
     if not isinstance(metrics, list):
         raise SpatialQualityError("profile.metrics must be a list")

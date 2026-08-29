@@ -49,6 +49,7 @@ def run(output_dir: Path) -> dict[str, Any]:
         "scope": "bounded-regional-public-datasets-only-non-operational-technical-preview",
         "non_claims": [
             "This report is not independent human review.",
+            "This report is not external participant evidence.",
             "This report does not satisfy elapsed beta or RC soak duration.",
             "This report does not authorize promotion.",
             "Network, timetable, facility, national, clinical and dispatch claims remain disabled.",
@@ -73,7 +74,14 @@ def main() -> int:
             }
         )
     )
-    return 0 if all(r["status"] == "passed" for r in report["workflows"]) else 1
+    # When this file is executed directly, its directory is on ``sys.path``;
+    # import the sibling validator without requiring ``scripts`` to be a package.
+    from validate_agent_user_workflow_report import validate_report
+
+    errors = validate_report(report)
+    for error in errors:
+        print(error)
+    return 1 if errors else 0
 
 
 if __name__ == "__main__":

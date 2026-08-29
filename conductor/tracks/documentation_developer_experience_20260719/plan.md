@@ -28,6 +28,10 @@
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; external usability, preservation and release-authority gates remain explicitly pending (`docs/documentation-closeout-evidence-20260825.json`, `tests/test_documentation_closeout_evidence.py`; `c79bda0`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/documentation-conductor-regeneration-20260825.json`).
+
+## Review fixes
+
+- [x] R1 Add a fail-closed validator for the bounded owner-authorized agent workflow report, retaining the external-participant and promotion boundaries (`scripts/validate_agent_user_workflow_report.py`, `tests/test_agent_user_workflow_report_validator.py`, `docs/documentation-agent-workflow-report-validation-20260829.json`; 2026-08-29).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.9.0`, with external usability, preservation, RC-soak and authority gates unresolved.
 
