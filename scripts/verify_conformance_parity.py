@@ -11,8 +11,8 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
-from riopa_provenance.hashing import sha256_json
 from riopa_provenance.canonical import validate_conformance_corpus
+from riopa_provenance.hashing import sha256_json
 
 
 def build_receipt(root: Path) -> dict[str, Any]:
