@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from jsonschema import Draft202012Validator
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -17,6 +19,16 @@ def test_archived_supermarket_source_is_revision_and_digest_bound() -> None:
     assert validation["premise_type_matching_supermarket_case_insensitive"] == 241
     assert validation["matching_status_counts"]["Active"] == 108
     assert record["qualification"]["promotion_allowed"] is False
+
+
+def test_archived_supermarket_source_matches_schema() -> None:
+    record = json.loads(
+        (ROOT / "docs/supermarket-archived-source-qualification-20260829.json").read_text()
+    )
+    schema = json.loads(
+        (ROOT / "schemas/supermarket-archive-qualification.schema.json").read_text()
+    )
+    assert list(Draft202012Validator(schema).iter_errors(record)) == []
 
 
 def test_archived_supermarket_source_preserves_scope_non_claims() -> None:
