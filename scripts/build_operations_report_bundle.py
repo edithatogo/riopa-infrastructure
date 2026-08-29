@@ -29,6 +29,10 @@ def validate_bundle(bundle: object) -> tuple[str, ...]:
         errors.append("schema_version must be 1.0.0")
     if bundle.get("record_type") != "operations_report_bundle":
         errors.append("record_type must be operations_report_bundle")
+    if not isinstance(bundle.get("report_id"), str) or not bundle["report_id"].strip():
+        errors.append("report_id must be non-empty")
+    if not isinstance(bundle.get("generated_at"), str) or not bundle["generated_at"].strip():
+        errors.append("generated_at must be non-empty")
     if bundle.get("publication_status") != "candidate-not-published":
         errors.append("publication_status must remain candidate-not-published")
     if bundle.get("promotion_allowed") is not False:

@@ -44,3 +44,12 @@ def test_bundle_validator_rejects_bad_component_digest() -> None:
     bundle = build_bundle({"slo": {"observations": 1}}, report_id="ops", generated_at="2026-08-29")
     bundle["components"]["slo"]["content_sha256"] = "bad"
     assert any("candidate input requires" in error for error in validate_bundle(bundle))
+
+
+def test_bundle_validator_rejects_missing_identity_fields() -> None:
+    bundle = build_bundle({}, report_id="ops", generated_at="2026-08-29")
+    bundle["report_id"] = ""
+    bundle["generated_at"] = None
+    errors = validate_bundle(bundle)
+    assert "report_id must be non-empty" in errors
+    assert "generated_at must be non-empty" in errors
