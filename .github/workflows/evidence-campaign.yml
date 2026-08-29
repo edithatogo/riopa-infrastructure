@@ -80,6 +80,12 @@ jobs:
       EVIDENCE_ACTIVATION_AUTHORITY: ${{ github.event.inputs.activation_authority || '' }}
       EVIDENCE_ACTIVATED_AT: ${{ github.event.inputs.activated_at || '' }}
     steps:
+      - name: Validate exact revision input
+        run: |
+          if [[ ! "$EVIDENCE_CANDIDATE_REVISION" =~ ^[0-9a-fA-F]{40}$ ]]; then
+            echo "EVIDENCE_CANDIDATE_REVISION must be a full 40-character Git commit SHA" >&2
+            exit 1
+          fi
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
