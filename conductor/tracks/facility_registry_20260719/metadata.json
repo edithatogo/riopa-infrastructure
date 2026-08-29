@@ -4,7 +4,7 @@
   "phase": "Analytics",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-26T02:00:00Z",
+  "updated_at": "2026-08-29T08:00:00Z",
   "description": "Reconcile supermarkets, health services and other facilities from multiple public assertions while preserving disagreement, confidence, temporal history, geocoding and rights evidence.",
   "depends_on": [
     "canonical_domain_schemas_ontology_20260719",
@@ -50,6 +50,6 @@
     "stale-pr-175-blocker-wording-repaired: 2026-08-25",
     "public-health-source-family archived: config/archive-sources/rangitikei-public-ambulance-2023.json; reconciliation and authority remain pending",
     "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
-    "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; factual adjudication remains open"
+    "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; content-bound panel manifest and factual adjudication remain open"
   ]
 }
