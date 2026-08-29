@@ -35,7 +35,8 @@ gates remain open (`docs/repository-template-conductor-regeneration-20260825.jso
 
 ## Blocking defects
 
-- None recorded for the bounded WP-008 adapter slice.
+- Cross-repository adoption, hosted execution and preservation/rollback evidence remain open.
+- Independent reproduction, contributor feedback and release-authority evidence remain open.
 
 ## Decisions, exceptions and limitations
 

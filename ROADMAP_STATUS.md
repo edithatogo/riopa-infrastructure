@@ -22,7 +22,7 @@ Stable target: `1.0.0`
 ### 0.2.0 — v1 roadmap and maturity architecture (NOT READY)
 
 - Maturity gate: `M1`
-- Tracks qualified: 13/29
+- Tracks qualified: 9/29
 - Gates: 4/4 passed
 - Blockers:
   - track accessibility_network_engine_20260719 has blocking defects
@@ -31,14 +31,18 @@ Stable target: `1.0.0`
   - track facility_location_engine_20260718 has blocking defects
   - track facility_registry_20260719 has blocking defects
   - track health_outcomes_causal_methods_20260719 has blocking defects
+  - track interoperability_conformance_sdks_20260719 has blocking defects
   - track nz_spatial_archive_mvp_20260718 has blocking defects
   - track nz_spatial_archive_operations_20260719 has blocking defects
   - track operations_preservation_sre_20260719 has blocking defects
   - track performance_scalability_reliability_20260719 has blocking defects
   - track planning_rules_linkage_20260718 has blocking defects
   - track planning_system_transition_20260719 has blocking defects
+  - track provenance_query_api_20260719 has blocking defects
   - track publication_validation_20260718 has blocking defects
+  - track repository_template_adoption_20260718 has blocking defects
   - track simulation_validation_engine_20260719 has blocking defects
+  - track spatial_quality_temporality_20260718 has blocking defects
   - track supermarket_health_pilot_20260718 has blocking defects
   - track v1_release_hardening_20260719 has blocking defects
 
