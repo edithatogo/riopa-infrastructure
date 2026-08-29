@@ -155,3 +155,10 @@ def test_linkage_error_report_validator_rejects_non_numeric_counts() -> None:
     report["finding_counts"]["missing_link_targets"] = "bad"
     errors = validate_planning_linkage_error_report(report)
     assert "finding_counts must contain non-negative integers" in errors
+
+
+def test_linkage_error_report_validator_rejects_non_string_findings_without_raising() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["findings"]["missing_link_targets"] = [object()]
+    errors = validate_planning_linkage_error_report(report)
+    assert "findings.missing_link_targets must be a list of strings" in errors

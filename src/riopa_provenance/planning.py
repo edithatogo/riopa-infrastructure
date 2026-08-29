@@ -605,13 +605,19 @@ def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
         "unlinked_crosswalk_sources",
         "missing_feasibility_provisions",
     )
-    if not isinstance(findings, Mapping) or set(findings) != set(expected):
+    valid_findings = isinstance(findings, Mapping) and set(findings) == set(expected)
+    if not valid_findings:
         errors.append("findings must contain the three bounded categories")
     else:
         for name in expected:
             values = findings[name]
             if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
                 errors.append(f"findings.{name} must be a list of strings")
+        valid_findings = all(
+            isinstance(findings[name], list)
+            and all(isinstance(value, str) for value in findings[name])
+            for name in expected
+        )
     if not isinstance(counts, Mapping) or any(
         counts.get(name) != len(findings[name])
         for name in expected
@@ -623,7 +629,7 @@ def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
     )
     if isinstance(counts, Mapping) and not valid_counts:
         errors.append("finding_counts must contain non-negative integers")
-    if isinstance(findings, Mapping) and isinstance(counts, Mapping) and valid_counts:
+    if valid_findings and isinstance(counts, Mapping) and valid_counts:
         total = report.get("total_finding_count")
         if total != sum(counts.get(name, 0) for name in expected):
             errors.append("total_finding_count must match finding_counts")
