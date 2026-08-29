@@ -1,0 +1,14 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-RETROSPECTIVE-OBSERVATION-20260830-26BC0B4",
+  "schema_version": "1.0.0",
+  "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "campaign_id": "supplemental-retrospective-20260830-26bc0b4",
+  "qualification_epoch": "supplemental-retrospective-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-retrospective-supplement",
+  "observations": [{"lane": "retrospective-replay", "run_id": "33263289821", "architecture": "x86_64", "receipt_sha256": "02c0924446bab3cd27c66830781ee24d13bede22516ab193fef955f0cb1b20ee", "log_sha256": "8e0dd3e259f68c193f05e3e04acef6407a9ed36e5124438d9f9a04fbd0db33db", "receipt_path": "docs/hosted-evidence/33263289821/retrospective-replay.receipt.json", "log_path": "docs/hosted-evidence/33263289821/retrospective-replay.log"}],
+  "non_claims": [
+    "This retrospective supplement does not advance the beta or RC elapsed clocks.",
+    "It does not establish external operator or user evidence, national-scale performance, production recovery, preservation acceptance or release authority."
+  ]
+}
