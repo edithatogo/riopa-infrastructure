@@ -130,9 +130,7 @@ def test_v040_mirror_receipt_is_a_successor_record() -> None:
 
 
 def test_v040_zenodo_receipt_is_a_verified_successor_record() -> None:
-    receipt = json.loads(
-        (ROOT / "docs/v0.4.0-zenodo-preservation-20260829.json").read_text()
-    )
+    receipt = json.loads((ROOT / "docs/v0.4.0-zenodo-preservation-20260829.json").read_text())
     for predecessor in receipt["predecessors"]:
         path = ROOT / predecessor["path"]
         assert predecessor["sha256"] == hashlib.sha256(path.read_bytes()).hexdigest()
