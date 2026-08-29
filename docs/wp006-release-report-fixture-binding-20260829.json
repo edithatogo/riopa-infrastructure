@@ -1,0 +1,17 @@
+{
+  "evidence_id": "WP006-RELEASE-REPORT-FIXTURE-BINDING-20260829",
+  "schema": "riopa.wp006.release-report-fixture-binding.v1",
+  "scope": "bounded repository-owned technical-preview report validation",
+  "validator": "scripts/validate_release_conformance_report.py",
+  "requirement": "fixture_sha256 must match the checked-in conformance/v1/client-workflow.json bytes",
+  "observed_status": "negative-test-pass",
+  "promotion_allowed": false,
+  "open_gates": [
+    "trusted stable-candidate signing",
+    "provider-backed preservation",
+    "accountable release authority"
+  ],
+  "nonclaims": [
+    "Fixture binding does not establish external execution or release approval."
+  ]
+}

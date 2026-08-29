@@ -1,0 +1,24 @@
+{
+  "evidence_id": "WP006-DSSE-INPUT-ROBUSTNESS-20260829",
+  "schema": "riopa.wp006.dsse-input-robustness.v1",
+  "scope": "bounded repository-owned unsigned DSSE/in-toto envelope construction and decoding",
+  "validator": "src/riopa_provenance/attestation.py",
+  "requirements": [
+    "non-string predicate types and subjects fail with controlled AttestationError values",
+    "non-object predicates and envelopes fail with controlled AttestationError values",
+    "non-string or malformed payloads fail with controlled AttestationError values",
+    "decoded statements are subject to the same subject, predicate type and predicate object checks",
+    "signature entries are objects with string keyid (including keyless empty keyid) and valid base64 sig fields",
+    "builder and decoder apply the same strict statement-field validation"
+  ],
+  "observed_status": "negative-tests-pass",
+  "promotion_allowed": false,
+  "open_gates": [
+    "trusted DSSE signing",
+    "external producer/consumer interoperability",
+    "stable release authority"
+  ],
+  "nonclaims": [
+    "Unsigned envelope validation is not cryptographic verification or release approval."
+  ]
+}

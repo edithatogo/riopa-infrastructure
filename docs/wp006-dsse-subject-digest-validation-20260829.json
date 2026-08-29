@@ -1,0 +1,20 @@
+{
+  "evidence_id": "WP006-DSSE-SUBJECT-DIGEST-VALIDATION-20260829",
+  "schema": "riopa.wp006.dsse-subject-digest-validation.v1",
+  "scope": "bounded repository-owned DSSE/in-toto subject envelope",
+  "validator": "src/riopa_provenance/attestation.py:build_in_toto_statement",
+  "requirements": [
+    "each subject has a lowercase hexadecimal SHA-256 digest",
+    "digest length is exactly 64 characters"
+  ],
+  "observed_status": "negative-contract-tests-pass",
+  "promotion_allowed": false,
+  "open_gates": [
+    "trusted DSSE signing and protected-tag attestation",
+    "external producer/consumer acceptance",
+    "stable release authority"
+  ],
+  "nonclaims": [
+    "Unsigned envelope construction is not signed release evidence or external standards certification."
+  ]
+}

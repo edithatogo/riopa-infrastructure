@@ -35,22 +35,50 @@ def build_in_toto_statement(
 
     if not subjects:
         raise AttestationError("at least one attestation subject is required")
-    if not predicate_type.strip():
+    if not isinstance(predicate_type, str) or not predicate_type.strip():
         raise AttestationError("predicate type is required")
+    if not isinstance(predicate, Mapping):
+        raise AttestationError("predicate must be an object")
     normalised: list[dict[str, Any]] = []
     for subject in subjects:
-        if not isinstance(subject, Mapping) or not subject.get("name"):
+        if (
+            not isinstance(subject, Mapping)
+            or not isinstance(subject.get("name"), str)
+            or not subject["name"].strip()
+        ):
             raise AttestationError("each subject requires a name")
         digest = subject.get("digest")
-        if not isinstance(digest, Mapping) or not isinstance(digest.get("sha256"), str):
+        sha256 = digest.get("sha256") if isinstance(digest, Mapping) else None
+        if (
+            not isinstance(sha256, str)
+            or len(sha256) != 64
+            or any(character not in "0123456789abcdef" for character in sha256)
+        ):
             raise AttestationError("each subject requires a sha256 digest")
-        normalised.append({"name": str(subject["name"]), "digest": {"sha256": digest["sha256"]}})
+        normalised.append({"name": str(subject["name"]), "digest": {"sha256": sha256}})
     return {
         "_type": IN_TOTO_STATEMENT_TYPE,
         "subject": normalised,
         "predicateType": predicate_type,
         "predicate": dict(predicate),
     }
+
+
+def _validate_statement_fields(statement: Mapping[str, Any]) -> None:
+    subjects = statement.get("subject")
+    predicate_type = statement.get("predicateType")
+    predicate = statement.get("predicate")
+    if not isinstance(subjects, list) or not subjects:
+        raise AttestationError("in-toto subject must be a non-empty array")
+    if not isinstance(predicate_type, str):
+        raise AttestationError("in-toto predicateType must be a string")
+    if not isinstance(predicate, Mapping):
+        raise AttestationError("in-toto predicate must be an object")
+    build_in_toto_statement(
+        subjects,
+        predicate_type=predicate_type,
+        predicate=predicate,
+    )
 
 
 def build_dsse_envelope(statement: Mapping[str, Any]) -> dict[str, Any]:
@@ -63,6 +91,7 @@ def build_dsse_envelope(statement: Mapping[str, Any]) -> dict[str, Any]:
 
     if not isinstance(statement, Mapping) or statement.get("_type") != IN_TOTO_STATEMENT_TYPE:
         raise AttestationError("statement must be an in-toto Statement/v1 object")
+    _validate_statement_fields(statement)
     payload = base64.b64encode(_canonical_json(statement)).decode("ascii")
     return {"payloadType": DSSE_PAYLOAD_TYPE, "payload": payload, "signatures": []}
 
@@ -70,16 +99,37 @@ def build_dsse_envelope(statement: Mapping[str, Any]) -> dict[str, Any]:
 def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
     """Decode and validate the in-toto payload without trusting signatures."""
 
+    if not isinstance(envelope, Mapping):
+        raise AttestationError("DSSE envelope must be an object")
     if envelope.get("payloadType") != DSSE_PAYLOAD_TYPE:
         raise AttestationError("unsupported DSSE payload type")
     signatures = envelope.get("signatures")
     if not isinstance(signatures, list):
         raise AttestationError("DSSE signatures must be an array")
+    for signature in signatures:
+        if (
+            not isinstance(signature, Mapping)
+            or not isinstance(signature.get("keyid"), str)
+            or not isinstance(signature.get("sig"), str)
+            or not signature["sig"].strip()
+        ):
+            raise AttestationError("DSSE signatures must contain string keyid and sig")
+        try:
+            base64.b64decode(signature["sig"], validate=True)
+        except ValueError as exc:
+            raise AttestationError("DSSE signature sig must be valid base64") from exc
+    payload = envelope.get("payload")
+    if not isinstance(payload, str) or not payload:
+        raise AttestationError("DSSE payload is not valid base64 JSON")
     try:
-        decoded = base64.b64decode(str(envelope["payload"]), validate=True)
+        decoded = base64.b64decode(payload, validate=True)
         value = json.loads(decoded)
-    except (KeyError, ValueError, json.JSONDecodeError) as exc:
+    except (ValueError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise AttestationError("DSSE payload is not valid base64 JSON") from exc
     if not isinstance(value, dict) or value.get("_type") != IN_TOTO_STATEMENT_TYPE:
         raise AttestationError("DSSE payload is not an in-toto Statement/v1 object")
+    try:
+        _validate_statement_fields(value)
+    except (AttestationError, TypeError) as exc:
+        raise AttestationError("DSSE payload statement fields are invalid") from exc
     return value
