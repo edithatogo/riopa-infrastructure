@@ -65,6 +65,8 @@ jobs:
             --evidence docs/separate-rust-client-workflow-20260829.json \
             --evidence docs/wp006-external-rocrate-validation-20260829.json \
             --evidence dist/release/riopa-provenance.cdx.json
+          uv run python scripts/validate_release_conformance_report.py \
+            dist/release/riopa-conformance-report.json
           export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"
           tar \
             --sort=name \
