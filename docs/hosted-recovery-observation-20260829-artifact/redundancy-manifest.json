@@ -1,0 +1,28 @@
+{
+  "bundle_id": "recovery-20260829-main-recovery-rollback-33236847804",
+  "bundle_sha256": "3be73bc575c8681b367579f3d121d69eeb9cfdf85e960efebe752c42cfd70415",
+  "created_at": "2026-08-29T05:44:49.229367Z",
+  "files": [
+    {
+      "bytes": 80,
+      "path": "recovery-rollback.log",
+      "sha256": "32faef56d0289369b1ac111e68ee0bb7b2ed1bcf92d3f33b75313bd0556c3e6f"
+    },
+    {
+      "bytes": 1385,
+      "path": "recovery-rollback.receipt.json",
+      "sha256": "970bfa9c3c2d948e2a1526db06d3ac86e4f3470401a061ee53cca0044c309b17"
+    }
+  ],
+  "non_claims": [
+    "A manifest does not prove that a replication target accepted the bundle.",
+    "Pending targets must be verified by a later receipt before preservation is qualified."
+  ],
+  "replication_targets": [
+    {"kind": "github-actions-artifact", "required": true, "status": "created"},
+    {"kind": "huggingface-dataset", "required": true, "status": "pending-credential"},
+    {"kind": "zenodo", "required": true, "status": "pending-credential"}
+  ],
+  "schema": "riopa.evidence-redundancy-manifest.v1",
+  "source": "github-actions-artifact"
+}

@@ -1,0 +1,39 @@
+{
+  "evidence_id": "urn:riopa:evidence:hosted-pipeline-observation:2026-08-29",
+  "record_type": "hosted_pipeline_observation",
+  "schema_version": "1.0.0",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "run_id": "33236847804",
+  "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33236847804",
+  "lane": "publication-linz-pipeline",
+  "workflow_lane": "recovery-rollback",
+  "campaign_id": "recovery-20260829-main",
+  "qualification_epoch": "recovery-epoch-20260829-main",
+  "candidate_revision": "e225bd401683f90d293851f605a3c2fe8562373d",
+  "source_revision": "e225bd401683f90d293851f605a3c2fe8562373d",
+  "status": "passed",
+  "receipt_sha256": "970bfa9c3c2d948e2a1526db06d3ac86e4f3470401a061ee53cca0044c309b17",
+  "log_sha256": "32faef56d0289369b1ac111e68ee0bb7b2ed1bcf92d3f33b75313bd0556c3e6f",
+  "bundle_sha256": "3be73bc575c8681b367579f3d121d69eeb9cfdf85e960efebe752c42cfd70415",
+  "source_artifact": "evidence-campaign-recovery-20260829-main-recovery-rollback-33236847804",
+  "retained_evidence": [
+    "docs/hosted-recovery-observation-20260829-artifact/recovery-rollback.receipt.json",
+    "docs/hosted-recovery-observation-20260829-artifact/recovery-rollback.log",
+    "docs/hosted-recovery-observation-20260829-artifact/redundancy-manifest.json"
+  ],
+  "observed_at": "2026-08-29T05:44:53Z",
+  "qualification": {
+    "classification": "hosted-publication-linz-pipeline-observation",
+    "exit_code": 0,
+    "tests_executed": ["tests/test_publication.py", "tests/test_linz_pipeline.py"],
+    "recovery_rollback_execution": false,
+    "production_disaster_recovery": false,
+    "preservation_targets": {"github_actions_artifact": "created", "huggingface_dataset": "pending-credential", "zenodo": "pending-credential"}
+  },
+  "non_claims": [
+    "This observation did not execute restore, rollback or recovery-point operations.",
+    "It is not hosted recovery or production disaster-recovery qualification.",
+    "It is not external operator or external user evidence.",
+    "It does not satisfy elapsed beta/RC duration or release-authority approval."
+  ]
+}

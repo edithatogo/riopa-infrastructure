@@ -1,0 +1,41 @@
+{
+  "campaign_id": "recovery-20260829-main",
+  "candidate_revision": "e225bd401683f90d293851f605a3c2fe8562373d",
+  "classification": "hosted-technical-preview-drill",
+  "command": [
+    "uv",
+    "run",
+    "pytest",
+    "-q",
+    "tests/test_publication.py",
+    "tests/test_linz_pipeline.py"
+  ],
+  "ended_at": "2026-08-29T05:44:48.950372Z",
+  "exit_code": 0,
+  "host": {
+    "architecture": "x86_64",
+    "provider": "github-actions",
+    "run_attempt": "1",
+    "run_id": "33236847804",
+    "runner_name": "GitHub Actions 1000374717",
+    "runner_os": "Linux"
+  },
+  "lane": "recovery-rollback",
+  "log": {
+    "path": "recovery-rollback.log",
+    "sha256": "32faef56d0289369b1ac111e68ee0bb7b2ed1bcf92d3f33b75313bd0556c3e6f"
+  },
+  "non_claims": [
+    "This receipt is not production disaster-recovery qualification.",
+    "This receipt is not external operator or external user evidence.",
+    "This receipt does not satisfy elapsed soak duration by itself.",
+    "This receipt is not an accountable release-authority decision.",
+    "Retrospective supplements do not count as elapsed beta or RC soak observations."
+  ],
+  "operational_cycle_id": "2026-W35",
+  "qualification_epoch": "recovery-epoch-20260829-main",
+  "schema_version": "1.1.0",
+  "source_revision": "e225bd401683f90d293851f605a3c2fe8562373d",
+  "started_at": "2026-08-29T05:44:46.571094Z",
+  "status": "passed"
+}
