@@ -1,0 +1,13 @@
+{
+  "evidence_id": "WP006-V040-PRESERVATION-RECEIPT-VALIDATION-20260829",
+  "schema": "riopa.v040-preservation-receipts-validation.v1",
+  "validator": "scripts/validate_v040_preservation_receipts.py",
+  "observed_status": "successor-receipts-and-digests-validated",
+  "scope": "v0.4.0 public technical preview",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "does not contact or independently accept either provider",
+    "does not establish provider-backed restore, production recovery, or stable-v1 preservation",
+    "does not establish external participant evidence or accountable release authority"
+  ]
+}

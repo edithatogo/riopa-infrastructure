@@ -72,3 +72,9 @@
 - [x] R18 Guard corpus case-class membership by type before set lookup so malformed non-string values fail with structured validation errors (review fix; 2026-08-29).
 - [x] R20 Bind the technical-preview report's declared fixture digest to the checked-in client-workflow bytes and reject tampered fixture digests (2026-08-29; `docs/wp006-release-report-fixture-binding-20260829.json`).
 - [x] R21 Return a controlled validation result when the release-report CLI receives a JSON scalar or array (review fix; 2026-08-29).
+- [x] R22 Add a deterministic local validator for the v0.4.0 successor
+  preservation receipts, checking provider coverage, receipt status,
+  repository-relative paths and exact digests while retaining the preview/stable
+  boundary (`scripts/validate_v040_preservation_receipts.py`,
+  `docs/v040-preservation-receipt-validation-20260829.json`,
+  `tests/test_v040_preservation_receipt_validator.py`).
