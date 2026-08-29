@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "existing_public_archive_rights_qualification",
+  "record_id": "urn:riopa:evidence:existing-public-archive-rights:2026-08-29",
+  "qualified_at": "2026-08-29T00:00:00Z",
+  "repository": {
+    "provider": "huggingface-dataset",
+    "id": "edithatogo/riopa-public-data-archive",
+    "visibility": "public",
+    "url": "https://huggingface.co/datasets/edithatogo/riopa-public-data-archive"
+  },
+  "packets": [
+    {
+      "source_id": "hamilton-food-premise-register",
+      "packet_revision": "3d3d0f4eb3065bcfb28e1c05cb8c7012a58df433",
+      "manifest_path": "snapshots/hamilton-food-premise-register/manifest.json",
+      "manifest_sha256": "7c7abb27e34ac0498e602c6e3c9570330acd5abe35b20d8772edb38061938bf5",
+      "payload_sha256": "618933c1f27d6931d89dd6e79d26c421a449af012b38e164902d7423ae14d2e1",
+      "licence": "CC-BY-4.0",
+      "basis": "exact ArcGIS item 3cba290b4e7e457e83830a46c4051c92",
+      "rights_evidence_url": "https://www.arcgis.com/sharing/rest/content/items/3cba290b4e7e457e83830a46c4051c92?f=json",
+      "attribution": "Hamilton City Council",
+      "derivative_notice_required": true
+    },
+    {
+      "source_id": "marlborough-food-premise-licences",
+      "packet_revision": "b31703eb0dbdaa6aa05b6a84df5fe46e57e37ee0",
+      "manifest_path": "snapshots/marlborough-food-premise-licences/manifest.json",
+      "manifest_sha256": "cd1f67004bdb7364dae8b471f73c3afc6f62bed907551dfc566d5b0203963cb8",
+      "payload_sha256": "f51393d0305acb0f51e623361f36548245ab9a7cd81d451f1833ccc99d5c593f",
+      "licence": "CC-BY-3.0-NZ",
+      "basis": "Marlborough District Council Open Data default applies unless otherwise stated; exact layer 4 has no contrary notice",
+      "rights_evidence_url": "https://www.marlborough.govt.nz/repository/libraries/id%3A2ifzri1o01cxbymxkvwz/hierarchy/documents/services/OpenDataHelp.pdf",
+      "attribution": "Marlborough District Council",
+      "derivative_notice_required": false
+    },
+    {
+      "source_id": "urn:riopa:source:stats-nz:meshblock-2026",
+      "packet_revision": "3f2dc0a4d95a4fcb495551098d58fc5bce9c9202",
+      "manifest_path": "snapshots/stats-nz-meshblock-2026/20260802T133311Z/manifest.json",
+      "manifest_sha256": "1352a1693bba7dc6c090a56aedb89bd33c098985cde2bf3e74bd765990a19a5f",
+      "licence": "CC-BY-4.0",
+      "basis": "exact packet manifest and Stats NZ publisher-wide copyright terms",
+      "rights_evidence_url": "https://www.stats.govt.nz/about-us/copyright/",
+      "attribution": "Stats NZ Tatauranga Aotearoa",
+      "derivative_notice_required": false
+    },
+    {
+      "source_id": "urn:riopa:source:stats-nz:subnational-population-2025",
+      "packet_revision": "4f94d300c0bea6b64972b4b67044990f7e591716",
+      "manifest_path": "snapshots/stats-nz-subnational-population-2025/20260802T140246Z/manifest.json",
+      "manifest_sha256": "47540c8eb74fbc069b841308402961319aee57a0e85caad8b1de392595465617",
+      "payload_sha256": "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a6",
+      "licence": "CC-BY-4.0",
+      "basis": "exact packet manifest and Stats NZ publisher-wide copyright terms",
+      "rights_evidence_url": "https://www.stats.govt.nz/about-us/copyright/",
+      "attribution": "Stats NZ Tatauranga Aotearoa",
+      "derivative_notice_required": false
+    }
+  ],
+  "qualification": {
+    "public_payloads": "permitted with attribution",
+    "logos_emblems_photographs_and_identified_third_party_material": "not qualified by this record",
+    "anonymous_archive_revision_and_manifest_downloads": "observed",
+    "rights_metadata_reconciliation": "passed"
+  },
+  "non_claims": [
+    "Rights qualification does not establish national completeness, currency, legal authority or operational fitness.",
+    "The two food-register packets remain bounded regional source assertions rather than a national facility register.",
+    "The population packet remains the named provisional edition and this decision does not finalise it.",
+    "No logo, emblem, photograph or separately identified third-party material is licensed by inference."
+  ]
+}

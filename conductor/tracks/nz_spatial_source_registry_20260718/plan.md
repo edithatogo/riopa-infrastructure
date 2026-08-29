@@ -34,6 +34,7 @@
 - [x] C.5 Group missing and existing licence decisions into permissive public-archive tiers, separating copyright permission from authority, completeness and safety (`docs/source-rights-publication-decision-matrix-20260829.json`, `tests/test_source_rights_publication_decision_matrix.py`).
 - [x] C.6 Adopt full lawful capture and private preservation as the default unless explicitly restricted, while retaining an affirmative-basis requirement only for public payload copying (`docs/source-rights-archive-default-20260829.json`, `tests/test_source_rights_archive_default.py`).
 - [x] C.7 Capture and publicly preserve the three newly qualified Tier-A ArcGIS layers with exact payload, licence and fixity receipts. The merged public revision contains one WCC feature, 224 prototype ambulance points and five Greater Wellington points (`docs/public-tier-a-archive-publication-20260829.json`, `tests/test_public_tier_a_archive_publication.py`).
+- [x] C.8 Qualify the four existing Hamilton, Marlborough and Stats NZ public archive packets against exact-item or applicable publisher-wide licences, bind each decision to its immutable packet revision and retain authority, completeness and fitness non-claims (`docs/existing-public-archive-rights-qualification-20260829.json`, `tests/test_existing_public_archive_rights.py`).
 
 ## M2 review fixes
 
