@@ -24,3 +24,11 @@ def test_preserved_matrix_is_non_assertive() -> None:
     )
     assert matrix["compatibility"]["external_producer_consumer"] == "not-observed"
     assert any("not an independent review" in claim for claim in matrix["non_claims"])
+
+
+def test_matrix_traceability_receipt_binds_exact_revision() -> None:
+    root = Path(__file__).resolve().parents[1]
+    receipt = json.loads((root / "docs/wp006-matrix-traceability-20260829.json").read_text())
+    revision = receipt["source_revision"]
+    assert len(revision) == 40
+    assert revision == "bd7530f648ca4a215be180ad2e87dc40032f18d0"
