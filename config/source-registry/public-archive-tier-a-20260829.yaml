@@ -1,0 +1,104 @@
+schema_version: 1.0.0
+record_type: source_registry
+registry_id: urn:riopa:registry:public-archive-tier-a:2026-08-29
+generated_at: 2026-08-29T00:00:00Z
+catalogue_url: https://huggingface.co/datasets/edithatogo/riopa-public-data-archive
+sources:
+  - source_id: urn:riopa:source:wcc:churton-park-village-supermarket
+    name: Churton Park Village Supermarket district-plan layer
+    publisher:
+      name: Wellington City Council
+      url: https://wellington.govt.nz/
+    jurisdiction: Wellington City
+    source_family: council-planning-reference
+    status: active-public-archive
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-3.0-NZ
+      redistribution_status: attribution-required
+      notes: "Exact ArcGIS item aed53628016540388abfbe018da439b6 declares Creative Commons 3.0 (NZ), Wellington City Council ownership and Corporate GIS custodianship. No operative-plan or current-supermarket inference is permitted."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:wcc:churton-supermarket-layer
+        mechanism: arcgis-map-service
+        url: https://gis.wcc.govt.nz/arcgis/rest/services/DistrictPlan/DistrictPlan_RuBRIC/MapServer
+        enabled: true
+        capture_strategy: paginated
+        authentication:
+          type: none
+        layer_ids: [152]
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:wcc:district-plan-item-licence
+        mechanism: web-resource
+        url: https://www.arcgis.com/sharing/rest/content/items/aed53628016540388abfbe018da439b6?f=json
+        enabled: true
+        capture_strategy: download-whole
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:arcgis:nz-ambulance-stations-prototype
+    name: New Zealand Ambulance Station Locations prototype
+    publisher:
+      name: nzemgeo
+      url: https://www.arcgis.com/home/item.html?id=e5b22c07d197417495c8012e945c41da
+    jurisdiction: New Zealand
+    source_family: public-ambulance-facility-reference
+    status: active-public-archive
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "The exact item grants CC BY 4.0 sharing and adaptation. Preserve its statements that it is a manually collated mixed-source prototype, is not owned by either ambulance provider and is not guaranteed accurate."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:arcgis:nz-ambulance-stations-prototype
+        mechanism: arcgis-feature-service
+        url: https://services.arcgis.com/XTtANUDT8Va4DLwI/arcgis/rest/services/NZ_Base_Data_St_John_Ambulance_Station_Locatioons_2008/FeatureServer
+        enabled: true
+        capture_strategy: paginated
+        authentication:
+          type: none
+        layer_ids: [0]
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:arcgis:nz-ambulance-prototype-item-licence
+        mechanism: web-resource
+        url: https://www.arcgis.com/sharing/rest/content/items/e5b22c07d197417495c8012e945c41da?f=json
+        enabled: true
+        capture_strategy: download-whole
+        authentication:
+          type: none
+
+  - source_id: urn:riopa:source:greater-wellington:ambulance-stations
+    name: Greater Wellington Ambulance Stations
+    publisher:
+      name: Greater Wellington Regional Council
+      url: https://www.gw.govt.nz/
+    jurisdiction: Greater Wellington Region
+    source_family: public-ambulance-facility-reference
+    status: active-public-archive
+    rights:
+      access_status: public
+      spdx_or_uri: CC-BY-4.0
+      redistribution_status: attribution-required
+      notes: "Greater Wellington's official GIS page applies CC BY 4.0 to all data unless specifically stated otherwise. The exact layer metadata carries no contrary licence or copyright notice. Regional coverage is not national or operational authority."
+    endpoints:
+      - endpoint_id: urn:riopa:endpoint:greater-wellington:ambulance-stations
+        mechanism: arcgis-map-service
+        url: https://mapping.gw.govt.nz/arcgis/rest/services/GW/Emergencies_P/MapServer
+        enabled: true
+        capture_strategy: paginated
+        authentication:
+          type: none
+        layer_ids: [1]
+        rate_limit:
+          requests_per_second: 0.2
+          maximum_concurrency: 1
+      - endpoint_id: urn:riopa:endpoint:greater-wellington:gis-licence
+        mechanism: web-resource
+        url: https://www.gw.govt.nz/environment/environmental-data-and-information/geographic-mapping-information/
+        enabled: true
+        capture_strategy: download-whole
+        authentication:
+          type: none
