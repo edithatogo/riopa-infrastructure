@@ -2266,7 +2266,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `provenance_query_api_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Validate equivalent answers across the bounded Python/CLI/MCP interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; remote access filtering, real-release and agent-user-journey gates remain open.\n- [ ] 4.2 Run a bounded owner-authorized agent-user workflow over representative where/why/how provenance questions. The deterministic workflow and content-bound report are repository-owned evidence; agent-operated user/operator journeys, remote access control, MCP and release evidence remain open (`scripts/run_provenance_query_agent_workflow.py`, `docs/provenance-query-agent-workflow-20260825.json`, `tests/test_provenance_query_agent_workflow.py`).\n- [ ] 4.3 Publish bounded migration guidance for the 1.0.0 query contract. Compatibility rules and explicit breaking-change boundaries are documented as repository-owned guidance; v1 freeze, MCP/remote qualification, exact-candidate agent-user journey evidence and release approval remain open (`docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py`).\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; remote access-control, exact-candidate agent-user journey, scale and authority gates remain explicitly pending (`docs/provenance-query-closeout-evidence-20260825.json`, `tests/test_provenance_query_closeout_evidence.py`; `8ec0385`).\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/provenance-query-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with remote access, scale, agent-user-journey and authority gates unresolved.\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_query_api_20260719/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `provenance_query_api_20260719`.\n\n## Tasks\n\n- [ ] 4.1 Validate equivalent answers across the bounded Python/CLI/MCP interfaces and SQLite/DuckDB/PROV-JSON-LD projections. Evidence: `docs/provenance-query-equivalence-contract-20260825.json`, `tests/test_provenance_query_equivalence.py`; remote access filtering, real-release and agent-user-journey gates remain open.\n- [ ] 4.2 Run a bounded owner-authorized agent-user workflow over representative where/why/how provenance questions. The deterministic workflow and content-bound report are repository-owned evidence; agent-operated user/operator journeys, remote access control, MCP and release evidence remain open (`scripts/run_provenance_query_agent_workflow.py`, `docs/provenance-query-agent-workflow-20260825.json`, `tests/test_provenance_query_agent_workflow.py`).\n- [ ] 4.3 Publish bounded migration guidance for the 1.0.0 query contract. Compatibility rules and explicit breaking-change boundaries are documented as repository-owned guidance; v1 freeze, MCP/remote qualification, exact-candidate agent-user journey evidence and release approval remain open (`docs/provenance-query-migration-guidance-20260825.md`, `tests/test_provenance_query_migration.py`).\n- [ ] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; remote access-control, exact-candidate agent-user journey, scale and authority gates remain explicitly pending (`docs/provenance-query-closeout-evidence-20260825.json`, `tests/test_provenance_query_closeout_evidence.py`; `8ec0385`).\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/provenance-query-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with remote access, scale, agent-user-journey and authority gates unresolved.\n- [ ] Reject non-integer pagination `limit` and `offset` values before slicing;\n- [ ] Keep C.3 and remote/scale/authority gates open; this is repository-owned\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/provenance_query_api_20260719/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "Core",
@@ -2315,7 +2315,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "planning_rules_linkage_20260718:phase-1",
@@ -2343,7 +2343,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "planning_rules_linkage_20260718:phase-2",
@@ -2373,7 +2373,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "planning_rules_linkage_20260718:phase-3",
@@ -2403,7 +2403,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "planning_rules_linkage_20260718:phase-4",
@@ -2419,7 +2419,7 @@
         "maturity:m1",
         "release:0.6.0"
       ],
-      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct a panel-of-agents link sample review and bounded error analysis over the two synthetic council-shaped fixtures (`docs/planning-link-sample-panel-review-20260825.json`, `tests/test_planning_link_sample_panel_review.py`). Candidate-bound role-separated agent-panel review, real council evidence, legal interpretation and authority remain open.\n- [ ] 4.2 Quantify missing or incorrect references without inferring repairs (`src/riopa_provenance/planning.py::build_planning_linkage_error_report`, `docs/planning-linkage-error-ledger-20260825.json`, `tests/test_planning_linkage_error_report.py`). Real council completeness, legal interpretation and authority remain open.\n- [ ] 4.3 Publish the bounded versioned-link methods and non-authority limitations (`docs/planning-versioned-links-methods-20260825.md`, `tests/test_planning_versioned_methods.py`). Panel-of-agents review, real source capture, legal interpretation, preservation and authority remain open.\n- [ ] C.1 Link implementation, test, agent-panel, migration and release evidence in `index.md` for the repository-owned bounded slice (`docs/planning-rules-closeout-evidence-20260825.json`, `tests/test_planning_closeout_evidence.py`). Real council, legal-authority, external-participation and release gates remain open.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/planning-rules-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.6.0`, with real council-source capture, legal interpretation, external participation, preservation and accountable-authority gates unresolved.\n- [ ] R1 Register the new planning module in the Python 3.14 coverage inventory after hosted CI discovery. (`docs/module-coverage-inventory-20260825.json`; commit `91c584e`)\n- [ ] R2 Reconcile the evidence index status and blocking-defect register with the active metadata and the bounded closeout packet (`docs/planning-rules-closeout-evidence-20260825.json`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
+      "body": "Implementation phase for Conductor track `planning_rules_linkage_20260718`.\n\n## Tasks\n\n- [ ] 4.1 Conduct a panel-of-agents link sample review and bounded error analysis over the two synthetic council-shaped fixtures (`docs/planning-link-sample-panel-review-20260825.json`, `tests/test_planning_link_sample_panel_review.py`). Candidate-bound role-separated agent-panel review, real council evidence, legal interpretation and authority remain open.\n- [ ] 4.2 Quantify missing or incorrect references without inferring repairs (`src/riopa_provenance/planning.py::build_planning_linkage_error_report`, `docs/planning-linkage-error-ledger-20260825.json`, `tests/test_planning_linkage_error_report.py`). Real council completeness, legal interpretation and authority remain open.\n- [ ] 4.3 Publish the bounded versioned-link methods and non-authority limitations (`docs/planning-versioned-links-methods-20260825.md`, `tests/test_planning_versioned_methods.py`). Panel-of-agents review, real source capture, legal interpretation, preservation and authority remain open.\n- [ ] C.1 Link implementation, test, agent-panel, migration and release evidence in `index.md` for the repository-owned bounded slice (`docs/planning-rules-closeout-evidence-20260825.json`, `tests/test_planning_closeout_evidence.py`). Real council, legal-authority, external-participation and release gates remain open.\n- [ ] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/planning-rules-conductor-regeneration-20260825.json`).\n- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.\n- [ ] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.6.0`, with real council-source capture, legal interpretation, external participation, preservation and accountable-authority gates unresolved.\n- [ ] R3 Validate linkage-error report category counts, total, digest and non-promotion boundary (`src/riopa_provenance/planning.py`, `tests/test_planning_linkage_error_report.py`, `docs/planning-linkage-error-integrity-20260829.json`). Real council, legal, external and authority gates remain open.\n- [ ] R1 Register the new planning module in the Python 3.14 coverage inventory after hosted CI discovery. (`docs/module-coverage-inventory-20260825.json`; commit `91c584e`)\n- [ ] R2 Reconcile the evidence index status and blocking-defect register with the active metadata and the bounded closeout packet (`docs/planning-rules-closeout-evidence-20260825.json`).\n\n## Evidence\n\nLink code, tests, reports, decisions, migrations and immutable release artifacts in `conductor/tracks/planning_rules_linkage_20260718/index.md` before closing.",
       "mirror_to_umbrella": false,
       "project": true,
       "phase": "NZ Spatial",
@@ -2433,7 +2433,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "facility_location_engine_20260718",

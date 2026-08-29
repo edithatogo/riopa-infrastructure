@@ -24,6 +24,7 @@
     "urn:riopa:evidence:planning-versioned-methods:2026-08-25",
     "urn:riopa:evidence:planning-link-sample-panel:2026-08-25",
     "urn:riopa:evidence:planning-linkage-error-ledger:2026-08-25",
+    "PLANNING-LINKAGE-ERROR-INTEGRITY-20260829",
     "urn:riopa:evidence:planning-rules-closeout:2026-08-25"
   ],
   "target_release": "0.6.0",
@@ -48,5 +49,8 @@
     "Data-governance analyst",
     "Scientific-methods analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "Real council source-faithful documents and legal authority remain open.",
+    "External participation, preservation and accountable release-authority evidence remain open."
+  ]
 }

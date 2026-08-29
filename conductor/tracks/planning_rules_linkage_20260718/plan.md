@@ -33,5 +33,6 @@
 
 ## Review fixes
 
+- [x] R3 Validate linkage-error report category counts, total, digest and non-promotion boundary (`src/riopa_provenance/planning.py`, `tests/test_planning_linkage_error_report.py`, `docs/planning-linkage-error-integrity-20260829.json`). Real council, legal, external and authority gates remain open.
 - [x] R1 Register the new planning module in the Python 3.14 coverage inventory after hosted CI discovery. (`docs/module-coverage-inventory-20260825.json`; commit `91c584e`)
 - [x] R2 Reconcile the evidence index status and blocking-defect register with the active metadata and the bounded closeout packet (`docs/planning-rules-closeout-evidence-20260825.json`).

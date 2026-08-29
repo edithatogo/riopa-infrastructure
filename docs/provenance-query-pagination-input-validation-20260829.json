@@ -1,0 +1,22 @@
+{
+  "evidence_id": "PROVENANCE-QUERY-PAGINATION-INPUT-VALIDATION-20260829",
+  "schema": "riopa.provenance.query-pagination-validation.v1",
+  "scope": "repository-owned local lineage node pagination",
+  "requirement": "Pagination inputs must be bounded integers and reject coercion-prone values before slicing.",
+  "implementation": [
+    "src/riopa_provenance/lineage.py::LineageIndex.page_nodes",
+    "tests/test_lineage.py::test_page_nodes_rejects_non_integer_pagination_inputs"
+  ],
+  "observed_status": "negative-contract-tests-pass",
+  "validation": "uv run pytest -q tests/test_lineage.py",
+  "promotion_allowed": false,
+  "open_gates": [
+    "remote authorization and access filtering",
+    "production-scale performance",
+    "agent-operated user journey and release authority"
+  ],
+  "nonclaims": [
+    "This hardens local input validation only.",
+    "It does not establish remote interface, scale, real-release or external-client conformance."
+  ]
+}

@@ -7,6 +7,7 @@ from riopa_provenance.planning import (
     build_planning_feasibility_record,
     build_planning_linkage_error_report,
     build_rule_structure_record,
+    validate_planning_linkage_error_report,
 )
 
 
@@ -128,3 +129,46 @@ def test_linkage_error_report_rejects_unexpected_packet_types() -> None:
     packets["structure"] = {**packets["structure"], "record_type": "wrong"}
     with pytest.raises(ValueError, match="unexpected record_type"):
         build_planning_linkage_error_report(**packets)
+
+
+def test_linkage_error_report_validator_binds_categories_and_digest() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    assert validate_planning_linkage_error_report(report) == ()
+    tampered = dict(report)
+    tampered["total_finding_count"] = 1
+    assert any(
+        "total_finding_count" in error for error in validate_planning_linkage_error_report(tampered)
+    )
+
+
+def test_linkage_error_report_validator_rejects_promotion() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["promotion_allowed"] = True
+    assert (
+        "linkage error reports must prohibit promotion"
+        in validate_planning_linkage_error_report(report)
+    )
+
+
+def test_linkage_error_report_validator_rejects_non_numeric_counts() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["finding_counts"]["missing_link_targets"] = "bad"
+    errors = validate_planning_linkage_error_report(report)
+    assert "finding_counts must contain non-negative integers" in errors
+
+
+def test_linkage_error_report_validator_rejects_non_string_findings_without_raising() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["findings"]["missing_link_targets"] = [object()]
+    errors = validate_planning_linkage_error_report(report)
+    assert "findings.missing_link_targets must be a list of strings" in errors
+
+
+def test_linkage_error_report_validator_binds_status_to_findings() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["findings"]["missing_link_targets"] = ["missing:target"]
+    report["finding_counts"]["missing_link_targets"] = 1
+    report["total_finding_count"] = 1
+    report["status"] = "no-unresolved-references"
+    errors = validate_planning_linkage_error_report(report)
+    assert "status must match whether findings are present" in errors

@@ -6,7 +6,7 @@ import re
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import date
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 from .hashing import sha256_json
 
@@ -586,3 +586,77 @@ def build_planning_linkage_error_report(
         ],
         "report_sha256": sha256_json(findings),
     }
+
+
+def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
+    """Validate a bounded linkage-error report without inferring repairs."""
+
+    if not isinstance(report, Mapping):
+        return ("linkage error report must be an object",)
+    errors: list[str] = []
+    if report.get("record_type") != "planning-linkage-error-report":
+        errors.append("record_type must be planning-linkage-error-report")
+    if report.get("promotion_allowed") is not False:
+        errors.append("linkage error reports must prohibit promotion")
+    findings = report.get("findings")
+    counts = report.get("finding_counts")
+    expected = (
+        "missing_link_targets",
+        "unlinked_crosswalk_sources",
+        "missing_feasibility_provisions",
+    )
+    finding_map = (
+        cast(Mapping[str, Any], findings)
+        if isinstance(findings, Mapping) and set(findings) == set(expected)
+        else None
+    )
+    valid_findings = finding_map is not None
+    if finding_map is None:
+        errors.append("findings must contain the three bounded categories")
+    else:
+        for name in expected:
+            values = finding_map[name]
+            if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
+                errors.append(f"findings.{name} must be a list of strings")
+        valid_findings = all(
+            isinstance(finding_map[name], list)
+            and all(isinstance(value, str) for value in finding_map[name])
+            for name in expected
+        )
+    if not isinstance(counts, Mapping) or any(
+        counts.get(name) != len(finding_map[name])
+        for name in expected
+        if finding_map is not None and isinstance(finding_map.get(name), list)
+    ):
+        errors.append("finding_counts must match findings")
+    valid_counts = isinstance(counts, Mapping) and all(
+        type(counts.get(name)) is int and counts[name] >= 0 for name in expected
+    )
+    if isinstance(counts, Mapping) and not valid_counts:
+        errors.append("finding_counts must contain non-negative integers")
+    if valid_findings and isinstance(counts, Mapping) and valid_counts:
+        assert finding_map is not None
+        total = report.get("total_finding_count")
+        if total != sum(counts.get(name, 0) for name in expected):
+            errors.append("total_finding_count must match finding_counts")
+        supplied_digest = report.get("report_sha256")
+        if supplied_digest != sha256_json(dict(finding_map)):
+            errors.append("report_sha256 does not match findings")
+    status = report.get("status")
+    if status not in {"quantified-unresolved", "no-unresolved-references"}:
+        errors.append("status is unsupported")
+    elif valid_findings:
+        assert finding_map is not None
+        expected_status = (
+            "quantified-unresolved"
+            if any(finding_map[name] for name in expected)
+            else "no-unresolved-references"
+        )
+        if status != expected_status:
+            errors.append("status must match whether findings are present")
+    nonclaims = report.get("nonclaims")
+    if not isinstance(nonclaims, list) or not any(
+        isinstance(item, str) and "does not repair or infer links" in item for item in nonclaims
+    ):
+        errors.append("nonclaims must retain the no-repair boundary")
+    return tuple(dict.fromkeys(errors))

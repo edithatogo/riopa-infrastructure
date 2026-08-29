@@ -36,3 +36,10 @@
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/provenance-query-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.6.0`, with remote access, scale, agent-user-journey and authority gates unresolved.
+
+### Review fixes (2026-08-29)
+
+- [x] Reject non-integer pagination `limit` and `offset` values before slicing;
+  local negative-contract coverage passes (`PROVENANCE-QUERY-PAGINATION-INPUT-VALIDATION-20260829`).
+- [ ] Keep C.3 and remote/scale/authority gates open; this is repository-owned
+  input hardening, not external conformance evidence.
