@@ -7,9 +7,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_tier_a_capture_evidence_is_bounded_and_fail_closed() -> None:
     evidence = json.loads((ROOT / "docs/tier-a-archive-capture-evidence-20260829.json").read_text())
-    assert evidence["status"] == "locally-captured-publication-pending"
-    assert evidence["publication_gate"]["status"] == "pending"
-    assert evidence["publication_gate"]["promotion_allowed"] is False
+    assert evidence["status"] == "published-with-local-capture-retained"
+    publication_gate = evidence["publication_gate"]
+    assert publication_gate["status"] == "passed-for-tier-a-packet"
+    assert publication_gate["provider"] == "huggingface-dataset"
+    assert len(publication_gate["revision"]) == 40
+    assert publication_gate["hosted_fixity_comparison"] == "passed"
+    assert publication_gate["promotion_allowed"] is False
     assert len(evidence["sources"]) == 3
     for source in evidence["sources"]:
         assert re.fullmatch(r"[0-9a-f]{64}", source["manifest_sha256"])
