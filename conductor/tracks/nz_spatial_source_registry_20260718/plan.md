@@ -32,11 +32,13 @@
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Promote the bounded registry executable-proof boundary to experimental M2. The track remains `validating`; current-authority completeness, live rights/health evidence, repeated hosted monitoring, preservation, panel reproduction and accountable-owner gates remain assigned to M3-M6 (`docs/nz-source-registry-m2-promotion-20260829.json`, `tests/test_nz_source_registry_m2_promotion.py`).
 - [x] C.5 Group missing and existing licence decisions into permissive public-archive tiers, separating copyright permission from authority, completeness and safety (`docs/source-rights-publication-decision-matrix-20260829.json`, `tests/test_source_rights_publication_decision_matrix.py`).
+- [x] C.6 Adopt full lawful capture and private preservation as the default unless explicitly restricted, while retaining an affirmative-basis requirement only for public payload copying (`docs/source-rights-archive-default-20260829.json`, `tests/test_source_rights_archive_default.py`).
 
 ## M2 review fixes
 
 - [x] R3 Apply the sole-developer subagent-panel policy while preserving factual source-rights, hosted-observation, preservation and owner-authority boundaries.
 - [x] R4 Replace blanket permission holds with exact-item and publisher-wide open-licence decisions for the WCC Churton layer, NZ ambulance prototype and Greater Wellington GIS, while retaining provenance, authority and safety limitations (`docs/source-rights-publication-decision-matrix-20260829.json`, `tests/test_source_rights_publication_decision_matrix.py`).
+- [x] R5 Confirm the maximal archive default distinguishes explicit retention restrictions from copyright's affirmative public-copying requirement and does not rely on takedown as permission (`docs/source-rights-archive-default-20260829.json`).
 
 ## Review fixes
 
