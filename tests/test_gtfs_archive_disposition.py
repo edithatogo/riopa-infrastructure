@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from jsonschema import Draft202012Validator
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -12,3 +14,9 @@ def test_gtfs_disposition_is_immutable_and_fail_closed() -> None:
     assert record["disposition"]["network_claims_enabled"] is False
     assert record["disposition"]["timetable_claims_enabled"] is False
     assert record["disposition"]["promotion_allowed"] is False
+
+
+def test_gtfs_disposition_matches_schema() -> None:
+    record = json.loads((ROOT / "docs/gtfs-archive-disposition-20260829.json").read_text())
+    schema = json.loads((ROOT / "schemas/gtfs-archive-disposition.schema.json").read_text())
+    assert list(Draft202012Validator(schema).iter_errors(record)) == []
