@@ -32,6 +32,22 @@ on:
         required: true
         default: beta-epoch-20260825-26bc0b4
         type: string
+      qualification:
+        description: Whether this run is a formally activated qualifying beta/RC observation
+        required: true
+        default: supplemental
+        type: choice
+        options:
+          - supplemental
+          - qualifying
+      activation_authority:
+        description: Named authority recorded only for an explicitly qualifying campaign
+        required: false
+        type: string
+      activated_at:
+        description: UTC activation timestamp for an explicitly qualifying campaign
+        required: false
+        type: string
   schedule:
     - cron: "17 14 * * *"
 
@@ -60,6 +76,9 @@ jobs:
       EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}
       EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || github.sha }}
       EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || format('beta-epoch-{0}', github.sha) }}
+      EVIDENCE_QUALIFYING: ${{ github.event.inputs.qualification == 'qualifying' && 'true' || 'false' }}
+      EVIDENCE_ACTIVATION_AUTHORITY: ${{ github.event.inputs.activation_authority || '' }}
+      EVIDENCE_ACTIVATED_AT: ${{ github.event.inputs.activated_at || '' }}
     steps:
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -92,7 +111,7 @@ jobs:
           --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json"
           schemas/hosted-evidence.schema.json
       - name: Restore the latest cumulative campaign artifact
-        if: ${{ always() && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
+        if: ${{ always() && env.EVIDENCE_QUALIFYING == 'true' && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -106,7 +125,7 @@ jobs:
           cp "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json" \
             "dist/campaign-history/${GITHUB_RUN_ID}-${EVIDENCE_LANE}.receipt.json"
       - name: Build cumulative fail-closed campaign ledger
-        if: ${{ always() && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
+        if: ${{ always() && env.EVIDENCE_QUALIFYING == 'true' && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
         run: >-
           uv run python scripts/build_campaign_ledger.py
           dist/campaign-history/*.receipt.json
@@ -119,7 +138,7 @@ jobs:
           --bundle-id "${EVIDENCE_CAMPAIGN_ID}-${EVIDENCE_LANE}-${GITHUB_RUN_ID}"
           --output "dist/hosted-evidence/${GITHUB_RUN_ID}/redundancy-manifest.json"
       - name: Upload cumulative content-bound evidence
-        if: ${{ always() && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
+        if: ${{ always() && env.EVIDENCE_QUALIFYING == 'true' && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-${{ env.EVIDENCE_LANE }}

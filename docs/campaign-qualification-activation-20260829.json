@@ -1,0 +1,18 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-QUALIFICATION-ACTIVATION-20260829",
+  "schema_version": "1.0.0",
+  "scope": "repository-owned workflow control",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "controls": {
+    "default_mode": "supplemental",
+    "qualifying_lanes": ["operational-observation", "rc-soak-observation"],
+    "required_activation_fields": ["authority", "activated_at", "campaign_id"],
+    "ledger_behavior": "cumulative ledger runs only for explicitly qualifying observations",
+    "non_qualifying_behavior": "technical-preview receipt is retained and no elapsed ledger is emitted"
+  },
+  "validation": [
+    "tests/test_hosted_evidence.py::test_qualifying_observation_requires_explicit_activation",
+    "tests/test_hosted_evidence.py::test_qualifying_non_observation_lane_fails_closed"
+  ],
+  "boundary": "This control prevents supplemental drills from being misclassified as elapsed evidence; it does not activate a beta or RC campaign, satisfy elapsed duration, provide external participant evidence, or authorize promotion."
+}
