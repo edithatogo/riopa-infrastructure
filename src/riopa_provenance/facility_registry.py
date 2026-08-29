@@ -246,7 +246,7 @@ def validate_snapshot_record(record: Mapping[str, object] | None) -> tuple[str, 
                     continue
                 try:
                     assertion = FacilityAssertion(**dict(row))
-                except TypeError, ValueError:
+                except (TypeError, ValueError):
                     errors.append("payload assertions contain an invalid assertion")
                     continue
                 if assertion.release_classification != "public":
