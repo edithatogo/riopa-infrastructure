@@ -21,6 +21,11 @@ def test_build_and_decode_unsigned_dsse_intoto_envelope() -> None:
     assert decode_dsse_payload(envelope) == statement
 
 
+def test_dsse_builder_rejects_non_object_statement() -> None:
+    with pytest.raises(AttestationError, match="Statement/v1 object"):
+        build_dsse_envelope(None)  # type: ignore[arg-type]
+
+
 def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> None:
     with pytest.raises(AttestationError, match="predicate type"):
         build_in_toto_statement(

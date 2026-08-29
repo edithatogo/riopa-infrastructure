@@ -95,6 +95,9 @@ def main() -> int:
         report = json.loads(args.report.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         parser.error(f"unable to read report: {exc}")
+    if not isinstance(report, dict):
+        print("release report must be a JSON object")
+        return 1
     errors = validate_report(report, root=args.root.resolve())
     if errors:
         for error in errors:
