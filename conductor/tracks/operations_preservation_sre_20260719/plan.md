@@ -42,6 +42,7 @@
 - [x] 4.16 Record fresh hosted supplemental beta and exact-candidate RC observations with receipt/log digests; retain their technical-preview classification and all elapsed, recovery, external, preservation and authority gates (`docs/hosted-beta-rc-campaign-observation-20260829-ddec941.json`, runs 33259405506/33259407593).
 - [x] 4.17 Record the fresh hosted control-matrix supplemental drills with receipt/log digests; retain their technical-preview classification and all elapsed, production-recovery, national-scale, external, preservation and authority gates (`docs/hosted-control-matrix-observation-20260829-3b2fbf4.json`, runs 33259809069/33259810861/33259813004/33259815211/33259817003).
 - [x] 4.18 Record the fresh hosted supplemental operational-observation drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close recovery, national-scale, external, preservation or authority gates (`docs/hosted-supplemental-operational-observation-20260830-692545e.json`, run 33260680164).
+- [x] 4.19 Record the fresh hosted supplemental recovery-rollback drill with receipt/log digests; retain its technical-preview classification and do not advance beta/RC elapsed clocks or close production-recovery, national-scale, external, preservation or authority gates (`docs/hosted-supplemental-recovery-observation-20260830-92b405c.json`, run 33261028041).
 
 ## Review fixes
 
