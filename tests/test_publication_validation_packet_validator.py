@@ -14,6 +14,10 @@ def test_publication_packet_validator_passes() -> None:
     assert validate_packet(_packet(), root=ROOT) == ()
 
 
+def test_publication_packet_validator_resolves_relative_root() -> None:
+    assert validate_packet(_packet(), root=Path(".")) == ()
+
+
 def test_publication_packet_validator_rejects_publication_ready() -> None:
     packet = _packet()
     packet["publication_ready"] = True

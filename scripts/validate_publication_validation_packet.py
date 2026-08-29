@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
+    root = root.resolve()
     if not isinstance(packet, dict):
         return ("publication packet must be an object",)
     errors: list[str] = []
