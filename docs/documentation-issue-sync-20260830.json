@@ -1,0 +1,15 @@
+{
+  "record_type": "github_issue_projection_sync",
+  "recorded_at": "2026-08-30T12:45:00Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "track_id": "documentation_developer_experience_20260719",
+  "source": "project/issues.yaml",
+  "issues": [
+    {"issue": 125, "phase": "1", "body_sha256": "b9fb1a4ecd44d716bfd811da8155516df0b1e9b84e2da6fab68d32c28481c9b4"},
+    {"issue": 126, "phase": "2", "body_sha256": "999e90600d867b94afa60436772e658b58e014d33b58ed7b26b8ff71858b9047"},
+    {"issue": 127, "phase": "3", "body_sha256": "4cbe11440148765868c7248e170475f47355d37028b970559ea78d5a10b0e126"},
+    {"issue": 128, "phase": "4", "body_sha256": "b78076064a44a4b4fc401385d2d3c600ff8645755d30e6cb0b7444dddf027fe5"}
+  ],
+  "result": "updated",
+  "boundary": "Descriptions were synchronized only; external usability, accessibility, preservation, soak, promotion and authority gates remain open."
+}

@@ -38,3 +38,6 @@
 ## Review fixes
 
 - [x] R1 Wrap the long nonclaim string so the repository quality gate passes (`3d62c46`).
+- [x] Synchronize GitHub phase issues #125–#128 from the generated projection and
+  record exact body digests; no external usability, preservation, soak, promotion
+  or authority gate is closed (`docs/documentation-issue-sync-20260830.json`).
