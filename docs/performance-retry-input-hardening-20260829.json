@@ -1,0 +1,10 @@
+{
+  "evidence_id": "PERF-RETRY-INPUT-HARDENING-20260829",
+  "schema": "riopa.performance-retry-input-hardening.v1",
+  "scope": "bounded repository-owned retry decision inputs",
+  "requirements": ["non-string Retry-After values fail closed as absent", "non-string HTTP methods produce a controlled validation error"],
+  "observed_status": "negative-contract-tests-pass",
+  "promotion_allowed": false,
+  "open_gates": ["hosted soak and stress qualification", "national-scale resource/cost measurements", "production recovery and release authority"],
+  "nonclaims": ["Local retry input hardening is not hosted reliability or production SLO evidence."]
+}

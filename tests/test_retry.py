@@ -35,6 +35,7 @@ def test_retry_after_supports_seconds_and_http_dates() -> None:
     assert parse_retry_after("Thu, 30 Jul 2026 00:00:05 GMT", now=now) == 5
     assert parse_retry_after("-1", now=now) is None
     assert parse_retry_after("nonsense", now=now) is None
+    assert parse_retry_after(42, now=now) is None  # type: ignore[arg-type]
 
 
 def test_retry_policy_rejects_unbounded_parameters() -> None:
@@ -44,6 +45,11 @@ def test_retry_policy_rejects_unbounded_parameters() -> None:
         RetryPolicy(base_delay_seconds=float("inf"))
     with pytest.raises(ValueError, match="less"):
         RetryPolicy(base_delay_seconds=2, max_delay_seconds=1)
+
+
+def test_retry_rejects_non_string_methods_without_attribute_error() -> None:
+    with pytest.raises(ValueError, match="method must be a string"):
+        decide_retry(method=None, attempt=1)  # type: ignore[arg-type]
 
 
 def test_rate_limiter_bounds_burst_and_returns_deterministic_delay() -> None:

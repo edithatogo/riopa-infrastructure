@@ -30,6 +30,7 @@ LANES: dict[str, list[str]] = {
         "run",
         "pytest",
         "-q",
+        "tests/test_recovery.py",
         "tests/test_publication.py",
         "tests/test_linz_pipeline.py",
     ],

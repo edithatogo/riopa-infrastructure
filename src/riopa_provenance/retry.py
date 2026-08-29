@@ -132,7 +132,7 @@ class CircuitBreaker:
 def parse_retry_after(value: str | None, *, now: datetime) -> float | None:
     """Parse seconds or an HTTP date, rejecting malformed/negative values."""
 
-    if not value:
+    if not isinstance(value, str) or not value:
         return None
     rendered = value.strip()
     try:
@@ -163,6 +163,8 @@ def decide_retry(
     retry_policy = policy or RetryPolicy()
     if attempt < 1:
         raise ValueError("attempt must be positive")
+    if not isinstance(method, str):
+        raise ValueError("method must be a string")
     normalized_method = method.upper()
     if normalized_method not in IDEMPOTENT_METHODS:
         return RetryDecision(attempt, False, 0.0, "non-idempotent-method")
