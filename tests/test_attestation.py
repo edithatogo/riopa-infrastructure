@@ -27,6 +27,18 @@ def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> Non
             predicate_type="https://riopa.example/predicate/build/v1",
             predicate={},
         )
+    with pytest.raises(AttestationError, match="sha256 digest"):
+        build_in_toto_statement(
+            [{"name": "dist/package.whl", "digest": {"sha256": "not-a-digest"}}],
+            predicate_type="https://riopa.example/predicate/build/v1",
+            predicate={},
+        )
+    with pytest.raises(AttestationError, match="sha256 digest"):
+        build_in_toto_statement(
+            [{"name": "dist/package.whl", "digest": {"sha256": "A" * 64}}],
+            predicate_type="https://riopa.example/predicate/build/v1",
+            predicate={},
+        )
     with pytest.raises(AttestationError, match="valid base64 JSON"):
         decode_dsse_payload(
             {"payloadType": "application/vnd.in-toto+json", "payload": "!", "signatures": []}

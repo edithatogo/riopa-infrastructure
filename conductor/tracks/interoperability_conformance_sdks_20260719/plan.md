@@ -67,4 +67,5 @@
 - [x] R15 Bind the matrix traceability receipt to the exact 40-character merged revision and guard it with a regression test (review fix; 2026-08-29).
 - [x] R16 Require positive, negative and migration case classes in the normative corpus before parity execution, with negative coverage for unknown and missing classes (2026-08-29).
 - [x] R17 Harden OpenLineage projection validation for non-empty run/job/dataset identity and producer/schema fields, with negative contract coverage (2026-08-29; `docs/wp006-openlineage-projection-validation-20260829.json`).
+- [x] R19 Enforce lowercase 64-character SHA-256 subject digests before building unsigned DSSE/in-toto envelopes, with negative contract coverage (2026-08-29; `docs/wp006-dsse-subject-digest-validation-20260829.json`).
 - [x] R18 Guard corpus case-class membership by type before set lookup so malformed non-string values fail with structured validation errors (review fix; 2026-08-29).

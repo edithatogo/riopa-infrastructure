@@ -42,9 +42,14 @@ def build_in_toto_statement(
         if not isinstance(subject, Mapping) or not subject.get("name"):
             raise AttestationError("each subject requires a name")
         digest = subject.get("digest")
-        if not isinstance(digest, Mapping) or not isinstance(digest.get("sha256"), str):
+        sha256 = digest.get("sha256") if isinstance(digest, Mapping) else None
+        if (
+            not isinstance(sha256, str)
+            or len(sha256) != 64
+            or any(character not in "0123456789abcdef" for character in sha256)
+        ):
             raise AttestationError("each subject requires a sha256 digest")
-        normalised.append({"name": str(subject["name"]), "digest": {"sha256": digest["sha256"]}})
+        normalised.append({"name": str(subject["name"]), "digest": {"sha256": sha256}})
     return {
         "_type": IN_TOTO_STATEMENT_TYPE,
         "subject": normalised,
