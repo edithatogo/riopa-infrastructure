@@ -37,6 +37,8 @@
 - [x] 4.11 Reconcile the anonymously verified Hugging Face mirror and Zenodo DOI as complete preservation evidence for the `v0.4.0` public technical preview only; retain stable-candidate replication, provider restore, elapsed-operation and authority gates (`docs/v0.4.0-preservation-wp006-reconciliation-20260829.json`, `tests/test_v040_preservation_wp006_reconciliation.py`).
 - [x] 4.12 Require lowercase 40-character hexadecimal Git revisions in campaign status source, observation and RC bindings, with malformed-input regression coverage; hosted execution, elapsed, preservation and authority gates remain open (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-revision-validation-20260830.json`).
 - [x] 4.13 Correct the known truncated run-32519141017 revision from the immutable hosted run head and record the predecessor correction explicitly (`docs/campaign-status-correction-20260830.json`).
+- [x] 4.14 Extend strict revision validation to supplemental observation and candidate fields with negative coverage; supplemental records retain their non-qualifying semantics (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-revision-validation-20260830.json`).
+- [x] 4.15 Require every supplemental observation to carry a strict revision while keeping candidate revision optional-but-validated; record an immutable successor evidence artifact (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-supplemental-revision-validation-20260830.json`).
 
 ## Review fixes
 
