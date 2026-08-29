@@ -36,6 +36,7 @@
     ,"urn:riopa:evidence:beta-campaign-schedule-hardening:2026-08-29"
     ,"OPS-HF-MIRROR-VERIFIER-20260829"
     ,"OPS-REPORT-BUNDLE-CONTRACT-20260829"
+    ,"OPS-HOSTED-BETA-RC-CAMPAIGN-OBSERVATION-20260829-CA3DF8DC"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
