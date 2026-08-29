@@ -46,3 +46,21 @@ def test_v040_preservation_receipts_reject_duplicate_provider() -> None:
 
 def test_v040_preservation_receipts_reject_non_object() -> None:
     assert validate_reconciliation([], root=ROOT) == ("preservation record must be a JSON object",)
+
+
+def test_v040_preservation_receipts_reject_receipt_substitution() -> None:
+    record = _record()
+    receipts = record["verified_receipts"]
+    assert isinstance(receipts, list)
+    receipts[0]["path"] = "AGENTS.md"
+    receipts[0]["sha256"] = ""  # the path check must fail closed before trust
+    errors = validate_reconciliation(record, root=ROOT)
+    assert any("canonical huggingface receipt" in error for error in errors)
+
+
+def test_v040_preservation_receipts_reject_affirmative_boundary() -> None:
+    record = _record()
+    record["nonclaims"] = ["stable-v1 preservation is established"]
+    assert any(
+        "exact stable-v1 non-claim" in error for error in validate_reconciliation(record, root=ROOT)
+    )

@@ -19,6 +19,11 @@ _EXPECTED = {
     "huggingface": "published-and-anonymously-byte-reverified",
     "zenodo": "published-doi-and-anonymously-byte-reverified",
 }
+_EXPECTED_PATHS = {
+    "huggingface": "docs/v0.4.0-release-mirror-20260829.json",
+    "zenodo": "docs/v0.4.0-zenodo-preservation-20260829.json",
+}
+_STABLE_BOUNDARY = "The v0.4.0 receipts do not preserve an eventual stable-v1 candidate."
 
 
 def _digest(path: Path) -> str:
@@ -67,13 +72,51 @@ def validate_reconciliation(record: object, *, root: Path) -> tuple[str, ...]:
             errors.append(f"{prefix}.sha256 is not a lowercase SHA-256 digest")
         elif _digest(path) != digest:
             errors.append(f"{prefix}.sha256 does not match {path_value}")
+        if provider in _EXPECTED_PATHS and path_value != _EXPECTED_PATHS[provider]:
+            errors.append(f"{prefix}.path is not the canonical {provider} receipt")
+        if path.is_file() and isinstance(provider, str):
+            try:
+                referenced = json.loads(path.read_text(encoding="utf-8"))
+            except OSError, json.JSONDecodeError:
+                errors.append(f"{prefix}.path is not a valid JSON receipt")
+            else:
+                if not isinstance(referenced, dict):
+                    errors.append(f"{prefix}.path must contain a JSON object")
+                elif provider == "huggingface":
+                    mirror = referenced.get("mirror")
+                    qualification = referenced.get("qualification")
+                    if (
+                        referenced.get("record_type") != "successor_release_mirror_receipt"
+                        or referenced.get("release") != "0.4.0"
+                        or referenced.get("channel") != "public-technical-preview"
+                        or not isinstance(mirror, dict)
+                        or mirror.get("provider") != "huggingface"
+                        or not isinstance(qualification, dict)
+                        or qualification.get("status") != "published_and_publicly_reverified"
+                    ):
+                        errors.append(f"{prefix} does not corroborate the Hugging Face receipt")
+                elif provider == "zenodo":
+                    deposit = referenced.get("deposit")
+                    verification = referenced.get("public_verification")
+                    if (
+                        referenced.get("record_type") != "successor_zenodo_preservation_receipt"
+                        or referenced.get("release") != "0.4.0"
+                        or referenced.get("channel") != "public-technical-preview"
+                        or not isinstance(deposit, dict)
+                        or deposit.get("provider") != "zenodo"
+                        or deposit.get("state") != "done"
+                        or deposit.get("submitted") is not True
+                        or not isinstance(verification, dict)
+                        or verification.get("sha256sums_passed") is not True
+                    ):
+                        errors.append(f"{prefix} does not corroborate the Zenodo receipt")
     if set(providers) != set(_EXPECTED):
         errors.append("reconciliation must contain exactly one Hugging Face and one Zenodo receipt")
-    elif any(count != 1 for count in providers.values()):
+    elif len(receipts) != len(_EXPECTED) or any(count != 1 for count in providers.values()):
         errors.append("reconciliation must contain exactly one receipt per provider")
     nonclaims = record.get("nonclaims")
-    if not isinstance(nonclaims, list) or not any("stable-v1" in str(item) for item in nonclaims):
-        errors.append("record must retain the stable-v1 non-claim")
+    if not isinstance(nonclaims, list) or _STABLE_BOUNDARY not in nonclaims:
+        errors.append("record must retain the exact stable-v1 non-claim")
     return tuple(dict.fromkeys(errors))
 
 
