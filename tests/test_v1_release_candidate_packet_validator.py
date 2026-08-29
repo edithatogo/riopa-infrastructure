@@ -24,3 +24,20 @@ def test_v1_candidate_packet_validator_rejects_missing_soak_gate() -> None:
     packet = _packet()
     packet["required_external_or_elapsed_evidence"] = ["preservation"]
     assert any("30-day exact-RC soak" in error for error in validate_packet(packet))
+
+
+def test_v1_candidate_packet_validator_rejects_incomplete_gate_set() -> None:
+    packet = _packet()
+    packet["required_external_or_elapsed_evidence"] = [
+        "30-day exact-RC soak without a qualifying reset",
+        "accepted preservation target and restore receipt",
+        "accountable release-authority decision with expiry and rollback conditions",
+    ]
+    errors = validate_packet(packet)
+    assert any("protected keyless signing" in error for error in errors)
+    assert any("independent verification" in error for error in errors)
+    assert any("clean-room" in error for error in errors)
+
+
+def test_v1_candidate_packet_validator_rejects_non_object() -> None:
+    assert validate_packet([]) == ("packet must be a JSON object",)

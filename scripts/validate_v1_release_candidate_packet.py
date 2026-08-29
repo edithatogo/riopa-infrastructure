@@ -7,12 +7,13 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Any
 
 _REVISION = re.compile(r"^[0-9a-f]{40}$")
 
 
-def validate_packet(packet: dict[str, Any]) -> tuple[str, ...]:
+def validate_packet(packet: object) -> tuple[str, ...]:
+    if not isinstance(packet, dict):
+        return ("packet must be a JSON object",)
     errors: list[str] = []
     if packet.get("schema") != "riopa.v1-release-candidate-packet.v1":
         errors.append("unexpected packet schema")
@@ -38,7 +39,14 @@ def validate_packet(packet: dict[str, Any]) -> tuple[str, ...]:
         errors.append("required_external_or_elapsed_evidence must be non-empty")
     else:
         text = " ".join(str(item) for item in required)
-        for phrase in ("30-day exact-RC soak", "preservation", "accountable release-authority"):
+        for phrase in (
+            "protected keyless signing and artifact attestation receipt",
+            "independent verification of every candidate asset",
+            "accepted preservation target and restore receipt",
+            "two qualifying clean-room operator/user reproductions",
+            "30-day exact-RC soak without a qualifying reset",
+            "accountable release-authority decision with expiry and rollback conditions",
+        ):
             if phrase not in text:
                 errors.append(f"required evidence omits {phrase}")
     nonclaims = packet.get("non_claims")
