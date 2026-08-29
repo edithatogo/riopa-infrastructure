@@ -31,6 +31,7 @@ def main() -> int:
         root / "docs/separate-rust-client-workflow-20260829.json",
         root / "docs/wp006-external-rocrate-validation-20260829.json",
     ]
+    evidence = [path if path.is_absolute() else root / path for path in evidence]
     missing = [str(path) for path in evidence if not path.is_file()]
     if missing:
         parser.error("evidence receipt not found: " + ", ".join(missing))
