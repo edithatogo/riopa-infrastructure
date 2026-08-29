@@ -9,6 +9,11 @@
   "checksums_sha256": "46d2aeeb128fb6a31e0059dc3d33ae05ab3acad723550fabd6fce07fb28b5a61",
   "receipt_path": "receipts/github/30751233863-1.json",
   "receipt_sha256": "f9f6cd8ce01653681cd3bd9cc5288ce1b59e287b3ed2335d25fc9a72d5a0024d",
+  "rights_status": "public-payload-qualified",
+  "licence": "CC-BY-4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "rights_evidence_url": "https://www.stats.govt.nz/about-us/copyright/",
+  "attribution": "Stats NZ Tatauranga Aotearoa",
   "expected_workbook_sha256": "001e8a896cfb50f5ed17836dc815b235e3bcca55ee91c9869a2afaeb054b50a",
   "expected_workbook_bytes": 97990
 }

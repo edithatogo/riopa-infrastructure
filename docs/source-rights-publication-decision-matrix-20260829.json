@@ -105,13 +105,22 @@
       "terms_url": "https://www.arcgis.com/home/item.html?id=e5b22c07d197417495c8012e945c41da"
     },
     {
-      "source": "Hamilton and Marlborough council food-register archive packets",
-      "licence": "source-specific terms preserved with receipts",
-      "tier": "B",
-      "recommendation": "Keep public metadata, receipts and bounded assertions; publish full payloads when the preserved terms receipt explicitly permits redistribution.",
-      "contingency": "If the existing public archive already contains payloads without an explicit redistribution decision, quarantine payload publication while retaining non-reconstructive evidence.",
+      "source": "Hamilton City Council Food Premise archive packet",
+      "licence": "CC-BY-4.0 on exact ArcGIS item 3cba290b4e7e457e83830a46c4051c92",
+      "tier": "A",
+      "recommendation": "Keep the exact-version payload public with Hamilton City Council attribution and the item-specified derivative notice.",
+      "contingency": "If the exact item terms change or a component is identified as third-party material, quarantine that component while retaining permitted metadata and decision evidence.",
       "non_claims": ["national coverage", "current licensing or trading status"],
-      "terms_url": "https://github.com/edithatogo/riopa-public-data-archive"
+      "terms_url": "https://www.arcgis.com/sharing/rest/content/items/3cba290b4e7e457e83830a46c4051c92?f=json"
+    },
+    {
+      "source": "Marlborough District Council Food Premise Licences archive packet",
+      "licence": "CC-BY-3.0-NZ under the Council Open Data default with no exact-layer exception",
+      "tier": "A",
+      "recommendation": "Keep the exact-version payload public with Marlborough District Council attribution.",
+      "contingency": "If an item-specific exception or third-party right is later identified, apply it and quarantine only the affected material.",
+      "non_claims": ["national coverage", "current licensing or trading status"],
+      "terms_url": "https://www.marlborough.govt.nz/repository/libraries/id%3A2ifzri1o01cxbymxkvwz/hierarchy/documents/services/OpenDataHelp.pdf"
     }
   ]
 }

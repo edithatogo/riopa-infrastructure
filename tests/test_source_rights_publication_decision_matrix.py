@@ -24,6 +24,11 @@ def test_decision_matrix_is_permissive_without_licence_laundering() -> None:
     assert by_source["LINZ Data Service items"]["tier"] == "B"
     assert by_source["Churton Park Village Supermarket catalogue record"]["tier"] == "A"
     assert by_source["NZ ambulance prototype and provider location candidates"]["tier"] == "A"
+    assert by_source["Hamilton City Council Food Premise archive packet"]["tier"] == "A"
+    assert (
+        by_source["Marlborough District Council Food Premise Licences archive packet"]["tier"]
+        == "A"
+    )
     assert all(decision["contingency"] for decision in matrix["decisions"])
     assert all(decision["non_claims"] for decision in matrix["decisions"])
 
