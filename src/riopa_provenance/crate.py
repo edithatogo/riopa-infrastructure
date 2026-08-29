@@ -545,6 +545,38 @@ def validate_provenance_projections(
             for field in ("run", "job", "inputs", "outputs", "producer", "schemaURL"):
                 if field not in event:
                     errors.append(f"OpenLineage event requires {field}")
+            run = event.get("run")
+            if (
+                not isinstance(run, Mapping)
+                or not isinstance(run.get("runId"), str)
+                or not run["runId"].strip()
+            ):
+                errors.append("OpenLineage event run requires a non-empty runId")
+            job = event.get("job")
+            if (
+                not isinstance(job, Mapping)
+                or not isinstance(job.get("namespace"), str)
+                or not job["namespace"].strip()
+                or not isinstance(job.get("name"), str)
+                or not job["name"].strip()
+            ):
+                errors.append("OpenLineage event job requires namespace and name")
+            for field in ("inputs", "outputs"):
+                values = event.get(field)
+                if not isinstance(values, list):
+                    errors.append(f"OpenLineage event {field} must be an array")
+                elif any(
+                    not isinstance(value, Mapping)
+                    or not isinstance(value.get("namespace"), str)
+                    or not isinstance(value.get("name"), str)
+                    or not value["namespace"].strip()
+                    or not value["name"].strip()
+                    for value in values
+                ):
+                    errors.append(f"OpenLineage event {field} require namespace and name")
+            for field in ("producer", "schemaURL"):
+                if not isinstance(event.get(field), str) or not event[field].strip():
+                    errors.append(f"OpenLineage event {field} must be a non-empty string")
     return tuple(dict.fromkeys(errors))
 
 
