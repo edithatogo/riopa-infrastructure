@@ -81,6 +81,12 @@
   beta/RC clock-reset rules, preservation fallback and explicit non-substitutions;
   keep the record preparation-only and promotion fail-closed. (`docs/stable-v1-readiness-plan-20260829.json`,
   `docs/stable-v1-readiness-plan-20260829.md`, `tests/test_stable_v1_readiness_plan.py`)
+- [x] 5.26 Add a fail-closed validator for the exact v1 release-candidate
+  packet, requiring preparation-only status, an exact candidate revision,
+  unsigned status, explicit soak/preservation/authority gates and non-claims
+  (`scripts/validate_v1_release_candidate_packet.py`,
+  `docs/v1-release-candidate-packet-validation-20260829.json`,
+  `tests/test_v1_release_candidate_packet_validator.py`).
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).

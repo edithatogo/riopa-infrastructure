@@ -33,6 +33,15 @@ def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:
         "rc-soak-observation",
         "retrospective-replay",
     }
+    assert LANES["recovery-rollback"] == [
+        "uv",
+        "run",
+        "pytest",
+        "-q",
+        "tests/test_recovery.py",
+        "tests/test_publication.py",
+        "tests/test_linz_pipeline.py",
+    ]
 
 
 def test_performance_rehearsal_emits_benchmark_artifact(tmp_path: Path) -> None:

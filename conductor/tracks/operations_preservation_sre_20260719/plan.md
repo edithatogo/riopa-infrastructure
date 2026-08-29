@@ -41,6 +41,7 @@
 - [x] R1 Constrain lifecycle transition endpoints to the declared job states and add a negative validation. Evidence: `schemas/operations-control.schema.json`, `tests/test_operations_control_contract.py`. (3af81f0)
 - [x] R2 Record a bounded four-lens agent-panel qualification of operations, preservation and campaign controls without closing provider, elapsed, participant or authority gates (`docs/operations-panel-qualification-20260825.json`, `tests/test_operations_panel_qualification.py`).
 - [x] R3 Reject malformed replication manifests, non-object receipts and duplicate target receipts before acceptance validation (`scripts/build_redundancy_manifest.py`, `tests/test_redundancy_manifest.py`).
+- [x] R4 Bind the hosted recovery/rollback lane to the deterministic snapshot, restore and rollback harness rather than publication-only tests; retain production-representative recovery as an external gate (`scripts/record_hosted_evidence.py`, `tests/test_hosted_evidence.py`, `docs/operations-recovery-lane-contract-20260829.json`; 2026-08-29).
 
 ## Track closeout
 

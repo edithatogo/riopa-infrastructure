@@ -40,6 +40,7 @@
     ,"urn:riopa:evidence:v0.4.0-release-mirror:2026-08-29"
     ,"urn:riopa:evidence:v0.4.0-zenodo-preservation:2026-08-29"
     ,"urn:riopa:evidence:v0.4.0-preservation-wp006-reconciliation:2026-08-29"
+    ,"OPS-RECOVERY-LANE-CONTRACT-20260829"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

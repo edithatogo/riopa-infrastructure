@@ -1,0 +1,27 @@
+{
+  "evidence_id": "OPS-RECOVERY-LANE-CONTRACT-20260829",
+  "schema": "riopa.operations-recovery-lane-contract.v1",
+  "scope": "bounded repository-owned hosted recovery/rollback lane",
+  "command": [
+    "uv",
+    "run",
+    "pytest",
+    "-q",
+    "tests/test_recovery.py",
+    "tests/test_publication.py",
+    "tests/test_linz_pipeline.py"
+  ],
+  "observed_status": "lane-binding-updated",
+  "promotion_allowed": false,
+  "open_gates": [
+    "hosted execution of the updated lane",
+    "production-representative provider restore and rollback",
+    "RPO/RTO qualification",
+    "accountable release authority"
+  ],
+  "nonclaims": [
+    "The lane contract is not a production disaster-recovery receipt.",
+    "Repository tests are not external operator or external-user evidence.",
+    "Updating the command does not satisfy elapsed beta or RC soak requirements."
+  ]
+}

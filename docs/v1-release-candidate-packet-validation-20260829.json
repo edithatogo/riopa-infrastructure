@@ -1,0 +1,12 @@
+{
+  "evidence_id": "V1-RC-PACKET-VALIDATION-20260829",
+  "schema": "riopa.v1-release-candidate-packet-validation.v1",
+  "validator": "scripts/validate_v1_release_candidate_packet.py",
+  "observed_status": "preparation-packet-structure-validated",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "does not sign or attest the candidate",
+    "does not provide external operator/user, elapsed soak, preservation restore, or authority evidence",
+    "does not approve beta, RC, or stable-v1 promotion"
+  ]
+}

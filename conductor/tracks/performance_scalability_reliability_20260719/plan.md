@@ -31,6 +31,7 @@
   and authority gates remain open (`docs/performance-second-environment-rehearsal-20260825.json`).
 - [x] 4.2 Complete the repository-owned orchestrated method-and-results agent-panel qualification. Four bounded lenses assess the existing contracts and preserve open national, second-environment, resource/cost, elapsed and authority gates; this is repository-owned advisory evidence and not a third-party implementation or hosted-system receipt (`docs/performance-panel-qualification-20260825.json`, `tests/test_performance_panel_qualification.py`).
 - [x] 4.3 Freeze v1 performance envelopes, limitations and operational actions. (`docs/performance-v1-envelope-freeze-20260825.json`, `tests/test_performance_v1_envelope_freeze.py`; bounded candidate only, promotion remains disallowed)
+- [x] R1 Harden retry decision inputs against non-string method/header values with controlled fail-closed behavior (`src/riopa_provenance/retry.py`, `tests/test_retry.py`, `docs/performance-retry-input-hardening-20260829.json`).
 
 ## Track closeout
 
