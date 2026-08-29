@@ -1,0 +1,37 @@
+{
+  "schema": "riopa.performance-hosted-rehearsal.v1",
+  "record_id": "urn:riopa:evidence:performance-hosted-rehearsal:2026-08-29",
+  "recorded_at": "2026-08-29T04:16:25Z",
+  "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "campaign_id": "performance-rehearsal-20260829-26bc0b4",
+  "observations": [
+    {
+      "run_id": "33233408928",
+      "runner_os": "Linux",
+      "architecture": "x86_64",
+      "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+      "status": "passed",
+      "receipt": "hosted artifact performance-rehearsal.receipt.json"
+    },
+    {
+      "run_id": "33233408928",
+      "runner_os": "macOS",
+      "architecture": "arm64",
+      "source_revision": "3bf108f378b12b05984b4adbf305000f33bd262a",
+      "status": "passed",
+      "receipt": "hosted artifact performance-rehearsal.receipt.json"
+    }
+  ],
+  "qualification": {
+    "status": "bounded-hosted-rehearsal-passed",
+    "correctness": "resilience-matrix-validation-passed",
+    "second_environment": "observed",
+    "promotion_allowed": false
+  },
+  "non_claims": [
+    "This is a bounded technical-preview rehearsal, not a national-scale benchmark.",
+    "It does not establish production SLO, cost, disaster-recovery, external-participant or elapsed-soak qualification.",
+    "The macOS observation is a second-environment rehearsal of the merged workflow and is not the exact candidate revision.",
+    "It is not an accountable release-authority decision."
+  ]
+}
