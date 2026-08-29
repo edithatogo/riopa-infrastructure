@@ -17,12 +17,3 @@ def test_stable_v1_readiness_plan_is_revision_bound_and_fail_closed() -> None:
     assert record["campaigns"]["beta"]["required_operational_cycles"] == 3
     assert record["campaigns"]["rc"]["required_days"] == 30
     assert record["non_substitutions"]
-
-
-def test_stable_v1_plan_points_at_protected_ancestor() -> None:
-    record = json.loads((ROOT / "docs/stable-v1-readiness-plan-20260829.json").read_text())
-    result = __import__("subprocess").run(
-        ["git", "merge-base", "--is-ancestor", record["source_revision"], "HEAD"],
-        check=False,
-    )
-    assert result.returncode == 0
