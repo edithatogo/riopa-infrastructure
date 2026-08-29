@@ -134,3 +134,19 @@ def test_successor_snapshot_digest_is_self_consistent() -> None:
     digest = artifact.pop("snapshot_sha256")
     assert digest == sha256_json(artifact)
     assert artifact["status"] == "blocked"
+
+
+def test_latest_exact_merged_revision_snapshot_matches_current_inputs() -> None:
+    artifact = json.loads(
+        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-e2a682b6.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert artifact == build_snapshot(
+        ROOT,
+        evaluated_revision=artifact["evaluated_revision"],
+        generated_at=artifact["generated_at"],
+    )
+    assert artifact["evaluated_revision"] == "e2a682b6a8273b2bb4fa4cfc58af12c97a4423f2"
+    assert artifact["track_summary"]["qualified"] == 0
+    assert artifact["stable_gate_summary"]["passed"] == 0
