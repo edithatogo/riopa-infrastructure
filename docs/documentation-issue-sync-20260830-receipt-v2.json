@@ -1,0 +1,15 @@
+{
+  "record_type": "github_issue_projection_sync_receipt",
+  "recorded_at": "2026-08-29T15:01:12Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "track_id": "documentation_developer_experience_20260719",
+  "method": "gh issue view --json body (CLI output bytes)",
+  "supersedes": "docs/documentation-issue-sync-20260830.json",
+  "issues": [
+    {"issue": 125, "body_sha256": "98774f15886f20b9cc27b790ce77c9040f8804dad1c373056ca29cae9cf94b69"},
+    {"issue": 126, "body_sha256": "a3558576a3deba7eba4ae384e32350f9294959fcb589b3d03b5d0d1a885df528"},
+    {"issue": 127, "body_sha256": "3eea59a9dd3ecd1f5de0db7d66ff03e0dab794295ba60b8e78f90c5e41ced62b"},
+    {"issue": 128, "body_sha256": "38fb5a9617e454a7185dccab56b1bfccd2913efb928e31294c5cbf2cc38b72ef"}
+  ],
+  "boundary": "Receipt representation is CLI-output based; no external usability, accessibility, preservation, soak, promotion or authority gate is closed."
+}

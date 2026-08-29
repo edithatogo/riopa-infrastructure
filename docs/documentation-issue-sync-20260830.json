@@ -1,0 +1,36 @@
+{
+  "record_type": "github_issue_projection_sync",
+  "recorded_at": "2026-08-30T12:45:00Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "track_id": "documentation_developer_experience_20260719",
+  "source": "project/issues.yaml",
+  "issues": [
+    {
+      "issue": 125,
+      "phase": "1",
+      "source_body_sha256": "b9fb1a4ecd44d716bfd811da8155516df0b1e9b84e2da6fab68d32c28481c9b4",
+      "deployed_body_sha256": "98774f15886f20b9cc27b790ce77c9040f8804dad1c373056ca29cae9cf94b69"
+    },
+    {
+      "issue": 126,
+      "phase": "2",
+      "source_body_sha256": "999e90600d867b94afa60436772e658b58e014d33b58ed7b26b8ff71858b9047",
+      "deployed_body_sha256": "a3558576a3deba7eba4ae384e32350f9294959fcb589b3d03b5d0d1a885df528"
+    },
+    {
+      "issue": 127,
+      "phase": "3",
+      "source_body_sha256": "4cbe11440148765868c7248e170475f47355d37028b970559ea78d5a10b0e126",
+      "deployed_body_sha256": "3eea59a9dd3ecd1f5de0db7d66ff03e0dab794295ba60b8e78f90c5e41ced62b"
+    },
+    {
+      "issue": 128,
+      "phase": "4",
+      "source_body_sha256": "b78076064a44a4b4fc401385d2d3c600ff8645755d30e6cb0b7444dddf027fe5",
+      "deployed_body_sha256": "fce010cb0485bbb9a0bfc3c6554896b9d4b74ea624905c39f0af5061499161d5"
+    }
+  ],
+  "result": "verified",
+  "boundary": "Descriptions were synchronized only; external usability, accessibility, preservation, soak, promotion and authority gates remain open.",
+  "deployment": "GitHub issue body returned by gh issue view (including riopa-issue-key marker)"
+}
