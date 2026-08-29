@@ -1,0 +1,28 @@
+{
+  "evidence_id": "urn:riopa:evidence:hosted-beta-observation:2026-08-29",
+  "record_type": "hosted_evidence_observation",
+  "schema_version": "1.0.0",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "run_id": "33236636950",
+  "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33236636950",
+  "lane": "operational-observation",
+  "campaign_id": "operational-beta-20260829-main",
+  "qualification_epoch": "beta-epoch-20260829-main",
+  "candidate_revision": "e225bd401683f90d293851f605a3c2fe8562373d",
+  "status": "passed",
+  "receipt_sha256": "8c8ce88bc461ff9d017e9487f519ba428bda3372040f0bbea28104c1c4e8b933",
+  "ledger_chain_head_sha256": "4f6c8421ed5089b9bc2f721447cb4a714fa26d70a077afe716b0f242253f856b",
+  "artifact": "evidence-campaign-operational-beta-20260829-main-operational-observation",
+  "observed_at": "2026-08-29T05:38:54Z",
+  "qualification": {
+    "duration_status": "pending-duration",
+    "operational_cycles_status": "pending-cycles",
+    "required_elapsed_days": 90,
+    "required_operational_cycles": 3
+  },
+  "non_claims": [
+    "One passing hosted observation is not 90-day or three-cycle beta evidence.",
+    "This observation does not start or satisfy the exact-RC soak.",
+    "This is a bounded non-operational technical-preview drill, not production SLO or disaster-recovery qualification."
+  ]
+}
