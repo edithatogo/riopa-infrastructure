@@ -1,0 +1,11 @@
+{
+  "evidence_id": "PUB-VALIDATION-PACKET-INTEGRITY-20260829",
+  "schema": "riopa.publication-validation-packet-integrity.v1",
+  "validator": "scripts/validate_publication_validation_packet.py",
+  "observed_status": "preparation-boundary-validated",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This validates packet structure and referenced local contracts only.",
+    "It does not create a DOI, publication, preservation acceptance, external participant evidence or release authority."
+  ]
+}
