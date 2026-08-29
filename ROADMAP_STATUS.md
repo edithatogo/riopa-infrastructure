@@ -1,21 +1,21 @@
 # RIOPA Roadmap Status
 
-Programme configuration: `0.3.0`
-Current roadmap release: `0.3.0`
+Programme configuration: `0.3.0`  
+Current roadmap release: `0.3.0`  
 Stable target: `1.0.0`
 
 ## Tracks
 
 - Total: **29**
 - v1-critical: **28**
-- active: **20**
+- active: **19**
 - archived: **1**
-- validating: **8**
+- validating: **9**
 
 ### Current maturity
 
-- `M1`: **21**
-- `M2`: **8**
+- `M1`: **20**
+- `M2`: **9**
 
 ## Release readiness
 
@@ -74,7 +74,7 @@ Stable target: `1.0.0`
 - Gates: 0/5 passed
 - Blockers:
   - track provenance_query_api_20260719 is M1; M3 is required
-  - track interoperability_conformance_sdks_20260719 is M1; M3 is required
+  - track interoperability_conformance_sdks_20260719 is M2; M3 is required
   - track planning_rules_linkage_20260718 is M1; M3 is required
   - track accessibility_network_engine_20260719 is M1; M3 is required
   - track facility_registry_20260719 is M1; M3 is required
@@ -133,7 +133,7 @@ Stable target: `1.0.0`
   - track foundation_architecture_20260718 is M2; M5 is required
   - track governance_maori_data_sovereignty_20260718 is M2; M5 is required
   - track health_outcomes_causal_methods_20260719 is M1; M5 is required
-  - track interoperability_conformance_sdks_20260719 is M1; M5 is required
+  - track interoperability_conformance_sdks_20260719 is M2; M5 is required
   - track methods_research_objects_20260718 is M2; M5 is required
   - track nz_spatial_archive_mvp_20260718 is M1; M5 is required
   - track nz_spatial_archive_operations_20260719 is M1; M5 is required
@@ -178,7 +178,7 @@ Stable target: `1.0.0`
   - track foundation_architecture_20260718 is M2; M6 is required
   - track governance_maori_data_sovereignty_20260718 is M2; M6 is required
   - track health_outcomes_causal_methods_20260719 is M1; M6 is required
-  - track interoperability_conformance_sdks_20260719 is M1; M6 is required
+  - track interoperability_conformance_sdks_20260719 is M2; M6 is required
   - track methods_research_objects_20260718 is M2; M6 is required
   - track nz_spatial_archive_mvp_20260718 is M1; M6 is required
   - track nz_spatial_archive_operations_20260719 is M1; M6 is required

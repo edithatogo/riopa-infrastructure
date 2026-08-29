@@ -17,8 +17,8 @@ see the [single-developer and agent-advisory policy](../docs/single-developer-ag
 
 - **Total tracks:** 29 (28 continuing stable-v1 tracks plus 1 archived historical closeout)
 - **Complete:** 0
-- **Active:** 23
-- **Validating:** 5
+- **Active:** 19
+- **Validating:** 9
 - **Ready:** 0
 - **Specified:** 0
 - **Proposed:** 0
@@ -41,7 +41,7 @@ Track completion is not equivalent to release readiness. Stable v1 additionally 
 - [~] **`connector_runtime_capture_20260719`** — Common connector runtime and faithful capture framework (target `0.4.0`, current `M2`, target `M6`, risk Critical; depends on: `provenance_profile_v1_20260718`, `security_supply_chain_20260719`)
 - [~] **`methods_research_objects_20260718`** — Research objects, methods supplements and citation automation (target `0.4.0`, current `M2`, target `M6`, risk Critical; depends on: `provenance_profile_v1_20260718`, `security_supply_chain_20260719`)
 - [~] **`repository_template_adoption_20260718`** — Repository template and cross-repository adoption (target `0.5.0`, current `M1`, target `M6`, risk High; depends on: `provenance_profile_v1_20260718`, `methods_research_objects_20260718`, `security_supply_chain_20260719`)
-- [~] **`interoperability_conformance_sdks_20260719`** — Interoperability, conformance suites and supported SDKs (target `0.6.0`, current `M1`, target `M6`, risk High; depends on: `provenance_profile_v1_20260718`, `canonical_domain_schemas_ontology_20260719`, `methods_research_objects_20260718`, `repository_template_adoption_20260718`)
+- [~] **`interoperability_conformance_sdks_20260719`** — Interoperability, conformance suites and supported SDKs (target `0.6.0`, current `M2`, target `M6`, risk High; depends on: `provenance_profile_v1_20260718`, `canonical_domain_schemas_ontology_20260719`, `methods_research_objects_20260718`, `repository_template_adoption_20260718`)
 - [~] **`provenance_query_api_20260719`** — Queryable provenance and impact-analysis API (target `0.6.0`, current `M1`, target `M6`, risk High; depends on: `canonical_domain_schemas_ontology_20260719`, `provenance_profile_v1_20260718`)
 
 ## NZ Spatial
@@ -89,4 +89,4 @@ Normative contracts, governance, security and faithful capture are upstream of p
 Stable v1.0 requires every v1-critical track to reach its declared maturity target, all blocking `1.0.0` gates to pass, the global v1 gate to pass, no prohibited defect or expired waiver, and a signed release-authority decision. See `docs/v1-definition-of-done.md`.
 
 *Programme configuration version: 0.2.0*  
-*Updated: 2026-08-26*
+*Updated: 2026-08-29*

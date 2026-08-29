@@ -33,7 +33,7 @@
 - [x] C.4 Promote the bounded registry executable-proof boundary to experimental M2. The track remains `validating`; current-authority completeness, live rights/health evidence, repeated hosted monitoring, preservation, panel reproduction and accountable-owner gates remain assigned to M3-M6 (`docs/nz-source-registry-m2-promotion-20260829.json`, `tests/test_nz_source_registry_m2_promotion.py`).
 - [x] C.5 Group missing and existing licence decisions into permissive public-archive tiers, separating copyright permission from authority, completeness and safety (`docs/source-rights-publication-decision-matrix-20260829.json`, `tests/test_source_rights_publication_decision_matrix.py`).
 - [x] C.6 Adopt full lawful capture and private preservation as the default unless explicitly restricted, while retaining an affirmative-basis requirement only for public payload copying (`docs/source-rights-archive-default-20260829.json`, `tests/test_source_rights_archive_default.py`).
-- [~] C.7 Capture and publicly preserve the three newly qualified Tier-A ArcGIS layers with exact payload, licence and fixity receipts.
+- [x] C.7 Capture and publicly preserve the three newly qualified Tier-A ArcGIS layers with exact payload, licence and fixity receipts. Evidence: `docs/tier-a-archive-capture-evidence-20260829.json`, `docs/public-tier-a-archive-publication-20260829.json`, public Hugging Face revision `001137c0df64e9f8a7b0539fd0286a7cd5819ce7`, and merged PR #636. Publication is bounded; authority, completeness, currentness and operational claims remain open.
 
 ## M2 review fixes
 
