@@ -40,6 +40,7 @@ def build_archived_supermarket_snapshot(
     registry_version: str,
     licence: str,
     observed_at: str,
+    payload_sha256: str,
 ) -> dict[str, Any]:
     """Convert an archived GeoJSON food-premise payload into bounded assertions.
 
@@ -53,11 +54,16 @@ def build_archived_supermarket_snapshot(
         ("registry_version", registry_version),
         ("licence", licence),
         ("observed_at", observed_at),
+        ("payload_sha256", payload_sha256),
     ):
         if not isinstance(value, str) or not value.strip():
             raise SupermarketPilotError(f"{name} must be a non-empty string")
     if payload.get("type") != "FeatureCollection":
         raise SupermarketPilotError("archived payload must be a GeoJSON FeatureCollection")
+    if len(payload_sha256) != 64 or any(
+        character not in "0123456789abcdef" for character in payload_sha256
+    ):
+        raise SupermarketPilotError("payload_sha256 must be a lowercase SHA-256 digest")
     features = payload.get("features")
     if not isinstance(features, list):
         raise SupermarketPilotError("archived payload features must be a list")
@@ -102,6 +108,7 @@ def build_archived_supermarket_snapshot(
         "release_filter": "public-only",
         "registry_version": registry_version.strip(),
         "source_id": source_id.strip(),
+        "payload_sha256": payload_sha256,
         "assertions": assertions,
         "claim_classification": "bounded-public-reference",
         "promotion_allowed": False,

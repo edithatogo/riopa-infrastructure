@@ -37,6 +37,7 @@ def test_archived_supermarket_snapshot_filters_publisher_classification() -> Non
         registry_version="hf:001137c0@hamilton",
         licence="CC-BY-4.0",
         observed_at="2026-08-02T15:30:08Z",
+        payload_sha256="a" * 64,
     )
     assert len(snapshot["assertions"]) == 1
     assertion = snapshot["assertions"][0]
@@ -54,6 +55,17 @@ def test_archived_supermarket_snapshot_rejects_invalid_payload() -> None:
             registry_version="v1",
             licence="CC-BY-4.0",
             observed_at="now",
+            payload_sha256="a" * 64,
+        )
+
+    with pytest.raises(SupermarketPilotError, match="payload_sha256"):
+        build_archived_supermarket_snapshot(
+            {"type": "FeatureCollection", "features": []},
+            source_id="source",
+            registry_version="v1",
+            licence="CC-BY-4.0",
+            observed_at="now",
+            payload_sha256="not-a-digest",
         )
 
 
@@ -80,6 +92,8 @@ def test_archived_supermarket_snapshot_cli_reads_local_payload(tmp_path: Path) -
             "CC-BY-4.0",
             "--observed-at",
             "2026-08-29T00:00:00Z",
+            "--payload-sha256",
+            "a" * 64,
         ],
         check=False,
         capture_output=True,
@@ -88,6 +102,7 @@ def test_archived_supermarket_snapshot_cli_reads_local_payload(tmp_path: Path) -
     assert result.returncode == 0, result.stderr
     snapshot = json.loads(output_path.read_text(encoding="utf-8"))
     assert snapshot["record_type"] == "facility_assertions"
+    assert snapshot["payload_sha256"] == "a" * 64
     assert snapshot["assertions"] == []
     assert snapshot["promotion_allowed"] is False
 
