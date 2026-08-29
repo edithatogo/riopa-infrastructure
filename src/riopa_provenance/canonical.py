@@ -29,6 +29,7 @@ _SHACL_FIELD_NAMES = {
     "evidence": "evidence",
 }
 _SHACL_STRING_PATHS = {"mappingId", "canonicalId", "method", "reviewer"}
+_CONFORMANCE_CASE_CLASSES = {"positive", "negative", "migration"}
 
 
 def _part(value: str) -> str:
@@ -265,6 +266,7 @@ def validate_conformance_corpus(
     if not isinstance(cases, list) or not cases:
         return tuple([*errors, "cases must be a non-empty array"])
     seen: set[str] = set()
+    observed_classes: set[str] = set()
     base = Path(root or ".")
     for index, case in enumerate(cases):
         if not isinstance(case, Mapping):
@@ -277,6 +279,13 @@ def validate_conformance_corpus(
             errors.append(f"duplicate case_id: {case_id}")
         else:
             seen.add(case_id)
+        case_class = case.get("case_class")
+        if case_class not in _CONFORMANCE_CASE_CLASSES:
+            errors.append(
+                f"case {index} case_class must be one of {sorted(_CONFORMANCE_CASE_CLASSES)}"
+            )
+        else:
+            observed_classes.add(case_class)
         digest = case.get("expected_sha256")
         if (
             not isinstance(digest, str)
@@ -300,6 +309,9 @@ def validate_conformance_corpus(
                     errors.append(f"case {index} schema does not exist: {schema}")
         if not isinstance(case.get("expected_valid"), (bool, type(None))):
             errors.append(f"case {index} expected_valid must be boolean or null")
+    missing_classes = sorted(_CONFORMANCE_CASE_CLASSES - observed_classes)
+    if missing_classes:
+        errors.append("corpus is missing required case classes: " + ", ".join(missing_classes))
     return tuple(errors)
 
 

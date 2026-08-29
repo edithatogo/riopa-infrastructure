@@ -65,3 +65,4 @@
   `tests/test_release_conformance_report.py`, `.github/workflows/release.yml`).
 - [x] R14 Reconcile stale compatibility-matrix references with the observed 2026-08-29 successor while preserving the 2026-08-25 predecessor snapshot (`docs/wp006-matrix-traceability-20260829.json`, `docs/conformance-and-release-verification.md`).
 - [x] R15 Bind the matrix traceability receipt to the exact 40-character merged revision and guard it with a regression test (review fix; 2026-08-29).
+- [x] R16 Require positive, negative and migration case classes in the normative corpus before parity execution, with negative coverage for unknown and missing classes (2026-08-29).

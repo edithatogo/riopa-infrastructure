@@ -45,6 +45,24 @@ def test_corpus_envelope_is_safe_and_well_formed() -> None:
     )
 
 
+def test_corpus_envelope_rejects_unknown_case_class() -> None:
+    root, corpus = _corpus()
+    tampered = json.loads(json.dumps(corpus))
+    tampered["cases"][0]["case_class"] = "unknown"
+    errors = validate_conformance_corpus(tampered, root=str(root / "conformance/v1"))
+    assert any("case_class must be one of" in error for error in errors)
+
+
+def test_corpus_envelope_requires_each_case_class() -> None:
+    root, corpus = _corpus()
+    tampered = {
+        **corpus,
+        "cases": [case for case in corpus["cases"] if case["case_class"] != "migration"],
+    }
+    errors = validate_conformance_corpus(tampered, root=str(root / "conformance/v1"))
+    assert "corpus is missing required case classes: migration" in errors
+
+
 def test_node_implementation_matches_python_outcomes() -> None:
     root, corpus = _corpus()
     result = subprocess.run(
