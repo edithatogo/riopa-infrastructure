@@ -20,8 +20,36 @@ def _node_version(root: Path) -> str:
     return result.stdout.strip()
 
 
+def _rust_report(root: Path) -> tuple[str, list[dict[str, Any]]]:
+    manifest = root / "rust/riopa-conformance/Cargo.toml"
+    version = subprocess.run(
+        ["rustc", "--version"], cwd=root, check=True, capture_output=True, text=True
+    ).stdout.strip()
+    result = subprocess.run(
+        [
+            "cargo",
+            "run",
+            "--quiet",
+            "--locked",
+            "--manifest-path",
+            str(manifest),
+            "--bin",
+            "conformance_corpus",
+        ],
+        cwd=root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    reports = [json.loads(line) for line in result.stdout.splitlines() if line]
+    if not reports or not all(item.get("passed") is True for item in reports):
+        raise ValueError("Rust conformance report is absent or contains a failure")
+    return version, reports
+
+
 def build_matrix(root: Path) -> dict[str, Any]:
     receipt = build_receipt(root)
+    rust_version, rust_reports = _rust_report(root)
     corpus = json.loads((root / "conformance/v1/corpus.json").read_text(encoding="utf-8"))
     return {
         "matrix_version": "1.0.0",
@@ -30,6 +58,7 @@ def build_matrix(root: Path) -> dict[str, Any]:
         "environment": {
             "python": platform.python_version(),
             "node": _node_version(root),
+            "rust": rust_version,
         },
         "implementations": [
             {
@@ -49,13 +78,20 @@ def build_matrix(root: Path) -> dict[str, Any]:
             {
                 "tool": "rust-reference",
                 "language": "Rust",
-                "status": "not-implemented",
-                "cases": 0,
-                "parity": False,
+                "status": "observed-pass",
+                "cases": len(rust_reports),
+                "parity": all(item["passed"] for item in rust_reports),
+                "schema_cases": sum(item["schema_valid"] is not None for item in rust_reports),
+                "rfc8785_numeric_cases": sum(
+                    item["case_id"] == "canonical-rfc8785-numbers" for item in rust_reports
+                ),
             },
         ],
         "compatibility": {
             "python_node_parity": receipt["parity"],
+            "python_node_rust_parity": (
+                receipt["parity"] and len(rust_reports) == receipt["case_count"]
+            ),
             "migration_cases_included": any(
                 item["case_id"].startswith("canonical-profile-migration")
                 for item in corpus["cases"]
@@ -65,7 +101,7 @@ def build_matrix(root: Path) -> dict[str, Any]:
         },
         "non_claims": [
             "This is a bounded repository-owned matrix, not an independent review.",
-            "Rust, standards round-trips and external producer/consumer exercises remain open.",
+            "Standards-complete round-trips and trusted stable-candidate signing remain open.",
             "The matrix does not establish release, operational or preservation acceptance.",
         ],
     }

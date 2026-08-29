@@ -6,45 +6,9 @@
 
 use sha2::{Digest, Sha256};
 
-/// Canonicalise the JSON value subset used by the checked-in conformance corpus.
-///
-/// Object keys are sorted recursively and scalar values use serde_json's JSON
-/// representation. The corpus contains integers, booleans, nulls, arrays and
-/// strings; floating-point canonicalisation is intentionally not widened here
-/// without a corresponding corpus contract.
+/// Canonicalise an I-JSON value using RFC 8785 / JCS semantics.
 pub fn canonical_json(value: &serde_json::Value) -> Result<String, ValidationError> {
-    match value {
-        serde_json::Value::Null => Ok("null".to_owned()),
-        serde_json::Value::Bool(value) => Ok(value.to_string()),
-        serde_json::Value::Number(value) => {
-            if value.is_f64() {
-                return Err(ValidationError::InvalidWireField);
-            }
-            Ok(value.to_string())
-        }
-        serde_json::Value::String(value) => {
-            serde_json::to_string(value).map_err(|_| ValidationError::InvalidWireField)
-        }
-        serde_json::Value::Array(values) => {
-            let encoded = values
-                .iter()
-                .map(canonical_json)
-                .collect::<Result<Vec<_>, _>>()?;
-            Ok(format!("[{}]", encoded.join(",")))
-        }
-        serde_json::Value::Object(values) => {
-            let mut keys: Vec<&String> = values.keys().collect();
-            keys.sort();
-            let mut encoded = Vec::with_capacity(keys.len());
-            for key in keys {
-                let value = canonical_json(&values[key])?;
-                let encoded_key =
-                    serde_json::to_string(key).map_err(|_| ValidationError::InvalidWireField)?;
-                encoded.push(format!("{encoded_key}:{value}"));
-            }
-            Ok(format!("{{{}}}", encoded.join(",")))
-        }
-    }
+    serde_json_canonicalizer::to_string(value).map_err(|_| ValidationError::InvalidWireField)
 }
 
 /// Return a SHA-256 digest over the bounded canonical JSON representation.
@@ -242,5 +206,17 @@ mod tests {
         let mut value = valid_crosswalk();
         value.mapping_id.push('\t');
         assert_eq!(value.to_wire(), Err(ValidationError::InvalidWireField));
+    }
+
+    #[test]
+    fn canonical_json_supports_rfc8785_numbers_and_utf16_key_order() {
+        let value: serde_json::Value = serde_json::from_str(
+            r#"{"\u20ac":"euro","\r":"control","1":1e-7,"2":1e+21,"3":-0.0,"\ud83d\ude00":"face","\ufb33":"hebrew"}"#,
+        )
+        .expect("valid I-JSON fixture");
+        assert_eq!(
+            canonical_json(&value).expect("canonical fixture"),
+            r#"{"\r":"control","1":1e-7,"2":1e+21,"3":0,"€":"euro","😀":"face","דּ":"hebrew"}"#
+        );
     }
 }

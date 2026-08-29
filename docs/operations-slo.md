@@ -23,7 +23,7 @@ Before the 0.9.0 release candidate, operational components must provide at least
 **90 consecutive calendar days** with at least **90 daily hosted observations**
 and three complete operating cycles, including an injected source or dependency
 failure, backfill and recovery. The unchanged exact candidate then completes at
-least **7 consecutive calendar days** with at least **7 daily hosted
+least **30 consecutive calendar days** with at least **30 daily hosted
 observations**. A candidate revision change restarts its soak segment.
 
 “Hosted” means a scheduled workflow actually ran outside the developer laptop

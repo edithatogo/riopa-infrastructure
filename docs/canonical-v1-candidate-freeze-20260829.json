@@ -1,0 +1,34 @@
+{
+  "schema": "riopa.canonical-v1-candidate-freeze.v1",
+  "freeze_id": "canonical-v1-candidate-freeze-20260829",
+  "supersedes": "docs/canonical-v1-candidate-freeze-20260825.json",
+  "status": "candidate-frozen-not-published",
+  "scope": "bounded public-source technical-preview vocabulary, crosswalk and seven-case cross-language conformance corpus",
+  "artifacts": {
+    "schemas/canonical-crosswalk.schema.json": "2389536e5e9717e79cb25894e3c9a6070aee2d5e16dd30ab4815cb069fb014a4",
+    "docs/ontology/canonical-context.jsonld": "aa23975c938869b7765dcba4b63ee838cd3c9fce86ede4343ae91a14e126f1ff",
+    "docs/ontology/canonical-ontology-release-1.0.0.json": "07e379a2137a3f34ce66f9f28c06b1a4f289e34cb717b14edcc858b5230458d0",
+    "docs/ontology/canonical-conformance-manifest-1.0.0.json": "b79ab54aef50b3d27d7181e368f736eaf6884345427e12e2d3bf0433cd9165cd",
+    "docs/ontology/canonical-crosswalk.shacl.ttl": "f43ee9a29112136abe0719977bfcde75fb907e4f8809329c7643594c5bc2bf25",
+    "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json": "942538b5c57038ee9d2bffea129a6548b55886fcd0af26051be8415f4e33ea59",
+    "fixtures/canonical-crosswalk-golden.json": "0a5ce20c85fd43c29dc47ec8e6baafe72af1f297929d2c5285381a0e0ec85e74",
+    "conformance/v1/corpus.json": "e0d34ba79a0961ca5ae3fb1cb2c224bd20a76dab0599ea35ef7ada5b5fa5f6fa"
+  },
+  "freeze_rules": [
+    "changes to listed normative artifacts require a successor candidate and digest update",
+    "unknown or unmapped terms fail closed",
+    "extensions remain namespaced and cannot redefine normative fields",
+    "the candidate is not the stable-v1 release candidate or an operational authority"
+  ],
+  "open_gates": [
+    "standards-complete claimed-profile validation",
+    "stable exact-candidate trusted signing and preservation",
+    "semantic/domain agent-panel qualification",
+    "persistent stable publication identifier and authority decision"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This bounded canonical freeze does not start the stable beta or RC clocks.",
+    "Agent-panel assessment is advisory and does not represent an external software validator or hosted-system receipt."
+  ]
+}
