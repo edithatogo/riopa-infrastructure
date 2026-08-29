@@ -5,8 +5,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
+
+_REVISION = re.compile(r"^[0-9a-f]{40}$")
 
 
 def validate_status(document: Any) -> tuple[str, ...]:
@@ -16,8 +19,8 @@ def validate_status(document: Any) -> tuple[str, ...]:
         return ("status snapshot must be an object",)
     errors: list[str] = []
     source_revision = document.get("source_revision")
-    if not isinstance(source_revision, str) or len(source_revision) != 40:
-        errors.append("source_revision must be a 40-character revision")
+    if not isinstance(source_revision, str) or _REVISION.fullmatch(source_revision) is None:
+        errors.append("source_revision must be a 40-character lowercase hexadecimal revision")
     observations = document.get("observations")
     if not isinstance(observations, list) or not observations:
         errors.append("observations must be a non-empty array")
@@ -48,12 +51,14 @@ def validate_status(document: Any) -> tuple[str, ...]:
             errors.append(f"{prefix}.revision is required")
         else:
             latest_revision = revision
+            if _REVISION.fullmatch(revision) is None:
+                errors.append(
+                    f"{prefix}.revision must be a 40-character lowercase hexadecimal revision"
+                )
         if lane == "rc-soak-observation":
             candidate = observation.get("candidate_revision")
             if candidate != revision:
                 errors.append(f"{prefix} RC candidate must equal revision")
-            if not isinstance(revision, str) or len(revision) != 40:
-                errors.append(f"{prefix}.revision must be a 40-character revision")
             for field in ("campaign_id", "qualification_epoch", "operational_cycle_id"):
                 if not isinstance(observation.get(field), str) or not observation[field].strip():
                     errors.append(f"{prefix}.{field} is required for RC observations")
