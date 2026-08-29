@@ -43,5 +43,8 @@
     "Research-object analyst",
     "User-workflow analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "Cross-repository adoption, hosted execution and preservation/rollback evidence remain open.",
+    "Independent reproduction, contributor feedback and release-authority evidence remain open."
+  ]
 }

@@ -40,7 +40,8 @@ evidence (`docs/provenance-query-conductor-regeneration-20260825.json`).
 
 ## Blocking defects
 
-- None recorded.
+- MCP transport, cross-interface equivalence and remote access-control evidence remain open.
+- Production-scale performance, agent-operated user-journey and stable-release evidence remain open.
 
 The 2026-08-25 closeout packet links the bounded lineage implementation, CLI,
 projection, migration and synthetic benchmark evidence. It does not establish

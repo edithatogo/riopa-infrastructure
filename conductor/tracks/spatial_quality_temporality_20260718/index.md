@@ -40,7 +40,8 @@ gates remain open (`docs/spatial-quality-conductor-regeneration-20260825.json`).
 
 ## Blocking defects
 
-- None recorded.
+- Heterogeneous real-council, historical/boundary and national completeness evidence remain open.
+- MAUP qualification, external semantics and stable-release evidence remain open.
 
 The 2026-08-25 closeout packet links the bounded profile, evaluator, trend,
 temporal, crosswalk, sensitivity and uncertainty evidence. It does not

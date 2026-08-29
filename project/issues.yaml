@@ -1365,7 +1365,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "repository_template_adoption_20260718:phase-1",
@@ -1393,7 +1393,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "repository_template_adoption_20260718:phase-2",
@@ -1423,7 +1423,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "repository_template_adoption_20260718:phase-3",
@@ -1453,7 +1453,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "repository_template_adoption_20260718:phase-4",
@@ -1483,7 +1483,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "nz_spatial_archive_mvp_20260718",
@@ -2010,7 +2010,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "interoperability_conformance_sdks_20260719:phase-1",
@@ -2038,7 +2038,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "interoperability_conformance_sdks_20260719:phase-2",
@@ -2068,7 +2068,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "interoperability_conformance_sdks_20260719:phase-3",
@@ -2098,7 +2098,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "interoperability_conformance_sdks_20260719:phase-4",
@@ -2128,7 +2128,7 @@
       "priority": "P0",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "provenance_query_api_20260719",
@@ -2162,7 +2162,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "provenance_query_api_20260719:phase-1",
@@ -2190,7 +2190,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "provenance_query_api_20260719:phase-2",
@@ -2220,7 +2220,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "provenance_query_api_20260719:phase-3",
@@ -2250,7 +2250,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "provenance_query_api_20260719:phase-4",
@@ -2280,7 +2280,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Core platform maintainer",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "planning_rules_linkage_20260718",
@@ -2804,7 +2804,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "spatial_quality_temporality_20260718:phase-1",
@@ -2832,7 +2832,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "spatial_quality_temporality_20260718:phase-2",
@@ -2862,7 +2862,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "spatial_quality_temporality_20260718:phase-3",
@@ -2892,7 +2892,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "spatial_quality_temporality_20260718:phase-4",
@@ -2922,7 +2922,7 @@
       "priority": "P1",
       "owner_repository": "edithatogo/riopa-infrastructure",
       "owner_role": "Spatial data lead",
-      "blocking_defects": 0
+      "blocking_defects": 2
     },
     {
       "key": "simulation_validation_engine_20260719",

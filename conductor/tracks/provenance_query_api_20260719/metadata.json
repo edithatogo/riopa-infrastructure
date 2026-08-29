@@ -51,5 +51,8 @@
     "Operations analyst",
     "User-workflow analyst"
   ],
-  "blocking_defects": []
+  "blocking_defects": [
+    "MCP transport, cross-interface equivalence and remote access-control evidence remain open.",
+    "Production-scale performance, agent-operated user-journey and stable-release evidence remain open."
+  ]
 }
