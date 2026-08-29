@@ -64,6 +64,23 @@ def test_v040_report_fails_closed_for_missing_evidence(tmp_path):
     assert "evidence receipt not found" in result.stderr
 
 
+def test_v040_report_accepts_workflow_relative_evidence_paths(tmp_path):
+    output = tmp_path / "report.json"
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/build_release_conformance_report.py",
+            str(output),
+            "--evidence",
+            "docs/rust-corpus-parity-20260825.json",
+        ],
+        cwd=ROOT,
+        check=True,
+    )
+    binding = json.loads(output.read_text())["evidence_bindings"][0]
+    assert binding["path"] == "docs/rust-corpus-parity-20260825.json"
+
+
 def test_v040_release_workflow_attests_conformance_report():
     workflow = (ROOT / ".github/workflows/release.yml").read_text()
     assert "scripts/build_release_conformance_report.py" in workflow
