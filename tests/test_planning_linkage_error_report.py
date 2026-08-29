@@ -137,8 +137,7 @@ def test_linkage_error_report_validator_binds_categories_and_digest() -> None:
     tampered = dict(report)
     tampered["total_finding_count"] = 1
     assert any(
-        "total_finding_count" in error
-        for error in validate_planning_linkage_error_report(tampered)
+        "total_finding_count" in error for error in validate_planning_linkage_error_report(tampered)
     )
 
 
@@ -149,3 +148,10 @@ def test_linkage_error_report_validator_rejects_promotion() -> None:
         "linkage error reports must prohibit promotion"
         in validate_planning_linkage_error_report(report)
     )
+
+
+def test_linkage_error_report_validator_rejects_non_numeric_counts() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["finding_counts"]["missing_link_targets"] = "bad"
+    errors = validate_planning_linkage_error_report(report)
+    assert "finding_counts must contain non-negative integers" in errors

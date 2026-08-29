@@ -618,7 +618,12 @@ def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
         if isinstance(findings, Mapping) and isinstance(findings.get(name), list)
     ):
         errors.append("finding_counts must match findings")
-    if isinstance(findings, Mapping) and isinstance(counts, Mapping):
+    valid_counts = isinstance(counts, Mapping) and all(
+        type(counts.get(name)) is int and counts[name] >= 0 for name in expected
+    )
+    if isinstance(counts, Mapping) and not valid_counts:
+        errors.append("finding_counts must contain non-negative integers")
+    if isinstance(findings, Mapping) and isinstance(counts, Mapping) and valid_counts:
         total = report.get("total_finding_count")
         if total != sum(counts.get(name, 0) for name in expected):
             errors.append("total_finding_count must match finding_counts")
