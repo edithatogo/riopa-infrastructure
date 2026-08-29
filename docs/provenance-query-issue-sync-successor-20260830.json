@@ -1,0 +1,17 @@
+{
+  "record_type": "github_issue_projection_sync_successor",
+  "recorded_at": "2026-08-29T14:49:07Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "track_id": "provenance_query_api_20260719",
+  "supersedes": "docs/provenance-query-issue-sync-20260830.json",
+  "source": "project/issues.yaml",
+  "deployment": "GitHub issue body returned by gh issue view (including riopa-issue-key marker)",
+  "issues": [
+    {"issue": 70, "deployed_body_sha256": "bbb83f0d3784371bbe5bd9c3242cbd12a1ae979aec93f6625bba09ddeedd5def"},
+    {"issue": 71, "deployed_body_sha256": "5baca9e8f75184bae07e14757526b3d89f25432894c3778b985a7a651f416bb3"},
+    {"issue": 72, "deployed_body_sha256": "ce074aceb6dadbf2cc5b560e4d0915c5ce6a54404b715f86a7f3dc54aaea85a1"},
+    {"issue": 73, "deployed_body_sha256": "dc6ef8f1b032ce6109d39227287f04446dd0e1fa0452c2b28144c4f6d9046e10"}
+  ],
+  "result": "verified",
+  "boundary": "Descriptions only; no access, scale, user-testing, promotion or release gate was closed."
+}

@@ -43,3 +43,9 @@
   local negative-contract coverage passes (`PROVENANCE-QUERY-PAGINATION-INPUT-VALIDATION-20260829`).
 - [ ] Keep C.3 and remote/scale/authority gates open; this is repository-owned
   input hardening, not external conformance evidence.
+
+### Review fixes (2026-08-30)
+
+- [x] Synchronize GitHub phase issues #70–#73 from the generated issue projection
+  and record exact body digests; no remote access, scale, user-testing or release
+  gate is closed (`docs/provenance-query-issue-sync-20260830.json`).
