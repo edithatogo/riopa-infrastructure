@@ -88,6 +88,15 @@ def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
     signatures = envelope.get("signatures")
     if not isinstance(signatures, list):
         raise AttestationError("DSSE signatures must be an array")
+    for signature in signatures:
+        if (
+            not isinstance(signature, Mapping)
+            or not isinstance(signature.get("keyid"), str)
+            or not isinstance(signature.get("sig"), str)
+            or not signature["keyid"].strip()
+            or not signature["sig"].strip()
+        ):
+            raise AttestationError("DSSE signatures must contain string keyid and sig")
     payload = envelope.get("payload")
     if not isinstance(payload, str) or not payload:
         raise AttestationError("DSSE payload is not valid base64 JSON")
@@ -104,6 +113,10 @@ def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
         predicate = value.get("predicate")
         if not isinstance(subjects, list):
             raise AttestationError("in-toto subject must be a non-empty array")
+        if not isinstance(predicate_type, str):
+            raise AttestationError("in-toto predicateType must be a string")
+        if not isinstance(predicate, Mapping):
+            raise AttestationError("in-toto predicate must be an object")
         build_in_toto_statement(
             subjects,
             predicate_type=predicate_type,

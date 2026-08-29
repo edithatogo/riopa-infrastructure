@@ -43,6 +43,23 @@ def test_dsse_decoder_validates_statement_fields() -> None:
         )
 
 
+def test_dsse_decoder_rejects_malformed_signature_entries() -> None:
+    statement = build_in_toto_statement(
+        [{"name": "release.json", "digest": {"sha256": "b" * 64}}],
+        predicate_type="https://riopa.example/predicate/release/v1",
+        predicate={},
+    )
+    payload = base64.b64encode(json.dumps(statement).encode()).decode()
+    with pytest.raises(AttestationError, match="keyid and sig"):
+        decode_dsse_payload(
+            {
+                "payloadType": DSSE_PAYLOAD_TYPE,
+                "payload": payload,
+                "signatures": [{"sig": 1}],
+            }
+        )
+
+
 def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> None:
     with pytest.raises(AttestationError, match="predicate type"):
         build_in_toto_statement(
