@@ -1,0 +1,22 @@
+{
+  "evidence_id": "WP006-MATRIX-TRACEABILITY-20260829",
+  "schema": "riopa.wp006-matrix-traceability.v1",
+  "source_revision": "bd7530f648ca4a215be180ad2e87dc40032f18d0",
+  "predecessor": {
+    "path": "docs/ontology/interoperability-compatibility-matrix-20260825.json",
+    "sha256": "95ad4db875ed980da1c171effe52bd1f332b9407b21309f44005a01b8c55730e"
+  },
+  "successor": {
+    "path": "docs/ontology/interoperability-compatibility-matrix-20260829.json",
+    "sha256": "3f58455847fdc49b048369b68f22168e629a609168a0f19432ae7b7fb75b3fc7",
+    "observed_cases": 7,
+    "runtimes": ["python", "node", "rust"]
+  },
+  "interpretation": "The successor records bounded repository-owned parity observations; it is not external standards certification or stable-release evidence.",
+  "promotion_allowed": false,
+  "open_gates": [
+    "external standards-validator acceptance",
+    "trusted signed stable-candidate report",
+    "stable-candidate preservation and release authority"
+  ]
+}

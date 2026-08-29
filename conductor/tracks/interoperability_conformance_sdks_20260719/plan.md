@@ -15,7 +15,7 @@
 ## 3. Standards and compatibility testing
 
 - [x] 3.1 Add bounded PROV-O-shaped, OpenLineage-shaped, RO-Crate and DSSE/in-toto round-trip tests. Evidence: `docs/interoperability-standards-roundtrip-contract-20260825.json`, `tests/test_standards_roundtrip_contract.py`; external producer/consumer interoperability, full validator qualification and trusted signing remain open.
-- [x] 3.2 Generate a bounded cross-version and cross-tool compatibility matrix. Evidence: `scripts/build_interoperability_matrix.py` and `docs/ontology/interoperability-compatibility-matrix-20260825.json`; Rust, standards round-trips and external producer/consumer exercises remain open.
+- [x] 3.2 Generate a bounded cross-version and cross-tool compatibility matrix. Evidence: `scripts/build_interoperability_matrix.py` and successor `docs/ontology/interoperability-compatibility-matrix-20260829.json`; seven Python/Node/Rust cases are observed, while external standards round-trips and producer/consumer acceptance remain open.
 - [x] 3.3 Run bounded producer/consumer interoperability exercises. The dependency-free Rust/Python wire-format exchange passes in both directions, and a separately implemented Rust client completes capture, validation and lineage-query workflows against a language-neutral fixture. This satisfies the separately implemented branch without claiming external authorship or use; standards-complete serialization and signed release reports remain open (`rust/riopa-conformance/src/bin/{conformance_exchange.rs,client_workflow.rs}`, `conformance/v1/client-workflow.json`, `tests/test_rust_producer_consumer.py`, `docs/separate-rust-client-workflow-20260829.json`).
 - [x] 3.4 Validate the published research object with an independently maintained RO-Crate validator, preserve the v0.3.0 failure, and remediate prospective generator output to pass all 65 RO-Crate 1.2 required checks (`docs/wp006-external-rocrate-validation-20260829.json`, `src/riopa_provenance/crate.py`, `tests/test_crate.py`).
 
@@ -63,3 +63,5 @@
   publication acceptance or authority (`scripts/validate_release_conformance_report.py`,
   `docs/release-conformance-report-validation-20260829.json`,
   `tests/test_release_conformance_report.py`, `.github/workflows/release.yml`).
+- [x] R14 Reconcile stale compatibility-matrix references with the observed 2026-08-29 successor while preserving the 2026-08-25 predecessor snapshot (`docs/wp006-matrix-traceability-20260829.json`, `docs/conformance-and-release-verification.md`).
+- [x] R15 Bind the matrix traceability receipt to the exact 40-character merged revision and guard it with a regression test (review fix; 2026-08-29).
