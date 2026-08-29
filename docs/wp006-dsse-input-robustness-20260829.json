@@ -8,7 +8,8 @@
     "non-object predicates and envelopes fail with controlled AttestationError values",
     "non-string or malformed payloads fail with controlled AttestationError values",
     "decoded statements are subject to the same subject, predicate type and predicate object checks",
-    "signature entries are objects with non-empty string keyid and sig fields"
+    "signature entries are objects with non-empty string keyid and sig fields",
+    "builder and decoder apply the same strict statement-field validation"
   ],
   "observed_status": "negative-tests-pass",
   "promotion_allowed": false,

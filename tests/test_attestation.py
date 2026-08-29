@@ -29,6 +29,11 @@ def test_dsse_builder_rejects_non_object_statement() -> None:
         build_dsse_envelope(None)  # type: ignore[arg-type]
 
 
+def test_dsse_builder_validates_statement_fields() -> None:
+    with pytest.raises(AttestationError, match="subject must be a non-empty array"):
+        build_dsse_envelope({"_type": "https://in-toto.io/Statement/v1", "subject": []})
+
+
 def test_dsse_decoder_validates_statement_fields() -> None:
     statement = {
         "_type": "https://in-toto.io/Statement/v1",

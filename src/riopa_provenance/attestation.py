@@ -64,6 +64,23 @@ def build_in_toto_statement(
     }
 
 
+def _validate_statement_fields(statement: Mapping[str, Any]) -> None:
+    subjects = statement.get("subject")
+    predicate_type = statement.get("predicateType")
+    predicate = statement.get("predicate")
+    if not isinstance(subjects, list) or not subjects:
+        raise AttestationError("in-toto subject must be a non-empty array")
+    if not isinstance(predicate_type, str):
+        raise AttestationError("in-toto predicateType must be a string")
+    if not isinstance(predicate, Mapping):
+        raise AttestationError("in-toto predicate must be an object")
+    build_in_toto_statement(
+        subjects,
+        predicate_type=predicate_type,
+        predicate=predicate,
+    )
+
+
 def build_dsse_envelope(statement: Mapping[str, Any]) -> dict[str, Any]:
     """Encode one statement in a deterministic DSSE envelope.
 
@@ -74,6 +91,7 @@ def build_dsse_envelope(statement: Mapping[str, Any]) -> dict[str, Any]:
 
     if not isinstance(statement, Mapping) or statement.get("_type") != IN_TOTO_STATEMENT_TYPE:
         raise AttestationError("statement must be an in-toto Statement/v1 object")
+    _validate_statement_fields(statement)
     payload = base64.b64encode(_canonical_json(statement)).decode("ascii")
     return {"payloadType": DSSE_PAYLOAD_TYPE, "payload": payload, "signatures": []}
 
@@ -108,20 +126,7 @@ def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(value, dict) or value.get("_type") != IN_TOTO_STATEMENT_TYPE:
         raise AttestationError("DSSE payload is not an in-toto Statement/v1 object")
     try:
-        subjects = value.get("subject")
-        predicate_type = value.get("predicateType")
-        predicate = value.get("predicate")
-        if not isinstance(subjects, list):
-            raise AttestationError("in-toto subject must be a non-empty array")
-        if not isinstance(predicate_type, str):
-            raise AttestationError("in-toto predicateType must be a string")
-        if not isinstance(predicate, Mapping):
-            raise AttestationError("in-toto predicate must be an object")
-        build_in_toto_statement(
-            subjects,
-            predicate_type=predicate_type,
-            predicate=predicate,
-        )
+        _validate_statement_fields(value)
     except (AttestationError, TypeError) as exc:
         raise AttestationError("DSSE payload statement fields are invalid") from exc
     return value

@@ -50,3 +50,4 @@
 - [x] R.14 Guard the DSSE builder and release-report CLI against non-object JSON inputs (review fix; 2026-08-29).
 - [x] R.15 Validate decoded in-toto statement fields with the same strict subject and predicate checks as the builder (review fix; 2026-08-29).
 - [x] R.16 Validate non-empty string keyid and sig fields for decoded DSSE signature entries (review fix; 2026-08-29).
+- [x] R.17 Apply symmetric strict statement-field validation in DSSE builders and decoders (review fix; 2026-08-29).
