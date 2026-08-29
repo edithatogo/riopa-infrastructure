@@ -60,6 +60,21 @@ def test_recorded_hosted_recovery_receipt_is_bound_to_successful_run() -> None:
     assert evidence["gate_disposition"]["production_disaster_recovery"] == "pending"
 
 
+def test_current_hosted_recovery_observation_preserves_provider_gate() -> None:
+    evidence = json.loads(
+        (ROOT / "docs/hosted-recovery-observation-20260829.json").read_text(encoding="utf-8")
+    )
+    assert evidence["status"] == "passed"
+    assert evidence["qualification"]["exit_code"] == 0
+    assert evidence["qualification"]["production_disaster_recovery"] is False
+    assert (
+        evidence["qualification"]["preservation_targets"]["huggingface_dataset"]
+        == "pending-credential"
+    )
+    assert evidence["qualification"]["preservation_targets"]["zenodo"] == "pending-credential"
+    assert evidence["non_claims"]
+
+
 def test_hosted_batch_records_all_bounded_lanes_without_overclaiming() -> None:
     batch = json.loads((ROOT / "docs/hosted-evidence-batch-20260802.json").read_text())
     observations = {item["lane"]: item for item in batch["observations"]}
