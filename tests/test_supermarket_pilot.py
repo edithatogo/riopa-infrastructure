@@ -1,3 +1,4 @@
+import hashlib
 import json
 import subprocess
 from copy import deepcopy
@@ -75,7 +76,39 @@ def test_archived_supermarket_snapshot_cli_reads_local_payload(tmp_path: Path) -
     payload_path.write_text(
         json.dumps({"type": "FeatureCollection", "features": []}), encoding="utf-8"
     )
+    payload_digest = hashlib.sha256(payload_path.read_bytes()).hexdigest()
     result = subprocess.run(
+        [
+            "uv",
+            "run",
+            "python",
+            "scripts/build_archived_supermarket_snapshot.py",
+            str(payload_path),
+            "--output",
+            str(output_path),
+            "--source-id",
+            "source",
+            "--registry-version",
+            "archive:v1",
+            "--licence",
+            "CC-BY-4.0",
+            "--observed-at",
+            "2026-08-29T00:00:00Z",
+            "--payload-sha256",
+            payload_digest,
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    snapshot = json.loads(output_path.read_text(encoding="utf-8"))
+    assert snapshot["record_type"] == "facility_assertions"
+    assert snapshot["payload_sha256"] == payload_digest
+    assert snapshot["assertions"] == []
+    assert snapshot["promotion_allowed"] is False
+
+    mismatch = subprocess.run(
         [
             "uv",
             "run",
@@ -99,12 +132,8 @@ def test_archived_supermarket_snapshot_cli_reads_local_payload(tmp_path: Path) -
         capture_output=True,
         text=True,
     )
-    assert result.returncode == 0, result.stderr
-    snapshot = json.loads(output_path.read_text(encoding="utf-8"))
-    assert snapshot["record_type"] == "facility_assertions"
-    assert snapshot["payload_sha256"] == "a" * 64
-    assert snapshot["assertions"] == []
-    assert snapshot["promotion_allowed"] is False
+    assert mismatch.returncode != 0
+    assert "SHA-256 mismatch" in mismatch.stderr
 
 
 def facility_snapshot() -> dict[str, object]:
