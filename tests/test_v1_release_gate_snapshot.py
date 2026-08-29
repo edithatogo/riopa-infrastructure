@@ -150,3 +150,18 @@ def test_latest_exact_merged_revision_snapshot_matches_current_inputs() -> None:
     assert artifact["evaluated_revision"] == "07686ac3378a4ac5656d31310f44dfb345dadca7"
     assert artifact["track_summary"]["qualified"] == 0
     assert artifact["stable_gate_summary"]["passed"] == 0
+
+
+def test_current_revision_snapshot_matches_current_inputs() -> None:
+    artifact = json.loads(
+        (
+            ROOT / "docs/v1-stable-release-gate-snapshot-20260829-1fa16a6.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert artifact == build_snapshot(
+        ROOT,
+        evaluated_revision=artifact["evaluated_revision"],
+        generated_at=artifact["generated_at"],
+    )
+    assert artifact["evaluated_revision"] == "1fa16a61ff11ef7efbc0f64c5f2dcd98f0da1d1f"
+    assert artifact["release_ready"] is False
