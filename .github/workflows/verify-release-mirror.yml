@@ -1,0 +1,41 @@
+name: Verify public release mirror
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 15 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-release-mirror-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out verifier
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.14"
+          version: "0.11.16"
+      - name: Verify all mirrored release bytes
+        run: uv run python scripts/verify_hf_release_mirror.py --output dist/release-mirror-verification.json
+      - name: Upload verification report
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-mirror-verification-${{ github.run_id }}
+          path: dist/release-mirror-verification.json
+          if-no-files-found: error
+          retention-days: 90

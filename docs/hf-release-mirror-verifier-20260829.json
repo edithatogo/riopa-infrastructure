@@ -1,0 +1,15 @@
+{
+  "evidence_id": "OPS-HF-MIRROR-VERIFIER-20260829",
+  "schema_version": "1.0.0",
+  "workflow": ".github/workflows/verify-release-mirror.yml",
+  "schedule": "weekly plus manual dispatch",
+  "source_publication_receipt": "docs/v0.4.0-release-publication-20260829.json",
+  "mirror_record": "docs/v0.4.0-release-mirror-20260829.json",
+  "verification": "Unauthenticated HTTPS downloads at the immutable Hugging Face commit are SHA-256 checked against the historical receipt and mirror metadata.",
+  "classification": "repository-owned-public-byte-mirror-verification",
+  "non_claims": [
+    "does not establish Zenodo or institutional preservation acceptance",
+    "does not establish signed evidence or independent target qualification",
+    "does not advance beta/RC elapsed clocks or stable-v1 release authority"
+  ]
+}
