@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:v0.4.0-release-mirror:2026-08-29",
+  "record_type": "successor_release_mirror_receipt",
+  "release": "0.4.0",
+  "channel": "public-technical-preview",
+  "observed_at": "2026-08-29T06:13:44Z",
+  "source_publication_receipt": {
+    "path": "docs/v0.4.0-release-publication-20260829.json",
+    "sha256": "eedd8cfd2c907619d0074d3c97a07830b4ca4c4c442de853199f5e798ec1c767"
+  },
+  "mirror": {
+    "provider": "huggingface",
+    "repository": "edithatogo/riopa-evidence-campaign",
+    "path": "releases/v0.4.0",
+    "commit": "ebecf6d38084aa459b27ef2bf753505003b08a16",
+    "commit_url": "https://huggingface.co/datasets/edithatogo/riopa-evidence-campaign/commit/ebecf6d38084aa459b27ef2bf753505003b08a16",
+    "release_assets": 6,
+    "release_metadata_sha256": "f0eee330ac23067b92f0eef64fb9c69028f79ea1161fdd846e2b446b8761445d",
+    "public_anonymous_byte_matches": 7,
+    "sha256sums_passed": true
+  },
+  "qualification": {
+    "status": "published_and_publicly_reverified",
+    "classification": "byte_preserving_public_mirror",
+    "does_not_establish": [
+      "DOI or Zenodo preservation",
+      "external participant evidence",
+      "elapsed beta or release-candidate qualification",
+      "stable-v1 release authority"
+    ]
+  }
+}

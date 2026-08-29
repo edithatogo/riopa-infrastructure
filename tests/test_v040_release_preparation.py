@@ -112,8 +112,18 @@ def test_v040_publication_receipt_preserves_preview_boundaries():
         "total": 65,
     }
     assert receipt["preservation"]["zenodo"].startswith("not_attempted")
-    hugging_face = receipt["preservation"]["hugging_face"]
-    assert hugging_face["status"] == "published_and_publicly_reverified"
-    assert len(hugging_face["commit"]) == 40
-    assert hugging_face["public_anonymous_byte_matches"] == 7
+    assert receipt["preservation"]["hugging_face"].startswith("not_attempted")
     assert any("90-day beta" in claim for claim in receipt["non_claims"])
+
+
+def test_v040_mirror_receipt_is_a_successor_record() -> None:
+    receipt_path = ROOT / "docs/v0.4.0-release-publication-20260829.json"
+    mirror = json.loads((ROOT / "docs/v0.4.0-release-mirror-20260829.json").read_text())
+    assert mirror["source_publication_receipt"] == {
+        "path": "docs/v0.4.0-release-publication-20260829.json",
+        "sha256": hashlib.sha256(receipt_path.read_bytes()).hexdigest(),
+    }
+    assert mirror["mirror"]["release_assets"] == 6
+    assert mirror["mirror"]["public_anonymous_byte_matches"] == 7
+    assert mirror["mirror"]["sha256sums_passed"] is True
+    assert mirror["qualification"]["classification"] == "byte_preserving_public_mirror"
