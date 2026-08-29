@@ -1,0 +1,29 @@
+{
+  "contract_version": "1.0.0",
+  "capture": {
+    "capture_id": "urn:riopa:capture:client-workflow",
+    "payload": {
+      "artifact_id": "urn:riopa:artifact:client-workflow",
+      "source_id": "urn:riopa:source:client-workflow",
+      "status": "captured"
+    },
+    "expected_sha256": "ba8091cc2ab95255a5aaef5cc49a12f7c126593a0197b8494f45a1ef40bce417"
+  },
+  "validation": {
+    "required_fields": ["artifact_id", "source_id", "status"]
+  },
+  "lineage_query": {
+    "contract_version": "1.0.0",
+    "node_id": "urn:riopa:artifact:canonical",
+    "question": "why",
+    "max_depth": 20
+  },
+  "lineage_edges": [
+    {"source": "urn:riopa:source:client-workflow", "target": "urn:riopa:artifact:client-workflow"},
+    {"source": "urn:riopa:artifact:client-workflow", "target": "urn:riopa:artifact:canonical"}
+  ],
+  "expected_lineage": [
+    "urn:riopa:artifact:client-workflow",
+    "urn:riopa:source:client-workflow"
+  ]
+}

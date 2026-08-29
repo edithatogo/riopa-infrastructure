@@ -9,14 +9,14 @@
 ## 2. Independent implementations
 
 - [x] 2.1 Stabilise the Python reference SDK and validator. Evidence: `src/riopa_provenance/sdk.py`, `tests/test_sdk.py`, and `docs/python-reference-sdk-20260825.md`; deterministic schema/crosswalk reports pass, while independent and release gates remain open.
-- [x] 2.2 Implement a bounded Rust typed model and validation. The Rust runner parses the checked-in corpus and matches all five canonical SHA-256 fixtures (`rust/riopa-conformance/src/bin/conformance_corpus.rs`, `docs/rust-corpus-parity-20260825.json`, `tests/test_rust_producer_consumer.py`). Schema-validity parity, full RFC 8785 number handling, independent producer/consumer interoperability and signed release conformance remain open.
+- [x] 2.2 Implement a bounded Rust typed model and validation. The Rust runner parses the checked-in corpus and matches all five canonical SHA-256 fixtures (`rust/riopa-conformance/src/bin/conformance_corpus.rs`, `docs/rust-corpus-parity-20260825.json`, `tests/test_rust_producer_consumer.py`). Schema-validity parity, full RFC 8785 number handling and signed release conformance remain open.
 - [x] 2.3 Implement a transport-neutral lineage/query client contract. Evidence: `src/riopa_provenance/lineage.py` and `tests/test_lineage.py`; strict versioned request round-trips are local-only and carry no endpoint or credential semantics.
 
 ## 3. Standards and compatibility testing
 
 - [x] 3.1 Add bounded PROV-O-shaped, OpenLineage-shaped, RO-Crate and DSSE/in-toto round-trip tests. Evidence: `docs/interoperability-standards-roundtrip-contract-20260825.json`, `tests/test_standards_roundtrip_contract.py`; external producer/consumer interoperability, full validator qualification and trusted signing remain open.
 - [x] 3.2 Generate a bounded cross-version and cross-tool compatibility matrix. Evidence: `scripts/build_interoperability_matrix.py` and `docs/ontology/interoperability-compatibility-matrix-20260825.json`; Rust, standards round-trips and external producer/consumer exercises remain open.
-- [x] 3.3 Run bounded producer/consumer interoperability exercises. The dependency-free Rust/Python wire-format exchange is tested in both directions and recorded as repository-owned evidence; external independent implementations, standards-complete serialization and signed release reports remain open (`rust/riopa-conformance/src/bin/conformance_exchange.rs`, `tests/test_rust_producer_consumer.py`, `docs/interop-producer-consumer-exercise-20260825.json`).
+- [x] 3.3 Run bounded producer/consumer interoperability exercises. The dependency-free Rust/Python wire-format exchange passes in both directions, and a separately implemented Rust client completes capture, validation and lineage-query workflows against a language-neutral fixture. This satisfies the separately implemented branch without claiming external authorship or use; standards-complete serialization and signed release reports remain open (`rust/riopa-conformance/src/bin/{conformance_exchange.rs,client_workflow.rs}`, `conformance/v1/client-workflow.json`, `tests/test_rust_producer_consumer.py`, `docs/separate-rust-client-workflow-20260829.json`).
 - [x] 3.4 Validate the published research object with an independently maintained RO-Crate validator, preserve the v0.3.0 failure, and remediate prospective generator output to pass all 65 RO-Crate 1.2 required checks (`docs/wp006-external-rocrate-validation-20260829.json`, `src/riopa_provenance/crate.py`, `tests/test_crate.py`).
 
 ## 4. Stable SDK and conformance release
@@ -43,3 +43,4 @@
 ## Review fixes
 
 - [x] R1 Review the Rust corpus runner for deterministic ordering, corpus binding, unsupported-number fail-closed behavior and non-promotion language. (`rust/riopa-conformance/src/{lib.rs,bin/conformance_corpus.rs}`, `tests/test_rust_producer_consumer.py`, `docs/rust-corpus-parity-20260825.json`)
+- [x] R2 Add a separately implemented Rust client workflow with content-bound capture, required-field validation, bounded reverse-lineage traversal and fail-closed drift tests (`docs/separate-rust-client-workflow-20260829.json`).
