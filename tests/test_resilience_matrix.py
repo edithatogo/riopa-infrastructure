@@ -2,6 +2,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 from scripts.run_bounded_resilience_rehearsal import run
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +23,27 @@ def test_resilience_matrix_is_complete_and_fail_closed() -> None:
     spec.loader.exec_module(module)
     module.validate(matrix)
     assert matrix["completion"]["status"] == "not-run"
+
+
+def test_resilience_matrix_validator_rejects_non_object_nested_sections() -> None:
+    spec = importlib.util.spec_from_file_location(
+        "validate_resilience_matrix", ROOT / "scripts/validate_resilience_matrix.py"
+    )
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with pytest.raises(ValueError, match="must be an object"):
+        module.validate([])
+    matrix = {
+        "classification": "repository-rehearsal-plan-not-operational-evidence",
+        "required_cases": [
+            "baseline", "stressed", "degraded", "concurrency", "retry-storm",
+            "cancellation", "malformed-input",
+        ],
+        "safety": [],
+    }
+    with pytest.raises(ValueError, match="safety must be an object"):
+        module.validate(matrix)
 
 
 def test_bounded_rehearsal_executes_local_cases_without_operational_claim() -> None:

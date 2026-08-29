@@ -1,0 +1,15 @@
+{
+  "evidence_id": "PERF-RESILIENCE-MATRIX-INPUT-VALIDATION-20260829",
+  "schema": "riopa.performance.resilience-matrix-validation.v1",
+  "scope": "repository-owned validation of the bounded WP-010 resilience rehearsal plan",
+  "requirement": "Malformed matrix and nested safety/completion sections fail closed before field access.",
+  "implementation": [
+    "scripts/validate_resilience_matrix.py::validate",
+    "tests/test_resilience_matrix.py::test_resilience_matrix_validator_rejects_non_object_nested_sections"
+  ],
+  "observed_status": "negative-contract-tests-pass",
+  "validation": "uv run pytest -q tests/test_resilience_matrix.py",
+  "promotion_allowed": false,
+  "open_gates": ["hosted execution and elapsed soak", "national-scale measurement", "external operator and release authority"],
+  "nonclaims": ["This validates the rehearsal-plan input shape only.", "It does not claim operational, hosted, national-scale or elapsed-time evidence."]
+}
