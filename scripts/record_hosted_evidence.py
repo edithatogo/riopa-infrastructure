@@ -84,6 +84,8 @@ def run_lane(lane: str, output_dir: Path) -> dict[str, Any]:
     )
     candidate_revision = os.getenv("EVIDENCE_CANDIDATE_REVISION") or None
     qualifying = os.getenv("EVIDENCE_QUALIFYING", "false").lower() == "true"
+    if qualifying and lane not in {"operational-observation", "rc-soak-observation"}:
+        raise ValueError("only beta and RC observation lanes may be qualifying")
     try:
         source_revision = subprocess.run(
             ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
@@ -151,8 +153,6 @@ def run_lane(lane: str, output_dir: Path) -> dict[str, Any]:
         if lane == "retrospective-replay"
         else "hosted-technical-preview-drill"
     )
-    if qualifying and lane not in {"operational-observation", "rc-soak-observation"}:
-        raise ValueError("only beta and RC observation lanes may be qualifying")
     campaign_activation = None
     if qualifying:
         authority = os.getenv("EVIDENCE_ACTIVATION_AUTHORITY", "").strip()
