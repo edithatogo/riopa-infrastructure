@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riopa.dev/schemas/supermarket-archive-qualification.schema.json",
   "type": "object",
   "required": ["schema", "record_id", "source", "archive_validation", "qualification", "non_claims"],
   "properties": {
