@@ -41,7 +41,7 @@
   "review_roles": [
     "Governance analyst",
     "API/schema analyst",
-    "External-user analyst"
+    "User-workflow analyst"
   ],
   "blocking_defects": [
     "m3-real-data-and-failure-evidence",

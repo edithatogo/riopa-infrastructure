@@ -55,7 +55,8 @@ def build_inventory(coverage: dict[str, Any], *, root: Path) -> dict[str, Any]:
                 "reliability or release readiness."
             ),
             (
-                "Coverage inventory does not substitute for external operator/user evidence "
+                "Coverage inventory does not substitute for owner-authorized "
+                "agent-operated user/operator journey evidence "
                 "or elapsed soak."
             ),
         ],

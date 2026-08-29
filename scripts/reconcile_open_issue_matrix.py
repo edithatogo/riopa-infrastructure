@@ -95,7 +95,10 @@ def reconcile(issues: list[dict], observed: str | None = None) -> dict:
         "track_inventory": rows,
         "limitations": [
             "This reconciliation does not close issues or qualify tracks.",
-            "External reproduction, operational soak and release authority remain separate gates.",
+            (
+                "Isolated role-separated clean-room agent reproduction, operational "
+                "soak and release authority remain separate gates."
+            ),
             "Rows with unresolved classifications require agent-panel evidence "
             "review before closure decisions.",
         ],

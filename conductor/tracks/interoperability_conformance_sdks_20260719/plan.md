@@ -35,10 +35,10 @@
 
 ## Track closeout
 
-- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; external implementation, signing, preservation and authority gates remain explicitly pending (`docs/interoperability-closeout-evidence-20260825.json`, `tests/test_interoperability_closeout_evidence.py`; `22945ef`).
+- [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned closeout slice; the `v0.4.0` preview is now mirrored and DOI-preserved, while broader standards conformance, trusted stable-candidate signing, stable-candidate preservation and authority gates remain pending (`docs/interoperability-closeout-evidence-20260825.json`, `docs/v0.4.0-preservation-wp006-reconciliation-20260829.json`, `tests/test_interoperability_closeout_evidence.py`; `22945ef`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/interoperability-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `validating`/M2 for target release `0.6.0`, with external implementations, signing, preservation and authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `validating`/M2 for target release `0.6.0`. `v0.4.0` preview preservation is complete; broader claimed-profile conformance, trusted stable-candidate signing and preservation, and authority gates remain unresolved.
 
 ## Review fixes
 
@@ -49,3 +49,4 @@
 - [x] R5 Publish `v0.4.0` from the exact reviewed merge, verify all checksums and GitHub OIDC attestations after download, and preserve the credential-gated Zenodo/Hugging Face contingency without claiming a deposit (`docs/v0.4.0-release-publication-20260829.json`; PRs #661 and #662; release run 33236124879).
 - [x] R6 Mirror the six exact release assets and bounded metadata to the public `edithatogo/riopa-evidence-campaign` dataset, bind commit `ebecf6d38084aa459b27ef2bf753505003b08a16`, and anonymously re-download all seven files with byte equality and checksum verification (`docs/v0.4.0-release-mirror-20260829.json`).
 - [x] R7 Publish the same six release assets to Zenodo, bind DOI `10.5281/zenodo.22156988`, and anonymously re-download all files with byte equality and SHA-256 manifest verification in another immutable successor receipt (`docs/v0.4.0-zenodo-preservation-20260829.json`).
+- [x] R8 Recalculate WP-006 after the Hugging Face and Zenodo successor receipts: preserve the completed `v0.4.0` slice and retain broader standards-complete conformance plus a trusted signed exact-stable-candidate report as the remaining acceptance boundary (`docs/v0.4.0-preservation-wp006-reconciliation-20260829.json`, `tests/test_v040_preservation_wp006_reconciliation.py`).

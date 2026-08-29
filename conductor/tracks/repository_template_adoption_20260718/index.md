@@ -48,6 +48,6 @@ does not establish adoption, independent reproduction or a stable release.
 
 ## Review and handover
 
-Required agent-panel lenses: API/schema analyst, Security analyst, Research-object analyst, External-user workflow analyst.
+Required agent-panel lenses: API/schema analyst, Security analyst, Research-object analyst, User-workflow analyst.
 
 This index is deliberately non-assertive while the track remains `specified`. Status may advance only through `conductor/workflow.md`; evidence must be immutable or version-addressed, agent-panel qualified where required, and sufficient for the applicable release gates.

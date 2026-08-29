@@ -49,7 +49,7 @@
     "repeated-external-profile-use-and-slo-evidence",
     "rc-semantic-security-recovery-panel-and-soak-qualification",
     "stable-profile-publication-identifier-and-signed-attestation",
-    "independent-external-reproduction",
+    "isolated-role-separated-clean-room-agent-reproduction",
     "accountable-stable-release-authority"
   ],
   "blocking_defect_maturity": {
@@ -58,7 +58,7 @@
     "repeated-external-profile-use-and-slo-evidence": "M4",
     "rc-semantic-security-recovery-panel-and-soak-qualification": "M5",
     "stable-profile-publication-identifier-and-signed-attestation": "M6",
-    "independent-external-reproduction": "M6",
+    "isolated-role-separated-clean-room-agent-reproduction": "M6",
     "accountable-stable-release-authority": "M6"
   }
 }

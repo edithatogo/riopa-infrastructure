@@ -28,4 +28,4 @@ def test_documentation_archive_manifest_is_content_addressed(tmp_path: Path) -> 
     assert manifest["publication"]["persistent_identifier"] is None
     assert len(manifest["artifacts"]) >= 5
     assert all(len(item["sha256"]) == 64 for item in manifest["artifacts"])
-    assert "External user/operator evidence" in manifest["nonclaims"][2]
+    assert "agent-operated user/operator journey evidence" in manifest["nonclaims"][2]

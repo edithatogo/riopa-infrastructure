@@ -61,9 +61,10 @@ stable-release authority.
   declared scope or another applicable obligation.
 - Local target reconciliation is tested; no live distribution/takedown system
   is claimed by the bounded synthetic drill.
-- This is a single-developer repository. Agent panels may assess governance
-  packets, but cannot substitute for factual external participation or the
-  accountable release authority.
+- This is a single-developer repository. Role-separated subagent panels provide
+  repository governance review but cannot establish source rights,
+  scope-triggered cultural/community authority or the accountable release
+  authority.
 - Public datasets remain the current scope. Non-public acquisition and
   custodian coordination are closed out for this stage rather than inferred.
 

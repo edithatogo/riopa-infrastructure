@@ -94,7 +94,7 @@
     },
     {
       "id": "WP-006",
-      "title": "Complete external conformance, signed evidence and preservation qualification",
+      "title": "Complete broader standards conformance and signed stable-candidate qualification",
       "priority": "P1",
       "tracks": [
         "interoperability_conformance_sdks_20260719",
@@ -103,10 +103,10 @@
         "publication_validation_20260718"
       ],
       "acceptance": [
-        "Independent validators cover every claimed publication profile.",
-        "Signed checkpoints, SBOMs and attestations are verified.",
-        "Research objects are closed, reproducible and preservation-ready.",
-        "Cross-language golden fixtures validate canonical hashes and schemas."
+        "Independently maintained validators cover every claimed publication profile.",
+        "Broader standards-complete producer/consumer conformance and cross-language golden fixtures validate canonical hashes and schemas.",
+        "The v0.4.0 public technical preview is mirrored to Hugging Face, DOI-preserved on Zenodo and anonymously downloaded with byte verification.",
+        "The exact stable candidate has a trusted signed conformance report, verified SBOMs and attestations, and candidate-specific preservation receipts."
       ]
     },
     {

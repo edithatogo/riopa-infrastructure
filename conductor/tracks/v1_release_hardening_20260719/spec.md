@@ -81,7 +81,7 @@ This track is part of the stable v1 release contract. It is complete only when i
 
 - M2 requires executable proof, negative tests and traceable evidence; interfaces may remain experimental.
 - M3 requires real-data integration, migration evidence and representative failure handling.
-- M4 requires repeated operation, external use, SLO evidence and bounded compatibility changes.
+- M4 requires repeated operation, representative agent-operated use, SLO evidence and bounded compatibility changes.
 - M5 requires frozen interfaces, orchestrated agent-panel qualification, security/performance/recovery qualification and release-candidate soak.
 - M6 requires supported compatibility, signed and preserved releases, agent reproduction, a named owner and post-release verification.
 - Exceptions must be machine-readable, scoped, approved, time-limited and visible in release evidence.
@@ -91,7 +91,8 @@ This track is part of the stable v1 release contract. It is complete only when i
 - V1 normative inventory and frozen conformance suite.
 - Defect, exception, audit and release-readiness reports.
 - Migration/rollback/restore/withdrawal rehearsal evidence.
-- External reproduction and user-validation reports.
+- Isolated role-separated clean-room agent reproduction and owner-authorized
+  agent-operated user-validation reports.
 - Signed release, preservation, support and maintainer records.
 
 ## Risks

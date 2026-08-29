@@ -69,7 +69,7 @@ semantic, authority and release gates (`docs/canonical-domain-conductor-regenera
 
 ## Review and handover
 
-Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, External-user workflow analyst.
+Required agent-panel lenses: Governance analyst, API/schema analyst, Data-governance analyst, User-workflow analyst.
 
 This index remains fail-closed while the track is `validating` at experimental
 M2. The executable schemas, negative cases, bounded cross-language parity,

@@ -33,7 +33,7 @@ def test_bounded_provenance_query_agent_workflow_preserves_external_gate() -> No
         assert all(item["has_projection_diagnostic"] for item in report["questions"])
         assert report["claim_classification"] == "repository-reference-only"
         assert report["promotion_allowed"] is False
-        assert "external user/operator workflows" in report["open_gates"]
+        assert "owner-authorized agent-operated user/operator workflows" in report["open_gates"]
     finally:
         output.unlink(missing_ok=True)
         database.unlink(missing_ok=True)

@@ -1,7 +1,7 @@
 """Execute every repository tutorial against one immutable candidate revision.
 
 This is a repository-owned rehearsal. It does not promote the revision to RC
-or stable status and cannot replace external user/operator evidence.
+or stable status and cannot replace owner-authorized agent-operated user/operator journey evidence.
 """
 
 from __future__ import annotations

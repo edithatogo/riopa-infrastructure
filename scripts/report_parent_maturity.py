@@ -41,7 +41,7 @@ def build_report() -> dict[str, Any]:
         "tracks": tracks,
         "shared_blockers": [
             "incomplete track-specific implementation and compatibility evidence",
-            "external operator and user workflows",
+            "owner-authorized agent-operated user and operator workflows",
             "elapsed beta/RC soak and production recovery qualification",
             "national-scale performance and cost measurements",
             "signed preservation and accountable release-authority decisions",

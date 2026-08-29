@@ -37,7 +37,7 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 - M3 real-data integration and representative failure handling.
 - M4 repeated operation, external use and SLO evidence.
 - M5 orchestrated agent-panel qualification, recovery qualification and RC soak.
-- M6 supported compatibility, external reproduction, named maintainers and stable release authority.
+- M6 supported compatibility, isolated role-separated clean-room agent reproduction, named maintainers and stable release authority.
 
 The consolidated parent-track maturity inventory is recorded in
 `docs/parent-track-maturity-report-20260803.json`; it finds all 28 tracks at
@@ -66,7 +66,7 @@ M1 against an M6 target and does not promote any track.
 
 ## Review and handover
 
-Required analyst coverage: distinct agent-panel lenses with separate scopes and recorded dispositions; governance, API/schema and external-user perspectives remain recommended coverage. Agent panels assess repository evidence only and do not substitute for factual external participation or accountable release authority.
+Required analyst coverage: distinct agent-panel lenses with separate scopes and recorded dispositions; governance, API/schema and user-workflow agent perspectives remain recommended coverage. Agent panels assess repository evidence only and do not substitute for role-separated agent-panel evidence or accountable release authority.
 
 The programme-wide 2026-08-26 policy records that this is a single-developer
 repository: AI agents provide repository-owned advice, the sole developer
