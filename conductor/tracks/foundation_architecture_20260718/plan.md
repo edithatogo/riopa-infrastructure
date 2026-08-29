@@ -35,7 +35,7 @@
 - [x] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)
 - [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)
 - [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains `validating` at M1 pending M2–M6 gates. (index.md; metadata.json; docs/foundation-maturity-readiness-20260801.json)
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status is `validating` at M2, with M3–M6 gates still pending. (index.md; metadata.json; docs/foundation-m2-promotion-20260826.json)
 
 ## Review fixes
 
