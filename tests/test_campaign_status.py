@@ -100,3 +100,31 @@ def test_campaign_status_rejects_malformed_rc_revision() -> None:
         "observations[0].revision must be a 40-character lowercase hexadecimal" in error
         for error in errors
     )
+
+
+def test_campaign_status_rejects_malformed_supplemental_revisions() -> None:
+    document = {
+        "source_revision": "a" * 40,
+        "observations": [
+            {
+                "run_id": "1",
+                "lane": "operational-observation",
+                "status": "passed",
+                "revision": "a" * 40,
+            }
+        ],
+        "supplemental_observations": [{"revision": "A" * 40, "candidate_revision": "not-a-sha"}],
+        "elapsed_gate": {},
+        "rc_gate": {},
+    }
+    errors = validate_status(document)
+    assert any(
+        "supplemental_observations[0].revision must be a 40-character lowercase hexadecimal"
+        in error
+        for error in errors
+    )
+    assert any(
+        "supplemental_observations[0].candidate_revision must be a 40-character "
+        "lowercase hexadecimal" in error
+        for error in errors
+    )

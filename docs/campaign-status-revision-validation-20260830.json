@@ -4,6 +4,12 @@
   "validator": "scripts/validate_campaign_status.py",
   "observed_status": "strict-revision-format-validated",
   "required_format": "lowercase-40-character-hexadecimal-Git-SHA",
+  "validated_fields": [
+    "source_revision",
+    "observations[].revision",
+    "supplemental_observations[].revision",
+    "supplemental_observations[].candidate_revision"
+  ],
   "promotion_allowed": false,
   "nonclaims": [
     "This validates campaign status input syntax only.",

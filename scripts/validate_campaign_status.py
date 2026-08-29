@@ -65,6 +65,23 @@ def validate_status(document: Any) -> tuple[str, ...]:
             rc_observations.append(observation)
     if isinstance(source_revision, str) and latest_revision and source_revision != latest_revision:
         errors.append("source_revision must match the latest receipt-bearing observation")
+    supplemental = document.get("supplemental_observations", [])
+    if not isinstance(supplemental, list):
+        errors.append("supplemental_observations must be an array when present")
+    else:
+        for index, observation in enumerate(supplemental):
+            prefix = f"supplemental_observations[{index}]"
+            if not isinstance(observation, dict):
+                errors.append(f"{prefix} must be an object")
+                continue
+            for field in ("revision", "candidate_revision"):
+                value = observation.get(field)
+                if value is not None and (
+                    not isinstance(value, str) or _REVISION.fullmatch(value) is None
+                ):
+                    errors.append(
+                        f"{prefix}.{field} must be a 40-character lowercase hexadecimal revision"
+                    )
     rc_gate = document.get("rc_gate")
     if not isinstance(rc_gate, dict):
         errors.append("rc_gate must be an object")
