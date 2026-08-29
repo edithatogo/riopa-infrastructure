@@ -1,0 +1,18 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-STATUS-CORRECTION-20260830",
+  "schema": "riopa.campaign-status-correction.v1",
+  "predecessor": "docs/evidence-campaign-status-20260821.json",
+  "correction": {
+    "observation_run_id": "32519141017",
+    "field": "revision",
+    "previous_value": "8f9fb7e930fa39f96f3d887941956a10f06306a",
+    "corrected_value": "8f9fb7e9300fa39f96f3d887941956a10f06306a",
+    "source": "GitHub Actions run 32519141017 headSha"
+  },
+  "reason": "The predecessor record omitted one zero from the exact hosted run SHA; the corrected value is the immutable run head.",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This is a record correction and syntax validation only.",
+    "It does not establish elapsed qualification, preservation acceptance or release authority."
+  ]
+}

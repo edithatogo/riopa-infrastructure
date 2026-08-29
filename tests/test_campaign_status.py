@@ -50,3 +50,53 @@ def test_campaign_status_rejects_duplicate_runs_and_stale_source() -> None:
     errors = validate_status(document)
     assert any("duplicated" in error for error in errors)
     assert any("latest receipt-bearing" in error for error in errors)
+
+
+def test_campaign_status_rejects_non_hex_or_uppercase_revisions() -> None:
+    document = {
+        "source_revision": "A" * 40,
+        "observations": [
+            {
+                "run_id": "1",
+                "lane": "operational-observation",
+                "status": "passed",
+                "revision": "g" * 40,
+            }
+        ],
+        "elapsed_gate": {},
+        "rc_gate": {},
+    }
+    errors = validate_status(document)
+    assert any(
+        "source_revision must be a 40-character lowercase hexadecimal" in error for error in errors
+    )
+    assert any(
+        "observations[0].revision must be a 40-character lowercase hexadecimal" in error
+        for error in errors
+    )
+
+
+def test_campaign_status_rejects_malformed_rc_revision() -> None:
+    revision = "f" * 39
+    document = {
+        "source_revision": revision,
+        "observations": [
+            {
+                "run_id": "1",
+                "lane": "rc-soak-observation",
+                "status": "passed",
+                "revision": revision,
+                "candidate_revision": revision,
+                "campaign_id": "rc",
+                "qualification_epoch": "epoch",
+                "operational_cycle_id": "cycle",
+            }
+        ],
+        "elapsed_gate": {},
+        "rc_gate": {"candidate_revision": revision},
+    }
+    errors = validate_status(document)
+    assert any(
+        "observations[0].revision must be a 40-character lowercase hexadecimal" in error
+        for error in errors
+    )

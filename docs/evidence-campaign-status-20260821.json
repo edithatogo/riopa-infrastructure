@@ -30,7 +30,7 @@
     {"lane": "operational-observation", "run_id": "32516811002", "status": "passed", "revision": "dd92aa9713c23f09b522941c0ac99c836717061b"},
     {"lane": "operational-observation", "run_id": "32517413711", "status": "passed", "revision": "759b05aa870311d844193abc37b904733df7a51a"},
     {"lane": "operational-observation", "run_id": "32518213179", "status": "passed", "revision": "174e3a57c586d1c168fcd1e143d4a5a77a3441c8"},
-    {"lane": "operational-observation", "run_id": "32519141017", "status": "passed", "revision": "8f9fb7e930fa39f96f3d887941956a10f06306a"},
+    {"lane": "operational-observation", "run_id": "32519141017", "status": "passed", "revision": "8f9fb7e9300fa39f96f3d887941956a10f06306a"},
     {"lane": "operational-observation", "run_id": "32519733539", "status": "passed", "revision": "6de709d0c1896533b682785ae632bebf03c7410f"},
     {"lane": "operational-observation", "run_id": "32520311746", "status": "passed", "revision": "1113284192dbe6256302886aa2bb319f021de096"},
     {"lane": "operational-observation", "run_id": "32521189425", "status": "passed", "revision": "57d20c5c4f574659373e2c582c2a59a79c5f7498"},

@@ -35,6 +35,8 @@
 - [x] 4.9 Bind scheduled protected-main observations to the current `github.sha` and derive revision-specific campaign/qualification identifiers so merges automatically reset elapsed segments (`docs/beta-campaign-schedule-hardening-20260829.json`, `.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`).
 - [x] 4.10 Verify the immutable public Hugging Face release mirror from an unauthenticated scheduled workflow, failing closed on receipt drift, HTTP errors or byte mismatches (`scripts/verify_hf_release_mirror.py`, `.github/workflows/verify-release-mirror.yml`, `docs/hf-release-mirror-verifier-20260829.json`, `tests/test_hf_release_mirror_verifier.py`). This improves redundancy observability but does not establish preservation acceptance or stable-v1 gates.
 - [x] 4.11 Reconcile the anonymously verified Hugging Face mirror and Zenodo DOI as complete preservation evidence for the `v0.4.0` public technical preview only; retain stable-candidate replication, provider restore, elapsed-operation and authority gates (`docs/v0.4.0-preservation-wp006-reconciliation-20260829.json`, `tests/test_v040_preservation_wp006_reconciliation.py`).
+- [x] 4.12 Require lowercase 40-character hexadecimal Git revisions in campaign status source, observation and RC bindings, with malformed-input regression coverage; hosted execution, elapsed, preservation and authority gates remain open (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-revision-validation-20260830.json`).
+- [x] 4.13 Correct the known truncated run-32519141017 revision from the immutable hosted run head and record the predecessor correction explicitly (`docs/campaign-status-correction-20260830.json`).
 
 ## Review fixes
 
