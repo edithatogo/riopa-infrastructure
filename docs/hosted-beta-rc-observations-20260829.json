@@ -1,0 +1,27 @@
+{
+  "record_type": "hosted_beta_rc_observations",
+  "schema_version": "1.0.0",
+  "observed_at": "2026-08-29T03:44:00Z",
+  "repository": "edithatogo/riopa-infrastructure",
+  "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "beta": {
+    "campaign_id": "operational-beta-20260825-26bc0b4",
+    "qualification_epoch": "beta-epoch-20260825-26bc0b4",
+    "run_id": "33232103718",
+    "url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33232103718",
+    "status": "success"
+  },
+  "rc": {
+    "campaign_id": "operational-rc-20260825-26bc0b4",
+    "qualification_epoch": "rc-epoch-20260825-26bc0b4",
+    "run_id": "33232105006",
+    "url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33232105006",
+    "status": "success"
+  },
+  "promotion_allowed": false,
+  "nonclaims": [
+    "These hosted observations do not satisfy the 90-day/three-cycle beta requirement.",
+    "These hosted observations do not satisfy the 30-day exact-RC soak.",
+    "They do not establish external participant evidence, national-scale performance, preservation acceptance or release authority."
+  ]
+}
