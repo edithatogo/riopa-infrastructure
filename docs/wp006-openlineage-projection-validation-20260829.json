@@ -1,0 +1,21 @@
+{
+  "evidence_id": "WP006-OPENLINEAGE-PROJECTION-VALIDATION-20260829",
+  "schema": "riopa.wp006.openlineage-projection-validation.v1",
+  "scope": "bounded repository-owned OpenLineage projection envelope",
+  "validator": "src/riopa_provenance/crate.py:validate_provenance_projections",
+  "requirements": [
+    "run identifiers and job namespace/name are non-empty",
+    "input/output dataset entries have non-empty namespace/name",
+    "producer and schemaURL are non-empty strings"
+  ],
+  "observed_status": "negative-contract-tests-pass",
+  "promotion_allowed": false,
+  "open_gates": [
+    "external OpenLineage producer/consumer acceptance",
+    "trusted stable-candidate signing and preservation",
+    "accountable release authority"
+  ],
+  "nonclaims": [
+    "Repository validation is not external standards certification or production operation."
+  ]
+}

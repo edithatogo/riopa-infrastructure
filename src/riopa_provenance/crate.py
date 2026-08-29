@@ -546,7 +546,11 @@ def validate_provenance_projections(
                 if field not in event:
                     errors.append(f"OpenLineage event requires {field}")
             run = event.get("run")
-            if not isinstance(run, Mapping) or not isinstance(run.get("runId"), str) or not run["runId"].strip():
+            if (
+                not isinstance(run, Mapping)
+                or not isinstance(run.get("runId"), str)
+                or not run["runId"].strip()
+            ):
                 errors.append("OpenLineage event run requires a non-empty runId")
             job = event.get("job")
             if (
