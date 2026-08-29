@@ -1,0 +1,17 @@
+{
+  "evidence_id": "OPS-REPORT-BUNDLE-CONTRACT-20260829",
+  "schema_version": "1.0.0",
+  "implementation": "scripts/build_operations_report_bundle.py",
+  "components": ["slo", "incident", "capacity", "preservation"],
+  "status_policy": {
+    "missing": "pending",
+    "provided": "candidate-input",
+    "publication": "candidate-not-published",
+    "promotion_allowed": false
+  },
+  "non_claims": [
+    "The bundle does not create hosted SLO history or operational-cycle evidence.",
+    "Content hashes do not establish independent preservation acceptance or signed evidence.",
+    "The bundle does not authorize beta, RC or stable-v1 promotion."
+  ]
+}

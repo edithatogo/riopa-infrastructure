@@ -25,6 +25,7 @@
 
 - [ ] 4.1 Operate the release pipeline for the required beta evidence period.
 - [ ] 4.2 Publish SLO, incident, capacity and preservation reports.
+  - [x] Prepare a deterministic candidate-only report bundle with explicit pending states and content hashes (`scripts/build_operations_report_bundle.py`, `docs/operations-report-bundle-contract-20260829.json`, `tests/test_operations_report_bundle.py`). Factual hosted reports and publication remain pending.
 - [ ] 4.3 Approve stable operational risk and support obligations.
 - [x] 4.4 Start the protected-main cumulative daily beta campaign with a fail-closed hash-chained ledger. (`docs/operational-beta-observation-20260802.json`)
 - [x] 4.6 Isolate scheduled, replay and exact-RC campaign runs by campaign, lane and candidate revision so unrelated runs cannot cancel one another. (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`)
