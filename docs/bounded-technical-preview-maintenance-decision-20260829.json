@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "bounded_technical_preview_maintenance_decision",
+  "decision_id": "urn:riopa:decision:bounded-technical-preview-maintenance:2026-08-29",
+  "decided_at": "2026-08-29T00:00:00Z",
+  "source_revision": "a43ef8c6d513c2cf1f60d6c3598b246f7f9897fe",
+  "decision": "maintain-bounded-technical-preview",
+  "authority": {
+    "role": "sole repository owner",
+    "approval_basis": "Owner instruction to proceed with the recommended bounded-preview posture",
+    "promotion_authorized": false,
+    "signature_state": "owner-instruction-recorded-not-cryptographically-signed"
+  },
+  "scope": "bounded regional, public-datasets-only, non-operational technical preview",
+  "included_evidence": [
+    "docs/public-tier-a-archive-publication-20260829.json",
+    "docs/evidence-campaign-status-20260821.json",
+    "https://huggingface.co/datasets/edithatogo/riopa-public-data-archive/commit/001137c0df64e9f8a7b0539fd0286a7cd5819ce7"
+  ],
+  "disabled_claims": [
+    "network",
+    "timetable",
+    "facility-authoritative",
+    "national",
+    "clinical",
+    "dispatch",
+    "stable-v1"
+  ],
+  "open_gates": [
+    "external operator and user evidence",
+    "90 consecutive beta days and three operational cycles",
+    "30-day exact-candidate RC soak",
+    "hosted recovery and national-scale measurements",
+    "preservation qualification where required",
+    "tier-specific signed promotion decision"
+  ],
+  "review": {
+    "scheduled_at": "2026-08-31",
+    "early_review_triggers": [
+      "scope change",
+      "rights or source-status change",
+      "safety or integrity change",
+      "qualifying operational interruption"
+    ]
+  },
+  "rollback_and_revocation": [
+    "quarantine affected outputs on integrity, rights or safety failure",
+    "withdraw or correct affected publication artifacts",
+    "reset affected elapsed gate after a qualifying interruption or revision change",
+    "record a successor decision before restoring a withdrawn scope"
+  ],
+  "non_claims": [
+    "This is not beta, release-candidate or stable-v1 approval.",
+    "Agent-panel assessment cannot substitute for factual external participant evidence.",
+    "The decision does not assert national completeness, operational authority or clinical validity."
+  ]
+}
