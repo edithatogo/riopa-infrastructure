@@ -30,6 +30,7 @@
 | `DOCUMENTATION-AGENT-WORKFLOW-REPORT-VALIDATION-20260829` | Validate the bounded owner-authorized agent workflow report shape and nonclaims | `scripts/validate_agent_user_workflow_report.py`, `tests/test_agent_user_workflow_report_validator.py`, `docs/documentation-agent-workflow-report-validation-20260829.json` | Report shape is machine-checked; factual external participant, exact stable-candidate and release-authority gates remain open |
 | `DOCUMENTATION-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate rehearsal evidence for the repository-owned slice | `docs/documentation-closeout-evidence-20260825.json`, `tests/test_documentation_closeout_evidence.py` | Evidence categories are linked and fail-closed; external usability, preservation acceptance, elapsed soak and release-authority gates remain open |
 | `DOCUMENTATION-ISSUE-SYNC-20260830` | Generated Conductor phase projections are synchronized to GitHub issues #125–#128 with content digests | `docs/documentation-issue-sync-20260830.json`, `project/issues.yaml` | Descriptions synchronized; external usability, preservation, soak, promotion and authority gates remain open |
+| `DOCUMENTATION-ISSUE-SYNC-RECEIPT-V2-20260830` | CLI-output receipt records the deployed GitHub issue body digests without mutating the original local-source receipt | `docs/documentation-issue-sync-20260830-receipt-v2.json` | Remote bodies verified; no external usability, preservation, soak, promotion or authority gate is closed |
 
 ## Blocking defects
 

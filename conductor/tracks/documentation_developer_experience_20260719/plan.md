@@ -41,3 +41,5 @@
 - [x] Synchronize GitHub phase issues #125–#128 from the generated projection and
   record exact body digests; no external usability, preservation, soak, promotion
   or authority gate is closed (`docs/documentation-issue-sync-20260830.json`).
+- [x] Add a successor CLI-output receipt for the deployed issue bodies while
+  preserving the original local-source receipt (`docs/documentation-issue-sync-20260830-receipt-v2.json`).
