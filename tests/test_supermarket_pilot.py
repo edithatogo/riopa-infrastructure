@@ -1,4 +1,7 @@
+import json
+import subprocess
 from copy import deepcopy
+from pathlib import Path
 
 import pytest
 
@@ -52,6 +55,41 @@ def test_archived_supermarket_snapshot_rejects_invalid_payload() -> None:
             licence="CC-BY-4.0",
             observed_at="now",
         )
+
+
+def test_archived_supermarket_snapshot_cli_reads_local_payload(tmp_path: Path) -> None:
+    payload_path = tmp_path / "payload.json"
+    output_path = tmp_path / "snapshot.json"
+    payload_path.write_text(
+        json.dumps({"type": "FeatureCollection", "features": []}), encoding="utf-8"
+    )
+    result = subprocess.run(
+        [
+            "uv",
+            "run",
+            "python",
+            "scripts/build_archived_supermarket_snapshot.py",
+            str(payload_path),
+            "--output",
+            str(output_path),
+            "--source-id",
+            "source",
+            "--registry-version",
+            "archive:v1",
+            "--licence",
+            "CC-BY-4.0",
+            "--observed-at",
+            "2026-08-29T00:00:00Z",
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    snapshot = json.loads(output_path.read_text(encoding="utf-8"))
+    assert snapshot["record_type"] == "facility_assertions"
+    assert snapshot["assertions"] == []
+    assert snapshot["promotion_allowed"] is False
 
 
 def facility_snapshot() -> dict[str, object]:
