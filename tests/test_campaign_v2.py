@@ -54,6 +54,16 @@ def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
     assert any(step.get("name") == "Verify exact RC candidate checkout" for step in steps)
 
 
+def test_supplemental_elapsed_lanes_are_retained_as_artifacts() -> None:
+    workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
+    upload = next(
+        step for step in workflow["jobs"]["observe"]["steps"]
+        if step.get("name") == "Upload retrospective supplemental evidence"
+    )
+    condition = upload["if"]
+    assert "EVIDENCE_QUALIFYING != 'true'" in condition
+
+
 def test_campaign_concurrency_isolated_by_campaign_lane_and_rc_candidate() -> None:
     workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
     group = workflow["concurrency"]["group"]

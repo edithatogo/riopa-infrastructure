@@ -149,7 +149,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
       - name: Upload retrospective supplemental evidence
-        if: ${{ always() && env.EVIDENCE_LANE != 'operational-observation' && env.EVIDENCE_LANE != 'rc-soak-observation' }}
+        if: ${{ always() && (env.EVIDENCE_QUALIFYING != 'true' || (env.EVIDENCE_LANE != 'operational-observation' && env.EVIDENCE_LANE != 'rc-soak-observation')) }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: evidence-campaign-${{ env.EVIDENCE_CAMPAIGN_ID }}-${{ env.EVIDENCE_LANE }}-${{ github.run_id }}
