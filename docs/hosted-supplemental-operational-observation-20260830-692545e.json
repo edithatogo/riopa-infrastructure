@@ -1,0 +1,21 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-OPERATIONAL-OBSERVATION-20260830-692545E",
+  "schema_version": "1.0.0",
+  "source_revision": "692545e8b8d3dabd964e5ab6dfc8bb765565e1ae",
+  "campaign_id": "supplemental-operational-20260830-692545e",
+  "qualification_epoch": "supplemental-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [
+    {
+      "lane": "operational-observation",
+      "run_id": "33260680164",
+      "receipt_sha256": "e70345a531a9073fef77cfbe0ec3417ba26801a7ac492071c5a02ad11bdfbecb",
+      "log_sha256": "99db33d5c94c6f7da021687c7391181685cc33299c5435b1c861e2db3be3ec87"
+    }
+  ],
+  "non_claims": [
+    "This supplemental drill does not advance the beta or RC elapsed clocks.",
+    "It does not establish production disaster recovery, national-scale performance, external participation, preservation acceptance or release authority."
+  ]
+}
