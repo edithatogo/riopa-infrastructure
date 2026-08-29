@@ -726,9 +726,9 @@ class LineageIndex:
     ) -> dict[str, Any]:
         """Return a bounded, deterministic node page with projection diagnostics."""
 
-        if limit < 1 or limit > 1000:
+        if type(limit) is not int or limit < 1 or limit > 1000:
             raise LineageError("limit must be between 1 and 1000")
-        if offset < 0:
+        if type(offset) is not int or offset < 0:
             raise LineageError("offset must be non-negative")
         all_nodes = self.nodes(node_type=node_type)
         page = all_nodes[offset : offset + limit]

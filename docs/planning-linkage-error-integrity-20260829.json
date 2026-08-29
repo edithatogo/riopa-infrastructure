@@ -1,0 +1,10 @@
+{
+  "evidence_id": "PLANNING-LINKAGE-ERROR-INTEGRITY-20260829",
+  "schema": "riopa.planning.linkage-error-integrity.v1",
+  "scope": "bounded caller-supplied planning packets",
+  "validator": "riopa_provenance.planning.validate_planning_linkage_error_report",
+  "observed_status": "category-count-digest-and-boundary-validation-tested",
+  "promotion_allowed": false,
+  "open_gates": ["real council source-faithful documents", "legal interpretation", "external participation", "preservation and release authority"],
+  "nonclaims": ["Validation does not repair or infer planning links.", "Synthetic consistency does not establish legal authority or council completeness."]
+}

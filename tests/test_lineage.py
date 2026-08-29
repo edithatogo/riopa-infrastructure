@@ -121,6 +121,15 @@ def test_page_nodes_is_bounded_and_reports_diagnostics(tmp_path: Path) -> None:
         index.page_nodes(offset=-1)
 
 
+@pytest.mark.parametrize("value", [1.5, "1", True])
+def test_page_nodes_rejects_non_integer_pagination_inputs(tmp_path: Path, value: object) -> None:
+    index = seeded_index(tmp_path)
+    with pytest.raises(LineageError, match="limit"):
+        index.page_nodes(limit=value)  # type: ignore[arg-type]
+    with pytest.raises(LineageError, match="offset"):
+        index.page_nodes(offset=value)  # type: ignore[arg-type]
+
+
 def test_query_cache_is_bounded_and_projection_fingerprint_aware(tmp_path: Path) -> None:
     index = seeded_index(tmp_path)
     first = index.query_cached("source-1", question="where")

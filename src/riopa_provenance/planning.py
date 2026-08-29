@@ -586,3 +586,51 @@ def build_planning_linkage_error_report(
         ],
         "report_sha256": sha256_json(findings),
     }
+
+
+def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
+    """Validate a bounded linkage-error report without inferring repairs."""
+
+    if not isinstance(report, Mapping):
+        return ("linkage error report must be an object",)
+    errors: list[str] = []
+    if report.get("record_type") != "planning-linkage-error-report":
+        errors.append("record_type must be planning-linkage-error-report")
+    if report.get("promotion_allowed") is not False:
+        errors.append("linkage error reports must prohibit promotion")
+    findings = report.get("findings")
+    counts = report.get("finding_counts")
+    expected = (
+        "missing_link_targets",
+        "unlinked_crosswalk_sources",
+        "missing_feasibility_provisions",
+    )
+    if not isinstance(findings, Mapping) or set(findings) != set(expected):
+        errors.append("findings must contain the three bounded categories")
+    else:
+        for name in expected:
+            values = findings[name]
+            if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
+                errors.append(f"findings.{name} must be a list of strings")
+    if not isinstance(counts, Mapping) or any(
+        counts.get(name) != len(findings[name])
+        for name in expected
+        if isinstance(findings, Mapping) and isinstance(findings.get(name), list)
+    ):
+        errors.append("finding_counts must match findings")
+    if isinstance(findings, Mapping) and isinstance(counts, Mapping):
+        total = report.get("total_finding_count")
+        if total != sum(counts.get(name, 0) for name in expected):
+            errors.append("total_finding_count must match finding_counts")
+        supplied_digest = report.get("report_sha256")
+        if supplied_digest != sha256_json(dict(findings)):
+            errors.append("report_sha256 does not match findings")
+    status = report.get("status")
+    if status not in {"quantified-unresolved", "no-unresolved-references"}:
+        errors.append("status is unsupported")
+    nonclaims = report.get("nonclaims")
+    if not isinstance(nonclaims, list) or not any(
+        isinstance(item, str) and "does not repair or infer links" in item for item in nonclaims
+    ):
+        errors.append("nonclaims must retain the no-repair boundary")
+    return tuple(dict.fromkeys(errors))

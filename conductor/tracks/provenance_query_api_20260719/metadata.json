@@ -27,6 +27,7 @@
     ,"urn:riopa:evidence:provenance-query-migration-guidance:2026-08-25"
     ,"urn:riopa:evidence:provenance-query-mcp-transport:2026-08-26"
     ,"urn:riopa:evidence:provenance-query-mcp-equivalence:2026-08-26"
+    ,"PROVENANCE-QUERY-PAGINATION-INPUT-VALIDATION-20260829"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
