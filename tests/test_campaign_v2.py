@@ -57,7 +57,8 @@ def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
 def test_supplemental_elapsed_lanes_are_retained_as_artifacts() -> None:
     workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
     upload = next(
-        step for step in workflow["jobs"]["observe"]["steps"]
+        step
+        for step in workflow["jobs"]["observe"]["steps"]
         if step.get("name") == "Upload retrospective supplemental evidence"
     )
     condition = upload["if"]
