@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "work_package_closeout",
+  "record_id": "urn:riopa:evidence:wp010-single-developer-closeout:2026-08-29",
+  "work_package": "WP-010",
+  "status": "complete-bounded-repository-scope",
+  "policy": "docs/single-developer-agent-advisory-policy-20260826.md",
+  "acceptance": {
+    "explicit_estimands_assumptions_and_validation": "passed-bounded-synthetic-reference",
+    "versioned_public_reference_pilot_data_and_value_judgements": "passed-bounded-regional-scope",
+    "non_operational_non_clinical_non_legal_non_commercial_boundary": "passed",
+    "role_separated_agent_reproduction": "passed-bounded-repository-scope"
+  },
+  "evidence": [
+    "docs/publication-applied-benchmark-reproduction-20260825.json",
+    "docs/hosted-evidence-batch-20260802.json",
+    "docs/v1-agent-operated-journeys-20260825.json",
+    "docs/panel-reports/20260802/manifest.json",
+    "docs/preservation-deposition-qualification-20260803.json",
+    "docs/public-tier-a-archive-publication-20260829.json",
+    "docs/existing-public-archive-rights-qualification-20260829.json"
+  ],
+  "supersedes": {
+    "github_issue": "https://github.com/edithatogo/riopa-infrastructure/issues/149",
+    "obsolete_requirement": "independent external person/operator reproduction"
+  },
+  "remaining_track_gates": [
+    "empirical calibration or causal identification for any empirical claim",
+    "authoritative national facility or provider evidence for any national claim",
+    "clinical legal cultural or community authority when scope triggers it",
+    "elapsed beta and exact-candidate release-candidate operation",
+    "hosted preservation or conformance acceptance where claimed",
+    "candidate-specific signed promotion decision by the sole owner"
+  ],
+  "non_claims": [
+    "Work-package completion does not complete its four Conductor tracks or approve beta, release-candidate or stable-v1 promotion.",
+    "No other human user, operator, reviewer, clinician or stakeholder participated or is claimed.",
+    "Agent evidence does not create source rights, authority, elapsed time, hosted-system state or provider acceptance.",
+    "No national, operational, clinical, legal, commercial or causal result is claimed."
+  ]
+}

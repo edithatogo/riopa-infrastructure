@@ -30,6 +30,7 @@
 | `HEALTH-METHODS-PANEL-20260825` | Four-lens repository-owned agent-panel assessment of bounded health methods | `docs/health-methods-panel-qualification-20260825.json`, `tests/test_health_methods_panel_qualification.py` | Repository evidence is assessed; empirical, clinical, independent-reproduction, privacy and authority gates remain open |
 | `HEALTH-METHODS-REMEDIATION-20260825` | Bounded remediation matrix for overclaiming, sensitivity and privacy findings | `docs/health-methods-panel-remediation-20260825.json`, `tests/test_health_methods_panel_remediation.py` | Repository controls are recorded; empirical, external and accountable-authority gates remain open |
 | `HEALTH-METHODS-REPORTING-20260825` | Versioned bounded methods, reporting and limitations template | `docs/health-methods-reporting-template-20260825.json`, `tests/test_health_methods_reporting_template.py` | Candidate template is validated; external reproduction, elapsed, clinical and authority gates remain open |
+| `WP-010-SINGLE-DEVELOPER-CLOSEOUT-20260829` | Bounded methods reproduction uses isolated role-separated agents without claiming human peer or clinical review | `docs/wp010-single-developer-closeout-20260829.json`, `docs/publication-applied-benchmark-reproduction-20260825.json` | WP-010 repository scope is complete; empirical identification, clinical review and promotion authority remain outside this closeout |
 
 ## Blocking defects
 

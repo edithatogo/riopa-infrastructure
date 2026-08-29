@@ -20,9 +20,9 @@
 
 ## 4. Agent-panel qualification and stable methods release
 
-- [x] 4.1 Conduct the repository-owned orchestrated epidemiological/statistical and governance agent-panel assessment. The packet is bounded and explicitly non-qualifying; empirical, clinical, independent-reproduction and authority gates remain open (`docs/health-methods-panel-qualification-20260825.json`, `tests/test_health_methods_panel_qualification.py`).
+- [x] 4.1 Conduct the repository-owned orchestrated epidemiological/statistical and governance agent-panel assessment. The packet is bounded and explicitly non-qualifying; empirical, clinical and authority gates remain open (`docs/health-methods-panel-qualification-20260825.json`, `tests/test_health_methods_panel_qualification.py`).
 - [x] 4.2 Resolve overclaiming, sensitivity and privacy findings for the repository-owned bounded slice. Remediation controls are recorded with promotion disabled; empirical, external and authority gates remain open (`docs/health-methods-panel-remediation-20260825.json`, `tests/test_health_methods_panel_remediation.py`).
-- [x] 4.3 Publish a versioned bounded methods, reporting and limitation template. The candidate remains promotion-disabled and requires external reproduction, elapsed evidence and accountable authority (`docs/health-methods-reporting-template-20260825.json`, `tests/test_health_methods_reporting_template.py`).
+- [x] 4.3 Publish a versioned bounded methods, reporting and limitation template. The candidate remains promotion-disabled and requires candidate-specific agent-panel reproduction, elapsed evidence and accountable authority (`docs/health-methods-reporting-template-20260825.json`, `tests/test_health_methods_reporting_template.py`).
 
 ## 5. Bounded WP-010 evidence
 
@@ -33,4 +33,5 @@
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md`; the bounded evidence register and required agent-panel lenses are linked.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected.
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains active/M1 because external empirical and authority gates are unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status remains active/M1 because empirical and authority gates are unresolved.
+- [x] C.5 Close the bounded WP-010 work-package scope under the sole-developer role-separated agent policy; empirical identification, clinical review and promotion authority remain track-level gates (`docs/wp010-single-developer-closeout-20260829.json`, `tests/test_wp010_single_developer_closeout.py`).

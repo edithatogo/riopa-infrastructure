@@ -37,10 +37,11 @@
 
 ## Track closeout
 
-- [x] C.1 Link current implementation, test and Conductor review evidence in `index.md`; migration, empirical, independent-reproduction and release evidence remain explicitly unavailable.
+- [x] C.1 Link current implementation, test and Conductor review evidence in `index.md`; migration, empirical and release evidence remain explicitly unavailable.
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/supermarket-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
-- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.8.0`, with rights-cleared supermarket data, empirical health linkage, independent reproduction, preservation, external participation and accountable-authority gates unresolved.
+- [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata remains `active`/M1 for target release `0.8.0`, with rights-cleared supermarket data, empirical health linkage, preservation and accountable-authority gates unresolved.
+- [x] C.5 Close the bounded WP-010 work-package scope under the sole-developer role-separated agent policy; empirical health, national completeness, operative planning and promotion authority remain track-level gates (`docs/wp010-single-developer-closeout-20260829.json`, `tests/test_wp010_single_developer_closeout.py`).
 
 ## Review fixes
 

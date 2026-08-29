@@ -22,7 +22,8 @@
     "urn:riopa:evidence:emergency-health-pareto:2026-08-25",
     "urn:riopa:evidence:emergency-health-panel:2026-08-25",
     "urn:riopa:evidence:emergency-health-research-object:2026-08-25",
-    "urn:riopa:evidence:emergency-health-review-remediation:2026-08-25"
+    "urn:riopa:evidence:emergency-health-review-remediation:2026-08-25",
+    "urn:riopa:evidence:wp010-single-developer-closeout:2026-08-29"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

@@ -27,7 +27,7 @@
     "stable-v1"
   ],
   "open_gates": [
-    "external operator and user evidence",
+    "candidate-specific role-separated agent journey and clean-room evidence",
     "90 consecutive beta days and three operational cycles",
     "30-day exact-candidate RC soak",
     "hosted recovery and national-scale measurements",
@@ -51,7 +51,7 @@
   ],
   "non_claims": [
     "This is not beta, release-candidate or stable-v1 approval.",
-    "Agent-panel assessment cannot substitute for factual external participant evidence.",
+    "Agent-panel assessment does not establish elapsed operation, source authority, hosted-system state or preservation-provider acceptance.",
     "The decision does not assert national completeness, operational authority or clinical validity."
   ]
 }
