@@ -1,6 +1,6 @@
 {
-  "evidence_id": "urn:riopa:evidence:hosted-recovery-observation:2026-08-29",
-  "record_type": "hosted_recovery_observation",
+  "evidence_id": "urn:riopa:evidence:hosted-pipeline-observation:2026-08-29",
+  "record_type": "hosted_pipeline_observation",
   "schema_version": "1.0.0",
   "workflow": ".github/workflows/evidence-campaign.yml",
   "run_id": "33236847804",
@@ -17,13 +17,16 @@
   "artifact": "evidence-campaign-recovery-20260829-main-recovery-rollback-33236847804",
   "observed_at": "2026-08-29T05:44:53Z",
   "qualification": {
-    "classification": "hosted-technical-preview-drill",
+    "classification": "hosted-publication-linz-pipeline-observation",
     "exit_code": 0,
+    "tests_executed": ["tests/test_publication.py", "tests/test_linz_pipeline.py"],
+    "recovery_rollback_execution": false,
     "production_disaster_recovery": false,
     "preservation_targets": {"github_actions_artifact": "created", "huggingface_dataset": "pending-credential", "zenodo": "pending-credential"}
   },
   "non_claims": [
-    "This drill is not production disaster-recovery qualification.",
+    "This observation did not execute restore, rollback or recovery-point operations.",
+    "It is not hosted recovery or production disaster-recovery qualification.",
     "It is not external operator or external user evidence.",
     "It does not satisfy elapsed beta/RC duration or release-authority approval."
   ]

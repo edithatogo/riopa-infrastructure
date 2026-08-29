@@ -60,13 +60,18 @@ def test_recorded_hosted_recovery_receipt_is_bound_to_successful_run() -> None:
     assert evidence["gate_disposition"]["production_disaster_recovery"] == "pending"
 
 
-def test_current_hosted_recovery_observation_preserves_provider_gate() -> None:
+def test_current_hosted_pipeline_observation_preserves_recovery_gate() -> None:
     evidence = json.loads(
         (ROOT / "docs/hosted-recovery-observation-20260829.json").read_text(encoding="utf-8")
     )
     assert evidence["status"] == "passed"
     assert evidence["qualification"]["exit_code"] == 0
+    assert evidence["qualification"]["recovery_rollback_execution"] is False
     assert evidence["qualification"]["production_disaster_recovery"] is False
+    assert evidence["qualification"]["tests_executed"] == [
+        "tests/test_publication.py",
+        "tests/test_linz_pipeline.py",
+    ]
     assert (
         evidence["qualification"]["preservation_targets"]["huggingface_dataset"]
         == "pending-credential"
