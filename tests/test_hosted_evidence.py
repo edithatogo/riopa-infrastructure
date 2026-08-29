@@ -82,6 +82,21 @@ def test_current_hosted_pipeline_observation_preserves_recovery_gate() -> None:
     assert evidence["qualification"]["preservation_targets"]["zenodo"] == "pending-credential"
     assert evidence["non_claims"]
 
+    retained = ROOT / "docs/hosted-recovery-observation-20260829-artifact"
+    receipt = retained / "recovery-rollback.receipt.json"
+    log = retained / "recovery-rollback.log"
+    assert evidence["retained_evidence"] == [
+        "docs/hosted-recovery-observation-20260829-artifact/recovery-rollback.receipt.json",
+        "docs/hosted-recovery-observation-20260829-artifact/recovery-rollback.log",
+        "docs/hosted-recovery-observation-20260829-artifact/redundancy-manifest.json",
+    ]
+    assert receipt.is_file() and log.is_file()
+    assert (
+        hashlib.sha256(receipt.read_bytes()).hexdigest()
+        == "970bfa9c3c2d948e2a1526db06d3ac86e4f3470401a061ee53cca0044c309b17"
+    )
+    assert hashlib.sha256(log.read_bytes()).hexdigest() == evidence["log_sha256"]
+
 
 def test_hosted_batch_records_all_bounded_lanes_without_overclaiming() -> None:
     batch = json.loads((ROOT / "docs/hosted-evidence-batch-20260802.json").read_text())

@@ -16,6 +16,11 @@
   "log_sha256": "32faef56d0289369b1ac111e68ee0bb7b2ed1bcf92d3f33b75313bd0556c3e6f",
   "bundle_sha256": "3be73bc575c8681b367579f3d121d69eeb9cfdf85e960efebe752c42cfd70415",
   "source_artifact": "evidence-campaign-recovery-20260829-main-recovery-rollback-33236847804",
+  "retained_evidence": [
+    "docs/hosted-recovery-observation-20260829-artifact/recovery-rollback.receipt.json",
+    "docs/hosted-recovery-observation-20260829-artifact/recovery-rollback.log",
+    "docs/hosted-recovery-observation-20260829-artifact/redundancy-manifest.json"
+  ],
   "observed_at": "2026-08-29T05:44:53Z",
   "qualification": {
     "classification": "hosted-publication-linz-pipeline-observation",
