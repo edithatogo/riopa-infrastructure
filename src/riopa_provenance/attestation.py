@@ -111,10 +111,13 @@ def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
             not isinstance(signature, Mapping)
             or not isinstance(signature.get("keyid"), str)
             or not isinstance(signature.get("sig"), str)
-            or not signature["keyid"].strip()
             or not signature["sig"].strip()
         ):
             raise AttestationError("DSSE signatures must contain string keyid and sig")
+        try:
+            base64.b64decode(signature["sig"], validate=True)
+        except ValueError as exc:
+            raise AttestationError("DSSE signature sig must be valid base64") from exc
     payload = envelope.get("payload")
     if not isinstance(payload, str) or not payload:
         raise AttestationError("DSSE payload is not valid base64 JSON")

@@ -63,6 +63,24 @@ def test_dsse_decoder_rejects_malformed_signature_entries() -> None:
                 "signatures": [{"sig": 1}],
             }
         )
+    with pytest.raises(AttestationError, match="valid base64"):
+        decode_dsse_payload(
+            {
+                "payloadType": DSSE_PAYLOAD_TYPE,
+                "payload": payload,
+                "signatures": [{"keyid": "", "sig": "not-base64"}],
+            }
+        )
+    assert (
+        decode_dsse_payload(
+            {
+                "payloadType": DSSE_PAYLOAD_TYPE,
+                "payload": payload,
+                "signatures": [{"keyid": "", "sig": base64.b64encode(b"signature").decode()}],
+            }
+        )
+        == statement
+    )
 
 
 def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> None:

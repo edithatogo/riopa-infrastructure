@@ -51,3 +51,4 @@
 - [x] R.15 Validate decoded in-toto statement fields with the same strict subject and predicate checks as the builder (review fix; 2026-08-29).
 - [x] R.16 Validate non-empty string keyid and sig fields for decoded DSSE signature entries (review fix; 2026-08-29).
 - [x] R.17 Apply symmetric strict statement-field validation in DSSE builders and decoders (review fix; 2026-08-29).
+- [x] R.18 Allow keyless empty DSSE key identifiers while requiring strictly base64-encoded signature bytes (review fix; 2026-08-29).
