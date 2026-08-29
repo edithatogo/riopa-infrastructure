@@ -1,0 +1,24 @@
+{
+  "evidence_id": "OPS-HOSTED-SUPPLEMENTAL-CLEANROOM-OBSERVATION-20260830-17AAEC8",
+  "schema_version": "1.0.0",
+  "source_revision": "17aaec8f661aa23db2b05f6377d2a3b4c8c1646d",
+  "campaign_id": "supplemental-clean-room-20260830-17aaec8",
+  "qualification_epoch": "supplemental-clean-room-epoch-20260830",
+  "operational_cycle": "2026-W35",
+  "classification": "hosted-technical-preview-drill",
+  "observations": [
+    {
+      "lane": "agent-clean-room",
+      "run_id": "33262213373",
+      "architecture": "x86_64",
+      "receipt_sha256": "b3f243e931ff0a36ccd98ecc370cc6a3530a5249675d0131fc2d996af38b6205",
+      "log_sha256": "c4b808d34f4db00b333696dec1f3a43a2887d8bfe0cb7af07a3cb98ff43a7830",
+      "receipt_path": "docs/hosted-evidence/33262213373/agent-clean-room.receipt.json",
+      "log_path": "docs/hosted-evidence/33262213373/agent-clean-room.log"
+    }
+  ],
+  "non_claims": [
+    "This supplemental rehearsal does not establish independent external reproduction or advance the beta or RC elapsed clocks.",
+    "It does not establish production disaster recovery, national-scale performance, preservation acceptance or release authority."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "campaign_activation": null,
+  "campaign_id": "supplemental-clean-room-20260830-17aaec8",
+  "candidate_revision": "17aaec8f661aa23db2b05f6377d2a3b4c8c1646d",
+  "classification": "hosted-technical-preview-drill",
+  "command": ["uv", "run", "pytest", "-q", "tests/test_wp010_benchmark.py"],
+  "ended_at": "2026-08-29T16:10:23.174116Z",
+  "exit_code": 0,
+  "host": {"architecture": "x86_64", "provider": "github-actions", "run_attempt": "1", "run_id": "33262213373", "runner_name": "GitHub Actions 1000381637", "runner_os": "Linux"},
+  "hosted_run_id": null,
+  "lane": "agent-clean-room",
+  "log": {"path": "agent-clean-room.log", "sha256": "c4b808d34f4db00b333696dec1f3a43a2887d8bfe0cb7af07a3cb98ff43a7830"},
+  "non_claims": ["This receipt is not production disaster-recovery qualification.", "This receipt is hosted-system evidence, not a role-separated agent user/operator journey.", "This receipt does not satisfy elapsed soak duration by itself.", "This receipt is not an accountable release-authority decision.", "Retrospective supplements do not count as elapsed beta or RC soak observations."],
+  "operational_cycle_id": "2026-W35",
+  "qualification_epoch": "supplemental-clean-room-epoch-20260830",
+  "schema_version": "1.1.0",
+  "source_revision": "17aaec8f661aa23db2b05f6377d2a3b4c8c1646d",
+  "started_at": "2026-08-29T16:10:20.984065Z",
+  "status": "passed"
+}
