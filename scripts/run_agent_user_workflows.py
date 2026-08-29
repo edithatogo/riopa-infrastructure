@@ -74,7 +74,9 @@ def main() -> int:
             }
         )
     )
-    from scripts.validate_agent_user_workflow_report import validate_report
+    # When this file is executed directly, its directory is on ``sys.path``;
+    # import the sibling validator without requiring ``scripts`` to be a package.
+    from validate_agent_user_workflow_report import validate_report
 
     errors = validate_report(report)
     for error in errors:
