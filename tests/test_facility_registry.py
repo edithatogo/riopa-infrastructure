@@ -185,6 +185,19 @@ def test_snapshot_record_rejects_malformed_nested_assertions_and_ledger() -> Non
     assert "payload record_type is unsupported" in validate_snapshot_record(wrong_shape)
 
 
+def test_snapshot_record_rejects_wrong_typed_nested_assertion_fields() -> None:
+    record = build_snapshot_record(
+        (assertion("public", 0, 0),), revision="snapshot-1", registry_version="registry:1"
+    )
+    payload = dict(record["payload"])  # type: ignore[arg-type]
+    row = dict(payload["assertions"][0])  # type: ignore[index]
+    row["assertion_id"] = []
+    payload["assertions"] = [row]
+    malformed = dict(record)
+    malformed["payload"] = payload
+    assert "payload assertions contain an invalid assertion" in validate_snapshot_record(malformed)
+
+
 def test_history_records_opening_closure_relocation_rebrand_and_disagreement() -> None:
     events = (
         FacilityHistoryEvent(
