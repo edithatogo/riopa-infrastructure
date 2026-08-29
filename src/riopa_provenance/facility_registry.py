@@ -220,6 +220,8 @@ def validate_snapshot_record(record: Mapping[str, object] | None) -> tuple[str, 
     if not isinstance(payload, Mapping):
         errors.append("payload must be an object")
     else:
+        if payload.get("record_type") != "facility_assertions":
+            errors.append("payload record_type is unsupported")
         if (
             payload.get("authoritative") is not False
             or payload.get("release_filter") != "public-only"
@@ -233,6 +235,32 @@ def validate_snapshot_record(record: Mapping[str, object] | None) -> tuple[str, 
         digest = record.get("payload_sha256")
         if not isinstance(digest, str) or digest != sha256_json(payload):
             errors.append("payload_sha256 does not match payload")
+        rows = payload.get("assertions")
+        if not isinstance(rows, list):
+            errors.append("payload assertions must be an array")
+        else:
+            assertion_ids: list[str] = []
+            for row in rows:
+                if not isinstance(row, Mapping):
+                    errors.append("payload assertions must contain objects")
+                    continue
+                try:
+                    assertion = FacilityAssertion(**dict(row))
+                except AttributeError, TypeError, ValueError:
+                    errors.append("payload assertions contain an invalid assertion")
+                    continue
+                if assertion.release_classification != "public":
+                    errors.append("payload assertions must be public")
+                assertion_ids.append(assertion.assertion_id)
+            if len(assertion_ids) != len(set(assertion_ids)):
+                errors.append("payload assertion IDs must be unique")
+        excluded = payload.get("excluded_assertion_ids")
+        if not isinstance(excluded, list) or any(
+            not isinstance(identifier, str) or not identifier.strip() for identifier in excluded
+        ):
+            errors.append("excluded_assertion_ids must be an array of non-empty strings")
+        elif len(excluded) != len(set(excluded)):
+            errors.append("excluded_assertion_ids must be unique")
     if record.get("status") not in {"unpublished", "candidate"}:
         errors.append("status must remain unpublished or candidate")
     if record.get("correction_policy") != "append-successor-preserve-predecessor":

@@ -157,6 +157,47 @@ def test_snapshot_record_is_content_addressed_and_correction_successor_only() ->
     assert any("does not match" in error for error in validate_snapshot_record(tampered))
 
 
+def test_snapshot_record_rejects_malformed_nested_assertions_and_ledger() -> None:
+    record = build_snapshot_record(
+        (assertion("public", 0, 0),), revision="snapshot-1", registry_version="registry:1"
+    )
+    payload = dict(record["payload"])  # type: ignore[arg-type]
+    payload["assertions"] = [{"assertion_id": "incomplete"}]
+    payload["excluded_assertion_ids"] = ["", ""]
+    malformed = dict(record)
+    malformed["payload"] = payload
+    errors = validate_snapshot_record(malformed)
+    assert "payload assertions contain an invalid assertion" in errors
+    assert "excluded_assertion_ids must be an array of non-empty strings" in errors
+
+    private_row = dict(record["payload"]["assertions"][0])  # type: ignore[index]
+    private_row["release_classification"] = "restricted"
+    private_payload = dict(record["payload"])  # type: ignore[arg-type]
+    private_payload["assertions"] = [private_row]
+    private_record = dict(record)
+    private_record["payload"] = private_payload
+    assert "payload assertions must be public" in validate_snapshot_record(private_record)
+
+    wrong_shape = dict(record)
+    wrong_payload = dict(record["payload"])  # type: ignore[arg-type]
+    wrong_payload["record_type"] = "facility_registry_snapshot"
+    wrong_shape["payload"] = wrong_payload
+    assert "payload record_type is unsupported" in validate_snapshot_record(wrong_shape)
+
+
+def test_snapshot_record_rejects_wrong_typed_nested_assertion_fields() -> None:
+    record = build_snapshot_record(
+        (assertion("public", 0, 0),), revision="snapshot-1", registry_version="registry:1"
+    )
+    payload = dict(record["payload"])  # type: ignore[arg-type]
+    row = dict(payload["assertions"][0])  # type: ignore[index]
+    row["assertion_id"] = []
+    payload["assertions"] = [row]
+    malformed = dict(record)
+    malformed["payload"] = payload
+    assert "payload assertions contain an invalid assertion" in validate_snapshot_record(malformed)
+
+
 def test_history_records_opening_closure_relocation_rebrand_and_disagreement() -> None:
     events = (
         FacilityHistoryEvent(

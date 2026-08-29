@@ -68,6 +68,14 @@ promote a source to authoritative status without a documented panel disposition.
 - [x] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.
 - [ ] G.5 Immutable release snapshot, correction process and accountable release-authority decision.
 
+### Review fixes (2026-08-29)
+
+- [x] Harden `validate_snapshot_record` to validate the nested assertion array,
+  public-only classification, unique IDs, exclusion ledger and payload record
+  type; malformed candidates fail closed (`FACILITY-SNAPSHOT-NESTED-VALIDATION-20260829`).
+- [ ] Keep G.5 publication and accountable release-authority decision open;
+  repository-owned validation is not external release evidence.
+
 ## Historical hosted merge-policy blocker (resolved 2026-08-03)
 
 The code and required checks were green, but GitHub reported the protected PR as

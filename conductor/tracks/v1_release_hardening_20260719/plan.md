@@ -87,6 +87,11 @@
   (`scripts/validate_v1_release_candidate_packet.py`,
   `docs/v1-release-candidate-packet-validation-20260829.json`,
   `tests/test_v1_release_candidate_packet_validator.py`).
+- [x] 5.27 Validate the non-authorising release-decision readiness projection,
+  requiring pending authority, disabled promotion, unique track identities and
+  explicit blockers (`scripts/validate_release_decision_readiness.py`,
+  `docs/release-decision-readiness-validation-20260829.json`,
+  `tests/test_release_decision_readiness_validator.py`).
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
