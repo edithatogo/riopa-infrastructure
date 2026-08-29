@@ -10,11 +10,12 @@ The existing bounded pilot does not depend on access to a national ambulance
 dataset. Custodian approval is required only if the scope expands to
 authoritative provider, national, current-service or operational claims.
 
-- Repository head: `2278cc8` (operational-cycle evidence schema, stressed/degraded benchmark scenarios, panel templates and release-readiness projection).
+- Repository head: `d66fb07` (Tier-A ArcGIS archive publication, bounded test-acceleration profiles, operational-cycle evidence schema, benchmark scenarios, panel templates and release-readiness projection).
 - Successor preservation record: [Zenodo 10.5281/zenodo.21737563](https://doi.org/10.5281/zenodo.21737563).
+- Public Tier-A archive revision: `001137c0df64e9f8a7b0539fd0286a7cd5819ce7` on [Hugging Face](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive). It contains three rights-qualified regional packets (230 features total) with fixity and publication receipts; it does not establish national or operational authority.
 - Internal panel rehearsal: two clean-room bundle builds were byte-identical; `verify.py` passed; expected SHA-256 was `26bf2281…b6813`. This is rehearsal evidence only and does **not** satisfy the mandatory independent external-operator gate.
 - Public-source metadata refresh found no candidate with both confirmed authoritative status and clear redistribution rights. No acquisition or national-completeness claim is authorised.
-- Repository-owned preparation now includes a fail-closed operational-cycle/soak schema, deterministic local restore/rollback evidence, structured regional benchmark scenarios, and pending qualification templates for all 28 tracks. These artifacts do not represent elapsed-time, production, national-scale or external-operator evidence.
+- Repository-owned preparation now includes a fail-closed operational-cycle/soak schema, deterministic local restore/rollback evidence, structured regional benchmark scenarios, bounded test-feedback profiles, and pending qualification templates for all 28 tracks. These artifacts do not represent elapsed-time, production, national-scale or external-operator evidence.
 
 ## Promotion prerequisites
 
