@@ -50,6 +50,8 @@ promote a source to authoritative status without a documented panel disposition.
   ledger and align the history evidence row after task 3.3. (review fix; 2026-08-22)
 - [x] 5.3 Align the G.1 lifecycle marker with the completed agent-panel frame
   qualification while retaining factual adjudication as an open gate. (review fix; 2026-08-29)
+- [x] 5.4 Validate historical stable-gate snapshots by their self-contained
+  digest rather than recomputing them against mutable current metadata. (review fix; 2026-08-29)
 
 ## Evidence gates still open
 
