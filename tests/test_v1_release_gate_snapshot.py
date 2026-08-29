@@ -154,9 +154,9 @@ def test_latest_exact_merged_revision_snapshot_matches_current_inputs() -> None:
 
 def test_current_revision_snapshot_matches_current_inputs() -> None:
     artifact = json.loads(
-        (
-            ROOT / "docs/v1-stable-release-gate-snapshot-20260829-1fa16a6.json"
-        ).read_text(encoding="utf-8")
+        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-1fa16a6.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert artifact == build_snapshot(
         ROOT,
