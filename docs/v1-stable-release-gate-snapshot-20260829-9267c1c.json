@@ -1,0 +1,542 @@
+{
+  "blockers": {
+    "operational_campaign": [
+      "beta:pending-duration-and-cycles",
+      "rc:pending-duration",
+      "rc:exact-candidate-continuity-not-met"
+    ],
+    "release_authority": [
+      "signed-unanimous-decision-not-qualified"
+    ],
+    "release_evidence": [
+      "stable-release-record-absent"
+    ],
+    "roadmap": [
+      "track accessibility_network_engine_20260719 is M1; M6 is required",
+      "track canonical_domain_schemas_ontology_20260719 is M2; M6 is required",
+      "track connector_runtime_capture_20260719 is M2; M6 is required",
+      "track documentation_developer_experience_20260719 is M1; M6 is required",
+      "track emergency_health_facilities_pilot_20260718 is M1; M6 is required",
+      "track facility_location_engine_20260718 is M1; M6 is required",
+      "track facility_registry_20260719 is M1; M6 is required",
+      "track foundation_architecture_20260718 is M2; M6 is required",
+      "track governance_maori_data_sovereignty_20260718 is M2; M6 is required",
+      "track health_outcomes_causal_methods_20260719 is M1; M6 is required",
+      "track interoperability_conformance_sdks_20260719 is M2; M6 is required",
+      "track methods_research_objects_20260718 is M2; M6 is required",
+      "track nz_spatial_archive_mvp_20260718 is M1; M6 is required",
+      "track nz_spatial_archive_operations_20260719 is M1; M6 is required",
+      "track nz_spatial_source_registry_20260718 is M2; M6 is required",
+      "track operations_preservation_sre_20260719 is M1; M6 is required",
+      "track performance_scalability_reliability_20260719 is M1; M6 is required",
+      "track planning_rules_linkage_20260718 is M1; M6 is required",
+      "track planning_system_transition_20260719 is M1; M6 is required",
+      "track provenance_profile_v1_20260718 is M2; M6 is required",
+      "track provenance_query_api_20260719 is M1; M6 is required",
+      "track publication_validation_20260718 is M1; M6 is required",
+      "track repository_template_adoption_20260718 is M1; M6 is required",
+      "track security_supply_chain_20260719 is M2; M6 is required",
+      "track simulation_validation_engine_20260719 is M1; M6 is required",
+      "track spatial_quality_temporality_20260718 is M1; M6 is required",
+      "track supermarket_health_pilot_20260718 is M1; M6 is required",
+      "track v1_release_hardening_20260719 is M1; M6 is required",
+      "gate stable-governance is not passed with current evidence",
+      "gate stable-contracts is not passed with current evidence",
+      "gate stable-provenance is not passed with current evidence",
+      "gate stable-security is not passed with current evidence",
+      "gate stable-data is not passed with current evidence",
+      "gate stable-operations is not passed with current evidence",
+      "gate stable-performance is not passed with current evidence",
+      "gate stable-interoperability is not passed with current evidence",
+      "gate stable-publication is not passed with current evidence",
+      "gate stable-usability is not passed with current evidence",
+      "gate stable-analytics is not passed with current evidence",
+      "gate stable-science is not passed with current evidence",
+      "gate stable-panel-clean-room-reproduction is not passed with current evidence",
+      "gate stable-release-authority is not passed with current evidence",
+      "stable release evidence record is absent"
+    ],
+    "stable_gates": [
+      "14-of-14-not-qualified"
+    ],
+    "tracks": [
+      "accessibility_network_engine_20260719",
+      "canonical_domain_schemas_ontology_20260719",
+      "connector_runtime_capture_20260719",
+      "documentation_developer_experience_20260719",
+      "emergency_health_facilities_pilot_20260718",
+      "facility_location_engine_20260718",
+      "facility_registry_20260719",
+      "foundation_architecture_20260718",
+      "governance_maori_data_sovereignty_20260718",
+      "health_outcomes_causal_methods_20260719",
+      "interoperability_conformance_sdks_20260719",
+      "methods_research_objects_20260718",
+      "nz_spatial_archive_mvp_20260718",
+      "nz_spatial_archive_operations_20260719",
+      "nz_spatial_source_registry_20260718",
+      "operations_preservation_sre_20260719",
+      "performance_scalability_reliability_20260719",
+      "planning_rules_linkage_20260718",
+      "planning_system_transition_20260719",
+      "provenance_profile_v1_20260718",
+      "provenance_query_api_20260719",
+      "publication_validation_20260718",
+      "repository_template_adoption_20260718",
+      "security_supply_chain_20260719",
+      "simulation_validation_engine_20260719",
+      "spatial_quality_temporality_20260718",
+      "supermarket_health_pilot_20260718",
+      "v1_release_hardening_20260719"
+    ]
+  },
+  "campaign": {
+    "beta": {
+      "campaign_id": "operational-beta-20260825-26bc0b4",
+      "required_days": 90,
+      "required_operational_cycles": 3,
+      "status": "pending-duration-and-cycles"
+    },
+    "rc": {
+      "campaign_id": "operational-rc-20260825-26bc0b4",
+      "candidate_revisions": [
+        "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
+      ],
+      "declared_candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+      "declared_status": "pending-duration",
+      "exact_candidate_continuity_met": false,
+      "observation_bindings_valid": true,
+      "observation_count": 1,
+      "observations": [
+        {
+          "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+          "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+          "run_id": "32856370956"
+        }
+      ],
+      "qualification_epoch": "rc-epoch-20260825-26bc0b4",
+      "required_days": 30,
+      "reset_required": false
+    }
+  },
+  "evaluated_revision": "9267c1c6a174c19149c14de5f69739e00923b4f3",
+  "generated_at": "2026-08-29T12:00:00Z",
+  "nonclaims": [
+    "This snapshot evaluates declared repository evidence and does not grant release authority.",
+    "Hosted observations do not substitute for elapsed duration, isolated role-separated clean-room agent reproduction or stable-candidate preservation acceptance.",
+    "A candidate revision change resets exact-candidate soak; observations are not combined across revisions."
+  ],
+  "promotion_allowed": false,
+  "record_type": "v1_stable_release_gate_snapshot",
+  "release": "1.0.0",
+  "release_ready": false,
+  "schema_version": "1.0.0",
+  "snapshot_sha256": "7331b50a4b96713f2c41207ea8ae6744d5eb8fb94d4a2491d5e5f8b4c431c223",
+  "stable_gate_summary": {
+    "passed": 0,
+    "required": 14,
+    "required_gate_ids": [
+      "stable-governance",
+      "stable-contracts",
+      "stable-provenance",
+      "stable-security",
+      "stable-data",
+      "stable-operations",
+      "stable-performance",
+      "stable-interoperability",
+      "stable-publication",
+      "stable-usability",
+      "stable-analytics",
+      "stable-science",
+      "stable-panel-clean-room-reproduction",
+      "stable-release-authority"
+    ]
+  },
+  "stable_release_evidence_present": false,
+  "status": "blocked",
+  "track_summary": {
+    "qualified": 0,
+    "required": 28,
+    "tracks": [
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "accessibility_network_engine_20260719"
+      },
+      {
+        "blocking_defects": [
+          "representative-real-data-and-cross-runtime-conformance",
+          "migration-compatibility-qualification",
+          "repeated-external-schema-use-and-slo-evidence",
+          "rc-cross-language-semantic-panel-and-soak-qualification",
+          "ontology-publication-identifier",
+          "accountable-stable-release-authority"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "canonical_domain_schemas_ontology_20260719"
+      },
+      {
+        "blocking_defects": [
+          "live-national-and-council-capture-with-rights",
+          "representative-migration-and-failure-handling",
+          "repeated-hosted-operation-and-alert-delivery",
+          "release-candidate-security-performance-recovery-and-soak",
+          "stable-signed-and-preserved-release",
+          "isolated-agent-panel-reproduction",
+          "accountable-stable-release-authority"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "connector_runtime_capture_20260719"
+      },
+      {
+        "blocking_defects": [
+          "agent-user-and-operator-workflow-studies",
+          "accessibility-terminology-safety-review",
+          "release-candidate-tutorial-execution",
+          "support-ownership-and-versioned-publication"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "documentation_developer_experience_20260719"
+      },
+      {
+        "blocking_defects": [
+          "blocking-dependencies-not-complete",
+          "authoritative-source-and-external-calibration-pending",
+          "clinical-operational-safety-approval-pending",
+          "isolated-role-separated-clean-room-agent-reproduction-pending",
+          "hosted-preservation-and-recovery-acceptance-pending",
+          "elapsed-beta-release-candidate-evidence-pending",
+          "accountable-release-authority-pending"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "emergency_health_facilities_pilot_20260718"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "facility_location_engine_20260718"
+      },
+      {
+        "blocking_defects": [
+          "facility-review-panel-disposition pending: docs/facility-panel-qualification-20260803.json and docs/facility-stratified-review-sample-20260803.json",
+          "hamilton-geometry-disposition blocked: docs/facility-source-materialization-20260803.json",
+          "stale-pr-175-blocker-wording-repaired: 2026-08-25",
+          "public-health-source-family archived: config/archive-sources/rangitikei-public-ambulance-2023.json; reconciliation and authority remain pending",
+          "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
+          "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; content-bound panel manifest and factual adjudication remain open",
+          "panel-manifest-contract-added: scripts/validate_facility_panel_manifest.py and docs/facility-panel-manifest-contract-20260829.json; existing frame remains partial"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "facility_registry_20260719"
+      },
+      {
+        "blocking_defects": [
+          "m3-real-data-and-failure-evidence",
+          "m4-operational-and-external-use-evidence",
+          "m5-rc-soak-and-independent-review",
+          "m6-stable-support-and-release-authority"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": true,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "foundation_architecture_20260718"
+      },
+      {
+        "blocking_defects": [
+          "live-takedown-and-publication-evidence",
+          "applied-pilot-governance-evidence",
+          "accountable-release-authority-decision"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "governance_maori_data_sovereignty_20260718"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "health_outcomes_causal_methods_20260719"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "interoperability_conformance_sdks_20260719"
+      },
+      {
+        "blocking_defects": [
+          "complete-real-data-research-object",
+          "representative-clean-environment-reproduction",
+          "repeated-supported-environment-use-and-preservation-operation",
+          "release-candidate-security-recovery-panel-and-soak-qualification",
+          "stable-signed-and-preserved-publication",
+          "isolated-role-separated-clean-room-agent-reproduction",
+          "accountable-stable-release-authority"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "methods_research_objects_20260718"
+      },
+      {
+        "blocking_defects": [
+          "blocking-dependencies-not-complete",
+          "four-council-two-national-capture-to-release-pending",
+          "external-research-object-validation-pending",
+          "second-clean-environment-reproduction-pending",
+          "spatial-alpha-release-gates-and-cycles-pending",
+          "durable-preservation-and-publication-acceptance-pending",
+          "accountable-release-authority-pending"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "nz_spatial_archive_mvp_20260718"
+      },
+      {
+        "blocking_defects": [
+          "All four dependency tracks remain incomplete.",
+          "Current-authority inventory, source rights, credentials and reviewed exceptions are incomplete.",
+          "Live controlled-wave operation and the required beta SLO evidence period are incomplete.",
+          "National-scale restore, correction, retirement, preservation, capacity and cost exercises are incomplete.",
+          "Accountable stable-model approval, publication and target-release readiness are incomplete."
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "nz_spatial_archive_operations_20260719"
+      },
+      {
+        "blocking_defects": [
+          "current-authority-completeness-and-live-rights-validation",
+          "representative-migration-and-failure-handling",
+          "repeated-hosted-health-monitoring-and-slo-evidence",
+          "release-candidate-security-recovery-panel-and-soak",
+          "stable-signed-and-preserved-registry-release",
+          "isolated-agent-panel-reproduction",
+          "accountable-stable-release-authority"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "nz_spatial_source_registry_20260718"
+      },
+      {
+        "blocking_defects": [
+          "provider-restore-and-production-dr-execution",
+          "beta-90-day-three-cycle-and-rc-30-day-soaks",
+          "hosted-national-scale-and-slo-measurements",
+          "stable-candidate-replication-and-provider-restore-qualification",
+          "accountable-release-authority-decision"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "operations_preservation_sre_20260719"
+      },
+      {
+        "blocking_defects": [
+          "second-environment-reproduction",
+          "hosted-national-scale-measurements",
+          "resource-and-cost-instrumentation",
+          "elapsed-soak-and-production-failure-injection",
+          "final-agent-panel-qualification"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "performance_scalability_reliability_20260719"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "planning_rules_linkage_20260718"
+      },
+      {
+        "blocking_defects": [
+          "historical-authority-and-plan-reconstruction",
+          "immutable-public-source-transition-evidence",
+          "real-data-transition-reproduction",
+          "accountable-release-authority"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "planning_system_transition_20260719"
+      },
+      {
+        "blocking_defects": [
+          "representative-real-data-and-cross-runtime-conformance",
+          "representative-migration-and-failure-handling",
+          "repeated-external-profile-use-and-slo-evidence",
+          "rc-semantic-security-recovery-panel-and-soak-qualification",
+          "stable-profile-publication-identifier-and-signed-attestation",
+          "isolated-role-separated-clean-room-agent-reproduction",
+          "accountable-stable-release-authority"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "provenance_profile_v1_20260718"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "provenance_query_api_20260719"
+      },
+      {
+        "blocking_defects": [
+          "claim-classification-and-package-coordination",
+          "agent-clean-room-and-agent-operated-user-journey-evidence",
+          "stable-candidate-publication-preservation-and-restore-acceptance",
+          "correction-notification-execution",
+          "elapsed-beta-rc-evidence",
+          "accountable-release-authority-acceptance"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "publication_validation_20260718"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "repository_template_adoption_20260718"
+      },
+      {
+        "blocking_defects": [
+          "hosted-protection-and-release-environment-verification",
+          "sbom-signature-and-provenance-execution",
+          "repeated-security-operation-and-slo-evidence",
+          "credential-compromise-and-rollback-exercise",
+          "security-agent-panel-qualification",
+          "accountable-release-authority-approval"
+        ],
+        "current_maturity": "M2",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "validating",
+        "track_id": "security_supply_chain_20260719"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "simulation_validation_engine_20260719"
+      },
+      {
+        "blocking_defects": [],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "spatial_quality_temporality_20260718"
+      },
+      {
+        "blocking_defects": [
+          "All five dependency tracks remain incomplete at M1.",
+          "Rights-cleared versioned supermarket and population inputs and factual baseline reproduction are unavailable.",
+          "Representative access, facility reconciliation, empirical ecological-health and sensitivity analyses are incomplete.",
+          "Operative planning linkage, authority review and representative solver alternatives are incomplete.",
+          "Agent-panel qualification, complete research object, independent reproduction, publication and release authority are incomplete."
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "supermarket_health_pilot_20260718"
+      },
+      {
+        "blocking_defects": [
+          "all-v1-critical-tracks-complete",
+          "clean-room-agent-reproduction",
+          "agent-user-workflow-validation",
+          "operational-and-release-candidate-soak",
+          "signed-preserved-stable-release",
+          "release-authority-decision"
+        ],
+        "current_maturity": "M1",
+        "dependencies_at_required_maturity": false,
+        "linked_evidence_present": true,
+        "qualified": false,
+        "status": "active",
+        "track_id": "v1_release_hardening_20260719"
+      }
+    ]
+  }
+}
