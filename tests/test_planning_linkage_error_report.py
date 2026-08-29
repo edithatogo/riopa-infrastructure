@@ -162,3 +162,13 @@ def test_linkage_error_report_validator_rejects_non_string_findings_without_rais
     report["findings"]["missing_link_targets"] = [object()]
     errors = validate_planning_linkage_error_report(report)
     assert "findings.missing_link_targets must be a list of strings" in errors
+
+
+def test_linkage_error_report_validator_binds_status_to_findings() -> None:
+    report = build_planning_linkage_error_report(**_packets())
+    report["findings"]["missing_link_targets"] = ["missing:target"]
+    report["finding_counts"]["missing_link_targets"] = 1
+    report["total_finding_count"] = 1
+    report["status"] = "no-unresolved-references"
+    errors = validate_planning_linkage_error_report(report)
+    assert "status must match whether findings are present" in errors

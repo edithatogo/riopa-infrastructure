@@ -645,6 +645,15 @@ def validate_planning_linkage_error_report(report: object) -> tuple[str, ...]:
     status = report.get("status")
     if status not in {"quantified-unresolved", "no-unresolved-references"}:
         errors.append("status is unsupported")
+    elif valid_findings:
+        assert finding_map is not None
+        expected_status = (
+            "quantified-unresolved"
+            if any(finding_map[name] for name in expected)
+            else "no-unresolved-references"
+        )
+        if status != expected_status:
+            errors.append("status must match whether findings are present")
     nonclaims = report.get("nonclaims")
     if not isinstance(nonclaims, list) or not any(
         isinstance(item, str) and "does not repair or infer links" in item for item in nonclaims
