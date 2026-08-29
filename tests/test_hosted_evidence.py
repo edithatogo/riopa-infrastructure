@@ -42,6 +42,15 @@ def test_qualifying_non_observation_lane_fails_closed(tmp_path: Path, monkeypatc
         run_lane("scale-smoke", tmp_path)
 
 
+def test_qualifying_rc_requires_exact_checked_out_candidate(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("EVIDENCE_QUALIFYING", "true")
+    monkeypatch.setenv("EVIDENCE_ACTIVATION_AUTHORITY", "Sole repository owner")
+    monkeypatch.setenv("EVIDENCE_ACTIVATED_AT", "2026-08-29T12:00:00Z")
+    monkeypatch.setenv("EVIDENCE_CANDIDATE_REVISION", "0" * 40)
+    with pytest.raises(ValueError, match="candidate_revision to equal source_revision"):
+        run_lane("rc-soak-observation", tmp_path)
+
+
 def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:
     assert set(LANES) == {
         "agent-user-workflows",
