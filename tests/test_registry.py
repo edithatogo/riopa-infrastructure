@@ -184,6 +184,22 @@ def test_registry_release_candidate_rejects_duplicate_sources() -> None:
         build_registry_release_candidate(registry, release_id="r", prepared_at="t")
 
 
+def test_registry_release_candidate_rejects_empty_or_duplicate_endpoint_ids() -> None:
+    for endpoints, message in (
+        ([{"endpoint_id": " "}], "endpoint_id"),
+        ([{"endpoint_id": "e"}, {"endpoint_id": "e"}], "unique"),
+    ):
+        with pytest.raises(ValueError, match=message):
+            build_registry_release_candidate(
+                {
+                    "record_type": "source_registry",
+                    "sources": [{"source_id": "s", "endpoints": endpoints}],
+                },
+                release_id="r",
+                prepared_at="t",
+            )
+
+
 def test_validation_returns_schema_errors(tmp_path: Path) -> None:
     root = Path(__file__).resolve().parents[1]
     invalid = tmp_path / "invalid.json"

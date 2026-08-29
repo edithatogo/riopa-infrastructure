@@ -1,0 +1,10 @@
+{
+  "evidence_id": "OPS-COVERAGE-REPORT-INTEGRITY-20260829",
+  "schema": "riopa.operations-coverage-report-integrity.v1",
+  "scope": "bounded repository-owned coverage reports built from supplied observations",
+  "validator": "riopa_provenance.archive_operations.validate_coverage_report",
+  "observed_status": "content-digest-and-boundary-validation-tested",
+  "promotion_allowed": false,
+  "open_gates": ["hosted national observations", "beta SLO duration", "provider restore", "preservation acceptance", "accountable release authority"],
+  "nonclaims": ["Validation does not contact endpoints or establish national coverage.", "Agent-panel review and repository tests do not replace external or elapsed evidence."]
+}

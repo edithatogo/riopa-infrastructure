@@ -577,12 +577,19 @@ def build_registry_release_candidate(
         if not isinstance(endpoints, list):
             raise ValueError(f"endpoints must be an array for {source_id}")
         endpoint_ids = []
+        seen_endpoint_ids: set[str] = set()
         for endpoint in endpoints:
-            if not isinstance(endpoint, Mapping) or not isinstance(
-                endpoint.get("endpoint_id"), str
+            if (
+                not isinstance(endpoint, Mapping)
+                or not isinstance(endpoint.get("endpoint_id"), str)
+                or not endpoint["endpoint_id"].strip()
             ):
                 raise ValueError(f"endpoint entries require endpoint_id for {source_id}")
-            endpoint_ids.append(endpoint["endpoint_id"])
+            endpoint_id = endpoint["endpoint_id"]
+            if endpoint_id in seen_endpoint_ids:
+                raise ValueError(f"endpoint_id values must be unique for {source_id}")
+            seen_endpoint_ids.add(endpoint_id)
+            endpoint_ids.append(endpoint_id)
         source_records.append(
             {
                 "source_id": source_id,
