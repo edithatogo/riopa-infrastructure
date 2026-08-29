@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -18,7 +18,9 @@ def _load(path: Path) -> dict[str, Any]:
     return value
 
 
-def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str, Any]:
+def build_ledger(
+    paths: list[Path], *, maximum_gap_hours: int = 36, now: datetime | None = None
+) -> dict[str, Any]:
     if not paths:
         raise ValueError("at least one receipt is required")
     loaded = [(path, _load(path)) for path in paths]
@@ -28,6 +30,11 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
     lanes = {receipt.get("lane") for _, receipt in loaded}
     if lanes not in ({"operational-observation"}, {"rc-soak-observation"}):
         raise ValueError("a ledger must contain exactly one elapsed-evidence lane")
+    expected_classification = (
+        "qualifying-rc-observation"
+        if lanes == {"rc-soak-observation"}
+        else "qualifying-beta-observation"
+    )
     observations = []
     seen_receipts: set[str] = set()
     duplicate_receipt_count = 0
@@ -38,6 +45,18 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
             continue
         seen_receipts.add(receipt_sha256)
         lane = receipt.get("lane")
+        if receipt.get("classification") != expected_classification:
+            raise ValueError(f"{path}: receipt classification is not qualifying for {lane}")
+        activation = receipt.get("campaign_activation")
+        if not isinstance(activation, dict) or activation.get("status") != "activated":
+            raise ValueError(f"{path}: qualifying receipt requires campaign activation")
+        if activation.get("campaign_id") != receipt.get("campaign_id"):
+            raise ValueError(f"{path}: campaign activation is not bound to campaign_id")
+        if not activation.get("authority") or not activation.get("activated_at"):
+            raise ValueError(f"{path}: campaign activation requires authority and activated_at")
+        run_id = receipt.get("hosted_run_id")
+        if not isinstance(run_id, str) or not run_id.strip():
+            raise ValueError(f"{path}: qualifying receipt requires a hosted_run_id")
         revision = receipt.get("source_revision")
         candidate = receipt.get("candidate_revision")
         if lane == "rc-soak-observation" and candidate != revision:
@@ -50,18 +69,30 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
                 "candidate_revision": candidate,
                 "qualification_epoch": receipt.get("qualification_epoch"),
                 "operational_cycle_id": receipt.get("operational_cycle_id"),
+                "classification": receipt.get("classification"),
+                "hosted_run_id": run_id,
                 "started_at": receipt.get("started_at"),
                 "ended_at": receipt.get("ended_at"),
                 "receipt_sha256": receipt_sha256,
             }
         )
     observations.sort(key=lambda item: str(item["started_at"]))
+    current_time = now or datetime.now(UTC)
+    if current_time.tzinfo is None:
+        raise ValueError("now must be timezone-aware")
+    observed_dates: set[str] = set()
     previous_chain = ""
     for observation in observations:
         start = datetime.fromisoformat(str(observation["started_at"]).replace("Z", "+00:00"))
         end = datetime.fromisoformat(str(observation["ended_at"]).replace("Z", "+00:00"))
         if end < start:
             raise ValueError("receipt ended_at precedes started_at")
+        if start > current_time or end > current_time:
+            raise ValueError("receipt timestamps cannot be in the future")
+        observed_date = start.date().isoformat()
+        if observed_date in observed_dates:
+            raise ValueError("qualifying receipts require distinct UTC observation dates")
+        observed_dates.add(observed_date)
         previous_chain = hashlib.sha256(
             f"{previous_chain}:{observation['receipt_sha256']}".encode()
         ).hexdigest()
@@ -118,6 +149,7 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
     cadence_passed = active["maximum_gap_seconds"] <= maximum_gap_hours * 3600
     cycles_passed = len(active["operational_cycle_ids"]) >= required_cycles
     duration_passed = active["elapsed_seconds"] >= required_days * 86400
+    daily_observations_passed = len(observed_dates) >= required_days
     return {
         "schema": "riopa.evidence-campaign-ledger.v1",
         "campaign_id": campaign_ids.pop(),
@@ -128,12 +160,21 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
         "active_segment": active,
         "required_elapsed_days": required_days,
         "required_operational_cycles": required_cycles,
+        "required_daily_observations": required_days,
+        "distinct_observation_dates": len(observed_dates),
         "maximum_allowed_gap_hours": maximum_gap_hours,
         "duration_status": "passed" if duration_passed else "pending-duration",
         "cadence_status": "passed" if cadence_passed else "failed-gap",
         "operational_cycles_status": "passed" if cycles_passed else "pending-cycles",
+        "daily_observations_status": (
+            "passed" if daily_observations_passed else "pending-observations"
+        ),
         "elapsed_gate_status": "passed"
-        if duration_passed and cadence_passed and cycles_passed and not active["failed"]
+        if duration_passed
+        and cadence_passed
+        and cycles_passed
+        and daily_observations_passed
+        and not active["failed"]
         else "pending",
         "non_claims": [
             "Observation count does not substitute for elapsed time.",
@@ -142,6 +183,7 @@ def build_ledger(paths: list[Path], *, maximum_gap_hours: int = 36) -> dict[str,
             "Passing requires bounded observation gaps and the required operational cycles.",
             "Operational observations do not start the RC clock.",
             "Identical receipt bytes restored under multiple artifact paths count once.",
+            "Preview drills and receipts without an activated campaign never qualify.",
         ],
     }
 

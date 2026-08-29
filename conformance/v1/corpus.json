@@ -73,6 +73,33 @@
       "expected_sha256": "6f7a96383681ce0aaa4f322a63609bb72b0679a44dbb6a2a04120c3702119ef4",
       "schema": null,
       "expected_valid": null
+    },
+    {
+      "case_id": "canonical-rfc8785-numbers",
+      "case_class": "positive",
+      "instance": {
+        "negative_zero": -0.0,
+        "small": 1e-7,
+        "large": 1e21,
+        "fraction": 333333333.33333329
+      },
+      "expected_sha256": "79ea2ba3954f5b298ae343ea00cf1e50a7ab29e1aff6c31698462c02c604eee1",
+      "schema": null,
+      "expected_valid": null
+    },
+    {
+      "case_id": "canonical-rfc8785-utf16-order",
+      "case_class": "positive",
+      "instance": {
+        "€": "euro",
+        "\r": "control",
+        "😀": "face",
+        "דּ": "hebrew",
+        "1": "one"
+      },
+      "expected_sha256": "8b26c493c28732075ae394f0ebedac41845be7daf48aa8f448cfbc635b56961f",
+      "schema": null,
+      "expected_valid": null
     }
   ]
 }

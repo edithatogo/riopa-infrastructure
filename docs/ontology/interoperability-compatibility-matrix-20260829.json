@@ -1,0 +1,47 @@
+{
+  "matrix_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "scope": "bounded canonical-hash and schema-outcome corpus",
+  "environment": {
+    "python": "3.14.5",
+    "node": "v26.7.0",
+    "rust": "rustc 1.98.0 (88d9e12ae 2026-08-18) (Homebrew)"
+  },
+  "implementations": [
+    {
+      "tool": "riopa-python-reference",
+      "language": "Python",
+      "status": "observed-pass",
+      "cases": 7,
+      "parity": true
+    },
+    {
+      "tool": "conformance_node.mjs",
+      "language": "JavaScript",
+      "status": "observed-pass",
+      "cases": 7,
+      "parity": true
+    },
+    {
+      "tool": "rust-reference",
+      "language": "Rust",
+      "status": "observed-pass",
+      "cases": 7,
+      "parity": true,
+      "schema_cases": 3,
+      "rfc8785_numeric_cases": 1
+    }
+  ],
+  "compatibility": {
+    "python_node_parity": true,
+    "python_node_rust_parity": true,
+    "migration_cases_included": true,
+    "external_producer_consumer": "not-observed",
+    "standards_round_trip": "not-observed"
+  },
+  "non_claims": [
+    "This is a bounded repository-owned matrix, not an independent review.",
+    "Standards-complete round-trips and trusted stable-candidate signing remain open.",
+    "The matrix does not establish release, operational or preservation acceptance."
+  ]
+}

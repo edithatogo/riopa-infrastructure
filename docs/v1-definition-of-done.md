@@ -32,7 +32,7 @@ RIOPA v1.0 is complete only when every condition below is evidenced. Feature com
 
 ## Operations, security and performance
 
-- At least 14 consecutive days with 14 daily hosted observations and a seven-day unchanged-candidate soak with seven daily observations satisfy published SLOs or record explicit non-prohibited deviations.
+- At least 90 consecutive days with 90 daily hosted observations and a 30-day unchanged-candidate soak with 30 daily hosted observations satisfy published SLOs or record explicit non-prohibited deviations.
 - Source disappearance, partial failure, quarantine, backfill, correction, restore and disaster-recovery exercises pass.
 - No unresolved P0/P1, critical security, governance prohibition, integrity failure or release-blocking correctness/reproducibility defect remains.
 - National/reference workloads meet frozen performance, capacity, resilience and cost envelopes with correctness and provenance controls enabled.

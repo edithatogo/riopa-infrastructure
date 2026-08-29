@@ -11,7 +11,10 @@ def test_bounded_interoperability_matrix_records_observed_and_open_tools() -> No
     tools = {item["tool"]: item for item in matrix["implementations"]}
     assert tools["riopa-python-reference"]["status"] == "observed-pass"
     assert tools["conformance_node.mjs"]["status"] == "observed-pass"
-    assert tools["rust-reference"]["status"] == "not-implemented"
+    assert tools["rust-reference"]["status"] == "observed-pass"
+    assert tools["rust-reference"]["schema_cases"] == 3
+    assert tools["rust-reference"]["rfc8785_numeric_cases"] == 1
+    assert matrix["compatibility"]["python_node_rust_parity"] is True
 
 
 def test_preserved_matrix_is_non_assertive() -> None:

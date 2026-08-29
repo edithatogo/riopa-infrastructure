@@ -33,7 +33,7 @@ def run_exchange(mode: str, *, stdin: str | None = None) -> str:
     return result.stdout.strip()
 
 
-def run_corpus_hashes() -> list[tuple[str, str]]:
+def run_corpus_report() -> list[dict[str, object]]:
     result = subprocess.run(
         [
             "cargo",
@@ -50,7 +50,7 @@ def run_corpus_hashes() -> list[tuple[str, str]]:
         text=True,
         check=True,
     )
-    return [tuple(line.split("\t", maxsplit=1)) for line in result.stdout.splitlines()]
+    return [json.loads(line) for line in result.stdout.splitlines()]
 
 
 def run_client_workflow(path: Path, *, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -99,8 +99,18 @@ def test_rust_producer_python_consumer_and_python_producer_rust_consumer() -> No
 
 def test_rust_canonical_hashes_match_the_conformance_corpus() -> None:
     corpus = json.loads((ROOT / "conformance/v1/corpus.json").read_text(encoding="utf-8"))
-    expected = [(case["case_id"], case["expected_sha256"]) for case in corpus["cases"]]
-    assert run_corpus_hashes() == expected
+    reports = run_corpus_report()
+    assert [report["case_id"] for report in reports] == [
+        case["case_id"] for case in corpus["cases"]
+    ]
+    assert [report["sha256"] for report in reports] == [
+        case["expected_sha256"] for case in corpus["cases"]
+    ]
+    assert all(report["hash_matches"] is True for report in reports)
+    assert all(report["schema_matches"] is True for report in reports)
+    assert all(report["passed"] is True for report in reports)
+    expected_schema_valid = [case["expected_valid"] for case in corpus["cases"]]
+    assert [report["schema_valid"] for report in reports] == expected_schema_valid
 
 
 def test_separately_implemented_rust_client_completes_workflow() -> None:
