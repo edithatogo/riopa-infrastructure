@@ -7,6 +7,8 @@ import argparse
 import json
 from pathlib import Path
 
+EXPECTED_SCOPE = "bounded-regional-public-datasets-only-non-operational-technical-preview"
+
 
 def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
     root = root.resolve()
@@ -19,6 +21,8 @@ def validate_packet(packet: object, *, root: Path) -> tuple[str, ...]:
         errors.append("packet must remain preparation-only")
     if packet.get("publication_ready") is not False:
         errors.append("publication_ready must be false")
+    if packet.get("scope") != EXPECTED_SCOPE:
+        errors.append(f"scope must remain {EXPECTED_SCOPE}")
     contracts = packet.get("metadata_contracts")
     if not isinstance(contracts, list) or not contracts:
         errors.append("metadata_contracts must be non-empty")

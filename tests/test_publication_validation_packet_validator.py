@@ -24,6 +24,13 @@ def test_publication_packet_validator_rejects_publication_ready() -> None:
     assert any("publication_ready" in error for error in validate_packet(packet, root=ROOT))
 
 
+def test_publication_packet_validator_rejects_scope_expansion() -> None:
+    packet = _packet()
+    packet["scope"] = "national-operational-release"
+    errors = validate_packet(packet, root=ROOT)
+    assert any("scope must remain" in error for error in errors)
+
+
 def test_publication_packet_validator_rejects_unsafe_contract_path() -> None:
     packet = _packet()
     packet["metadata_contracts"] = ["../outside.json"]
