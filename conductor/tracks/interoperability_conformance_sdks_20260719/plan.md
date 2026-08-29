@@ -68,6 +68,7 @@
 - [x] R16 Require positive, negative and migration case classes in the normative corpus before parity execution, with negative coverage for unknown and missing classes (2026-08-29).
 - [x] R17 Harden OpenLineage projection validation for non-empty run/job/dataset identity and producer/schema fields, with negative contract coverage (2026-08-29; `docs/wp006-openlineage-projection-validation-20260829.json`).
 - [x] R19 Enforce lowercase 64-character SHA-256 subject digests before building unsigned DSSE/in-toto envelopes, with negative contract coverage (2026-08-29; `docs/wp006-dsse-subject-digest-validation-20260829.json`).
+- [x] R20 Reject empty PROV graph identifiers in the bounded projection validator, with negative contract coverage (2026-08-29; `docs/wp006-prov-identity-validation-20260829.json`).
 - [x] R18 Guard corpus case-class membership by type before set lookup so malformed non-string values fail with structured validation errors (review fix; 2026-08-29).
 - [x] R20 Bind the technical-preview report's declared fixture digest to the checked-in client-workflow bytes and reject tampered fixture digests (2026-08-29; `docs/wp006-release-report-fixture-binding-20260829.json`).
 - [x] R21 Return a controlled validation result when the release-report CLI receives a JSON scalar or array (review fix; 2026-08-29).

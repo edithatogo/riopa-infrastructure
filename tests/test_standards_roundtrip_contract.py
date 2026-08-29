@@ -70,3 +70,11 @@ def test_openlineage_projection_rejects_incomplete_identity_and_facets() -> None
     assert "OpenLineage event outputs require namespace and name" in errors
     assert "OpenLineage event producer must be a non-empty string" in errors
     assert "OpenLineage event schemaURL must be a non-empty string" in errors
+
+
+def test_prov_projection_rejects_empty_graph_identifier() -> None:
+    errors = validate_provenance_projections(
+        {"@context": {"prov": "http://www.w3.org/ns/prov#"}, "@graph": [{"@id": " "}]},
+        {"projection": "candidate-openlineage-2.0.2", "disclaimer": "bounded", "events": []},
+    )
+    assert "PROV graph entries require a non-empty string @id" in errors

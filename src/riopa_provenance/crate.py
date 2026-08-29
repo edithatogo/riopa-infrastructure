@@ -522,8 +522,12 @@ def validate_provenance_projections(
     else:
         ids: list[str] = []
         for item in graph:
-            if not isinstance(item, Mapping) or not isinstance(item.get("@id"), str):
-                errors.append("PROV graph entries require string @id")
+            if (
+                not isinstance(item, Mapping)
+                or not isinstance(item.get("@id"), str)
+                or not item["@id"].strip()
+            ):
+                errors.append("PROV graph entries require a non-empty string @id")
                 continue
             if item["@id"] in ids:
                 errors.append("PROV graph identifiers must be unique")
