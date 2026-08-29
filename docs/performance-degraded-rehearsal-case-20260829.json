@@ -1,0 +1,15 @@
+{
+  "evidence_id": "PERF-DEGRADED-REHEARSAL-CASE-20260829",
+  "schema": "riopa.performance.resilience-rehearsal.v1",
+  "scope": "bounded local WP-010 resilience rehearsal",
+  "requirement": "The executed rehearsal report must cover every declared matrix case, including deterministic dependency degradation.",
+  "implementation": [
+    "scripts/run_bounded_resilience_rehearsal.py::run",
+    "tests/test_resilience_matrix.py::test_bounded_rehearsal_executes_local_cases_without_operational_claim"
+  ],
+  "observed_status": "local-degraded-case-pass",
+  "validation": "uv run pytest -q tests/test_resilience_matrix.py",
+  "promotion_allowed": false,
+  "open_gates": ["hosted execution", "elapsed soak", "national-scale measurement", "external operator and release authority"],
+  "nonclaims": ["The degraded case is a deterministic local input failure, not production failure injection.", "No hosted, national-scale, elapsed, operational, or release qualification is claimed."]
+}

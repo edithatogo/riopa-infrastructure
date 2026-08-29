@@ -57,6 +57,7 @@ def test_bounded_rehearsal_executes_local_cases_without_operational_claim() -> N
     assert set(report["cases"]) == {
         "baseline",
         "stressed",
+        "degraded",
         "concurrency",
         "retry-storm",
         "cancellation",
@@ -65,6 +66,7 @@ def test_bounded_rehearsal_executes_local_cases_without_operational_claim() -> N
     }
     assert all(case["status"] == "passed" for case in report["cases"].values())
     assert report["safety"]["live_endpoint_contacted"] is False
+    assert report["cases"]["degraded"]["fallback"] == "bounded error receipt"
 
 
 def test_performance_plan_closes_bounded_tasks_without_closing_hosted_gates() -> None:

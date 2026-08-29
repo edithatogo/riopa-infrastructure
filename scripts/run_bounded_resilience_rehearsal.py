@@ -45,6 +45,17 @@ def run(output: Path | None = None) -> dict[str, Any]:
         "baseline": timed(128, 200),
         "stressed": timed(512, 400),
     }
+    try:
+        checksum(0, 200)
+    except ValueError as exc:
+        cases["degraded"] = {
+            "status": "passed",
+            "dependency_failure": "deterministic-local-checksum-input",
+            "fallback": "bounded error receipt",
+            "error": str(exc),
+        }
+    else:  # pragma: no cover - defensive contract failure
+        cases["degraded"] = {"status": "failed"}
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = [pool.submit(checksum, 128, 200), pool.submit(checksum, 128, 200)]
         values = [future.result() for future in futures]
@@ -66,7 +77,7 @@ def run(output: Path | None = None) -> dict[str, Any]:
         "cancelled_before_external_effect": True,
     }
     try:
-        checksum(0, 200)
+        checksum(128, 0)
     except ValueError as exc:
         cases["malformed-input"] = {"status": "passed", "error": str(exc)}
     else:  # pragma: no cover - defensive contract failure
