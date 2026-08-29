@@ -17,6 +17,7 @@
 - [x] 3.1 Add bounded PROV-O-shaped, OpenLineage-shaped, RO-Crate and DSSE/in-toto round-trip tests. Evidence: `docs/interoperability-standards-roundtrip-contract-20260825.json`, `tests/test_standards_roundtrip_contract.py`; external producer/consumer interoperability, full validator qualification and trusted signing remain open.
 - [x] 3.2 Generate a bounded cross-version and cross-tool compatibility matrix. Evidence: `scripts/build_interoperability_matrix.py` and `docs/ontology/interoperability-compatibility-matrix-20260825.json`; Rust, standards round-trips and external producer/consumer exercises remain open.
 - [x] 3.3 Run bounded producer/consumer interoperability exercises. The dependency-free Rust/Python wire-format exchange is tested in both directions and recorded as repository-owned evidence; external independent implementations, standards-complete serialization and signed release reports remain open (`rust/riopa-conformance/src/bin/conformance_exchange.rs`, `tests/test_rust_producer_consumer.py`, `docs/interop-producer-consumer-exercise-20260825.json`).
+- [x] 3.4 Validate the published research object with an independently maintained RO-Crate validator, preserve the v0.3.0 failure, and remediate prospective generator output to pass all 65 RO-Crate 1.2 required checks (`docs/wp006-external-rocrate-validation-20260829.json`, `src/riopa_provenance/crate.py`, `tests/test_crate.py`).
 
 ## 4. Stable SDK and conformance release
 

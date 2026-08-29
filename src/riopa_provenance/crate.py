@@ -32,6 +32,8 @@ GENERATED_METADATA_FILES = {
     "ro-crate-metadata.json",
     *INTEGRITY_FILES,
 }
+RO_CRATE_PROFILE = "https://w3id.org/ro/crate/1.2"
+RO_CRATE_CONTEXT = f"{RO_CRATE_PROFILE}/context"
 
 
 @dataclass(frozen=True)
@@ -101,7 +103,7 @@ def _load_manifest_records(
 
 
 def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
-    """Build an RO-Crate 1.3 metadata projection for files currently in *output_dir*.
+    """Build an RO-Crate 1.2 metadata projection for files currently in *output_dir*.
 
     Integrity files are declared even when this function is called before they
     are generated.  Their hashes are intentionally not embedded in the crate,
@@ -151,7 +153,7 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
         ],
         "publisher": {"@id": "#publisher"},
         "hasPart": [{"@id": value} for value in has_parts],
-        "conformsTo": [{"@id": value} for value in manifest["conforms_to"]],
+        "conformsTo": {"@id": RO_CRATE_PROFILE},
         "subjectOf": [
             {"@id": "methods.md"},
             {"@id": manifest["quality_report"]},
@@ -166,13 +168,18 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
             "@id": "ro-crate-metadata.json",
             "@type": "CreativeWork",
             "about": {"@id": "./"},
-            "conformsTo": {"@id": "https://w3id.org/ro/crate/1.3"},
+            "conformsTo": {"@id": RO_CRATE_PROFILE},
         },
         root,
         {
             "@id": "#publisher",
             "@type": "Organization",
             "name": manifest["citation"]["publisher"],
+        },
+        {
+            "@id": RO_CRATE_PROFILE,
+            "@type": "Profile",
+            "name": "RO-Crate Metadata Specification 1.2",
         },
     ]
 
@@ -212,10 +219,13 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
                 },
             ]
         )
+        root["hasPart"].append({"@id": record["source_id"]})
 
     for reference in manifest.get("artifacts", []):
         artifact = _load(_safe_source(base, reference))
         location = artifact.get("uri") or artifact.get("path")
+        payload_property_id = f"{artifact['artifact_id']}#payload-status"
+        verification_property_id = f"{artifact['artifact_id']}#verification-status"
         graph.append(
             {
                 "@id": artifact["artifact_id"],
@@ -228,19 +238,28 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
                 "isPartOf": {"@id": "./"},
                 "mainEntityOfPage": {"@id": reference},
                 "additionalProperty": [
-                    {
-                        "@type": "PropertyValue",
-                        "name": "payload_status",
-                        "value": artifact["payload_status"],
-                    },
-                    {
-                        "@type": "PropertyValue",
-                        "name": "verification_status",
-                        "value": artifact["verification_status"],
-                    },
+                    {"@id": payload_property_id},
+                    {"@id": verification_property_id},
                 ],
             }
         )
+        graph.extend(
+            [
+                {
+                    "@id": payload_property_id,
+                    "@type": "PropertyValue",
+                    "name": "payload_status",
+                    "value": artifact["payload_status"],
+                },
+                {
+                    "@id": verification_property_id,
+                    "@type": "PropertyValue",
+                    "name": "verification_status",
+                    "value": artifact["verification_status"],
+                },
+            ]
+        )
+        root["hasPart"].append({"@id": artifact["artifact_id"]})
 
     software_seen: set[str] = set()
     for reference in manifest.get("transformations", []):
@@ -251,7 +270,7 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
             graph.append(
                 {
                     "@id": software_id,
-                    "@type": "SoftwareSourceCode",
+                    "@type": ["File", "SoftwareSourceCode"],
                     "name": implementation.get("package") or implementation["repository"],
                     "codeRepository": implementation["repository"],
                     "version": implementation.get("package_version"),
@@ -259,6 +278,7 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
                     + ([implementation["swhid"]] if implementation.get("swhid") else []),
                 }
             )
+            root["hasPart"].append({"@id": software_id})
             software_seen.add(software_id)
         graph.append(
             {
@@ -294,6 +314,7 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
 
     for reference in manifest.get("materializations", []):
         item = _load(_safe_source(base, reference))
+        reproducibility_property_id = f"{item['materialization_id']}#reproducibility-class"
         graph.append(
             {
                 "@id": item["materialization_id"],
@@ -303,13 +324,18 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
                 "isBasedOn": {"@id": item["artifact_id"]},
                 "creator": {"@id": item["generated_by"]},
                 "mainEntityOfPage": {"@id": reference},
-                "additionalProperty": {
-                    "@type": "PropertyValue",
-                    "name": "reproducibility_class",
-                    "value": item.get("reproducibility_class"),
-                },
+                "additionalProperty": {"@id": reproducibility_property_id},
             }
         )
+        graph.append(
+            {
+                "@id": reproducibility_property_id,
+                "@type": "PropertyValue",
+                "name": "reproducibility_class",
+                "value": item.get("reproducibility_class"),
+            }
+        )
+        root["hasPart"].append({"@id": item["materialization_id"]})
 
     for record_key, id_key, label in (
         ("quality_report", "report_id", "RIOPA quality report"),
@@ -331,7 +357,7 @@ def build_ro_crate(manifest_path: str | Path, output_dir: str | Path) -> Path:
             }
         )
 
-    crate = {"@context": "https://w3id.org/ro/crate/1.3/context", "@graph": graph}
+    crate = {"@context": RO_CRATE_CONTEXT, "@graph": graph}
     path = out / "ro-crate-metadata.json"
     _write_json(path, crate)
     return path
