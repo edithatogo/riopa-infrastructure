@@ -43,7 +43,7 @@ concurrency:
   # Keep unrelated campaigns and exact RC candidates isolated.  A manual
   # replay must not cancel the protected-main beta run, and a new RC
   # candidate must not cancel observations for the prior candidate.
-  group: evidence-campaign-${{ github.event.inputs.campaign_id || 'operational-beta-20260825-26bc0b4' }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event.inputs.candidate_revision || '26bc0b49bcd84f409bf24b527e1049fd396c94a6' }}
+  group: evidence-campaign-${{ github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event.inputs.candidate_revision || github.sha }}
   cancel-in-progress: true
 
 defaults:
@@ -57,9 +57,9 @@ jobs:
     timeout-minutes: 45
     env:
       EVIDENCE_LANE: ${{ github.event.inputs.lane || 'operational-observation' }}
-      EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || 'operational-beta-20260825-26bc0b4' }}
-      EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || '26bc0b49bcd84f409bf24b527e1049fd396c94a6' }}
-      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || 'beta-epoch-20260825-26bc0b4' }}
+      EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}
+      EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || github.sha }}
+      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || format('beta-epoch-{0}', github.sha) }}
     steps:
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

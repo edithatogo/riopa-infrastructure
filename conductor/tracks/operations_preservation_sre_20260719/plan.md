@@ -31,6 +31,7 @@
 - [x] 4.7 Deduplicate identical receipt bytes restored under multiple artifact paths before calculating elapsed or cycle counts. (`scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py`)
 - [x] 4.8 Validate the checked-in campaign status snapshot for unique runs, exact RC binding and latest receipt revision before release readiness checks. (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `scripts/ci_quality.sh`)
 - [x] 4.5 Bind RC-soak execution to the supplied exact candidate revision so later documentation commits do not silently change the candidate. (`.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `tests/test_campaign_v2.py`; the 30-day duration remains pending.)
+- [x] 4.9 Bind scheduled protected-main observations to the current `github.sha` and derive revision-specific campaign/qualification identifiers so merges automatically reset elapsed segments (`docs/beta-campaign-schedule-hardening-20260829.json`, `.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`).
 
 ## Review fixes
 

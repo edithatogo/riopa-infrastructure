@@ -40,9 +40,10 @@ def test_operational_observation_schedule_is_daily_and_read_only() -> None:
     assert inputs["candidate_revision"]["default"] == candidate
     assert inputs["qualification_epoch"]["default"] == "beta-epoch-20260825-26bc0b4"
     environment = workflow["jobs"]["observe"]["env"]
-    assert candidate in environment["EVIDENCE_CANDIDATE_REVISION"]
-    assert "operational-beta-20260825-26bc0b4" in environment["EVIDENCE_CAMPAIGN_ID"]
-    assert "beta-epoch-20260825-26bc0b4" in environment["EVIDENCE_QUALIFICATION_EPOCH"]
+    assert candidate in inputs["candidate_revision"]["default"]
+    assert "github.sha" in environment["EVIDENCE_CANDIDATE_REVISION"]
+    assert "format('operational-beta-{0}', github.sha)" in environment["EVIDENCE_CAMPAIGN_ID"]
+    assert "format('beta-epoch-{0}', github.sha)" in environment["EVIDENCE_QUALIFICATION_EPOCH"]
 
 
 def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:

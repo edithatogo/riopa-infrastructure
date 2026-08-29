@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:beta-campaign-schedule-hardening:2026-08-29",
+  "scope": "repository-owned workflow control",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "scheduled_fallbacks": {
+    "candidate_revision": "github.sha",
+    "campaign_id": "format('operational-beta-{0}', github.sha)",
+    "qualification_epoch": "format('beta-epoch-{0}', github.sha)"
+  },
+  "purpose": "Ensure scheduled protected-main observations never reuse a stale candidate or qualification epoch after a merge.",
+  "validation": ["tests/test_campaign_v2.py"],
+  "external_boundary": "This control starts or resets clocks; it does not satisfy elapsed beta or RC duration, external participation, preservation acceptance or release authority."
+}
