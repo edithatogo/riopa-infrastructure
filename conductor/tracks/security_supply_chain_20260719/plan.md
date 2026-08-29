@@ -48,3 +48,4 @@
 - [x] R.12 Ensure malformed signed artifact arrays and non-string builder revisions fail with controlled validation errors (review fix; 2026-08-29).
 - [x] R.13 Guard DSSE/in-toto builders and decoders against malformed non-string/object inputs with controlled errors and negative tests (`docs/wp006-dsse-input-robustness-20260829.json`; 2026-08-29).
 - [x] R.14 Guard the DSSE builder and release-report CLI against non-object JSON inputs (review fix; 2026-08-29).
+- [x] R.15 Validate decoded in-toto statement fields with the same strict subject and predicate checks as the builder (review fix; 2026-08-29).

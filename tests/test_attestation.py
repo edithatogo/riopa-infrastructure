@@ -1,3 +1,6 @@
+import base64
+import json
+
 import pytest
 
 from riopa_provenance.attestation import (
@@ -24,6 +27,20 @@ def test_build_and_decode_unsigned_dsse_intoto_envelope() -> None:
 def test_dsse_builder_rejects_non_object_statement() -> None:
     with pytest.raises(AttestationError, match="Statement/v1 object"):
         build_dsse_envelope(None)  # type: ignore[arg-type]
+
+
+def test_dsse_decoder_validates_statement_fields() -> None:
+    statement = {
+        "_type": "https://in-toto.io/Statement/v1",
+        "subject": 42,
+        "predicateType": "https://riopa.example/predicate/build/v1",
+        "predicate": {},
+    }
+    payload = base64.b64encode(json.dumps(statement).encode()).decode()
+    with pytest.raises(AttestationError, match="statement fields are invalid"):
+        decode_dsse_payload(
+            {"payloadType": DSSE_PAYLOAD_TYPE, "payload": payload, "signatures": []}
+        )
 
 
 def test_attestation_builder_rejects_missing_digest_and_invalid_payload() -> None:

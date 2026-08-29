@@ -6,7 +6,8 @@
   "requirements": [
     "non-string predicate types and subjects fail with controlled AttestationError values",
     "non-object predicates and envelopes fail with controlled AttestationError values",
-    "non-string or malformed payloads fail with controlled AttestationError values"
+    "non-string or malformed payloads fail with controlled AttestationError values",
+    "decoded statements are subject to the same subject, predicate type and predicate object checks"
   ],
   "observed_status": "negative-tests-pass",
   "promotion_allowed": false,

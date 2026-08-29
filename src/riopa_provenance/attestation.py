@@ -98,4 +98,17 @@ def decode_dsse_payload(envelope: Mapping[str, Any]) -> dict[str, Any]:
         raise AttestationError("DSSE payload is not valid base64 JSON") from exc
     if not isinstance(value, dict) or value.get("_type") != IN_TOTO_STATEMENT_TYPE:
         raise AttestationError("DSSE payload is not an in-toto Statement/v1 object")
+    try:
+        subjects = value.get("subject")
+        predicate_type = value.get("predicateType")
+        predicate = value.get("predicate")
+        if not isinstance(subjects, list):
+            raise AttestationError("in-toto subject must be a non-empty array")
+        build_in_toto_statement(
+            subjects,
+            predicate_type=predicate_type,
+            predicate=predicate,
+        )
+    except (AttestationError, TypeError) as exc:
+        raise AttestationError("DSSE payload statement fields are invalid") from exc
     return value
