@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_id": "urn:riopa:evidence:separate-rust-client-workflow:2026-08-29",
+  "track_id": "interoperability_conformance_sdks_20260719",
+  "implementation": {
+    "language": "Rust",
+    "entrypoint": "rust/riopa-conformance/src/bin/client_workflow.rs",
+    "reference_implementation_imported": false,
+    "fixture": "conformance/v1/client-workflow.json",
+    "fixture_sha256": "c31f02ccb811e64cd09f5d7915b1ea36bed7bf2f317c578bcf12eff1d1f3df63"
+  },
+  "workflows": {
+    "capture": "passed",
+    "validation": "passed",
+    "lineage_query": "passed"
+  },
+  "negative_checks": [
+    "capture payload digest mismatch fails closed",
+    "lineage result drift fails closed",
+    "unsupported contract and query semantics fail closed",
+    "missing required payload fields fail closed"
+  ],
+  "status": "repository-owned-separately-implemented-client-passed",
+  "acceptance_interpretation": "Satisfies the separately implemented branch of the external-or-separately-implemented client criterion; does not claim external authorship or use.",
+  "limitations": [
+    "The workflow uses a bounded language-neutral synthetic fixture rather than a live endpoint or credentialed source.",
+    "This is not external reproduction, standards-complete serialization, release signing, preservation acceptance or production operation."
+  ],
+  "promotion_allowed": false
+}

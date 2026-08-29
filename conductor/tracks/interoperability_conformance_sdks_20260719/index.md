@@ -31,6 +31,7 @@
 | `INTEROP-CLOSEOUT-EVIDENCE-20260825` | Link implementation, tests, review, migration and release-candidate exercise evidence for the bounded interoperability slice | `docs/interoperability-closeout-evidence-20260825.json`, `tests/test_interoperability_closeout_evidence.py` | Evidence categories are linked and fail-closed; external implementations, signing, preservation and authority gates remain open |
 | `WP006-EXTERNAL-ROCRATE-VALIDATION-20260829` | Independently maintained RO-Crate validator checks published and remediated research objects | `docs/wp006-external-rocrate-validation-20260829.json`, `src/riopa_provenance/crate.py`, `tests/test_crate.py` | v0.3.0 failure preserved; prospective output passes 65/65 required RO-Crate 1.2 checks; separate producer/consumer, preservation and release gates remain open |
 | `WP006-HOSTED-SBOM-VALIDATION-20260829` | Exact merged revision executes strict CycloneDX 1.6 validation in a dedicated hosted security lane | `docs/wp006-hosted-sbom-validation-20260829.json`, [run 33232065327](https://github.com/edithatogo/riopa-infrastructure/actions/runs/33232065327) | Hosted run and digest-bearing artifact pass; the official locked validator is not represented as a separate external implementation |
+| `SEPARATE-RUST-CLIENT-WORKFLOW-20260829` | Separately implemented client completes capture, validation and lineage-query workflows | `rust/riopa-conformance/src/bin/client_workflow.rs`, `conformance/v1/client-workflow.json`, `tests/test_rust_producer_consumer.py`, `docs/separate-rust-client-workflow-20260829.json` | Repository-owned Rust implementation passes positive and negative workflows; satisfies the separately implemented branch without claiming external authorship, live operation or release conformance |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -43,8 +44,8 @@ release evidence (`docs/interoperability-conductor-regeneration-20260825.json`).
 
 ## Remaining maturity gates
 
-Implementation evidence is bounded to the recorded conformance slices. Rust,
-full-schema, standards-projection, external-client, signed-report, and
+Implementation evidence is bounded to the recorded conformance slices. Full-schema,
+standards-complete projection, signed-report, preservation, and
 release-authority evidence remain open; the track must not be marked complete
 or archived until its M2–M6 acceptance evidence is recorded.
 
