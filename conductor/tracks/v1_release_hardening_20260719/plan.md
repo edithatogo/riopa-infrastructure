@@ -28,6 +28,7 @@
 
 - [ ] 4.1 Approve all machine-readable v1 release gates and governance decisions.
 - [x] 4.1a Reconcile current track, stable-gate, campaign, release-evidence and authority state into a non-authorizing machine-readable snapshot. The result is blocked and permits no promotion (`docs/v1-stable-release-gate-snapshot-20260825.json`).
+- [x] 4.1b Refresh the non-authorizing gate snapshot against protected-main revision `898c5c2` while preserving the historical snapshot; the successor remains blocked at 0/28 tracks and 0/14 gates (`docs/v1-stable-release-gate-snapshot-20260829.json`).
 - [ ] 4.2 Publish stable artifacts, DOI/citations, support, deprecation and maintenance plan.
 - [ ] 4.3 Announce v1.0, monitor adoption and begin the 1.x maintenance process.
 

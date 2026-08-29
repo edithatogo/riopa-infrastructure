@@ -127,3 +127,14 @@ def test_committed_snapshot_is_reproducible() -> None:
         evaluated_revision=artifact["evaluated_revision"],
         generated_at=artifact["generated_at"],
     )
+
+
+def test_current_successor_snapshot_is_reproducible() -> None:
+    artifact = json.loads(
+        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829.json").read_text(encoding="utf-8")
+    )
+    assert artifact == build_snapshot(
+        ROOT,
+        evaluated_revision=artifact["evaluated_revision"],
+        generated_at=artifact["generated_at"],
+    )
