@@ -4,7 +4,7 @@
   "record_id": "urn:riopa:evidence:tier-a-archive-capture:2026-08-29",
   "captured_at": "2026-08-29",
   "scope": "bounded regional public-datasets-only non-operational technical preview",
-  "status": "locally-captured-publication-pending",
+  "status": "published-with-local-capture-retained",
   "registry": "config/source-registry/public-archive-tier-a-20260829.yaml",
   "fixity_check": {
     "command": "sha256sum -c checksums.sha256",
@@ -38,12 +38,12 @@
     }
   ],
   "publication_gate": {
-    "status": "pending",
-    "required": [
-      "upload immutable packet to approved public archive",
-      "record hosted revision and retrieval receipt",
-      "retain local and hosted fixity comparison"
-    ],
+    "status": "passed-for-tier-a-packet",
+    "provider": "huggingface-dataset",
+    "repository": "edithatogo/riopa-public-data-archive",
+    "revision": "001137c0df64e9f8a7b0539fd0286a7cd5819ce7",
+    "receipt": "docs/public-tier-a-archive-publication-20260829.json",
+    "hosted_fixity_comparison": "passed",
     "promotion_allowed": false
   },
   "non_claims": [
