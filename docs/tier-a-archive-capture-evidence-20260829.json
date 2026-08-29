@@ -17,21 +17,24 @@
       "capture_set": ".riopa-local/publication/tier-a-20260829/wcc-churton-park-village-supermarket-20260829/capture-set.json",
       "manifest_sha256": "ae1363f729370334e38dec26d8da71776a07655b9379b3cd48ec0b10be0d3be1",
       "feature_count": 1,
-      "licence": "CC-BY-3.0-NZ"
+      "licence": "CC-BY-3.0-NZ",
+      "capture_window_utc": ["2026-08-29T00:05:24.783912Z", "2026-08-29T00:05:43.003011Z"]
     },
     {
       "source_id": "urn:riopa:source:arcgis:nz-ambulance-stations-prototype",
       "capture_set": ".riopa-local/publication/tier-a-20260829/nz-ambulance-stations-prototype-20260829/capture-set.json",
       "manifest_sha256": "e285e4c988fdbb23721f83e6cc4c58e9a4679e1ada55ac95a1274035a0d0a9c2",
       "feature_count": 224,
-      "licence": "CC-BY-4.0"
+      "licence": "CC-BY-4.0",
+      "capture_window_utc": ["2026-08-29T00:03:09.007795Z", "2026-08-29T00:05:30.797240Z"]
     },
     {
       "source_id": "urn:riopa:source:greater-wellington:ambulance-stations",
       "capture_set": ".riopa-local/publication/tier-a-20260829/greater-wellington-ambulance-stations-20260829/capture-set.json",
       "manifest_sha256": "8c9d0ed23723861fed0bb14e940b6879da28e35a1cf695159a6d1b9da22e916b",
       "feature_count": 5,
-      "licence": "CC-BY-4.0"
+      "licence": "CC-BY-4.0",
+      "capture_window_utc": ["2026-08-29T00:03:16.698454Z", "2026-08-29T00:03:18.590085Z"]
     }
   ],
   "publication_gate": {

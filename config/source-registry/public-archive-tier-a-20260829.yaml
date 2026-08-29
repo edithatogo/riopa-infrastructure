@@ -3,6 +3,7 @@ record_type: source_registry
 registry_id: urn:riopa:registry:public-archive-tier-a:2026-08-29
 generated_at: 2026-08-29T00:00:00Z
 catalogue_url: https://huggingface.co/datasets/edithatogo/riopa-public-data-archive
+catalogue_status: planned-not-yet-published
 sources:
   - source_id: urn:riopa:source:wcc:churton-park-village-supermarket
     name: Churton Park Village Supermarket district-plan layer
