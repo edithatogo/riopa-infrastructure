@@ -1,0 +1,15 @@
+{
+  "evidence_id": "SECURITY-RELEASE-SIGNING-HARDENING-20260829",
+  "schema": "riopa.release-signing-hardening.v1",
+  "predecessor": "docs/security-release-signing-contract-20260824.json",
+  "requirements": [
+    "release revision is a 40-character lowercase Git SHA-1",
+    "a signed status requires a verified provider and attestation identifier bound to the exact revision and artifact digests",
+    "unsigned candidate status remains non-authorizing"
+  ],
+  "validator": "src/riopa_provenance/release_signing.py:validate_release_signing_manifest",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This successor contract does not create a signature, attestation, publication or release authority decision."
+  ]
+}
