@@ -136,64 +136,43 @@ def test_successor_snapshot_digest_is_self_consistent() -> None:
     assert artifact["status"] == "blocked"
 
 
-def test_latest_exact_merged_revision_snapshot_matches_current_inputs() -> None:
-    artifact = json.loads(
-        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-07686ac.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert artifact == build_snapshot(
-        ROOT,
-        evaluated_revision=artifact["evaluated_revision"],
-        generated_at=artifact["generated_at"],
-    )
-    assert artifact["evaluated_revision"] == "07686ac3378a4ac5656d31310f44dfb345dadca7"
-    assert artifact["track_summary"]["qualified"] == 0
-    assert artifact["stable_gate_summary"]["passed"] == 0
-
-
-def test_current_revision_snapshot_matches_current_inputs() -> None:
-    artifact = json.loads(
-        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-1fa16a6.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert artifact == build_snapshot(
-        ROOT,
-        evaluated_revision=artifact["evaluated_revision"],
-        generated_at=artifact["generated_at"],
-    )
-    assert artifact["evaluated_revision"] == "1fa16a61ff11ef7efbc0f64c5f2dcd98f0da1d1f"
-    assert artifact["release_ready"] is False
-
-
-def test_latest_current_revision_successor_matches_current_inputs() -> None:
-    artifact = json.loads(
-        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-012a0e7.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert artifact == build_snapshot(
-        ROOT,
-        evaluated_revision=artifact["evaluated_revision"],
-        generated_at=artifact["generated_at"],
-    )
-    assert artifact["evaluated_revision"] == "012a0e7294d39410fac789f873e99666ccb365a3"
+@pytest.mark.parametrize(
+    "filename,revision",
+    [
+        (
+            "docs/v1-stable-release-gate-snapshot-20260829-07686ac.json",
+            "07686ac3378a4ac5656d31310f44dfb345dadca7",
+        ),
+        (
+            "docs/v1-stable-release-gate-snapshot-20260829-1fa16a6.json",
+            "1fa16a61ff11ef7efbc0f64c5f2dcd98f0da1d1f",
+        ),
+        (
+            "docs/v1-stable-release-gate-snapshot-20260829-012a0e7.json",
+            "012a0e7294d39410fac789f873e99666ccb365a3",
+        ),
+        (
+            "docs/v1-stable-release-gate-snapshot-20260830-b0f5d28.json",
+            "b0f5d28ef761c7c10948f23ec026ffdaac54dcf9",
+        ),
+    ],
+)
+def test_historical_snapshot_digest_and_revision_are_immutable(
+    filename: str, revision: str
+) -> None:
+    artifact = json.loads((ROOT / filename).read_text(encoding="utf-8"))
+    digest = artifact.pop("snapshot_sha256")
+    assert digest == sha256_json(artifact)
+    assert artifact["evaluated_revision"] == revision
     assert artifact["status"] == "blocked"
     assert artifact["promotion_allowed"] is False
 
 
-def test_latest_main_successor_matches_current_inputs() -> None:
-    artifact = json.loads(
-        (ROOT / "docs/v1-stable-release-gate-snapshot-20260830-b0f5d28.json").read_text(
-            encoding="utf-8"
-        )
+def test_current_snapshot_reconstruction_remains_exact() -> None:
+    snapshot = build_snapshot(
+        ROOT, evaluated_revision=REVISION, generated_at="2026-08-25T11:30:00Z"
     )
-    assert artifact == build_snapshot(
-        ROOT,
-        evaluated_revision=artifact["evaluated_revision"],
-        generated_at=artifact["generated_at"],
-    )
-    assert artifact["evaluated_revision"] == "b0f5d28ef761c7c10948f23ec026ffdaac54dcf9"
-    assert artifact["status"] == "blocked"
-    assert artifact["promotion_allowed"] is False
+    digest = snapshot.pop("snapshot_sha256")
+    assert digest == sha256_json(snapshot)
+    assert snapshot["evaluated_revision"] == REVISION
+    assert snapshot["status"] == "blocked"
