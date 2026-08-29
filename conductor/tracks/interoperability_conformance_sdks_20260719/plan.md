@@ -44,3 +44,4 @@
 
 - [x] R1 Review the Rust corpus runner for deterministic ordering, corpus binding, unsupported-number fail-closed behavior and non-promotion language. (`rust/riopa-conformance/src/{lib.rs,bin/conformance_corpus.rs}`, `tests/test_rust_producer_consumer.py`, `docs/rust-corpus-parity-20260825.json`)
 - [x] R2 Add a separately implemented Rust client workflow with content-bound capture, required-field validation, bounded reverse-lineage traversal and fail-closed drift tests (`docs/separate-rust-client-workflow-20260829.json`).
+- [x] R3 Reject unknown lineage-query fields in the Rust client so its fail-closed field-set semantics match the normative Python contract (`rust/riopa-conformance/src/bin/client_workflow.rs`, `tests/test_rust_producer_consumer.py`; review fix).
