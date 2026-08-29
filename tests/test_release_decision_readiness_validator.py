@@ -25,3 +25,12 @@ def test_release_decision_readiness_rejects_duplicate_tracks() -> None:
     tracks = projection["tracks"]
     tracks[1]["track_id"] = tracks[0]["track_id"]
     assert any("must be unique" in error for error in validate_readiness(projection))
+
+
+def test_release_decision_readiness_rejects_track_qualification_claims() -> None:
+    projection = _projection()
+    projection["tracks"][0]["panel_status"] = "qualified"
+    projection["tracks"][1]["disposition"] = "approved"
+    errors = validate_readiness(projection)
+    assert any("panel_status must remain pending" in error for error in errors)
+    assert any("disposition must remain null" in error for error in errors)

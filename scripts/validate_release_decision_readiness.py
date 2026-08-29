@@ -39,6 +39,10 @@ def validate_readiness(payload: object) -> tuple[str, ...]:
             identifiers.add(track_id)
         if track.get("release_authority") != "pending":
             errors.append(f"{prefix}.release_authority must remain pending")
+        if track.get("panel_status") not in {None, "pending"}:
+            errors.append(f"{prefix}.panel_status must remain pending")
+        if track.get("disposition") is not None:
+            errors.append(f"{prefix}.disposition must remain null")
         blockers = track.get("blockers")
         if (
             not isinstance(blockers, list)
