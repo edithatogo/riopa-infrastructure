@@ -64,6 +64,10 @@ packages = ["src/riopa_provenance"]
 addopts = "-q"
 pythonpath = ["."]
 testpaths = ["tests"]
+markers = [
+  "slow: tests intentionally excluded from the local fast profile",
+  "serial: tests that must run in an isolated serial phase",
+]
 
 [tool.ruff]
 line-length = 100
