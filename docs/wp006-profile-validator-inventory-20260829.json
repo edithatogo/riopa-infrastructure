@@ -1,0 +1,25 @@
+{
+  "schema": "riopa.profile-validator-inventory.v1",
+  "evidence_id": "WP006-PROFILE-VALIDATOR-INVENTORY-20260829",
+  "scope": "claimed release profiles in the bounded technical preview",
+  "profiles": [
+    {"id": "json-schema", "standard": "JSON Schema Draft 2020-12", "validator": "jsonschema", "version": "4.26.0", "command": "scripts/run_profile_validators.py", "status": "bounded-pass", "independent_implementation": false},
+    {"id": "rdf-shacl", "standard": "RDF/SHACL", "validator": "pyshacl", "version": "0.40.1", "command": "scripts/run_profile_validators.py", "status": "bounded-pass", "independent_implementation": false},
+    {"id": "ro-crate", "standard": "RO-Crate 1.2", "validator": "roc-validator", "version": "0.11.3", "command": "rocrate-validator validate", "status": "independently-tool-validated", "independent_implementation": true},
+    {"id": "prov-o", "standard": "W3C PROV-O", "validator": "riopa projection validator", "version": "repository", "command": "tests/test_standards_roundtrip_contract.py", "status": "bounded-roundtrip", "independent_implementation": false},
+    {"id": "openlineage", "standard": "OpenLineage", "validator": "riopa projection validator", "version": "repository", "command": "tests/test_standards_roundtrip_contract.py", "status": "bounded-roundtrip", "independent_implementation": false},
+    {"id": "cyclonedx", "standard": "CycloneDX 1.6", "validator": "official CycloneDX schema validator", "version": "1.6", "command": "scripts/validate_cyclonedx_sbom.py", "status": "hosted-schema-pass", "independent_implementation": false},
+    {"id": "dsse-in-toto", "standard": "DSSE/in-toto", "validator": "riopa attestation validator", "version": "repository", "command": "tests/test_standards_roundtrip_contract.py", "status": "bounded-unsigned-roundtrip", "independent_implementation": false}
+  ],
+  "allowed_statuses": ["bounded-pass", "bounded-roundtrip", "bounded-unsigned-roundtrip", "hosted-schema-pass", "independently-tool-validated"],
+  "promotion_allowed": false,
+  "open_gates": [
+    "external producer/consumer interoperability",
+    "trusted signed stable-candidate report",
+    "provider-backed preservation and release authority"
+  ],
+  "nonclaims": [
+    "Inventory completeness is machine-checked, but bounded or hosted status is not external certification.",
+    "Unsigned or repository-owned validators do not establish stable release approval."
+  ]
+}
