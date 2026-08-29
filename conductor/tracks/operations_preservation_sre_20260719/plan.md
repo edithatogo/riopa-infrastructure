@@ -39,6 +39,7 @@
 - [x] 4.13 Correct the known truncated run-32519141017 revision from the immutable hosted run head and record the predecessor correction explicitly (`docs/campaign-status-correction-20260830.json`).
 - [x] 4.14 Extend strict revision validation to supplemental observation and candidate fields with negative coverage; supplemental records retain their non-qualifying semantics (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-revision-validation-20260830.json`).
 - [x] 4.15 Require every supplemental observation to carry a strict revision while keeping candidate revision optional-but-validated; record an immutable successor evidence artifact (`scripts/validate_campaign_status.py`, `tests/test_campaign_status.py`, `docs/campaign-status-supplemental-revision-validation-20260830.json`).
+- [x] 4.16 Record fresh hosted supplemental beta and exact-candidate RC observations with receipt/log digests; retain their technical-preview classification and all elapsed, recovery, external, preservation and authority gates (`docs/hosted-beta-rc-campaign-observation-20260829-ddec941.json`, runs 33259405506/33259407593).
 
 ## Review fixes
 

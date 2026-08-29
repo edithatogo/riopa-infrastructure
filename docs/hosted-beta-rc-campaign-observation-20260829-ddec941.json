@@ -1,0 +1,31 @@
+{
+  "evidence_id": "OPS-HOSTED-BETA-RC-CAMPAIGN-OBSERVATION-20260829-DDEC941",
+  "schema_version": "1.0.0",
+  "source_revision": "ddec9416814bc6b7617f129040d824ca09047df9",
+  "operational_cycle": "2026-W35",
+  "beta": {
+    "campaign_id": "operational-beta-20260825-26bc0b4",
+    "run_id": "33259405506",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33259405506",
+    "qualification_epoch": "beta-epoch-20260825-26bc0b4",
+    "status": "passed",
+    "classification": "hosted-technical-preview-drill",
+    "receipt_sha256": "a8c96e31610b8fccd62c0d80e674720d3d7b2bb9ac519147a4cc59caaa1cf341",
+    "log_sha256": "99db33d5c94c6f7da021687c7391181685cc33299c5435b1c861e2db3be3ec87"
+  },
+  "rc": {
+    "campaign_id": "operational-rc-20260825-26bc0b4",
+    "run_id": "33259407593",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33259407593",
+    "qualification_epoch": "rc-epoch-20260825-26bc0b4",
+    "status": "passed",
+    "classification": "hosted-technical-preview-drill",
+    "receipt_sha256": "9813e9f9eb7886098217d28b3c56df3f15a81f9e83071afc496eb7d89ab305a6",
+    "log_sha256": "75714dae81a19ff356fc462619bae1ce8741376da686e235699f14922dd42700"
+  },
+  "classification": "hosted-technical-preview-observation",
+  "non_claims": [
+    "These supplemental observations do not satisfy 90-day/three-cycle beta or 30-day RC duration.",
+    "They are not production disaster-recovery, external participant, preservation-acceptance or release-authority evidence."
+  ]
+}
