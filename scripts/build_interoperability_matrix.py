@@ -27,8 +27,14 @@ def _rust_report(root: Path) -> tuple[str, list[dict[str, Any]]]:
     ).stdout.strip()
     result = subprocess.run(
         [
-            "cargo", "run", "--quiet", "--locked", "--manifest-path", str(manifest),
-            "--bin", "conformance_corpus",
+            "cargo",
+            "run",
+            "--quiet",
+            "--locked",
+            "--manifest-path",
+            str(manifest),
+            "--bin",
+            "conformance_corpus",
         ],
         cwd=root,
         check=True,

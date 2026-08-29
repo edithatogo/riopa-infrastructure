@@ -49,9 +49,7 @@ def test_beta_revision_change_does_not_reset_same_epoch(tmp_path: Path) -> None:
         started_at="2026-08-03T00:00:00Z",
         ended_at="2026-08-03T00:01:00Z",
     )
-    ledger = build_ledger(
-        [first, second], now=datetime(2026, 12, 1, tzinfo=UTC)
-    )
+    ledger = build_ledger([first, second], now=datetime(2026, 12, 1, tzinfo=UTC))
     assert len(ledger["segments"]) == 1
 
 
@@ -86,9 +84,7 @@ def test_sparse_observations_cannot_pass_elapsed_gate(tmp_path: Path) -> None:
         started_at="2026-11-01T00:00:00Z",
         ended_at="2026-11-01T00:01:00Z",
     )
-    ledger = build_ledger(
-        [first, second], now=datetime(2026, 12, 1, tzinfo=UTC)
-    )
+    ledger = build_ledger([first, second], now=datetime(2026, 12, 1, tzinfo=UTC))
     assert ledger["duration_status"] == "passed"
     assert ledger["cadence_status"] == "failed-gap"
     assert ledger["operational_cycles_status"] == "pending-cycles"
@@ -164,9 +160,7 @@ def test_identical_restored_receipts_count_once(tmp_path: Path) -> None:
 
 
 def test_preview_drill_cannot_qualify(tmp_path: Path) -> None:
-    receipt = _receipt(
-        tmp_path / "preview.json", classification="hosted-technical-preview-drill"
-    )
+    receipt = _receipt(tmp_path / "preview.json", classification="hosted-technical-preview-drill")
     with pytest.raises(ValueError, match="classification"):
         build_ledger([receipt])
 
