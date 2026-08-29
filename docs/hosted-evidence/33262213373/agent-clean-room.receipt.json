@@ -22,7 +22,10 @@
   },
   "hosted_run_id": null,
   "lane": "agent-clean-room",
-  "log": {"path": "agent-clean-room.log", "sha256": "c4b808d34f4db00b333696dec1f3a43a2887d8bfe0cb7af07a3cb98ff43a7830"},
+  "log": {
+    "path": "agent-clean-room.log",
+    "sha256": "c4b808d34f4db00b333696dec1f3a43a2887d8bfe0cb7af07a3cb98ff43a7830"
+  },
   "non_claims": [
     "This receipt is not production disaster-recovery qualification.",
     "This receipt is hosted-system evidence, not a role-separated agent user/operator journey.",
