@@ -39,12 +39,33 @@ def timed(records: int, iterations: int) -> dict[str, Any]:
     }
 
 
+def unavailable_dependency() -> int:
+    """Represent a deterministic local dependency outage for the rehearsal."""
+
+    raise RuntimeError("deterministic local dependency unavailable")
+
+
 def run(output: Path | None = None) -> dict[str, Any]:
     matrix = json.loads(MATRIX.read_text(encoding="utf-8"))
     cases: dict[str, dict[str, Any]] = {
         "baseline": timed(128, 200),
         "stressed": timed(512, 400),
     }
+    try:
+        unavailable_dependency()
+    except ValueError as exc:
+        cases["degraded"] = {"status": "failed", "error": str(exc)}
+    except RuntimeError as exc:
+        fallback = timed(64, 100)
+        cases["degraded"] = {
+            "status": "passed",
+            "dependency_failure": "deterministic-local-unavailable-dependency",
+            "fallback": "bounded local checksum",
+            "fallback_checksum": fallback["checksum"],
+            "error": str(exc),
+        }
+    else:  # pragma: no cover - defensive contract failure
+        cases["degraded"] = {"status": "failed"}
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = [pool.submit(checksum, 128, 200), pool.submit(checksum, 128, 200)]
         values = [future.result() for future in futures]
@@ -66,7 +87,7 @@ def run(output: Path | None = None) -> dict[str, Any]:
         "cancelled_before_external_effect": True,
     }
     try:
-        checksum(0, 200)
+        checksum(128, 0)
     except ValueError as exc:
         cases["malformed-input"] = {"status": "passed", "error": str(exc)}
     else:  # pragma: no cover - defensive contract failure
