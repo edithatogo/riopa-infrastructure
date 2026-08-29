@@ -39,6 +39,17 @@ fn execute(document: &Value) -> Result<Value, String> {
     let query = document
         .get("lineage_query")
         .ok_or("missing lineage_query")?;
+    let query_fields: BTreeSet<&str> = query
+        .as_object()
+        .ok_or("lineage_query must be an object")?
+        .keys()
+        .map(String::as_str)
+        .collect();
+    let expected_query_fields =
+        BTreeSet::from(["contract_version", "node_id", "question", "max_depth"]);
+    if query_fields != expected_query_fields {
+        return Err("lineage query fields must match the 1.0.0 contract".into());
+    }
     if text(query, "contract_version")? != "1.0.0" || text(query, "question")? != "why" {
         return Err("unsupported lineage query".into());
     }

@@ -149,6 +149,7 @@ def test_rust_client_fails_closed_on_contract_and_required_field_drift(
             "required-field",
             lambda item: item["validation"]["required_fields"].append("missing_field"),
         ),
+        ("unknown-query-field", lambda item: item["lineage_query"].update(max_dept=1)),
     ]
     for name, mutate in mutations:
         fixture = deepcopy(original)
