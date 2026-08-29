@@ -21,7 +21,8 @@
     "urn:riopa:evidence:facility-snapshot-version:2026-08-25",
     "urn:riopa:evidence:facility-accessibility-binding:2026-08-25",
     "urn:riopa:evidence:facility-public-health-source-families:2026-08-25",
-    "FACILITY-PANEL-MANIFEST-CONTRACT-20260829"
+    "FACILITY-PANEL-MANIFEST-CONTRACT-20260829",
+    "FACILITY-PANEL-MANIFEST-HARDENING-20260829"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

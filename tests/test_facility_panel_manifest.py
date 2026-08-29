@@ -71,6 +71,29 @@ def test_manifest_requires_the_four_facility_lenses(tmp_path: Path) -> None:
     assert any("exactly methods, provenance" in error for error in validate(path))
 
 
+def test_manifest_rejects_non_utc_time_and_unsafe_duplicate_paths(tmp_path: Path) -> None:
+    value = _manifest()
+    value["evaluated_at"] = "2026-08-29T00:00:00+10:00"
+    value["panel"][0]["artifact_digests"] = [
+        {"path": "../report.json", "sha256": "b" * 64},
+        {"path": "../report.json", "sha256": "c" * 64},
+    ]
+    path = tmp_path / "manifest.json"
+    path.write_text(json.dumps(value), encoding="utf-8")
+    errors = validate(path)
+    assert any("evaluated_at" in error for error in errors)
+    assert any("canonical relative path" in error for error in errors)
+    assert any("paths must be unique" in error for error in errors)
+
+
+def test_manifest_rejects_noncanonical_artifact_alias(tmp_path: Path) -> None:
+    value = _manifest()
+    value["panel"][0]["artifact_digests"] = [{"path": "reports//result.json", "sha256": "b" * 64}]
+    path = tmp_path / "manifest.json"
+    path.write_text(json.dumps(value), encoding="utf-8")
+    assert any("canonical relative path" in error for error in validate(path))
+
+
 def test_existing_frame_is_not_falsely_qualified() -> None:
     path = Path(__file__).parents[1] / "docs/facility-panel-frame-qualification-20260825.json"
     errors = validate(path)
