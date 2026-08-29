@@ -80,6 +80,12 @@ jobs:
       EVIDENCE_ACTIVATION_AUTHORITY: ${{ github.event.inputs.activation_authority || '' }}
       EVIDENCE_ACTIVATED_AT: ${{ github.event.inputs.activated_at || '' }}
     steps:
+      - name: Validate exact revision input
+        run: |
+          if [[ ! "$EVIDENCE_CANDIDATE_REVISION" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "EVIDENCE_CANDIDATE_REVISION must be a full 40-character Git commit SHA" >&2
+            exit 1
+          fi
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -168,12 +174,20 @@ jobs:
     env:
       EVIDENCE_LANE: performance-rehearsal
       EVIDENCE_CAMPAIGN_ID: ${{ inputs.campaign_id }}
+      EVIDENCE_CANDIDATE_REVISION: ${{ inputs.candidate_revision || github.sha }}
       EVIDENCE_QUALIFICATION_EPOCH: ${{ inputs.qualification_epoch }}
     steps:
+      - name: Validate exact revision input
+        run: |
+          if [[ ! "$EVIDENCE_CANDIDATE_REVISION" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "EVIDENCE_CANDIDATE_REVISION must be a full 40-character Git commit SHA" >&2
+            exit 1
+          fi
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          ref: ${{ env.EVIDENCE_CANDIDATE_REVISION }}
       - name: Install uv and Python
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:

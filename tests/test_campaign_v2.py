@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import yaml
@@ -49,9 +50,30 @@ def test_operational_observation_schedule_is_daily_and_read_only() -> None:
 def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
     workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
     steps = workflow["jobs"]["observe"]["steps"]
+    validate = next(step for step in steps if step.get("name") == "Validate exact revision input")
+    assert "40-character Git commit SHA" in validate["run"]
+    assert "[0-9a-f]{40}" in validate["run"]
     checkout = next(step for step in steps if step.get("name") == "Check out exact revision")
     assert checkout["with"]["ref"] == "${{ env.EVIDENCE_CANDIDATE_REVISION || github.sha }}"
     assert any(step.get("name") == "Verify exact RC candidate checkout" for step in steps)
+
+
+def test_campaign_revision_preflight_rejects_uppercase_and_short_shas() -> None:
+    pattern = re.compile(r"^[0-9a-f]{40}$")
+    assert pattern.fullmatch("a" * 40)
+    assert not pattern.fullmatch("A" * 40)
+    assert not pattern.fullmatch("a" * 39)
+
+
+def test_performance_second_environment_binds_exact_candidate_revision() -> None:
+    workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
+    job = workflow["jobs"]["performance-second-environment"]
+    assert "EVIDENCE_CANDIDATE_REVISION" in job["env"]
+    steps = job["steps"]
+    validate = next(step for step in steps if step.get("name") == "Validate exact revision input")
+    assert "[0-9a-f]{40}" in validate["run"]
+    checkout = next(step for step in steps if step.get("name") == "Check out exact revision")
+    assert checkout["with"]["ref"] == "${{ env.EVIDENCE_CANDIDATE_REVISION }}"
 
 
 def test_supplemental_elapsed_lanes_are_retained_as_artifacts() -> None:
