@@ -174,3 +174,45 @@ def test_duplicate_observation_day_cannot_qualify(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match="distinct UTC"):
         build_ledger([first, second])
+
+
+def test_observation_cannot_predate_or_change_campaign_activation(tmp_path: Path) -> None:
+    pre_activation = _receipt(
+        tmp_path / "pre.json",
+        campaign_activation={
+            "status": "activated",
+            "campaign_id": "beta-test",
+            "authority": "repository-owner",
+            "activated_at": "2026-08-03T00:00:00Z",
+        },
+    )
+    with pytest.raises(ValueError, match="predate"):
+        build_ledger([pre_activation])
+
+    first = _receipt(tmp_path / "one.json")
+    second = _receipt(
+        tmp_path / "two.json",
+        started_at="2026-08-03T00:00:00Z",
+        ended_at="2026-08-03T00:01:00Z",
+        campaign_activation={
+            "status": "activated",
+            "campaign_id": "beta-test",
+            "authority": "repository-owner",
+            "activated_at": "2026-08-01T01:00:00Z",
+        },
+    )
+    with pytest.raises(ValueError, match="consistent activation"):
+        build_ledger([first, second])
+
+
+def test_superseded_segment_dates_do_not_count_for_active_segment(tmp_path: Path) -> None:
+    first = _receipt(tmp_path / "old.json")
+    second = _receipt(
+        tmp_path / "active.json",
+        qualification_epoch="beta-epoch-2",
+        started_at="2026-08-03T00:00:00Z",
+        ended_at="2026-08-03T00:01:00Z",
+    )
+    ledger = build_ledger([first, second])
+    assert ledger["distinct_observation_dates"] == 1
+    assert ledger["active_segment"]["observation_dates"] == ["2026-08-03"]

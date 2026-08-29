@@ -36,6 +36,7 @@ def build_ledger(
         else "qualifying-beta-observation"
     )
     observations = []
+    campaign_activation: dict[str, Any] | None = None
     seen_receipts: set[str] = set()
     duplicate_receipt_count = 0
     for path, receipt in loaded:
@@ -54,6 +55,10 @@ def build_ledger(
             raise ValueError(f"{path}: campaign activation is not bound to campaign_id")
         if not activation.get("authority") or not activation.get("activated_at"):
             raise ValueError(f"{path}: campaign activation requires authority and activated_at")
+        if campaign_activation is None:
+            campaign_activation = activation
+        elif activation != campaign_activation:
+            raise ValueError(f"{path}: qualifying receipts require one consistent activation")
         run_id = receipt.get("hosted_run_id")
         if not isinstance(run_id, str) or not run_id.strip():
             raise ValueError(f"{path}: qualifying receipt requires a hosted_run_id")
@@ -73,6 +78,7 @@ def build_ledger(
                 "hosted_run_id": run_id,
                 "started_at": receipt.get("started_at"),
                 "ended_at": receipt.get("ended_at"),
+                "activated_at": activation.get("activated_at"),
                 "receipt_sha256": receipt_sha256,
             }
         )
@@ -89,6 +95,11 @@ def build_ledger(
             raise ValueError("receipt ended_at precedes started_at")
         if start > current_time or end > current_time:
             raise ValueError("receipt timestamps cannot be in the future")
+        activated_at = datetime.fromisoformat(
+            str(observation["activated_at"]).replace("Z", "+00:00")
+        )
+        if activated_at > start or activated_at > current_time:
+            raise ValueError("receipt observation cannot predate campaign activation")
         observed_date = start.date().isoformat()
         if observed_date in observed_dates:
             raise ValueError("qualifying receipts require distinct UTC observation dates")
@@ -119,6 +130,7 @@ def build_ledger(
                     "ended_at": observation["ended_at"],
                     "observation_count": 0,
                     "operational_cycle_ids": [],
+                    "observation_dates": [],
                     "maximum_gap_seconds": 0,
                     "failed": False,
                 }
@@ -138,6 +150,9 @@ def build_ledger(
             segment["source_revisions"].append(observation["source_revision"])
         if observation["operational_cycle_id"] not in segment["operational_cycle_ids"]:
             segment["operational_cycle_ids"].append(observation["operational_cycle_id"])
+        observation_date = str(observation["started_at"])[:10]
+        if observation_date not in segment["observation_dates"]:
+            segment["observation_dates"].append(observation_date)
         segment["ended_at"] = observation["ended_at"]
         segment["failed"] = observation["status"] != "passed"
     active = segments[-1]
@@ -149,7 +164,7 @@ def build_ledger(
     cadence_passed = active["maximum_gap_seconds"] <= maximum_gap_hours * 3600
     cycles_passed = len(active["operational_cycle_ids"]) >= required_cycles
     duration_passed = active["elapsed_seconds"] >= required_days * 86400
-    daily_observations_passed = len(observed_dates) >= required_days
+    daily_observations_passed = len(active["observation_dates"]) >= required_days
     return {
         "schema": "riopa.evidence-campaign-ledger.v1",
         "campaign_id": campaign_ids.pop(),
@@ -161,7 +176,7 @@ def build_ledger(
         "required_elapsed_days": required_days,
         "required_operational_cycles": required_cycles,
         "required_daily_observations": required_days,
-        "distinct_observation_dates": len(observed_dates),
+        "distinct_observation_dates": len(active["observation_dates"]),
         "maximum_allowed_gap_hours": maximum_gap_hours,
         "duration_status": "passed" if duration_passed else "pending-duration",
         "cadence_status": "passed" if cadence_passed else "failed-gap",
