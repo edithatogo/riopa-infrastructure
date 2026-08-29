@@ -18,6 +18,7 @@ def main() -> int:
     parser.add_argument("--registry-version", required=True)
     parser.add_argument("--licence", required=True)
     parser.add_argument("--observed-at", required=True)
+    parser.add_argument("--payload-sha256", required=True)
     args = parser.parse_args()
 
     payload = json.loads(args.payload.read_text(encoding="utf-8"))
@@ -27,6 +28,7 @@ def main() -> int:
         registry_version=args.registry_version,
         licence=args.licence,
         observed_at=args.observed_at,
+        payload_sha256=args.payload_sha256,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
