@@ -37,8 +37,13 @@ def test_resilience_matrix_validator_rejects_non_object_nested_sections() -> Non
     matrix = {
         "classification": "repository-rehearsal-plan-not-operational-evidence",
         "required_cases": [
-            "baseline", "stressed", "degraded", "concurrency", "retry-storm",
-            "cancellation", "malformed-input",
+            "baseline",
+            "stressed",
+            "degraded",
+            "concurrency",
+            "retry-storm",
+            "cancellation",
+            "malformed-input",
         ],
         "safety": [],
     }

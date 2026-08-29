@@ -1,6 +1,10 @@
 import pytest
 
-from scripts.build_operations_report_bundle import OperationsReportError, build_bundle
+from scripts.build_operations_report_bundle import (
+    OperationsReportError,
+    build_bundle,
+    validate_bundle,
+)
 
 
 def test_bundle_is_deterministic_and_marks_missing_components_pending() -> None:
@@ -26,3 +30,17 @@ def test_bundle_rejects_non_object_components(payload: dict[str, object], messag
 def test_bundle_rejects_empty_identity() -> None:
     with pytest.raises(OperationsReportError, match="non-empty"):
         build_bundle({}, report_id="", generated_at="")
+
+
+def test_bundle_validator_binds_self_digest_and_boundaries() -> None:
+    bundle = build_bundle({"slo": {"observations": 1}}, report_id="ops", generated_at="2026-08-29")
+    assert validate_bundle(bundle) == ()
+    tampered = dict(bundle)
+    tampered["promotion_allowed"] = True
+    assert any("promotion_allowed" in error for error in validate_bundle(tampered))
+
+
+def test_bundle_validator_rejects_bad_component_digest() -> None:
+    bundle = build_bundle({"slo": {"observations": 1}}, report_id="ops", generated_at="2026-08-29")
+    bundle["components"]["slo"]["content_sha256"] = "bad"
+    assert any("candidate input requires" in error for error in validate_bundle(bundle))

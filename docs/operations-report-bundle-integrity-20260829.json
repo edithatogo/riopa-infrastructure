@@ -1,0 +1,12 @@
+{
+  "evidence_id": "OPS-REPORT-BUNDLE-INTEGRITY-20260829",
+  "schema": "riopa.operations-report-bundle-integrity.v1",
+  "validator": "scripts/build_operations_report_bundle.py::validate_bundle",
+  "observed_status": "self-digest-and-component-boundary-tests-pass",
+  "scope": "repository-owned candidate report inputs",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This validates candidate structure only, not an operational measurement.",
+    "It does not establish hosted SLO history, preservation acceptance or release authority."
+  ]
+}

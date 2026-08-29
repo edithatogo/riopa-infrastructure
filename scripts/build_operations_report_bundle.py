@@ -5,16 +5,65 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
 
 from riopa_provenance.hashing import sha256_json  # noqa: E402
 
 COMPONENTS = ("slo", "incident", "capacity", "preservation")
+_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 
 
 class OperationsReportError(ValueError):
     """Raised when a report bundle input is malformed."""
+
+
+def validate_bundle(bundle: object) -> tuple[str, ...]:
+    """Validate a candidate bundle's structure and self-digest."""
+
+    if not isinstance(bundle, dict):
+        return ("report bundle must be an object",)
+    errors: list[str] = []
+    if bundle.get("schema_version") != "1.0.0":
+        errors.append("schema_version must be 1.0.0")
+    if bundle.get("record_type") != "operations_report_bundle":
+        errors.append("record_type must be operations_report_bundle")
+    if bundle.get("publication_status") != "candidate-not-published":
+        errors.append("publication_status must remain candidate-not-published")
+    if bundle.get("promotion_allowed") is not False:
+        errors.append("promotion_allowed must be false")
+    supplied = bundle.get("bundle_sha256")
+    unsigned = {key: value for key, value in bundle.items() if key != "bundle_sha256"}
+    if not isinstance(supplied, str) or not _SHA256.fullmatch(supplied):
+        errors.append("bundle_sha256 must be a lowercase SHA-256 digest")
+    elif supplied != sha256_json(unsigned):
+        errors.append("bundle_sha256 does not match bundle content")
+    components = bundle.get("components")
+    if not isinstance(components, dict) or set(components) != set(COMPONENTS):
+        errors.append("components must contain exactly the four report categories")
+    else:
+        for name in COMPONENTS:
+            component = components[name]
+            if not isinstance(component, dict):
+                errors.append(f"components.{name} must be an object")
+                continue
+            status = component.get("status")
+            digest = component.get("content_sha256")
+            if status == "pending" and digest is not None:
+                errors.append(f"components.{name} pending content digest must be null")
+            elif status == "candidate-input" and (
+                not isinstance(digest, str) or not _SHA256.fullmatch(digest)
+            ):
+                errors.append(f"components.{name} candidate input requires a SHA-256 digest")
+            elif status not in {"pending", "candidate-input"}:
+                errors.append(f"components.{name} has unsupported status")
+    nonclaims = bundle.get("nonclaims")
+    if not isinstance(nonclaims, list) or not any(
+        isinstance(item, str) and "not independently qualified" in item for item in nonclaims
+    ):
+        errors.append("nonclaims must retain the unqualified-input boundary")
+    return tuple(dict.fromkeys(errors))
 
 
 def build_bundle(payload: dict[str, Any], *, report_id: str, generated_at: str) -> dict[str, Any]:
