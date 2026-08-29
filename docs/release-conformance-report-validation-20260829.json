@@ -1,0 +1,17 @@
+{
+  "evidence_id": "WP006-RELEASE-CONFORMANCE-REPORT-VALIDATION-20260829",
+  "schema": "riopa.release-conformance-report-validation.v1",
+  "validator": "scripts/validate_release_conformance_report.py",
+  "requirements": [
+    "The report is bound to a 40-character lowercase source revision and a SHA-256 fixture digest.",
+    "Every evidence binding is a unique repository-relative path with a matching SHA-256 digest and non-empty evidence identifier.",
+    "The report retains explicit copied-evidence interpretation and limitations."
+  ],
+  "observed_status": "repository-validator-and-negative-tests-pass",
+  "promotion_allowed": false,
+  "nonclaims": [
+    "does not verify a cryptographic signature or trusted signer",
+    "does not establish publication-provider acceptance, external execution, or accountable release authority",
+    "does not start or satisfy beta, RC, or stable-v1 elapsed-time gates"
+  ]
+}

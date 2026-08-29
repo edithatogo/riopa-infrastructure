@@ -55,3 +55,11 @@
 - [x] R11 Validate the normative corpus envelope before invoking the Python/Node parity runners, rejecting malformed metadata, unsafe references, duplicate IDs and invalid digests before a parity receipt is emitted (2026-08-29; `scripts/verify_conformance_parity.py`).
 - [x] R11 Replace the bounded Rust hash-only runner with maintained RFC 8785 canonicalisation and Draft 2020-12 schema validation, expand the shared corpus with numeric and UTF-16 ordering vectors, and publish an observed Python/Node/Rust successor matrix (`e1e4d68`, `docs/ontology/interoperability-compatibility-matrix-20260829.json`).
 - [x] R12 Fail closed on premature stable campaign evidence: technical-preview drills no longer qualify, qualifying observations require an activated campaign and hosted run identity, daily observations must be unique and non-future, and the normative 90-day beta plus 30-day RC thresholds are consistent (`e1e4d68`, `tests/test_campaign_ledger.py`).
+
+- [x] R13 Validate the machine-readable technical-preview report's local
+  content-addressed bindings in the release workflow, including repository-
+  relative paths, exact SHA-256 digests and explicit copied-evidence
+  limitations. This hardens report integrity without claiming signatures,
+  publication acceptance or authority (`scripts/validate_release_conformance_report.py`,
+  `docs/release-conformance-report-validation-20260829.json`,
+  `tests/test_release_conformance_report.py`, `.github/workflows/release.yml`).
