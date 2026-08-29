@@ -92,6 +92,10 @@ def run_lane(lane: str, output_dir: Path) -> dict[str, Any]:
         ).stdout.strip()
     except OSError, subprocess.CalledProcessError:
         source_revision = os.getenv("GITHUB_SHA", "local-uncommitted")
+    if qualifying and lane == "rc-soak-observation" and candidate_revision != source_revision:
+        raise ValueError(
+            "qualifying RC observation requires candidate_revision to equal source_revision"
+        )
     if lane == "rc-soak-observation" and candidate_revision != source_revision:
         raise ValueError(
             "rc-soak-observation requires EVIDENCE_CANDIDATE_REVISION to equal GITHUB_SHA"

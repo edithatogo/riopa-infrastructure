@@ -1,5 +1,6 @@
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -40,6 +41,31 @@ def test_qualifying_non_observation_lane_fails_closed(tmp_path: Path, monkeypatc
     monkeypatch.setenv("EVIDENCE_ACTIVATED_AT", "2026-08-29T12:00:00Z")
     with pytest.raises(ValueError, match="only beta and RC observation lanes"):
         run_lane("scale-smoke", tmp_path)
+
+
+def test_qualifying_rc_requires_exact_checked_out_candidate(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("EVIDENCE_QUALIFYING", "true")
+    monkeypatch.setenv("EVIDENCE_ACTIVATION_AUTHORITY", "Sole repository owner")
+    monkeypatch.setenv("EVIDENCE_ACTIVATED_AT", "2026-08-29T12:00:00Z")
+    monkeypatch.setenv("EVIDENCE_CANDIDATE_REVISION", "0" * 40)
+    with pytest.raises(ValueError, match="candidate_revision to equal source_revision"):
+        run_lane("rc-soak-observation", tmp_path)
+
+
+def test_qualifying_rc_accepts_exact_checked_out_candidate(tmp_path: Path, monkeypatch) -> None:
+    source_revision = subprocess.run(
+        ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
+    ).stdout.strip()
+    monkeypatch.setenv("EVIDENCE_QUALIFYING", "true")
+    monkeypatch.setenv("EVIDENCE_ACTIVATION_AUTHORITY", "Sole repository owner")
+    monkeypatch.setenv("EVIDENCE_ACTIVATED_AT", "2026-08-29T12:00:00Z")
+    monkeypatch.setenv("EVIDENCE_CANDIDATE_REVISION", source_revision)
+    monkeypatch.setenv("GITHUB_RUN_ID", "12346")
+    receipt = run_lane("rc-soak-observation", tmp_path)
+    assert receipt["classification"] == "qualifying-rc-observation"
+    assert receipt["candidate_revision"] == source_revision
+    assert receipt["source_revision"] == source_revision
+    assert receipt["hosted_run_id"] == "12346"
 
 
 def test_hosted_lanes_are_fixed_not_arbitrary_commands() -> None:
