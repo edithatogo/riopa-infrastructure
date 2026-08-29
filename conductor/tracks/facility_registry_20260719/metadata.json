@@ -20,7 +20,8 @@
     "urn:riopa:evidence:facility-panel-frame-qualification:2026-08-25",
     "urn:riopa:evidence:facility-snapshot-version:2026-08-25",
     "urn:riopa:evidence:facility-accessibility-binding:2026-08-25",
-    "urn:riopa:evidence:facility-public-health-source-families:2026-08-25"
+    "urn:riopa:evidence:facility-public-health-source-families:2026-08-25",
+    "FACILITY-PANEL-MANIFEST-CONTRACT-20260829"
   ],
   "target_release": "0.6.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
@@ -50,6 +51,7 @@
     "stale-pr-175-blocker-wording-repaired: 2026-08-25",
     "public-health-source-family archived: config/archive-sources/rangitikei-public-ambulance-2023.json; reconciliation and authority remain pending",
     "stable-registry-snapshot pending: conductor/tracks/facility_registry_20260719/plan.md",
-    "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; content-bound panel manifest and factual adjudication remain open"
+    "panel-frame-qualification-recorded: docs/facility-panel-frame-qualification-20260825.json; content-bound panel manifest and factual adjudication remain open",
+    "panel-manifest-contract-added: scripts/validate_facility_panel_manifest.py and docs/facility-panel-manifest-contract-20260829.json; existing frame remains partial"
   ]
 }

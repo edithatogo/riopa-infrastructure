@@ -53,6 +53,10 @@ promote a source to authoritative status without a documented panel disposition.
   factual adjudication open. (review fix; 2026-08-29)
 - [x] 5.4 Validate historical stable-gate snapshots by their self-contained
   digest rather than recomputing them against mutable current metadata. (review fix; 2026-08-29)
+- [x] 5.5 Add a fail-closed contract validator for the missing facility panel
+  roles/session manifest; retain G.1 partial until a real content-bound rerun
+  supplies those fields. (`scripts/validate_facility_panel_manifest.py`,
+  `docs/facility-panel-manifest-contract-20260829.json`)
 
 ## Evidence gates still open
 
