@@ -18,9 +18,7 @@ from riopa_provenance.hashing import sha256_json
 def build_receipt(root: Path) -> dict[str, Any]:
     corpus_path = root / "conformance/v1/corpus.json"
     corpus = json.loads(corpus_path.read_text(encoding="utf-8"))
-    corpus_errors = validate_conformance_corpus(
-        corpus, root=str(root / "conformance/v1")
-    )
+    corpus_errors = validate_conformance_corpus(corpus, root=str(root / "conformance/v1"))
     if corpus_errors:
         raise ValueError("invalid conformance corpus: " + "; ".join(corpus_errors))
     node = subprocess.run(
