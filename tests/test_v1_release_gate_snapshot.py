@@ -165,3 +165,19 @@ def test_current_revision_snapshot_matches_current_inputs() -> None:
     )
     assert artifact["evaluated_revision"] == "1fa16a61ff11ef7efbc0f64c5f2dcd98f0da1d1f"
     assert artifact["release_ready"] is False
+
+
+def test_latest_current_revision_successor_matches_current_inputs() -> None:
+    artifact = json.loads(
+        (ROOT / "docs/v1-stable-release-gate-snapshot-20260829-012a0e7.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert artifact == build_snapshot(
+        ROOT,
+        evaluated_revision=artifact["evaluated_revision"],
+        generated_at=artifact["generated_at"],
+    )
+    assert artifact["evaluated_revision"] == "012a0e7294d39410fac789f873e99666ccb365a3"
+    assert artifact["status"] == "blocked"
+    assert artifact["promotion_allowed"] is False
