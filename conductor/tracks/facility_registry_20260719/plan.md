@@ -48,10 +48,12 @@ promote a source to authoritative status without a documented panel disposition.
   and align the evidence-index lifecycle wording with active metadata. (review fix; 2026-08-22)
 - [x] 5.2 Verify the public-only release projection, preserve the exclusion
   ledger and align the history evidence row after task 3.3. (review fix; 2026-08-22)
+- [x] 5.3 Align the G.1 lifecycle marker with the completed agent-panel frame
+  qualification while retaining factual adjudication as an open gate. (review fix; 2026-08-29)
 
 ## Evidence gates still open
 
-- [~] G.1 Agent-panel qualification of the deterministic 741-row review frame is recorded in `docs/facility-panel-frame-qualification-20260825.json`; factual pair/sample adjudication remains open and no promotion is enabled.
+- [x] G.1 Agent-panel qualification of the deterministic 741-row review frame is recorded in `docs/facility-panel-frame-qualification-20260825.json`; factual pair/sample adjudication remains open and no promotion is enabled.
 - [x] G.2 Record the Hamilton packet as explicitly attribute-only because all 3,245 archived assertions have null geometry (`docs/facility-panel-qualification-20260803.json`, `docs/facility-food-reconciliation-20260803.json`, `tests/test_public_dataset_archive_plan.py`). No geometry, completeness or authoritative facility claim is enabled.
 - [x] G.3 A second public health source family with an immutable archive receipt. The bounded Rangitīkei public ambulance-facility assertions are registered from the preserved Zenodo successor packet with a verified payload digest (`config/archive-sources/rangitikei-public-ambulance-2023.json`, `docs/public-health-ambulance-source-qualification-20260825.json`, `tests/test_public_dataset_archive_plan.py`). Reconciliation, currentness, completeness, authoritative ambulance coverage and operational use remain disabled.
 - [x] G.4 Stable public-only, non-authoritative registry projection with source-disagreement and coverage reports is implemented and tested (`FACILITY-DISAGREEMENT-COVERAGE-20260822`, `FACILITY-SNAPSHOT-CORRECTION-20260824`). Completeness, panel adjudication, publication and accountable release approval remain open.
