@@ -19,6 +19,9 @@
     "public_receipt_matches_original_bytes": true
   },
   "producer_reconciliation": {
+    "capture_script_sha256": "4ee49f216bf02719f0c19b83df61d4bd6ff93984d63a4e3f3e89bb10c585b2ea",
+    "successor_script_sha256": "d911f4ff673325dc72518099ebf6d867edcc59809cb1c02534d9d5da3c949d04",
+    "script_change": "Hosted review corrected the failure stage to hub before Hub retrieval and parsing. The original successful capture receipt is unchanged; the new failure-path label is tested with fixtures, not claimed as a historical live failure.",
     "capture_core_revision": "37cc2af377ba83d5b038bc8c983cf71b6901c61f",
     "capture_arcgis_module_sha256": "72e1c50dc6a5ec5ab3af6cac3e10d1416fdc45ccab56a55758680c31d64c6f2d",
     "successor_arcgis_module_sha256": "c3371c41dd9898e9047184ec698d57c752ddcfeb25ba9b98ed6b826d692697dc",

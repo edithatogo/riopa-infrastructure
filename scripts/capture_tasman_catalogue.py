@@ -203,6 +203,7 @@ def capture_tasman(client: BoundedClient) -> dict[str, Any]:
             source_id=SOURCE_ID,
             endpoint_id=f"{SOURCE_ID}:authority",
         )
+        stage = "hub"
         home = client.capture("GET", HUB, source_id=SOURCE_ID, endpoint_id=f"{SOURCE_ID}:hub")
         match = re.search(r'window\.__SITE="([^"]+)"', home.object_path.read_text())
         if match is None:

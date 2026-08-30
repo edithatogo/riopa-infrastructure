@@ -47,6 +47,7 @@
 
 - [x] 5.8 Persist incomplete receipts for malformed Tasman layer capabilities and distinguish observed licence links from publication approval after isolated subagent review.
 - [x] 5.9 Detect ArcGIS object IDs declared only through `esriFieldTypeOID` field metadata, reject ambiguous declarations and enforce ordered unique-ID capture; preserve the original Tasman manifest and record independent offline uniqueness verification in `docs/tasman-geohub-offline-verification-20260830.json`.
+- [x] 5.10 Attribute Hub fetch/configuration failures to the Hub stage rather than the authority page; bind the historical and successor script hashes without changing the original successful capture receipt after hosted review.
 
 ## Track closeout
 

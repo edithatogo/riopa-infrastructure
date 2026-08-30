@@ -188,9 +188,6 @@ def test_committed_live_receipt_and_registry_are_bound() -> None:
     assert receipt["source_id"] == registry["sources"][0]["source_id"] == SCRIPT["SOURCE_ID"]
     assert receipt["status"] == "captured"
     assert receipt["semantic_sha256"] == sha256_json(receipt, omit_keys={"semantic_sha256"})
-    assert receipt["producer_sha256"] == sha256_bytes(
-        (root / "scripts/capture_tasman_catalogue.py").read_bytes()
-    )
     groups = receipt["groups"]
     assert tuple(group["group_id"] for group in groups) == SCRIPT["GROUPS"]
     ids = {item for group in groups for item in group["item_ids"]}
@@ -208,7 +205,31 @@ def test_committed_live_receipt_and_registry_are_bound() -> None:
     )
     assert review["receipt_sha256"] == sha256_bytes((root / review["receipt"]).read_bytes())
     assert review["receipt_semantic_sha256"] == receipt["semantic_sha256"]
+    assert review["producer_reconciliation"]["capture_script_sha256"] == receipt["producer_sha256"]
+    assert review["producer_reconciliation"]["successor_script_sha256"] == sha256_bytes(
+        (root / "scripts/capture_tasman_catalogue.py").read_bytes()
+    )
     assert review["verified"]["unique_object_ids"] == receipt["zones"]["feature_count"]
     assert review["producer_reconciliation"]["successor_arcgis_module_sha256"] == sha256_bytes(
         (root / "src/riopa_provenance/arcgis.py").read_bytes()
     )
+
+
+@pytest.mark.parametrize("status", [200, 404])
+def test_hub_failure_receipt_identifies_hub_stage(tmp_path: Path, status: int) -> None:
+    def respond(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            status if str(request.url) == SCRIPT["HUB"] else 200, text="no configuration"
+        )
+
+    with httpx.Client(transport=httpx.MockTransport(respond)) as transport:
+        client = SCRIPT["BoundedClient"](
+            client=transport,
+            store=CaptureStore(tmp_path),
+            policy=CapturePolicy(allowed_hosts=SCRIPT["HOSTS"]),
+        )
+        receipt = SCRIPT["capture_tasman"](client)
+    assert receipt["status"] == "incomplete"
+    assert receipt["failure"]["stage"] == "hub"
+    assert len(receipt["attempts"]) == 2
+    assert list(tmp_path.glob("tasman-receipt-*.json"))
