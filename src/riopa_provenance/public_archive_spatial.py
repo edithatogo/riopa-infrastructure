@@ -193,6 +193,7 @@ def verify_public_archive_packet(
         object_items[digest] = item
     referenced_objects: set[str] = set()
     rights_capture_ids: set[str] = set()
+    captures_by_id: dict[str, dict[str, Any]] = {}
     for relative in sorted(name for name in by_path if name.startswith("captures/")):
         capture = _load_object(root / relative, relative)
         capture_id = capture.get("capture_id")
@@ -204,6 +205,7 @@ def verify_public_archive_packet(
         if relative != expected_filename:
             raise PublicArchivePacketError(f"capture filename does not match identity: {relative}")
         capture_ids.add(capture_id)
+        captures_by_id[capture_id] = capture
         if capture.get("source_id") != manifest.get("source_id"):
             raise PublicArchivePacketError(f"capture source mismatch: {relative}")
         object_record = capture.get("object")
@@ -236,6 +238,17 @@ def verify_public_archive_packet(
         raise PublicArchivePacketError("packet contains an unreferenced object")
     if not rights_capture_ids:
         raise PublicArchivePacketError("packet has no explicit rights capture")
+    declared_count = capture_set.get("feature_count")
+    if not isinstance(declared_count, int) or declared_count < 0:
+        raise PublicArchivePacketError("capture set feature count is invalid")
+    for capture_id in capture_set.get("count_capture_ids", []):
+        count_object = captures_by_id[capture_id]["object"]["sha256"]
+        count_payload = _load_object(
+            root / "objects" / "sha256" / count_object,
+            f"count capture payload {capture_id}",
+        )
+        if count_payload.get("count") != declared_count:
+            raise PublicArchivePacketError("captured count disagrees with capture set")
     if rights_capture_ids != {descriptor.rights_capture_id}:
         raise PublicArchivePacketError("rights capture does not match trusted descriptor")
     rights_relative = f"captures/{descriptor.rights_capture_id.removeprefix('urn:uuid:')}.json"
@@ -274,6 +287,7 @@ def materialize_public_arcgis_packet(
     if not _BASE_NAME.fullmatch(base_name):
         raise PublicArchivePacketError("base_name must be a safe single filename component")
     manifest = verify_public_archive_packet(root, descriptor=descriptor)
+    capture_set = _load_object(root / "capture-set.json", "capture set")
     with tempfile.TemporaryDirectory(prefix="riopa-public-packet-") as temporary_name:
         store = Path(temporary_name).resolve()
         shutil.copy2(root / "capture-set.json", store / "capture-set.json")
@@ -307,9 +321,12 @@ def materialize_public_arcgis_packet(
             page_capture_lineage=True,
             derive_object_id_from_fields=True,
         )
+        if materialization.feature_count != capture_set["feature_count"]:
+            raise PublicArchivePacketError(
+                "materialized feature count disagrees with verified capture set"
+            )
 
     table = pq.read_table(materialization.geoparquet_path)
-    capture_set = _load_object(root / "capture-set.json", "capture set")
     records.mkdir(parents=True, exist_ok=True)
     rows = table.select(
         ["_riopa_feature_id", "_riopa_source_object_id", "_riopa_capture_ids", "geometry"]

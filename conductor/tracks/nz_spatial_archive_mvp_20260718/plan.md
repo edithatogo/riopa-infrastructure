@@ -37,6 +37,7 @@
 - [x] 5.2 Bind the WCC packet to a trusted immutable descriptor; enforce exact filesystem, capture and object closure; contain reconstructed object paths; derive the ArcGIS OID from metadata; and limit feature lineage to its page capture after isolated preservation review.
 - [x] 5.3 Replace the non-portable DuckDB file digest claim with independently reproduced semantic readback, and generate policy non-claims in the projection receipt after isolated reproduction review.
 - [x] 5.4 Prevent outputs from mutating verified inputs, reject unsafe output names and symlinked control files, reconcile the checked-in WCC trust descriptor to the public publication receipt, and bind the captured rights payload to its exact digest, licence text and attribution after preservation re-review.
+- [x] 5.5 Fail closed when captured count receipts, the capture-set declaration and materialized rows disagree, while keeping the new page-lineage and metadata-OID behavior opt-in so earlier preserved rebuild identities remain unchanged after hosted review.
 
 ## Track closeout
 

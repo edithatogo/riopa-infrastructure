@@ -35,6 +35,25 @@ def descriptor(packet: Path, *, revision: str = REVISION) -> PublicArchiveDescri
     )
 
 
+def reseal_packet(packet: Path) -> None:
+    capture_set_path = packet / "capture-set.json"
+    capture_set = json.loads(capture_set_path.read_text())
+    capture_set["manifest_sha256"] = sha256_json(capture_set, omit_keys={"manifest_sha256"})
+    capture_set_path.write_text(json.dumps(capture_set, indent=2) + "\n")
+    manifest_path = packet / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    for item in manifest["files"]:
+        path = packet / item["path"]
+        item["sha256"] = sha256_file(path)
+        item["bytes"] = path.stat().st_size
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    checksums = {str(item["path"]): str(item["sha256"]) for item in manifest["files"]}
+    checksums["manifest.json"] = sha256_file(manifest_path)
+    (packet / "checksums.sha256").write_text(
+        "".join(f"{digest}  {name}\n" for name, digest in sorted(checksums.items()))
+    )
+
+
 @pytest.fixture
 def packet(tmp_path: Path) -> Path:
     target = tmp_path / "packet"
@@ -306,3 +325,13 @@ def test_two_rebuilds_have_stable_bytes_or_semantics(packet: Path, tmp_path: Pat
     )
     assert evidence[0]["duckdb"]["semantic_sha256"] == evidence[1]["duckdb"]["semantic_sha256"]
     assert evidence[0]["semantic_sha256"] == evidence[1]["semantic_sha256"]
+
+
+def test_public_packet_rejects_declared_count_disagreement(packet: Path) -> None:
+    capture_set_path = packet / "capture-set.json"
+    capture_set = json.loads(capture_set_path.read_text())
+    capture_set["feature_count"] = 2
+    capture_set_path.write_text(json.dumps(capture_set))
+    reseal_packet(packet)
+    with pytest.raises(PublicArchivePacketError, match="count disagrees"):
+        verify_public_archive_packet(packet, descriptor=descriptor(packet))
