@@ -1,0 +1,77 @@
+{
+  "schema": "riopa.nz-spatial-archive-rights-capability-health.v1",
+  "record_id": "urn:riopa:evidence:nz-spatial-archive-rights-capability-health:2026-08-30",
+  "observed_at": "2026-08-30T00:00:00Z",
+  "archive_repository": "edithatogo/riopa-public-data-archive",
+  "archive_revision": "dd37463037ce0c1df52a06ffb1566a160d329f9c",
+  "observation_basis": "existing content-addressed archive manifests, preservation receipts and repository source registries; no live endpoint contact",
+  "sources": [
+    {
+      "source_id": "urn:riopa:source:stats-nz:meshblock-2026",
+      "packet": "snapshots/stats-nz-meshblock-2026/20260802T133311Z/manifest.json",
+      "archive_status": "complete-and-immutable",
+      "rights_status": "public-payload-qualified",
+      "licence": "CC-BY-4.0",
+      "legal_status": "supporting-geography; non-authoritative",
+      "capabilities": ["complete-feature-capture", "checksum-verification", "offline-projection"],
+      "source_health": "not-observed",
+      "source_health_action": "quarantine-live-health-claims"
+    },
+    {
+      "source_id": "urn:riopa:source:wcc:churton-park-village-supermarket",
+      "packet": "snapshots/wcc-churton-park-village-supermarket-20260829",
+      "archive_status": "complete-bounded-feature-slice",
+      "rights_status": "public-rights-qualified",
+      "licence": "CC-BY-3.0-NZ",
+      "legal_status": "bounded-non-authoritative-planning-reference",
+      "capabilities": ["single-feature-capture", "geometry-preservation", "offline-projection"],
+      "source_health": "not-observed",
+      "source_health_action": "quarantine-live-health-claims"
+    },
+    {
+      "source_id": "urn:riopa:source:tasman:geohub",
+      "packet": "campaigns/33298911797/tasman/1",
+      "archive_status": "complete-private-preservation; public-payload-not-approved",
+      "rights_status": "selected-item-CC-BY-4.0; catalogue-wide-terms-not-determined",
+      "licence": "CC-BY-4.0 (selected zones item only)",
+      "legal_status": "bounded-capture; operative status not inferred",
+      "capabilities": ["catalogue-enumeration", "count-reconciled-layer-capture"],
+      "source_health": "not-observed",
+      "source_health_action": "quarantine-live-health-claims"
+    },
+    {
+      "source_id": "urn:riopa:source:qldc:eplan",
+      "packet": "campaigns/33298911797/qldc/1",
+      "archive_status": "partial-route-qualification",
+      "rights_status": "not-determined-by-route-probe",
+      "licence": null,
+      "legal_status": "route-reference; operative status not inferred",
+      "capabilities": ["route-qualification", "bounded-http-capture"],
+      "source_health": "not-observed",
+      "source_health_action": "quarantine-source"
+    },
+    {
+      "source_id": "urn:riopa:source:npdc:district-plan-2005-maps",
+      "packet": "campaigns/33298911797/npdc/1",
+      "archive_status": "complete-private-preservation",
+      "rights_status": "metadata-public-payload-decision-pending",
+      "licence": null,
+      "legal_status": "bounded-document-capture; operative status not inferred",
+      "capabilities": ["pdf-document-enumeration", "faithful-http-capture"],
+      "source_health": "not-observed",
+      "source_health_action": "quarantine-source"
+    }
+  ],
+  "disposition": {
+    "public_payload_materialisation_allowed": false,
+    "network_timetable_facility_national_authoritative_claims_enabled": false,
+    "promotion_allowed": false,
+    "next_action": "obtain separate rights, legal-status, source-health and preservation acceptance evidence for each candidate packet"
+  },
+  "non_claims": [
+    "Archive presence and checksum verification do not prove current endpoint health, authority, completeness or legal effect.",
+    "A selected-item licence does not extend to other catalogue items or packets.",
+    "No live endpoint was contacted to create this record.",
+    "This record does not close external reproduction, hosted recovery, elapsed soak, national-scale or release-authority gates."
+  ]
+}
