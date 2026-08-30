@@ -29,7 +29,7 @@ jobs:
         source: [tasman, npdc, qldc]
     env:
       SOURCE: ${{ matrix.source }}
-      WORK: ${{ runner.temp }}/council-archive
+      WORK: ${{ github.workspace }}/.council-archive
       HF_HUB_DISABLE_IMPLICIT_TOKEN: "1"
     steps:
       - name: Check out approved implementation
@@ -61,6 +61,6 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: council-preservation-${{ matrix.source }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/council-archive/public/
+          path: ${{ github.workspace }}/.council-archive/public/
           if-no-files-found: warn
           retention-days: 90
