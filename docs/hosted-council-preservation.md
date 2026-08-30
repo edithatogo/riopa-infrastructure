@@ -134,3 +134,21 @@ validation failure, not a completed capture or a source-service failure.
 
 Implementation references: [GitHub job matrices](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations)
 and [Hugging Face upload API](https://huggingface.co/docs/huggingface_hub/guides/upload).
+
+## Observed hosted execution — run 33301038921
+
+[Run 33301038921](https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921)
+completed successfully on `df52ca881ce6f7937046095e1112b4da2bc1da07`. The
+Tasman, QLDC and NPDC jobs succeeded (job IDs `99229124204`, `99229124249` and
+`99229124273`). Their evidence artifacts were respectively `9728945563`
+(1,008 bytes), `9728942869` (482 bytes) and `9728959528` (480 bytes). The
+machine-readable record is
+`docs/hosted-council-preservation-run-33301038921.json`.
+
+The Tasman job successfully prepared, but did not publish, the isolated
+CC-BY-4.0 candidate for 3,655 features across 12 captured files (24,378,239
+bytes), with TDC attribution. QLDC remains a route-qualification-only,
+incomplete acquisition. This run provides preservation and preparation
+evidence only: it does not establish public-payload upload or anonymous
+payload acceptance, canonical/materialised rebuild, operative legal status,
+beta/RC/stable-v1 promotion, or any national/operational claim.
