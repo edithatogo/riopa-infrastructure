@@ -676,12 +676,14 @@ def materialize_arcgis_capture_set(
     crs: str | None = None,
     base_name: str = "features",
     repair_invalid: bool = True,
+    page_capture_lineage: bool = False,
+    derive_object_id_from_fields: bool = False,
 ) -> SpatialMaterialization:
     capture_set = _load_capture_set(capture_set_path, "arcgis_layer_capture_set")
     root = Path(store_root).resolve()
     metadata = _capture_payload(root, capture_set["metadata_capture_id"])
     object_id_field = capture_set.get("object_id_field") or metadata.get("objectIdField")
-    if not object_id_field:
+    if not object_id_field and derive_object_id_from_fields:
         object_id_field = next(
             (
                 field.get("name")
@@ -698,8 +700,9 @@ def materialize_arcgis_capture_set(
             object_id_field=object_id_field,
             repair_invalid=repair_invalid,
         )
-        for feature in page_features:
-            feature["capture_ids"] = [capture_id]
+        if page_capture_lineage:
+            for feature in page_features:
+                feature["capture_ids"] = [capture_id]
         features.extend(page_features)
         payload_crs = payload_crs or page_crs
     metadata_crs = None

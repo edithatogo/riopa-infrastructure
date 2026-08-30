@@ -304,6 +304,8 @@ def materialize_public_arcgis_packet(
             output_dir=output,
             base_name=base_name,
             repair_invalid=False,
+            page_capture_lineage=True,
+            derive_object_id_from_fields=True,
         )
 
     table = pq.read_table(materialization.geoparquet_path)
