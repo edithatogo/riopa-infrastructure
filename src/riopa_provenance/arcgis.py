@@ -183,6 +183,20 @@ class ArcGISFeatureLayerArchiver:
             raise CaptureError(f"ArcGIS metadata error: {metadata['error']}")
 
         raw_object_id = metadata.get("objectIdField") or metadata.get("objectIdFieldName")
+        if not raw_object_id:
+            fields = metadata.get("fields", [])
+            if not isinstance(fields, list):
+                raise CaptureError("ArcGIS metadata fields must be an array")
+            oid_fields = [
+                item.get("name")
+                for item in fields
+                if isinstance(item, dict) and item.get("type") == "esriFieldTypeOID"
+            ]
+            if len(oid_fields) > 1 or any(
+                not isinstance(name, str) or not name.strip() for name in oid_fields
+            ):
+                raise CaptureError("ArcGIS metadata has ambiguous or invalid object ID fields")
+            raw_object_id = oid_fields[0] if oid_fields else None
         object_id_field = str(raw_object_id) if raw_object_id else None
         effective_out_fields = _effective_out_fields(out_fields, object_id_field)
         page_size = int(metadata.get("maxRecordCount") or 1000)

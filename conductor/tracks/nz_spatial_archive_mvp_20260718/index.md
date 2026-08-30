@@ -60,6 +60,31 @@ digest and distinguishes historical verification from successor retry, failure
 recording and receipt-field behavior. No historical execution of those new paths
 is inferred.
 
+### Tasman catalogue-to-layer increment (2026-08-30)
+
+`docs/tasman-geohub-capture-20260830.json` binds the current Hub site configuration,
+two explicitly scoped catalogue groups (3 and 111 items), captured Hub/website
+terms, and the selected TRMP zones item to its complete 3,655-feature layer.
+Twelve full HTTP responses retain 24,899,154 bytes locally. The receipt records
+the exact producer hash and raw capture IDs/digests; the source registry is
+`config/source-registry/tasman-geohub.json` and the implementation/tests are
+`scripts/capture_tasman_catalogue.py` / `tests/test_tasman_catalogue_capture.py`.
+
+The selected item metadata links CC-BY-4.0 and names Tasman District Council for
+attribution. This is not automatic public-payload approval for every catalogue
+item. Raw payloads and full metadata remain outside Git; only the receipt is
+published here. The catalogue explicitly warns that item modification dates do
+not establish layer currency. Valid/operative time, catalogue-wide payload
+coverage, canonical transformations, materialisations, scheduled cycles and
+external preservation remain open. Count reconciliation does not prove an atomic
+source snapshot or unchanged geometry throughout collection.
+
+`docs/tasman-geohub-offline-verification-20260830.json` records the isolated
+subagent's verification of every original capture and all 3,655 unique IDs. It
+also distinguishes the original archiver from the successor field-list OID
+detection fix: the historical manifest remains unchanged, and future captures
+gain automatic ordering and uniqueness enforcement for this MapServer pattern.
+
 ### Remaining track blockers
 
 
