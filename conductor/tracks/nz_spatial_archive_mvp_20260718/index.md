@@ -54,7 +54,14 @@ document acquisition increment, not a four-council capture-to-release chain,
 current operative-status assessment, vector conversion, scheduled operation,
 public payload rights qualification or independent preservation acceptance.
 
+The historical acquisition receipt predates producer hardening; its original bytes
+remain unchanged. `docs/npdc-map-producer-reconciliation-20260830.json` binds its
+digest and distinguishes historical verification from successor retry, failure
+recording and receipt-field behavior. No historical execution of those new paths
+is inferred.
+
 ### Remaining track blockers
+
 
 - All four blocking dependency tracks remain incomplete.
 - Four heterogeneous council and two national source-family capture-to-release chains remain incomplete.

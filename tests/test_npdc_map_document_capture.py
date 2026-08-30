@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import runpy
 from pathlib import Path
@@ -139,6 +140,75 @@ def test_live_receipt_is_closed_and_bounded_metadata() -> None:
     assert sum(item["bytes"] for item in documents) + receipt["index"]["bytes"] == 97_420_678
     assert receipt["total_bytes"] < receipt["bounds"]["max_total_bytes"]
     assert "raw PDFs retained locally" in receipt["publication"]
+    reconciliation = json.loads(
+        (root / "docs/npdc-map-producer-reconciliation-20260830.json").read_text()
+    )
+    assert (
+        hashlib.sha256((root / reconciliation["historical_receipt"]).read_bytes()).hexdigest()
+        == reconciliation["historical_receipt_sha256"]
+    )
+    assert reconciliation["historical_semantic_sha256"] == receipt["semantic_sha256"]
+    assert all(field not in receipt for field in reconciliation["successor_fields"])
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        b"\xff",
+        b"<h1>Changed layout</h1>",
+        b'<h1>Volume 3 - Maps</h1><a href="https://foreign.test/a.pdf">A</a>',
+    ],
+)
+def test_index_parse_errors_persist_failure_evidence(tmp_path: Path, body: bytes) -> None:
+    with httpx.Client(
+        transport=httpx.MockTransport(lambda _: httpx.Response(200, content=body))
+    ) as transport:
+        client = HttpCaptureClient(
+            client=transport,
+            store=CaptureStore(tmp_path),
+            policy=CapturePolicy(allowed_hosts=frozenset({"www.npdc.govt.nz"})),
+        )
+        with pytest.raises(ValueError, match="index enumeration failed"):
+            SCRIPT["capture_maps"](client)
+        assert client.on_failure is None
+    records = [json.loads(path.read_text()) for path in (tmp_path / "failures").glob("*.json")]
+    assert records[0]["context"]["stage"] == "index-enumeration"
+    assert records[0]["context"]["capture_id"]
+
+
+@pytest.mark.parametrize("failure", ["http", "transport"])
+def test_transient_failures_retry_and_account_for_all_retained_bytes(
+    tmp_path: Path, failure: str
+) -> None:
+    count = 0
+    delays = []
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        nonlocal count
+        if not request.url.path.endswith(".pdf"):
+            return httpx.Response(200, content=HTML.encode())
+        count += 1
+        if count == 1:
+            if failure == "transport":
+                raise httpx.ConnectError("transient", request=request)
+            return httpx.Response(429, content=b"busy", headers={"Retry-After": "2"})
+        return httpx.Response(200, content=b"%PDF-1.7")
+
+    with httpx.Client(transport=httpx.MockTransport(respond)) as transport:
+        client = HttpCaptureClient(
+            client=transport,
+            store=CaptureStore(tmp_path),
+            sleep=delays.append,
+            policy=CapturePolicy(allowed_hosts=frozenset({"www.npdc.govt.nz"})),
+        )
+        receipt = SCRIPT["capture_maps"](client)
+    assert receipt["captured_count"] == 2
+    assert count == 3
+    assert delays == ([2.0] if failure == "http" else [1.0])
+    assert receipt["total_bytes"] == sum(item.get("bytes", 0) for item in receipt["attempts"])
+    for item in receipt["attempts"]:
+        if "capture_id" in item:
+            client.store.verify_capture_integrity(item["capture_id"])
 
 
 def test_oversize_document_records_failure_without_exceeding_retained_budget(
@@ -159,3 +229,29 @@ def test_oversize_document_records_failure_without_exceeding_retained_budget(
     assert all(item["status"] == "capture-failed" for item in receipt["documents"])
     assert receipt["documents"][0]["failures"][0]["category"] == "response-size"
     assert list((tmp_path / "failures").glob("*.json"))
+
+
+@pytest.mark.parametrize("budget,expected_attempts", [(10000, 6), (len(HTML.encode()) + 4, 1)])
+def test_retry_attempts_and_retained_budget_remain_bounded(
+    tmp_path: Path, budget: int, expected_attempts: int
+) -> None:
+    count = 0
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        nonlocal count
+        if not request.url.path.endswith(".pdf"):
+            return httpx.Response(200, content=HTML.encode())
+        count += 1
+        return httpx.Response(503, content=b"busy")
+
+    with httpx.Client(transport=httpx.MockTransport(respond)) as transport:
+        client = HttpCaptureClient(
+            client=transport,
+            store=CaptureStore(tmp_path),
+            policy=CapturePolicy(allowed_hosts=frozenset({"www.npdc.govt.nz"})),
+        )
+        receipt = SCRIPT["capture_maps"](client, max_total_bytes=budget)
+    assert count == expected_attempts
+    assert receipt["captured_count"] == 0
+    assert receipt["total_bytes"] <= budget
+    assert receipt["total_bytes"] == len(HTML.encode()) + count * 4

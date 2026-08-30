@@ -40,6 +40,7 @@
 - [x] 5.4 Prevent outputs from mutating verified inputs, reject unsafe output names and symlinked control files, reconcile the checked-in WCC trust descriptor to the public publication receipt, and bind the captured rights payload to its exact digest, licence text and attribution after preservation re-review.
 - [x] 5.5 Fail closed when captured count receipts, the capture-set declaration and materialized rows disagree, while keeping the new page-lineage and metadata-OID behavior opt-in so earlier preserved rebuild identities remain unchanged after hosted review.
 - [x] 5.6 Reject partial HTTP 206/Content-Range document and index responses, distinguish retained-byte budgets from transfer volume, and persist structured failure evidence after the NPDC capture subagent review.
+- [x] 5.7 Address hosted NPDC review: bounded transient retries charge every retained attempt to the byte budget; index parsing failures persist capture-linked diagnostics; preserve the historical receipt unchanged and explain successor producer fields in `docs/npdc-map-producer-reconciliation-20260830.json`.
 
 ## Track closeout
 

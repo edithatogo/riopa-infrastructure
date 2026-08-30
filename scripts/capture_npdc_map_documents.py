@@ -24,7 +24,7 @@ from riopa_provenance.capture import (
     HttpCaptureClient,
 )
 from riopa_provenance.hashing import sha256_json
-from riopa_provenance.retry import RateLimiter, RateLimitPolicy
+from riopa_provenance.retry import RateLimiter, RateLimitPolicy, decide_retry
 
 SOURCE_ID = "urn:riopa:source:npdc:district-plan-2005-maps"
 INDEX_URL = (
@@ -111,6 +111,7 @@ def _capture_maps(
     per_response_limit = client.policy.max_response_bytes
     failure_records: list[dict[str, Any]] = []
     previous_observer = client.on_failure
+    failure_context: dict[str, Any] = {"stage": "index-capture"}
 
     def record_failure(failure: CaptureFailure) -> None:
         record = {
@@ -120,6 +121,7 @@ def _capture_maps(
             "category": failure.category.value,
             "status_code": failure.status_code,
             "retryable": failure.retryable,
+            "context": dict(failure_context),
         }
         digest, _ = client.store.write_object(json.dumps(record, sort_keys=True).encode())
         directory = client.store.root / "failures"
@@ -130,10 +132,51 @@ def _capture_maps(
             previous_observer(failure)
 
     client.on_failure = record_failure
-    client.policy = replace(
-        client.policy, max_response_bytes=min(per_response_limit, max_total_bytes)
-    )
-    index = client.capture("GET", INDEX_URL, source_id=SOURCE_ID, endpoint_id=f"{SOURCE_ID}:index")
+    total = 0
+    attempts: list[dict[str, Any]] = []
+
+    def capture_bounded(url: str, endpoint: str) -> CaptureResult:
+        nonlocal total
+        for attempt in range(1, 4):
+            if total >= max_total_bytes:
+                raise CaptureError("retained response budget exhausted")
+            client.policy = replace(
+                client.policy, max_response_bytes=min(per_response_limit, max_total_bytes - total)
+            )
+            try:
+                result = client.capture(
+                    "GET", url, source_id=SOURCE_ID, endpoint_id=endpoint, require_success=False
+                )
+            except httpx.TransportError:
+                decision = decide_retry(method="GET", attempt=attempt)
+                attempts.append({"url": url, "attempt": attempt, "transport_failure": True})
+                if not decision.retry:
+                    raise
+            else:
+                total += result.size_bytes
+                attempts.append(
+                    {
+                        "url": url,
+                        "attempt": attempt,
+                        "capture_id": result.capture_id,
+                        "bytes": result.size_bytes,
+                        "http_status": result.status_code,
+                    }
+                )
+                decision = decide_retry(
+                    method="GET",
+                    attempt=attempt,
+                    status_code=result.status_code,
+                    retry_after=result.retry_after,
+                    now=client.store.clock(),
+                )
+                if not decision.retry:
+                    return result
+            client.sleep(decision.delay_seconds)
+        raise AssertionError("bounded retry loop must terminate")
+
+    index = capture_bounded(INDEX_URL, f"{SOURCE_ID}:index")
+    failure_context.update(stage="index-validation", capture_id=index.capture_id)
     if not complete_response(index):
         record_failure(
             CaptureFailure(
@@ -144,10 +187,21 @@ def _capture_maps(
         )
         client.on_failure = previous_observer
         raise ValueError("partial index response cannot establish document inventory")
-    urls = enumerate_documents(index.object_path.read_text(encoding="utf-8"))
-    total = index.size_bytes
+    try:
+        urls = enumerate_documents(index.object_path.read_text(encoding="utf-8"))
+    except (UnicodeError, ValueError) as exc:
+        failure_context.update(stage="index-enumeration", exception_type=type(exc).__name__)
+        record_failure(
+            CaptureFailure(
+                CaptureFailureCategory.MALFORMED_RESPONSE,
+                "index enumeration failed",
+                status_code=index.status_code,
+            )
+        )
+        raise ValueError("index enumeration failed") from exc
     documents = []
     for position, url in enumerate(urls):
+        failure_context = {"stage": "document-capture", "url": url}
         item: dict[str, Any] = {"url": url, "status": "deferred-budget"}
         if position < max_documents and total < max_total_bytes:
             first_failure = len(failure_records)
@@ -155,14 +209,7 @@ def _capture_maps(
                 client.policy, max_response_bytes=min(per_response_limit, max_total_bytes - total)
             )
             try:
-                result = client.capture(
-                    "GET",
-                    url,
-                    source_id=SOURCE_ID,
-                    endpoint_id=f"{SOURCE_ID}:document",
-                    require_success=False,
-                )
-                total += result.size_bytes
+                result = capture_bounded(url, f"{SOURCE_ID}:document")
                 with result.object_path.open("rb") as handle:
                     is_pdf = handle.read(5) == b"%PDF-"
                 item.update(
@@ -194,6 +241,7 @@ def _capture_maps(
             "retrieved_at": index.retrieved_at,
         },
         "documents": documents,
+        "attempts": attempts,
         "discovered_count": len(urls),
         "captured_count": sum(item["status"] == "captured" for item in documents),
         "total_bytes": total,
