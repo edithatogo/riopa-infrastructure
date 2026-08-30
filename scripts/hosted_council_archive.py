@@ -450,8 +450,12 @@ def main() -> int:
             output.write(f"resumed={str(resumed).lower()}\n")
         return 0
     manifest = json.loads((work / "packet/manifest.json").read_text())
+    # Publication/readback success is the workflow outcome.  A source may be
+    # intentionally incomplete (for example, a documented 403 route), which
+    # remains explicit in the immutable manifest without making preservation
+    # itself look like a failed job.
     publish(api, work, manifest)
-    return 0 if manifest["acquisition_complete"] else 1
+    return 0
 
 
 if __name__ == "__main__":
