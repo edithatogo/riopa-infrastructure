@@ -37,3 +37,12 @@ Receipts are retained in the existing 90-day GitHub metadata artifact. They are
 not a new durable Hugging Face preservation claim. Exact successful hosted
 evidence is committed separately after execution. Existing source and derived
 receipts remain unchanged, and the archive track stays active/M1.
+
+## Hosted acceptance
+
+`docs/tasman-run-provenance-acceptance-20260831.json` records successful run
+33336884257 attempts 1 and 2 on merged `6fdbb81`. Both bind the unchanged source
+and derived receipts to one source-run key. Publication attempt metadata differs
+as expected; both classify the source and publication as manual and retain false
+cycle qualification. The scheduled follow-up path has fixture coverage but no
+hosted scheduled observation is claimed by this acceptance.
