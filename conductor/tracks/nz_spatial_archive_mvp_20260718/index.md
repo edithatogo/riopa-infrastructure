@@ -218,6 +218,28 @@ tests. The full local suite passes 1,545 tests with one existing skip and 90.41%
 branch-aware coverage against the 90% gate; it ran alongside the new test work,
 so the 14 new derived tests were also executed separately on the final code.
 
+### Tasman derived hosted acceptance (2026-08-31)
+
+`docs/tasman-derived-acceptance-20260831.json` supersedes the pending derived
+publication state above. Run 33335595270 on merged implementation `9f262b7`
+published all 3,655 features as canonical JSON, GeoParquet and DuckDB at immutable
+public revision `1ccd5953893c588f87a31fe77fcd3d6124f03fae`. Anonymous byte and
+full-row semantic readback passed. Attempt 2 reused the same revision and
+produced a byte-identical receipt (SHA-256
+`e25f96dcf8df5d25bbf3a19d26edcda4cc1e7fc240ea35f5f0a84636bb389e24`).
+Both attempts restored the original source packet; no new live-source capture
+was claimed. The packet retains CC-BY-4.0/Tasman attribution and explicit unknown
+valid time. Bulk outputs remain outside Git.
+
+This completes bounded task 3.7, not the whole track or release. Hosted CI for
+PR #756 passed 1,559 tests with one skip and 90.41% branch-aware coverage.
+Scheduled change/recovery cycles, clean-room panel reproduction, wider source
+coverage and release qualification remain open.
+
+An isolated evidence reviewer independently confirmed both hosted successes,
+receipt equality, source/producer bindings and the bounded task closure. The
+50-test source/derived/workflow/acceptance group and roadmap checks pass.
+
 ### Remaining track blockers
 
 
