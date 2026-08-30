@@ -38,6 +38,31 @@ release gates remain open (`docs/nz-archive-mvp-conductor-regeneration-20260825.
 
 ## Blocking defects
 
+### New Plymouth document capture increment (2026-08-30)
+
+`docs/npdc-map-document-capture-20260830.json` records the exact index and all
+130 distinct in-content PDF downloads (97,420,678 bytes), with HTTP capture IDs,
+retrieval times and SHA-256 digests. Every retained response was independently
+checked locally for HTTP 200, absence of Content-Range, byte count and digest.
+The typed, bounded capture script and hermetic tests are
+`scripts/capture_npdc_map_documents.py` and `tests/test_npdc_map_document_capture.py`;
+the source is registered in `config/source-registry/npdc-map-documents.json`.
+The byte budget limits retained response bodies, not rejected transfer overhead.
+Raw PDF objects and HTTP receipts remain in the ignored local archive store;
+only non-reconstructive metadata is committed. This completes the index-defined
+document acquisition increment, not a four-council capture-to-release chain,
+current operative-status assessment, vector conversion, scheduled operation,
+public payload rights qualification or independent preservation acceptance.
+
+The historical acquisition receipt predates producer hardening; its original bytes
+remain unchanged. `docs/npdc-map-producer-reconciliation-20260830.json` binds its
+digest and distinguishes historical verification from successor retry, failure
+recording and receipt-field behavior. No historical execution of those new paths
+is inferred.
+
+### Remaining track blockers
+
+
 - All four blocking dependency tracks remain incomplete.
 - Four heterogeneous council and two national source-family capture-to-release chains remain incomplete.
 - External research-object validation and a second clean-environment reproduction remain absent.

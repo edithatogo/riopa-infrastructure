@@ -1,0 +1,1199 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "npdc_map_document_capture",
+  "source_id": "urn:riopa:source:npdc:district-plan-2005-maps",
+  "index": {
+    "url": "https://www.npdc.govt.nz/planning-our-future/district-plan/operative-district-plan-2005/volume-3-maps/",
+    "capture_id": "urn:uuid:960ad7c4-9fd4-4e4b-a7d2-7ce853933c04",
+    "sha256": "d4eef2062e9112119f2a5e25915af5c69d922f83680b32742a994bd7c1e1ab42",
+    "bytes": 867009,
+    "retrieved_at": "2026-08-30T04:45:36.676063Z"
+  },
+  "documents": [
+    {
+      "url": "https://www.npdc.govt.nz/media/02jj5zcn/d5.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:57eaf003-dde1-46f1-a273-daed0ebb8ea2",
+      "sha256": "66129f005486afadaa3d0367272dbf34cc974ba32389612f8324f610c731deab",
+      "bytes": 1590648,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:38.070893Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/0duckuod/viewshafts-new-plymouth-1.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:1a1976a0-6d96-4753-82f0-70b5ad703bab",
+      "sha256": "3a10732400b5ef0ba3e9c02a738a8c4fcb9377aa92cd7e8dd9a2ad7e912daffd",
+      "bytes": 183471,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:38.428827Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/0nths1r0/e23.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:da9ba0a9-9743-4b2d-b918-535cf11e8a07",
+      "sha256": "c6f6f86b55dee688029edf8f7d40f19b49ce0b9a72d0ca5914106f3436bd86e1",
+      "bytes": 672435,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:39.171377Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/0q3l2cjn/airport-flight-path-surfaces.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:6c79fbdd-8185-459a-bc94-f11ec8cb2ab3",
+      "sha256": "f954047a6d263f8b721e0fcbb030e38f35b4f65ab8f80a4325494b1d9d978949",
+      "bytes": 832795,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:39.698660Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/0s2ltjvl/c24a.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:11068b5c-2062-4797-a0b0-6107bf681a0b",
+      "sha256": "cb485eb3a932aa49796a986a656c15326c227526837ca021aa40b1e207b0f5ea",
+      "bytes": 662020,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:40.439706Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/15llpt4g/b50.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2dd02bd2-0743-4ab4-8bed-0352c536b327",
+      "sha256": "70b68e5d64f8e07c8b797045b7413a36ba248f7bca84adff612d38203384cc5b",
+      "bytes": 415908,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:40.958163Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/1mudedkl/e21.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:0162db40-8107-45d6-b4e0-6f175a94abec",
+      "sha256": "50c81351766cc9f64beec27c90368c781bce3ecf5693f78001c39997d354b772",
+      "bytes": 479584,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:41.608677Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/1q3n1o2x/a28.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:796d1d47-de88-4f23-b822-ff4476d0bfb5",
+      "sha256": "23d7db58301a73a1d5fb7ed3839754033017151dbb9791577c4ebe6339cdfb92",
+      "bytes": 714040,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:42.152012Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/2funz0pi/f5.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:647b99f5-3cbf-42d2-bbd8-a613f63190ca",
+      "sha256": "fd9c163763eac39cc9a300d9f151a1041e096e7cfc4ebefafd421bdab4725948",
+      "bytes": 236540,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:42.809794Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/2jzbrxbh/d10.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:41fb0efb-dfce-4e25-9888-53b7b083bdf9",
+      "sha256": "dc771c79a5bbeadce26a2ffa80ccb4102753966ff9cfde60d2d64d24f2df1003",
+      "bytes": 387016,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:43.274684Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/2u1ppjip/index-waitara.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:362b4025-8a6e-4045-9dc2-c163be87d961",
+      "sha256": "2f6a03b3eb39f7f2fa0e89001b29bd9dfe72dfbe29c46211f6982b3dcaf89b00",
+      "bytes": 179437,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:43.974082Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/2udbdbrh/d9.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d2591330-5c36-4193-bae0-d1779913a025",
+      "sha256": "05bd8144954291b9454b1f372c4ec6af1436300ed9c8c42b42ff419f07db5294",
+      "bytes": 151943,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:44.412695Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/302p5ejy/f23.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:9f76f1af-1e85-4251-bfad-f64dc9cfa874",
+      "sha256": "33f25dd0fb88254fa8c14b81ca43df2122d86ce4ec3a61cc3e3ff8762546e5e3",
+      "bytes": 418154,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:45.076241Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/3deiyzcy/c25b.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:8601f82f-3186-4c9b-9741-17bda91866bd",
+      "sha256": "790692e67d222670e7fde30160773da5f081a5022013bb2fe28990ec2ac77767",
+      "bytes": 895236,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:45.604670Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/3f5jzetr/viewshafts-new-plymouth-3.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:a565ba45-059b-43ca-8191-388d146a0228",
+      "sha256": "29b0188c211e1549e5389f7a1f6caafc709c72de123ef66412617ccb4c6ae024",
+      "bytes": 4748554,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:46.297102Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/3unbxlns/a29.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:947750f3-9f6a-4ca4-a4f6-0cabd7af839d",
+      "sha256": "279a683e10b5676084e91baeda1cdb15f1425810a08ad867b1987ecfd6b43431",
+      "bytes": 899334,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:47.346251Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/3ybk5qgp/c21.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:cd54a47e-2967-458f-8542-cdd05e5db8ba",
+      "sha256": "efffbd469684a781bb771300e3834d090d7cca0da2bb07b9c50eac83a4774057",
+      "bytes": 580230,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:47.698355Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/45chveur/f22.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:52934b54-9169-497f-a2ed-79375784f6d4",
+      "sha256": "197a0df130498d2366d40808b000421073715b65ba63ad2365316e69a2f96589",
+      "bytes": 617857,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:48.514973Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/4hpnvdrx/e22.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:95ee7066-90ec-4e73-a99b-4c1113226792",
+      "sha256": "cae65551954cc7be8f4a6508b831fe8816af775f09e68039249218e456c515fd",
+      "bytes": 736697,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:48.874973Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/4m5lucer/e1.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:a135143e-3aa6-4ac5-b224-8793985425ee",
+      "sha256": "36337da5dc35fc778378458523ec0c990430050fa7c746eee7d78f6d30f70ab4",
+      "bytes": 879653,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:49.719476Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/54nhbkus/e20.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:678d4489-a1c7-42a5-9980-3535388ac9db",
+      "sha256": "b034c57839306bdaefa8082777d99b853cfee8dd488333bc60a06e1bb81efdcb",
+      "bytes": 673610,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:50.078378Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/5odlky2t/f08.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d5dfd5a3-77c6-429d-97ce-9d4cf6d49eae",
+      "sha256": "aa6004ed6abfc1baf16b961be8fd23c7dbc35a36fd531e6fef07e4b6a2e0f2ef",
+      "bytes": 107755,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:50.912107Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/5umobugy/d3.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:36c4acc0-1dc4-4c3b-ad6d-e68e39950ad6",
+      "sha256": "8f5106e8f58e2af3a33d15e8d2897fc8b4e1c5e8543662118864be9038a3b8a3",
+      "bytes": 1708590,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:51.174300Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/5vqn4lnx/viewshaft-oakura.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:74eb1be6-2314-450d-af5b-2fb4846a4c08",
+      "sha256": "2c7d6caf3a82cda2fc37ae1ef22e85107f6130d23277975138a0514df830afb3",
+      "bytes": 710924,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:52.251570Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/5wserciu/a51.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2524a3c0-6863-4997-9e82-523915feb941",
+      "sha256": "a57039193a0b5258aa88ed84625009f7b9e95f24f963e287fd3b4528eafbaa2a",
+      "bytes": 424000,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:52.442625Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/a2ee1hqg/c27.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2d263a18-58c2-402b-9968-b89e1c337417",
+      "sha256": "bcde349583deb9ff0282d59f3367c52a4cee4768812b8761e8db567c951fd770",
+      "bytes": 1936125,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:53.425748Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ag2glsvl/b30.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:10f62d3b-18b4-4091-bd6b-cd64e28c1af3",
+      "sha256": "684edd97c7bec52b23716144a0e822a43c7e499123f9ea4696c507447879d47a",
+      "bytes": 537051,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:53.756731Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/atkfx0vs/a30.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:aab36864-432d-4c83-882a-75bea3891d5b",
+      "sha256": "e5e98972b53cf75a7e7630a4469ab8d27c017f49b11c35fdcc682ac755e26c66",
+      "bytes": 1182774,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:54.600398Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ceudqe5f/b41.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:1605f267-363a-47b4-a69e-97173b76e6e1",
+      "sha256": "d707cdee94e805dd7ba0ed2cce71e45baa029a615a70b540600a906e3041b138",
+      "bytes": 1740215,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:54.994706Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/cp3nfoye/c5.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:cf2ce1f3-7d82-4be6-a5ba-bee147bbed43",
+      "sha256": "86c0866965e14733ef2b20a815ffb9d0e1bc7c94eecd5886d00dea51b70bbb13",
+      "bytes": 567959,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:55.898181Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/cpja03le/f3.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:93cf6013-8d17-4ed8-a690-af3caacbc80d",
+      "sha256": "2c8c76a56343cbcc58ad0fbbb66f4ca222d13bc18680cbe8427d9864a9b91a17",
+      "bytes": 127359,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:56.166322Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/d1ogfi4d/road-widening-detail-2-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:3914de87-915a-42ee-b060-a3f236ac17e8",
+      "sha256": "2deb909da0306e3927324ae4c743c362f8cf1f0735a18d470b8aff929a62d219",
+      "bytes": 332175,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:56.984566Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/dccbyn3a/c6.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:60771506-2fa9-42f6-9299-caba0f41722b",
+      "sha256": "8a02a138889f6486b6609154425915c8cb94f039ebb4e098a078b5f25a844dcb",
+      "bytes": 852300,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:57.296240Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/desjsdvg/b12.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:3c1f5836-a8a3-4a58-b78c-a7516b0a572b",
+      "sha256": "37ae2ee4ab03cb6557d4ac96d7e83aa9bb074790e64f1c5f6efac29f6a9a7c28",
+      "bytes": 124633,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:58.171821Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/dflfdna0/a73.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:892e58db-2bd3-4cff-96b3-798df95cb1f2",
+      "sha256": "721312b374a2a4241b2dd37f422d497c8b283eae724971d0b4404ad0094373a0",
+      "bytes": 490319,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:58.391561Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/drsbo0mu/a43.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c591c6b5-2337-4759-89b8-2e065dedcf55",
+      "sha256": "7bfa94a231acb93233086af6c4a006c9b3b5e1e45612f4218ea73f62817cb03a",
+      "bytes": 476217,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:59.356910Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/dz0newj4/index-rural-right.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:bb151d0b-91fd-4522-b8aa-e0a9cb519ab5",
+      "sha256": "495c92b77a7a89f8d53429da47e99e53f73500316b8c6cfb82933b8473317009",
+      "bytes": 333014,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:45:59.533911Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/dzaf4pop/b29.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c0a7a3ed-05b3-4be5-a88e-ceb4e2a4c5c1",
+      "sha256": "a0cc63b69b05c5749d7f8eef711d345281234ede103e6812cfa063b95056a8b7",
+      "bytes": 527506,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:00.492323Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ehpp1qyg/index-inglewood.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:265e935f-d4ca-4eb2-95d2-f1d479f27521",
+      "sha256": "ad5edc47b6228a4ec8c8e5dce369019c2d1116c787f02308aad9ca75d83ec7b6",
+      "bytes": 98072,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:00.690702Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/eqfpj45g/f7.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d17a9c40-5726-4aed-9dfe-f36c983168a2",
+      "sha256": "b345d02f9ba0cf5ccc4ee4f22091ffcdf466ffa3bbbae30f436f34098faa1ce1",
+      "bytes": 125231,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:01.586957Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/fgzbein5/index-new-plymouth-right.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d8106dc7-23d5-497d-b1ee-6f739e6dfdc5",
+      "sha256": "d252345f8e06c87245237fb6323c79f4ed2781850ee3be4a71e2d4310be4f675",
+      "bytes": 392216,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:01.781530Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/fytoy1rx/d4.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:36b7264b-f12e-4947-bda6-b1ca059f4a42",
+      "sha256": "c6122cd8140e67e252974f6a3bd5be28c142745c8054a2c2166994fb38c8f4e0",
+      "bytes": 4143368,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:02.727222Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/fzvbapdu/road-widening-index-left-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:5ab4d6b3-be67-4d72-bcb1-ad4aa0737ede",
+      "sha256": "678165d932500e45a50471ecf6361a1ee8e113b94ee1395e23acaf7cd59c182b",
+      "bytes": 559461,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:03.442158Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/gjjfl2qu/e26.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7475bbb6-83fc-47c0-9598-45cf78be5137",
+      "sha256": "dc4439057407b3bbf9c982e203d13152d9e5c31f70882b6162ae81546d734a84",
+      "bytes": 439821,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:03.905790Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/gjtazzzi/viewshafts-new-plymouth-5.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:e7911c21-4a6e-49b0-b1ad-c99e4470cbd7",
+      "sha256": "9ff22bfc0c18fd6364a3dd1c2d0c53092a9d70a0ace60550862edf2c98672ca5",
+      "bytes": 4108635,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:04.583308Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/gkwkmm51/b26.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:0922e1cf-1b8e-4d6e-8194-426b15c94963",
+      "sha256": "12d221f4055fef75c3a2d2d39715f52320b2cf8cc6bb35968de68e11f919fd38",
+      "bytes": 156931,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:05.465963Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/gtea24qq/sreet-index.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:0d611bf5-58a6-4f85-a27c-e991b76a5c59",
+      "sha256": "37cb471d796c56d743ae78ee6894e99defacb1a150af4ac3ecfd9ace0f3d8389",
+      "bytes": 87095,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:05.701080Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/guob2pfb/b28.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:f4e22fc2-45b1-4df6-aaa2-01045147b97f",
+      "sha256": "3e4c085b12d4fe5b5f81d83ddfb04b62dd6269c0dc7b398d22c37b80c1a2f15b",
+      "bytes": 1175364,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:06.570911Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/gzybh1jp/e10.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:4d91681e-d36b-4599-98ce-ec917e89ad96",
+      "sha256": "da3cfa532be204cd2a1a5d28f49fdd087bdb058b019b5a89717e4841ca8b26a5",
+      "bytes": 68364,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:06.939464Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/hygogepp/e9.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7e81b131-9c16-47e4-963f-1fcf87dfa1c2",
+      "sha256": "cbd507591ed7d86c736ecfa50b429e937d54b8fb0f88b7ccd075a284c1f25931",
+      "bytes": 624934,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:07.658180Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ieblbugi/e25.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c822bb87-fc88-4e22-b5f1-a7b8b26519e9",
+      "sha256": "ed1b81beab8e33ff787b1df0bcd2ca4ddcaea2790ff9253be90156e6f371b509",
+      "bytes": 757523,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:08.100956Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ij4jaalp/d11.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:8f0bb4cb-b576-4a7a-930d-c6ddb6260538",
+      "sha256": "5e766f3aa620f3617d34f6c8c9e887dc177d9bda74e0f63ad70d687aab7c48c3",
+      "bytes": 97965,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:08.876917Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ikjktfqu/a50.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:72441d0e-6a7a-476c-9d10-20bac117427a",
+      "sha256": "d56debe2dcc850d816b914f18c2bf8ef694c6d0049c067e155b960714f40a37a",
+      "bytes": 349057,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:09.185547Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/jltfn0rp/c22.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:aaa2610b-6c95-4836-8aef-c0766c9dc506",
+      "sha256": "631448ed54c11bef829d6f7daaf10b1393be421da0066dcaadf566004d5f2eb6",
+      "bytes": 469010,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:10.948766Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/jwrfhkkm/f2.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2f9c0c55-9d07-4f29-90b1-1f316c659047",
+      "sha256": "fd4a66cfcf7e0f76e1f656a602c327ec1a8aa78cf26e955846a1377a15982df3",
+      "bytes": 155971,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:12.069644Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/jznjfnpe/f24.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7b4ffac4-54f0-4c44-a036-fc8222330e9d",
+      "sha256": "fe1f3cdf6aadc51c9b0d705c26697d56542eafd8f5a4058b5a37759b7b648799",
+      "bytes": 100932,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:12.160844Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/k5mfj5d3/d20.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:93ae5db0-c323-492c-bb91-d70f2979c8fc",
+      "sha256": "363f4826864d19593c732a45951e7aae58c6158151d024ce83e201a8c862cb16",
+      "bytes": 527712,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:13.174045Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/kgrgwltl/road-widening-detail-5-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:bb4a9b6d-e822-4c9b-ab0f-bb1ecb874a54",
+      "sha256": "d536f70495b69de9c12027cc61d557e67be64deacc34e34e9abaedb3c77fbc78",
+      "bytes": 372016,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:13.338703Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/liepl4ov/e5.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:67a9197f-a1fc-42d9-be10-d3378f5d1c2f",
+      "sha256": "d8b95725c920d113bc94baf24662038adc8c1157002a314efb363ee383a92eb2",
+      "bytes": 1834986,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:14.325314Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/lkppyyhu/c10-update.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:9488d1bf-71df-422e-b236-a8cdcff2f1f7",
+      "sha256": "da3e6b2c5cb8d47ace82e122ebc259ee9b8a1822895cb25912ce89bc9ecfb832",
+      "bytes": 440983,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:14.720083Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/lkwpnlbs/f4.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ba72e3d1-de38-470b-a7fe-36b32ee4abcd",
+      "sha256": "e213dae472c7da85f44292821ef9cfd3050ba56e951c2c1ad631e6aecf32412f",
+      "bytes": 978015,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:15.476465Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/lyxfuy4g/road-widening-detail-3-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:a127e417-7043-4388-950c-82063398c65b",
+      "sha256": "b793485eb5bd5e641fff0760d89685bb401c05a2a1b096987f0dbbc79a8effaa",
+      "bytes": 546164,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:16.014121Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/m1blh2u2/f25.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:85649b12-c6df-4259-b010-47fc9996be62",
+      "sha256": "2a9ceda6e7aa18b93a1a2e2034ec045c46141b1f928a48114d2fcc6e9d33fcb5",
+      "bytes": 422075,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:16.630030Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/mcjesm3z/e4.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:3ae2941e-1cb9-45b7-82ac-b028bfe3aabb",
+      "sha256": "ff7e160d2d692a25b844a8c4d25c08b261134fa8e6c51ed06b0559d3627e0349",
+      "bytes": 1249225,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:17.171830Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/mgsdluc3/a42.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d381fb49-64e5-4ffd-9c77-756b9f10d992",
+      "sha256": "3c37f2d759a08dd568b9dd7e3b46a532c0bb6cae2ba14761b2d4e8a75aa7ac6d",
+      "bytes": 778238,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:17.929558Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/mivjsj25/a41.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:784e6e96-9609-4668-9bc5-d3a774546e55",
+      "sha256": "6153f958e37ec4991ae0a4d785bfdde90d36c2ba95137157ab935ee76e807bc7",
+      "bytes": 1382281,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:18.574137Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/msdptc3a/b10-update.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:219ff184-58d7-4cdf-8b6f-ba2b0ada45cc",
+      "sha256": "bea7ed55363e5b75ea8625755edcecea5b80f6807a94d99d210598765e172f32",
+      "bytes": 747489,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:19.178847Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/n4ti2e0l/district-plan-how-to-use-this-plan.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:bb6b9367-b088-4c95-b95e-71afa034ee06",
+      "sha256": "05e6a41892c5601fd30cfa5eb2b947e8a7ed9d671e13503c97d6af223b67ae59",
+      "bytes": 293902,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:19.761719Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/nfwjzqfm/b40.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:cfc40ed3-9a4a-4acf-935d-83805f149a6f",
+      "sha256": "65d25e12cd69f0dc4886397fa007fb2120f0e4c691a2b1d7e40d91dc5e738682",
+      "bytes": 428917,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:20.304275Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/nqxmuqof/map-key.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c3717ebc-4fd1-4754-9e59-468bee57664f",
+      "sha256": "9699eda600a47f50617431251e9dc226ece849b99c1a948bf2743b9c9c929bb7",
+      "bytes": 217772,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:20.921525Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/nt5ntvo5/a10.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:e802f7e9-beac-4392-a0c5-3323afa982dd",
+      "sha256": "d736ae6cd464c7a84ed0a66db9ed14af968193b079459011b2252ee2b45b4fab",
+      "bytes": 810738,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:21.405945Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ofbhyfjb/a74.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:f1e2afdc-725e-4792-8670-c6070204d683",
+      "sha256": "5e34d9a1b6fdd44d5cf32f21d191b546404535bb8f417589422a9add0cb1a564",
+      "bytes": 733790,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:22.117120Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/oiue4ky3/e3.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2aba63fb-16f3-4261-8c94-187446df25f6",
+      "sha256": "43f97369533fd6d279d05172aa3b9b7fe3da8600fd641e6b96a8ee90c9697c6a",
+      "bytes": 830875,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:22.615019Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/olknljeg/c8.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:6efb2128-e041-4a50-97e5-357a5363b8d0",
+      "sha256": "354b2297f414e6ab08a1892b8424746746804aecbf89c3d653f2cdbcdb9cad1b",
+      "bytes": 1086524,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:23.306696Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ow5jm4bx/e27.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:8cf6295e-25f1-4f02-bb00-77dd2ade705c",
+      "sha256": "d924d7359f8cd8d5f0a104a7379928957389a360c1f78e0bcf4b5c11a92dafaa",
+      "bytes": 803862,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:23.844093Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/oz1dlfum/e24.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:52e38489-f19a-42ed-9d4f-7cf3e46e668d",
+      "sha256": "56d085dce9ac0aed17d808c97a4b6d648196bec1139a794658e4591958b4cf5a",
+      "bytes": 810486,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:24.508710Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/p15nrqs3/c9.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:976945e1-5bbb-413d-a7db-0de7daa3a911",
+      "sha256": "14a91fdd69e2b99a07f24010d7ef53178965c827b20883c65bf4bb7697bc8f73",
+      "bytes": 515355,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:25.038706Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/phwlhnuz/a32.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:416cc0ae-8e1e-4709-939f-af9838bd8095",
+      "sha256": "4816fc4d1899a78df7090faf0ed3f55cec5f12ecc4d511895d98efac01597a8d",
+      "bytes": 411418,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:25.663847Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/pqxnqkok/a72.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:6d0af381-3366-411b-bce8-365abd125fc5",
+      "sha256": "a6ca3a54cbe96412cf021a8efc80ab2e5622b5dd480df57329cf37e15bf992d6",
+      "bytes": 603741,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:26.195244Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/pslfvxrg/a40.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:6421047b-b799-4140-ade9-66402a87684b",
+      "sha256": "d6bb19f42c92d819e4311782d6fe14c3da6d0ad0534fdaa578ecbeddaaadb948",
+      "bytes": 623105,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:26.884968Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/py0ps5qo/d25.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:eae1fb30-8c01-4194-9b10-87873d9aa53a",
+      "sha256": "4e0e70d9aa6e0adb0e2962cbe63fad43cbb1abdc0de1d719ddd5c63bb03196a7",
+      "bytes": 867582,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:27.389582Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/qglpqk1r/a31-v2.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c0277672-95d6-4a06-8d08-8a28e495a3e8",
+      "sha256": "59f03b9ad78d2a6b41a47d260695d138fed2af0980e66f10d5247bbeb95df256",
+      "bytes": 385343,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:28.149342Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/qmqfn2su/e7.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7cb96fdb-e68a-4537-a10b-e60df7e76886",
+      "sha256": "9661b97a75e11bbc78eb3da05a7494e81c17b75cc4619a7dc163900f1c866ee4",
+      "bytes": 1183651,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:28.532080Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/qqrcj1xh/port-taranaki-environment-area.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:dffd19ff-414d-49c4-a20b-c0b55ddafcaa",
+      "sha256": "f26181bbc6ce31b55c5ae278955bfe296e17f64b3b72209c8a8fae484f27b938",
+      "bytes": 302258,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:29.401159Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/r1dfvsqt/c12.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:1dc69c0d-10a7-41dd-8633-63b86a9c95d2",
+      "sha256": "389b0a4047309d303f83267b69e7cfe1a839dc250518dcc7aaae76006f505756",
+      "bytes": 91543,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:29.673097Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/r3yhpvlu/index-new-plymouth-left.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ac293f4c-e281-46df-9d15-95da200bd2e1",
+      "sha256": "30757adf06ebb216503af9efcd9beb2fa7d615cb387f8faff1c5226fae1b4ac5",
+      "bytes": 261587,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:30.508920Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/rbgi0dze/b27.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:5777900d-5d14-44ec-a088-c9706de80c5d",
+      "sha256": "ae4317c66419a4ea60bf36d4ed562b10ba3127a4d00db65d30dec7c3ac7b1709",
+      "bytes": 1615444,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:30.816044Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/rcwf3gmt/b42.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:fe638aca-3dd5-4f01-b24c-8c637ad703ae",
+      "sha256": "4fee53ff5c78b4bb00af64537d3991b38e6e278c0221d97a51d6a5102b188090",
+      "bytes": 753887,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:31.913347Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/s3ja3j3e/viewshafts-new-plymouth-2.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:f1b228e8-a820-481b-bc58-94376c784dae",
+      "sha256": "c8bdc9951b1d72b0344b70e3565294f614a5b40cd8d9edee7849082528938bf9",
+      "bytes": 1056167,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:32.105067Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/smonrs3l/d24.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:8399fd8e-fff6-4cde-bc8f-c186feb30611",
+      "sha256": "28f1271b12e7140b3fafe8f239e79029b08f7d663238988077ace7d3b7e59acc",
+      "bytes": 1192353,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:33.156010Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/swdlitra/a12.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7da0e284-ffef-4720-810f-b8a225f98bde",
+      "sha256": "ef428220db88adf7b0fc0c85b4b935af0f624a3efad42edc16f36c738b564c03",
+      "bytes": 122688,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:33.410425Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/tflcc5fi/d7.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:b5d52cbb-e55e-4812-9ac8-f2381dbc388f",
+      "sha256": "d437d758f0c0d6a666f631d883f180851b25424c463f23d404ef2287a5acccf2",
+      "bytes": 940109,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:34.247772Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/thsakgo3/road-widening-detail-1-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:9b5f92f7-75ba-46e8-ad85-735b298aa266",
+      "sha256": "329ad5aee699359d248071ea6d0a5dd2d1d122ec257cb7f5c44cb371df6d96e1",
+      "bytes": 282436,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:34.613211Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/tmkolsqj/b9.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:935a6600-dcfa-47c7-a260-433a49846c41",
+      "sha256": "12fe78395bbbf6ae66200143f0efde9acc7d455bb1d1993e0b712d63f5669261",
+      "bytes": 805756,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:35.363130Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/tqdmghzn/f6.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:73a332ea-4b7b-4628-b41c-a421bafe44ad",
+      "sha256": "854f5a9992b542080eee2889a26bc59c1dd33f0616a671687933abe3582e9054",
+      "bytes": 1069120,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:35.787276Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ts3lxmdt/d21.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d6638bdc-cd66-47e5-b08c-283cb4904e07",
+      "sha256": "61240c7eb3f1282931e7940d0e7d7e2378717ea833cd54a3dd57c50ed930bece",
+      "bytes": 971109,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:36.565283Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ttcjzvgf/a70.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:e9186d31-f8a3-416d-ae74-8dd24c0bb567",
+      "sha256": "786de5a9afd46b97886b86235fd5818c3d7fc009fd21045938659749fada92cc",
+      "bytes": 951589,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:36.979813Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/u1hlhf33/b32.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7ac65d3a-7e4f-4fa6-ad5f-498309856b61",
+      "sha256": "ea85848c09458cfba5ed68543299a06c0659e141d7e000d6754845e5a8404045",
+      "bytes": 367818,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:37.765356Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/u2ycdeyw/e8.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:5d4434ca-727f-49af-a1f5-aee21b056944",
+      "sha256": "055a39bfcf55556e38cef015ab90601f58d016e5e862ee2368ae8781f3c5c08a",
+      "bytes": 613468,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:38.115063Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/uelp0lkn/a60.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:64ced2c5-1659-424d-9f7c-7ddc630894a9",
+      "sha256": "0d2067158d953c80da4eef4e43cf15596aca5d20740d4d76d809e968bb23b373",
+      "bytes": 835978,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:38.934419Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/unjlkeuc/d6.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c376bd97-1092-4a47-8ed7-bca5e539ca21",
+      "sha256": "4424259a5e8d65ad83133d781be23623ca124b9918f16038f088fd44235d052e",
+      "bytes": 1391401,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:39.314546Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/uwhcvedh/d23.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:c1db6c2f-3a3e-49ec-86db-09e6a88585e3",
+      "sha256": "da64fa9b8facc515f115ddbba4587c2e4b12d46dce6c21fa8b355e2040d04807",
+      "bytes": 1024420,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:40.216720Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/v4nogcgk/d26.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ff117adc-083d-4fe0-8650-366e61c325f8",
+      "sha256": "2e177738a8ffbdc957d4e9b1121febe37d325a241e24b6a3f74d5180a376b94c",
+      "bytes": 854483,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:40.568017Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/vrgppieg/e6.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ea658519-8b3c-4cb2-8623-f0439f13c7a0",
+      "sha256": "1ba557ff13582783db40fe0ac101c19ce519c723d8bbb34e56b171de3a0e5402",
+      "bytes": 1332373,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:41.596286Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/vryfqhen/viewshafts-new-plymouth-4.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:f134b161-d3b7-4597-8aee-5c7598aeff31",
+      "sha256": "1203bae77242624304354b3220c99bdc40c935f64383e39b48ec8dfcb89306ec",
+      "bytes": 317077,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:42.010033Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/vztmmjkl/road-widening-detail-4-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:da511590-6240-41d3-a00a-39d6d08fbca6",
+      "sha256": "1be64c1f5d29e789e9800fc65f94f82a01835d58d40b00ef6efa90679b4dc21b",
+      "bytes": 461135,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:42.755747Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/w2zkkupd/d22.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:aca4ce59-695a-407b-8b54-8dbab7fc4be5",
+      "sha256": "d9a7a63093698148a9c5e4bcd3d4154534733c3d22871f9b272e0192088b7ad9",
+      "bytes": 1014786,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:43.194523Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/wtqh1duf/c26.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:5ffaeaec-8fe6-461a-ad1a-238d03c4b94d",
+      "sha256": "ef668164beb95fd527eda9eb5dbadc1c2da563962d69f4fb2ed7a7dabcf1f6aa",
+      "bytes": 1059860,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:44.148751Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/wzpdsqdl/c24b.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:e8dbbb54-4933-4415-af5a-e299fc5480d8",
+      "sha256": "e2d759c4223a3888e75a1241aa706481c57c8e473fdf788c0a0d8f55fd47b690",
+      "bytes": 3020833,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:44.542106Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/x03d2r0y/service-lane-other-towns-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:e0061067-898d-4a87-8638-318fd7c10574",
+      "sha256": "0038b630ab3bc8902f25279d09d3d43116d8a591ee9af98694f7db388b266320",
+      "bytes": 259389,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:45.633290Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/x0nawpty/a61.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:e4658aaf-c81d-4a7a-99c1-749ce411ff64",
+      "sha256": "91509fc1b7fbbb214d62e99282413b380ce4714c1b350ac911c62b1d62993a7c",
+      "bytes": 819649,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:45.855385Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/x0zlrcru/road-widening-index-right-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ac9e0d29-5ecb-427d-a888-d628d7a555ba",
+      "sha256": "3854696bae8f30c7fb2fd9c5fb1452e64af726b2a09e8a8667b1812bdc7b9904",
+      "bytes": 444498,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:46.823673Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/x34dwhd2/c25a.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:7e484dd7-6bf6-43fb-8a74-6a6342d69080",
+      "sha256": "d77d841c864b957d97d5370093dd6a8b51b0812f0c1e0378a1989e6d1726129d",
+      "bytes": 803595,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:47.252974Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/x5mixqd4/d27.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ccdc882c-eb6c-45ae-a6dd-6b68cba6918f",
+      "sha256": "baf815df0844d5367804d5f49d78708eee110050bd26aef88aed9b775e985076",
+      "bytes": 866617,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:48.093797Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/xc3jtgil/d8.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:ff9f5329-0c32-4aae-afc9-858f1df359ae",
+      "sha256": "8f4421b5a55f4032177cf6dbb1cb5b82aff148047af3117b60d6771c30f252c7",
+      "bytes": 447047,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:48.467769Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/xiujqikb/c7.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:245736db-cff7-4555-a4c9-5b60d0caaa3d",
+      "sha256": "51dd848af223e5c86669c7c5a42175a392c04a210502d2e80c748a994aa12c0b",
+      "bytes": 576884,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:49.266945Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/xt4nmd04/d28.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:18e6bdbe-8068-4d28-b292-63f59d4bb433",
+      "sha256": "35df6e8bdcd1490b7eb4b1981af548e0ac230d2969f65d4f2a5086d937f154d0",
+      "bytes": 263960,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:49.666471Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/yaoh5ir3/c11.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:36f378f2-2ec7-4b09-b0b1-782d4bab4d07",
+      "sha256": "1aba22f331e56d6a307839bb0d8a5c724e85c13ea2954398e4a88f4bfa85c8a1",
+      "bytes": 156877,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:50.411072Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ybbdchn4/e2.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2bc6914b-005a-4a1d-948b-da51d845cf47",
+      "sha256": "3453a8dc2fba0c1eacb99d76942d7b8491f7acb62b28e1a19cc7d12c2cb9264a",
+      "bytes": 1391132,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:50.762081Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ye1beuyb/b11.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:5bd97284-6478-4fc7-bceb-0ed46b815ce9",
+      "sha256": "37b724d39084aa953e04eadd97615c49b043ddcc8c74b8a700196df5e289e80d",
+      "bytes": 130216,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:51.693220Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/yjmphscl/c23.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:409214d8-8e89-446d-b2eb-c62ee4b5e614",
+      "sha256": "fb4ae2914f9a2fd12a049a60fd86b900787a5ed0ed7207ce72ae30600fa3af59",
+      "bytes": 779653,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:51.897522Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/ynrjyn4k/service-lane-new-plymouth-1-2007.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:3230a414-d964-457a-aa04-df6686ca891b",
+      "sha256": "ecb93b025fc596fb1ce14dbcb5e0271123e80781cb6715c91bb96bfb4957ff7e",
+      "bytes": 270493,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:52.887743Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/z04auny2/b31.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:74ee7343-d9c5-4f38-9bce-70ff06ac5ec4",
+      "sha256": "3573c14afcc0faeab8c930f541a5fc22614a3e2e466429f2623694c7a9bcef5c",
+      "bytes": 401311,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:53.052322Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zgyfnpzn/c28.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:42e9250a-1a5a-4513-be04-cfcba002b687",
+      "sha256": "1531d0fd89d21c7697d6ba5aa8d5e952c068fe9561f7d9c4737d3ad8d0d264bd",
+      "bytes": 781891,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:54.034403Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zsop4qp2/plan-update-schedule-updated-august-2023.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:2aa3c6b6-52a9-43d6-8e97-46de4a15a852",
+      "sha256": "dd70176e244de435f733472ae5fcf64703ab2b79115e5ae7c0e3507e692dc755",
+      "bytes": 391557,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:54.278365Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zt3h531v/e28.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:eaeab27a-ebc7-47da-8675-80cebec19d9a",
+      "sha256": "6b9f92ad3c4ca119aba4a98662d3737c7e581431f3d720fa82b15606ee2f69ba",
+      "bytes": 242556,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:55.204569Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zv4lafyp/a11.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:23b90039-95e6-498d-a899-91281de456d2",
+      "sha256": "005fe563723ea5c05435ab5eb0d28d626f6dd3c2d93ec8cf2e43ef9c7ccbc727",
+      "bytes": 339957,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:55.403656Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zvmh0aev/index-rural-left.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:4975e838-d5e3-4834-a47d-3639371f074b",
+      "sha256": "47f2884012637d20f9b45c68eda5a9f743124feac8d80fe4dfa34f18d9d63543",
+      "bytes": 355320,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:56.440965Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zyvfi5ah/b51.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:26c80595-6315-453c-9f85-4413d995db84",
+      "sha256": "a6d134dc523148fa0af77c855629ae783a09fa758325851e2360c6d6ed5f9e7a",
+      "bytes": 567345,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:56.592458Z"
+    },
+    {
+      "url": "https://www.npdc.govt.nz/media/zzmd05ym/a71.pdf",
+      "status": "captured",
+      "capture_id": "urn:uuid:d4ae69b2-50c7-4716-8d7f-a1178f55b51d",
+      "sha256": "efd9b76b41e44964ca112ebf1055faa530a83855c9dc03f98d3ffe6949cba933",
+      "bytes": 623771,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T04:46:57.673689Z"
+    }
+  ],
+  "discovered_count": 130,
+  "captured_count": 130,
+  "total_bytes": 97420678,
+  "bounds": {
+    "max_documents": 160,
+    "max_total_bytes": 128000000
+  },
+  "publication": "metadata-only; raw PDFs retained locally pending exact rights disposition",
+  "non_claims": [
+    "Inventory completeness is limited to PDF links in this captured index content.",
+    "The 2005 plan label does not establish present operative legal status.",
+    "PDF documents are not vector features or canonical bitemporal spatial records.",
+    "This capture is not a scheduled cycle or public payload preservation receipt."
+  ],
+  "semantic_sha256": "18436d156a2844d4e9f608ccc85b13da78d28bd13b68b5dc01af14f2d47e4a89"
+}
