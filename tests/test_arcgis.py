@@ -107,11 +107,16 @@ def test_arcgis_archiver_requires_positive_page_budget(max_pages: int) -> None:
         ArcGISFeatureLayerArchiver(None, max_pages=max_pages)  # type: ignore[arg-type]
 
 
-def test_arcgis_offset_archive_writes_redacted_manifest(tmp_path: Path) -> None:
+@pytest.mark.parametrize("field_list", [False, True])
+def test_arcgis_offset_archive_writes_redacted_manifest(tmp_path: Path, field_list: bool) -> None:
     client = _ArcGISClient(
         tmp_path,
         {
-            "objectIdField": "OBJECTID",
+            **(
+                {"fields": [{"name": "OBJECTID", "type": "esriFieldTypeOID"}]}
+                if field_list
+                else {"objectIdField": "OBJECTID"}
+            ),
             "maxRecordCount": 2,
             "advancedQueryCapabilities": {"supportsPagination": True},
         },
@@ -145,6 +150,42 @@ def test_arcgis_offset_archive_writes_redacted_manifest(tmp_path: Path) -> None:
     page_requests = [item for item in client.requests if ":query-page-" in item["endpoint_id"]]
     assert [item["params"]["resultOffset"] for item in page_requests] == [0, 2]
     assert all(item["params"]["orderByFields"] == "OBJECTID ASC" for item in page_requests)
+    assert manifest["object_id_field"] == "OBJECTID"
+
+
+@pytest.mark.parametrize(
+    "fields",
+    [
+        None,
+        [{"type": "esriFieldTypeOID"}],
+        [{"type": "esriFieldTypeOID", "name": "one"}, {"type": "esriFieldTypeOID", "name": "two"}],
+    ],
+)
+def test_arcgis_invalid_field_list_identity_fails_closed(tmp_path: Path, fields: Any) -> None:
+    client = _ArcGISClient(tmp_path, {"fields": fields})
+    with pytest.raises(CaptureError):
+        ArcGISFeatureLayerArchiver(client).archive_layer(
+            source_id="source",
+            endpoint_id="layer",
+            service_url="https://example.test/MapServer",
+            layer_id=3,
+        )
+
+
+def test_arcgis_field_list_fallback_rejects_duplicate_ids(tmp_path: Path) -> None:
+    client = _ArcGISClient(
+        tmp_path,
+        {"fields": [{"name": "OBJECTID", "type": "esriFieldTypeOID"}]},
+        counts=({"count": 2}, {"count": 2}),
+        pages=[{"features": [{"attributes": {"OBJECTID": 1}}, {"attributes": {"OBJECTID": 1}}]}],
+    )
+    with pytest.raises(CaptureError, match="duplicate object IDs"):
+        ArcGISFeatureLayerArchiver(client).archive_layer(
+            source_id="source",
+            endpoint_id="layer",
+            service_url="https://example.test/MapServer",
+            layer_id=3,
+        )
 
 
 def test_arcgis_object_id_archive_sorts_and_chunks(tmp_path: Path) -> None:

@@ -10,7 +10,10 @@
 - [x] 1.6 Verify and consume the immutable public WCC Churton Park packet offline, binding every packet path, byte count, digest, capture identity and object reference while retaining CC-BY-3.0-NZ attribution and non-authority boundaries (`docs/wcc-public-archive-spatial-projection-20260830.json`, `tests/test_public_archive_spatial.py`).
 - [x] 1.7 Capture all 130 distinct New Plymouth Volume 3 PDF links plus the index (97,420,678 response bytes), verify each retained HTTP/object receipt and reject partial responses. Raw documents remain outside Git; operative status, public-payload rights and capture-to-release qualification remain open (`docs/npdc-map-document-capture-20260830.json`, `scripts/capture_npdc_map_documents.py`, `tests/test_npdc_map_document_capture.py`).
 
+- [x] 1.8 Capture the exact Tasman GeoHUB group inventory (3 + 111 items), terms and all 3,655 catalogue-linked TRMP zones features in 12 HTTP captures / 24,899,154 retained bytes. Raw bytes remain local; catalogue observation is not source currency, operative status or an atomic snapshot (`docs/tasman-geohub-capture-20260830.json`, `scripts/capture_tasman_catalogue.py`, `tests/test_tasman_catalogue_capture.py`).
+
 ## 2. Canonical bitemporal model
+
 
 - [ ] 2.1 Transform source layers into canonical feature/version records.
 - [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.
@@ -42,7 +45,11 @@
 - [x] 5.6 Reject partial HTTP 206/Content-Range document and index responses, distinguish retained-byte budgets from transfer volume, and persist structured failure evidence after the NPDC capture subagent review.
 - [x] 5.7 Address hosted NPDC review: bounded transient retries charge every retained attempt to the byte budget; index parsing failures persist capture-linked diagnostics; preserve the historical receipt unchanged and explain successor producer fields in `docs/npdc-map-producer-reconciliation-20260830.json`.
 
+- [x] 5.8 Persist incomplete receipts for malformed Tasman layer capabilities and distinguish observed licence links from publication approval after isolated subagent review.
+- [x] 5.9 Detect ArcGIS object IDs declared only through `esriFieldTypeOID` field metadata, reject ambiguous declarations and enforce ordered unique-ID capture; preserve the original Tasman manifest and record independent offline uniqueness verification in `docs/tasman-geohub-offline-verification-20260830.json`.
+
 ## Track closeout
+
 
 - [x] C.1 Link implementation, test, panel, migration and release-candidate evidence in `index.md` for the bounded archive slice; full source coverage, restoration, preservation, external validation and release-authority gates remain explicitly open (`docs/nz-archive-mvp-closeout-evidence-20260829.json`, `tests/test_nz_archive_mvp_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/nz-archive-mvp-conductor-regeneration-20260825.json`).

@@ -1,0 +1,31 @@
+{
+  "record_type": "tasman_capture_offline_agent_verification",
+  "reviewer": "isolated subagent tasman_review",
+  "review_mode": "read-only, offline; no source network requests",
+  "receipt": "docs/tasman-geohub-capture-20260830.json",
+  "receipt_sha256": "cf57ebb4f17b6b4d0018991200fe1c530229aa45f14e5f968424d77ca769acec",
+  "receipt_semantic_sha256": "93904c41ea5745319ecc133d901d836823815a1a8eb68a0134dabdec6c512a4d",
+  "verified": {
+    "http_200_without_content_range": 12,
+    "object_hashes_and_byte_counts": 12,
+    "retained_bytes": 24899154,
+    "catalogue_group_counts": [3, 111],
+    "catalogue_unique_items": 114,
+    "selected_item_url_and_licence_hash": true,
+    "feature_pages": 2,
+    "count_before": 3655,
+    "count_after": 3655,
+    "unique_object_ids": 3655,
+    "public_receipt_matches_original_bytes": true
+  },
+  "producer_reconciliation": {
+    "capture_core_revision": "37cc2af377ba83d5b038bc8c983cf71b6901c61f",
+    "capture_arcgis_module_sha256": "72e1c50dc6a5ec5ab3af6cac3e10d1416fdc45ccab56a55758680c31d64c6f2d",
+    "successor_arcgis_module_sha256": "c3371c41dd9898e9047184ec698d57c752ddcfeb25ba9b98ed6b826d692697dc",
+    "explanation": "The original archiver did not detect the field-list-only OBJECTID declaration and wrote object_id_field:null. Offline review independently verified all 3655 IDs. The successor archiver detects esriFieldTypeOID fields, adds ordering and enforces uniqueness automatically. The historical capture receipt and manifest were not rewritten, and execution of the successor path is covered by fixtures rather than claimed for this live run."
+  },
+  "non_claims": [
+    "No atomic source snapshot or unchanged geometry during collection is established.",
+    "No operative legal status, canonical materialisation, scheduled cycle, public raw publication or external preservation is established."
+  ]
+}

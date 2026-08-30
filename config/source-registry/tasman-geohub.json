@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "source_registry",
+  "registry_id": "urn:riopa:registry:tasman-geohub",
+  "generated_at": "2026-08-30T00:00:00Z",
+  "sources": [{
+    "source_id": "urn:riopa:source:tasman:geohub",
+    "name": "Tasman GeoHUB catalogue and TRMP zones",
+    "publisher": {"name": "Tasman District Council", "url": "https://www.tasman.govt.nz/"},
+    "jurisdiction": "Tasman District",
+    "source_family": "council-open-data-catalogue",
+    "status": "bounded-capture",
+    "rights": {
+      "access_status": "public-download",
+      "redistribution_status": "selected-zones-item-declares-CC-BY-4.0",
+      "notes": "The selected zones item 99868f57e0df486991a4785a1d3303d3 declares CC-BY-4.0 and Tasman District Council attribution. Other catalogue items retain their own terms. Raw bytes remain local; this registry does not assert publication or operative legal status."
+    },
+    "endpoints": [{
+      "endpoint_id": "urn:riopa:source:tasman:geohub:catalogue",
+      "mechanism": "arcgis-hub-catalogue",
+      "url": "https://geohub.tasman.govt.nz/",
+      "enabled": true,
+      "authentication": {"type": "none"},
+      "allowed_download_hosts": ["www.tasman.govt.nz", "geohub.tasman.govt.nz", "www.arcgis.com", "gispublic.tasman.govt.nz"],
+      "rate_limit": {"requests_per_second": 1, "maximum_concurrency": 1},
+      "capabilities": ["catalogue-group-enumeration", "faithful-http-capture"]
+    }, {
+      "endpoint_id": "urn:riopa:source:tasman:geohub:zones",
+      "mechanism": "arcgis-rest",
+      "url": "https://gispublic.tasman.govt.nz/server/rest/services/OpenData/OpenData_Planning_TRMPLand_Zones/MapServer",
+      "enabled": true,
+      "authentication": {"type": "none"},
+      "allowed_download_hosts": ["gispublic.tasman.govt.nz"],
+      "rate_limit": {"requests_per_second": 1, "maximum_concurrency": 1},
+      "capabilities": ["query", "count-reconciled-layer-capture"]
+    }]
+  }]
+}
