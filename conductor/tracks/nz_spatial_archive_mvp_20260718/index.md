@@ -249,6 +249,21 @@ a scheduled capture, and retries reuse one source-run deduplication key. Hosted
 acceptance for the collector remains pending until separately observed. No
 change/recovery, scheduled-cycle or track promotion is inferred.
 
+Hosted acceptance now supersedes that pending collector status:
+`docs/tasman-run-provenance-acceptance-20260831.json` records run 33336884257
+attempts 1 and 2 on `6fdbb81`. Both completed successfully, retain source-run key
+33301038921, and bind byte-identical source and derived publication receipts.
+The provenance receipts correctly differ in publication attempt/timestamps,
+while both report manual triggers and no cycle qualification. This completes
+task 3.8 only. The automatic scheduled branch remains fixture-tested, not yet
+observed in hosted execution; change/recovery evaluation remains outstanding.
+
+The isolated evidence reviewer independently confirmed both completed attempts,
+the embedded/downloaded receipt hashes and the attempt-only provenance changes.
+All 42 collector/workflow/acceptance tests pass, with Ruff, formatting and roadmap
+validation. Implementation CI passed 1,598 tests with one skip at 90.41%
+branch-aware coverage.
+
 The isolated reviewer verified failed-matrix capture reuse, source-specific
 archived-run binding, strict trigger and publication attempt checks, receipt
 hashes, deduplication and token separation. All 39 collector/workflow tests,

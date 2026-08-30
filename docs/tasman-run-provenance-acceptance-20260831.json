@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "status": "hosted-run-provenance-and-retry-verified",
+  "run_id": "33336884257",
+  "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33336884257",
+  "producer_revision": "6fdbb8124ccddc732332ec68a4595de09ad0598f",
+  "implementation_pr": "https://github.com/edithatogo/riopa-infrastructure/pull/759",
+  "successful_attempts": [
+    1,
+    2
+  ],
+  "ci": {
+    "run_id": "33336576220",
+    "revision": "465e2a97903793fa2d42a5bdd6d519466ecd09ef",
+    "tests_passed": 1598,
+    "tests_skipped": 1,
+    "branch_aware_coverage_percent": 90.41,
+    "coverage_gate_percent": 90
+  },
+  "attempts": [
+    {
+      "receipt_sha256": "60e35bf52819339491e16e89317de9c23531fbb37afa532e3e67455f273692da",
+      "receipt": {
+        "schema_version": "1.0.0",
+        "record_type": "tasman_run_provenance",
+        "repository": "edithatogo/riopa-infrastructure",
+        "source_receipt_sha256": "1a62aa1eeb4ea778acb2ec3d98356780af46b0200ae84e7785b9e0cadb676ec2",
+        "derived_receipt_sha256": "e25f96dcf8df5d25bbf3a19d26edcda4cc1e7fc240ea35f5f0a84636bb389e24",
+        "source_public_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2",
+        "source_packet_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+        "derived_public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae",
+        "derived_logical_sha256": "0699ba5d1964aa0418f446bc7407037234cf72c0e3c7bf20503066863d64f3f9",
+        "source_capture": {
+          "run_id": "33301038921",
+          "attempt": "1",
+          "code_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_path": ".github/workflows/council-archive.yml",
+          "created_at": "2026-08-30T08:13:02Z",
+          "run_started_at": "2026-08-30T08:13:02Z",
+          "updated_at": "2026-08-30T08:14:58Z"
+        },
+        "source_capture_status_basis": "verified-publication-receipt-and-archived-hosted-run",
+        "archived_hosted_run_sha256": "6a2ce09d05a524dc7a0755a4ec59859baa01caf384054f1f9154ff77c3ff842d",
+        "source_trigger": {
+          "run_id": "33301038921",
+          "attempt": "1",
+          "code_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_path": ".github/workflows/council-archive.yml",
+          "created_at": "2026-08-30T08:13:02Z",
+          "run_started_at": "2026-08-30T08:13:02Z",
+          "updated_at": "2026-08-30T08:14:58Z"
+        },
+        "publication": {
+          "run_id": "33336884257",
+          "attempt": "1",
+          "code_sha": "6fdbb8124ccddc732332ec68a4595de09ad0598f",
+          "event": "workflow_dispatch",
+          "status": "in_progress",
+          "conclusion": null,
+          "workflow_path": ".github/workflows/tasman-publication.yml",
+          "created_at": "2026-08-30T21:36:16Z",
+          "run_started_at": "2026-08-30T21:36:16Z",
+          "updated_at": "2026-08-30T21:36:36Z"
+        },
+        "cycle_key": "33301038921",
+        "capture_checkpoint_reused": false,
+        "scheduled_source_trigger_observed": false,
+        "automatic_followup": false,
+        "release_cycle_qualified": false,
+        "change_recovery": "not-evaluated",
+        "publication_job_completion_claimed": false
+      }
+    },
+    {
+      "receipt_sha256": "3f4e72fd4d727b58a00f0e7e9217ddfe9eb5c7ed5f7f2ace5c275cfef19d5ed1",
+      "receipt": {
+        "schema_version": "1.0.0",
+        "record_type": "tasman_run_provenance",
+        "repository": "edithatogo/riopa-infrastructure",
+        "source_receipt_sha256": "1a62aa1eeb4ea778acb2ec3d98356780af46b0200ae84e7785b9e0cadb676ec2",
+        "derived_receipt_sha256": "e25f96dcf8df5d25bbf3a19d26edcda4cc1e7fc240ea35f5f0a84636bb389e24",
+        "source_public_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2",
+        "source_packet_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+        "derived_public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae",
+        "derived_logical_sha256": "0699ba5d1964aa0418f446bc7407037234cf72c0e3c7bf20503066863d64f3f9",
+        "source_capture": {
+          "run_id": "33301038921",
+          "attempt": "1",
+          "code_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_path": ".github/workflows/council-archive.yml",
+          "created_at": "2026-08-30T08:13:02Z",
+          "run_started_at": "2026-08-30T08:13:02Z",
+          "updated_at": "2026-08-30T08:14:58Z"
+        },
+        "source_capture_status_basis": "verified-publication-receipt-and-archived-hosted-run",
+        "archived_hosted_run_sha256": "6a2ce09d05a524dc7a0755a4ec59859baa01caf384054f1f9154ff77c3ff842d",
+        "source_trigger": {
+          "run_id": "33301038921",
+          "attempt": "1",
+          "code_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_path": ".github/workflows/council-archive.yml",
+          "created_at": "2026-08-30T08:13:02Z",
+          "run_started_at": "2026-08-30T08:13:02Z",
+          "updated_at": "2026-08-30T08:14:58Z"
+        },
+        "publication": {
+          "run_id": "33336884257",
+          "attempt": "2",
+          "code_sha": "6fdbb8124ccddc732332ec68a4595de09ad0598f",
+          "event": "workflow_dispatch",
+          "status": "in_progress",
+          "conclusion": null,
+          "workflow_path": ".github/workflows/tasman-publication.yml",
+          "created_at": "2026-08-30T21:37:26Z",
+          "run_started_at": "2026-08-30T21:37:25Z",
+          "updated_at": "2026-08-30T21:37:44Z"
+        },
+        "cycle_key": "33301038921",
+        "capture_checkpoint_reused": false,
+        "scheduled_source_trigger_observed": false,
+        "automatic_followup": false,
+        "release_cycle_qualified": false,
+        "change_recovery": "not-evaluated",
+        "publication_job_completion_claimed": false
+      }
+    }
+  ],
+  "source_and_derived_receipts_byte_identical_across_attempts": true,
+  "non_claims": [
+    "Both source and publication were manually triggered; no scheduled capture was observed.",
+    "The same source-run cycle key is retained across publication retries; retries are not new source cycles.",
+    "The embedded publication status is an in-progress observation, not a claim that the job was complete at collection time. Hosted completion was checked separately.",
+    "Change/recovery, clean-room reproduction, broader source coverage and release qualification remain pending."
+  ]
+}
