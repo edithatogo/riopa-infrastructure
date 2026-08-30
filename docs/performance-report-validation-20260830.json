@@ -1,0 +1,20 @@
+{
+  "evidence_id": "PERF-REPORT-VALIDATION-20260830",
+  "record_type": "repository-owned-performance-contract",
+  "status": "implemented",
+  "validator": "scripts/validate_performance_report.py",
+  "tests": ["tests/test_performance_report_validator.py"],
+  "controls": [
+    "Measured scenarios must remain bounded regional synthetic observations with at least three repetitions.",
+    "Throughput must be arithmetically consistent with records and each scenario's elapsed time.",
+    "Unknown resource and cost measurements must remain explicitly null with non-measured statuses.",
+    "Projection arithmetic must match the regional baseline and declared scaling factor.",
+    "Archive-only and disabled-domain markers are required for ingestion and accessibility.",
+    "National output must remain an explicit linear projection, never a measurement.",
+    "Archive-only ingestion and reference-only accessibility boundaries are fail-closed."
+  ],
+  "non_claims": [
+    "This validator does not create national-scale, hosted, operational or release evidence.",
+    "Resource and cost nulls remain unknown rather than being inferred."
+  ]
+}

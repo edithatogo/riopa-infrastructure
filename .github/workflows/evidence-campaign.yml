@@ -132,6 +132,9 @@ jobs:
           uv run jsonschema
           --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/${EVIDENCE_LANE}.receipt.json"
           schemas/hosted-evidence.schema.json
+      - name: Validate bounded performance report
+        if: ${{ always() && steps.execute.outcome == 'success' && env.EVIDENCE_LANE == 'performance-rehearsal' }}
+        run: uv run python scripts/validate_performance_report.py "dist/hosted-evidence/${GITHUB_RUN_ID}/benchmark.json"
       - name: Restore the latest cumulative campaign artifact
         if: ${{ always() && env.EVIDENCE_QUALIFYING == 'true' && (env.EVIDENCE_LANE == 'operational-observation' || env.EVIDENCE_LANE == 'rc-soak-observation') }}
         env:
@@ -221,6 +224,8 @@ jobs:
           uv run jsonschema
           --instance "dist/hosted-evidence/${GITHUB_RUN_ID}/performance-rehearsal.receipt.json"
           schemas/hosted-evidence.schema.json
+      - name: Validate bounded performance report
+        run: uv run python scripts/validate_performance_report.py "dist/hosted-evidence/${GITHUB_RUN_ID}/benchmark.json"
       - name: Upload second-environment evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:

@@ -42,6 +42,9 @@
 - [ ] Keep hosted execution, elapsed soak, national-scale, and authority gates
   open; this is repository-owned plan validation only.
 
+- [x] Add a fail-closed validator for bounded WP-010 reports: require repeated regional synthetic measurements, internally consistent throughput, archive-only ingestion, reference-only accessibility and an explicit national projection boundary (`scripts/validate_performance_report.py`, `tests/test_performance_report_validator.py`, `docs/performance-report-validation-20260830.json`). Hosted, elapsed-soak, national-scale and authority gates remain open.
+- [x] Invoke the report validator in both hosted performance-rehearsal jobs and require explicit unknown resource/cost, projection arithmetic and disabled-domain markers (`.github/workflows/evidence-campaign.yml`, `scripts/validate_performance_report.py`, `tests/test_performance_report_validator.py`). Hosted, elapsed-soak, national-scale and authority gates remain open.
+
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned slice; hosted and panel gates remain explicitly pending.

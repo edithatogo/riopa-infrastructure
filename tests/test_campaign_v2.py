@@ -53,6 +53,12 @@ def test_operational_observation_schedule_is_daily_and_read_only() -> None:
     assert "rc-soak-observation" in inputs["lane"]["options"]
 
 
+def test_performance_rehearsal_validates_generated_report() -> None:
+    workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
+    observe_steps = workflow["jobs"]["observe"]["steps"]
+    assert any("validate_performance_report.py" in step.get("run", "") for step in observe_steps)
+
+
 def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
     workflow = yaml.safe_load((ROOT / ".github/workflows/evidence-campaign.yml").read_text())
     steps = workflow["jobs"]["observe"]["steps"]
