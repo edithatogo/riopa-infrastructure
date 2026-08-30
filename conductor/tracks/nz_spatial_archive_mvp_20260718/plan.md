@@ -56,6 +56,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 5. Review fixes
 
+- [x] 5.19 Distinguish a verified Tasman capture from its enclosing failed matrix run, bind archived acquisition/code evidence, pin trigger/publication API attempts, reject invalid calendar/repository/receipt bindings, and resolve the GitHub CLI to an absolute path (`cc61878`; isolated review, 39 focused tests, strict MyPy/Bandit, full quality and reproducibility checks pass; hosted collector acceptance remains separate).
+
 - [x] 5.18 Bind derived-publication rights and full-row readback, preserve canonical time/lineage records, disable external access before DuckDB queries, retain immutable original-manifest checksums and rewrite sanitized failure evidence after durable storage outcomes (`c4f745f`; isolated review, 49 focused tests, full suite 1,545 passed/1 skipped, 90.41% branch-aware coverage against the 90% gate).
 
 - [x] 5.17 Preserve bounded, credential-free failure receipts and durable attempt records when anonymous publication verification or rebuilds fail, without replacing the original public revision or masking the primary error (`85af7d4`; PR #754 hosted review; 34 focused tests and isolated re-review pass).
