@@ -45,3 +45,11 @@ rewrite historical receipts or republish different bytes under the same path.
 Source acquisition failures remain visible in the council receipts even when
 preserving the failed attempt succeeds. A successful preservation job alone
 does not prove full ePlan acquisition or completion of an alpha operating cycle.
+
+Post-upload verification failures must retain a bounded metadata receipt in the
+Actions artifact and a separate durable private attempt record. These records
+identify the failed stage and exception class, not raw exception messages,
+credentials or payloads. They do not replace the original public revision or
+turn a failed verification into acceptance. If private evidence storage itself
+fails, the local artifact still records that limitation and the primary failure
+remains a failed run.

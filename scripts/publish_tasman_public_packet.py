@@ -10,6 +10,7 @@ import re
 import runpy
 import shutil
 import tarfile
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
@@ -65,7 +66,8 @@ def restore(archive: Path, manifest: dict[str, Any], destination: Path) -> None:
             target = destination / member.name
             target.parent.mkdir(parents=True, exist_ok=True)
             source = tar.extractfile(member)
-            assert source is not None
+            if source is None:
+                raise ValueError("archive member has no regular content")
             with source, target.open("xb") as output:
                 shutil.copyfileobj(source, output, 1024 * 1024)
     HOSTED["inventory"](destination)
@@ -171,13 +173,73 @@ def rebuild(packet: Path, binding: PublicArchiveDescriptor, work: Path) -> dict[
 
 
 def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
+    if not re.fullmatch(r"[0-9]{1,32}", source_run) or work.exists():
+        raise ValueError("source run must be numeric and work directory fresh")
+    progress: dict[str, Any] = {"stage": "visibility", "source_run": source_run}
+    try:
+        return _publish(api, source_run, work, progress)
+    except Exception as error:
+        failure: dict[str, Any] = {
+            "schema_version": "1.0.0",
+            "status": "failed",
+            "source": "tasman",
+            "source_run": source_run,
+            "attempt_id": str(uuid.uuid4()),
+            "stage": progress["stage"],
+            "error_class": type(error).__name__[:128],
+            "durable_failure_record": False,
+        }
+        for key, pattern in {
+            "public_revision": r"[0-9a-f]{40}",
+            "private_revision": r"[0-9a-f]{40}",
+            "private_manifest_sha256": r"[0-9a-f]{64}",
+            "packet_manifest_sha256": r"[0-9a-f]{64}",
+        }.items():
+            value = progress.get(key)
+            if isinstance(value, str) and re.fullmatch(pattern, value):
+                failure[key] = value
+        for name in ("GITHUB_RUN_ID", "GITHUB_RUN_ATTEMPT"):
+            value = os.environ.get(name, "")
+            if re.fullmatch(r"[0-9]{1,32}", value):
+                failure[name.lower()] = value
+        local = work / "public/tasman-publication-failure.json"
+        try:
+            HOSTED["write_json"](local, failure)
+        except Exception as local_error:
+            failure["local_record_error_class"] = type(local_error).__name__[:128]
+        try:
+            if not progress.get("visibility_verified"):
+                raise ValueError("destination visibility was not verified")
+            name = f"publications/tasman/attempts/{failure['attempt_id']}.json"
+            durable_record = {
+                key: value for key, value in failure.items() if key != "durable_failure_record"
+            }
+            revision = HOSTED["commit_files"](
+                api, PRIVATE, {name: json.dumps(durable_record).encode()}
+            )
+            failure.update(durable_failure_record=True, failure_record_revision=revision)
+        except Exception as secondary:
+            failure["failure_record_error_class"] = type(secondary).__name__[:128]
+        try:
+            HOSTED["write_json"](local, failure)
+        except Exception as local_error:
+            failure["local_record_error_class"] = type(local_error).__name__[:128]
+        raise
+
+
+def _publish(api: Any, source_run: str, work: Path, progress: dict[str, Any]) -> dict[str, Any]:
     if not re.fullmatch(r"[0-9]+", source_run) or work.exists():
         raise ValueError("source run must be numeric and work directory fresh")
     HOSTED["require_visibility"](api)
+    progress["visibility_verified"] = True
     work.mkdir(parents=True)
+    progress["stage"] = "source-checkpoint"
     checkpoint = control(api, f"campaigns/{source_run}/tasman/checkpoint.json", work)
-    assert checkpoint is not None
+    if checkpoint is None:
+        raise ValueError("source checkpoint missing")
+    progress["private_revision"] = checkpoint.get("revision")
     original = HOSTED["checked_manifest"](api, checkpoint, work / "private-readback")
+    progress["private_manifest_sha256"] = original.get("manifest_sha256")
     if (
         original.get("source") != "tasman"
         or original.get("run_id") != source_run
@@ -185,12 +247,14 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
     ):
         raise ValueError("source checkpoint is not a complete Tasman acquisition")
     HOSTED["verify_public_checkpoint"](api, checkpoint, work / "original-evidence")
+    progress["stage"] = "restore-and-prepare"
     archive = work / "private-readback" / checkpoint["prefix"] / "raw.tar"
     restore(archive, original, work / "store")
     report = PREPARE(work)
     candidate = work / "tasman-public-candidate"
     manifest = json.loads((candidate / "manifest.json").read_bytes())
     digest = report["manifest_sha256"]
+    progress["packet_manifest_sha256"] = digest
     prefix = f"snapshots/tasman-zones/{digest}"
     # Validate closure/rights before any upload; current HEAD is only a local
     # descriptor validation input, never reported as this packet's publication.
@@ -201,6 +265,7 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
         ),
     )
     checkpoint_name = f"publications/tasman/{original['manifest_sha256']}.json"
+    progress["stage"] = "publication-checkpoint"
     existing = control(api, checkpoint_name, work, missing=True)
     if existing is not None:
         if (
@@ -210,6 +275,7 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
         ):
             raise ValueError("publication checkpoint identity mismatch")
         revision = existing["public_revision"]
+        progress["public_revision"] = revision
     else:
         found = api.get_paths_info(
             PUBLIC, [f"{prefix}/manifest.json"], repo_type="dataset", expand=True
@@ -217,6 +283,7 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
         if found:
             # Recover the original manifest commit after a checkpoint-write crash.
             revision = found[0].last_commit.oid
+            progress.update(stage="recovery-readback", public_revision=revision)
             readback(
                 api,
                 candidate,
@@ -225,6 +292,7 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
                 descriptor(manifest, digest, prefix, revision),
             )
         else:
+            progress["stage"] = "public-upload"
             revision = HOSTED["commit_files"](
                 api,
                 PUBLIC,
@@ -234,6 +302,7 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
                     if p.is_file()
                 },
             )
+        progress.update(stage="pending-checkpoint", public_revision=revision)
         existing = {
             "private_manifest_sha256": original["manifest_sha256"],
             "packet_manifest_sha256": digest,
@@ -243,7 +312,9 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
         }
         HOSTED["commit_files"](api, PRIVATE, {checkpoint_name: json.dumps(existing).encode()})
     binding = descriptor(manifest, digest, prefix, revision)
+    progress["stage"] = "anonymous-readback"
     readback(api, candidate, work / "anonymous-packet", work / "anonymous-cache", binding)
+    progress["stage"] = "rebuild"
     reproduction = rebuild(work / "anonymous-packet", binding, work / "builds")
     result = {
         "schema_version": "1.0.0",
@@ -270,7 +341,9 @@ def publish(api: Any, source_run: str, work: Path) -> dict[str, Any]:
             "Spatial projections rebuilt locally on runner; only source packet publicly uploaded.",
         ],
     }
+    progress["stage"] = "verified-checkpoint"
     HOSTED["commit_files"](api, PRIVATE, {checkpoint_name: json.dumps(result).encode()})
+    progress["stage"] = "local-evidence"
     HOSTED["write_json"](work / "public/tasman-publication.json", result)
     return result
 
@@ -289,7 +362,11 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     if work.is_relative_to(root) and not work.is_relative_to(root / ".riopa-local"):
         parser.error("work must be outside Git or within .riopa-local")
-    result = publish(HfApi(token=os.environ["HF_TOKEN"]), args.source_run, work)
+    try:
+        result = publish(HfApi(token=os.environ["HF_TOKEN"]), args.source_run, work)
+    except Exception as error:
+        print(json.dumps({"status": "failed", "error_class": type(error).__name__}))
+        return 1
     print(json.dumps(result, sort_keys=True))
     return 0
 

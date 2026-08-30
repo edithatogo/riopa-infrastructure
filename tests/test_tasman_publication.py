@@ -16,7 +16,18 @@ SCRIPT = runpy.run_path(
 
 
 @pytest.mark.parametrize(
-    "scenario", ["new", "resume", "recover", "wrong-checkpoint", "incomplete", "rebuild-fails"]
+    "scenario",
+    [
+        "new",
+        "resume",
+        "recover",
+        "wrong-checkpoint",
+        "incomplete",
+        "rebuild-fails",
+        "anonymous-fails",
+        "failure-save-fails",
+        "resume-fails",
+    ],
 )
 def test_publication_original_revision_and_checkpoint_order(tmp_path: Path, scenario: str) -> None:
     work = tmp_path / "work"
@@ -39,7 +50,7 @@ def test_publication_original_revision_and_checkpoint_order(tmp_path: Path, scen
     def control(_api: object, name: str, _work: Path, **_: object) -> dict | None:
         if name.startswith("campaigns/"):
             return {"prefix": "campaigns/123/tasman/1", "revision": "a" * 40}
-        return saved if scenario in ("resume", "wrong-checkpoint") else None
+        return saved if scenario in ("resume", "wrong-checkpoint", "resume-fails") else None
 
     def prepare(path: Path) -> dict:
         candidate = path / "tasman-public-candidate"
@@ -61,6 +72,8 @@ def test_publication_original_revision_and_checkpoint_order(tmp_path: Path, scen
         return {"manifest_sha256": "b" * 64}
 
     def commit(_api: object, repo: str, files: dict) -> str:
+        if scenario == "failure-save-fails" and any("/attempts/" in name for name in files):
+            raise RuntimeError("secondary SECRET private/path token")
         commits.append((repo, files))
         return "c" * 40
 
@@ -68,10 +81,12 @@ def test_publication_original_revision_and_checkpoint_order(tmp_path: Path, scen
 
     def readback(*args: object) -> None:
         checks.append(args[-1])
+        if scenario == "anonymous-fails":
+            raise ValueError("SECRET token private/path")
 
     def rebuild(*args: object) -> dict:
-        if scenario == "rebuild-fails":
-            raise ValueError("rebuild failed")
+        if scenario in ("rebuild-fails", "failure-save-fails", "resume-fails"):
+            raise ValueError("SECRET token private/path")
         return {"builds": 2}
 
     api = SimpleNamespace(
@@ -102,17 +117,45 @@ def test_publication_original_revision_and_checkpoint_order(tmp_path: Path, scen
             "rebuild": rebuild,
         },
     ):
-        if scenario in ("wrong-checkpoint", "incomplete", "rebuild-fails"):
+        if scenario in (
+            "wrong-checkpoint",
+            "incomplete",
+            "rebuild-fails",
+            "anonymous-fails",
+            "failure-save-fails",
+            "resume-fails",
+        ):
             with pytest.raises(ValueError):
                 SCRIPT["publish"](api, "123", work)
             assert not (work / "public/tasman-publication.json").exists()
+            failure_path = work / "public/tasman-publication-failure.json"
+            failure = json.loads(failure_path.read_bytes())
+            assert failure["status"] == "failed"
+            assert (
+                "SECRET" not in failure_path.read_text()
+                and "private/path" not in failure_path.read_text()
+            )
+            if scenario == "anonymous-fails":
+                assert failure["stage"] == "anonymous-readback"
+            if scenario in ("rebuild-fails", "failure-save-fails", "resume-fails"):
+                assert failure["stage"] == "rebuild"
+                assert failure["public_revision"] == "c" * 40
+            if scenario == "failure-save-fails":
+                assert failure["durable_failure_record"] is False
+                assert failure["failure_record_error_class"] == "RuntimeError"
+            if scenario == "resume-fails":
+                assert all("/attempts/" in name for _, files in commits for name in files)
         else:
             result = SCRIPT["publish"](api, "123", work)
             assert result["public_revision"] == "c" * 40
             assert result["anonymous_full_packet_verified"]
             assert all(revision == "c" * 40 for revision in checks)
         public_commits = [c for c in commits if c[0] == SCRIPT["PUBLIC"]]
-        assert len(public_commits) == (1 if scenario in ("new", "rebuild-fails") else 0)
+        assert len(public_commits) == (
+            1
+            if scenario in ("new", "rebuild-fails", "anonymous-fails", "failure-save-fails")
+            else 0
+        )
 
 
 @pytest.mark.parametrize("scenario", ["ok", "extra", "size", "bytes", "workers", "existing"])
@@ -359,3 +402,48 @@ def test_real_restore_prepare_public_packet_and_two_rebuilds(
     assert result["reproduction"]["builds"] == 2
     assert result["anonymous_full_packet_verified"] is True
     assert all(not name.endswith(".duckdb") for repo, name in remote if repo == SCRIPT["PUBLIC"])
+
+
+@pytest.mark.parametrize("scenario", ["visibility", "local-save", "normal"])
+def test_failure_record_preserves_original_exception_and_unique_attempt(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, scenario: str
+) -> None:
+    monkeypatch.setenv("GITHUB_RUN_ID", "unsafe/SECRET")
+    monkeypatch.setenv("GITHUB_RUN_ATTEMPT", "2")
+    original = ValueError("SECRET must never enter evidence")
+    commits = []
+
+    def fail(api: object, source: str, work: Path, progress: dict) -> None:
+        progress.update(
+            stage="anonymous-readback",
+            visibility_verified=scenario != "visibility",
+            public_revision="c" * 40,
+        )
+        raise original
+
+    def commit(api: object, repo: str, files: dict) -> str:
+        commits.append(files)
+        return "d" * 40
+
+    hosted = {**SCRIPT["HOSTED"], "commit_files": commit}
+    # Keep the original writer outside the patched mapping to avoid recursion.
+    original_writer = hosted["write_json"]
+
+    def write_local(path: Path, value: dict) -> None:
+        if scenario == "local-save":
+            raise OSError("SECRET filesystem error")
+        original_writer(path, value)
+
+    hosted["write_json"] = write_local
+    with patch.dict(SCRIPT["publish"].__globals__, {"_publish": fail, "HOSTED": hosted}):
+        for number in (1, 2):
+            with pytest.raises(ValueError) as caught:
+                SCRIPT["publish"](None, "123", tmp_path / str(number))
+            assert caught.value is original
+    if scenario == "visibility":
+        assert commits == []
+    else:
+        assert len(commits) == 2 and set(commits[0]) != set(commits[1])
+        serialized = json.dumps(commits[0], default=lambda value: value.decode())
+        assert "SECRET" not in serialized and "unsafe" not in serialized
+        assert "github_run_attempt" in serialized and "github_run_id" not in serialized
