@@ -54,7 +54,7 @@ def validate_report(report: Any) -> tuple[str, ...]:
                 1e-9, expected * 1e-9
             ):
                 errors.append(f"{prefix}.records_per_second is inconsistent with elapsed_ns")
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             errors.append(f"{prefix} has invalid measurement fields")
         resources = scenario.get("resources")
         cost = scenario.get("cost")
@@ -119,7 +119,7 @@ def validate_report(report: Any) -> tuple[str, ...]:
                 regional.get("records_per_second"), "regional.records_per_second", positive=True
             ):
                 errors.append("national projection throughput must equal the bounded baseline")
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             errors.append("national projection has invalid arithmetic fields")
     ingestion = report.get("ingestion")
     if (
