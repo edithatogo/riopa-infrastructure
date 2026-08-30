@@ -197,6 +197,22 @@ An isolated evidence-review subagent independently checked both hosted attempt
 statuses and the downloaded receipt hashes, and found no binding or scope
 overclaim. The receipt/plan/workflow test group passes 35 tests.
 
+### Tasman derived preservation increment (2026-08-31)
+
+Task 3.7 extends the existing Actions publication chain to preserve canonical,
+GeoParquet and DuckDB outputs in the public Hugging Face archive. The contract is
+recorded in `docs/tasman-derived-publication-20260831.md`. Publication acceptance
+remains pending until immutable anonymous readback and checkpoint replay are
+observed. This does not change the historical source-only acceptance above or
+the track's active/M1 status.
+
+The implementation adds `scripts/publish_tasman_derivatives.py` and 14 hermetic
+tests. An isolated advisory reviewer found no remaining blocking finding after
+the DuckDB access-order and durable failure-receipt fixes. The existing source
+publisher remains unchanged. Strict MyPy, Ruff, Bandit, the workflow test, full
+quality and research-object reproducibility checks pass; hosted execution is
+not inferred from those local checks.
+
 ### Remaining track blockers
 
 
