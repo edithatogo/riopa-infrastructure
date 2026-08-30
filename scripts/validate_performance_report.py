@@ -119,7 +119,7 @@ def validate_report(report: Any) -> tuple[str, ...]:
                 regional.get("records_per_second"), "regional.records_per_second", positive=True
             ):
                 errors.append("national projection throughput must equal the bounded baseline")
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             errors.append("national projection has invalid arithmetic fields")
     ingestion = report.get("ingestion")
     if (
