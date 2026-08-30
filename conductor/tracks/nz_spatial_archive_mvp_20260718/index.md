@@ -143,9 +143,24 @@ now records standalone item rights without rewriting earlier catalogue receipts;
 
 Actions prepares this candidate only after private source preservation, with no
 publication credential in preparation and no candidate bytes in Actions artifacts.
-Public upload, immutable anonymous acceptance, preparation retry from preserved
-checkpoints and clean materialisation remain next steps. Task 1.10 remains open
-until hosted preparation has actually succeeded.
+`docs/tasman-hosted-preparation-20260830.json` records successful hosted
+preparation in run 33301038921: all 3,655 features and 12 selected files
+(24,378,239 bytes), bound to the original private revision and preparation
+receipt. This completes task 1.10, not public payload acceptance.
+
+`.github/workflows/tasman-publication.yml` and
+`scripts/publish_tasman_public_packet.py` implement the separate, resumable
+publication/rebuild path. Only the licensed layer packet is eligible, never
+the mixed catalogue or website objects. Hosted anonymous acceptance and two
+clean materialisations remain task 1.11 until actual execution is recorded.
+
+The isolated preservation/operations reviewer found no blocking issue in the
+workflow trust boundary, rights filtering, checkpoint recovery or anonymous
+verification. The implementation's synthetic end-to-end test exercises real
+tar restoration, packet preparation and two spatial builds with only Hub I/O
+mocked. The generic skill validator does not recognise this repository's
+legacy registry format; repository-native roadmap/evidence validation passes.
+This bounded review does not complete the whole track or clean-room gate.
 
 ### Remaining track blockers
 
