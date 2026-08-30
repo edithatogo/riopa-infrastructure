@@ -20,7 +20,7 @@ on:
       campaign_id:
         description: Stable evidence-campaign identifier
         required: true
-        default: operational-beta-20260825-26bc0b4
+        default: operational-beta-20260830-26bc0b4
         type: string
       candidate_revision:
         description: Exact candidate; pinned by default for beta and required for RC soak
@@ -30,7 +30,7 @@ on:
       qualification_epoch:
         description: Change only when a material beta candidate or instrumentation change resets the clock
         required: true
-        default: beta-epoch-20260825-26bc0b4
+        default: beta-epoch-20260830-26bc0b4
         type: string
       qualification:
         description: Whether this run is a formally activated qualifying beta/RC observation
@@ -73,12 +73,12 @@ jobs:
     timeout-minutes: 45
     env:
       EVIDENCE_LANE: ${{ github.event.inputs.lane || 'operational-observation' }}
-      EVIDENCE_CAMPAIGN_ID: ${{ github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}
-      EVIDENCE_CANDIDATE_REVISION: ${{ github.event.inputs.candidate_revision || github.sha }}
-      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event.inputs.qualification_epoch || format('beta-epoch-{0}', github.sha) }}
-      EVIDENCE_QUALIFYING: ${{ github.event.inputs.qualification == 'qualifying' && 'true' || 'false' }}
-      EVIDENCE_ACTIVATION_AUTHORITY: ${{ github.event.inputs.activation_authority || '' }}
-      EVIDENCE_ACTIVATED_AT: ${{ github.event.inputs.activated_at || '' }}
+      EVIDENCE_CAMPAIGN_ID: ${{ github.event_name == 'schedule' && 'operational-beta-20260830-26bc0b4' || github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}
+      EVIDENCE_CANDIDATE_REVISION: ${{ github.event_name == 'schedule' && '26bc0b49bcd84f409bf24b527e1049fd396c94a6' || github.event.inputs.candidate_revision || github.sha }}
+      EVIDENCE_QUALIFICATION_EPOCH: ${{ github.event_name == 'schedule' && 'beta-epoch-20260830-26bc0b4' || github.event.inputs.qualification_epoch || format('beta-epoch-{0}', github.sha) }}
+      EVIDENCE_QUALIFYING: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.qualification == 'qualifying' && 'true' || 'false' }}
+      EVIDENCE_ACTIVATION_AUTHORITY: ${{ github.event_name == 'schedule' && 'edithatogo' || github.event.inputs.activation_authority || '' }}
+      EVIDENCE_ACTIVATED_AT: ${{ github.event_name == 'schedule' && '2026-08-30T02:41:05Z' || github.event.inputs.activated_at || '' }}
     steps:
       - name: Validate exact revision input
         run: |

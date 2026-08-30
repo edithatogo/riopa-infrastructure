@@ -52,6 +52,7 @@
 - [x] 4.26 Separate current campaign qualification tooling from the exact candidate checkout so qualifying receipts retain activation/classification and candidate tests remain content-addressed; validate workflow ordering and fail-closed ledger controls (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`, `docs/campaign-qualification-tooling-fix-20260830.json`). Hosted activation, elapsed, recovery, scale, external, preservation and authority gates remain open.
 - [x] 4.27 Activate clean beta/RC campaign identifiers after excluding prior technical-preview and retrospective receipts; preserve the first qualifying observations and record the reset boundary (`docs/campaign-qualification-activation-20260830.json`, runs 33289129127/33289130323). Duration, cycle, recovery, scale, external, preservation and authority gates remain open.
 - [x] 4.28 Correct placement of the first clean qualifying beta/RC observations so the active ledger counts them; preserve the prior records and retain all duration and promotion gates (`docs/campaign-qualification-placement-review-fix-20260830.json`, `docs/evidence-campaign-status-20260821.json`).
+- [x] 4.29 Bind scheduled observations to the active qualifying beta campaign and candidate while preserving manual inputs and manual-only RC execution (`.github/workflows/evidence-campaign.yml`, `docs/campaign-scheduled-qualification-binding-20260830.json`, `tests/test_campaign_v2.py`). Duration, cycle, recovery, scale, external, preservation and authority gates remain open.
 
 ## Review fixes
 
