@@ -42,6 +42,8 @@ def test_current_rc_observations_start_one_fresh_candidate_segment() -> None:
     )
     rc = snapshot["campaign"]["rc"]
     assert rc["observation_count"] == 1
+    assert rc["campaign_id"] == "operational-rc-20260830-26bc0b4"
+    assert rc["qualification_epoch"] == "rc-epoch-20260830-26bc0b4"
     assert rc["candidate_revisions"] == ["26bc0b49bcd84f409bf24b527e1049fd396c94a6"]
     assert rc["observation_bindings_valid"] is True
     assert rc["exact_candidate_continuity_met"] is False

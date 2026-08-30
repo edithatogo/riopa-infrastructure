@@ -60,6 +60,8 @@
     ,"OPS-HOSTED-SUPPLEMENTAL-RETROSPECTIVE-OBSERVATION-20260830-26BC0B4"
     ,"OPS-CAMPAIGN-QUALIFICATION-TOOLING-FIX-20260830"
     ,"OPS-CAMPAIGN-QUALIFICATION-ACTIVATION-20260830"
+    ,"OPS-CAMPAIGN-QUALIFICATION-PLACEMENT-REVIEW-FIX-20260830"
+    ,"urn:riopa:evidence:stable-v1-readiness-plan:2026-08-30"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
