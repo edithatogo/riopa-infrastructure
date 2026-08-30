@@ -1,0 +1,33 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-QUALIFICATION-TOOLING-FIX-20260830",
+  "schema_version": "1.0.0",
+  "status": "repository-workflow-fix-ready",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "problem": "Exact-candidate checkout previously selected recorder and ledger code from the frozen candidate, which could not emit the current qualifying activation and classification contract.",
+  "resolution": [
+    "Check out the workflow revision first and save the current recorder, ledger builder and hosted-evidence schema.",
+    "Check out the exact candidate for the lane under test, then restore only the current campaign tooling before execution and validation."
+  ],
+  "controls": [
+    "The lane tests and benchmark continue to execute from the exact candidate checkout.",
+    "Qualifying beta and RC receipts must carry activated campaign metadata and qualifying classification, and the ledger rejects missing activation.",
+    "The exact candidate revision remains bound and RC checkout verification remains enabled."
+  ],
+  "validation": [
+    "tests/test_campaign_v2.py",
+    "tests/test_hosted_evidence.py",
+    "tests/test_campaign_ledger.py",
+    "tests/test_ci_quality_gates.py"
+  ],
+  "open_gates": [
+    "90-day/three-cycle beta operation",
+    "30-day exact-RC soak",
+    "production recovery and national-scale qualification",
+    "external reproduction, preservation acceptance and release authority"
+  ],
+  "promotion_allowed": false,
+  "nonclaims": [
+    "This workflow fix does not create a qualifying observation or advance an elapsed clock.",
+    "Repository tests and workflow structure do not substitute for hosted execution or accountable activation."
+  ]
+}

@@ -55,6 +55,17 @@ def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
     assert "[0-9a-f]{40}" in validate["run"]
     checkout = next(step for step in steps if step.get("name") == "Check out exact revision")
     assert checkout["with"]["ref"] == "${{ env.EVIDENCE_CANDIDATE_REVISION || github.sha }}"
+    workflow_checkout = next(
+        step for step in steps if step.get("name") == "Check out workflow revision"
+    )
+    assert workflow_checkout["with"]["ref"] == "${{ github.sha }}"
+    names = [step.get("name") for step in steps]
+    assert names.index("Save current campaign tooling") < names.index("Check out exact revision")
+    assert names.index("Restore current campaign tooling") > names.index("Check out exact revision")
+    restore = next(step for step in steps if step.get("name") == "Restore current campaign tooling")
+    assert "record_hosted_evidence.py" in restore["run"]
+    assert "build_campaign_ledger.py" in restore["run"]
+    assert "hosted-evidence.schema.json" in restore["run"]
     assert any(step.get("name") == "Verify exact RC candidate checkout" for step in steps)
 
 
