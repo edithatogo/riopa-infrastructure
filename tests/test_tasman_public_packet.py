@@ -46,6 +46,19 @@ def inputs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, Path,
             ),
         )
         for role in ("metadata", "count-before", "count-after", "page", "licence"):
+            params = {"f": "pjson" if role == "metadata" else "json"}
+            if role.startswith("count"):
+                params.update(where="1=1", returnCountOnly="true")
+            elif role == "page":
+                params.update(
+                    where="1=1",
+                    outFields="*",
+                    returnGeometry="true",
+                    returnExceededLimitFeatures="true",
+                    orderByFields="OBJECTID ASC",
+                    resultOffset="0",
+                    resultRecordCount="1000",
+                )
             captures.append(
                 client.capture(
                     "GET",
@@ -54,6 +67,7 @@ def inputs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, Path,
                     else builder.SERVICE + "/3" + ("" if role == "metadata" else "/query"),
                     source_id=builder.SOURCE,
                     endpoint_id=f"{builder.SOURCE}:{role}",
+                    params=params,
                 )
             )
     capture_set = {
@@ -67,6 +81,10 @@ def inputs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, Path,
         "count_capture_ids": [c.capture_id for c in captures[1:3]],
         "page_capture_ids": [captures[3].capture_id],
         "feature_count": 1,
+        "query": {"where": "1=1", "out_fields": "*"},
+        "object_id_field": "OBJECTID",
+        "page_size": 1000,
+        "pagination_strategy": "offset",
     }
     capture_set["manifest_sha256"] = sha256_json(capture_set)
     path = store.root / "capture-set.json"
@@ -199,7 +217,7 @@ def test_packet_budget_fails_before_output(
     assert not (tmp_path / "output").exists()
 
 
-@pytest.mark.parametrize("tamper", [None, "source", "count"])
+@pytest.mark.parametrize("tamper", [None, "source", "count", "rights_digest"])
 def test_preparation_cli_binds_receipt_summary(
     inputs: tuple[Path, Path, str], tamper: str | None
 ) -> None:
@@ -212,7 +230,14 @@ def test_preparation_cli_binds_receipt_summary(
             "manifest_sha256": sha256_file(capture_set),
             "feature_count": 99 if tamper == "count" else 1,
         },
-        "selected_item": {"rights_capture_id": rights},
+        "selected_item": {
+            "rights_capture_id": rights,
+            "rights_object_sha256": "0" * 64
+            if tamper == "rights_digest"
+            else json.loads(
+                (store / "captures" / f"{rights.removeprefix('urn:uuid:')}.json").read_bytes()
+            )["object"]["sha256"],
+        },
     }
     digest = sha256_json(receipt)
     receipt["semantic_sha256"] = digest
@@ -230,3 +255,36 @@ def test_preparation_cli_binds_receipt_summary(
         assert report["status"] == "prepared-not-published"
         assert report["feature_count"] == 1
         assert json.loads(public_summary.read_bytes()) == report
+
+
+@pytest.mark.parametrize(
+    "parameter,value",
+    [
+        ("outFields", "OBJECTID"),
+        ("where", "OBJECTID=1"),
+        ("resultOffset", "10"),
+        ("returnGeometry", "false"),
+        ("orderByFields", "OBJECTID DESC"),
+        ("duplicate", "1"),
+    ],
+)
+def test_rejects_partial_or_ambiguous_page_queries(
+    inputs: tuple[Path, Path, str], tmp_path: Path, parameter: str, value: str
+) -> None:
+    from urllib.parse import parse_qsl, urlencode, urlsplit
+
+    store, capture_set, rights = inputs
+    cid = json.loads(capture_set.read_bytes())["page_capture_ids"][0]
+    path = store / "captures" / f"{cid.removeprefix('urn:uuid:')}.json"
+    record = json.loads(path.read_bytes())
+    url = urlsplit(record["request"]["url"])
+    params = dict(parse_qsl(url.query))
+    if parameter == "duplicate":
+        query = url.query + "&where=1%3D1"
+    else:
+        params[parameter] = value
+        query = urlencode(params)
+    record["request"]["url"] = url._replace(query=query).geturl()
+    path.write_text(json.dumps(record))
+    with pytest.raises(ValueError):
+        builder.build_tasman_public_packet(store, capture_set, rights, tmp_path / "output")

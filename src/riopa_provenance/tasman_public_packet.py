@@ -6,6 +6,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qsl, urlsplit
 
 from .hashing import sha256_bytes, sha256_json
 
@@ -69,9 +70,9 @@ def build_tasman_public_packet(
         raise ValueError("missing count/page closure")
     roles = [(capture_set.get("metadata_capture_id"), "metadata")]
     roles.extend((cid, "count") for cid in counts)
-    roles.extend((cid, "page") for cid in pages)
     if capture_set.get("object_ids_capture_id"):
         roles.append((capture_set["object_ids_capture_id"], "ids"))
+    roles.extend((cid, "page") for cid in pages)
     roles.append((rights_capture_id, "rights"))
     if len(roles) > (MAX_FILES - 1) // 2:
         raise ValueError("capture budget exceeded")
@@ -83,6 +84,12 @@ def build_tasman_public_packet(
         raise ValueError("invalid feature count")
     rights_digest = ""
     observed: list[str] = []
+    oid_field: str | None = None
+    page_size = 0
+    object_ids: list[int] | None = None
+    field_names: set[str] = set()
+    if capture_set.get("query") != {"where": "1=1", "out_fields": "*"}:
+        raise ValueError("capture set must declare an unrestricted full-field query")
     for cid, role in roles:
         if not isinstance(cid, str) or not _UUID.fullmatch(cid) or cid in seen:
             raise ValueError("unsafe or duplicate capture identity")
@@ -111,12 +118,111 @@ def build_tasman_public_packet(
         payload = json.loads(body)
         if not isinstance(payload, dict) or "error" in payload:
             raise ValueError("malformed captured JSON")
-        request_url = record["request"]["url"].split("?", 1)[0]
+        parsed_url = urlsplit(record["request"]["url"])
+        request_url = parsed_url._replace(query="", fragment="").geturl()
+        pairs = parse_qsl(parsed_url.query, keep_blank_values=True, strict_parsing=True)
+        params = dict(pairs)
+        if (
+            len(params) != len(pairs)
+            or parsed_url.fragment
+            or record["request"].get("method") != "GET"
+        ):
+            raise ValueError("ambiguous request query or method")
         expected_url = RIGHTS_URL if role == "rights" else f"{SERVICE}/3"
         if role in ("count", "page", "ids"):
             expected_url += "/query"
         if request_url != expected_url:
             raise ValueError("capture request is not bound to selected layer/item")
+        expected_params = {"f": "pjson" if role == "metadata" else "json"}
+        if role in ("count", "ids", "page"):
+            expected_params["where"] = "1=1"
+        if role == "metadata":
+            fields = payload.get("fields", [])
+            if (
+                not isinstance(fields, list)
+                or not fields
+                or any(
+                    not isinstance(field, dict) or not isinstance(field.get("name"), str)
+                    for field in fields
+                )
+            ):
+                raise ValueError("invalid layer fields")
+            field_names = {field["name"] for field in fields}
+            candidates = [
+                field.get("name") for field in fields if field.get("type") == "esriFieldTypeOID"
+            ]
+            oid_field = (
+                payload.get("objectIdField")
+                or payload.get("objectIdFieldName")
+                or (candidates[0] if len(candidates) == 1 else None)
+            )
+            if oid_field != "OBJECTID" or capture_set.get("object_id_field") != oid_field:
+                raise ValueError("unbound object ID field")
+            maximum = payload.get("maxRecordCount") or 1000
+            if type(maximum) is not int:
+                raise ValueError("invalid server page size")
+            page_size = min(max(maximum, 1), 10000)
+            if capture_set.get("page_size") != page_size:
+                raise ValueError("capture page size does not match metadata")
+            pagination = payload.get("advancedQueryCapabilities", {}).get(
+                "supportsPagination", True
+            )
+            strategy = "offset" if pagination else "object_ids"
+            if capture_set.get("pagination_strategy") != strategy:
+                raise ValueError("pagination strategy does not match metadata")
+            if bool(capture_set.get("object_ids_capture_id")) != (strategy == "object_ids"):
+                raise ValueError("unexpected object-ID inventory")
+        elif role == "count":
+            expected_params["returnCountOnly"] = "true"
+        elif role == "ids":
+            expected_params["returnIdsOnly"] = "true"
+            raw_ids = payload.get("objectIds")
+            if not isinstance(raw_ids, list) or any(type(v) is not int for v in raw_ids):
+                raise ValueError("invalid object ID inventory")
+            object_ids = sorted(raw_ids)
+            if len(set(object_ids)) != expected_count or len(object_ids) != expected_count:
+                raise ValueError("object ID inventory count mismatch")
+        elif role == "page":
+            expected_params.update(
+                outFields="*",
+                returnGeometry="true",
+                returnExceededLimitFeatures="true",
+                orderByFields=f"{oid_field} ASC",
+            )
+            if capture_set["pagination_strategy"] == "offset":
+                expected_params.update(
+                    resultOffset=str(len(feature_ids)), resultRecordCount=str(page_size)
+                )
+            else:
+                if object_ids is None:
+                    raise ValueError("missing object ID inventory")
+                chunk = object_ids[len(feature_ids) : len(feature_ids) + page_size]
+                if chunk:
+                    expected_params["objectIds"] = ",".join(map(str, chunk))
+                else:
+                    expected_params["where"] = "1=0"
+                    expected_params.pop("orderByFields")
+            rows = payload.get("features")
+            if not isinstance(rows, list) or len(rows) > page_size:
+                raise ValueError("invalid feature page")
+            if any(
+                not isinstance(row, dict)
+                or "geometry" not in row
+                or not isinstance(row.get("attributes"), dict)
+                or set(row["attributes"]) != field_names
+                for row in rows
+            ):
+                raise ValueError("page omits declared fields or geometry")
+            ids = [row["attributes"]["OBJECTID"] for row in rows]
+            if ids != sorted(ids) or (feature_ids and ids and ids[0] <= feature_ids[-1]):
+                raise ValueError("page object IDs are not strictly ordered")
+            if (
+                object_ids is not None
+                and ids != object_ids[len(feature_ids) : len(feature_ids) + page_size]
+            ):
+                raise ValueError("object ID chunk mismatch")
+        if params != expected_params:
+            raise ValueError("request does not match full-layer query contract")
         if role == "rights":
             licence = payload.get("licenseInfo")
             if (

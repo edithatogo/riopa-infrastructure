@@ -50,6 +50,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 ## 5. Review fixes
 
 - [x] 5.13 Reject traversing builder inputs and derive public preparation summaries from verified packet identities/counts; validate receipt hash/name bindings and add negative tests after isolated review.
+- [x] 5.14 Validate role-specific ArcGIS query parameters and bind the receipt's rights-object digest to the public candidate after hosted review.
+- [~] 5.15 Retain machine-readable hosted coverage even on test failure and refresh the generated module inventory for the new packet builder without weakening the coverage gate.
 
 - [x] 5.12 Correct the GitHub-rejected job-level runner context and test literal work/artifact path binding; serialise overlapping runs per council without cancelling active preservation.
 

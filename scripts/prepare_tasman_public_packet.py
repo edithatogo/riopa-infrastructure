@@ -39,6 +39,7 @@ def prepare(work: Path) -> dict[str, Any]:
     if (
         receipt["source_id"] != manifest["source_id"]
         or receipt["zones"]["feature_count"] != verified_set["feature_count"]
+        or receipt["selected_item"].get("rights_object_sha256") != manifest["rights_object_sha256"]
     ):
         raise ValueError("receipt summary differs from verified packet")
     report = {
