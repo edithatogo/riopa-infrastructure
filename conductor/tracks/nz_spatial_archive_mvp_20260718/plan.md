@@ -8,7 +8,7 @@
 
 - [x] 1.1 Select Wellington City, Queenstown Lakes, New Plymouth and Tasman after the national source inventory, using four materially different official publication mechanisms while keeping rights, capture, legal-status and representativeness gates open (`docs/nz-spatial-council-selection-20260825.json`, `tests/test_nz_spatial_council_selection.py`; `e37b398`).
 - [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
-- [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.
+- [~] 1.3 Preserve bounded rights, capability, legal-status and source-health evidence for existing archived packets. The archive-only record is fail-closed: unobserved live health, unresolved rights and operative legal status remain explicit (`docs/nz-spatial-archive-rights-capability-health-20260830.json`, `schemas/nz-spatial-archive-rights-capability-health.schema.json`, `tests/test_nz_spatial_archive_rights_capability_health.py`).
 - [x] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.
 - [x] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service (`8f34bfd`).
 - [x] 1.6 Verify and consume the immutable public WCC Churton Park packet offline, binding every packet path, byte count, digest, capture identity and object reference while retaining CC-BY-3.0-NZ attribution and non-authority boundaries (`docs/wcc-public-archive-spatial-projection-20260830.json`, `tests/test_public_archive_spatial.py`).

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema", "record_id", "observed_at", "archive_repository", "archive_revision", "observation_basis", "sources", "disposition", "non_claims"],
+  "properties": {
+    "schema": {"const": "riopa.nz-spatial-archive-rights-capability-health.v1"},
+    "record_id": {"type": "string", "pattern": "^urn:riopa:evidence:"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "archive_repository": {"const": "edithatogo/riopa-public-data-archive"},
+    "archive_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "observation_basis": {"type": "string", "pattern": "no live endpoint contact"},
+    "sources": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["source_id", "packet", "archive_status", "rights_status", "legal_status", "capabilities", "source_health", "source_health_action"], "properties": {"source_id": {"type": "string"}, "packet": {"type": "string"}, "archive_status": {"type": "string"}, "rights_status": {"type": "string"}, "licence": {"type": ["string", "null"]}, "legal_status": {"type": "string"}, "capabilities": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "source_health": {"const": "not-observed"}, "source_health_action": {"enum": ["quarantine-source", "quarantine-live-health-claims"]}}}},
+    "disposition": {"type": "object", "required": ["public_payload_materialisation_allowed", "network_timetable_facility_national_authoritative_claims_enabled", "promotion_allowed", "next_action"], "properties": {"public_payload_materialisation_allowed": {"const": false}, "network_timetable_facility_national_authoritative_claims_enabled": {"const": false}, "promotion_allowed": {"const": false}, "next_action": {"type": "string"}}},
+    "non_claims": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
