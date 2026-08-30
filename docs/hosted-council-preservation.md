@@ -35,7 +35,9 @@ locked in the optional `preservation` extra.
    fail closed rather than silently discarding a checkpoint.
 2. Reuse only a complete checkpoint matching the exact source, GitHub run and
    code revision. Re-download and verify its immutable raw packet and every tar
-   member first. Recheck public evidence anonymously.
+   member first. The durable checkpoint binds the original public revision and
+   both evidence file sizes/digests; recheck those exact bytes anonymously without
+   republishing a replacement. Lost public evidence fails checkpoint replay.
 3. New acquisition has a 600-second subprocess limit. Source failures/timeouts
    are packaged as incomplete. Retain all well-formed captured responses and
    their original receipt identities; never promote partial responses.

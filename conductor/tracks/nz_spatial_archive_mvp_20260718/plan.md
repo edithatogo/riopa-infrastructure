@@ -2,9 +2,7 @@
 
 ## 1. Real source capture
 
-- [~] 1.9 Run council captures in bounded parallel GitHub Actions jobs, preserve
-  complete and failed attempts in private Hugging Face storage, publish unrestricted
-  evidence, and verify immutable bytes before accepting source-level checkpoints.
+- [~] 1.9 Run council captures in bounded parallel GitHub Actions jobs, preserve complete and failed attempts in private Hugging Face storage, publish unrestricted evidence, and verify immutable bytes before accepting source-level checkpoints.
 
 - [x] 1.1 Select Wellington City, Queenstown Lakes, New Plymouth and Tasman after the national source inventory, using four materially different official publication mechanisms while keeping rights, capture, legal-status and representativeness gates open (`docs/nz-spatial-council-selection-20260825.json`, `tests/test_nz_spatial_council_selection.py`; `e37b398`).
 - [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
@@ -48,6 +46,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.
 
 ## 5. Review fixes
+
+- [x] 5.11 Bind original public revision and evidence sizes/digests in durable hosted checkpoints; verify that exact public revision on replay without replacement, and keep task 1.9 on one parseable issue-generator line after hosted review.
 
 - [x] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record, safely reuse only a verified local packet, reject redirects outside the archive host boundary and separate stable semantic identity from run-specific DuckDB bytes (`ffeb681`, `6c9c5c8`, `f04693c`, `de8b790`, `61cddd3`).
 - [x] 5.2 Bind the WCC packet to a trusted immutable descriptor; enforce exact filesystem, capture and object closure; contain reconstructed object paths; derive the ArcGIS OID from metadata; and limit feature lineage to its page capture after isolated preservation review.

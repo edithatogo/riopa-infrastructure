@@ -186,7 +186,7 @@ def test_publication_boundaries_and_checkpoint_order(tmp_path: Path, failure: st
         return str(path)
 
     def paths(repo: str, names: list[str], **kwargs: object) -> list[SimpleNamespace]:
-        assert kwargs["revision"] == "b" * 40
+        assert kwargs["revision"] == ("b" * 40 if repo == SCRIPT["PRIVATE_REPO"] else "c" * 40)
         return [
             SimpleNamespace(
                 path=name,
@@ -197,6 +197,7 @@ def test_publication_boundaries_and_checkpoint_order(tmp_path: Path, failure: st
                 ),
             )
             for name in names
+            if (repo, name) in remote
         ]
 
     api = SimpleNamespace(
@@ -233,10 +234,19 @@ def test_publication_boundaries_and_checkpoint_order(tmp_path: Path, failure: st
             assert all(
                 token is False for repo, _, token in downloads if repo == SCRIPT["PUBLIC_REPO"]
             )
-            with patch.dict(SCRIPT["resume"].__globals__, {"publish": lambda *args: None}):
-                assert SCRIPT["resume"](api, "tasman", "123", "a" * 40, tmp_path / "resumed")
-                with pytest.raises(ValueError, match="source/run/code"):
-                    SCRIPT["resume"](api, "tasman", "123", "d" * 40, tmp_path / "other")
+            checkpoint = json.loads(
+                remote[SCRIPT["PRIVATE_REPO"], "campaigns/123/tasman/checkpoint.json"]
+            )
+            assert checkpoint["public_revision"] == "c" * 40
+            before = len(commits)
+            assert SCRIPT["resume"](api, "tasman", "123", "a" * 40, tmp_path / "resumed")
+            assert len(commits) == before  # Recheck original public revision, do not republish.
+            with pytest.raises(ValueError, match="source/run/code"):
+                SCRIPT["resume"](api, "tasman", "123", "d" * 40, tmp_path / "other")
+            del remote[SCRIPT["PUBLIC_REPO"], "campaigns/123/tasman/1/preservation.json"]
+            with pytest.raises(ValueError, match="public checkpoint files missing"):
+                SCRIPT["resume"](api, "tasman", "123", "a" * 40, tmp_path / "lost-public")
+            assert len(commits) == before
 
 
 def test_commit_conflict_retries_are_bounded(tmp_path: Path) -> None:

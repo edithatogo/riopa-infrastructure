@@ -16,7 +16,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 from riopa_provenance.capture import CaptureStore
-from riopa_provenance.hashing import sha256_file, sha256_json
+from riopa_provenance.hashing import sha256_bytes, sha256_file, sha256_json
 
 PRIVATE_REPO = "edithatogo/riopa-nz-spatial-raw"
 PUBLIC_REPO = "edithatogo/riopa-public-data-archive"
@@ -285,31 +285,72 @@ def checked_manifest(api: Any, checkpoint: dict[str, Any], work: Path) -> dict[s
     return manifest
 
 
-def publish(
-    api: Any, work: Path, manifest: dict[str, Any], checkpoint: dict[str, Any] | None = None
-) -> None:
+def verify_public_checkpoint(api: Any, checkpoint: dict[str, Any], work: Path) -> None:
     from huggingface_hub import hf_hub_download
 
+    revision = checkpoint["public_revision"]
+    if not re.fullmatch(r"[0-9a-f]{40}", revision):
+        raise ValueError("invalid public checkpoint revision")
+    entries = checkpoint["public_files"]
+    if set(entries) != {"preservation.json", "manifest.json"}:
+        raise ValueError("invalid public checkpoint closure")
+    names = [f"{checkpoint['prefix']}/{name}" for name in entries]
+    sizes = {
+        item.path: item.size
+        for item in api.get_paths_info(
+            PUBLIC_REPO, names, repo_type="dataset", revision=revision, token=False
+        )
+    }
+    if set(sizes) != set(names):
+        raise ValueError("original public checkpoint files missing")
+    for name, entry in entries.items():
+        remote_name = f"{checkpoint['prefix']}/{name}"
+        if (
+            type(entry["bytes"]) is not int
+            or not 0 < entry["bytes"] <= MAX_MANIFEST_BYTES
+            or sizes[remote_name] != entry["bytes"]
+        ):
+            raise ValueError("original public checkpoint size mismatch")
+        path = Path(
+            hf_hub_download(
+                PUBLIC_REPO,
+                remote_name,
+                repo_type="dataset",
+                revision=revision,
+                token=False,
+                force_download=True,
+                local_dir=work / "anonymous-readback",
+            )
+        )
+        if path.stat().st_size != entry["bytes"] or sha256_file(path) != entry["sha256"]:
+            raise ValueError("original public evidence digest mismatch")
+    evidence = json.loads(
+        (work / "anonymous-readback" / checkpoint["prefix"] / "preservation.json").read_text()
+    )
+    evidence.update(public_revision=revision, anonymous_evidence_verified=True)
+    write_json(work / "public/preservation.json", evidence)
+
+
+def publish(api: Any, work: Path, manifest: dict[str, Any]) -> None:
     if api.repo_info(PRIVATE_REPO, repo_type="dataset").private is not True:
         raise ValueError("raw destination must be private")
     if api.repo_info(PUBLIC_REPO, repo_type="dataset").private is not False:
         raise ValueError("evidence destination must be public")
     prefix = f"campaigns/{manifest['run_id']}/{manifest['source']}/{manifest['attempt']}"
-    if checkpoint is None:
-        verify_packet(work / "packet/raw.tar", manifest)
-        revision = commit_files(
-            api,
-            PRIVATE_REPO,
-            {
-                f"{prefix}/raw.tar": work / "packet/raw.tar",
-                f"{prefix}/manifest.json": work / "packet/manifest.json",
-            },
-        )
-        checkpoint = {
-            "prefix": prefix,
-            "revision": revision,
-            "manifest_sha256": manifest["manifest_sha256"],
-        }
+    verify_packet(work / "packet/raw.tar", manifest)
+    revision = commit_files(
+        api,
+        PRIVATE_REPO,
+        {
+            f"{prefix}/raw.tar": work / "packet/raw.tar",
+            f"{prefix}/manifest.json": work / "packet/manifest.json",
+        },
+    )
+    checkpoint = {
+        "prefix": prefix,
+        "revision": revision,
+        "manifest_sha256": manifest["manifest_sha256"],
+    }
     verified = checked_manifest(api, checkpoint, work / "readback")
     if verified != manifest:
         raise ValueError("uploaded manifest differs from local packet")
@@ -335,26 +376,18 @@ def publish(
             f"{prefix}/manifest.json": manifest_payload,
         },
     )
-    for name, expected in (("preservation.json", payload), ("manifest.json", manifest_payload)):
-        downloaded = Path(
-            hf_hub_download(
-                PUBLIC_REPO,
-                f"{prefix}/{name}",
-                repo_type="dataset",
-                revision=public_revision,
-                token=False,
-                force_download=True,
-                local_dir=work / "anonymous-readback",
-            )
-        )
-        if downloaded.read_bytes() != expected:
-            raise ValueError("anonymous evidence readback mismatch")
-    evidence["public_revision"] = public_revision
-    evidence["anonymous_evidence_verified"] = True
-    write_json(work / "public/preservation.json", evidence)
+    durable_checkpoint = {
+        **checkpoint,
+        "public_revision": public_revision,
+        "public_files": {
+            name: {"sha256": sha256_bytes(value), "bytes": len(value)}
+            for name, value in (("preservation.json", payload), ("manifest.json", manifest_payload))
+        },
+    }
+    verify_public_checkpoint(api, durable_checkpoint, work)
     # Publish the reusable checkpoint only after private and anonymous public verification.
     checkpoint_name = f"campaigns/{manifest['run_id']}/{manifest['source']}/checkpoint.json"
-    commit_files(api, PRIVATE_REPO, {checkpoint_name: json.dumps(checkpoint).encode()})
+    commit_files(api, PRIVATE_REPO, {checkpoint_name: json.dumps(durable_checkpoint).encode()})
 
 
 def resume(api: Any, source: str, run_id: str, revision: str, work: Path) -> bool:
@@ -380,10 +413,8 @@ def resume(api: Any, source: str, run_id: str, revision: str, work: Path) -> boo
         revision,
     ):
         raise ValueError("checkpoint source/run/code mismatch")
-    if manifest["acquisition_complete"] is not True:
-        return False
-    publish(api, work, manifest, checkpoint)
-    return True
+    verify_public_checkpoint(api, checkpoint, work)
+    return manifest["acquisition_complete"] is True
 
 
 def main() -> int:
