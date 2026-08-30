@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "source_registry",
+  "registry_id": "urn:riopa:registry:npdc-map-documents",
+  "generated_at": "2026-08-30T00:00:00Z",
+  "sources": [{
+    "source_id": "urn:riopa:source:npdc:district-plan-2005-maps",
+    "name": "NPDC District Plan 2005 Volume 3 PDF maps",
+    "publisher": {"name": "New Plymouth District Council", "url": "https://www.npdc.govt.nz/"},
+    "jurisdiction": "New Plymouth District",
+    "source_family": "council-planning-documents",
+    "status": "bounded-capture",
+    "rights": {
+      "access_status": "public-download",
+      "redistribution_status": "metadata-public-payload-decision-pending",
+      "notes": "Official download links support bounded acquisition and local preservation. No public-payload licence is inferred. Exact redistribution terms remain to be qualified; documents retain unresolved operative status."
+    },
+    "endpoints": [{
+      "endpoint_id": "urn:riopa:source:npdc:district-plan-2005-maps:index",
+      "mechanism": "html-pdf-index",
+      "url": "https://www.npdc.govt.nz/planning-our-future/district-plan/operative-district-plan-2005/volume-3-maps/",
+      "enabled": true,
+      "authentication": {"type": "none"},
+      "allowed_download_hosts": ["www.npdc.govt.nz"],
+      "rate_limit": {"requests_per_second": 1, "maximum_concurrency": 1},
+      "capabilities": ["pdf-document-enumeration", "faithful-http-capture"]
+    }]
+  }]
+}

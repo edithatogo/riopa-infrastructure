@@ -8,6 +8,7 @@
 - [x] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.
 - [x] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service (`8f34bfd`).
 - [x] 1.6 Verify and consume the immutable public WCC Churton Park packet offline, binding every packet path, byte count, digest, capture identity and object reference while retaining CC-BY-3.0-NZ attribution and non-authority boundaries (`docs/wcc-public-archive-spatial-projection-20260830.json`, `tests/test_public_archive_spatial.py`).
+- [x] 1.7 Capture all 130 distinct New Plymouth Volume 3 PDF links plus the index (97,420,678 response bytes), verify each retained HTTP/object receipt and reject partial responses. Raw documents remain outside Git; operative status, public-payload rights and capture-to-release qualification remain open (`docs/npdc-map-document-capture-20260830.json`, `scripts/capture_npdc_map_documents.py`, `tests/test_npdc_map_document_capture.py`).
 
 ## 2. Canonical bitemporal model
 
@@ -38,6 +39,7 @@
 - [x] 5.3 Replace the non-portable DuckDB file digest claim with independently reproduced semantic readback, and generate policy non-claims in the projection receipt after isolated reproduction review.
 - [x] 5.4 Prevent outputs from mutating verified inputs, reject unsafe output names and symlinked control files, reconcile the checked-in WCC trust descriptor to the public publication receipt, and bind the captured rights payload to its exact digest, licence text and attribution after preservation re-review.
 - [x] 5.5 Fail closed when captured count receipts, the capture-set declaration and materialized rows disagree, while keeping the new page-lineage and metadata-OID behavior opt-in so earlier preserved rebuild identities remain unchanged after hosted review.
+- [x] 5.6 Reject partial HTTP 206/Content-Range document and index responses, distinguish retained-byte budgets from transfer volume, and persist structured failure evidence after the NPDC capture subagent review.
 
 ## Track closeout
 
