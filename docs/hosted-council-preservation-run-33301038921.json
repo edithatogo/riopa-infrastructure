@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "observed_date": "2026-08-30",
+  "workflow_run": {"id": "33301038921", "url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921", "conclusion": "success", "head_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07"},
+  "jobs": [
+    {"source": "tasman", "id": "99229124204", "url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921/job/99229124204", "conclusion": "success", "artifact": {"id": "9728945563", "name": "council-preservation-tasman-33301038921-1", "size_bytes": 1008}},
+    {"source": "qldc", "id": "99229124249", "url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921/job/99229124249", "conclusion": "success", "artifact": {"id": "9728942869", "name": "council-preservation-qldc-33301038921-1", "size_bytes": 482}},
+    {"source": "npdc", "id": "99229124273", "url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921/job/99229124273", "conclusion": "success", "artifact": {"id": "9728959528", "name": "council-preservation-npdc-33301038921-1", "size_bytes": 480}}
+  ],
+  "tasman_candidate": {"status": "prepared-not-published", "source_id": "urn:riopa:source:tasman:geohub", "manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6", "capture_set_id": "urn:uuid:56fb6c1d-7ddf-4061-af0b-722ddb06caa6", "feature_count": 3655, "file_count": 12, "file_bytes": 24378239, "licence": "CC-BY-4.0", "attribution": "Tasman District Council (TDC)", "evidence_artifact_id": "9728945563"},
+  "huggingface_archive": {"repository": "edithatogo/riopa-public-data-archive", "revision": "3541a8f741717dc46311ba32ce254d61c8b628b3", "files": {"tasman_manifest": "20a201de32ec84084ac182003f82c37465f86a2e", "tasman_preservation": "daf8af00b3449777e209383eefb536ec338a31ba", "qldc_manifest": "0a2661ae38838fdd9076d1efd3c8a28c4a21ed6e", "qldc_preservation": "db13c6c7fadb144c497c4d467bbb7e307911161a", "npdc_manifest": "226aa00c2a6a3e279c95c6003c2c67ed34d65ed6", "npdc_preservation": "4c36d41e0beb29b591af9b769d14e9f0b612b5c0"}},
+  "claims_disabled": ["No public payload upload or anonymous payload acceptance.", "No canonical or materialised rebuild.", "No operative legal-status or currentness claim.", "No beta, RC or stable-v1 promotion."]
+}
