@@ -14,6 +14,14 @@
 
 ## 2. Canonical bitemporal model
 
+QLDC acquisition follow-up: the current official entry page and user guide are
+captured, but both linked application routes returned HTTP 403 from this
+environment. `docs/qldc-eplan-route-qualification-20260830.json` records all four
+responses; `scripts/qualify_qldc_eplan.py` reruns a bounded four-request probe.
+This does not complete 1.2 or count the guide as a planning-data capture. Next:
+qualify a council-published export or ordinary interactive access, without
+bypassing access controls; meanwhile continue Tasman canonical materialisation.
+
 
 - [ ] 2.1 Transform source layers into canonical feature/version records.
 - [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.

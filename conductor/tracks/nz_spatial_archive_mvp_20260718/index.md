@@ -85,7 +85,32 @@ also distinguishes the original archiver from the successor field-list OID
 detection fix: the historical manifest remains unchanged, and future captures
 gain automatic ordering and uniqueness enforcement for this MapServer pattern.
 
-### Remaining track blockers
+### QLDC route qualification (2026-08-30)
+
+`docs/qldc-eplan-route-qualification-20260830.json` binds four faithful response
+captures (3,054,045 retained bytes): the official authority page and linked PDF
+user guide returned HTTP 200; the separately linked operative/proposed ePlan
+applications returned HTTP 403. This is an environment-specific access observation,
+not a claim that the applications are unavailable to all users. Raw payloads
+remain outside Git. The guide is not planning provisions, geometry or an ePlan
+snapshot. Source access, rights, valid time and operative legal status remain
+separate questions; no public archival exclusion is inferred from this probe.
+
+`scripts/qualify_qldc_eplan.py` and `tests/test_qldc_eplan_qualification.py` provide
+a four-request, one-attempt-per-route qualification path with authority-link
+binding, response-size limits, redirect rejection and persistent failure status.
+`config/source-registry/qldc-eplan.json` records the bounded source access plan.
+Future invocations preserve previous captures and content-addressed receipts;
+this small probe deliberately does not retry denials or claim resumable bulk
+collection. Qualify council-published exports or ordinary interactive access
+next; continue Tasman canonical/materialised outputs while QLDC remains blocked.
+
+An isolated subagent review verified all four stored objects, capture identities,
+byte counts, HTTP statuses, absence of Content-Range, exact authority anchors,
+receipt semantic hash and producer hash offline. All ten focused tests passed;
+the reviewer reported no actionable finding for this bounded increment.
+
+### Remaining track blockers (unchanged)
 
 
 - All four blocking dependency tracks remain incomplete.
