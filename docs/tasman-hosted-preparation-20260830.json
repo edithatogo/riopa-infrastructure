@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "status": "hosted-preparation-verified-publication-pending",
+  "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921",
+  "producer_revision": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+  "artifact": "council-preservation-tasman-33301038921-1",
+  "preparation_receipt_sha256": "87c03a465a58a08c816674236294d9da752f5af09cf7c1447244887195345ac5",
+  "preservation_receipt_sha256": "8ff922f79d6c9c368f8d1d5f413682ec91719015834a94e019c6530f95ae49d3",
+  "private_revision": "c05d8edd1954b4f96d891f29e43511803a760ecb",
+  "private_manifest_sha256": "a3bbed6282ca6f78bd9cfdce9decafcf6c800df9e20279132940129576bbdd36",
+  "candidate": {
+    "manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+    "capture_set_id": "urn:uuid:56fb6c1d-7ddf-4061-af0b-722ddb06caa6",
+    "feature_count": 3655,
+    "file_count": 12,
+    "file_bytes": 24378239,
+    "licence": "CC-BY-4.0",
+    "attribution": "Tasman District Council (TDC)"
+  },
+  "non_claims": [
+    "This is hosted preparation evidence, not public payload acceptance.",
+    "The earlier preparation implementation record is historical and remains unchanged.",
+    "Canonical rebuild, operative status, scheduled cycles and track completion are separate."
+  ]
+}

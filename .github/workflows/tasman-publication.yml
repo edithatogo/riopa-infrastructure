@@ -1,0 +1,67 @@
+name: Publish and rebuild licensed Tasman archive
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_run:
+        description: Successful council archive run containing standalone Tasman rights
+        required: true
+        default: "33301038921"
+        type: string
+  workflow_run:
+    workflows: [Preserve bounded council archives]
+    types: [completed]
+
+permissions:
+  contents: read
+
+# Independent invocations must not interrupt a commit or its verification.
+concurrency:
+  group: tasman-publication-${{ github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+  publish:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.head_repository.full_name == github.repository))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: tasman-publication-writer
+      cancel-in-progress: false
+    env:
+      SOURCE_RUN: ${{ inputs.source_run || github.event.workflow_run.id }}
+      WORK: .riopa-local/tasman-publication
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: "1"
+    steps:
+      - name: Check out approved implementation
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.14"
+          version: "0.11.16"
+      - name: Install locked spatial and preservation environment
+        run: uv sync --extra spatial --extra preservation --frozen
+      - name: Publish licensed packet and verify anonymous clean rebuilds
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: uv run python scripts/publish_tasman_public_packet.py --source-run "$SOURCE_RUN" --work "$WORK"
+      - name: Retain metadata verification evidence only
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: tasman-publication-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .riopa-local/tasman-publication/public/
+          if-no-files-found: warn
+          retention-days: 90
