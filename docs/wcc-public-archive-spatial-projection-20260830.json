@@ -1,0 +1,37 @@
+{
+  "canonical_features": [{
+    "capture_ids": ["urn:uuid:f90ca9c7-7734-4258-ae63-f0d333f868d1"],
+    "feature_id": "urn:riopa:feature:6227d2301663c18a38ba65ae93c4b351ae57e9d93c659e8ef365180403adfa9f",
+    "geometry_sha256": "fff7ce3952897e000f8179730d63b179b4a12f09d9244bb13cfd825010f1e0b1",
+    "recorded_time": {"at": "2026-08-29", "basis": "archive-capture-date"},
+    "source_object_id": "1",
+    "valid_time": {"from": null, "status": "unknown-not-imputed", "to": null}
+  }],
+  "capture_inputs": {
+    "count_capture_ids": ["urn:uuid:5d49ab1d-3f46-4834-9538-99a925ba7961", "urn:uuid:9fd39941-9c09-493a-8d8e-8e585eca1b4b"],
+    "metadata_capture_id": "urn:uuid:97cb3acc-acf2-4e38-92e2-002a525ab8b4",
+    "page_capture_ids": ["urn:uuid:f90ca9c7-7734-4258-ae63-f0d333f868d1"],
+    "rights_capture_ids": ["urn:uuid:29b34e42-2c4d-4fd1-8c03-4c2faecfeca6"]
+  },
+  "capture_set_id": "urn:uuid:55c2ec4b-f977-4b6a-bce7-844b71c2d93b",
+  "dataset_repository": "edithatogo/riopa-public-data-archive",
+  "duckdb": {"reproducibility_class": "deterministic-semantics", "semantic_sha256": "71ce1914a5b307263e36b3bd98d476cc656457fce744df919b2ecdbe90d86b4f"},
+  "feature_count": 1,
+  "geometry_policy": "original translated geometry preserved; implicit repair disabled",
+  "geoparquet": {"profile": "GeoParquet 1.1.0", "sha256": "b00cc93bf892e9277a25ff810ce0766edd40271d1716f371a50eccf5f7c27021"},
+  "legal_status": "bounded-non-authoritative-planning-reference",
+  "non_claims": [
+    "No operative district-plan status is inferred.",
+    "The feature does not establish current supermarket operation.",
+    "This one-feature council slice does not satisfy four-council or two-national-family coverage.",
+    "A local repeat rebuild does not satisfy the three scheduled change and recovery cycles."
+  ],
+  "packet_manifest_sha256": "d263e7c80f395f439ae4cf2e9a3ec6932b1eda3b21a0cfa19ac6cf426d15da52",
+  "packet_path": "snapshots/wcc-churton-park-village-supermarket-20260829",
+  "packet_revision": "001137c0df64e9f8a7b0539fd0286a7cd5819ce7",
+  "record_type": "public_archive_spatial_projection",
+  "rights": {"attribution": "Wellington City Council", "licence": "CC-BY-3.0-NZ", "publication_status": "public-rights-qualified"},
+  "schema_version": "1.0.0",
+  "semantic_sha256": "2e6a1db4e206cdb529f002dd86e36c6d5b57ab32ad08ea0922b14877cf051c24",
+  "source_id": "urn:riopa:source:wcc:churton-park-village-supermarket"
+}

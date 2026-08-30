@@ -675,13 +675,33 @@ def materialize_arcgis_capture_set(
     output_dir: str | Path,
     crs: str | None = None,
     base_name: str = "features",
+    repair_invalid: bool = True,
 ) -> SpatialMaterialization:
     capture_set = _load_capture_set(capture_set_path, "arcgis_layer_capture_set")
     root = Path(store_root).resolve()
     metadata = _capture_payload(root, capture_set["metadata_capture_id"])
-    payloads = [_capture_payload(root, item) for item in capture_set["page_capture_ids"]]
     object_id_field = capture_set.get("object_id_field") or metadata.get("objectIdField")
-    features, payload_crs = arcgis_features_to_geojson(payloads, object_id_field=object_id_field)
+    if not object_id_field:
+        object_id_field = next(
+            (
+                field.get("name")
+                for field in metadata.get("fields", [])
+                if isinstance(field, Mapping) and field.get("type") == "esriFieldTypeOID"
+            ),
+            None,
+        )
+    features: list[dict[str, Any]] = []
+    payload_crs: str | None = None
+    for capture_id in capture_set["page_capture_ids"]:
+        page_features, page_crs = arcgis_features_to_geojson(
+            [_capture_payload(root, capture_id)],
+            object_id_field=object_id_field,
+            repair_invalid=repair_invalid,
+        )
+        for feature in page_features:
+            feature["capture_ids"] = [capture_id]
+        features.extend(page_features)
+        payload_crs = payload_crs or page_crs
     metadata_crs = None
     spatial_reference = metadata.get("extent", {}).get("spatialReference", {})
     wkid = spatial_reference.get("latestWkid") or spatial_reference.get("wkid")
@@ -706,6 +726,7 @@ def materialize_arcgis_capture_set(
         crs=crs or payload_crs or metadata_crs,
         object_id_field=object_id_field,
         base_name=base_name,
+        repair_invalid=repair_invalid,
     )
 
 

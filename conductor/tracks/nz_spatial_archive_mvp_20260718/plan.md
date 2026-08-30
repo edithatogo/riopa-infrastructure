@@ -7,6 +7,7 @@
 - [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.
 - [x] 1.4 Acquire and verify the complete Stats NZ Meshblock 2026 supporting-geography packet at immutable GitHub and Hugging Face revisions.
 - [x] 1.5 Project the immutable Meshblock packet into content-addressed RIOPA source and capture records without contacting its live service (`8f34bfd`).
+- [x] 1.6 Verify and consume the immutable public WCC Churton Park packet offline, binding every packet path, byte count, digest, capture identity and object reference while retaining CC-BY-3.0-NZ attribution and non-authority boundaries (`docs/wcc-public-archive-spatial-projection-20260830.json`, `tests/test_public_archive_spatial.py`).
 
 ## 2. Canonical bitemporal model
 
@@ -14,6 +15,7 @@
 - [ ] 2.2 Preserve original geometry and produce separately evidenced repairs.
 - [ ] 2.3 Link source, document and plan identities without unsupported interpretation.
 - [x] 2.4 Build a normalized Meshblock feature projection with page-level capture lineage and no implicit geometry repair (`8f34bfd`, `61cddd3`; projection `urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f`).
+- [x] 2.5 Build one canonical WCC feature identity with explicit unknown valid time, archive-recorded time, geometry digest and capture lineage; no operative-plan or current-supermarket status is inferred (`docs/wcc-public-archive-spatial-projection-20260830.json`).
 
 ## 3. Materialisation and quality
 
@@ -21,6 +23,7 @@
 - [x] 3.2 Run bounded geometry, topology, completeness, temporal, rights-metadata and lineage checks over the immutable Meshblock projection. Population, national authority and broader source checks remain open. (`tests/test_meshblock_projection_evidence.py`, `docs/stats-nz-meshblock-projection-quality-report-20260825.json`; `cdd5a8f`)
 - [x] 3.3 Produce bounded coverage, fidelity and unresolved-status reports without promoting supporting geography to population or national evidence. (`docs/stats-nz-meshblock-projection-quality-report-20260825.json`, `tests/test_meshblock_projection_quality_report.py`; `cdd5a8f`)
 - [x] 3.4 Validate the complete offline projection and commit bounded evidence while keeping bulk spatial outputs outside Git (`evidence/stats-nz-meshblock-2026-projection/records-manifest.json`).
+- [x] 3.5 Rebuild the WCC slice into byte-stable GeoParquet and semantically deterministic DuckDB projections, execute PyArrow/DuckDB readback, and keep the materialized files outside Git (`src/riopa_provenance/public_archive_spatial.py`, `tests/test_public_archive_spatial.py`).
 
 ## 4. Research-object release
 
@@ -31,6 +34,9 @@
 ## 5. Review fixes
 
 - [x] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record, safely reuse only a verified local packet, reject redirects outside the archive host boundary and separate stable semantic identity from run-specific DuckDB bytes (`ffeb681`, `6c9c5c8`, `f04693c`, `de8b790`, `61cddd3`).
+- [x] 5.2 Bind the WCC packet to a trusted immutable descriptor; enforce exact filesystem, capture and object closure; contain reconstructed object paths; derive the ArcGIS OID from metadata; and limit feature lineage to its page capture after isolated preservation review.
+- [x] 5.3 Replace the non-portable DuckDB file digest claim with independently reproduced semantic readback, and generate policy non-claims in the projection receipt after isolated reproduction review.
+- [x] 5.4 Prevent outputs from mutating verified inputs, reject unsafe output names and symlinked control files, reconcile the checked-in WCC trust descriptor to the public publication receipt, and bind the captured rights payload to its exact digest, licence text and attribution after preservation re-review.
 
 ## Track closeout
 
