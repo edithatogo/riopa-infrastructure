@@ -22,7 +22,12 @@ def inputs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, Path,
     licence = "This data is distributed under https://creativecommons.org/licenses/by/4.0/"
     monkeypatch.setattr(builder, "LICENCE_SHA256", sha256_bytes(licence.encode()))
     payloads = [
-        {"fields": [{"name": "OBJECTID", "type": "esriFieldTypeOID"}]},
+        {
+            "fields": [
+                {"name": "OBJECTID", "type": "esriFieldTypeOID"},
+                {"name": "Shape", "type": "esriFieldTypeGeometry"},
+            ]
+        },
         {"count": 1},
         {"count": 1},
         {"features": [{"attributes": {"OBJECTID": 1}, "geometry": None}]},
@@ -288,3 +293,178 @@ def test_rejects_partial_or_ambiguous_page_queries(
     path.write_text(json.dumps(record))
     with pytest.raises(ValueError):
         builder.build_tasman_public_packet(store, capture_set, rights, tmp_path / "output")
+
+
+def replace_payload(store: Path, cid: str, payload: dict) -> None:
+    path = store / "captures" / f"{cid.removeprefix('urn:uuid:')}.json"
+    record = json.loads(path.read_bytes())
+    body = json.dumps(payload).encode()
+    digest = sha256_bytes(body)
+    storage = f"objects/sha256/{digest[:2]}/{digest}"
+    obj = store / storage
+    obj.parent.mkdir(parents=True, exist_ok=True)
+    obj.write_bytes(body)
+    record["object"].update(sha256=digest, size_bytes=len(body), storage_path=storage)
+    path.write_text(json.dumps(record))
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("fields", None),
+        ("fields", []),
+        ("objectIdField", "BAD"),
+        ("maxRecordCount", "bad"),
+        ("maxRecordCount", 2),
+        ("advancedQueryCapabilities", {"supportsPagination": False}),
+    ],
+)
+def test_invalid_metadata_contract(
+    inputs: tuple[Path, Path, str], tmp_path: Path, field: str, value: object
+) -> None:
+    store, path, rights = inputs
+    cid = json.loads(path.read_bytes())["metadata_capture_id"]
+    payload = {"fields": [{"name": "OBJECTID", "type": "esriFieldTypeOID"}], field: value}
+    replace_payload(store, cid, payload)
+    with pytest.raises(ValueError):
+        builder.build_tasman_public_packet(store, path, rights, tmp_path / "output")
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("source_id", "wrong"),
+        ("count_capture_ids", []),
+        ("page_capture_ids", []),
+        ("feature_count", -1),
+        ("query", {}),
+        ("object_ids_capture_id", "urn:uuid:00000000-0000-4000-8000-000000000088"),
+    ],
+)
+def test_invalid_capture_set_contract(
+    inputs: tuple[Path, Path, str], tmp_path: Path, field: str, value: object
+) -> None:
+    store, path, rights = inputs
+    capture_set = json.loads(path.read_bytes())
+    capture_set[field] = value
+    capture_set["manifest_sha256"] = sha256_json(capture_set, omit_keys={"manifest_sha256"})
+    path.write_text(json.dumps(capture_set))
+    with pytest.raises(ValueError):
+        builder.build_tasman_public_packet(store, path, rights, tmp_path / "output")
+
+
+@pytest.mark.parametrize(
+    "rows",
+    [
+        None,
+        [],
+        [{"attributes": {"OBJECTID": 1}}],
+        [{"attributes": {"OBJECTID": True}, "geometry": None}],
+        [
+            {"attributes": {"OBJECTID": 2}, "geometry": None},
+            {"attributes": {"OBJECTID": 1}, "geometry": None},
+        ],
+    ],
+)
+def test_invalid_feature_page(inputs: tuple[Path, Path, str], tmp_path: Path, rows: object) -> None:
+    store, path, rights = inputs
+    cid = json.loads(path.read_bytes())["page_capture_ids"][0]
+    replace_payload(store, cid, {"features": rows})
+    with pytest.raises(ValueError):
+        builder.build_tasman_public_packet(store, path, rights, tmp_path / "output")
+
+
+@pytest.mark.parametrize("count", [0, 2])
+@pytest.mark.parametrize("tamper", [None, "badids", "duplicateids", "wrongchunk"])
+def test_actual_archiver_object_id_strategy(
+    inputs: tuple[Path, Path, str], tmp_path: Path, count: int, tamper: str | None
+) -> None:
+    from riopa_provenance.arcgis import ArcGISFeatureLayerArchiver
+
+    store, _, rights = inputs
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        params = request.url.params
+        if request.url.path.endswith("/3"):
+            return httpx.Response(
+                200,
+                json={
+                    "fields": [
+                        {"name": "OBJECTID", "type": "esriFieldTypeOID"},
+                        {"name": "Shape", "type": "esriFieldTypeGeometry"},
+                    ],
+                    "maxRecordCount": 1,
+                    "advancedQueryCapabilities": {"supportsPagination": False},
+                },
+            )
+        if params.get("returnCountOnly"):
+            return httpx.Response(200, json={"count": count})
+        if params.get("returnIdsOnly"):
+            return httpx.Response(200, json={"objectIds": list(range(1, count + 1))})
+        ids = [int(params["objectIds"])] if params.get("objectIds") else []
+        return httpx.Response(
+            200, json={"features": [{"attributes": {"OBJECTID": i}, "geometry": None} for i in ids]}
+        )
+
+    with httpx.Client(transport=httpx.MockTransport(respond)) as http:
+        archive = ArcGISFeatureLayerArchiver(
+            HttpCaptureClient(
+                client=http,
+                store=CaptureStore(store),
+                policy=CapturePolicy(allowed_hosts=frozenset({"gispublic.tasman.govt.nz"})),
+            )
+        ).archive_layer(
+            source_id=builder.SOURCE,
+            endpoint_id=builder.SOURCE + ":zones",
+            service_url=builder.SERVICE,
+            layer_id=3,
+        )
+    output = tmp_path / "output"
+    capture_set = json.loads(archive.manifest_path.read_bytes())
+    if tamper:
+        if tamper == "wrongchunk":
+            cid = capture_set["page_capture_ids"][0]
+            replace_payload(
+                store, cid, {"features": [{"attributes": {"OBJECTID": 99}, "geometry": None}]}
+            )
+        else:
+            cid = capture_set["object_ids_capture_id"]
+            replace_payload(store, cid, {"objectIds": [True] if tamper == "badids" else [1, 1]})
+        with pytest.raises(ValueError):
+            builder.build_tasman_public_packet(store, archive.manifest_path, rights, output)
+        return
+    manifest = builder.build_tasman_public_packet(store, archive.manifest_path, rights, output)
+    verify_public_archive_packet(output, descriptor=descriptor(output, manifest))
+
+
+@pytest.mark.parametrize(
+    "tamper", ["storage", "size", "jsonerror", "filebudget", "bytebudget", "ancestorlink"]
+)
+def test_extra_integrity_and_budget_guards(
+    inputs: tuple[Path, Path, str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch, tamper: str
+) -> None:
+    store, capture_set, rights = inputs
+    cid = json.loads(capture_set.read_bytes())["metadata_capture_id"]
+    path = store / "captures" / f"{cid.removeprefix('urn:uuid:')}.json"
+    record = json.loads(path.read_bytes())
+    output = tmp_path / "output"
+    if tamper == "storage":
+        record["object"]["storage_path"] = "../outside"
+    elif tamper == "size":
+        record["object"]["size_bytes"] += 1
+    elif tamper == "jsonerror":
+        replace_payload(store, cid, {"error": {"code": 403}})
+    elif tamper == "filebudget":
+        monkeypatch.setattr(builder, "MAX_FILES", 2)
+    elif tamper == "bytebudget":
+        # Every individual input fits, but combined packet exceeds this budget.
+        sizes = [p.stat().st_size for p in store.rglob("*") if p.is_file()]
+        monkeypatch.setattr(builder, "MAX_BYTES", max(sizes) + 1)
+    else:
+        link = tmp_path / "alias"
+        link.symlink_to(store, target_is_directory=True)
+        output = link / "new-packet"
+    if tamper in ("storage", "size"):
+        path.write_text(json.dumps(record))
+    with pytest.raises(ValueError):
+        builder.build_tasman_public_packet(store, capture_set, rights, output)

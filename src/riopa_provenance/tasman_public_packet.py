@@ -147,7 +147,9 @@ def build_tasman_public_packet(
                 )
             ):
                 raise ValueError("invalid layer fields")
-            field_names = {field["name"] for field in fields}
+            field_names = {
+                field["name"] for field in fields if field.get("type") != "esriFieldTypeGeometry"
+            }
             candidates = [
                 field.get("name") for field in fields if field.get("type") == "esriFieldTypeOID"
             ]
