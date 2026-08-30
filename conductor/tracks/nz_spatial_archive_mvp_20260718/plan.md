@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [~] 3.9 Compare Tasman feature identities, attributes and original geometry against the pinned accepted baseline after hosted publication; reject corrupt inputs and distinguish capture metadata changes from data changes without crediting scheduled cycles or recovery qualification.
+
 - [x] 3.8 Bind preserved Tasman source and derived receipts to verified GitHub source/publication run attempts, distinguish scheduled triggers from manual replay, and retain a deduplication key without claiming change/recovery or release-cycle qualification (`6fdbb81`; `docs/tasman-run-provenance-acceptance-20260831.json`; run 33336884257 attempts 1/2).
 
 - [x] 3.7 Preserve the qualified Tasman canonical, GeoParquet and DuckDB projections publicly through GitHub Actions, verify immutable anonymous bytes and semantics, and replay without replacing the original derived revision. Keep derived payloads outside Git and retain unknown valid time, attribution and release non-claims (`docs/tasman-derived-acceptance-20260831.json`; run 33335595270 attempts 1/2; public revision `1ccd5953893c588f87a31fe77fcd3d6124f03fae`).
