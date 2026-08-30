@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "status": "implementation-pending-hosted-verification",
+  "historical_review": "docs/tasman-geohub-offline-verification-20260830.json",
+  "previous_capture_producer_sha256": "d911f4ff673325dc72518099ebf6d867edcc59809cb1c02534d9d5da3c949d04",
+  "capture_producer_sha256": "62f000cfe6a69f316440b93cd3d15951c0b9959792ec96b7dc779a6006920798",
+  "change": "Capture standalone selected-item rights and bind it to catalogue identity, layer URL, attribution and exact licence text before layer capture.",
+  "public_candidate": {
+    "source_id": "urn:riopa:source:tasman:geohub",
+    "item_id": "99868f57e0df486991a4785a1d3303d3",
+    "layer_id": 3,
+    "licence": "CC-BY-4.0",
+    "attribution": "Tasman District Council (TDC)",
+    "approved_licence_text_sha256": "8ef78b71e297f41a29d95c087d158594e6e980557064cd8a6c562b409c4d791c",
+    "scope": "Only selected layer capture set and standalone item rights; no mixed catalogue or website payloads."
+  },
+  "non_claims": [
+    "Historical captures are not rewritten or claimed to include the new standalone item receipt.",
+    "Candidate preparation is not public payload publication or anonymous acceptance.",
+    "No canonical rebuild, scheduled-cycle qualification or track completion is inferred."
+  ]
+}

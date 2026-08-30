@@ -61,6 +61,9 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: uv run python scripts/hosted_council_archive.py publish --source "$SOURCE" --work "$WORK"
+      - name: Prepare isolated licensed Tasman public candidate
+        if: matrix.source == 'tasman' && steps.resume.outputs.resumed != 'true'
+        run: uv run python scripts/prepare_tasman_public_packet.py --work "$WORK"
       - name: Retain public verification evidence only
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

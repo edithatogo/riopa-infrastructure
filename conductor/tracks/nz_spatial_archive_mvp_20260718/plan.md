@@ -2,6 +2,8 @@
 
 ## 1. Real source capture
 
+- [~] 1.10 Capture standalone Tasman item rights and prepare a closed, licensed layer-only public packet on Actions from unchanged capture bytes; public upload and rebuild acceptance remain separate.
+
 - [x] 1.9 Run council captures in bounded parallel GitHub Actions jobs, preserve complete and failed attempts in private Hugging Face storage, publish unrestricted evidence, and verify immutable bytes before accepting source-level checkpoints (`docs/hosted-council-preservation-20260830.json`; run 33298342091 attempts 1/2; QLDC acquisition remains incomplete).
 
 - [x] 1.1 Select Wellington City, Queenstown Lakes, New Plymouth and Tasman after the national source inventory, using four materially different official publication mechanisms while keeping rights, capture, legal-status and representativeness gates open (`docs/nz-spatial-council-selection-20260825.json`, `tests/test_nz_spatial_council_selection.py`; `e37b398`).
@@ -46,6 +48,11 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.
 
 ## 5. Review fixes
+
+- [x] 5.13 Reject traversing builder inputs and derive public preparation summaries from verified packet identities/counts; validate receipt hash/name bindings and add negative tests after isolated review.
+- [x] 5.14 Validate role-specific ArcGIS query parameters and bind the receipt's rights-object digest to the public candidate after hosted review.
+- [x] 5.15 Retain machine-readable hosted coverage even on test failure and refresh the generated module inventory for the new packet builder without weakening the coverage gate (hosted measurement run 33299699887; its below-threshold result remains explicit until successor CI).
+- [x] 5.16 Treat ArcGIS geometry fields separately from feature attributes and exercise real-archiver object-ID pagination plus corruption/query failure paths; preserve the 90% whole-package gate.
 
 - [x] 5.12 Correct the GitHub-rejected job-level runner context and test literal work/artifact path binding; serialise overlapping runs per council without cancelling active preservation.
 

@@ -284,6 +284,23 @@ def capture_tasman(client: BoundedClient) -> dict[str, Any]:
             "valid_time": None,
             "operative_status": "unresolved",
         }
+        # Keep a standalone item receipt: publishing the entire catalogue page
+        # would accidentally include unrelated, differently licensed items.
+        stage = "selected-item-licence"
+        rights_capture, rights_item = client.capture_json(
+            "GET",
+            f"{API}/content/items/{ITEM_ID}",
+            source_id=SOURCE_ID,
+            endpoint_id=f"{SOURCE_ID}:zones:licence",
+            params={"f": "json"},
+        )
+        if not isinstance(rights_item, dict) or any(
+            rights_item.get(key) != selected.get(key)
+            for key in ("id", "url", "accessInformation", "licenseInfo")
+        ):
+            raise ValueError("standalone item rights differ from catalogue observation")
+        receipt["selected_item"]["rights_capture_id"] = rights_capture.capture_id
+        receipt["selected_item"]["rights_object_sha256"] = rights_capture.object_sha256
         stage = "zones-layer"
         archive = ArcGISFeatureLayerArchiver(client, max_pages=4).archive_layer(
             source_id=SOURCE_ID, endpoint_id=f"{SOURCE_ID}:zones", service_url=SERVICE, layer_id=3
