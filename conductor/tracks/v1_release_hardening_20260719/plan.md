@@ -96,6 +96,8 @@
   `docs/release-decision-readiness-validation-20260829.json`,
   `tests/test_release_decision_readiness_validator.py`).
 
+- [x] 5.28 Record the scheduled-automation status correction in a separately identified successor packet while preserving the immutable predecessor; retain the next scheduled event as pending and preserve fail-closed promotion semantics (`docs/campaign-scheduled-qualification-status-correction-20260830.json`, `docs/v1-candidate-hosted-validation-20260830.json`, `tests/test_v1_candidate_hosted_validation.py`).
+
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the bounded candidate packet; external, elapsed, preservation and authority gates remain open (`docs/v1-release-closeout-evidence-20260825.json`, `tests/test_v1_release_closeout_evidence.py`).
 - [x] C.2 Regenerate methods, citation, roadmap status and issue configuration where affected. The locked methods generation, roadmap status, issue graph and full quality harness passed; the methods output was temporary and not a release artifact (`docs/v1-release-conductor-regeneration-20260825.json`).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
