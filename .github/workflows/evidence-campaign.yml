@@ -59,7 +59,7 @@ concurrency:
   # Keep unrelated campaigns and exact RC candidates isolated.  A manual
   # replay must not cancel the protected-main beta run, and a new RC
   # candidate must not cancel observations for the prior candidate.
-  group: evidence-campaign-${{ github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event.inputs.candidate_revision || github.sha }}
+  group: evidence-campaign-${{ github.event_name == 'schedule' && 'operational-beta-20260830-26bc0b4' || github.event.inputs.campaign_id || format('operational-beta-{0}', github.sha) }}-${{ github.event.inputs.lane || 'operational-observation' }}-${{ github.event_name == 'schedule' && '26bc0b49bcd84f409bf24b527e1049fd396c94a6' || github.event.inputs.candidate_revision || github.sha }}
   cancel-in-progress: true
 
 defaults:

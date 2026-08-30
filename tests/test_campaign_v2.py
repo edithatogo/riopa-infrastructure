@@ -111,6 +111,9 @@ def test_campaign_concurrency_isolated_by_campaign_lane_and_rc_candidate() -> No
     assert "lane" in group
     assert "candidate_revision" in group
     assert workflow["concurrency"]["cancel-in-progress"] is True
+    assert "operational-beta-20260830-26bc0b4" in group
+    assert "26bc0b49bcd84f409bf24b527e1049fd396c94a6" in group
+    assert "github.event_name == 'schedule'" in group
 
 
 def test_normative_track_sources_use_agent_panel_qualification() -> None:
