@@ -62,6 +62,7 @@
     ,"OPS-CAMPAIGN-QUALIFICATION-ACTIVATION-20260830"
     ,"OPS-CAMPAIGN-QUALIFICATION-PLACEMENT-REVIEW-FIX-20260830"
     ,"urn:riopa:evidence:stable-v1-readiness-plan:2026-08-30"
+    ,"OPS-CAMPAIGN-SCHEDULED-QUALIFICATION-BINDING-20260830"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",
