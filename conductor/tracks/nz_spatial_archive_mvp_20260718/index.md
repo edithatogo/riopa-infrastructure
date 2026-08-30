@@ -152,7 +152,7 @@ receipt. This completes task 1.10, not public payload acceptance.
 `scripts/publish_tasman_public_packet.py` implement the separate, resumable
 publication/rebuild path. Only the licensed layer packet is eligible, never
 the mixed catalogue or website objects. Hosted anonymous acceptance and two
-clean materialisations remain task 1.11 until actual execution is recorded.
+clean materialisations are now recorded below under Tasman public acceptance.
 
 The isolated preservation/operations reviewer found no blocking issue in the
 workflow trust boundary, rights filtering, checkpoint recovery or anonymous
@@ -163,8 +163,8 @@ legacy registry format; repository-native roadmap/evidence validation passes.
 This bounded review does not complete the whole track or clean-room gate.
 Implementation `52df22d` passes 28 focused script/workflow tests, strict MyPy,
 the complete local coverage suite (90.41%, threshold 90%), full quality and
-research-object reproducibility checks. Hosted publication is still pending;
-these local checks do not substitute for its acceptance receipt.
+research-object reproducibility checks. At that review stage, hosted publication
+was pending; the later acceptance receipt below supplies the execution evidence.
 
 Hosted review subsequently identified missing durable failed-attempt evidence.
 `85af7d4` adds append-only private attempt records and safe local failure
@@ -173,6 +173,29 @@ durable writes when destination visibility is unverified. All 34 focused
 script/workflow tests, strict MyPy, Ruff and Bandit pass; isolated re-review
 found no remaining blocker in this fix. Hosted checks and publication remain
 separate from that local result.
+
+### Tasman public acceptance (2026-08-30)
+
+`docs/tasman-publication-acceptance-20260830.json` supersedes the earlier pending
+publication status for this exact Tasman packet. Actions run 33303579649 on
+`4093254` published it at immutable Hugging Face revision
+`73be6f6d5b7d1297458ed49e7222a46f915dc5a2`, anonymously checked the entire packet,
+and rebuilt all 3,655 features twice. Canonical semantic hashes, GeoParquet
+bytes and DuckDB semantic readback agree. The licence remains CC-BY-4.0 with
+Tasman District Council attribution. Raw mixed catalogue/website objects were
+not republished; only the selected licensed source packet is public.
+Attempt 2 successfully restored the checkpoint, reverified the original public
+revision and repeated both builds. Its receipt is byte-identical to attempt 1
+(SHA-256 `1a62aa1eeb4ea778acb2ec3d98356780af46b0200ae84e7785b9e0cadb676ec2`).
+
+This completes tasks 1.11, 2.6 and 3.6. Historical preparation and implementation
+receipts remain unchanged. Bulk derived outputs were verified on the runner,
+not published. Manual hosted repeatability does not establish scheduled change
+cycles, two isolated clean-room agent reproductions, operative legal status,
+full research-object publication or release readiness.
+An isolated evidence-review subagent independently checked both hosted attempt
+statuses and the downloaded receipt hashes, and found no binding or scope
+overclaim. The receipt/plan/workflow test group passes 35 tests.
 
 ### Remaining track blockers
 

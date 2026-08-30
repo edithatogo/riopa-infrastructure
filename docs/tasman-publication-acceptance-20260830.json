@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "status": "hosted-publication-and-rebuild-verified",
+  "hosted_execution": {
+    "run_id": "33303579649",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33303579649",
+    "producer_revision": "409325462c3841a8b0756e55547dec8ca7088061",
+    "successful_attempts": [
+      1,
+      2
+    ],
+    "identical_receipts_sha256": "1a62aa1eeb4ea778acb2ec3d98356780af46b0200ae84e7785b9e0cadb676ec2",
+    "original_public_revision_reused": true
+  },
+  "implementation_pr": "https://github.com/edithatogo/riopa-infrastructure/pull/754",
+  "ci": {
+    "run_id": "33303477593",
+    "revision": "6552688a359bfd246013240dbafeaebefb78dd5c",
+    "branch_aware_coverage_percent": 90.41228466352668,
+    "coverage_gate_percent": 90
+  },
+  "publication_receipt": {
+    "schema_version": "1.0.0",
+    "status": "public-packet-verified-and-rebuilt",
+    "private_manifest_sha256": "a3bbed6282ca6f78bd9cfdce9decafcf6c800df9e20279132940129576bbdd36",
+    "packet_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+    "prefix": "snapshots/tasman-zones/22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+    "public_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2",
+    "state": "verified",
+    "source_run": "33301038921",
+    "public_dataset_repository": "edithatogo/riopa-public-data-archive",
+    "private_revision": "c05d8edd1954b4f96d891f29e43511803a760ecb",
+    "private_prefix": "campaigns/33301038921/tasman/1",
+    "licence": "CC-BY-4.0",
+    "attribution": "Tasman District Council (TDC)",
+    "rights_capture_id": "urn:uuid:243e4cd2-15b7-454d-87eb-06806fd2ce6f",
+    "rights_object_sha256": "52dac7e017b8db73d9eceef0920dd7fefa7c5ea7308c7a62fc96d6d5940e2974",
+    "rights_licence_text": "This data is distributed under",
+    "source_id": "urn:riopa:source:tasman:geohub",
+    "capture_set_id": "urn:uuid:56fb6c1d-7ddf-4061-af0b-722ddb06caa6",
+    "file_count": 12,
+    "file_bytes": 24378239,
+    "anonymous_full_packet_verified": true,
+    "reproduction": {
+      "feature_count": 3655,
+      "canonical_sha256": "e729de6e1083750016449ea9f0af3eabb9a7f17b0104b14de709ced3bda55aa3",
+      "geoparquet_sha256": "9fd4408ab375bb28ca6f88a1c295a8a8c2b90dda3c26dd29a5293075cac955f1",
+      "duckdb_semantic_sha256": "358a03ff5ac998d518da83fcdb6304e3f247b0bda7d873a1f1f2ef8a8871fe87",
+      "builds": 2
+    },
+    "non_claims": [
+      "No operative legal status, valid-time inference, atomic snapshot or stable release.",
+      "Spatial projections rebuilt locally on runner; only source packet publicly uploaded."
+    ]
+  },
+  "non_claims": [
+    "Hosted repeatability is not two isolated clean-room reproducer agents.",
+    "Manual runs do not qualify the three scheduled change/recovery cycles.",
+    "Only the licensed source packet is public; bulk canonical and spatial outputs were rebuilt on the runner.",
+    "Four-council/two-national-family capture-to-release, research-object release and stable-v1 gates remain open."
+  ]
+}

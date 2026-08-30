@@ -3,7 +3,7 @@
 ## 1. Real source capture
 
 - [x] 1.10 Capture standalone Tasman item rights and prepare a closed, licensed layer-only public packet on Actions from unchanged capture bytes (`4bd89c5`; `docs/tasman-hosted-preparation-20260830.json`, run 33301038921); public upload and rebuild acceptance remain separate.
-- [~] 1.11 Publish the licensed Tasman packet from verified private preservation through Actions, verify every public byte anonymously at an immutable revision, and rebuild canonical, GeoParquet and DuckDB representations twice without live-source contact (implementation `52df22d`; hosted acceptance pending).
+- [x] 1.11 Publish the licensed Tasman packet from verified private preservation through Actions, verify every public byte anonymously at an immutable revision, and rebuild canonical, GeoParquet and DuckDB representations twice without live-source contact (`4093254`; `docs/tasman-publication-acceptance-20260830.json`, run 33303579649, public revision `73be6f6d5b7d1297458ed49e7222a46f915dc5a2`).
 
 - [x] 1.9 Run council captures in bounded parallel GitHub Actions jobs, preserve complete and failed attempts in private Hugging Face storage, publish unrestricted evidence, and verify immutable bytes before accepting source-level checkpoints (`docs/hosted-council-preservation-20260830.json`; run 33298342091 attempts 1/2; QLDC acquisition remains incomplete).
 
@@ -33,6 +33,7 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [ ] 2.3 Link source, document and plan identities without unsupported interpretation.
 - [x] 2.4 Build a normalized Meshblock feature projection with page-level capture lineage and no implicit geometry repair (`8f34bfd`, `61cddd3`; projection `urn:riopa:projection:sha256:64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f`).
 - [x] 2.5 Build one canonical WCC feature identity with explicit unknown valid time, archive-recorded time, geometry digest and capture lineage; no operative-plan or current-supermarket status is inferred (`docs/wcc-public-archive-spatial-projection-20260830.json`).
+- [x] 2.6 Rebuild all 3,655 archived Tasman zone features into canonical records with capture lineage, original geometry digests and unknown valid/operative time from the anonymously verified public packet (`docs/tasman-publication-acceptance-20260830.json`).
 
 ## 3. Materialisation and quality
 
@@ -41,6 +42,7 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [x] 3.3 Produce bounded coverage, fidelity and unresolved-status reports without promoting supporting geography to population or national evidence. (`docs/stats-nz-meshblock-projection-quality-report-20260825.json`, `tests/test_meshblock_projection_quality_report.py`; `cdd5a8f`)
 - [x] 3.4 Validate the complete offline projection and commit bounded evidence while keeping bulk spatial outputs outside Git (`evidence/stats-nz-meshblock-2026-projection/records-manifest.json`).
 - [x] 3.5 Rebuild the WCC slice into byte-stable GeoParquet and semantically deterministic DuckDB projections, execute PyArrow/DuckDB readback, and keep the materialized files outside Git (`src/riopa_provenance/public_archive_spatial.py`, `tests/test_public_archive_spatial.py`).
+- [x] 3.6 Verify two hosted Tasman rebuilds agree on canonical semantics, GeoParquet bytes and DuckDB semantic readback; keep bulk derived outputs outside Git and distinguish repeatability from isolated clean-room reproduction (`docs/tasman-publication-acceptance-20260830.json`).
 
 ## 4. Research-object release
 
