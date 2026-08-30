@@ -110,6 +110,20 @@ byte counts, HTTP statuses, absence of Content-Range, exact authority anchors,
 receipt semantic hash and producer hash offline. All ten focused tests passed;
 the reviewer reported no actionable finding for this bounded increment.
 
+### Hosted parallel preservation implementation
+
+`docs/hosted-council-preservation.md`, `scripts/hosted_council_archive.py` and
+`.github/workflows/council-archive.yml` define three parallel source jobs with
+independent failure handling, bounded capture/packet budgets, private full raw
+preservation and public non-reconstructive evidence. Exact-revision private
+readback and anonymous public readback precede reusable source checkpoints.
+`tests/test_hosted_council_archive.py` covers tampering, timeouts, credential
+isolation, failed anonymous readback, wrong visibility, commit conflicts and
+source/run/code-bound resume. Hosted success is not inferred from these tests;
+task 1.9 stays in progress until a real run and checkpoint replay are verified.
+Isolated subagent review identified and verified a remote-size preflight fix;
+all 25 pipeline tests passed on re-review with no remaining blocker.
+
 ### Remaining track blockers (unchanged)
 
 

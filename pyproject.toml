@@ -48,6 +48,9 @@ dev = [
   "twine>=7,<8",
   "types-PyYAML>=6.0.12,<7",
 ]
+preservation = [
+    "huggingface-hub>=1,<2",
+]
 
 [project.urls]
 Homepage = "https://github.com/edithatogo/riopa-infrastructure"

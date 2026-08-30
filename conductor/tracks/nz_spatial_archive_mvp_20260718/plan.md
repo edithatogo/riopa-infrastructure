@@ -2,6 +2,10 @@
 
 ## 1. Real source capture
 
+- [~] 1.9 Run council captures in bounded parallel GitHub Actions jobs, preserve
+  complete and failed attempts in private Hugging Face storage, publish unrestricted
+  evidence, and verify immutable bytes before accepting source-level checkpoints.
+
 - [x] 1.1 Select Wellington City, Queenstown Lakes, New Plymouth and Tasman after the national source inventory, using four materially different official publication mechanisms while keeping rights, capture, legal-status and representativeness gates open (`docs/nz-spatial-council-selection-20260825.json`, `tests/test_nz_spatial_council_selection.py`; `e37b398`).
 - [ ] 1.2 Archive exact-version national layers, council services and planning documents faithfully before incorporating their named snapshots.
 - [ ] 1.3 Preserve rights, capability, legal-status and source-health evidence.

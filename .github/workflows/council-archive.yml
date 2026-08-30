@@ -1,0 +1,66 @@
+name: Preserve bounded council archives
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
+
+# Each run is an independent snapshot. Never cancel another run's preservation.
+concurrency:
+  group: council-archive-${{ github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        source: [tasman, npdc, qldc]
+    env:
+      SOURCE: ${{ matrix.source }}
+      WORK: ${{ runner.temp }}/council-archive
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: "1"
+    steps:
+      - name: Check out approved implementation
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.14"
+          version: "0.11.16"
+      - name: Install locked archive environment
+        run: uv sync --extra archive --extra preservation --frozen
+      - name: Verify and reuse completed source checkpoint
+        id: resume
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: uv run python scripts/hosted_council_archive.py resume --source "$SOURCE" --work "$WORK"
+      - name: Capture source with no publication credential
+        if: steps.resume.outputs.resumed != 'true'
+        run: uv run python scripts/hosted_council_archive.py capture --source "$SOURCE" --work "$WORK"
+      - name: Preserve and verify complete or partial attempt
+        if: ${{ !cancelled() && steps.resume.outcome == 'success' && steps.resume.outputs.resumed != 'true' }}
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: uv run python scripts/hosted_council_archive.py publish --source "$SOURCE" --work "$WORK"
+      - name: Retain public verification evidence only
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: council-preservation-${{ matrix.source }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/council-archive/public/
+          if-no-files-found: warn
+          retention-days: 90
