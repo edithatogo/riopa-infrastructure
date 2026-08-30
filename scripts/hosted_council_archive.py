@@ -331,11 +331,15 @@ def verify_public_checkpoint(api: Any, checkpoint: dict[str, Any], work: Path) -
     write_json(work / "public/preservation.json", evidence)
 
 
-def publish(api: Any, work: Path, manifest: dict[str, Any]) -> None:
+def require_visibility(api: Any) -> None:
     if api.repo_info(PRIVATE_REPO, repo_type="dataset").private is not True:
         raise ValueError("raw destination must be private")
     if api.repo_info(PUBLIC_REPO, repo_type="dataset").private is not False:
         raise ValueError("evidence destination must be public")
+
+
+def publish(api: Any, work: Path, manifest: dict[str, Any]) -> None:
+    require_visibility(api)
     prefix = f"campaigns/{manifest['run_id']}/{manifest['source']}/{manifest['attempt']}"
     verify_packet(work / "packet/raw.tar", manifest)
     revision = commit_files(
@@ -394,6 +398,7 @@ def resume(api: Any, source: str, run_id: str, revision: str, work: Path) -> boo
     from huggingface_hub import hf_hub_download
     from huggingface_hub.errors import EntryNotFoundError
 
+    require_visibility(api)
     try:
         path = hf_hub_download(
             PRIVATE_REPO,

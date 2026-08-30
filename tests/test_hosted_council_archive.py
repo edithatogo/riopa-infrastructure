@@ -247,6 +247,9 @@ def test_publication_boundaries_and_checkpoint_order(tmp_path: Path, failure: st
             with pytest.raises(ValueError, match="public checkpoint files missing"):
                 SCRIPT["resume"](api, "tasman", "123", "a" * 40, tmp_path / "lost-public")
             assert len(commits) == before
+            api.repo_info = lambda *args, **kwargs: SimpleNamespace(private=False)
+            with pytest.raises(ValueError, match="raw destination must be private"):
+                SCRIPT["resume"](api, "tasman", "123", "a" * 40, tmp_path / "raw-now-public")
 
 
 def test_commit_conflict_retries_are_bounded(tmp_path: Path) -> None:
