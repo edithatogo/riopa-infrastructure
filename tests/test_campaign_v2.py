@@ -37,14 +37,20 @@ def test_operational_observation_schedule_is_daily_and_read_only() -> None:
     assert any(step.get("name") == "Build cumulative fail-closed campaign ledger" for step in steps)
     inputs = triggers["workflow_dispatch"]["inputs"]
     candidate = "26bc0b49bcd84f409bf24b527e1049fd396c94a6"
-    assert inputs["campaign_id"]["default"] == "operational-beta-20260825-26bc0b4"
+    assert inputs["campaign_id"]["default"] == "operational-beta-20260830-26bc0b4"
     assert inputs["candidate_revision"]["default"] == candidate
-    assert inputs["qualification_epoch"]["default"] == "beta-epoch-20260825-26bc0b4"
+    assert inputs["qualification_epoch"]["default"] == "beta-epoch-20260830-26bc0b4"
     environment = workflow["jobs"]["observe"]["env"]
     assert candidate in inputs["candidate_revision"]["default"]
     assert "github.sha" in environment["EVIDENCE_CANDIDATE_REVISION"]
-    assert "format('operational-beta-{0}', github.sha)" in environment["EVIDENCE_CAMPAIGN_ID"]
-    assert "format('beta-epoch-{0}', github.sha)" in environment["EVIDENCE_QUALIFICATION_EPOCH"]
+    assert "operational-beta-20260830-26bc0b4" in environment["EVIDENCE_CAMPAIGN_ID"]
+    assert "beta-epoch-20260830-26bc0b4" in environment["EVIDENCE_QUALIFICATION_EPOCH"]
+    assert "edithatogo" in environment["EVIDENCE_ACTIVATION_AUTHORITY"]
+    assert "2026-08-30T02:41:05Z" in environment["EVIDENCE_ACTIVATED_AT"]
+    assert "github.event_name == 'schedule' && 'true'" in environment["EVIDENCE_QUALIFYING"]
+    assert "github.event.inputs.qualification" in environment["EVIDENCE_QUALIFYING"]
+    assert inputs["lane"]["default"] == "recovery-rollback"
+    assert "rc-soak-observation" in inputs["lane"]["options"]
 
 
 def test_rc_soak_checks_out_the_content_addressed_candidate_revision() -> None:
@@ -105,6 +111,9 @@ def test_campaign_concurrency_isolated_by_campaign_lane_and_rc_candidate() -> No
     assert "lane" in group
     assert "candidate_revision" in group
     assert workflow["concurrency"]["cancel-in-progress"] is True
+    assert "operational-beta-20260830-26bc0b4" in group
+    assert "26bc0b49bcd84f409bf24b527e1049fd396c94a6" in group
+    assert "github.event_name == 'schedule'" in group
 
 
 def test_normative_track_sources_use_agent_panel_qualification() -> None:

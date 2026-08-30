@@ -1,0 +1,24 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-SCHEDULED-QUALIFICATION-BINDING-20260830",
+  "record_type": "repository-owned-workflow-hardening",
+  "status": "implemented",
+  "workflow": ".github/workflows/evidence-campaign.yml",
+  "scheduled_lane": "operational-observation",
+  "scheduled_binding": {
+    "campaign_id": "operational-beta-20260830-26bc0b4",
+    "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+    "qualification_epoch": "beta-epoch-20260830-26bc0b4",
+    "activation_authority": "edithatogo",
+    "activated_at": "2026-08-30T02:41:05Z"
+  },
+  "controls": [
+    "Manual inputs remain available for bounded lanes and may select a distinct campaign.",
+    "RC soak remains manual-only because the schedule defaults to operational-observation.",
+    "Campaign concurrency and duplicate-date fail-closed ledger validation remain unchanged."
+  ],
+  "validation": ["tests/test_campaign_v2.py"],
+  "non_claims": [
+    "This workflow change does not satisfy beta duration or operational-cycle gates.",
+    "The activation binding is repository configuration, not release-authority approval."
+  ]
+}
