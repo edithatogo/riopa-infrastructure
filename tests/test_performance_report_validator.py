@@ -27,6 +27,12 @@ def test_bounded_report_validates_and_preserves_projection_boundary() -> None:
         (("accessibility", "claim_supported"), True),
         (("scenarios", 0, "repetitions"), 2),
         (("scenarios", 0, "records_per_second"), 1),
+        (("scenarios", 0, "resources", "status"), "measured"),
+        (("scenarios", 0, "resources", "memory_mb"), 12),
+        (("national", "scaling_factor"), 1),
+        (("national", "estimated_elapsed_ns"), 1),
+        (("accessibility", "network"), "enabled"),
+        (("accessibility", "classification"), "operational-spatial-input"),
     ],
 )
 def test_validator_rejects_promotion_or_contract_drift(

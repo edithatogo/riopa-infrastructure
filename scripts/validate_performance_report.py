@@ -54,14 +54,26 @@ def validate_report(report: Any) -> tuple[str, ...]:
                 1e-9, expected * 1e-9
             ):
                 errors.append(f"{prefix}.records_per_second is inconsistent with elapsed_ns")
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             errors.append(f"{prefix} has invalid measurement fields")
         resources = scenario.get("resources")
         cost = scenario.get("cost")
-        if not isinstance(resources, dict) or resources.get("status") == "measured":
-            errors.append(f"{prefix}.resources must retain non-measured status")
-        if not isinstance(cost, dict) or cost.get("status") == "measured":
-            errors.append(f"{prefix}.cost must retain non-measured status")
+        if (
+            not isinstance(resources, dict)
+            or resources.get("status") != "not-instrumented"
+            or any(
+                resources.get(field) is not None
+                for field in ("cpu_seconds", "memory_mb", "storage_mb")
+            )
+        ):
+            errors.append(f"{prefix}.resources must declare not-instrumented null measurements")
+        if (
+            not isinstance(cost, dict)
+            or cost.get("status") != "not-priced"
+            or cost.get("currency") is not None
+            or cost.get("amount") is not None
+        ):
+            errors.append(f"{prefix}.cost must declare not-priced null values")
     if regional.get("case_id") != "baseline":
         errors.append("regional must identify the baseline scenario")
     elif regional not in scenarios:
@@ -76,12 +88,57 @@ def validate_report(report: Any) -> tuple[str, ...]:
             "linear record-count extrapolation from regional measured median"
         ):
             errors.append("national projection method is not the declared bounded method")
+        try:
+            regional_records = _number(regional.get("records"), "regional.records", positive=True)
+            regional_elapsed = _number(
+                regional.get("elapsed_ns"), "regional.elapsed_ns", positive=True
+            )
+            projection_records = _number(
+                projection.get("records"), "national.records", positive=True
+            )
+            scaling_factor = _number(
+                projection.get("scaling_factor"), "national.scaling_factor", positive=True
+            )
+            estimated_elapsed = _number(
+                projection.get("estimated_elapsed_ns"),
+                "national.estimated_elapsed_ns",
+                positive=True,
+            )
+            if projection_records <= regional_records:
+                errors.append("national projection must exceed regional records")
+            if abs(scaling_factor - projection_records / regional_records) > 1e-9:
+                errors.append("national scaling_factor is inconsistent with record counts")
+            if estimated_elapsed != int(regional_elapsed * scaling_factor):
+                errors.append(
+                    "national estimated_elapsed_ns is inconsistent with regional baseline"
+                )
+            throughput = _number(
+                projection.get("records_per_second"), "national.records_per_second", positive=True
+            )
+            if throughput != _number(
+                regional.get("records_per_second"), "regional.records_per_second", positive=True
+            ):
+                errors.append("national projection throughput must equal the bounded baseline")
+        except TypeError, ValueError:
+            errors.append("national projection has invalid arithmetic fields")
     ingestion = report.get("ingestion")
-    if not isinstance(ingestion, dict) or ingestion.get("live_endpoint_contacted") is not False:
-        errors.append("ingestion must declare live_endpoint_contacted false")
+    if (
+        not isinstance(ingestion, dict)
+        or ingestion.get("classification") != "archive-bound-metadata"
+        or ingestion.get("live_endpoint_contacted") is not False
+    ):
+        errors.append("ingestion must declare archive-bound metadata and no live endpoint")
     accessibility = report.get("accessibility")
-    if not isinstance(accessibility, dict) or accessibility.get("claim_supported") is not False:
-        errors.append("accessibility claims must remain unsupported")
+    if (
+        not isinstance(accessibility, dict)
+        or accessibility.get("classification") != "reference-only-spatial-input"
+        or accessibility.get("claim_supported") is not False
+        or any(
+            accessibility.get(domain) != "disabled-no-archive"
+            for domain in ("network", "timetable", "facility")
+        )
+    ):
+        errors.append("accessibility must remain reference-only with disabled archived domains")
     return tuple(dict.fromkeys(errors))
 
 
