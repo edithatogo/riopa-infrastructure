@@ -22,6 +22,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # Serialise the same source across manual/scheduled runs without interrupting uploads.
+    concurrency:
+      group: council-source-${{ matrix.source }}
+      cancel-in-progress: false
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -29,7 +33,7 @@ jobs:
         source: [tasman, npdc, qldc]
     env:
       SOURCE: ${{ matrix.source }}
-      WORK: ${{ github.workspace }}/.council-archive
+      WORK: .riopa-local/hosted-council
       HF_HUB_DISABLE_IMPLICIT_TOKEN: "1"
     steps:
       - name: Check out approved implementation
@@ -61,6 +65,6 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: council-preservation-${{ matrix.source }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ github.workspace }}/.council-archive/public/
+          path: .riopa-local/hosted-council/public/
           if-no-files-found: warn
           retention-days: 90

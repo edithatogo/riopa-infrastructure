@@ -7,6 +7,8 @@ Track: `nz_spatial_archive_mvp_20260718`, issue #49.
 registered one-request-per-second, single-connection load policy. `fail-fast:
 false` lets other sources finish when one source fails. Dispatch manually or use
 the daily schedule; a new run is a new observation, not an atomic source snapshot.
+Per-source job concurrency also serialises overlapping manual/scheduled runs
+without cancelling an active capture or upload. Different sources still run in parallel.
 
 ## Storage and rights
 
@@ -82,6 +84,12 @@ The tests exercise deterministic packets, corrupt/symlinked inputs, unsafe tar
 members, partial/time-limited captures, secret isolation, parallel workflow
 structure, optimistic commit retries, visibility enforcement, oversized remote
 rejection, anonymous readback failure and exact-code checkpoint reuse.
+
+Initial hosted registration at `3ae6875` failed before jobs started because
+`runner.temp` is not available in job-level environment expressions. The
+successor uses a literal ignored work directory with a matching public-only
+artifact path; a regression assertion covers both bindings. This was a workflow
+validation failure, not a completed capture or a source-service failure.
 
 Implementation references: [GitHub job matrices](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations)
 and [Hugging Face upload API](https://huggingface.co/docs/huggingface_hub/guides/upload).
