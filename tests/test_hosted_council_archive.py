@@ -135,7 +135,7 @@ def test_workflow_parallelism_and_credential_isolation() -> None:
     job = workflow["jobs"]["capture"]
     assert job["strategy"] == {
         "fail-fast": False,
-        "max-parallel": 1,
+        "max-parallel": 3,
         "matrix": {"source": ["tasman", "npdc", "qldc"]},
     }
     capture_step = next(s for s in job["steps"] if s["name"].startswith("Capture source"))
