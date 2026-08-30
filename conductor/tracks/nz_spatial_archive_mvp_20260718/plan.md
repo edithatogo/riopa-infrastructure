@@ -47,6 +47,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 5. Review fixes
 
+- [x] 5.12 Correct the GitHub-rejected job-level runner context and test literal work/artifact path binding; serialise overlapping runs per council without cancelling active preservation.
+
 - [x] 5.11 Bind original public revision and evidence sizes/digests in durable hosted checkpoints; verify that exact public revision on replay without replacement, and keep task 1.9 on one parseable issue-generator line after hosted review.
 
 - [x] 5.1 Verify compressed and uncompressed artifact identities, require a retrieval receipt for every projected capture record, safely reuse only a verified local packet, reject redirects outside the archive host boundary and separate stable semantic identity from run-specific DuckDB bytes (`ffeb681`, `6c9c5c8`, `f04693c`, `de8b790`, `61cddd3`).

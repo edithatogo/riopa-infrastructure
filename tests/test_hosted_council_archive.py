@@ -141,6 +141,8 @@ def test_workflow_parallelism_and_credential_isolation() -> None:
     capture_step = next(s for s in job["steps"] if s["name"].startswith("Capture source"))
     assert "HF_TOKEN" not in capture_step.get("env", {})
     assert "HF_TOKEN" not in job["env"]
+    assert job["env"]["WORK"] == ".riopa-local/hosted-council"
+    assert all("runner." not in str(value) for value in job["env"].values())
     assert workflow["permissions"] == {"contents": "read"}
     assert job["concurrency"] == {
         "group": "council-source-${{ matrix.source }}",
@@ -148,6 +150,7 @@ def test_workflow_parallelism_and_credential_isolation() -> None:
     }
     assert "github.run_id" in workflow["concurrency"]["group"]
     assert job["steps"][-1]["with"]["path"].endswith("/public/")
+    assert job["steps"][-1]["with"]["path"] == job["env"]["WORK"] + "/public/"
 
 
 @pytest.mark.parametrize("failure", [None, "raw-public", "anonymous", "oversize", "manifest"])

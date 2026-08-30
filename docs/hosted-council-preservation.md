@@ -85,5 +85,11 @@ members, partial/time-limited captures, secret isolation, parallel workflow
 structure, optimistic commit retries, visibility enforcement, oversized remote
 rejection, anonymous readback failure and exact-code checkpoint reuse.
 
+Initial hosted registration at `3ae6875` failed before jobs started because
+`runner.temp` is not available in job-level environment expressions. The
+successor uses a literal ignored work directory with a matching public-only
+artifact path; a regression assertion covers both bindings. This was a workflow
+validation failure, not a completed capture or a source-service failure.
+
 Implementation references: [GitHub job matrices](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations)
 and [Hugging Face upload API](https://huggingface.co/docs/huggingface_hub/guides/upload).
