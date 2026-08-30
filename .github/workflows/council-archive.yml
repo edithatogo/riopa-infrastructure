@@ -28,7 +28,9 @@ jobs:
       cancel-in-progress: false
     strategy:
       fail-fast: false
-      max-parallel: 3
+      # All sources publish to one Hugging Face branch; serialize commits to
+      # avoid branch-head races and preserve each source atomically.
+      max-parallel: 1
       matrix:
         source: [tasman, npdc, qldc]
     env:
