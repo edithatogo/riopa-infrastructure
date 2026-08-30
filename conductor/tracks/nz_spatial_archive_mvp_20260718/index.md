@@ -242,6 +242,23 @@ receipt equality, source/producer bindings and the bounded task closure. The
 
 ### Remaining track blockers
 
+Task 3.8 adds explicit run-attempt provenance to the Tasman publication chain
+(`docs/tasman-run-provenance-20260831.md`). This closes a bookkeeping gap before
+scheduled observations can be assessed: publication success alone does not prove
+a scheduled capture, and retries reuse one source-run deduplication key. Hosted
+acceptance for the collector remains pending until separately observed. No
+change/recovery, scheduled-cycle or track promotion is inferred.
+
+The isolated reviewer verified failed-matrix capture reuse, source-specific
+archived-run binding, strict trigger and publication attempt checks, receipt
+hashes, deduplication and token separation. All 39 collector/workflow tests,
+strict script MyPy and Bandit pass. The existing full suite passes 1,560 tests
+with one skip and 90.41% branch-aware coverage; the new collector tests were
+run separately after that suite was collected. Research-object reproducibility
+also passes. The GitHub CLI uses an absolute executable, fixed hostname and
+repository, numeric identifiers, no shell and a 30-second timeout; narrowly
+justified import/subprocess advisories do not change global security gates.
+
 
 - All four blocking dependency tracks remain incomplete.
 - Four heterogeneous council and two national source-family capture-to-release chains remain incomplete.

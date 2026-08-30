@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [~] 3.8 Bind preserved Tasman source and derived receipts to verified GitHub source/publication run attempts, distinguish scheduled triggers from manual replay, and retain a deduplication key without claiming change/recovery or release-cycle qualification.
+
 - [x] 3.7 Preserve the qualified Tasman canonical, GeoParquet and DuckDB projections publicly through GitHub Actions, verify immutable anonymous bytes and semantics, and replay without replacing the original derived revision. Keep derived payloads outside Git and retain unknown valid time, attribution and release non-claims (`docs/tasman-derived-acceptance-20260831.json`; run 33335595270 attempts 1/2; public revision `1ccd5953893c588f87a31fe77fcd3d6124f03fae`).
 
 - [x] 3.1 Validate the GeoParquet and DuckDB Spatial materialization receipt and query-ready projection links from the content-addressed archived packet, with packet-bound read-only query examples. The 57,575-feature local restoration is path-, size- and digest-bound and passes PyArrow/DuckDB readback; independent target acceptance remains open (`scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py`, `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py`; `1abb123`, `a466a49`).
