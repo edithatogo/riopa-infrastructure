@@ -17,6 +17,11 @@ def test_candidate_hosted_validation_is_exact_and_fail_closed() -> None:
     assert beta["observation_count"] == 1
     assert beta["operational_cycles"] == 1
     assert beta["duration_status"] == "pending-duration"
+    assert beta["elapsed_seconds"] == 1
+    predecessor = json.loads(
+        (ROOT / "docs/v1-candidate-hosted-validation-20260825.json").read_text(encoding="utf-8")
+    )
+    assert predecessor["beta_campaign"]["elapsed_seconds"] != beta["elapsed_seconds"]
     assert beta["operational_cycles_status"] == "pending-cycles"
     assert beta["elapsed_seconds"] < beta["required_elapsed_days"] * 86_400
     assert beta["operational_cycles"] < beta["required_operational_cycles"]
@@ -30,6 +35,7 @@ def test_candidate_hosted_validation_is_exact_and_fail_closed() -> None:
     assert rc["source_revisions"] == [CANDIDATE]
     assert rc["observation_count"] == 1
     assert rc["duration_status"] == "pending-duration"
+    assert rc["elapsed_seconds"] == 13
     assert rc["elapsed_seconds"] < rc["required_elapsed_days"] * 86_400
     assert len(rc["chain_head_sha256"]) == 64
     assert len(rc["receipt_sha256"]) == 64

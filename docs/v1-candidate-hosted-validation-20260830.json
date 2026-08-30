@@ -12,7 +12,7 @@
     "status": "passed",
     "receipt_schema_validated": true,
     "observation_count": 1,
-    "elapsed_seconds": 428,
+    "elapsed_seconds": 1,
     "required_elapsed_days": 90,
     "operational_cycles": 1,
     "required_operational_cycles": 3,
@@ -34,7 +34,7 @@
     "receipt_schema_validated": true,
     "candidate_checkout_verified": true,
     "observation_count": 1,
-    "elapsed_seconds": 11,
+    "elapsed_seconds": 13,
     "required_elapsed_days": 30,
     "duration_status": "pending-duration",
     "source_revisions": [
