@@ -54,6 +54,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 5. Review fixes
 
+- [x] 5.18 Bind derived-publication rights and full-row readback, preserve canonical time/lineage records, disable external access before DuckDB queries, retain immutable original-manifest checksums and rewrite sanitized failure evidence after durable storage outcomes (`c4f745f`; isolated review, 49 focused tests, full suite 1,545 passed/1 skipped, 90.41% branch-aware coverage against the 90% gate).
+
 - [x] 5.17 Preserve bounded, credential-free failure receipts and durable attempt records when anonymous publication verification or rebuilds fail, without replacing the original public revision or masking the primary error (`85af7d4`; PR #754 hosted review; 34 focused tests and isolated re-review pass).
 
 - [x] 5.13 Reject traversing builder inputs and derive public preparation summaries from verified packet identities/counts; validate receipt hash/name bindings and add negative tests after isolated review.

@@ -213,6 +213,11 @@ publisher remains unchanged. Strict MyPy, Ruff, Bandit, the workflow test, full
 quality and research-object reproducibility checks pass; hosted execution is
 not inferred from those local checks.
 
+Implementation `c4f745f` passes 49 focused source/derived/workflow/acceptance
+tests. The full local suite passes 1,545 tests with one existing skip and 90.41%
+branch-aware coverage against the 90% gate; it ran alongside the new test work,
+so the 14 new derived tests were also executed separately on the final code.
+
 ### Remaining track blockers
 
 
