@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [~] 3.9 Compare Tasman feature identities, attributes and original geometry against the pinned accepted baseline after hosted publication; reject corrupt inputs and distinguish capture metadata changes from data changes without crediting scheduled cycles or recovery qualification (`52cab92`; local implementation and review pass, hosted acceptance pending).
+
 - [x] 3.8 Bind preserved Tasman source and derived receipts to verified GitHub source/publication run attempts, distinguish scheduled triggers from manual replay, and retain a deduplication key without claiming change/recovery or release-cycle qualification (`6fdbb81`; `docs/tasman-run-provenance-acceptance-20260831.json`; run 33336884257 attempts 1/2).
 
 - [x] 3.7 Preserve the qualified Tasman canonical, GeoParquet and DuckDB projections publicly through GitHub Actions, verify immutable anonymous bytes and semantics, and replay without replacing the original derived revision. Keep derived payloads outside Git and retain unknown valid time, attribution and release non-claims (`docs/tasman-derived-acceptance-20260831.json`; run 33335595270 attempts 1/2; public revision `1ccd5953893c588f87a31fe77fcd3d6124f03fae`).
@@ -55,6 +57,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.
 
 ## 5. Review fixes
+
+- [x] 5.20 Bind comparison files to source/count/canonical receipt semantics, preserve exact WKB without reserialization, validate canonical lineage and metadata-only differences, and verify corrupted-download recovery after isolated cross-review (`52cab92`; 41 focused tests, strict MyPy/Bandit and full quality/reproducibility pass).
 
 - [x] 5.19 Distinguish a verified Tasman capture from its enclosing failed matrix run, bind archived acquisition/code evidence, pin trigger/publication API attempts, reject invalid calendar/repository/receipt bindings, and resolve the GitHub CLI to an absolute path (`cc61878`; isolated review, 39 focused tests, strict MyPy/Bandit, full quality and reproducibility checks pass; hosted collector acceptance remains separate).
 

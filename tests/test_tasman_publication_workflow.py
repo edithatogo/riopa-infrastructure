@@ -47,6 +47,12 @@ def test_publication_workflow_is_bounded_and_separate_from_capture() -> None:
     assert "if" not in provenance[0]
     assert "GH_TOKEN" not in job["env"]
     assert "HF_TOKEN" not in provenance[0]["env"]
+    comparison = steps[steps.index(provenance[0]) + 1]
+    assert comparison["run"] == (
+        'uv run python scripts/record_tasman_snapshot_comparison.py --work "$WORK"'
+    )
+    assert "env" not in comparison
+    assert "if" not in comparison
     assert not any("capture_tasman_catalogue.py" in s.get("run", "") for s in steps)
     artifact = steps[-1]
     assert artifact["with"]["path"] == f"{job['env']['WORK']}/public/"

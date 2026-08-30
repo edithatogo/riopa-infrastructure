@@ -242,6 +242,24 @@ receipt equality, source/producer bindings and the bounded task closure. The
 
 ### Remaining track blockers
 
+Task 3.9 adds a bounded comparison against the initial accepted Tasman derived
+packet (`docs/tasman-feature-comparison-20260831.md`). The hosted step is
+anonymous and read-only; source object IDs anchor separate attribute and
+original-geometry comparisons. Capture-specific identifiers and timestamps do
+not create false data changes. This is fixed-baseline comparison, not a rolling
+predecessor ledger. Hosted acceptance is recorded separately from local tests;
+scheduled change/recovery and release qualification remain pending.
+
+The comparator and runner received separate cross-reviews with no blocking
+findings. Forty-one focused comparator/runner/workflow tests pass, including
+actual canonical producer output and corrupted-input recovery. Strict MyPy,
+Ruff, Bandit, full quality and research-object reproducibility checks pass.
+The broad local suite passes 1,635 tests with one skip and 90.41% branch-aware
+coverage; the final focused group also covers tests added after broad-suite
+collection. The earlier transient issue-graph drift during plan editing was
+resolved by regeneration and the affected CLI test passes. Hosted acceptance
+remains separate from these local results.
+
 Task 3.8 adds explicit run-attempt provenance to the Tasman publication chain
 (`docs/tasman-run-provenance-20260831.md`). This closes a bookkeeping gap before
 scheduled observations can be assessed: publication success alone does not prove
