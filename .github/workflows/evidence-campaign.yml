@@ -86,6 +86,17 @@ jobs:
             echo "EVIDENCE_CANDIDATE_REVISION must be a full 40-character Git commit SHA" >&2
             exit 1
           fi
+      - name: Check out workflow revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - name: Save current campaign tooling
+        run: |
+          mkdir -p "$RUNNER_TEMP/riopa-campaign-tooling"
+          cp scripts/record_hosted_evidence.py "$RUNNER_TEMP/riopa-campaign-tooling/"
+          cp scripts/build_campaign_ledger.py "$RUNNER_TEMP/riopa-campaign-tooling/"
+          cp schemas/hosted-evidence.schema.json "$RUNNER_TEMP/riopa-campaign-tooling/"
       - name: Check out exact revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -93,6 +104,11 @@ jobs:
           # RC observations are content-addressed to the supplied candidate;
           # later documentation commits on main must not change the candidate.
           ref: ${{ env.EVIDENCE_CANDIDATE_REVISION || github.sha }}
+      - name: Restore current campaign tooling
+        run: |
+          cp "$RUNNER_TEMP/riopa-campaign-tooling/record_hosted_evidence.py" scripts/
+          cp "$RUNNER_TEMP/riopa-campaign-tooling/build_campaign_ledger.py" scripts/
+          cp "$RUNNER_TEMP/riopa-campaign-tooling/hosted-evidence.schema.json" schemas/
       - name: Verify exact RC candidate checkout
         if: env.EVIDENCE_LANE == 'rc-soak-observation'
         run: test "$(git rev-parse HEAD)" = "$EVIDENCE_CANDIDATE_REVISION"
