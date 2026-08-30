@@ -35,7 +35,7 @@ jobs:
           python-version: "3.14"
           version: "0.11.16"
       - name: Install locked environment
-        run: uv sync --extra dev --extra spatial --frozen
+        run: uv sync --extra dev --extra spatial --extra preservation --frozen
       - name: Run engineering quality harness
         run: scripts/ci_quality.sh
       - name: Verify workflow lint and tracked-secret gates
@@ -75,7 +75,7 @@ jobs:
         with:
           node-version: "24"
       - name: Install locked environment
-        run: uv sync --extra dev --extra spatial --frozen
+        run: uv sync --extra dev --extra spatial --extra preservation --frozen
       - name: Run branch-aware tests
         run: >-
           uv run pytest
