@@ -11,7 +11,7 @@ def test_publication_workflow_is_bounded_and_separate_from_capture() -> None:
         "workflows": ["Preserve bounded council archives"],
         "types": ["completed"],
     }
-    assert workflow["permissions"] == {"contents": "read"}
+    assert workflow["permissions"] == {"contents": "read", "actions": "read"}
     assert workflow["concurrency"]["group"].endswith("${{ github.run_id }}")
     job = workflow["jobs"]["publish"]
     assert "github.ref == 'refs/heads/main'" in job["if"]
@@ -37,6 +37,16 @@ def test_publication_workflow_is_bounded_and_separate_from_capture() -> None:
     )
     assert steps.index(credential_steps[1]) == steps.index(credential_steps[0]) + 1
     assert "if" not in credential_steps[1]  # Failed source verification cannot publish derivatives.
+    provenance = [step for step in steps if "GH_TOKEN" in step.get("env", {})]
+    assert len(provenance) == 1
+    assert provenance[0]["run"] == (
+        "uv run python scripts/record_tasman_run_provenance.py "
+        '--source-run "$SOURCE_RUN" --work "$WORK"'
+    )
+    assert steps.index(provenance[0]) == steps.index(credential_steps[1]) + 1
+    assert "if" not in provenance[0]
+    assert "GH_TOKEN" not in job["env"]
+    assert "HF_TOKEN" not in provenance[0]["env"]
     assert not any("capture_tasman_catalogue.py" in s.get("run", "") for s in steps)
     artifact = steps[-1]
     assert artifact["with"]["path"] == f"{job['env']['WORK']}/public/"

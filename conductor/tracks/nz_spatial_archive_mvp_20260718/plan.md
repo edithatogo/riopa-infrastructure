@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [~] 3.8 Bind preserved Tasman source and derived receipts to verified GitHub source/publication run attempts, distinguish scheduled triggers from manual replay, and retain a deduplication key without claiming change/recovery or release-cycle qualification.
+
 - [x] 3.7 Preserve the qualified Tasman canonical, GeoParquet and DuckDB projections publicly through GitHub Actions, verify immutable anonymous bytes and semantics, and replay without replacing the original derived revision. Keep derived payloads outside Git and retain unknown valid time, attribution and release non-claims (`docs/tasman-derived-acceptance-20260831.json`; run 33335595270 attempts 1/2; public revision `1ccd5953893c588f87a31fe77fcd3d6124f03fae`).
 
 - [x] 3.1 Validate the GeoParquet and DuckDB Spatial materialization receipt and query-ready projection links from the content-addressed archived packet, with packet-bound read-only query examples. The 57,575-feature local restoration is path-, size- and digest-bound and passes PyArrow/DuckDB readback; independent target acceptance remains open (`scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py`, `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py`; `1abb123`, `a466a49`).
@@ -53,6 +55,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.
 
 ## 5. Review fixes
+
+- [x] 5.19 Distinguish a verified Tasman capture from its enclosing failed matrix run, bind archived acquisition/code evidence, pin trigger/publication API attempts, reject invalid calendar/repository/receipt bindings, and resolve the GitHub CLI to an absolute path (`cc61878`; isolated review, 39 focused tests, strict MyPy/Bandit, full quality and reproducibility checks pass; hosted collector acceptance remains separate).
 
 - [x] 5.18 Bind derived-publication rights and full-row readback, preserve canonical time/lineage records, disable external access before DuckDB queries, retain immutable original-manifest checksums and rewrite sanitized failure evidence after durable storage outcomes (`c4f745f`; isolated review, 49 focused tests, full suite 1,545 passed/1 skipped, 90.41% branch-aware coverage against the 90% gate).
 
