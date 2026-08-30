@@ -166,6 +166,14 @@ the complete local coverage suite (90.41%, threshold 90%), full quality and
 research-object reproducibility checks. Hosted publication is still pending;
 these local checks do not substitute for its acceptance receipt.
 
+Hosted review subsequently identified missing durable failed-attempt evidence.
+`85af7d4` adds append-only private attempt records and safe local failure
+receipts, preserves the original error when evidence storage fails, and refuses
+durable writes when destination visibility is unverified. All 34 focused
+script/workflow tests, strict MyPy, Ruff and Bandit pass; isolated re-review
+found no remaining blocker in this fix. Hosted checks and publication remain
+separate from that local result.
+
 ### Remaining track blockers
 
 

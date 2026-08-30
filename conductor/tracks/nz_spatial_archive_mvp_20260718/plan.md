@@ -50,7 +50,7 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 5. Review fixes
 
-- [~] 5.17 Preserve bounded, credential-free failure receipts and durable attempt records when anonymous publication verification or rebuilds fail, without replacing the original public revision or masking the primary error (PR #754 hosted review).
+- [x] 5.17 Preserve bounded, credential-free failure receipts and durable attempt records when anonymous publication verification or rebuilds fail, without replacing the original public revision or masking the primary error (`85af7d4`; PR #754 hosted review; 34 focused tests and isolated re-review pass).
 
 - [x] 5.13 Reject traversing builder inputs and derive public preparation summaries from verified packet identities/counts; validate receipt hash/name bindings and add negative tests after isolated review.
 - [x] 5.14 Validate role-specific ArcGIS query parameters and bind the receipt's rights-object digest to the public candidate after hosted review.
