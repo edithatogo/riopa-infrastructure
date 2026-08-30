@@ -3,7 +3,7 @@
 ## 1. Real source capture
 
 - [x] 1.10 Capture standalone Tasman item rights and prepare a closed, licensed layer-only public packet on Actions from unchanged capture bytes (`4bd89c5`; `docs/tasman-hosted-preparation-20260830.json`, run 33301038921); public upload and rebuild acceptance remain separate.
-- [~] 1.11 Publish the licensed Tasman packet from verified private preservation through Actions, verify every public byte anonymously at an immutable revision, and rebuild canonical, GeoParquet and DuckDB representations twice without live-source contact.
+- [~] 1.11 Publish the licensed Tasman packet from verified private preservation through Actions, verify every public byte anonymously at an immutable revision, and rebuild canonical, GeoParquet and DuckDB representations twice without live-source contact (implementation `52df22d`; hosted acceptance pending).
 
 - [x] 1.9 Run council captures in bounded parallel GitHub Actions jobs, preserve complete and failed attempts in private Hugging Face storage, publish unrestricted evidence, and verify immutable bytes before accepting source-level checkpoints (`docs/hosted-council-preservation-20260830.json`; run 33298342091 attempts 1/2; QLDC acquisition remains incomplete).
 

@@ -161,6 +161,10 @@ tar restoration, packet preparation and two spatial builds with only Hub I/O
 mocked. The generic skill validator does not recognise this repository's
 legacy registry format; repository-native roadmap/evidence validation passes.
 This bounded review does not complete the whole track or clean-room gate.
+Implementation `52df22d` passes 28 focused script/workflow tests, strict MyPy,
+the complete local coverage suite (90.41%, threshold 90%), full quality and
+research-object reproducibility checks. Hosted publication is still pending;
+these local checks do not substitute for its acceptance receipt.
 
 ### Remaining track blockers
 
