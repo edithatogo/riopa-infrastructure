@@ -1,4 +1,5 @@
 {
+  "$id": "https://riopa.edithatogo.dev/schemas/nz-spatial-archive-rights-capability-health.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "required": ["schema", "record_id", "observed_at", "archive_repository", "archive_revision", "observation_basis", "sources", "disposition", "non_claims"],
