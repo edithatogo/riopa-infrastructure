@@ -111,7 +111,7 @@ def test_retained_budget_stops_retry(tmp_path: Path) -> None:
         assert len(client.attempts) == 1
 
 
-@pytest.mark.parametrize("broken", [False, True, "malformed-capabilities"])
+@pytest.mark.parametrize("broken", [False, True, "malformed-capabilities", "rights-drift"])
 def test_whole_capture_binds_catalogue_layer_and_failure_receipt(
     tmp_path: Path, broken: bool | str
 ) -> None:
@@ -136,6 +136,11 @@ def test_whole_capture_binds_catalogue_layer_and_failure_receipt(
     }
 
     def respond(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith("/" + SCRIPT["ITEM_ID"]):
+            standalone = dict(item)
+            if broken == "rights-drift":
+                standalone["licenseInfo"] = "Changed licence"
+            return httpx.Response(200, json=standalone)
         if str(request.url) == SCRIPT["HUB"]:
             return httpx.Response(200, text='window.__SITE="' + quote(json.dumps(site)) + '"')
         if request.url.path.endswith("/search"):
@@ -176,9 +181,13 @@ def test_whole_capture_binds_catalogue_layer_and_failure_receipt(
     assert receipt["catalogue_unique_items"] == 1
     assert list(tmp_path.glob("tasman-receipt-*.json"))
     if broken:
-        assert receipt["failure"]["stage"] == "zones-layer"
+        assert receipt["failure"]["stage"] == (
+            "selected-item-licence" if broken == "rights-drift" else "zones-layer"
+        )
     else:
         assert receipt["zones"]["feature_count"] == 1
+        assert receipt["selected_item"]["rights_capture_id"].startswith("urn:uuid:")
+        assert len(receipt["selected_item"]["rights_object_sha256"]) == 64
 
 
 def test_committed_live_receipt_and_registry_are_bound() -> None:
@@ -206,7 +215,14 @@ def test_committed_live_receipt_and_registry_are_bound() -> None:
     assert review["receipt_sha256"] == sha256_bytes((root / review["receipt"]).read_bytes())
     assert review["receipt_semantic_sha256"] == receipt["semantic_sha256"]
     assert review["producer_reconciliation"]["capture_script_sha256"] == receipt["producer_sha256"]
-    assert review["producer_reconciliation"]["successor_script_sha256"] == sha256_bytes(
+    preparation = json.loads(
+        (root / "docs/tasman-public-packet-preparation-20260830.json").read_text()
+    )
+    assert (
+        review["producer_reconciliation"]["successor_script_sha256"]
+        == preparation["previous_capture_producer_sha256"]
+    )
+    assert preparation["capture_producer_sha256"] == sha256_bytes(
         (root / "scripts/capture_tasman_catalogue.py").read_bytes()
     )
     assert review["verified"]["unique_object_ids"] == receipt["zones"]["feature_count"]

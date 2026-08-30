@@ -128,7 +128,24 @@ routes returned 404); no full ePlan or scheduled-cycle qualification is claimed.
 Isolated subagent review identified and verified a remote-size preflight fix;
 all 25 pipeline tests passed on re-review with no remaining blocker.
 
-### Remaining track blockers (unchanged)
+### Tasman public packet preparation
+
+`src/riopa_provenance/tasman_public_packet.py` prepares only the selected TRMP
+zones layer and standalone item rights record, preserving exact capture IDs and
+bytes. The reviewed licence-text digest, layer/item identities and attribution
+are pinned; changed rights, partial responses, count/identity discrepancies,
+unsafe paths and corrupt objects fail closed. The existing public packet
+verifier accepts the resulting structure in hermetic tests. The capture producer
+now records standalone item rights without rewriting earlier catalogue receipts;
+`docs/tasman-public-packet-preparation-20260830.json` records that producer chain.
+
+Actions prepares this candidate only after private source preservation, with no
+publication credential in preparation and no candidate bytes in Actions artifacts.
+Public upload, immutable anonymous acceptance, preparation retry from preserved
+checkpoints and clean materialisation remain next steps. Task 1.10 remains open
+until hosted preparation has actually succeeded.
+
+### Remaining track blockers
 
 
 - All four blocking dependency tracks remain incomplete.

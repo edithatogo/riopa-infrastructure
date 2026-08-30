@@ -22,7 +22,18 @@ without cancelling an active capture or upload. Different sources still run in p
   NPDC and QLDC still require exact public-payload disposition. The governing
   decision is `source-rights-archive-default-20260829.json`.
 - Never upload `packet/`, `store/` or raw bytes as GitHub Actions artifacts.
-  The workflow uploads only `public/preservation.json`.
+  The workflow uploads only the non-reconstructive `public/` evidence directory.
+
+After a new successful Tasman capture and private preservation, Actions prepares
+a layer-only public candidate using a separately captured item licence. The
+builder binds the exact approved licence-text digest, item and layer identities,
+attribution and captured response integrity. Mixed catalogue and website bytes
+are excluded from this candidate, not deleted from private preservation. The
+candidate itself stays outside Git/Actions artifacts; only its preparation
+summary is uploaded. A preparation failure does not undo the preceding private
+preservation. Completed source checkpoint replay skips preparation as well as
+capture; this is not a public-publication retry mechanism. Public upload,
+anonymous payload readback and materialisation acceptance are separate next steps.
 
 The existing authenticated owner's credential is stored as the GitHub repository
 secret `HF_TOKEN`. It is supplied only to checkpoint/publication steps, never to
