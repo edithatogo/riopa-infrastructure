@@ -1,0 +1,18 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-SCHEDULED-QUALIFICATION-STATUS-CORRECTION-20260830",
+  "record_type": "immutable-status-correction",
+  "status": "corrected",
+  "scope": "repository-owned readiness packet status",
+  "source_revision": "bbbcec76593b404c2d319a1d1ff1a0fd5257a317",
+  "campaign_id": "operational-beta-20260830-26bc0b4",
+  "qualification_epoch": "beta-epoch-20260830-26bc0b4",
+  "finding": "The readiness packet retained a pre-merge manual-schedule status after the protected workflow defaults were bound to the active qualifying beta campaign.",
+  "resolution": "The successor packet status records that the qualifying schedule is configured while the next scheduled event remains pending; the verified manual observation remains separately identified.",
+  "verification_run_id": "33289129127",
+  "promotion_allowed": false,
+  "non_claims": [
+    "Workflow configuration is not evidence that a scheduled event has executed.",
+    "The verified manual observation does not establish an elapsed beta campaign.",
+    "This correction does not close cycle, recovery, scale, external, preservation or release-authority gates."
+  ]
+}

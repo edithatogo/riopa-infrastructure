@@ -55,6 +55,13 @@ def test_candidate_hosted_validation_is_exact_and_fail_closed() -> None:
     assert scheduled["verification_run_id"] == "33289129127"
     assert record["blockers"]
     assert any("not independent external" in item for item in record["non_claims"])
+    correction = json.loads(
+        (ROOT / "docs/campaign-scheduled-qualification-status-correction-20260830.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert correction["source_revision"] == "bbbcec76593b404c2d319a1d1ff1a0fd5257a317"
+    assert len(correction["source_revision"]) == 40
 
 
 def test_campaign_status_points_to_the_fresh_candidate_segment() -> None:
