@@ -22,6 +22,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # Serialise the same source across manual/scheduled runs without interrupting uploads.
+    concurrency:
+      group: council-source-${{ matrix.source }}
+      cancel-in-progress: false
     strategy:
       fail-fast: false
       max-parallel: 3

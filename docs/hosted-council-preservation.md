@@ -7,6 +7,8 @@ Track: `nz_spatial_archive_mvp_20260718`, issue #49.
 registered one-request-per-second, single-connection load policy. `fail-fast:
 false` lets other sources finish when one source fails. Dispatch manually or use
 the daily schedule; a new run is a new observation, not an atomic source snapshot.
+Per-source job concurrency also serialises overlapping manual/scheduled runs
+without cancelling an active capture or upload. Different sources still run in parallel.
 
 ## Storage and rights
 
