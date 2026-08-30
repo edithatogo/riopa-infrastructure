@@ -1,0 +1,43 @@
+{
+  "campaign_activation": {
+    "activated_at": "2026-08-30T02:41:05Z",
+    "authority": "edithatogo",
+    "campaign_id": "operational-rc-20260830-26bc0b4",
+    "status": "activated"
+  },
+  "campaign_id": "operational-rc-20260830-26bc0b4",
+  "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "classification": "qualifying-rc-observation",
+  "command": [
+    "scripts/ci_quality.sh"
+  ],
+  "ended_at": "2026-08-30T02:56:56.919215Z",
+  "exit_code": 0,
+  "host": {
+    "architecture": "x86_64",
+    "provider": "github-actions",
+    "run_attempt": "1",
+    "run_id": "33289130323",
+    "runner_name": "GitHub Actions 1000382467",
+    "runner_os": "Linux"
+  },
+  "hosted_run_id": "33289130323",
+  "lane": "rc-soak-observation",
+  "log": {
+    "path": "rc-soak-observation.log",
+    "sha256": "75714dae81a19ff356fc462619bae1ce8741376da686e235699f14922dd42700"
+  },
+  "non_claims": [
+    "This receipt is not production disaster-recovery qualification.",
+    "This receipt is hosted-system evidence, not a role-separated agent user/operator journey.",
+    "This receipt does not satisfy elapsed soak duration by itself.",
+    "This receipt is not an accountable release-authority decision.",
+    "Retrospective supplements do not count as elapsed beta or RC soak observations."
+  ],
+  "operational_cycle_id": "2026-W35",
+  "qualification_epoch": "rc-epoch-20260830-26bc0b4",
+  "schema_version": "1.1.0",
+  "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "started_at": "2026-08-30T02:56:42.999961Z",
+  "status": "passed"
+}

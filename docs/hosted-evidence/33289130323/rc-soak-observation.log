@@ -1,0 +1,107 @@
+All checks passed!
+356 files already formatted
+Success: no issues found in 59 source files
+All external GitHub Actions are immutable-SHA pinned.
+GitHub workflow lint passed.
+GitHub workflow policy passed.
+Tracked-secret scan passed.
+Repository context contract passed.
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/accessibility-matrix.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/accessibility-measure.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/accessibility-scenario.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/adapter-mapping.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/analysis-preregistration.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/analysis-protocol.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/artifact.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/canonical-crosswalk.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/governance-decision.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/health-analysis-design.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/hosted-evidence.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/interoperability-conformance-contract.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/linz-archive-plan.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/materialization.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/maturity-model.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/methods-facts.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/operations-control.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/planning-transition.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/provenance-event.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/publication-plan.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/quality-report.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/release-evidence.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/release-roadmap.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/repository-template-contract.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/rights-inventory.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/snapshot-manifest.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/source-acquisition-approval.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/source-health-observation.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/source-record.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/source-registry.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/spatial-feature-link.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/track-metadata.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/transformation-run.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/schemas/v1-gate.schema.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/source-record.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/artifact-raw.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/artifact-canonical.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/provenance-event.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/provenance-event-transformation.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/provenance-event-snapshot.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/transformation-run.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/materialization.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/quality-report.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/rights-inventory.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/methods-facts.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/snapshot-manifest.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/spatial-feature-link.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/snapshot-manifest.json
+PASS /home/runner/work/riopa-infrastructure/riopa-infrastructure/examples/minimal/.bundle-integrity
+Validated 49 item(s); 0 failure(s).
+PASS source registry config/source-registry/nz-spatial-pilot.yaml
+PASS docs/evidence-campaign-status-20260821.json
+PASS roadmap, maturity, release, track, evidence, and issue-graph validation
+PASS all-track agent-panel lens integrity
+Issue configuration written to /home/runner/work/riopa-infrastructure/riopa-infrastructure/project/issues.yaml
+Methods written to /tmp/RIOPA-METHODS.md
+Checking dist/package/riopa_provenance-0.2.0-py3-none-any.whl: [32mPASSED[0m
+Checking dist/package/riopa_provenance-0.2.0.tar.gz: [32mPASSED[0m
+Validated CycloneDX SBOM with 116 components: dist/package/riopa-provenance.cdx.json
+[manager]	WARNING	Test in comment: deterministic is not a test name or id, ignoring
+[manager]	WARNING	Test in comment: non is not a test name or id, ignoring
+[manager]	WARNING	Test in comment: security is not a test name or id, ignoring
+[manager]	WARNING	Test in comment: simulation is not a test name or id, ignoring
+[manager]	WARNING	Test in comment: seed is not a test name or id, ignoring
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:443
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:443
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:729
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:734
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:735
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:743
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:744
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:744
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:749
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:749
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:751
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:754
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:755
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:755
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:755
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:763
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:764
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:764
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:764
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:764
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:772
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:773
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:773
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:773
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:773
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:778
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:778
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:779
+[tester]	WARNING	nosec encountered (B608), but no failed test on file src/riopa_provenance/linz.py:780
+[manager]	WARNING	Test in comment: SafeLoader is not a test name or id, ignoring
+[manager]	WARNING	Test in comment: subclass is not a test name or id, ignoring
+Building source distribution...
+Building wheel from source distribution...
+Successfully built dist/package/riopa_provenance-0.2.0.tar.gz
+Successfully built dist/package/riopa_provenance-0.2.0-py3-none-any.whl
