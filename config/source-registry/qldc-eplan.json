@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "source_registry",
+  "registry_id": "urn:riopa:registry:qldc-eplan",
+  "generated_at": "2026-08-30T00:00:00Z",
+  "sources": [{
+    "source_id": "urn:riopa:source:qldc:eplan",
+    "name": "Queenstown Lakes ePlan entry points and user guide",
+    "publisher": {"name": "Queenstown Lakes District Council", "url": "https://www.qldc.govt.nz/"},
+    "jurisdiction": "Queenstown Lakes District",
+    "source_family": "hosted-eplan",
+    "status": "route-qualification",
+    "rights": {
+      "access_status": "public-authority-page-application-access-observed-separately",
+      "redistribution_status": "not-determined-by-route-probe",
+      "notes": "This registry does not exclude future public archival. Rights evidence and any explicit restrictions must be evaluated separately. Route labels and user-guide text are not operative-status determinations."
+    },
+    "endpoints": [{
+      "endpoint_id": "urn:riopa:source:qldc:eplan:authority",
+      "mechanism": "hosted-eplan-route-qualification",
+      "url": "https://www.qldc.govt.nz/your-council/district-plan/eplans",
+      "enabled": true,
+      "authentication": {"type": "none"},
+      "allowed_download_hosts": ["www.qldc.govt.nz", "districtplan.qldc.govt.nz"],
+      "rate_limit": {"requests_per_second": 1, "maximum_concurrency": 1},
+      "capabilities": ["faithful-http-capture", "bounded-source-health-observation"]
+    }]
+  }]
+}

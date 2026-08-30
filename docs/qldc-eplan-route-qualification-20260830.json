@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "qldc_eplan_route_qualification",
+  "source_id": "urn:riopa:source:qldc:eplan",
+  "producer_sha256": "f23ff2124c8144b31e1ce7cdd2c21770da53ef987c940fa2712ea865c77127df",
+  "status": "blocked-or-incomplete",
+  "bounds": {
+    "maximum_requests": 4,
+    "per_response_bytes": 8000000
+  },
+  "routes": [
+    {
+      "role": "authority",
+      "url": "https://www.qldc.govt.nz/your-council/district-plan/eplans",
+      "status": "captured-authority",
+      "capture_id": "urn:uuid:1be9a648-d20a-49f9-bb63-69b7faf551bf",
+      "sha256": "4c7c84355f429d57f9365468f50992424cb49549ace3dc85a1a31d33f065db6f",
+      "bytes": 665371,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T06:14:41.029143Z"
+    },
+    {
+      "role": "operative-application",
+      "url": "https://districtplan.qldc.govt.nz/operative/",
+      "status": "http-denied",
+      "capture_id": "urn:uuid:a67f98a3-b26e-4381-842d-fd1bbbea9e02",
+      "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "bytes": 118,
+      "http_status": 403,
+      "retrieved_at": "2026-08-30T06:14:41.904726Z"
+    },
+    {
+      "role": "proposed-application",
+      "url": "https://districtplan.qldc.govt.nz/proposed",
+      "status": "http-denied",
+      "capture_id": "urn:uuid:aa395ef8-6b4b-4869-99a7-498c9aca3d7c",
+      "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "bytes": 118,
+      "http_status": 403,
+      "retrieved_at": "2026-08-30T06:14:42.249034Z"
+    },
+    {
+      "role": "user-guide",
+      "url": "https://www.qldc.govt.nz/media/crfavxde/qldc_eplan_user-guide_mar24.pdf",
+      "status": "captured-guide",
+      "capture_id": "urn:uuid:19003e84-7532-4d02-be5e-0601c9d81940",
+      "sha256": "300582e016e16ac85af9d108ab5f9e858c80906d0ac51e384e33f37e57fab2ab",
+      "bytes": 2388438,
+      "http_status": 200,
+      "retrieved_at": "2026-08-30T06:14:42.963041Z"
+    }
+  ],
+  "non_claims": [
+    "Application HTML is not a complete ePlan or an executable offline application.",
+    "The guide is documentation, not plan provisions or spatial data.",
+    "Route labels do not establish operative legal status or valid time.",
+    "No public-payload publication, rights determination or preservation acceptance.",
+    "HTTP denial describes this observation, not availability to all users."
+  ],
+  "total_retained_bytes": 3054045,
+  "semantic_sha256": "a71b37b1945d606d27145371a1b0436880ce7908712d1c5fb41781e5ef656b98"
+}
