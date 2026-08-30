@@ -57,6 +57,10 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: uv run python scripts/publish_tasman_public_packet.py --source-run "$SOURCE_RUN" --work "$WORK"
+      - name: Preserve derived outputs and verify anonymous semantic readback
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: uv run python scripts/publish_tasman_derivatives.py --work "$WORK"
       - name: Retain metadata verification evidence only
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [~] 3.7 Preserve the qualified Tasman canonical, GeoParquet and DuckDB projections publicly through GitHub Actions, verify immutable anonymous bytes and semantics, and replay without replacing the original derived revision. Keep derived payloads outside Git and retain unknown valid time, attribution and release non-claims.
+
 - [x] 3.1 Validate the GeoParquet and DuckDB Spatial materialization receipt and query-ready projection links from the content-addressed archived packet, with packet-bound read-only query examples. The 57,575-feature local restoration is path-, size- and digest-bound and passes PyArrow/DuckDB readback; independent target acceptance remains open (`scripts/validate_meshblock_materialization_receipt.py`, `docs/meshblock-materialization-receipt-validation-20260826.json`, `tests/test_meshblock_materialization_receipt_validation.py`, `docs/meshblock-projection-query-examples-20260826.md`, `tests/test_meshblock_projection_query_examples.py`; `1abb123`, `a466a49`).
 - [x] 3.2 Run bounded geometry, topology, completeness, temporal, rights-metadata and lineage checks over the immutable Meshblock projection. Population, national authority and broader source checks remain open. (`tests/test_meshblock_projection_evidence.py`, `docs/stats-nz-meshblock-projection-quality-report-20260825.json`; `cdd5a8f`)
 - [x] 3.3 Produce bounded coverage, fidelity and unresolved-status reports without promoting supporting geography to population or national evidence. (`docs/stats-nz-meshblock-projection-quality-report-20260825.json`, `tests/test_meshblock_projection_quality_report.py`; `cdd5a8f`)
@@ -51,6 +53,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 - [ ] 4.3 Publish immutable DOI-ready MVP and correction policy.
 
 ## 5. Review fixes
+
+- [x] 5.18 Bind derived-publication rights and full-row readback, preserve canonical time/lineage records, disable external access before DuckDB queries, retain immutable original-manifest checksums and rewrite sanitized failure evidence after durable storage outcomes (`c4f745f`; isolated review, 49 focused tests, full suite 1,545 passed/1 skipped, 90.41% branch-aware coverage against the 90% gate).
 
 - [x] 5.17 Preserve bounded, credential-free failure receipts and durable attempt records when anonymous publication verification or rebuilds fail, without replacing the original public revision or masking the primary error (`85af7d4`; PR #754 hosted review; 34 focused tests and isolated re-review pass).
 
