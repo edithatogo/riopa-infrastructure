@@ -66,8 +66,10 @@ locked in the optional `preservation` extra.
    Verify archive size/digest and every member, without extracting tar paths.
 7. Publish only the manifest and preservation evidence publicly; verify their
    bytes anonymously at the returned immutable revision. Only then write the
-   private source checkpoint. Incomplete captures still fail their job after
-   successful preservation; their checkpoints are not reused as complete.
+   private source checkpoint. Since PR #748, successful preservation/readback
+   returns success even for an incomplete source; `acquisition_complete: false`
+   remains explicit and its checkpoint is not reused as complete. A green
+   preservation job therefore does not establish complete acquisition.
 
 Rerun failed jobs to reacquire incomplete sources while retaining prior attempts.
 Rerunning all jobs also demonstrates checkpoint reuse for successful sources.
