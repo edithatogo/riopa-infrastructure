@@ -1,0 +1,21 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-QUALIFICATION-PLACEMENT-REVIEW-FIX-20260830",
+  "record_type": "immutable-review-fix",
+  "status": "corrected",
+  "scope": "repository-owned campaign ledger input placement",
+  "finding": "The first clean qualifying beta and RC receipts were recorded under supplemental_observations, so the ledger ignored them for active campaign counts.",
+  "resolution": "Runs 33289129127 and 33289130323 are now retained in observations with their activated campaign classifications, and successor packet elapsed values are derived from each receipt's own started_at/ended_at timestamps; prior technical-preview and contaminated campaign records remain preserved and non-qualifying.",
+  "campaigns": {
+    "beta": {"campaign_id": "operational-beta-20260830-26bc0b4", "run_id": "33289129127", "classification": "qualifying-beta-observation", "started_at": "2026-08-30T02:56:46.176859Z", "ended_at": "2026-08-30T02:56:47.837235Z", "elapsed_seconds": 1},
+    "rc": {"campaign_id": "operational-rc-20260830-26bc0b4", "run_id": "33289130323", "classification": "qualifying-rc-observation", "started_at": "2026-08-30T02:56:42.999961Z", "ended_at": "2026-08-30T02:56:56.919215Z", "elapsed_seconds": 13}
+  },
+  "validation": [
+    "tests/test_v1_candidate_hosted_validation.py",
+    "tests/test_v1_release_gate_snapshot.py",
+    "scripts/build_campaign_ledger.py"
+  ],
+  "non_claims": [
+    "Observation counts do not satisfy the 90-day beta, three-cycle, or 30-day RC duration gates.",
+    "This correction does not close recovery, scale, external reproduction, preservation, or release-authority gates."
+  ]
+}

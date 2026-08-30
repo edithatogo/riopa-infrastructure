@@ -50,6 +50,8 @@
 - [x] 4.24 Record the fresh hosted supplemental exact-RC rehearsal with raw receipt/log paths; retain its technical-preview classification and do not advance the exact-RC elapsed clock or close production-recovery, external operator/user, preservation or authority gates (`docs/hosted-supplemental-rc-observation-20260830-26bc0b4.json`, run 33262668117).
 - [x] 4.25 Record the fresh hosted supplemental retrospective replay with raw receipt/log paths; retain its retrospective classification and do not advance beta/RC elapsed clocks or close external, national-scale, production-recovery, preservation or authority gates (`docs/hosted-supplemental-retrospective-observation-20260830-26bc0b4.json`, run 33263289821).
 - [x] 4.26 Separate current campaign qualification tooling from the exact candidate checkout so qualifying receipts retain activation/classification and candidate tests remain content-addressed; validate workflow ordering and fail-closed ledger controls (`.github/workflows/evidence-campaign.yml`, `tests/test_campaign_v2.py`, `docs/campaign-qualification-tooling-fix-20260830.json`). Hosted activation, elapsed, recovery, scale, external, preservation and authority gates remain open.
+- [x] 4.27 Activate clean beta/RC campaign identifiers after excluding prior technical-preview and retrospective receipts; preserve the first qualifying observations and record the reset boundary (`docs/campaign-qualification-activation-20260830.json`, runs 33289129127/33289130323). Duration, cycle, recovery, scale, external, preservation and authority gates remain open.
+- [x] 4.28 Correct placement of the first clean qualifying beta/RC observations so the active ledger counts them; preserve the prior records and retain all duration and promotion gates (`docs/campaign-qualification-placement-review-fix-20260830.json`, `docs/evidence-campaign-status-20260821.json`).
 
 ## Review fixes
 
@@ -68,6 +70,7 @@
 - [x] R3 Reject malformed replication manifests, non-object receipts and duplicate target receipts before acceptance validation (`scripts/build_redundancy_manifest.py`, `tests/test_redundancy_manifest.py`).
 - [x] R4 Bind the hosted recovery/rollback lane to the deterministic snapshot, restore and rollback harness rather than publication-only tests; retain production-representative recovery as an external gate (`scripts/record_hosted_evidence.py`, `tests/test_hosted_evidence.py`, `docs/operations-recovery-lane-contract-20260829.json`; 2026-08-29).
 - [x] R8 Make beta/RC qualification activation explicit: supplemental drills remain retained without a cumulative elapsed ledger, while qualifying observations require an authority, activation timestamp and exact campaign binding (`.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_hosted_evidence.py`, `docs/campaign-qualification-activation-20260829.json`; elapsed and promotion gates remain open).
+- [x] R9 Correct clean qualifying observation placement after review found the active ledger was ignoring records stored as supplemental; add regression coverage and an immutable correction record (`docs/campaign-qualification-placement-review-fix-20260830.json`, `tests/test_v1_candidate_hosted_validation.py`, `tests/test_v1_release_gate_snapshot.py`).
 
 ## Track closeout
 

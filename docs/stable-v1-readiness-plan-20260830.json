@@ -1,0 +1,51 @@
+{
+  "record_type": "stable_v1_readiness_plan",
+  "schema_version": "1.0.0",
+  "record_id": "stable-v1-readiness-plan-20260830",
+  "release": "1.0.0",
+  "source_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "generated_at": "2026-08-30T02:41:05Z",
+  "scope": "bounded regional, public-datasets-only, non-operational technical preview",
+  "promotion_allowed": false,
+  "status": "preparation-only",
+  "recommended_strategy": {
+    "candidate": "Continue the isolated 26bc0b4 beta/RC campaign; do not freeze a new RC before beta duration and cycle criteria pass.",
+    "evidence": "Use GitHub Actions as the primary hosted evidence plane and retain Hugging Face or an institutional repository as a secondary preservation target.",
+    "review": "Use a panel of content-bound agents for qualification; panels assess evidence but do not create elapsed, participant, provider-acceptance or owner-authority facts.",
+    "authority": "Keep the tier-specific release decision unsigned and non-authorizing until every required gate is evidenced."
+  },
+  "stable_gate_families": [
+    {"id": "stable-governance", "status": "pending", "evidence": "owner decision and governance packet"},
+    {"id": "stable-contracts", "status": "pending", "evidence": "frozen conformance corpus and compatibility qualification"},
+    {"id": "stable-provenance", "status": "pending", "evidence": "signed, content-addressed provenance and preservation"},
+    {"id": "stable-security", "status": "pending", "evidence": "security, supply-chain and provider-side receipts"},
+    {"id": "stable-data", "status": "pending", "evidence": "rights-qualified representative data and source authority"},
+    {"id": "stable-operations", "status": "pending", "evidence": "90-day/three-cycle beta and recovery evidence"},
+    {"id": "stable-performance", "status": "pending", "evidence": "approved national-scale workload measurements"},
+    {"id": "stable-interoperability", "status": "pending", "evidence": "cross-runtime and clean-room reproduction"},
+    {"id": "stable-publication", "status": "pending", "evidence": "accepted preserved stable artifacts"},
+    {"id": "stable-usability", "status": "pending", "evidence": "qualifying external user workflows"},
+    {"id": "stable-analytics", "status": "pending", "evidence": "reproducible benchmark and audit outputs"},
+    {"id": "stable-science", "status": "pending", "evidence": "bounded methods and applicability qualification"},
+    {"id": "stable-panel-clean-room-reproduction", "status": "pending", "evidence": "two isolated reproductions against the exact candidate"},
+    {"id": "stable-release-authority", "status": "pending", "evidence": "owner-signed tier decision with scope, exclusions, expiry, rollback and revocation"}
+  ],
+  "campaigns": {
+    "beta": {"campaign_id": "operational-beta-20260830-26bc0b4", "qualification_epoch": "beta-epoch-20260830-26bc0b4", "required_days": 90, "required_operational_cycles": 3, "status": "pending-duration-and-cycles", "reset_on": ["qualifying interruption", "revision change"]},
+    "rc": {"campaign_id": "operational-rc-20260830-26bc0b4", "qualification_epoch": "rc-epoch-20260830-26bc0b4", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "required_days": 30, "status": "pending-duration", "reset_on": ["qualifying interruption", "revision change"]}
+  },
+  "repository_owned_next_steps": [
+    "retain immutable candidate and daily hosted schedule",
+    "validate each observation against revision, epoch, timestamps, SLO and incident fields",
+    "refresh the gate snapshot and panel packet after each qualifying observation",
+    "maintain recovery, benchmark and preservation manifests without calling them production evidence",
+    "prepare the owner decision packet but do not sign or promote"
+  ],
+  "non_substitutions": [
+    "Retrospective data cannot replace elapsed beta or RC soak.",
+    "Agent panels cannot replace factual external operator/user participation.",
+    "Local or technical-preview recovery cannot replace production-representative hosted recovery.",
+    "A draft decision cannot authorize beta, RC or stable-v1 promotion."
+  ],
+  "review": {"scheduled_by": "2026-08-31", "early_triggers": ["scope change", "rights or source-status change", "safety incident", "candidate revision change", "qualifying interruption"]}
+}

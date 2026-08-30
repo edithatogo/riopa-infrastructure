@@ -77,7 +77,9 @@
     {"lane": "operational-observation", "run_id": "32863847331", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
     {"lane": "operational-observation", "run_id": "32986291754", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
     {"lane": "operational-observation", "run_id": "33127553189", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
-    {"lane": "operational-observation", "run_id": "33220839876", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"}
+    {"lane": "operational-observation", "run_id": "33220839876", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260825-26bc0b4", "qualification_epoch": "beta-epoch-20260825-26bc0b4", "operational_cycle_id": "2026-W35"},
+    {"lane": "operational-observation", "run_id": "33289129127", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-beta-20260830-26bc0b4", "qualification_epoch": "beta-epoch-20260830-26bc0b4", "operational_cycle_id": "2026-W35", "classification": "qualifying-beta-observation", "campaign_activation": {"status": "activated", "authority": "edithatogo", "activated_at": "2026-08-30T02:41:05Z", "campaign_id": "operational-beta-20260830-26bc0b4"}},
+    {"lane": "rc-soak-observation", "run_id": "33289130323", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "operational-rc-20260830-26bc0b4", "qualification_epoch": "rc-epoch-20260830-26bc0b4", "operational_cycle_id": "2026-W35", "classification": "qualifying-rc-observation", "campaign_activation": {"status": "activated", "authority": "edithatogo", "activated_at": "2026-08-30T02:41:05Z", "campaign_id": "operational-rc-20260830-26bc0b4"}}
   ],
   "supplemental_observations": [
     {"lane": "operational-observation", "run_id": "33254451288", "status": "passed", "revision": "14c1783230606c359142b49d1c2100ae566ecc04", "candidate_revision": "14c1783230606c359142b49d1c2100ae566ecc04", "campaign_id": "operational-beta-20260829-14c17832", "qualification_epoch": "beta-epoch-20260829-14c17832"},
@@ -114,16 +116,16 @@
     {"lane": "retrospective-replay", "run_id": "33263289821", "status": "passed", "revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6", "campaign_id": "supplemental-retrospective-20260830-26bc0b4", "qualification_epoch": "supplemental-retrospective-epoch-20260830", "operational_cycle_id": "2026-W35"}
   ],
   "elapsed_gate": {
-    "campaign_id": "operational-beta-20260825-26bc0b4",
-    "qualification_epoch": "beta-epoch-20260825-26bc0b4",
+    "campaign_id": "operational-beta-20260830-26bc0b4",
+    "qualification_epoch": "beta-epoch-20260830-26bc0b4",
     "required_days": 90,
     "required_operational_cycles": 3,
     "status": "pending-duration-and-cycles",
     "reset_conditions": ["qualifying interruption", "revision change", "failed restoration", "material scope or rights change"]
   },
   "rc_gate": {
-    "campaign_id": "operational-rc-20260825-26bc0b4",
-    "qualification_epoch": "rc-epoch-20260825-26bc0b4",
+    "campaign_id": "operational-rc-20260830-26bc0b4",
+    "qualification_epoch": "rc-epoch-20260830-26bc0b4",
     "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
     "required_days": 30,
     "status": "pending-duration",

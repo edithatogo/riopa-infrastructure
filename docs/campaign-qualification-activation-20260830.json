@@ -1,0 +1,17 @@
+{
+  "evidence_id": "OPS-CAMPAIGN-QUALIFICATION-ACTIVATION-20260830",
+  "schema_version": "1.0.0",
+  "decision": "activate-clean-campaigns",
+  "authority": "edithatogo",
+  "activated_at": "2026-08-30T02:41:05Z",
+  "candidate_revision": "26bc0b49bcd84f409bf24b527e1049fd396c94a6",
+  "beta": {"campaign_id": "operational-beta-20260830-26bc0b4", "qualification_epoch": "beta-epoch-20260830-26bc0b4", "run_id": "33289129127"},
+  "rc": {"campaign_id": "operational-rc-20260830-26bc0b4", "qualification_epoch": "rc-epoch-20260830-26bc0b4", "run_id": "33289130323"},
+  "prior_finding": "Earlier campaign identifiers contained retrospective or technical-preview receipts and were not suitable as clean qualifying ledgers; those receipts remain preserved as non-qualifying evidence.",
+  "status": "elapsed-clocks-start-at-first-clean-observation",
+  "promotion_allowed": false,
+  "non_claims": [
+    "Activation starts the clean beta and RC segments but does not satisfy their duration or cycle requirements.",
+    "This record does not establish production recovery, external participation, national-scale performance, preservation acceptance or release authority."
+  ]
+}
