@@ -26,6 +26,7 @@ def test_bounded_report_validates_and_preserves_projection_boundary() -> None:
         (("ingestion", "live_endpoint_contacted"), True),
         (("accessibility", "claim_supported"), True),
         (("scenarios", 0, "repetitions"), 2),
+        (("scenarios", 0, "records_per_second"), 1),
     ],
 )
 def test_validator_rejects_promotion_or_contract_drift(
