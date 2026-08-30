@@ -142,6 +142,10 @@ def test_workflow_parallelism_and_credential_isolation() -> None:
     assert "HF_TOKEN" not in capture_step.get("env", {})
     assert "HF_TOKEN" not in job["env"]
     assert workflow["permissions"] == {"contents": "read"}
+    assert job["concurrency"] == {
+        "group": "council-source-${{ matrix.source }}",
+        "cancel-in-progress": False,
+    }
     assert "github.run_id" in workflow["concurrency"]["group"]
     assert job["steps"][-1]["with"]["path"].endswith("/public/")
 
