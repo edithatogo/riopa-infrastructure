@@ -119,8 +119,12 @@ preservation and public non-reconstructive evidence. Exact-revision private
 readback and anonymous public readback precede reusable source checkpoints.
 `tests/test_hosted_council_archive.py` covers tampering, timeouts, credential
 isolation, failed anonymous readback, wrong visibility, commit conflicts and
-source/run/code-bound resume. Hosted success is not inferred from these tests;
-task 1.9 stays in progress until a real run and checkpoint replay are verified.
+source/run/code-bound resume. Hosted evidence is recorded separately in
+`docs/hosted-council-preservation-20260830.json`: run 33298342091 captured three
+sources concurrently; attempt 2 reused verified Tasman/NPDC checkpoints and
+preserved another incomplete QLDC attempt. Task 1.9 is complete within this
+bounded scope. Both attempts remain red for QLDC acquisition (hosted application
+routes returned 404); no full ePlan or scheduled-cycle qualification is claimed.
 Isolated subagent review identified and verified a remote-size preflight fix;
 all 25 pipeline tests passed on re-review with no remaining blocker.
 
@@ -131,7 +135,7 @@ all 25 pipeline tests passed on re-review with no remaining blocker.
 - Four heterogeneous council and two national source-family capture-to-release chains remain incomplete.
 - External research-object validation and a second clean-environment reproduction remain absent.
 - The four `0.5.0` release gates, including three scheduled archive cycles with change and recovery evidence, remain unpassed.
-- Durable preservation/publication acceptance and accountable release-authority approval remain absent.
+- Hosted private preservation and public evidence acceptance are verified for the bounded Tasman/NPDC packets and incomplete QLDC attempts; wider release-packet acceptance and release-authority evidence remain separate gates.
 - Any defensible Meshblock-level population denominator remains pending. The workload manifest is a bounded reference input, not population or national analytical evidence.
 
 ## Decisions, exceptions and limitations

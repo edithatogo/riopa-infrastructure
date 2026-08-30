@@ -1,0 +1,328 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "observed_date": "2026-08-30",
+  "workflow_run": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091",
+  "code_revision": "1babdbf333091ff3f65b96ccf03990052ce82589",
+  "max_parallel_sources": 3,
+  "private_repository": "edithatogo/riopa-nz-spatial-raw",
+  "public_repository": "edithatogo/riopa-public-data-archive",
+  "attempts": [
+    {
+      "attempt": 1,
+      "workflow_conclusion": "failure",
+      "sources": [
+        {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "source": "npdc",
+            "run_id": "33298342091",
+            "attempt": "1",
+            "private_preservation": {
+              "prefix": "campaigns/33298342091/npdc/1",
+              "revision": "f3d968beddd718d68b147642bd059857f45aa556",
+              "manifest_sha256": "84992f0c27749f2818a116bb6ce94a14666bc43a83340c0590b91661c03cfc99"
+            },
+            "raw_bytes_verified": true,
+            "acquisition_complete": true,
+            "public_payload": false,
+            "scope": "bounded-source-capture",
+            "public_revision": "9a2d66a586515394c343880346bb49abb104c1c7",
+            "anonymous_evidence_verified": true
+          },
+          "archive_bytes": 98273280,
+          "archive_sha256": "fc80107a4945153d1cf333e443db583fcc482937d27ce2973e1892ec6d99f3a9",
+          "file_count": 264,
+          "anonymous_readback": {
+            "manifest.json": {
+              "sha256": "1213d2ac0db428f5a3d80746d70322264e63968f4f6cb39bc02c981a2fd31f6b",
+              "bytes": 54168
+            },
+            "preservation.json": {
+              "sha256": "397ed1feb78cab8b30af8fca5a328e72ead7f207294ab8a1cf308579ff056d0e",
+              "bytes": 452
+            }
+          },
+          "job_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091/job/99221765067",
+          "job_conclusion": "success",
+          "steps": [
+            {
+              "name": "Verify and reuse completed source checkpoint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Capture source with no publication credential",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve and verify complete or partial attempt",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "source": "qldc",
+            "run_id": "33298342091",
+            "attempt": "1",
+            "private_preservation": {
+              "prefix": "campaigns/33298342091/qldc/1",
+              "revision": "6bd5f5d9e2366922272f5852aa1acdf03ffa9e80",
+              "manifest_sha256": "da4276ad96490605b8e22a53d3a4cc52678d25ea6ae92368713541ce7c607db4"
+            },
+            "raw_bytes_verified": true,
+            "acquisition_complete": false,
+            "public_payload": false,
+            "scope": "route-qualification-only",
+            "public_revision": "7ee27c303f09b218de05c214083cd5d386f340c9",
+            "anonymous_evidence_verified": true
+          },
+          "archive_bytes": 3082240,
+          "archive_sha256": "c329a4c07ab6ff9c924b89a294ed09024e243bf89bbf1f1d16001f5798b3f6df",
+          "file_count": 10,
+          "anonymous_readback": {
+            "manifest.json": {
+              "sha256": "2095ddd721cbb6bd16096dd1ddc7791ea5430cc1173214f461400c94d1ef224d",
+              "bytes": 2841
+            },
+            "preservation.json": {
+              "sha256": "7b64e4d3d629dbd341a4a92a09817795232a5dd69472e7edf4cebe5e062fe1b3",
+              "bytes": 455
+            }
+          },
+          "job_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091/job/99221765070",
+          "job_conclusion": "failure",
+          "steps": [
+            {
+              "name": "Verify and reuse completed source checkpoint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Capture source with no publication credential",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve and verify complete or partial attempt",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "source": "tasman",
+            "run_id": "33298342091",
+            "attempt": "1",
+            "private_preservation": {
+              "prefix": "campaigns/33298342091/tasman/1",
+              "revision": "161ac5fdc0abbc0835b73438a8612edf6d2f6fde",
+              "manifest_sha256": "662b342e4ada9f7cfb827e0117dc9a2bf6e1cb21b073e8a47be99af65dacb893"
+            },
+            "raw_bytes_verified": true,
+            "acquisition_complete": true,
+            "public_payload": false,
+            "scope": "bounded-source-capture",
+            "public_revision": "742238c010bf3ac096a29581474140234f87cad9",
+            "anonymous_evidence_verified": true
+          },
+          "archive_bytes": 24985600,
+          "archive_sha256": "87514c88e9589b5de5cfa271c3a0a8a9fb258ba20700fc9bede921ecfe4c3dd0",
+          "file_count": 50,
+          "anonymous_readback": {
+            "manifest.json": {
+              "sha256": "5d0094657d06aafd8d301abe3eff449054e20a3a28ad72f99d1dc2ba306f09ed",
+              "bytes": 11176
+            },
+            "preservation.json": {
+              "sha256": "30133ade3da13570301e7f4587d6dc01fb5b833ea062dfaedebd4948cf639322",
+              "bytes": 456
+            }
+          },
+          "job_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091/job/99221764960",
+          "job_conclusion": "success",
+          "steps": [
+            {
+              "name": "Verify and reuse completed source checkpoint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Capture source with no publication credential",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve and verify complete or partial attempt",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "workflow_conclusion": "failure",
+      "sources": [
+        {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "source": "npdc",
+            "run_id": "33298342091",
+            "attempt": "1",
+            "private_preservation": {
+              "prefix": "campaigns/33298342091/npdc/1",
+              "revision": "f3d968beddd718d68b147642bd059857f45aa556",
+              "manifest_sha256": "84992f0c27749f2818a116bb6ce94a14666bc43a83340c0590b91661c03cfc99"
+            },
+            "raw_bytes_verified": true,
+            "acquisition_complete": true,
+            "public_payload": false,
+            "scope": "bounded-source-capture",
+            "public_revision": "9a2d66a586515394c343880346bb49abb104c1c7",
+            "anonymous_evidence_verified": true
+          },
+          "archive_bytes": 98273280,
+          "archive_sha256": "fc80107a4945153d1cf333e443db583fcc482937d27ce2973e1892ec6d99f3a9",
+          "file_count": 264,
+          "anonymous_readback": {
+            "manifest.json": {
+              "sha256": "1213d2ac0db428f5a3d80746d70322264e63968f4f6cb39bc02c981a2fd31f6b",
+              "bytes": 54168
+            },
+            "preservation.json": {
+              "sha256": "397ed1feb78cab8b30af8fca5a328e72ead7f207294ab8a1cf308579ff056d0e",
+              "bytes": 452
+            }
+          },
+          "job_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091/job/99222024888",
+          "job_conclusion": "success",
+          "steps": [
+            {
+              "name": "Verify and reuse completed source checkpoint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Capture source with no publication credential",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Preserve and verify complete or partial attempt",
+              "conclusion": "skipped"
+            }
+          ]
+        },
+        {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "source": "qldc",
+            "run_id": "33298342091",
+            "attempt": "2",
+            "private_preservation": {
+              "prefix": "campaigns/33298342091/qldc/2",
+              "revision": "390b73dcc1b52815e05b638f75416556bb539cbf",
+              "manifest_sha256": "7f022e88cf4462863173e61bc484990eb4902c5f2f2872e1c59d912efa9c76a1"
+            },
+            "raw_bytes_verified": true,
+            "acquisition_complete": false,
+            "public_payload": false,
+            "scope": "route-qualification-only",
+            "public_revision": "4ae36ab22082d76e85065efad20b74cfea2db8ef",
+            "anonymous_evidence_verified": true
+          },
+          "archive_bytes": 3082240,
+          "archive_sha256": "393cd045c409afc1745e70381df6346716b28813498d1fe66bd45ad6eee34311",
+          "file_count": 10,
+          "anonymous_readback": {
+            "manifest.json": {
+              "sha256": "4dca0e821d4d7e54202e7eaae8cf35289578f37bdfe893d2d45d420f09e69fed",
+              "bytes": 2839
+            },
+            "preservation.json": {
+              "sha256": "bbd882f131e312035dae7e9785675c64986d6d53f38ab266b4a0ec1f1d3223c0",
+              "bytes": 455
+            }
+          },
+          "job_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091/job/99222024940",
+          "job_conclusion": "failure",
+          "steps": [
+            {
+              "name": "Verify and reuse completed source checkpoint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Capture source with no publication credential",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve and verify complete or partial attempt",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "source": "tasman",
+            "run_id": "33298342091",
+            "attempt": "1",
+            "private_preservation": {
+              "prefix": "campaigns/33298342091/tasman/1",
+              "revision": "161ac5fdc0abbc0835b73438a8612edf6d2f6fde",
+              "manifest_sha256": "662b342e4ada9f7cfb827e0117dc9a2bf6e1cb21b073e8a47be99af65dacb893"
+            },
+            "raw_bytes_verified": true,
+            "acquisition_complete": true,
+            "public_payload": false,
+            "scope": "bounded-source-capture",
+            "public_revision": "742238c010bf3ac096a29581474140234f87cad9",
+            "anonymous_evidence_verified": true
+          },
+          "archive_bytes": 24985600,
+          "archive_sha256": "87514c88e9589b5de5cfa271c3a0a8a9fb258ba20700fc9bede921ecfe4c3dd0",
+          "file_count": 50,
+          "anonymous_readback": {
+            "manifest.json": {
+              "sha256": "5d0094657d06aafd8d301abe3eff449054e20a3a28ad72f99d1dc2ba306f09ed",
+              "bytes": 11176
+            },
+            "preservation.json": {
+              "sha256": "30133ade3da13570301e7f4587d6dc01fb5b833ea062dfaedebd4948cf639322",
+              "bytes": 456
+            }
+          },
+          "job_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091/job/99222024770",
+          "job_conclusion": "success",
+          "steps": [
+            {
+              "name": "Verify and reuse completed source checkpoint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Capture source with no publication credential",
+              "conclusion": "skipped"
+            },
+            {
+              "name": "Preserve and verify complete or partial attempt",
+              "conclusion": "skipped"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "non_claims": [
+    "QLDC acquisition remains incomplete; workflow conclusion is failure.",
+    "Public evidence is not public raw payload permission.",
+    "Manual capture and replay are not three scheduled change/recovery cycles.",
+    "No stable release, elapsed beta/RC, complete ePlan or full-track completion."
+  ],
+  "qldc_attempt_2_independent_private_readback": {
+    "verified": true,
+    "response_statuses": {
+      "authority": 200,
+      "user-guide": 200,
+      "operative-application": 404,
+      "proposed-application": 404
+    },
+    "note": "Hosted application routes returned 404, distinct from earlier local 403 observations."
+  }
+}

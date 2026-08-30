@@ -71,7 +71,35 @@ change/recovery gate, SLO history or stable-only beta/RC periods. Those require
 separately reconciled evidence. Successful QLDC route qualification would still
 not establish a complete ePlan archive or operative legal status.
 
-## Commands and validation
+## Observed hosted execution — 2026-08-30
+
+[Run 33298342091](https://github.com/edithatogo/riopa-infrastructure/actions/runs/33298342091)
+executed three concurrent sources at `1babdbf333091ff3f65b96ccf03990052ce82589`.
+Tasman and NPDC completed bounded acquisition and immutable preservation.
+First-attempt raw tar sizes were 24,985,600 bytes (Tasman), 98,273,280 bytes
+(NPDC), and 3,082,240 bytes (incomplete QLDC). These are archive sizes, not
+source payload totals. All three produced anonymous public evidence.
+
+Attempt 2 verified Tasman/NPDC checkpoints and skipped their capture/publication
+steps. QLDC reacquired and preserved another incomplete attempt: hosted authority
+and guide routes returned 200, while both application routes returned 404.
+Independent private-packet readback confirmed the latter observations; they are
+not the earlier local 403 observations. Both workflow attempts correctly ended
+in failure because QLDC acquisition was incomplete, not because its packet was
+lost. This closes task 1.9's hosted preservation/replay scope, not the wider track.
+
+`hosted-council-preservation-20260830.json` records per-attempt job outcomes,
+immutable private/public revisions, archive digests, and independently retrieved
+anonymous evidence hashes. The isolated reviewer separately checked Tasman and
+QLDC public manifests; private verification is explicitly distinguished.
+
+PR #746 briefly serialized the entire matrix to avoid shared HF branch races.
+That also serialized downloads, contrary to the approved requirement. The
+evidence closeout restores three parallel sources, retaining bounded optimistic
+commit retries and same-source cross-run serialization. The cited execution
+already exercised this parallel configuration, including immutable readback.
+
+## Reproduction commands
 
 ```sh
 gh workflow run council-archive.yml --ref main
