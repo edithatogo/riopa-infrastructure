@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "status": "hosted-derived-publication-and-replay-verified",
+  "hosted_execution": {
+    "run_id": "33335595270",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33335595270",
+    "producer_revision": "9f262b77ad611118b0fdd6a3ccd713ced0c74300",
+    "successful_attempts": [
+      1,
+      2
+    ],
+    "identical_receipts_sha256": "e25f96dcf8df5d25bbf3a19d26edcda4cc1e7fc240ea35f5f0a84636bb389e24",
+    "original_public_revision_reused": true
+  },
+  "implementation_pr": "https://github.com/edithatogo/riopa-infrastructure/pull/756",
+  "ci": {
+    "run_id": "33335451160",
+    "revision": "38e69892fb0f189a516de31cc335d935dd934dbb",
+    "branch_aware_coverage_percent": 90.41228466352668,
+    "coverage_gate_percent": 90,
+    "tests_passed": 1559,
+    "tests_skipped": 1
+  },
+  "publication_receipt": {
+    "logical_sha256": "0699ba5d1964aa0418f446bc7407037234cf72c0e3c7bf20503066863d64f3f9",
+    "prefix": "derivatives/tasman-zones/0699ba5d1964aa0418f446bc7407037234cf72c0e3c7bf20503066863d64f3f9",
+    "public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae",
+    "manifest_sha256": "d3202f0ba4226087807ec9ab28ecc5146ebeb891cf8376e9f5ac22e5f13f738f",
+    "state": "verified",
+    "public_repository": "edithatogo/riopa-public-data-archive",
+    "status": "derivatives-published-and-verified",
+    "identity": {
+      "profile": "tasman-derived-v1",
+      "producer_sha256": "e28e282677efdcdccc87dba296d18d5c8d56c54df4dffa22f79145ed029bb1bb",
+      "source_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+      "source_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2",
+      "full_row_semantic_sha256": "1c5d83df769cd50e871b533e1ad67abed5366e8cf1c6eb412de614afdc2f9d5d",
+      "canonical_sha256": "5cf2ae44d784b54ee899823fc347e6b557e4ec37315ed6a62fb9b77674045eed",
+      "geoparquet_sha256": "9fd4408ab375bb28ca6f88a1c295a8a8c2b90dda3c26dd29a5293075cac955f1",
+      "feature_count": 3655
+    },
+    "files": {
+      "canonical.json": {
+        "sha256": "8226c400e55cebdce172751c57e8e270cd99f30db198a0427696098faf2c5238",
+        "bytes": 24149096
+      },
+      "features.duckdb": {
+        "sha256": "b0378a77bbfe212196b8114e897bb2f75330e5929e420654d51b4abd12073aea",
+        "bytes": 12857344
+      },
+      "features.parquet": {
+        "sha256": "9fd4408ab375bb28ca6f88a1c295a8a8c2b90dda3c26dd29a5293075cac955f1",
+        "bytes": 8846605
+      }
+    },
+    "licence": "CC-BY-4.0",
+    "attribution": "Tasman District Council (TDC)"
+  },
+  "non_claims": [
+    "Manual hosted replay does not qualify the three scheduled change/recovery cycles.",
+    "Hosted repeatability is not two isolated clean-room reproducer agents.",
+    "The derived packet supplements the exact licensed source packet; mixed catalogue and website objects remain excluded.",
+    "Unknown valid time and non-authoritative planning status remain unchanged.",
+    "Four-council/two-national-family capture-to-release, research-object release and stable-v1 gates remain open."
+  ]
+}

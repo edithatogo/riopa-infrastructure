@@ -55,3 +55,11 @@ Implementation or local tests alone do not prove publication. Manual replay is
 not a scheduled change/recovery cycle or isolated clean-room agent reproduction.
 This task does not close the whole archive track, establish operative planning
 status, supply population denominators, or advance a release gate.
+
+## Hosted result
+
+`docs/tasman-derived-acceptance-20260831.json` records successful Actions run
+33335595270 attempts 1 and 2 on merged implementation `9f262b7`. Both verified
+the same immutable derived revision, with byte-identical acceptance receipts.
+This supplies the publication/replay evidence required above; the scope
+boundaries still apply.
