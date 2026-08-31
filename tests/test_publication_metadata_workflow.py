@@ -33,6 +33,10 @@ def test_metadata_workflow_is_main_only_fixed_read_only_and_retains_failures() -
     workflow = yaml.safe_load(text)
     assert workflow.get("on", workflow.get(True)) == {"workflow_dispatch": None}
     assert workflow["permissions"] == {"contents": "read"}
+    assert workflow["concurrency"] == {
+        "group": "publication-metadata-${{ github.workflow }}-${{ github.ref }}",
+        "cancel-in-progress": True,
+    }
     assert "secrets." not in text and "github.token" not in text
     assert "HF_TOKEN" not in text and "GH_TOKEN" not in text
     assert set(workflow["jobs"]) == {"reconcile"}
