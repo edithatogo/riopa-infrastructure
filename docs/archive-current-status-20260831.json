@@ -20,6 +20,10 @@
     {
       "path": "docs/tasman-feature-comparison-acceptance-20260831.json",
       "sha256": "7aa55851f679e89942685af018fc2b970005ff30eec21a58aa607336cf6f3681"
+    },
+    {
+      "path": "docs/tasman-first-scheduled-cycle-20260831.json",
+      "sha256": "589fde41b7d80d4113216cf4cf7c06f67ce8deeab929460321de9a21add42b7f"
     }
   ],
   "source_scope": "Tasman selected TRMP zones layer and standalone item rights only",
@@ -30,21 +34,46 @@
   "dispositions": {
     "source_publication": {
       "status": "accepted",
+      "role": "historical-baseline",
       "evidence": "docs/tasman-publication-acceptance-20260830.json",
       "public_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2"
     },
     "derived_publication": {
       "status": "accepted",
+      "role": "historical-baseline",
       "evidence": "docs/tasman-derived-acceptance-20260831.json",
       "public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae"
     },
     "run_attempt_binding": {
       "status": "accepted-manual-replay",
+      "role": "historical-baseline",
       "evidence": "docs/tasman-run-provenance-acceptance-20260831.json"
     },
     "fixed_baseline_comparison": {
       "status": "accepted-no-feature-differences",
+      "role": "historical-baseline",
       "evidence": "docs/tasman-feature-comparison-acceptance-20260831.json"
+    },
+    "scheduled_capture_and_publication": {
+      "status": "accepted-first-scheduled-observation",
+      "role": "latest-observed-scheduled-packet",
+      "evidence": "docs/tasman-first-scheduled-cycle-20260831.json",
+      "source_run": "33379733331",
+      "publication_run": "33379877031",
+      "source_public_revision": "9d92875ee1604dba435f86fe1c7394c31b1dc494",
+      "derived_public_revision": "588442feec91e4a0c4d2b2361c21833596497387",
+      "ledger_public_revision": "46ff54604026525630d7e8e44d3ac4c26edeaddc",
+      "scheduled_source_runs_observed": ["33379733331"],
+      "ledger_distinct_source_run_count": 2,
+      "comparison_basis": "fixed-initial-accepted-packet-not-previous-cycle",
+      "difference_counts": {
+        "added": 0,
+        "removed": 0,
+        "attribute_changed": 3655,
+        "geometry_changed": 0
+      },
+      "difference_cause": "unattributed",
+      "three_cycle_gate_qualified": false
     }
   },
   "supersession": {
@@ -62,8 +91,11 @@
   ],
   "non_claims": [
     "No mixed catalogue or website payload publication is asserted.",
-    "No fresh source capture, current source health, legal valid time or operative planning status is asserted.",
+    "No current source health, legal valid time or operative planning status is asserted.",
     "No whole-track, alpha-cycle or stable-release qualification is asserted.",
-    "This Tasman disposition does not alter other source packets or historical technical-preview preservation receipts."
+    "This Tasman disposition does not alter other source packets or historical technical-preview preservation receipts.",
+    "The four historical-baseline dispositions retain the original manual/no-difference acceptance; the latest observed scheduled packet is separately identified.",
+    "One scheduled source run is observed; the two ledger source runs include the earlier manual source and do not satisfy the three-cycle gate.",
+    "All 3655 projected attribute digests differ from the fixed baseline; their cause is unattributed and no adjacent-cycle source-change qualification is asserted."
   ]
 }

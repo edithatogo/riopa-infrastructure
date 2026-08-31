@@ -25,6 +25,7 @@ def test_current_disposition_is_bound_to_exact_accepted_packets() -> None:
         ("derived_publication", derived_receipt),
     ):
         assert items[key]["status"] == "accepted"
+        assert items[key]["role"] == "historical-baseline"
         assert items[key]["public_revision"] == receipt["public_revision"]
         assert receipt["state"] == "verified"
         assert receipt["licence"] == current["licence"]
@@ -53,6 +54,8 @@ def test_current_disposition_does_not_turn_manual_replay_into_qualification() ->
     for attempt in provenance["attempts"]:
         assert attempt["receipt"]["scheduled_source_trigger_observed"] is False
         assert attempt["receipt"]["release_cycle_qualified"] is False
+    assert items["run_attempt_binding"]["role"] == "historical-baseline"
+    assert items["fixed_baseline_comparison"]["role"] == "historical-baseline"
     observed = comparison["comparison_receipt"]["comparison"]
     for change in ("added", "removed", "attribute_changed", "geometry_changed"):
         assert observed[change] == []
@@ -62,3 +65,36 @@ def test_current_disposition_does_not_turn_manual_replay_into_qualification() ->
         "three-scheduled-cycles-including-change-and-failure-recovery"
         in current["remaining_qualification"]
     )
+
+
+def test_current_scheduled_disposition_binds_latest_without_rewriting_baseline() -> None:
+    root = Path(__file__).resolve().parents[1]
+    current = json.loads((root / "docs/archive-current-status-20260831.json").read_text())
+    latest = current["dispositions"]["scheduled_capture_and_publication"]
+    evidence = json.loads((root / latest["evidence"]).read_text())
+    source = evidence["receipts"]["source"]["receipt"]
+    derived = evidence["receipts"]["derived"]["receipt"]
+    preserved = evidence["preservation"]["receipt"]
+    assert latest["status"] == "accepted-first-scheduled-observation"
+    assert latest["role"] == "latest-observed-scheduled-packet"
+    assert latest["source_run"] == evidence["source_execution"]["run_id"] == "33379733331"
+    assert latest["publication_run"] == evidence["publication_execution"]["run_id"]
+    assert latest["source_public_revision"] == source["public_revision"]
+    assert latest["derived_public_revision"] == derived["public_revision"]
+    assert latest["ledger_public_revision"] == preserved["public_revision"]
+    assert evidence["source_execution"]["event"] == "schedule"
+    assert evidence["publication_execution"]["event"] == "workflow_run"
+    assert latest["scheduled_source_runs_observed"] == [latest["source_run"]]
+    assert latest["ledger_distinct_source_run_count"] == preserved["source_run_count"] == 2
+    assert latest["three_cycle_gate_qualified"] is False
+    assert latest["comparison_basis"] == evidence["comparison_summary"]["baseline_role"]
+    assert latest["difference_counts"] == evidence["comparison_summary"]["difference_counts"]
+    assert latest["difference_counts"]["attribute_changed"] == 3655
+    assert latest["difference_cause"] == "unattributed"
+    assert source["licence"] == derived["licence"] == current["licence"]
+    assert source["reproduction"]["feature_count"] == current["feature_count"]
+    assert (
+        latest["source_public_revision"]
+        != current["dispositions"]["source_publication"]["public_revision"]
+    )
+    assert "One scheduled source run" in " ".join(current["non_claims"])
