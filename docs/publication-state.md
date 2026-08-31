@@ -16,6 +16,20 @@ receipt for an already completed target fails closed, preventing a retry from
 silently creating or adopting a second deposit. Overall state becomes
 `published` only when every planned target has a verified receipt.
 
+Restored journals are validated before any reconciliation, including an empty
+receipt batch. The state digest, target operation keys, nested receipt digests,
+target statuses and aggregate status must agree. A supplied receipt digest is
+checked, never silently replaced. Legacy unhashed receipt inputs remain accepted
+and receive their canonical digest on ingestion. Identifiers and revisions are
+non-empty opaque strings; the provider adapter must establish their actual
+existence and immutability. Journal validation is not provider verification.
+
+Staging requires a fresh directory disjoint from the research object and plan.
+Existing output directories and symlinked destinations are rejected without
+deleting anything. To retry an interrupted staging operation, retain its evidence
+and select a new output directory; remote publication resumability is separate
+from replacing a local staging tree.
+
 Rights decisions are inherited from source records through artifact records.
 Path and target-specific reviewed decisions may narrow that inherited decision
 but cannot widen it. Unknown sources, decisions, targets, or conflicting
