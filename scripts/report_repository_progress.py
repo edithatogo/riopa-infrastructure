@@ -11,10 +11,16 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from riopa_provenance.hashing import sha256_file
+from riopa_provenance.hashing import sha256_bytes, sha256_file, sha256_json
 from riopa_provenance.roadmap import roadmap_status, validate_roadmap
 
 ROOT = Path(__file__).resolve().parents[1]
+ARCHIVE_RECEIPTS = (
+    "docs/tasman-publication-acceptance-20260830.json",
+    "docs/tasman-derived-acceptance-20260831.json",
+    "docs/tasman-run-provenance-acceptance-20260831.json",
+    "docs/tasman-feature-comparison-acceptance-20260831.json",
+)
 
 
 def plan_tasks(text: str) -> list[dict[str, str]]:
@@ -143,8 +149,11 @@ def validate_archive_evidence(root: Path, archive: dict[str, Any]) -> None:
     if not isinstance(references, list) or not references:
         raise ValueError("missing archive evidence references")
     paths: set[str] = set()
+    documents: dict[str, Any] = {}
     for reference in references:
         relative = reference["path"]
+        if not isinstance(relative, str):
+            raise ValueError("unsafe archive evidence path")
         path = root / relative
         if (
             not isinstance(relative, str)
@@ -156,11 +165,161 @@ def validate_archive_evidence(root: Path, archive: dict[str, Any]) -> None:
         ):
             raise ValueError("unsafe or duplicate archive evidence path")
         paths.add(relative)
-        if not path.is_file() or sha256_file(path) != reference["sha256"]:
+        if (
+            not path.is_file()
+            or not 0 < path.stat().st_size <= 2_000_000
+            or sha256_file(path) != reference["sha256"]
+        ):
             raise ValueError("archive evidence digest mismatch")
-    for disposition in archive["dispositions"].values():
-        if disposition["evidence"] not in paths:
-            raise ValueError("unbound archive disposition")
+        documents[relative] = json.loads(path.read_bytes())
+    if paths != set(ARCHIVE_RECEIPTS):
+        raise ValueError("unexpected archive evidence set")
+    expected = archive_projection(documents)
+    expected["evidence_refs"] = [
+        {"path": path, "sha256": sha256_file(root / path)} for path in ARCHIVE_RECEIPTS
+    ]
+    # Canonical comparison distinguishes booleans from integers as well as extra keys.
+    if sha256_json(archive) != sha256_json(expected):
+        raise ValueError("archive disposition differs from receipt-derived claims")
+
+
+def archive_projection(documents: dict[str, Any]) -> dict[str, Any]:
+    """Project only this accepted Tasman packet; not a generic receipt trust engine."""
+    source, derived, provenance, comparison = (documents[path] for path in ARCHIVE_RECEIPTS)
+
+    def check(condition: bool) -> None:
+        if not condition:
+            raise ValueError("archive acceptance receipt semantic mismatch")
+
+    for document, status in zip(
+        (source, derived, provenance, comparison),
+        (
+            "hosted-publication-and-rebuild-verified",
+            "hosted-derived-publication-and-replay-verified",
+            "hosted-run-provenance-and-retry-verified",
+            "hosted-fixed-baseline-comparison-verified",
+        ),
+        strict=True,
+    ):
+        check(document["schema_version"] == "1.0.0")
+        check(document["track"] == "nz_spatial_archive_mvp_20260718")
+        check(document["status"] == status)
+    s, d, c = (
+        source["publication_receipt"],
+        derived["publication_receipt"],
+        comparison["comparison_receipt"],
+    )
+
+    def body(value: dict[str, Any]) -> bytes:
+        # Exact serialization used by these four historical producers.
+        return (json.dumps(value, indent=2) + "\n").encode()
+
+    check(s["reproduction"]["builds"] == 2)
+    check(type(s["reproduction"]["feature_count"]) is int)
+    check(s["reproduction"]["feature_count"] > 0)
+    for document, receipt in ((source, s), (derived, d)):
+        check(
+            sha256_bytes(body(receipt)) == document["hosted_execution"]["identical_receipts_sha256"]
+        )
+        check(document["hosted_execution"]["successful_attempts"] == [1, 2])
+        check(document["hosted_execution"]["original_public_revision_reused"] is True)
+    check(sha256_bytes(body(c)) == comparison["hosted_execution"]["receipt_sha256"])
+    check(comparison["hosted_execution"]["conclusion"] == "success")
+    check(comparison["hosted_execution"]["event"] == "workflow_dispatch")
+    check(comparison["hosted_execution"]["source_run"] == s["source_run"])
+    check(c["baseline_public_revision"] == d["public_revision"])
+    check(c["baseline_acceptance_sha256"] == sha256_bytes(body(derived)))
+    diff = c["comparison"]
+    check(
+        all(
+            diff[name] == []
+            for name in ("added", "removed", "attribute_changed", "geometry_changed")
+        )
+    )
+    check(diff["change_hashes"] == {})
+    check(diff["before"] == diff["after"])
+    check(c["baseline_canonical_sha256"] == c["current_canonical_sha256"])
+    # Reuse the shipped receipt binding validator, not executable code from --root.
+    ledger = runpy.run_path(str(ROOT / "scripts/tasman_cycle_ledger.py"))
+    attempts = provenance["attempts"]
+    check(isinstance(attempts, list) and len(attempts) == 2)
+    check([a["receipt"]["publication"]["attempt"] for a in attempts] == ["1", "2"])
+    for attempt in attempts:
+        p = attempt["receipt"]
+        check(sha256_bytes(body(p)) == attempt["receipt_sha256"])
+        check(
+            all(
+                p[name]["event"] == "workflow_dispatch"
+                for name in ("source_capture", "source_trigger", "publication")
+            )
+        )
+        check(p["automatic_followup"] is False)
+        check(p["scheduled_source_trigger_observed"] is False)
+        check(p["publication_job_completion_claimed"] is False)
+        check(p["change_recovery"] == "not-evaluated")
+        documents_bytes = {
+            "source": body(s),
+            "derived": body(d),
+            "comparison": body(c),
+            "provenance": body(p),
+        }
+        ledger["observation"](
+            documents_bytes, {k: sha256_bytes(v) for k, v in documents_bytes.items()}
+        )
+    return {
+        "schema_version": "1.0.0",
+        "record_type": "bounded_archive_current_disposition",
+        "as_of": "2026-08-31",
+        "track": "nz_spatial_archive_mvp_20260718",
+        "basis": "checked-in-immutable-acceptance-receipts-not-a-fresh-network-observation",
+        "source_scope": "Tasman selected TRMP zones layer and standalone item rights only",
+        "public_repository": s["public_dataset_repository"],
+        "feature_count": s["reproduction"]["feature_count"],
+        "licence": s["licence"],
+        "attribution": s["attribution"],
+        "dispositions": {
+            "source_publication": {
+                "status": "accepted",
+                "evidence": ARCHIVE_RECEIPTS[0],
+                "public_revision": s["public_revision"],
+            },
+            "derived_publication": {
+                "status": "accepted",
+                "evidence": ARCHIVE_RECEIPTS[1],
+                "public_revision": d["public_revision"],
+            },
+            "run_attempt_binding": {
+                "status": "accepted-manual-replay",
+                "evidence": ARCHIVE_RECEIPTS[2],
+            },
+            "fixed_baseline_comparison": {
+                "status": "accepted-no-feature-differences",
+                "evidence": ARCHIVE_RECEIPTS[3],
+            },
+        },
+        "supersession": {
+            "scope": "Earlier pending-publication wording for this exact source and derived "
+            "packet is historical, not a current blocker.",
+            "historical_receipts_modified": False,
+            "source_only_receipt_reinterpreted_as_derived_publication": False,
+        },
+        "remaining_qualification": [
+            "wider-council-and-national-source-capture-to-release",
+            "broader-release-packet-preservation-and-publication",
+            "three-scheduled-cycles-including-change-and-failure-recovery",
+            "external-software-research-object-validation",
+            "isolated-clean-room-subagent-reproduction",
+            "release-specific-authority-and-stable-elapsed-periods",
+        ],
+        "non_claims": [
+            "No mixed catalogue or website payload publication is asserted.",
+            "No fresh source capture, current source health, legal valid time or operative "
+            "planning status is asserted.",
+            "No whole-track, alpha-cycle or stable-release qualification is asserted.",
+            "This Tasman disposition does not alter other source packets or historical "
+            "technical-preview preservation receipts.",
+        ],
+    }
 
 
 def markdown(value: dict[str, Any]) -> str:

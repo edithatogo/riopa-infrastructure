@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 import scripts.report_repository_progress as progress
+from riopa_provenance.hashing import sha256_bytes, sha256_file, sha256_json
 
 
 def test_only_top_level_actual_tasks_are_counted() -> None:
@@ -80,3 +81,111 @@ def test_track_identity_and_symlink_fail_closed(tmp_path: Path) -> None:
     (track / "plan.md").symlink_to(target)
     with pytest.raises(ValueError, match="symlink"):
         progress.track_progress(tmp_path)
+
+
+@pytest.mark.parametrize(
+    "path,value",
+    [
+        (("schema_version",), "2"),
+        (("record_type",), "complete_archive"),
+        (("as_of",), "2027-01-01"),
+        (("track",), "other_track"),
+        (("basis",), "live-provider-health"),
+        (("source_scope",), "all-councils"),
+        (("public_repository",), "other/repo"),
+        (("feature_count",), 3656),
+        (("feature_count",), True),
+        (("licence",), "CC0"),
+        (("attribution",), "Other publisher"),
+        (("dispositions", "source_publication", "status"), "pending"),
+        (("dispositions", "derived_publication", "status"), "pending"),
+        (("dispositions", "source_publication", "public_revision"), "0" * 40),
+        (("dispositions", "derived_publication", "public_revision"), "0" * 40),
+        (("dispositions", "run_attempt_binding", "status"), "accepted-scheduled"),
+        (("dispositions", "fixed_baseline_comparison", "status"), "accepted-changes"),
+        (("supersession", "scope"), "All preservation complete"),
+        (("supersession", "historical_receipts_modified"), True),
+        (("supersession", "source_only_receipt_reinterpreted_as_derived_publication"), True),
+        (("remaining_qualification",), []),
+        (("non_claims",), []),
+        (("unexpected_claim",), "stable-ready"),
+    ],
+)
+def test_every_projected_claim_is_receipt_bound(path: tuple, value: object) -> None:
+    root = Path(__file__).resolve().parents[1]
+    archive = json.loads((root / "docs/archive-current-status-20260831.json").read_bytes())
+    target = archive
+    for key in path[:-1]:
+        target = target[key]
+    target[path[-1]] = value
+    # All four evidence references and their hashes remain untouched.
+    with pytest.raises(ValueError):
+        progress.validate_archive_evidence(root, archive)
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "source_status",
+        "derived_status",
+        "provenance_status",
+        "comparison_status",
+        "rights",
+        "count",
+        "manual",
+        "differences",
+        "change_hashes",
+        "content_hash",
+    ],
+)
+def test_resealed_receipt_semantic_drift_rejected(tmp_path: Path, fault: str) -> None:
+    root = Path(__file__).resolve().parents[1]
+    archive = json.loads((root / "docs/archive-current-status-20260831.json").read_bytes())
+    documents = {path: json.loads((root / path).read_bytes()) for path in progress.ARCHIVE_RECEIPTS}
+    source, derived, provenance, comparison = [
+        documents[path] for path in progress.ARCHIVE_RECEIPTS
+    ]
+    if fault.endswith("_status"):
+        docs = {
+            "source": source,
+            "derived": derived,
+            "provenance": provenance,
+            "comparison": comparison,
+        }
+        docs[fault.removesuffix("_status")]["status"] = "pending"
+    elif fault == "rights":
+        derived["publication_receipt"]["licence"] = "CC0"
+    elif fault == "count":
+        derived["publication_receipt"]["identity"]["feature_count"] = 3656
+    elif fault == "manual":
+        provenance["attempts"][0]["receipt"]["publication"]["event"] = "workflow_run"
+    else:
+        diff = comparison["comparison_receipt"]["comparison"]
+        if fault == "differences":
+            diff["added"] = ["99999"]
+        elif fault == "change_hashes":
+            diff["change_hashes"] = {"99999": {}}
+        else:
+            diff["before"]["comparison_content_sha256"] = "0" * 64
+        diff["comparison_sha256"] = sha256_json(diff, omit_keys={"comparison_sha256"})
+
+    # Re-seal file bindings and embedded byte hashes, forcing semantic validation.
+    def body(value: dict) -> bytes:
+        return (json.dumps(value, indent=2) + "\n").encode()
+
+    for doc in (source, derived):
+        doc["hosted_execution"]["identical_receipts_sha256"] = sha256_bytes(
+            body(doc["publication_receipt"])
+        )
+    for attempt in provenance["attempts"]:
+        attempt["receipt_sha256"] = sha256_bytes(body(attempt["receipt"]))
+    comparison["hosted_execution"]["receipt_sha256"] = sha256_bytes(
+        body(comparison["comparison_receipt"])
+    )
+    for reference in archive["evidence_refs"]:
+        path = tmp_path / reference["path"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(body(documents[reference["path"]]))
+        reference["sha256"] = sha256_file(path)
+    with pytest.raises(ValueError):
+        progress.validate_archive_evidence(tmp_path, archive)

@@ -83,6 +83,15 @@ release-authority evidence (`docs/documentation-conductor-regeneration-20260825.
 
 ## Review and handover
 
+PR #763's initial hosted CI run `33353850937` passed 1,707 tests with one skip
+and 90.41% branch-aware coverage. A subsequent automated review identified
+summary-to-receipt semantic drift; the reporter now binds the projected claims
+and unchanged qualification limits to the parsed acceptance receipts. Its fix
+is covered by adversarial mutation tests and a separate isolated subagent review.
+The questioned implementation revision `f145368` was independently confirmed
+as the parent of reviewed revision `c22df71` through local Git and GitHub metadata.
+These are bounded reporting corrections, not publication or track qualification.
+
 Required agent-panel lenses: User-workflow analyst, API/schema analyst, Research-object analyst, Operations analyst, Interoperability analyst, Governance analyst.
 
 This index is deliberately non-assertive while the track remains `active` at

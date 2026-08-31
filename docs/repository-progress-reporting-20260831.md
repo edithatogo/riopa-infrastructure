@@ -16,6 +16,10 @@ explicit local routing choices. Neither view changes track status or supplies
 missing operational, preservation, signing or release-authority evidence.
 
 Archive status describes the named recorded receipts, not live provider health.
+The reporter verifies both receipt digests and the summary's semantic claims:
+accepted packet revisions, repository, feature count, licence, attribution,
+manual replay and fixed-baseline comparison outcomes must match their receipts.
+The bounded scope and non-qualification statements cannot be silently widened.
 The validated metadata-only cycle baseline is reported separately; it is a recorded
 checkpoint, not an automatically refreshed view of GitHub runs.
 Release readiness comes from the existing evaluator; time-limited waivers are

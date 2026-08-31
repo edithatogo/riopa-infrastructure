@@ -33,6 +33,7 @@
 
 ## Review fixes
 
+- [x] R2 Bind current archive summary claims to parsed acceptance receipts, rejecting drift in publication status, immutable revisions, counts, rights and qualification boundaries (PR #763; `scripts/report_repository_progress.py`, `tests/test_repository_progress.py`; 43 tests and isolated cross-review passed).
 - [x] R1 Add a fail-closed validator for the bounded owner-authorized agent workflow report, retaining the external-participant and promotion boundaries (`scripts/validate_agent_user_workflow_report.py`, `tests/test_agent_user_workflow_report_validator.py`, `docs/documentation-agent-workflow-report-validation-20260829.json`; 2026-08-29).
 - [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains.
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; metadata is `active`/M1 for target release `0.9.0`, with external usability, preservation, RC-soak and authority gates unresolved.
