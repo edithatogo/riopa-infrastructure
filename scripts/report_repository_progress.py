@@ -20,6 +20,7 @@ ARCHIVE_RECEIPTS = (
     "docs/tasman-derived-acceptance-20260831.json",
     "docs/tasman-run-provenance-acceptance-20260831.json",
     "docs/tasman-feature-comparison-acceptance-20260831.json",
+    "docs/tasman-first-scheduled-cycle-20260831.json",
 )
 
 
@@ -185,7 +186,7 @@ def validate_archive_evidence(root: Path, archive: dict[str, Any]) -> None:
 
 def archive_projection(documents: dict[str, Any]) -> dict[str, Any]:
     """Project only this accepted Tasman packet; not a generic receipt trust engine."""
-    source, derived, provenance, comparison = (documents[path] for path in ARCHIVE_RECEIPTS)
+    source, derived, provenance, comparison = (documents[path] for path in ARCHIVE_RECEIPTS[:4])
 
     def check(condition: bool) -> None:
         if not condition:
@@ -266,6 +267,7 @@ def archive_projection(documents: dict[str, Any]) -> dict[str, Any]:
         ledger["observation"](
             documents_bytes, {k: sha256_bytes(v) for k, v in documents_bytes.items()}
         )
+    scheduled = scheduled_archive_projection(documents[ARCHIVE_RECEIPTS[4]], s, d)
     return {
         "schema_version": "1.0.0",
         "record_type": "bounded_archive_current_disposition",
@@ -280,22 +282,27 @@ def archive_projection(documents: dict[str, Any]) -> dict[str, Any]:
         "dispositions": {
             "source_publication": {
                 "status": "accepted",
+                "role": "historical-baseline",
                 "evidence": ARCHIVE_RECEIPTS[0],
                 "public_revision": s["public_revision"],
             },
             "derived_publication": {
                 "status": "accepted",
+                "role": "historical-baseline",
                 "evidence": ARCHIVE_RECEIPTS[1],
                 "public_revision": d["public_revision"],
             },
             "run_attempt_binding": {
                 "status": "accepted-manual-replay",
+                "role": "historical-baseline",
                 "evidence": ARCHIVE_RECEIPTS[2],
             },
             "fixed_baseline_comparison": {
                 "status": "accepted-no-feature-differences",
+                "role": "historical-baseline",
                 "evidence": ARCHIVE_RECEIPTS[3],
             },
+            "scheduled_capture_and_publication": scheduled,
         },
         "supersession": {
             "scope": "Earlier pending-publication wording for this exact source and derived "
@@ -313,12 +320,128 @@ def archive_projection(documents: dict[str, Any]) -> dict[str, Any]:
         ],
         "non_claims": [
             "No mixed catalogue or website payload publication is asserted.",
-            "No fresh source capture, current source health, legal valid time or operative "
-            "planning status is asserted.",
+            "No current source health, legal valid time or operative planning status is asserted.",
             "No whole-track, alpha-cycle or stable-release qualification is asserted.",
             "This Tasman disposition does not alter other source packets or historical "
             "technical-preview preservation receipts.",
+            "The four historical-baseline dispositions retain the original manual/no-difference "
+            "acceptance; the latest observed scheduled packet is separately identified.",
+            "One scheduled source run is observed; the two ledger source runs include the earlier "
+            "manual source and do not satisfy the three-cycle gate.",
+            "All 3655 projected attribute digests differ from the fixed baseline; their cause is "
+            "unattributed and no adjacent-cycle source-change qualification is asserted.",
         ],
+    }
+
+
+def scheduled_archive_projection(
+    document: dict[str, Any], baseline_source: dict[str, Any], baseline_derived: dict[str, Any]
+) -> dict[str, Any]:
+    """Bind the additional observation without reinterpreting the historical baseline."""
+
+    def check(condition: bool) -> None:
+        if not condition:
+            raise ValueError("scheduled archive acceptance semantic mismatch")
+
+    check(document["schema_version"] == "1.0.0")
+    check(document["track"] == "nz_spatial_archive_mvp_20260718")
+    check(document["status"] == "first-scheduled-capture-and-automatic-publication-observed")
+    receipts = document["receipts"]
+    for item in (*receipts.values(), document["preservation"]):
+        check(
+            sha256_bytes((json.dumps(item["receipt"], indent=2) + "\n").encode()) == item["sha256"]
+        )
+    s, d, p = (receipts[key]["receipt"] for key in ("source", "derived", "provenance"))
+    preservation = document["preservation"]["receipt"]
+    comparison = document["comparison_summary"]
+    qualification = document["qualification"]
+    check(s["status"] == "public-packet-verified-and-rebuilt")
+    check(d["status"] == "derivatives-published-and-verified")
+    check(s["anonymous_full_packet_verified"] is True)
+    check(s["reproduction"]["builds"] == 2)
+    check(s["reproduction"]["feature_count"] == d["identity"]["feature_count"] == 3655)
+    check(d["identity"]["source_revision"] == s["public_revision"])
+    check(d["identity"]["source_manifest_sha256"] == s["packet_manifest_sha256"])
+    for key in ("licence", "attribution"):
+        check(s[key] == d[key] == baseline_source[key])
+    repository = baseline_source["public_dataset_repository"]
+    check(s["public_dataset_repository"] == d["public_repository"] == repository)
+    check(p["source_public_revision"] == s["public_revision"])
+    check(p["derived_public_revision"] == d["public_revision"])
+    check(p["source_packet_manifest_sha256"] == s["packet_manifest_sha256"])
+    check(p["derived_logical_sha256"] == d["logical_sha256"])
+    for name in ("source", "derived"):
+        check(p[f"{name}_receipt_sha256"] == receipts[name]["sha256"])
+    for name, execution_name, event in (
+        ("source_capture", "source_execution", "schedule"),
+        ("source_trigger", "source_execution", "schedule"),
+        ("publication", "publication_execution", "workflow_run"),
+    ):
+        execution = document[execution_name]
+        check(p[name]["run_id"] == execution["run_id"])
+        check(p[name]["attempt"] == str(execution["attempt"]))
+        check(p[name]["code_sha"] == document["producer_revision"])
+        check(p[name]["event"] == execution["event"] == event)
+        check(execution["conclusion"] == "success")
+    check(p["cycle_key"] == p["source_capture"]["run_id"] == s["source_run"])
+    check(p["automatic_followup"] is True and p["scheduled_source_trigger_observed"] is True)
+    check(p["release_cycle_qualified"] is False)
+    check(p["publication_job_completion_claimed"] is False)
+    check(p["change_recovery"] == "not-evaluated")
+    check(preservation["status"] == "verified")
+    check(preservation["source_run"] == s["source_run"])
+    check(preservation["publication"] == p["publication"])
+    check(preservation["public_repository"] == comparison["public_repository"] == repository)
+    check(preservation["public_revision"] == comparison["public_revision"])
+    for name in ("source", "derived", "provenance"):
+        check(preservation["receipt_sha256"][name] == receipts[name]["sha256"])
+    check(preservation["receipt_sha256"]["comparison"] == comparison["receipt_sha256"])
+    check(
+        comparison["receipt_path"]
+        == "operational/tasman-cycle-ledger/v1/receipts/" + comparison["receipt_sha256"] + ".json"
+    )
+    check(
+        comparison["before"]["canonical_sha256"]
+        == baseline_derived["files"]["canonical.json"]["sha256"]
+    )
+    check(comparison["after"]["canonical_sha256"] == d["files"]["canonical.json"]["sha256"])
+    check(comparison["baseline_role"] == "fixed-initial-accepted-packet-not-previous-cycle")
+    check(comparison["diagnostic_status"] == "projected-attribute-differences-unattributed")
+    check(
+        comparison["difference_counts"]
+        == {
+            "added": 0,
+            "removed": 0,
+            "attribute_changed": 3655,
+            "geometry_changed": 0,
+        }
+    )
+    check(qualification["scheduled_source_runs_observed"] == [s["source_run"]])
+    check(
+        qualification["ledger_distinct_source_run_count"] == preservation["source_run_count"] == 2
+    )
+    check(preservation["three_cycle_gate_qualified"] is False)
+    for key in (
+        "three_cycle_gate_qualified",
+        "adjacent_cycle_change_qualified",
+        "hosted_outage_recovery_qualified",
+    ):
+        check(qualification[key] is False)
+    return {
+        "status": "accepted-first-scheduled-observation",
+        "role": "latest-observed-scheduled-packet",
+        "evidence": ARCHIVE_RECEIPTS[4],
+        "source_run": s["source_run"],
+        "publication_run": p["publication"]["run_id"],
+        "source_public_revision": s["public_revision"],
+        "derived_public_revision": d["public_revision"],
+        "ledger_public_revision": preservation["public_revision"],
+        "scheduled_source_runs_observed": qualification["scheduled_source_runs_observed"],
+        "ledger_distinct_source_run_count": preservation["source_run_count"],
+        "comparison_basis": comparison["baseline_role"],
+        "difference_counts": comparison["difference_counts"],
+        "difference_cause": "unattributed",
+        "three_cycle_gate_qualified": False,
     }
 
 
