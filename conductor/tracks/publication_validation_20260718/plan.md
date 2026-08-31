@@ -49,6 +49,8 @@
 
 ## Review fixes
 
+- [x] R6 Reconcile pinned public provider metadata through bounded anonymous Hugging Face reads and an Actions-only verifier, with fail-closed observations and no upload authorization (`ef71108`; `docs/publication-provider-metadata-reconciliation-20260831.md`). Fifty adapter tests, two workflow tests and isolated advisory review pass; hosted observation remains separate.
+
 - [x] R5 Expose exact-plan-bound recovery as a local-only JSON CLI, reject ambiguous JSON inputs, and verify deterministic replay and unchanged input files without authorizing provider writes (`885bfc9`; `docs/publication-resume-cli-20260831.md`, `tests/test_publication_resume_cli.py`). Local full suite: 1,842 passed, one skipped, 90.62% coverage; quality and isolated advisory review pass. WP-003 remains partial.
 
 - [x] R4 Bind recovery projections to the exact ready publication plan, identity and target set; reconcile receipts deterministically with detached state and require provider reconciliation for missing receipts without authorizing duplicate deposits (`docs/publication-plan-bound-resume-20260831.md`, `tests/test_publication.py`). WP-003 remains partial; provider acceptance and track qualification remain open.
