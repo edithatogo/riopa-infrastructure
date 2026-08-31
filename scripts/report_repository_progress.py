@@ -357,11 +357,15 @@ def scheduled_archive_projection(
     qualification = document["qualification"]
     check(s["status"] == "public-packet-verified-and-rebuilt")
     check(d["status"] == "derivatives-published-and-verified")
+    check(s["state"] == d["state"] == "verified")
+    check(s["source_id"] == baseline_source["source_id"])
+    check(d["logical_sha256"] == sha256_json(d["identity"]))
     check(s["anonymous_full_packet_verified"] is True)
     check(s["reproduction"]["builds"] == 2)
     check(s["reproduction"]["feature_count"] == d["identity"]["feature_count"] == 3655)
     check(d["identity"]["source_revision"] == s["public_revision"])
     check(d["identity"]["source_manifest_sha256"] == s["packet_manifest_sha256"])
+    check(d["identity"]["geoparquet_sha256"] == s["reproduction"]["geoparquet_sha256"])
     for key in ("licence", "attribution"):
         check(s[key] == d[key] == baseline_source[key])
     repository = baseline_source["public_dataset_repository"]

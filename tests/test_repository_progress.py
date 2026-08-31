@@ -240,3 +240,40 @@ def test_scheduled_receipt_semantic_drift_rejected(path: tuple[str, ...], value:
     item[path[-1]] = value
     with pytest.raises(ValueError):
         progress.archive_projection(documents)
+
+
+@pytest.mark.parametrize(
+    "fault", ["source-state", "derived-state", "logical", "geoparquet", "source-id"]
+)
+def test_scheduled_resealed_identity_drift_rejected(fault: str) -> None:
+    root = Path(__file__).resolve().parents[1]
+    documents = {p: json.loads((root / p).read_bytes()) for p in progress.ARCHIVE_RECEIPTS}
+    scheduled = documents[progress.ARCHIVE_RECEIPTS[4]]
+    receipts = scheduled["receipts"]
+    derived = receipts["derived"]["receipt"]
+    provenance = receipts["provenance"]["receipt"]
+    preservation = scheduled["preservation"]["receipt"]
+    if fault.endswith("-state"):
+        receipts[fault.removesuffix("-state")]["receipt"]["state"] = "pending"
+    elif fault == "source-id":
+        receipts["source"]["receipt"]["source_id"] = "urn:riopa:source:other"
+    elif fault == "logical":
+        derived["logical_sha256"] = "0" * 64
+    else:
+        derived["identity"]["geoparquet_sha256"] = "0" * 64
+        derived["logical_sha256"] = sha256_json(derived["identity"])
+    provenance["derived_logical_sha256"] = derived["logical_sha256"]
+
+    def digest(value: dict) -> str:
+        return sha256_bytes((json.dumps(value, indent=2) + "\n").encode())
+
+    # Rebind every embedded byte digest, exposing semantic rather than hash rejection.
+    for name in ("source", "derived"):
+        receipts[name]["sha256"] = digest(receipts[name]["receipt"])
+        provenance[f"{name}_receipt_sha256"] = receipts[name]["sha256"]
+    receipts["provenance"]["sha256"] = digest(provenance)
+    for name in ("source", "derived", "provenance"):
+        preservation["receipt_sha256"][name] = receipts[name]["sha256"]
+    scheduled["preservation"]["sha256"] = digest(preservation)
+    with pytest.raises(ValueError, match="scheduled archive acceptance semantic mismatch"):
+        progress.archive_projection(documents)
