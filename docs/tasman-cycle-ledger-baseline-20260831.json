@@ -1,0 +1,75 @@
+{
+  "record_type": "tasman_offline_cycle_ledger",
+  "schema_version": "1.0.0",
+  "events": [
+    {
+      "kind": "observation",
+      "source_run": "33301038921",
+      "source_identity": {
+        "capture": {
+          "run_id": "33301038921",
+          "attempt": "1",
+          "code_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_path": ".github/workflows/council-archive.yml",
+          "created_at": "2026-08-30T08:13:02Z",
+          "run_started_at": "2026-08-30T08:13:02Z",
+          "updated_at": "2026-08-30T08:14:58Z"
+        },
+        "manifest": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+        "revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2"
+      },
+      "publication": {
+        "run_id": "33345370638",
+        "attempt": "1",
+        "code_sha": "3b28c8764ec2fcddc9a04e9885c4c03f9cf8bfb6",
+        "event": "workflow_dispatch",
+        "status": "in_progress",
+        "conclusion": null,
+        "workflow_path": ".github/workflows/tasman-publication.yml",
+        "created_at": "2026-08-31T00:42:36Z",
+        "run_started_at": "2026-08-31T00:42:36Z",
+        "updated_at": "2026-08-31T00:42:40Z"
+      },
+      "source_trigger": {
+        "run_id": "33301038921",
+        "attempt": "1",
+        "code_sha": "df52ca881ce6f7937046095e1112b4da2bc1da07",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "workflow_path": ".github/workflows/council-archive.yml",
+        "created_at": "2026-08-30T08:13:02Z",
+        "run_started_at": "2026-08-30T08:13:02Z",
+        "updated_at": "2026-08-30T08:14:58Z"
+      },
+      "evidence_sha256": {
+        "provenance": "11020e99d0d4e02aa1d4b1742f2443e058d1415e256db9ff8ded87ad833ca00e",
+        "comparison": "6d30934d24e62cf78328802afa2b792d6a775a31a604339d85428b88def85ff3",
+        "source": "1a62aa1eeb4ea778acb2ec3d98356780af46b0200ae84e7785b9e0cadb676ec2",
+        "derived": "e25f96dcf8df5d25bbf3a19d26edcda4cc1e7fc240ea35f5f0a84636bb389e24"
+      },
+      "scheduled_automatic_observation": false,
+      "manual_replay_ineligible": true,
+      "comparison_basis": "fixed-baseline-not-adjacent",
+      "outcome": "receipt-verified-not-completion-attested",
+      "predecessor_source_run": null,
+      "previous_event_sha256": null,
+      "event_sha256": "3d7b62b8e1d0b32925de811f642946dc30ff2fd033411d30ab5d2fa17de6cd19"
+    }
+  ],
+  "source_runs": [
+    "33301038921"
+  ],
+  "unique_source_run_count": 1,
+  "scheduled_automatic_source_runs": [],
+  "three_cycle_gate_qualified": false,
+  "qualification_gaps": [
+    "Verified signed hosted completion evidence is not consumed by this offline ledger.",
+    "Fixed-baseline comparisons are not adjacent-cycle change evidence.",
+    "Hosted change and recovery qualification remains unassessed."
+  ],
+  "ledger_sha256": "d76185a7f6cfb4693985990bd3fec783817440808e570ec73888b86d3ee7d57c"
+}

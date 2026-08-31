@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [x] 3.10 Implement an offline receipt-bound cycle ledger with predecessor linkage, retry deduplication and corruption/recovery tests; reconcile current preservation summaries without changing historical receipts or qualifying unobserved hosted cycles (`f145368`; `docs/tasman-cycle-ledger-20260831.md`).
+
 - [x] 3.9 Compare Tasman feature identities, attributes and original geometry against the pinned accepted baseline after hosted publication; reject corrupt inputs and distinguish capture metadata changes from data changes without crediting scheduled cycles or recovery qualification (`52cab92`; `docs/tasman-feature-comparison-acceptance-20260831.json`; run 33345370638 passed for all 3,655 features).
 
 - [x] 3.8 Bind preserved Tasman source and derived receipts to verified GitHub source/publication run attempts, distinguish scheduled triggers from manual replay, and retain a deduplication key without claiming change/recovery or release-cycle qualification (`6fdbb81`; `docs/tasman-run-provenance-acceptance-20260831.json`; run 33336884257 attempts 1/2).
@@ -59,6 +61,7 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 ## 5. Review fixes
 
 - [x] 5.20 Bind comparison files to source/count/canonical receipt semantics, preserve exact WKB without reserialization, validate canonical lineage and metadata-only differences, and verify corrupted-download recovery after isolated cross-review (`52cab92`; 41 focused tests, strict MyPy/Bandit and full quality/reproducibility pass).
+- [x] 5.21 Recompute ledger scheduling classifications from bound run events rather than trusting stored flags after isolated subagent review (`f145368`; 19 ledger tests; no hosted-cycle qualification).
 
 - [x] 5.19 Distinguish a verified Tasman capture from its enclosing failed matrix run, bind archived acquisition/code evidence, pin trigger/publication API attempts, reject invalid calendar/repository/receipt bindings, and resolve the GitHub CLI to an absolute path (`cc61878`; isolated review, 39 focused tests, strict MyPy/Bandit, full quality and reproducibility checks pass; hosted collector acceptance remains separate).
 

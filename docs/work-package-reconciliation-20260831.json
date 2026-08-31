@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "portable_work_package_reconciliation",
+  "as_of": "2026-08-31",
+  "authority": "Repository evidence-based routing only; no track, gate or release promotion.",
+  "model": "Single developer with isolated advisory subagent panels; hosted software, source authority and elapsed execution remain distinct.",
+  "packages": {
+    "WP-001": {
+      "repository_implementation_status": "complete",
+      "qualification_status": "pending",
+      "scope": "Recorded repository quality baseline, module inventory and reproducible harness; not a promise that later revisions need no regression checks.",
+      "remaining_work": "Maintain inventory, issue traceability and CI on every subsequent revision; stable qualification remains separate.",
+      "evidence": [
+        {
+          "path": "docs/module-coverage-inventory-20260825.json",
+          "sha256": "e6fbe58e08e9f51b5c3edd0948990b864a491be5755b9bccd61b317b47d83784"
+        },
+        {
+          "path": "docs/quality-frontier-closeout-20260821.json",
+          "sha256": "be41cab02fefcbf26917991764182ca37c3040c2290f71d70303097d425ec3dc"
+        },
+        {
+          "path": "docs/tasman-feature-comparison-acceptance-20260831.json",
+          "sha256": "7aa55851f679e89942685af018fc2b970005ff30eec21a58aa607336cf6f3681"
+        }
+      ]
+    },
+    "WP-002": {
+      "repository_implementation_status": "complete",
+      "qualification_status": "pending",
+      "scope": "Repository M2 connector controls: classified health, bounded evidenced retries, connection-time DNS/TLS safeguards and failure metrics.",
+      "remaining_work": "Live-source M3 breadth, operational alerts and elapsed recovery/soak qualification remain track work.",
+      "evidence": [
+        {
+          "path": "docs/connector-runtime-m2-promotion-20260829.json",
+          "sha256": "e84e1a2d34758749116cdd69f1fbd765a4d148b3d7490ae2306b5714e5c7e295"
+        }
+      ]
+    },
+    "WP-003": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "Rights decision policy and immutable receipt reconciliation implemented; bounded hosted preservation exists.",
+      "remaining_work": "Complete generalized multi-target resumable publication and conflict/recovery acceptance across GitHub, Hugging Face and Zenodo; do not infer all-provider parity from Tasman.",
+      "evidence": [
+        {
+          "path": "docs/publication-receipt-reconciliation-contract-20260825.json",
+          "sha256": "f71b33edbe54584164540270c0905abf0d55675690d1e9ca82b61bcc7d564294"
+        },
+        {
+          "path": "docs/source-rights-archive-default-20260829.json",
+          "sha256": "08606476af9c6ee17d0b9a8d950003c7c98086291d512551969af92d879db60d"
+        }
+      ]
+    },
+    "WP-004": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "Bounded source registry and catalogue contracts implemented; not catalogue-complete LINZ execution.",
+      "remaining_work": "Evidence every LINZ catalogue disposition, independently resumable stages and budgeted changeset/full-export reconciliation.",
+      "evidence": [
+        {
+          "path": "docs/nz-source-registry-closeout-evidence-20260826.json",
+          "sha256": "c8d491fd3d11fe462ffb8c16d8530806a7590772f3330bf76c0c8dfb3bdc5df8"
+        }
+      ]
+    },
+    "WP-005": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "Bounded provenance query contracts and hosted fixed-baseline exact Tasman feature comparison implemented.",
+      "remaining_work": "Complete broader schema/tolerance comparison and stale-projection acceptance; unchanged manual baseline replay is not a changed scheduled cycle.",
+      "evidence": [
+        {
+          "path": "docs/provenance-query-closeout-evidence-20260825.json",
+          "sha256": "fe4da9f4b84bd5afe9ce1dcf3e4263a9e8a710cb047dfed40515d858480e938f"
+        },
+        {
+          "path": "docs/tasman-feature-comparison-acceptance-20260831.json",
+          "sha256": "7aa55851f679e89942685af018fc2b970005ff30eec21a58aa607336cf6f3681"
+        }
+      ]
+    },
+    "WP-006": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "v0.4.0 preview preservation is satisfied; corrected bounded repository-owned conformance work is not broad stable qualification.",
+      "remaining_work": "Broader standards-complete conformance and exact stable-candidate trusted signed report, SBOM, attestation and preservation remain required.",
+      "evidence": [
+        {
+          "path": "docs/v0.4.0-preservation-wp006-reconciliation-20260829.json",
+          "sha256": "8b678fbf95aa26aa4d5055f33553e9c27d205ec14ec369dc9cc57109e837169f"
+        }
+      ]
+    },
+    "WP-007": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "Licensed real Tasman council raw and derived packet publicly preserved, anonymously verified and rebuilt.",
+      "remaining_work": "Finish the full bounded LINZ, council, planning and facility combination with linked rights/quality/lineage and reconstruction evidence; Tasman alone is not all-source completion.",
+      "evidence": [
+        {
+          "path": "docs/tasman-derived-acceptance-20260831.json",
+          "sha256": "30dcbfc1acfbfe385374749b5bfc83f12bdf778416f1237c06e1e5efd66d8015"
+        }
+      ]
+    },
+    "WP-008": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "Repository template and adapter-policy rehearsal contracts exist.",
+      "remaining_work": "Execute and evidence scoped fyi-cli/fyi-archive related-repository changes and conformance fixtures while preserving dirty clones.",
+      "evidence": [
+        {
+          "path": "docs/repository-template-closeout-evidence-20260825.json",
+          "sha256": "28359e77aa6b9436f5a8cb4e7cddc761bfb870cbc4a757e2e81d02224f0e5537"
+        }
+      ]
+    },
+    "WP-009": {
+      "repository_implementation_status": "partial",
+      "qualification_status": "pending",
+      "scope": "Bounded facility-location interfaces and local reference benchmarks implemented.",
+      "remaining_work": "Finish full named model family acceptance, independently calculated benchmark/solver verification and reproducible equity/Pareto evidence; retain non-operational scope.",
+      "evidence": [
+        {
+          "path": "docs/facility-location-closeout-evidence-20260825.json",
+          "sha256": "c1c167524481fe289d8a7cb1850bfc09bf9a0f7494bb77f05840e95348db70e2"
+        }
+      ]
+    },
+    "WP-010": {
+      "repository_implementation_status": "complete",
+      "qualification_status": "pending",
+      "scope": "Explicit closeout of all four original package acceptance items in bounded synthetic/reference and regional non-operational scope, using role-separated agent reproduction.",
+      "remaining_work": "Empirical or national claims need additional calibration, identification and authority; elapsed beta/RC, candidate-specific conformance/preservation and sole-owner promotion remain track gates.",
+      "evidence": [
+        {
+          "path": "docs/wp010-single-developer-closeout-20260829.json",
+          "sha256": "1d76bd768a85f61c26958ffaa2c03e108314867509b9ef6c918c6613218c20e8"
+        }
+      ]
+    }
+  }
+}

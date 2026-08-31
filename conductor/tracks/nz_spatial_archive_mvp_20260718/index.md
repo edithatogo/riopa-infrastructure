@@ -14,6 +14,20 @@
 
 ## Evidence register
 
+The bounded task 3.10 implementation is documented in
+`docs/tasman-cycle-ledger-20260831.md`. Its reviewed metadata-only baseline binds
+the four receipts from publication run 33345370638 and records one manual source
+run, no scheduled automatic source runs and no cycle qualification. Hash-chain,
+predecessor, repeated-attempt, corruption/recovery and manual/scheduled-negative
+tests pass. The ledger is offline; automatic collection and durable scheduled
+advancement remain future integration work, not a claim made by this task.
+
+Current bounded Tasman disposition is summarized in
+`docs/archive-current-status-20260831.json`. The preparation-only observations
+below retain their historical scope; later public source, derivative and
+comparison acceptance supersedes their pending-publication wording. Broader
+release-packet preservation remains open, not the accepted Tasman packets.
+
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-004-sharded-archive-contract-20260731` | Catalogue-to-federation stages are independently resumable and content-bound | `src/riopa_provenance/linz_pipeline.py`, `tests/test_linz_pipeline.py`, `docs/linz-archive-pipeline.md` | Synthetic stage/dependency/replay tests pass; real-data MVP remains open |
@@ -31,7 +45,7 @@
 | `GTFS-ARCHIVE-DISPOSITION-20260829` | Preserve exact archived dispositions for candidate public Auckland and Christchurch GTFS sources | `docs/gtfs-archive-disposition-20260829.json`, `tests/test_gtfs_archive_disposition.py`, [Hugging Face archive revision](https://huggingface.co/datasets/edithatogo/riopa-public-data-archive/tree/001137c0df64e9f8a7b0539fd0286a7cd5819ce7) | Both candidate manifests are unavailable (404/401) with no payload; network and timetable claims remain disabled pending an exact-edition payload and terms receipt |
 | `WCC-PUBLIC-ARCHIVE-SPATIAL-PROJECTION-20260830` | Consume one public-rights-qualified council packet into canonical/bitemporal, GeoParquet and DuckDB projections without live-source contact | `src/riopa_provenance/public_archive_spatial.py`, `docs/wcc-public-archive-spatial-projection-20260830.json`, `tests/test_public_archive_spatial.py` | Immutable HF revision and all packet bytes pass; one feature rebuilds deterministically with unknown valid time and no implicit geometry repair; broader council/national coverage and scheduled-cycle gates remain open |
 | `NZ-SPATIAL-RIGHTS-CAPABILITY-HEALTH-20260830` | Preserve bounded rights, capability, legal-status and source-health evidence for existing archived packets | `docs/nz-spatial-archive-rights-capability-health-20260830.json`, `schemas/nz-spatial-archive-rights-capability-health.schema.json`, `tests/test_nz_spatial_archive_rights_capability_health.py` | Five archived packet references are classified; live health is explicitly not observed, unresolved rights/legal status remain quarantined, and promotion/public materialisation remain disabled |
-| `HOSTED-COUNCIL-RUN-33301038921` | Record successful hosted preservation and isolated Tasman public-candidate preparation | `docs/hosted-council-preservation-run-33301038921.json`, [workflow run 33301038921](https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921) | All three bounded preservation jobs and evidence artifacts succeeded; Tasman candidate prepared under CC-BY-4.0 but remains unpublished; QLDC acquisition remains incomplete and all promotion/materialisation claims remain disabled |
+| `HOSTED-COUNCIL-RUN-33301038921` | Record successful hosted preservation and isolated Tasman public-candidate preparation | `docs/hosted-council-preservation-run-33301038921.json`, [workflow run 33301038921](https://github.com/edithatogo/riopa-infrastructure/actions/runs/33301038921) | Historical preparation-only observation: Tasman was unpublished at this run; later source/derived acceptance below supersedes that status. QLDC acquisition and broader qualification remain incomplete |
 
 The same revision’s Conductor regeneration receipt records the methods hash,
 roadmap status, generated issue graph and full quality harness. This closes only
@@ -76,9 +90,10 @@ The selected item metadata links CC-BY-4.0 and names Tasman District Council for
 attribution. This is not automatic public-payload approval for every catalogue
 item. Raw payloads and full metadata remain outside Git; only the receipt is
 published here. The catalogue explicitly warns that item modification dates do
-not establish layer currency. Valid/operative time, catalogue-wide payload
-coverage, canonical transformations, materialisations, scheduled cycles and
-external preservation remain open. Count reconciliation does not prove an atomic
+not establish layer currency. At this historical capture stage, canonical
+transformations, materialisations and preservation were still pending; later
+Tasman acceptance below supplies those bounded results. Valid/operative time,
+catalogue-wide payload coverage and scheduled cycles remain open. Count reconciliation does not prove an atomic
 source snapshot or unchanged geometry throughout collection.
 
 `docs/tasman-geohub-offline-verification-20260830.json` records the isolated
@@ -202,8 +217,8 @@ overclaim. The receipt/plan/workflow test group passes 35 tests.
 Task 3.7 extends the existing Actions publication chain to preserve canonical,
 GeoParquet and DuckDB outputs in the public Hugging Face archive. The contract is
 recorded in `docs/tasman-derived-publication-20260831.md`. Publication acceptance
-remains pending until immutable anonymous readback and checkpoint replay are
-observed. This does not change the historical source-only acceptance above or
+was pending at implementation time; the hosted acceptance below now supplies
+immutable anonymous readback and checkpoint replay. This does not change the historical source-only acceptance above or
 the track's active/M1 status.
 
 The implementation adds `scripts/publish_tasman_derivatives.py` and 14 hermetic

@@ -1,7 +1,8 @@
 {
   "schema_version": "1.0.0",
   "programme": "RIOPA stable-v1 autonomous implementation",
-  "updated_at": "2026-07-27T00:00:00Z",
+  "updated_at": "2026-08-31T00:00:00Z",
+  "repository_reconciliation": "docs/work-package-reconciliation-20260831.json",
   "packages": [
     {
       "id": "WP-001",
@@ -54,7 +55,7 @@
       ],
       "acceptance": [
         "Rights propagate from source to derived artifact and target-specific publication decision.",
-        "Unknown or conflicting rights fail closed.",
+        "Apply the approved archive-default rights policy; explicit restrictions and conflicting rights block incompatible publication targets, with recorded evidence and contingencies.",
         "GitHub, Hugging Face and Zenodo publication steps are resumable and idempotent.",
         "Cross-platform identifiers and receipts reconcile without duplicate deposits."
       ]

@@ -8,8 +8,10 @@ machine-local continuation packet without changing track maturity or GitHub stat
 from __future__ import annotations
 
 import argparse
+import copy
+import hashlib
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -30,6 +32,7 @@ class WorkPackage:
     acceptance: tuple[str, ...]
     commands: tuple[str, ...]
     requires: tuple[str, ...]
+    reconciliation: str | None = None
 
     @classmethod
     def from_mapping(cls, value: dict[str, Any]) -> WorkPackage:
@@ -51,25 +54,120 @@ def _load_json(path: Path) -> dict[str, Any]:
     return loaded
 
 
-def load_queue() -> list[WorkPackage]:
-    payload = _load_json(QUEUE_PATH)
+def load_queue(*, root: Path | None = None) -> list[WorkPackage]:
+    payload = _load_json(QUEUE_PATH if root is None else root / "codex/implementation-queue.json")
     raw = payload.get("packages")
     if not isinstance(raw, list) or not raw:
         raise ValueError("Implementation queue must contain a non-empty packages list")
-    packages = [WorkPackage.from_mapping(item) for item in raw if isinstance(item, dict)]
+    if any(not isinstance(item, dict) for item in raw):
+        raise ValueError("Implementation queue entries must be objects")
+    reference = payload.get("repository_reconciliation")
+    if reference is not None and (not isinstance(reference, str) or not reference):
+        raise ValueError("Invalid repository reconciliation reference")
+    packages = [replace(WorkPackage.from_mapping(item), reconciliation=reference) for item in raw]
     identifiers = [item.identifier for item in packages]
     if len(identifiers) != len(set(identifiers)):
         raise ValueError("Implementation queue contains duplicate package identifiers")
     return packages
 
 
-def load_state() -> dict[str, Any]:
+def load_local_state() -> dict[str, Any]:
     if not STATE_PATH.exists():
         return {"schema_version": "1.0.0", "packages": {}}
     state = _load_json(STATE_PATH)
     if not isinstance(state.get("packages", {}), dict):
         raise ValueError("Local Codex state packages must be an object")
     return state
+
+
+def _evidence_path(root: Path, reference: str) -> Path:
+    path = Path(reference)
+    if path.is_absolute() or ".." in path.parts or not path.parts:
+        raise ValueError("Evidence must be a repository-relative path")
+    resolved = (root / path).resolve()
+    if not resolved.is_relative_to(root.resolve()) or not resolved.is_file():
+        raise ValueError("Evidence is missing or outside the repository")
+    return resolved
+
+
+def reconcile_state(
+    queue: list[WorkPackage], local_state: dict[str, Any], *, root: Path | None = None
+) -> dict[str, Any]:
+    """Combine verified portable evidence and optional legacy local routing overrides.
+
+    Completion here is bounded implementation, never track or release qualification.
+    Pass raw local state, not an earlier reconciled view; the input is not mutated.
+    """
+    root = ROOT if root is None else root
+    local = local_state.get("packages", {})
+    if not isinstance(local, dict):
+        raise ValueError("Local Codex state packages must be an object")
+    references = {item.reconciliation for item in queue}
+    if len(references) > 1:
+        raise ValueError("Queue has inconsistent reconciliation references")
+    reference = next(iter(references), None)
+    baseline: dict[str, Any] = {}
+    if reference is not None:
+        document = _load_json(_evidence_path(root, reference))
+        baseline = document.get("packages", {})
+        if document.get("schema_version") != "1.0.0" or not isinstance(baseline, dict):
+            raise ValueError("Invalid reconciliation schema")
+        if set(baseline) != {item.identifier for item in queue}:
+            raise ValueError("Reconciliation must cover exactly the configured packages")
+    result = copy.deepcopy(local_state)
+    result["packages"] = {}
+    for item in queue:
+        entry = copy.deepcopy(baseline.get(item.identifier, {}))
+        if not isinstance(entry, dict):
+            raise ValueError("Reconciliation package must be an object")
+        implementation = entry.get("repository_implementation_status", "pending")
+        if not isinstance(implementation, str) or implementation not in {
+            "pending",
+            "partial",
+            "complete",
+        }:
+            raise ValueError("Invalid repository implementation status")
+        if reference is not None:
+            if entry.get("qualification_status") != "pending":
+                raise ValueError("This reconciliation cannot qualify tracks or releases")
+            for field in ("scope", "remaining_work"):
+                if not isinstance(entry.get(field), str) or not entry[field].strip():
+                    raise ValueError(f"Reconciliation requires {field}")
+            evidence = entry.get("evidence")
+            if not isinstance(evidence, list) or not evidence:
+                raise ValueError("Reconciliation requires evidence")
+            for binding in evidence:
+                if not isinstance(binding, dict) or not isinstance(binding.get("path"), str):
+                    raise ValueError("Malformed evidence binding")
+                path = _evidence_path(root, binding["path"])
+                if hashlib.sha256(path.read_bytes()).hexdigest() != binding.get("sha256"):
+                    raise ValueError("Evidence digest mismatch")
+                _load_json(path)
+        override = local.get(item.identifier, {})
+        if not isinstance(override, dict):
+            raise ValueError("Local package must be an object")
+        status = override.get("status", implementation)
+        if not isinstance(status, str) or status not in {
+            "pending",
+            "partial",
+            "active",
+            "complete",
+            "blocked",
+        }:
+            raise ValueError("Invalid local routing status")
+        entry.update({key: override[key] for key in ("note", "updated_at") if key in override})
+        entry.update(
+            status=status,
+            status_origin="local-override" if "status" in override else "repository-evidence",
+            repository_implementation_status=implementation,
+            qualification_status="pending",
+        )
+        result["packages"][item.identifier] = entry
+    return result
+
+
+def load_state() -> dict[str, Any]:
+    return reconcile_state(load_queue(), load_local_state())
 
 
 def save_state(state: dict[str, Any]) -> None:
@@ -98,17 +196,27 @@ def choose_next(queue: list[WorkPackage], state: dict[str, Any]) -> WorkPackage 
     )
 
 
-def render_work_packet(item: WorkPackage, status: str) -> str:
+def render_work_packet(
+    item: WorkPackage, status: str, progress: dict[str, Any] | None = None
+) -> str:
     lines = [
         f"# Next Codex work package — {item.identifier}",
         "",
         f"**Title:** {item.title}",
         f"**Priority:** {item.priority}",
-        f"**Local status:** {status}",
+        f"**Routing status:** {status}",
         "",
         "## Conductor tracks",
         "",
     ]
+    if progress:
+        lines[7:7] = [
+            f"Repository implementation: {progress['repository_implementation_status']}",
+            f"Qualification: {progress['qualification_status']} (no track/release promotion)",
+            f"Scope: {progress.get('scope', 'No portable evidence recorded')}",
+            f"Remaining: {progress.get('remaining_work', 'Reconcile mapped track evidence')}",
+            "",
+        ]
     lines.extend(f"- `{track}`" for track in item.tracks)
     if item.requires:
         lines.extend(["", "## External prerequisites", ""])
@@ -146,6 +254,7 @@ def render_terminal_packet(queue: list[WorkPackage], state: dict[str, Any]) -> s
         "All configured work packages are complete or blocked. This terminal packet",
         "replaces any earlier next-work packet so stale instructions cannot be mistaken",
         "for an executable assignment.",
+        "Routing completion does not qualify mapped tracks or a release.",
         "",
         "## Status summary",
         "",
@@ -173,7 +282,12 @@ def render_terminal_packet(queue: list[WorkPackage], state: dict[str, Any]) -> s
 def status_command(queue: list[WorkPackage], state: dict[str, Any]) -> int:
     for item in queue:
         state_name = package_state(state, item.identifier)
-        print(f"{item.identifier}\t{item.priority}\t{state_name}\t{item.title}")
+        entry = state.get("packages", {}).get(item.identifier, {})
+        implementation = entry.get("repository_implementation_status", "unreconciled")
+        print(
+            f"{item.identifier}\t{item.priority}\t{state_name}\t"
+            f"repository={implementation}\tqualification=pending\t{item.title}"
+        )
     return 0
 
 
@@ -186,7 +300,9 @@ def next_command(queue: list[WorkPackage], state: dict[str, Any], *, write: bool
             NEXT_PATH.write_text(render_terminal_packet(queue, state), encoding="utf-8")
             print(NEXT_PATH.relative_to(ROOT))
         return 0
-    text = render_work_packet(item, package_state(state, item.identifier))
+    entry = state.get("packages", {}).get(item.identifier, {})
+    progress = entry if "repository_implementation_status" in entry else None
+    text = render_work_packet(item, package_state(state, item.identifier), progress)
     if write:
         LOCAL_DIR.mkdir(parents=True, exist_ok=True)
         NEXT_PATH.write_text(text, encoding="utf-8")
@@ -201,9 +317,10 @@ def mutate_command(identifier: str, new_status: str, note: str | None) -> int:
     known = {item.identifier for item in queue}
     if identifier not in known:
         raise ValueError(f"Unknown work package: {identifier}")
-    state = load_state()
+    state = load_local_state()
     packages = state.setdefault("packages", {})
-    assert isinstance(packages, dict)
+    if not isinstance(packages, dict):
+        raise ValueError("Local Codex state packages must be an object")
     entry = packages.setdefault(identifier, {})
     if not isinstance(entry, dict):
         entry = {}
