@@ -57,6 +57,15 @@ acceptance or close WP-003's generalized multi-target execution requirements.
 | `PUB-APPLIED-BENCHMARK-20260825` | Owner-authorized agent reproduces one manifest-bound applied benchmark with explicit national projection boundary | `docs/publication-applied-benchmark-reproduction-20260825.json`, `examples/wp010-performance-benchmark/`, `tests/test_publication_applied_benchmark_reproduction.py`, `tests/test_wp010_performance_contract.py`, `tests/test_resilience_matrix.py` | Regional synthetic run passes; national-scale measurement, resource/cost instrumentation, isolated role-separated clean-room agent reproduction, preservation, elapsed qualification and authority remain open |
 | `PUB-DEVIATIONS-LIMITATIONS-20260825` | Findings from repository-owned real-data and applied-benchmark reproductions are resolved and published without erasing open gates | `docs/publication-deviations-limitations-20260825.json`, `tests/test_publication_deviations_limitations.py` | Findings pass with limitations; external participation, preservation, elapsed evidence, national-scale measurement and release authority remain open |
 
+## Exact-plan-bound recovery (2026-08-31)
+
+`build_publication_resume_plan` binds a restored journal to the intended ready
+plan before deterministic receipt reconciliation. Missing receipts require
+provider reconciliation, not a new deposit. The bounded contract and negative
+tests are recorded in `docs/publication-plan-bound-resume-20260831.md` and
+`tests/test_publication.py` (issue #129, WP-003, plan R4). No authenticated
+provider acceptance, publication, preservation or maturity promotion is claimed.
+
 ## Blocking defects
 
 - The repository-owned claim-classification and publication-package contracts

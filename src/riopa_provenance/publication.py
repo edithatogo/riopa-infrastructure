@@ -777,3 +777,66 @@ def reconcile_publication_receipts(
             raise PublicationError("publication receipts must contain objects")
         result = record_publication_receipt(result, receipt)
     return result
+
+
+def build_publication_resume_plan(
+    plan: Mapping[str, Any],
+    state: Mapping[str, Any],
+    receipts: Sequence[Mapping[str, Any]] = (),
+) -> dict[str, Any]:
+    """Project receipt reconciliation against the caller's exact expected plan.
+
+    This pure helper checks a ready plan's content binding, not its full schema,
+    current rights, authenticity or provider state. A missing receipt never
+    establishes that a release/deposit is absent or that another write is safe.
+    The existing journal APIs remain available for compatibility.
+    """
+    if not isinstance(plan, Mapping):
+        raise PublicationError("expected publication plan must be an object")
+    _publication_text(plan.get("publication_id"), "publication_id")
+    expected = initialise_publication_state(plan)
+    validate_publication_state(state)
+    for field in ("publication_id", "plan_sha256"):
+        if state[field] != expected[field]:
+            raise PublicationError(f"publication resume {field} differs from expected plan")
+    if set(state["targets"]) != set(expected["targets"]):
+        raise PublicationError("publication resume target set differs from expected plan")
+    # Journal validation already recomputes every operation key from the now
+    # matched plan hash and target identity.
+    # Detach even the no-op/replay result so callers cannot mutate input journals.
+    reconciled = cast(
+        dict[str, Any], json.loads(json.dumps(reconcile_publication_receipts(state, receipts)))
+    )
+    targets = []
+    for target_id, target in sorted(reconciled["targets"].items()):
+        receipt = target["receipt"]
+        targets.append(
+            {
+                "target_id": target_id,
+                "operation_key": target["operation_key"],
+                "disposition": "receipt-recorded"
+                if receipt is not None
+                else "provider-reconciliation-required",
+                "receipt_sha256": receipt["receipt_sha256"] if receipt is not None else None,
+                "remote_write_authorized": False,
+            }
+        )
+    projection = {
+        "schema_version": "1.0.0",
+        "record_type": "publication_resume_projection",
+        "publication_id": expected["publication_id"],
+        "plan_sha256": expected["plan_sha256"],
+        "input_state_sha256": state["state_sha256"],
+        "reconciled_state_sha256": reconciled["state_sha256"],
+        "reconciled_state": reconciled,
+        "targets": targets,
+        "remote_write_authorized": False,
+        "non_claims": [
+            "Receipt presence is not live provider acceptance or immutable revision verification.",
+            "Missing receipts require provider reconciliation before any separately "
+            "authorized write.",
+            "No current rights, full plan schema, release qualification or publication authority "
+            "is established by this projection.",
+        ],
+    }
+    return {**projection, "projection_sha256": sha256_json(projection)}

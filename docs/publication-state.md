@@ -24,6 +24,13 @@ and receive their canonical digest on ingestion. Identifiers and revisions are
 non-empty opaque strings; the provider adapter must establish their actual
 existence and immutability. Journal validation is not provider verification.
 
+Before resuming a specific plan, use `build_publication_resume_plan` to require
+that the journal matches that exact plan and all its targets. The deterministic
+projection separates recorded receipts from targets requiring provider
+reconciliation; neither disposition authorizes a remote write. See
+`docs/publication-plan-bound-resume-20260831.md` for the lost-response and
+duplicate-deposit boundaries.
+
 Staging requires a fresh directory disjoint from the research object and plan.
 Existing output directories and symlinked destinations are rejected without
 deleting anything. To retry an interrupted staging operation, retain its evidence
