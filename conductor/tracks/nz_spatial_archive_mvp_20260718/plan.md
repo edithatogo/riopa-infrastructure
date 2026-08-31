@@ -37,7 +37,7 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
-- [~] 3.9 Compare Tasman feature identities, attributes and original geometry against the pinned accepted baseline after hosted publication; reject corrupt inputs and distinguish capture metadata changes from data changes without crediting scheduled cycles or recovery qualification (`52cab92`; local implementation and review pass, hosted acceptance pending).
+- [x] 3.9 Compare Tasman feature identities, attributes and original geometry against the pinned accepted baseline after hosted publication; reject corrupt inputs and distinguish capture metadata changes from data changes without crediting scheduled cycles or recovery qualification (`52cab92`; `docs/tasman-feature-comparison-acceptance-20260831.json`; run 33345370638 passed for all 3,655 features).
 
 - [x] 3.8 Bind preserved Tasman source and derived receipts to verified GitHub source/publication run attempts, distinguish scheduled triggers from manual replay, and retain a deduplication key without claiming change/recovery or release-cycle qualification (`6fdbb81`; `docs/tasman-run-provenance-acceptance-20260831.json`; run 33336884257 attempts 1/2).
 
