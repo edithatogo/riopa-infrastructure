@@ -14,6 +14,13 @@
 
 ## Evidence register
 
+Task 3.11's successor integration is documented in
+`docs/tasman-cycle-preservation-20260831.md`. It connects new verified workflow
+receipts to atomic, publicly readable Hugging Face metadata checkpoints with
+compare-and-swap conflict recovery and parallel immutable readback. The historical
+baseline below remains offline evidence. Implementation tests do not establish
+hosted execution, scheduled change/recovery or cycle qualification.
+
 The bounded task 3.10 implementation is documented in
 `docs/tasman-cycle-ledger-20260831.md`. Its reviewed metadata-only baseline binds
 the four receipts from publication run 33345370638 and records one manual source

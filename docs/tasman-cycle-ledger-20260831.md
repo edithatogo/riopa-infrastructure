@@ -30,6 +30,9 @@ records one source run (33301038921), zero scheduled automatic source runs and n
 qualified cycle. This is offline evidence indexing, not another hosted execution.
 Automatic collection and durable advancement of this ledger are not wired into
 the scheduled workflow by this bounded offline implementation.
+The successor integration in `tasman-cycle-preservation-20260831.md` connects new
+workflow observations to a public metadata checkpoint; this historical baseline
+remains unchanged and is not silently imported into the new hosted ledger.
 
 `record_rejected_attempt(ledger, attempt_id, error_class)` preserves a bounded local
 validation failure without exception text. Restoring the original input and retrying

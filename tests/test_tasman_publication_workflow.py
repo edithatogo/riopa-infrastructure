@@ -27,7 +27,7 @@ def test_publication_workflow_is_bounded_and_separate_from_capture() -> None:
     assert "HF_TOKEN" not in job["env"]
     steps = job["steps"]
     credential_steps = [step for step in steps if "HF_TOKEN" in step.get("env", {})]
-    assert len(credential_steps) == 2
+    assert len(credential_steps) == 3
     assert credential_steps[0]["run"] == (
         "uv run python scripts/publish_tasman_public_packet.py "
         '--source-run "$SOURCE_RUN" --work "$WORK"'
@@ -53,6 +53,11 @@ def test_publication_workflow_is_bounded_and_separate_from_capture() -> None:
     )
     assert "env" not in comparison
     assert "if" not in comparison
+    assert steps.index(credential_steps[2]) == steps.index(comparison) + 1
+    assert credential_steps[2]["run"] == (
+        'uv run python scripts/preserve_tasman_cycle_ledger.py --work "$WORK"'
+    )
+    assert "if" not in credential_steps[2]
     assert not any("capture_tasman_catalogue.py" in s.get("run", "") for s in steps)
     artifact = steps[-1]
     assert artifact["with"]["path"] == f"{job['env']['WORK']}/public/"
