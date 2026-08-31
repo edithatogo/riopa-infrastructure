@@ -31,6 +31,11 @@ reconciliation; neither disposition authorizes a remote write. See
 `docs/publication-plan-bound-resume-20260831.md` for the lost-response and
 duplicate-deposit boundaries.
 
+Operators and CI jobs can inspect/reconcile local checkpoints with
+`riopa publication resume --plan PLAN --state STATE [--receipts RECEIPTS]`.
+It emits the JSON projection on stdout without modifying inputs or contacting
+providers; see `docs/publication-resume-cli-20260831.md` for usage and safety.
+
 Staging requires a fresh directory disjoint from the research object and plan.
 Existing output directories and symlinked destinations are rejected without
 deleting anything. To retry an interrupted staging operation, retain its evidence

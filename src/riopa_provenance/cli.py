@@ -16,6 +16,7 @@ from .lineage import LineageIndex
 from .methods import generate_methods_markdown
 from .publication import (
     build_publication_plan,
+    build_publication_resume_plan,
     stage_publication,
     validate_publication_plan,
 )
@@ -735,6 +736,54 @@ def _publication_stage(args: argparse.Namespace) -> int:
     return 0
 
 
+def _publication_resume_input(path: str) -> Any:
+    """Read strict recovery JSON without changing other commands' input policy."""
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError("duplicate recovery JSON key")
+            result[key] = value
+        return result
+
+    def reject_constant(_value: str) -> Any:
+        raise ValueError("non-finite recovery JSON constant")
+
+    source = Path(path)
+    limit = 8 * 1024 * 1024
+    if not source.is_file() or not 0 < source.stat().st_size <= limit:
+        raise ValueError("recovery input must be a bounded regular file")
+    with source.open("rb") as stream:
+        body = stream.read(limit + 1)
+    if len(body) > limit:
+        raise ValueError("recovery input exceeds limit")
+    return json.loads(body, object_pairs_hook=unique_object, parse_constant=reject_constant)
+
+
+def _publication_resume(args: argparse.Namespace) -> int:
+    try:
+        plan = _publication_resume_input(args.plan)
+        state = _publication_resume_input(args.state)
+        receipts = _publication_resume_input(args.receipts) if args.receipts is not None else []
+        if not isinstance(plan, dict) or not isinstance(state, dict):
+            raise ValueError("recovery plan and state must be objects")
+        if not isinstance(receipts, list) or any(not isinstance(r, dict) for r in receipts):
+            raise ValueError("recovery receipts must be an array of objects")
+        projection = build_publication_resume_plan(plan, state, receipts)
+        rendered = json.dumps(
+            projection, indent=2, ensure_ascii=False, allow_nan=False, sort_keys=True
+        )
+    except OSError, ValueError, TypeError, KeyError, RecursionError:
+        # Recovery inputs can contain sensitive paths, keys or values. Never echo them.
+        print(
+            "ERROR publication resume: invalid recovery input or evidence binding", file=sys.stderr
+        )
+        return 1
+    print(rendered)
+    return 0
+
+
 def _roadmap_validate(args: argparse.Namespace) -> int:
     problems = validate_roadmap(args.root, check_generated_issues=not args.skip_issue_drift)
     if problems:
@@ -1004,6 +1053,13 @@ def build_parser() -> argparse.ArgumentParser:
     publication_stage.add_argument("--research-object", required=True)
     publication_stage.add_argument("--output-dir", required=True)
     publication_stage.set_defaults(func=_publication_stage)
+    publication_resume = publication_subparsers.add_parser(
+        "resume", help="print a read-only exact-plan-bound receipt reconciliation projection"
+    )
+    publication_resume.add_argument("--plan", required=True)
+    publication_resume.add_argument("--state", required=True)
+    publication_resume.add_argument("--receipts")
+    publication_resume.set_defaults(func=_publication_resume)
 
     roadmap = subparsers.add_parser("roadmap", help="validate and report the v1 roadmap")
     roadmap_subparsers = roadmap.add_subparsers(dest="roadmap_command", required=True)
