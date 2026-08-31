@@ -7,7 +7,7 @@ from typing import Any
 
 import httpx
 import pytest
-from huggingface_hub.errors import HfHubHTTPError
+from huggingface_hub.errors import HfHubHTTPError, LocalEntryNotFoundError, OfflineModeIsEnabled
 
 from riopa_provenance.hashing import sha256_bytes, sha256_json
 from scripts import reconcile_publication_provider_metadata as adapter
@@ -93,6 +93,10 @@ def observe(context: tuple[dict, Hub]) -> dict:
     assert result["report_sha256"] == sha256_json(result, omit_keys={"report_sha256"})
     assert result["remote_write_authorized"] is False
     assert result["publication_receipt_created"] is False
+    assert result["attempts"] == len(result["attempt_history"])
+    assert [item["ordinal"] for item in result["attempt_history"]] == list(
+        range(1, result["attempts"] + 1)
+    )
     assert all(not path.exists() for path in hub.directories)
     return result
 
@@ -195,6 +199,11 @@ def test_transient_recovery_is_bounded(context: tuple, status: int) -> None:
     result = observe(context)
     assert result["status"] == "matching-metadata-observed" and result["attempts"] == 3
     assert hub.calls == 3 and hub.downloads == 1
+    assert result["attempt_history"] == [
+        {"ordinal": 1, "status": "transport", "http_status": status},
+        {"ordinal": 2, "status": "transport", "http_status": status},
+        {"ordinal": 3, "status": "matching-metadata-observed"},
+    ]
 
 
 @pytest.mark.parametrize(
@@ -271,6 +280,7 @@ def test_main_guard_precedes_client_construction(tmp_path: Path, monkeypatch, ca
     captured = capsys.readouterr()
     result = json.loads(captured.out)
     assert result["status"] == "conflict" and result["attempts"] == 0
+    assert result["attempt_history"] == []
     assert "SECRET" not in captured.out
     assert calls == []
 
@@ -298,3 +308,84 @@ def test_main_stdout_only_bound_report(context: tuple, tmp_path: Path, monkeypat
     calls = hub.calls
     assert adapter.main() == 1
     assert "SECRET" not in capsys.readouterr().out and hub.calls == calls
+
+
+@pytest.mark.parametrize("local_entry", [False, True])
+@pytest.mark.parametrize("exhaust", [False, True])
+@pytest.mark.parametrize("cli", [False, True])
+def test_response_less_hub_failure_history(
+    context: tuple,
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+    local_entry: bool,
+    exhaust: bool,
+    cli: bool,
+) -> None:
+    request, hub = context
+    failure: Exception
+    if local_entry:
+        failure = LocalEntryNotFoundError("SECRET https://private.example/token")
+    else:
+        # Simulate response-less errors from older SDKs or custom Hub transports.
+        failure = http_error(503)
+        monkeypatch.setattr(failure, "response", None)
+    hub.download_failures = [failure] * (3 if exhaust else 1)
+    if cli:
+        path = tmp_path / "request.json"
+        path.write_text(json.dumps(request))
+        monkeypatch.setattr(adapter, "HfApi", lambda **_kwargs: hub)
+        monkeypatch.setattr(adapter, "hf_hub_download", hub.download)
+        monkeypatch.setattr("sys.argv", ["observe", "--request", str(path)])
+        assert adapter.main() == (1 if exhaust else 0)
+        captured = capsys.readouterr()
+        assert captured.err == ""
+        result = json.loads(captured.out)
+    else:
+        result = observe(context)
+    statuses = ["transport"] * (3 if exhaust else 1)
+    if not exhaust:
+        statuses.append("matching-metadata-observed")
+    assert result["attempt_history"] == [
+        {"ordinal": index, "status": status} for index, status in enumerate(statuses, 1)
+    ]
+    assert result["attempts"] == hub.calls == hub.downloads == len(statuses)
+    assert result["status"] == statuses[-1]
+    assert result["report_sha256"] == sha256_json(result, omit_keys={"report_sha256"})
+    assert "SECRET" not in json.dumps(result) and "private.example" not in json.dumps(result)
+
+
+@pytest.mark.parametrize(
+    "cause,retry,status",
+    [
+        (httpx.ReadTimeout("SECRET"), True, "transport"),
+        (http_error(503), True, "transport"),
+        (http_error(403), False, "conflict"),
+        (http_error(404), False, "missing"),
+        (OfflineModeIsEnabled("SECRET"), False, "conflict"),
+    ],
+)
+def test_force_download_wrapped_failure(
+    context: tuple, cause: Exception, retry: bool, status: str
+) -> None:
+    _, hub = context
+    wrapper = ValueError("Force download failed SECRET")
+    wrapper.__cause__ = cause
+    hub.download_failures = [wrapper]
+    result = observe(context)
+    assert result["attempt_history"][0]["status"] == status
+    assert result["attempts"] == (2 if retry else 1)
+    assert result["status"] == ("matching-metadata-observed" if retry else status)
+    assert "SECRET" not in json.dumps(result)
+
+
+def test_cyclic_or_excessive_error_causes_fail_closed() -> None:
+    cycle = ValueError("SECRET")
+    cycle.__cause__ = cycle
+    assert adapter.failure_kind(cycle) == ("conflict", False, None)
+    error: Exception = httpx.ReadTimeout("SECRET")
+    for _ in range(5):
+        wrapper = ValueError("SECRET")
+        wrapper.__cause__ = error
+        error = wrapper
+    assert adapter.failure_kind(error) == ("conflict", False, None)

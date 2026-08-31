@@ -14,7 +14,7 @@ from typing import Any
 
 import httpx
 from huggingface_hub import HfApi, hf_hub_download
-from huggingface_hub.errors import HfHubHTTPError
+from huggingface_hub.errors import HfHubHTTPError, LocalEntryNotFoundError, OfflineModeIsEnabled
 
 from riopa_provenance.hashing import sha256_bytes, sha256_json
 
@@ -78,7 +78,12 @@ def validate_request(request: dict[str, Any]) -> None:
 
 
 def report(
-    request: dict[str, Any] | None, status: str, attempts: int, *, observed_bytes: int | None = None
+    request: dict[str, Any] | None,
+    status: str,
+    attempts: int,
+    *,
+    observed_bytes: int | None = None,
+    attempt_history: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     result: dict[str, Any] = {
         "schema_version": "1.0.0",
@@ -87,6 +92,7 @@ def report(
         "request_sha256": sha256_json(request) if request is not None else None,
         "status": status,
         "attempts": attempts,
+        "attempt_history": attempt_history if attempt_history is not None else [],
         "remote_write_authorized": False,
         "publication_receipt_created": False,
         "non_claims": [
@@ -152,33 +158,75 @@ def _read_once(request: dict[str, Any], api: Any, download: Callable[..., Any]) 
     return size
 
 
+def failure_kind(error: BaseException) -> tuple[str, bool, int | None]:
+    """Classify SDK force-download wrappers by type/cause, never provider text."""
+    seen: set[int] = set()
+    for _ in range(4):
+        if id(error) in seen:
+            return "conflict", False, None
+        seen.add(id(error))
+        if isinstance(error, OfflineModeIsEnabled):
+            return "conflict", False, None
+        if isinstance(error, HfHubHTTPError):
+            response = getattr(error, "response", None)
+            status = response.status_code if response is not None else None
+            classification = "missing" if status == 404 else "transport"
+            if status in {400, 401, 403, 409, 422}:
+                classification = "conflict"
+            return classification, status is None or status in TRANSIENT, status
+        if isinstance(error, (httpx.TransportError, TimeoutError, ConnectionError)):
+            return "transport", True, None
+        if isinstance(error, (ValueError, LocalEntryNotFoundError)) and error.__cause__ is not None:
+            error = error.__cause__
+            continue
+        if isinstance(error, LocalEntryNotFoundError):
+            return "transport", True, None
+        return ("transport" if isinstance(error, OSError) else "conflict"), False, None
+    return "conflict", False, None
+
+
 def observe(request: dict[str, Any], *, api: Any, download: Callable[..., Any]) -> dict[str, Any]:
     """At most three adapter attempts; injected transports enable offline testing."""
     validate_request(request)
     if os.environ.get("GITHUB_ACTIONS") != "true":
         return report(request, "conflict", 0)
+    history: list[dict[str, Any]] = []
+
+    def record(status: str, http_status: int | None = None) -> None:
+        item: dict[str, Any] = {"ordinal": len(history) + 1, "status": status}
+        if type(http_status) is int and 100 <= http_status <= 599:
+            item["http_status"] = http_status
+        history.append(item)
+
     for attempt in range(1, 4):
         try:
             size = _read_once(request, api, download)
-            return report(request, "matching-metadata-observed", attempt, observed_bytes=size)
+            record("matching-metadata-observed")
+            return report(
+                request,
+                "matching-metadata-observed",
+                attempt,
+                observed_bytes=size,
+                attempt_history=history,
+            )
         except ObservationError as error:
-            return report(request, error.classification, attempt)
-        except HfHubHTTPError as error:
-            status = error.response.status_code
-            if status in TRANSIENT and attempt < 3:
+            record(error.classification)
+            return report(request, error.classification, attempt, attempt_history=history)
+        except (
+            HfHubHTTPError,
+            httpx.TransportError,
+            OSError,
+            ValueError,
+            TypeError,
+            KeyError,
+            AttributeError,
+            RecursionError,
+        ) as error:
+            classification, retry, status = failure_kind(error)
+            record(classification, status)
+            if retry and attempt < 3:
                 continue
-            classification = "missing" if status == 404 else "transport"
-            if status in {400, 401, 403, 409, 422}:
-                classification = "conflict"
-            return report(request, classification, attempt)
-        except httpx.TransportError, TimeoutError, ConnectionError:
-            if attempt < 3:
-                continue
-            return report(request, "transport", attempt)
-        except ValueError, TypeError, KeyError, AttributeError, RecursionError:
-            return report(request, "conflict", attempt)
-        except OSError:
-            return report(request, "transport", attempt)
+            return report(request, classification, attempt, attempt_history=history)
     raise RuntimeError("unreachable retry state")
 
 

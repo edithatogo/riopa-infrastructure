@@ -12,6 +12,8 @@ transport failures cannot produce a successful observation. At most three
 adapter attempts apply only to transient reads, never to a provider write.
 The provider SDK can retry internally; this is not a three-HTTP-request limit.
 The hosted job has a five-minute timeout.
+Each adapter attempt is retained in a bounded, digest-bound history with a
+sanitized outcome; successful recovery does not erase earlier failures.
 
 All provider calls explicitly disable tokens. Live execution is restricted to
 GitHub Actions; tests inject a transport and use synthetic metadata. Neither
