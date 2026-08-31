@@ -37,6 +37,9 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [x] 3.12 Record the first observed scheduled source capture and automatic public preservation chain, binding completed GitHub runs and immutable ledger receipts without qualifying three cycles (`3cfb7fb`; `docs/tasman-first-scheduled-cycle-20260831.json`). Nine acceptance/current-status tests and isolated advisory review pass.
+- [x] 3.13 Diagnose attribute differences by field using already verified canonical bytes, preserving historical comparison semantics and distinguishing `_riopa_`-prefixed from other field names without claiming field origin or causality (`fcede5f`; `docs/tasman-attribute-diagnostics-20260831.md`). Forty-nine diagnostic/comparator/producer tests and isolated advisory review pass; hosted diagnostic execution remains separate.
+
 - [x] 3.11 Integrate receipt-bound cycle ledger persistence into the Tasman Actions workflow with verified immutable Hugging Face checkpoints, concurrent-writer reconciliation and failure receipts; keep scheduled/change/recovery qualification separate (`9c56ef5`; `docs/tasman-cycle-preservation-20260831.md`; `docs/tasman-cycle-preservation-acceptance-20260831.json`, run 33360096774 attempts 1/2 passed).
 
 - [x] 3.10 Implement an offline receipt-bound cycle ledger with predecessor linkage, retry deduplication and corruption/recovery tests; reconcile current preservation summaries without changing historical receipts or qualifying unobserved hosted cycles (`f145368`; `docs/tasman-cycle-ledger-20260831.md`).

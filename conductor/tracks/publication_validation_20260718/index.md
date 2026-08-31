@@ -14,6 +14,15 @@
 
 ## Evidence register
 
+Task R6 adds a bounded anonymous Hugging Face metadata reader and main-only
+Actions verifier, described in
+`docs/publication-provider-metadata-reconciliation-20260831.md`. Its request
+binds an already-public v0.4.0 metadata object to an immutable revision and byte
+digest. Mocked transport tests distinguish matching metadata, absence, conflict
+and transport failure. This does not authorize uploads, create target receipts
+or close generalized authenticated multi-provider reconciliation. Hosted
+execution remains a separate observation.
+
 `docs/publication-journal-recovery-20260831.md` records the WP-003 restored-state
 and safe-staging increment. The pure journal rejects corrupt or contradictory
 checkpoints and supplied receipt hashes before replay; staging preserves existing

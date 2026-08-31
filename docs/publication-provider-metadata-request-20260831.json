@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "provider": "hugging-face",
+  "repository": "edithatogo/riopa-evidence-campaign",
+  "revision": "ebecf6d38084aa459b27ef2bf753505003b08a16",
+  "path": "releases/v0.4.0/release-metadata.json",
+  "sha256": "f0eee330ac23067b92f0eef64fb9c69028f79ea1161fdd846e2b446b8761445d",
+  "max_bytes": 2097152
+}

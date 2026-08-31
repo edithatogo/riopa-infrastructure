@@ -143,7 +143,7 @@ def test_resealed_receipt_semantic_drift_rejected(tmp_path: Path, fault: str) ->
     archive = json.loads((root / "docs/archive-current-status-20260831.json").read_bytes())
     documents = {path: json.loads((root / path).read_bytes()) for path in progress.ARCHIVE_RECEIPTS}
     source, derived, provenance, comparison = [
-        documents[path] for path in progress.ARCHIVE_RECEIPTS
+        documents[path] for path in progress.ARCHIVE_RECEIPTS[:4]
     ]
     if fault.endswith("_status"):
         docs = {
@@ -189,3 +189,91 @@ def test_resealed_receipt_semantic_drift_rejected(tmp_path: Path, fault: str) ->
         reference["sha256"] = sha256_file(path)
     with pytest.raises(ValueError):
         progress.validate_archive_evidence(tmp_path, archive)
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("status", "accepted-three-cycles"),
+        ("role", "historical-baseline"),
+        ("source_run", "999"),
+        ("publication_run", "999"),
+        ("source_public_revision", "0" * 40),
+        ("derived_public_revision", "0" * 40),
+        ("ledger_public_revision", "0" * 40),
+        ("scheduled_source_runs_observed", ["999"]),
+        ("ledger_distinct_source_run_count", 3),
+        ("comparison_basis", "adjacent-cycle"),
+        ("difference_counts", {}),
+        ("difference_cause", "authoritative-source-change"),
+        ("three_cycle_gate_qualified", True),
+    ],
+)
+def test_scheduled_summary_drift_rejected(field: str, value: object) -> None:
+    root = Path(__file__).resolve().parents[1]
+    archive = json.loads((root / "docs/archive-current-status-20260831.json").read_bytes())
+    archive["dispositions"]["scheduled_capture_and_publication"][field] = value
+    with pytest.raises(ValueError):
+        progress.validate_archive_evidence(root, archive)
+
+
+@pytest.mark.parametrize(
+    "path,value",
+    [
+        (("status",), "pending"),
+        (("publication_execution", "conclusion"), "failure"),
+        (("source_execution", "event"), "workflow_dispatch"),
+        (("qualification", "three_cycle_gate_qualified"), True),
+        (("qualification", "scheduled_source_runs_observed"), ["999"]),
+        (("comparison_summary", "diagnostic_status"), "source-change"),
+        (("comparison_summary", "difference_counts", "attribute_changed"), 0),
+        (("comparison_summary", "after", "canonical_sha256"), "0" * 64),
+        (("receipts", "source", "sha256"), "0" * 64),
+    ],
+)
+def test_scheduled_receipt_semantic_drift_rejected(path: tuple[str, ...], value: object) -> None:
+    root = Path(__file__).resolve().parents[1]
+    documents = {p: json.loads((root / p).read_bytes()) for p in progress.ARCHIVE_RECEIPTS}
+    item = documents[progress.ARCHIVE_RECEIPTS[4]]
+    for key in path[:-1]:
+        item = item[key]
+    item[path[-1]] = value
+    with pytest.raises(ValueError):
+        progress.archive_projection(documents)
+
+
+@pytest.mark.parametrize(
+    "fault", ["source-state", "derived-state", "logical", "geoparquet", "source-id"]
+)
+def test_scheduled_resealed_identity_drift_rejected(fault: str) -> None:
+    root = Path(__file__).resolve().parents[1]
+    documents = {p: json.loads((root / p).read_bytes()) for p in progress.ARCHIVE_RECEIPTS}
+    scheduled = documents[progress.ARCHIVE_RECEIPTS[4]]
+    receipts = scheduled["receipts"]
+    derived = receipts["derived"]["receipt"]
+    provenance = receipts["provenance"]["receipt"]
+    preservation = scheduled["preservation"]["receipt"]
+    if fault.endswith("-state"):
+        receipts[fault.removesuffix("-state")]["receipt"]["state"] = "pending"
+    elif fault == "source-id":
+        receipts["source"]["receipt"]["source_id"] = "urn:riopa:source:other"
+    elif fault == "logical":
+        derived["logical_sha256"] = "0" * 64
+    else:
+        derived["identity"]["geoparquet_sha256"] = "0" * 64
+        derived["logical_sha256"] = sha256_json(derived["identity"])
+    provenance["derived_logical_sha256"] = derived["logical_sha256"]
+
+    def digest(value: dict) -> str:
+        return sha256_bytes((json.dumps(value, indent=2) + "\n").encode())
+
+    # Rebind every embedded byte digest, exposing semantic rather than hash rejection.
+    for name in ("source", "derived"):
+        receipts[name]["sha256"] = digest(receipts[name]["receipt"])
+        provenance[f"{name}_receipt_sha256"] = receipts[name]["sha256"]
+    receipts["provenance"]["sha256"] = digest(provenance)
+    for name in ("source", "derived", "provenance"):
+        preservation["receipt_sha256"][name] = receipts[name]["sha256"]
+    scheduled["preservation"]["sha256"] = digest(preservation)
+    with pytest.raises(ValueError, match="scheduled archive acceptance semantic mismatch"):
+        progress.archive_projection(documents)

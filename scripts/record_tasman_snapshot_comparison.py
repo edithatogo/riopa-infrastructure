@@ -98,7 +98,8 @@ def record(work: Path) -> dict[str, Any]:
     if work.is_relative_to(ROOT) and not work.is_relative_to(ROOT / ".riopa-local"):
         raise ValueError("ignored or external work directory required")
     output = safe(work / "public/tasman-snapshot-comparison.json", work)
-    if output.exists():
+    diagnostics_output = safe(work / "public/tasman-attribute-diagnostics.json", work)
+    if output.exists() or diagnostics_output.exists():
         raise ValueError("comparison evidence must be fresh")
     source_path = work / "public/tasman-publication.json"
     derived_path = work / "public/tasman-derivatives.json"
@@ -216,7 +217,13 @@ def record(work: Path) -> dict[str, Any]:
             "No scheduled-cycle, operative-status, clean-room or release qualification.",
         ],
     }
-    output.write_text(json.dumps(result, indent=2) + "\n")
+    diagnostic = runpy.run_path(str(ROOT / "scripts/diagnose_tasman_attribute_changes.py"))[
+        "diagnose"
+    ](downloaded, canonical, baseline_hash, current_hash, comparison["comparison_sha256"])
+    with output.open("x") as stream:
+        stream.write(json.dumps(result, indent=2) + "\n")
+    with diagnostics_output.open("x") as stream:
+        stream.write(json.dumps(diagnostic, indent=2) + "\n")
     return result
 
 

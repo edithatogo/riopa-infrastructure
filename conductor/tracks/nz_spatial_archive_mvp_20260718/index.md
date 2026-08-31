@@ -14,6 +14,23 @@
 
 ## Evidence register
 
+Task 3.12 records the first actual scheduled capture and automatic public
+preservation chain in `docs/tasman-first-scheduled-cycle-20260831.json`:
+source run 33379733331 and publication run 33379877031 both completed
+successfully at `5ed0f6bc84831883de85c1a824def93ff5e4f30e`. The immutable
+public ledger contains two distinct source runs, only one of them scheduled;
+three-cycle, adjacent-cycle change and hosted outage-recovery qualification
+remain false. The fixed-baseline comparison records 3,655 unattributed
+attribute-digest differences, no membership differences and no geometry
+differences. Historical manual receipts below retain their original scope.
+
+Task 3.13 adds `docs/tasman-attribute-diagnostics-20260831.md` and an offline
+per-field counter integrated into the existing comparison producer. It uses
+already verified bytes without additional downloads, emits no attribute values
+or feature identities, and leaves historical comparison and ledger hashes
+unchanged. Hosted diagnostic execution and source-cause attribution remain
+separate from implementation tests.
+
 Task 3.11's successor integration is documented in
 `docs/tasman-cycle-preservation-20260831.md`. It connects new verified workflow
 receipts to atomic, publicly readable Hugging Face metadata checkpoints with
