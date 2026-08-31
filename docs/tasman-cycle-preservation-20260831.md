@@ -45,3 +45,13 @@ Repository tests cover atomic updates, replay, concurrent writers, missing/corru
 history, metadata-only boundaries, visibility, byte limits, safe failure paths and
 commit/readback recovery. Hosted acceptance must be recorded separately after an
 actual Actions execution; these fixtures do not establish provider acceptance.
+
+## Hosted acceptance
+
+`tasman-cycle-preservation-acceptance-20260831.json` records successful run
+33360096774 on merged `ac984b7`, attempts 1 and 2. Both anonymously verified their
+immutable public checkpoints; attempt 2 retained the first observation while
+keeping one distinct source run. Original source and derivative receipts remain
+byte-identical. The embedded in-progress publication observation is preserved;
+final job completion was checked separately. These were manual replays, not
+scheduled captures, adjacent-cycle changes or hosted outage/recovery exercises.
