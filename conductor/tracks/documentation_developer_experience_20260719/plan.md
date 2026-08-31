@@ -8,7 +8,7 @@
 
 ## 2. Documentation implementation
 
-- [~] 2.4 Reconcile portable work-package implementation status separately from qualification, generate a read-only evidence-bound progress report, and provide tested archived Tasman query examples without new source acquisition.
+- [x] 2.4 Reconcile portable work-package implementation status separately from qualification, generate a read-only evidence-bound progress report, and provide tested archived Tasman query examples without new source acquisition (`f145368`; `docs/repository-progress-reporting-20260831.md`).
 
 - [x] 2.1 Write user, operator, contributor, maintainer and migration guides. (`docs/usage-guides-20260825.md`, `tests/test_usage_guides.py`; bounded technical-preview handoff only)
 - [x] 2.2 Generate API, CLI, schema and ontology references. (`docs/reference-index-20260825.json`, `tests/test_reference_index.py`; deterministic surface index, not external usability evidence)
