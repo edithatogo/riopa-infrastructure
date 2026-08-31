@@ -49,7 +49,7 @@
 
 ## Review fixes
 
-- [~] R3 Validate restored publication journals and supplied receipt digests before replay, reject inconsistent aggregate/target state and unsafe staging destinations, and test failure/recovery across all three target kinds without claiming provider acceptance.
+- [x] R3 Validate restored publication journals and supplied receipt digests before replay, reject inconsistent aggregate/target state and unsafe staging destinations, and test failure/recovery across all three target kinds without claiming provider acceptance (`b91d6e0`; `docs/publication-journal-recovery-20260831.md`; 62 focused tests and isolated review pass).
 
 - [x] R2 Reject duplicate target IDs within one receipt batch while retaining idempotent replay across separate calls (`src/riopa_provenance/publication.py`, `tests/test_publication.py`, `docs/publication-receipt-batch-cardinality-20260829.json`). Remote acceptance, preservation, external, elapsed and authority gates remain open.
 
