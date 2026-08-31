@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "track": "publication_validation_20260718",
+  "status": "hosted-matching-metadata-observed",
+  "hosted_execution": {
+    "repository": "edithatogo/riopa-infrastructure",
+    "workflow_path": ".github/workflows/reconcile-publication-metadata.yml",
+    "run_id": "33385363775",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33385363775",
+    "attempt": 1,
+    "head_sha": "703b7ccdeb612056bde49306502f036ccebfb1ce",
+    "branch": "main",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-08-31T11:05:46Z",
+    "updated_at": "2026-08-31T11:19:23Z",
+    "job_id": "99466666100",
+    "job_conclusion": "success",
+    "job_started_at": "2026-08-31T11:19:09Z",
+    "job_completed_at": "2026-08-31T11:19:22Z"
+  },
+  "artifact": {
+    "id": "9755731290",
+    "name": "publication-metadata-33385363775-1",
+    "archive_bytes": 786,
+    "github_archive_sha256": "98d4aea4d374a59e2614c8b70b203f51138628746a1ba4af58c531704ca4f992",
+    "archive_digest_basis": "GitHub artifacts API; extracted JSON bytes independently checked",
+    "files": [
+      "publication-provider-metadata.json"
+    ]
+  },
+  "request": {
+    "path": "docs/publication-provider-metadata-request-20260831.json",
+    "file_sha256": "f136cae9412be904101dbe70d5e3e053629a89451d9ad3c8e4c4019a5b6cdf16",
+    "request_sha256": "41fe6c3ba395ef2cbf2c0c23d76feb82bbd520f06abd3060d654fa267857e92e"
+  },
+  "observation": {
+    "file_sha256": "2d8dc2f5ce30e017439954b06aaaa42dadce88596ccbb52478ce094c6b03b791",
+    "file_bytes": 1130,
+    "report": {
+      "attempt_history": [
+        {
+          "ordinal": 1,
+          "status": "matching-metadata-observed"
+        }
+      ],
+      "attempts": 1,
+      "binding": {
+        "path": "releases/v0.4.0/release-metadata.json",
+        "repository": "edithatogo/riopa-evidence-campaign",
+        "revision": "ebecf6d38084aa459b27ef2bf753505003b08a16",
+        "sha256": "f0eee330ac23067b92f0eef64fb9c69028f79ea1161fdd846e2b446b8761445d"
+      },
+      "non_claims": [
+        "Metadata observation is not full asset verification or publication acceptance.",
+        "Missing or unavailable metadata does not authorize another release or deposit.",
+        "No new plan, rights decision, preservation qualification or release authority is established."
+      ],
+      "observed_bytes": 1178,
+      "provider": "hugging-face",
+      "publication_receipt_created": false,
+      "record_type": "publication_provider_metadata_observation",
+      "remote_write_authorized": false,
+      "report_sha256": "b3159325b2bc9adf5282785bd0efdea720ce74cf869c54db064e08d9ca972bee",
+      "request_sha256": "41fe6c3ba395ef2cbf2c0c23d76feb82bbd520f06abd3060d654fa267857e92e",
+      "schema_version": "1.0.0",
+      "status": "matching-metadata-observed"
+    }
+  },
+  "qualification": {
+    "full_asset_verification": false,
+    "publication_acceptance": false,
+    "release_qualification": false
+  },
+  "non_claims": [
+    "Only the pinned public release metadata JSON was anonymously read and digest-verified in Actions.",
+    "This acceptance inspection downloaded only the GitHub metadata artifact, not source or derived datasets.",
+    "No provider write, full release asset verification, new publication receipt, rights decision or stable qualification is established.",
+    "The successful single attempt does not constitute hosted transient-failure or recovery evidence."
+  ]
+}

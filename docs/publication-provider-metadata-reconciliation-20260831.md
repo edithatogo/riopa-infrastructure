@@ -30,3 +30,13 @@ matches the expectation at the observed revision. It is not a completed target
 receipt, proof of every release asset, current rights clearance, authorization
 to write, DOI acceptance, a signature or stable-release qualification. Authenticated
 GitHub/Hugging Face/Zenodo publication reconciliation remains separate work.
+
+## Hosted observation
+
+`docs/publication-provider-metadata-acceptance-20260831.json` records successful
+Actions run 33385363775 at merged revision
+`703b7ccdeb612056bde49306502f036ccebfb1ce`. One anonymous adapter attempt
+verified the expected 1,178-byte metadata object. The 1,130-byte observation is
+content-bound and retained with the completed job and artifact identifiers.
+This is a successful read, not hosted transient-failure/recovery evidence or
+authorization to perform a provider write.

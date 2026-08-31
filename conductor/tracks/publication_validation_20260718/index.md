@@ -20,8 +20,13 @@ Actions verifier, described in
 binds an already-public v0.4.0 metadata object to an immutable revision and byte
 digest. Mocked transport tests distinguish matching metadata, absence, conflict
 and transport failure. This does not authorize uploads, create target receipts
-or close generalized authenticated multi-provider reconciliation. Hosted
-execution remains a separate observation.
+or close generalized authenticated multi-provider reconciliation. Hosted run
+33385363775 passed on merged `703b7cc`: one anonymous attempt verified the
+expected 1,178-byte object. The exact request, report and completed execution
+are bound in `docs/publication-provider-metadata-acceptance-20260831.json`.
+The adapter's 64 regression tests cover response-less and SDK-wrapped failures
+and retain digest-bound sanitized attempt history; the successful hosted read
+does not establish hosted failure/recovery acceptance.
 
 `docs/publication-journal-recovery-20260831.md` records the WP-003 restored-state
 and safe-staging increment. The pure journal rejects corrupt or contradictory
