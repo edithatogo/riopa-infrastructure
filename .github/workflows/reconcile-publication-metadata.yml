@@ -1,0 +1,50 @@
+name: Reconcile public publication metadata
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publication-metadata-${{ github.run_id }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+  reconcile:
+    if: github.repository == 'edithatogo/riopa-infrastructure' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DOWNLOAD_TIMEOUT: "15"
+      HF_HUB_ETAG_TIMEOUT: "15"
+    steps:
+      - name: Check out verifier and pinned request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.14"
+          version: "0.11.16"
+      - name: Reconcile exact public metadata without credentials
+        run: |
+          mkdir -p .riopa-local
+          uv run --locked --extra preservation python scripts/reconcile_publication_provider_metadata.py \
+            --request docs/publication-provider-metadata-request-20260831.json \
+            > .riopa-local/publication-provider-metadata.json
+      - name: Retain success or failure observation
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: publication-metadata-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .riopa-local/publication-provider-metadata.json
+          if-no-files-found: error
+          retention-days: 90
