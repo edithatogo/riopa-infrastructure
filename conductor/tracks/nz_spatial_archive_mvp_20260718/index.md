@@ -260,6 +260,24 @@ collection. The earlier transient issue-graph drift during plan editing was
 resolved by regeneration and the affected CLI test passes. Hosted acceptance
 remains separate from these local results.
 
+Hosted acceptance now supersedes that pending task 3.9 status:
+`docs/tasman-feature-comparison-acceptance-20260831.json` records successful
+Actions run 33345370638 on merged revision `3b28c87`. All 3,655 features compare
+equal to the initial accepted public baseline, with zero additions, removals,
+attribute changes or geometry changes. The original source and derived public
+revisions and receipt digests remain unchanged. This manual replay reused source
+run 33301038921, not a new or scheduled capture. Implementation CI passed 1,639
+tests with one skip and 90.41% coverage; the comparison took four hosted seconds.
+Task 3.9 is complete within that bounded scope. A rolling predecessor ledger,
+actual scheduled change/recovery observations, wider source capture-to-release
+and whole-track qualification remain open.
+
+An isolated evidence reviewer independently confirmed the hosted success,
+exact comparison-receipt digest, all 3,655 equal feature records and unchanged
+source/derived receipt bindings. The 42-test comparison/workflow/acceptance group
+passes, as do roadmap, formatting and full quality checks. No broader gate is
+closed by this evidence.
+
 Task 3.8 adds explicit run-attempt provenance to the Tasman publication chain
 (`docs/tasman-run-provenance-20260831.md`). This closes a bookkeeping gap before
 scheduled observations can be assessed: publication success alone does not prove

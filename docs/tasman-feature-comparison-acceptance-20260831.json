@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "status": "hosted-fixed-baseline-comparison-verified",
+  "implementation_pr": "https://github.com/edithatogo/riopa-infrastructure/pull/761",
+  "hosted_execution": {
+    "run_id": "33345370638",
+    "run_url": "https://github.com/edithatogo/riopa-infrastructure/actions/runs/33345370638",
+    "attempt": 1,
+    "producer_revision": "3b28c8764ec2fcddc9a04e9885c4c03f9cf8bfb6",
+    "event": "workflow_dispatch",
+    "conclusion": "success",
+    "completed_at": "2026-08-31T00:43:10Z",
+    "receipt_sha256": "6d30934d24e62cf78328802afa2b792d6a775a31a604339d85428b88def85ff3",
+    "source_run": "33301038921"
+  },
+  "ci": {
+    "run_id": "33337887479",
+    "revision": "be33057eca0a70bb910dfc90abfbfeace25ec75d",
+    "tests_passed": 1639,
+    "tests_skipped": 1,
+    "branch_aware_coverage_percent": 90.41,
+    "coverage_gate_percent": 90
+  },
+  "comparison_receipt": {
+    "schema_version": "1.0.0",
+    "record_type": "tasman_fixed_baseline_snapshot_comparison",
+    "status": "compared",
+    "baseline_role": "fixed-initial-accepted-packet-not-previous-cycle",
+    "baseline_acceptance_sha256": "30dcbfc1acfbfe385374749b5bfc83f12bdf778416f1237c06e1e5efd66d8015",
+    "baseline_public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae",
+    "baseline_canonical_sha256": "8226c400e55cebdce172751c57e8e270cd99f30db198a0427696098faf2c5238",
+    "source_receipt_sha256": "1a62aa1eeb4ea778acb2ec3d98356780af46b0200ae84e7785b9e0cadb676ec2",
+    "derived_receipt_sha256": "e25f96dcf8df5d25bbf3a19d26edcda4cc1e7fc240ea35f5f0a84636bb389e24",
+    "source_public_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2",
+    "source_packet_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+    "derived_public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae",
+    "current_canonical_sha256": "8226c400e55cebdce172751c57e8e270cd99f30db198a0427696098faf2c5238",
+    "comparison": {
+      "schema_version": "1.0.0",
+      "record_type": "tasman_observed_snapshot_comparison",
+      "before": {
+        "canonical_sha256": "8226c400e55cebdce172751c57e8e270cd99f30db198a0427696098faf2c5238",
+        "source_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+        "feature_count": 3655,
+        "recorded_capture_times": [
+          "2026-08-30T08:13:37.844481Z"
+        ],
+        "comparison_content_sha256": "c1a02aad4adc7f45ca952ee6267208da392f99195badc0bc4d59271952ffc7f9"
+      },
+      "after": {
+        "canonical_sha256": "8226c400e55cebdce172751c57e8e270cd99f30db198a0427696098faf2c5238",
+        "source_manifest_sha256": "22134fa73961f92d9d341376ec1e91303becec23d9e8e77c3ee23a1e081094d6",
+        "feature_count": 3655,
+        "recorded_capture_times": [
+          "2026-08-30T08:13:37.844481Z"
+        ],
+        "comparison_content_sha256": "c1a02aad4adc7f45ca952ee6267208da392f99195badc0bc4d59271952ffc7f9"
+      },
+      "added": [],
+      "removed": [],
+      "attribute_changed": [],
+      "geometry_changed": [],
+      "change_hashes": {},
+      "semantics": {
+        "identity": "_riopa_source_object_id",
+        "ignored_metadata": [
+          "_riopa_capture_ids",
+          "_riopa_feature_id",
+          "_riopa_source_object_id"
+        ],
+        "geometry": "original projected WKB bytes, without reserialization or tolerance"
+      },
+      "release_cycle_qualified": false,
+      "non_claims": [
+        "Capture-time comparison only; no legal valid-time or operative-status inference.",
+        "Differences may reflect acquisition/transformation; no causal source-change claim.",
+        "No scheduled-cycle or recovery qualification."
+      ],
+      "comparison_sha256": "4ab56a526637d79816c85566f31c74481211928d6a9f945da7019e4cffa43be1"
+    },
+    "release_cycle_qualified": false,
+    "non_claims": [
+      "Fixed initial baseline comparison is not previous-cycle change or recovery evidence.",
+      "No scheduled-cycle, operative-status, clean-room or release qualification."
+    ]
+  },
+  "non_claims": [
+    "This manual replay reused an existing source capture; no fresh or scheduled capture is claimed.",
+    "The baseline is the initial accepted packet, not a rolling predecessor ledger.",
+    "Corruption and recovery tests are hermetic, not a hosted source failure/recovery cycle.",
+    "Whole-track acceptance, broader source coverage and release qualification remain open."
+  ]
+}
