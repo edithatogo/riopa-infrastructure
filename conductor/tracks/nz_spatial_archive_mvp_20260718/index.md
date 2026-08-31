@@ -28,8 +28,13 @@ Task 3.13 adds `docs/tasman-attribute-diagnostics-20260831.md` and an offline
 per-field counter integrated into the existing comparison producer. It uses
 already verified bytes without additional downloads, emits no attribute values
 or feature identities, and leaves historical comparison and ledger hashes
-unchanged. Hosted diagnostic execution and source-cause attribution remain
-separate from implementation tests.
+unchanged. Hosted replay 33385367218 on merged `703b7cc` passed, with exact
+bindings in `docs/tasman-attribute-diagnostics-acceptance-20260831.json`.
+`UpdatedDate_UTC` is the only changed field included in the original attribute
+comparison (3,655 features); capture IDs also differ but remain excluded.
+The source, derived and comparison receipts are unchanged. This locates the
+field without establishing its cause or a planning-policy change, and adds
+no scheduled source run or cycle qualification.
 
 Task 3.11's successor integration is documented in
 `docs/tasman-cycle-preservation-20260831.md`. It connects new verified workflow

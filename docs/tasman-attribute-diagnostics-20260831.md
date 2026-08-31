@@ -24,3 +24,19 @@ classification, nested/null values, membership changes and fresh-output
 requirements. Hosted diagnostic execution is separate evidence and is not
 claimed by these tests. Neither field counts nor a manual replay qualify a new
 scheduled source cycle, source-change causality, outage recovery or release.
+
+## Hosted diagnostic observation
+
+`docs/tasman-attribute-diagnostics-acceptance-20260831.json` records successful
+manual replay 33385367218 at merged `703b7cc`, reusing scheduled source run
+33379733331. Source, derived and fixed-baseline comparison receipt hashes are
+unchanged. The only changed field included in the original attribute comparison
+is `UpdatedDate_UTC`, on all 3,655 shared features. `_riopa_capture_ids` also
+differs but is excluded by the original comparator. Membership and geometry
+remain unchanged.
+
+This identifies the field, not why its values changed or whether planning policy
+changed. No attribute values or source payloads were downloaded for the local
+acceptance inspection. The public ledger retains two distinct source runs;
+this manual replay adds no scheduled capture and does not qualify the three-cycle
+or recovery gates.

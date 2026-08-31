@@ -49,7 +49,7 @@
 
 ## Review fixes
 
-- [x] R6 Reconcile pinned public provider metadata through bounded anonymous Hugging Face reads and an Actions-only verifier, with fail-closed observations and no upload authorization (`ef71108`; `docs/publication-provider-metadata-reconciliation-20260831.md`). Fifty adapter tests, two workflow tests and isolated advisory review pass; hosted observation remains separate.
+- [x] R6 Reconcile pinned public provider metadata through bounded anonymous Hugging Face reads and an Actions-only verifier, with fail-closed observations and no upload authorization (`ef71108`, retry review fixes `d719c34`; `docs/publication-provider-metadata-reconciliation-20260831.md`). Sixty-four adapter tests, two workflow tests and isolated advisory review pass. Hosted run 33385363775 on merged `703b7cc` verified the expected metadata in one anonymous attempt (`docs/publication-provider-metadata-acceptance-20260831.json`); generalized authenticated multi-provider and hosted failure/recovery acceptance remain separate.
 
 - [x] R5 Expose exact-plan-bound recovery as a local-only JSON CLI, reject ambiguous JSON inputs, and verify deterministic replay and unchanged input files without authorizing provider writes (`885bfc9`; `docs/publication-resume-cli-20260831.md`, `tests/test_publication_resume_cli.py`). Local full suite: 1,842 passed, one skipped, 90.62% coverage; quality and isolated advisory review pass. WP-003 remains partial.
 
