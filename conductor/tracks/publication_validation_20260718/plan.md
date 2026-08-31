@@ -49,6 +49,8 @@
 
 ## Review fixes
 
+- [x] R5 Expose exact-plan-bound recovery as a local-only JSON CLI, reject ambiguous JSON inputs, and verify deterministic replay and unchanged input files without authorizing provider writes (`885bfc9`; `docs/publication-resume-cli-20260831.md`, `tests/test_publication_resume_cli.py`). Local full suite: 1,842 passed, one skipped, 90.62% coverage; quality and isolated advisory review pass. WP-003 remains partial.
+
 - [x] R4 Bind recovery projections to the exact ready publication plan, identity and target set; reconcile receipts deterministically with detached state and require provider reconciliation for missing receipts without authorizing duplicate deposits (`docs/publication-plan-bound-resume-20260831.md`, `tests/test_publication.py`). WP-003 remains partial; provider acceptance and track qualification remain open.
 
 - [x] R3 Validate restored publication journals and supplied receipt digests before replay, reject inconsistent aggregate/target state and unsafe staging destinations, and test failure/recovery across all three target kinds without claiming provider acceptance (`b91d6e0`; `docs/publication-journal-recovery-20260831.md`; 62 focused tests and isolated review pass).
