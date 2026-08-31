@@ -16,6 +16,7 @@ from riopa_provenance.publication import (
     _most_restrictive,
     _narrow_decision,
     build_publication_plan,
+    build_publication_resume_plan,
     initialise_publication_state,
     reconcile_publication_receipts,
     record_publication_receipt,
@@ -367,6 +368,135 @@ def test_journal_entrypoints_reject_missing_fields_and_non_objects() -> None:
         record_publication_receipt(state, {**receipt, "target_id": "unknown"})
     with pytest.raises(PublicationError, match="at least one target"):
         initialise_publication_state(_ready_plan())
+
+
+def test_resume_projection_is_plan_bound_sorted_and_non_authorising() -> None:
+    plan = _ready_plan("zenodo", "hugging-face", "github")
+    initial = initialise_publication_state(plan)
+    first = _journal_receipt(initial, "github")
+    state = record_publication_receipt(initial, first)
+    receipt = _journal_receipt(initial, "hugging-face")
+    before = copy.deepcopy((plan, state, receipt))
+    result = build_publication_resume_plan(plan, state, [receipt])
+    assert (plan, state, receipt) == before
+    assert result["input_state_sha256"] == state["state_sha256"]
+    assert result["plan_sha256"] == plan["plan_sha256"]
+    assert result["publication_id"] == plan["publication_id"]
+    assert result["reconciled_state_sha256"] == result["reconciled_state"]["state_sha256"]
+    assert result["projection_sha256"] == sha256_json(result, omit_keys={"projection_sha256"})
+    assert [target["target_id"] for target in result["targets"]] == [
+        "github",
+        "hugging-face",
+        "zenodo",
+    ]
+    assert [target["disposition"] for target in result["targets"]] == [
+        "receipt-recorded",
+        "receipt-recorded",
+        "provider-reconciliation-required",
+    ]
+    assert result["targets"][-1]["receipt_sha256"] is None
+    assert all(target["remote_write_authorized"] is False for target in result["targets"])
+    assert result["remote_write_authorized"] is False
+    assert "not live provider acceptance" in result["non_claims"][0]
+    assert result == build_publication_resume_plan(plan, state, [receipt])
+    result["reconciled_state"]["targets"]["github"]["receipt"]["revision"] = "changed-output"
+    assert (plan, state, receipt) == before
+
+
+def test_resume_projection_handles_complete_and_empty_replay_without_aliases() -> None:
+    plan = _ready_plan("github", "hugging-face", "zenodo")
+    state = initialise_publication_state(plan)
+    receipts = [_journal_receipt(state, target) for target in state["targets"]]
+    result = build_publication_resume_plan(plan, state, receipts)
+    assert result == build_publication_resume_plan(plan, state, list(reversed(receipts)))
+    complete = result["reconciled_state"]
+    replay = build_publication_resume_plan(plan, complete, receipts)
+    assert replay == build_publication_resume_plan(plan, complete, [])
+    assert all(t["disposition"] == "receipt-recorded" for t in replay["targets"])
+    assert replay["remote_write_authorized"] is False
+    replay["reconciled_state"]["targets"]["github"]["receipt"]["revision"] = "changed"
+    assert complete["targets"]["github"]["receipt"]["revision"] != "changed"
+
+
+@pytest.mark.parametrize("fault", ["removed", "injected", "publication_id", "plan_sha256"])
+def test_resume_rejects_internally_valid_but_wrong_plan_journal(fault: str) -> None:
+    plan = _ready_plan("github", "hugging-face", "zenodo")
+    state = initialise_publication_state(plan)
+    if fault == "removed":
+        del state["targets"]["zenodo"]
+    elif fault == "injected":
+        state["targets"]["extra"] = {
+            "status": "pending",
+            "receipt": None,
+            "operation_key": sha256_json(
+                {"plan_sha256": state["plan_sha256"], "target_id": "extra"}
+            ),
+        }
+    elif fault == "publication_id":
+        state["publication_id"] = "urn:other:publication"
+    else:
+        state["plan_sha256"] = "0" * 64
+        for target_id, target in state["targets"].items():
+            target["operation_key"] = sha256_json(
+                {"plan_sha256": state["plan_sha256"], "target_id": target_id}
+            )
+    state["state_sha256"] = sha256_json(state, omit_keys={"state_sha256"})
+    validate_publication_state(state)  # A self-consistent journal is insufficient.
+    before = copy.deepcopy(state)
+    with pytest.raises(PublicationError, match="expected plan"):
+        build_publication_resume_plan(plan, state, [])
+    assert state == before
+
+
+@pytest.mark.parametrize(
+    "fault", ["hash", "unready", "duplicate", "missing_id", "rights", "destination"]
+)
+def test_resume_rejects_invalid_or_changed_expected_plan(fault: str) -> None:
+    plan = _ready_plan("github", "zenodo")
+    state = initialise_publication_state(plan)
+    changed = copy.deepcopy(plan)
+    if fault == "hash":
+        changed["plan_sha256"] = "0" * 64
+    elif fault == "unready":
+        changed["status"] = "review-required"
+    elif fault == "duplicate":
+        changed["targets"] = [{"target_id": "github"}, {"target_id": "github"}]
+    elif fault == "missing_id":
+        del changed["publication_id"]
+    elif fault == "rights":
+        changed["rights_decision"] = "withhold"
+    else:
+        changed["targets"] = [
+            {"target_id": "github", "repository": "different/repo"},
+            {"target_id": "zenodo"},
+        ]
+    if fault != "hash":
+        changed["plan_sha256"] = sha256_json(changed, omit_keys={"plan_sha256"})
+    before = copy.deepcopy((changed, state))
+    with pytest.raises(PublicationError):
+        build_publication_resume_plan(changed, state)
+    assert (changed, state) == before
+
+
+def test_resume_projection_rejects_receipt_conflict_and_recovers() -> None:
+    plan = _ready_plan("github", "zenodo")
+    initial = initialise_publication_state(plan)
+    zenodo = _journal_receipt(initial, "zenodo")
+    state = record_publication_receipt(initial, zenodo)
+    github = _journal_receipt(initial, "github")
+    before = copy.deepcopy(state)
+    with pytest.raises(PublicationError, match="conflicting"):
+        build_publication_resume_plan(plan, state, [github, {**zenodo, "revision": "other"}])
+    assert state == before
+    recovered = build_publication_resume_plan(plan, state, [github, zenodo])
+    assert recovered["reconciled_state"]["status"] == "published"
+    assert recovered["remote_write_authorized"] is False
+    with pytest.raises(PublicationError, match="object"):
+        build_publication_resume_plan([], state)  # type: ignore[arg-type]
+    with pytest.raises(PublicationError, match="object"):
+        build_publication_resume_plan(plan, [])  # type: ignore[arg-type]
+    with pytest.raises(PublicationError, match="hash mismatch"):
+        build_publication_resume_plan(plan, {**state, "state_sha256": "0" * 64}, [])
 
 
 def test_publication_state_rejects_unready_or_unbound_work() -> None:
