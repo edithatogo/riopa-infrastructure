@@ -37,6 +37,8 @@ bypassing access controls; meanwhile continue Tasman canonical materialisation.
 
 ## 3. Materialisation and quality
 
+- [x] 3.11 Integrate receipt-bound cycle ledger persistence into the Tasman Actions workflow with verified immutable Hugging Face checkpoints, concurrent-writer reconciliation and failure receipts; keep scheduled/change/recovery qualification separate (`9c56ef5`; `docs/tasman-cycle-preservation-20260831.md`; hosted acceptance recorded separately).
+
 - [x] 3.10 Implement an offline receipt-bound cycle ledger with predecessor linkage, retry deduplication and corruption/recovery tests; reconcile current preservation summaries without changing historical receipts or qualifying unobserved hosted cycles (`f145368`; `docs/tasman-cycle-ledger-20260831.md`).
 
 - [x] 3.9 Compare Tasman feature identities, attributes and original geometry against the pinned accepted baseline after hosted publication; reject corrupt inputs and distinguish capture metadata changes from data changes without crediting scheduled cycles or recovery qualification (`52cab92`; `docs/tasman-feature-comparison-acceptance-20260831.json`; run 33345370638 passed for all 3,655 features).

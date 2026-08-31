@@ -12,6 +12,7 @@ import mimetypes
 import re
 import shutil
 from collections.abc import Mapping, Sequence
+from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
 
@@ -459,10 +460,22 @@ def stage_publication(
     research_object_dir: str | Path,
     output_dir: str | Path,
 ) -> Path:
-    """Create deterministic, target-specific upload staging directories."""
+    """Create target staging in a fresh, disjoint directory; never replace data."""
 
     root = Path(research_object_dir).resolve()
     plan_file = Path(plan_path).resolve()
+    requested_output = Path(output_dir).absolute()
+    if any(path.is_symlink() for path in (requested_output, *requested_output.parents)):
+        raise PublicationError("publication staging output must not use symlinks")
+    output = requested_output.resolve()
+    if (
+        output.is_relative_to(root)
+        or root.is_relative_to(output)
+        or plan_file.is_relative_to(output)
+    ):
+        raise PublicationError("publication staging output must be disjoint from its inputs")
+    if output.exists():
+        raise PublicationError("publication staging output must be a fresh directory")
     errors = validate_publication_plan(plan_file, root)
     if errors:
         raise PublicationError("publication plan validation failed: " + "; ".join(errors))
@@ -471,10 +484,7 @@ def stage_publication(
         raise PublicationError(
             f"publication plan status is {plan['status']}; resolve blockers before staging"
         )
-    output = Path(output_dir).resolve()
-    if output.exists():
-        shutil.rmtree(output)
-    output.mkdir(parents=True)
+    output.mkdir(parents=True, exist_ok=False)
 
     for target in plan["targets"]:
         target_id = target["target_id"]
@@ -565,6 +575,94 @@ def stage_publication(
     return output
 
 
+def _publication_text(value: Any, field: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise PublicationError(f"publication {field} must be a non-empty string")
+    return value
+
+
+def _normalise_publication_receipt(
+    receipt: Mapping[str, Any], plan_sha256: str, target_id: str
+) -> dict[str, Any]:
+    if not isinstance(receipt, Mapping):
+        raise PublicationError("publication receipt must be an object")
+    required = {
+        "target_id",
+        "operation_key",
+        "plan_sha256",
+        "identifier",
+        "revision",
+        "recorded_at",
+    }
+    missing = sorted(required - set(receipt))
+    if missing:
+        raise PublicationError(f"publication receipt is missing fields: {missing}")
+    for field in required:
+        _publication_text(receipt[field], field)
+    if receipt["target_id"] != target_id:
+        raise PublicationError("publication receipt target mismatch")
+    if receipt["plan_sha256"] != plan_sha256:
+        raise PublicationError("publication receipt plan hash mismatch")
+    operation_key = sha256_json({"plan_sha256": plan_sha256, "target_id": target_id})
+    if receipt["operation_key"] != operation_key:
+        raise PublicationError("publication receipt operation key mismatch")
+    try:
+        recorded_at = datetime.fromisoformat(receipt["recorded_at"])
+    except ValueError as error:
+        raise PublicationError(
+            "publication receipt recorded_at must be an ISO timestamp"
+        ) from error
+    if recorded_at.tzinfo is None or recorded_at.utcoffset() is None:
+        raise PublicationError("publication receipt recorded_at must include a timezone")
+    digest = sha256_json(receipt, omit_keys={"receipt_sha256"})
+    if "receipt_sha256" in receipt and receipt["receipt_sha256"] != digest:
+        raise PublicationError("publication receipt hash mismatch")
+    return {**receipt, "receipt_sha256": digest}
+
+
+def validate_publication_state(state: Mapping[str, Any]) -> None:
+    """Validate a restored journal, including its nested receipts and routing state.
+
+    Hashes establish consistency, not authenticity or provider-side acceptance.
+    Opaque identifier/revision text is retained; this does not prove immutability.
+    """
+    if not isinstance(state, Mapping):
+        raise PublicationError("publication state must be an object")
+    if state.get("state_sha256") != sha256_json(state, omit_keys={"state_sha256"}):
+        raise PublicationError("publication state hash mismatch")
+    if state.get("schema_version") != "1.0.0" or state.get("record_type") != "publication_state":
+        raise PublicationError("unsupported publication state schema")
+    _publication_text(state.get("publication_id"), "publication_id")
+    plan_sha256 = _publication_text(state.get("plan_sha256"), "plan_sha256")
+    if re.fullmatch(r"[0-9a-f]{64}", plan_sha256) is None:
+        raise PublicationError("publication state plan hash must be a SHA-256 digest")
+    targets = state.get("targets")
+    if not isinstance(targets, Mapping) or not targets:
+        raise PublicationError("publication state requires a non-empty targets object")
+    statuses: set[str] = set()
+    for target_id, target in targets.items():
+        _publication_text(target_id, "target_id")
+        if not isinstance(target, Mapping):
+            raise PublicationError("publication target state must be an object")
+        operation_key = sha256_json({"plan_sha256": plan_sha256, "target_id": target_id})
+        if target.get("operation_key") != operation_key:
+            raise PublicationError("publication target operation key mismatch")
+        if "receipt" not in target:
+            raise PublicationError("publication target state requires receipt field")
+        receipt = target["receipt"]
+        expected_status = "pending" if receipt is None else "published"
+        if target.get("status") != expected_status:
+            raise PublicationError("publication target status and receipt disagree")
+        if receipt is not None:
+            normalised = _normalise_publication_receipt(receipt, plan_sha256, target_id)
+            if receipt != normalised:
+                raise PublicationError("stored publication receipt requires its content hash")
+        statuses.add(expected_status)
+    expected = "in-progress" if len(statuses) > 1 else next(iter(statuses))
+    if state.get("status") != expected:
+        raise PublicationError("publication aggregate status and targets disagree")
+
+
 def initialise_publication_state(plan: Mapping[str, Any]) -> dict[str, Any]:
     """Create a resumable target journal bound to one exact publication plan."""
 
@@ -573,8 +671,14 @@ def initialise_publication_state(plan: Mapping[str, Any]) -> dict[str, Any]:
     plan_sha256 = str(plan.get("plan_sha256") or "")
     if plan_sha256 != sha256_json(plan, omit_keys={"plan_sha256"}):
         raise PublicationError("publication state requires a content-bound plan")
-    target_records = list(plan.get("targets", []))
-    target_ids = [str(target["target_id"]) for target in target_records]
+    target_records = plan.get("targets", [])
+    if not isinstance(target_records, list) or any(
+        not isinstance(target, Mapping) for target in target_records
+    ):
+        raise PublicationError("publication plan targets must be an array of objects")
+    target_ids = [
+        _publication_text(target.get("target_id"), "target_id") for target in target_records
+    ]
     if len(target_ids) != len(set(target_ids)):
         raise PublicationError("publication state targets must be unique")
     targets = {
@@ -599,6 +703,7 @@ def initialise_publication_state(plan: Mapping[str, Any]) -> dict[str, Any]:
         "state_sha256": "",
     }
     state["state_sha256"] = sha256_json(state, omit_keys={"state_sha256"})
+    validate_publication_state(state)
     return state
 
 
@@ -606,39 +711,19 @@ def record_publication_receipt(
     state: Mapping[str, Any],
     receipt: Mapping[str, Any],
 ) -> dict[str, Any]:
-    """Reconcile one immutable remote receipt; identical replay is a no-op."""
+    """Reconcile a recorded provider receipt without asserting remote verification."""
 
-    expected_state_hash = sha256_json(state, omit_keys={"state_sha256"})
-    if state.get("state_sha256") != expected_state_hash:
-        raise PublicationError("publication state hash mismatch")
-    target_id = str(receipt.get("target_id") or "")
+    validate_publication_state(state)
+    if not isinstance(receipt, Mapping):
+        raise PublicationError("publication receipt must be an object")
+    target_id = _publication_text(receipt.get("target_id"), "target_id")
     targets = state.get("targets")
     if not isinstance(targets, Mapping) or target_id not in targets:
         raise PublicationError(f"receipt references unknown target: {target_id}")
     target = targets[target_id]
     if not isinstance(target, Mapping):
         raise PublicationError(f"invalid target state: {target_id}")
-    required = {
-        "target_id",
-        "operation_key",
-        "plan_sha256",
-        "identifier",
-        "revision",
-        "recorded_at",
-    }
-    missing = sorted(required - set(receipt))
-    if missing:
-        raise PublicationError(f"publication receipt is missing fields: {missing}")
-    if receipt["operation_key"] != target.get("operation_key"):
-        raise PublicationError("publication receipt operation key mismatch")
-    if receipt["plan_sha256"] != state.get("plan_sha256"):
-        raise PublicationError("publication receipt plan hash mismatch")
-    if not receipt["identifier"] or not receipt["revision"]:
-        raise PublicationError("publication receipt requires immutable identifier and revision")
-    normalised_receipt = dict(receipt)
-    normalised_receipt["receipt_sha256"] = sha256_json(
-        normalised_receipt, omit_keys={"receipt_sha256"}
-    )
+    normalised_receipt = _normalise_publication_receipt(receipt, state["plan_sha256"], target_id)
     existing = target.get("receipt")
     if existing is not None:
         if existing != normalised_receipt:
@@ -668,6 +753,7 @@ def reconcile_publication_receipts(
     hash and operation key.
     """
 
+    validate_publication_state(state)
     if not isinstance(receipts, Sequence) or isinstance(receipts, (str, bytes)):
         raise PublicationError("publication receipts must be an array")
     receipt_target_ids = [

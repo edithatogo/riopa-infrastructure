@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import copy
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -19,6 +21,7 @@ from riopa_provenance.publication import (
     record_publication_receipt,
     stage_publication,
     validate_correction_package,
+    validate_publication_state,
 )
 
 
@@ -181,6 +184,189 @@ def test_publication_receipt_batch_rejects_duplicate_target_ids() -> None:
     }
     with pytest.raises(PublicationError, match="target_id values must be unique"):
         reconcile_publication_receipts(state, [receipt, receipt])
+
+
+def _journal_receipt(state: dict[str, Any], target: str) -> dict[str, Any]:
+    return {
+        "target_id": target,
+        "operation_key": state["targets"][target]["operation_key"],
+        "plan_sha256": state["plan_sha256"],
+        "identifier": f"https://example.test/{target}",
+        "revision": "provider-specific-opaque-revision",
+        "recorded_at": "2026-08-31T10:00:00+10:00",
+    }
+
+
+def test_multi_target_journal_restore_and_recovery_is_deterministic() -> None:
+    original = initialise_publication_state(_ready_plan("github", "hugging-face", "zenodo"))
+    receipts = [_journal_receipt(original, target) for target in original["targets"]]
+    checkpoint = record_publication_receipt(original, receipts[0])
+    restored = json.loads(json.dumps(checkpoint))
+    validate_publication_state(restored)
+    assert reconcile_publication_receipts(restored, []) == checkpoint
+    corrupted = {**restored, "state_sha256": "0" * 64}
+    before = copy.deepcopy(corrupted)
+    with pytest.raises(PublicationError, match="state hash"):
+        reconcile_publication_receipts(corrupted, [])
+    assert corrupted == before
+    completed = reconcile_publication_receipts(restored, receipts)
+    assert completed == reconcile_publication_receipts(original, list(reversed(receipts)))
+    assert completed["status"] == "published"
+    validate_publication_state(completed)
+    assert record_publication_receipt(completed, receipts[0]) == completed
+    assert original["status"] == "pending"
+    assert restored == checkpoint
+
+
+@pytest.mark.parametrize("provider", ["github", "hugging-face", "zenodo"])
+def test_supplied_receipt_hash_checked_without_breaking_legacy(provider: str) -> None:
+    state = initialise_publication_state(_ready_plan(provider))
+    receipt = _journal_receipt(state, provider)
+    expected = record_publication_receipt(state, receipt)
+    hashed = {**receipt, "receipt_sha256": sha256_json(receipt)}
+    assert record_publication_receipt(state, hashed) == expected
+    assert record_publication_receipt(expected, receipt) == expected
+    assert record_publication_receipt(expected, hashed) == expected
+    for bad_hash in ("0" * 64, "", None, False, []):
+        with pytest.raises(PublicationError, match="receipt hash"):
+            record_publication_receipt(state, {**receipt, "receipt_sha256": bad_hash})
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("identifier", " "),
+        ("identifier", 42),
+        ("revision", True),
+        ("revision", []),
+        ("recorded_at", "yesterday"),
+        ("recorded_at", "2026-08-31T00:00:00"),
+        ("recorded_at", "2026-99-31T00:00:00Z"),
+        ("recorded_at", None),
+        ("target_id", False),
+        ("plan_sha256", "0" * 64),
+        ("operation_key", "0" * 64),
+    ],
+)
+def test_receipt_primitive_fields_and_timestamp_fail_closed(field: str, value: Any) -> None:
+    state = initialise_publication_state(_ready_plan("github"))
+    receipt = {**_journal_receipt(state, "github"), field: value}
+    before = copy.deepcopy(state)
+    with pytest.raises(PublicationError):
+        record_publication_receipt(state, receipt)
+    assert state == before
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "aggregate",
+        "target_status",
+        "operation",
+        "stored_hash",
+        "stored_binding",
+        "missing_hash",
+        "missing_receipt",
+        "empty_targets",
+        "target_object",
+        "schema",
+        "record_type",
+        "publication_id",
+        "plan_hash",
+        "target_id",
+        "receipt_object",
+        "receipt_timestamp",
+    ],
+)
+def test_resealed_journal_semantic_corruption_rejected(fault: str) -> None:
+    original = initialise_publication_state(_ready_plan("github", "hugging-face", "zenodo"))
+    receipt = _journal_receipt(original, "github")
+    checkpoint = record_publication_receipt(original, receipt)
+    state = copy.deepcopy(checkpoint)
+    target = state["targets"]["github"]
+    if fault == "aggregate":
+        state["status"] = "pending"
+    elif fault == "target_status":
+        target["status"] = "pending"
+    elif fault == "operation":
+        target["operation_key"] = "0" * 64
+    elif fault == "stored_hash":
+        target["receipt"]["receipt_sha256"] = "0" * 64
+    elif fault == "stored_binding":
+        target["receipt"]["target_id"] = "zenodo"
+    elif fault == "missing_hash":
+        del target["receipt"]["receipt_sha256"]
+    elif fault == "missing_receipt":
+        del target["receipt"]
+    elif fault == "empty_targets":
+        state["targets"] = {}
+    elif fault == "target_object":
+        state["targets"]["github"] = []
+    elif fault == "schema":
+        state["schema_version"] = "2.0"
+    elif fault == "record_type":
+        state["record_type"] = "other"
+    elif fault == "publication_id":
+        state["publication_id"] = None
+    elif fault == "plan_hash":
+        state["plan_sha256"] = "not-a-digest"
+    elif fault == "target_id":
+        state["targets"][""] = state["targets"].pop("github")
+    elif fault == "receipt_object":
+        target["receipt"] = []
+    else:
+        target["receipt"]["recorded_at"] = "not-a-time"
+        target["receipt"]["receipt_sha256"] = sha256_json(
+            target["receipt"], omit_keys={"receipt_sha256"}
+        )
+    state["state_sha256"] = sha256_json(state, omit_keys={"state_sha256"})
+    before = copy.deepcopy(state)
+    with pytest.raises(PublicationError):
+        validate_publication_state(state)
+    with pytest.raises(PublicationError):
+        reconcile_publication_receipts(state, [])
+    with pytest.raises(PublicationError):
+        record_publication_receipt(state, receipt)
+    assert state == before
+    assert record_publication_receipt(checkpoint, receipt) == checkpoint
+
+
+def test_conflicting_late_batch_is_atomic_for_the_caller() -> None:
+    initial = initialise_publication_state(_ready_plan("github", "hugging-face", "zenodo"))
+    zenodo = _journal_receipt(initial, "zenodo")
+    checkpoint = record_publication_receipt(initial, zenodo)
+    before = copy.deepcopy(checkpoint)
+    with pytest.raises(PublicationError, match="conflicting"):
+        reconcile_publication_receipts(
+            checkpoint, [_journal_receipt(initial, "github"), {**zenodo, "revision": "different"}]
+        )
+    assert checkpoint == before
+
+
+@pytest.mark.parametrize(
+    "targets", [[None], {"github": {}}, [{"target_id": False}], [{"target_id": ""}]]
+)
+def test_initial_journal_rejects_invalid_target_shapes(targets: Any) -> None:
+    plan = {**_ready_plan("github"), "targets": targets}
+    plan["plan_sha256"] = sha256_json(plan, omit_keys={"plan_sha256"})
+    with pytest.raises(PublicationError):
+        initialise_publication_state(plan)
+
+
+def test_journal_entrypoints_reject_missing_fields_and_non_objects() -> None:
+    state = initialise_publication_state(_ready_plan("github"))
+    with pytest.raises(PublicationError, match="object"):
+        validate_publication_state([])  # type: ignore[arg-type]
+    with pytest.raises(PublicationError, match="object"):
+        record_publication_receipt(state, [])  # type: ignore[arg-type]
+    receipt = _journal_receipt(state, "github")
+    del receipt["revision"]
+    with pytest.raises(PublicationError, match="missing fields"):
+        record_publication_receipt(state, receipt)
+    with pytest.raises(PublicationError, match="unknown target"):
+        record_publication_receipt(state, {**receipt, "target_id": "unknown"})
+    with pytest.raises(PublicationError, match="at least one target"):
+        initialise_publication_state(_ready_plan())
 
 
 def test_publication_state_rejects_unready_or_unbound_work() -> None:

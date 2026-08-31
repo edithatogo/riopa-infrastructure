@@ -14,6 +14,14 @@
 
 ## Evidence register
 
+`docs/publication-journal-recovery-20260831.md` records the WP-003 restored-state
+and safe-staging increment. The pure journal rejects corrupt or contradictory
+checkpoints and supplied receipt hashes before replay; staging preserves existing
+directories. The implementation and sentinel/failure/recovery tests are in
+`src/riopa_provenance/publication.py`, `tests/test_publication.py` and
+`tests/test_publication_staging_safety.py`. This does not establish provider
+acceptance or close WP-003's generalized multi-target execution requirements.
+
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `WP-003-resumable-publication-20260731` | GitHub, Hugging Face and Zenodo publication steps are resumable, idempotent and conflict-safe | `src/riopa_provenance/publication.py`, `tests/test_publication.py`, `docs/publication-state.md` | Pure state and receipt reconciliation tests pass; no remote publication performed |
