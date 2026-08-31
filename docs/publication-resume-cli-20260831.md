@@ -42,3 +42,18 @@ The pure-core contract is described in
 `docs/publication-plan-bound-resume-20260831.md`. Generalized authenticated
 GitHub/Hugging Face/Zenodo adapters remain separate work; this CLI performs no
 publication and does not close WP-003 or promote/archive the track.
+
+## Validation and review
+
+Implementation: `885bfc9`. On Python 3.14.5, 27 new recovery CLI tests and 33
+existing CLI tests pass. Independent reviewers also ran the publication-core
+tests, checking 93 and 126 tests respectively. The full suite passes 1,842 tests
+with one skip and 90.62% branch-aware coverage against the approved 90% gate.
+The full engineering quality harness passes, including lint, strict types,
+configured security checks, schema/Conductor/issue validation and packaging.
+
+One implementation subagent and two separately prompted review subagents found
+no blocking findings after strict parsing, content-free errors and sorted JSON
+output were incorporated. These are repository-owned advisory checks, not
+provider acceptance or external human review. Hosted CI remains a separate
+protected-merge requirement.

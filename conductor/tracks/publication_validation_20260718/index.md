@@ -66,6 +66,16 @@ tests are recorded in `docs/publication-plan-bound-resume-20260831.md` and
 `tests/test_publication.py` (issue #129, WP-003, plan R4). No authenticated
 provider acceptance, publication, preservation or maturity promotion is claimed.
 
+## Local recovery command (2026-08-31)
+
+The local-only `riopa publication resume` operator entry point is documented in
+`docs/publication-resume-cli-20260831.md` and exercised by
+`tests/test_publication_resume_cli.py` (WP-003, issue #129, plan R5). It rejects
+ambiguous recovery JSON and emits a key-sorted exact-plan projection without
+modifying inputs or contacting providers. This is local recovery tooling, not
+authenticated provider reconciliation or evidence that remote publication
+completed.
+
 ## Blocking defects
 
 - The repository-owned claim-classification and publication-package contracts
