@@ -50,7 +50,8 @@ extension; external access is disabled before querying. Fourteen new tests
 include an actual fixture archive/projection round trip and a physically
 different fresh DuckDB file with equivalent feature semantics.
 
-Hosted acceptance and replay must be recorded separately after execution.
+Hosted acceptance and replay are now recorded in the hosted result below and
+summarised in [the current disposition](archive-current-status-20260831.json).
 Implementation or local tests alone do not prove publication. Manual replay is
 not a scheduled change/recovery cycle or isolated clean-room agent reproduction.
 This task does not close the whole archive track, establish operative planning

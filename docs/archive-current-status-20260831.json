@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "bounded_archive_current_disposition",
+  "as_of": "2026-08-31",
+  "track": "nz_spatial_archive_mvp_20260718",
+  "basis": "checked-in-immutable-acceptance-receipts-not-a-fresh-network-observation",
+  "evidence_refs": [
+    {
+      "path": "docs/tasman-publication-acceptance-20260830.json",
+      "sha256": "2a1baf9036f2b4a544ee78336a2a018dd778d1cd1f6dfab46058e35917ccc5f9"
+    },
+    {
+      "path": "docs/tasman-derived-acceptance-20260831.json",
+      "sha256": "30dcbfc1acfbfe385374749b5bfc83f12bdf778416f1237c06e1e5efd66d8015"
+    },
+    {
+      "path": "docs/tasman-run-provenance-acceptance-20260831.json",
+      "sha256": "be319713ce8aa311343ce01ddc30afa053ead6cef3f7866e08bf719f2ea567d2"
+    },
+    {
+      "path": "docs/tasman-feature-comparison-acceptance-20260831.json",
+      "sha256": "7aa55851f679e89942685af018fc2b970005ff30eec21a58aa607336cf6f3681"
+    }
+  ],
+  "source_scope": "Tasman selected TRMP zones layer and standalone item rights only",
+  "public_repository": "edithatogo/riopa-public-data-archive",
+  "feature_count": 3655,
+  "licence": "CC-BY-4.0",
+  "attribution": "Tasman District Council (TDC)",
+  "dispositions": {
+    "source_publication": {
+      "status": "accepted",
+      "evidence": "docs/tasman-publication-acceptance-20260830.json",
+      "public_revision": "73be6f6d5b7d1297458ed49e7222a46f915dc5a2"
+    },
+    "derived_publication": {
+      "status": "accepted",
+      "evidence": "docs/tasman-derived-acceptance-20260831.json",
+      "public_revision": "1ccd5953893c588f87a31fe77fcd3d6124f03fae"
+    },
+    "run_attempt_binding": {
+      "status": "accepted-manual-replay",
+      "evidence": "docs/tasman-run-provenance-acceptance-20260831.json"
+    },
+    "fixed_baseline_comparison": {
+      "status": "accepted-no-feature-differences",
+      "evidence": "docs/tasman-feature-comparison-acceptance-20260831.json"
+    }
+  },
+  "supersession": {
+    "scope": "Earlier pending-publication wording for this exact source and derived packet is historical, not a current blocker.",
+    "historical_receipts_modified": false,
+    "source_only_receipt_reinterpreted_as_derived_publication": false
+  },
+  "remaining_qualification": [
+    "wider-council-and-national-source-capture-to-release",
+    "broader-release-packet-preservation-and-publication",
+    "three-scheduled-cycles-including-change-and-failure-recovery",
+    "external-software-research-object-validation",
+    "isolated-clean-room-subagent-reproduction",
+    "release-specific-authority-and-stable-elapsed-periods"
+  ],
+  "non_claims": [
+    "No mixed catalogue or website payload publication is asserted.",
+    "No fresh source capture, current source health, legal valid time or operative planning status is asserted.",
+    "No whole-track, alpha-cycle or stable-release qualification is asserted.",
+    "This Tasman disposition does not alter other source packets or historical technical-preview preservation receipts."
+  ]
+}

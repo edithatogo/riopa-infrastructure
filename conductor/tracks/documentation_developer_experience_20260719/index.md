@@ -14,6 +14,23 @@
 
 ## Evidence register
 
+The repository-owned progress/reporting increment is tracked in task 2.4.
+`docs/repository-progress-reporting-20260831.md` documents the read-only command;
+`docs/work-package-reconciliation-20260831.json` separates portable implementation
+dispositions from qualification. Tested Tasman archive queries are documented in
+`docs/tasman-verified-query-examples-20260831.md`. These improvements do not
+qualify a release-candidate user/operator journey or promote this track.
+
+Three isolated advisory subagents implemented and cross-reviewed the queue,
+archive disposition, query examples and ledger; the parent integrated reporting
+and reviewed evidence. The final focused group passes 73 tests. The broad local
+run passes 1,706 tests with one skip and 90.41% branch-aware coverage; the later
+ledger-baseline test and final reporter checks also pass separately. Strict
+MyPy/Bandit and reproducibility pass. An initial packaging output-path failure
+was isolated from the passing SBOM generation; the complete sequential quality
+rerun passes. Hosted CI remains separately recorded at integration. No human participant, release approval, new acquisition
+or scheduled execution is asserted by this repository-owned increment.
+
 | Evidence ID | Acceptance criterion or gate | Artifact, persistent identifier or URL | Review state |
 |---|---|---|---|
 | `DOCS-IA-CONTRACT-20260824` | Audience, workflow, interface and normative-source inventory | `docs/documentation-information-architecture-20260824.md`, `docs/documentation-contract-20260824.json` | Contract is repository-owned and bounded; external usability evidence remains open |

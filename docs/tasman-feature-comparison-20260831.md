@@ -5,6 +5,12 @@ the immutable initial accepted derived packet recorded in
 `tasman-derived-acceptance-20260831.json`. This is a fixed baseline comparison,
 not a comparison to the immediately preceding scheduled cycle.
 
+Hosted run 33345370638 compared all 3,655 features successfully with no additions,
+removals, attribute changes or geometry changes. The immutable
+[acceptance receipt](tasman-feature-comparison-acceptance-20260831.json) supplies
+this bounded result; the [current disposition](archive-current-status-20260831.json)
+distinguishes accepted preservation from remaining qualification.
+
 ## Identity and evidence
 
 Comparison uses source object identifiers, not capture-specific feature IDs.
