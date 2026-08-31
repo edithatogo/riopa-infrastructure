@@ -17,17 +17,21 @@
 Task 3.11's successor integration is documented in
 `docs/tasman-cycle-preservation-20260831.md`. It connects new verified workflow
 receipts to atomic, publicly readable Hugging Face metadata checkpoints with
-compare-and-swap conflict recovery and parallel immutable readback. The historical
-baseline below remains offline evidence. Implementation tests do not establish
-hosted execution, scheduled change/recovery or cycle qualification.
+compare-and-swap conflict recovery and parallel immutable readback. Hosted
+acceptance is now recorded in `docs/tasman-cycle-preservation-acceptance-20260831.json`:
+run 33360096774 on merged `ac984b7` passed both manual attempts. The second public
+checkpoint preserves both attempts but one source run, with unchanged source and
+derived receipts. The historical baseline below remains offline evidence. Neither
+manual execution nor implementation tests qualify scheduled change/recovery cycles.
 
 The bounded task 3.10 implementation is documented in
 `docs/tasman-cycle-ledger-20260831.md`. Its reviewed metadata-only baseline binds
 the four receipts from publication run 33345370638 and records one manual source
 run, no scheduled automatic source runs and no cycle qualification. Hash-chain,
 predecessor, repeated-attempt, corruption/recovery and manual/scheduled-negative
-tests pass. The ledger is offline; automatic collection and durable scheduled
-advancement remain future integration work, not a claim made by this task.
+tests pass. That task implemented the offline ledger only; the successor task
+3.11 above supplies the workflow integration and separately observed manual
+acceptance. Actual scheduled change/recovery qualification remains open.
 
 Current bounded Tasman disposition is summarized in
 `docs/archive-current-status-20260831.json`. The preparation-only observations
