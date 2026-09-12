@@ -19,6 +19,7 @@ from riopa_provenance.roadmap import (
     _section,
     _semver_key,
     _stability_label,
+    _validate_contract_ownership,
     _validate_evidence_reference,
     _validate_release_evidence,
     _waiver_is_current,
@@ -69,6 +70,58 @@ def test_architecture_fitness_requires_boundary_contract(tmp_path: Path) -> None
     assert "architecture-artifact" not in codes(root)
     (root / "docs/v1-scope-and-boundaries.md").unlink()
     assert "architecture-artifact" in codes(root)
+
+
+def test_architecture_fitness_rejects_unowned_new_schema(tmp_path: Path) -> None:
+    root = copy_roadmap(tmp_path)
+    assert "architecture-contract" not in codes(root)
+    (root / "schemas/new-contract.schema.json").write_text("{}\n", encoding="utf-8")
+    assert "architecture-contract" in codes(root)
+
+
+@pytest.mark.parametrize(
+    ("rows", "message"),
+    [
+        ("", "missing schema row"),
+        ("| `a.schema.json` | owner | policy | check |\n" * 2, "duplicate schema row"),
+        ("| `removed.schema.json` | owner | policy | check |", "stale schema row"),
+        ("| `a.schema.json` | | policy | check |", "require owner"),
+        ("| `a.schema.json` | owner | | check |", "require owner"),
+        ("| `a.schema.json` | owner | policy | |", "require owner"),
+        ("| `a.schema.json` | owner | policy |", "require owner"),
+        ("| `a.schema.json` | owner | policy | check | extra |", "require owner"),
+    ],
+)
+def test_contract_ownership_rejects_incomplete_inventory(
+    tmp_path: Path, rows: str, message: str
+) -> None:
+    (tmp_path / "schemas").mkdir()
+    (tmp_path / "schemas/a.schema.json").write_text("{}\n", encoding="utf-8")
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs/contract-ownership-matrix.md").write_text(rows, encoding="utf-8")
+    problems: list[RoadmapProblem] = []
+    _validate_contract_ownership(tmp_path, problems)
+    assert any(message in problem.message for problem in problems)
+    assert {problem.code for problem in problems} == {"architecture-contract"}
+
+
+def test_contract_ownership_uses_checkout_inventory(tmp_path: Path) -> None:
+    # Historical checkouts qualify their own schema set, not today's inventory.
+    (tmp_path / "schemas").mkdir()
+    (tmp_path / "schemas/a.schema.json").write_text("{}\n", encoding="utf-8")
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs/contract-ownership-matrix.md").write_text(
+        "# Matrix\n| Contract | Owner | Policy | Migration |\n|---|---|---|---|\n"
+        "| `a.schema.json` | owner | policy | check |\n",
+        encoding="utf-8",
+    )
+    problems: list[RoadmapProblem] = []
+    _validate_contract_ownership(tmp_path, problems)
+    assert problems == []
+    (tmp_path / "docs/contract-ownership-matrix.md").unlink()
+    _validate_contract_ownership(tmp_path, problems)
+    assert len(problems) == 1
+    assert problems[0].message == "contract matrix is absent"
 
 
 def test_v1_critical_track_requires_owner_and_maturity_metadata(tmp_path: Path) -> None:

@@ -312,11 +312,57 @@ def _validate_track_documents(
             )
 
 
+def _validate_contract_ownership(base: Path, problems: list[RoadmapProblem]) -> None:
+    """Require one complete ownership row per current normative JSON Schema."""
+
+    relative = "docs/contract-ownership-matrix.md"
+    path = base / relative
+    if not path.is_file():
+        problems.append(
+            RoadmapProblem("architecture-contract", relative, "contract matrix is absent")
+        )
+        return
+    expected = {path.name for path in (base / "schemas").glob("*.schema.json")}
+    counts: Counter[str] = Counter()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip().startswith("|"):
+            continue
+        cells = [cell.strip().strip("`") for cell in line.strip().strip("|").split("|")]
+        contract = cells[0]
+        if not contract.endswith(".schema.json"):
+            continue
+        counts[contract] += 1
+        if len(cells) != 4 or any(not cell.strip() for cell in cells[1:]):
+            problems.append(
+                RoadmapProblem(
+                    "architecture-contract",
+                    relative,
+                    f"{contract}: require owner, compatibility policy and migration/check cells",
+                )
+            )
+    for contract in sorted(expected - counts.keys()):
+        problems.append(
+            RoadmapProblem("architecture-contract", relative, f"missing schema row: {contract}")
+        )
+    for contract in sorted(counts):
+        if contract not in expected:
+            problems.append(
+                RoadmapProblem("architecture-contract", relative, f"stale schema row: {contract}")
+            )
+        if counts[contract] > 1:
+            problems.append(
+                RoadmapProblem(
+                    "architecture-contract", relative, f"duplicate schema row: {contract}"
+                )
+            )
+
+
 def _validate_architecture_fitness(
     base: Path, tracks: dict[str, dict[str, Any]], problems: list[RoadmapProblem]
 ) -> None:
     """Check the foundation boundary contract and component ownership index."""
 
+    _validate_contract_ownership(base, problems)
     required = {
         "docs/architecture.md": ("## Component model", "## Data-flow guarantees"),
         "docs/v1-scope-and-boundaries.md": (
