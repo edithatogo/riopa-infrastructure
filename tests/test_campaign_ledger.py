@@ -172,8 +172,11 @@ def test_duplicate_observation_day_cannot_qualify(tmp_path: Path) -> None:
         started_at="2026-08-02T12:00:00Z",
         ended_at="2026-08-02T12:01:00Z",
     )
-    with pytest.raises(ValueError, match="distinct UTC"):
-        build_ledger([first, second])
+    ledger = build_ledger([first, second])
+    assert len(ledger["observations"]) == 2
+    assert ledger["active_segment"]["observation_dates"] == ["2026-08-02"]
+    assert ledger["elapsed_gate_status"] == "pending"
+    assert ledger["active_segment"]["elapsed_seconds"] == 12 * 3600 + 60
 
 
 def test_observation_cannot_predate_or_change_campaign_activation(tmp_path: Path) -> None:
@@ -216,3 +219,57 @@ def test_superseded_segment_dates_do_not_count_for_active_segment(tmp_path: Path
     ledger = build_ledger([first, second])
     assert ledger["distinct_observation_dates"] == 1
     assert ledger["active_segment"]["observation_dates"] == ["2026-08-03"]
+
+
+def test_same_instant_failure_is_retained_independent_of_input_order(tmp_path: Path) -> None:
+    passed = _receipt(tmp_path / "passed.json")
+    failed = _receipt(tmp_path / "failed.json", status="failed")
+    first = build_ledger([passed, failed])
+    second = build_ledger([failed, passed])
+    assert first == second
+    assert first["active_segment"]["failed"] is True
+    assert first["elapsed_gate_status"] == "pending"
+    retry = _receipt(
+        tmp_path / "retry.json", started_at="2026-08-02T01:00:00Z", ended_at="2026-08-02T01:01:00Z"
+    )
+    recovered = build_ledger([passed, failed, retry])
+    assert len(recovered["segments"]) == 2
+    assert recovered["segments"][0]["failed"] is True
+    assert recovered["active_segment"]["elapsed_seconds"] == 60
+
+
+def test_utc_day_not_local_date_controls_daily_evidence(tmp_path: Path) -> None:
+    first = _receipt(
+        tmp_path / "one.json", started_at="2026-08-02T23:00:00Z", ended_at="2026-08-02T23:01:00Z"
+    )
+    second = _receipt(
+        tmp_path / "two.json",
+        started_at="2026-08-03T10:00:00+10:00",
+        ended_at="2026-08-03T10:01:00+10:00",
+    )
+    ledger = build_ledger([second, first])
+    assert ledger["active_segment"]["observation_dates"] == ["2026-08-02", "2026-08-03"]
+    # A different written calendar date can represent the same UTC day.
+    third = _receipt(
+        tmp_path / "three.json",
+        started_at="2026-08-03T09:30:00+10:00",
+        ended_at="2026-08-03T09:31:00+10:00",
+    )
+    same_day = build_ledger([first, third])
+    assert same_day["active_segment"]["observation_dates"] == ["2026-08-02"]
+
+
+def test_naive_receipt_timestamp_is_rejected(tmp_path: Path) -> None:
+    receipt = _receipt(tmp_path / "naive.json", started_at="2026-08-02T00:00:00")
+    with pytest.raises(ValueError, match="timezone-aware"):
+        build_ledger([receipt])
+
+
+def test_real_hosted_same_day_receipts_rebuild_without_inflating_days() -> None:
+    paths = sorted(Path("tests/fixtures/campaign-same-day").glob("*.json"))
+    assert len(paths) == 3
+    ledger = build_ledger(paths, now=datetime(2026, 9, 12, tzinfo=UTC))
+    assert ledger["active_segment"]["observation_count"] == 3
+    assert ledger["distinct_observation_dates"] == 1
+    assert ledger["elapsed_gate_status"] == "pending"
+    assert ledger == build_ledger(list(reversed(paths)), now=datetime(2026, 9, 12, tzinfo=UTC))

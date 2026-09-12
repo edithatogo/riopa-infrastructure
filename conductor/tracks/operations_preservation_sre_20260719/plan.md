@@ -74,6 +74,8 @@
 - [x] R8 Make beta/RC qualification activation explicit: supplemental drills remain retained without a cumulative elapsed ledger, while qualifying observations require an authority, activation timestamp and exact campaign binding (`.github/workflows/evidence-campaign.yml`, `scripts/record_hosted_evidence.py`, `schemas/hosted-evidence.schema.json`, `tests/test_hosted_evidence.py`, `docs/campaign-qualification-activation-20260829.json`; elapsed and promotion gates remain open).
 - [x] R9 Correct clean qualifying observation placement after review found the active ledger was ignoring records stored as supplemental; add regression coverage and an immutable correction record (`docs/campaign-qualification-placement-review-fix-20260830.json`, `tests/test_v1_candidate_hosted_validation.py`, `tests/test_v1_release_gate_snapshot.py`).
 
+- [x] R10 Retain distinct same-day hosted attempts while counting UTC dates once, preserve failures and deterministic chain order, and reproduce failed run 34629491783 locally. (`scripts/build_campaign_ledger.py`, `tests/test_campaign_ledger.py`, `docs/campaign-same-day-recovery-20260912.json`; hosted successor execution and elapsed qualification remain open.)
+
 ## Track closeout
 
 - [x] C.1 Link implementation, test, review, migration and release evidence in `index.md` for the repository-owned slice; hosted, preservation and elapsed gates remain explicitly pending.

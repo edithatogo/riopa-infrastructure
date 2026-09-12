@@ -18,6 +18,13 @@ def _load(path: Path) -> dict[str, Any]:
     return value
 
 
+def _utc(value: object) -> datetime:
+    parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    if parsed.tzinfo is None:
+        raise ValueError("receipt timestamps must be timezone-aware")
+    return parsed.astimezone(UTC)
+
+
 def build_ledger(
     paths: list[Path], *, maximum_gap_hours: int = 36, now: datetime | None = None
 ) -> dict[str, Any]:
@@ -82,28 +89,32 @@ def build_ledger(
                 "receipt_sha256": receipt_sha256,
             }
         )
-    observations.sort(key=lambda item: str(item["started_at"]))
+    # Keep each attempt; canonical ordering must not depend on input file order.
+    # At an identical start instant, a failure is last and cannot be hidden by
+    # a successful retry with the same timestamp.
+    observations.sort(
+        key=lambda item: (
+            _utc(item["started_at"]),
+            item["status"] != "passed",
+            item["receipt_sha256"],
+        )
+    )
     current_time = now or datetime.now(UTC)
     if current_time.tzinfo is None:
         raise ValueError("now must be timezone-aware")
-    observed_dates: set[str] = set()
     previous_chain = ""
     for observation in observations:
-        start = datetime.fromisoformat(str(observation["started_at"]).replace("Z", "+00:00"))
-        end = datetime.fromisoformat(str(observation["ended_at"]).replace("Z", "+00:00"))
+        start = _utc(observation["started_at"])
+        end = _utc(observation["ended_at"])
         if end < start:
             raise ValueError("receipt ended_at precedes started_at")
         if start > current_time or end > current_time:
             raise ValueError("receipt timestamps cannot be in the future")
-        activated_at = datetime.fromisoformat(
-            str(observation["activated_at"]).replace("Z", "+00:00")
-        )
+        activated_at = _utc(observation["activated_at"])
         if activated_at > start or activated_at > current_time:
             raise ValueError("receipt observation cannot predate campaign activation")
-        observed_date = start.date().isoformat()
-        if observed_date in observed_dates:
-            raise ValueError("qualifying receipts require distinct UTC observation dates")
-        observed_dates.add(observed_date)
+        # Distinct attempts on a day remain chained. Qualification counts UTC
+        # dates below, so retries add neither days nor artificial elapsed time.
         previous_chain = hashlib.sha256(
             f"{previous_chain}:{observation['receipt_sha256']}".encode()
         ).hexdigest()
@@ -150,7 +161,7 @@ def build_ledger(
             segment["source_revisions"].append(observation["source_revision"])
         if observation["operational_cycle_id"] not in segment["operational_cycle_ids"]:
             segment["operational_cycle_ids"].append(observation["operational_cycle_id"])
-        observation_date = str(observation["started_at"])[:10]
+        observation_date = _utc(observation["started_at"]).date().isoformat()
         if observation_date not in segment["observation_dates"]:
             segment["observation_dates"].append(observation_date)
         segment["ended_at"] = observation["ended_at"]
