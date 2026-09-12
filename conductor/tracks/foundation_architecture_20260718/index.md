@@ -111,3 +111,14 @@ Task 6.1 is in progress: migration execution on real versioned inputs, its
 compatibility/loss/failure assessment and candidate qualification remain open.
 Status and maturity stay `validating` / `M2`. PR #772 was squash-merged as
 `e77bc5ba5dca9d661bf1654b9af1567fe03dd2ba`; R.11 references that reachable commit.
+
+## Bounded native-capture migration — 2026-09-12
+
+`docs/archived-capture-view-migration.md` and
+`docs/archived-capture-migration-evidence-20260912.json` record an executed
+experimental native 1.0 capture to derived 1.1 view migration of 236 archived
+records. Native fields/hashes round-trip and original bytes remain unchanged;
+invalid input, tampering, conflicting destinations and interruption are tested.
+This is not provenance-event 1.1 publication or full M3 qualification. Broader
+migration, cross-runtime and candidate-panel evidence remain open; status stays
+validating/M2.

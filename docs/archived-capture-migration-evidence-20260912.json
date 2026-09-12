@@ -1,0 +1,24 @@
+{
+  "canonical_records_preserved": true,
+  "evidence_id": "urn:riopa:evidence:archived-capture-migration:2026-09-12",
+  "idempotent_retry": true,
+  "non_claims": [
+    "This is a derived native-capture adapter, not provenance-event 1.1 publication.",
+    "Evidence references do not grant rights, verify their contents or confer authority.",
+    "Only one archived national capture family is exercised; no national bulk rebuild.",
+    "Broader cross-runtime, candidate qualification, operational and release gates remain open."
+  ],
+  "original_file_bytes_preserved": true,
+  "output_jsonl_sha256": "c31bbf412fbfd4fce5564144cabe1d0a019d2502a7c259c602bce444ee57a94b",
+  "promotion_allowed": false,
+  "record_count": 236,
+  "restored_records_sha256": "ee69380e30b2fefa337efada9e360afa5bea7e34592f65a9328fcb2e35c0a268",
+  "source": "evidence/stats-nz-meshblock-2026-projection/capture-records.jsonl",
+  "source_contract": "archived_http_capture/1.0.0",
+  "source_records_sha256": "ee69380e30b2fefa337efada9e360afa5bea7e34592f65a9328fcb2e35c0a268",
+  "source_sha256": "49793b8c1517564bdffda1305cda432dc1e53bd8bc28906e5f12bd6b197c3540",
+  "status": "bounded-real-archive-view-migration-reproduced",
+  "target_contract": "archived_capture_view/1.1.0-experimental",
+  "target_schema": "schemas/archived-capture-view.schema.json",
+  "target_schema_sha256": "a7d8d8a9ebf7e860b1212dbd292368fa6461e68d4da4051d3828be240f1944e5"
+}

@@ -13,6 +13,7 @@ owner or compatibility policy.
 | `adapter-mapping.schema.json` | API/schema analyst | retain source and target versions; breaking mappings require explicit replacement | `scripts/ci_quality.sh`; `tests/test_adapters.py` |
 | `analysis-preregistration.schema.json` | Scientific-method maintainer | registered designs are immutable; amendments retain original identity and rationale | `scripts/ci_quality.sh`; `tests/test_analysis_preregistration.py` |
 | `analysis-protocol.schema.json` | Scientific-method maintainer | version estimands and analysis assumptions; preserve protocol identity | `scripts/ci_quality.sh`; `tests/test_analysis.py` |
+| `archived-capture-view.schema.json` | Provenance maintainer | experimental opt-in projection; native 1.0 records and hashes remain immutable | `tests/test_capture_migration.py`; `docs/archived-capture-view-migration.md` |
 | `artifact.schema.json` | Provenance maintainer | additive fields only within a minor; breaking changes require a major profile | `scripts/ci_quality.sh`; `tests/test_validation_integrity.py` |
 | `canonical-crosswalk.schema.json` | Spatial maintainer | preserve source/target identities and temporal validity; changed mappings require successors | `scripts/ci_quality.sh`; `tests/test_spatial_crosswalk.py` |
 | `governance-decision.schema.json` | Governance analyst | decisions remain scope-bound and attributable; changed permissions require new evidence | `scripts/ci_quality.sh`; `tests/test_governance.py` |
