@@ -35,12 +35,12 @@ jobs:
           test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
           test "$(git rev-list -n 1 "$RELEASE_TAG")" = "$RELEASE_SHA"
       - name: Install uv and historical Python
-        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
           python-version: "3.13"
-          version: "0.11.16"
+          version: "0.12.13"
       - name: Route locked hashes through public PyPI
         run: |
           cp uv.lock /tmp/riopa-v020-original.lock
