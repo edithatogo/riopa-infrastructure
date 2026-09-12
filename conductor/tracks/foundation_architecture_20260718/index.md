@@ -130,3 +130,12 @@ implementations, schema and parity suite. All 236 archived native records migrat
 to identical values/hashes and recover in both directions. This qualifies only
 the experimental capture view; full event-profile parity, candidate qualification,
 operation and release gates remain open. See `docs/archived-capture-parity.md`.
+
+## Native-event projection loss qualification — 2026-09-12
+
+`docs/event-projection-semantic-loss.md` and
+`docs/event-projection-loss-evidence-20260912.json` classify every native event
+property in the current OpenLineage projection and document PROV's omission of
+native events. Retained values, all status mappings and loss collisions are
+executable tests. This is bounded synthetic semantic-loss evidence, not full
+profile conformance or standalone event recovery. M3–M6 gates remain open.
