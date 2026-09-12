@@ -122,3 +122,11 @@ invalid input, tampering, conflicting destinations and interruption are tested.
 This is not provenance-event 1.1 publication or full M3 qualification. Broader
 migration, cross-runtime and candidate-panel evidence remain open; status stays
 validating/M2.
+
+## Bounded capture cross-runtime parity — 2026-09-12
+
+`docs/archived-capture-parity-evidence-20260912.json` binds the Node and Python
+implementations, schema and parity suite. All 236 archived native records migrate
+to identical values/hashes and recover in both directions. This qualifies only
+the experimental capture view; full event-profile parity, candidate qualification,
+operation and release gates remain open. See `docs/archived-capture-parity.md`.
