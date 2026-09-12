@@ -4,7 +4,7 @@
   "phase": "Foundation",
   "status": "active",
   "created_at": "2026-07-19T00:00:00Z",
-  "updated_at": "2026-08-30T12:00:00Z",
+  "updated_at": "2026-09-12T03:47:07Z",
   "description": "Operate captures, transformations, releases and preservation as a measured service with observable health, explicit SLOs, fixity, recovery and sustainable cost controls.",
   "depends_on": [
     "foundation_architecture_20260718",
@@ -64,6 +64,7 @@
     ,"urn:riopa:evidence:stable-v1-readiness-plan:2026-08-30"
     ,"OPS-CAMPAIGN-SCHEDULED-QUALIFICATION-BINDING-20260830"
     ,"OPS-CAMPAIGN-SCHEDULED-QUALIFICATION-STATUS-CORRECTION-20260830"
+    ,"urn:riopa:evidence:campaign-same-day-recovery:2026-09-12"
   ],
   "target_release": "0.8.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

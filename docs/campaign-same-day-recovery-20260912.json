@@ -1,0 +1,41 @@
+{
+  "evidence_id": "urn:riopa:evidence:campaign-same-day-recovery:2026-09-12",
+  "source_run": "34629491783",
+  "source_run_status": "failure",
+  "failed_step": "Build cumulative fail-closed campaign ledger",
+  "original_error": "qualifying receipts require distinct UTC observation dates",
+  "replay_kind": "local-rebuild-of-downloaded-hosted-receipts",
+  "input_files": 17,
+  "distinct_observations": 15,
+  "duplicate_receipt_count": 2,
+  "distinct_utc_dates": 13,
+  "chain_head_sha256": "0188cbadf22bbcc9c93791db87c7d3d80520455fa716e5e4bc97faa71f63d1b6",
+  "elapsed_gate_status": "pending",
+  "duration_status": "pending-duration",
+  "cadence_status": "passed",
+  "operational_cycles_status": "passed",
+  "input_sha256": {
+    "campaign-history/33289129127-operational-observation.receipt.json": "ee3e0de16169a64f743c063eb77f500c1a31e6330d39a5047b5c3a634ac36557",
+    "campaign-history/33293186355-operational-observation.receipt.json": "c4ab8de4b1487b7db0f1d4ae911a262d16a91575903ed74da6498f12feac2ca8",
+    "campaign-history/33327019897-operational-observation.receipt.json": "2373afcfd32363f312837cdae5e3b8d4612aca01b6c6d0ddfeb1f19998299e65",
+    "campaign-history/33434355408-operational-observation.receipt.json": "44bfa3dd25472aa0d4facb88fb64fbb81c781a48d2eb39fee92bcf2904d921d5",
+    "campaign-history/33540090838-operational-observation.receipt.json": "f47b3fc5b9104a8961e537a06e9ed186873ffe7a467881851d6de8279b9e5b1b",
+    "campaign-history/33664010410-operational-observation.receipt.json": "8c6fbaf12172dec758abfa84b64a89646f7e70bc1371e456967057126f8a411b",
+    "campaign-history/33787160327-operational-observation.receipt.json": "b4d2544b86ea61d2441003f89afc2f378f5460ce96028948d95288433aefea6a",
+    "campaign-history/33901573094-operational-observation.receipt.json": "25d1c0fbc465bad44a4890002cd44020291c314391e1a6038a380dcb05133aa3",
+    "campaign-history/33979093831-operational-observation.receipt.json": "ba23c46cf1650163e4f2028772d190ece7f1b98e9a7407011c2d2c6cef66d2b3",
+    "campaign-history/34047498471-operational-observation.receipt.json": "68ceaf91cea338e303aee4a50f7dcc4c7f603dc851fd53b8451615ef0ef6a6f5",
+    "campaign-history/34152864507-operational-observation.receipt.json": "7412d98998fb9ace8a7b480011cb53fa7e34673ad46ab257b479d279d40e0293",
+    "campaign-history/34260044631-operational-observation.receipt.json": "2e616f3324ef56606dd7c52c6dd0364044a8fb6e197edc265467344899de8368",
+    "campaign-history/34385409621-operational-observation.receipt.json": "38da383ee124ad1693201c51d85bcc5c5d641316013ee7d92337ab04a53b8394",
+    "campaign-history/34509900370-operational-observation.receipt.json": "c127bf835e60d974cd9bf179932f7aa8ca4ca775aac0ef8aff970acc5e7b8a02",
+    "campaign-history/34629491783-operational-observation.receipt.json": "c293a57b3ec007f4177cb0f03e72bfe101ce13515cb9110f59f30f7c268438d8",
+    "campaign-history/operational-observation.receipt.json": "ee3e0de16169a64f743c063eb77f500c1a31e6330d39a5047b5c3a634ac36557",
+    "hosted-evidence/34629491783/operational-observation.receipt.json": "c293a57b3ec007f4177cb0f03e72bfe101ce13515cb9110f59f30f7c268438d8"
+  },
+  "non_claims": [
+    "Local replay is not a new hosted campaign execution.",
+    "Same-day receipts do not add distinct qualifying days.",
+    "Elapsed beta/RC gates and release authority remain open."
+  ]
+}

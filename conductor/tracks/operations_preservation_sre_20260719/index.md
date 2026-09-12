@@ -130,3 +130,14 @@ This index is deliberately non-assertive while the track remains `active` at
 M1. Status may advance only through `conductor/workflow.md`; evidence must be
 immutable or version-addressed, agent-panel qualified where required, and
 sufficient for the applicable release gates.
+
+## Same-day campaign recovery — 2026-09-12
+
+Run `34629491783` failed because cumulative ledger construction rejected multiple
+qualifying receipts on one UTC date. The repair retains each distinct receipt,
+counts distinct UTC dates once, preserves failed attempts and sorts deterministically.
+The downloaded artifact rebuilds locally: 17 files, 15 distinct observations,
+13 UTC dates; elapsed gate remains pending. Details and input hashes are in
+`docs/campaign-same-day-recovery-20260912.json` and
+`docs/campaign-same-day-recovery-20260912.md`. This is local replay, not a new
+hosted campaign observation or an elapsed-duration qualification.
