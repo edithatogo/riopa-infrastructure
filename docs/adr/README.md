@@ -30,6 +30,8 @@ decisions and consequences.
 
 ## Review state
 
-This is an implementation artifact for the foundation track. Governance,
-API/schema and external-user reviews remain outstanding and must be appended to
-the track evidence ledger before closeout.
+The foundation evidence index records two completed advisory architecture
+analyses for the bounded baseline. Later candidate-bound governance, API/schema
+and agent-operated workflow qualification remains open. Record new findings and
+dispositions in that index; historical baseline reviews do not qualify a changed
+release candidate or imply external participation.

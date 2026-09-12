@@ -34,7 +34,7 @@
 
 - [x] C.1 Link implementation, test, review, migration and bounded ratification evidence in `index.md`. (31cffd0)
 - [x] C.2 Regenerate roadmap status and issue configuration; methods and citation are unaffected by the bounded architecture decision. (31cffd0)
-- [x] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md)
+- [ ] C.3 Confirm no unresolved blocking gate, expired waiver or undocumented limitation remains for final M6 closure. The historical bounded M1 audit remains valid for its recorded scope; M3–M6 gates remain open. (docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md; docs/architecture-reviews/2026-09-12-foundation-review.md)
 - [x] C.4 Update metadata status and target-release evidence through the Conductor workflow; status is `validating` at M2, with M3–M6 gates still pending. (index.md; metadata.json; docs/foundation-m2-promotion-20260826.json)
 
 ## Review fixes
@@ -44,3 +44,15 @@
 - [x] R.8 Establish the programme-wide single-developer and agent-advisory contract, correct ambiguous agent-independence/approval wording, and preserve genuinely external evidence gates. (`docs/single-developer-agent-advisory-policy-20260826.md`, `tests/test_single_developer_agent_advisory_policy.py`)
 - [x] R.9 Make terminal orchestrator selection replace stale executable packets, restore the Python 3.14 `uv` invocation contract, and regenerate the current roadmap status. (`scripts/codex_orchestrator.py`, `tests/test_codex_orchestrator.py`, `Makefile`, `ROADMAP_STATUS.md`)
 - [x] R.10 Revalidate the executable, negative-test, traceability and clean-checkout evidence on the merged tree and promote only the foundation track from M1 to experimental M2. (`docs/foundation-m2-promotion-20260826.json`, `tests/test_foundation_m2_promotion.py`)
+
+- [x] R.11 Repair schema ownership drift with executable inventory validation and negative tests; preserve historical digest assertions at their pinned revision, reopen final C.3 and record current traceability and remaining gates. (`5c99385`; `docs/architecture-reviews/2026-09-12-foundation-review.md`)
+
+## 6. Remaining maturity qualification
+
+- [ ] 6.1 Qualify representative real-data integrations, version migrations and failure handling against the foundation contracts (M3).
+- [ ] 6.2 Bind repeated operations, agent-operated workflows, SLOs and compatibility evidence to supported versions (M4).
+- [ ] 6.3 Freeze the candidate inventory and complete role-separated panel, security, performance, recovery and actual RC-soak qualification (M5).
+- [ ] 6.4 Record supported compatibility, named maintainers, signed/preserved release, isolated reproduction, accountable release decision and post-release verification (M6).
+
+Evidence, responsible roles, next actions and authorization boundaries are listed
+in `docs/architecture-reviews/2026-09-12-foundation-review.md`.

@@ -25,12 +25,12 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 | R02 | Normative contract ownership and migration matrix | `docs/contract-ownership-matrix.md` | Implemented; executable suite passes locally |
 | R03, R05 | Independent analyst review records | `docs/architecture-reviews/2026-07-29-architecture-contract-analyst-01.md`, `docs/architecture-reviews/2026-07-29-architecture-governance-analyst-02.md` | Two records complete; findings resolved for M1 or explicitly deferred to named later gates |
 | R01–R05 | Programme-owner bounded architecture ratification | `docs/architecture-baseline-ratification.md`; source revision `64c4dd7c28d18f1ed68f28a52421770777f92d7d` | M1 development baseline ratified on 2026-08-01; M2-M6 maturity and release approvals explicitly excluded |
-| R05 | External dependency and release-gate register | `docs/external-dependency-register.md` | Current hosted checks are recorded as passed; independent reproduction, source authority, preservation and release authority remain open with explicit fallbacks |
+| R05 | External dependency and release-gate register | `docs/external-dependency-register.md` | Historical revision-specific hosted checks are recorded as passed; independent reproduction, source authority, preservation and release authority remain open with explicit fallbacks |
 | C.3 | M1 closeout audit | `docs/architecture-reviews/2026-08-01-foundation-closeout-audit.md` | Repository-owned blocker, waiver and limitation checks pass; later maturity and external gates remain open |
 | M2-prep | Executable acceptance checklist | `docs/architecture-reviews/foundation-m2-evidence-checklist.md` | Defines bounded proof and explicit non-claims for the next maturity gate |
 | M2-READINESS-20260801 | Machine-readable M2 readiness and later-gate boundary | `docs/foundation-maturity-readiness-20260801.json` | Repository-owned M2 preparation passes; promotion remains false |
 | `FOUNDATION-AGENT-PANEL-WORDING-20260825` | Single-developer repository wording correction for agent-panel coverage | `docs/foundation-agent-panel-wording-correction-20260825.json` | Agent panels are repository assessors only; external participation, elapsed evidence and accountable authority remain separate gates |
-| `FOUNDATION-M2-PROMOTION-20260826` | Exact-tree M2 executable proof, negative tests, traceability and owner-authorized maturity decision | `docs/foundation-m2-promotion-20260826.json`, `tests/test_foundation_m2_promotion.py`, [PR #614](https://github.com/edithatogo/riopa-infrastructure/pull/614) | Promoted to experimental M2 only; M3-M6 evidence and release 0.3.0 gates remain open |
+| `FOUNDATION-M2-PROMOTION-20260826` | Exact-tree M2 executable proof, negative tests, traceability and owner-authorized maturity decision | `docs/foundation-m2-promotion-20260826.json`, `tests/test_foundation_m2_promotion.py`, [PR #614](https://github.com/edithatogo/riopa-infrastructure/pull/614) | Historical promotion to experimental M2 only; M3-M6 evidence remains open. Evaluate current 0.3.0 readiness separately |
 
 ## Blocking maturity gates
 
@@ -40,13 +40,14 @@ Closeout sequence: `docs/foundation-provenance-connector-ontology-closeout-plan.
 - M6 supported compatibility, isolated role-separated clean-room agent reproduction, named maintainers and stable release authority.
 
 The consolidated parent-track maturity inventory is recorded in
-`docs/parent-track-maturity-report-20260803.json`; it finds all 28 tracks at
-M1 against an M6 target and does not promote any track.
+`docs/parent-track-maturity-report-20260803.json`; that historical snapshot
+found all 28 tracks at M1 against an M6 target. Current metadata supersedes
+that snapshot for present maturity; the receipt is retained unchanged.
 
 ## Decisions, exceptions and limitations
 
-- ADR-0006, ADR-0009 and ADR-0011 are explicitly deferred with owners, revisit
-  dates and follow-up tracks in `docs/adr/README.md`; they are not treated as
+- ADR-0005, ADR-0006, ADR-0009 and ADR-0011 are explicitly deferred with owners
+  and revisit conditions or dates in `docs/adr/README.md`; they are not treated as
   approvals.
 - The normative contract ownership and migration matrix is recorded in
   `docs/contract-ownership-matrix.md`.
@@ -87,3 +88,11 @@ maturity and release gate.
 
 Target-release metadata and evidence were revalidated on 2026-08-26; status is
 `validating` by design while M3-M6 gates remain unresolved.
+
+## Foundation review — 2026-09-12
+
+See [the current audit and closure register](../../../docs/architecture-reviews/2026-09-12-foundation-review.md)
+for R01–R05 traceability, qualified downstream boundaries, findings, hosted
+observations and the owner/action/evidence/authorization register for M3–M6.
+C.3 is reopened for final closure; historical ratification and promotion receipts
+remain unchanged. Current status stays `validating`, maturity stays `M2`.
