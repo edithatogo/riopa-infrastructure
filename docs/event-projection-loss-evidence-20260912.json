@@ -1,0 +1,118 @@
+{
+  "artifacts": {
+    "schemas/provenance-event.schema.json": "8163c52931c43ecd84da42eb7fbed99f6f74be83c747fe13d6a197fdc62e7e06",
+    "src/riopa_provenance/crate.py": "a2ff7c8644f7eb5d7acc9b865238e8c6b5759eba972c787543736ff65e24c0d6",
+    "tests/test_event_projection_loss.py": "0072864f80f2fb8bcb712c49b5e2e897ce4973184fca0f021874322870fa6f69"
+  },
+  "event_count": 3,
+  "evidence_id": "urn:riopa:evidence:event-projection-loss:2026-09-12",
+  "native_events_sha256": "3c35b76f2179f952134333c52efb0484ab0ff52071205b11a6699a2bea0fc80c",
+  "non_claims": [
+    "Exact values are not certification of target-standard semantics.",
+    "The event hash binds omitted content but cannot reconstruct it or verify a signature.",
+    "Retain native evidence for rights, agents, chain verification and event recovery.",
+    "Artifact/transformation field qualification, full event parity and RC approval remain open."
+  ],
+  "openlineage_fields": {
+    "activity": {
+      "classification": "partial",
+      "loss": "only activity_type retained; identity, name, description and extensions omitted",
+      "path": "job.name"
+    },
+    "agents": {
+      "classification": "omitted",
+      "path": null
+    },
+    "classification_refs": {
+      "classification": "omitted",
+      "path": null
+    },
+    "diagnostics": {
+      "classification": "omitted",
+      "path": null
+    },
+    "environment": {
+      "classification": "omitted",
+      "path": null
+    },
+    "event_hash": {
+      "classification": "exact-value",
+      "path": "run.facets.riopa_provenance.eventHash"
+    },
+    "event_id": {
+      "classification": "exact-value",
+      "path": "run.runId"
+    },
+    "event_type": {
+      "classification": "omitted",
+      "path": null
+    },
+    "inputs": {
+      "classification": "exact-value",
+      "path": "inputs[].name"
+    },
+    "occurred_at": {
+      "classification": "omitted",
+      "path": null
+    },
+    "outputs": {
+      "classification": "exact-value",
+      "path": "outputs[].name"
+    },
+    "parameters": {
+      "classification": "omitted",
+      "path": null
+    },
+    "previous_event_hash": {
+      "classification": "omitted",
+      "path": null
+    },
+    "quality_refs": {
+      "classification": "omitted",
+      "path": null
+    },
+    "recorded_at": {
+      "classification": "exact-value",
+      "path": "eventTime"
+    },
+    "rights_refs": {
+      "classification": "omitted",
+      "path": null
+    },
+    "schema_refs": {
+      "classification": "omitted",
+      "path": null
+    },
+    "schema_version": {
+      "classification": "omitted",
+      "path": null
+    },
+    "sequence": {
+      "classification": "exact-value",
+      "path": "run.facets.riopa_provenance.sequence"
+    },
+    "signature_ref": {
+      "classification": "omitted",
+      "path": null
+    },
+    "status": {
+      "classification": "many-to-one",
+      "loss": "partial and reviewed both become OTHER",
+      "path": "eventType"
+    },
+    "stream_id": {
+      "classification": "exact-value",
+      "path": "run.facets.riopa_provenance.streamId"
+    },
+    "valid_time": {
+      "classification": "omitted",
+      "path": null
+    }
+  },
+  "openlineage_sha256": "6225539306038cabf296db42f2d0d4ec969ed9258c3517acbbeafa1aa5e40e30",
+  "promotion_allowed": false,
+  "prov_native_event_fields": "none: PROV builder reads artifacts and transformation runs, not native events",
+  "prov_sha256": "c97dc990935efe2768da5e7f092e3f3d4332d7321a5a014430af09319dcdea35",
+  "scope": "native-event fields in bundled synthetic reference projections",
+  "standalone_native_event_recovery": false
+}
