@@ -35,3 +35,9 @@ analyses for the bounded baseline. Later candidate-bound governance, API/schema
 and agent-operated workflow qualification remains open. Record new findings and
 dispositions in that index; historical baseline reviews do not qualify a changed
 release candidate or imply external participation.
+
+## Experimental native-capture adapter amendment
+
+`docs/archived-capture-view-migration.md` applies ADR-0002 and ADR-0008 to an
+opt-in versioned view over immutable native capture records. It does not replace
+the event schema, approve a stable profile or change other ADR dispositions.

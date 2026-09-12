@@ -4,7 +4,7 @@
   "phase": "Core",
   "status": "validating",
   "created_at": "2026-07-18T01:30:00Z",
-  "updated_at": "2026-08-27T00:00:00Z",
+  "updated_at": "2026-09-12T04:04:20Z",
   "description": "Stabilise a cross-language profile that unifies capture, transformation, lineage, manual and AI assistance, integrity, rights and quality without replacing repository-native evidence.",
   "depends_on": [
     "foundation_architecture_20260718",
@@ -19,7 +19,8 @@
     "urn:riopa:evidence:provenance-profile-compatibility-draft:2026-08-25"
     ,"urn:riopa:evidence:provenance-profile-panel-qualification:2026-08-25"
     ,"urn:riopa:evidence:provenance-profile-v1-candidate-freeze:2026-08-25"
-    ,"urn:riopa:evidence:provenance-m2-promotion:2026-08-27"
+    ,"urn:riopa:evidence:provenance-m2-promotion:2026-08-27",
+    "urn:riopa:evidence:archived-capture-migration:2026-09-12"
   ],
   "target_release": "0.3.0",
   "owner_repository": "edithatogo/riopa-infrastructure",

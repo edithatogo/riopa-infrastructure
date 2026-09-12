@@ -47,3 +47,5 @@
 - [x] R.3 Reconcile C.4 and the evidence index with the bounded M2 decision while
   retaining all M3-M6 integration, operation, publication, reproduction and
   authority gates. (Conductor review fix)
+
+- [x] R.4 Execute and recover the bounded native-capture 1.0 to derived-view 1.1 adapter on 236 archived records; preserve source identity/bytes and reject tampering, invalid input and destination conflicts. (`src/riopa_provenance/capture_migration.py`, `tests/test_capture_migration.py`, `docs/archived-capture-view-migration.md`; broader event-profile/cross-runtime and candidate qualification remain open.)

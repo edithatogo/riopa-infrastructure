@@ -5,7 +5,7 @@ from pathlib import Path
 def test_module_coverage_inventory_is_python314_and_fail_closed() -> None:
     root = Path(__file__).resolve().parents[1]
     inventory = json.loads(
-        (root / "docs/module-coverage-inventory-20260825.json").read_text(encoding="utf-8")
+        (root / "docs/module-coverage-inventory-20260912.json").read_text(encoding="utf-8")
     )
     assert inventory["status"] == "measured-python314-full-suite"
     assert inventory["runtime"] == "Python 3.14 only"

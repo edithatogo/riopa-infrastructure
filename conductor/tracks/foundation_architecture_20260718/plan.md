@@ -49,7 +49,7 @@
 
 ## 6. Remaining maturity qualification
 
-- [~] 6.1 Qualify representative real-data integrations, version migrations and failure handling against the foundation contracts (M3). The bounded national/council evidence chain and tamper rejection are validated; real-data old/new-version migration execution and candidate-bound qualification remain open. (`docs/foundation-m3-evidence-20260912.json`, `scripts/validate_foundation_m3_evidence.py`, `tests/test_foundation_m3_evidence.py`)
+- [~] 6.1 Qualify representative real-data integrations, version migrations and failure handling against the foundation contracts (M3). The bounded national/council evidence chain and tamper rejection are validated; a bounded native-capture migration is now exercised in `docs/archived-capture-migration-evidence-20260912.json`; broader contract migration and candidate-bound qualification remain open. (`docs/foundation-m3-evidence-20260912.json`, `scripts/validate_foundation_m3_evidence.py`, `tests/test_foundation_m3_evidence.py`)
 - [ ] 6.2 Bind repeated operations, agent-operated workflows, SLOs and compatibility evidence to supported versions (M4).
 - [ ] 6.3 Freeze the candidate inventory and complete role-separated panel, security, performance, recovery and actual RC-soak qualification (M5).
 - [ ] 6.4 Record supported compatibility, named maintainers, signed/preserved release, isolated reproduction, accountable release decision and post-release verification (M6).

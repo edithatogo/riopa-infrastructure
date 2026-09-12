@@ -94,3 +94,14 @@ The track remains `validating` at M2 and is not complete or archive-eligible.
 The exact-tree promotion closes only the experimental executable-proof boundary;
 M3-M6 integration, operation, RC, publication, reproduction and authority gates
 remain open.
+
+## Bounded native-capture migration — 2026-09-12
+
+`docs/archived-capture-view-migration.md` and
+`docs/archived-capture-migration-evidence-20260912.json` record an executed
+experimental native 1.0 capture to derived 1.1 view migration of 236 archived
+records. Native fields/hashes round-trip and original bytes remain unchanged;
+invalid input, tampering, conflicting destinations and interruption are tested.
+This is not provenance-event 1.1 publication or full M3 qualification. Broader
+migration, cross-runtime and candidate-panel evidence remain open; status stays
+validating/M2.
