@@ -96,3 +96,18 @@ for R01–R05 traceability, qualified downstream boundaries, findings, hosted
 observations and the owner/action/evidence/authorization register for M3–M6.
 C.3 is reopened for final closure; historical ratification and promotion receipts
 remain unchanged. Current status stays `validating`, maturity stays `M2`.
+
+## M3 evidence inventory — 2026-09-12
+
+`docs/foundation-m3-evidence-20260912.json` binds archived national/council inputs,
+rights declarations, Wellington output digests and bounded migration fixtures.
+Rebuild using `uv run python -m scripts.validate_foundation_m3_evidence --root .
+--output /tmp/foundation-m3.json` (one command). The validator rejects altered
+input/output/receipt bytes and malformed migration metadata. It reconciles only
+the exact national manifest successor introduced by PR #598; no historical
+receipt is rewritten. See `docs/architecture-reviews/2026-09-12-foundation-m3-inventory.md`.
+
+Task 6.1 is in progress: migration execution on real versioned inputs, its
+compatibility/loss/failure assessment and candidate qualification remain open.
+Status and maturity stay `validating` / `M2`. PR #772 was squash-merged as
+`e77bc5ba5dca9d661bf1654b9af1567fe03dd2ba`; R.11 references that reachable commit.
