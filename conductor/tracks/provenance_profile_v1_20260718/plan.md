@@ -49,3 +49,5 @@
   authority gates. (Conductor review fix)
 
 - [x] R.4 Execute and recover the bounded native-capture 1.0 to derived-view 1.1 adapter on 236 archived records; preserve source identity/bytes and reject tampering, invalid input and destination conflicts. (`src/riopa_provenance/capture_migration.py`, `tests/test_capture_migration.py`, `docs/archived-capture-view-migration.md`; broader event-profile/cross-runtime and candidate qualification remain open.)
+
+- [x] R.5 Qualify bounded capture migration and recovery across Python and Node on 236 archived records, with negative and extension fixtures. (`docs/archived-capture-parity-evidence-20260912.json`, `tests/test_capture_migration_parity.py`; full event-profile parity and M3 promotion remain open.)

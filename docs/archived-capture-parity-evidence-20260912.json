@@ -1,0 +1,23 @@
+{
+  "artifacts": {
+    "schemas/archived-capture-view.schema.json": "a7d8d8a9ebf7e860b1212dbd292368fa6461e68d4da4051d3828be240f1944e5",
+    "scripts/capture_migration_node.mjs": "e9d87033ad320edb55958f8327e79a0f832895a6e9c3c5cff62b176be05d2e5e",
+    "src/riopa_provenance/capture_migration.py": "acd2e303b44abd66f140736ec71886cf47d154d1ce6d1b97fe82072fc072725c",
+    "tests/test_capture_migration_parity.py": "c22a60a744c83ae8067d3f0a9cef84914fd1c5f48541724bd4465f6cbb0031b5"
+  },
+  "evidence_id": "urn:riopa:evidence:archived-capture-parity:2026-09-12",
+  "identical_migration_values_and_hashes": true,
+  "node_to_python_recovery": true,
+  "non_claims": [
+    "No full event-profile parity, independent reproduction or release approval.",
+    "Node runner consumes generated structured requests, not untrusted JSONL storage.",
+    "References are declarations; no rights or publication approval is conferred."
+  ],
+  "promotion_allowed": false,
+  "python_to_node_recovery": true,
+  "record_count": 236,
+  "scope": "structured native capture objects and experimental derived views",
+  "source_records_sha256": "ee69380e30b2fefa337efada9e360afa5bea7e34592f65a9328fcb2e35c0a268",
+  "source_sha256": "49793b8c1517564bdffda1305cda432dc1e53bd8bc28906e5f12bd6b197c3540",
+  "views_sha256": "02c03f428a9c28e448bc0d77f10277a23cb1c076e6d3314da64ba345fe0148e9"
+}
