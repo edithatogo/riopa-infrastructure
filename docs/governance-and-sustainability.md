@@ -30,9 +30,10 @@ control, expiry and remediation issue in machine-readable release evidence.
 
 Contributors work through issues and focused changes with tests and evidence.
 Maintainers document ownership transfer before leaving a role, preserve access
-and recovery procedures, and keep at least two analysts familiar with every
-release-critical contract; agents may contribute one of those analyses while
-accountable ownership remains explicit. The project publishes supported environments,
+and recovery procedures, and retain two separately prompted advisory agent
+analyses for every release-critical contract. The sole developer dispositions their findings;
+no second human or external participant is implied. Accountable ownership
+remains explicit. The project publishes supported environments,
 security reporting, response boundaries and deprecation notices for stable 1.x.
 
 ## Review cadence
@@ -45,5 +46,8 @@ distinct independent-reproduction evidence.
 
 ## Current approval state
 
-This document defines the operating contract; named signatories and external
-agent-panel reports are still required before the foundation track can close.
+This document defines the operating contract. The bounded M1 ratification and
+M2 promotion are recorded in the foundation evidence index. Later candidate-bound
+advisory agent qualification and the accountable signed/attested release decision
+remain required before final closure. Agent reports cannot supply source authority,
+provider receipts, elapsed operation or the owner's approval.

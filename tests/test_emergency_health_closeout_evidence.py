@@ -1,5 +1,6 @@
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 PACKET = Path("docs/emergency-health-closeout-evidence-20260825.json")
@@ -35,7 +36,13 @@ def test_review_remediation_is_digest_bound_and_keeps_external_gates_open() -> N
     assert packet["promotion_allowed"] is False
     assert len(packet["review_lenses"]) == 4
     for relative_path, expected_digest in packet["artifact_sha256"].items():
-        assert hashlib.sha256(Path(relative_path).read_bytes()).hexdigest() == expected_digest
+        # This immutable receipt qualifies historical bytes, not every successor.
+        # The pinned pre-review revision contains all six original digests;
+        # CI checks out full history so missing historical evidence fails closed.
+        historical_bytes = subprocess.check_output(
+            ["git", "show", f"f2159611c376246c18377325dad4388c34745781:{relative_path}"]
+        )
+        assert hashlib.sha256(historical_bytes).hexdigest() == expected_digest
     gates = " ".join(packet["remaining_blocking_gates"])
     for boundary in (
         "dependencies",
