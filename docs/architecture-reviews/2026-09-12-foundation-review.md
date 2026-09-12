@@ -129,7 +129,7 @@ Final local results (Python 3.14.6; frozen dev/spatial/preservation environment)
 - `uv run riopa roadmap validate --root .`: passed. Current 0.3.0 evaluator is ready;
   later release gates remain separate and this does not approve release.
 - Final advisory re-review: no blocking correctness or evidence-boundary finding.
-- Functional repair commit: `5c99385`. Hosted checks for this successor are not
+- Functional repair commit: `e77bc5ba5dca9d661bf1654b9af1567fe03dd2ba`. Hosted checks for this successor are not
   covered by historical M2 runs; consult this change's PR exact-head checks.
 
 The first full attempt lacked the preservation extra and failed collection; it

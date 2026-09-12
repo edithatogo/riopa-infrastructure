@@ -45,11 +45,11 @@
 - [x] R.9 Make terminal orchestrator selection replace stale executable packets, restore the Python 3.14 `uv` invocation contract, and regenerate the current roadmap status. (`scripts/codex_orchestrator.py`, `tests/test_codex_orchestrator.py`, `Makefile`, `ROADMAP_STATUS.md`)
 - [x] R.10 Revalidate the executable, negative-test, traceability and clean-checkout evidence on the merged tree and promote only the foundation track from M1 to experimental M2. (`docs/foundation-m2-promotion-20260826.json`, `tests/test_foundation_m2_promotion.py`)
 
-- [x] R.11 Repair schema ownership drift with executable inventory validation and negative tests; preserve historical digest assertions at their pinned revision, reopen final C.3 and record current traceability and remaining gates. (`5c99385`; `docs/architecture-reviews/2026-09-12-foundation-review.md`)
+- [x] R.11 Repair schema ownership drift with executable inventory validation and negative tests; preserve historical digest assertions at their pinned revision, reopen final C.3 and record current traceability and remaining gates. (`e77bc5ba5dca9d661bf1654b9af1567fe03dd2ba`; `docs/architecture-reviews/2026-09-12-foundation-review.md`)
 
 ## 6. Remaining maturity qualification
 
-- [ ] 6.1 Qualify representative real-data integrations, version migrations and failure handling against the foundation contracts (M3).
+- [~] 6.1 Qualify representative real-data integrations, version migrations and failure handling against the foundation contracts (M3). The bounded national/council evidence chain and tamper rejection are validated; real-data old/new-version migration execution and candidate-bound qualification remain open. (`docs/foundation-m3-evidence-20260912.json`, `scripts/validate_foundation_m3_evidence.py`, `tests/test_foundation_m3_evidence.py`)
 - [ ] 6.2 Bind repeated operations, agent-operated workflows, SLOs and compatibility evidence to supported versions (M4).
 - [ ] 6.3 Freeze the candidate inventory and complete role-separated panel, security, performance, recovery and actual RC-soak qualification (M5).
 - [ ] 6.4 Record supported compatibility, named maintainers, signed/preserved release, isolated reproduction, accountable release decision and post-release verification (M6).

@@ -1,0 +1,106 @@
+{
+  "current_maturity": "M2",
+  "evidence_id": "urn:riopa:evidence:foundation-m3-inventory:2026-09-12",
+  "file_sha256": {
+    "docs/connector-archived-real-source-pair-20260826.json": "a13d126e43c9e35fb1c7b5efc631f513f1957eea18614493bcf269d48830166c",
+    "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json": "942538b5c57038ee9d2bffea129a6548b55886fcd0af26051be8415f4e33ea59",
+    "docs/provenance-profile-migration-1.0.0-to-1.1.0.json": "229dee510812d1f41bf41002ec87d15763022b52956b6d416094765330f937dc",
+    "docs/publication-real-data-release-candidate-20260825.json": "29163e6139224f2359fee7aaec755d302657b3c5ddb0bb86c7e0beec3753bbf2",
+    "evidence/stats-nz-meshblock-2026-projection/capture-records.jsonl": "49793b8c1517564bdffda1305cda432dc1e53bd8bc28906e5f12bd6b197c3540",
+    "evidence/stats-nz-meshblock-2026-projection/materialization-receipt.json": "d20698dd557a5e78916e9ae62662bffc08fe57f565d1b73e5815bd7fda91a1b0",
+    "evidence/stats-nz-meshblock-2026-projection/projection-records/sha256/64/64a1cbce366794b2b802f04dbe2bf1dc5fbf813e5c5b159bcf0782af9adc511f.json": "39c56ce70d5532727f453f7374dec2ed26a05b4fbe887bc6d97f89a1af966d3b",
+    "evidence/stats-nz-meshblock-2026-projection/records-manifest.json": "27f278ca5a537b2d97eff92e13d0bf51ef7ae8ae256ca8a4e6cf453adc48ec0e",
+    "evidence/stats-nz-meshblock-2026-projection/source-records/sha256/90/9067e5e9da3673f88de357315870fe18d058760fe87a36e9bf4abfc080a55ced.json": "813d05d82863320f3c726a716b1d28a615a1d9478bf96d5e516ca760a0279f07",
+    "evidence/wp007-real-slice/manifest.json": "2b773fc68fd630aec197bb5e266e8332e14c15eb251cdfde94ee01a4ee8f20ba",
+    "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.duckdb": "b892592af88844cc28307dbd4319cf4cfc0bf9c461fe10059de71773cde7c9c2",
+    "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.parquet": "eaa2c0cab0e76afeb28e808f7b451df32c646462f6dfb31dd35e728c035fab48",
+    "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.quality.json": "7f5c4f28284ff02c4f42a9c22fb0e21563efc2133c4e7ca0512994ce311e4566",
+    "evidence/wp007-real-slice/store/capture-sets/b973595d-0aaf-4b18-a594-db973507195b.json": "294c5de4debc2cdd2351d064f71d1e57b35e7016a68951996ed856899f80e44b"
+  },
+  "historical_receipt_reconciliation": {
+    "historical_receipt_modified": false,
+    "historical_sha256": "92b38767943694f42f18fd5b9b1efc398ea9164c2580b27ca776b641aec8d8c1",
+    "path": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+    "reason": "merged materialization receipt and manifest hardening in PR #598",
+    "successor_commit": "38ae813818e0cca9065ea3d299ca22153a88b206",
+    "successor_sha256": "27f278ca5a537b2d97eff92e13d0bf51ef7ae8ae256ca8a4e6cf453adc48ec0e"
+  },
+  "migrations": [
+    {
+      "from_version": "1.0.0",
+      "path": "docs/provenance-profile-migration-1.0.0-to-1.1.0.json",
+      "status": "declarative-fixture-valid-real-data-execution-unverified",
+      "to_version": "1.1.0"
+    },
+    {
+      "from_version": "1.0.0",
+      "path": "docs/ontology/migrations/canonical-crosswalk-1.0.0-to-1.1.0.json",
+      "status": "declarative-fixture-valid-real-data-execution-unverified",
+      "to_version": "1.1.0"
+    }
+  ],
+  "non_claims": [
+    "No fresh source retrieval, publication, provider restore or authority approval.",
+    "Archived rights declarations are not new redistribution clearance.",
+    "Valid migration metadata is not an executed migration or cross-runtime conformance.",
+    "Passing this inventory does not satisfy M3 or the later M4-M6 gates."
+  ],
+  "outputs": [
+    {
+      "bytes": 1323008,
+      "path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.duckdb",
+      "sha256": "b892592af88844cc28307dbd4319cf4cfc0bf9c461fe10059de71773cde7c9c2"
+    },
+    {
+      "bytes": 18963,
+      "path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.parquet",
+      "sha256": "eaa2c0cab0e76afeb28e808f7b451df32c646462f6dfb31dd35e728c035fab48"
+    },
+    {
+      "bytes": 1250,
+      "path": "evidence/wp007-real-slice/materialized/wcc-zone-objectid-1.quality.json",
+      "sha256": "7f5c4f28284ff02c4f42a9c22fb0e21563efc2133c4e7ca0512994ce311e4566"
+    }
+  ],
+  "promotion_allowed": false,
+  "remaining_m3_gates": [
+    "execute applicable old/new-version migration on representative real inputs",
+    "qualify loss, rejection, recovery and compatibility against those versions",
+    "record candidate-bound foundation integration qualification and finding disposition"
+  ],
+  "rights": {
+    "council": {
+      "rights_disposition": "WCC GIS metadata declares CC BY 3.0 NZ; layer purpose limitations retained",
+      "rights_evidence": [
+        "https://wellington.govt.nz/~/media/maps/gis/gis-data-metadata.pdf"
+      ]
+    },
+    "national": {
+      "access_status": "public",
+      "attribution_text": "Stats NZ Tatauranga Aotearoa",
+      "licence_status": "declared",
+      "notes": "Rights assertion copied from the verified archive manifest.",
+      "redistribution_status": "attribution-required",
+      "reviewed_at": "2026-08-02T13:38:16Z",
+      "spdx_or_uri": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "verification_scope": "archived declarations; no fresh rights or authority decision"
+  },
+  "schema": "riopa.foundation-m3-evidence.v1",
+  "sources": {
+    "council_planning": {
+      "capture_set": "evidence/wp007-real-slice/store/capture-sets/b973595d-0aaf-4b18-a594-db973507195b.json",
+      "feature_count": 1,
+      "manifest": "evidence/wp007-real-slice/manifest.json",
+      "source_id": "urn:riopa:source:wcc:2024-district-plan-zones"
+    },
+    "national": {
+      "capture_record_count": 236,
+      "capture_records": "evidence/stats-nz-meshblock-2026-projection/capture-records.jsonl",
+      "manifest": "evidence/stats-nz-meshblock-2026-projection/records-manifest.json",
+      "source_id": "urn:riopa:source:stats-nz:meshblock-2026"
+    }
+  },
+  "status": "bounded-integration-verified-m3-qualification-incomplete",
+  "track_id": "foundation_architecture_20260718"
+}
