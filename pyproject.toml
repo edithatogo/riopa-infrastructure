@@ -49,7 +49,7 @@ dev = [
   "types-PyYAML>=6.0.12,<7",
 ]
 preservation = [
-    "huggingface-hub>=1,<2",
+    "huggingface-hub>=1,<3",
 ]
 
 [project.urls]
