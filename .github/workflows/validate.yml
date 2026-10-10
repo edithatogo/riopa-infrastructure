@@ -29,11 +29,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Install uv and Python
-        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           enable-cache: true
           python-version: "3.14"
-          version: "0.11.16"
+          version: "0.13.0"
       - name: Install locked environment
         run: uv sync --extra dev --extra spatial --extra preservation --frozen
       - name: Run engineering quality harness
@@ -43,7 +43,7 @@ jobs:
           uv run python scripts/check_workflow_lint.py --root .
           uv run python scripts/check_tracked_secrets.py --root .
       - name: Upload package and SBOM evidence
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: package-and-sbom
           path: dist/package/
@@ -65,13 +65,13 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Install uv and Python
-        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           enable-cache: true
           python-version: ${{ matrix.python-version }}
-          version: "0.11.16"
+          version: "0.13.0"
       - name: Install independent Node conformance runtime
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: "24"
       - name: Install locked environment
@@ -96,7 +96,7 @@ jobs:
         run: cargo test --manifest-path rust/riopa-conformance/Cargo.toml --locked
       - name: Upload coverage evidence
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: coverage-${{ matrix.python-version }}
           path: |
