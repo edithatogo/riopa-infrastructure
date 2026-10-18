@@ -30,7 +30,7 @@ archive = [
 spatial = [
   "httpx>=0.28,<1",
   "duckdb>=1.3,<2",
-  "pyarrow>=18,<26",
+  "pyarrow>=18,<27",
   "pyproj>=3.6,<4",
   "shapely>=2.0,<3",
 ]
@@ -49,7 +49,7 @@ dev = [
   "types-PyYAML>=6.0.12,<7",
 ]
 preservation = [
-    "huggingface-hub>=1,<2",
+    "huggingface-hub>=1,<3",
 ]
 
 [project.urls]
