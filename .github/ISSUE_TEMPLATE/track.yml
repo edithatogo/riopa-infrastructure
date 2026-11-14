@@ -1,5 +1,5 @@
 name: Conductor track task
-about: Propose or implement work linked to a Conductor track
+description: Propose or implement work linked to a Conductor track
 title: "[Track] "
 labels: ["type:track"]
 body:
