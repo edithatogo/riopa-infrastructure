@@ -79,3 +79,12 @@ This track is part of the stable v1 release contract. It is complete only when i
 ## Completion rule
 
 The track may enter `complete` only after every acceptance criterion is evidenced in `index.md`, all blocking dependencies are complete, required migrations and documentation are published, and the target release readiness evaluator reports no track-specific blocker.
+
+## Serde suitability for conformance contracts — 18 November 2026
+
+`rust/riopa-conformance/Cargo.toml` already depends on `serde_json`, `serde_json_canonicalizer`, `jsonschema` and SHA-256. `src/lib.rs` explicitly marks `Crosswalk::to_wire/from_wire` as a **restricted tab-delimited fixture alphabet**, not a production interchange format. **Retain this intentional constraint**. Serde cannot replace RFC 8785 canonicalization, JSON Schema checks, SHA-256, confidence/source validations or real conformance tests.
+
+- [ ] First establish a genuine public cross-language DTO consumer and a versioned exchange schema; only then evaluate adding `serde` derive for new typed JSON values in a separate adapter. Do not retrofit Serde into the existing restricted TSV fixture or broaden claims without contract negotiation.
+- [ ] Preserve JCS canonical hash vectors, Unicode ordering, float representations, duplicate key rejection, malformed/oversize input and domain-separated digest semantics; keep schema validity distinct from source truth or scientific equivalence.
+- [ ] Test pinned independent Python/Rust fixtures and published crosswalk identifiers/rights. Demonstrate actual reduction of duplicated serialization code; no-go is permitted if direct JSON Value + JCS remains simpler.
+- [ ] Treat source licensing, Māori data sovereignty, source provenance and human review as separate governance gates; exact-head CI and downstream consumer acceptance required. No implementation has been completed by this note.
