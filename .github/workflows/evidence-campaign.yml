@@ -80,6 +80,11 @@ jobs:
       EVIDENCE_ACTIVATION_AUTHORITY: ${{ github.event_name == 'schedule' && 'edithatogo' || github.event.inputs.activation_authority || '' }}
       EVIDENCE_ACTIVATED_AT: ${{ github.event_name == 'schedule' && '2026-08-30T02:41:05Z' || github.event.inputs.activated_at || '' }}
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a # v2.22.4
+        with:
+          egress-policy: audit
+
       - name: Validate exact revision input
         run: |
           if [[ ! "$EVIDENCE_CANDIDATE_REVISION" =~ ^[0-9a-f]{40}$ ]]; then
@@ -196,6 +201,11 @@ jobs:
       EVIDENCE_CANDIDATE_REVISION: ${{ inputs.candidate_revision || github.sha }}
       EVIDENCE_QUALIFICATION_EPOCH: ${{ inputs.qualification_epoch }}
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a # v2.22.4
+        with:
+          egress-policy: audit
+
       - name: Validate exact revision input
         run: |
           if [[ ! "$EVIDENCE_CANDIDATE_REVISION" =~ ^[0-9a-f]{40}$ ]]; then
